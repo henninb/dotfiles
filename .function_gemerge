@@ -1,0 +1,13 @@
+function gemerge() {
+  if [ "$#" -ne 1 ]; then
+    echo "Usage: ${FUNCNAME} <package>" >&2
+  else
+    qlist -I | grep -v grep | grep $1
+    if [ $? -ne 0 ]; then
+      echo $1 will emerge.
+      sudo emerge $1
+    else
+      echo  $1 already built.
+    fi
+  fi
+}

@@ -1,0 +1,102 @@
+#!/usr/bin/env sh
+
+# https://askubuntu.com/questions/689281/pulseaudio-can-not-load-bluetooth-module-15-10-16-04-16-10
+# https://ubuntuforums.org/showthread.php?t=2308489
+
+if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
+  sudo apt install -y bluez-tools pulseaudio-module-bluetooth expect
+elif [ "$OS" = "Fedora" ]; then
+  echo
+  sudo dnf install -y bluez-tools
+  sudo dnf install -y pulseaudio-module-bluetooth
+  sudo dnf install -y expect
+elif [ "$OS" = "Arch Linux" ]; then
+  sudo pacman --noconfirm --needed -S bluez-tools expect bluez-utils pulseaudio-bluetooth blueman pulseaudio-alsa bluez-hid2hci bluedevil
+  cd projects
+  git clone https://aur.archlinux.org/asoundconf.git
+  git clone https://aur.archlinux.org/bluez-utils-compat.git
+  echo /etc/pulse/default.pa
+  echo /etc/pulse/system.pa
+  echo load-module module-bluetooth-policy
+  echo load-module module-bluetooth-discover
+  echo Change to privacy = off but set Controller = le in /etc/bluetooth/main.conf
+  sudo usermod -a -G lp $(id -un)
+else
+  echo $OS is not yet implemented.
+  exit 1
+fi
+echo sudo hciconfig hci0 up
+
+sudo systemctl enable bluetooth
+sudo systemctl start bluetooth
+sudo systemctl status bluetooth
+
+if [ ! -f sn-725.mp3 ]; then
+  wget https://media.grc.com/sn/sn-725.mp3 -O sn-725.mp3
+fi
+
+amixer -D pulse sset Master 5%+
+echo alsamixer -c 1
+echo hciconfig scan
+echo sudo bt-device -l
+echo BC:F2:92:28:6D:45	PLT Focus
+echo pulseaudio -k # to restart pulseaudio
+
+echo sudo journalctl --unit=bluetooth -f
+echo dconf reset -f /
+echo sudo rfkill list # to see if audio device is blocked
+sudo rfkill list
+echo sudo rfkill unblock bluetooth
+echo sudo systemctl status bluetooth
+echo pacmd ls
+echo pactl load-module module-bluetooth-discover
+echo pactl list short
+
+#/etc/bluetooth/main.conf
+#[Policy]
+#AutoEnable=true
+
+echo hcitool scan
+#sudo bluetoothctl -- power on
+sudo bluetoothctl -- scan on
+sudo bluetoothctl -- trust BC:F2:92:28:6D:45
+sudo bluetoothctl -- pairable on
+sudo bluetoothctl -- pair BC:F2:92:28:6D:45
+sudo bluetoothctl -- trust BC:F2:92:28:6D:45
+echo sudo l2ping BC:F2:92:28:6D:45
+
+#echo echo -e "<command1>\n<command2>\n" | bluetoothctl or bluetoothctl -- command
+exit 0
+sudo yum install -y bluez-hid2hci bluez-tools pulseaudio-module-bluetooth mgp123
+sudo hciconfig hci0 up
+
+sudo systemctl start bluetooth
+sudo systemctl status bluetooth
+
+wget https://media.grc.com/sn/sn-663.mp3
+amixer -D pulse sset Master 5%+
+
+hciconfig scan
+sudo bt-device -l
+
+hcitool scan
+
+sudo l2ping F0:F0:F0:06:32:84
+
+sudo bluetoothctl
+pair F0:F0:F0:06:32:84
+
+6F:8A:CC:29:DE:14
+
+sudo bluetoothctl list
+#need to start to connect
+pulseaudio -k
+pulseaudio --start
+sudo pulseaudio --system
+
+sudo pactl unload-module module-bluetooth-discover
+sudo pactl load-module module-bluetooth-discover
+
+
+exit 0
+

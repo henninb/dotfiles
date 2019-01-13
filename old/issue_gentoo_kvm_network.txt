@@ -1,0 +1,6 @@
+sudo virsh net-start default
+Unable to open /dev/net/tun
+modprobe tun
+can't initialize iptables table `nat': Table does not exist
+
+IP_NF_NAT and IP6_NF_NAT to be enabled in your kernel configuration for USE=virt-network

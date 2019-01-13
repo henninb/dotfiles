@@ -1,0 +1,7 @@
+[package]
+name = "parser_new"
+version = "0.1.0"
+authors = ["Brian Henning <henninb@gmail.com>"]
+edition = "2018"
+
+[dependencies]

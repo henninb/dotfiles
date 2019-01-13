@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: example_email
+
+#spring.config.name: application.yml
+
+#  spring.mail.host=smtp.gmail.com
+#  spring.mail.port=587
+#  spring.mail.username=username
+#  spring.mail.password=password
+
+
+  mail:
+    protocol: smtp
+    host:  smtp.gmail.com
+    port: 25
+    username:
+    password:
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false

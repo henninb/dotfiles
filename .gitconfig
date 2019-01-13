@@ -1,0 +1,25 @@
+[user]
+	email = henninb@msn.com
+	name = Brian Henning
+[alias]
+  co = checkout
+  ci = commit
+  st = status -sb
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+  cob = checkout -b
+  pom = push origin master
+[push]
+	default = simple
+#[remote "origin"]
+#	url = git@github.com:BitExplorer/dotfiles.git
+#	fetch = +refs/heads/*:refs/remotes/origin/*
+# [branch "master"]
+# 	remote = origin
+# 	merge = refs/heads/master
+[merge]
+  tool = vimdiff
+[diff]
+  tool = vimdiff

@@ -1,0 +1,23 @@
+- hosts: debian
+  become_user: root
+  become: yes
+  tasks:
+    - name: ensure package cache is up to date
+      action: apt update_cache=yes cache_valid_time=3600
+    - name: install web server
+      action: apt pkg=apache2 state=present
+    - name: install stunnel
+      action: apt pkg=stunnel state=present
+    - name: install postfix
+      action: apt pkg=postfix state=present
+    - name: install vim
+      action: apt pkg=vim state=present
+    - name: install zsh
+      action: apt pkg=zsh state=present
+    - name: install rtorrent
+      action: apt pkg=rtorrent state=present
+    - name: install mpg123
+      action: apt pkg=mpg123 state=present
+    - name: install figlet
+      action: apt pkg=figlet state=present
+      #stunnel postfix mailutils mpg123 screen figlet neovim vim rtorrent wget ranger fx zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg alsa-utils cmus python-setuptools weechat rsync tmux emacs mcrypt wine64 yarn nodejs ssh-askpass iptables-persistent libguestfs-tools

@@ -1,0 +1,4 @@
+https://forums.linuxmint.com/viewtopic.php?f=47&t=293987
+https://forums.freebsd.org/search/85061/
+https://forums.freebsd.org/threads/virtualbox-guest-for-freebsd-issue-with-i3-after-guest-additions-installed.69315/
+https://forums.freebsd.org/threads/10-2-vbox-shared-folders-mounting.55091/#post-360030

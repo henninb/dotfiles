@@ -1,0 +1,28 @@
+VM_NAME = 'gentoobox'
+VM_USER = 'henninb'
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "generic/gentoo"
+  #config.vm.box_version = "1.9.14"
+#  config.vm.hostname = VM_NAME
+#  config.vm.network "private_network", ip: "192.168.133.11"
+
+#  config.vm.network "public_network", type: "bridge", dev: "br0", mode: "bridge", network_name: "public-network"
+  config.vm.provision "file", source: "setup.sh", destination: "~/setup.sh"
+
+#  config.vm.provider :libvirt do |libvirt|
+  #config.vm.provider :libvirt do |libvirt|
+#    libvirt.driver = "kvm"
+#    libvirt.cpu_mode = 'host-passthrough'
+#    net.ifnames=0
+#    biosdevname=0
+#    libvirt.graphics_port = 5901
+#    libvirt.graphics_ip = '0.0.0.0'
+#    libvirt.video_type = 'qxl'
+#  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    su - vagrant -c "mkdir -p /home/vagrant/.ssh"
+  SHELL
+  config.vm.provision "file", source: "/home/henninb/.ssh/id_rsa", destination: "/home/vagrant/.ssh/id_rsa"
+end

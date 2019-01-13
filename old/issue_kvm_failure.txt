@@ -1,0 +1,3 @@
+The problem is that even if libvirtd runs as root it starts qemu with user:group defined into /etc/libvirt/qemu.conf (by default nobody:nobody). One long term solution could be to add a new system group named kvm (changing /dev/kvm to user:group root:kvm) and run qemu from nobody:kvm.
+
+One quickfix solution for now is adding a line in /etc/libvirt/qemu.conf that states qemu runs with group = wheel.

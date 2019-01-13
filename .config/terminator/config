@@ -1,0 +1,19 @@
+[global_config]
+  tab_position = hidden
+  title_transmit_bg_color = "#4e9a06"
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"
+    font = DejaVu Sans Mono 12
+    scrollback_lines = 9999
+    use_system_font = False

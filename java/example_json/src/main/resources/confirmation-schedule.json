@@ -1,0 +1,51 @@
+[
+  {
+    "id": "0000",
+    "confirmation-times": [
+      {
+        "type": "soft",
+        "hour": 16
+      },
+      {
+        "type": "hard",
+        "hour": 17
+      },
+      {
+        "type": "soft",
+        "hour": 21
+      },
+      {
+        "type": "hard",
+        "hour": 22
+      }
+    ],
+    "alert-distribution-lists": [
+      {
+        "alert-type": "soft",
+        "send-alerts-to": [
+          {
+            "addressee": "test@test.com",
+            "type": "to"
+          },
+          {
+            "addressee": "test1@test.com",
+            "type": "to"
+          }
+        ]
+      },
+      {
+        "alert-type": "hard",
+        "send-alerts-to": [
+          {
+            "addressee": "test@test.com",
+            "type": "to"
+          },
+          {
+            "addressee": "test1@test.com",
+            "type": "to"
+          }
+        ]
+      }
+    ]
+  }
+]

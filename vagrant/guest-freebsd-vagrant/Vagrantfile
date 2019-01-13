@@ -1,0 +1,19 @@
+VM_NAME = 'bsdbox'
+VM_USER = 'henninb'
+
+Vagrant.configure("2") do |config|
+  #config.vm.box = "freebsd/FreeBSD-12.0-STABLE"
+  #config.vm.box = "generic/freebsd11"
+  config.vm.box = "generic/freebsd12"
+  config.vm.hostname = VM_NAME
+  config.vm.provision "file", source: "setup.sh", destination: "~/setup.sh"
+
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.driver = "kvm"
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    su - vagrant -c "mkdir -p /home/vagrant/.ssh"
+  SHELL
+  config.vm.provision "file", source: "/home/henninb/.ssh/id_rsa", destination: "/home/vagrant/.ssh/id_rsa"
+end

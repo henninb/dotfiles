@@ -1,0 +1,54 @@
+#!/bin/sh
+
+if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+  sudo apt install -y make
+  sudo apt install -y gtk-doc
+  sudo apt install -y intltool
+  sudo apt install -y gnutls-devel
+  sudo apt install -y gperf
+  sudo apt install -y pkg-config
+  sudo apt install -y g++
+  sudo apt install -y gnutls-dev
+  sudo apt install -y libpcre2-dev
+  #sudo apt install -y gtk3-devel
+  sudo apt install libgtk-3-dev
+  sudo apt-get install libgtk2.0-dev
+  #sudo apt install gnome-devel
+  sudo apt-get install gtk+3.0
+elif [ "$OS" = "Gentoo" ]; then
+  echo
+elif [ "$OS" = "Arch Linux" ]; then
+  sudo pacman -Rsn termite
+  sudo pacman -S gtk-doc
+  sudo pacman -S intltool
+  sudo pacman -S gperf
+elif [ "$OS" = "Fedora" ]; then
+  sudo dnf install -y gtk-doc
+  sudo dnf install -y intltool
+  sudo dnf install -y gtk3-devel
+  sudo dnf install -y gnutls-devel
+  sudo dnf install -y gperf
+else
+  echo $OS is not yet implemented.
+  exit 1
+fi
+
+mkdir -p $HOME/projects
+cd $HOME/projects
+git clone --recursive git@github.com:thestinger/termite.git
+git clone git@github.com:thestinger/vte-ng.git
+
+cd $HOME/projects/vte-ng
+./autogen.sh --disable-introspection --disable-vala
+make
+sudo make install
+
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
+cd $HOME/projects/termite
+make
+sudo make install
+
+sudo touch /etc/ld.so.conf.d/vte.conf
+sudo ldconfig
+
+exit 0

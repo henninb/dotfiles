@@ -1,0 +1,24 @@
+#!/bin/sh
+exec tail -n +3 $0
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+
+# installed in bedroom on arch
+menuentry "CentOS Linux (5.0.2-1.el7.elrepo.x86_64) 7 (Core)" {
+  set root=(hd2,4)
+  linux /boot/vmlinuz-5.0.2-1.el7.elrepo.x86_64 root=UUID=7555bb30-68c4-45f6-a24f-f4c4e4f91c26 rw quiet
+  initrd /boot/initramfs-5.0.2-1.el7.elrepo.x86_64.img
+}
+
+menuentry "Windows 10" {
+  set root=(hd2,1)
+  chainloader +1
+}
+
+# installed in another system
+menuentry "Mint 19.1" {
+  set root=(hd0,1)
+  linux /boot/vmlinuz-4.15.0-20-generic root=UUID=ffb5a152-1ca8-47a2-8629-443b59d81b41 ro quiet splash
+  initrd /boot/initrd.img-4.15.0-20-generic
+}

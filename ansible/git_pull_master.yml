@@ -1,0 +1,9 @@
+- hosts: all
+  gather_facts: true
+  tasks:
+    - name: pull from git
+      git:
+        repo: git@github.com:BitExplorer/dotfiles.git
+        dest: /home/henninb
+        version: master
+        force: yes

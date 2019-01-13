@@ -1,0 +1,100 @@
+: 1566955288:: :;using gnu screen with zsh, but having font issues inside screen. glyphs have turne into question marks. any idea how to address this?
+: 1566955739:: :;let me check fling, thanks for the lead.
+: 1566957768:: :;fling, you were spot on setting the character set locale helped with the gnu screen issue.
+: 1566959031:: :;exit
+: 1566959035:: :;/quit
+: 1567122079:: :;hi, i am trying to see glyphs from zsh on the console, where can I download the correct font to install with setfont
+: 1567122285:: :;thanks sarnold, i will check it out.
+: 1567122830:: :;not sure if i absolutely need it, but I would like my console to show the gliphs from zsh
+: 1567123016:: :;the ones for git
+: 1567123023:: :;i am using oh my zsh
+: 1567123123:: :;i am not sure I understand the question deltab. it is all text from my point of view.
+: 1567123241:: :;is there a command that I can run to tell me the screen mode? I will try and google the answer.
+: 1567124214:: :;yes, I was trying to avoid x/Wayland.
+: 1567124236:: :;my hardware is 1 year old
+: 1567128488:: :;sarnold i was able to get ter-powerline-v16b.psf to work in the console, tty1.
+: 1567128573:: :;no, I found it on a git repo.
+: 1567128622:: :;i alway appreciate getting ideas and thoughts from folks.
+: 1567128637:: :;thanks for your responses.
+: 1567285540:: :;/join awesome
+: 1567285649:: :;hi, is it possible to set the default behavior of Awesome in the config to default to tiled?
+: 1567734358:: :;hi, having trouble with xrdp, I am getting the following error. "KDSETMODE failed: Bad file descriptor". not finding a solution, any ideas?
+: 1568080674:: :;i have installed the plugin for prettier for nvim, is there a way to disable markdown for the plugin. when I save a large markdown file prettier pegs my cpu.
+: 1568420189:: :;when I call xmonad from xrdp either xmobar doesn't start or fails after starting. xmobar starts fine otherwise. any thoughts on how to troubleshoot?
+: 1568430561:: :;when I call xmonad from xrdp either xmobar doesn't start or fails after starting. xmobar starts fine otherwise. any ideas what to try?
+: 1568471384:: :;when I use my xmbar i see "updating..." in the top left. I set my loghook for ppOutput. what else should I look for?
+: 1568471495:: :; 
+: 1568471676:: :;vrs, i just verified I am using spawnPipe for xmobar in my xmonad.hs.
+: 1568471803:: :;vrs, it might be happening because of a different issue. when I start xmonad my xmobar is not starting automatically. I then start it from a terminal after startup.
+: 1568472201:: :;geekosaur, I am on arch and it is residing on /usr/bin
+: 1568472268:: :;geekosaur, this issue is only happening while I am using xrdp to remote into the system. the issue does NOT happen while i am on the console.
+: 1568472348:: :;my .xsession-errors file is empty.
+: 1568472682:: :;i tried hardcoding the path, but it didn't help.
+: 1568472852:: :;geekosaur, https://github.com/BitExplorer/dotfiles/blob/master/.xmonad/xmonad.hs
+: 1568472937:: :;geekosaur, yes
+: 1568472949:: :;and yes I am using that xmobarrc
+: 1568473098:: :;geekosaur, it may be that you are correct in your point above because xmobar appears to not get called or fail on startup.
+: 1568473264:: :;i wonder if there is any thing I should set in my .xinitrc to prepare the enviornment for xmonad/xmobar.
+: 1568473304:: :;i say that because xrdp is calling .xinitrc
+: 1568487383:: :;for xmobar to function correctly are there any enviroment variable required as it is spawned from the xmonad.hs? mine xmobar is failiing to stay up.
+: 1568487841:: :;geekosaur, here is what the logs have "<stdin>: hGetLine: end of file"
+: 1568488092:: :;geekosaur, i know I have looked this over and everything seems correct.
+: 1568488360:: :;i copied your exact command and produced the same line "<stdin>: hGetLine: end of file" 
+: 1568488375:: :;found in /tmp/xmobar.errors
+: 1568488429:: :;soon after I modified it and I see an active pid - "/bin/sh -c /usr/bin/xmobar .config/xmobar/xmobarrc && ps -ef| grep xmobar > /tmp/xmobar.pid"
+: 1568488456:: :;so like you indicated it is starting, but it terminates soon after.
+: 1568488533:: :;ok
+: 1568488593:: :;here is the code I need that produced that result  "xmproc <- spawnPipe "/usr/bin/xmobar .config/xmobar/xmobarrc && ps -ef| grep xmobar > /tmp/xmobar.pid"
+: 1568488799:: :;ok good to know
+: 1568488840:: :;after i login i can start xmobar (in the foreground) from a shell and it stays up.
+: 1568488942:: :;the StdinReader says Updating... but from what I understand that is expected because it wasn't spawned directly from xmonad.
+: 1568489010:: :;exactly what happened :)
+: 1568489188:: :;i assume there are no flags to turn on more debugging in xmobar?
+: 1568489304:: :;thanks again for your help geekosaur.
+: 1568489736:: :;when I pass a -v flag, here is what I see - "13:56 < henninb> for xmobar to function correctly are there any enviroment variable required as it is spawned from the xmonad.hs? mine xmobar is failiing to stay up.
+: 1568489736:: :;13:57 ::: Irssi: Join to #xmonad was synced in 167 secs
+: 1568489736:: :;13:58 < geekosaur> there's some X11-related environment variables that are required, but xmonad requires them as well
+: 1568489736:: :;14:00 < geekosaur> it would be helpful if you could capture stderr from it, possibly via: xmproc <- spawnPipe "/usr/bin/xmobar .config/xmobar/xmobarrc 2>/tmp/xmobar.errors"
+: 1568489736:: :;14:00 < geekosaur> (the parentheses you have do nothing)
+: 1568489736:: :;14:04 < henninb> geekosaur, here is what the logs have "<stdin>: hGetLine: end of file"
+: 1568489736:: :;14:06 < geekosaur> that sounds like it's not being started by that invocation at all
+: 1568489736:: :;14:06 < geekosaur> you are using spawnPipe and you use xmproc later in the logHook, so it should be held open
+: 1568489736:: :;14:08 < henninb> geekosaur, i know I have looked this over and everything seems correct.
+: 1568489736:: :;14:11 < geekosaur> btw, which "logs" are you talking about? the one I suggested creating above, or some other one?
+: 1568489736:: :;14:12 < henninb> i copied your exact command and produced the same line "<stdin>: hGetLine: end of file"
+: 1568489736:: :;14:12 < henninb> found in /tmp/xmobar.errors
+: 1568489736:: :;14:13 < geekosaur> thsat is just weird
+: 1568489736:: :;14:13 < henninb> soon after I modified it and I see an active pid - "/bin/sh -c /usr/bin/xmobar .config/xmobar/xmobarrc && ps -ef| grep xmobar > /tmp/xmobar.pid"
+: 1568489736:: :;14:14 < henninb> so like you indicated it is starting, but it terminates soon after.
+: 1568489800:: :;sorry I didn't mean to paste that.
+: 1568494297:: :;/quit
+: 1568502627:: :;is there a shell command to identify if the terminal has been started with xmonad?
+: 1568502875:: :;/join xmobar
+: 1568502954:: :;/join xmonad
+: 1568503654:: :;/join #xrdp
+: 1568503680:: :;is there a shell command to tell if you are running xrdp?
+: 1568504322:: :;definately gives me the pid, but if i am in the terminal how would I know that the terminal was started inside an xrdp session?
+: 1568504912:: :;is there a shell command to identify if I am running xmonad, awesome, or i3?
+: 1568506567:: :;i tried that "Cannot get window manager info properties." from xmonad.
+: 1568508089:: :;thanks tabby
+: 1568510521:: :;for xmonad does anyone know if yabar can be used with instead of xmobar?
+: 1568510739:: :;for xmonad does anyone know if yabar can be used with instead of xmobar? or what other bar options ar there?
+: 1569777986:: :;hi, which font should I install paired with ohmyzsh and urxvt? I am having trouble getting icons to show?
+: 1570836685:: :;i am having a font issue, when starting urxvt I set the font in the .Xdefault (Urxvt.font: xft:SauceCodePro NF:pixelsize=16), but the font doesn't take, any advice?
+: 1570837562:: :;thanks sarnold, from what I read the .Xresources is on demand.
+: 1570837835:: :;sarnold did you install your fonts or are these part of the default on the system?
+: 1570837991:: :;ok, I will put it in my .xinitrc, thanks sarnold
+: 1571535444:: :;/join #fedora
+: 1571535536:: :;fedora30 - urxvt, not able to view gliphs, any advice?
+: 1572207214:: :;/quit
+: 1572207505:: :;if I am using urxvt is there a way to tell I am using that vs another termial such as termite?
+: 1572215243:: :;/quit
+: 1572570609:: :;hi trying to build termite, the build cannot find <gtk/gtk.h>, installed libgtk-3-dev already. Any thought on how to get these header files?
+: 1572570711:: :;sarnold I am not sure if it is gtk-2 or 3.
+: 1572570742:: :;sarnold, I will try
+: 1572570788:: :;sarnold, libgtk2.0-dev is already installed.
+: 1572570795:: :;same issue
+: 1572570984:: :;akk, I will see if I can find out how it is found in this autogen.sh.
+: 1572571024:: :;akk, will check
+: 1572571154:: :;akk, logs show this: configure:15450: error: Package requirements (glib-2.0 >= 2.40.0 gobject-2.0 pango >= 1.22.0 gtk+-3.0 >= 3.8.0 gobject-2.0 gio-2.0 gio-unix-2.0 zlib libpcre2-8 >= 10.21 gnutls >= 3.2.7) were not met
+: 1572571255:: :;akk, me too. usually it fails with the missage package.

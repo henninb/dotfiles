@@ -1,0 +1,2 @@
+book title|book author|fiction|1001
+7 wonders|unknown|fiction|1002

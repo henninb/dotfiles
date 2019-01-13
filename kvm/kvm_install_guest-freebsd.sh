@@ -1,0 +1,12 @@
+sudo virt-install \
+--virt-type=kvm \
+--name freebsd \
+--memory=1024,maxmemory=2048 \
+--vcpus=1,maxvcpus=2 \
+--os-variant=freebsd10.0 \
+--virt-type=kvm \
+--hvm \
+--cdrom=/var/lib/libvirt/boot/FreeBSD-11.0-RELEASE-amd64-disc1.iso \
+--network=bridge=br0,model=virtio \
+--graphics vnc \
+--disk path=/var/lib/libvirt/images/freebsd11.qcow2,size=40,bus=virtio,format=qcow2

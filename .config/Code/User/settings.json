@@ -1,0 +1,12 @@
+{
+  "editor.renderControlCharacters": true,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "all",
+  "workbench.editor.showTabs": false,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "team.showWelcomeMessage": false,
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.renderWhiteSpace": "all",
+  "editor.insertSpaces": false
+}

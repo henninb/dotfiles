@@ -1,0 +1,32 @@
+#!/bin/sh
+
+if [ "$OS" = "Arch Linux" ]; then
+  echo "arch"
+elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
+  sudo apt install -y mlton
+  exit 0
+elif [ "$OS" = "CentOS Linux" ]; then
+  sudo yum install -y mlton
+  exit 0
+elif [ "$OS" = "Gentoo" ]; then
+  sudo emerge mlton
+  exit 0
+else
+  echo $OS is not yet implemented.
+  exit 1
+fi
+
+echo wget https://github.com/kfl/mosml/archive/ver-2.10.1.tar.gz -O mosml-2.10.1.tar.gz
+echo tar xvf mosml-2.10.1.tar.gz
+cd projects
+git clone git@github.com:kfl/mosml.git
+cd mosml/src/config
+make
+echo make install_local
+sudo make install
+cd $HOME
+
+cd projects
+git clone git@github.com:MLton/mlton.git
+
+exit 0

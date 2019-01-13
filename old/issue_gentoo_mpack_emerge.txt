@@ -1,0 +1,3 @@
+when I set my package use to `>=dev-lua/mpack-1.0.4 luajit` I cannot get mpack to compile because `cannot find -lluajit-5.1` what can I look at to fix this emerge issue?
+
+https://forums.gentoo.org/viewtopic-p-8351966.html

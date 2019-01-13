@@ -1,0 +1,9 @@
+=sys-kernel/linux-firmware-20190514 linux-fw-redistributable no-source-code
+=sys-kernel/linux-firmware-20190118 linux-fw-redistributable no-source-code
+>=dev-java/oracle-jdk-bin-1.8.0.202:1.8 Oracle-BCLA-JavaSE
+=media-libs/fdk-aac-2.0.0 FraunhoferFDK
+=media-libs/fdk-aac-0.1.5 FraunhoferFDK
+>=media-fonts/font-bh-type1-1.0.3-r1 bh-luxi
+>=media-fonts/font-bh-ttf-1.0.3-r1 bh-luxi
+app-arch/unrar unRAR
+#sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE

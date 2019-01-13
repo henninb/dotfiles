@@ -1,0 +1,55 @@
+bar-list = ["topbar"];
+
+topbar:{
+	block-list: ["workspaces", "title", "date"];
+
+	position: "top";
+	monitor: "DVI-I-1";
+	gap-horizontal: 10;
+	gap-vertical: 10;
+	height: 30;
+
+	font: "Droid Sans 9";
+	background-color-argb: 0x00000000;
+	underline-size: 0;
+	overline-size: 0;
+	slack-size: 0;
+
+	workspaces: {
+		exec: "YABAR_WORKSPACE";
+	        internal-option1: "Work Play Web Common"
+	        align: "left";
+	        justify: "center";
+	        type: "persist";
+        	fixed-size: 100;
+
+	        background-color-rgb: 0xC62828;
+		underline-color-rgb: 0xB71C1C;
+	}
+
+
+	title: {
+	        exec: "YABAR_TITLE";
+
+	        align: "left";
+	        justify: "left";
+        	fixed-size: 1000;
+	        type: "persist";
+        	variable-size: false;    // Save some space...;
+		foreground-color-rgb: 0x666666;
+	}
+
+	date: {
+	        exec: "YABAR_DATE";
+	        internal-option1: "%a %d %b, %I:%M:%S";
+	        internal-prefix: "  ";
+
+	        align: "right";
+	        fixed-size: 400;
+	        type: "periodic";
+        	interval: 1;
+
+	        background-color-rgb: 0x00838F;
+        	underline-color-rgb: 0x006064;
+	}
+}

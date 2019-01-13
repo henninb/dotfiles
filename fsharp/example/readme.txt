@@ -1,0 +1,1 @@
+fsharpi --load:example.fs

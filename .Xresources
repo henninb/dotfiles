@@ -1,0 +1,54 @@
+#define 	font0 			TerminessTTF Nerd Font Mono
+#define		font1			FontAwesome
+#define		font2			Material Icons
+#define		font3			SauceCodePro Nerd Font
+
+!! Colorscheme
+
+! special
+*.foreground: #93a1a1
+!*.background: #141c21
+*.background: #000000
+*.cursorColor: #afbfbf
+
+URxvt*color0:      #000000
+URxvt*color1:      #A80000
+URxvt*color2:      #00A800
+URxvt*color3:      #A85400
+URxvt*color4:      #0000A8
+URxvt*color5:      #A800A8
+URxvt*color6:      #00A8A8
+URxvt*color7:      #A8A8A8
+URxvt*color8:      #545054
+URxvt*color9:      #F85450
+URxvt*color10:     #50FC50
+URxvt*color11:     #F2FC50
+URxvt*color12:     #5054F8
+URxvt*color13:     #F854F8
+URxvt*color14:     #50FCF8
+URxvt*color15:     #F8FCF8
+
+!URxvt.font: xft:xos4 Terminus:pixelsize=12, xft:FontAwesome:pixelsize=24
+!URxvt.font: xft:FontAwesome:pixelsize=24
+!URxvt.font: xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true,xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true
+!Urxvt.font: xft:SauceCodePro NF:pixelsize=16, xft:Monospace:pixelsize=16, xft:SauceCodePro Nerd Front Mono:pixelsize=16
+URxvt.font: xft:SauceCodePro NF:pixelsize=16, xft:dejavu sans mono:medium:pixelsize=16, xft:Monospace:pixelsize=16, xft:SauceCodePro Nerd Front Mono:pixelsize=16
+
+!Rxvt*termName: rxvt-unicode-256color
+URxvt.termName: rxvt-256color
+
+URxvt.letterSpace: 0
+URxvt.lineSpace: 0
+URxvt.geometry: 92x24
+URxvt.internalBorder: 24
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+URxvt.saveline: 4096
+URxvt.scrollBar: true
+URxvt.scrollBar_right: true
+URxvt.urgentOnBell: true
+URxvt.depth: 24
+URxvt.iso14755: false
+
+! Location of custom Perl extensions
+URxvt*.perl-lib: $HOME/.urxvt/perl-extensions

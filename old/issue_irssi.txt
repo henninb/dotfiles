@@ -1,0 +1,77 @@
+/msg NickServ identify
+
+#timezone
+/script exec $ENV{'TZ'}='UTC'
+
+#irssi issue on mintlinux
+issue: Error loading module perl/core: /usr/local/lib/irssi/modules/libperl_core.so: cannot open shared object file: No such file or directory
+solve: sudo apt install libperl-dev # do this before building irssi
+#irssi issue on mintlinux
+/load perl
+/script list
+
+/uptime
+
+/set nick henninb
+/join #archlinux
+/join #ubuntu
+
+control-p switches the screens in irssi
+control-n switches the screens in irssi
+
+#to leave
+/part 
+
+/WINDOW <number>          - Jump to any window with specified number
+Ctrl-P, Ctrl-N            - Jump to previous / next window
+
+/SET autolog ON
+
+/WINDOW NEW                    - Create new split window
+/WINDOW NEW HIDE               - Create new hidden window
+/WINDOW CLOSE                  - Close split or hidden window
+
+/WINDOW HIDE [<number>|<name>] - Make the split window hidden window
+/WINDOW SHOW <number>|<name>   - Make the hidden window a split window
+
+/WINDOW SHRINK [<lines>]       - Shrink the split window
+/WINDOW GROW [<lines>]         - Grow the split window
+/WINDOW BALANCE                - Balance the sizes of all split windows
+
+mac specific
+fn <up> and <down>             - for scrolling in a window
+
+05:50 < henninb> hi koobs, i am using irssi and having issue getting unregistered connections to channels. any ideas as to why?
+05:51 < koobs> henninb: what auth method do you use?
+05:52 < koobs> henninb: if its not SASL, that might be the issue, see: https://freenode.net/kb/answer/sasl
+05:52 < henninb> knoobs, autosendcmd = "wait 2000; /msg nickserv identify password" is in my config.
+05:52 < koobs> https://freenode.net/catalysts
+05:52 < tex> henninb: follow koobs link
+05:52 < koobs> tex: but +r and +qa are not for non equality, its for !spam
+05:52 < tex> so you'll be identified as soon as connected
+05:52 < tex> (remove autosendcmd, obviously ^_^)
+05:52 < koobs> henninb: sasl auth happens much earlier in the connection process, so ensures youre auth'd before your client tries to /join
+05:53 < koobs> henninb: otherwise its a race to /ns identify (and how long nicksev takes to response)
+05:54 < koobs> so in light of all that discussion on better options
+05:54 < henninb> knoobs, should I try waiting 4000 ms vs 2000ms?
+05:54 < koobs> since we dont have a bot monitor
+05:54 < koobs> is +r and overflow to here the best we can do right now ?
+05:54 < koobs> henninb: i would just to sasl auth :)
+05:54 < koobs> henninb: you may not be able to control the timing of identifies vs joins in the client
+05:54 < koobs> unless you write them out serially/scripted
+05:54 < koobs> but thats just annoying
+05:54 < koobs> SASL auth :)
+05:55 < koobs> we've gotten it here too
+05:55 < henninb> ahh, got your point, let me look into SASL auth.
+henninb> ahh, got your point, let me look into SASL auth.
+05:55 < tex> henninb: there is the 'alternative' of your nickserv password as server password
+15:47 <+tex> henninb: if you have an irssi-script or similar pkg/port installed
+
+15:49 <+henninb> tex, I am running ubuntu. I will see if there is apt package.
+15:49 <+tex> henninb: if you don't know, you must put a symlink in ~/.irssi/script/autorun/ to have it auto-load
+15:49 <+bossband> for providing information :))
+15:49 <+tex> henninb: yes, it has
+15:51 <+tex> IIRC it will install scripts in /usr/share/irssi/scripts/
+
+ln -s /path/to/file /path/to/link
+ln -s /usr/share/irssi/scripts ~/.irssi/script/autorun

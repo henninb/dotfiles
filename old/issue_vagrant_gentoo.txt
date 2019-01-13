@@ -1,0 +1,1 @@
+hi trying to install vagrant, but getting "emerge: there are no ebuilds to satisfy ">=dev-ruby/erubis-2.7.0[ruby_targets_ruby25]", how do I resolve these issues?

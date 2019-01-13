@@ -1,0 +1,26 @@
+defutf8 on
+#utf8 on
+startup_message off
+term "screen-256color"
+
+# Automatically detach on hangup.
+autodetach on
+vbell off
+
+# Cache 30000 lines for scroll back
+defscrollback 30000
+
+shell -${SHELL}
+#shell "/usr/bin/zsh"
+
+altscreen on
+termcapinfo xterm* ti@:te@:cl=\Ec
+
+# look and feel
+# hardstatus string '%{= kG}%-Lw%{= kW}%50> %n*%f %t%{= kG}%+Lw%< %{= kG}%-=%D %m/%d/%y | %C:%s %A | %1`%{-}'
+#hardstatus alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+# caption always "%{= bb}%{+b w}%n %t %h %=%l %H %c"
+# caption always "%{kY} %n%f* %t %?%{YR}%{kR} %u %{Rb}%:%{Yb}%?%?%F%{.b}%:%{.w}%?%="
+caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= %c"
+vbell off
+autodetach on

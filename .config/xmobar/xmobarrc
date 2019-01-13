@@ -1,0 +1,41 @@
+Config
+  {
+--   font = "xft:Bitstream Vera Sans Mono:pixelsize=16:antialias=true"
+   font = "xft:terminus:size=16:antialias=true:hinting=true"
+ --   font = "xft:Monospace:size=16"
+  , bgColor = "black"
+  , fgColor = "grey"
+--  , wmClass = "xmobar"
+ -- , wmName = "xmobar"
+--  , position = TopW L 75
+--  , position = Static { xpos = 0, ypos = 0, width = 1024, height = 30}
+
+  , border = BottomB
+  , borderColor = "#646464"
+--  , position =  Bottom C 75
+  , position = Top
+  , lowerOnStart = False
+  , commands =
+      [ Run StdinReader
+      , Run Cpu ["-L", "3", "-H", "50", "--normal", "green", "--high", "red"] 10
+      , Run Memory ["-t", "Mem: <usedratio>%"] 10
+      , Run Com "uname" ["-s", "-r"] "" 36000
+      , Run Swap [] 10
+--      , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+      --, Run Date "%A, %B %e, %Y %r %Z" "date" 10
+      , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+      --, Run Battery [] 2
+      ]
+  , sepChar = "%"
+  , alignSep = "}{"
+  , template = "%StdinReader% }{ | %cpu% | %memory% | %swap% | %date% |"
+  --, alpha = 0
+  --, verbose = False
+  , iconRoot = "."
+
+  , hideOnStart              = False
+  , allDesktops              = True
+  , overrideRedirect         = True
+  , pickBroadest             = False
+  , persistent               = True
+  }

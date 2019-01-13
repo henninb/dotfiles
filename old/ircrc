@@ -1,0 +1,26 @@
+on connect * { orignick henninb }
+SERVER irc.freenode.net
+alias w whois
+alias q query
+alias m msg
+alias n notice
+alias r msg $,
+alias a msg $.
+alias c clear
+alias j join
+alias l who
+alias ls who *
+alias i invite
+set novice off
+set history_file ~/.irchistory
+set beep off
+set beep_max 0
+set scroll_lines 1
+set log on
+set suppress_server_motd on
+set auto_away off
+set auto_unmark_away on
+set auto_whowas on
+set clock_24hour on
+set lastlog 1000
+set display on

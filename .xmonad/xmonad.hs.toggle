@@ -1,0 +1,188 @@
+import XMonad
+import XMonad.StackSet (sink)
+import XMonad.Layout.Named (named)
+import XMonad.Layout.NoBorders (smartBorders)
+import XMonad.Layout.Reflect (reflectHoriz)
+import XMonad.Layout.IM (withIM, Property(..))
+import XMonad.Layout.ToggleLayouts (toggleLayouts, ToggleLayout(..))
+import XMonad.Layout.ThreeColumns (ThreeCol(..))
+import XMonad.Layout.Tabbed (tabbedBottom, defaultTheme, activeColor, inactiveColor,
+  urgentColor, activeTextColor, inactiveTextColor, urgentTextColor, activeBorderColor,
+  inactiveBorderColor, urgentBorderColor, shrinkText)
+import XMonad.Actions.WindowGo (raiseMaybe)
+import XMonad.Actions.CycleWS (nextWS, prevWS, toggleWS)
+import XMonad.Hooks.ManageDocks (avoidStruts, manageDocks)
+import XMonad.Hooks.ManageHelpers (doCenterFloat)
+import XMonad.Hooks.DynamicLog (dynamicLogWithPP, xmobarPP, ppOutput, ppCurrent, ppVisible,
+  ppTitle, ppLayout, xmobarColor, wrap, shorten)
+import XMonad.Hooks.EwmhDesktops (ewmh, fullscreenEventHook)
+import XMonad.Hooks.UrgencyHook (withUrgencyHook, NoUrgencyHook(..))
+import XMonad.Util.Run (spawnPipe, safeSpawn, runInTerm)
+
+import Data.Map (union, fromList)
+import Data.Char (toUpper)
+import System.IO (hPutStrLn)
+
+main = do
+  xmobar <- spawnPipe "xmobar"
+  xmonad $ withUrgencyHook NoUrgencyHook $ ewmh $ myConfig xmobar
+
+myConfig logHandle = defaultConfig
+  { terminal           = "terminator"
+  , modMask            = myModMask
+  , normalBorderColor  = "#00ffff"
+  , focusedBorderColor = "#ff00ff"
+  , layoutHook         = myLayoutHook
+  , manageHook         = myManageHook
+  , handleEventHook    = fullscreenEventHook
+  , workspaces         = myWorkspaces
+  , logHook            = myLogHook logHandle
+  , keys               = \c ->
+                         myKeys `union` keys defaultConfig c
+  , mouseBindings      = \c ->
+                         myMouseBindings `union` mouseBindings defaultConfig c
+  }
+
+myModMask = mod1Mask
+
+myWorkspaces = map show [1..9]
+
+myLogHook proc = dynamicLogWithPP $ xmobarPP
+  { ppOutput  = hPutStrLn proc
+  , ppCurrent = currentStyle
+  , ppVisible = visibleStyle
+  , ppTitle   = titleStyle
+  , ppLayout  = (\layout -> case layout of
+      "Tall"        -> "[|]"
+      "Mirror Tall" -> "[-]"
+      "ThreeCol"    -> "[||]"
+      "Tabbed"      -> "[_]"
+      "Gimp"        -> "[&]"
+      )
+  }
+  where
+    currentStyle = xmobarColor "yellow" "" . wrap "[" "]"
+    visibleStyle = wrap "(" ")"
+    titleStyle   = xmobarColor "cyan" "" . shorten 100 . filterCurly
+    filterCurly  = filter (not . isCurly)
+    isCurly x    = x == '{' || x == '}'
+
+myLayoutHook =
+  avoidStruts $
+  smartBorders $
+  toggleLayouts tabbedLayout
+  (tiled ||| Mirror tiled ||| threeCol ||| tabbedLayout ||| gimpLayout)
+  where
+    tiled    = Tall nmaster delta ratio
+    threeCol = ThreeColMid nmaster delta ratio
+    nmaster  = 1
+    delta    = 3/100
+    ratio    = 1/2
+
+    gimpLayout = named "Gimp" (
+        withIM (0.15) (Role "gimp-toolbox") $
+        reflectHoriz $
+        withIM (0.2) (Role "gimp-dock") Full
+      )
+
+    tabbedLayout = named "Tabbed" (tabbedBottom shrinkText myTheme)
+
+myKeys = fromList
+  [ ((controlMask, xK_space),  dmenu)
+  , ((myModMask,   xK_p),      dmenu)
+  , ((0,           xK_Print),  safeSpawn "scrot" ["-q100", "-m"])
+  , ((myModMask,   xK_plus),   safeSpawn "amixer" ["-c", "0", "set", "Master", "1+", "unmute"])
+  , ((myModMask,   xK_minus),  safeSpawn "amixer" ["-c", "0", "set", "Master", "1-"])
+  , ((myModMask,   xK_s),      safeSpawn "killall" ["-USR1", "redshift"])
+  , ((myModMask,   xK_y),      safeSpawn "mpc" ["prev"])
+  , ((myModMask,   xK_u),      safeSpawn "mpc" ["toggle"])
+  , ((myModMask,   xK_i),      safeSpawn "mpc" ["next"])
+  , ((myModMask,   xK_f),      sendMessage ToggleLayout)
+
+  -- It would be more logical to leave shiftMask out but that would conflict with weechat
+  , ((myModMask .|. shiftMask, xK_Left),  prevWS)
+  , ((myModMask .|. shiftMask, xK_Right), nextWS)
+
+  , ((myModMask .|. shiftMask, xK_g),     safeSpawn "slock" [])
+  , ((myModMask .|. shiftMask, xK_b),     spawnOrRaise "firefox")
+  , ((myModMask .|. shiftMask, xK_d),     spawnOrRaise "gvim")
+  , ((myModMask .|. shiftMask, xK_f),     spawnOrRaise "evince")
+  , ((myModMask .|. shiftMask, xK_o),     runInTerm "" "ncmpcpp")
+  , ((myModMask .|. shiftMask, xK_v),     runInTerm "" "miru")
+  , ((myModMask .|. shiftMask, xK_m),     runInTerm "--title mail" "mutt")
+  , ((myModMask .|. shiftMask, xK_a),     runInTermOrRaise "main" "tmux -2 attach -t main")
+  , ((myModMask .|. shiftMask, xK_t),     runInTermOrRaise "htop" "htop")
+  , ((myModMask .|. shiftMask, xK_p),     runInTermOrRaise "ranger" "ranger")
+  ]
+  where
+    spawnOrRaise p = raiseMaybe (safeSpawn p []) (className =? (upper p))
+      where
+        upper [] = ""
+        upper (x:xs) = toUpper x : xs
+
+    runInTermOrRaise t p = raiseMaybe (runInTerm ("--title " ++ t) p) (title =? t)
+
+    dmenu = safeSpawn "dmenu_run" dmenuConfig
+    dmenuConfig =
+      ["-nb", "black", "-nf", "grey", "-sb", "magenta", "-sf", "white"
+      , "-fn", "\"-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*\""
+      ]
+
+myMouseBindings = fromList
+  [ ((0, 10),        \w -> toggleWS)
+  , ((myModMask, 5), \w -> prevWS)
+  , ((myModMask, 4), \w -> nextWS)
+  ]
+
+myManageHook = manageDocks <+> (composeAll . concat)
+  [ [className  =? c --> doFloat       | c <- classFloats]
+  , [className  =? c --> doCenterFloat | c <- classCenterFloats]
+  , [wmName     =? c --> doFloat       | c <- nameFloats]
+  , [wmName     =? c --> doCenterFloat | c <- nameCenterFloats]
+  , [wmRole     =? c --> doFloat       | c <- roleFloats]
+  , [gimp, shiftLast]
+  ]
+  where
+    classFloats =
+      [ "sun-applet-Main"
+      , "openliero"
+      , "Dolphin-emu"
+      , "Gimp"
+      , "zombie-FrameLoader"
+      , "Synfigstudio"
+      , "Uim-toolbar-gtk3"
+      , "VirtualBox"
+      , "Anki"
+      , "Vidalia"
+      ]
+    classCenterFloats =
+      [ "Mplayer"
+      , "Gnome-mplayer"
+      ]
+    nameFloats = ["Color"]
+    nameCenterFloats =
+      [ "Minecraft Launcher"
+      , "PCSX"
+      , "Unlock Keyring"
+      ]
+    roleFloats = ["Brush Selector"]
+    shiftLast  = wmName =? "main" --> (doShift $ last myWorkspaces)
+    gimp       =
+      (wmRole =? "gimp-toolbox" <||> wmRole =? "gimp-image-window" <||> wmRole =? "gimp-dock") --> (ask >>= doF . sink)
+
+    wmRole = stringProperty "WM_WINDOW_ROLE"
+    wmName = stringProperty "WM_WINDOW_NAME"
+
+myTheme = defaultTheme
+  { activeColor         = "#1a1a1a"
+  , inactiveColor       = "#000000"
+  , urgentColor         = "#1a1a1a"
+  , activeTextColor     = "#00ffff"
+  , inactiveTextColor   = "#ffbe33"
+  , urgentTextColor     = "#ff00ff"
+  , activeBorderColor   = "#000000"
+  , inactiveBorderColor = "#1a1a1a"
+  , urgentBorderColor   = "#000000"
+  }
+
+

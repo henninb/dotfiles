@@ -1,0 +1,25 @@
+VM_NAME = 'archbox'
+VM_USER = 'henninb'
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "archlinux/archlinux"
+  config.vm.hostname = VM_NAME
+  config.vm.box_version = "2019.09.10"
+
+  config.vm.synced_folder '.', '/home/'+VM_USER+'', disabled: true
+#  config.vm.network "public_network", type: "bridge", dev: "br0", mode: "bridge", network_name: "public-network"
+  config.vm.provision "file", source: "setup.sh", destination: "~/setup.sh"
+#  config.ssh.forward_agent = true
+  config.ssh.forward_x11 = true
+#  config.ssh.private_key_path = "~/.ssh/id_rsa"
+  config.ssh.forward_agent = true
+
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.driver = "kvm"
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    su - vagrant -c "mkdir -p /home/vagrant/.ssh"
+  SHELL
+  config.vm.provision "file", source: "/home/henninb/.ssh/id_rsa", destination: "/home/vagrant/.ssh/id_rsa"
+end

@@ -1,0 +1,4 @@
+^server chat.freenode.net
+^nick henninb
+^clock_24hour on
+^history_file ~/.irchistory

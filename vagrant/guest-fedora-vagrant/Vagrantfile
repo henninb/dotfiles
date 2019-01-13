@@ -1,0 +1,17 @@
+VM_NAME = 'archbox'
+VM_USER = 'henninb'
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "generic/fedora29"
+  config.vm.hostname = VM_NAME
+
+  config.vm.network "public_network", type: "bridge", dev: "br0", mode: "bridge", network_name: "public-network"
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.driver = "kvm"
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    su - vagrant -c "mkdir -p /home/vagrant/.ssh"
+  SHELL
+  config.vm.provision "file", source: "/home/henninb/.ssh/id_rsa", destination: "/home/vagrant/.ssh/id_rsa"
+end

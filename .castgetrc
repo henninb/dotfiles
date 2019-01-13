@@ -1,0 +1,176 @@
+[*]
+id3contenttype=Podcast
+spool=/home/henninb/podcasts
+
+[Sword and Scale]
+url=https://rss.art19.com/sword-and-scale
+#filename=%(date)-%(title).mp3
+id3album=Sword and Scale
+
+[Freedomain Radio]
+url=http://feeds.feedburner.com/FreedomainRadioVolume6
+
+[Security Now]
+url=https://feeds.twit.tv/sn.xml
+
+
+[Around the NFL]
+url=http://rss.art19.com/around-the-nfl
+
+[Atheist Experience]
+url=http://www.atheist-experience.com/podcast.php
+
+[Skeptics with a K]
+url=http://feeds.feedburner.com/swak
+
+[Be Reasonable]
+url=http://feeds.feedburner.com/reasonablepod
+
+[InKredulous]
+url=http://feeds.feedburner.com/inkredulous
+
+[Big Picture Science]
+url=http://arewealone.libsyn.com/rss
+
+[BSD Now]
+#url=http://feed.jupiter.zone/bsdnow
+url=https://feeds.fireside.fm/bsdnow/rss
+
+[Casefile True Crime]
+url=https://audioboom.com/channels/4940872.rss
+
+[Catholic Answers Live]
+url=http://www.catholic.com/radio/podcast/podcast
+
+[Console of Trent]
+url=http://feeds.soundcloud.com/users/soundcloud:users:406683825/sounds.rss
+
+[Catholic Stuff You Should Know]
+url=https://pinecast.com/feed/catholicstuff
+
+[Cognitive Dissonance]
+url=https://audioboom.com/channels/2399536.rss
+
+[Code Newbie]
+url=http://feeds.codenewbie.org/cnpodcast.xml
+
+[Complete Privacy and Security]
+url=http://feeds.soundcloud.com/users/soundcloud:users:261098918/sounds.rss
+
+[Cults]
+url=https://rss.art19.com/cults
+
+[Dan Barreiro]
+url=https://post.futurimedia.com/kfxn/playlist/rss/7.xml
+
+[Sunday Morning Linux Reviw]
+url=https://smlr.us/?feed=smlr-ogg
+
+[Data Skeptic]
+url=https://dataskeptic.libsyn.com/rss
+
+[Flat Earth Podcast]
+url=http://feeds.soundcloud.com/users/soundcloud:users:321459426/sounds.rss
+
+[Floss Weekly]
+url=https://feeds.twit.tv/floss.xml
+
+#[Freedomain Radio]
+#need to get Stfan M
+
+[Going Linux]
+url=http://goinglinux.com/mp3podcast.xml
+
+[I Survivor]
+url=http://feeds.feedburner.com/RobCesternino
+
+[Know How]
+url=http://feeds.twit.tv/kh.xml
+
+[The Tech Guy]
+url=http://feeds.twit.tv/kfi.xml
+
+[This Week In Computer Hardware]
+url=http://feeds.twit.tv/twich.xml
+
+[Triangulation]
+url=http://feeds.twit.tv/tri.xml
+
+[Linux Action Show]
+url=http://feed.jupiter.zone/allshows
+
+[Locked on Vikings]
+url=http://feeds.megaphone.fm/PPY6226455144
+
+[Mintcast]
+url=https://mintcast.org/category/ogg/feed/
+
+[Wobcast]
+url=https://nflvikingsonline.cachefly.net/content/vikings/production/minnesota-vikings-wobcast.xml
+
+[Money Girl]
+url=https://lauradadams.com/feed
+
+[Naked Mormonism]
+url=http://nakedmormonismpodcast.libsyn.com/rss
+
+[Norse Code]
+url=http://norsecode.libsyn.com/rss
+
+[Part of the Problem]
+url=https://rss.art19.com/part-of-the-problem
+
+[Purple People Podcast]
+url=https://purplepeoplepodcast.podomatic.com/rss2.xml
+
+[Waking Up with Sam Harris]
+url=http://wakingup.libsyn.com/rss
+
+[Vanished]
+url=https://rss.art19.com/the-vanished-podcast-wondery
+
+[The Upgrade]
+url=https://feeds.megaphone.fm/FGM2944312041
+
+[Unsolved Murders]
+url=https://rss.art19.com/unsolved-murders
+
+[Up and Vanished]
+url=https://rss.art19.com/up-and-vanished
+
+[Talk Python]
+url=https://talkpython.fm/episodes/rss
+
+[Skeptics Guide to the Universe]
+url=https://feed.theskepticsguide.org/feed/sgu
+
+[Science Friday]
+url=http://feeds.wnyc.org/science-friday
+
+[Science Vs]
+url=http://feeds.gimletmedia.com/ScienceVs
+
+[Ted Radio Hour]
+url=https://www.npr.org/rss/podcast.php?id=510298
+
+[How I Built It]
+url=https://howibuilt.it/feed/podcast/
+
+[Free Code Camp]
+url=http://freecodecamp.libsyn.com/rss
+
+[Purple Podcast]
+url=http://feeds.feedburner.com/1500espn/podcast/purplepodcast
+
+[Vikings Vent Line]
+url=http://feeds.feedburner.com/1500espn/podcast/ventline
+
+[TruNews]
+url=http://www.spreaker.com/show/1865617/episodes/feed
+
+[Purple Mafia]
+url=https://thesportsfans.hipcast.com/rss/purple_mafia.xml
+
+#[Pauls Security Weekly]
+#url=http://secweekly2.wpengine.com/PaulsFeeds-Nov2014.opml
+

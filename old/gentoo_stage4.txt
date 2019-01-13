@@ -1,0 +1,46 @@
+--- Log opened Sat Jun 29 09:57:11 2019
+09:57 -!- henninb [~henninb@63-226-185-83.mpls.qwest.net] has joined #gentoo
+09:57 -!- Irssi: #gentoo: Total of 1078 nicks [3 ops, 0 halfops, 55 voices, 1020 normal]
+09:57 -ChanServ(ChanServ@services.)- [#gentoo] Welcome to #gentoo || Acceptable Usage Policy @ http://www.gentoo.org/main/en/irc.xml || Keep the language clean || Google is your friend || No bots or scripts that talk || Turn off public away messages || More than three lines to #flood or a pastebin service, no spam!
+09:57 -!- Irssi: Join to #gentoo was synced in 10 secs
+09:58 -!- dingir [~dingir@unaffiliated/dingir] has joined #gentoo
+09:58 < henninb> hello, looking to load a gentoo guest into KVM without having to go through the install process. any recommendations?
+10:00 -!- doodlebug [~Android@ip68-100-31-14.dc.dc.cox.net] has joined #gentoo
+10:00 -!- doodlebug [~Android@ip68-100-31-14.dc.dc.cox.net] has quit [Excess Flood]
+10:00 -!- shinboi [My_user_na@gateway/vpn/mullvad/shinboi] has quit [Quit: WeeChat 2.4]
+10:00 -!- doodlebug [~Android@ip68-100-31-14.dc.dc.cox.net] has joined #gentoo
+10:00 -!- doodlebug [~Android@ip68-100-31-14.dc.dc.cox.net] has quit [Excess Flood]
+10:01 < winny> henninb: stage4
+10:01 < soliwilos> henninb: I haven't used them myself, but there are official stage4 files available.
+10:01 -!- samuelrajan747 [~samuelraj@45.116.113.113] has quit [Ping timeout: 245 seconds]
+10:01 < soliwilos> henninb: https://gentoo.osuosl.org/releases/amd64/autobuilds/
+10:01 -!- doodlebug [~Android@ip68-100-31-14.dc.dc.cox.net] has joined #gentoo
+10:01 < winny> is this official? I found this in my browser history: https://github.com/asarubbo/gentoo-stage4
+10:01 -!- samuelrajan747 [~samuelraj@117.249.228.89] has joined #gentoo
+10:01 -!- creich [~unknown@ip5f5a992e.dynamic.kabel-deutschland.de] has joined #gentoo
+10:01 < domhnall> dev repo
+10:01 -!- samuelrajan747 [~samuelraj@117.249.228.89] has quit [Remote host closed the connection]
+10:02 < henninb> let me take a look at the stage4 idea, thanks for the tip.
+10:02 < soliwilos> henninb: https://wiki.gentoo.org/wiki/Stage_tarball#Stage_4
+10:04 -!- Inepu [~Mithrandi@host67-78-static.1-79-b.business.telecomitalia.it] has joined #gentoo
+10:04 -!- aHick [~aHick@unaffiliated/ahick] has joined #gentoo
+10:05 -!- fixl_ [fixl@gateway/vpn/privateinternetaccess/fixl] has quit [Ping timeout: 248 seconds]
+10:05 -!- thatmadhacker [~thatmadha@2607:fea8:e3e0:296::5] has quit [Read error: Connection reset by peer]
+10:07 -!- bananaprotocol [~banana@ip5f5868e0.dynamic.kabel-deutschland.de] has joined #gentoo
+10:08 -!- brundle [~brundle@240b:10:b020:6300:91fd:9f85:47b8:432e] has joined #gentoo
+10:10 -!- Cueball [lee@crush.lb3.co.uk] has quit [Ping timeout: 268 seconds]
+10:11 -!- n0s0u1 [n0s0u1@gateway/vpn/protonvpn/n0s0u1] has joined #gentoo
+
+http://gentoo.ussg.indiana.edu/releases/amd64/autobuilds/current-stage4-amd64-minimal/stage4-amd64-minimal-20190626T214502Z.tar.xz
+
+veewee
+
+gem install veewee
+
+veewee kvm define centos-64 https://github.com/emiddleton/veewee-kvm-template-centos-6.4-x86_64-minimal.git
+veewee kvm define gentoo-latest https://github.com/jedi4ever/veewee/tree/master/templates/gentoo-latest
+
+gem install veewee-templates-updater
+gem install ruby-libvirt
+
+veewee-templates-update
