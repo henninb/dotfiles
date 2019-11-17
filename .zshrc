@@ -92,6 +92,10 @@ fi
 export EDITOR=vim
 export PAGER=less
 
+# Tells 'less' not to paginate if less than a page
+export LESS="-F -X $LESS"
+export GIT_PAGER=cat git diff
+
 # for rust
 [ -s "$HOME/.cargo/env" ] && source $HOME/.cargo/env
 
