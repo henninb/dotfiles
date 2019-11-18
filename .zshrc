@@ -173,6 +173,8 @@ if [ \( "$OS" = "Arch Linux" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
   #fi
 fi
 
+[ ! -d "~/.pyenv" ] && git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+
 export TMOUT=0
 export GPG_TTY=$(tty)
 export PYENV_ROOT="$HOME/.pyenv"
