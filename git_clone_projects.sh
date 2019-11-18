@@ -11,5 +11,4 @@ done
 cd ~/projects
 git clone git@gitlab.com:BitExplorer/howto.git
 
-
 exit 0
