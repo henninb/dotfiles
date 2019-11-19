@@ -12,7 +12,7 @@ git rebase --edit-todo
 
 ## git log
 git log
-git log --online
+git log --oneline
 git log --oneline --graph --all
 git log --name-only
 
