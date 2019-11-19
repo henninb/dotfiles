@@ -189,6 +189,9 @@ nmap <leader>z :g/^$/d<cr>
 nmap <leader>s :%s/\s\+$//g<cr>
 nmap <leader>l :set nu! rnu!<cr>
 
+" jk is escape
+inoremap jk <esc>
+
 " Commenting blocks of code.
 autocmd FileType c,cpp,java,scala let b:comment_leader = '// '
 autocmd FileType sh,ruby,python   let b:comment_leader = '# '
