@@ -175,6 +175,11 @@ fi
 
 [ ! -d "~/.pyenv" ] && git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
+grep -A 3 '\[branch "master"\]' .git/config | grep 'remote = origin' > /dev/null
+if [ $? -ne 0 ]; then
+  echo git branch --set-upstream-to=origin/master master
+fi
+
 export TMOUT=0
 export GPG_TTY=$(tty)
 export PYENV_ROOT="$HOME/.pyenv"
@@ -194,6 +199,7 @@ ln -sfn /opt/vscode/bin/code $HOME/bin/code
 chmod 600 $HOME/.ssh/authorized_keys
 chmod 600 $HOME/.ssh/config
 chmod 600 $HOME/.ssh/id_rsa
+chmod 700 $HOME
 
 export PATH=$PATH:$PYENV_ROOT/bin
 export PATH=$PATH:$HOME/.local/bin:$HOME/bin
@@ -205,7 +211,6 @@ export PATH=/opt/kafka/bin:$PATH
 export PATH=/opt/kotlinc/bin:$PATH
 [ -s "$HOME/.rvm/scripts/rvm" ] && source $HOME/.rvm/scripts/rvm
 [ -s "/etc/profile.d/rvm.sh" ] && source /etc/profile.d/rvm.sh
-echo git branch --set-upstream-to=origin/master master
 #echo "stty -tostop"
 if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
   if [ -x "$(command -v inxi)" ]; then
@@ -215,5 +220,3 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
     inxi -Sxxx
   fi
 fi
-
-#xterm -version
