@@ -173,7 +173,7 @@ if [ \( "$OS" = "Arch Linux" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
   #fi
 fi
 
-[ ! -d "~/.pyenv" ] && git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+[ ! -d "$HOME/.pyenv" ] && git clone https://github.com/pyenv/pyenv.git $HOME/.pyenv
 
 grep -A 3 '\[branch "master"\]' .git/config | grep 'remote = origin' > /dev/null
 if [ $? -ne 0 ]; then
