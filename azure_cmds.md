@@ -1,3 +1,5 @@
+# az commands
+
 az login
 az group show --name brian_web --output table
 

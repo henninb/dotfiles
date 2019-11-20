@@ -1,3 +1,4 @@
+# vim commands
 1.1 insert (and replace) 1.2 normal (command) 1.3 visual. 1.3.1 plain visual mode. 1.3.2 block visual mode. 1.3.3 linewise visual mode.  1.4 select.  1.5 command-line.  1.6 Ex-mode.  master motions and operators di" - delete inside double quote on a line - example line is: text before key="value"
 di' - delete inside single quote on a line - example line is: text before key='value'
 
@@ -16,11 +17,12 @@ ciw - change inner word
 caw - change inner word including the space
 c6j - change 6 lines
 
+## repeat
 . = repeat
 
 5>> indent the next 5 lines
 
-fc find first occurrence of c in a line 
+fc find first occurrence of c in a line
 
 :g/^$/d will delete empty lines
 :%s/\s\+$//g delete trailing spaces

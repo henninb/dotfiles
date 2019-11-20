@@ -1,4 +1,6 @@
-View -> Toggle Render Whitespace
+# vscode commands
+## show white space
+* View -> Toggle Render Whitespace
 
 editor.renderWhitespace: "all"
 

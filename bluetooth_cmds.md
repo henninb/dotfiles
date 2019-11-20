@@ -1,3 +1,5 @@
+# bluetooth commands
+
 [bluetooth]# scan on
 Discovery started
 [CHG] Controller 68:EC:C5:81:4F:D3 Discovering: yes

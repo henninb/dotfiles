@@ -1,4 +1,4 @@
-The way I did this was to run:
+# radio
 
 git@github.com:rxseger/rx_tools.git
 
@@ -17,7 +17,7 @@ With the vendor and product ids for your particular dongle. This should make the
 
 It's probably a good idea to unplug the dongle, restart udev (sudo restart udev) and re-plug in the dongle at this point.
 
-
+# station
 107900.000
 92500.000
 102100.000

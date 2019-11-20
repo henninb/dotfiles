@@ -1,3 +1,5 @@
+# terminal commands
+
 infocmp rxvt-256color
 
 xterm-color - if you're on an older system and colors don't work

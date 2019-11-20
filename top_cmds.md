@@ -1,10 +1,8 @@
-# top - customizations
-
-## top
+# top commands
 
 ## change color and display settings
 cxz
 
-# change column
+## change column
 <
 >
