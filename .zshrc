@@ -202,6 +202,8 @@ chmod 600 $HOME/.ssh/config
 chmod 600 $HOME/.ssh/id_rsa
 chmod 700 $HOME
 
+sort -t ";" -k 2 -u $HOME/.zsh_history | sort -o $HOME/.zsh_history
+
 export PATH=$PATH:$PYENV_ROOT/bin
 export PATH=$PATH:$HOME/.local/bin:$HOME/bin
 export PATH=$PATH:$HOME/node_modules/.bin
