@@ -177,6 +177,7 @@ fi
 
 grep -A 3 '\[branch "master"\]' $HOME/.git/config | grep 'remote = origin' > /dev/null
 if [ $? -ne 0 ]; then
+  echo git branch --set-upstream-to=origin/master master
   git branch --set-upstream-to=origin/master master
 fi
 
