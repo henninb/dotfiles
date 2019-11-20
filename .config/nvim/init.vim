@@ -189,6 +189,10 @@ nmap <leader>z :g/^$/d<cr>
 nmap <leader>s :%s/\s\+$//g<cr>
 nmap <leader>l :set nu! rnu!<cr>
 
+" edit vimrc/zshrc and load vimrc bindings
+nnoremap <leader>ev :vsp $MYVIMRC<cr>
+nnoremap <leader>ez :vsp ~/.zshrc<cr>
+
 " jk is escape
 inoremap jk <esc>
 
