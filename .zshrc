@@ -175,9 +175,9 @@ fi
 
 [ ! -d "$HOME/.pyenv" ] && git clone https://github.com/pyenv/pyenv.git $HOME/.pyenv
 
-grep -A 3 '\[branch "master"\]' .git/config | grep 'remote = origin' > /dev/null
+grep -A 3 '\[branch "master"\]' $HOME/.git/config | grep 'remote = origin' > /dev/null
 if [ $? -ne 0 ]; then
-  echo git branch --set-upstream-to=origin/master master
+  git branch --set-upstream-to=origin/master master
 fi
 
 export TMOUT=0
