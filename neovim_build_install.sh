@@ -64,6 +64,6 @@ sudo make clean
 cd $HOME
 
 echo nvim -u NORC file
-echo "previous $NVER"
+echo "previous $ACTUAL_VER"
 
 exit 0
