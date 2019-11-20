@@ -3,7 +3,6 @@
 NVER=$(curl https://github.com/neovim/neovim/releases/ | grep release | grep -v nightly | grep 'tar.gz' | head -1 | grep -o 'v[0-9.]\+[0-9]')
 
 if [ "$OS" = "Arch Linux" ]; then
-  echo archlinux
   sudo pacman  --noconfirm --needed -S make luajit luarocks cmake base-devel
 elif [ "$OS" = "Manjaro Linux" ]; then
   echo manjaro
@@ -59,5 +58,7 @@ sudo make clean
 cd $HOME
 
 echo nvim -u NORC file
+nvim --version | grep -o 'v[0-9.]\+[0-9]'
+echo "prev $NVER"
 
 exit 0
