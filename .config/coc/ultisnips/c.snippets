@@ -1,0 +1,16 @@
+snippet main "main() (main)"
+int main( int argc, char *argv[] ) {
+	${VISUAL}$0
+	return 0;
+}
+endsnippet
+
+snippet for "for loop (for)"
+for (${2:i} = 0; $2 < ${1:count}; ${3:++$2}) {
+${VISUAL}$0
+}
+endsnippet
+
+# snippet fprintf "fprintf ..."
+# fprintf(${1:stderr}, "${2:%s}\n"${2/([^%]|%%)*(%.)?.*/(?2:, :\);)/}$3${2/([^%]|%%)*(%.)?.*/(?2:\);)/}
+# endsnippet

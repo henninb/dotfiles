@@ -38,25 +38,39 @@ endif
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 " curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
  call plug#begin(plugpath)
-   Plug 'git@github.com:prettier/vim-prettier.git', { 'do': 'yarn add prettier' }
    Plug 'git@github.com:tpope/vim-surround.git'
    Plug 'git@github.com:tpope/vim-commentary.git'
    Plug 'git@github.com:vim-syntastic/syntastic.git'
    Plug 'git@github.com:svermeulen/vim-subversive.git'
    Plug 'git@github.com:bronson/vim-trailing-whitespace.git'
    Plug 'git@github.com:vim-airline/vim-airline.git'
-"   Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
    Plug 'neoclide/coc.nvim', {'branch': 'release'}
    Plug 'git@github.com:dense-analysis/ale.git'
    Plug 'udalov/kotlin-vim'
    Plug 'sbdchd/neoformat'
    Plug 'https://github.com/vim-scripts/CycleColor.git'
+   Plug 'git@github.com:prettier/vim-prettier.git', { 'do': 'yarn add prettier' }
+"   Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
 "   Plug 'neovimhaskell/haskell-vim'
 "   Plug 'git@github.com:neovimhaskell/haskell-vim.git'
 "   Plug 'git@github.com:itchyny/vim-haskell-indent.git'
 "   Plug 'git@github.com:terryma/vim-multiple-cursors.git'
 "   Plug 'git@github.com:yuttie/comfortable-motion.vim.git'
  call plug#end()
+
++ " coc config
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-json',
+  \ 'coc-java',
+  \ 'coc-git',
+  \ 'coc-rls',
+  \ 'coc-python',
+  \ 'coc-fsharp',
+  \ ]
 
 " Show line numbers and relative numbers
 set number relativenumber
@@ -201,6 +215,12 @@ autocmd FileType c,cpp,java,scala let b:comment_leader = '// '
 autocmd FileType sh,ruby,python   let b:comment_leader = '# '
 autocmd FileType conf,fstab       let b:comment_leader = '# '
 autocmd FileType vim              let b:comment_leader = '" '
+autocmd FileType make,snippets set noexpandtab shiftwidth=8 softtabstop=0
+
+" autocmd FileType make,snippets set noexpandtab softtabstop=0
+" filetype plugin indent on
+" filetype detect
+" autocmd FileType make,snippets set noexpandtab
 
 " noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 " noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
