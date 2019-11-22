@@ -39,3 +39,7 @@ $ find . -type f -exec egrep -l " +$" {} \;
 ```shell
 $ find . -type f -name "*.java" -exec dos2unix {} \;
 ```
+## find with depth
+```shell
+$ find .  -mindepth 1 -maxdepth 1 -type d
+```
