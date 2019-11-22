@@ -2,10 +2,10 @@
 <configuration>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOGS}/example.log</file>
+        <file>${LOGS}/example_email.log</file>
         <append>true</append>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>${LOGS}/archive/example.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <fileNamePattern>${LOGS}/archive/example_email.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
             <!-- or whenever the file size reaches 10MB -->
             <maxFileSize>10MB</maxFileSize>
             <maxHistory>7</maxHistory>
@@ -40,7 +40,7 @@
     </appender>
 
     <!-- Send all our DEBUG and higher log statements to the ASYNC logger. -->
-    <logger name="example" level="INFO">
+    <logger name="example_email" level="INFO">
         <appender-ref ref="ASYNC" />
     </logger>
 
