@@ -1,7 +1,7 @@
 FROM openjdk:8
 
 ARG APP="example_db"
-ENV APP example
+ENV APP example_db
 RUN useradd henninb
 
 RUN mkdir -p -m 0775 /opt/${APP}/bin

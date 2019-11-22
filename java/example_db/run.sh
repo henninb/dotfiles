@@ -5,7 +5,7 @@ HOST_BASEDIR=$(pwd)
 GUEST_BASEDIR=/opt/$APP
 echo dnf install java-1.8.0-openjdk-devel
 ./gradlew clean build
-mkdir logs
+mkdir -p logs
 
 docker rm $APP -f
 docker build -t $APP .

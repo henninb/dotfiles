@@ -1,0 +1,9 @@
+# Oracle settings
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    tomcat:
+      test-while-idle: true
+      test-on-borrow: true
+      validation-query: "SELECT 1 FROM DUAL"

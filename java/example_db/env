@@ -1,1 +1,4 @@
-LOGS=/opt/example_db
+LOGS=/opt/example_db/logs
+DATASOURCE_URL=ora-url
+DB_USERNAME=sa
+DB_PASSWORD=changeit
