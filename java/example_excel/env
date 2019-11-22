@@ -1,0 +1,2 @@
+LOGS=/opt/example_excel/logs
+EXCEL_FILEPATH=/opt/example_excel/input
