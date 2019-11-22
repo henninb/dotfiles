@@ -1,13 +1,14 @@
 #!/bin/sh
 
-gradle wrapper
-./gradlew wrapper --gradle-version=5.5.1
+APP=example_json
+echo dnf install java-1.8.0-openjdk-devel
 ./gradlew clean build
 
-docker rm example_json -f
-docker build -t example_json .
-#docker run -it --rm --name my-running-app -d my-running-app
-docker run -it --name example_json -d example_json
+docker rm $APP -f
+docker build -t $APP .
+#docker run -it --name $APP --env-file env --env-file env.secrets --rm -d $APP
+docker run --name $APP --env-file env --env-file env.secrets --rm -t $APP
+
 echo docker container prune
 
 exit 0
