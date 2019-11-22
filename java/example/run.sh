@@ -1,13 +1,14 @@
 #!/bin/sh
 
+APP=example
 echo dnf install java-1.8.0-openjdk-devel
-gradle wrapper
-./gradlew wrapper --gradle-version=5.5.1
 ./gradlew clean build
 
-docker rm example -f
-docker build -t example .
-docker run -it --name example -d example
+docker rm $APP -f
+docker build -t $APP .
+#docker run -it --name $APP --env-file env --env-file env.secrets --rm -d $APP
+docker run --name $APP --env-file env --env-file env.secrets --rm -t $APP
+
 echo docker container prune
 
 exit 0

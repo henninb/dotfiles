@@ -13,4 +13,4 @@ ADD ./build/libs/example*.jar /apps/jars/example.jar
 RUN chown -R henninb:wheel /apps
 USER henninb
 
-CMD java -jar -Xmx1g /apps/jars/example.jar > /dev/null 2>&1
+CMD java -jar -Xmx1g /apps/jars/example.jar
