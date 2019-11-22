@@ -132,9 +132,9 @@ set mouse-=a
 set nospell
 
 " Enable folding
-"set foldmethod=indent
+set foldmethod=manual
 
-set tags=tags;
+set tags=tags
 
 " Use 256 colors (Use this setting only if your terminal supports 256 colors)
 set t_Co=256
@@ -152,20 +152,17 @@ endif
 " Always show statusline
 set laststatus=2
 
-" Disable Arrow keys in Escape mode
+" Disable Arrow keys in NORMAL mode
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
-" Disable Arrow keys in Insert mode
+" Disable Arrow keys in INSERT mode
 "imap <up> <nop>
 "imap <down> <nop>
 "imap <left> <nop>
 "imap <right> <nop>
-
-" Ali: to indent json files on save
-"autocmd FileType json autocmd BufWritePre <buffer> %!python -m json.tool
 
 if exists(":PrettierAsync")
   let g:prettier#autoformat = 0
@@ -217,11 +214,6 @@ autocmd FileType conf,fstab       let b:comment_leader = '# '
 autocmd FileType vim              let b:comment_leader = '" '
 autocmd FileType make,snippets set noexpandtab shiftwidth=8 softtabstop=0
 
-" autocmd FileType make,snippets set noexpandtab softtabstop=0
-" filetype plugin indent on
-" filetype detect
-" autocmd FileType make,snippets set noexpandtab
-
 " noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 " noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
@@ -229,6 +221,5 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
 
-"color desert
 set cursorline
 hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE

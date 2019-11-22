@@ -174,6 +174,9 @@ if [ \( "$OS" = "Arch Linux" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
 fi
 
 [ ! -d "$HOME/.pyenv" ] && git clone https://github.com/pyenv/pyenv.git $HOME/.pyenv
+[ ! -d "$HOME/.oh-my-zsh" ] && git clone git@github.com:ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
+[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ] && git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ] && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 grep -A 3 '\[branch "master"\]' $HOME/.git/config | grep 'remote = origin' > /dev/null
 if [ $? -ne 0 ]; then
