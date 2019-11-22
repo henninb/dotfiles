@@ -113,7 +113,7 @@ dependencies {
     //  { exclude module: "spring-boot-starter-tomcat" }
     //compile("org.springframework.boot:spring-boot-starter-undertow:${springBootVersion}")
     //compile("org.springframework.boot:spring-boot-starter-jetty:${springBootVersion}")
-    compile("org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}")
+    //compile("org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}")
     //compile("org.springframework.boot:spring-boot-starter-data-mongodb:${springBootVersion}")
     //compile("org.springframework.boot:spring-boot-starter-jersey:${springBootVersion}")
     compile("org.springframework.boot:spring-boot-starter-tomcat:${springBootVersion}")
@@ -186,7 +186,7 @@ dependencies {
     //compile("org.webjars:bootstrap-datepicker:1.0.1")
 
     //swagger
-    compile("io.springfox:springfox-swagger2:${swaggerVersion}")
+    //compile("io.springfox:springfox-swagger2:${swaggerVersion}")
 
     //ssh client
     compile("com.jcraft:jsch:0.1.55")
