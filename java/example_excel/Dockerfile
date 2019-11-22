@@ -1,12 +1,13 @@
 FROM openjdk:8
 
 ARG APP="example_excel"
-ENV APP example
+ENV APP example_excel
 RUN useradd henninb
 
 RUN mkdir -p -m 0775 /opt/${APP}/bin
 RUN mkdir -p -m 0775 /opt/${APP}/logs/archive
 RUN mkdir -p -m 0775 /opt/${APP}/ssl
+RUN mkdir -p -m 0775 /opt/${APP}/input
 ADD ./build/libs/${APP}*.jar /opt/${APP}/bin/${APP}.jar
 RUN chown -R henninb /opt/${APP}/*
 
