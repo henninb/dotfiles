@@ -1,16 +1,16 @@
-FROM alpine:latest
+FROM openjdk:8
 
-RUN apk update && apk add maven curl tzdata openjdk8
+ARG APP="example"
+ENV APP example
+RUN useradd henninb
 
-RUN adduser -D -G wheel -s /bin/bash henninb
+RUN mkdir -p -m 0775 /opt/${APP}/bin
+RUN mkdir -p -m 0775 /opt/${APP}/logs/archive
+RUN mkdir -p -m 0775 /opt/${APP}/ssl
+ADD ./build/libs/${APP}*.jar /opt/${APP}/bin/${APP}.jar
+RUN chown -R henninb /opt/${APP}/*
 
-RUN mkdir -p -m 0775 /apps/jars
-RUN mkdir -p -m 0775 /apps/docker/logs/archive
-RUN mkdir -p -m 0775 /apps/docker/ssl
-
-WORKDIR /apps/jars
-ADD ./build/libs/example*.jar /apps/jars/example.jar
-RUN chown -R henninb:wheel /apps
+WORKDIR /opt/${APP}/bin
 USER henninb
 
-CMD java -jar -Xmx1g /apps/jars/example.jar
+CMD java -jar -Xmx1g /opt/${APP}/bin/${APP}.jar
