@@ -6,23 +6,21 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.Properties;
 
 @Configuration
-@EnableTransactionManagement
-@EnableJpaRepositories(
-        basePackages = "example_db.repositories",
-        entityManagerFactoryRef = "OracleConfigEntityManager",
-        transactionManagerRef = "OracleConfigTransactionManager"
-)
+//@EnableTransactionManagement
+// @EnableJpaRepositories(
+//         basePackages = "example_db.repositories",
+//         entityManagerFactoryRef = "OracleConfigEntityManager",
+//         transactionManagerRef = "OracleConfigTransactionManager"
+// )
 public class OracleConfig {
     @Autowired
     private Environment env;
@@ -48,7 +46,7 @@ public class OracleConfig {
     public DataSource GetDBDataSource() {
 
         java.util.Properties props = new java.util.Properties();
-        props.setProperty("v$session.program",env.getProperty("spring.application.name"));
+        props.setProperty("v$session.program","application.name");
 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setUrl(env.getProperty("spring.datasource.url"));

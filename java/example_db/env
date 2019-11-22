@@ -1,4 +1,4 @@
 LOGS=/opt/example_db/logs
-DATASOURCE_URL=ora-url
+DATASOURCE_URL=jdbc:oracle:thin:@localhost:1521/service_name
 DB_USERNAME=sa
 DB_PASSWORD=changeit

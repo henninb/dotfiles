@@ -1,3 +1,4 @@
+spring:
 # Oracle settings
   datasource:
     url: ${DATASOURCE_URL}

@@ -111,11 +111,11 @@ dependencies {
     //  { exclude module: "spring-boot-starter-tomcat" }
     //compile("org.springframework.boot:spring-boot-starter-undertow:${springBootVersion}")
     //compile("org.springframework.boot:spring-boot-starter-jetty:${springBootVersion}")
-    compile("org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}")
+    //compile("org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}")
     //compile("org.springframework.boot:spring-boot-starter-data-mongodb:${springBootVersion}")
     //compile("org.springframework.boot:spring-boot-starter-jersey:${springBootVersion}")
     compile("org.springframework.boot:spring-boot-starter-tomcat:${springBootVersion}")
-    compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
+    //compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
     compile("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}")
     //compile("org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}")
     //compile("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
@@ -194,6 +194,9 @@ dependencies {
 
     //IBM MQ
     compile("com.ibm.mq:com.ibm.mq.allclient:9.1.1.0")
+
+    //oracle
+    compile("com.oracle:ojdbc8:12.1.0.2")
 
     //Spring
     compile("org.springframework:spring-jms:${springJmsVersion}")
