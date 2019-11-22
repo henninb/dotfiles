@@ -1,0 +1,2 @@
+LOGS=/opt/excel-to-db/logs
+EXCEL_FILEPATH=/opt/excel-to-db/input

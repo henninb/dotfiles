@@ -1,0 +1,5 @@
+custom:
+  project:
+    excel:
+      password: ${EXCEL_PASSWORD}
+      file-path: ${EXCEL_FILEPATH}
