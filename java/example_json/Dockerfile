@@ -1,6 +1,6 @@
 FROM openjdk:8
 
-ARG APP="example_db"
+ARG APP="example_json"
 ENV APP example
 RUN useradd henninb
 
