@@ -18,7 +18,7 @@ fi
 docker rm factorial -f
 docker build -t factorial .
 # docker run -it --name factorial -d factorial
-docker run  --rm factorial
+docker run --rm factorial
 
 # dotnet $PATH_FSI factorial.fs
 # fsharpi --nologo --load:example.fs
