@@ -9,9 +9,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.core.env.Environment;
 import java.io.*;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.stream.IntStream;
 
 @Service
 public class ExcelService {
@@ -19,46 +17,6 @@ public class ExcelService {
 
     public ExcelService(Environment env) {
         this.env = env;
-    }
-
-    //private String FILE_NAME = env.getProperty("custom.project.excel.file-path") + "/" + "finance_db_master.xlsm";
-
-
-    //@Scheduled(fixedDelay = 1000 * 20)
-    public void excelReadExcel() throws IOException {
-        try {
-            String fname = env.getProperty("custom.project.excel.file-path") + "/" + "finance_db_master.xlsm";
-            FileInputStream excelFile = new FileInputStream(new File(fname));
-
-            Workbook workbook = new XSSFWorkbook(excelFile);
-            //Workbook workbook = new XSSFWorkbook(fs);
-            Sheet datatypeSheet = workbook.getSheetAt(0);
-            int numberOfSheets = workbook.getNumberOfSheets();
-            Iterator<Row> iterator = datatypeSheet.iterator();
-
-            String sheetName = workbook.getSheetName(0);
-            workbook.getAllNames();
-
-            System.out.println("numberOfSheets: " + numberOfSheets);
-            System.out.println("sheetName: " + sheetName);
-            while (iterator.hasNext()) {
-                Row currentRow = iterator.next();
-
-                for (Cell currentCell : currentRow) {
-                    //getCellTypeEnum shown as deprecated for version 3.15
-                    //getCellTypeEnum ill be renamed to getCellType starting from version 4.0
-                    if (currentCell.getCellType() == CellType.STRING) {
-                        System.out.print(currentCell.getStringCellValue() + "--");
-                    } else if (currentCell.getCellType() == CellType.NUMERIC) {
-                        System.out.print(currentCell.getNumericCellValue() + "--");
-                    }
-                }
-                System.out.println();
-
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 
     @Scheduled(fixedDelay = 1000 * 20)
@@ -75,16 +33,18 @@ public class ExcelService {
 
         Workbook workbook = new XSSFWorkbook(is);
 
-        //String sheetName = workbook.getSheetName(0);
-        //workbook.getAllNames();
-          Map<String,Integer> sheetMap = new HashMap<>();
-        for (int idx = 0; idx < workbook.getNumberOfSheets(); idx++) {
-            if( (workbook.getSheetName(idx).contains("_brian")) || (workbook.getSheetName(idx).contains("_kari")) ) {
-                System.out.println("Sheet name: " + workbook.getSheetName(idx));
-                sheetMap.put(workbook.getSheetName(idx), idx);
+          //sheetMap.put(workbook.getSheetName(idx), idx);
+          IntStream.range(0, workbook.getNumberOfSheets()).filter(idx -> (workbook.getSheetName(idx).contains("_brian")) || (workbook.getSheetName(idx).contains("_kari"))).forEach(idx -> {
+
+
+if( workbook.getSheetName(idx).contentEquals("vacation_brian") || workbook.getSheetName(idx).contentEquals("vacation_kari") || workbook.getSheetName(idx).contentEquals("401k_brian") || workbook.getSheetName(idx).contentEquals("401k_kari") || workbook.getSheetName(idx).contentEquals("pension_brian") || workbook.getSheetName(idx).contentEquals("pension_kari") || workbook.getSheetName(idx).contentEquals("amazongift_brian")
+                ) {
+                } else {
+
+                System.out.println("Sheet name: " + workbook.getSheetName(idx).trim() );
                 this.printSheet(workbook, idx);
-            }
-        }
+                }
+          });
 
         } catch( FileNotFoundException e) {
             e.printStackTrace();
@@ -93,17 +53,54 @@ public class ExcelService {
 
     private void printSheet(Workbook workbook, int sheetNumber) {
         Sheet datatypeSheet = workbook.getSheetAt(sheetNumber);
-        //int numberOfSheets = workbook.getNumberOfSheets();
+
         for (Row currentRow : datatypeSheet) {
 
             for (Cell currentCell : currentRow) {
                 if (currentCell.getCellType() == CellType.STRING) {
-                    System.out.print(currentCell.getStringCellValue() + "--");
+
+                    System.out.print(  capitalizeWords( currentCell.getStringCellValue().trim() ) + "--");
+        //            System.out.print(   currentCell.getStringCellValue().trim() + "--");
                 } else if (currentCell.getCellType() == CellType.NUMERIC) {
                     System.out.print(currentCell.getNumericCellValue() + "--");
                 }
             }
             System.out.println();
         }
+    }
+
+    private String capitalizeWords(String str) {
+        if (str.length() > 0) {
+            String[] words = str.toLowerCase().split("\\s");
+            StringBuilder capitalizeWord = new StringBuilder();
+            for (String w : words) {
+                if ( w.length() > 0 ) {
+                    String first = w.substring(0, 1);
+                    String afterfirst = w.substring(1);
+                    capitalizeWord.append(first.toUpperCase()).append(afterfirst).append(" ");
+                } else {
+                    capitalizeWord.append(w);
+                }
+            }
+            return capitalizeWord.toString().trim();
+       }
+       return str;
+    }
+
+    private String capitalizeString(String element) {
+        char[] chars = element.toLowerCase().toCharArray();
+        boolean found = false;
+        int i = 0;
+        while (i < chars.length) {
+            if (!found && Character.isLetter(chars[i])) {
+                chars[i] = Character.toUpperCase(chars[i]);
+                found = true;
+            } else if (Character.isWhitespace(chars[i]) ) {
+            //} else if (chars[i] == ' ' ) {
+                found = false;
+            }
+            i++;
+        }
+        return String.valueOf(chars);
     }
 }
