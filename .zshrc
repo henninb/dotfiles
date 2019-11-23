@@ -86,7 +86,8 @@ else
 fi
 
 if [ "$OS" = "Linux Mint" ]; then
-  export JAVA_HOME=/usr/lib/jvm/default-java/
+  #export JAVA_HOME=/usr/lib/jvm/default-java/
+  [ -d "/usr/lib/jvm/java-8-openjdk-amd64" ] && export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 fi
 
 export EDITOR=vim
