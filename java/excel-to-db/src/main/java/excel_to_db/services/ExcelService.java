@@ -34,10 +34,10 @@ public class ExcelService {
         Workbook workbook = new XSSFWorkbook(is);
 
           //sheetMap.put(workbook.getSheetName(idx), idx);
-          IntStream.range(0, workbook.getNumberOfSheets()).filter(idx -> (workbook.getSheetName(idx).contains("_brian")) || (workbook.getSheetName(idx).contains("_kari"))).forEach(idx -> {
+          IntStream.range(0, workbook.getNumberOfSheets()).filter(idx -> ( (workbook.getSheetName(idx).contains("_brian") || workbook.getSheetName(idx).contains("_kari")) && ! workbook.isSheetHidden(idx)  )).forEach(idx -> {
 
 
-if( workbook.getSheetName(idx).contentEquals("vacation_brian") || workbook.getSheetName(idx).contentEquals("vacation_kari") || workbook.getSheetName(idx).contentEquals("401k_brian") || workbook.getSheetName(idx).contentEquals("401k_kari") || workbook.getSheetName(idx).contentEquals("pension_brian") || workbook.getSheetName(idx).contentEquals("pension_kari") || workbook.getSheetName(idx).contentEquals("amazongift_brian")
+if( workbook.getSheetName(idx).contentEquals("giftcards_brian") || workbook.getSheetName(idx).contentEquals("scottrade_ira_brian") || workbook.getSheetName(idx).contentEquals("vacation_brian") || workbook.getSheetName(idx).contentEquals("vacation_kari") || workbook.getSheetName(idx).contentEquals("401k_brian") || workbook.getSheetName(idx).contentEquals("401k_kari") || workbook.getSheetName(idx).contentEquals("pension_brian") || workbook.getSheetName(idx).contentEquals("pension_kari") || workbook.getSheetName(idx).contentEquals("amazongift_brian")
                 ) {
                 } else {
 
@@ -45,6 +45,8 @@ if( workbook.getSheetName(idx).contentEquals("vacation_brian") || workbook.getSh
                 this.printSheet(workbook, idx);
                 }
           });
+
+          is.close();
 
         } catch( FileNotFoundException e) {
             e.printStackTrace();
