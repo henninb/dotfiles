@@ -142,7 +142,7 @@ fi
 # else
 #   echo VIMRUNTIME is set to the default.
 # fi
-echo unset VIMRUNTIME
+# echo unset VIMRUNTIME
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source $NVM_DIR/nvm.sh
