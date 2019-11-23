@@ -50,7 +50,7 @@ endif
    Plug 'sbdchd/neoformat'
    Plug 'https://github.com/vim-scripts/CycleColor.git'
    Plug 'git@github.com:prettier/vim-prettier.git', { 'do': 'yarn add prettier' }
-"   Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
+   Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
 "   Plug 'neovimhaskell/haskell-vim'
 "   Plug 'git@github.com:neovimhaskell/haskell-vim.git'
 "   Plug 'git@github.com:itchyny/vim-haskell-indent.git'
@@ -220,6 +220,11 @@ autocmd FileType make,snippets set noexpandtab shiftwidth=8 softtabstop=0
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
+
+" https://github.com/neovim/neovim/blob/master/runtime/doc/provider.txt
+" let g:python2_host_prog = '/usr/bin/python2'
+" let g:loaded_python_provider = 0
+" let g:python3_host_prog = '/usr/bin/python3.6'
 
 set cursorline
 hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE

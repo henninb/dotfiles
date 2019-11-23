@@ -130,17 +130,19 @@ if [ $? -ne 0 ]; then
   cd -
 fi
 
-if [ -d "/usr/local/share/vim/vim81" ]; then
-  export VIMRUNTIME=/usr/local/share/vim/vim81
-elif [ -d "/usr/share/vim/vim81" ]; then
-  export VIMRUNTIME=/usr/share/vim/vim81
-elif [ -d "/usr/share/vim/vim80" ]; then
-  export VIMRUNTIME=/usr/share/vim/vim80
-elif [ -d "/usr/share/vim/vim74" ]; then
-  export VIMRUNTIME=/usr/share/vim/vim74
-else
-  echo VIMRUNTIME is set to the default.
-fi
+# neovim has python env issues with VIMRUNTIME variable set.
+# if [ -d "/usr/local/share/vim/vim81" ]; then
+#   export VIMRUNTIME=/usr/local/share/vim/vim81
+# elif [ -d "/usr/share/vim/vim81" ]; then
+#   export VIMRUNTIME=/usr/share/vim/vim81
+# elif [ -d "/usr/share/vim/vim80" ]; then
+#   export VIMRUNTIME=/usr/share/vim/vim80
+# elif [ -d "/usr/share/vim/vim74" ]; then
+#   export VIMRUNTIME=/usr/share/vim/vim74
+# else
+#   echo VIMRUNTIME is set to the default.
+# fi
+echo unset VIMRUNTIME
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source $NVM_DIR/nvm.sh
