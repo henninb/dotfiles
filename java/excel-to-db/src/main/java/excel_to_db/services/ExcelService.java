@@ -65,10 +65,16 @@ if( workbook.getSheetName(idx).contentEquals("giftcards_brian") || workbook.getS
 
     private void printSheet(Workbook workbook, int sheetNumber) {
         Sheet datatypeSheet = workbook.getSheetAt(sheetNumber);
+        boolean blank = false;
 
         for (Row currentRow : datatypeSheet) {
             for (Cell currentCell : currentRow) {
                 int col = currentCell.getColumnIndex();
+                blank = false;
+                if ( col == COL_GUID && currentCell.getStringCellValue().trim().equals("") ) {
+                  blank = true;
+                  break;
+                }
                 if (currentCell.getAddress().getRow() != 0 ) {
                   if (currentCell.getCellType() == CellType.STRING) {
                       if ( col == COL_DESCRIPTION || col == COL_NOTES ) {
@@ -84,10 +90,11 @@ if( workbook.getSheetName(idx).contentEquals("giftcards_brian") || workbook.getS
                     System.out.println("currentCell.getCellType()="+ currentCell.getCellType());
                     System.exit(1);
                   }
-
                 }
             }
-            System.out.println();
+            if ( !blank ) {
+              System.out.println();
+            }
         }
     }
 
