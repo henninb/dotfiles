@@ -14,6 +14,10 @@ import java.util.stream.IntStream;
 @Service
 public class ExcelService {
     private Environment env;
+    private static final int COL_GUID = 1;
+    private static final int COL_DESCRIPTION = 3;
+    private static final int COL_CATEGORY = 4;
+    private static final int COL_NOTES = 7;
 
     public ExcelService(Environment env) {
         this.env = env;
@@ -22,6 +26,7 @@ public class ExcelService {
     @Scheduled(fixedDelay = 1000 * 20)
     public void readPasswordProtected() throws Exception {
         String fname = env.getProperty("custom.project.excel.file-path") + "/" + "finance_db_master.xlsm";
+        String ofname = env.getProperty("custom.project.excel.file-path") + "/" + "finance_db_master_new.xlsm";
       try {
         POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(fname));
         EncryptionInfo info = new EncryptionInfo(fs);
@@ -48,6 +53,11 @@ if( workbook.getSheetName(idx).contentEquals("giftcards_brian") || workbook.getS
 
           is.close();
 
+          FileOutputStream outFile = new FileOutputStream(new File(ofname));
+          workbook.write(outFile);
+          outFile.close();
+          System.exit(2);
+
         } catch( FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -57,14 +67,24 @@ if( workbook.getSheetName(idx).contentEquals("giftcards_brian") || workbook.getS
         Sheet datatypeSheet = workbook.getSheetAt(sheetNumber);
 
         for (Row currentRow : datatypeSheet) {
-
             for (Cell currentCell : currentRow) {
-                if (currentCell.getCellType() == CellType.STRING) {
+                int col = currentCell.getColumnIndex();
+                if (currentCell.getAddress().getRow() != 0 ) {
+                  if (currentCell.getCellType() == CellType.STRING) {
+                      if ( col == COL_DESCRIPTION || col == COL_NOTES ) {
+                        System.out.print(  capitalizeWords( currentCell.getStringCellValue().trim() ) + "--");
+                      } else {
+                        System.out.print(currentCell.getStringCellValue().trim() + "--");
+                      }
+                  } else if (currentCell.getCellType() == CellType.NUMERIC) {
+                      System.out.print(currentCell.getNumericCellValue() + "--");
+                  } else if (currentCell.getCellType() == CellType.BLANK) {
+                  } else if (currentCell.getCellType() == CellType.FORMULA) {
+                  } else {
+                    System.out.println("currentCell.getCellType()="+ currentCell.getCellType());
+                    System.exit(1);
+                  }
 
-                    System.out.print(  capitalizeWords( currentCell.getStringCellValue().trim() ) + "--");
-        //            System.out.print(   currentCell.getStringCellValue().trim() + "--");
-                } else if (currentCell.getCellType() == CellType.NUMERIC) {
-                    System.out.print(currentCell.getNumericCellValue() + "--");
                 }
             }
             System.out.println();
