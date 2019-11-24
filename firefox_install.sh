@@ -3,6 +3,9 @@
 RASPI_IP=$(nmap -sP --host-timeout 10 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
 FOX_VER=$(curl -fI 'https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US' | grep -o 'firefox-[0-9.]\+[0-9]' | sed 's/firefox-//')
 
+echo $FOX_VER
+echo $ACTUAL_VER
+
 ACTUAL_VER=$(/opt/firefox/firefox --version | grep -o '[0-9.]\+[0-9]')
 
 if [ "$ACTUAL_VER" = "$FOX_VER" ]; then
