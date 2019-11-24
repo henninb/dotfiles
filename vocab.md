@@ -1,5 +1,7 @@
 # Vocabulary
 
+## presupposition [ noun ]
+- a thing tacitly assumed beforehand at the beginning of a line of argument or course of action
 ## tomfoolery
 
 ## genial
@@ -14,7 +16,8 @@
 
 ## wheedle
 
-## aberration	noun	a departure from what is normal, usual, or expected, typically one that is unwelcome.
+## aberration [ noun ]
+- a departure from what is normal, usual, or expected, typically one that is unwelcome.
 ## absurdity	noun	the quality or state of being ridiculous or wildly unreasonable.
 accolades	noun	A tangible symbol signifying approval or distinction
 ## adage	noun	a proverb or short statement expressing a general truth.
@@ -56,37 +59,37 @@ accolades	noun	A tangible symbol signifying approval or distinction
 ## disposition	noun	the way in which something is placed or arranged, especially in relation to other things.
 ## disrepute	noun	the state of being held in low esteem by the public.
 ## dissonance	noun	a tension or clash resulting from the combination of two disharmonious or unsuitable elements.
-## duck tailed		
+## duck tailed
 ## duplicity	noun	deceitfulness; double-dealing.
-## Eidetic memory		
+## Eidetic memory
 ## embezzlement	noun	theft or misappropriation of funds placed in one's trust or belonging to one's employer.
-## endowed		
+## endowed
 ## enmity	noun	the state or feeling of being actively opposed or hostile to someone or something.
 ## equanimity	noun	mental calmness, composure, and evenness of temper, especially in a difficult situation.
 ## eviscerate	verb	deprive (something) of its essential content.
 ## extensible	adjective	able to be extended; extendable. - Capable of being protruded or stretched or opened out
-## extortion		
+## extortion
 ## felonious	adjective	of, relating to, or involved in crime.
-## fertuitus		
+## fertuitus
 ## flail	verb	wave or swing or cause to wave or swing wildly.
 ## fleeting	adjective	lasting for a very short time.
 ## fruition	noun	the point at which a plan or project is realized.
-## germain		
+## germain
 ## harlots	noun	a prostitute or promiscuous woman.
 ## hawkish	adjective	advocating war or a belligerently threatening diplomatic policy.
-## hazing		
+## hazing
 ## heresy		an opinion
 ## impetus	noun	the force or energy with which a body moves.
 ## impudent	adjective	not showing due respect for another person; impertinent.
 ## incestuous	adjective	(of human relations generally) excessively close and resistant to outside influence.
 ## indignant	adjective	feeling or showing anger or annoyance at what is perceived as unfair treatment.
-## inditement		
+## inditement
 ## inert	adjective	lacking the ability or strength to move.
 ## insidious	adjective	proceeding in a gradual, subtle way, but with harmful effects.
 ## irrefutable	adjective	impossible to deny or disprove.
 ## karmic		destiny or fate in general
 ## laborious	adjective	(especially of a task, process, or journey) requiring considerable effort and time.
-## latency		
+## latency
 ## lethargic	adjective	affected by lethargy; sluggish and apathetic.
 ## levity	noun	humor or frivolity, especially the treatment of a serious matter with humor or in a manner lacking due respect.
 ## logistics	noun	the detailed coordination of a complex operation involving many people, facilities, or supplies.
@@ -97,14 +100,14 @@ accolades	noun	A tangible symbol signifying approval or distinction
 ## morbid	adjective	characterized by or appealing to an abnormal and unhealthy interest in disturbing and unpleasant subjects, especially death and disease.
 ## nebulous	adjective	(of a concept or idea) unclear, vague, or ill-defined.
 ## obstinate	adjective	stubbornly refusing to change one's opinion or chosen course of action, despite attempts to persuade one to do so.
-## omenes		
+## omenes
 ## opaque	adjective	not able to be seen through; not transparent.
 ## osmosis	noun	the process of gradual or unconscious assimilation of ideas, knowledge, etc.
 ## palpable	adjective	able to be touched or felt, or clear to the mind or plain to see.
 ## pandemic	adjective	(of a disease) prevalent throughout an entire country, continent, or the whole world; epidemic over a large area.
 ## pandering	verb	gratify or indulge (an immoral or distasteful desire, need, or habit or a person with such a desire, etc.).
 ## patronize	verb	treat with an apparent kindness that betrays a feeling of superiority.
-## pension		
+## pension
 ## pervasive	adjective	(especially of an unwelcome influence or physical effect) spreading widely throughout an area or a group of people.
 ## phenomenal	adjective	very remarkable; extraordinary.
 ## pilfer	verb	steal (typically things of relatively little value).
@@ -113,32 +116,32 @@ accolades	noun	A tangible symbol signifying approval or distinction
 ## predilection	noun	a preference or special liking for something; a bias in favor of something.
 ## preponderance	noun	the quality or fact of being greater in number, quantity, or importance.
 ## procured		Get by special effort
-## proficiency		
-## prude		
+## proficiency
+## prude
 ## prudent	adjective	acting with or showing care and thought for the future.
 ## quagmire	noun	a soft boggy area of land that gives way underfoot.
-## rankles		
-## reckless		
-## refactor		
-## rhetoric		
+## rankles
+## reckless
+## refactor
+## rhetoric
 ## rogue	noun	a dishonest, knavish person; scoundrel.
-## ruse		
-## salacious		
+## ruse
+## salacious
 ## serendipitous	adjective	occurring or discovered by chance in a happy or beneficial way.
 ## serendipitously		The faculty of making fortunate discoveries by accident
-## snood		
-## spar		
-## spurious		
-## succumb		
-## surly		
-## surreal		
-## surreptitious		
-## synchronous		
-## thorough		
+## snood
+## spar
+## spurious
+## succumb
+## surly
+## surreal
+## surreptitious
+## synchronous
+## thorough
 ## tizzy		An excited state of agitation
 ## transparent		able to be seen through with clarity
-## triage		
-## undesirable		
+## triage
+## undesirable
 ## unscrupulous	adjective	having or showing no moral principles; not honest or fair.
 ## unsettle	verb	cause to feel anxious or uneasy; disturb.
 ## urbane	adjective	(of a person, especially a man) suave, courteous, and refined in manner.
