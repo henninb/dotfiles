@@ -27,7 +27,7 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   alias pip='pip3'
   alias python='python3'
 elif [ "$OS" = "Arch Linux" ]; then
-  sudo pacman --noconfirm --needed -S python python-pip
+  sudo pacman --noconfirm --needed -S python python-pip python2-pip python2
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y epel-release python python-pip wget gcc python-devel
 elif [ "$OS" = "Gentoo" ]; then

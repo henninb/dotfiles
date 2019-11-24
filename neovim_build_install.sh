@@ -66,4 +66,7 @@ cd $HOME
 echo nvim -u NORC file
 echo "previous $ACTUAL_VER"
 
+echo ":checkhealth"
+python -m pip install --user --upgrade pynvim
+
 exit 0
