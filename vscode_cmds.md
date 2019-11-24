@@ -8,6 +8,7 @@ https://stackoverflow.com/questions/36814642/convert-spaces-to-tabs
 
 ## To convert existing indentation from spaces to tabs
 ```
+Cmd+Shift+P
 Ctrl+Shift+P
 >Convert indentation to Tabs
 ```
