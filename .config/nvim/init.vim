@@ -221,6 +221,8 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
 
+" python2 -m pip uninstall neovim pynvim
+" python3 -m pip uninstall neovim pynvim
 " python3 -m pip install --user --upgrade pynvim
 " python2 -m pip install --user --upgrade pynvim
 " https://github.com/neovim/neovim/blob/master/runtime/doc/provider.txt
@@ -228,6 +230,7 @@ endif
 "let g:loaded_python3_provider = 0
 "let g:python3_host_prog = '/usr/bin/python3'
 "let g:python2_host_prog = '/usr/bin/python2'
+"let g:fsharp_interactive_bin = '/opt/dotnet/sdk/2.2.108/FSharp/fsi.exe'
 
 set cursorline
 hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
