@@ -6,21 +6,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import example_db.entities.Person;
+
 @Service
 public class BatchExecuteService {
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
-    private LocService locService;
+    private PersonService personService;
 
     @Autowired
-    BatchExecuteService(LocService locService) {
-        this.locService = locService;
+    BatchExecuteService(PersonService personService) {
+        this.personService = personService;
     }
 
-    @Scheduled(fixedDelay = 1000 * 60)
+    //every 4 seconds
+    @Scheduled(fixedDelay = 4000)
     public void execute() {
         System.out.println("test");
-        locService.updateLoc();
+        Person person = new Person();
+        person.setFirstName("Brian");
+        person.setPersonId(1);
+        personService.addPerson(person);
+        System.out.println("test complete");
+        System.exit(2);
         //List<Map<String, Object>> list = jdbcTemplate.queryForList(tlogQuery);
 
 //        list.forEach(row -> {

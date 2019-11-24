@@ -13,4 +13,5 @@ RUN chown -R henninb /opt/${APP}/*
 WORKDIR /opt/${APP}/bin
 USER henninb
 
-CMD java -jar -Xmx1g /opt/${APP}/bin/${APP}.jar
+CMD java -Duser.timezone=CST -jar /opt/${APP}/bin/${APP}.jar
+#CMD java -jar /opt/${APP}/bin/${APP}.jar

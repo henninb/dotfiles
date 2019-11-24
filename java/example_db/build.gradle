@@ -153,7 +153,8 @@ dependencies {
     compile("ch.qos.logback:logback-classic:1.2.3")
 
     //Lombock
-    compile("org.projectlombok:lombok:${lombokVersion}")
+    compileOnly("org.projectlombok:lombok:${lombokVersion}")
+    annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
 
     //micrometer
     //compile("io.micrometer:micrometer-registry-influx:1.1.3")

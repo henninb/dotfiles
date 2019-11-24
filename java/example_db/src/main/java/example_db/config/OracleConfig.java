@@ -14,13 +14,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import java.util.Properties;
 
-@Configuration
-//@EnableTransactionManagement
-// @EnableJpaRepositories(
-//         basePackages = "example_db.repositories",
-//         entityManagerFactoryRef = "OracleConfigEntityManager",
-//         transactionManagerRef = "OracleConfigTransactionManager"
-// )
+/*
 public class OracleConfig {
     @Autowired
     private Environment env;
@@ -68,4 +62,4 @@ public class OracleConfig {
         return transactionManager;
     }
 }
-
+*/
