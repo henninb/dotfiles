@@ -1,3 +1,4 @@
+--sqlplus SYSTEM/monday1@localhost:1521
 --select banner from v$version where rownum = 1;
 
 create table person (
