@@ -221,6 +221,7 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
 
+" :checkhealth
 " python2 -m pip uninstall neovim pynvim
 " python3 -m pip uninstall neovim pynvim
 " python3 -m pip install --user --upgrade pynvim
