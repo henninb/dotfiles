@@ -3,7 +3,7 @@
 
 create table person (
   person_id NUMBER,
-  first_name VARCHAR2(10)
+  first_name VARCHAR2(10),
   CONSTRAINT person_pk PRIMARY KEY (person_id)
 );
 
