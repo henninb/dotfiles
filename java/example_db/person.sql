@@ -18,7 +18,7 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
-
+/
 
 CREATE TABLE customers (
   customer_id number(10) NOT NULL,
