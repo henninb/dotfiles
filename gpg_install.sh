@@ -3,7 +3,8 @@
 if [ "$OS" = "Gentoo" ]; then
   sudo emerge gnupg pass
 elif [ "$OS" = "Arch Linux" ]; then
-  sudo pcaman -S gnupg pass
+  sudo pacman --noconfirm --needed -S gnupg
+  sudo pacman --noconfirm --needed -S pass
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y gnupg pass pinentry
 elif [ "$OS" = "Fedora" ]; then
