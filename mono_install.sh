@@ -3,12 +3,17 @@
 sudo dnf install mono-complete
 sudo acman -S wine-mono
 
-cd projects
+cd ~/projects
+git clone https://aur.archlinux.org/msbuild-stable.git msbuild-stable-aur
+cd msbuild-stable-aur
+makepkg -si
+cd -
+
+cd ~/projects
 git clone https://aur.archlinux.org/fsharp.git fsharp-aur
 cd fsharp-aur
 makepkg -si
 cd -
-
 
 exit 0
 
