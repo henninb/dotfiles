@@ -1,11 +1,13 @@
 #!/bin/sh
 
-pip show youtube-dl > /dev/null
-if [ $? -ne 0 ]; then
-  pip install youtube-dl --user
-else
-  pip install -U youtube-dl --user
-fi
+# pip show youtube-dl > /dev/null
+# if [ $? -ne 0 ]; then
+#   pip install youtube-dl --user
+# else
+#   pip install -U youtube-dl --user
+#fi
+
+python3 -m pip install --user --upgrade youtube-dl
 
 if [ "$OS" = "CentOS Linux" ]; then
   sudo yum install epel-release -y
