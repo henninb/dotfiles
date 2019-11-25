@@ -16,6 +16,7 @@ if has('vim')
   endif
 endif
 
+
 "TERM=xterm-256color
 "COLORTERM=xterm-256color
 "$TERM is rxvt-unicode-256colors
@@ -50,7 +51,9 @@ endif
    Plug 'sbdchd/neoformat'
    Plug 'https://github.com/vim-scripts/CycleColor.git'
    Plug 'git@github.com:prettier/vim-prettier.git', { 'do': 'yarn add prettier' }
+if $OS != "Arch Linux"
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
+endif
 "   Plug 'neovimhaskell/haskell-vim'
 "   Plug 'git@github.com:neovimhaskell/haskell-vim.git'
 "   Plug 'git@github.com:itchyny/vim-haskell-indent.git'
@@ -213,6 +216,9 @@ autocmd FileType sh,ruby,python   let b:comment_leader = '# '
 autocmd FileType conf,fstab       let b:comment_leader = '# '
 autocmd FileType vim              let b:comment_leader = '" '
 autocmd FileType make,snippets set noexpandtab shiftwidth=8 softtabstop=0
+
+" fsharp file set based on .fs
+autocmd BufNewFile,BufRead *.fs :set filetype=fsharp
 
 " noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 " noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
