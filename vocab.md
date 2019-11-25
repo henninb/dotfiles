@@ -18,12 +18,18 @@
 
 ## aberration [ noun ]
 - a departure from what is normal, usual, or expected, typically one that is unwelcome.
-## absurdity	noun	the quality or state of being ridiculous or wildly unreasonable.
-accolades	noun	A tangible symbol signifying approval or distinction
-## adage	noun	a proverb or short statement expressing a general truth.
-## affluence	noun	the state of having a great deal of money; wealth.
-## amass	verb	to gather together or accumulate (a large amount or number of valuable material or things) over a period of time.
-## amnesty	noun	an official pardon for people who have been convicted of political offenses.
+## absurdity [ noun	]
+- the quality or state of being ridiculous or wildly unreasonable.
+accolades [ noun ]
+- A tangible symbol signifying approval or distinction
+## adage [ noun ]
+- a proverb or short statement expressing a general truth.
+## affluence [ noun	]
+- the state of having a great deal of money; wealth.
+## amass [ verb	]
+- to gather together or accumulate (a large amount or number of valuable material or things) over a period of time.
+## amnesty [ noun ]
+- an official pardon for people who have been convicted of political offenses.
 ## anatomical	adjective	of or relating to bodily structure.
 ## antagonism	noun	active hostility or opposition.
 ## apathy	noun	lack of interest, enthusiasm, or concern.
