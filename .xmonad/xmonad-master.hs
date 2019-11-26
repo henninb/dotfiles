@@ -235,13 +235,11 @@ myLayoutHook =
 delta = 3 / 100
 
 main = do
-  -- xmproc <- spawnPipe "xmobar -B white -a right -F blue"
+  -- capture logs
   --xmproc <- spawnPipe "/usr/bin/xmobar /home/henninb/.config/xmobar/xmobarrc >>/tmp/xmobar.log 2>&1"
-  --xmproc <- spawnPipe "/usr/bin/xmobar .config/xmobar/xmobarrc &!"
-  -- good
+  -- works
   xmproc <- spawnPipe "/usr/bin/xmobar ~/.config/xmobar/xmobarrc"
   --xmproc <- spawnPipe "polybar desktop"
-  --xmproc <- spawnPipe "/usr/bin/xmobar .config/xmobar/xmobarrc && ps -ef| grep xmobar > /tmp/xmobar.pid"
 --  xmeyes <- spawnPipe("xeyes")
   -- n <- countScreens
   -- xmproc <- mapM(\i -> spawnPipe $ "xmobar" ++ show i ++ "-x " ++ show i) [0..n-1]
