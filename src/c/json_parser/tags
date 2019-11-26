@@ -1,0 +1,16 @@
+AUTHOR	json_parser.c	24
+BOOKID	json_parser.c	26
+Mjson_parser	json_parser.c	/^int main(int argc, char* argv[]) {$/
+SUBJECT	json_parser.c	25
+TITLE	json_parser.c	23
+all	Makefile	/^all:$/
+fsize	json_parser.c	/^int fsize( char *fname ) {$/
+json_plural	json_parser.c	/^const char *json_plural(int count) {$/
+load_json	json_parser.c	/^json_t *load_json(const char *text) {$/
+print_json	json_parser.c	/^void print_json(json_t *root) {$/
+print_json_array	json_parser.c	/^void print_json_array(json_t *element, int indent)/
+print_json_aux	json_parser.c	/^void print_json_aux(json_t *element, int indent) {/
+print_json_indent	json_parser.c	/^void print_json_indent(int indent) {$/
+print_json_object	json_parser.c	/^void print_json_object(json_t *element, int indent/
+print_json_string	json_parser.c	/^void print_json_string(json_t *element, int indent/
+process_file	json_parser.c	/^void process_file( char *fname ) {$/
