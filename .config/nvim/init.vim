@@ -16,12 +16,6 @@ if has('vim')
   endif
 endif
 
-
-"TERM=xterm-256color
-"COLORTERM=xterm-256color
-"$TERM is rxvt-unicode-256colors
-"set $TERM=rxvt-unicode-256colors
-
 "set termguicolors
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -238,6 +232,9 @@ endif
 "let g:python3_host_prog = '/usr/bin/python3'
 "let g:python2_host_prog = '/usr/bin/python2'
 "let g:fsharp_interactive_bin = '/opt/dotnet/sdk/2.2.108/FSharp/fsi.exe'
+
+set exrc " allows loading local executing local rc files
+set secure " disallows the use of :autocmd, shell and write commands
 
 set cursorline
 hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
