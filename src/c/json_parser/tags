@@ -1,16 +1,21 @@
-AUTHOR	json_parser.c	24
-BOOKID	json_parser.c	26
-Mjson_parser	json_parser.c	/^int main(int argc, char* argv[]) {$/
-SUBJECT	json_parser.c	25
-TITLE	json_parser.c	23
-all	Makefile	/^all:$/
-fsize	json_parser.c	/^int fsize( char *fname ) {$/
-json_plural	json_parser.c	/^const char *json_plural(int count) {$/
-load_json	json_parser.c	/^json_t *load_json(const char *text) {$/
-print_json	json_parser.c	/^void print_json(json_t *root) {$/
-print_json_array	json_parser.c	/^void print_json_array(json_t *element, int indent)/
-print_json_aux	json_parser.c	/^void print_json_aux(json_t *element, int indent) {/
-print_json_indent	json_parser.c	/^void print_json_indent(int indent) {$/
-print_json_object	json_parser.c	/^void print_json_object(json_t *element, int indent/
-print_json_string	json_parser.c	/^void print_json_string(json_t *element, int indent/
-process_file	json_parser.c	/^void process_file( char *fname ) {$/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AUTHOR	json_parser.c	24;"	d	file:
+BOOKID	json_parser.c	26;"	d	file:
+SUBJECT	json_parser.c	25;"	d	file:
+TITLE	json_parser.c	23;"	d	file:
+fsize	json_parser.c	/^int fsize( char *fname ) {$/;"	f
+json_plural	json_parser.c	/^const char *json_plural(int count) {$/;"	f
+load_json	json_parser.c	/^json_t *load_json(const char *text) {$/;"	f
+main	json_parser.c	/^int main(int argc, char* argv[]) {$/;"	f
+print_json	json_parser.c	/^void print_json(json_t *root) {$/;"	f
+print_json_array	json_parser.c	/^void print_json_array(json_t *element, int indent) {$/;"	f
+print_json_aux	json_parser.c	/^void print_json_aux(json_t *element, int indent) {$/;"	f
+print_json_indent	json_parser.c	/^void print_json_indent(int indent) {$/;"	f
+print_json_object	json_parser.c	/^void print_json_object(json_t *element, int indent) {$/;"	f
+print_json_string	json_parser.c	/^void print_json_string(json_t *element, int indent) {$/;"	f
+process_file	json_parser.c	/^void process_file( char *fname ) {$/;"	f
