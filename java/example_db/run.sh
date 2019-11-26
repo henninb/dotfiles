@@ -8,6 +8,7 @@ echo dnf install java-1.8.0-openjdk-devel
 mkdir -p logs
 mkdir -p libs
 touch env.secrets
+find . -name "*.java" | xargs ctags -a -f ctags
 
 docker rm $APP -f
 docker build -t $APP .
