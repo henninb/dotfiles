@@ -52,6 +52,9 @@ xdisplays = withDisplay $ io . getScreenInfo
 myTerminal = "urxvt"
 myBrowser = "firefox"
 myFont = "xft:SauceCodePro NF:pixelsize=16"
+--myBar = "xmobar"
+myBar = "dzen2 -y -1"
+
 
 ---- Key binding to toggle the gap for the bar.
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
