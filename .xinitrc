@@ -37,14 +37,15 @@ echo sudo mkfontdir /usr/share/fonts/TTF
 exec feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg &
 exec xscreensaver -no-splash &
 
-cp ~/.xmonad/xmonad-master.hs ~/.xmonad/xmonad.hs
+# cp ~/.xmonad/xmonad-master.hs ~/.xmonad/xmonad.hs
+ln -sfn $HOME/.xmonad/xmonad-master.hs $HOME/.xmonad/xmonad.hs
 
 if [ "$OS" = "Arch Linux" ]; then
-  #xset +fp /usr/share/fonts/TTF &
-  [ -n "$XRDP_SESSION" ] && cp ~/.xmonad/xmonad-archlinux-xrdp.hs ~/.xmonad/xmonad.hs
+  #[ -n "$XRDP_SESSION" ] && cp ~/.xmonad/xmonad-archlinux-xrdp.hs ~/.xmonad/xmonad.hs
+  [ -n "$XRDP_SESSION" ] && ln -sfn $HOME/.xmonad/xmonad-archlinux-xrdp.hs $HOME/.xmonad/xmonad.hs
 fi
 
-~/.xmonad/xmonad.hs && xmonad --recompile 2> /dev/null
+xmonad --recompile > /dev/null 2>&1
 
 #exec mate-session
 #exec i3
