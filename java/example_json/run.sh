@@ -7,6 +7,7 @@ echo dnf install java-1.8.0-openjdk-devel
 ./gradlew clean build
 mkdir -p logs
 touch env.secrets
+git ls-files | ctags --links=no --languages=c,c++,javascript,java,python -L-
 
 docker rm $APP -f
 docker build -t $APP .
