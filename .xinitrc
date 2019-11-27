@@ -46,8 +46,10 @@ if [ "$OS" = "Arch Linux" ]; then
   [ -n "$XRDP_SESSION" ] && ln -sfn $HOME/.xmonad/xmonad-archlinux-xrdp.hs $HOME/.xmonad/xmonad.hs
 fi
 
-rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux*
-ln -sfn $HOME/.xmonad/xmonad-test.hs $HOME/.xmonad/xmonad.hs
+if [ -f "$HOME/.xmonad/test" ]; then
+  rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux*
+  ln -sfn $HOME/.xmonad/xmonad-test.hs $HOME/.xmonad/xmonad.hs
+fi
 
 xmonad --recompile > /dev/null 2>&1
 
