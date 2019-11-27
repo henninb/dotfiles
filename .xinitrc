@@ -38,6 +38,7 @@ exec feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg &
 exec xscreensaver -no-splash &
 
 # cp ~/.xmonad/xmonad-master.hs ~/.xmonad/xmonad.hs
+rm -rf $HOME/.xmonad/xmonad.hs
 ln -sfn $HOME/.xmonad/xmonad-master.hs $HOME/.xmonad/xmonad.hs
 
 if [ "$OS" = "Arch Linux" ]; then
