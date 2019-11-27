@@ -52,8 +52,11 @@ xdisplays = withDisplay $ io . getScreenInfo
 myTerminal = "urxvt"
 myBrowser = "firefox"
 myFont = "xft:SauceCodePro NF:pixelsize=16"
---myBar = "xmobar"
-myBar = "dzen2 -y -1"
+-- myBar = "xmobar"
+-- myBar = "dzen2 -y -1"
+-- myBar = "dzen2 -bg lightblue -fg grey80 -fn fixed"
+myBar = "date | dzen2 -p -bg black -fg grey80 -fn fixed"
+-- myBar = "echo 'Arch is the best' | dzen2 -fg black -bg lightblue -w 230 -p -e & transset .3 & sleep 1 ; xdotool mousemove 5 5 ; xdotool click 1"
 
 
 ---- Key binding to toggle the gap for the bar.
@@ -235,10 +238,12 @@ myLayoutHook =
 delta = 3 / 100
 
 main = do
+
+  xmproc <- spawnPipe myBar
   -- capture logs
   --xmproc <- spawnPipe "/usr/bin/xmobar /home/henninb/.config/xmobar/xmobarrc >>/tmp/xmobar.log 2>&1"
   -- works
-  xmproc <- spawnPipe "/usr/bin/xmobar ~/.config/xmobar/xmobarrc"
+  -- xmproc <- spawnPipe "/usr/bin/xmobar ~/.config/xmobar/xmobarrc"
   --xmproc <- spawnPipe "polybar desktop"
 --  xmeyes <- spawnPipe("xeyes")
   -- n <- countScreens
