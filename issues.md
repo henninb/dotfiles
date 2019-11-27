@@ -117,3 +117,6 @@ Running urxvt --help 2>&1 | grep options: returns iso14755, unicode3, and frills
 
 ranger issue W3MIMGDISPLAY
 neofetch --w3m /path/to/image
+
+## xmonad bar ricing
+https://gitlab.com/epsi-rns/dotfiles/tree/master/xmonad
