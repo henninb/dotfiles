@@ -41,7 +41,7 @@ myConfig = defaultConfig { modMask = myModMask,
 --myModMask = mod4Mask
 myModMask = mod1Mask
 -- Terminal
-myTerminal = "urxvtc"
+myTerminal = "urxvt"
 
 -- Workspaces
 myws1 = "\xf120"
@@ -123,7 +123,8 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- launching apps
-    [ ((modMask .|. controlMask, xK_Return), safeSpawn "urxvt" [])
+    -- [ ((modMask .|. controlMask, xK_Return), safeSpawn "urxvt" [])
+    [ ((modMask,                 xK_Return), safeSpawn "urxvt" [])
     , ((modMask,                 xK_p     ), safeSpawn "rofi" ["-show", "run"])
     , ((modMask,                 xK_o     ), safeSpawn "rofi" ["-show", "window"])
     , ((modMask .|. controlMask, xK_c     ), safeSpawn "firefox" [])
@@ -166,7 +167,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_m     ), windows W.focusMaster)
 
     -- swapping
-    , ((modMask,               xK_Return), windows W.shiftMaster)
+    --, ((modMask,               xK_Return), windows W.shiftMaster)
     , ((modMask .|. shiftMask, xK_j     ), windows W.swapDown  )
     , ((modMask .|. shiftMask, xK_k     ), windows W.swapUp    )
 
