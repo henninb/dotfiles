@@ -38,13 +38,16 @@ exec feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg &
 exec xscreensaver -no-splash &
 
 # cp ~/.xmonad/xmonad-master.hs ~/.xmonad/xmonad.hs
-rm -rf $HOME/.xmonad/xmonad.hs
+rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux*
 ln -sfn $HOME/.xmonad/xmonad-master.hs $HOME/.xmonad/xmonad.hs
 
 if [ "$OS" = "Arch Linux" ]; then
   #[ -n "$XRDP_SESSION" ] && cp ~/.xmonad/xmonad-archlinux-xrdp.hs ~/.xmonad/xmonad.hs
   [ -n "$XRDP_SESSION" ] && ln -sfn $HOME/.xmonad/xmonad-archlinux-xrdp.hs $HOME/.xmonad/xmonad.hs
 fi
+
+rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux*
+ln -sfn $HOME/.xmonad/xmonad-test.hs $HOME/.xmonad/xmonad.hs
 
 xmonad --recompile > /dev/null 2>&1
 
