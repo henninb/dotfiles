@@ -1,4 +1,4 @@
-module MyManageHook  
+module MyManageHook
 ( myManageHook
 ) where
 
@@ -19,7 +19,7 @@ import MyWorkspaces
 
 ------------------------------------------------------------------------
 
--- Window Management 
+-- Window Management
 
 myManageHook = (composeAll . concat $
   [
@@ -28,7 +28,7 @@ myManageHook = (composeAll . concat $
   , [className =? b --> viewShift wsNet    | b <- myBrowser    ]
   , [className =? b --> viewShift wsEdit   | b <- myEditor     ]
   , [className =? b --> viewShift wsPlace  | b <- myPlace      ]
-  , [className =? b --> viewShift wsMail   | b <- myMail       ]  
+  , [className =? b --> viewShift wsMail   | b <- myMail       ]
   , [className =? c --> viewShift ws6      | c <- myGfxs       ]
   , [role      =? r --> doShift   ws6      | r <- myFs         ]
 
@@ -62,13 +62,13 @@ myManageHook = (composeAll . concat $
 
     -- resources
     myIgnores = ["desktop", "desktop_window"]
- 
+
     -- names
     myNames   = ["Google Chrome Options", "Chromium Options", "Firefox Preferences"]
-  
+
     -- browser
-    myBrowser = ["Midori", "midori4", "Chromium", "Firefox", "Navigator"]
- 
+    myBrowser = ["Firefox", "Navigator"]
+
     -- editor
     myEditor = ["Geany"]
 

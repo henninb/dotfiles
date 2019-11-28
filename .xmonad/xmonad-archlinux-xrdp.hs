@@ -52,43 +52,49 @@ xdisplays = withDisplay $ io . getScreenInfo
 myTerminal = "urxvt"
 myBrowser = "firefox"
 myFont = "xft:SauceCodePro NF:pixelsize=16"
+myBar = "/usr/bin/xmobar ~/.config/xmobar/xmobarrc"
+-- myBar = "dzen2 -y -1"
+-- myBar = "dzen2 -bg lightblue -fg grey80 -fn fixed"
+-- myBar = "date | dzen2 -p -bg black -fg grey80 -fn fixed"
+-- myBar = "echo 'Arch is the best' | dzen2 -fg black -bg lightblue -w 230 -p -e & transset .3 & sleep 1 ; xdotool mousemove 5 5 ; xdotool click 1"
+
 
 ---- Key binding to toggle the gap for the bar.
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
---myWorkspaces    = ["1","2","3","4","5","6","7","8","9","aa","bb","cc","dd"]
+  --myWorkspaces    = ["1","2","3","4","5","6","7","8","9","aa","bb","cc","dd"]
 myWorkspaces =
-  ["1:web", "2:term", "3:mail", "4:files", "5:steam", "6:media", "7:audio", "8:misc", "9:other"]
+    ["1:web", "2:term", "3:mail", "4:files", "5:steam", "6:media", "7:audio", "8:misc", "9:other"]
 
--- xmobarEscape = concatMap doubleLts
---   where
---     doubleLts '<' = "<<"
---     doubleLts x = [x]
---myWorkspaces :: [String]
--- myWorkspaces =
---   clickable . (map xmobarEscape) $
---   [ "1:\xf269"
---   , "2:\xf120"
---   , "3:\xf0e0"
---   , "4:\xf07c"
---   , "5:\xf1b6"
---   , "6:\xf281"
---   , "7:\xf04b"
---   , "8:\xf167"
---   , "9"
---   ]
---   where
---     clickable l =
---       [ "<action=xdotool key super+" ++ show (n) ++ ">" ++ ws ++ "</action>"
---       | (i, ws) <- zip [1 .. 9] l
---       , let n = i
---       ]
+  -- xmobarEscape = concatMap doubleLts
+  --   where
+  --     doubleLts '<' = "<<"
+  --     doubleLts x = [x]
+  --myWorkspaces :: [String]
+  -- myWorkspaces =
+  --   clickable . (map xmobarEscape) $
+  --   [ "1:\xf269"
+  --   , "2:\xf120"
+  --   , "3:\xf0e0"
+  --   , "4:\xf07c"
+  --   , "5:\xf1b6"
+  --   , "6:\xf281"
+  --   , "7:\xf04b"
+  --   , "8:\xf167"
+  --   , "9"
+  --   ]
+  --   where
+  --     clickable l =
+  --       [ "<action=xdotool key super+" ++ show (n) ++ ">" ++ ws ++ "</action>"
+  --       | (i, ws) <- zip [1 .. 9] l
+  --       , let n = i
+  --       ]
 myKeys conf@(XConfig {XMonad.modMask = modMask}) =
-  M.fromList $
-    -- launch a terminal
-  [
-    --((modMask, xK_Return), spawn myTerminal)
-  -- ((modMask, xK_Return), spawn "urxvt")
+    M.fromList $
+      -- launch a terminal
+    [
+      --((modMask, xK_Return), spawn myTerminal)
+    -- ((modMask, xK_Return), spawn "urxvt")
     ((modMask, xK_Return), spawn "termite")
   , ((modMask, xK_i), spawn myBrowser)
   , ((modMask .|. shiftMask, xK_i), spawn (myBrowser ++ " -private-window"))
@@ -232,13 +238,13 @@ myLayoutHook =
 delta = 3 / 100
 
 main = do
-  -- xmproc <- spawnPipe "xmobar -B white -a right -F blue"
+
+  xmproc <- spawnPipe myBar
+  -- capture logs
   --xmproc <- spawnPipe "/usr/bin/xmobar /home/henninb/.config/xmobar/xmobarrc >>/tmp/xmobar.log 2>&1"
-  --xmproc <- spawnPipe "/usr/bin/xmobar .config/xmobar/xmobarrc &!"
-  -- good
-  xmproc <- spawnPipe "/usr/bin/xmobar ~/.config/xmobar/xmobarrc"
+  -- works
+  -- xmproc <- spawnPipe "/usr/bin/xmobar ~/.config/xmobar/xmobarrc"
   --xmproc <- spawnPipe "polybar desktop"
-  --xmproc <- spawnPipe "/usr/bin/xmobar .config/xmobar/xmobarrc && ps -ef| grep xmobar > /tmp/xmobar.pid"
 --  xmeyes <- spawnPipe("xeyes")
   -- n <- countScreens
   -- xmproc <- mapM(\i -> spawnPipe $ "xmobar" ++ show i ++ "-x " ++ show i) [0..n-1]

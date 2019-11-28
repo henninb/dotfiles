@@ -6,7 +6,7 @@ import XMonad
 
 -- hooks --
 import XMonad.Hooks.DynamicLog
-import qualified GHC.IO.Handle.Types 
+import qualified GHC.IO.Handle.Types
 
 -- miscelllanous --
 import System.IO
@@ -17,7 +17,7 @@ import MyColor
 
 ------------------------------------------------------------------------
 
-dcColor = myColor "Decoration"    
+dcColor = myColor "Decoration"
 makeSpace = wrap "    " "    "
 wrapXBitmapL bitmap = "  ^i(.xmonad/assets/layout/"++bitmap++")  "
 wrapXBitmapT bitmap = "^i(.xmonad/assets/"++bitmap++")"
@@ -27,12 +27,12 @@ myLogHookLT h = do dynamicLogWithPP $ myPP_LT h
 -- defaultPP
 myPP_LT :: Handle -> PP
 --myPP_LT p = def
-myPP_LT p = defaultPP 
+myPP_LT p = defaultPP
     { ppOutput  = hPutStrLn p
     , ppSep     = ""
-    , ppTitle   = titleWrapper . makeSpace  
+    , ppTitle   = titleWrapper . makeSpace
                 . (" " ++) . (icon_run ++) . (" " ++)
-                . shorten 50 
+                . shorten 50
                 . ( \t -> if t == [] then "Desktop" else t )
     , ppLayout  = buttonLayout . makeSpace .
                   (\x -> case x of
