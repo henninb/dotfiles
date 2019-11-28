@@ -17,5 +17,5 @@ myWorkspaces = clickable . map dzenEscape $ myWorkspacenames
                             x = "^ca(1,xdotool key super+" ++ show n ++ ")"]
 
 
-[wsTerm, wsNet, wsEdit, wsPlace, wsMail, ws6, ws7, ws8, ws9] = myWorkspaces 
+[wsTerm, wsNet, wsEdit, wsPlace, wsMail, ws6, ws7, ws8, ws9] = myWorkspaces
 

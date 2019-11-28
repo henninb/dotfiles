@@ -1,4 +1,4 @@
-module MyColor 
+module MyColor
 ( myColor
 ) where
 
@@ -10,7 +10,7 @@ import Data.Map as M
 -- Reading:
 -- http://learnyouahaskell.com/modules
 
-colorSchemes =   
+colorSchemes =
     [("Orange",       "#FD971F")
     ,("DarkGray",     "#1B1D1E")
     ,("Pink",         "#F92672")
@@ -28,12 +28,12 @@ colorSchemes =
     ,("PureBlack",    "#000000")
     ,("PureWhite",    "#FFFFFF")
 
-    ,("Foreground",   "#efefef")    
+    ,("Foreground",   "#efefef")
     ,("Background",   "#2d2d2d")
-    ,("Separator",    "#393939")    
+    ,("Separator",    "#393939")
     ,("RedHaruka",    "#c90c25")
-    ,("BlueUnknown",  "#5c5dad") 
-    ,("Decoration",   "#2980b9") 
-    ]    
+    ,("BlueUnknown",  "#5c5dad")
+    ,("Decoration",   "#2980b9")
+    ]
 
 myColor key = M.findWithDefault "#ffffff" key (fromList colorSchemes)
