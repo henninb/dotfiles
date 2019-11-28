@@ -7,7 +7,8 @@ module MyWorkspaces
 import XMonad.Hooks.DynamicLog
 
 -- Workspaces
-myWorkspacenames = ["terminal", "web", "steam", "place", "mail", "6", "7", "8", "9"]
+--["1:web", "2:term", "3:mail", "4:files", "5:steam", "6:media", "7:audio", "8:misc", "9:other"]
+myWorkspacenames = ["1:term", "2:web", "3:steam", "4:place", "5:mail", "6:media", "7:audio", "8:misc", "9:other"]
 
 myWorkspaces :: [String]
 myWorkspaces = clickable . map dzenEscape $ myWorkspacenames

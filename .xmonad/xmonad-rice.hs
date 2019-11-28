@@ -8,6 +8,11 @@ import XMonad.Util.SpawnOnce
 -- hooks --
 import XMonad.Hooks.ManageDocks
 
+-- custom prompt
+import XMonad.Prompt ( XPPosition (Top), alwaysHighlight, font , position, promptBorderWidth )
+import XMonad.Prompt.ConfirmPrompt ( confirmPrompt )
+import System.Exit
+
 -- own module: configuration decomposition --
 -- http://learnyouahaskell.com/modules
 
@@ -60,17 +65,24 @@ main = do
 myTerminal = "termite"
 myBrowser = "firefox"
 
+-- Custom Prompt
+myXPConfig = def
+    { position          = Top
+    , alwaysHighlight   = True
+    , promptBorderWidth = 0
+    --, font              = "xft:monospace:size=12"
+    , font              = "xft:SauceCodePro NF:pixelsize=16"
+    }
 ------------------------------------------------------------------------
-
+--myKeys conf@(XConfig {XMonad.modMask = modMask}) =
 myKeys = [
     ((mod4Mask .|. shiftMask, xK_z),
             spawn "xscreensaver-command -lock")
-        , ((mod4Mask, xK_p),
-            spawn "dmenu_run  -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal")
-        , ((controlMask, xK_Print),
-            spawn "sleep 0.2; scrot -s")
-        , ((0, xK_Print),
-            spawn "scrot")
+        , ((mod4Mask, xK_p), spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal")
+        , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
+        , ((0, xK_Print), spawn "scrot")
         , ((mod4Mask, xK_i), spawn myBrowser)
         , ((mod4Mask .|. shiftMask, xK_i), spawn (myBrowser ++ " -private-window"))
+        , ((mod4Mask .|. shiftMask, xK_BackSpace), kill)
+        , ((mod4Mask .|. shiftMask, xK_w), confirmPrompt myXPConfig "exit" (io exitSuccess))
     ]

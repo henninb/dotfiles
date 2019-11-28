@@ -26,8 +26,8 @@ myLogHookLT h = do dynamicLogWithPP $ myPP_LT h
 
 -- defaultPP
 myPP_LT :: Handle -> PP
---myPP_LT p = def
-myPP_LT p = defaultPP
+myPP_LT p = def
+--myPP_LT p = defaultPP
     { ppOutput  = hPutStrLn p
     , ppSep     = ""
     , ppTitle   = titleWrapper . makeSpace

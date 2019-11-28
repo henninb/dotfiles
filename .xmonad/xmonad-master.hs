@@ -19,7 +19,6 @@ import XMonad.Util.SpawnOnce
 import qualified Data.Map as M
 import Data.Monoid
 import Graphics.X11.ExtraTypes.XF86
-import System.Exit
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
