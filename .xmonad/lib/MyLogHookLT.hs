@@ -33,7 +33,7 @@ myPP_LT p = defaultPP
     , ppTitle   = titleWrapper . makeSpace  
                 . (" " ++) . (icon_run ++) . (" " ++)
                 . shorten 50 
-                . ( \t -> if t == [] then "Epsi Sayidina Desktop" else t )
+                . ( \t -> if t == [] then "Desktop" else t )
     , ppLayout  = buttonLayout . makeSpace .
                   (\x -> case x of
                          "common"       -> icon_comm

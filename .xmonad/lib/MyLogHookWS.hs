@@ -15,7 +15,6 @@ import System.IO
 import MyColor
 
 ------------------------------------------------------------------------
-
    
 -- Status Bars and Logging
 
@@ -24,7 +23,6 @@ leftDeco fgWS bgWS = "^fg("++(myColor bgWS)++")"
     ++"^i(.xmonad/assets/deco/mr2m.xbm)"
     ++"^fg()^bg("++(myColor bgWS)++")^fg("++(myColor fgWS)++")"
 rightDeco  = "^fg()^bg()" 
-
 
 myLogHookWS ::  H.Handle -> X ()
 --myLogHookWS h = dynamicLogWithPP $ def
@@ -49,6 +47,4 @@ myLogHookWS h = dynamicLogWithPP $ defaultPP
     }
     where 
         icon_grid = wrapXBitmapWS "grid.xbm"
-          
-          
           

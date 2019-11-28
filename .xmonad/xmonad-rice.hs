@@ -48,7 +48,7 @@ main = do
         , terminal      = myTerminal
         , borderWidth   = 3
         , startupHook   = spawnOnce autoload
-        , modMask       = mod4Mask     -- Rebind Mod to the Windows key
+--        , modMask       = mod4Mask     -- Rebind Mod to the Windows key
         , normalBorderColor  = myColor "Blue"
         , focusedBorderColor = myColor "Yellow"
         } `additionalKeys` myKeys

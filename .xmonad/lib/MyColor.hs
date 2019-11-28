@@ -5,16 +5,11 @@ module MyColor
 -- colorschemes
 import Data.Map as M
 
-------------------------------------------------------------------------
-
 -- Dzen2 Bar
 
 -- Reading:
 -- http://learnyouahaskell.com/modules
 
-------------------------------------------------------------------------
-
--- Color names are easier to remember:
 colorSchemes =   
     [("Orange",       "#FD971F")
     ,("DarkGray",     "#1B1D1E")
