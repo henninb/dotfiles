@@ -40,8 +40,9 @@ main = do
 --  http://xmonad.org/xmonad-docs/xmonad/src/XMonad-Config.html
 --  use def instead of defaultConfig for more edge distribution.
 
-    xmonad $ defaultConfig
-        { manageHook    = myManageHook <+> manageDocks <+> manageHook defaultConfig
+    --xmonad $ defaultConfig
+    xmonad $ def
+        { manageHook    = myManageHook <+> manageDocks <+> manageHook def
         , layoutHook    = myLayoutHook
         , logHook       = myLogHookLT sbLayoutText <+> myLogHookWS sbWorkspace
         , workspaces    = myWorkspaces
@@ -57,10 +58,10 @@ main = do
 
 -- Common
 myTerminal = "termite"
+myBrowser = "firefox"
 
 ------------------------------------------------------------------------
 
---Keys
 myKeys = [
     ((mod4Mask .|. shiftMask, xK_z),
             spawn "xscreensaver-command -lock")
@@ -70,4 +71,6 @@ myKeys = [
             spawn "sleep 0.2; scrot -s")
         , ((0, xK_Print),
             spawn "scrot")
+        , ((mod4Mask, xK_i), spawn myBrowser)
+        , ((mod4Mask .|. shiftMask, xK_i), spawn (myBrowser ++ " -private-window"))
     ]

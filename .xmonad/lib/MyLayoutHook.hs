@@ -34,13 +34,13 @@ myLayoutHook
 commonLayout = renamed [Replace "common"]
     $ avoidStruts
     $ gaps [(U,5), (D,5)]
-    $ spacing 10
+--    $ spacing 10
     $ Tall 1 (5/100) (1/3)
 
 screenshotLayout = renamed [Replace "screenshot"]
     $ avoidStruts
     $ gaps [(U,25), (D,25)]
-    $ spacing 16
+--    $ spacing 16
     $ Mirror
     $ Tall 1 (5/100) (1/2)
 --  $ Tall 1 (30/1280) (794/1280)
@@ -49,9 +49,9 @@ screenshotLayout = renamed [Replace "screenshot"]
 workingLayout = renamed [Replace "working"]
     $ avoidStruts
     $ gaps [(U,5), (D,5)]
-    $ spacing 10
---  $ layoutHook def
-    $ layoutHook defaultConfig
+--    $ spacing 10
+    $ layoutHook def
+--    $ layoutHook defaultConfig
 
 browserLayout = renamed [Replace "browser"]
     $ noBorders
