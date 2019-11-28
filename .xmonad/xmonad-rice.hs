@@ -54,7 +54,7 @@ main = do
         , terminal      = myTerminal
         , borderWidth   = 3
         , startupHook   = spawnOnce autoload
---        , modMask       = mod4Mask     -- Rebind Mod to the Windows key
+--        , modMask       = mod4Mask     -- Rebind default Mod to the Windows key for the default key bindings
         , normalBorderColor  = myColor "Blue"
         , focusedBorderColor = myColor "Yellow"
         } `additionalKeys` myKeys
@@ -76,13 +76,15 @@ myXPConfig = def
 ------------------------------------------------------------------------
 --myKeys conf@(XConfig {XMonad.modMask = modMask}) =
 myKeys = [
-    ((mod4Mask .|. shiftMask, xK_z),
+    ((mod1Mask .|. shiftMask, xK_z),
             spawn "xscreensaver-command -lock")
-        , ((mod4Mask, xK_p), spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal")
+        , ((mod1Mask .|. shiftMask, xK_p), spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal")
         , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
         , ((0, xK_Print), spawn "scrot")
-        , ((mod4Mask, xK_i), spawn myBrowser)
-        , ((mod4Mask .|. shiftMask, xK_i), spawn (myBrowser ++ " -private-window"))
-        , ((mod4Mask .|. shiftMask, xK_BackSpace), kill)
-        , ((mod4Mask .|. shiftMask, xK_w), confirmPrompt myXPConfig "exit" (io exitSuccess))
+        , ((mod1Mask, xK_i), spawn myBrowser)
+        , ((mod1Mask .|. shiftMask, xK_i), spawn (myBrowser ++ " -private-window"))
+        --, ((mod4Mask .|. shiftMask, xK_BackSpace), kill)
+        , ((mod1Mask .|. shiftMask, xK_BackSpace), kill)
+        --, ((mod4Mask .|. shiftMask, xK_w), confirmPrompt myXPConfig "exit" (io exitSuccess))
+        , ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" (io exitSuccess))
     ]
