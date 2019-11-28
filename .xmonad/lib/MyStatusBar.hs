@@ -38,7 +38,7 @@ font2 = "profont-9"
 font3 = "Droid Sans Fallback-9:bold"
 font4 = "takaopgothic-9"             -- debian
 
-dzenArgs = " -p -e 'button3=' -fn '"++font3++"' "
+dzenArgs = " -p -e 'button3=' -fn '"++font1++"' "
 dzenColors = " -fg '"++fgColor++"' -bg '"++bgColor++"' "
 
 ------------------------------------------------------------------------
