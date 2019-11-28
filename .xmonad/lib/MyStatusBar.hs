@@ -222,7 +222,8 @@ csbdBottomRight = "sleep 1.5 && "
 csbdBottomCenter = "sleep 2; "
     ++ " dzen2 -ta c -h 20 -y -25 "
 --  ++ " -w 500 -x `expr "++screenWidth++" / 2 - 250` "
-    ++ " -w 450 -x `expr "++screenWidth++" / 2 - 150` " --  1280 or 1024
+--    ++ " -w 450 -x `expr "++screenWidth++" / 2 - 150` " --  1280 or 1024
+    ++ " -w 525 -x `expr "++screenWidth++" / 2 - 150` " --  1280 or 1024
     ++ dzenArgs ++ dzenColors
 
 --    test your color
