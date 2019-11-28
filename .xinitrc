@@ -51,6 +51,7 @@ if [ -f "$HOME/.xmonad/rice" ]; then
   ln -sfn $HOME/.xmonad/xmonad-rice.hs $HOME/.xmonad/xmonad.hs
 fi
 
+cd $HOME/.xinitrc && ghc xmonad -ilib > /dev/null 2>&1
 xmonad --recompile > /dev/null 2>&1
 
 #exec mate-session

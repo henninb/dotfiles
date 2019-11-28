@@ -14,7 +14,7 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   tar xvf cabal-install-3.0.0.0-x86_64-unknown-linux.tar.xz
   mv cabal $HOME/bin
   sudo apt remove -y lightdm gdm lxdm
-  sudo apt install -y xmonad xmobar libghc-xmonad-contrib-dev libghc-xmonad-contrib-doc libghc-xmonad-contrib-prof libghc-xmonad-dev  libghc-xmonad-doc libghc-xmonad-extras-dev libghc-xmonad-extras-prof libghc-xmonad-prof libghc-xmonad-wallpaper-dev libghc-xmonad-wallpaper-prof xscreensaver feh nitrogen w3m neofetch dzen2 conky
+  sudo apt install -y xmonad xmobar libghc-xmonad-contrib-dev libghc-xmonad-contrib-doc libghc-xmonad-contrib-prof libghc-xmonad-dev  libghc-xmonad-doc libghc-xmonad-extras-dev libghc-xmonad-extras-prof libghc-xmonad-prof libghc-xmonad-wallpaper-dev libghc-xmonad-wallpaper-prof xscreensaver feh nitrogen w3m neofetch dzen2 conky nitrogen
 elif [ "$OS" = "Arch Linux" ]; then
   wget https://downloads.haskell.org/\~cabal/cabal-install-latest/cabal-install-3.0.0.0-x86_64-unknown-linux.tar.xz -O cabal-install-3.0.0.0-x86_64-unknown-linux.tar.xz
   mv cabal $HOME/bin
@@ -32,6 +32,7 @@ elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S extra/xorg-xfontsel
   sudo pacman --noconfirm --needed -S dzen2
   sudo pacman --noconfirm --needed -S conky
+  sudo pacman --noconfirm --needed -S nitrogen
   cd $HOME/projects
   git clone https://aur.archlinux.org/yabar-git.git yabar-aur
   cd yabar-aur
@@ -55,6 +56,7 @@ elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S extra/xorg-xfontsel
   sudo pacman --noconfirm --needed -S dzen2
   sudo pacman --noconfirm --needed -S conky
+  sudo pacman --noconfirm --needed -S nitrogen
 elif [ "$OS" = "Gentoo" ]; then
   GENTOO_PKGS="xmonad xmobar xmonad-contrib"
   FAILURES=""
@@ -82,6 +84,7 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y xscreensaver
   sudo dnf install -y dzen2
   sudo dnf install -y conky
+  sudo dnf install -y nitrogen
 elif [ "$OS" = "CentOS Linux" ]; then
   wget https://downloads.haskell.org/\~cabal/cabal-install-latest/cabal-install-3.0.0.0-x86_64-unknown-linux.tar.xz -O cabal-install-3.0.0.0-x86_64-unknown-linux.tar.xz
   tar xvf cabal-install-3.0.0.0-x86_64-unknown-linux.tar.xz
