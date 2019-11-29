@@ -28,6 +28,7 @@ fun_download() {
 }
 
 #youtube-dl -F https://youtu.be/d8ERTCVXIUE
+fun_download 'https://www.youtube.com/watch?v=E-ZbrtoSuzw' vim_advanced.opus
 fun_download 'https://www.youtube.com/watch?v=h7Rlru3agdA' pfsense_letsencrypt.opus
 fun_download 'https://youtu.be/d8ERTCVXIUE' namika_lass_sie_tanzen.opus
 #fun_download 'https://youtu.be/gnrQXMYJRRA' learn_german_while_you_sleep.opus
