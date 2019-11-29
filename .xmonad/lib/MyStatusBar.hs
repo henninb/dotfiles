@@ -118,7 +118,6 @@ csbdTopRightScript = "\
  \  echo -n '^bg("++dcColor++")';\
  \ "++ scriptCPU ++"\
  \ "++ scriptMem ++"\
- \ "++ scriptPac ++"\
  \  echo -n '^bg()';\
  \  echo -n '^fg("++dcColor++")\
     \^i(.xmonad/assets/deco/arrow_rev.xbm)^fg()';\
