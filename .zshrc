@@ -157,24 +157,18 @@ echo ${TERM}
 
 [ ! -f "~/.ssh/id_rsa.pub" ] && ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
 
-if [ \( "$OS" = "Arch Linux" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
-  XMOBAR_WITH_PTS=$(ps -ef | grep xmobar | grep -v grep | grep pts | awk {'print$2'})
-  XMOBAR_WITHOUT_PTS=$(ps -ef | grep xmobar | grep -v grep | grep -v pts | awk {'print$2'})
+# if [ \( "$OS" = "Arch Linux" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+#   XMOBAR_WITH_PTS=$(ps -ef | grep xmobar | grep -v grep | grep pts | awk {'print$2'})
+#   XMOBAR_WITHOUT_PTS=$(ps -ef | grep xmobar | grep -v grep | grep -v pts | awk {'print$2'})
 
-  for XMOBAR_PID in $(echo $XMOBAR_WITHOUT_PTS); do
-    PARENT_PID=$(ps -o comm= -p $(ps -o ppid= -p ${XMOBAR_PID}))
-    if [ "$PARENT_PID" = "systemd" ]; then
-      kill -9 $XMOBAR_PID
-    fi
-  done
-  #setopt NO_HUP
-  #pgrep xmobar
-  #if [ $? -ne 0 ]; then
-  #kill -9 $(ps -ef| grep xmobar | grep -v grep | grep -v pts | awk {'print$2'})
-  #[ ! -z "$XMOBAR_WITHOUT_PTS" ] && echo cleanup && kill -9 ${XMOBAR_WITHOUT_PTS}
-  [ -n "$XRDP_SESSION" ] && [ ! -n "$XMOBAR_WITH_PTS" ] && nohup xmobar ~/.config/xmobar/xmobarrc 2> /dev/null &
-  #fi
-fi
+#   for XMOBAR_PID in $(echo $XMOBAR_WITHOUT_PTS); do
+#     PARENT_PID=$(ps -o comm= -p $(ps -o ppid= -p ${XMOBAR_PID}))
+#     if [ "$PARENT_PID" = "systemd" ]; then
+#       kill -9 $XMOBAR_PID
+#     fi
+#   done
+#   [ -n "$XRDP_SESSION" ] && [ ! -n "$XMOBAR_WITH_PTS" ] && nohup xmobar ~/.config/xmobar/xmobarrc 2> /dev/null &
+# fi
 
 [ ! -d "$HOME/.pyenv" ] && git clone https://github.com/pyenv/pyenv.git $HOME/.pyenv
 [ ! -d "$HOME/.oh-my-zsh" ] && git clone git@github.com:ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
