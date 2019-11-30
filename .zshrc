@@ -193,10 +193,11 @@ fi
 ln -sfn $HOME/.config/nvim/init.vim $HOME/.vimrc
 #ln -sfn $HOME/.xinitrc $HOME/.xsessionrc
 ln -sfn $HOME/.xinitrc $HOME/.xsession
-ln -sfn /opt/arduino/arduino $HOME/bin/arduino
-ln -sfn /opt/intellij/bin/idea.sh $HOME/bin/idea.sh
-ln -sfn /opt/firefox/firefox $HOME/bin/firefox
-ln -sfn /opt/vscode/bin/code $HOME/bin/code
+ln -sfn /opt/arduino/arduino $HOME/bin/.local/arduino
+ln -sfn /opt/intellij/bin/idea.sh $HOME/.local/bin/idea.sh
+ln -sfn /opt/intellij/bin/idea.sh $HOME/.local/bin/intellij
+ln -sfn /opt/firefox/firefox $HOME/.local/bin/firefox
+ln -sfn /opt/vscode/bin/code $HOME/.local/bin/code
 chmod 600 $HOME/.ssh/authorized_keys
 chmod 600 $HOME/.ssh/config
 chmod 600 $HOME/.ssh/id_rsa
