@@ -16,7 +16,7 @@
 - sudo locale-gen
 
 ## powerline not showing glyphs in console
-https://github.com/powerline/fonts/tree … rminus/PSF
+- https://github.com/powerline/fonts/tree … rminus/PSF
 
 Its up to you where you place the files, I put mine in /usr/share/fonts/PSF. You can test the font using the setfont command and make it permanent by creating or editing /etc/vconsole.conf
 
@@ -25,7 +25,7 @@ FONT=/usr/share/fonts/PSF/ter-powerline-v16b.psf
 setfont /path/to/yourfont.ext
 #For the fonts already installed you only need the name, so using gr737a-9x16.psfu.gz as an example:
 
-BDF/PCF/PSF fonts are bitmap fonts meaning they describe a character as pixels in a grid. 
+BDF/PCF/PSF fonts are bitmap fonts meaning they describe a character as pixels in a grid.
 
 setfont gr737a-9x16
 To see the glyphs in the font, use:
@@ -119,4 +119,7 @@ ranger issue W3MIMGDISPLAY
 neofetch --w3m /path/to/image
 
 ## xmonad bar ricing
-https://gitlab.com/epsi-rns/dotfiles/tree/master/xmonad
+- https://gitlab.com/epsi-rns/dotfiles/tree/master/xmonad
+
+## play audio via command line
+- cvlc
