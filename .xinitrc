@@ -78,11 +78,13 @@ else
   cd -
 fi
 
+cp xmonad /home/henninb/.local/bin
+
 #xmonad --recompile > /dev/null 2>&1
 
 #exec mate-session
 #exec i3
 #exec awesome
 #exec xmonad
-exec $HOME/.xmonad/xmonad
+exec xmonad
 #exec qtile
