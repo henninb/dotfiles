@@ -92,19 +92,17 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) =
     M.fromList $
       -- launch a terminal
     [
-      --((modMask, xK_Return), spawn myTerminal)
-    -- ((modMask, xK_Return), spawn "urxvt")
-    ((modMask, xK_Return), spawn "urxvt -fn 'xft:SauceCodePro NF:pixelsize=16'")
-  , ((modMask, xK_i), spawn myBrowser)
+      --((modMask .|. shiftMask, xK_Return), spawn myTerminal)
+    -- ((modMask .|. shiftMask, xK_Return), spawn "urxvt")
+    ((modMask .|. shiftMask, xK_Return), spawn "urxvt -fn 'xft:SauceCodePro NF:pixelsize=16'")
+  , ((modMask,               xK_i), spawn myBrowser)
   , ((modMask .|. shiftMask, xK_i), spawn (myBrowser ++ " -private-window"))
   , ((modMask .|. shiftMask, xK_p), spawn "rofi -show drun")
-  , ((modMask .|. shiftMask, xK_t), spawn "terminator")
-  , ((modMask .|. shiftMask, xK_y), spawn "termite")
   , ((modMask .|. shiftMask, xK_x), spawn "xscreensaver-command -lock")
    -- close focused window
   , ((modMask .|. shiftMask, xK_BackSpace), kill)
     --- Rotate through the available layout algorithms
-  , ((modMask, xK_space), sendMessage NextLayout)
+  , ((modMask,               xK_space), sendMessage NextLayout)
     --  Reset the layouts on the current workspace to default
   , ((modMask .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf)
     -- Resize viewed windows to the correct size
@@ -116,35 +114,22 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) =
     -- Move focus to the previous window
   , ((modMask, xK_k), windows W.focusUp)
     -- Volume Control
-  , ((0, xF86XK_AudioMute), spawn "amixer set Master toggle")
-  , ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 5%- unmute")
-  , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 5%+ unmute")
     -- Brightness Control
-  , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
-  , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
     -- Move focus to the master window
   , ((modMask, xK_m), windows W.focusMaster)
     -- Swap the focused window and the master window
-  , ((modMask .|. shiftMask, xK_Return), windows W.swapMaster)
     -- Swap the focused window with the next window
   , ((modMask .|. shiftMask, xK_j), windows W.swapDown)
     -- Swap the focused window with the previous window
   , ((modMask .|. shiftMask, xK_k), windows W.swapUp)
-    -- Shrink the master area
-  , ((modMask, xK_h), sendMessage Shrink)
-    -- Expand the master area
-  , ((modMask, xK_l), sendMessage Expand)
     -- Push window back into tiling
   , ((modMask, xK_t), withFocused $ windows . W.sink)
     -- Increment the number of windows in the master area
-  , ((modMask, xK_comma), sendMessage (IncMasterN 1))
     -- Deincrement the number of windows in the master area
-  , ((modMask, xK_period), sendMessage (IncMasterN (-1)))
     -- Toggle the status bar gap
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.
     --
-  , ((modMask, xK_b), sendMessage ToggleStruts)
     -- Quit xmonad
   --, ((modMask .|. shiftMask, xK_q), io (exitWith ExitSuccess))
   , (( modMask.|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" (io exitSuccess))

@@ -1,3 +1,3 @@
-nitrogen --restore &
-mpd &
-compton &
+#nitrogen --restore &
+#mpd &
+#compton &

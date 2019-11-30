@@ -31,10 +31,9 @@ import MyColor
 -- to enable '$ xmonad --recompile'
 -- https://unix.stackexchange.com/questions/175127/xmobar-doesnt-appear
 
-------------------------------------------------------------------------
-
 main = do
 
+    -- spawnPipe fails on xrdp sesssions on archlinux
     spawn csbdBottomBackground
     spawn csbdBottomRight
     sbLayoutText <- spawnPipe csbdBottomLeft

@@ -1,7 +1,8 @@
 -- Imports
 import XMonad
 import System.Exit
-import XMonad.Util.Run (safeSpawn)
+--import XMonad.Util.Run (safeSpawn)
+import XMonad.Util.Run (spawnPipe)
 import Graphics.X11.ExtraTypes.XF86
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
@@ -37,10 +38,8 @@ myConfig = defaultConfig { modMask = myModMask,
                           keys = myKeys
                           }
 
--- Modkey
 --myModMask = mod4Mask
 myModMask = mod1Mask
--- Terminal
 myTerminal = "urxvt"
 
 -- Workspaces
@@ -124,24 +123,17 @@ myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- launching apps
     -- [ ((modMask .|. controlMask, xK_Return), spawn "urxvt" [])
-    [ ((modMask,                 xK_Return), spawn "urxvt" [])
-    , ((modMask,                 xK_p     ), spawn "rofi" ["-show", "run"])
-    , ((modMask,                 xK_o     ), spawn "rofi" ["-show", "window"])
-    , ((modMask .|. controlMask, xK_c     ), spawn "firefox" [])
+    [
+      ((modMask,                 xK_Return), spawn "urxvt")
+    , ((modMask,                 xK_p     ), spawn "rofi -show run")
+    , ((modMask,                 xK_o     ), spawn "rofi -show window")
+    , ((modMask .|. controlMask, xK_c     ), spawn "firefox")
     -- launching cli apps
     -- Kill windows
     , ((modMask .|. controlMask, xK_w     ), kill)
-    -- lock screen
-    , ((modMask .|. controlMask, xK_Delete), safeSpawn "rmlock.sh" [])
     -- screenshot
-    , ((0, xK_Print                       ), safeSpawn "scrot" [])
+    , ((0, xK_Print                       ), spawn "scrot")
     -- multimedia
-    , ((0, xF86XK_AudioRaiseVolume      ), safeSpawn "pamixer" ["-i", "5"])
-    , ((0, xF86XK_AudioLowerVolume      ), safeSpawn "pamixer" ["-d", "5"])
-    , ((modMask,                 xK_Down), safeSpawn "mpc" ["toggle"])
-    , ((modMask,                 xK_Up),   safeSpawn "mpc" ["stop"])
-    , ((modMask,                 xK_Left), safeSpawn "mpc" ["prev"])
-    , ((modMask,                 xK_Right), safeSpawn "mpc" ["next"])
     -- layouts
     , ((modMask,               xK_space ), sendMessage NextLayout)
     , ((modMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
