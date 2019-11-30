@@ -18,7 +18,9 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
 elif [ "$OS" = "Arch Linux" ]; then
   wget https://downloads.haskell.org/\~cabal/cabal-install-latest/cabal-install-3.0.0.0-x86_64-unknown-linux.tar.xz -O cabal-install-3.0.0.0-x86_64-unknown-linux.tar.xz
   mv cabal $HOME/bin
-  sudo pacman -Rsnc lightdm gdm lxdm
+  sudo pacman -Rsnc lightdm
+  sudo pacman -Rsnc gdm
+  sudo pacman -Rsnc lxdm
   sudo pacman --noconfirm --needed -S xmonad
   sudo pacman --noconfirm --needed -S xmobar
   sudo pacman --noconfirm --needed -S xmonad-contrib
