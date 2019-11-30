@@ -90,38 +90,17 @@ scriptCPU = "\
 scriptMem = "\
  \  echo -n '^fg("++spColor++"):: ^fg()\
     \^i(.xmonad/assets/monitor/mem.xbm) ';\
- \  mem_total=$(free | awk 'FNR == 2 {print $2}');\
- \  mem_used=$(free | awk 'FNR == 2 {print $3}');\
- \  echo -n $[$mem_used * 100 / $mem_total];"
-
-scriptPac = "\
- \  echo -n '^fg("++spColor++")\
-    \^ca(1, .xmonad/assets/bin/pacshow)';\
- \  echo -n '^fg("++spColor++") :: ^fg()\
-    \^i(.xmonad/assets/monitor/pacman.xbm) ';\
- \  echo -n `pacman -Qu | wc -l`;\
- \  echo -n '^ca()^fg()';"
-
-scriptDiskUsage = "\
- \  echo -n ':: ';\
- \  echo -n '^i(.xmonad/assets/monitor/diskette.xbm) ';\
- \  DISK=$(df /home -h | awk  'FNR == 2 {print $5}' | sed s/%//);\
- \  if [[ $DISK -gt 90 ]]; \
- \  then FORE='red'; \
- \  else FORE='#cccccc'; \
- \  fi; \
- \  echo -n $(echo $DISK | gdbar -bg '"++spColor++"' -fg $FORE -h 3 -w 60);"
+ \  sh ~/.xmonad/assets/bin/chunk_cpu_usage.sh;"
 
 csbdTopRightScript = "\
  \  echo -n '^fg("++dcColor++")\
     \^i(.xmonad/assets/deco/arrow.xbm)^fg()';\
  \  echo -n '^bg("++dcColor++")';\
  \ "++ scriptCPU ++"\
- \ "++ scriptMem ++"\
  \  echo -n '^bg()';\
  \  echo -n '^fg("++dcColor++")\
     \^i(.xmonad/assets/deco/arrow_rev.xbm)^fg()';\
- \ "++ scriptDiskUsage ++"\
+ \ "++ scriptMem ++"\
  \  echo -n ' ^fg("++dcColor++")\
     \^i(.xmonad/assets/deco/mt2.xbm)^fg()';\
  \  echo ;"
@@ -222,7 +201,7 @@ csbdBottomCenter = "sleep 2; "
     ++ " dzen2 -ta c -h 20 -y -25 "
 --  ++ " -w 500 -x `expr "++screenWidth++" / 2 - 250` "
 --    ++ " -w 450 -x `expr "++screenWidth++" / 2 - 150` " --  1280 or 1024
-    ++ " -w 525 -x `expr "++screenWidth++" / 2 - 150` " --  1280 or 1024
+    ++ " -w 600 -x `expr "++screenWidth++" / 2 - 150` " --  1280 or 1024
     ++ dzenArgs ++ dzenColors
 
 --    test your color
