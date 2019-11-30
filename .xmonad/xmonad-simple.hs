@@ -75,13 +75,15 @@ statusBarCmd= "dzen2 -p -h 16 -w 400 -ta l -bg '" ++ myNormalBGColor ++ "' -fg '
 
 main = do
     statusBarPipe <- spawnPipe statusBarCmd
-    xmonad  defaultConfig
+    --xmonad  defaultConfig
+    xmonad  def
         { modMask = mod1Mask -- Use Super instead of Alt
         , terminal = "urxvtc -bg black -fg gray +sb"
         , borderWidth = 1
         , normalBorderColor = myNormalBGColor
         , focusedBorderColor = myFocusedFGColor
-        , manageHook = manageHook defaultConfig <+> myManageHook
+        , manageHook = manageHook def <+> myManageHook
+        --, manageHook = manageHook defaultConfig <+> myManageHook
         , workspaces = myWorkspaces
         , logHook = dynamicLogWithPP $ myPP statusBarPipe
         -- more changes
@@ -105,7 +107,8 @@ myManageHook = composeAll [
 -- }}}
 
 -- Dzen Pretty Printer {{{
-myPP i = defaultPP
+--myPP i = defaultPP
+myPP i = def
            { ppCurrent = wrap "^fg(#DDDDDD)^bg(#323232)^p(6)" "^p(6)^fg()^bg()"
            , ppVisible = wrap "^fg(#555555)^bg(#232323)^p(6)" "^p(6)^fg()^bg()"
            , ppHidden  = wrap "^fg(#BBBBBB)^bg(#232323)^p(6)" "^p(6)^fg()^bg()"

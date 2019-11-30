@@ -50,26 +50,39 @@ if [ -f "$HOME/.xmonad/rice" ]; then
   rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux*
   ln -sfn $HOME/.xmonad/xmonad-rice.hs $HOME/.xmonad/xmonad.hs
   cd $HOME/.xinitrc
-  ghc xmonad -ilib > /dev/null 2>&1
+  stack ghc -- --make xmonad.hs -i -ilib > /dev/null 2>&1
   cd -
 elif [ -f "$HOME/.xmonad/simple" ]; then
-  rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux*
+  rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux* xmonad
   ln -sfn $HOME/.xmonad/xmonad-simple.hs $HOME/.xmonad/xmonad.hs
+  cd $HOME/.xinitrc
+  stack ghc -- --make xmonad.hs > /dev/null 2>&1
+  cd -
 elif [ -f "$HOME/.xmonad/test" ]; then
-  rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux*
+  rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux* xmonad
   ln -sfn $HOME/.xmonad/xmonad-test.hs $HOME/.xmonad/xmonad.hs
+  cd $HOME/.xinitrc
+  stack ghc -- --make xmonad.hs > /dev/null 2>&1
+  cd -
 elif [ -f "$HOME/.xmonad/xrdp" ]; then
-  rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux*
+  rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux* xmonad
   ln -sfn $HOME/.xmonad/xmonad-archlinux-xrdp.hs $HOME/.xmonad/xmonad.hs
+  cd $HOME/.xinitrc
+  stack ghc -- --make xmonad.hs > /dev/null 2>&1
+  cd -
 else
-  rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux*
+  rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux* xmonad
   ln -sfn $HOME/.xmonad/xmonad-master.hs $HOME/.xmonad/xmonad.hs
+  cd $HOME/.xinitrc
+  stack ghc -- --make xmonad.hs > /dev/null 2>&1
+  cd -
 fi
 
-xmonad --recompile > /dev/null 2>&1
+#xmonad --recompile > /dev/null 2>&1
 
 #exec mate-session
 #exec i3
 #exec awesome
-exec xmonad
+#exec xmonad
+exec $HOME/.xmonad/xmonad
 #exec qtile

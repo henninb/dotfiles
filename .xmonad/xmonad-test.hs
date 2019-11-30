@@ -26,7 +26,8 @@ main :: IO()
 main = xmonad =<< statusBar myBar myPP toggleStrutsKey (ewmh $ myConfig)
 
 -- Configs
-myConfig = defaultConfig { modMask = myModMask,
+--myConfig = defaultConfig { modMask = myModMask,
+myConfig = def { modMask = myModMask,
                           terminal = myTerminal,
                           workspaces = myWorkspaces,
                           layoutHook = myLayoutHook,
@@ -60,6 +61,7 @@ myWorkspaces = [myws1, myws2, myws3, myws4, myws5, myws6 , myws7 ]
                    {-where tall = Tall 1 (3/100) (1/2) -}
 
 -- with spacing
+--myLayoutHook = (spacing 10 $ avoidStruts (tall ||| GridRatio (4/3) ||| Full )) ||| smartBorders Full
 myLayoutHook = (spacing 10 $ avoidStruts (tall ||| GridRatio (4/3) ||| Full )) ||| smartBorders Full
                    where tall = Tall 1 (3/100) (1/2)
 

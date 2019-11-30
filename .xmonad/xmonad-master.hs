@@ -51,7 +51,7 @@ xdisplays = withDisplay $ io . getScreenInfo
 myTerminal = "urxvt"
 myBrowser = "firefox"
 myFont = "xft:SauceCodePro NF:pixelsize=16"
-myBar = "/usr/bin/xmobar ~/.config/xmobar/xmobarrc"
+myBar = "xmobar ~/.config/xmobar/xmobarrc"
 -- myBar = "dzen2 -y -1"
 -- myBar = "dzen2 -bg lightblue -fg grey80 -fn fixed"
 -- myBar = "date | dzen2 -p -bg black -fg grey80 -fn fixed"
