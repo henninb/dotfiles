@@ -1,9 +1,6 @@
 all: master
-rice:
-	@rm -rf *.hi *.o lib/*.o lib/*.hi xmonad
-	@ln -sfn xmonad-rice.hs xmonad.hs
-	@stack ghc -- --make xmonad.hs -i -ilib
-	@rm -rf *.hi *.o lib/*.o lib/*.hi
+
+	@rm -rf rice simple test master
 master:
 	@rm -rf *.hi *.o xmonad
 	@ln -sfn xmonad-master.hs xmonad.hs
@@ -14,11 +11,19 @@ test:
 	@ln -sfn xmonad-test.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs
 	@rm -rf *.hi *.o
+	@touch test
 simple:
 	@rm -rf *.hi *.o xmonad
 	@ln -sfn xmonad-simple.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs
 	@rm -rf *.hi *.o
+	@touch simple
+rice:
+	@rm -rf *.hi *.o lib/*.o lib/*.hi xmonad
+	@ln -sfn xmonad-rice.hs xmonad.hs
+	@stack ghc -- --make xmonad.hs -i -ilib -fforce-recomp
+	@rm -rf *.hi *.o lib/*.o lib/*.hi
+	@touch rice
 
 # exec stack ghc \
 #   -- \
