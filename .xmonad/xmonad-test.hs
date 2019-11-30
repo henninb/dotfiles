@@ -123,20 +123,12 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- launching apps
-    -- [ ((modMask .|. controlMask, xK_Return), safeSpawn "urxvt" [])
-    [ ((modMask,                 xK_Return), safeSpawn "urxvt" [])
-    , ((modMask,                 xK_p     ), safeSpawn "rofi" ["-show", "run"])
-    , ((modMask,                 xK_o     ), safeSpawn "rofi" ["-show", "window"])
-    , ((modMask .|. controlMask, xK_c     ), safeSpawn "firefox" [])
-    , ((modMask .|. controlMask, xK_b     ), safeSpawn "chromium" [])
-    , ((modMask .|. controlMask, xK_p     ), safeSpawn "pcmanfm" [])
+    -- [ ((modMask .|. controlMask, xK_Return), spawn "urxvt" [])
+    [ ((modMask,                 xK_Return), spawn "urxvt" [])
+    , ((modMask,                 xK_p     ), spawn "rofi" ["-show", "run"])
+    , ((modMask,                 xK_o     ), spawn "rofi" ["-show", "window"])
+    , ((modMask .|. controlMask, xK_c     ), spawn "firefox" [])
     -- launching cli apps
-    , ((modMask .|. controlMask, xK_n     ), safeSpawn "urxvtc" ["-name", "ncmpcpp", "-e", "ncmpcpp"])
-    , ((modMask .|. controlMask, xK_f     ), safeSpawn "urxvtc" ["-name", "ranger", "-e", "ranger"])
-    , ((modMask .|. controlMask, xK_i     ), safeSpawn "urxvtc" ["-name", "irssi", "-e", "irssi"])
-    , ((modMask .|. controlMask, xK_r     ), safeSpawn "urxvtc" ["-name", "rainbowstream", "-e", "rainbowstream"])
-    , ((modMask .|. controlMask, xK_v     ), safeSpawn "urxvtc" ["-name", "vim", "-e", "nvim"])
-    , ((modMask .|. controlMask, xK_m     ), safeSpawn "urxvtc" ["-name", "mutt", "-e", "mutt"])
     -- Kill windows
     , ((modMask .|. controlMask, xK_w     ), kill)
     -- lock screen
@@ -180,7 +172,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_l     ), sendMessage Expand)
     -- quit, or restart
     , ((modMask .|. shiftMask, xK_Escape  ), io (exitWith ExitSuccess))
-    , ((modMask              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+    --, ((modMask              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
     ]
     ++
     [((m .|. modMask, k), windows $ f i)

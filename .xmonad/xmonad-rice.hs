@@ -13,6 +13,8 @@ import XMonad.Prompt ( XPPosition (Top), alwaysHighlight, font , position, promp
 import XMonad.Prompt.ConfirmPrompt ( confirmPrompt )
 import System.Exit
 
+import qualified Data.Map as M
+
 -- own module: configuration decomposition --
 -- http://learnyouahaskell.com/modules
 
@@ -27,6 +29,7 @@ import MyColor
 -- https://pbrisbin.com/posts/xmonad_modules/
 -- do '$ ghc xmonad -ilib' in your ~/.xmonad
 -- to enable '$ xmonad --recompile'
+-- https://unix.stackexchange.com/questions/175127/xmobar-doesnt-appear
 
 ------------------------------------------------------------------------
 
@@ -74,7 +77,8 @@ myXPConfig = def
     , font              = "xft:SauceCodePro NF:pixelsize=16"
     }
 ------------------------------------------------------------------------
---myKeys conf@(XConfig {XMonad.modMask = modMask}) =
+--myKeys conf@(XConfig {modMask = modMask}) =
+--myKeys conf@(XConfig {modMask = modMask}) = M.fromList $
 myKeys = [
     ((mod1Mask .|. shiftMask, xK_z),
             spawn "xscreensaver-command -lock")
