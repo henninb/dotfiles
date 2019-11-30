@@ -193,7 +193,7 @@ fi
 ln -sfn $HOME/.config/nvim/init.vim $HOME/.vimrc
 #ln -sfn $HOME/.xinitrc $HOME/.xsessionrc
 ln -sfn $HOME/.xinitrc $HOME/.xsession
-ln -sfn /opt/arduino/arduino $HOME/bin/.local/arduino
+ln -sfn /opt/arduino/arduino $HOME/.local/bin/arduino
 ln -sfn /opt/intellij/bin/idea.sh $HOME/.local/bin/idea.sh
 ln -sfn /opt/intellij/bin/idea.sh $HOME/.local/bin/intellij
 ln -sfn /opt/firefox/firefox $HOME/.local/bin/firefox
