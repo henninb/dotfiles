@@ -52,6 +52,7 @@ if [ -f "$HOME/.xmonad/rice" ]; then
   cd $HOME/.xinitrc
   stack ghc -- --make xmonad.hs -i -ilib > /dev/null 2>&1
   cd -
+  echo "rice $(date)" >> f.txt
 elif [ -f "$HOME/.xmonad/simple" ]; then
   rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux* xmonad
   ln -sfn $HOME/.xmonad/xmonad-simple.hs $HOME/.xmonad/xmonad.hs
@@ -64,19 +65,24 @@ elif [ -f "$HOME/.xmonad/test" ]; then
   cd $HOME/.xinitrc
   stack ghc -- --make xmonad.hs > /dev/null 2>&1
   cd -
+  echo "xrdp $(date)" >> f.txt
 elif [ -f "$HOME/.xmonad/xrdp" ]; then
   rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux* xmonad
   ln -sfn $HOME/.xmonad/xmonad-archlinux-xrdp.hs $HOME/.xmonad/xmonad.hs
   cd $HOME/.xinitrc
   stack ghc -- --make xmonad.hs > /dev/null 2>&1
   cd -
+  echo "xrdp $(date)" >> f.txt
 else
   rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux* xmonad
   ln -sfn $HOME/.xmonad/xmonad-master.hs $HOME/.xmonad/xmonad.hs
   cd $HOME/.xinitrc
   stack ghc -- --make xmonad.hs > /dev/null 2>&1
   cd -
+  echo "default $(date)" >> f.txt
 fi
+
+echo "ghc $(date)" >> f.txt
 
 mv $HOME/.xmonad/xmonad /home/henninb/.local/bin
 
