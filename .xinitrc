@@ -78,7 +78,7 @@ else
   cd -
 fi
 
-cp xmonad /home/henninb/.local/bin
+mv $HOME/.xmonad/xmonad /home/henninb/.local/bin
 
 #xmonad --recompile > /dev/null 2>&1
 
