@@ -142,12 +142,6 @@ fi
 
 wget https://raw.githubusercontent.com/mevdschee/2048.c/master/2048.c -O 2048.c
 gcc -o 2048 2048.c
-mv 2048 $HOME/bin
-
-exit 0
-
-
-#sudo pip -qq install --upgrade pip
-#sudo pip -qq install --upgrade pip==9.0.3
+mv 2048 $HOME/.local/bin
 
 exit 0
