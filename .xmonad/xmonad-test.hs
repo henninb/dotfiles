@@ -1,7 +1,5 @@
 -- Imports
 import XMonad
-import System.Exit
---import XMonad.Util.Run (safeSpawn)
 import XMonad.Util.Run (spawnPipe)
 import Graphics.X11.ExtraTypes.XF86
 import qualified XMonad.StackSet as W
@@ -23,7 +21,7 @@ import System.Exit
 
 -- Main process
 main :: IO()
-main = xmonad =<< statusBar myBar myPP toggleStrutsKey (ewmh $ myConfig)
+main = xmonad =<< statusBar myBar myPP toggleStrutsKey (ewmh myConfig)
 
 -- Configs
 --myConfig = defaultConfig { modMask = myModMask,
@@ -62,7 +60,7 @@ myWorkspaces = [myws1, myws2, myws3, myws4, myws5, myws6 , myws7 ]
 
 -- with spacing
 --myLayoutHook = (spacing 10 $ avoidStruts (tall ||| GridRatio (4/3) ||| Full )) ||| smartBorders Full
-myLayoutHook = (spacing 10 $ avoidStruts (tall ||| GridRatio (4/3) ||| Full )) ||| smartBorders Full
+myLayoutHook = spacing 10 (avoidStruts (tall ||| GridRatio (4 / 3) ||| Full)) ||| smartBorders Full
                    where tall = Tall 1 (3/100) (1/2)
 
 -- fullscreen layout (not needed with ewmh)
@@ -122,7 +120,7 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
 -- Keyboard shortcuts
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
-myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
+myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
     -- launching apps
     -- [ ((modMask .|. controlMask, xK_Return), spawn "urxvt" [])
     [
@@ -165,7 +163,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_h     ), sendMessage Shrink)
     , ((modMask,               xK_l     ), sendMessage Expand)
     -- quit, or restart
-    , ((modMask .|. shiftMask, xK_Escape  ), io (exitWith ExitSuccess))
+    , ((modMask .|. shiftMask, xK_Escape  ), io exitSuccess)
     --, ((modMask              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
     ]
     ++
