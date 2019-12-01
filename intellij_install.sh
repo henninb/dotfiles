@@ -78,4 +78,6 @@ else
   exit 1
 fi
 
+sudo usermod  -a -G intellij $(whoami)
+
 exit 0
