@@ -7,6 +7,7 @@ import XMonad.Util.SpawnOnce
 
 -- hooks --
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
 
 -- custom prompt
 import XMonad.Prompt ( XPPosition (Top), alwaysHighlight, font , position, promptBorderWidth )
@@ -49,7 +50,9 @@ main = do
 
     --xmonad $ defaultConfig
     xmonad $ def
-        { manageHook    = myManageHook <+> manageDocks <+> manageHook def
+        -- added (isFullscreen --> doFullFloat) for intellij
+        -- { manageHook    = myManageHook <+> manageDocks <+> manageHook def
+        { manageHook    = myManageHook <+> (isFullscreen --> doFullFloat) <+> manageDocks <+> manageHook def
         , layoutHook    = myLayoutHook
         , logHook       = myLogHookLT sbLayoutText <+> myLogHookWS sbWorkspace
         , workspaces    = myWorkspaces
