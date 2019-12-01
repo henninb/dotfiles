@@ -82,11 +82,10 @@ myXPConfig = def
     , font              = "xft:SauceCodePro NF:pixelsize=16"
     }
 ------------------------------------------------------------------------
---myKeys conf@(XConfig {modMask = modMask}) =
---myKeys conf@(XConfig {modMask = modMask}) = M.fromList $
+--myKeys conf@XConfig {modMask = modMask} =
+--myKeys conf@XConfig {modMask = modMask} = M.fromList $
 myKeys = [
-    ((mod1Mask .|. shiftMask, xK_z),
-            spawn "xscreensaver-command -lock")
+    ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
         , ((mod1Mask .|. shiftMask, xK_p), spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal")
         , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
         , ((0, xK_Print), spawn "scrot")
@@ -96,4 +95,5 @@ myKeys = [
         , ((mod1Mask .|. shiftMask, xK_BackSpace), kill)
         --, ((mod4Mask .|. shiftMask, xK_w), confirmPrompt myXPConfig "exit" (io exitSuccess))
         , ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" (io exitSuccess))
+        , ((mod1Mask, xK_space ), sendMessage NextLayout)
     ]
