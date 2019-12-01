@@ -50,23 +50,13 @@ csbdTopBackground = "echo '^fg("++dcColor++")^p(;-10)^r("++screenWidth++"x5)' |"
 
 ------------------------------------------------------------------------
 
-scriptSSID = "\
- \  WIFI=$(iw dev | grep Interface | awk '{print $2}');\
- \  if [ \"$WIFI\" ]; then \
- \    SSID=$(iw dev $WIFI link | grep SSID: | awk '{print $2}');\
- \    echo -n '^i(.xmonad/assets/monitor/wireless.xbm) ';\
- \    echo -n $SSID;\
- \  fi; "
-
 csbdTopLeftScript = "\
  \  echo -n '^fg("++dcColor++")\
     \^i(.xmonad/assets/deco/mt1.xbm)^fg()  ';\
- \ "++ scriptSSID ++"\
  \  echo -n ' ^fg("++dcColor++")\
     \^i(.xmonad/assets/deco/arrow.xbm)^fg()';\
  \  echo -n '^bg("++dcColor++")  ';\
  \  echo -n '^fg("++spColor++"):: ^fg()';\
- \  sh ~/.xmonad/assets/bin/chunk_net_speed.sh;\
  \  echo -n '^bg()';\
  \  echo -n '^fg("++dcColor++")\
     \^i(.xmonad/assets/deco/arrow_rev.xbm)^fg()';\
@@ -115,39 +105,8 @@ csbdTopRight = "sleep 0.5 && "
 
 ------------------------------------------------------------------------
 
-scriptMPD = "\
- \  MPDSTAT=$(mpc status | grep playing);\
- \  if [ \"$MPDSTAT\" ]; then \
- \  echo -n '^fg(#91ba0d)^i(.xmonad/assets/monitor/music.xbm) ^fg()';\
- \  echo -n $(mpc --format %artist% | head -n 1);\
- \  echo -n '^fg(#91ba0d) | ^fg()';\
- \  echo -n $(mpc --format %title% | head -n 1);\
- \  fi; "
-
-scriptAlsa = "\
- \  echo -n '^ca()';\
- \  echo -n '^ca(3, amixer -q set Master toggle)';\
- \  echo -n '^ca(4, amixer -q set Master 5%+ unmute)';\
- \  echo -n '^ca(5, amixer -q set Master 5%- unmute)';\
- \  echo -n ' :: ';\
- \ \
- \  AVOL=$(amixer get Master | awk 'END{print $5}' | sed -E 's/\\[|\\]|%//g');\
- \  ASTATUS=$(amixer get Master | awk 'END{print $6}' | sed -E 's/\\[|\\]//g');\
- \  if [[ $ASTATUS = 'on' ]]; \
- \  then \
- \    echo -n '^i(.xmonad/assets/monitor/spkr_01.xbm) ';\
- \    echo -n $(echo $AVOL | gdbar -bg '"++spColor++"' -fg '#d6d6d6' -h 3 -w 60);\
- \  else \
- \    echo -n '^i(.xmonad/assets/monitor/spkr_02.xbm) ';\
- \    echo -n $(echo 0 | gdbar -bg '"++spColor++"' -fg '#d6d6d6' -h 3 -w 60);\
- \  fi; \
- \ \
- \  echo -n '^ca()^ca()^ca()^ca()^fg()';"
-
 csbdTopCenterScript = "\
  \  echo -n '^fg("++spColor++")';\
- \ "++ scriptMPD ++"\
- \ "++ scriptAlsa ++"\
  \  echo ;"
 
 csbdTopCenter = "sleep 0.5 && "
