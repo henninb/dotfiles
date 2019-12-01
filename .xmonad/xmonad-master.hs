@@ -65,32 +65,8 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 myWorkspaces =
     ["1:web", "2:term", "3:mail", "4:files", "5:steam", "6:media", "7:audio", "8:misc", "9:other"]
 
-  -- xmobarEscape = concatMap doubleLts
-  --   where
-  --     doubleLts '<' = "<<"
-  --     doubleLts x = [x]
-  --myWorkspaces :: [String]
-  -- myWorkspaces =
-  --   clickable . (map xmobarEscape) $
-  --   [ "1:\xf269"
-  --   , "2:\xf120"
-  --   , "3:\xf0e0"
-  --   , "4:\xf07c"
-  --   , "5:\xf1b6"
-  --   , "6:\xf281"
-  --   , "7:\xf04b"
-  --   , "8:\xf167"
-  --   , "9"
-  --   ]
-  --   where
-  --     clickable l =
-  --       [ "<action=xdotool key super+" ++ show (n) ++ ">" ++ ws ++ "</action>"
-  --       | (i, ws) <- zip [1 .. 9] l
-  --       , let n = i
-  --       ]
-myKeys conf@(XConfig {XMonad.modMask = modMask}) =
+myKeys conf@XConfig {XMonad.modMask = modMask} =
     M.fromList $
-      -- launch a terminal
     [
       --((modMask .|. shiftMask, xK_Return), spawn myTerminal)
     -- ((modMask .|. shiftMask, xK_Return), spawn "urxvt")
@@ -167,7 +143,7 @@ myXPConfig = def
 --  , ((modMask .|. mod1Mask, xK_u), spawn "setxkbmap -layout us")
 --  , ((modMask, xK_o), namedScratchpadAction myScratchPads "terminal")
 --  , ((modMask, xK_p), namedScratchpadAction myScratchPads "music")
-myStartupHook = do
+myStartupHook =
   spawn "/usr/bin/stalonetray"-- spawn "nm-applet"
 
 myScratchPads =
@@ -192,13 +168,13 @@ myManageHook =
   namedScratchpadManageHook myScratchPads
 
 --      , className =? "mpv"          --> doFullFloat
-myMouseBindings (XConfig {XMonad.modMask = modMask}) =
-  M.fromList $
+myMouseBindings XConfig {XMonad.modMask = modMask} =
+  M.fromList
     -- mod-button1, Set the window to floating mode and move by dragging
-  [ ( (modMask, button1)
+  [ ((modMask, button1)
     , (\w -> focus w >> mouseMoveWindow w >> windows W.shiftMaster))
     -- mod-button2, Raise the window to the top of the stack
-  , ((modMask, button2), (\w -> focus w >> windows W.shiftMaster))
+  , ((modMask, button2), \ w -> focus w >> windows W.shiftMaster)
     -- mod-button3, Set the window to floating mode and resize by dragging
   , ( (modMask, button3)
     , (\w -> focus w >> mouseResizeWindow w >> windows W.shiftMaster))
@@ -207,9 +183,9 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) =
 
 myLayoutHook =
   avoidStruts
-    (toggleLayouts Full (Grid) |||
+    (toggleLayouts Full Grid |||
      toggleLayouts Full (ThreeColMid 1 (1 / 20) (1 / 2)) |||
-     simpleTabbed ||| toggleLayouts Full (tiled) ||| Mirror tiled)
+     simpleTabbed ||| toggleLayouts Full tiled ||| Mirror tiled)
   where
     -- default tiling algorithm partitions the screen into two panes
     tiled = Tall nmaster delta ratio
@@ -259,7 +235,7 @@ defaults =
     { terminal = myTerminal
     , workspaces = myWorkspaces
     , keys = myKeys
-    , layoutHook = smartBorders $ myLayoutHook
+    , layoutHook = smartBorders myLayoutHook
     , handleEventHook = handleEventHook def <+> docksEventHook
     , focusedBorderColor = "#2E9AFE"
     , normalBorderColor = "#000000"
