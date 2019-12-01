@@ -40,6 +40,7 @@ myManageHook = composeAll . concat $
   , [isFullscreen   --> doFullFloat                            ]
   , [title =? "Outlast" --> doFullFloat                        ]
   , [title =? "Palth of Exile" --> doFullFloat                 ]
+  , [title =? "IntelliJ IDEA" --> doFullFloat                  ]
 
   , [insertPosition Below Newer                                ]
   ]
@@ -56,7 +57,7 @@ myManageHook = composeAll . concat $
 
     -- classnames
     myFloats      = ["Vlc"]
-    myFullFloats  = ["feh", "Mirage", "Zathura", "Mcomix"]
+    myFullFloats  = ["feh", "intellij"]
     myGfxs        = ["Inkscape", "Gimp"]
 
     -- roles

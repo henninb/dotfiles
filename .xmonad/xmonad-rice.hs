@@ -8,6 +8,7 @@ import XMonad.Util.SpawnOnce
 -- hooks --
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.SetWMName
 
 -- custom prompt
 import XMonad.Prompt ( XPPosition (Top), alwaysHighlight, font , position, promptBorderWidth )
@@ -58,7 +59,9 @@ main = do
         , workspaces    = myWorkspaces
         , terminal      = myTerminal
         , borderWidth   = 3
-        , startupHook   = spawnOnce autoload
+        --, startupHook   = spawnOnce autoload
+        -- needed for java and intellij
+        , startupHook   = spawnOnce autoload <+> setWMName "LG3D"
 --        , modMask       = mod4Mask     -- Rebind default Mod to the Windows key for the default key bindings
         , normalBorderColor  = myColor "Blue"
         , focusedBorderColor = myColor "Yellow"
