@@ -50,7 +50,7 @@ myWorkspaces = ["general", "internet", "chat", "code"] ++ map show [5..9 :: Int]
   --    }
 
 -- Keybindings {{{
-myKeys conf@(XConfig {modMask = modm}) = M.fromList $
+myKeys conf@XConfig {modMask = modm} = M.fromList $
     [
       ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
           , ((modm .|. shiftMask, xK_p), spawn "dmenu_run -nb orange -nf '#444' -sb yellow -s  f black -fn Monospace-9:normal")
@@ -89,7 +89,7 @@ main = do
         -- more changes
     }
     where
-        globalLayout = layoutHints (tiled) ||| layoutHints (noBorders Full) ||| layoutHints (Mirror tiled) ||| layoutHints (Tall 1 (3/100) (1/2))
+        globalLayout = layoutHints tiled ||| layoutHints (noBorders Full) ||| layoutHints (Mirror tiled) ||| layoutHints (Tall 1 (3/100) (1/2))
         chatLayout = layoutHints (noBorders Full)
         tiled = ThreeCol 1 (3/100) (1/2)
 
