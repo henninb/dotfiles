@@ -45,6 +45,8 @@ if [ ! -z "$branch" ]; then
 fi
 
 echo "Opening GitURL $giturl"
-open $giturl
+
+#open $giturl
+nohup xdg-open $giturl 2> /dev/null &
 
 exit 0
