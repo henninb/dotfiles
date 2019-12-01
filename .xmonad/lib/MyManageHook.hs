@@ -38,6 +38,8 @@ myManageHook = composeAll . concat $
 
   , [isDialog       --> doFocusCenterFloat                     ]
   , [isFullscreen   --> doFullFloat                            ]
+  , [title =? "Outlast" --> doFullFloat                        ]
+  , [title =? "Palth of Exile" --> doFullFloat                 ]
 
   , [insertPosition Below Newer                                ]
   ]
@@ -53,7 +55,7 @@ myManageHook = composeAll . concat $
     doFocusFullFloat   = doFullFloat
 
     -- classnames
-    myFloats      = ["MPlayer", "Vlc", "Smplayer", "Lxappearance", "XFontSel"]
+    myFloats      = ["Vlc"]
     myFullFloats  = ["feh", "Mirage", "Zathura", "Mcomix"]
     myGfxs        = ["Inkscape", "Gimp"]
 
@@ -67,13 +69,13 @@ myManageHook = composeAll . concat $
     myNames   = ["Google Chrome Options", "Chromium Options", "Firefox Preferences"]
 
     -- browser
-    myBrowser = ["Firefox", "Navigator"]
+    myBrowser = ["Firefox"]
 
     -- editor
     myEditor = ["Geany"]
 
-    -- editor
+    -- Place
     myPlace = ["Thunar"]
 
     -- mail
-    myMail = ["Mail", "Thunderbird"]
+    myMail = ["Thunderbird"]
