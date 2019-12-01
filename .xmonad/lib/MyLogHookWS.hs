@@ -19,9 +19,9 @@ import MyColor
 -- Status Bars and Logging
 
 wrapXBitmapWS bitmap = "^i(.xmonad/assets/layout/"++bitmap++")"
-leftDeco fgWS bgWS = "^fg("++(myColor bgWS)++")"
+leftDeco fgWS bgWS = "^fg("++ myColor bgWS ++")"
     ++"^i(.xmonad/assets/deco/mr2m.xbm)"
-    ++"^fg()^bg("++(myColor bgWS)++")^fg("++(myColor fgWS)++")"
+    ++ "^fg()^bg(" ++ myColor bgWS ++ ")^fg(" ++ myColor fgWS ++ ")"
 rightDeco  = "^fg()^bg()"
 
 myLogHookWS ::  H.Handle -> X ()

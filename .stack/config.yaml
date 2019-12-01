@@ -19,3 +19,4 @@ templates:
 # Rendition) control codes (in decimal). Use "stack ls stack-colors --basic"
 # to see the current sequence.
 # stack-colors: STYLES
+allow-newer: true

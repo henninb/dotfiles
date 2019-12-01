@@ -22,18 +22,18 @@ makeSpace = wrap "    " "    "
 wrapXBitmapL bitmap = "  ^i(.xmonad/assets/layout/"++bitmap++")  "
 wrapXBitmapT bitmap = "^i(.xmonad/assets/"++bitmap++")"
 
-myLogHookLT h = do dynamicLogWithPP $ myPP_LT h
+myLogHookLT h = dynamicLogWithPP $ myPPLT h
 
 -- defaultPP
-myPP_LT :: Handle -> PP
-myPP_LT p = def
---myPP_LT p = defaultPP
+myPPLT :: Handle -> PP
+myPPLT p = def
+--myPPLT p = defaultPP
     { ppOutput  = hPutStrLn p
     , ppSep     = ""
     , ppTitle   = titleWrapper . makeSpace
                 . (" " ++) . (icon_run ++) . (" " ++)
                 . shorten 50
-                . ( \t -> if t == [] then "Desktop" else t )
+                . ( \t -> if null t then "Desktop" else t )
     , ppLayout  = buttonLayout . makeSpace .
                   (\x -> case x of
                          "common"       -> icon_comm

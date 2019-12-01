@@ -28,8 +28,7 @@ myLayoutHook
     = onWorkspaces [wsTerm] screenshotLayout
     $ onWorkspaces [wsEdit, wsPlace] workingLayout
     $ onWorkspaces [wsNet, wsMail] browserLayout
-    $ onWorkspaces [ws6, ws7, ws8, ws9] commonLayout
-    $ commonLayout
+    $ onWorkspaces [ws6, ws7, ws8, ws9] commonLayout commonLayout
 
 commonLayout = renamed [Replace "common"]
     $ avoidStruts
@@ -55,6 +54,5 @@ workingLayout = renamed [Replace "working"]
 
 browserLayout = renamed [Replace "browser"]
     $ noBorders
-    $ gaps [(U,40), (D,40)]
-    $ Full
+    $ gaps [(U,40), (D,40)] Full
 --  $ simpleFloat

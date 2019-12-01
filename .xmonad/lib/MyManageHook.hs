@@ -21,7 +21,7 @@ import MyWorkspaces
 
 -- Window Management
 
-myManageHook = (composeAll . concat $
+myManageHook = composeAll . concat $
   [
     [resource  =? r --> doIgnore           | r <- myIgnores    ]
 
@@ -40,7 +40,7 @@ myManageHook = (composeAll . concat $
   , [isFullscreen   --> doFullFloat                            ]
 
   , [insertPosition Below Newer                                ]
-  ])
+  ]
 
   where
     viewShift = doF . liftM2 (.) W.greedyView W.shift
