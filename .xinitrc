@@ -1,5 +1,7 @@
 #!/bin/sh
 
+PATH=${HOME}.local/bin:${PATH}
+
 if [ -f /etc/os-release ]; then
     . /etc/os-release
     export OS=$NAME
@@ -90,5 +92,5 @@ mv $HOME/.xmonad/xmonad /home/henninb/.local/bin
 #exec i3
 #exec awesome
 #exec xmonad
-exec xmonad
+exec xmonad 2>> xinit.log
 #exec qtile
