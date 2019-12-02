@@ -219,7 +219,8 @@ export PATH=/opt/kotlinc/bin:$PATH
 #echo "stty -tostop"
 if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
   if [ -x "$(command -v inxi)" ]; then
-    inxi -Sxxx
+    # inxi -Sxxx #causes xmonad to hang
+    inxi
   else
     sudo apt install -y inxi
     inxi -Sxxx
