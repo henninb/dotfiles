@@ -92,4 +92,5 @@ mv $HOME/.xmonad/xmonad /home/henninb/.local/bin
 #exec i3
 #exec awesome
 exec xmonad 2>> xinit.log
+#exec xmonad
 #exec qtile
