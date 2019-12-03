@@ -7,5 +7,9 @@
 - ghci
 
 ## Clojure
+- lein repl
 
 ## Fsharp
+
+## Kotlin
+- kotlinc
