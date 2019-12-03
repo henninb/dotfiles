@@ -198,6 +198,7 @@ ln -sfn /opt/intellij/bin/idea.sh $HOME/.local/bin/idea.sh
 ln -sfn /opt/intellij/bin/idea.sh $HOME/.local/bin/intellij
 ln -sfn /opt/firefox/firefox $HOME/.local/bin/firefox
 ln -sfn /opt/vscode/bin/code $HOME/.local/bin/code
+
 chmod 600 $HOME/.ssh/authorized_keys
 chmod 600 $HOME/.ssh/config
 chmod 600 $HOME/.ssh/id_rsa
