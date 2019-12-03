@@ -45,6 +45,7 @@ endif
    Plug 'sbdchd/neoformat'
    Plug 'https://github.com/vim-scripts/CycleColor.git'
    Plug 'git@github.com:prettier/vim-prettier.git', { 'do': 'yarn add prettier' }
+   Plug 'git@github.com:c-brenn/repel.nvim.git'
 if $OS != "Arch Linux"
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
 endif
@@ -178,7 +179,7 @@ endif
 
 let g:haskell_enable_quantification = 1
 
-" Easy filetype switching
+" normal mode Easy filetype switching
 nnoremap ftm :set ft=markdown<cr>
 nnoremap ftp :set ft=python<cr>
 nnoremap ftw :set ft=wiki<cr>
@@ -197,12 +198,15 @@ nmap <leader>z :g/^$/d<cr>
 nmap <leader>s :%s/\s\+$//g<cr>
 nmap <leader>l :set nu! rnu!<cr>
 
-" edit vimrc/zshrc and load vimrc bindings
+" normal mode: edit vimrc/zshrc and load vimrc bindings
 nnoremap <leader>ev :vsp $MYVIMRC<cr>
 nnoremap <leader>ez :vsp ~/.zshrc<cr>
 
-" jk is escape
+" insertmode: jk is escape
 inoremap jk <esc>
+
+" normal mode
+noremap  <f1> :colorscheme torte<cr>:set nu! rnu!<cr>:Sopen ghci<cr>
 
 " Commenting blocks of code.
 autocmd FileType c,cpp,java,scala let b:comment_leader = '// '
