@@ -204,6 +204,7 @@ chmod 600 $HOME/.ssh/config
 chmod 600 $HOME/.ssh/id_rsa
 chmod 700 $HOME
 chmod 700 $HOME/.gnupg
+chmod 644 $HOME/.ghci
 
 sort -t ";" -k 2 -u $HOME/.zsh_history | sort -o $HOME/.zsh_history
 
