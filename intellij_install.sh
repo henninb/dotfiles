@@ -28,7 +28,6 @@ if  [ ! -z "$VER_OVERRIDE" ]; then
 fi
 
 echo $VER
-exit 1
 
 if [ ! -f "ideaIU-${VER}.tar.gz" ]; then
   rm -rf ideaIU-*.tar.gz
