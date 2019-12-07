@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [ $# -eq 1 ]; then
+  VER_OVERRIDE=$1
+fi
+
 RASPI_IP=$(nmap -sP --host-timeout 10 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
 
 find ~/.IntelliJIdea* -type d -exec touch -t $(date +"%Y%m%d%H%M") {} \;
@@ -18,7 +22,13 @@ rm -rf ~/.java/.userPrefs/jetbrains
 #curl https://www.jetbrains.com/updates/updates.xml | grep "IntelliJ IDEA [0-9]\{4\}\.[0-9]\.[0-9] is available" | grep -o '[0-9]\{4\}\.[0-9]\.[0-9]'
 #VER=$(curl https://en.wikipedia.org/wiki/IntelliJ_IDEA | grep -o '[0-9]\{4\}\.[0-9]\.[0-9]' | head -1)
 VER=$(curl https://www.jetbrains.com/updates/updates.xml | grep "IntelliJ IDEA [0-9]\{4\}\.[0-9]\.[0-9] is available" | grep -o '[0-9]\{4\}\.[0-9]\.[0-9]')
+
+if  [ ! -z "$VER_OVERRIDE" ]; then
+  VER=2019.3
+fi
+
 echo $VER
+exit 1
 
 if [ ! -f "ideaIU-${VER}.tar.gz" ]; then
   rm -rf ideaIU-*.tar.gz
@@ -67,9 +77,10 @@ elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
   sudo rm -rf /opt/intellij
   sudo rm -rf /opt/idea-IU-???.????.??/
   sudo tar -xvf ideaIU-${VER}.tar.gz -C /opt
-  sudo ln -sfn /opt/idea-IU-???.????.?? /opt/intellij
-  sudo chown -R intellij:intellij /opt/idea-IU-???.????.??/
-  sudo chmod 775 /opt/idea-IU-???.????.??/
+  sudo ln -sfn $(ls -1d /opt/idea-IU-*.????.*/) /opt/intellij
+  #sudo chown -R intellij:intellij /opt/idea-IU-???.????.??/
+  sudo chown -R intellij:intellij /opt/idea-IU-*/
+  sudo chmod 775 /opt/idea-IU-*/
 elif [ "$OS" = "Fedora" ]; then
   echo
 elif [ "$OS" = "CentOS Linux" ]; then
