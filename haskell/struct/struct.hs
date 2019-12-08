@@ -1,5 +1,15 @@
+import Data.List
 
-data Transaction = Integer String Integer String Int String String Float Int Bool String Int Int String
+data Transaction = Transaction Integer String Integer String String Integer String String Double Int
+   deriving Show
+-- data Transaction = Transaction String String
+--  deriving Show
+--newtype Transaction = String String deriving Show
+
+transaction :: Transaction
+-- transaction = Transaction "1001" "guid"
+transaction = Transaction 1 "guid" 1 "credit" "chase_brian" 1 "aliexpress.com" "none" 12.51 1
+main = print "hello world"
 
 
 -- import Data.Dates
