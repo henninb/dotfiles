@@ -15,13 +15,13 @@ struct MyObj {
     number: i32,
 }
 
-/// This handler uses json extractor
+const MAX_SIZE: usize = 262_144; // max payload size is 256k
+
 fn index(item: web::Json<MyObj>) -> HttpResponse {
     println!("model: {:?}", &item);
-    HttpResponse::Ok().json(item.0) // <- send response
+    HttpResponse::Ok().json(item.0)
 }
 
-/// This handler uses json extractor with limit
 fn extract_item(item: web::Json<MyObj>, req: HttpRequest) -> HttpResponse {
     println!("request: {:?}", req);
     println!("model: {:?}", item);
@@ -29,12 +29,9 @@ fn extract_item(item: web::Json<MyObj>, req: HttpRequest) -> HttpResponse {
     HttpResponse::Ok().json(item.0) // <- send json response
 }
 
-const MAX_SIZE: usize = 262_144; // max payload size is 256k
 
 /// This handler manually load request payload and parse json object
-fn index_manual(
-    payload: web::Payload,
-) -> impl Future<Item = HttpResponse, Error = Error> {
+fn index_manual( payload: web::Payload,) -> impl Future<Item = HttpResponse, Error = Error> {
     // payload is a stream of Bytes objects
     payload
         // `Future::from_err` acts like `?` in that it coerces the error type from
@@ -45,7 +42,7 @@ fn index_manual(
         .fold(BytesMut::new(), move |mut body, chunk| {
             // limit max size of in-memory payload
             if (body.len() + chunk.len()) > MAX_SIZE {
-                Err(error::ErrorBadRequest("overflow"))
+                Err(error::ErrorBadRequest("overflow of max body length"))
             } else {
                 body.extend_from_slice(&chunk);
                 Ok(body)
@@ -79,21 +76,16 @@ fn main() -> std::io::Result<()> {
     std::env::set_var("RUST_LOG", "actix_web=info");
     env_logger::init();
 
+    println!("localhost:8081/manual");
+
     HttpServer::new(|| {
         App::new()
-            // enable logger
             .wrap(middleware::Logger::default())
             .data(web::JsonConfig::default().limit(4096)) // <- limit size of the payload (global configuration)
             .service(web::resource("/extractor").route(web::post().to(index)))
-            .service(
-                web::resource("/extractor2")
-                    .data(web::JsonConfig::default().limit(1024)) // <- limit size of the payload (resource level)
-                    .route(web::post().to_async(extract_item)),
-            )
+            .service( web::resource("/extractor2").data(web::JsonConfig::default().limit(1024)).route(web::post().to_async(extract_item)))
             .service(web::resource("/manual").route(web::post().to_async(index_manual)))
-            .service(
-                web::resource("/mjsonrust").route(web::post().to_async(index_mjsonrust)),
-            )
+            .service( web::resource("/mjsonrust").route(web::post().to_async(index_mjsonrust)))
             .service(web::resource("/").route(web::post().to(index)))
     })
     .bind("127.0.0.1:8081")?
