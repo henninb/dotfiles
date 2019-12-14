@@ -203,6 +203,9 @@ nmap <leader>l :set nu! rnu!<cr>
 nnoremap <leader>ev :vsp $MYVIMRC<cr>
 nnoremap <leader>ez :vsp ~/.zshrc<cr>
 
+" find file in NERDTree
+nnoremap <Leader>f :NERDTreeToggle<cr>
+
 " insertmode: jk is escape
 inoremap jk <esc>
 
