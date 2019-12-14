@@ -16,7 +16,7 @@ RUN chown -R ${USERNAME}:${USERNAME} /opt/${APP}/*
 WORKDIR /opt/${APP}/bin
 COPY . .
 
-RUN cargo install --path .
+#RUN cargo install --path .
 
 #CMD [./${APP}]
 CMD cargo run
