@@ -46,6 +46,7 @@ endif
    Plug 'https://github.com/vim-scripts/CycleColor.git'
    Plug 'git@github.com:prettier/vim-prettier.git', { 'do': 'yarn add prettier' }
    Plug 'git@github.com:c-brenn/repel.nvim.git'
+   Plug 'git@github.com:scrooloose/nerdtree.git'
 if $OS != "Arch Linux"
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
 endif
