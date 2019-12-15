@@ -4,7 +4,14 @@ RASPI_IP=$(nmap -sP --host-timeout 10 192.168.100.0/24 | grep raspb | grep -o '[
 
 if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
   sudo apt install -y alien fakeroot
+elif [ "$OS" = "Fedora" ]; then
+  sudo dnf install -y libnsl
+else
+  echo $OS is not yet implemented.
+  exit 1
 fi
+
+#export LD_LIBRARY_PATH=/opt/oracle/instantclient:$LD_LIBRARY_PATH
 
 echo /usr/lib/oracle/19.3/client64/lib/libsqlplus.so
 if [ ! -f "oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm" ]; then
