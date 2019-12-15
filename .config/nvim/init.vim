@@ -242,6 +242,9 @@ endif
 "let g:python2_host_prog = '/usr/bin/python2'
 "let g:fsharp_interactive_bin = '/opt/dotnet/sdk/2.2.108/FSharp/fsi.exe'
 
+" for rust
+let g:rustfmt_autosave = 1
+
 set exrc " allows loading local executing local rc files
 set secure " disallows the use of :autocmd, shell and write commands
 
