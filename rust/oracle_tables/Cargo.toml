@@ -1,0 +1,9 @@
+[package]
+name = "oracle_tables"
+version = "0.1.0"
+authors = ["Brian Henning <henninb@msn.com>"]
+edition = "2018"
+
+[dependencies]
+oracle = "0.3.1"
+log = "0.4"
