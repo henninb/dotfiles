@@ -15,7 +15,7 @@ struct Book {
 #[allow(dead_code)]
 type ParsedLine = ((String, String), usize);
 
-fn file_read_csv(fname: String) -> Result<(), Box<Error>> {
+fn file_read_csv(fname: String) -> Result<(), Box<dyn Error>> {
     let file = File::open(fname).expect("Couldn't open input");
     let mut records = ReaderBuilder::new()
         .has_headers(false)
@@ -34,7 +34,7 @@ fn file_read_csv(fname: String) -> Result<(), Box<Error>> {
 }
 
 #[allow(dead_code)]
-fn example(fname : String) -> Result<(), Box<Error>> {
+fn example(fname : String) -> Result<(), Box<dyn Error>> {
     let file = File::open(fname).expect("Couldn't open input");
     let mut rdr = ReaderBuilder::new()
         .has_headers(false)
@@ -52,9 +52,9 @@ fn example(fname : String) -> Result<(), Box<Error>> {
     }
 }
 
-fn file_read(fname: String) {
+fn file_read(input_filename: String) {
 
-    let contents = fs::read_to_string(fname)
+    let contents = fs::read_to_string(input_filename)
         .expect("Something went wrong reading the file");
     println!("{}", contents);
     let x = parse_line("one|two|three".to_string());

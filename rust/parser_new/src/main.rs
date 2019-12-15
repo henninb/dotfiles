@@ -1,6 +1,7 @@
 use std::io::BufReader;
 use std::io::BufRead;
 use std::fs::File;
+use std::io::Error;
 
 fn parse_line(line: &str) {
     let split = line.split("|");
@@ -12,7 +13,7 @@ fn parse_line(line: &str) {
 
 //playground
 //https://play.rust-lang.org/?gist=63908c351a8c1038b07a9edc3a30ff16&version=stable
-fn readloop( ifp: File ) -> Result<(), std::io::Error> {
+fn read_file(ifp: File ) -> Result<(), Error> {
     let reader = BufReader::new(&ifp);
     let lines : Vec<_> = reader.lines().collect();
         for line in lines {
@@ -22,11 +23,11 @@ fn readloop( ifp: File ) -> Result<(), std::io::Error> {
     Ok(())
 }
 
-fn read_by_line( fname: &str ) -> Result<(), std::io::Error> {
-    let file = File::open(fname).expect("file not found");
-    readloop(file)
+fn read_by_line( filename: &str ) -> Result<(), Error> {
+    let file = File::open(filename).expect("file not found");
+    read_file(file)
 }
 
-fn main() -> Result<(), std::io::Error> {
+fn main() -> Result<(), Error> {
     read_by_line("input")
 }
