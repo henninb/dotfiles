@@ -1,2 +1,1 @@
-server1
-server2
+localhost,1521,XE
