@@ -1,9 +1,7 @@
 #[macro_use]
 extern crate json;
 
-use actix_web::{
-    error, middleware, web, App, Error, HttpRequest, HttpResponse, HttpServer,
-};
+use actix_web::{error, middleware, web, App, Error, HttpRequest, HttpResponse, HttpServer};
 use bytes::BytesMut;
 use futures::{Future, Stream};
 use json::JsonValue;
@@ -17,7 +15,7 @@ struct MyObj {
 
 const MAX_SIZE: usize = 262_144; // max payload size is 256k
 
-fn index(item: web::Json<MyObj>) -> HttpResponse {
+fn index_handler(item: web::Json<MyObj>) -> HttpResponse {
     println!("model: {:?}", &item);
     HttpResponse::Ok().json(item.0)
 }
@@ -29,10 +27,8 @@ fn extract_item(item: web::Json<MyObj>, req: HttpRequest) -> HttpResponse {
     HttpResponse::Ok().json(item.0) // <- send json response
 }
 
-
 /// This handler manually load request payload and parse json object
 fn index_manual( payload: web::Payload,) -> impl Future<Item = HttpResponse, Error = Error> {
-    // payload is a stream of Bytes objects
     payload
         // `Future::from_err` acts like `?` in that it coerces the error type from
         // the future into the final error type
@@ -53,7 +49,7 @@ fn index_manual( payload: web::Payload,) -> impl Future<Item = HttpResponse, Err
         .and_then(|body| {
             // body is loaded, now we can deserialize serde-json
             let obj = serde_json::from_slice::<MyObj>(&body)?;
-            Ok(HttpResponse::Ok().json(obj)) // <- send response
+            Ok(HttpResponse::Ok().json(obj))
         })
 }
 
@@ -82,11 +78,11 @@ fn main() -> std::io::Result<()> {
         App::new()
             .wrap(middleware::Logger::default())
             .data(web::JsonConfig::default().limit(4096)) // <- limit size of the payload (global configuration)
-            .service(web::resource("/extractor").route(web::post().to(index)))
+            .service(web::resource("/extractor").route(web::post().to(index_handler)))
             .service( web::resource("/extractor2").data(web::JsonConfig::default().limit(1024)).route(web::post().to_async(extract_item)))
             .service(web::resource("/manual").route(web::post().to_async(index_manual)))
             .service( web::resource("/mjsonrust").route(web::post().to_async(index_mjsonrust)))
-            .service(web::resource("/").route(web::post().to(index)))
+            .service(web::resource("/").route(web::post().to(index_handler)))
     })
     .bind("127.0.0.1:8081")?
     .run()

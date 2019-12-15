@@ -34,5 +34,5 @@ fn main() {
     println!("{:?} unwraps to {:?}", optional_float, optional_float.unwrap());
 
     // Unwrapping a `None` variant will `panic!`
-    println!("{:?} unwraps to {:?}", none, none.unwrap());
+    //println!("{:?} unwraps to {:?}", none, none.unwrap());
 }
