@@ -1,13 +1,15 @@
 extern crate log;
 extern crate oracle;
+extern crate env_logger;
 
-use log::{info, warn};
+use log::{info, warn, error};
 use oracle::Connection;
 use std::env;
 use std::fs::File;
 use std::io::Write;
 use std::io::{BufRead, BufReader};
 use std::fs;
+//use env_logger::Builder;
 
 //use std::io::Error;
 //use std::env::VarError;
@@ -27,7 +29,9 @@ fn get_env_var(key: &str) -> String {
 fn open_file(filename: &str) -> File {
     match File::open(filename) {
         Ok(f) => return f,
-        Err(_) => panic!("file {} is not found.", filename),
+        Err(_) => {
+            error!("file {} is not found.", filename);
+            panic!("file {} is not found.", filename)},
     }
 }
 
@@ -39,7 +43,12 @@ fn open_file(filename: &str) -> File {
 // }
 
 fn main() {
-    //let username = "SYSTEM";
+
+    // Builder::new()
+    //     .parse(&env::var("MY_APP_LOG").unwrap_or_default())
+    //     .init();
+    env_logger::init();
+
     let passwd_key = "ORACLE_PASSWORD";
     let username_key = "ORACLE_USERNAME";
     let sites_filename = "site.txt";
@@ -49,6 +58,7 @@ fn main() {
         "SELECT table_name FROM dba_tables WHERE owner = '{}' ORDER BY table_name",
         owner
     );
+    info!("start of the app");
     let file = open_file(sites_filename);
     for line in BufReader::new(file).lines() {
         let str_line = match line {
@@ -68,12 +78,14 @@ fn main() {
         let connection_string = format!("(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST={})(PORT={}))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME={})))", servername, port, service_name);
         println!("{}", connection_string);
 
+        info!("connection to start");
         let conn = match Connection::connect(username, passwd, connection_string) {
             Ok(cn) => cn,
             Err(e) => {
                 println!("did the uername/password fail?");
                 panic!("{:?}", e)},
         };
+        info!("query to start");
         let table_list_rows = match conn.query(&table_list_sql, &[]) {
             Ok(rs) => rs,
             Err(e) => panic!("{:?}", e),
