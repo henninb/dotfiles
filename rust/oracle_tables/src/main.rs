@@ -44,6 +44,7 @@ fn main() {
     let username_key = "ORACLE_USERNAME";
     let sites_filename = "site.txt";
     let owner = "SYSTEM";
+    let package_list_sql = format!("SELECT DISTINCT name FROM dba_source WHERE type = 'PACKAGE' A    ND owner = '{}' ORDER BY name", owner);
     let table_list_sql = format!(
         "SELECT table_name FROM dba_tables WHERE owner = '{}' ORDER BY table_name",
         owner
@@ -57,8 +58,6 @@ fn main() {
 
         info!("{}", str_line);
         let site = &str_line;
-        //let site_args = site.split(",");
-//        let site_args = site.split(",");
         let site_args: Vec<&str> = site.split(',').collect();
         let servername = site_args.clone().into_iter().nth(0).unwrap();
         let port = site_args.clone().into_iter().nth(1).unwrap();
@@ -110,6 +109,23 @@ fn main() {
                     file.write_all("|".as_bytes()).expect("write failure");
                 }
                 file.write_all("\n".as_bytes()).expect("write failure");
+            }
+        }
+
+        fs::create_dir_all("package_list").unwrap();
+        let package_list_rows = match conn.query(&package_list_sql, &[]) {
+            Ok(rs) => rs,
+            Err(e) => panic!("{:?}", e),
+        };
+
+        //let mut package_list: Vec<String> = Vec::new();
+        for row_result in package_list_rows {
+            for (idx, val) in row_result.unwrap().sql_values().iter().enumerate() {
+                if idx != 0 {
+                    print!(" {:14}|", "");
+                }
+                table_list.push(val.to_string());
+                println!("{}", val);
             }
         }
 
