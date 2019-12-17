@@ -1,11 +1,20 @@
 #[macro_use]
 extern crate json;
+extern crate log;
+extern crate env_logger;
+extern crate dotenv;
+extern crate log4rs;
 
 use actix_web::{error, middleware, web, App, Error, HttpRequest, HttpResponse, HttpServer};
 use bytes::BytesMut;
 use futures::{Future, Stream};
 use json::JsonValue;
-use serde_derive::{Deserialize, Serialize};
+use serde_derive::Deserialize;
+use serde_derive::Serialize;
+//use log::{info, warn, error};
+use log::info;
+use std::env;
+use dotenv::dotenv;
 
 #[derive(Debug, Serialize, Deserialize)]
 struct MyObj {
@@ -16,13 +25,20 @@ struct MyObj {
 const MAX_SIZE: usize = 262_144; // max payload size is 256k
 
 fn index_handler(item: web::Json<MyObj>) -> HttpResponse {
-    println!("model: {:?}", &item);
+    info!("model: {:?}", &item);
     HttpResponse::Ok().json(item.0)
 }
 
+// fn get_env_var(key: &str) -> String {
+//    match env::var(key) {
+//     Ok(x)  => return x,
+//     Err(_) => panic!("Failure to set the value for key {}", key)
+//    };
+// }
+
 fn extract_item(item: web::Json<MyObj>, req: HttpRequest) -> HttpResponse {
-    println!("request: {:?}", req);
-    println!("model: {:?}", item);
+    info!("request: {:?}", req);
+    info!("model: {:?}", item);
 
     HttpResponse::Ok().json(item.0) // <- send json response
 }
@@ -69,10 +85,24 @@ fn index_mjsonrust(pl: web::Payload) -> impl Future<Item = HttpResponse, Error =
 }
 
 fn main() -> std::io::Result<()> {
-    std::env::set_var("RUST_LOG", "actix_web=info");
-    env_logger::init();
+    //std::env::set_var("RUST_LOG", "actix_web=info");
 
-    println!("localhost:8081/manual");
+    dotenv().ok();
+    env_logger::init();
+    match env::var("MY_VALUE") {
+        Ok(lang) => println!("My value={}", lang),
+        Err(e) => println!("Couldn't read MY_VALUE ({})", e),
+    };
+
+    info!("localhost:8081");
+    // let my_value = get_env_var("MY_VALUE");
+    // println!("{}", my_value);
+
+    // for (key, value) in env::vars() {
+    //     println!("{}: {}", key, value);
+    // }
+
+    dotenv::dotenv().expect("Failed to read .env file");
 
     HttpServer::new(|| {
         App::new()

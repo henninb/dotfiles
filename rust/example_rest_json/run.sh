@@ -7,6 +7,7 @@ USERNAME=henninb
 touch env
 touch env.secrets
 
+cargo build --release
 docker rm ${APP} -f
 docker build -t $APP --build-arg TIMEZONE=${TIMEZONE} --build-arg APP=${APP} --build-arg USERNAME=${USERNAME} .
 if [ $? -ne 0 ]; then
