@@ -22,6 +22,20 @@ struct MyObj {
     number: i32,
 }
 
+#[allow(non_snake_case)]
+#[derive(Serialize, Deserialize)]
+struct Transaction {
+  guid: String,
+  accountType: String,
+  accountNameOwner: String,
+  description: String,
+  category: String,
+  notes: String,
+  cleared: i8,
+  amount: String,
+  transactionDate: u32,
+}
+
 const MAX_SIZE: usize = 262_144; // max payload size is 256k
 
 fn index_handler(item: web::Json<MyObj>) -> HttpResponse {
