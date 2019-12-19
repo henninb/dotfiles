@@ -9,5 +9,9 @@ cd projects
 git clone git@github.com:emacs-mirror/emacs.git
 cd emacs
 
+#sudo add-apt-repository ppa:ubuntu-elisp/ppa
+#sudo apt-get update
+#sudo apt-get install emacs-snapshot
+
 
 exit 0
