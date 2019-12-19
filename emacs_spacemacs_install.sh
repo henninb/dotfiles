@@ -1,8 +1,8 @@
 #!/bin/sh
 
-if [ ! -d "$HOME/.emacs.d/evil" ]; then
-  git clone git@github.com:emacs-evil/evil.git $HOME/.emacs.d/evil
-fi
+# if [ ! -d "$HOME/.emacs.d/evil" ]; then
+#   git clone git@github.com:emacs-evil/evil.git $HOME/.emacs.d/evil
+# fi
 
 if [ ! -d "$HOME/.emacs.d/color-theme-sanityinc-tomorrow" ]; then
   git clone git@github.com:purcell/color-theme-sanityinc-tomorrow.git $HOME/.emacs.d/color-theme-sanityinc-tomorrow
