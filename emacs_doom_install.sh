@@ -6,8 +6,9 @@ elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Ras
   wget https://ftp.gnu.org/gnu/emacs/emacs-26.3.tar.xz
   tar xvf emacs-26.3.tar.xz
   cd emacs-26.3
-  ./autocofig.sh
+  ./autogen.sh
   ./configure --with-xpm=no --with-jpeg=no --with-gif=no --with-tiff=no
+  make
 else
   echo $OS is not yet implemented.
   exit 1
