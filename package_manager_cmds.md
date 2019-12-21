@@ -1,7 +1,5 @@
-	
-To find what you are missing, run this command
-
-
+# package commands
+## To find what you are missing, run this command
 pkgfile alisp.h
 
 pkgfile -l alsa-lib
