@@ -183,6 +183,9 @@ if [ $? -ne 0 ]; then
   git branch --set-upstream-to=origin/master master
 fi
 
+export XDG_DATA_HOME=~/.local/share/fonts:${XDG_DATA_HOME}
+# sed -i 's/blue $CURRENT_FG/39d $CURRENT_FG/' ~/.oh-my-zsh/themes/agnoster.zsh-theme
+
 export TMOUT=0
 export GPG_TTY=$(tty)
 export PYENV_ROOT="$HOME/.pyenv"
