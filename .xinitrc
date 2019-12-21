@@ -1,6 +1,7 @@
 #!/bin/sh
 
-PATH=${HOME}/.local/bin:${PATH}
+export PATH=${HOME}/.local/bin:${PATH}
+export XDG_DATA_HOME=~/.local/share/fonts:${XDG_DATA_HOME}
 
 if [ -f /etc/os-release ]; then
     . /etc/os-release

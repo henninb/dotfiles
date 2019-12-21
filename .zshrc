@@ -131,6 +131,8 @@ if [ $? -ne 0 ]; then
   cd -
 fi
 
+echo copy fonts to ~/.local/share/fonts
+
 # neovim has python env issues with VIMRUNTIME variable set.
 # if [ -d "/usr/local/share/vim/vim81" ]; then
 #   export VIMRUNTIME=/usr/local/share/vim/vim81
