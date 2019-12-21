@@ -6,27 +6,41 @@
 !! Colorscheme
 
 ! special
-*.foreground: #93a1a1
-!*.background: #141c21
-*.background: #000000
-*.cursorColor: #afbfbf
+*.foreground:   #948e48
+*.background:   #201602
+*.cursorColor:  #948e48
 
-URxvt*color0:      #000000
-URxvt*color1:      #A80000
-URxvt*color2:      #00A800
-URxvt*color3:      #A85400
-URxvt*color4:      #0000A8
-URxvt*color5:      #A800A8
-URxvt*color6:      #00A8A8
-URxvt*color7:      #A8A8A8
-URxvt*color8:      #545054
-URxvt*color9:      #F85450
-URxvt*color10:     #50FC50
-URxvt*color11:     #F2FC50
-URxvt*color12:     #5054F8
-URxvt*color13:     #F854F8
-URxvt*color14:     #50FCF8
-URxvt*color15:     #F8FCF8
+! black
+*.color0:       #201602
+*.color8:       #6c6823
+
+! red
+*.color1:       #c35359
+*.color9:       #c35359
+
+! green
+*.color2:       #18974e
+*.color10:      #18974e
+
+! yellow
+*.color3:       #a88339
+*.color11:      #a88339
+
+! blue
+*.color4:       #477ca1
+*.color12:      #477ca1
+
+! magenta
+*.color5:       #8868b3
+*.color13:      #8868b3
+
+! cyan
+*.color6:       #75a738
+*.color14:      #75a738
+
+! white
+*.color7:       #948e48
+*.color15:      #faf0a5
 
 !URxvt.font: xft:xos4 Terminus:pixelsize=12, xft:FontAwesome:pixelsize=24
 !URxvt.font: xft:FontAwesome:pixelsize=24
