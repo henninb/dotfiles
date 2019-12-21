@@ -8,41 +8,24 @@ font = Inconsolata 16
 
 [colors]
 
-# special
-foreground      = #a2dbc0
-foreground_bold = #a2dbc0
-cursor          = #a2dbc0
-background      = #070e0b
-
-# black
-color0  = #0e1713
-color8  = #a8b15a
-
-# red
-color1  = #15211c
-color9  = #6fcfe2
-
-# green
-color2  = #23332c
-color10 = #b3abd6
-
-# yellow
-color3  = #364c42
-color11 = #e3b4ce
-
-# blue
-color4  = #4e6c5e
-color12 = #999f70
-
-# magenta
-color5  = #6b917f
-color13 = #5aa786
-
-# cyan
-color6  = #8cbda6
-color14 = #de83ba
-
-# white
-color7  = #b6efd4
-color15 = #a6ae6d
-
+# 20% background transparency (requires a compositor)
+background = rgba(64, 69, 82, 0.8)
+foreground = #c5c8c6
+foreground_bold = #c5c8c6
+cursor = #c5c8c6
+color0 = #073642
+color1 = #dc322f
+color2 = #859900
+color3 = #b58900
+color4 = #268bd2
+color5 = #d33682
+color6 = #2aa198
+color7 = #eee8d5
+color8 = #002b36
+color9 = #cb4b16
+color10 = #586e75
+color11 = #657b83
+color12 = #839496
+color13 = #6c71c4
+color14 = #93a1a1
+color15 = #fdf6e3
