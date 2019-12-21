@@ -12,4 +12,7 @@ done
 cd ~/projects
 git clone git@gitlab.com:BitExplorer/howto.git
 
+echo distrotube
+git clone git@gitlab.com:dwt1/wallpapers.git
+
 exit 0
