@@ -126,7 +126,7 @@ mkdir -p ~/.fonts
 ls -l ~/.fonts/{Sauce-Code-Pro-Nerd-Font-Complete-Mono-Windows-Compatible.ttf,Sauce-Code-Pro-Nerd-Font-Complete-Mono.ttf,Sauce-Code-Pro-Nerd-Font-Complete-Windows-Compatible.ttf,Sauce-Code-Pro-Nerd-Font-Complete.ttf} > /dev/null 2>&1
 if [ $? -ne 0 ]; then
   cd ~/.fonts
-  unzip ../Sauce-Code-Pro-Nerd-Fonts.zip
+  unzip ../sauce-code-pro-nerd-fonts.zip
   fc-cache -vf ~/.fonts/
   cd -
 fi
