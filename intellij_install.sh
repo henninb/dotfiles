@@ -21,10 +21,11 @@ rm -rf ~/.java/.userPrefs/jetbrains
 
 #curl https://www.jetbrains.com/updates/updates.xml | grep "IntelliJ IDEA [0-9]\{4\}\.[0-9]\.[0-9] is available" | grep -o '[0-9]\{4\}\.[0-9]\.[0-9]'
 #VER=$(curl https://en.wikipedia.org/wiki/IntelliJ_IDEA | grep -o '[0-9]\{4\}\.[0-9]\.[0-9]' | head -1)
-VER=$(curl https://www.jetbrains.com/updates/updates.xml | grep "IntelliJ IDEA [0-9]\{4\}\.[0-9]\.[0-9] is available" | grep -o '[0-9]\{4\}\.[0-9]\.[0-9]')
+VER=$(curl https://www.jetbrains.com/updates/updates.xml | grep "[0-9]\{4\}\.[0-9]\.[0-9]" | head -1 | grep -o '[0-9]\{4\}\.[0-9]\.[0-9]')
+#VER=$(curl https://www.jetbrains.com/updates/updates.xml | grep " [0-9]\{4\}\.[0-9]\.[0-9,] is available" | grep -o '[0-9]\{4\}\.[0-9]\.[0-9]')
 
 if  [ ! -z "$VER_OVERRIDE" ]; then
-  VER=2019.3
+  VER=${VER_OVERRIDE}
 fi
 
 echo $VER
