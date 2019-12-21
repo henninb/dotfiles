@@ -15,6 +15,9 @@ import XMonad.Prompt ( XPPosition (Top), alwaysHighlight, font , position, promp
 import XMonad.Prompt.ConfirmPrompt ( confirmPrompt )
 import System.Exit
 
+-- layouts
+import XMonad.Layout.ToggleLayouts
+
 import qualified Data.Map as M
 
 -- own module: configuration decomposition --
@@ -95,5 +98,5 @@ myKeys = [
         , ((mod1Mask .|. shiftMask, xK_BackSpace), kill)
         --, ((mod4Mask .|. shiftMask, xK_w), confirmPrompt myXPConfig "exit" (io exitSuccess))
         , ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" (io exitSuccess))
-        , ((mod1Mask, xK_space ), sendMessage NextLayout)
+        , ((mod1Mask, xK_space ), sendMessage ToggleLayout)
     ]

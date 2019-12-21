@@ -8,6 +8,8 @@ import XMonad
 -- hooks --
 import XMonad.Hooks.ManageDocks
 
+import XMonad.Layout.ToggleLayouts
+
 -- layout --
 import XMonad.Layout.Spacing
 import XMonad.Layout.Gaps
@@ -23,6 +25,7 @@ import MyWorkspaces
 
 ------------------------------------------------------------------------
 
+-- toggleLayouts ??
 -- Layout Hook
 myLayoutHook
     = onWorkspaces [wsTerm] screenshotLayout
