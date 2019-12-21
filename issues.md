@@ -108,7 +108,7 @@ main = xmonad $ desktopConfig
         {- spawn xmobar -}
     }
 
-# mirror list fails for centos 8
+## mirror list fails for centos 8
 
 use the following url =  http://mirrorlist.centos.org/?release=8&arch=x86_64&repo=BaseOS
 
@@ -123,3 +123,7 @@ neofetch --w3m /path/to/image
 
 ## play audio via command line
 - cvlc
+
+## XDG_CONFIG_HOME for font stuff on archlinux
+
+$HOME/.config
