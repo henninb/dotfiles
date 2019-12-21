@@ -73,7 +73,8 @@ main = do
         autoload = "~/.xmonad/assets/bin/autoload.sh"
 
 -- Common
-myTerminal = "termite"
+--myTerminal = "termite"
+myTerminal = "urxvt"
 myBrowser = "firefox"
 
 -- Custom Prompt
