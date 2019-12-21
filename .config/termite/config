@@ -8,24 +8,41 @@ font = Inconsolata 16
 
 [colors]
 
-# 20% background transparency (requires a compositor)
-background = rgba(64, 69, 82, 0.8)
-foreground = #c5c8c6
-foreground_bold = #c5c8c6
-cursor = #c5c8c6
-color0 = #073642
-color1 = #dc322f
-color2 = #859900
-color3 = #b58900
-color4 = #268bd2
-color5 = #d33682
-color6 = #2aa198
-color7 = #eee8d5
-color8 = #002b36
-color9 = #cb4b16
-color10 = #586e75
-color11 = #657b83
-color12 = #839496
-color13 = #6c71c4
-color14 = #93a1a1
-color15 = #fdf6e3
+# special
+foreground      = #00bb00
+foreground_bold = #00bb00
+cursor          = #00bb00
+background      = #001100
+
+# black
+color0  = #001100
+color8  = #007700
+
+# red
+color1  = #007700
+color9  = #007700
+
+# green
+color2  = #00bb00
+color10 = #00bb00
+
+# yellow
+color3  = #007700
+color11 = #007700
+
+# blue
+color4  = #009900
+color12 = #009900
+
+# magenta
+color5  = #00bb00
+color13 = #00bb00
+
+# cyan
+color6  = #005500
+color14 = #005500
+
+# white
+color7  = #00bb00
+color15 = #00ff00
+
