@@ -16,6 +16,7 @@ if has('vim')
   endif
 endif
 
+" needed for urxvt
 "set termguicolors
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -251,4 +252,8 @@ set exrc " allows loading local executing local rc files
 set secure " disallows the use of :autocmd, shell and write commands
 
 set cursorline
+" override the cursor settings
 hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
+
+" override settings for evening theme
+" hi Normal ctermbg=236 ctermfg=White guifg=White guibg=grey20
