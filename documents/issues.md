@@ -128,3 +128,14 @@ neofetch --w3m /path/to/image
 
 $HOME/.config
 https://serverfault.com/questions/709777/xrdp-changing-path-environment-variable
+
+2
+
+## vim color support
+This turned out to be me misunderstanding what the termguicolors option entails in Vim. The ayu colour theme actually requires Truecolor support, which Urxvt does not have.
+
+There is a good explanation of colour support in terminals: https://gist.github.com/XVilka/8346728
+
+This has finally given me a good enough reason to switch to Alacritty.
+
+https://github.com/vim-scripts/256-jungle

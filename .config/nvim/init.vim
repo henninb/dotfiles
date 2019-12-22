@@ -118,6 +118,7 @@ nnoremap <leader>* 0y$/\V<c-r>"<cr>
 noremap <Leader>W :w !sudo tee % > /dev/null
 
 colorscheme evening
+"colorscheme 256-jungle
 "colorscheme darkblue
 
 " Enable scrolling via mouse
