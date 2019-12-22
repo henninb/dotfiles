@@ -5,6 +5,7 @@ for i in $(echo $PROJECTS); do
   cd ~/projects
   git clone git@github.com:BitExplorer/$i.git
   cd $i
+  git branch --set-upstream-to=origin/master master
   git config --local user.email henninb@msn.com
   git pull
 done
