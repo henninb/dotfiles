@@ -112,26 +112,22 @@ if [ ! "$OS" = "FreeBSD" ]; then
 fi
 export CHEF_USER=$(whoami)
 
-# fpath=(
-#     ~/.zshrc/pjava
-#     ~/.zshrc/gemerge
-#     "${fpath[@]}"
-# )
-
-# autoload -Uz pjava
-# autoload -Uz gemerge
-
-FONTS="Sauce-Code-Pro-Nerd-Font-Complete-Mono-Windows-Compatible.ttf  Sauce-Code-Pro-Nerd-Font-Complete-Mono.ttf  Sauce-Code-Pro-Nerd-Font-Complete-Windows-Compatible.ttf  Sauce-Code-Pro-Nerd-Font-Complete.ttf"
 mkdir -p ~/.fonts
-ls -l ~/.fonts/{Sauce-Code-Pro-Nerd-Font-Complete-Mono-Windows-Compatible.ttf,Sauce-Code-Pro-Nerd-Font-Complete-Mono.ttf,Sauce-Code-Pro-Nerd-Font-Complete-Windows-Compatible.ttf,Sauce-Code-Pro-Nerd-Font-Complete.ttf} > /dev/null 2>&1
+ls -l ~/.fonts/{Monofur_Bold_for_Powerline.ttf,Monofur_Italic_for_Powerline.ttf,Monofur_for_Powerline.ttf} > /dev/null 2>&1
 if [ $? -ne 0 ]; then
   cd ~/.fonts
-  unzip ../sauce-code-pro-nerd-fonts.zip
+  unzip ../monofur-fonts.zip
   fc-cache -vf ~/.fonts/
   cd -
 fi
 
-echo copy fonts to ~/.local/share/fonts
+# ls -l ~/.fonts/{Sauce-Code-Pro-Nerd-Font-Complete-Mono-Windows-Compatible.ttf,Sauce-Code-Pro-Nerd-Font-Complete-Mono.ttf,Sauce-Code-Pro-Nerd-Font-Complete-Windows-Compatible.ttf,Sauce-Code-Pro-Nerd-Font-Complete.ttf} > /dev/null 2>&1
+# if [ $? -ne 0 ]; then
+#   cd ~/.fonts
+#   unzip ../sauce-code-pro-nerd-fonts.zip
+#   fc-cache -vf ~/.fonts/
+#   cd -
+# fi
 
 # neovim has python env issues with VIMRUNTIME variable set.
 # if [ -d "/usr/local/share/vim/vim81" ]; then
@@ -154,7 +150,6 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -n "$STY" ] && export TERM="screen-256color"
 [ -n "$TMUX" ] && export TERM="xterm-256color"
-#export TERM=rxvt-256color
 echo ${TERM}
 
 [ ! -f "~/.ssh/id_rsa.pub" ] && ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
