@@ -73,6 +73,8 @@ echo git pull origin master
 
 echo for linux console
 echo setfont ter-powerline-v16b
+echo xrdp-genkeymap file
+echo terminfo rxvt-unicode 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 
 echo Awesome-Terminal Fonts
 echo https://github.com/gabrielelana/awesome-terminal-fonts

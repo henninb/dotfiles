@@ -1,8 +1,3 @@
-#define 	font0 			TerminessTTF Nerd Font Mono
-#define		font1			FontAwesome
-#define		font2			Material Icons
-#define		font3			SauceCodePro Nerd Font
-
 !! Colorscheme
 
 ! special
@@ -46,12 +41,15 @@
 !URxvt.font: xft:FontAwesome:pixelsize=24
 !URxvt.font: xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true,xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true
 !Urxvt.font: xft:SauceCodePro NF:pixelsize=16, xft:Monospace:pixelsize=16, xft:SauceCodePro Nerd Front Mono:pixelsize=16
-URxvt.font: xft:SauceCodePro NF:pixelsize=16, xft:dejavu sans mono:medium:pixelsize=16, xft:Monospace:pixelsize=16, xft:SauceCodePro Nerd Front Mono:pixelsize=16
+!URxvt.font: xft:SauceCodePro NF:pixelsize=16, xft:dejavu sans mono:medium:pixelsize=16, xft:Monospace:pixelsize=16, xft:SauceCodePro Nerd Front Mono:pixelsize=16
+!URxvt.font: xft:SauceCodePro NF:pixelsize=16
+URxvt.font: xft:monofur for Powerline:pixelsize=16, xft:SauceCodePro NF:pixelsize=16
 
 !Rxvt*termName: rxvt-unicode-256color
 URxvt.termName: rxvt-256color
 
-URxvt.letterSpace: 0
+!URxvt.letterSpace: 0
+URxvt.letterSpace: 1
 URxvt.lineSpace: 0
 URxvt.geometry: 92x24
 URxvt.internalBorder: 24
