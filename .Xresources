@@ -42,8 +42,8 @@
 !URxvt.font: xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true,xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true
 !Urxvt.font: xft:SauceCodePro NF:pixelsize=16, xft:Monospace:pixelsize=16, xft:SauceCodePro Nerd Front Mono:pixelsize=16
 !URxvt.font: xft:SauceCodePro NF:pixelsize=16, xft:dejavu sans mono:medium:pixelsize=16, xft:Monospace:pixelsize=16, xft:SauceCodePro Nerd Front Mono:pixelsize=16
-!URxvt.font: xft:SauceCodePro NF:pixelsize=16
-URxvt.font: xft:monofur for Powerline:pixelsize=16, xft:SauceCodePro NF:pixelsize=16
+!URxvt.font: xft:SauceCodePro NF:pixelsize=20
+URxvt.font: xft:monofur for Powerline:pixelsize=20
 
 !Rxvt*termName: rxvt-unicode-256color
 URxvt.termName: rxvt-256color
