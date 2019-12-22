@@ -127,3 +127,4 @@ neofetch --w3m /path/to/image
 ## XDG_CONFIG_HOME for font stuff on archlinux
 
 $HOME/.config
+https://serverfault.com/questions/709777/xrdp-changing-path-environment-variable
