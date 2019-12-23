@@ -259,3 +259,6 @@ hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
 
 " override settings for evening theme
 " hi Normal ctermbg=236 ctermfg=White guifg=White guibg=grey20
+
+" could this setting work
+" set t_Co=88
