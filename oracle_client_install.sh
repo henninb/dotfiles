@@ -4,6 +4,8 @@ RASPI_IP=$(nmap -sP --host-timeout 10 192.168.100.0/24 | grep raspb | grep -o '[
 
 if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
   sudo apt install -y alien fakeroot
+elif [ "$OS" = "Arch Linux" ]; then
+  sudo pacman --noconfirm --needed -S libnsl
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y libnsl
 else
@@ -65,25 +67,30 @@ elif [ "$OS" = "Fedora" ]; then
   sudo yum localinstall -y oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm
   sudo yum localinstall -y oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm
 elif [ "$OS" = "Arch Linux" ]; then
-  sudo pacman -S fakeroot
-  if [ ! -f "instantclient-sqlplus-linux.x64-19.3.0.0.0dbru.zip" ]; then
-    scp pi@$RASPI_IP:/home/pi/instantclient-sqlplus-linux.x64-19.3.0.0.0dbru.zip .
-  fi
+  sudo pacman --noconfirm --needed -S fakeroot
+  sudo pacman --noconfirm --needed -S rpm
+  sudo rpm -i --nodeps oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm
+  sudo rpm -i --nodeps oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
+  sudo rpm -i --nodeps oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm
+  sudo rpm -i --nodeps oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm
+  # if [ ! -f "instantclient-sqlplus-linux.x64-19.3.0.0.0dbru.zip" ]; then
+  #   scp pi@$RASPI_IP:/home/pi/instantclient-sqlplus-linux.x64-19.3.0.0.0dbru.zip .
+  # fi
 
-  if [ ! -f "instantclient-basic-linux.x64-19.3.0.0.0dbru.zip" ]; then
-    scp pi@$RASPI_IP:/home/pi/instantclient-basic-linux.x64-19.3.0.0.0dbru.zip .
-  fi
-  cd $HOME/projects
-  git clone https://aur.archlinux.org/oracle-instantclient-basic.git
-  git clone https://aur.archlinux.org/oracle-instantclient-sqlplus.git
-  mv -v $HOME/instantclient-sqlplus-linux.x64-19.3.0.0.0dbru.zip oracle-instantclient-sqlplus/
-  mv -v $HOME/instantclient-basic-linux.x64-19.3.0.0.0dbru.zip oracle-instantclient-basic/
-  cd oracle-instantclient-basic/
-  makepkg -si
-  cd ..
-  cd oracle-instantclient-sqlplus/
-  makepkg -si
-  cd $HOME
+  # if [ ! -f "instantclient-basic-linux.x64-19.3.0.0.0dbru.zip" ]; then
+  #   scp pi@$RASPI_IP:/home/pi/instantclient-basic-linux.x64-19.3.0.0.0dbru.zip .
+  # fi
+  # cd $HOME/projects
+  # git clone https://aur.archlinux.org/oracle-instantclient-basic.git
+  # git clone https://aur.archlinux.org/oracle-instantclient-sqlplus.git
+  # mv -v $HOME/instantclient-sqlplus-linux.x64-19.3.0.0.0dbru.zip oracle-instantclient-sqlplus/
+  # mv -v $HOME/instantclient-basic-linux.x64-19.3.0.0.0dbru.zip oracle-instantclient-basic/
+  # cd oracle-instantclient-basic/
+  # makepkg -si
+  # cd ..
+  # cd oracle-instantclient-sqlplus/
+  # makepkg -si
+  # cd $HOME
 elif [ "$OS" = "Gentoo" ]; then
   sudo rpm -i --nodeps oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm
   sudo rpm -i --nodeps oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
