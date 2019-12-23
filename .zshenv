@@ -10,7 +10,7 @@ case $(tty) in
   *)
     export TERM=xterm-256color
     # workaround for darker blue theme in agnoster
-    sed -i 's/blue $CURRENT_FG/39d $CURRENT_FG/' ~/.oh-my-zsh/themes/agnoster.zsh-theme
+    #sed -i 's/blue $CURRENT_FG/39d $CURRENT_FG/' ~/.oh-my-zsh/themes/agnoster.zsh-theme
   ;;
 esac
 
