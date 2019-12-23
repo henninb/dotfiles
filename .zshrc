@@ -195,6 +195,7 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 #  export DISPLAY=localhost:10.0
 fi
 
+#ln -sfn $HOME/.config/nvim/init.vim.simple $HOME/.vimrc
 ln -sfn $HOME/.config/nvim/init.vim $HOME/.vimrc
 #ln -sfn $HOME/.xinitrc $HOME/.xsessionrc
 ln -sfn $HOME/.xinitrc $HOME/.xsession

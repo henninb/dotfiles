@@ -8,8 +8,10 @@ case $(tty) in
     sed -i 's/39d $CURRENT_FG/blue $CURRENT_FG/' ~/.oh-my-zsh/themes/agnoster.zsh-theme
   ;;
   *)
-    echo $TERM
     #export TERM=xterm-256color
+    echo $TERM
+    # export TERM=rxvt-unicode
+    # export COLORTERM=rxvt
     # workaround for darker blue theme in agnoster
     #sed -i 's/blue $CURRENT_FG/39d $CURRENT_FG/' ~/.oh-my-zsh/themes/agnoster.zsh-theme
   ;;

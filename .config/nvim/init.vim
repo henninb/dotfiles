@@ -2,11 +2,13 @@ syntax on
 filetype plugin indent on
 
 let plugpath = '~/.vim/bundle'
+
+" set TERM as a fix for screen and tmux
 if has('nvim')
   let plugpath = '~/.local/share/nvim/bundle'
-  if !empty($STY)
-    let $TERM = 'screen-256color'
-  endif
+  " if !empty($STY)
+  "   let $TERM = 'screen-256color'
+  " endif
 endif
 
 if has('vim')
