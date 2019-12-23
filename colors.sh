@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 for i in $(seq 0 255); do
         printf "\e[0;48;5;${i}m %03d\e[0;38;5;${i}m %03d " $i $i
@@ -14,4 +14,5 @@ echo
 echo should be red
 tput setab 160 && echo foo
 
+echo  /usr/share/terminfo/r/rxvt-256color to ~/.terminfo/r/rxvt-256color
 exit 0
