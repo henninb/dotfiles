@@ -231,3 +231,4 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
     inxi -Sxxx
   fi
 fi
+screenfetch -E

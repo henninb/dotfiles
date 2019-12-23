@@ -16,7 +16,7 @@ if has('vim')
   endif
 endif
 
-" needed for urxvt
+" removed for urxvt
 "set termguicolors
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -141,9 +141,9 @@ set tags=tags
 
 " Use 256 colors (Use this setting only if your terminal supports 256 colors)
 set t_Co=256
-if ( $TERM == "xterm-256color" || $TERM == "screen-256color" )
-  set t_Co=256
-endif
+"if ( $TERM == "xterm-256color" || $TERM == "screen-256color" )
+  " set t_Co=256
+" endif
 
 " Powerline
 " set rtp+=/usr/share/powerline/bindings/vim/
