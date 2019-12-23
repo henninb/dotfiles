@@ -188,9 +188,11 @@ export TMOUT=0
 export GPG_TTY=$(tty)
 export PYENV_ROOT="$HOME/.pyenv"
 export VAGRANT_DEFAULT_PROVIDER=kvm
+
+# turn this on to display x on mac or windows
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   echo ssh session has started.
-  export DISPLAY=localhost:10.0
+#  export DISPLAY=localhost:10.0
 fi
 
 ln -sfn $HOME/.config/nvim/init.vim $HOME/.vimrc
@@ -222,13 +224,13 @@ export PATH=/opt/kotlinc/bin:$PATH
 [ -s "$HOME/.rvm/scripts/rvm" ] && source $HOME/.rvm/scripts/rvm
 [ -s "/etc/profile.d/rvm.sh" ] && source /etc/profile.d/rvm.sh
 #echo "stty -tostop"
-if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
-  if [ -x "$(command -v inxi)" ]; then
-    # inxi -Sxxx #causes xmonad to hang
-    inxi
-  else
-    sudo apt install -y inxi
-    inxi -Sxxx
-  fi
-fi
-screenfetch -E
+# if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+#   if [ -x "$(command -v inxi)" ]; then
+#     # inxi -Sxxx #causes xmonad to hang
+#     inxi
+#   else
+#     sudo apt install -y inxi
+#     inxi -Sxxx
+#   fi
+# fi
+screenfetch
