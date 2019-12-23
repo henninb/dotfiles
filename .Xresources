@@ -48,8 +48,8 @@ URxvt.font: xft:monofur for Powerline:pixelsize=20
 URxvt.termName: rxvt-unicode-256color
 !URxvt.termName: rxvt-256color
 
-!URxvt.letterSpace: 0
-URxvt.letterSpace: 1
+URxvt.letterSpace: 0
+!URxvt.letterSpace: 1
 URxvt.lineSpace: 0
 URxvt.geometry: 92x24
 URxvt.internalBorder: 24
