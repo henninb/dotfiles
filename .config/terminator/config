@@ -14,6 +14,6 @@
 [profiles]
   [[default]]
     cursor_color = "#aaaaaa"
-    font = DejaVu Sans Mono 12
+    font = monofur for Powerline 12
     scrollback_lines = 9999
     use_system_font = False
