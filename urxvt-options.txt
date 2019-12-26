@@ -1,0 +1,1 @@
+options: perl,xft,styles,combining,blink,iso14755,unicode3,encodings=eu+vn+jp+jp-ext+kr+zh+zh-ext,fade,transparent,tint,pixbuf,XIM,frills,selectionscrolling,wheel,slipwheel,smart-resize,cursorBlink,pointerBlank,scrollbars=plain+rxvt+NeXT+xterm
