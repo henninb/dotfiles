@@ -94,6 +94,7 @@ myKeys = [
         , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
         , ((0, xK_Print), spawn "scrot")
         , ((mod1Mask, xK_i), spawn myBrowser)
+        , ((mod1Mask, xK_Return), spawn "termite")
         , ((mod1Mask .|. shiftMask, xK_i), spawn (myBrowser ++ " -private-window"))
         --, ((mod4Mask .|. shiftMask, xK_BackSpace), kill)
         , ((mod1Mask .|. shiftMask, xK_BackSpace), kill)
