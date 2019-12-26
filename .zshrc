@@ -49,9 +49,9 @@ fi
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LC_COLLATE="C"
+# why would this be needed to be set here?
+#export LANG=en_US.UTF-8
+#export LC_COLLATE="C"
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -145,12 +145,6 @@ fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source $NVM_DIR/nvm.sh
-
-#[ -t 0 ] && echo "TTY available" || echo "No TTY available"
-
-[ -n "$STY" ] && export TERM="screen-256color"
-[ -n "$TMUX" ] && export TERM="xterm-256color"
-echo ${TERM}
 
 [ ! -f "~/.ssh/id_rsa.pub" ] && ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
 

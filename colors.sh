@@ -10,9 +10,12 @@ done
 echo
 echo should be 256
 tput colors
+
+echo
+echo /usr/share/terminfo/r/rxvt-256color to ~/.terminfo/r/rxvt-256color
+
 echo
 echo should be red
 tput setab 160 && echo foo
 
-echo  /usr/share/terminfo/r/rxvt-256color to ~/.terminfo/r/rxvt-256color
 exit 0

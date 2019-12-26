@@ -1,5 +1,19 @@
 # one of the first items called with respect to zsh
 
+#export LC_ALL=en_US.UTF-8
+# make zsh/terminfo work for terms with application and cursor modes
+
+case "$TERM" in
+  xterm-termite)
+    echo termite-workaround
+    export TERM=xterm-256color
+    ;;
+  xterm)
+    echo xterm-workaround
+    export TERM=xterm-256color
+    ;;
+esac
+
 case $(tty) in
   /dev/tty[0-9]*)
     setfont ter-powerline-v16b
@@ -7,15 +21,11 @@ case $(tty) in
     echo in console
     sed -i 's/39d $CURRENT_FG/blue $CURRENT_FG/' ~/.oh-my-zsh/themes/agnoster.zsh-theme
   ;;
-  *)
-    #export TERM=xterm-256color
-    echo $TERM
-    # export TERM=rxvt-unicode
-    # export COLORTERM=rxvt
-    # workaround for darker blue theme in agnoster
-    #sed -i 's/blue $CURRENT_FG/39d $CURRENT_FG/' ~/.oh-my-zsh/themes/agnoster.zsh-theme
-  ;;
 esac
+
+[ -n "$STY" ] && export TERM="screen-256color"
+[ -n "$TMUX" ] && export TERM="xterm-256color"
+echo ${TERM}
 
 function gemerge() {
   if [ "$#" -ne 1 ]; then
