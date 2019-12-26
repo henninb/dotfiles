@@ -10,7 +10,7 @@ curl -sSL https://get.haskellstack.org/ | sh
 stack update
 stack install ghc
 
-stock install hlint
+stack install hlint
 
 stack install xmobar
 stack install xmonad-contrib

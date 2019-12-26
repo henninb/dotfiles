@@ -2,7 +2,7 @@
 
 if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
   sudo apt remove lightdm gdm
-  sudo apt install -y i3status i3blocks i3 xterm i3lock rofi terminator feh ranger dolphin zsh suckless-tools qt5ct nitrogen
+  sudo apt install -y i3status i3blocks i3 xterm i3lock rofi terminator feh ranger suckless-tools
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S i3status i3blocks i3-wm xterm i3lock rofi termite terminator dmenu feh ranger dolphin zsh qt5ct terminus-font
 elif [ "$OS" = "Manjaro Linux" ]; then
