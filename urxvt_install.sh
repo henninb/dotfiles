@@ -32,11 +32,31 @@ fi
 
 cd $HOME/projects
 wget http://dist.schmorp.de/rxvt-unicode/Attic/rxvt-unicode-9.22.tar.bz2
+if [ $? -ne 0 ]; then
+  echo "wget failed."
+  exit 1
+fi
 tar xvf rxvt-unicode-9.22.tar.bz2
+if [ $? -ne 0 ]; then
+  echo "tar failed."
+  exit 1
+fi
 cd rxvt-unicode-9.22
 ./autogen.sh
-./configure --enable-everything --disable-perl
+if [ $? -ne 0 ]; then
+  echo "autogen failed."
+  exit 1
+fi
+./configure --enable-everything --disable-perl --enable-smart-resize --enable-256-color
+if [ $? -ne 0 ]; then
+  echo "configure failed."
+  exit 1
+fi
 make
+if [ $? -ne 0 ]; then
+  echo "make failed."
+  exit 1
+fi
 sudo make install
 cd $HOME
 
