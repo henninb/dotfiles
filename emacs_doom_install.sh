@@ -9,6 +9,7 @@ elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Ras
   ./autogen.sh
   ./configure --with-xpm=no --with-jpeg=no --with-gif=no --with-tiff=no
   make
+  sudo make install
 else
   echo $OS is not yet implemented.
   exit 1
