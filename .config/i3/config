@@ -14,6 +14,7 @@ floating_modifier $mod
 #bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec termite
 #bindsym $mod+Shift+Return exec terminator
+#bindsym $mod+Shift+Return exec urxvt
 bindsym $mod+Shift+Return exec urxvt
 #bindsym $mod+Shift+l exec i3lock
 bindsym $mod+Shift+x exec i3lock -c 00000f
@@ -22,8 +23,8 @@ bindsym $mod+Shift+i exec /opt/firefox/firefox -private-window
 bindsym $mod+Shift+q kill
 
 # program launcher
-#bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec rofi -show drun -theme dmenu
+bindsym $mod+Shift+p exec dmenu_run
+#bindsym $mod+Shift+p exec rofi -show drun -theme dmenu
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
