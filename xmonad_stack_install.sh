@@ -4,6 +4,7 @@
 sudo dnf install alsa-lib-devel
 echo dnf provides '*scrnsaver.h'
 sudo dnf install libXScrnSaver-devel
+sudo apt install libxss-dev
 
 curl -sSL https://get.haskellstack.org/ | sh
 
