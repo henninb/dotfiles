@@ -40,6 +40,7 @@ else
 fi
 
 #pip install -U $(pip freeze | awk '{split($0, a, "=="); print a[1]}')
+pip_ins wheel
 pip_ins ansible
 pip_ins ranger-fm
 pip_ins youtube-dl
