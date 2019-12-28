@@ -226,7 +226,8 @@ autocmd FileType c,cpp,java,scala let b:comment_leader = '// '
 autocmd FileType sh,ruby,python   let b:comment_leader = '# '
 autocmd FileType conf,fstab       let b:comment_leader = '# '
 autocmd FileType vim              let b:comment_leader = '" '
-autocmd FileType make,snippets set noexpandtab shiftwidth=8 softtabstop=0
+"autocmd FileType make,snippets set noexpandtab shiftwidth=8 softtabstop=0
+autocmd FileType make,snippets set noexpandtab shiftwidth=4 softtabstop=0
 
 " fsharp file set based on .fs
 autocmd BufNewFile,BufRead *.fs :set filetype=fsharp
@@ -263,8 +264,11 @@ hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
 set ffs=unix
 set encoding=utf-8
 set fileencoding=utf-8
-set listchars=eol:¬
-set listchars+=tab:».
+"set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
+set listchars=eol:¬,tab:»·,trail:␠,nbsp:⎵
+
+"set listchars=eol:¬
+"set listchars+=tab:».
 "set listchars+=tab:->
 set list
 
