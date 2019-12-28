@@ -45,8 +45,9 @@
 !URxvt.font: xft:SauceCodePro NF:pixelsize=20
 URxvt.font: xft:monofur for Powerline:pixelsize=20
 
-URxvt.termName: rxvt-unicode-256color
-!URxvt.termName: rxvt-256color
+!URxvt.termName: rxvt-unicode-256color
+! using this term as it works on all platforms
+URxvt.termName: rxvt-256color
 !URxvt*termName: rxvt
 
 URxvt.letterSpace: 0
