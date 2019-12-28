@@ -264,6 +264,8 @@ set ffs=unix
 set encoding=utf-8
 set fileencoding=utf-8
 set listchars=eol:¬
+set listchars+=tab:».
+"set listchars+=tab:->
 set list
 
 " center on motions
