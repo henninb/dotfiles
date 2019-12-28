@@ -52,6 +52,7 @@ endif
    Plug 'git@github.com:scrooloose/nerdtree.git'
    Plug 'git@github.com:rust-lang/rust.vim.git'
    Plug 'git@github.com:dhruvasagar/vim-zoom.git'
+   Plug 'git@github.com:easymotion/vim-easymotion.git'
 if $OS != "Arch Linux"
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
 endif
@@ -141,11 +142,8 @@ set foldmethod=manual
 
 set tags=tags
 
-" Use 256 colors (Use this setting only if your terminal supports 256 colors)
+" Use 256 colors
 set t_Co=256
-"if ( $TERM == "xterm-256color" || $TERM == "screen-256color" )
-  " set t_Co=256
-" endif
 
 " Powerline
 " set rtp+=/usr/share/powerline/bindings/vim/
@@ -162,6 +160,12 @@ map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
+
+" disable arrow keys in VISUAL mode
+vno <down> <Nop>
+vno <left> <Nop>
+vno <right> <Nop>
+vno <up> <Nop>
 
 " Disable Arrow keys in INSERT mode
 "imap <up> <nop>
@@ -181,7 +185,7 @@ autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
 autocmd BufNewFile,BufRead Berksfile set filetype=ruby
 "autocmd BufWritePre .zshrc %s/\s\+$//e
 if exists(":FixWhitespace")
-  autocmd BufWritePre .zshrc,*.sql,*.sh,*.json FixWhitespace
+  autocmd BufWritePre .zshrc,*.sql,*.sh,*.json,.vimrc FixWhitespace
 endif
 
 let g:haskell_enable_quantification = 1
@@ -204,13 +208,11 @@ nnoremap fth :set ft=html<cr>
 nmap <leader>z :g/^$/d<cr>
 nmap <leader>s :%s/\s\+$//g<cr>
 nmap <leader>l :set nu! rnu!<cr>
+nmap <leader>n :NERDTreeToggle<cr>
 
 " normal mode: edit vimrc/zshrc and load vimrc bindings
 nnoremap <leader>ev :vsp $MYVIMRC<cr>
 nnoremap <leader>ez :vsp ~/.zshrc<cr>
-
-" find file in NERDTree
-nnoremap <Leader>f :NERDTreeToggle<cr>
 
 " insertmode: jk is escape
 inoremap jk <esc>
@@ -257,8 +259,21 @@ set cursorline
 " override the cursor settings
 hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
 
-" override settings for evening theme
-" hi Normal ctermbg=236 ctermfg=White guifg=White guibg=grey20
+set ffs=unix
+set encoding=utf-8
+set fileencoding=utf-8
+set listchars=eol:¬
+set list
 
-" could this setting work
-" set t_Co=88
+" center on motions
+nmap G Gzz
+nmap n nzz
+nmap N Nzz
+nmap } }zz
+nmap { {zz
+
+
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+

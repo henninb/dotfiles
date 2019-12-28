@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PROJECTS="sauce-code-pro-nerd-fonts.zip monofur-fonts.zip mononoki-fonts.zip inconsolata-fonts.zip"
+PROJECTS="sauce-code-pro-nerd-fonts.zip monofur-fonts.zip mononoki-fonts.zip inconsolata-fonts.zip dejavu-sans-mono-fonts.zip"
 for i in $(echo $PROJECTS); do
   cd ~/.fonts
   unzip -o ../$i
