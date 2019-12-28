@@ -53,6 +53,7 @@ endif
    Plug 'git@github.com:rust-lang/rust.vim.git'
    Plug 'git@github.com:dhruvasagar/vim-zoom.git'
    Plug 'git@github.com:easymotion/vim-easymotion.git'
+   Plug 'git@github.com:tpope/vim-fugitive.git'
 if $OS != "Arch Linux"
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
 endif
