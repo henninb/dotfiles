@@ -63,11 +63,10 @@ keys = [
     Key([mod], 'space', lazy.next_layout()),
     Key([mod, 'shift'], 'space', lazy.prev_layout()),
     # lazy.group.setlayout('...
-    Key([mod, 'shift'], 'c', lazy.window.kill()),
+    Key([mod, 'shift'], 'BackSpace', lazy.window.kill()),
     # qtile maintenence
-    #Key([mod, 'shift'], 'e', lazy.spawn('gvim {}'.format(__file__))),
     Key([mod, 'shift'], 'r', lazy.restart()), # default is control! ;)
-    Key([mod, 'shift'], 'e', lazy.shutdown()),
+    Key([mod, 'shift'], 'q', lazy.shutdown()),
     Key([mod], "d", lazy.spawn("rofi -show drun")),
     Key([mod], 'r', lazy.spawncmd()),
     ]
