@@ -19,8 +19,9 @@ bindsym $mod+Shift+Return exec urxvt
 #bindsym $mod+Shift+l exec i3lock
 bindsym $mod+Shift+x exec i3lock -c 00000f
 bindsym $mod+Shift+i exec /opt/firefox/firefox -private-window
+bindsym $mod+Shift+BackSpace kill
 
-bindsym $mod+Shift+q kill
+#bindsym $mod+Shift+q kill
 
 # program launcher
 bindsym $mod+Shift+p exec dmenu_run
