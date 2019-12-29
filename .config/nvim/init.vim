@@ -120,7 +120,7 @@ map <leader><space> :let @/=''<cr>
 nnoremap <leader>* 0y$/\V<c-r>"<cr>
 
 " Map leader to write a root
-noremap <Leader>W :w !sudo tee % > /dev/null
+noremap <leader>W :w !sudo tee % > /dev/null
 
 colorscheme evening
 "colorscheme 256-jungle
@@ -208,7 +208,7 @@ nnoremap fth :set ft=html<cr>
 " normal mode mapings
 nmap <leader>z :g/^$/d<cr>
 nmap <leader>s :%s/\s\+$//g<cr>
-nmap <leader>l :set nu! rnu!<cr>
+nmap <leader>l :set nu! rnu! list!<cr>
 nmap <leader>n :NERDTreeToggle<cr>
 
 " normal mode: edit vimrc/zshrc and load vimrc bindings
