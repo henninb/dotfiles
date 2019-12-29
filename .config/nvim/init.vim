@@ -78,6 +78,8 @@ let g:coc_global_extensions = [
   \ 'coc-fsharp',
   \ ]
 
+" CocCommand git.toggleGutters
+
 " Show line numbers and relative numbers
 set number relativenumber
 
@@ -208,7 +210,7 @@ nnoremap fth :set ft=html<cr>
 " normal mode mapings
 nmap <leader>z :g/^$/d<cr>
 nmap <leader>s :%s/\s\+$//g<cr>
-nmap <leader>l :set nu! rnu! list!<cr>
+nmap <leader>l :set nu! rnu! list!<cr> :CocCommand git.toggleGutters<cr>
 nmap <leader>n :NERDTreeToggle<cr>
 
 " normal mode: edit vimrc/zshrc and load vimrc bindings
