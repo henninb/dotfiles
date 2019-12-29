@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [ $# -eq 1 ]; then
+  VER_OVERRIDE=$1
+fi
+
 NVER=$(curl https://github.com/neovim/neovim/releases/ | grep release | grep -v nightly | grep 'tar.gz' | head -1 | grep -o 'v[0-9.]\+[0-9]')
 ACTUAL_VER=$(nvim --version | grep -o 'v[0-9.]\+[0-9]')
 
@@ -7,6 +11,12 @@ if [ "$ACTUAL_VER" = "$NVER" ]; then
   echo already at the latest version $NVER.
   exit 0
 fi
+
+if  [ ! -z "$VER_OVERRIDE" ]; then
+  VER=${VER_OVERRIDE}
+fi
+
+echo $VER
 
 if [ "$OS" = "Arch Linux" ]; then
   sudo pacman  --noconfirm --needed -S make luajit luarocks cmake base-devel
