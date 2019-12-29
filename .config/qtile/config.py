@@ -17,16 +17,6 @@ def kick_to_next_screen(qtile, direction=1):
     if othergroup:
         qtile.moveToGroup(othergroup)
 
-# future use: udev code
-def __x():
-    import pyudev
-    context = pyudev.Context()
-    monitor = pyudev.Monitor.from_netlink(context)
-    monitor.filter_by('drm')
-    monitor.enable_receiving()
-    observer = pyudev.MonitorObserver(monitor, setup_monitors)
-    observer.start()
-
 # see http://docs.qtile.org/en/latest/manual/config/keys.html
 keys = [
     # Switch between windows in current stack pane
@@ -78,14 +68,8 @@ keys = [
     #Key([mod, 'shift'], 'e', lazy.spawn('gvim {}'.format(__file__))),
     Key([mod, 'shift'], 'r', lazy.restart()), # default is control! ;)
     Key([mod, 'shift'], 'e', lazy.shutdown()),
-
-        Key([mod], "d", lazy.spawn("rofi -show drun")),
-
+    Key([mod], "d", lazy.spawn("rofi -show drun")),
     Key([mod], 'r', lazy.spawncmd()),
-    Key([mod], 'f', lazy.window.toggle_floating()),
-    Key([mod], 'm', lazy.window.toggle_fullscreen()),
-    Key([mod], 'n', lazy.window.toggle_minimize()),
-    #Key( [mod, 'shift'], '2', lazy.to_screen(1), lazy.group.toscreen(1)),
     ]
 
 # create groups
