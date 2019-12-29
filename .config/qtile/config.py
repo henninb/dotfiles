@@ -29,11 +29,11 @@ keys = [
     # Swap panes of split stack
     #Key([mod, 'shift'], 'space', lazy.layout.rotate()),
     # Change ratios
-    Key([mod], 'p', lazy.spawn('dmenu')),
+    Key([mod, 'shift'], 'p', lazy.spawn('dmenu')),
     #Key([mod], 'j', lazy.layout.decrease_ratio()),
     # kick to next/prev screen
     Key([mod], "o", lazy.function(kick_to_next_screen)),
-    Key([mod, "shift"], "o", lazy.function(kick_to_next_screen, -1)),
+    Key([mod, 'shift'], 'o', lazy.function(kick_to_next_screen, -1)),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -64,7 +64,7 @@ keys = [
     # qtile maintenence
     Key([mod, 'shift'], 'r', lazy.restart()), # default is control! ;)
     Key([mod, 'shift'], 'q', lazy.shutdown()),
-    Key([mod], "d", lazy.spawn("rofi -show drun")),
+    #Key([mod], "d", lazy.spawn("rofi -show drun")),
     Key([mod], 'r', lazy.spawncmd()),
     ]
 
