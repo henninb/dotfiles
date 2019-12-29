@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 sudo mkdir -p /usr/share/i3blocks/
+#sudo cp iface cpu_usage memory /usr/share/i3blocks
 
 if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
   sudo apt remove -y lightdm
