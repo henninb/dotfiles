@@ -2,7 +2,7 @@ from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
 from libqtile import layout, hook, bar, widget
 
-mod = 'mod4'
+mod = 'mod1'
 color_alert = '#ee9900'
 color_frame = '#808080'
 
@@ -51,7 +51,7 @@ keys = [
 	# Unsplit = 1 window displayed, like Max layout, but still with
 	# multiple stack panes
 	#Key([mod, 'shift'], 'Return', lazy.layout.toggle_split()),
-	Key([mod], 'Return', lazy.spawn('x-terminal-emulator')),
+	Key([mod], 'Return', lazy.spawn('urxvt')),
 	Key([mod], 'v', lazy.spawn('gvim')),
 	Key([mod], 'l', lazy.spawn('xlock')),
 	Key([], 'XF86Launch1', lazy.spawn('xlock')),
