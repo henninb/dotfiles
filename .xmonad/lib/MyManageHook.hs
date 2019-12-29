@@ -53,7 +53,7 @@ myManageHook = composeAll . concat $
 
     doFocusCenterFloat = doF W.shiftMaster <+> doF W.swapDown <+> doCenterFloat
 
-    doFocusFullFloat   = doFullFloat
+    doFocusFullFloat = doFullFloat
 
     -- classnames
     myFloats      = ["Vlc"]
@@ -68,7 +68,6 @@ myManageHook = composeAll . concat $
 
     -- names
     myNames   = ["Google Chrome Options", "Chromium Options", "Firefox Preferences"]
-
     -- browser
     myBrowser = ["Firefox"]
 
