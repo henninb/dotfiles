@@ -31,9 +31,9 @@ keys = [
     # Swap panes of split stack
     #Key([mod, 'shift'], 'space', lazy.layout.rotate()),
     # Change ratios
-    Key([mod], 'k', lazy.layout.increase_ratio()),
+    #Key([mod], 'k', lazy.layout.increase_ratio()),
     Key([mod], 'p', lazy.spawn('dmenu')),
-    Key([mod], 'j', lazy.layout.decrease_ratio()),
+    #Key([mod], 'j', lazy.layout.decrease_ratio()),
     # kick to next/prev screen
     Key([mod], "o", lazy.function(kick_to_next_screen)),
     Key([mod, "shift"], "o", lazy.function(kick_to_next_screen, -1)),
@@ -44,7 +44,6 @@ keys = [
     #Key([mod, 'shift'], 'Return', lazy.layout.toggle_split()),
     Key([mod, 'shift'], 'Return', lazy.spawn('urxvt')),
     Key([mod], 'Return', lazy.spawn('termite')),
-    Key([mod], 'v', lazy.spawn('gvim')),
     Key([mod], 'l', lazy.spawn('xlock')),
     Key([], 'XF86Launch1', lazy.spawn('xlock')),
     Key([], 'XF86AudioMute', lazy.spawn('amixer -D pulse set Master toggle')),
