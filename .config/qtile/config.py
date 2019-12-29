@@ -23,15 +23,12 @@ keys = [
     Key([mod], 'Tab', lazy.layout.down()),
     Key([mod, 'shift'], 'Tab', lazy.layout.up()),
     # Move windows up or down in current stack
-    Key([mod, 'mod1'], 'Tab', lazy.layout.shuffle_down()),
-    Key([mod, 'mod1', 'shift'], 'Tab', lazy.layout.shuffle_up()),
     # Switch window focus to other pane(s) of stack
     Key([mod, 'control'], 'Tab', lazy.layout.next()),
     Key([mod, 'control', 'shift'], 'Tab', lazy.layout.prev()),
     # Swap panes of split stack
     #Key([mod, 'shift'], 'space', lazy.layout.rotate()),
     # Change ratios
-    #Key([mod], 'k', lazy.layout.increase_ratio()),
     Key([mod], 'p', lazy.spawn('dmenu')),
     #Key([mod], 'j', lazy.layout.decrease_ratio()),
     # kick to next/prev screen
@@ -42,6 +39,7 @@ keys = [
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
     #Key([mod, 'shift'], 'Return', lazy.layout.toggle_split()),
+    Key([mod, 'shift'], 'i', lazy.spawn('firefox')),
     Key([mod, 'shift'], 'Return', lazy.spawn('urxvt')),
     Key([mod], 'Return', lazy.spawn('termite')),
     Key([mod], 'l', lazy.spawn('xlock')),
