@@ -1,5 +1,6 @@
 #!/bin/sh
 
+wget https://gigenet.dl.sourceforge.net/project/libxls/libxls-old/libxls-0.2.0/libxls-0.2.0/libxls-0.2.0.tar.gz
 sudo dnf install byacc
 sudo apt install libncursesw5-dev
 
