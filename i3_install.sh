@@ -1,13 +1,48 @@
 #!/usr/bin/env sh
 
 if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
-  sudo apt remove lightdm gdm
-  sudo apt install -y i3status i3blocks i3 xterm i3lock rofi terminator feh ranger suckless-tools
+  sudo apt remove -y lightdm
+  sudo apt remove -y gdm
+  sudo apt install -y i3status
+  sudo apt install -y i3blocks
+  sudo apt install -y i3
+  sudo apt install -y xterm
+  sudo apt install -y i3lock
+  sudo apt install -y rofi
+  sudo apt install -y terminator
+  sudo apt install -y feh
+  sudo apt install -y ranger
+  sudo apt install -y suckless-tools
 elif [ "$OS" = "Arch Linux" ]; then
-  sudo pacman --noconfirm --needed -S i3status i3blocks i3-wm xterm i3lock rofi termite terminator dmenu feh ranger dolphin zsh qt5ct terminus-font
+  sudo pacman -Rsnc lightdm
+  sudo pacman -Rsnc gdm
+  sudo pacman --noconfirm --needed -S i3status
+  sudo pacman --noconfirm --needed -S i3blocks
+  sudo pacman --noconfirm --needed -S i3-wm
+  sudo pacman --noconfirm --needed -S xterm
+  sudo pacman --noconfirm --needed -S i3lock
+  sudo pacman --noconfirm --needed -S rofi
+  sudo pacman --noconfirm --needed -S termite
+  sudo pacman --noconfirm --needed -S terminator
+  sudo pacman --noconfirm --needed -S dmenu
+  sudo pacman --noconfirm --needed -S feh
+  sudo pacman --noconfirm --needed -S ranger
+  sudo pacman --noconfirm --needed -S terminus-font
 elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman -Rsnc lightdm
-  sudo pacman --noconfirm --needed -S i3status i3blocks i3-wm xterm i3lock rofi termite terminator dmenu feh ranger dolphin zsh qt5ct terminus-font
+  sudo pacman -Rsnc gdm
+  sudo pacman --noconfirm --needed -S i3status
+  sudo pacman --noconfirm --needed -S i3blocks
+  sudo pacman --noconfirm --needed -S i3-wm
+  sudo pacman --noconfirm --needed -S xterm
+  sudo pacman --noconfirm --needed -S i3lock
+  sudo pacman --noconfirm --needed -S rofi
+  sudo pacman --noconfirm --needed -S termite
+  sudo pacman --noconfirm --needed -S terminator
+  sudo pacman --noconfirm --needed -S dmenu
+  sudo pacman --noconfirm --needed -S feh
+  sudo pacman --noconfirm --needed -S ranger
+  sudo pacman --noconfirm --needed -S terminus-font
 elif [ "$OS" = "Gentoo" ]; then
   GENTOO_PKGS="x11-misc/i3status i3blocks i3 xterm i3lock rofi terminator dmenu dolphin ranger feh"
   FAILURES=""
@@ -38,8 +73,5 @@ else
   echo $OS is not yet implemented.
   exit 1
 fi
-
-#echo $HOME/.xinitrc
-#echo exec i3
 
 exit 0
