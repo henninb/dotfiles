@@ -7,8 +7,7 @@ Description=Schedule shutdown during off peak hours
 [Timer]
 OnCalendar=*-*-* 23:59:00
 RandomizedDelaySec=10
-
-Persistent=true
+Persistent=false
 
 [Install]
 WantedBy=timers.target
