@@ -1,3 +1,6 @@
+# systemctl --user start shutdown-nightly.timer
+# systemctl --user enable shutdown-nightly.timer
+# systemctl --user list-timers -all
 [Unit]
 Description=Schedule shutdown during off peak hours
 
