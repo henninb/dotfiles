@@ -1,0 +1,8 @@
+#systemctl --user start shutdown-nightly.service
+[Unit]
+Description=Nightly Server Shutdown
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c '/usr/bin/sudo /usr/bin/shutdown -h now'
+[Install]
+WantedBy=default.target
