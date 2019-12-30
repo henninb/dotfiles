@@ -1,10 +1,10 @@
 #!/bin/sh
 
-echo $(date) >> /home/henninb/out
+echo $(/usr/bin/date) >> /home/henninb/crontab.log
 if [ "$OS" = "FreeBSD" ]; then
-  sudo shutdown -p now
+  /usr/bin/sudo /usr/bin/shutdown -p now
 else
-  sudo shutdown -h now
+  /usr/bin/sudo /usr/bin/shutdown -h now
 fi
 
 exit 0
