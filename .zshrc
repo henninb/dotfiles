@@ -1,3 +1,9 @@
+#[[ -o interactive ]] || exit 0
+
+if [ ! "$SSH_TTY" ]; then
+  echo $(date) >> $HOME/nosshtty
+fi
+
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="agnoster"
@@ -168,7 +174,6 @@ export NVM_DIR="$HOME/.nvm"
 
 grep -A 3 '\[branch "master"\]' $HOME/.git/config | grep 'remote = origin' > /dev/null
 if [ $? -ne 0 ]; then
-  echo git branch --set-upstream-to=origin/master master
   git branch --set-upstream-to=origin/master master
 fi
 
@@ -185,7 +190,8 @@ export VAGRANT_DEFAULT_PROVIDER=kvm
 
 # turn this on to display x on mac or windows
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  echo ssh session has started.
+  #echo ssh session has started.
+  screenfetch
 #  export DISPLAY=localhost:10.0
 fi
 
@@ -228,4 +234,4 @@ export PATH=/opt/kotlinc/bin:$PATH
 #     inxi -Sxxx
 #   fi
 # fi
-screenfetch
+#screenfetch
