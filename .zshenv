@@ -5,11 +5,11 @@
 
 case "$TERM" in
   xterm-termite)
-    echo termite-workaround
+    #echo termite-workaround
     export TERM=xterm-256color
     ;;
   xterm)
-    echo xterm-workaround
+    #echo xterm-workaround
     export TERM=xterm-256color
     ;;
 esac
@@ -18,14 +18,14 @@ case $(tty) in
   /dev/tty[0-9]*)
     setfont ter-powerline-v16b
     export TERM=linux
-    echo in console
+    #echo in console
     sed -i 's/39d $CURRENT_FG/blue $CURRENT_FG/' ~/.oh-my-zsh/themes/agnoster.zsh-theme
   ;;
 esac
 
 [ -n "$STY" ] && export TERM="screen-256color"
 [ -n "$TMUX" ] && export TERM="xterm-256color"
-echo ${TERM}
+#echo ${TERM}
 
 function gemerge() {
   if [ "$#" -ne 1 ]; then
