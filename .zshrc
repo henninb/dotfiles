@@ -191,7 +191,8 @@ export VAGRANT_DEFAULT_PROVIDER=kvm
 # turn this on to display x on mac or windows
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   #echo ssh session has started.
-  screenfetch
+  #screenfetch
+  neofetch
 #  export DISPLAY=localhost:10.0
 fi
 
