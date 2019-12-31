@@ -236,3 +236,5 @@ export PATH=/opt/kotlinc/bin:$PATH
 #   fi
 # fi
 #screenfetch
+bindkey "[D" backward-word
+bindkey "[C" forward-word
