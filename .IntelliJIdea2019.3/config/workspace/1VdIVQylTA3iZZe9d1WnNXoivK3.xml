@@ -23,15 +23,14 @@
     </panes>
   </component>
   <component name="TerminalArrangementManager">
-    <option name="myTabStates">
-      <TerminalTabState tabName="Local" commandHistoryFileName="history-" />
-    </option>
+    <option name="mySelectedTabIndex" value="-1" />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="244000" />
+    <option name="totallyTimeSpent" value="1289000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="140" y="25" width="1920" height="1049" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2524013" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -47,7 +46,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="internal-profiler" order="9" />
       <window_info anchor="bottom" id="Internal Method Tracing" order="10" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32972974" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32972974" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="13" />
       <window_info anchor="bottom" id="Build" order="14" weight="0.32893288" />
