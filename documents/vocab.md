@@ -164,3 +164,4 @@ accolades [ noun ]
 ## proposition	noun	a statement or assertion that expresses a judgment or opinion.
 ## assertion	noun	a confident and forceful statement of fact or belief.
 ## null hypothesis	noun	(in a statistical test) the hypothesis that there is no significant difference between specified populations, any observed difference being due to sampling or experimental error.
+## obsequious   adjective   ??
