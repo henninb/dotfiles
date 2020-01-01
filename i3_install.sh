@@ -62,7 +62,6 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y i3
   sudo dnf install -y i3lock
   sudo dnf install -y xterm
-  sudo dnf install -y i3lock
   sudo dnf install -y terminator
   sudo dnf install -y dmenu
   #sudo dnf install -y dolphin
@@ -70,6 +69,13 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y terminus-fonts-console
   sudo dnf install -y terminus-fonts
   sudo dnf install -y feh
+  cd ~/projects
+  git clone https://github.com/vivien/i3blocks.git
+  ./autogen.sh
+  ./configure
+  make
+  sudo make install
+  cd -
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y i3status i3 i3lock xterm i3lock terminator dmenu dolphin terminus-fonts-console terminus-fonts
 else
