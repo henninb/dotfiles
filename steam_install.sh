@@ -9,6 +9,7 @@ sync-uri = https://github.com/fosero/flatpak-overlay.git
 auto-sync = Yes
 EOF
 
+rm -rf com.valvesoftware.Steam.flatpakref*
 wget https://flathub.org/repo/appstream/com.valvesoftware.Steam.flatpakref
 
 if [ "$OS" = "Arch Linux" ]; then
@@ -16,6 +17,8 @@ if [ "$OS" = "Arch Linux" ]; then
   flatpak install flathub com.valvesoftware.Steam
 elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
   sudo apt install -y flatpak
+  #flatpak install --user flathub org.freedesktop.Platform.openh264
+  flatpak install --user flathub org.freedesktop.Platform/x86_64/19.08
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   flatpak install --user com.valvesoftware.Steam.flatpakref
 elif [ "$OS" = "CentOS Linux" ]; then
@@ -33,6 +36,7 @@ else
   exit 1
 fi
 
-flatpak update
+#flatpak update
+flatpak remotes
 
 exit 0

@@ -1,0 +1,13 @@
+[core]
+repo_version=1
+mode=bare-user-only
+min-free-space-size=500MB
+
+[remote "com.valvesoftware.Steam-origin"]
+url=https://dl.flathub.org/repo/
+xa.title=com.valvesoftware.Steam from flathub
+xa.noenumerate=true
+xa.prio=0
+gpg-verify-summary=true
+gpg-verify=true
+xa.main-ref=app/com.valvesoftware.Steam/x86_64/stable
