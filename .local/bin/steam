@@ -1,1 +1,9 @@
-flatpak run com.valvesoftware.Steam
+#!/bin/sh
+
+if [ "$OS" = "Linux Mint" ]; then
+  /usr/games/steam
+else
+  flatpak run com.valvesoftware.Steam
+fi
+
+exit 0
