@@ -39,6 +39,22 @@ if [ "$OS" = "Arch Linux" ]; then
   rm -v /tmp/install_psql_settings.sql
   sudo netstat -lntp | grep postgres
   sudo fuser 5432/tcp
+elif [ "$OS" = "Fedora" ]; then
+  sudo dnf install -y net-tools psmisc
+  sudo dnf install -y net-tools postgresql-server postgresql-contrib
+  sudo rm -rf /var/lib/pgsql/data/
+  sudo postgresql-setup initdb
+  sudo systemctl enable postgresql
+  sudo systemctl start postgresql
+  sudo systemctl status postgresql
+  sudo mv -v pg_hba.conf /var/lib/pgsql/data/pg_hba.conf
+  sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/pgsql/data/postgresql.conf
+  sudo systemctl restart postgresql
+  mv -v install_psql_settings.sql /tmp
+  sudo -u postgres sh -c 'cd /tmp && psql postgres -U postgres < /tmp/install_psql_settings.sql'
+  rm -v /tmp/install_psql_settings.sql
+  sudo netstat -lntp | grep postgres
+  sudo fuser 5432/tcp
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y net-tools psmisc
   sudo yum install -y net-tools postgresql-server postgresql-contrib
