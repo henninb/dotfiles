@@ -236,5 +236,17 @@ export PATH=/opt/kotlinc/bin:$PATH
 #   fi
 # fi
 #screenfetch
-bindkey "[D" backward-word
-bindkey "[C" forward-word
+
+if [ "$OS" = "Darwin" ]; then
+  #control arrow
+  # bindkey "^[^[[D" backward-word
+  # bindkey "^[^[[C" forward-word
+  # option arrow
+  bindkey "[D" backward-word
+  bindkey "[C" forward-word
+else
+  #control arraw
+  bindkey "^[[1;5C" forward-word
+  bindkey "^[[1;5D" backward-word
+fi
+
