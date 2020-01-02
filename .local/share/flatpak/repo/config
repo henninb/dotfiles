@@ -5,7 +5,7 @@ min-free-space-size=500MB
 
 [remote "com.valvesoftware.Steam-origin"]
 url=https://dl.flathub.org/repo/
-xa.title=com.valvesoftware.Steam from flathub
+xa.title=Flathub
 xa.noenumerate=true
 xa.prio=0
 gpg-verify-summary=true
