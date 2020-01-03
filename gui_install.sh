@@ -78,4 +78,7 @@ else
   exit 1
 fi
 
+echo "obs-studio - open broadcast software"
+echo "kdenlive - video software"
+
 exit 0
