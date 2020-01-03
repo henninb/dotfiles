@@ -1,9 +1,5 @@
 #[[ -o interactive ]] || exit 0
 
-if [ ! "$SSH_TTY" ]; then
-  echo $(date) >> $HOME/nosshtty
-fi
-
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="agnoster"
