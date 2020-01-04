@@ -49,7 +49,7 @@ if [ "$OS" = "Arch Linux" ]; then
   sudo tar -xvf ideaIU-${VER}.tar.gz -C /opt
   sudo ln -sfn /opt/idea-IU-* /opt/intellij
   sudo chown -R intellij:intellij /opt/idea-IU-*/
-  sudo chmod 775 /opt/idea-IU-*/
+  sudo chmod -R 775 /opt/idea-IU-*/
 elif [ "$OS" = "openSUSE Leap" ]; then
   sudo zypper install curl wget
   sudo rm -rf /opt/intellij
@@ -57,21 +57,21 @@ elif [ "$OS" = "openSUSE Leap" ]; then
   sudo tar -xvf ideaIU-${VER}.tar.gz -C /opt
   sudo ln -sfn /opt/idea-IU-* /opt/intellij
   sudo chown -R intellij:intellij /opt/idea-IU-*/
-  sudo chmod 775 /opt/idea-IU-*/
+  sudo chmod -R 775 /opt/idea-IU-*/
 elif [ "$OS" = "FreeBSD" ]; then
   sudo rm -rf /opt/intellij
   sudo rm -rf /opt/intellij-*/
   sudo tar -xvf ideaIU-${VER}.tar.gz -C /opt
   sudo ln -sfn /opt/idea-IU-* /opt/intellij
   sudo chown -R intellij:intellij /opt/idea-IU-*/
-  sudo chmod 775 /opt/idea-IU-*/
+  sudo chmod -R 775 /opt/idea-IU-*/
 elif [ "$OS" = "Gentoo" ]; then
   sudo rm -rf /opt/intellij
   sudo rm -rf /opt/idea-IU-*/
   sudo tar -xvf ideaIU-${VER}.tar.gz -C /opt
   sudo ln -sfn /opt/idea-IU-* /opt/intellij
   sudo chown -R intellij:intellij /opt/idea-IU-*/
-  sudo chmod 775 /opt/idea-IU-*/
+  sudo chmod -R 775 /opt/idea-IU-*/
 elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
   sudo apt install -y net-tools psmisc wget curl
   sudo rm -rf /opt/intellij
@@ -81,14 +81,14 @@ elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
   sudo ln -sfn /opt/idea-IU-* /opt/intellij
   #sudo chown -R intellij:intellij /opt/idea-IU-*/
   sudo chown -R intellij:intellij /opt/idea-IU-*/
-  sudo chmod 775 /opt/idea-IU-*/
+  sudo chmod -R 775 /opt/idea-IU-*/
 elif [ "$OS" = "Fedora" ]; then
   sudo rm -rf /opt/intellij
   sudo rm -rf /opt/idea-IU-*/
   sudo tar -xvf ideaIU-${VER}.tar.gz -C /opt
   sudo ln -sfn /opt/idea-IU-* /opt/intellij
   sudo chown -R intellij:intellij /opt/idea-IU-*/
-  sudo chmod 775 /opt/idea-IU-*/
+  sudo chmod -R 775 /opt/idea-IU-*/
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo rm -rf /opt/intellij
   sudo rm -rf /opt/idea-IU-*/
