@@ -166,9 +166,9 @@ bindsym XF86AudioMute exec "amixer -q -D sset Master,0 toggle"
 # bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
 # Start i3bar to display a workspace bar (plus the system information i3status
-bar {
-  position top
-  status_command i3blocks
-}
+# bar {
+#   position top
+#   status_command i3blocks
+# }
 
-#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
