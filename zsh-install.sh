@@ -13,7 +13,8 @@ elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Ras
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y zsh
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge zsh
+  sudo emerge --update --newuse zsh
+  sudo emerge --update --newuse media-fonts/urw-fonts
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y util-linux-user
   sudo dnf install -y zsh
