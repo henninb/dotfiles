@@ -66,3 +66,6 @@ URxvt.iso14755: false
 
 ! Location of custom Perl extensions
 URxvt*.perl-lib: $HOME/.urxvt/perl-extensions
+
+xterm*dynamicColors: true
+urxvt*dynamicColors: on
