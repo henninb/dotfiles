@@ -16,6 +16,7 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   sudo apt install -y feh
   sudo apt install -y ranger
   sudo apt install -y suckless-tools
+  sudo apt install -y cmatrix
   sudo apt install -y libev-dev
   sudo apt install -y libasound2-dev
   sudo apt install -y libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool
@@ -51,6 +52,7 @@ elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S terminator
   sudo pacman --noconfirm --needed -S dmenu
   sudo pacman --noconfirm --needed -S feh
+  sudo pacman --noconfirm --needed -S cmatrix
   sudo pacman --noconfirm --needed -S ranger
   sudo pacman --noconfirm --needed -S terminus-font
 elif [ "$OS" = "Manjaro Linux" ]; then
@@ -66,6 +68,7 @@ elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S terminator
   sudo pacman --noconfirm --needed -S dmenu
   sudo pacman --noconfirm --needed -S feh
+  sudo pacman --noconfirm --needed -S cmatrix
   sudo pacman --noconfirm --needed -S ranger
   sudo pacman --noconfirm --needed -S terminus-font
 elif [ "$OS" = "Gentoo" ]; then
@@ -91,6 +94,8 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y terminus-fonts-console
   sudo dnf install -y terminus-fonts
   sudo dnf install -y feh
+  sudo dnf install -y cmatrix
+  sudo dnf install -y libxcb-devel xcb-util-keysyms-devel xcb-util-devel xcb-util-wm-devel xcb-util-xrm-devel yajl-devel libXrandr-devel startup-notification-devel libev-devel xcb-util-cursor-devel libXinerama-devel libxkbcommon-devel libxkbcommon-x11-devel pcre-devel pango-devel git gcc automake
   cd ~/projects
   git clone https://github.com/vivien/i3blocks.git
   ./autogen.sh
