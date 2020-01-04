@@ -69,3 +69,6 @@ URxvt*.perl-lib: $HOME/.urxvt/perl-extensions
 
 xterm*dynamicColors: true
 urxvt*dynamicColors: on
+
+urxvt*perl-ext-common: urxvt-colors
+urxvt*keysym.F12: perl:urxvt-colors:

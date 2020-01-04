@@ -60,6 +60,8 @@ fi
 sudo make install
 cd $HOME
 
+git clone https://github.com/sos4nt/dynamic-colors ~/.dynamic-colors
+
 echo fc-match Monospace
 fc-match Monospace
 

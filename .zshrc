@@ -221,6 +221,7 @@ export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.rvm/bin
 export PATH=/opt/kafka/bin:$PATH
 export PATH=/opt/kotlinc/bin:$PATH
+export PATH="$HOME/.dynamic-colors/bin:$PATH"
 [ -s "$HOME/.rvm/scripts/rvm" ] && source $HOME/.rvm/scripts/rvm
 [ -s "/etc/profile.d/rvm.sh" ] && source /etc/profile.d/rvm.sh
 #echo "stty -tostop"
