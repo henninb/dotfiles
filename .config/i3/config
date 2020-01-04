@@ -1,6 +1,10 @@
 set $mod Mod1
 
-set $bg-color 	         #2f343f
+#for_window [class="^.*"] border pixel 2
+gaps inner 5
+gaps outer 5
+
+set $bg-color            #2f343f
 set $inactive-bg-color   #2f343f
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
@@ -17,6 +21,10 @@ bindsym $mod+Shift+Return exec urxvt
 bindsym $mod+Shift+x exec i3lock -c 00000f
 bindsym $mod+Shift+i exec firefox -private-window
 bindsym $mod+Shift+BackSpace kill
+
+# gaps settings
+bindsym $mod+t split toggle
+bindsym $mod+Shift+t gaps inner current set 15; gaps outer current set 15
 
 # program launcher
 bindsym $mod+Shift+p exec dmenu_run
@@ -61,9 +69,12 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
+#bindsym $mod+e layout toggle split
+
+bindsym $mod+s gaps inner current plus 5
+bindsym $mod+Shift+s gaps inner current minus 5
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
