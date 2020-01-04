@@ -27,3 +27,7 @@ app-crypt/pinentry gnome-keyring
 >=net-wireless/wpa_supplicant-2.6-r10 dbus
 >=media-libs/libvpx-1.7.0 postproc
 >=dev-db/sqlite-3.29.0 secure-delete
+>=x11-libs/cairo-1.16.0-r3 xcb X
+>=x11-libs/libxkbcommon-0.9.1 X
+>=x11-libs/pango-1.42.4-r2 X
+>=x11-libs/libxcb-1.13.1 xkb
