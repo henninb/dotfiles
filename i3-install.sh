@@ -42,7 +42,8 @@ elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman -Rsnc gdm
   sudo pacman --noconfirm --needed -S i3status
   sudo pacman --noconfirm --needed -S i3blocks
-  sudo pacman --noconfirm --needed -S i3-wm
+#  sudo pacman --noconfirm --needed -S i3-wm
+  sudo pacman --noconfirm --needed -S i3-gaps
   sudo pacman --noconfirm --needed -S xterm
   sudo pacman --noconfirm --needed -S i3lock
   sudo pacman --noconfirm --needed -S rofi
