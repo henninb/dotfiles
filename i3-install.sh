@@ -72,7 +72,7 @@ elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S ranger
   sudo pacman --noconfirm --needed -S terminus-font
 elif [ "$OS" = "Gentoo" ]; then
-  GENTOO_PKGS="x11-misc/i3status i3blocks i3 xterm i3lock rofi terminator dmenu ranger feh cmatrix cairo"
+  GENTOO_PKGS="x11-misc/i3status i3blocks i3 xterm i3lock rofi terminator dmenu ranger feh cmatrix cairo libmpdclient pulseaudio i3-gaps"
   FAILURES=""
   for i in $(echo $GENTOO_PKGS); do
     sudo emerge --update --newuse $i
