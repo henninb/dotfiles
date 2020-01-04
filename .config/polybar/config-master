@@ -60,9 +60,9 @@ font-3 = Symbola:pixelsize=9;1
 
 
 ; Other modules: xkeyboard filesystem xbacklight backlight-acpi cpu memory temperature powermenu weather
-modules-left = bspwm xwindow
+;modules-left = bspwm xwindow
 ;modules-center =
-modules-right = mpd volume mutt-wizard wlan eth battery date
+;modules-right = mpd volume mutt-wizard wlan eth battery date
 
 tray-position = right
 tray-padding = 0
