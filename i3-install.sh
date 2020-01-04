@@ -85,6 +85,7 @@ elif [ "$OS" = "Fedora" ]; then
   echo
   sudo dnf install -y i3status
   sudo dnf install -y i3
+  sudo dnf install -y i3-ipc
   sudo dnf install -y i3lock
   sudo dnf install -y xterm
   sudo dnf install -y terminator
@@ -95,9 +96,10 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y terminus-fonts
   sudo dnf install -y feh
   sudo dnf install -y cmatrix
-  sudo dnf install -y libxcb-devel xcb-util-keysyms-devel xcb-util-devel xcb-util-wm-devel xcb-util-xrm-devel yajl-devel libXrandr-devel startup-notification-devel libev-devel xcb-util-cursor-devel libXinerama-devel libxkbcommon-devel libxkbcommon-x11-devel pcre-devel pango-devel git gcc automake
+  sudo dnf install -y libxcb-devel xcb-util-keysyms-devel xcb-util-devel xcb-util-wm-devel xcb-util-xrm-devel yajl-devel libXrandr-devel startup-notification-devel libev-devel xcb-util-cursor-devel libXinerama-devel libxkbcommon-devel libxkbcommon-x11-devel pcre-devel pango-devel git gcc automake libcurl-devel libmpdclient-devel wireless-tools-devel pulseaudio-libs-devel xcb-proto  cairo-devel i3-devel
   cd ~/projects
   git clone https://github.com/vivien/i3blocks.git
+  cd i3blocks
   ./autogen.sh
   ./configure
   make
