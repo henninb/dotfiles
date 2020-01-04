@@ -139,3 +139,7 @@ There is a good explanation of colour support in terminals: https://gist.github.
 This has finally given me a good enough reason to switch to Alacritty.
 
 https://github.com/vim-scripts/256-jungle
+
+## keyboard keys
+- showkey -k
+- sudo showkey -k

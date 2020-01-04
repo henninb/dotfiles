@@ -17,8 +17,15 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   sudo apt install -y ranger
   sudo apt install -y suckless-tools
   sudo apt install -y libev-dev
-  sudo apt install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool
-  sudo apt-get install libxcb-xrm-dev
+  sudo apt install -y libasound2-dev
+  sudo apt install -y libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool
+  sudo apt install -y libxcb-xrm-dev
+  sudo apt install -y libmpdclient-dev
+  sudo apt install -y libiw-dev
+  sudo apt install -y libpulse-dev
+  sudo apt install -y libxcb-composite0-dev
+  sudo apt install -y xcb-proto
+  sudo apt install -y libxcb-ewmh-dev
   cd ~/projects
   git clone https://www.github.com/Airblader/i3 i3-gaps
   cd i3-gaps
@@ -96,6 +103,12 @@ else
   echo $OS is not yet implemented.
   exit 1
 fi
+
+cd $HOME/projects/
+git clone --recursive https://github.com/jaagr/polybar.git
+cd polybar
+./build.sh
+cd $HOME
 
 
 exit 0
