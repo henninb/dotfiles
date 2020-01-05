@@ -80,4 +80,7 @@ python2 -m pip install --user --upgrade pynvim
 python3 -m pip install --user --upgrade pynvim
 echo ":checkhealth"
 
+vim +slient +VimEnter +PlugUpgrade +qall
+vim +slient +VimEnter +PlugUpdate +qall
+
 exit 0
