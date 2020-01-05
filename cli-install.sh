@@ -97,6 +97,8 @@ elif [ "$OS" = "Raspbian GNU/Linux" ]; then
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
   sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+  sudo dnf install dnf-plugins-core
+  sudo dnf copr enable flatcap/neomutt
   sudo dnf update -y
   FAILURES=""
   for i in $(echo $FEDORA_PKGS); do
