@@ -6,24 +6,19 @@
 #exec dbus-launch --exit-with-x11 /etc/xrdp/startwm.sh
 #sudo dbus-launch --exit-with-x11 /etc/xrdp/startwm.sh
 
-ps -ef| grep xrdp | grep -v grep
-if [ $? -ne 0 ]; then
-  sudo pkill xrdp
-  sleep 1
-  sudo rm -v rm /var/run/xrdp/xrdp.pid
-  sudo rm -v /run/xrdp.pid
-  sleep 1
-  sudo xrdp
-else
-  sudo rm -v rm /run/xrdp.pid
-  sudo rm -v /var/log/xrdp.log
-  sudo xrdp
-fi
+#ps -ef| grep '^xrdp$' | grep -v grep
 
-exit 1
+#pgrep -x xrdp
+sudo rm -rfv rm /run/xrdp.pid
+sudo rm -rfv /var/log/xrdp.log
+sudo pkill -x xrdp
+sudo nohup xrdp > /dev/null 2>&1
 
-sudo kill -9 $(pgrep -f xrdp-sesman)
-sudo xrdp-sesman -n
-pgrep -f xrdp-sesman
+pgrep -x xrdp
+
+sudo pkill -x xrdp-sesman
+#sudo kill -9 $(pgrep -f xrdp-sesman)
+sudo nohup xrdp-sesman -n > /dev/null 2>&1 &
+pgrep -x xrdp-sesman
 
 exit 0
