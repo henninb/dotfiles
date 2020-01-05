@@ -6,8 +6,12 @@
 #exec dbus-launch --exit-with-x11 /etc/xrdp/startwm.sh
 #sudo dbus-launch --exit-with-x11 /etc/xrdp/startwm.sh
 
-sudo kill -9 $(pgrep -f xrdp)
-sudo xrdp
+ps -ef| grep xrdp | grep -v grep
+if [ $? -ne 0 ]; then
+  sudo pkill xrdp
+  sleep 1
+  sudo xrdp
+fi
 
 sudo kill -9 $(pgrep -f xrdp-sesman)
 sudo xrdp-sesman -n
