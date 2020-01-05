@@ -2,6 +2,7 @@
 
 RASPI_IP=$(nmap -sP 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
 
+echo $(code --version)
 sudo rm -rf /opt/vscode
 rm -rf code-stable-latest.tar.gz
 wget https://go.microsoft.com/fwlink/?LinkID=620884 -O code-stable-latest.tar.gz
