@@ -186,9 +186,11 @@ export VAGRANT_DEFAULT_PROVIDER=kvm
 
 # turn this on to display x on mac or windows
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  #echo ssh session has started.
-  #screenfetch
-  neofetch
+  # screenfetch
+  # inxi
+  if [ -x "$(command -v neofetch)" ]; then
+    neofetch
+  fi
 #  export DISPLAY=localhost:10.0
 fi
 
@@ -234,7 +236,6 @@ export PATH="$HOME/.dynamic-colors/bin:$PATH"
 #     inxi -Sxxx
 #   fi
 # fi
-#screenfetch
 
 if [ "$OS" = "Darwin" ]; then
   #control arrow
