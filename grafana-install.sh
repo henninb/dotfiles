@@ -15,12 +15,11 @@ if [ "$OS" = "Linux Mint" ]; then
   sudo fuser 3000/tcp
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S grafana
-  sudo systemctl restart grafana
   sudo systemctl status grafana
   sudo systemctl enable grafana
+  sudo systemctl restart grafana
 
   echo "admin:admin"
-
   netstat -na | grep LISTEN | grep tcp | grep 3000
   #netstat -tulp
   sudo fuser 3000/tcp
@@ -30,6 +29,13 @@ elif [ "$OS" = "Arch Linux" ]; then
 elif [ "$OS" = "Fedora" ]; then
   echo
   sudo dnf install -y grafana
+  sudo systemctl status grafana-server
+  sudo systemctl enable grafana-server
+  sudo systemctl restart grafana-server
+  echo "admin:admin"
+  netstat -na | grep LISTEN | grep tcp | grep 3000
+  #netstat -tulp
+  sudo fuser 3000/tcp
 else
   echo $OS is not yet implemented.
   exit 1
