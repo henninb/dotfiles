@@ -8,15 +8,15 @@ FEDORA_PKGS="mpg123 gcc ncurses-devel screen figlet neovim vim rtorrent wget ran
 
 ARCHLINUX_PKGS="pacman-contrib mpg123 screen figlet neovim vim rtorrent wget ranger fx zsh gnupg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg yarn alsa-utils cmus rsync terminus-font netcat unzip zip zsync emacs tmux stunnel wine mcrypt dos2unix pass fish ctags astyle clang-format lynx sshfs toilet rmlint w3m scim rsync screenfetch"
 
-MINT_PKGS="jq stunnel postfix mailutils mpg123 screen figlet neovim vim rtorrent wget ranger fx zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg alsa-utils cmus python-setuptools rsync tmux emacs mcrypt wine64 yarn nodejs ssh-askpass iptables-persistent libguestfs-tools byobu fetchmail dos2unix pass fish ctags strace astyle clang-format rpm gsnake bastet mpv sshfs lynx etherwake cdrecord toilet zsync"
+MINT_PKGS="jq stunnel postfix mailutils mpg123 screen figlet neovim vim rtorrent wget ranger fx zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg alsa-utils cmus python-setuptools rsync tmux emacs mcrypt wine64 yarn nodejs ssh-askpass iptables-persistent libguestfs-tools byobu fetchmail dos2unix pass fish ctags strace astyle clang-format rpm gsnake bastet mpv sshfs lynx etherwake cdrecord toilet zsync newsboat"
 
-UBUNTU_PKGS="jq stunnel postfix mailutils mpg123 screen figlet neovim vim rtorrent wget ranger fx zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg alsa-utils cmus python-setuptools rsync tmux emacs mcrypt wine yarn ssh-askpass iptables-persistent libguestfs-tools fetchmail dos2unix pass fish clang-format clisp rpm nsnake bastet netcat strace astyle ctags mpv sshfs lynx etherwake cdrecord toilet zsync"
+UBUNTU_PKGS="jq stunnel postfix mailutils mpg123 screen figlet neovim vim rtorrent wget ranger fx zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg alsa-utils cmus python-setuptools rsync tmux emacs mcrypt wine yarn ssh-askpass iptables-persistent libguestfs-tools fetchmail dos2unix pass fish clang-format clisp rpm nsnake bastet netcat strace astyle ctags mpv sshfs lynx etherwake cdrecord toilet zsync newsboat"
 
 GENTOO_PKGS="postfix stunnel mpg123 app-misc/screen figlet neovim vim rtorrent wget ranger zsh gnupg fossil subversion git mutt neomutt irssi htop nmon nmap tmux rsync libnova ffmpeg yarn alsa-utils cmus rsync dev-python/pip net-misc/netdate emacs mcrypt zip unzip dev-lang/smlnj dev-lisp/clisp layman dos2unix fish pass strace ctags astyle ntp mlton rpm eix bastet lsof sys-fs/fuse pulseaudio"
 
 FREEBSD_PKGS="zip unzip python py36-pip py36-powerline-status-2.7 stunnel mpg123 screen figlet neovim vim rtorrent wget ranger fx zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg yarn alsa-utils cmus rsync tmux emacs fish sysutils/password-store"
 
-RASPI_PKGS="jq vim-nox vim wget zsh gpg git mutt htop figlet screen pass neovim stunnel postfix mpg321 ranger mutt irssi nmon nmap libnova clisp fakeroot fish zip unzip dos2unix ctags emacs rsync tmux mcrypt etherwake sshfs cmus ffmpeg mpg123 strace yarn toilet"
+RASPI_PKGS="jq vim-nox vim wget zsh gpg git mutt htop figlet screen pass neovim stunnel postfix mpg321 ranger mutt irssi nmon nmap libnova clisp fakeroot fish zip unzip dos2unix ctags emacs rsync tmux mcrypt etherwake sshfs cmus ffmpeg mpg123 strace yarn toilet newsboat"
 
 mkdir -p .cli
 echo $CENTOS_PKGS > .cli/centos
