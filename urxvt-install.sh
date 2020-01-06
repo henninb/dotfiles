@@ -47,7 +47,7 @@ if [ $? -ne 0 ]; then
   echo "autogen failed."
   exit 1
 fi
-./configure --enable-everything --disable-perl --enable-smart-resize --enable-256-color
+./configure --enable-everything --enable-perl --enable-smart-resize --enable-256-color
 if [ $? -ne 0 ]; then
   echo "configure failed."
   exit 1
