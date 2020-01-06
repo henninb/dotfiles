@@ -264,14 +264,18 @@ touch $HOME/.zshrc-work-custom
 source $HOME/.zshrc-work-custom
 
 if [ "$MYSHELL" = "bash" ]; then
+  # pip3  install powerline-status --user
   if [ "$(uname -s)" = "Darwin" ]; then
     powerline-daemon -q
     POWERLINE_BASH_CONTINUATION=1
     POWERLINE_BASH_SELECT=1
     source /usr/local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
   elif [ "$(uname -s)" = "Linux" ]; then
-    if [ -f "~/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh" ]; then
-        source ~/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+    if [ -f "$HOME/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh" ]; then
+      powerline-daemon -q
+      POWERLINE_BASH_CONTINUATION=1
+      POWERLINE_BASH_SELECT=1
+      source $HOME/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
     fi
   else
     echo "OS not found"
