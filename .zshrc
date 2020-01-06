@@ -1,3 +1,5 @@
+export MYSHELL=$(ps -o args= -p $$ | egrep -m 1 -o '\w{0,5}sh')
+ln -sfn $HOME/.zshrc $HOME/.bashrc
 #[[ -o interactive ]] || exit 0
 
 export ZSH="$HOME/.oh-my-zsh"
@@ -44,8 +46,10 @@ ZSH_THEME="agnoster"
 
 plugins=(git zsh-autosuggestions docker zsh-syntax-highlighting )
 
-if [ -f $ZSH/oh-my-zsh.sh ]; then
-  source $ZSH/oh-my-zsh.sh
+if [ "$MYSHELL" = "zsh" ]; then
+  if [ -f $ZSH/oh-my-zsh.sh ]; then
+    source $ZSH/oh-my-zsh.sh
+  fi
 fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -109,7 +113,11 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 if [ ! "$OS" = "FreeBSD" ]; then
   if [ -x "$(command -v chef)" ]; then
-    eval "$(chef shell-init zsh)"
+    if [ "$MYSHELL" = "zsh" ]; then
+      eval "$(chef shell-init zsh)"
+    else
+      eval "$(chef shell-init bash)"
+    fi
   fi
 fi
 export CHEF_USER=$(whoami)
@@ -195,25 +203,25 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 fi
 
 #ln -sfn $HOME/.config/nvim/init.vim.simple $HOME/.vimrc
-ln -sfn $HOME/.config/nvim/init.vim $HOME/.vimrc
-#ln -sfn $HOME/.xinitrc $HOME/.xsessionrc
-ln -sfn $HOME/.xinitrc $HOME/.xsession
-ln -sfn /opt/arduino/arduino $HOME/.local/bin/arduino
+[ -f $HOME/.config/nvim/init.vim ] && ln -sfn $HOME/.config/nvim/init.vim $HOME/.vimrc
+# [-f $HOME/.xinitrc ] && ln -sfn $HOME/.xinitrc $HOME/.xsessionrc
+[ -f $HOME/.xinitrc ] && ln -sfn $HOME/.xinitrc $HOME/.xsession
+[ -f /opt/arduino/arduino ] && ln -sfn /opt/arduino/arduino $HOME/.local/bin/arduino
 ln -sfn /opt/intellij/bin/idea.sh $HOME/.local/bin/idea.sh
 ln -sfn /opt/intellij/bin/idea.sh $HOME/.local/bin/intellij
 ln -sfn /opt/firefox/firefox $HOME/.local/bin/firefox
 ln -sfn /opt/vscode/bin/code $HOME/.local/bin/code
 #ln -sfn $HOME/.config/polybar/config-default $HOME/.config/polybar/config
-ln -sfn $HOME/.config/polybar/config-master $HOME/.config/polybar/config
+[ -f $HOME/.config/polybar/config-master ] && ln -sfn $HOME/.config/polybar/config-master $HOME/.config/polybar/config
 
-chmod 600 $HOME/.ssh/authorized_keys
+[ -f $HOME/.ssh/authorized_keys ] && chmod 600 $HOME/.ssh/authorized_keys
 chmod 600 $HOME/.ssh/config
 chmod 600 $HOME/.ssh/id_rsa
 chmod 700 $HOME
 chmod 700 $HOME/.gnupg
-chmod 644 $HOME/.ghci
+[ -f $HOME/.ghci ] && chmod 644 $HOME/.ghci
 
-sort -t ";" -k 2 -u $HOME/.zsh_history | sort -o $HOME/.zsh_history
+[ -f $HOME/.zsh_history ] && sort -t ";" -k 2 -u $HOME/.zsh_history | sort -o $HOME/.zsh_history
 
 export PATH=$PATH:$PYENV_ROOT/bin
 export PATH=$PATH:$HOME/.local/bin:$HOME/bin
@@ -237,16 +245,36 @@ export PATH="$HOME/.dynamic-colors/bin:$PATH"
 #   fi
 # fi
 
-if [ "$OS" = "Darwin" ]; then
-  #control arrow
-  # bindkey "^[^[[D" backward-word
-  # bindkey "^[^[[C" forward-word
-  # option arrow
-  bindkey "[D" backward-word
-  bindkey "[C" forward-word
-else
-  #control arraw
-  bindkey "^[[1;5C" forward-word
-  bindkey "^[[1;5D" backward-word
+if [ "$MYSHELL" = "zsh" ]; then
+  if [ "$OS" = "Darwin" ]; then
+    #control arrow
+    # bindkey "^[^[[D" backward-word
+    # bindkey "^[^[[C" forward-word
+    # option arrow
+    bindkey "[D" backward-word
+    bindkey "[C" forward-word
+  else
+    #control arraw
+    bindkey "^[[1;5C" forward-word
+    bindkey "^[[1;5D" backward-word
+  fi
+fi
+
+touch $HOME/.zshrc-work-custom
+source $HOME/.zshrc-work-custom
+
+if [ "$MYSHELL" = "bash" ]; then
+  if [ "$(uname -s)" = "Darwin" ]; then
+    powerline-daemon -q
+    POWERLINE_BASH_CONTINUATION=1
+    POWERLINE_BASH_SELECT=1
+    source /usr/local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+  elif [ "$(uname -s)" = "Linux" ]; then
+    if [ -f "~/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh" ]; then
+        source ~/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+    fi
+  else
+    echo "OS not found"
+  fi
 fi
 
