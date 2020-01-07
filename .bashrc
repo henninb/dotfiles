@@ -1,1 +1,1 @@
-/home/henninb/.zshrc
+/home/pi/.zshrc
