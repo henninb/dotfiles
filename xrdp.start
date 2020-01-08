@@ -1,1 +1,32 @@
-cp xrdp.start /etc/local.d/xrdp.start
+#!/sbin/openrc-run
+
+#cp xrdp.start /etc/local.d/xrdp.start
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting xrdp"
+	start-stop-daemon --quiet --start -x /usr/local/sbin/xrdp
+	eend $? "xrdp did not start, error code $?"
+}
+
+stop() {
+	ebegin "Stopping xrdp"
+	start-stop-daemon --oknodo --quiet --stop -x /usr/local/sbin/xrdp --kill
+	xrdp_ecode=$?
+	eend $xrdp_ecode "Error stopping the xrdp daemon, error $xrdp_ecode"
+	checkconfig || return 1
+	return $noip_ecode
+}
+
+depend() {
+	use modules logger
+	before xdm
+}
+
+checkconfig() {
+	if [ ! -f /etc/no-ip2.conf ]; then
+		einfo "Answer the following questions about your no-ip account."
+		noip2 -C || return 1
+	fi
+    return 0
+}
