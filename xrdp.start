@@ -1,0 +1,1 @@
+cp xrdp.start /etc/local.d/xrdp.start
