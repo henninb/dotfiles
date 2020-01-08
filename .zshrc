@@ -1,4 +1,5 @@
 export MYSHELL=$(ps -o args= -p $$ | egrep -m 1 -o '\w{0,5}sh')
+[ -z "$MYSHEL" ] && echo SHELL not found: dollar zero $0
 ln -sfn $HOME/.zshrc $HOME/.bashrc
 #[[ -o interactive ]] || exit 0
 
