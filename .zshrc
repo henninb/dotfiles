@@ -214,7 +214,7 @@ ln -sfn /opt/firefox/firefox $HOME/.local/bin/firefox
 ln -sfn /opt/vscode/bin/code $HOME/.local/bin/code
 #ln -sfn $HOME/.config/polybar/config-default $HOME/.config/polybar/config
 [ -f $HOME/.config/polybar/config-master ] && ln -sfn $HOME/.config/polybar/config-master $HOME/.config/polybar/config
-
+[ -f $HOME/.ssh/config ] && chmod 600 $HOME/.ssh/config
 [ -f $HOME/.ssh/authorized_keys ] && chmod 600 $HOME/.ssh/authorized_keys
 chmod 600 $HOME/.ssh/config
 chmod 600 $HOME/.ssh/id_rsa
