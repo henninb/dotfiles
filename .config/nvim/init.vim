@@ -55,6 +55,7 @@ endif
    Plug 'git@github.com:easymotion/vim-easymotion.git'
    Plug 'git@github.com:tpope/vim-fugitive.git'
    Plug 'norcalli/nvim-colorizer.lua'
+   Plug 'tpope/vim-abolish'
 if $OS != "Arch Linux"
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
 endif
