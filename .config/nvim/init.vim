@@ -288,3 +288,5 @@ nmap { {zz
 map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
 
+map <F2> :.w !pbcopy<cr><cr>
+map <F3> :r !pbpaste<cr>
