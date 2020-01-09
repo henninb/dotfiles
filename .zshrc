@@ -1,5 +1,12 @@
-export MYSHELL=$(ps -o args= -p $$ | egrep -m 1 -o '\w{0,5}sh')
-[ -z "$MYSHEL" ] && echo SHELL not found: dollar zero $0
+if [ "$0" = "zsh" ]; then
+  export MYSHELL=zsh
+elif [ "$0" = "bash" ]; then
+  export MYSHELL=bash
+else
+  export MYSHELL=$(ps -o args= -p $$ | egrep -m 1 -o '\w{0,5}sh')
+fi
+
+[ -z "$MYSHELL" ] && echo SHELL not found: dollar zero $0 and need to find a fix.
 ln -sfn $HOME/.zshrc $HOME/.bashrc
 #[[ -o interactive ]] || exit 0
 
@@ -276,6 +283,9 @@ if [ "$MYSHELL" = "bash" ]; then
       POWERLINE_BASH_CONTINUATION=1
       POWERLINE_BASH_SELECT=1
       source $HOME/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+    elif [ -f "$HOME/.local/lib64/python3.6/site-packages/powerline/bindings/bash/powerline.sh" ]; then
+      powerline-daemon -q
+      source $HOME/.local/lib64/python3.6/site-packages/powerline/bindings/bash/powerline.sh
     else
       pip3 install powerline-status --user
       source $HOME/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
