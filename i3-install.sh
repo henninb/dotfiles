@@ -27,6 +27,8 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   sudo apt install -y libxcb-composite0-dev
   sudo apt install -y xcb-proto
   sudo apt install -y libxcb-ewmh-dev
+  sudo apt install -y xclip
+  sudo apt install -y sxhkd
   cd ~/projects
   git clone https://www.github.com/Airblader/i3 i3-gaps
   cd i3-gaps
@@ -55,6 +57,8 @@ elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S cmatrix
   sudo pacman --noconfirm --needed -S ranger
   sudo pacman --noconfirm --needed -S terminus-font
+  sudo pacman --noconfirm --needed -S xclip
+  sudo pacman --noconfirm --needed -S sxhkd
 elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
@@ -71,6 +75,8 @@ elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S cmatrix
   sudo pacman --noconfirm --needed -S ranger
   sudo pacman --noconfirm --needed -S terminus-font
+  sudo pacman --noconfirm --needed -S xclip
+  sudo pacman --noconfirm --needed -S sxhkd
 elif [ "$OS" = "Gentoo" ]; then
   GENTOO_PKGS="x11-misc/i3status i3blocks xterm i3lock rofi terminator dmenu ranger feh cmatrix cairo libmpdclient pulseaudio i3-gaps"
   FAILURES=""
@@ -96,6 +102,8 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y terminus-fonts
   sudo dnf install -y feh
   sudo dnf install -y cmatrix
+  sudo dnf install -y xclip
+  sudo dnf install -y sxhkd
   sudo dnf install -y libxcb-devel xcb-util-keysyms-devel xcb-util-devel xcb-util-wm-devel xcb-util-xrm-devel yajl-devel libXrandr-devel startup-notification-devel libev-devel xcb-util-cursor-devel libXinerama-devel libxkbcommon-devel libxkbcommon-x11-devel pcre-devel pango-devel git gcc automake libcurl-devel libmpdclient-devel wireless-tools-devel pulseaudio-libs-devel xcb-proto  cairo-devel i3-devel
   cd ~/projects
   git clone https://github.com/vivien/i3blocks.git
