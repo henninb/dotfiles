@@ -2,6 +2,7 @@
 
 sudo apt install imagemagick
 sudo apt install php-imagick
+sudo apt-get install  libjpeg-dev
 
 
 cd projects

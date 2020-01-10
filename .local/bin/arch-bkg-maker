@@ -10,7 +10,7 @@ width=$(magick convert "$pape" -format "%w" info:)
 logo_height=$(($height*9/16))
 
 # Generate Mask
-convert "$(pwd)/arch.png" -gravity center -resize $logo_height -background white -extent "${width}x${height}" -flatten "temp_logo.png" 
+convert "$HOME/.local/bin/arch.png" -gravity center -resize $logo_height -background white -extent "${width}x${height}" -flatten "temp_logo.png" 
 
 # Generate Wallpaper
 outfile_name=$(basename "$pape")
