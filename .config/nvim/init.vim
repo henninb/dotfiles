@@ -67,7 +67,8 @@ endif
 "   Plug 'git@github.com:yuttie/comfortable-motion.vim.git'
  call plug#end()
 
-+ " coc config
+" coc config
+" CocCommand git.toggleGutters
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
@@ -81,7 +82,13 @@ let g:coc_global_extensions = [
   \ 'coc-fsharp',
   \ ]
 
-" CocCommand git.toggleGutters
+let g:quickrun_known_file_types = {
+  \"cpp": ["!g++ %", "./a.out"],
+  \"c": ["!gcc %", "./a.out"],
+  \"vim": ["source %"],
+  \"py": ["!python %"],
+  \"go": ["!go %"],
+  \}
 
 " Show line numbers and relative numbers
 set number relativenumber
