@@ -4,3 +4,9 @@ set drawbox true
 #set icons true
 
 map ee $$EDITOR "$f"
+
+# Basic Functions
+map dd delete
+map p paste
+
+map gp. cd ~/projects
