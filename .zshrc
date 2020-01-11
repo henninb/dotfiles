@@ -1,3 +1,6 @@
+# needs to be tested
+[[ $- != *i* ]] && return
+
 if [ "$0" = "zsh" ]; then
   export MYSHELL=zsh
 elif [ "$0" = "bash" ]; then
@@ -5,6 +8,7 @@ elif [ "$0" = "bash" ]; then
 else
   export MYSHELL=$(ps -o args= -p $$ | egrep -m 1 -o '\w{0,5}sh')
 fi
+echo $MYSHELL
 
 [ -z "$MYSHELL" ] && echo SHELL not found: dollar zero $0 and need to find a fix.
 ln -sfn $HOME/.zshrc $HOME/.bashrc
