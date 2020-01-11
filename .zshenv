@@ -109,3 +109,11 @@ function niceProcess() {
     fi
   fi
 }
+
+function mdless() {
+  if [ "$#" -lt 1 ]; then
+    echo "Usage: ${FUNCNAME} <mdfile>" >&2
+  else
+    glow -s dark "$1" | less -r
+  fi
+}
