@@ -1,6 +1,7 @@
 # needs to be tested
 [[ $- != *i* ]] && return
 
+# TODO: test this further
 if [ "$0" = "zsh" ]; then
   export MYSHELL=zsh
 elif [ "$0" = "bash" ]; then
@@ -8,7 +9,6 @@ elif [ "$0" = "bash" ]; then
 else
   export MYSHELL=$(ps -o args= -p $$ | egrep -m 1 -o '\w{0,5}sh')
 fi
-echo $MYSHELL
 
 [ -z "$MYSHELL" ] && echo SHELL not found: dollar zero $0 and need to find a fix.
 ln -sfn $HOME/.zshrc $HOME/.bashrc
@@ -78,6 +78,7 @@ fi
 #   export EDITOR='mvim'
 # fi
 
+# TODO: not sure if/how this works
 HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
 
 if [ -f /etc/os-release ]; then
@@ -103,6 +104,7 @@ else
   export OS_VER=$(uname -r)
 fi
 
+# TODO: do I need this?
 if [ "$OS" = "Linux Mint" ]; then
   #export JAVA_HOME=/usr/lib/jvm/default-java/
   [ -d "/usr/lib/jvm/java-8-openjdk-amd64" ] && export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
@@ -168,7 +170,7 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source $NVM_DIR/nvm.sh
 
-[ ! -f "~/.ssh/id_rsa.pub" ] && ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
+[ ! -f "$HOME/.ssh/id_rsa.pub" ] && ssh-keygen -y -f $HOME/.ssh/id_rsa > $HOME/.ssh/id_rsa.pub
 
 # if [ \( "$OS" = "Arch Linux" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
 #   XMOBAR_WITH_PTS=$(ps -ef | grep xmobar | grep -v grep | grep pts | awk {'print$2'})
@@ -219,28 +221,29 @@ fi
 # [-f $HOME/.xinitrc ] && ln -sfn $HOME/.xinitrc $HOME/.xsessionrc
 [ -f $HOME/.xinitrc ] && ln -sfn $HOME/.xinitrc $HOME/.xsession
 [ -f /opt/arduino/arduino ] && ln -sfn /opt/arduino/arduino $HOME/.local/bin/arduino
-ln -sfn /opt/intellij/bin/idea.sh $HOME/.local/bin/idea.sh
-ln -sfn /opt/intellij/bin/idea.sh $HOME/.local/bin/intellij
-ln -sfn /opt/firefox/firefox $HOME/.local/bin/firefox
-ln -sfn /opt/vscode/bin/code $HOME/.local/bin/code
+[ -f /opt/intellij/bin/idea.sh ] && ln -sfn /opt/intellij/bin/idea.sh $HOME/.local/bin/idea.sh
+[ -f /opt/intellij/bin/idea.sh ] && ln -sfn /opt/intellij/bin/idea.sh $HOME/.local/bin/intellij
+[ -f /opt/firefox/firefox ] && ln -sfn /opt/firefox/firefox $HOME/.local/bin/firefox
+[ -f /opt/vscode/bin/code ] && ln -sfn /opt/vscode/bin/code $HOME/.local/bin/code
 #ln -sfn $HOME/.config/polybar/config-default $HOME/.config/polybar/config
 [ -f $HOME/.config/polybar/config-master ] && ln -sfn $HOME/.config/polybar/config-master $HOME/.config/polybar/config
 [ -f $HOME/.ssh/config ] && chmod 600 $HOME/.ssh/config
 [ -f $HOME/.ssh/authorized_keys ] && chmod 600 $HOME/.ssh/authorized_keys
-chmod 600 $HOME/.ssh/config
-chmod 600 $HOME/.ssh/id_rsa
+[ -f $HOME/.ssh/config ] && chmod 600 $HOME/.ssh/config
+[ -f $HOME/.ssh/id_rsa ] && chmod 600 $HOME/.ssh/id_rsa
 chmod 700 $HOME
-chmod 700 $HOME/.gnupg
+[ -d $HOME/.gnupg ] && chmod 700 $HOME/.gnupg
 [ -f $HOME/.ghci ] && chmod 644 $HOME/.ghci
 
 [ -f $HOME/.zsh_history ] && sort -t ";" -k 2 -u $HOME/.zsh_history | sort -o $HOME/.zsh_history
 
-export PATH=$PATH:$PYENV_ROOT/bin
-export PATH=$PATH:$HOME/.local/bin:$HOME/bin
-export PATH=$PATH:$HOME/node_modules/.bin
-export PATH=$PATH:$HOME/.cargo/bin
-#export PATH=$PATH:$HOME/.gem/ruby/2.6.0/bin
-export PATH=$PATH:$HOME/.rvm/bin
+export PATH=$PYENV_ROOT/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/go/bin:$PATH
+export PATH=$HOME/node_modules/.bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+#export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
+export PATH=$HOME/.rvm/bin:$PATH
 export PATH=/opt/kafka/bin:$PATH
 export PATH=/opt/kotlinc/bin:$PATH
 export PATH="$HOME/.dynamic-colors/bin:$PATH"
