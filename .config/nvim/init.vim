@@ -56,6 +56,7 @@ endif
    Plug 'git@github.com:tpope/vim-fugitive.git'
    Plug 'norcalli/nvim-colorizer.lua'
    Plug 'tpope/vim-abolish'
+   Plug 'MikeCoder/quickrun.vim'
 if $OS != "Arch Linux"
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
 endif
