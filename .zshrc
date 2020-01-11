@@ -296,9 +296,12 @@ if [ "$MYSHELL" = "bash" ]; then
     elif [ -f "$HOME/.local/lib64/python3.6/site-packages/powerline/bindings/bash/powerline.sh" ]; then
       powerline-daemon -q
       source $HOME/.local/lib64/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+    elif [ -f "$HOME/.local/lib/python3.7/site-packages/powerline/bindings/shell/powerline.sh" ]; then
+      powerline-daemon -q
+      source $HOME/.local/lib/python3.7/site-packages/powerline/bindings/bash/powerline.sh
     else
       pip3 install powerline-status --user
-      source $HOME/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+      #source $HOME/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
     fi
   else
     echo "OS not found"
