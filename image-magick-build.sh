@@ -8,6 +8,7 @@ sudo apt-get install  libjpeg-dev
 cd projects
 wget https://www.imagemagick.org/download/ImageMagick.tar.gz
 tar xvf ImageMagick.tar.gz
+rm ImageMagick.tar.gz
 cd ImageMagick*
 ./configure
 make
