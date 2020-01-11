@@ -50,6 +50,7 @@ pip_ins cheat
 #pip_ins greg
 pip_ins mdv
 pip_ins pexect
+pip_ins pssh
 pip_ins azure_cli
 
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
