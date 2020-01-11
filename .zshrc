@@ -56,7 +56,10 @@ ZSH_THEME="agnoster"
 
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-plugins=(git zsh-autosuggestions docker zsh-syntax-highlighting )
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
+autoload -U compinit && compinit -u
+
+plugins=(git zsh-autosuggestions docker zsh-syntax-highlighting autojump)
 
 if [ "$MYSHELL" = "zsh" ]; then
   if [ -f $ZSH/oh-my-zsh.sh ]; then

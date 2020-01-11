@@ -32,12 +32,18 @@ git checkout .zshrc
 echo cp ~/.zshrc.pre-oh-my-zsh  ~/.zshrc
 
 echo "Workaround for the dark blue color issue with agnoster theme"
+# TODO: no longer required, lightend the blue on the zsh shell
 #sed -i '0,/blue/{s/blue/39d/}' ~/.oh-my-zsh/themes/agnoster.zsh-theme
 
 sed -i 's/blue $CURRENT_FG/39d $CURRENT_FG/' ~/.oh-my-zsh/themes/agnoster.zsh-theme
 
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+git clone git://github.com/wting/autojump.git
+cd autojump
+./install.py
+cd -
 
 [ -s "/usr/bin/zsh" ] && sudo usermod -s /usr/bin/zsh $(whoami)
 [ -s "/usr/bin/zsh" ] && sudo chsh -s /usr/bin/zsh $(whoami)
