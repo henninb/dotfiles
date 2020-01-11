@@ -1,0 +1,6 @@
+set hidden true
+set color256 true
+set drawbox true
+#set icons true
+
+map ee $$EDITOR "$f"
