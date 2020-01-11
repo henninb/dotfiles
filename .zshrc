@@ -295,5 +295,5 @@ if [ "$MYSHELL" = "bash" ]; then
   fi
 fi
 
-echo export W3MIMGDISPLAY_PATH=/usr/lib/python2.7/dist-packages/ranger/ext/img_display.py
+#echo export W3MIMGDISPLAY_PATH=/usr/lib/python2.7/dist-packages/ranger/ext/img_display.py
 #/usr/lib/w3m/w3mimgdisplay
