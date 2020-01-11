@@ -86,3 +86,26 @@ function gitpush() {
     git push
   fi
 }
+
+function niceProcess() {
+  if [ "$#" -ne 1 ]; then
+    echo "Usage: ${FUNCNAME} <process_name>" >&2
+  else
+    PROC_NAME=$1
+    NICE_VAL=19
+    PID=$(pgrep -x ${PROC_NAME})
+    if [ $? -eq 0 ]; then
+      #PID=$(ps -Af | grep -w "${PROC_NAME}" | grep -v grep | head -n 1 | awk '{print $2}')
+      CURRENT_NICE=$(ps -Afl -C ${PID} | awk '{print $11}' | grep -v NI | head -n 1)
+      if [ "${CURRENT_NICE}" != "${NICE_VAL}" ]; then
+        echo "RUNNING: sudo renice -n \"${NICE_VAL}\" -p ${PID}"
+        sudo renice -n "${NICE_VAL}" -p ${PID}
+        #ps -Afl -C ${PID}
+      else
+        echo ${NICE_VAL}
+      fi
+    else
+      echo no pid found.
+    fi
+  fi
+}
