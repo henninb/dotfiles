@@ -264,7 +264,7 @@ export PATH="$HOME/.dynamic-colors/bin:$PATH"
 #   fi
 # fi
 
-grep $(hostname) /etc/hosts
+grep $(hostname) /etc/hosts > /dev/null
 if [ $? -ne 0 ]; then
   echo "Action required: add a hostname entry to /etc/hosts to prevent issues with xauth."
 fi
