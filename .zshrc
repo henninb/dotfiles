@@ -234,6 +234,7 @@ fi
 [ -f $HOME/.ssh/authorized_keys ] && chmod 600 $HOME/.ssh/authorized_keys
 [ -f $HOME/.ssh/config ] && chmod 600 $HOME/.ssh/config
 [ -f $HOME/.ssh/id_rsa ] && chmod 600 $HOME/.ssh/id_rsa
+[ -d $HOME/.ssh ] && chmod 700 $HOME/.ssh
 chmod 700 $HOME
 [ -d $HOME/.gnupg ] && chmod 700 $HOME/.gnupg
 [ -f $HOME/.ghci ] && chmod 644 $HOME/.ghci
