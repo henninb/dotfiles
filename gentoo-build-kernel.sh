@@ -1,15 +1,17 @@
 #!/bin/sh
 
 if [ "$OS" = "Gentoo" ]; then
-  sudo emerge sys-kernel/gentoo-sources
-  sudo emerge zfs
-  sudo emerge aufs-sources
+  sudo emerge --update --newuse sys-kernel/gentoo-sources
+  sudo emerge --update --newuse zfs
+  sudo emerge --update --newuse aufs-sources
 
-  sudo emerge fakeroot
-  sudo emerge pciutils
+  sudo emerge --update --newuse fakeroot
+  sudo emerge --update --newuse pciutils
   sudo eselect kernel list
   echo sudo eselect kernel set 1
 
+  echo TODO: should I be exiting here?
+  echo TODO: add audio into the kernel
   exit 1
   cd /usr/src/linux
   cp -v /usr/src/linux/.config ~/kernel-config-$(uname -r)
