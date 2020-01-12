@@ -1,4 +1,4 @@
-# needs to be tested
+# TODO: needs to be tested
 [[ $- != *i* ]] && return
 
 # TODO: test this further
@@ -56,6 +56,7 @@ ZSH_THEME="agnoster"
 
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+
 [ -f "$HOME/.autojump/etc/profile.d/autojump.sh" ] && source $HOME/.autojump/etc/profile.d/autojump.sh
 [ -f "$HOME/.autojump/etc/profile.d/autojump.sh" ] && autoload -U compinit && compinit -u
 
@@ -69,8 +70,6 @@ fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# You may need to manually set your language environment
-# why would this be needed to be set here?
 #export LANG=en_US.UTF-8
 #export LC_COLLATE="C"
 
@@ -78,7 +77,7 @@ fi
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # TODO: not sure if/how this works
@@ -105,6 +104,10 @@ elif [ -f /etc/redhat-release ]; then
 else
   export OS=$(uname -s)
   export OS_VER=$(uname -r)
+fi
+
+if [ ! -x "$(command -v unzip)" ]; then
+  echo unzip not installed.
 fi
 
 # TODO: do I need this?
