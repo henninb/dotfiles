@@ -143,3 +143,8 @@ https://github.com/vim-scripts/256-jungle
 ## keyboard keys
 - showkey -k
 - sudo showkey -k
+
+## Invalid MIT-MAGIC-COOKIE-1 key - startx
+I had the same problem a while ago. It took me quite a while to figure out what was wrong. For me the problem was caused by dhcpcd changing my hostname to "localhost". It uses localhost as fallback in case the dhcp server doesn't set any hostname. I worked around the problem by setting "nohook hostname" in /etc/dhcpcd.conf.
+
+A better workaround would be to get the hostname from `xauth list` and add it as a loopback address in /etc/hosts, so it's always valid.
