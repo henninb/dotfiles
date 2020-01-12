@@ -153,5 +153,10 @@ A better workaround would be to get the hostname from `xauth list` and add it as
 PERL="perl" perl /usr/share/perl5/ExtUtils/xsubpp -C++ -typemap /usr/share/perl5/ExtUtils/typemap -typemap 'typemap.iom' -typemap 'typemap' -prototypes ./rxvtperl.xs >rxvtperl.C
 Can't open perl script "/usr/share/perl5/ExtUtils/xsubpp": No such file or directory
 
-## Urxvt paste not working with middle mouse click - mintlinux¬
-- this is after enabling perl extentions¬
+## Urxvt paste not working with middle mouse click - mintlinux
+- this appears to be happening after enabling perl extentions
+
+## Urxvt paste is calling paste and color modules - mintlinux
+- modules not working
+
+## Urxvt zsh plugin (zsh-autosuggestions) not working?
