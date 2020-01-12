@@ -31,6 +31,12 @@ if [ "$OS" = "Arch Linux" ]; then
   sudo rm -rf /opt/firefox
   sudo tar -xjvf firefox-${FOX_VER}.tar.bz2 -C /opt
   chown -R firefox:firefox /opt/firefox
+elif [ "$OS" = "void" ]; then
+  sudo xbps-install -y wget
+  sudo xbps-install -y wget
+  sudo rm -rf /opt/firefox
+  sudo tar -xjvf firefox-${FOX_VER}.tar.bz2 -C /opt
+  chown -R firefox:firefox /opt/firefox
 elif [ "$OS" = "openSUSE Leap" ]; then
   sudo zypper install curl wget
   sudo rm -rf /opt/firefox
