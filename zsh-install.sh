@@ -15,6 +15,10 @@ elif [ "$OS" = "FreeBSD" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse zsh
   sudo emerge --update --newuse media-fonts/urw-fonts
+elif [ "$OS" = "void" ]; then
+  echo void
+  sudo xbps-install -y zsh
+  sudo xbps-install -y curl
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y util-linux-user
   sudo dnf install -y zsh
