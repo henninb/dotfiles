@@ -148,3 +148,7 @@ https://github.com/vim-scripts/256-jungle
 I had the same problem a while ago. It took me quite a while to figure out what was wrong. For me the problem was caused by dhcpcd changing my hostname to "localhost". It uses localhost as fallback in case the dhcp server doesn't set any hostname. I worked around the problem by setting "nohook hostname" in /etc/dhcpcd.conf.
 
 A better workaround would be to get the hostname from `xauth list` and add it as a loopback address in /etc/hosts, so it's always valid.
+
+## perl compile on fedora
+PERL="perl" perl /usr/share/perl5/ExtUtils/xsubpp -C++ -typemap /usr/share/perl5/ExtUtils/typemap -typemap 'typemap.iom' -typemap 'typemap' -prototypes ./rxvtperl.xs >rxvtperl.C
+Can't open perl script "/usr/share/perl5/ExtUtils/xsubpp": No such file or directory
