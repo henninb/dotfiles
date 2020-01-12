@@ -74,4 +74,5 @@ urxvt*dynamicColors: on
 urxvt*perl-ext-common: urxvt-colors,clipboard
 urxvt*keysym.F12: perl:urxvt-colors:
 !URxvt.keysym.Mod4-v: perl:clipboard:paste
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+!URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.F3: perl:clipboard:paste
