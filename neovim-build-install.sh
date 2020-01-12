@@ -25,13 +25,20 @@ elif [ "$OS" = "Manjaro Linux" ]; then
 elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
   sudo apt install -y gperf luajit luarocks libuv1-dev libluajit-5.1-dev libunibilium-dev libmsgpack-dev libtermkey-dev libvterm-dev cmake libtool-bin
   sudo apt remove -y neovim
+elif [ "$OS" = "void" ]; then
+  echo void
+  sudo xbps-install -y make
+  sudo xbps-install -y cmake
+  sudo xbps-install -y libtool
+  sudo xbps-install -y patch
+  sudo xbps-install -y gcc-c++
 elif [ "$OS" = "Fedora" ]; then
-    sudo dnf install -y make
-    sudo dnf install -y cmake
-    sudo dnf install -y libtool
-    sudo dnf install -y patch
-    sudo dnf install -y gcc-c++
-    sudo dnf install -y nodejs
+  sudo dnf install -y make
+  sudo dnf install -y cmake
+  sudo dnf install -y libtool
+  sudo dnf install -y patch
+  sudo dnf install -y gcc-c++
+  sudo dnf install -y nodejs
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
     echo centos8
