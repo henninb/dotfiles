@@ -110,6 +110,10 @@ if [ ! -x "$(command -v unzip)" ]; then
   echo unzip not installed.
 fi
 
+if [ ! -x "$(command -v fc-cache)" ]; then
+  echo unzip not installed.
+fi
+
 # TODO: do I need this?
 if [ "$OS" = "Linux Mint" ]; then
   #export JAVA_HOME=/usr/lib/jvm/default-java/
