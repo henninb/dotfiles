@@ -264,6 +264,11 @@ export PATH="$HOME/.dynamic-colors/bin:$PATH"
 #   fi
 # fi
 
+grep $(hostname) /etc/hosts
+if [ $? -ne 0 ]; then
+  echo "Action required: add a hostname entry to /etc/hosts to prevent issues with xauth."
+fi
+
 if [ "$MYSHELL" = "zsh" ]; then
   if [ "$OS" = "Darwin" ]; then
     #control arrow
