@@ -51,6 +51,8 @@ echo sudo mkfontdir /usr/share/fonts/TTF
 #exec feh --bg-scale --randomize $HOME/backgrounds/* &
 exec feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg &
 exec xscreensaver -no-splash &
+# TODO: test to see if needed for autoselecting text in urxvt
+# exec autocutsel
 
 # cp ~/.xmonad/xmonad-master.hs ~/.xmonad/xmonad.hs
 # rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux*

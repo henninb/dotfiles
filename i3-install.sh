@@ -85,7 +85,7 @@ elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S w3m
   sudo pacman --noconfirm --needed -S vifm
 elif [ "$OS" = "Gentoo" ]; then
-  GENTOO_PKGS="x11-misc/i3status i3blocks xterm i3lock rofi terminator dmenu ranger feh cmatrix cairo libmpdclient pulseaudio i3-gaps"
+  GENTOO_PKGS="x11-misc/i3status i3blocks xterm i3lock rofi terminator dmenu ranger feh cmatrix cairo libmpdclient pulseaudio i3-gaps autocutsel vimfm w3m xclip"
   FAILURES=""
   for i in $(echo $GENTOO_PKGS); do
     sudo emerge --update --newuse $i

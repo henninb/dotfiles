@@ -241,9 +241,10 @@ chmod 700 $HOME
 
 [ -f $HOME/.zsh_history ] && sort -t ";" -k 2 -u $HOME/.zsh_history | sort -o $HOME/.zsh_history
 
+export GOPATH=$HOME/.local
 export PATH=$PYENV_ROOT/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/go/bin:$PATH
+#export PATH=$HOME/go/bin:$PATH
 export PATH=$HOME/node_modules/.bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 #export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
