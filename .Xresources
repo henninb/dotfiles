@@ -46,9 +46,10 @@
 URxvt.font: xft:monofur for Powerline:pixelsize=20
 
 !URxvt.termName: rxvt-unicode-256color
-! using this term as it works on all platforms
+! TODO: verify this term as it works on all platforms
 URxvt.termName: rxvt-256color
-!URxvt*termName: rxvt
+! TODO: testing on gentoo.
+!URxvt.termName: xterm-256color
 
 URxvt.letterSpace: 0
 !URxvt.letterSpace: 1
