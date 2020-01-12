@@ -31,10 +31,12 @@ else
 fi
 
 cd $HOME/projects
-wget http://dist.schmorp.de/rxvt-unicode/Attic/rxvt-unicode-9.22.tar.bz2
-if [ $? -ne 0 ]; then
-  echo "wget failed."
-  exit 1
+if [ ! -f "rxvt-unicode-9.22.tar.bz2" ]; then
+  wget http://dist.schmorp.de/rxvt-unicode/Attic/rxvt-unicode-9.22.tar.bz2
+  if [ $? -ne 0 ]; then
+    echo "wget failed."
+    exit 1
+  fi
 fi
 tar xvf rxvt-unicode-9.22.tar.bz2
 if [ $? -ne 0 ]; then
