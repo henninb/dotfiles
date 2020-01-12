@@ -155,8 +155,11 @@ Can't open perl script "/usr/share/perl5/ExtUtils/xsubpp": No such file or direc
 
 ## Urxvt paste not working with middle mouse click - mintlinux
 - this appears to be happening after enabling perl extentions
+- fixed after removing a bad perl extention
+- new extention is causing issue - bracketed-paste-magic:zle:47: not enough arguments for -U
 
 ## Urxvt paste is calling paste and color modules - mintlinux
 - modules not working
+- fixed after removing bad extention
 
 ## Urxvt zsh plugin (zsh-autosuggestions) not working?

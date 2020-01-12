@@ -69,10 +69,12 @@ URxvt.iso14755: false
 URxvt*.perl-lib: /home/henninb/.urxvt/perl-extensions
 
 xterm*dynamicColors: true
-urxvt*dynamicColors: on
+URxvt*dynamicColors: on
 
-urxvt*perl-ext-common: urxvt-colors,clipboard
-urxvt*keysym.F12: perl:urxvt-colors:
+URxvt*perl-ext-common: urxvt-colors,clipboard-past-on-right-click
+URxvt*keysym.F12: perl:urxvt-colors:
 !URxvt.keysym.Mod4-v: perl:clipboard:paste
 !URxvt.keysym.Shift-Control-V: perl:clipboard:paste
-URxvt.keysym.F3: perl:clipboard:paste
+!URxvt.keysym.F3: perl:clipboard:paste
+!If true, copy to clipboard too
+!URxvt.keyboard-select.clipboard:true
