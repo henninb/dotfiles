@@ -41,7 +41,8 @@ EOF
 # port=-1
 # EOF
 
-cat > startwm-archlinux.sh <<'EOF'
+echo startwm.sh for archlinux gentoo fedora
+cat > startwm.sh <<'EOF'
 #!/usr/bin/env sh
 
 export TERM="xterm-256color"
@@ -82,21 +83,22 @@ EOF
 
 sudo mkdir -p /etc/X11
 
-exit 11
+chmod 755 startwm.sh
+chmod 755 xrdp.rc
 
 if [ "$OS" = "Arch Linux" ]; then
   mkdir -p $HOME/projects
   sudo pacman --noconfirm --needed -S patch autoconf automake pkg-config fakeroot lsof nasm net-tools libtool xorg-server-devel make terminator
 
-  cd $HOME/projects
-  git clone https://aur.archlinux.org/xrdp.git xrdp-aur
-  cd xrdp-aur
-  # makepkg -si
+  # cd $HOME/projects
+  # git clone https://aur.archlinux.org/xrdp.git xrdp-aur
+  # cd xrdp-aur
+  # # makepkg -si
 
-  cd $HOME/projects
-  git clone https://aur.archlinux.org/xorgxrdp-git.git xorgxrdp-aur
-  cd xorgxrdp-aur
-  # makepkg -si
+  # cd $HOME/projects
+  # git clone https://aur.archlinux.org/xorgxrdp-git.git xorgxrdp-aur
+  # cd xorgxrdp-aur
+  # # makepkg -si
 
   echo xrdp v0.9.11 was release on 8-19-2019
   cd $HOME/projects
@@ -114,6 +116,7 @@ if [ "$OS" = "Arch Linux" ]; then
   ./configure XRDP_CFLAGS=-I$HOME/projects/xrdp/common XRDP_LIBS=" "
   make
   sudo make install
+  sudo cp startwm.sh /etc/xrdp/startwm.sh
 
   cd $HOME
   #chmod 755 startwm.sh
@@ -144,6 +147,8 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo make install
 
   #USE="server" sudo emerge  --update --newuse net-misc/tigervnc
+  sudo mv -v startwm.sh /etc/xrdp/startwm.sh
+  sudo mv -v xrdp.rc /etc/init.d/xrdp
 
   cd $HOME
   sudo cp -v Xwrapper.config /etc/X11/Xwrapper.config
@@ -190,6 +195,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
   ./configure XRDP_CFLAGS=-I$HOME/projects/xrdp/common XRDP_LIBS=" "
   make
   sudo make install
+  sudo mv -v startwm.sh /etc/xrdp/startwm.sh
 
   sudo systemctl enable xrdp
   sudo systemctl start xrdp
