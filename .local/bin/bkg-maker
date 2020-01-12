@@ -1,0 +1,33 @@
+#!/bin/sh
+
+if [ "$#" -ne 1 ]; then
+  echo "Usage: $0 <jpg or png>" >&2
+  exit 1
+fi
+
+pape=$1
+if [ ! -f "${pape}" ]; then
+  echo "file does not exist: ${pape}" >&2
+  exit 2
+fi
+
+# Get the width of the wallpaper
+height=$(magick convert "$pape" -format "%h" info:)
+width=$(magick convert "$pape" -format "%w" info:)
+
+# Calculate appropriate height for logo on the wallpaper
+logo_height=$(($height*9/16))
+
+# Generate Mask
+convert "$HOME/.local/bin/vikings.png" -gravity center -resize $logo_height -background white -extent "${width}x${height}" -flatten "vikings_temp_logo.png"
+convert "$HOME/.local/bin/arch.png" -gravity center -resize $logo_height -background white -extent "${width}x${height}" -flatten "arch_temp_logo.png"
+
+outfile_name=$(basename "$pape")
+
+convert "$pape" -write-mask "vikings_temp_logo.png" -gravity center -blur 0x30 -attenuate 0.3 +noise Laplacian -evaluate Multiply 1.3 "vikings_$outfile_name"
+convert "$pape" -write-mask "arch_temp_logo.png" -gravity center -blur 0x30 -attenuate 0.3 +noise Laplacian -evaluate Multiply 1.3 "arch_$outfile_name"
+
+# Delete temporary file
+rm -rf arch_temp_logo.png vikings_temp_logo.png
+
+exit 0

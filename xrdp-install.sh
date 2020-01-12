@@ -1,5 +1,36 @@
 #!/bin/sh
 
+cat > xrdp.rc <<'EOF'
+#!/sbin/openrc-run
+
+#sudo cp xrdp.rc /etc/init.d/xrdp
+
+start() {
+  ebegin "Starting xrdp"
+  start-stop-daemon --quiet --start -x /usr/local/sbin/xrdp
+  eend $? "xrdp did not start, error code $?"
+  start-stop-daemon --quiet --start -x /usr/local/sbin/xrdp-sesman
+  eend $? "xrdp-sesman did not start, error code $?"
+}
+
+stop() {
+  ebegin "Stopping xrdp"
+  start-stop-daemon --quiet --stop -x /usr/local/sbin/xrdp
+  eend $? "xrdp did not stop, error code $?"
+  start-stop-daemon --quiet --stop -x /usr/local/sbin/xrdp-sesman
+  eend $? "xrdp-sesman did not stop, error code $?"
+  rm -rf /run/xrdp.pid
+  rm -rf /var/log/xrdp.log
+  rm -rf /run/xrdp-sesman.pid
+  rm -rf /var/log/xrdp-sesman.log
+}
+
+depend() {
+  need net
+  before logger
+}
+EOF
+
 # cat > xrdp.ini <<'EOF'
 # [tightvnc]
 # name=RDP_To_TightVNC
@@ -10,20 +41,39 @@
 # port=-1
 # EOF
 
-#cat > startwm.sh <<'EOF'
-##!/bin/sh
-#if [ -r /etc/default/locale ]; then
-#  . /etc/default/locale
-#  export LANG LANGUAGE
-#fi
+cat > startwm-archlinux.sh <<'EOF'
+#!/usr/bin/env sh
 
-# if [ -r ~/.xinitrc ]; then
-# . ~/.xinitrc
-# exit 0
-# fi
+export TERM="xterm-256color"
+#export LANG=en_US.UTF-8
+#export LC_CTYPE="en_US.UTF-8"
 
-#exit 0
-#EOF
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export LC_NUMERIC=en_US.UTF-8
+export LC_TIME=en_US.UTF-8
+export LC_COLLATE=C
+export LC_MONETARY=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+export LC_PAPER=en_US.UTF-8
+export LC_NAME=en_US.UTF-8
+export LC_ADDRESS=en_US.UTF-8
+export LC_TELEPHONE=en_US.UTF-8
+export LC_MEASUREMENT=en_US.UTF-8
+export LC_IDENTIFICATION=en_US.UTF-8
+
+
+#xset +fp ~/.fonts
+xrdb -merge ~/.Xresources
+
+# for troubleshooting uncomment
+#exec xterm
+#exec urxvt
+
+. ~/.xinitrc
+
+exit 0
+EOF
 
 cat > Xwrapper.config <<'EOF'
 allowed_users=anybody
@@ -31,6 +81,8 @@ needs_root_rights=yes
 EOF
 
 sudo mkdir -p /etc/X11
+
+exit 11
 
 if [ "$OS" = "Arch Linux" ]; then
   mkdir -p $HOME/projects
