@@ -1,10 +1,11 @@
 #!/bin/sh
 
-cp ~/.ssh/id_rsa .
+cp $HOME/.ssh/id_rsa .
+cp $HOME/.ssh/known_hosts .
 sudo docker build -t voidbox .
 if [ $? -ne 0 ]; then
-  echo debugging
-  sudo docker build -t voidbox -f Dockerfile.debug .
+  echo  failed docker build.
+  #sudo docker build -t voidbox -f Dockerfile.debug .
 fi
 rm -rf id_rsa
 sudo docker stop voidbox
