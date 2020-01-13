@@ -22,7 +22,7 @@ fi
 cd $HOME/projects
 git clone https://git.suckless.org/st
 if [ $? -ne 0 ]; then
-  echo "wget failed."
+  echo "git clone failed."
   exit 1
 fi
 cd st
