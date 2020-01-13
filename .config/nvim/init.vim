@@ -65,6 +65,7 @@ endif
 "   Plug 'git@github.com:itchyny/vim-haskell-indent.git'
 "   Plug 'git@github.com:terryma/vim-multiple-cursors.git'
 "   Plug 'git@github.com:yuttie/comfortable-motion.vim.git'
+"   Plug 'git@github.com:morhetz/gruvbox.git'
  call plug#end()
 
 " coc config
