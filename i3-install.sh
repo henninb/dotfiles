@@ -32,6 +32,7 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   sudo apt install -y w3m
   sudo apt install -y w3m-img
   sudo apt install -y vifm
+  sudo apt install -y compton
   cd ~/projects
   git clone https://www.github.com/Airblader/i3 i3-gaps
   cd i3-gaps
@@ -64,6 +65,7 @@ elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S sxhkd
   sudo pacman --noconfirm --needed -S w3m
   sudo pacman --noconfirm --needed -S vifm
+  sudo pacman --noconfirm --needed -S compton
 elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
@@ -84,6 +86,7 @@ elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S sxhkd
   sudo pacman --noconfirm --needed -S w3m
   sudo pacman --noconfirm --needed -S vifm
+  sudo pacman --noconfirm --needed -S compton
 elif [ "$OS" = "Gentoo" ]; then
   GENTOO_PKGS="x11-misc/i3status i3blocks xterm i3lock rofi terminator dmenu ranger feh cmatrix cairo libmpdclient pulseaudio i3-gaps autocutsel vimfm w3m xclip"
   FAILURES=""
@@ -113,6 +116,7 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y sxhkd
   sudo dnf install -y w3m
   sudo dnf install -y vifm
+  sudo dnf install -y compton
   sudo dnf install -y libxcb-devel xcb-util-keysyms-devel xcb-util-devel xcb-util-wm-devel xcb-util-xrm-devel yajl-devel libXrandr-devel startup-notification-devel libev-devel xcb-util-cursor-devel libXinerama-devel libxkbcommon-devel libxkbcommon-x11-devel pcre-devel pango-devel git gcc automake libcurl-devel libmpdclient-devel wireless-tools-devel pulseaudio-libs-devel xcb-proto  cairo-devel i3-devel
   cd ~/projects
   git clone https://github.com/vivien/i3blocks.git

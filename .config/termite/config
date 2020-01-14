@@ -3,6 +3,8 @@
 font = monofur for Powerline 16
 #font = Inconsolata 16
 
+#opacity-rule = ["85:class_g = 'Termite'"];
+
 # "block", "underline" or "ibeam"
 #cursor_shape = block
 

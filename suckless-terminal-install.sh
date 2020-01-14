@@ -21,10 +21,6 @@ fi
 
 cd $HOME/projects
 git clone https://git.suckless.org/st
-if [ $? -ne 0 ]; then
-  echo "git clone failed."
-  exit 1
-fi
 cd st
 if [ $? -ne 0 ]; then
   echo "cd failed."
@@ -36,6 +32,13 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 sudo make install
+cd $HOME
+
+cd $HOME/projects
+git clone git@github.com:Tharre/st-transparency.git
+cd st-transparency
+make
+mv st $HOME/.local/bin/st-transparency
 cd $HOME
 
 exit 0
