@@ -78,3 +78,6 @@ URxvt*keysym.F12: perl:urxvt-colors:
 !URxvt.keysym.F3: perl:clipboard:paste
 !If true, copy to clipboard too
 !URxvt.keyboard-select.clipboard:true
+
+URxvt.transparent: true
+URxvt.shading: 20

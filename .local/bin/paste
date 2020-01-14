@@ -1,2 +1,0 @@
-xclip -selection clipboard -o
-#xclip -loop 1 -out -selection clipboard
