@@ -51,6 +51,7 @@ echo sudo mkfontdir /usr/share/fonts/TTF
 #exec feh --bg-scale --randomize $HOME/backgrounds/* &
 exec feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg &
 exec xscreensaver -no-splash &
+exec picom &
 # TODO: test to see if needed for autoselecting text in urxvt
 # exec autocutsel
 
