@@ -32,7 +32,7 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   sudo apt install -y w3m
   sudo apt install -y w3m-img
   sudo apt install -y vifm
-  sudo apt install -y picom
+  sudo apt install -y compton
   cd ~/projects
   git clone https://www.github.com/Airblader/i3 i3-gaps
   cd i3-gaps

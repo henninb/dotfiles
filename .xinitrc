@@ -41,6 +41,7 @@ fi
 xrdb -merge ~/.Xresources
 #xrdb -load ~/.Xresources
 
+#TODO: is this required?
 for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
     [ -x "$f" ] && . "$f"
 done
@@ -51,58 +52,57 @@ echo sudo mkfontdir /usr/share/fonts/TTF
 #exec feh --bg-scale --randomize $HOME/backgrounds/* &
 exec feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg &
 exec xscreensaver -no-splash &
-exec picom &
-# TODO: test to see if needed for autoselecting text in urxvt
-# exec autocutsel
-
-# cp ~/.xmonad/xmonad-master.hs ~/.xmonad/xmonad.hs
-# rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux*
-# ln -sfn $HOME/.xmonad/xmonad-master.hs $HOME/.xmonad/xmonad.hs
-
 if [ "$OS" = "Arch Linux" ]; then
-  #[ -n "$XRDP_SESSION" ] && cp ~/.xmonad/xmonad-archlinux-xrdp.hs ~/.xmonad/xmonad.hs
-  [ -n "$XRDP_SESSION" ] && ln -sfn $HOME/.xmonad/xmonad-archlinux-xrdp.hs $HOME/.xmonad/xmonad.hs
-fi
-
-if [ -f "$HOME/.xmonad/rice" ]; then
-  rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux*
-  ln -sfn $HOME/.xmonad/xmonad-rice.hs $HOME/.xmonad/xmonad.hs
-  cd $HOME/.xmonad
-  stack ghc -- --make xmonad.hs -i -ilib > /dev/null 2>&1
-  cd -
-  echo "rice $(date)" >> xinit.log
-elif [ -f "$HOME/.xmonad/simple" ]; then
-  rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux* xmonad
-  ln -sfn $HOME/.xmonad/xmonad-simple.hs $HOME/.xmonad/xmonad.hs
-  cd $HOME/.xmonad
-  stack ghc -- --make xmonad.hs > /dev/null 2>&1
-  cd -
-elif [ -f "$HOME/.xmonad/test" ]; then
-  rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux* xmonad
-  ln -sfn $HOME/.xmonad/xmonad-test.hs $HOME/.xmonad/xmonad.hs
-  cd $HOME/.xmonad
-  stack ghc -- --make xmonad.hs > /dev/null 2>&1
-  cd -
-  echo "xrdp $(date)" >> xinit.log
-elif [ -f "$HOME/.xmonad/xrdp" ]; then
-  rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux* xmonad
-  ln -sfn $HOME/.xmonad/xmonad-archlinux-xrdp.hs $HOME/.xmonad/xmonad.hs
-  cd $HOME/.xmonad
-  stack ghc -- --make xmonad.hs > /dev/null 2>&1
-  cd -
-  echo "xrdp $(date)" >> xinit.log
+  exec picom &
 else
-  rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux* xmonad
-  ln -sfn $HOME/.xmonad/xmonad-master.hs $HOME/.xmonad/xmonad.hs
-  cd $HOME/.xmonad
-  stack ghc -- --make xmonad.hs > /dev/null 2>&1
-  cd -
-  echo "default $(date)" >> xinit.log
+  exec compton &
 fi
 
-echo "ghc $(date)" >> xinit.log
+## TODO: uncomment for xmonad stack ##
+#if [ "$OS" = "Arch Linux" ]; then
+#  #[ -n "$XRDP_SESSION" ] && cp ~/.xmonad/xmonad-archlinux-xrdp.hs ~/.xmonad/xmonad.hs
+#  [ -n "$XRDP_SESSION" ] && ln -sfn $HOME/.xmonad/xmonad-archlinux-xrdp.hs $HOME/.xmonad/xmonad.hs
+#fi
 
-mv $HOME/.xmonad/xmonad /home/henninb/.local/bin
+#if [ -f "$HOME/.xmonad/rice" ]; then
+#  rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux*
+#  ln -sfn $HOME/.xmonad/xmonad-rice.hs $HOME/.xmonad/xmonad.hs
+#  cd $HOME/.xmonad
+#  stack ghc -- --make xmonad.hs -i -ilib > /dev/null 2>&1
+#  cd -
+#  echo "rice $(date)" >> xinit.log
+#elif [ -f "$HOME/.xmonad/simple" ]; then
+#  rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux* xmonad
+#  ln -sfn $HOME/.xmonad/xmonad-simple.hs $HOME/.xmonad/xmonad.hs
+#  cd $HOME/.xmonad
+#  stack ghc -- --make xmonad.hs > /dev/null 2>&1
+#  cd -
+#elif [ -f "$HOME/.xmonad/test" ]; then
+#  rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux* xmonad
+#  ln -sfn $HOME/.xmonad/xmonad-test.hs $HOME/.xmonad/xmonad.hs
+#  cd $HOME/.xmonad
+#  stack ghc -- --make xmonad.hs > /dev/null 2>&1
+#  cd -
+#  echo "xrdp $(date)" >> xinit.log
+#elif [ -f "$HOME/.xmonad/xrdp" ]; then
+#  rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux* xmonad
+#  ln -sfn $HOME/.xmonad/xmonad-archlinux-xrdp.hs $HOME/.xmonad/xmonad.hs
+#  cd $HOME/.xmonad
+#  stack ghc -- --make xmonad.hs > /dev/null 2>&1
+#  cd -
+#  echo "xrdp $(date)" >> xinit.log
+#else
+#  rm -rf $HOME/.xmonad/xmonad.hs xmonad-x86_64-linux* xmonad
+#  ln -sfn $HOME/.xmonad/xmonad-master.hs $HOME/.xmonad/xmonad.hs
+#  cd $HOME/.xmonad
+#  stack ghc -- --make xmonad.hs > /dev/null 2>&1
+#  cd -
+#  echo "default $(date)" >> xinit.log
+#fi
+#mv $HOME/.xmonad/xmonad /home/henninb/.local/bin
+
+#echo "ghc $(date)" >> xinit.log
+
 
 #exec mate-session
 exec i3

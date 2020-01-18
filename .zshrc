@@ -226,8 +226,11 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 #  export DISPLAY=localhost:10.0
 fi
 
+mkdir -p $HOME/.config/compton
+
 #ln -sfn $HOME/.config/nvim/init.vim.simple $HOME/.vimrc
 [ -f $HOME/.config/nvim/init.vim ] && ln -sfn $HOME/.config/nvim/init.vim $HOME/.vimrc
+[ -f $HOME/.config/picom/picom.conf ] && ln -sfn $HOME/.config/picom/picom.conf $HOME/.config/compton/compton.conf
 # [-f $HOME/.xinitrc ] && ln -sfn $HOME/.xinitrc $HOME/.xsessionrc
 [ -f $HOME/.xinitrc ] && ln -sfn $HOME/.xinitrc $HOME/.xsession
 [ -f /opt/arduino/arduino ] && ln -sfn /opt/arduino/arduino $HOME/.local/bin/arduino
