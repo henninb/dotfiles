@@ -275,9 +275,11 @@ export PATH="$HOME/.dynamic-colors/bin:$PATH"
 #   fi
 # fi
 
-grep $(hostname) /etc/hosts > /dev/null
-if [ $? -ne 0 ]; then
-  echo "Action required: add a hostname entry to /etc/hosts to prevent issues with xauth."
+if [ "$OS" = "Gentoo" ]; then
+  grep $(hostname) /etc/hosts > /dev/null
+  if [ $? -ne 0 ]; then
+    echo "Action required: add a hostname entry to /etc/hosts to prevent issues with xauth."
+  fi
 fi
 
 if [ "$MYSHELL" = "zsh" ]; then
