@@ -1,6 +1,11 @@
 [options]
 #font = SauceCodePro NF 12
 font = monofur for Powerline 16
+
+
+[colors]
+transparency = 0.3
+background = rgba(0, 0, 0, 0.5)
 #font = Inconsolata 16
 
 #opacity-rule = ["85:class_g = 'Termite'"];
