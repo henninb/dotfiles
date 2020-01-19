@@ -86,7 +86,7 @@ brew install xmlstarlet
 brew install tmux
 #brew install docker
 brew install jenv
-brew install wine
+#brew install wine
 brew install pwgen
 brew install fish
 brew install dos2unix
@@ -96,25 +96,24 @@ brew install cppcheck
 brew install azure-cli
 brew install cheat
 brew cask install vimr
-brew install jenkins
+#brew install jenkins
 brew install lastpass-cli
-brew install mplayer
+#brew install mplayer
 #brew install sshfs
 brew install pacvim
-brew cask install xquartz
+#brew cask install xquartz
 brew install postgresql
 brew install fzf
-brew install liquibase
+#brew install liquibase
 brew install kotlin
 brew install pyenv
 brew install figlet
 brew install ghc
-brew install travis
+#brew install travis
 brew install stack
 brew install lf
 brew install pssh
 brew install charmbracelet/homebrew-tap/glow
-brew tap tgt/brewhouse git@git.target.com:brew/house.git
 echo brew cask install iterm2
 brew tap mongodb/brew
 brew install mongodb-community-shell

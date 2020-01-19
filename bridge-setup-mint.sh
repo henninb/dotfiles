@@ -18,7 +18,6 @@ auto br0
  iface br0 inet dhcp
 #    bridge_ports enp0s31f6
     bridge_ports wlp2s0
-#    bridge_ports eth0
 EOF
 
 cat > sysctl.conf <<'EOF'
