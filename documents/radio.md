@@ -40,6 +40,16 @@ SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", GROUP="adm"
 - national callin freq - (7 meter) 147.52
 - (2 meter) 466.0
 
+## bands
+6 meters – 50–54 MHz
+4 meters – 70–70.5 MHz
+2 meters – 144–148 MHz (VHF radio spectrum)
+1.25 meters – 219–220 MHz (Canada only), 222–225 MHz (US & Canada)
+70 centimeters – 420–450 MHz
+33 centimeters – 902–928 MHz
+23 centimeters – 1240–1300 MHz
+13 centimeters – 2300–2310 MHz (lower segment), 2390–2450 MHz (upper segment)
+
 ## police fire and rescure
 radio reference
 
