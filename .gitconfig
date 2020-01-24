@@ -1,6 +1,6 @@
 [user]
-	email = henninb@msn.com
-	name = Brian Henning
+  email = henninb@msn.com
+  name = Brian Henning
 [alias]
   co = checkout
   ci = commit
@@ -12,16 +12,11 @@
   cob = checkout -b
   pom = push origin master
 [push]
-	default = simple
-#[remote "origin"]
-#	url = git@github.com:BitExplorer/dotfiles.git
-#	fetch = +refs/heads/*:refs/remotes/origin/*
-# [branch "master"]
-# 	remote = origin
-# 	merge = refs/heads/master
+  default = simple
 [merge]
   tool = vimdiff
 [diff]
-  tool = vimdiff
+#  tool = vimdiff
+  external = git-diff-wrapper
 [core]
   pager = less -F -X
