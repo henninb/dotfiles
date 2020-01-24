@@ -33,6 +33,7 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   sudo apt install -y w3m-img
   sudo apt install -y vifm
   sudo apt install -y compton
+  sudo apt install -y xserver-xephyr
   cd ~/projects
   git clone https://www.github.com/Airblader/i3 i3-gaps
   cd i3-gaps
