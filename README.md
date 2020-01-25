@@ -33,6 +33,7 @@
 - database client - dbeaver
 - astronomy - stellarium
 - notes - standard note
+- font - monofur
 
 
 audacity
