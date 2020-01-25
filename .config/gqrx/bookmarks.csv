@@ -1,19 +1,22 @@
 # Tag name          ;  color
-102.1               ; #c0c0c0
-102.9               ; #c0c0c0
+92.5                ; #c0c0c0
+94.5                ; #c0c0c0
 93.7                ; #c0c0c0
 100.3               ; #c0c0c0
-96.3                ; #c0c0c0
-107.9               ; #c0c0c0
-94.5                ; #c0c0c0
-830                 ; #c0c0c0
+CB                  ; #c0c0c0
 97.1                ; #c0c0c0
-92.5                ; #c0c0c0
-104.1               ; #c0c0c0
+102.1               ; #c0c0c0
+102.9               ; #c0c0c0
 lowest              ; #c0c0c0
+96.3                ; #c0c0c0
+FRS                 ; #c0c0c0
+ham                 ; #c0c0c0
+107.9               ; #c0c0c0
+104.1               ; #c0c0c0
 
 # Frequency ; Name                     ; Modulation          ;  Bandwidth; Tags
     23100000; lowest                   ; AM                  ;      10000; lowest
+    27185000; CB                       ; WFM (mono)          ;     160000; CB
     92500000; 92.5                     ; WFM (stereo)        ;     160000; 92.5
     93700000; 93.7                     ; WFM (stereo)        ;     160000; 93.7
     94500000; 94.5                     ; WFM (stereo)        ;     160000; 94.5
@@ -24,3 +27,5 @@ lowest              ; #c0c0c0
    102900000; 102.9                    ; WFM (stereo)        ;     160000; 102.9
    104100000; 104.1                    ; WFM (stereo)        ;     160000; 104.1
    107900000; 107.9                    ; WFM (stereo)        ;     160000; 107.9
+   461818000; ham                      ; WFM (mono)          ;     160000; ham
+   467260000; FRS                      ; Narrow FM           ;      10000; FRS

@@ -21,7 +21,7 @@
 - spreadsheet -sc-im
 - programming - java, kotlin, rust, haskell, python
 - containerization - docker
-- software defined radio - gqrx
+- software defined radio - gqrx, CubicSDR
 - hypervisor - kvm, qemu
 - remote desktop server - xrdp
 - irc client - irssi
@@ -38,6 +38,7 @@
 - image converter - imagemagik
 - cd burning - k3b
 - podcast client - ???
+
 
 
 audacity
