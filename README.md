@@ -12,20 +12,32 @@
 ## software
 - PDF Reader - zathura
 - terminal - urxvt, termite, st
-- editor - neovim, doom emacs
+- editor - neovim, doom emacs, vscode, intellij
 - bar - polybar
 - wm - i3, xmonad
-- shell - zsh
+- shell - zsh, bash
 - file manager - ranger, lf
-- media player - vlc
+- media player - vlc, olivia
 - spreadsheet -sc-im
 - programming - java, kotlin, rust, haskell, python
 - containerization - docker
 - software defined radio - gqrx
-- virtual -  kvm, qemu
-- remote desktop - xrdp
+- hypervisor - kvm, qemu
+- remote desktop server - xrdp
 - podcast client - ???
 - irc client - irssi
 - other tools - screen, tmux
 - network packet tools - tcpdump
 - markdown reader - glow
+- browser - firefox
+- database client - dbeaver
+- astronomy - stellarium
+- notes - standard note
+
+
+audacity
+handbrake
+blender
+steam
+mutt
+arduino
