@@ -1,23 +1,20 @@
 package example_db.services;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import java.util.Locale;
-import com.github.javafaker.service.FakeValuesService;
-import com.github.javafaker.service.RandomService;
+//import com.github.javafaker.service.FakeValuesService;
+//import com.github.javafaker.service.RandomService;
 
-import example_db.entities.Person;
+import example_db.domain.Person;
 
+@Slf4j
 @Service
 public class BatchExecuteService {
-    private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
-
     private PersonService personService;
 
-    private FakeValuesService fakeValuesService = new FakeValuesService(new Locale("en-US"), new RandomService());
+    //private FakeValuesService fakeValuesService = new FakeValuesService(new Locale("en-US"), new RandomService());
 
     @Autowired
     BatchExecuteService(PersonService personService) {
@@ -29,8 +26,8 @@ public class BatchExecuteService {
     public void execute() {
         System.out.println("test");
         Person person = new Person();
-        person.setFirstName(fakeValuesService.regexify("[a-z]{8}"));
-        person.setPersonId( Integer.parseInt(fakeValuesService.regexify("[0-9]{5}")) );
+        person.setFirstName("blah");
+        person.setPersonId( 54 );
         personService.addPerson(person);
         System.out.println("test complete");
 //        System.exit(2);

@@ -1,6 +1,6 @@
 package example_db.repositories;
 
-import example_db.entities.Person;
+import example_db.domain.Person;
 //import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 

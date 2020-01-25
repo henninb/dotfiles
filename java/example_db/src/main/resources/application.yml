@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: example_db
 # Oracle settings
   datasource:
     url: ${DATASOURCE_URL}
