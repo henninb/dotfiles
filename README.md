@@ -36,6 +36,7 @@
 - font - monofur
 - audio player - cmus
 - image converter - imagemagik
+- cd burning - k3b
 - podcast client - ???
 
 
