@@ -18,7 +18,7 @@ sudo chmod 777 /var/kvm/images/guest-centos7.img
 #fails on centos boot
 #sudo virt-install --name guest-centos7 --ram=2048 --disk path=/var/kvm/images/guest-centos7.img,size=10 --vcpus 1 --os-type linux --os-variant rhel7.0 --graphics none --location 'http://bay.uchicago.edu/centos/7.6.1810/os/x86_64/' --extra-args console=ttyS0
 
-sudo mv //tmp/CentOS-7-x86_64-NetInstall-1810.iso /var/lib/libvirt/images/
+sudo mv /tmp/CentOS-7-x86_64-NetInstall-1810.iso /var/lib/libvirt/images/
 # works for iso media
 sudo virt-install --name=guest-centos7 --ram=2048 --vcpus=1 --os-type=linux --os-variant=rhel7.0 --disk path=/var/lib/libvirt/images/guest-centos7.img,size=10 --graphics none --location /var/lib/libvirt/images/CentOS-7-x86_64-NetInstall-1810.iso --extra-args console=ttyS0
 
