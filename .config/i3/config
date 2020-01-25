@@ -123,7 +123,7 @@ for_window [class="Firefox"] move to workspace 4
 for_window [class="Steam"] move to workspace 3
 
 # exit i3
-#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
 #bindsym $mod+Shift+q exec i3-msg exit
 bindsym $mod+Shift+q exec i3_exit
 
