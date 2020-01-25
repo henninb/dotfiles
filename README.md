@@ -41,3 +41,4 @@ blender
 steam
 mutt
 arduino
+gimp
