@@ -14,7 +14,7 @@ UBUNTU_PKGS="jq stunnel postfix mailutils mpg123 screen figlet neovim vim rtorre
 
 GENTOO_PKGS="postfix stunnel mpg123 app-misc/screen figlet neovim vim rtorrent wget ranger zsh gnupg fossil subversion git mutt neomutt irssi htop nmon nmap tmux rsync libnova ffmpeg yarn alsa-utils cmus rsync dev-python/pip net-misc/netdate emacs mcrypt zip unzip dev-lang/smlnj dev-lisp/clisp layman dos2unix fish pass strace ctags astyle ntp mlton rpm eix bastet lsof sys-fs/fuse pulseaudio vifm sxhkd alsa-utils"
 
-FREEBSD_PKGS="zip unzip python py36-pip py36-powerline-status-2.7 stunnel mpg123 screen figlet neovim vim rtorrent wget ranger fx zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg yarn alsa-utils cmus rsync tmux emacs fish sysutils/password-store"
+FREEBSD_PKGS="coreutils zip unzip python py36-pip py36-powerline-status-2.7 stunnel mpg123 screen figlet neovim vim rtorrent wget ranger fx zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg yarn alsa-utils cmus rsync tmux emacs fish sysutils/password-store"
 
 RASPI_PKGS="jq vim-nox vim wget zsh gpg git mutt htop figlet screen pass neovim stunnel postfix mpg321 ranger mutt irssi nmon nmap libnova clisp fakeroot fish zip unzip dos2unix ctags emacs rsync tmux mcrypt etherwake sshfs cmus ffmpeg mpg123 strace yarn toilet newsboat sxhkd"
 
