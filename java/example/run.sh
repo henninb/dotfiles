@@ -32,6 +32,8 @@ elif [ "$OS" = "Darwin" ]; then
   HOST_IP=$(ipconfig getifaddr en0)
 elif [ "$OS" = "Gentoo" ]; then
   HOST_IP=$(hostname -i | awk '{print $1}')
+elif [ "$OS" = "FreeBSD" ]; then
+  HOST_IP=$(hostname -i | awk '{print $1}')
 else
   echo $OS is not yet implemented.
   exit 1
