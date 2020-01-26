@@ -6,6 +6,8 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
   sudo apt install -y alien fakeroot
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S libnsl
+elif [ "$OS" = "Darwin" ]; then
+  echo noop
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y libnsl
 else
@@ -14,36 +16,38 @@ else
 fi
 
 #export LD_LIBRARY_PATH=/opt/oracle/instantclient:$LD_LIBRARY_PATH
+#echo /usr/lib/oracle/19.3/client64/lib/libsqlplus.so
 
-echo /usr/lib/oracle/19.3/client64/lib/libsqlplus.so
-if [ ! -f "oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm" ]; then
-  scp pi@$RASPI_IP:/home/pi/downloads/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm .
-  if [ $? -ne 0 ]; then
-    wget https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm
-    scp oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm pi@$RASPI_IP:/home/pi/downloads/
+if [ ! "$OS" = "Darwin" ]; then
+  if [ ! -f "oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm" ]; then
+    scp pi@$RASPI_IP:/home/pi/downloads/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm .
+    if [ $? -ne 0 ]; then
+      wget https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm
+      scp oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm pi@$RASPI_IP:/home/pi/downloads/
+    fi
   fi
-fi
 
-if [ ! -f "oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm" ]; then
-  scp pi@$RASPI_IP:/home/pi/downloads/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm .
-  if [ $? -ne 0 ]; then
-    wget https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
-    scp oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm pi@$RASPI_IP:/home/pi/downloads/
+  if [ ! -f "oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm" ]; then
+    scp pi@$RASPI_IP:/home/pi/downloads/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm .
+    if [ $? -ne 0 ]; then
+      wget https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
+      scp oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm pi@$RASPI_IP:/home/pi/downloads/
+    fi
   fi
-fi
 
-if [ ! -f "oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm" ]; then
-  scp pi@$RASPI_IP:/home/pi/downloads/oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm .
-  if [ $? -ne 0 ]; then
-    echo wget https://www.oracle.com/database/technologies/instant-client/precompiler-112010-downloads.html
+  if [ ! -f "oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm" ]; then
+    scp pi@$RASPI_IP:/home/pi/downloads/oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm .
+    if [ $? -ne 0 ]; then
+      echo wget https://www.oracle.com/database/technologies/instant-client/precompiler-112010-downloads.html
+    fi
   fi
-fi
 
-if [ ! -f "oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm" ]; then
-  scp pi@$RASPI_IP:/home/pi/downloads/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm .
-  if [ $? -ne 0 ]; then
-    wget https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm
-     scp oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm pi@$RASPI_IP:/home/pi/downloads/
+  if [ ! -f "oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm" ]; then
+    scp pi@$RASPI_IP:/home/pi/downloads/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm .
+    if [ $? -ne 0 ]; then
+      wget https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm
+       scp oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm pi@$RASPI_IP:/home/pi/downloads/
+    fi
   fi
 fi
 
@@ -56,6 +60,14 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
   sudo dpkg -i oracle-instantclient19.3-devel_19.3.0.0.0-2_amd64.deb
   sudo dpkg -i oracle-instantclient19.3-precomp_19.3.0.0.0-2_amd64.deb
   sudo dpkg -i oracle-instantclient19.3-sqlplus_19.3.0.0.0-2_amd64.deb
+elif [ "$OS" = "Darwin" ]; then
+  if [ ! -f "instantclient-basic-macos.x64-19.3.0.0.0.zip" ]; then
+    wget https://download.oracle.com/otn_software/mac/instantclient/193000/instantclient-basic-macos.x64-19.3.0.0.0dbru.zip
+  fi
+
+  if [ ! -f "instantclient-sqlplus-macos.x64-19.3.0.0.0dbru.zip" ]; then
+    wget https://download.oracle.com/otn_software/mac/instantclient/193000/instantclient-sqlplus-macos.x64-19.3.0.0.0dbru.zip
+  fi
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum localinstall -y oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm
   sudo yum localinstall -y oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
