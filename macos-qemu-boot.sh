@@ -6,8 +6,6 @@ OVMF=$VMDIR/firmware
 #export QEMU_AUDIO_DRV=pa
 #QEMU_AUDIO_DRV=pa
 
-echo ip tuntap add tap0 mode tap
-
 qemu-system-x86_64 \
     -enable-kvm \
     -m 6G \
