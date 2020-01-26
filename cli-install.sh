@@ -18,6 +18,8 @@ FREEBSD_PKGS="coreutils zip unzip python py36-pip py36-powerline-status-2.7 stun
 
 RASPI_PKGS="jq vim-nox vim wget zsh gpg git mutt htop figlet screen pass neovim stunnel postfix mpg321 ranger mutt irssi nmon nmap libnova clisp fakeroot fish zip unzip dos2unix ctags emacs rsync tmux mcrypt etherwake sshfs cmus ffmpeg mpg123 strace yarn toilet newsboat sxhkd neofetch"
 
+MACOS_PKGS="ffmpeg figlet cmus imagemagick neofetch htop screen wget zsh fish zip unzip tmux dos2unix lynx azure-cli astyle emacs qemu ansible"
+
 mkdir -p .cli
 echo $CENTOS_PKGS > .cli/centos
 echo $ARCHLINUX_PKGS > .cli/archlinux
@@ -27,6 +29,7 @@ echo $GENTOO_PKGS > .cli/gentoo
 echo $FREEBSD_PKGS > .cli/freebsd
 echo $RASPI_PKGS > .cli/raspi
 echo $FEDORA_PKGS > .cli/fedora
+echo $MACOS_PKGS > .cli/macos
 
 if [ "$OS" = "Linux Mint" ]; then
   FAILURES=""
@@ -103,6 +106,14 @@ elif [ "$OS" = "Fedora" ]; then
   FAILURES=""
   for i in $(echo $FEDORA_PKGS); do
     sudo dnf install -y $i
+    if [ 0 -ne $? ]; then
+      FAILURE="$i $FAILURE"
+    fi
+  done
+  echo Failures: $FAILURE
+elif [ "$OS" = "Darwin" ]; then
+  for i in $(echo $MACOS_PKGS); do
+    brew install $i
     if [ 0 -ne $? ]; then
       FAILURE="$i $FAILURE"
     fi
