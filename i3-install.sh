@@ -127,6 +127,29 @@ elif [ "$OS" = "Fedora" ]; then
   make
   sudo make install
   cd -
+elif [ "$OS" = "FreeBSD" ]; then
+  sudo pkg install -y i3status
+  sudo pkg install -y i3blocks
+  sudo pkg install -y i3
+  sudo pkg install -y xterm
+  sudo pkg install -y i3lock
+  sudo pkg install -y rofi
+  sudo pkg install -y terminator
+  sudo pkg install -y feh
+  sudo pkg install -y ranger
+  sudo pkg install -y suckless-tools
+  sudo pkg install -y cmatrix
+  sudo pkg install -y libev-dev
+  sudo pkg install -y xcb-proto
+  sudo pkg install -y libxcb-ewmh-dev
+  sudo pkg install -y xclip
+  sudo pkg install -y sxhkd
+  sudo pkg install -y w3m
+  sudo pkg install -y w3m-img
+  sudo pkg install -y vifm
+  sudo pkg install -y compton
+  sudo apt install -y xserver-xephyr
+  sudo apt install -y polybar
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y i3status i3 i3lock xterm i3lock terminator dmenu dolphin terminus-fonts-console terminus-fonts
 else
