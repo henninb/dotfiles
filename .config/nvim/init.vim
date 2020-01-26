@@ -220,9 +220,15 @@ nnoremap fth :set ft=html<cr>
 
 " normal mode mapings
 nmap <leader>z :g/^$/d<cr>
+" remove trailing spaces
 nmap <leader>s :%s/\s\+$//g<cr>
+" toggle line numbers
 nmap <leader>l :set nu! rnu! list!<cr> :CocCommand git.toggleGutters<cr>
+" toggle nerd tree
 nmap <leader>n :NERDTreeToggle<cr>
+"space separated to column
+nmap <leader>c :s/\s\+/\r/g<cr>
+nmap <leader>C :s/\s\+/\r/g<cr> :sort<cr>
 
 " normal mode: edit vimrc/zshrc and load vimrc bindings
 nnoremap <leader>ev :vsp $MYVIMRC<cr>

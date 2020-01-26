@@ -38,6 +38,7 @@
 - image converter - imagemagik
 - burning images - k3b, cdrecord
 - podcast client - ???
+- process viewer - htop
 
 
 
