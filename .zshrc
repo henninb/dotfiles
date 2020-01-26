@@ -7,7 +7,7 @@ if [ "$0" = "zsh" ]; then
 elif [ "$0" = "bash" ]; then
   export MYSHELL=bash
 else
-  export MYSHELL=$(ps -o args= -p $$ | egrep -m 1 -o '\w{0,5}sh')
+  export MYSHELL=$(ps -o args= -p $$ | egrep -m 1 -o '\w{0,5}sh'| head -1)
 fi
 
 [ -z "$MYSHELL" ] && echo SHELL not found: dollar zero $0 and need to find a fix.
