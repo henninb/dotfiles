@@ -10,6 +10,8 @@ elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Ras
   ./configure --with-xpm=no --with-jpeg=no --with-gif=no --with-tiff=no
   make
   sudo make install
+elif [ "$OS" = "Darwin" ]; then
+  echo nops
 elif [ "$OS" = "FreeBSD" ]; then
   echo noop
 else
