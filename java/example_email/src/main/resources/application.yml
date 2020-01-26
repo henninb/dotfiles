@@ -1,4 +1,5 @@
 spring:
+  profiles: prod
   application:
     name: example_email
 
