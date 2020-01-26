@@ -34,6 +34,7 @@ elif [ "$OS" = "Gentoo" ]; then
   done
   echo Failures: $FAILURE
 elif [ "$OS" = "Linux Mint" ]; then
+  echo sudo apt-add-repository ppa:dolphin-emu/ppa
   wget -O - https://dbeaver.io/debs/dbeaver.gpg.key | sudo apt-key add -
   echo "deb https://dbeaver.io/debs/dbeaver-ce /" | sudo tee /etc/apt/sources.list.d/dbeaver.list
   sudo apt update
