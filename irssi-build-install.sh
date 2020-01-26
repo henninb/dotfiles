@@ -13,6 +13,8 @@ fi
 
 if [ "$OS" = "FreeBSD" ]; then
   sudo pkg install gtk3 gmake intltool pkgconf automake pcre2 libtool gtk-doc
+elif [ "$OS" = "Darwin" ]; then
+  brew install wget
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
     echo centos8

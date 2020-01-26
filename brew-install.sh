@@ -121,6 +121,8 @@ brew install mongodb-community-shell
 #brew unlink md5sha1sum
 brew install md5sha1sum
 
+git -C "$(brew --repo homebrew/core)" fetch --unshallow
+
 brew tap homebrew/cask-versions
 git -C "$(brew --repo homebrew/core)" fetch --unshallow
 brew cask install java11
