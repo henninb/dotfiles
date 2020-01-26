@@ -6,6 +6,8 @@ OVMF=$VMDIR/firmware
 #export QEMU_AUDIO_DRV=pa
 #QEMU_AUDIO_DRV=pa
 
+udisksctl mount -b /dev/sda1
+
 qemu-system-x86_64 \
     -enable-kvm \
     -m 6G \
@@ -22,11 +24,12 @@ qemu-system-x86_64 \
     -netdev user,id=net0,hostfwd=tcp::2222-:22 \
     -device e1000-82545em,netdev=net0,id=net0,mac=52:54:00:c9:18:27 \
     -device ich9-ahci,id=sata \
-    -drive id=ESP,if=none,format=qcow2,file=ESP.qcow2 \
+    -drive id=ESP,if=none,format=qcow2,file=/media/henninb/Data/ESP.qcow2 \
     -device ide-hd,bus=sata.2,drive=ESP \
-    -drive id=SystemDisk,if=none,file=/home/henninb/MyDisk.qcow2 \
+    -drive id=SystemDisk,if=none,file=/media/henninb/Data/macos-qemu-disk.qcow2 \
     -device ide-hd,bus=sata.4,drive=SystemDisk
 exit 0
+# needed for install only
 # needed for install only
     -drive id=InstallMedia,format=raw,if=none,file=BaseSystem.img \
     -device ide-hd,bus=sata.3,drive=InstallMedia \
