@@ -1,10 +1,9 @@
 #!/bin/sh
 
-#go get -u github.com/gokcehan/lf
-go get github.com/gokcehan/lf
+if [ ! -x "$(command -v go)" ]; then
+  echo go not installed.
+fi
 
-#wget https://github.com/gokcehan/lf/releases/download/r13/lf-linux-amd64.tar.gz
-#tar xvf lf-linux-amd64.tar.gz
-#mv lf .local/bin
+go get github.com/gokcehan/lf
 
 exit 0
