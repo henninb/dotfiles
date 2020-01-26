@@ -62,7 +62,7 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
   sudo dpkg -i oracle-instantclient19.3-sqlplus_19.3.0.0.0-2_amd64.deb
 elif [ "$OS" = "Darwin" ]; then
   echo MacOS
-  if [ ! -f "instantclient-basic-macos.x64-19.3.0.0.0.zip" ]; then
+  if [ ! -f "instantclient-basic-macos.x64-19.3.0.0.0dbru.zip" ]; then
     wget https://download.oracle.com/otn_software/mac/instantclient/193000/instantclient-basic-macos.x64-19.3.0.0.0dbru.zip
   fi
 
@@ -70,10 +70,10 @@ elif [ "$OS" = "Darwin" ]; then
     wget https://download.oracle.com/otn_software/mac/instantclient/193000/instantclient-sqlplus-macos.x64-19.3.0.0.0dbru.zip
   fi
 
-  sudo mkdir -p /opt/oracle-instantclient
-  cd /opt/oracle-instantclient
-  sudo unzip $HOME/instantclient-sqlplus-macos.x64-19.3.0.0.0dbru.zip
-  sudo unzip $HOME/instantclient-basic-macos.x64-19.3.0.0.0.zip
+  cd /opt
+  sudo unzip -o $HOME/instantclient-sqlplus-macos.x64-19.3.0.0.0dbru.zip
+  sudo unzip -o $HOME/instantclient-basic-macos.x64-19.3.0.0.0.zip
+  sudo mv -v instantclient_19_3 oracle-instantclient
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum localinstall -y oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm
   sudo yum localinstall -y oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm

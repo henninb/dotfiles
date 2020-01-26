@@ -9,8 +9,8 @@ if [ "$OS" = "Darwin" ]; then
   sudo rm -rf /opt/vscode
   rm -rf code-stable-latest.zip
   wget https://go.microsoft.com/fwlink/?LinkID=620882 -O code-stable-latest.zip
-  unzip code-stable-latest.zip
-  sudo mv Visual\ Studio\ Code.app /Applications
+  unzip -o code-stable-latest.zip
+  sudo mv -v Visual\ Studio\ Code.app /Applications
   #id -g vscode &>/dev/null || sudo groupadd vscode
 elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
   echo $(code --version)
