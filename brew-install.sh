@@ -3,6 +3,7 @@
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
 
 brew install coreutils
+brew install fontconfig
 brew install ctags
 brew install activemq
 brew install gcc

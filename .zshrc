@@ -111,7 +111,7 @@ if [ ! -x "$(command -v unzip)" ]; then
 fi
 
 if [ ! -x "$(command -v fc-cache)" ]; then
-  echo unzip not installed.
+  echo fc-cache not installed.
 fi
 
 # TODO: do I need this?
