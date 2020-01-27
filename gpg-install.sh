@@ -11,7 +11,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y gnupg pass pinentry
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y gnupg pass
-elif [ "$OS" = "Mint Linux" ]; then
+elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
   sudo apt install -y gnupg pass pinentry-tty
   sudo update-alternatives --config pinentry
 elif [ "$OS" = "FreeBSD" ]; then
@@ -21,14 +21,14 @@ else
   exit 1
 fi
 
-cat > gpg-agent.conf <<'EOF'
-pinentry-program /usr/bin/pinentry-curses
-allow-loopback-pinentry
-EOF
+# cat > gpg-agent.conf <<'EOF'
+# pinentry-program /usr/bin/pinentry-curses
+# allow-loopback-pinentry
+# EOF
 
-mkdir -p $HOME/.gnupg
-chmod 700 $HOME/.gnupg
-echo Files inside .gnupg should be chmod 600
+# mkdir -p $HOME/.gnupg
+# chmod 700 $HOME/.gnupg
+
 echo
 echo gpg --full-generate-key
 
