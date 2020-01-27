@@ -8,33 +8,33 @@ master:
 	@stack ghc -- --make xmonad.hs
 	@rm -rf *.hi *.o
 	@touch .master
-	@mv xmonad $HOME/.local/bin
-	@hlint xmonad-master.hs
+	@mv -v xmonad ${HOME}/.local/bin
+#	@hlint xmonad-master.hs
 test:
 	@rm -rf *.hi *.o
 	@ln -sfn xmonad-test.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs
 	@rm -rf *.hi *.o
 	@touch .test
-	@mv xmonad $HOME/.local/bin
-	@hlint xmonad-test.hs
+	@mv -v xmonad ${HOME}/.local/bin
+#	@hlint xmonad-test.hs
 simple:
 	@rm -rf *.hi *.o xmonad
 	@ln -sfn xmonad-simple.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs
 	@rm -rf *.hi *.o
 	@touch .simple
-	@mv xmonad $HOME/.local/bin
-	@hlint xmonad-simple.hs
+	@mv -v xmonad ${HOME}/.local/bin
+#	@hlint xmonad-simple.hs
 rice:
 	@rm -rf *.hi *.o lib/*.o lib/*.hi xmonad
 	@ln -sfn xmonad-rice.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs -i -ilib -fforce-recomp
 	@rm -rf *.hi *.o lib/*.o lib/*.hi
 	@touch .rice
-	@hlint xmonad-rice.hs
-	@mv xmonad $HOME/.local/bin
-	@hlint lib/*.hs
+#	@hlint xmonad-rice.hs
+	@mv -v xmonad ${HOME}/.local/bin
+#	@hlint lib/*.hs
 
 # exec stack ghc \
 #   -- \
