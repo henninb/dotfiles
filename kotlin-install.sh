@@ -8,5 +8,6 @@ if [ ! -f "kotlin-compiler-${KOTLIN_VER}.zip" ]; then
 fi
 cd /opt
 sudo unzip -o $HOME/kotlin-compiler-${KOTLIN_VER}.zip
+echo $KOTLIN_VER
 
 exit 0
