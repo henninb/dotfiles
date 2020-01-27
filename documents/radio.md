@@ -23,6 +23,9 @@ SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", GROUP="adm"
 ## Linux Front end SDR software
 - gqrx
 
+# NOAA
+- NOAA Weather Radio Station KEC65 162.55 Mhz Minneapolis
+
 ## Baofeng UV-5R
 - Station for family walkie talkie
 - 467.287
