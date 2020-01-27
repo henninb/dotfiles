@@ -1,8 +1,8 @@
 #!/bin/sh
 
 xrandr --prop
-#Xephyr -br -ac -noreset -screen 1024x768 :1 &
-Xephyr -br -ac -noreset -screen 1280x1024 :1 &
+Xephyr -br -ac -noreset -screen 1024x768 :1 &
+#Xephyr -br -ac -noreset -screen 1280x1024 :1 &
 echo export DISPLAY=:1
 
 exit 0
