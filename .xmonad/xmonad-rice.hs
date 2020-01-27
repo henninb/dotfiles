@@ -89,16 +89,16 @@ myXPConfig = def
 --myKeys conf@XConfig {modMask = modMask} =
 --myKeys conf@XConfig {modMask = modMask} = M.fromList $
 myKeys = [
-    ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
-        , ((mod1Mask .|. shiftMask, xK_p), spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal")
+    ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
+        , ((mod4Mask .|. shiftMask, xK_p), spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal")
         , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
         , ((0, xK_Print), spawn "scrot")
-        , ((mod1Mask, xK_i), spawn myBrowser)
-        , ((mod1Mask, xK_Return), spawn "termite")
-        , ((mod1Mask .|. shiftMask, xK_i), spawn (myBrowser ++ " -private-window"))
+        , ((mod4Mask, xK_i), spawn myBrowser)
+        , ((mod4Mask, xK_Return), spawn "termite")
+        , ((mod4Mask .|. shiftMask, xK_i), spawn (myBrowser ++ " -private-window"))
         --, ((mod4Mask .|. shiftMask, xK_BackSpace), kill)
-        , ((mod1Mask .|. shiftMask, xK_BackSpace), kill)
+        , ((mod4Mask .|. shiftMask, xK_BackSpace), kill)
         --, ((mod4Mask .|. shiftMask, xK_w), confirmPrompt myXPConfig "exit" (io exitSuccess))
-        , ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" (io exitSuccess))
-        , ((mod1Mask, xK_space ), sendMessage ToggleLayout)
+        , ((mod4Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" (io exitSuccess))
+        , ((mod4Mask, xK_space ), sendMessage ToggleLayout)
     ]
