@@ -2,6 +2,8 @@
 
 if [ "$OS" = "Gentoo" ]; then
   sudo emerge gnupg pass
+elif [ "$OS" = "Linux Mint" ]; then
+  sudo apt install -y gnupg
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S gnupg
   sudo pacman --noconfirm --needed -S pass
@@ -30,7 +32,7 @@ echo Files inside .gnupg should be chmod 600
 echo
 echo gpg --full-generate-key
 
-if [ ! -f ~/private.key ]; then
+if [ ! -f "$HOME/private.key" ]; then
   echo ~/private.key is not found.
   exit 1
 fi
@@ -66,9 +68,9 @@ gpg-connect-agent reloadagent /bye
 
 exit 0
 
-gpg -e -u "Sender User Name" -r "Receiver User Name" somefile
-gpg --batch --yes --passphrase-fd 0 /tmp/test.gpg
-stty -echo; gpg --passphrase-fd 0 --pinentry-mode loopback --decrypt /tmp/test.gpg; stty echo
-gpg --passphrase-fd 0 --pinentry-mode loopback -d /tmp/test.gpg
+# gpg -e -u "Sender User Name" -r "Receiver User Name" somefile
+# gpg --batch --yes --passphrase-fd 0 /tmp/test.gpg
+# stty -echo; gpg --passphrase-fd 0 --pinentry-mode loopback --decrypt /tmp/test.gpg; stty echo
+# gpg --passphrase-fd 0 --pinentry-mode loopback -d /tmp/test.gpg
 
-export GPG_TTY=$(tty)
+# export GPG_TTY=$(tty)
