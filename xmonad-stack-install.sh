@@ -132,26 +132,26 @@ stack install xmonad-extras
 
 exit 0
 
-cd $HOME/projects
-git clone git@github.com:xmonad/xmonad.git
-cd xmonad
-git checkout tags/v0.13
-stack setup
-stack build
-stack install
-$HOME/.local/bin/xmonad --version
+# cd $HOME/projects
+# git clone git@github.com:xmonad/xmonad.git
+# cd xmonad
+# git checkout tags/v0.13
+# stack setup
+# stack build
+# stack install
+# $HOME/.local/bin/xmonad --version
 
-cd $HOME/projects
-git clone git@github.com:jaor/xmobar.git
-cd xmobar
-git checkout tags/v0.24.5
+# cd $HOME/projects
+# git clone git@github.com:jaor/xmobar.git
+# cd xmobar
+# git checkout tags/v0.24.5
 
-echo exec xmonad
-xmonad --recompile
-echo pid of systemd
-pidof systemd
+# echo exec xmonad
+# xmonad --recompile
+# echo pid of systemd
+# pidof systemd
 
-echo https://brianbuccola.com/how-to-install-xmonad-and-xmobar-via-stack/
-ghc-pkg list
+# echo https://brianbuccola.com/how-to-install-xmonad-and-xmobar-via-stack/
+# ghc-pkg list
 
-exit 0
+# exit 0
