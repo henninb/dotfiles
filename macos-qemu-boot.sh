@@ -6,7 +6,7 @@ OVMF=$VMDIR/firmware
 #export QEMU_AUDIO_DRV=pa
 #QEMU_AUDIO_DRV=pa
 
-udisksctl mount -b /dev/sda1
+echo udisksctl mount -b /dev/sda1
 
 qemu-system-x86_64 \
     -enable-kvm \
