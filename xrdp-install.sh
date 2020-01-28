@@ -238,5 +238,6 @@ sudo fuser 3389/tcp
 sudo fuser 3350/tcp
 
 echo /etc/X11/xrdp/xorg.conf
+echo  libpainter need for no text showing on the screen
 
 exit 0
