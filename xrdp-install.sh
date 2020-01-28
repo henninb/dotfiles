@@ -203,6 +203,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
 elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
   sudo usermod -a -G tty $(id -un)
   sudo apt install -y xrdp xorgxrdp rdesktop freerdp-x11 lsof
+  sudo apt install -y libpam0g-dev
   #sudo cp -v Xwrapper.config /etc/xorg/Xwrapper.config
   sudo cp -v Xwrapper.config /etc/X11/Xwrapper.config
   sudo systemctl start xrdp
