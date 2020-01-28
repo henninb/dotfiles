@@ -261,6 +261,7 @@ export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.rvm/bin:$PATH
 export PATH=/opt/kafka/bin:$PATH
 export PATH=/opt/kotlinc/bin:$PATH
+export PATH=/opt/oracle-instantclient:$PATH
 export PATH="$HOME/.dynamic-colors/bin:$PATH"
 [ -s "$HOME/.rvm/scripts/rvm" ] && source $HOME/.rvm/scripts/rvm
 [ -s "/etc/profile.d/rvm.sh" ] && source /etc/profile.d/rvm.sh
