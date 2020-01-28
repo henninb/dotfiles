@@ -202,13 +202,31 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo systemctl status xrdp
 elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
   sudo usermod -a -G tty $(id -un)
-  sudo apt install -y xrdp xorgxrdp rdesktop freerdp-x11 lsof
+  echo sudo apt install -y xrdp xorgxrdp
+  sudo apt install -y rdesktop freerdp-x11 lsof
   sudo apt install -y libpam0g-dev
   sudo apt install -y nasm
+  sudo apt install -y xserver-xorg-dev
   #sudo cp -v Xwrapper.config /etc/xorg/Xwrapper.config
+  cd $HOME/projects
+  git clone --recursive https://github.com/neutrinolabs/xrdp
+  cd xrdp
+  ./bootstrap
+  ./configure
+  make
+  sudo make install
+
+  cd $HOME/projects
+  git clone git@github.com:neutrinolabs/xorgxrdp.git
+  cd xorgxrdp
+  ./bootstrap
+  ./configure XRDP_CFLAGS=-I$HOME/projects/xrdp/common XRDP_LIBS=" "
+  make
+  sudo make install
   sudo cp -v Xwrapper.config /etc/X11/Xwrapper.config
   sudo systemctl start xrdp
   sudo systemctl status xrdp
+  echo systemctl unmask xrdp
 elif [ \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
   #sudo apt purge -y xserver-xorg-legacy
   sudo apt install -y libpam0g-dev xserver-xorg-dev lsof
