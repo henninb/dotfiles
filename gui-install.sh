@@ -20,6 +20,8 @@ if [ "$OS" = "Arch Linux" ]; then
     fi
   done
   echo failures $FAILURE
+elif [ "$OS" = "Darwin" ]; then
+  brew cask install vlc
 elif [ "$OS" = "Gentoo" ]; then
   FAILURES=""
   for i in $(echo $GENTOO_PKGS); do
