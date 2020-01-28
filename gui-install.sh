@@ -11,6 +11,8 @@ GENTOO_PKGS="vlc i3 handbrake terminator rofi games-emulation/dolphin firefox se
 
 FEDORA_PKGS="gvim gqrx"
 
+MACOS_PKGS=""
+
 if [ "$OS" = "Arch Linux" ]; then
   FAILURES=""
   for i in $(echo $ARCHLINUX_PKGS); do
