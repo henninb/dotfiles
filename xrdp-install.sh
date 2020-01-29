@@ -122,9 +122,6 @@ if [ "$OS" = "Arch Linux" ]; then
   #chmod 755 startwm.sh
   #sudo cp -v Xwrapper.config /etc/xorg/Xwrapper.config
   sudo cp -v Xwrapper.config /etc/X11/Xwrapper.config
-  sudo systemctl enable xrdp
-  sudo systemctl start xrdp
-  sudo systemctl status xrdp
   #chmod 755 $HOME/startwm.sh
   #sudo cp -v /etc/xrdp/startwm.sh /etc/xrdp/startwm.sh.bak.$$
   #sudo mv -v startwm.sh /etc/xrdp/startwm.sh
@@ -136,6 +133,10 @@ elif [ "$OS" = "Gentoo" ]; then
   ./bootstrap
   ./configure
   make
+  if [ $? -ne 0 ]; then
+    echo build failed for xrdp.
+    exit 1
+  fi
   sudo make install
 
   cd $HOME/projects
@@ -144,6 +145,10 @@ elif [ "$OS" = "Gentoo" ]; then
   ./bootstrap
   ./configure XRDP_CFLAGS=-I$HOME/projects/xrdp/common XRDP_LIBS=" "
   make
+  if [ $? -ne 0 ]; then
+    echo build failed for xorgxrdp.
+    exit 1
+  fi
   sudo make install
 
   #USE="server" sudo emerge  --update --newuse net-misc/tigervnc
@@ -151,7 +156,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo mv -v xrdp.rc /etc/init.d/xrdp
 
   cd $HOME
-  sudo cp -v Xwrapper.config /etc/X11/Xwrapper.config
+  sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
   sudo rc-update add xrdp default
   sudo rc-service xrdp start
 elif [ "$OS" = "Fedora" ]; then
@@ -186,6 +191,10 @@ elif [ "$OS" = "CentOS Linux" ]; then
   ./bootstrap
   ./configure
   make
+  if [ $? -ne 0 ]; then
+    echo build failed for xrdp.
+    exit 1
+  fi
   sudo make install
 
   cd $HOME/projects
@@ -194,12 +203,12 @@ elif [ "$OS" = "CentOS Linux" ]; then
   ./bootstrap
   ./configure XRDP_CFLAGS=-I$HOME/projects/xrdp/common XRDP_LIBS=" "
   make
+  if [ $? -ne 0 ]; then
+    echo build failed for xorgxrdp.
+    exit 1
+  fi
   sudo make install
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
-
-  sudo systemctl enable xrdp
-  sudo systemctl start xrdp
-  sudo systemctl status xrdp
 elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
   sudo usermod -a -G tty $(id -un)
   #echo sudo apt install -y xrdp xorgxrdp
@@ -213,6 +222,10 @@ elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
   ./bootstrap
   ./configure
   make
+  if [ $? -ne 0 ]; then
+    echo build failed for xrdp.
+    exit 1
+  fi
   sudo make install
 
   cd $HOME/projects
@@ -221,21 +234,19 @@ elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
   ./bootstrap
   ./configure XRDP_CFLAGS=-I$HOME/projects/xrdp/common XRDP_LIBS=" "
   make
+  if [ $? -ne 0 ]; then
+    echo build failed for xorgxrdp.
+    exit 1
+  fi
   sudo make install
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
-  sudo systemctl enable xrdp
-  sudo systemctl start xrdp
-  sudo systemctl status xrdp
-  echo systemctl unmask xrdp
 elif [ \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
   #sudo apt purge -y xserver-xorg-legacy
   sudo apt install -y libpam0g-dev xserver-xorg-dev lsof
   sudo apt install -y xrdp xorgxrdp rdesktop freerdp2-x11
 
   sudo usermod -a -G dialout $(id -un)
-  sudo systemctl start xrdp
-  sudo systemctl status xrdp
   cd $HOME
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
 else
@@ -243,21 +254,28 @@ else
   exit 1
 fi
 
-xrdp --version
+sudo systemctl enable xrdp
+sudo systemctl start xrdp
+sudo systemctl status xrdp
+echo systemctl unmask xrdp
 
 #vncserver -list
-echo "xfreerdp /u:henninb /p:'changeit' /cert-ignore /v:127.0.0.1"
-sudo lsof -Pi | grep LISTEN
-echo ~/.xsession
-echo setpriv --no-new-privs Xorg :10 -auth .Xauthority -config xrdp/xorg.conf -noreset -nolisten tcp -logfile $HOME/.xorgxrdp.%s.log
-echo cat $HOME/.xorgxrdp.10.log
-echo sudo apt-get install xserver-xorg-legacy
 netstat -na | grep 3389 | grep LIST
 netstat -na | grep 3350 | grep LIST
 sudo fuser 3389/tcp
 sudo fuser 3350/tcp
 
-echo /etc/X11/xrdp/xorg.conf
-echo  libpainter need for no text showing on the screen.
+#sudo lsof -Pi | grep LISTEN
+#/etc/X11/xrdp/xorg.conf
+#cat $HOME/.xorgxrdp.10.log
+#$HOME/.xsession
+#setpriv --no-new-privs Xorg :10 -auth .Xauthority -config xrdp/xorg.conf -noreset -nolisten tcp -logfile $HOME/.xorgxrdp.%s.log
+
+# debian based
+echo sudo add-apt-repository ppa:martinx/xrdp-hwe-18.04
+echo sudo apt-get update
+echo sudo apt-get install xrdp xorgxrdp
+
+xrdp --version
 
 exit 0
