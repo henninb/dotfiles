@@ -28,7 +28,8 @@ bindsym $mod+t split toggle
 bindsym $mod+Shift+t gaps inner current set 15; gaps outer current set 15
 
 # program launcher
-bindsym $mod+Shift+p exec dmenu_run
+#bindsym $mod+Shift+p exec dmenu_run
+bindsym $mod+Shift+p exec dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal
 #bindsym $mod+Shift+p exec rofi -show drun -theme dmenu
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
