@@ -57,6 +57,7 @@ endif
    Plug 'norcalli/nvim-colorizer.lua'
    Plug 'tpope/vim-abolish'
    Plug 'MikeCoder/quickrun.vim'
+   Plug 'dracula/vim', { 'name': 'dracula' }
 if $OS != "Arch Linux"
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
 endif
@@ -135,9 +136,10 @@ nnoremap <leader>* 0y$/\V<c-r>"<cr>
 " Map leader to write a root
 noremap <leader>W :w !sudo tee % > /dev/null
 
-colorscheme evening
+"colorscheme evening
 "colorscheme 256-jungle
 "colorscheme darkblue
+colorscheme dracula
 
 " Enable scrolling via mouse
 " if has('mouse')
