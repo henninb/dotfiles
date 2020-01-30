@@ -105,6 +105,8 @@ myKeys = [
         -- , ((0         , 0x1008FF11), spawn "amixer -q sset Master 2%-")
         -- , ((0         , 0x1008FF13), spawn "amixer -q sset Master 2%+")
         -- , ((0         , 0x1008FF12), spawn "amixer set Master toggle")
+        -- https://superuser.com/questions/389737/how-do-you-make-volume-keys-and-mute-key-work-in-xmonad
+        -- amixer -D pulse set Master 2-
         , ((0, xF86XK_AudioLowerVolume   ), spawn "amixer set Master 2-")
         , ((0, xF86XK_AudioRaiseVolume   ), spawn "amixer set Master 2+")
         , ((0, xF86XK_AudioMute          ), spawn "amixer set Master toggle")
