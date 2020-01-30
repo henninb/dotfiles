@@ -35,6 +35,10 @@ if [ ! -f "ideaIU-${VER}.tar.gz" ]; then
   scp pi@${RASPI_IP}:/home/pi/downloads/ideaIU-${VER}.tar.gz .
   if [ $? -ne 0 ]; then
     wget https://download-cf.jetbrains.com/idea/ideaIU-${VER}.tar.gz
+    if [ $? -ne 0 ]; then
+      echo download failed.
+      exit 1
+    fi
     scp ideaIU-${VER}.tar.gz pi@${RASPI_IP}:/home/pi/downloads
   fi
 fi
