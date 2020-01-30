@@ -30,6 +30,7 @@ import MyLogHookWS
 import MyLogHookLT
 import MyStatusBar
 import MyColor
+import Graphics.X11.ExtraTypes.XF86
 
 -- https://pbrisbin.com/posts/xmonad_modules/
 -- do '$ ghc xmonad -ilib' in your ~/.xmonad
@@ -101,9 +102,12 @@ myKeys = [
         --, ((mod1Mask .|. shiftMask, xK_BackSpace), kill)
         , ((mod1Mask .|. shiftMask, xK_BackSpace), kill)
         -- us the tool: xev
-        , ((0         , 0x1008FF11), spawn "amixer -q sset Master 2%-")
-        , ((0         , 0x1008FF13), spawn "amixer -q sset Master 2%+")
-        , ((0         , 0x1008FF12), spawn "amixer set Master toggle")
+        -- , ((0         , 0x1008FF11), spawn "amixer -q sset Master 2%-")
+        -- , ((0         , 0x1008FF13), spawn "amixer -q sset Master 2%+")
+        -- , ((0         , 0x1008FF12), spawn "amixer set Master toggle")
+        , ((0, xF86XK_AudioLowerVolume   ), spawn "amixer set Master 2-")
+        , ((0, xF86XK_AudioRaiseVolume   ), spawn "amixer set Master 2+")
+        , ((0, xF86XK_AudioMute          ), spawn "amixer set Master toggle")
         --, ((mod1Mask .|. shiftMask, xK_w), confirmPrompt myXPConfig "exit" (io exitSuccess))
         , ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" (io exitSuccess))
         --, ((mod1Mask, xK_space ), sendMessage ToggleLayout)
