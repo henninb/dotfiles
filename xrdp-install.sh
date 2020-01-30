@@ -157,8 +157,6 @@ elif [ "$OS" = "Gentoo" ]; then
 
   cd $HOME
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
-  sudo rc-update add xrdp default
-  sudo rc-service xrdp start
 elif [ "$OS" = "Fedora" ]; then
     sudo dnf install -y libtool
     sudo dnf install -y openssl-devel
@@ -254,10 +252,19 @@ else
   exit 1
 fi
 
-sudo systemctl enable xrdp
-sudo systemctl start xrdp
-sudo systemctl status xrdp
-echo systemctl unmask xrdp
+if [ "$OS" = "Gentoo" ]; then
+  sudo rc-update add xrdp default
+  sudo rc-service xrdp start
+  sudo rc-service xrdp status
+else
+  sudo systemctl enable xrdp
+  sudo systemctl enable xrdp-sesman
+  sudo systemctl start xrdp
+  sudo systemctl start xrdp-sesman
+  sudo systemctl status xrdp
+  sudo systemctl status xrdp-sesman
+  echo systemctl unmask xrdp
+fi
 
 #vncserver -list
 netstat -na | grep 3389 | grep LIST
