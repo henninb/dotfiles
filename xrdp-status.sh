@@ -4,6 +4,7 @@ if [ "$OS" = "Gentoo" ]; then
   rc-service xrdp status
 else
   sudo systemctl status xrdp
+  sudo systemctl status xrdp-sesman
 fi
 
 netstat -na | grep 3389 | grep LIST

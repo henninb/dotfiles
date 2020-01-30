@@ -1,6 +1,7 @@
 #!/bin/sh
 
 export PATH=${HOME}/.local/bin:${PATH}
+export PATH=/usr/local/sbin:/usr/sbin:${PATH}
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LC_NUMERIC=en_US.UTF-8
