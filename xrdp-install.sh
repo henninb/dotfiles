@@ -104,17 +104,29 @@ if [ "$OS" = "Arch Linux" ]; then
   cd $HOME/projects
   git clone --recursive git@github.com:neutrinolabs/xrdp.git
   cd xrdp
+  git pull origin master
   ./bootstrap
   ./configure
+  make clean
   make
+  if [ $? -ne 0 ]; then
+    echo build failed for xrdp.
+    exit 1
+  fi
   sudo make install
 
   cd $HOME/projects
-  git clone git@github.com:neutrinolabs/xorgxrdp.git
+  git clone --recursive git@github.com:neutrinolabs/xorgxrdp.git
   cd xorgxrdp
+  git pull origin master
   ./bootstrap
   ./configure XRDP_CFLAGS=-I$HOME/projects/xrdp/common XRDP_LIBS=" "
+  make clean
   make
+  if [ $? -ne 0 ]; then
+    echo build failed for xrdp-xorgxrdp.
+    exit 1
+  fi
   sudo make install
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
 
