@@ -2,7 +2,7 @@
 
 - urxvt, st, neovim, polybar, zsh, ranger, lf, i3, xmonad, etc
 
-## Operating Systems 
+## Operating Systems
 - Arch Linux
 - Void Linux
 - Mint Linux
@@ -34,6 +34,7 @@
 - astronomy - stellarium
 - notes - standard note
 - font - monofur
+- theme -dracula
 - audio player - cmus
 - image converter - imagemagik
 - burning images - k3b, cdrecord

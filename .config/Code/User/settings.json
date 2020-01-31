@@ -8,5 +8,6 @@
   "team.showWelcomeMessage": false,
   "editor.wordWrap": "wordWrapColumn",
   "editor.renderWhiteSpace": "all",
-  "editor.insertSpaces": false
+  "editor.insertSpaces": false,
+  "workbench.colorTheme": "Dracula"
 }

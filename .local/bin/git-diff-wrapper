@@ -1,9 +1,11 @@
 #!/bin/sh
 
 if [ "$2" = "/dev/null" ]; then
-  vim $1
+  #vim $1
+  nvim $1
 else
-  vimdiff "$1" "$2"
+  #vimdiff "$1" "$2"
+  nvim -d "$1" "$2"
 fi
 
 exit 0
