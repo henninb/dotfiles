@@ -39,6 +39,8 @@
 - burning images - k3b, cdrecord
 - podcast client - ???
 - process viewer - htop
+- shell plugin manager - oh-my-zsh
+- email client - neomutt
 
 
 
