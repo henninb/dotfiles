@@ -105,11 +105,6 @@ if [ "$MYSHELL" = "zsh" ]; then
   fi
 fi
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-#export LANG=en_US.UTF-8
-#export LC_COLLATE="C"
-
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -117,7 +112,7 @@ fi
 #   export EDITOR='nvim'
 # fi
 
-# TODO: not sure if/how this works
+# TODO: test this, not sure if/how this works
 HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
 
 if [ -f /etc/os-release ]; then
@@ -157,11 +152,12 @@ if [ "$OS" = "Linux Mint" ]; then
   [ -d "/usr/lib/jvm/java-8-openjdk-amd64" ] && export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 fi
 
-export EDITOR=vim
+export EDITOR=nvim
 export PAGER=less
 
 # Tells 'less' not to paginate if less than a page
 export LESS="-F -X $LESS"
+# TODO: will this continue to function?
 export GIT_PAGER=cat git diff
 
 # for rust
@@ -192,45 +188,10 @@ if [ $? -ne 0 ]; then
   cd -
 fi
 
-# ls -l ~/.fonts/{Sauce-Code-Pro-Nerd-Font-Complete-Mono-Windows-Compatible.ttf,Sauce-Code-Pro-Nerd-Font-Complete-Mono.ttf,Sauce-Code-Pro-Nerd-Font-Complete-Windows-Compatible.ttf,Sauce-Code-Pro-Nerd-Font-Complete.ttf} > /dev/null 2>&1
-# if [ $? -ne 0 ]; then
-#   cd ~/.fonts
-#   unzip ../sauce-code-pro-nerd-fonts.zip
-#   fc-cache -vf ~/.fonts/
-#   cd -
-# fi
-
-# neovim has python env issues with VIMRUNTIME variable set.
-# if [ -d "/usr/local/share/vim/vim81" ]; then
-#   export VIMRUNTIME=/usr/local/share/vim/vim81
-# elif [ -d "/usr/share/vim/vim81" ]; then
-#   export VIMRUNTIME=/usr/share/vim/vim81
-# elif [ -d "/usr/share/vim/vim80" ]; then
-#   export VIMRUNTIME=/usr/share/vim/vim80
-# elif [ -d "/usr/share/vim/vim74" ]; then
-#   export VIMRUNTIME=/usr/share/vim/vim74
-# else
-#   echo VIMRUNTIME is set to the default.
-# fi
-# echo unset VIMRUNTIME
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source $NVM_DIR/nvm.sh
 
 [ ! -f "$HOME/.ssh/id_rsa.pub" ] && ssh-keygen -y -f $HOME/.ssh/id_rsa > $HOME/.ssh/id_rsa.pub
-
-# if [ \( "$OS" = "Arch Linux" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
-#   XMOBAR_WITH_PTS=$(ps -ef | grep xmobar | grep -v grep | grep pts | awk {'print$2'})
-#   XMOBAR_WITHOUT_PTS=$(ps -ef | grep xmobar | grep -v grep | grep -v pts | awk {'print$2'})
-
-#   for XMOBAR_PID in $(echo $XMOBAR_WITHOUT_PTS); do
-#     PARENT_PID=$(ps -o comm= -p $(ps -o ppid= -p ${XMOBAR_PID}))
-#     if [ "$PARENT_PID" = "systemd" ]; then
-#       kill -9 $XMOBAR_PID
-#     fi
-#   done
-#   [ -n "$XRDP_SESSION" ] && [ ! -n "$XMOBAR_WITH_PTS" ] && nohup xmobar ~/.config/xmobar/xmobarrc 2> /dev/null &
-# fi
 
 [ ! -d "$HOME/.pyenv" ] && git clone https://github.com/pyenv/pyenv.git $HOME/.pyenv
 [ ! -d "$HOME/.oh-my-zsh" ] && git clone git@github.com:ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
@@ -242,10 +203,7 @@ if [ $? -ne 0 ]; then
   git branch --set-upstream-to=origin/master master
 fi
 
-# export XDG_CONFIG_HOME=~/.config
-# export XDG_DATA_HOME=~/.local/share
-# export XDG_DATA_DIRS=~/.local/share:$XDG_DATA_DIRS
-# export XDG_DATA_HOME=~/.local/share/fonts:${XDG_DATA_HOME}
+# workaround for font colors
 # sed -i 's/blue $CURRENT_FG/39d $CURRENT_FG/' ~/.oh-my-zsh/themes/agnoster.zsh-theme
 
 export TMOUT=0
@@ -255,8 +213,6 @@ export VAGRANT_DEFAULT_PROVIDER=kvm
 
 # turn this on to display x on mac or windows
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  # screenfetch
-  # inxi
   if [ -x "$(command -v neofetch)" ]; then
     neofetch
   fi
@@ -265,10 +221,8 @@ fi
 
 mkdir -p $HOME/.config/compton
 
-#ln -sfn $HOME/.config/nvim/init.vim.simple $HOME/.vimrc
 [ -f $HOME/.config/nvim/init.vim ] && ln -sfn $HOME/.config/nvim/init.vim $HOME/.vimrc
 [ -f $HOME/.config/picom/picom.conf ] && ln -sfn $HOME/.config/picom/picom.conf $HOME/.config/compton/compton.conf
-# [-f $HOME/.xinitrc ] && ln -sfn $HOME/.xinitrc $HOME/.xsessionrc
 [ -f $HOME/.xinitrc ] && ln -sfn $HOME/.xinitrc $HOME/.xsession
 [ -f /opt/arduino/arduino ] && ln -sfn /opt/arduino/arduino $HOME/.local/bin/arduino
 [ -f /opt/intellij/bin/idea.sh ] && ln -sfn /opt/intellij/bin/idea.sh $HOME/.local/bin/idea.sh
