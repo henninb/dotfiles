@@ -10,6 +10,10 @@ if [ "$OS" = "Linux Mint" ]; then
   sudo usermod  -a -G intellij henninb
   sudo usermod  -a -G arduino henninb
 #sudo adduser -m -G wheel -s /bin/bash henninb
+elif [ "$OS" = "Arch Linux" ]; then
+  id -g wheel &>/dev/null || sudo groupadd wheel
+  sudo useradd -m -G wheel -s /bin/bash brian
+  id brian
 elif [ "$OS" = "Fedora" ]; then
   sudo groupadd wheel
   id -u brian &>/dev/null || sudo useradd -m -G wheel -s /bin/bash brian
