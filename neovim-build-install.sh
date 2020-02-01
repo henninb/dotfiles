@@ -85,6 +85,8 @@ echo "previous $ACTUAL_VER"
 
 python2 -m pip install --user --upgrade pynvim
 python3 -m pip install --user --upgrade pynvim
+pip2 uninstall neovim
+pip3 uninstall neovim
 echo ":checkhealth"
 
 vim +slient +VimEnter +PlugUpgrade +qall
