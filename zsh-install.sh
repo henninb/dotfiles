@@ -64,4 +64,6 @@ cd -
 
 echo sudo vipw #fixes passwd file for freebsd
 
+for i in $fpath; do echo $i; ls -l $i | egrep -i "(async|pure)"; done
+
 exit 0
