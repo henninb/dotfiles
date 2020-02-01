@@ -26,7 +26,7 @@ brew install libtool
 brew install lua@5.1
 brew install msgpack
 brew install p11-kit
-brew install python@2
+brew install python2
 brew install unbound
 brew install yarn
 brew install ansible
