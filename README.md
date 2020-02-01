@@ -41,6 +41,7 @@
 - podcast client - ???
 - process viewer - htop
 - shell plugin manager - oh-my-zsh
+- shell prompt - spaceship
 - email client - neomutt
 
 
