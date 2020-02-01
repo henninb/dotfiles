@@ -307,3 +307,6 @@ nmap <Leader>f <Plug>(easymotion-overwin-f)
 
 map <F2> :.w !pbcopy<cr><cr>
 map <F3> :r !pbpaste<cr>
+
+"let g:python_host_prog = '/full/path/to/neovim2/bin/python'
+"let g:python3_host_prog = '/full/path/to/neovim3/bin/python'
