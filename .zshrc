@@ -14,6 +14,29 @@ fi
 ln -sfn $HOME/.zshrc $HOME/.bashrc
 #[[ -o interactive ]] || exit 0
 
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    export OS=$NAME
+    export OS_VER=$VERSION_ID
+elif type lsb_release >/dev/null 2>&1; then
+    export OS=$(lsb_release -si)
+    export OS_VER=$(lsb_release -sr)
+elif [ -f /etc/lsb-release ]; then
+    . /etc/lsb-release
+    export OS=$DISTRIB_ID
+    export OS_VER=$DISTRIB_RELEASE
+elif [ -f /etc/debian_version ]; then
+    export OS=Debian
+    export OS_VER=$(cat /etc/debian_version)
+elif [ -f /etc/SuSe-release ]; then
+    ...
+elif [ -f /etc/redhat-release ]; then
+    ...
+else
+  export OS=$(uname -s)
+  export OS_VER=$(uname -r)
+fi
+
 export ZSH="$HOME/.oh-my-zsh"
 
 SPACESHIP_PROMPT_ADD_NEWLINE=false
@@ -52,8 +75,11 @@ SPACESHIP_HOST_SHOW=always
 SPACESHIP_USER_SHOW=false
 SPACESHIP_GIT_PREFIX=""
 
-#ZSH_THEME="agnoster"
-ZSH_THEME="spaceship"
+if [ "$OS" = "Darwin" ]; then
+  ZSH_THEME="agnoster"
+else
+  ZSH_THEME="spaceship"
+fi
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -93,6 +119,13 @@ ZSH_THEME="spaceship"
 
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+if [ ! -x "$(command -v unzip)" ]; then
+  echo unzip not installed.
+fi
+
+if [ ! -x "$(command -v fc-cache)" ]; then
+  echo fc-cache not installed.
+fi
 
 if [ "$MYSHELL" = "zsh" ]; then
   [ -f "$HOME/.autojump/etc/profile.d/autojump.sh" ] && source $HOME/.autojump/etc/profile.d/autojump.sh
@@ -117,36 +150,6 @@ fi
 # TODO: test this, not sure if/how this works
 HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
 
-if [ -f /etc/os-release ]; then
-    . /etc/os-release
-    export OS=$NAME
-    export OS_VER=$VERSION_ID
-elif type lsb_release >/dev/null 2>&1; then
-    export OS=$(lsb_release -si)
-    export OS_VER=$(lsb_release -sr)
-elif [ -f /etc/lsb-release ]; then
-    . /etc/lsb-release
-    export OS=$DISTRIB_ID
-    export OS_VER=$DISTRIB_RELEASE
-elif [ -f /etc/debian_version ]; then
-    export OS=Debian
-    export OS_VER=$(cat /etc/debian_version)
-elif [ -f /etc/SuSe-release ]; then
-    ...
-elif [ -f /etc/redhat-release ]; then
-    ...
-else
-  export OS=$(uname -s)
-  export OS_VER=$(uname -r)
-fi
-
-if [ ! -x "$(command -v unzip)" ]; then
-  echo unzip not installed.
-fi
-
-if [ ! -x "$(command -v fc-cache)" ]; then
-  echo fc-cache not installed.
-fi
 
 # TODO: do I need this?
 if [ "$OS" = "Linux Mint" ]; then
