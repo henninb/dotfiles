@@ -1,0 +1,79 @@
+sourceSets {
+    test {
+        groovy.srcDir file('src/test/unit/groovy')
+        java.srcDir file('src/test/unit/java')
+        resources.srcDir file('src/main/resources')
+        compileClasspath += sourceSets.main.output + configurations.testRuntimeClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+
+    integrationTest {
+        groovy.srcDir file('src/test/integration/groovy')
+        java.srcDir file('src/test/integration/java')
+        resources.srcDir file('src/main/resources')
+        compileClasspath += sourceSets.main.output + configurations.testRuntimeClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+
+    functionalTest {
+        groovy.srcDir file('src/test/functional/groovy')
+        java.srcDir file('src/test/functional/java')
+        resources.srcDir file('src/main/resources')
+        compileClasspath += sourceSets.main.output + configurations.testRuntimeClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+
+    performanceTest {
+        groovy.srcDir file('src/test/performance/groovy')
+        java.srcDir file('src/test/performance/java')
+        resources.srcDir file('src/main/resources')
+        compileClasspath += sourceSets.main.output + configurations.testRuntimeClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+}
+
+compileTestKotlin {
+    //kotlinOptions.jvmTarget = '11'
+    kotlinOptions.jvmTarget = '1.8'
+}
+
+dependencies {
+    //testing modules
+    testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+    testImplementation("org.spockframework:spock-core:${spockVersion}")
+    testImplementation("org.spockframework:spock-spring:${spockVersion}")
+    testImplementation("org.testcontainers:spock:${testContainersVersion}")
+    testImplementation("io.github.http-builder-ng:http-builder-ng-core:${httpBuilderVersion}")
+    //testImplementation("org.scalatest:scalatest_2.11:3.0.0")
+    //testImplementation("com.github.javafaker:javafaker:${javaFakerVersion}") { exclude module: 'org.yaml' }
+    //testImplementation("io.github.benas:${randomBeanVersion}")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+}
+
+tasks.withType(Test) {
+    environment "CAMEL_ROUTE_ENABLED", "true"
+    environment "JSON_FILES_INPUT_PATH", "json_in"
+    environment "JSON_FILES_INPUT_PATH", "excel_in"
+    environment "INPUT_FILEPATH", "config"
+    environment "OUTPUT_FILEPATH", "json_out"
+    //systemProperties = System.properties
+}
+
+task integrationTest(type: Test) {
+    testClassesDirs = sourceSets.integrationTest.output.classesDirs
+    classpath = sourceSets.integrationTest.runtimeClasspath
+}
+
+task functionalTest(type: Test) {
+    testClassesDirs = sourceSets.functionalTest.output.classesDirs
+    classpath = sourceSets.functionalTest.runtimeClasspath
+}
+
+task performanceTest(type: Test) {
+    testClassesDirs = sourceSets.performanceTest.output.classesDirs
+    classpath = sourceSets.performanceTest.runtimeClasspath
+}
+
+integrationTest.reports.html.destination = file("$buildDir/reports/test/integration")
+functionalTest.reports.html.destination = file("$buildDir/reports/test/functional")
+performanceTest.reports.html.destination = file("$buildDir/reports/test/performance")
