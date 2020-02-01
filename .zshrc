@@ -94,8 +94,10 @@ ZSH_THEME="spaceship"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 
-[ -f "$HOME/.autojump/etc/profile.d/autojump.sh" ] && source $HOME/.autojump/etc/profile.d/autojump.sh
-[ -f "$HOME/.autojump/etc/profile.d/autojump.sh" ] && autoload -U compinit && compinit -u
+if [ "$MYSHELL" = "zsh" ]; then
+  [ -f "$HOME/.autojump/etc/profile.d/autojump.sh" ] && source $HOME/.autojump/etc/profile.d/autojump.sh
+  [ -f "$HOME/.autojump/etc/profile.d/autojump.sh" ] && autoload -U compinit && compinit -u
+fi
 
 plugins=(git zsh-autosuggestions docker zsh-syntax-highlighting autojump)
 
