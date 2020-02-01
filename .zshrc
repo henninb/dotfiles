@@ -79,6 +79,7 @@ if [ "$OS" = "Darwin" ]; then
   ZSH_THEME="agnoster"
 else
   ZSH_THEME="spaceship"
+#  ZSH_THEME="dracula"
 fi
 
 # Set list of themes to pick from when loading at random

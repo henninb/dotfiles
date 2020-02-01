@@ -46,12 +46,18 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 git clone https://github.com/denysdovhan/spaceship-prompt.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/spaceship-prompt
-ln -sfn "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/spaceship-prompt/spaceship.zsh-theme" ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/spaceship.zsh-theme
+ln -sfn "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/spaceship-prompt/spaceship.zsh-theme" "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/spaceship.zsh-theme"
 
 git clone git://github.com/wting/autojump.git
 cd autojump
 ./install.py
 cd -
+
+git clone git://github.com/eendroroy/alien.git
+cd alien
+git submodule update --init --recursive
+echo add to .zshrc
+echo source ~/alien/alien.zsh
 
 [ -s "/usr/bin/zsh" ] && sudo usermod -s /usr/bin/zsh $(whoami)
 [ -s "/usr/bin/zsh" ] && sudo chsh -s /usr/bin/zsh $(whoami)
