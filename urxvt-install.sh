@@ -37,13 +37,14 @@ if [ ! -f "rxvt-unicode-9.22.tar.bz2" ]; then
     echo "wget failed."
     exit 1
   fi
-fi
-tar xvf rxvt-unicode-9.22.tar.bz2
-if [ $? -ne 0 ]; then
-  echo "tar failed."
-  exit 1
+  tar xvf rxvt-unicode-9.22.tar.bz2
+  if [ $? -ne 0 ]; then
+    echo "tar failed."
+    exit 1
+  fi
 fi
 cd rxvt-unicode-9.22
+make clean
 ./autogen.sh
 if [ $? -ne 0 ]; then
   echo "autogen failed."
@@ -54,6 +55,11 @@ if [ $? -ne 0 ]; then
   echo "configure failed."
   exit 1
 fi
+
+if [ "$OS" = "Fedora" ]; then
+  cp $HOME/urxvt-Makefile-fedora $HOME/projects/rxvt-unicode-9.22/src/Makefile
+fi
+
 make
 if [ $? -ne 0 ]; then
   echo "make failed."
@@ -64,14 +70,6 @@ cd $HOME
 
 git clone https://github.com/sos4nt/dynamic-colors ~/.dynamic-colors
 
-echo fc-match Monospace
-fc-match Monospace
-
-#wget https://github.com/exg/rxvt-unicode/archive/rxvt-unicode-rel-9.22.tar.gz
-
-echo xrdb ~/.Xresources
-echo xrdb -merge ~/.Xresources
-
 echo urxvt -fn "xft:Bitstream Vera Sans Mono:pixelsize=15"
 echo urxvt -fn "xft:FontAwesome:pixelsize=15"
 echo urxvt --font "xft:Inconsolata for Powerline:size=10"
@@ -80,14 +78,14 @@ echo urxvt -fn "xft:Source Code Pro:size=10,xft:Source Han Sans,xft:DejaVu Serif
 echo urxvt -font "xft:Deja Vu Sans Mono:size=12"
 echo urxvt -font "xft:SauceCodePro NF:pixelsize=9"
 
+echo fc-match Monospace
+fc-match Monospace
 fc-match FontAwesome
 fc-match 'Courier New:slant=0:weight=100:pixelsize=24:antialias=False:autohint=True:minspace=True'
-echo cat /etc/default/locale
-
-echo sudo locale-gen en_US.UTF-8
-echo locale -a
-echo update-locale LANG=en_US.UTF-8
+# echo cat /etc/default/locale
+# echo sudo locale-gen en_US.UTF-8
+# echo locale -a
+# echo update-locale LANG=en_US.UTF-8
 echo https://github.com/ryanoasis/nerd-fonts
 
 exit 0
-
