@@ -160,6 +160,10 @@ HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
 
 if [ "$OSTYPE" = "linux-gnu" ]; then
   export JAVA_HOME=$(dirname $(dirname $(readlink $(readlink $(which javac)))))
+elif [ "$OSTYPE" = "linux-gnueabihf" ]; then
+  echo JAVA_HOME
+else
+  echo JAVA_HOME
 fi
 
 export EDITOR=nvim
