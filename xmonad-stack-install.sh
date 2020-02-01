@@ -60,7 +60,7 @@ elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S conky
   sudo pacman --noconfirm --needed -S nitrogen
 elif [ "$OS" = "Gentoo" ]; then
-  GENTOO_PKGS="xscreensaver feh xdotool w3m neofetch dzen2 conky ranger nitrogen"
+  GENTOO_PKGS="xscreensaver feh xdotool w3m neofetch conky ranger nitrogen dzen2"
   FAILURES=""
   for i in $(echo $GENTOO_PKGS); do
     sudo emerge --update --newuse $i
@@ -124,11 +124,35 @@ else
 fi
 
 stack install hindent
+if [ $? -ne 0 ]; then
+  echo failed hindent.
+  exit 1
+fi
 stack install ghc
+if [ $? -ne 0 ]; then
+  echo failed ghc.
+  exit 1
+fi
 stack install hlint
+if [ $? -ne 0 ]; then
+  echo failed hlint.
+  exit 1
+fi
 stack install xmobar
+if [ $? -ne 0 ]; then
+  echo failed xmobar.
+  exit 1
+fi
 stack install xmonad-contrib
+if [ $? -ne 0 ]; then
+  echo failed xmonad-contrib.
+  exit 1
+fi
 stack install xmonad-extras
+if [ $? -ne 0 ]; then
+  echo failed xmonad-extras.
+  exit 1
+fi
 
 exit 0
 

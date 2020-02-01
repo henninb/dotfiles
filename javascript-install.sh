@@ -23,7 +23,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge -upDN sys-apps/yarn
   sudo emerge sys-apps/yarn
 elif [ "$OS" = "CentOS Linux" ]; then
-  echo cent
+  echo centos
   exit 1
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y yarn gcc python27 gmake
