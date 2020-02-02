@@ -1,3 +1,4 @@
+@stack init .
 all:
 	@rm -rf rice simple test master
 	@touch .master
