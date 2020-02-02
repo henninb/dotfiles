@@ -119,6 +119,7 @@ elif [ "$OS" = "Darwin" ]; then
     fi
   done
   echo Failures: $FAILURE
+  brew cask install alacritty
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
     echo "centos8"
