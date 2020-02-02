@@ -59,9 +59,20 @@ elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S dzen2
   sudo pacman --noconfirm --needed -S conky
   sudo pacman --noconfirm --needed -S nitrogen
+elif [ "$OS" = "void" ]; then
+  sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
+  VOID_PKGS="xscreensaver feh xdotool w3m neofetch dzen2"
+  FAILURES=""
+  for i in $(echo $VOID_PKGS); do
+    sudo xbps-install -y $i
+    if [ 0 -ne $? ]; then
+      FAILURE="$i $FAILURE"
+    fi
+  done
+  echo Failures: $FAILURE
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --unmerge dzen
-  GENTOO_PKGS="xscreensaver feh xdotool w3m neofetch conky ranger nitrogen dzen2 dzen"
+  GENTOO_PKGS="xscreensaver feh xdotool w3m neofetch conky ranger nitrogen"
   FAILURES=""
   for i in $(echo $GENTOO_PKGS); do
     sudo emerge --update --newuse $i
@@ -124,31 +135,36 @@ else
   exit 1
 fi
 
-stack install hindent
-if [ $? -ne 0 ]; then
-  echo failed hindent.
-  exit 1
-fi
 stack install ghc
 if [ $? -ne 0 ]; then
   echo failed ghc.
   exit 1
 fi
+
+stack install hindent
+if [ $? -ne 0 ]; then
+  echo failed hindent.
+  exit 1
+fi
+
 stack install hlint
 if [ $? -ne 0 ]; then
   echo failed hlint.
   exit 1
 fi
+
 stack install xmobar
 if [ $? -ne 0 ]; then
   echo failed xmobar.
   exit 1
 fi
+
 stack install xmonad-contrib
 if [ $? -ne 0 ]; then
   echo failed xmonad-contrib.
   exit 1
 fi
+
 stack install xmonad-extras
 if [ $? -ne 0 ]; then
   echo failed xmonad-extras.
