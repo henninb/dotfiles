@@ -96,8 +96,8 @@ echo make install_local
 sudo make clean
 cd $HOME
 
-echo nvim -u NORC file
-echo "previous $ACTUAL_VER"
+#echo nvim -u NORC file
+#echo "previous $ACTUAL_VER"
 
 python2 -m pip install --user --upgrade pynvim
 python3 -m pip install --user --upgrade pynvim
@@ -105,7 +105,7 @@ pip2 uninstall neovim
 pip3 uninstall neovim
 echo ":checkhealth"
 
-vim +slient +VimEnter +PlugUpgrade +qall
-vim +slient +VimEnter +PlugUpdate +qall
+nvim +slient +VimEnter +PlugUpgrade +qall
+nvim +slient +VimEnter +PlugUpdate +qall
 
 exit 0
