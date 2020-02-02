@@ -311,6 +311,7 @@ if [ "$MYSHELL" = "zsh" ]; then
   fi
 fi
 
+touch $HOME/.xmonad/.active
 touch $HOME/.active-wm
 touch $HOME/.zshrc-work-custom
 source $HOME/.zshrc-work-custom
