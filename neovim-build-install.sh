@@ -34,6 +34,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y gcc-c++
   sudo xbps-install -y pkg-config
   sudo xbps-install -y m4
+  sudo xbps-install -y automake
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y make
   sudo dnf install -y cmake

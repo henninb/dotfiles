@@ -39,7 +39,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 
 #https://github.com/yarnpkg/yarn/archive/v1.21.1.tar.gz
 
-nvm add 10.16.0
+nvm install 10.16.0
 # echo yarn add react
 # yarn add coc-python
 # yarn add coc-html
