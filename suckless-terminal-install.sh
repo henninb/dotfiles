@@ -6,6 +6,8 @@ if [ "$OS" = "Gentoo" ]; then
 elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   #sudo apt install -y rxvt-unicode xsel
   echo
+elif [ "$OS" = "FreeBSD" ]; then
+  echo
 elif [ "$OS" = "Ubuntu" ]; then
   echo
 elif [ "$OS" = "Fedora" ]; then
@@ -22,10 +24,6 @@ fi
 cd $HOME/projects
 git clone https://git.suckless.org/st
 cd st
-if [ $? -ne 0 ]; then
-  echo "cd failed."
-  exit 1
-fi
 make
 if [ $? -ne 0 ]; then
   echo "make failed."
@@ -38,6 +36,10 @@ cd $HOME/projects
 git clone git@github.com:Tharre/st-transparency.git
 cd st-transparency
 make
+if [ $? -ne 0 ]; then
+  echo "make failed."
+  exit 1
+fi
 mv st $HOME/.local/bin/st-transparency
 cd $HOME
 
