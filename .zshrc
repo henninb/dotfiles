@@ -305,12 +305,13 @@ if [ "$MYSHELL" = "zsh" ]; then
     bindkey "[D" backward-word
     bindkey "[C" forward-word
   else
-    #control arraw
+    #control arraws trigger forward and backward by word
     bindkey "^[[1;5C" forward-word
     bindkey "^[[1;5D" backward-word
   fi
 fi
 
+touch $HOME/.active-wm
 touch $HOME/.zshrc-work-custom
 source $HOME/.zshrc-work-custom
 
