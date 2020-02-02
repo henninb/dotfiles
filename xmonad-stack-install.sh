@@ -180,7 +180,7 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-if [ "$OS" = "Gentoo" ]; then
+if [ \( "$OS" = "Gentoo" \) -o \(  "$OS" = "FreeBSD" \) ]; then
   cd $HOME/projects
   git clone https://github.com/minos-org/dzen2.git
   cd dzen2
