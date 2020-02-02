@@ -163,7 +163,11 @@ HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
 
 if [ "$OSTYPE" = "linux-gnu" ]; then
   #readlink $(readlink $(which javac)) || readlink $(which javac)
-  export JAVA_HOME=$(dirname $(dirname $(readlink $(readlink $(which javac)) || readlink $(which javac))))
+  if [ -x "$(command -v javac)" ]; then
+    export JAVA_HOME=$(dirname $(dirname $(readlink $(readlink $(which javac)) || readlink $(which javac))))
+  else
+    echo install java
+  fi
 elif [ "$OSTYPE" = "linux-gnueabihf" ]; then
   echo JAVA_HOME
 else
