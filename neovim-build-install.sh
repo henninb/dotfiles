@@ -77,7 +77,17 @@ git checkout master
 git pull origin master
 git checkout tags/$NVER
 make CMAKE_BUILD_TYPE=RelWithDebInfo
+if [ $? -ne 0 ]; then
+  echo make failed.
+  exit 1
+fi
+
 sudo make install
+if [ $? -ne 0 ]; then
+  echo make install failed.
+  exit 1
+fi
+
 echo make install_local
 sudo make clean
 cd $HOME
