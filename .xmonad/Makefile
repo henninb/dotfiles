@@ -1,7 +1,5 @@
 all:
-	@rm -rf rice simple test master
-	@touch .master
-	@stack ghc -- --make xmonad.hs
+	@make master
 master:
 	@echo need to learn about the stack.yaml file
 	@echo stack init .
@@ -9,7 +7,7 @@ master:
 	@ln -sfn xmonad-master.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs
 	@rm -rf *.hi *.o
-	@touch .master
+	echo master > .active
 	@mv -v xmonad ${HOME}/.local/bin
 	@hlint xmonad-master.hs
 test:
@@ -19,7 +17,7 @@ test:
 	@ln -sfn xmonad-test.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs
 	@rm -rf *.hi *.o
-	@touch .test
+	@echo test > .active
 	@mv -v xmonad ${HOME}/.local/bin
 	@hlint xmonad-test.hs
 simple:
@@ -29,7 +27,7 @@ simple:
 	@ln -sfn xmonad-simple.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs
 	@rm -rf *.hi *.o
-	@touch .simple
+	@echo simple > .active
 	@mv -v xmonad ${HOME}/.local/bin
 	@hlint xmonad-simple.hs
 rice:
@@ -40,19 +38,7 @@ rice:
 	@ln -sfn xmonad-rice.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs -i -ilib -fforce-recomp
 	@rm -rf *.hi *.o lib/*.o lib/*.hi
-	@touch .rice
+	@echo rice > .active
 	@mv -v xmonad ${HOME}/.local/bin
 	@hlint xmonad-rice.hs
 	@hlint lib/*.hs
-
-# exec stack ghc \
-#   -- \
-#   --make xmonad.hs \
-#   -i \
-#   -ilib \
-#   -fforce-recomp \
-#   -main-is main \
-#   -v \
-#   -O2 \
-#   -j$(nproc) \
-#   -o "$1"

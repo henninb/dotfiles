@@ -38,7 +38,9 @@ myConfig = def { modMask = myModMask,
                           }
 
 --myModMask = mod4Mask
-myModMask = mod1Mask
+-- alt key = mod4Mask
+-- super key = mod1Mask
+myModMask = mod4Mask
 myTerminal = "urxvt"
 
 -- Workspaces
