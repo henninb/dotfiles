@@ -59,6 +59,13 @@ elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S dzen2
   sudo pacman --noconfirm --needed -S conky
   sudo pacman --noconfirm --needed -S nitrogen
+elif [ "$OS" = "FreeBSD" ]; then
+  sudo pkg install -y neofetch
+  sudo pkg install -y w3m
+  sudo pkg install -y xz
+  sudo pkg install -y xscreensaver
+  sudo pkg install -y feh
+  sudo pkg install -y xdotool
 elif [ "$OS" = "void" ]; then
   sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
   VOID_PKGS="xscreensaver feh xdotool w3m neofetch dzen2 xz make gcc gmp-devel"
