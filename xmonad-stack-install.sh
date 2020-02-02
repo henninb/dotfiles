@@ -164,6 +164,8 @@ if [ "$OS" = "Gentoo" ]; then
 fi
 
 stack exec ghc-pkg list
+echo stack exec ghc-pkg unregister mypackage
+
 
 exit 0
 
