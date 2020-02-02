@@ -13,23 +13,23 @@
 - pdf reader - zathura
 - terminal - urxvt, termite, st
 - editor - neovim, doom emacs, vscode, intellij
-- bar - polybar
+- bar - polybar, dzen
 - window manager - i3, xmonad
-- shell - zsh, bash
+- shell - zsh, bash, fish
 - file manager - ranger, lf
 - media player - vlc, olivia
 - spreadsheet -sc-im
-- programming - java, kotlin, rust, haskell, python
+- programming - java, kotlin, rust, haskell, python, js
 - containerization - docker
 - software defined radio - gqrx, CubicSDR
 - hypervisor - kvm, qemu
 - remote desktop server - xrdp
 - irc client - irssi
-- other tools - screen, tmux
+- terminal multiplexer - screen, tmux
 - network packet tools - tcpdump
 - markdown reader - glow
 - browser - firefox
-- database client - dbeaver
+- database client - dbeaver, sqlplus
 - database server - postgresql
 - astronomy - stellarium
 - notes - standard note
@@ -43,6 +43,9 @@
 - shell plugin manager - oh-my-zsh
 - shell prompt - spaceship
 - email client - neomutt
+- lock screen - i3block
+- wii emulator - dolphin-emu
+- cloud storage - nextcloud
 
 
 
