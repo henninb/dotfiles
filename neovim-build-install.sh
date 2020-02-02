@@ -35,6 +35,9 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y pkg-config
   sudo xbps-install -y m4
   sudo xbps-install -y automake
+  sudo xbps-install -y gettext
+  sudo xbps-install -y gperf
+  sudo xbps-install -y luajit
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y make
   sudo dnf install -y cmake
