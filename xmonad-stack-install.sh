@@ -153,12 +153,6 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-stack install xmobar
-if [ $? -ne 0 ]; then
-  echo failed xmobar.
-  exit 1
-fi
-
 stack install xmonad-contrib
 if [ $? -ne 0 ]; then
   echo failed xmonad-contrib.
@@ -168,6 +162,12 @@ fi
 stack install xmonad-extras
 if [ $? -ne 0 ]; then
   echo failed xmonad-extras.
+  exit 1
+fi
+
+stack install xmobar
+if [ $? -ne 0 ]; then
+  echo failed xmobar.
   exit 1
 fi
 
