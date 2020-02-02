@@ -3,7 +3,8 @@ all:
 	@touch .master
 	@stack ghc -- --make xmonad.hs
 master:
-	@stack init . --force
+	@echo need to learn about the stack.yaml file
+	@echo stack init .
 	@rm -rf *.hi *.o xmonad
 	@ln -sfn xmonad-master.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs
@@ -12,7 +13,8 @@ master:
 	@mv -v xmonad ${HOME}/.local/bin
 	@hlint xmonad-master.hs
 test:
-	@stack init . --force
+	@echo need to learn about the stack.yaml file
+	@echo stack init .
 	@rm -rf *.hi *.o
 	@ln -sfn xmonad-test.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs
@@ -21,7 +23,8 @@ test:
 	@mv -v xmonad ${HOME}/.local/bin
 	@hlint xmonad-test.hs
 simple:
-	@stack init . --force
+	@echo need to learn about the stack.yaml file
+	@echo stack init .
 	@rm -rf *.hi *.o xmonad
 	@ln -sfn xmonad-simple.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs
@@ -30,7 +33,8 @@ simple:
 	@mv -v xmonad ${HOME}/.local/bin
 	@hlint xmonad-simple.hs
 rice:
-	@stack init . --force
+	@echo need to learn about the stack.yaml file
+	@echo stack init .
 	@rm -rf *.hi *.o lib/*.o lib/*.hi xmonad
 	@ln -sfn xmonad-rice.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs -i -ilib -fforce-recomp
