@@ -58,4 +58,14 @@ cd -
 #exec qtile
 #exec xmonad
 
-exec xmonad 2>> $HOME/xinit.log
+if [ -s "$HOME/.active-wm" ]; then
+  WM=$(cat $HOME/.active-wm | head -1)
+else
+  echo i3 > $HOME/.active-wm
+  WM=i3
+fi
+if [ -x "$(command -v ${WM})" ]; then
+  exec ${WM} 2>> $HOME/xinit.log
+else
+  exit 1
+fi
