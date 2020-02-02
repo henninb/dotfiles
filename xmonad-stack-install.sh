@@ -60,7 +60,7 @@ elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S conky
   sudo pacman --noconfirm --needed -S nitrogen
 elif [ "$OS" = "Gentoo" ]; then
-  GENTOO_PKGS="xscreensaver feh xdotool w3m neofetch conky ranger nitrogen dzen2"
+  GENTOO_PKGS="xscreensaver feh xdotool w3m neofetch conky ranger nitrogen dzen2 dzen"
   FAILURES=""
   for i in $(echo $GENTOO_PKGS); do
     sudo emerge --update --newuse $i
