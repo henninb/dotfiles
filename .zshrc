@@ -264,6 +264,8 @@ chmod 700 $HOME
 
 [ -f $HOME/.zsh_history ] && sort -t ";" -k 2 -u $HOME/.zsh_history | sort -o $HOME/.zsh_history
 
+#ln -sfn $(find /usr/local/bin/ -type f -name "perl5*" | tail -1) $HOME/.local/bin/perl
+
 export GOPATH=$HOME/.local
 export PATH=$PYENV_ROOT/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
