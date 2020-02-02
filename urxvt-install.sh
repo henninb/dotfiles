@@ -16,6 +16,8 @@ elif [ "$OS" = "Fedora" ]; then
   #sudo dnf install rxvt-unicode
   sudo dnf install fontawesome-fonts
   echo add libs
+elif [ "$OS" = "FreeBSD" ]; then
+  echo freebsd
 elif [ "$OS" = "Linux Mint" ]; then
   sudo apt update
   sudo apt upgrade -y
