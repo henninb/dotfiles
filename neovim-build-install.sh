@@ -41,6 +41,9 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y python3-pip
   sudo xbps-install -y python3-devel
   sudo xbps-install -y python-pip
+elif [ "$OS" = "FreeBSD" ]; then
+  sudo pkg install -y py27-pip
+  sudo pkg install -y py37-pip
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y make
   sudo dnf install -y cmake
