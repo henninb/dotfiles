@@ -15,8 +15,15 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   sudo apt-get install libgtk2.0-dev
   #sudo apt install gnome-devel
   sudo apt-get install gtk+3.0
+elif [ "$OS" = "FreeBSD" ]; then
+  echo freebsd
+  sudo pkg install -y gtk-doc
+  sudo apt install -y g++
+  sudo pkg install -y autoconf
+  sudo pkg install -y autotools
+  sudo pkg install -y autogen
 elif [ "$OS" = "Gentoo" ]; then
-  echo
+  echo gentoo
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman -Rsn termite
   sudo pacman -S gtk-doc
@@ -40,13 +47,36 @@ git clone git@github.com:thestinger/vte-ng.git
 
 cd $HOME/projects/vte-ng
 ./autogen.sh --disable-introspection --disable-vala
+if [ $? -ne 0 ]; then
+  echo failed autogen
+  exit 1
+fi
+
 make
+if [ $? -ne 0 ]; then
+  echo failed make
+  exit 1
+fi
+
 sudo make install
+if [ $? -ne 0 ]; then
+  echo failed install
+  exit 1
+fi
 
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
 cd $HOME/projects/termite
 make
+if [ $? -ne 0 ]; then
+  echo failed make
+  exit 1
+fi
+
 sudo make install
+if [ $? -ne 0 ]; then
+  echo failed install
+  exit 1
+fi
 
 sudo touch /etc/ld.so.conf.d/vte.conf
 sudo ldconfig
