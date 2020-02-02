@@ -33,6 +33,7 @@ simple:
 	@mv -v xmonad ${HOME}/.local/bin
 	@hlint xmonad-simple.hs
 rice:
+	@stack path --local-bin
 	@echo need to learn about the stack.yaml file
 	@echo stack init .
 	@rm -rf *.hi *.o lib/*.o lib/*.hi xmonad

@@ -163,6 +163,7 @@ if [ "$OS" = "Gentoo" ]; then
   cd -
 fi
 
+stack exec ghc-pkg list
 
 exit 0
 
