@@ -38,6 +38,9 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y gettext
   sudo xbps-install -y gperf
   sudo xbps-install -y luajit
+  sudo xbps-install -y python3-pip
+  sudo xbps-install -y python3-devel
+  sudo xbps-install -y python-pip
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y make
   sudo dnf install -y cmake
