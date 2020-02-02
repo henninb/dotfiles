@@ -165,7 +165,8 @@ fi
 
 stack exec ghc-pkg list
 echo stack exec ghc-pkg unregister mypackage
-
+echo stack exec ghc-pkg recache
+echo stack exec ghc-pkg check
 
 exit 0
 
