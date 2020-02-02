@@ -1,7 +1,7 @@
 all:
-
-all:
 	@rm -rf rice simple test master
+	@touch .master
+	@stack ghc -- --make xmonad.hs
 master:
 	@rm -rf *.hi *.o xmonad
 	@ln -sfn xmonad-master.hs xmonad.hs
