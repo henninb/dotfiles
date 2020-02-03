@@ -42,3 +42,12 @@ rice:
 	@mv -v xmonad ${HOME}/.local/bin
 	@hlint xmonad-rice.hs
 	@hlint lib/*.hs
+example:
+	@rm -rf *.hi *.o xmonad
+	@ln -sfn xmonad-example.hs xmonad.hs
+	@stack ghc -- --make xmonad.hs
+#	@stack ghc -- --make xmobar.hs
+	@rm -rf *.hi *.o
+	@echo example > .active
+	@mv -v xmonad ${HOME}/.local/bin
+	@hlint xmonad-example.hs

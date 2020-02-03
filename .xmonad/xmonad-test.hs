@@ -72,12 +72,10 @@ myLayoutHook = spacing 10 (avoidStruts (tall ||| GridRatio (4 / 3) ||| Full)) ||
 -- Mangehooks
 myManageHook = composeAll [ isFullscreen            --> doFullFloat,
                          className =? "Firefox" --> doShift myws2,
-                         className =? "Chromium" --> doShift myws2,
                          className =? "Pcmanfm" --> doShift myws4,
                          -- manage Gimp toolbox windows
                          className =? "Gimp"  --> doShift myws4, -- may be "Gimp" or "Gimp-2.4" instead
                          (className =? "Gimp" <&&> fmap ("tool" `isSuffixOf`) role) --> doFloat,
-                         className =? "Filezilla" --> doShift myws4,
                          className =? "Blender" --> doShift myws4,
                          className =? "Inkscape" --> doShift myws4,
                          className =? "libreoffice" --> doShift myws4,
@@ -89,7 +87,7 @@ myManageHook = composeAll [ isFullscreen            --> doFullFloat,
                          className =? "mpv" --> doShift myws4,
                          className =? "Steam" --> doShift myws7,
                          -- cli apps
-                         appName =? "vim" --> doShift myws3,
+                         appName =? "nvim" --> doShift myws3,
                          appName =? "ranger" --> doShift myws4,
                          appName =? "mutt" --> doShift myws4,
                          appName =? "irssi" --> doShift myws5,

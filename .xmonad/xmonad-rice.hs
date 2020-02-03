@@ -5,6 +5,20 @@ import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Util.SpawnOnce
 
+---------
+--conf
+--import Data.List
+---- layouts
+--import XMonad.Layout.Spacing
+--import XMonad.Layout.Grid
+----import XMonad.Layout.Fullscreen
+--import XMonad.Layout.NoBorders
+--import XMonad.Layout.MultiToggle
+-------------
+
+
+import qualified XMonad.StackSet as W
+
 -- hooks --
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
@@ -66,6 +80,7 @@ main = do
         --, startupHook   = spawnOnce autoload
         -- needed for java and intellij
         , startupHook   = spawnOnce autoload <+> setWMName "LG3D"
+        , modMask       = mod1Mask
 --        , modMask       = mod4Mask     -- Rebind default Mod to the Windows key for the default key bindings
         , normalBorderColor  = myColor "Blue"
         , focusedBorderColor = myColor "Yellow"
@@ -89,7 +104,13 @@ myXPConfig = def
 ------------------------------------------------------------------------
 --myKeys conf@XConfig {modMask = modMask} =
 --myKeys conf@XConfig {modMask = modMask} = M.fromList $
-myKeys = [
+--
+-- toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
+-- myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
+-- myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
+
+myKeys =
+   [
     ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
         , ((mod1Mask .|. shiftMask, xK_p), spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal")
         , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
@@ -119,3 +140,18 @@ myKeys = [
         , ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" (io exitSuccess))
         --, ((mod1Mask, xK_space ), sendMessage ToggleLayout)
     ]
+    -- ++
+    -- [((m .|. mod1Mask, k), windows $ f i)
+    --     | (i, k) <- zip (workspaces conf)[ xK_ampersand
+    --                                      , xK_eacute
+    --                                      , xK_quotedbl
+    --                                      , xK_apostrophe
+    --                                      , xK_parenleft
+    --                                      , xK_section -- 6 0xa7
+    --                                      , xK_egrave
+    --                                      , xK_exclam  -- 8 0x21
+    --                                      , xK_ccedilla
+    --                                      , xK_agrave
+    --                                      , xK_parenright
+    --                                      ] ,
+    --       (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
