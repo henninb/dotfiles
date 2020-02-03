@@ -51,3 +51,6 @@ example:
 	@echo example > .active
 	@mv -v xmonad ${HOME}/.local/bin
 	@hlint xmonad-example.hs
+restart:
+	@echo restart xrdp
+	@sudo systemctl restart xrdp

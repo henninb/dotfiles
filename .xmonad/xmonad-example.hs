@@ -59,7 +59,8 @@ myKeys = [
          ]
 
 main = do
-    xmproc <- spawnPipe "/usr/bin/xmobar ~/.xmonad/xmobar.hs"
+    --xmproc <- spawnPipe "xmobar /home/henninb/.config/xmobar/xmobarrc"
+    xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
     xmonad . docks $ ewmh $ defaults {
       logHook =  dynamicLogWithPP $
         --defaultPP{ppOutput = System.IO.hPutStrLn xmproc,
