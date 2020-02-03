@@ -101,6 +101,9 @@ myKeys = [
         , ((mod1Mask .|. shiftMask, xK_Return), spawn "urxvt")
         --, ((mod1Mask .|. shiftMask, xK_BackSpace), kill)
         , ((mod1Mask .|. shiftMask, xK_BackSpace), kill)
+
+        , ((mod1Mask,               xK_space ), sendMessage NextLayout)
+        --, ((mod1Mask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
         -- us the tool: xev
         -- , ((0         , 0x1008FF11), spawn "amixer -q sset Master 2%-")
         -- , ((0         , 0x1008FF13), spawn "amixer -q sset Master 2%+")

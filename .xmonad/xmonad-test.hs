@@ -38,22 +38,23 @@ myConfig = def { modMask = myModMask,
                           }
 
 --myModMask = mod4Mask
--- alt key = mod4Mask
--- super key = mod1Mask
-myModMask = mod4Mask
+-- super key = mod4Mask
+-- alt key = mod1Mask
+myModMask = mod1Mask
 myTerminal = "urxvt"
 
--- Workspaces
-myws1 = "\xf120"
-myws2 = "\xf269"
-myws3 = "\xf121"
-myws4 = "\xf07b"
-myws5 = "\xf099"
-myws6 = "\xf1bc"
-myws7 = "\xf11b"
+myws1 = "1"
+myws2 = "2"
+myws3 = "3"
+myws4 = "4"
+myws5 = "5"
+myws6 = "6"
+myws7 = "7"
+myws8 = "8"
+myws9 = "9"
 
 myWorkspaces :: [String]
-myWorkspaces = [myws1, myws2, myws3, myws4, myws5, myws6 , myws7 ]
+myWorkspaces = [myws1, myws2, myws3, myws4, myws5, myws6 , myws7, myws8, myws9 ]
 
 -- Layouts
 -- No spacing
@@ -124,15 +125,29 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
     -- launching apps
-    -- [ ((modMask .|. controlMask, xK_Return), spawn "urxvt" [])
     [
-      ((modMask,                 xK_Return), spawn "urxvt")
-    , ((modMask,                 xK_p     ), spawn "rofi -show run")
-    , ((modMask,                 xK_o     ), spawn "rofi -show window")
-    , ((modMask .|. controlMask, xK_c     ), spawn "firefox")
+      ((modMask,                 xK_Return), spawn "termite")
+    , ((modMask .|. shiftMask, xK_Return), spawn "urxvt")
+--    , ((modMask,                 xK_p     ), spawn "rofi -show run")
+ --   , ((modMask,                 xK_o     ), spawn "rofi -show window")
+  --  , ((modMask .|. controlMask, xK_c     ), spawn "firefox")
+
+    , ((modMask .|. shiftMask, xK_p), spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal")
+   -- , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
+    --, ((0, xK_Print), spawn "scrot")
+    , ((modMask, xK_i), spawn "firefox")
+    , ((modMask, xK_n), spawn "standard-notes")
+    , ((modMask .|. shiftMask, xK_i), spawn ("firefox" ++ " -private-window"))
+
+    , ((0, xF86XK_AudioLowerVolume   ), spawn "amixer -q -D pulse sset Master 2%-")
+    , ((0, xF86XK_AudioRaiseVolume   ), spawn "amixer -q -D pulse sset Master 2%+")
+    --, ((0, xF86XK_AudioMute          ), spawn "amixer set Master toggle")
+    , ((0, xF86XK_AudioMute          ), spawn "amixer -D pulse sset Master toggle")
+
     -- launching cli apps
     -- Kill windows
     , ((modMask .|. controlMask, xK_w     ), kill)
+    , ((modMask .|. shiftMask, xK_BackSpace), kill)
     -- screenshot
     , ((0, xK_Print                       ), spawn "scrot")
     -- multimedia
