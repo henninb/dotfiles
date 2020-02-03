@@ -209,7 +209,7 @@ exit 0
 # cd $HOME/projects
 # git clone git@github.com:jaor/xmobar.git
 # cd xmobar
-# git checkout tags/v0.24.5
+# git checkout tags/v0.31
 
 # echo exec xmonad
 # xmonad --recompile
