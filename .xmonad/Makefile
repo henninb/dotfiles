@@ -43,6 +43,7 @@ rice:
 	@hlint xmonad-rice.hs
 	@hlint lib/*.hs
 example:
+	@echo compiled xmobar without xft support?
 	@rm -rf *.hi *.o xmonad
 	@ln -sfn xmonad-example.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs

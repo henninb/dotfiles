@@ -175,6 +175,8 @@ if [ $? -ne 0 ]; then
 fi
 
 stack install xmobar
+stack build --flag xmobar:with_xft
+#stack build xmobar -f with_xft
 if [ $? -ne 0 ]; then
   echo failed xmobar.
   exit 1
