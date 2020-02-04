@@ -46,6 +46,7 @@
 - lock screen - i3block
 - wii emulator - dolphin-emu
 - cloud storage - nextcloud
+- game - xonotic
 
 
 
