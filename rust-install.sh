@@ -7,5 +7,7 @@ rustup --version &>/dev/null || curl --proto '=https' --tlsv1.2 -sSf https://sh.
 echo git checkout .bash_profile  .profile .zprofile
 echo cargo install ripgrep
 echo cargo install dust
+echo cargo install exa
+echo cargo install broot
 
 exit 0

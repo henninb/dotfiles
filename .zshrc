@@ -409,3 +409,5 @@ function zle-keymap-select {
   fi
 }
 zle -N zle-keymap-select
+
+source /home/henninb/.config/broot/launcher/bash/br
