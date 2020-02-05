@@ -127,6 +127,8 @@ brew tap homebrew/cask-versions
 git -C "$(brew --repo homebrew/core)" fetch --unshallow
 brew cask install java11
 
+brew install reattach-to-user-namespace
+
 ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
 
 echo postgresql
