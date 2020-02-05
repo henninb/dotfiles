@@ -5,3 +5,8 @@
 #sudo visudo
 henninb ALL=(ALL) NOPASSWD: ALL
 ```
+
+## disable pwfeedback - ** while typing sudo passwords
+```
+$ sudo mv /etc/sudoers.d/0pwfeedback /etc/sudoers.d/0pwfeedback.disabled
+```
