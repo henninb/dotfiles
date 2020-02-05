@@ -411,4 +411,4 @@ function zle-keymap-select {
 }
 zle -N zle-keymap-select
 
-source /home/henninb/.config/broot/launcher/bash/br
+[ -f "$HOME/.config/broot/launcher/bash/br" ] && source $HOME/.config/broot/launcher/bash/br
