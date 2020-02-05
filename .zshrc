@@ -236,7 +236,7 @@ export VAGRANT_DEFAULT_PROVIDER=kvm
 # turn this on to display x on mac or windows
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   if [ -x "$(command -v neofetch)" ]; then
-    neofetch
+    [ -n "$TMUX" ] || neofetch
   fi
 #  export DISPLAY=localhost:10.0
 fi
