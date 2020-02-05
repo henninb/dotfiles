@@ -251,6 +251,7 @@ mkdir -p $HOME/.config/compton
 [ -f /opt/intellij/bin/idea.sh ] && ln -sfn /opt/intellij/bin/idea.sh $HOME/.local/bin/intellij
 [ -f /opt/firefox/firefox ] && ln -sfn /opt/firefox/firefox $HOME/.local/bin/firefox
 [ -f /opt/vscode/bin/code ] && ln -sfn /opt/vscode/bin/code $HOME/.local/bin/code
+[ -f $HOME/.tmux-master.conf ] && ln -sfn $HOME/.tmux.conf
 #ln -sfn $HOME/.config/polybar/config-default $HOME/.config/polybar/config
 [ -f $HOME/.config/polybar/config-master ] && ln -sfn $HOME/.config/polybar/config-master $HOME/.config/polybar/config
 [ -f $HOME/.ssh/config ] && chmod 600 $HOME/.ssh/config
