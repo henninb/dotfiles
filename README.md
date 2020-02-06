@@ -25,7 +25,7 @@
 - hypervisor - kvm, qemu
 - remote desktop server - xrdp
 - irc client - irssi
-- terminal multiplexer - screen, tmux
+- terminal multiplexer - tmux screen
 - network packet tools - tcpdump
 - markdown reader - glow
 - browser - firefox
