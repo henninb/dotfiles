@@ -50,6 +50,7 @@ endif
    Plug 'git@github.com:prettier/vim-prettier.git', { 'do': 'yarn add prettier' }
    Plug 'git@github.com:c-brenn/repel.nvim.git'
    Plug 'git@github.com:scrooloose/nerdtree.git'
+   Plug 'Xuyuanp/nerdtree-git-plugin'
    Plug 'git@github.com:rust-lang/rust.vim.git'
    Plug 'git@github.com:dhruvasagar/vim-zoom.git'
    Plug 'git@github.com:easymotion/vim-easymotion.git'
@@ -58,6 +59,7 @@ endif
    Plug 'tpope/vim-abolish'
    Plug 'MikeCoder/quickrun.vim'
    Plug 'dracula/vim', { 'name': 'dracula' }
+   Plug 'benmills/vimux'
 if $OS != "Arch Linux"
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
 endif

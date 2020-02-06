@@ -20,7 +20,7 @@
 - window manager - i3, xmonad
 - lock screen - i3block
 - terminal multiplexer - tmux screen
-- media player - vlc, olivia
+- media player - vlc, mpv olivia
 - spreadsheet -sc-im
 - programming - java, kotlin, rust, haskell, python, js
 - containerization - docker
@@ -39,6 +39,7 @@
 - theme -dracula
 - audio player - cmus
 - image converter - imagemagik
+- image viewer - sxiv, feh
 - burning images - k3b, cdrecord
 - podcast client - ???
 - process viewer - htop
@@ -47,6 +48,9 @@
 - cloud storage - nextcloud
 - game - xonotic
 - pdf reader - zathura
+- calendar - calcurse
+- rss reader - newsboat
+
 
 
 
