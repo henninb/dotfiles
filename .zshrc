@@ -37,6 +37,7 @@ else
   export OS_VER=$(uname -r)
 fi
 
+# remove ohmyzsh
 export ZSH="$HOME/.oh-my-zsh"
 
 #SPACESHIP_PROMPT_ORDER=(user host dir git)
@@ -85,44 +86,6 @@ else
 #  ZSH_THEME="dracula"
 fi
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# DISABLE_AUTO_UPDATE="true"
-# export UPDATE_ZSH_DAYS=13
-# DISABLE_LS_COLORS="true"
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-#ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
 if [ ! -x "$(command -v unzip)" ]; then
   echo unzip not installed.
 fi
@@ -136,6 +99,7 @@ if [ "$MYSHELL" = "zsh" ]; then
   [ -f "$HOME/.autojump/etc/profile.d/autojump.sh" ] && autoload -U compinit && compinit -u
 fi
 
+# remove ohmyzsh
 plugins=(git zsh-autosuggestions docker zsh-syntax-highlighting autojump)
 
 if [ "$MYSHELL" = "zsh" ]; then
@@ -144,25 +108,11 @@ if [ "$MYSHELL" = "zsh" ]; then
   fi
 fi
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
-
 # TODO: test this, not sure if/how this works
 HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
 
 
-## TODO: do I need this?
-#if [ "$OS" = "Linux Mint" ]; then
-#  #export JAVA_HOME=/usr/lib/jvm/default-java/
-#  [ -d "/usr/lib/jvm/java-8-openjdk-amd64" ] && export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-#fi
-
 if [ "$OSTYPE" = "linux-gnu" ]; then
-  #readlink $(readlink $(which javac)) || readlink $(which javac)
   if [ -x "$(command -v javac)" ]; then
     export JAVA_HOME=$(dirname $(dirname $(readlink -f $(readlink -f $(which javac)) || readlink -f $(which javac))))
   else
@@ -171,7 +121,7 @@ if [ "$OSTYPE" = "linux-gnu" ]; then
 elif [ "$OSTYPE" = "linux-gnueabihf" ]; then
   echo JAVA_HOME
 else
-  echo JAVA_HOME
+  echo JAVA_HOME is not setup.
 fi
 
 export EDITOR=nvim
@@ -265,8 +215,6 @@ chmod 700 $HOME
 
 [ -f $HOME/.zsh_history ] && sort -t ";" -k 2 -u $HOME/.zsh_history | sort -o $HOME/.zsh_history
 
-#ln -sfn $(find /usr/local/bin/ -type f -name "perl5*" | tail -1) $HOME/.local/bin/perl
-
 export GOPATH=$HOME/.local
 export PATH=$PYENV_ROOT/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
@@ -281,16 +229,6 @@ export PATH=/opt/oracle-instantclient:$PATH
 export PATH="$HOME/.dynamic-colors/bin:$PATH"
 [ -s "$HOME/.rvm/scripts/rvm" ] && source $HOME/.rvm/scripts/rvm
 [ -s "/etc/profile.d/rvm.sh" ] && source /etc/profile.d/rvm.sh
-#echo "stty -tostop"
-# if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
-#   if [ -x "$(command -v inxi)" ]; then
-#     # inxi -Sxxx #causes xmonad to hang
-#     inxi
-#   else
-#     sudo apt install -y inxi
-#     inxi -Sxxx
-#   fi
-# fi
 
 if [ "$OS" = "Gentoo" ]; then
   grep $(hostname) /etc/hosts > /dev/null
@@ -346,69 +284,36 @@ if [ "$MYSHELL" = "bash" ]; then
   fi
 fi
 
-#echo export W3MIMGDISPLAY_PATH=/usr/lib/python2.7/dist-packages/ranger/ext/img_display.py
-#/usr/lib/w3m/w3mimgdisplay
+if [ "$MYSHELL" = "zsh" ]; then
+  # vi mode
+  bindkey -v
+  export KEYTIMEOUT=1
 
-#export XAUTHORITY=/home/henninb/.Xauthority
+  # Use vim keys in tab complete menu:
+  bindkey -M menuselect 'h' vi-backward-char
+  bindkey -M menuselect 'j' vi-down-line-or-history
+  bindkey -M menuselect 'k' vi-up-line-or-history
+  bindkey -M menuselect 'l' vi-forward-char
+  bindkey -M menuselect 'left' vi-backward-char
+  bindkey -M menuselect 'down' vi-down-line-or-history
+  bindkey -M menuselect 'up' vi-up-line-or-history
+  bindkey -M menuselect 'right' vi-forward-char
+  # Fix backspace bug when switching modes
+  bindkey "^?" backward-delete-char
 
-# vi mode
-bindkey -v
-export KEYTIMEOUT=1
-
-# Use vim keys in tab complete menu:
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'left' vi-backward-char
-bindkey -M menuselect 'down' vi-down-line-or-history
-bindkey -M menuselect 'up' vi-up-line-or-history
-bindkey -M menuselect 'right' vi-forward-char
-# Fix backspace bug when switching modes
-bindkey "^?" backward-delete-char
-
-# Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
-}
-zle -N zle-keymap-select
-
-# vi mode
-bindkey -v
-export KEYTIMEOUT=1
-
-# Use vim keys in tab complete menu:
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'left' vi-backward-char
-bindkey -M menuselect 'down' vi-down-line-or-history
-bindkey -M menuselect 'up' vi-up-line-or-history
-bindkey -M menuselect 'right' vi-forward-char
-# Fix backspace bug when switching modes
-bindkey "^?" backward-delete-char
-
-# Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
-}
-zle -N zle-keymap-select
+  # Change cursor shape for different vi modes.
+  function zle-keymap-select {
+    if [[ ${KEYMAP} == vicmd ]] ||
+       [[ $1 = 'block' ]]; then
+      echo -ne '\e[1 q'
+    elif [[ ${KEYMAP} == main ]] ||
+         [[ ${KEYMAP} == viins ]] ||
+         [[ ${KEYMAP} = '' ]] ||
+         [[ $1 = 'beam' ]]; then
+      echo -ne '\e[5 q'
+    fi
+  }
+  zle -N zle-keymap-select
+fi
 
 [ -f "$HOME/.config/broot/launcher/bash/1" ] && source $HOME/.config/broot/launcher/bash/1
