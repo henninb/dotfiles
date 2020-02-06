@@ -37,9 +37,6 @@ else
   export OS_VER=$(uname -r)
 fi
 
-# remove ohmyzsh
-export ZSH="$HOME/.oh-my-zsh"
-
 #SPACESHIP_PROMPT_ORDER=(user host dir git)
 SPACESHIP_PROMPT_ORDER=(exit_code host dir git jobs char)
 SPACESHIP_PROMPT_ADD_NEWLINE=false
@@ -99,15 +96,6 @@ if [ "$MYSHELL" = "zsh" ]; then
   [ -f "$HOME/.autojump/etc/profile.d/autojump.sh" ] && autoload -U compinit && compinit -u
 fi
 
-# remove ohmyzsh
-# plugins=(git zsh-autosuggestions docker zsh-syntax-highlighting autojump)
-
-# if [ "$MYSHELL" = "zsh" ]; then
-#   if [ -f $ZSH/oh-my-zsh.sh ]; then
-#     source $ZSH/oh-my-zsh.sh
-#   fi
-# fi
-
 # TODO: test this, not sure if/how this works
 HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
 
@@ -166,9 +154,6 @@ export NVM_DIR="$HOME/.nvm"
 [ ! -f "$HOME/.ssh/id_rsa.pub" ] && ssh-keygen -y -f $HOME/.ssh/id_rsa > $HOME/.ssh/id_rsa.pub
 
 [ ! -d "$HOME/.pyenv" ] && git clone https://github.com/pyenv/pyenv.git $HOME/.pyenv
-# [ ! -d "$HOME/.oh-my-zsh" ] && git clone git@github.com:ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
-# [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ] && git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-# [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ] && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 grep -A 3 '\[branch "master"\]' $HOME/.git/config | grep 'remote = origin' > /dev/null
 if [ $? -ne 0 ]; then
@@ -218,10 +203,8 @@ chmod 700 $HOME
 export GOPATH=$HOME/.local
 export PATH=$PYENV_ROOT/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
-#export PATH=$HOME/go/bin:$PATH
 export PATH=$HOME/node_modules/.bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
-#export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
 export PATH=$HOME/.rvm/bin:$PATH
 export PATH=/opt/kafka/bin:$PATH
 export PATH=/opt/kotlinc/bin:$PATH
