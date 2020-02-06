@@ -6,5 +6,24 @@ Apple icon > System Preferences > Keyboard > Text tab >  Uncheck Use smart quote
 terminal - show hidden files
 defaults write com.apple.finder AppleShowAllFiles YES
 
-cmd-shift . on the finder shows the dot directories on the finder
-cmd-tilda swithces between screens within an app
+## dot directories on the finder
+cmd-shift .
+
+## swithces between screens within an app
+cmd-tilda
+
+## spotlight
+cmd-space 
+
+## put mission control in the upper left corner
+
+## iterm2
+cmd-d - split horizontal
+cmd-shift-d - split virtical
+cmd-option-f - password manager
+
+## unmap capslock
+
+## faster mouse
+## hide dock
+
