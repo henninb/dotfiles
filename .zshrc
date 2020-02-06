@@ -100,7 +100,7 @@ if [ "$MYSHELL" = "zsh" ]; then
 fi
 
 # remove ohmyzsh
-plugins=(git zsh-autosuggestions docker zsh-syntax-highlighting autojump)
+# plugins=(git zsh-autosuggestions docker zsh-syntax-highlighting autojump)
 
 if [ "$MYSHELL" = "zsh" ]; then
   if [ -f $ZSH/oh-my-zsh.sh ]; then
@@ -317,3 +317,8 @@ if [ "$MYSHELL" = "zsh" ]; then
 fi
 
 [ -f "$HOME/.config/broot/launcher/bash/1" ] && source $HOME/.config/broot/launcher/bash/1
+
+source $HOME/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/plugins/autojump/bin/autojump.zsh
+source $HOME/themes/spaceship-prompt/spaceship.zsh

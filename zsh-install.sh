@@ -40,24 +40,44 @@ echo "Workaround for the dark blue color issue with agnoster theme"
 # TODO: no longer required, lightend the blue on the zsh shell
 #sed -i '0,/blue/{s/blue/39d/}' ~/.oh-my-zsh/themes/agnoster.zsh-theme
 
-sed -i 's/blue $CURRENT_FG/39d $CURRENT_FG/' ~/.oh-my-zsh/themes/agnoster.zsh-theme
+# sed -i 's/blue $CURRENT_FG/39d $CURRENT_FG/' ~/.oh-my-zsh/themes/agnoster.zsh-theme
 
-git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+## download plugins and themes
 
-git clone https://github.com/denysdovhan/spaceship-prompt.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/spaceship-prompt
-ln -sfn "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/spaceship-prompt/spaceship.zsh-theme" "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/spaceship.zsh-theme"
+git clone git://github.com/zsh-users/zsh-autosuggestions.git ${HOME}/plugins/zsh-autosuggestions
 
-git clone git://github.com/wting/autojump.git
-cd autojump
-./install.py
+git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ${HOME}/plugins/zsh-syntax-highlighting
+
+git clone git://github.com/wting/autojump.git $HOME/plugins/autojump
+
+git clone git://github.com/denysdovhan/spaceship-prompt.git ${HOME}/themes/spaceship-prompt
+
+git clone git://github.com/eendroroy/alien.git $HOME/themes/alien
+cd $HOME/themes/alien
+git submodule update --init --recursive
 cd -
 
-git clone git://github.com/eendroroy/alien.git
-cd alien
-git submodule update --init --recursive
-echo add to .zshrc
-echo source ~/alien/alien.zsh
+git clone git@github.com:agnoster/agnoster-zsh-theme.git $HOME/themes/agnoster-zsh-theme
+git clone git@github.com:dracula/zsh.git $HOME/themes/dracula-zsh-theme
+
+
+## download plugins and themes
+
+# git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# git clone https://github.com/denysdovhan/spaceship-prompt.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/spaceship-prompt
+
+# ln -sfn "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/spaceship-prompt/spaceship.zsh-theme" "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/spaceship.zsh-theme"
+
+# git clone git://github.com/wting/autojump.git
+# cd autojump
+# ./install.py
+# cd -
+
+# echo add to .zshrc
+# echo source ~/alien/alien.zsh
 
 [ -s "/usr/bin/zsh" ] && sudo usermod -s /usr/bin/zsh $(whoami)
 [ -s "/usr/bin/zsh" ] && sudo chsh -s /usr/bin/zsh $(whoami)
@@ -70,6 +90,6 @@ echo source ~/alien/alien.zsh
 
 echo sudo vipw #fixes passwd file for freebsd
 
-for i in $fpath; do echo $i; ls -l $i | egrep -i "(async|pure)"; done
+#for i in $fpath; do echo $i; ls -l $i | egrep -i "(async|pure)"; done
 
 exit 0
