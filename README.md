@@ -10,13 +10,16 @@
 - Fedora
 
 ## Software
-- pdf reader - zathura
 - terminal - urxvt, termite, st
 - editor - neovim, doom emacs, vscode, intellij
+- shell - zsh, bash, fish
+- shell prompt - spaceship, agnoster, alien, dracula
+- zsh plugins - zsh-syntax-highlighting, zsh-autosuggestions, autojump
+- file manager - ranger, lf
 - bar - polybar, dzen
 - window manager - i3, xmonad
-- shell - zsh, bash, fish
-- file manager - ranger, lf
+- lock screen - i3block
+- terminal multiplexer - tmux screen
 - media player - vlc, olivia
 - spreadsheet -sc-im
 - programming - java, kotlin, rust, haskell, python, js
@@ -25,7 +28,6 @@
 - hypervisor - kvm, qemu
 - remote desktop server - xrdp
 - irc client - irssi
-- terminal multiplexer - tmux screen
 - network packet tools - tcpdump
 - markdown reader - glow
 - browser - firefox
@@ -40,12 +42,11 @@
 - burning images - k3b, cdrecord
 - podcast client - ???
 - process viewer - htop
-- shell prompt - spaceship
 - email client - neomutt
-- lock screen - i3block
 - wii emulator - dolphin-emu
 - cloud storage - nextcloud
 - game - xonotic
+- pdf reader - zathura
 
 
 
