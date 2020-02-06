@@ -102,11 +102,11 @@ fi
 # remove ohmyzsh
 # plugins=(git zsh-autosuggestions docker zsh-syntax-highlighting autojump)
 
-if [ "$MYSHELL" = "zsh" ]; then
-  if [ -f $ZSH/oh-my-zsh.sh ]; then
-    source $ZSH/oh-my-zsh.sh
-  fi
-fi
+# if [ "$MYSHELL" = "zsh" ]; then
+#   if [ -f $ZSH/oh-my-zsh.sh ]; then
+#     source $ZSH/oh-my-zsh.sh
+#   fi
+# fi
 
 # TODO: test this, not sure if/how this works
 HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
@@ -166,9 +166,9 @@ export NVM_DIR="$HOME/.nvm"
 [ ! -f "$HOME/.ssh/id_rsa.pub" ] && ssh-keygen -y -f $HOME/.ssh/id_rsa > $HOME/.ssh/id_rsa.pub
 
 [ ! -d "$HOME/.pyenv" ] && git clone https://github.com/pyenv/pyenv.git $HOME/.pyenv
-[ ! -d "$HOME/.oh-my-zsh" ] && git clone git@github.com:ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
-[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ] && git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ] && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+# [ ! -d "$HOME/.oh-my-zsh" ] && git clone git@github.com:ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
+# [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ] && git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+# [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ] && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 grep -A 3 '\[branch "master"\]' $HOME/.git/config | grep 'remote = origin' > /dev/null
 if [ $? -ne 0 ]; then
@@ -237,20 +237,20 @@ if [ "$OS" = "Gentoo" ]; then
   fi
 fi
 
-if [ "$MYSHELL" = "zsh" ]; then
-  if [ "$OS" = "Darwin" ]; then
-    #control arrow
-    # bindkey "^[^[[D" backward-word
-    # bindkey "^[^[[C" forward-word
-    # option arrow
-    bindkey "[D" backward-word
-    bindkey "[C" forward-word
-  else
-    #control arraws trigger forward and backward by word
-    bindkey "^[[1;5C" forward-word
-    bindkey "^[[1;5D" backward-word
-  fi
-fi
+#if [ "$MYSHELL" = "zsh" ]; then
+#  if [ "$OS" = "Darwin" ]; then
+#    #control arrow
+#    # bindkey "^[^[[D" backward-word
+#    # bindkey "^[^[[C" forward-word
+#    # option arrow
+#    bindkey "[D" backward-word
+#    bindkey "[C" forward-word
+#  else
+#    #control arraws trigger forward and backward by word
+#    bindkey "^[[1;5C" forward-word
+#    bindkey "^[[1;5D" backward-word
+#  fi
+#fi
 
 touch $HOME/.xmonad/.active
 touch $HOME/.active-wm
@@ -290,14 +290,14 @@ if [ "$MYSHELL" = "zsh" ]; then
   export KEYTIMEOUT=1
 
   # Use vim keys in tab complete menu:
-  bindkey -M menuselect 'h' vi-backward-char
-  bindkey -M menuselect 'j' vi-down-line-or-history
-  bindkey -M menuselect 'k' vi-up-line-or-history
-  bindkey -M menuselect 'l' vi-forward-char
-  bindkey -M menuselect 'left' vi-backward-char
-  bindkey -M menuselect 'down' vi-down-line-or-history
-  bindkey -M menuselect 'up' vi-up-line-or-history
-  bindkey -M menuselect 'right' vi-forward-char
+  # bindkey -M menuselect 'h' vi-backward-char
+  # bindkey -M menuselect 'j' vi-down-line-or-history
+  # bindkey -M menuselect 'k' vi-up-line-or-history
+  # bindkey -M menuselect 'l' vi-forward-char
+  # bindkey -M menuselect 'left' vi-backward-char
+  # bindkey -M menuselect 'down' vi-down-line-or-history
+  # bindkey -M menuselect 'up' vi-up-line-or-history
+  # bindkey -M menuselect 'right' vi-forward-char
   # Fix backspace bug when switching modes
   bindkey "^?" backward-delete-char
 
