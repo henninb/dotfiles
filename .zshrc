@@ -305,8 +305,13 @@ if [ "$MYSHELL" = "zsh" ]; then
   source $HOME/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source $HOME/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
   source $HOME/plugins/autojump/bin/autojump.zsh
+  #eval "$(starship init zsh)"
   source $HOME/themes/spaceship-prompt/spaceship.zsh
   #source $HOME/themes/alien/alien.zsh
   #source $HOME/themes/dracula-zsh-theme/dracula.zsh-theme
   #source $HOME/themes/agnoster-zsh-theme/agnoster.zsh-theme
+elif [ "$MYSHELL" = "bash" ]; then
+  eval "$(starship init bash)"
+else
+  echo unknown shell
 fi

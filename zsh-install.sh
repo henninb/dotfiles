@@ -32,17 +32,18 @@ fi
 #   git clone git://github.com/sigurdga/gnome-terminal-colors-solarized.git ~/.solarized
 # fi
 
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-git checkout .zshrc
-echo cp ~/.zshrc.pre-oh-my-zsh  ~/.zshrc
+# sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# git checkout .zshrc
+# echo cp ~/.zshrc.pre-oh-my-zsh  ~/.zshrc
 
-echo "Workaround for the dark blue color issue with agnoster theme"
+# echo "Workaround for the dark blue color issue with agnoster theme"
 # TODO: no longer required, lightend the blue on the zsh shell
 #sed -i '0,/blue/{s/blue/39d/}' ~/.oh-my-zsh/themes/agnoster.zsh-theme
 
 # sed -i 's/blue $CURRENT_FG/39d $CURRENT_FG/' ~/.oh-my-zsh/themes/agnoster.zsh-theme
 
 ## download plugins and themes
+echo curl -fsSL https://starship.rs/install.sh | bash
 
 git clone git://github.com/zsh-users/zsh-autosuggestions.git ${HOME}/plugins/zsh-autosuggestions
 
