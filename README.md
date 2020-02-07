@@ -19,7 +19,7 @@
 - bar - polybar, dzen
 - window manager - i3, xmonad
 - lock screen - i3block
-- terminal multiplexer - tmux screen
+- terminal multiplexer - tmux, screen, tmate
 - media player - vlc, mpv olivia
 - spreadsheet -sc-im
 - programming - java, kotlin, rust, haskell, python, js
@@ -50,6 +50,7 @@
 - pdf reader - zathura
 - calendar - calcurse
 - rss reader - newsboat
+- log reader - lnav
 
 
 
