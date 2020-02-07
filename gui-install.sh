@@ -2,7 +2,7 @@
 
 DEBIAN_FRONTEND=noninteractive
 
-ARCHLINUX_PKGS="xorg-server vlc firefox riot-desktop i3-wm handbrake dolphin-emu dbeaver terminator handbrake rofi feh dolphin-emu xorg xorg-server xorg-xeyes xorg-xinit seahorse termite rxvt-unicode gqrx gitk audacity"
+ARCHLINUX_PKGS="xorg-server vlc firefox riot-desktop i3-wm handbrake dolphin-emu dbeaver terminator handbrake rofi feh dolphin-emu xorg xorg-server xorg-xeyes xorg-xinit seahorse termite rxvt-unicode gqrx gitk audacity zathura sxiv mpv"
 MINT_PKGS="vlc firefox riot-desktop i3-wm handbrake dolphin-emu vim-gtk3 i3status i3blocks i3 xterm i3lock rofi terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious rxvt gitk audacity gqrx-sdr"
 CENTOS_PKGS="vlc firefox riot-desktop handbrake dolphin-emu gvim terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious rxvt"
 UBUNTU_PKGS="gqrx vlc firefox riot-desktop handbrake dolphin-emu vim-gtk3 terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious rxvt gitk audacity"
