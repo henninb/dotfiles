@@ -7,12 +7,17 @@
 (set-keyboard-coding-system 'utf-8)
 
 
-(setq inhibit-startup-screen t)
+;;(setq inhibit-startup-screen t)
 ;; disable x - did not work
 ;(advice-add #'x-apply-session-resources :override #'ignore)
 
 ;; disable backup file from being created
 (setq make-backup-files nil)
+
+(setq doom-theme 'doom-dracula)
+
+(setq doom-font (font-spec :family "Monofur for Powerline" :size 18))
+
 
 ;; disable xwindows
 ;; (setq mouse-drag-copy-region nil)
@@ -43,4 +48,4 @@
 ;   (setq sml/theme 'powerline)
 ;   (add-hook 'after-init-hook 'sml/setup))
 
-(setq doom-theme 'doom-city-lights)
+;(setq doom-theme 'doom-city-lights)
