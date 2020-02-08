@@ -123,7 +123,19 @@ export GIT_PAGER=cat git diff
 # for rust
 [ -s "$HOME/.cargo/env" ] && source $HOME/.cargo/env
 
-[ -s "$HOME/.alias.env" ] && source $HOME/.alias.env
+[ -s "$HOME/.alias-master" ] && source $HOME/.alias-master
+
+if [ -x "$(command -v nvim)" ]; then
+  [ -s "$HOME/.alias-neovim" ] && source $HOME/.alias-neovim
+fi
+
+if [ \( "$OS" = "FreeBSD" \) -o \(  "$OS" = "Alpine Linux" \) -o \(  "$OS" = "OpenBSD" \) -o \(  "$OS" = "Darwin" \) ]; then
+  [ -s "$HOME/.alias-bsd" ] && source $HOME/.alias-bsd
+fi
+
+if [ \( "$OSTYPE" = "linux-gnu" \) ]; then
+  [ -s "$HOME/.alias-linux" ] && source $HOME/.alias-linux
+fi
 
 export SDKMAN_DIR="$HOME/.sdkman"
 [ -s "$HOME/.sdkman/bin/sdkman-init.sh" ] && source $HOME/.sdkman/bin/sdkman-init.sh
