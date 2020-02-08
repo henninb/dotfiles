@@ -22,6 +22,7 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   sudo apt install -y conky
   sudo apt install -y nitrogen
   sudo apt install -y cmake
+  sudo apt install -y libxpm-dev
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
