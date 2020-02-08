@@ -20,6 +20,10 @@ echo $VER
 
 if [ "$OS" = "Arch Linux" ]; then
   sudo pacman  --noconfirm --needed -S make luajit luarocks cmake base-devel
+elif [ "$OS" = "Darwin" ]; then
+  echo darwin
+  brew install python3
+  brew install python
 elif [ "$OS" = "Manjaro Linux" ]; then
   echo manjaro
 elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
@@ -104,6 +108,9 @@ cd $HOME
 
 #echo nvim -u NORC file
 #echo "previous $ACTUAL_VER"
+curl -O https://bootstrap.pypa.io/get-pip.py
+sudo python3 get-pip.py
+sudo python2 get-pip.py
 
 sudo chmod -R a+r /usr/local/share/nvim
 sudo chmod -R a+x /usr/local/share/nvim
