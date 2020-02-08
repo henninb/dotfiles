@@ -37,6 +37,30 @@ set SPACEFISH_HOST_SHOW always
 set SPACEFISH_USER_SHOW false
 set SPACEFISH_GIT_PREFIX ''
 
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    export OS=$NAME
+    export OS_VER=$VERSION_ID
+else if type lsb_release >/dev/null 2>&1; then
+    set OS $(lsb_release -si)
+    set OS_VER $(lsb_release -sr)
+else if [ -f /etc/lsb-release ]; then
+    . /etc/lsb-release
+    export OS=$DISTRIB_ID
+    export OS_VER=$DISTRIB_RELEASE
+else if [ -f /etc/debian_version ]; then
+    export OS=Debian
+    export OS_VER=$(cat /etc/debian_version)
+else if [ -f /etc/SuSe-release ]; then
+    ...
+else if [ -f /etc/redhat-release ]; then
+    ...
+else
+  export OS=$(uname -s)
+  export OS_VER=$(uname -r)
+end
+
+echo $OS
 source $HOME/.alias-master
 source $HOME/.alias-neovim
 source $HOME/.alias-bsd
