@@ -37,4 +37,6 @@ set SPACEFISH_HOST_SHOW always
 set SPACEFISH_USER_SHOW false
 set SPACEFISH_GIT_PREFIX ''
 
-source $HOME/.alias.env.fish
+source $HOME/.alias-master
+source $HOME/.alias-neovim
+source $HOME/.alias-bsd
