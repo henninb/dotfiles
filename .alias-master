@@ -31,45 +31,20 @@ alias lynx='lynx -cfg=~/.lynx.cfg'
 
 alias sudop='sudo -E su -p'
 
-if [ -x "$(command -v nvim)" ]; then
-  alias vim='nvim'
-  alias vi='nvim'
-  alias v='nvim'
-else
-  alias vi='vim'
-  alias v='vim'
-fi
+alias vi='vim'
+alias v='vim'
 
-if [ -x "$(command -v dig)" ]; then
-  alias external_ip="dig +short myip.opendns.com @resolver1.opendns.com"
-fi
+#if [ -x "$(command -v dig)" ]; then
+#  alias external_ip="dig +short myip.opendns.com @resolver1.opendns.com"
+#fi
 
-if [ \( "$OSTYPE" = "linux-gnu" \) ]; then
-  alias pbcopy='xclip -selection clipboard'
-  alias pbpaste='xclip -selection clipboard -o'
-#   alias python='python3'
-fi
+alias grep='grep --color'
+alias l.='ls -d .* --color=tty'
+alias ll='ls -l --color=tty'
+alias ls='ls --color=tty'
 
-if [ \( "$OS" = "FreeBSD" \) -o \(  "$OS" = "Alpine Linux" \) -o \(  "$OS" = "OpenBSD" \) -o \(  "$OS" = "Darwin" \) ]; then
-  export CLICOLOR=1
-  export LS_COLORS='di=1:fi=96:*.m=31:*.py=32:*.txt=36:*.out=35'
-  #if [ -x "$(command -v gls)" ]; then
-  # alias ls='gls -G'
-  # alias l.='gls -d .*'
-  # alias ll='gls -l'
-  alias ls='gls --color=always'
-  alias l.='gls --color=always -d .*'
-  alias ll='gls --color=always -l'
-  #fi
-else
-  alias grep='grep --color'
-  alias l.='ls -d .* --color=tty'
-  alias ll='ls -l --color=tty'
-  alias ls='ls --color=tty'
-
-  # Changing "ls" to "exa"
-  # alias ls='exa -al --color=always --group-directories-first' # my preferred listing
-  # alias la='exa -a --color=always --group-directories-first'  # all files and dirs
-  # alias ll='exa -l --color=always --group-directories-first'  # long format
-  # alias lt='exa -aT --color=always --group-directories-first' # tree listing
-fi
+# Changing "ls" to "exa"
+# alias ls='exa -al --color=always --group-directories-first' # my preferred listing
+# alias la='exa -a --color=always --group-directories-first'  # all files and dirs
+# alias ll='exa -l --color=always --group-directories-first'  # long format
+# alias lt='exa -aT --color=always --group-directories-first' # tree listing
