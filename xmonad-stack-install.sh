@@ -175,14 +175,6 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-#stack install xmobar
-#stack build --flag xmobar:with_xft
-##stack build xmobar -f with_xft
-#if [ $? -ne 0 ]; then
-#  echo failed xmobar.
-#  exit 1
-#fi
-
 echo "seems to have the the flag with_xft. how to confirm?"
 cd $HOME/projects
 git clone git@github.com:jaor/xmobar.git
