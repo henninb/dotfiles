@@ -6,18 +6,22 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
-
-;;(setq inhibit-startup-screen t)
-;; disable x - did not work
-;(advice-add #'x-apply-session-resources :override #'ignore)
-
 ;; disable backup file from being created
 (setq make-backup-files nil)
 
+;; set the theme
 (setq doom-theme 'doom-dracula)
+;(setq doom-theme 'doom-city-lights)
 
+;; set the font, note does not work in the console mode
 (setq doom-font (font-spec :family "Monofur for Powerline" :size 18))
 
+;; set the background color
+;; (custom-set-faces
+;;   '(default ((t (:background "#1d2021")))))
+
+(custom-set-faces
+  '(default ((t (:background "#090909")))))
 
 ;; disable xwindows
 ;; (setq mouse-drag-copy-region nil)
@@ -48,4 +52,3 @@
 ;   (setq sml/theme 'powerline)
 ;   (add-hook 'after-init-hook 'sml/setup))
 
-;(setq doom-theme 'doom-city-lights)
