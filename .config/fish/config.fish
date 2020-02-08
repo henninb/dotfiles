@@ -1,4 +1,5 @@
-echo executed fish startup
+#set --erase fish_greeting
+set --universal fish_greeting
 set SPACEFISH_PROMPT_ORDER exit_code host dir git jobs char
 set SPACEFISH_PROMPT_ADD_NEWLINE false
 set SPACEFISH_PROMPT_SEPARATE_LINE false
@@ -35,3 +36,5 @@ set SPACEFISH_HOST_PREFIX '@'
 set SPACEFISH_HOST_SHOW always
 set SPACEFISH_USER_SHOW false
 set SPACEFISH_GIT_PREFIX ''
+
+source $HOME/.alias.env.fish
