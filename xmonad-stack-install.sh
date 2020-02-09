@@ -106,6 +106,7 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y dzen2
   sudo dnf install -y conky
   sudo dnf install -y nitrogen
+  echo iwlib missing
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
     echo centos8
