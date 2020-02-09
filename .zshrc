@@ -319,6 +319,7 @@ if [ "$MYSHELL" = "zsh" ]; then
   source $HOME/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source $HOME/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
   source $HOME/plugins/autojump/bin/autojump.zsh
+  source $HOME/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
   #eval "$(starship init zsh)"
   source $HOME/themes/spaceship-prompt/spaceship.zsh
   #source $HOME/themes/alien/alien.zsh
@@ -329,3 +330,29 @@ elif [ "$MYSHELL" = "bash" ]; then
 else
   echo unknown shell
 fi
+
+# zsh completion system.
+zstyle ':completion:*' completer _complete
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+autoload -Uz compinit
+compinit
+
+# skip identical arrowup commands
+setopt histignoredups
+
+# https://github.com/mooz/percol
+
+# not working
+# bindkey "^[[A" history-beginning-search-backward
+# bindkey "^[[B" history-beginning-search-forward
+
+# requires plugin history-substring-search
+bindkey "^[[A" history-substring-search-up
+bindkey "^[[B" history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+export HISTFILE=/$HOME/.zsh_history
+export HISTSIZE=1000000000
+export SAVEHIST=$HISTSIZE
+setopt EXTENDED_HISTORY
