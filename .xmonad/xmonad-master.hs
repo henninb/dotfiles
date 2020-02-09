@@ -70,14 +70,22 @@ myKeys conf@XConfig {XMonad.modMask = modMask} =
     [
       --((modMask .|. shiftMask, xK_Return), spawn myTerminal)
     -- ((modMask .|. shiftMask, xK_Return), spawn "urxvt")
-    ((modMask .|. shiftMask, xK_Return), spawn "urxvt -fn 'xft:SauceCodePro NF:pixelsize=16'")
+    ((modMask .|. shiftMask, xK_Return), spawn "urxvt")
+  , ((modMask,                 xK_Return), spawn "termite")
   , ((modMask,               xK_i), spawn myBrowser)
   , ((modMask .|. shiftMask, xK_i), spawn (myBrowser ++ " -private-window"))
-  , ((modMask .|. shiftMask, xK_p), spawn "rofi -show drun")
+  --, ((modMask .|. shiftMask, xK_p), spawn "rofi -show drun")
+  , ((modMask .|. shiftMask, xK_p), spawn "dmenu_run -nb orange -nf '#444' -sb yellow -s  f black -fn Monospace-9:normal")
   , ((modMask .|. shiftMask, xK_x), spawn "xscreensaver-command -lock")
    -- close focused window
   , ((modMask .|. shiftMask, xK_BackSpace), kill)
     --- Rotate through the available layout algorithms
+
+    , ((0, xF86XK_AudioLowerVolume   ), spawn "amixer -q -D pulse sset Master 2%-")
+    , ((0, xF86XK_AudioRaiseVolume   ), spawn "amixer -q -D pulse sset Master 2%+")
+    --, ((0, xF86XK_AudioMute          ), spawn "amixer set Master toggle")
+    , ((0, xF86XK_AudioMute          ), spawn "amixer -D pulse sset Master toggle")
+
   , ((modMask,               xK_space), sendMessage NextLayout)
     --  Reset the layouts on the current workspace to default
   , ((modMask .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf)
