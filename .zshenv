@@ -19,7 +19,7 @@ case $(tty) in
     setfont ter-powerline-v16b
     export TERM=linux
     #echo in console
-    sed -i 's/39d $CURRENT_FG/blue $CURRENT_FG/' ~/.oh-my-zsh/themes/agnoster.zsh-theme
+    # sed -i 's/39d $CURRENT_FG/blue $CURRENT_FG/' ~/.oh-my-zsh/themes/agnoster.zsh-theme
   ;;
 esac
 
