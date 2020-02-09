@@ -48,3 +48,6 @@ alias ls='ls --color=tty'
 # alias la='exa -a --color=always --group-directories-first'  # all files and dirs
 # alias ll='exa -l --color=always --group-directories-first'  # long format
 # alias lt='exa -aT --color=always --group-directories-first' # tree listing
+
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'

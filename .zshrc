@@ -112,6 +112,19 @@ else
   echo JAVA_HOME is not setup.
 fi
 
+export PATH=$PYENV_ROOT/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/node_modules/.bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.rvm/bin:$PATH
+export PATH=/opt/kafka/bin:$PATH
+export PATH=/opt/kotlinc/bin:$PATH
+export PATH=/opt/oracle-instantclient:$PATH
+export PATH="$HOME/.dynamic-colors/bin:$PATH"
+
+export GOPATH=$HOME/.local
+export SDKMAN_DIR="$HOME/.sdkman"
+
 export EDITOR=nvim
 export PAGER=less
 
@@ -119,6 +132,16 @@ export PAGER=less
 export LESS="-F -X $LESS"
 # TODO: will this continue to function?
 export GIT_PAGER=cat git diff
+export CHEF_USER=$(whoami)
+export NVM_DIR="$HOME/.nvm"
+export TMOUT=0
+export GPG_TTY=$(tty)
+export PYENV_ROOT="$HOME/.pyenv"
+export VAGRANT_DEFAULT_PROVIDER=kvm
+# TODO is this required
+export POWERLINE_BASH_CONTINUATION=1
+export POWERLINE_BASH_SELECT=1
+export KEYTIMEOUT=1
 
 # for rust
 [ -s "$HOME/.cargo/env" ] && source $HOME/.cargo/env
@@ -133,11 +156,6 @@ if [ \( "$OS" = "FreeBSD" \) -o \(  "$OS" = "Alpine Linux" \) -o \(  "$OS" = "Op
   [ -s "$HOME/.alias-bsd" ] && source $HOME/.alias-bsd
 fi
 
-if [ \( "$OSTYPE" = "linux-gnu" \) ]; then
-  [ -s "$HOME/.alias-linux" ] && source $HOME/.alias-linux
-fi
-
-export SDKMAN_DIR="$HOME/.sdkman"
 [ -s "$HOME/.sdkman/bin/sdkman-init.sh" ] && source $HOME/.sdkman/bin/sdkman-init.sh
 
 if [ ! "$OS" = "FreeBSD" ]; then
@@ -149,7 +167,6 @@ if [ ! "$OS" = "FreeBSD" ]; then
     fi
   fi
 fi
-export CHEF_USER=$(whoami)
 
 mkdir -p ~/.fonts
 ls -l ~/.fonts/{Monofur_Bold_for_Powerline.ttf,Monofur_Italic_for_Powerline.ttf,Monofur_for_Powerline.ttf} > /dev/null 2>&1
@@ -160,7 +177,6 @@ if [ $? -ne 0 ]; then
   cd -
 fi
 
-export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source $NVM_DIR/nvm.sh
 
 [ ! -f "$HOME/.ssh/id_rsa.pub" ] && ssh-keygen -y -f $HOME/.ssh/id_rsa > $HOME/.ssh/id_rsa.pub
@@ -175,12 +191,7 @@ fi
 # workaround for font colors
 # sed -i 's/blue $CURRENT_FG/39d $CURRENT_FG/' ~/.oh-my-zsh/themes/agnoster.zsh-theme
 
-export TMOUT=0
-export GPG_TTY=$(tty)
-export PYENV_ROOT="$HOME/.pyenv"
-export VAGRANT_DEFAULT_PROVIDER=kvm
-
-# turn this on to display x on mac or windows
+# neofetch will run on certain conditions
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   if [ -x "$(command -v neofetch)" ]; then
     [ -n "$TMUX" ] || neofetch
@@ -212,16 +223,7 @@ chmod 700 $HOME
 
 [ -f $HOME/.zsh_history ] && sort -t ";" -k 2 -u $HOME/.zsh_history | sort -o $HOME/.zsh_history
 
-export GOPATH=$HOME/.local
-export PATH=$PYENV_ROOT/bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/node_modules/.bin:$PATH
-export PATH=$HOME/.cargo/bin:$PATH
-export PATH=$HOME/.rvm/bin:$PATH
-export PATH=/opt/kafka/bin:$PATH
-export PATH=/opt/kotlinc/bin:$PATH
-export PATH=/opt/oracle-instantclient:$PATH
-export PATH="$HOME/.dynamic-colors/bin:$PATH"
+
 [ -s "$HOME/.rvm/scripts/rvm" ] && source $HOME/.rvm/scripts/rvm
 [ -s "/etc/profile.d/rvm.sh" ] && source /etc/profile.d/rvm.sh
 
@@ -255,14 +257,10 @@ source $HOME/.zshrc-work-custom
 if [ "$MYSHELL" = "bash" ]; then
   if [ "$(uname -s)" = "Darwin" ]; then
     powerline-daemon -q
-    POWERLINE_BASH_CONTINUATION=1
-    POWERLINE_BASH_SELECT=1
     source /usr/local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
   elif [ "$(uname -s)" = "Linux" ]; then
     if [ -f "$HOME/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh" ]; then
       powerline-daemon -q
-      POWERLINE_BASH_CONTINUATION=1
-      POWERLINE_BASH_SELECT=1
       source $HOME/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
     elif [ -f "$HOME/.local/lib64/python3.6/site-packages/powerline/bindings/bash/powerline.sh" ]; then
       powerline-daemon -q
@@ -282,7 +280,6 @@ fi
 if [ "$MYSHELL" = "zsh" ]; then
   # vi mode
   bindkey -v
-  export KEYTIMEOUT=1
 
   # Use vim keys in tab complete menu:
   # bindkey -M menuselect 'h' vi-backward-char
