@@ -55,6 +55,7 @@ channels = (
   { name = "#i3"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#pfsense"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#dd-wrt"; chatnet = "Freenode"; autojoin = "Yes"; },
+  { name = "#distrotube"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#kvm"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#rust-beginners"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#linuxmint-help"; chatnet = "spotchat"; autojoin = "Yes"; },
