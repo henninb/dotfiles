@@ -8,6 +8,8 @@
 - Mint Linux
 - Gentoo
 - Fedora
+- FreeBSD
+- MacOS
 
 ## Software
 - terminal - urxvt, termite, st

@@ -15,9 +15,6 @@ ln -sfn $HOME/.zshrc $HOME/.bashrc
 #[[ -o interactive ]] || exit 0
 
 if [ -f /etc/os-release ]; then
-  # . /etc/os-release
-  # export OS=$NAME
-  # export OS_VER=$VERSION_ID
   export OS=$(cat /etc/os-release | grep '^NAME=' | tr -d '"' | cut -d = -f2)
   export OS_VER=$(cat /etc/os-release | egrep '^VERSION_ID=' | tr -d '"' | cut -d = -f2)
 elif type lsb_release >/dev/null 2>&1; then
@@ -25,9 +22,6 @@ elif type lsb_release >/dev/null 2>&1; then
   export OS_VER=$(lsb_release -sr)
 elif [ -f /etc/lsb-release ]; then
   echo /etc/lsb-release
-  # . /etc/lsb-release
-  # export OS=$DISTRIB_ID
-  # export OS_VER=$DISTRIB_RELEASE
   export OS=$(cat /etc/lsb-release | egrep '^DISTRIB_ID=' | tr -d '"' | cut -d = -f2)
   export OS_VER=$(cat /etc/lsb-release | egrep '^DISTRIB_RELEASE='| tr -d '"' | cut -d = -f2)
 elif [ -f /etc/debian_version ]; then
@@ -35,12 +29,12 @@ elif [ -f /etc/debian_version ]; then
   export OS_VER=$(cat /etc/debian_version)
 elif [ -f /etc/SuSe-release ]; then
   echo "should not enter here v1"
-  ...
+  exit 1
 elif [ -f /etc/redhat-release ]; then
   echo "should not enter here v2"
-  ...
+  exit 2
 else
-  echo "should not enter here v3"
+  #FreeBSD branches here.
   export OS=$(uname -s)
   export OS_VER=$(uname -r)
 fi
