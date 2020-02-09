@@ -18,17 +18,18 @@ if [ -f /etc/os-release ]; then
   # . /etc/os-release
   # export OS=$NAME
   # export OS_VER=$VERSION_ID
-  export OS=$(cat /etc/os-release | grep '^NAME="' | cut -d \" -f2)
-  export OS_VER=$(cat /etc/os-release | grep '^VERSION_ID="' | cut -d \" -f2)
+  export OS=$(cat /etc/os-release | grep '^NAME=' | tr -d '"' | cut -d = -f2)
+  export OS_VER=$(cat /etc/os-release | egrep '^VERSION_ID=' | tr -d '"' | cut -d = -f2)
 elif type lsb_release >/dev/null 2>&1; then
   export OS=$(lsb_release -si)
   export OS_VER=$(lsb_release -sr)
 elif [ -f /etc/lsb-release ]; then
+  echo /etc/lsb-release
   # . /etc/lsb-release
   # export OS=$DISTRIB_ID
   # export OS_VER=$DISTRIB_RELEASE
-  export OS=$(cat /etc/lsb-release | grep '^DISTRIB_ID="' | cut -d \" -f2)
-  export OS_VER=$(cat /etc/lsb-release | grep '^DISTRIB_RELEASE="' | cut -d \" -f2)
+  export OS=$(cat /etc/lsb-release | egrep '^DISTRIB_ID=' | tr -d '"' | cut -d = -f2)
+  export OS_VER=$(cat /etc/lsb-release | egrep '^DISTRIB_RELEASE='| tr -d '"' | cut -d = -f2)
 elif [ -f /etc/debian_version ]; then
   export OS=Debian
   export OS_VER=$(cat /etc/debian_version)

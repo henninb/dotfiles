@@ -39,14 +39,14 @@ set SPACEFISH_USER_SHOW false
 set SPACEFISH_GIT_PREFIX ''
 
 if [ -f /etc/os-release ];
-  set OS (cat /etc/os-release | grep '^NAME="' | cut -d \" -f2)
-  set OS_VER cat /etc/os-release | grep '^VERSION_ID="' | cut -d \" -f2
+  set OS (cat /etc/os-release | grep '^NAME=' | tr -d '"' | cut -d = -f2)
+  set OS_VER (cat /etc/os-release | grep '^VERSION_ID=' | tr -d '"' | cut -d = -f2)
 else if [ type lsb_release >/dev/null 2>&1 ];
   set OS (lsb_release -si)
   set OS_VER (lsb_release -sr)
 else if [ -f /etc/lsb-release ];
-  set OS (cat /etc/lsb-release | grep '^DISTRIB_ID="' | cut -d \" -f2)
-  set OS_VER cat /etc/lsb-release | grep '^DISTRIB_RELEASE="' | cut -d \" -f2
+  set OS (cat /etc/lsb-release | grep '^DISTRIB_ID=' | tr -d '"' | cut -d = -f2)
+  set OS_VER (cat /etc/lsb-release | grep '^DISTRIB_RELEASE=' | tr -d '"' | cut -d = -f2)
 else if [ -f /etc/debian_version ];
   set OS Debian
   set OS_VER (cat /etc/debian_version)
