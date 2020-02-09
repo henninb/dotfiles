@@ -15,24 +15,31 @@ ln -sfn $HOME/.zshrc $HOME/.bashrc
 #[[ -o interactive ]] || exit 0
 
 if [ -f /etc/os-release ]; then
-    . /etc/os-release
-    export OS=$NAME
-    export OS_VER=$VERSION_ID
+  # . /etc/os-release
+  # export OS=$NAME
+  # export OS_VER=$VERSION_ID
+  export OS=$(cat /etc/os-release | grep '^NAME="' | cut -d \" -f2)
+  export OS_VER=$(cat /etc/os-release | grep '^VERSION_ID="' | cut -d \" -f2)
 elif type lsb_release >/dev/null 2>&1; then
-    export OS=$(lsb_release -si)
-    export OS_VER=$(lsb_release -sr)
+  export OS=$(lsb_release -si)
+  export OS_VER=$(lsb_release -sr)
 elif [ -f /etc/lsb-release ]; then
-    . /etc/lsb-release
-    export OS=$DISTRIB_ID
-    export OS_VER=$DISTRIB_RELEASE
+  # . /etc/lsb-release
+  # export OS=$DISTRIB_ID
+  # export OS_VER=$DISTRIB_RELEASE
+  export OS=$(cat /etc/lsb-release | grep '^DISTRIB_ID="' | cut -d \" -f2)
+  export OS_VER=$(cat /etc/lsb-release | grep '^DISTRIB_RELEASE="' | cut -d \" -f2)
 elif [ -f /etc/debian_version ]; then
-    export OS=Debian
-    export OS_VER=$(cat /etc/debian_version)
+  export OS=Debian
+  export OS_VER=$(cat /etc/debian_version)
 elif [ -f /etc/SuSe-release ]; then
-    ...
+  echo "should not enter here v1"
+  ...
 elif [ -f /etc/redhat-release ]; then
-    ...
+  echo "should not enter here v2"
+  ...
 else
+  echo "should not enter here v3"
   export OS=$(uname -s)
   export OS_VER=$(uname -r)
 fi

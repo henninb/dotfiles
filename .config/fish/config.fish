@@ -45,11 +45,11 @@ else if [ type lsb_release >/dev/null 2>&1 ];
   set OS (lsb_release -si)
   set OS_VER (lsb_release -sr)
 else if [ -f /etc/lsb-release ];
-  set OS (cat /etc/os-release | grep '^DISTRIB_ID="' | cut -d \" -f2)
-  set OS_VER cat /etc/os-release | grep '^DISTRIB_RELEASE="' | cut -d \" -f2
+  set OS (cat /etc/lsb-release | grep '^DISTRIB_ID="' | cut -d \" -f2)
+  set OS_VER cat /etc/lsb-release | grep '^DISTRIB_RELEASE="' | cut -d \" -f2
 else if [ -f /etc/debian_version ];
-  export OS Debian
-  export OS_VER (cat /etc/debian_version)
+  set OS Debian
+  set OS_VER (cat /etc/debian_version)
 else if [ -f /etc/SuSe-release ];
   echo "should not get here v1."
   ...
