@@ -1,20 +1,3 @@
-: 1566955288:: :;using gnu screen with zsh, but having font issues inside screen. glyphs have turne into question marks. any idea how to address this?
-: 1566955739:: :;let me check fling, thanks for the lead.
-: 1566957768:: :;fling, you were spot on setting the character set locale helped with the gnu screen issue.
-: 1566959031:: :;exit
-: 1566959035:: :;/quit
-: 1567122079:: :;hi, i am trying to see glyphs from zsh on the console, where can I download the correct font to install with setfont
-: 1567122285:: :;thanks sarnold, i will check it out.
-: 1567122830:: :;not sure if i absolutely need it, but I would like my console to show the gliphs from zsh
-: 1567123016:: :;the ones for git
-: 1567123023:: :;i am using oh my zsh
-: 1567123123:: :;i am not sure I understand the question deltab. it is all text from my point of view.
-: 1567123241:: :;is there a command that I can run to tell me the screen mode? I will try and google the answer.
-: 1567124214:: :;yes, I was trying to avoid x/Wayland.
-: 1567124236:: :;my hardware is 1 year old
-: 1567128488:: :;sarnold i was able to get ter-powerline-v16b.psf to work in the console, tty1.
-: 1567128573:: :;no, I found it on a git repo.
-: 1567128622:: :;i alway appreciate getting ideas and thoughts from folks.
 : 1567128637:: :;thanks for your responses.
 : 1567285540:: :;/join awesome
 : 1567285649:: :;hi, is it possible to set the default behavior of Awesome in the config to default to tiled?
@@ -98,3 +81,20 @@
 : 1572571024:: :;akk, will check
 : 1572571154:: :;akk, logs show this: configure:15450: error: Package requirements (glib-2.0 >= 2.40.0 gobject-2.0 pango >= 1.22.0 gtk+-3.0 >= 3.8.0 gobject-2.0 gio-2.0 gio-unix-2.0 zlib libpcre2-8 >= 10.21 gnutls >= 3.2.7) were not met
 : 1572571255:: :;akk, me too. usually it fails with the missage package.
+: 1581208755:: :;i enjoyed listening to the episode comparing vim and emacs. I thought it was well put together.
+: 1581208894:: :;I am so used to vim, but the nice thing about doom is you have access to all the key bindings for vim.
+: 1581209046:: :;is it more common to use emacs in a terminal or the GUI version? I would prefer to stay in the terminal.
+: 1581209106:: :;i do notice that the gui has a nicer look and feel.
+: 1581209235:: :;i was able to switch to the dracula theme (my personal preference), it looks really nice
+: 1581209259:: :;good to know ottabwz
+: 1581209301:: :;SquareHimself, do you have a way to toggle the themes?
+: 1581209332:: :;that is pretty amazing SquareHimself.
+: 1581209399:: :;like Derek says in his videos, you have to just use it and explore.
+: 1581209451:: :;agreed, the elisp is important to know the basics.
+: 1581209470:: :;which internal emacs terminal do you use?
+: 1581209497:: :;that is a fair point outtabwz
+: 1581209616:: :;it will take me some time, but it sounds interesting.
+: 1581209743:: :;i will give it a try.
+: 1581209972:: :;irssi is really good.
+: 1581210285:: :;thanks for the chat
+: 1581210879:: :;/quit
