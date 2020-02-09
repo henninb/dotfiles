@@ -328,6 +328,7 @@ if [ "$MYSHELL" = "zsh" ]; then
   source $HOME/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
   source $HOME/plugins/autojump/bin/autojump.zsh
   source $HOME/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+  source $HOME/plugins/zed-zsh/zed.zsh
   #eval "$(starship init zsh)"
   source $HOME/themes/spaceship-prompt/spaceship.zsh
   #source $HOME/themes/alien/alien.zsh

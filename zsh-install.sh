@@ -51,6 +51,8 @@ git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ${HOME}/plugins
 
 git clone git://github.com/wting/autojump.git $HOME/plugins/autojump
 
+git clone --recursive git://github.com/eendroroy/zed-zsh $HOME/plugins/zed-zsh
+
 git clone git://github.com/zsh-users/zsh-history-substring-search.git $HOME/plugins/zsh-history-substring-search
 
 git clone git://github.com/denysdovhan/spaceship-prompt.git ${HOME}/themes/spaceship-prompt
