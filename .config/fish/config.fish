@@ -52,10 +52,10 @@ else if [ -f /etc/debian_version ];
   set OS_VER (cat /etc/debian_version)
 else if [ -f /etc/SuSe-release ];
   echo "should not get here v1."
-  ...
+  exit 1
 else if [ -f /etc/redhat-release ];
   echo "should not get here v2."
-  ...
+  exit 2
 else
   echo "should not get here v3."
   set OS (uname -s)

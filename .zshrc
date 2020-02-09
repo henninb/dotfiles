@@ -35,10 +35,10 @@ elif [ -f /etc/debian_version ]; then
   export OS_VER=$(cat /etc/debian_version)
 elif [ -f /etc/SuSe-release ]; then
   echo "should not enter here v1"
-  ...
+  exit 1
 elif [ -f /etc/redhat-release ]; then
   echo "should not enter here v2"
-  ...
+  exit 2
 else
   echo "should not enter here v3"
   export OS=$(uname -s)
