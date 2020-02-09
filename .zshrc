@@ -113,7 +113,7 @@ if [ "$OSTYPE" = "linux-gnu" ]; then
     echo install java
   fi
 elif [ "$OSTYPE" = "linux-gnueabihf" ]; then
-  echo JAVA_HOME
+  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-armhf
 else
   echo JAVA_HOME is not setup.
 fi
