@@ -12,7 +12,8 @@ alias gitls='git ls-tree --full-tree -r --name-only HEAD'
 alias gp=gitpush
 #alias gb='git branch '
 
-alias hg='history | grep'
+#alias hg='history | grep'
+alias hg='cat $HOME/.zsh_history | grep'
 
 alias emacs="emacs -nw"
 alias vscode='code'

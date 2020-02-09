@@ -12,21 +12,23 @@
 ## Software
 - terminal - urxvt, termite, st
 - editor - neovim, doom emacs, vscode, intellij
-- shell - zsh, bash, fish
+- shell - zsh, fish, bash
 - shell prompt - spaceship, agnoster, alien, dracula
-- zsh plugins - zsh-syntax-highlighting, zsh-autosuggestions, autojump
+- zsh plugins - zsh-syntax-highlighting, zsh-autosuggestions, autojump, zsh-history-substring-search
 - file manager - ranger, lf
-- bar - polybar, dzen
+- bar - polybar, dzen, xmobar
 - window manager - i3, xmonad
 - lock screen - i3block
 - terminal multiplexer - tmux, screen, tmate
-- media player - vlc, mpv olivia
+- media player - vlc, mpv
+- cloud media player - olivia
+- software defined radio - gqrx, CubicSDR
 - spreadsheet -sc-im
 - programming - java, kotlin, rust, haskell, python, js
 - containerization - docker
-- software defined radio - gqrx, CubicSDR
 - hypervisor - kvm, qemu
 - remote desktop server - xrdp
+- remote desktop client - xfreerdp
 - irc client - irssi
 - network packet tools - tcpdump
 - markdown reader - glow
@@ -34,7 +36,7 @@
 - database client - dbeaver, sqlplus
 - database server - postgresql
 - astronomy - stellarium
-- notes - standard note
+- notes - standard note, joplin
 - font - monofur
 - theme -dracula
 - audio player - cmus

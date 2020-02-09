@@ -1,5 +1,6 @@
 #set --erase fish_greeting
 set --universal fish_greeting
+
 set SPACEFISH_PROMPT_ORDER exit_code host dir git jobs char
 set SPACEFISH_PROMPT_ADD_NEWLINE false
 set SPACEFISH_PROMPT_SEPARATE_LINE false
@@ -37,35 +38,36 @@ set SPACEFISH_HOST_SHOW always
 set SPACEFISH_USER_SHOW false
 set SPACEFISH_GIT_PREFIX ''
 
-if [ -f /etc/os-release ]; then
-    . /etc/os-release
-    export OS=$NAME
-    export OS_VER=$VERSION_ID
-else if type lsb_release >/dev/null 2>&1; then
-    set OS (lsb_release -si)
-    set OS_VER (lsb_release -sr)
-else if [ -f /etc/lsb-release ]; then
-    . /etc/lsb-release
-    export OS=$DISTRIB_ID
-    export OS_VER=$DISTRIB_RELEASE
-else if [ -f /etc/debian_version ]; then
-    export OS=Debian
-    export OS_VER=(cat /etc/debian_version)
-else if [ -f /etc/SuSe-release ]; then
-    ...
-else if [ -f /etc/redhat-release ]; then
-    ...
+if [ -f /etc/os-release ];
+  set OS (cat /etc/os-release | grep '^NAME="' | cut -d \" -f2)
+  set OS_VER cat /etc/os-release | grep '^VERSION_ID="' | cut -d \" -f2
+else if [ type lsb_release >/dev/null 2>&1 ];
+  set OS (lsb_release -si)
+  set OS_VER (lsb_release -sr)
+else if [ -f /etc/lsb-release ];
+  set OS (cat /etc/os-release | grep '^DISTRIB_ID="' | cut -d \" -f2)
+  set OS_VER cat /etc/os-release | grep '^DISTRIB_RELEASE="' | cut -d \" -f2
+else if [ -f /etc/debian_version ];
+  export OS Debian
+  export OS_VER (cat /etc/debian_version)
+else if [ -f /etc/SuSe-release ];
+  echo "should not get here v1."
+  ...
+else if [ -f /etc/redhat-release ];
+  echo "should not get here v2."
+  ...
 else
-  export OS=(uname -s)
-  export OS_VER=(uname -r)
+  echo "should not get here v3."
+  set OS (uname -s)
+  set OS_VER (uname -r)
 end
 
 source $HOME/.alias-master
 
-if [ -x "(command -v nvim)" ]; then
+if [ -x (command -v nvim) ];
   source $HOME/.alias-neovim
 end
 
-if [ \( "$OS" = "FreeBSD" \) -o \(  "$OS" = "Alpine Linux" \) -o \(  "$OS" = "OpenBSD" \) -o \(  "$OS" = "Darwin" \) ]; then
+if [ \( "$OS" = "FreeBSD" \) -o \(  "$OS" = "Alpine Linux" \) -o \(  "$OS" = "OpenBSD" \) -o \(  "$OS" = "Darwin" \) ];
   source $HOME/.alias-bsd
 end
