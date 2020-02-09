@@ -101,7 +101,11 @@ HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
 
 
 if [ "$OSTYPE" = "linux-gnu" ]; then
-  if [ -x "$(command -v javac)" ]; then
+  if [ "$OS" = "Gentoo" ]; then
+  #  echo ${JDK_HOME}
+  #  echo fix java_home
+    export JAVA_HOME=$(readlink -f $(readlink -f $JDK_HOME))
+  elif [ -x "$(command -v javac)" ]; then
     export JAVA_HOME=$(dirname $(dirname $(readlink -f $(readlink -f $(which javac)) || readlink -f $(which javac))))
   else
     echo install java
@@ -118,6 +122,7 @@ export PATH=$HOME/node_modules/.bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.rvm/bin:$PATH
 export PATH=/opt/kafka/bin:$PATH
+export PATH=/opt/kafka-client/bin:$PATH
 export PATH=/opt/kotlinc/bin:$PATH
 export PATH=/opt/oracle-instantclient:$PATH
 export PATH="$HOME/.dynamic-colors/bin:$PATH"
