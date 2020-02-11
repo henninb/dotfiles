@@ -95,6 +95,19 @@ let g:quickrun_known_file_types = {
   \"go": ["!go %"],
   \}
 
+" filetypes like xml, html, xhtml, ...
+" These are the file types where this plugin is enabled.
+let g:closetag_filetypes = 'html,js'
+
+" ctrlp
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+" open NERDTree automatically
+autocmd VimEnter * NERDTree
+
+" Enable spell checking, s for spell check
+map <leader>s :setlocal spell! spelllang=en_us<cr>
+
 " Show line numbers and relative numbers
 set number relativenumber
 
@@ -226,7 +239,7 @@ nnoremap fth :set ft=html<cr>
 " normal mode mapings
 nmap <leader>z :g/^$/d<cr>
 " remove trailing spaces
-nmap <leader>s :%s/\s\+$//g<cr>
+" nmap <leader>s :%s/\s\+$//g<cr>
 " toggle line numbers
 nmap <leader>l :set nu! rnu! list!<cr> :CocCommand git.toggleGutters<cr>
 " toggle nerd tree
@@ -313,3 +326,16 @@ map <F3> :r !pbpaste<cr>
 
 "let g:python_host_prog = '/full/path/to/neovim2/bin/python'
 "let g:python3_host_prog = '/full/path/to/neovim3/bin/python'
+"
+" Shortcutting split navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" close a window
+map <C-c> <C-w>c
+
+" Shortcut split opening
+nnoremap <leader>h :split<cr>
+nnoremap <leader>v :vsplit<cr>
