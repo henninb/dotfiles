@@ -258,6 +258,7 @@ fi
 #  fi
 #fi
 
+mkdir -p $HOME/.xmonad
 touch $HOME/.xmonad/.active
 touch $HOME/.active-wm
 touch $HOME/.zshrc-work-custom
