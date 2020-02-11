@@ -114,6 +114,8 @@ if [ "$OSTYPE" = "linux-gnu" ]; then
   fi
 elif [ "$OSTYPE" = "linux-gnueabihf" ]; then
   export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-armhf
+elif [ "$OS" = "Darwin" ]; then
+  export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 else
   echo JAVA_HOME is not setup.
 fi
