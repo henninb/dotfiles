@@ -132,6 +132,8 @@ export PATH="$HOME/.dynamic-colors/bin:$PATH"
 export GOPATH=$HOME/.local
 export SDKMAN_DIR="$HOME/.sdkman"
 
+export SUDO_EDITOR=nvim
+export VISUAL=nvim
 export EDITOR=nvim
 export PAGER=less
 
@@ -328,6 +330,7 @@ if [ "$MYSHELL" = "zsh" ]; then
   #source $HOME/themes/alien/alien.zsh
   #source $HOME/themes/dracula-zsh-theme/dracula.zsh-theme
   #source $HOME/themes/agnoster-zsh-theme/agnoster.zsh-theme
+  #[ -f "$HOME/plugins/fzf.zsh" ] && source $HOME/plugins/fzf.zsh
 elif [ "$MYSHELL" = "bash" ]; then
   eval "$(starship init bash)"
 else
@@ -359,3 +362,11 @@ export HISTFILE=/$HOME/.zsh_history
 export HISTSIZE=1000000000
 export SAVEHIST=$HISTSIZE
 setopt EXTENDED_HISTORY
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+bindkey "^A" vi-beginning-of-line
+bindkey "^E" vi-end-of-line
+
+bindkey -r "^B"

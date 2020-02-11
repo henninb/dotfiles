@@ -60,6 +60,7 @@ endif
    Plug 'MikeCoder/quickrun.vim'
    Plug 'dracula/vim', { 'name': 'dracula' }
    Plug 'benmills/vimux'
+   Plug 'git@github.com:alvan/vim-closetag.git'
 if $OS != "Arch Linux"
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
 endif
