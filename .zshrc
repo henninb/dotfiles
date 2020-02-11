@@ -137,6 +137,9 @@ export VISUAL=nvim
 export EDITOR=nvim
 export PAGER=less
 
+autoload -Uz compinit
+compinit
+
 # Tells 'less' not to paginate if less than a page
 export LESS="-F -X $LESS"
 # TODO: will this continue to function?
