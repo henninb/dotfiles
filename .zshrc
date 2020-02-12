@@ -138,9 +138,11 @@ export SUDO_EDITOR=nvim
 export VISUAL=nvim
 export EDITOR=nvim
 export PAGER=less
+export OPENER=xdg-open
+export READER="zathura"
+export TERMINAL="urxvt"
+export BROWSER="firefox"
 
-autoload -Uz compinit
-compinit
 
 # Tells 'less' not to paginate if less than a page
 export LESS="-F -X $LESS"
@@ -174,6 +176,8 @@ fi
 
 if [ ! "$OS" = "FreeBSD" ]; then
   if [ -x "$(command -v chef)" ]; then
+    autoload -Uz compinit
+    compinit
     if [ "$MYSHELL" = "zsh" ]; then
       eval "$(chef shell-init zsh)"
     else
@@ -308,19 +312,28 @@ if [ "$MYSHELL" = "zsh" ]; then
   # Fix backspace bug when switching modes
   bindkey "^?" backward-delete-char
 
-  # Change cursor shape for different vi modes.
-  function zle-keymap-select {
-    if [[ ${KEYMAP} == vicmd ]] ||
-       [[ $1 = 'block' ]]; then
-      echo -ne '\e[1 q'
-    elif [[ ${KEYMAP} == main ]] ||
-         [[ ${KEYMAP} == viins ]] ||
-         [[ ${KEYMAP} = '' ]] ||
-         [[ $1 = 'beam' ]]; then
-      echo -ne '\e[5 q'
-    fi
+  function zle-line-init zle-keymap-select {
+    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
+    RPS2=$RPS1
+    zle reset-prompt
   }
+
+  zle -N zle-line-init
   zle -N zle-keymap-select
+
+  # # Change cursor shape for different vi modes.
+  # function zle-keymap-select {
+  #   if [[ ${KEYMAP} == vicmd ]] ||
+  #      [[ $1 = 'block' ]]; then
+  #     echo -ne '\e[1 q'
+  #   elif [[ ${KEYMAP} == main ]] ||
+  #        [[ ${KEYMAP} == viins ]] ||
+  #        [[ ${KEYMAP} = '' ]] ||
+  #        [[ $1 = 'beam' ]]; then
+  #     echo -ne '\e[5 q'
+  #   fi
+  # }
+  # zle -N zle-keymap-select
 fi
 
 [ -f "$HOME/.config/broot/launcher/bash/1" ] && source $HOME/.config/broot/launcher/bash/1

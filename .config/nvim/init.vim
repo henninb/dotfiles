@@ -142,6 +142,8 @@ set smartcase
 set showmatch
 
 " \ is the leader key
+" space key is the leader key
+let mapleader=" "
 
 " Map leader space clears search
 map <leader><space> :let @/=''<cr>
