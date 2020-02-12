@@ -13,7 +13,7 @@
 
 ## Software
 - terminal - urxvt, termite, st
-- editor - neovim, doom emacs, vscode, intellij
+- editor - neovim, doom emacs, vscode, intellij, vscodium
 - shell - zsh, fish, bash
 - shell prompt - spaceship, agnoster, alien, dracula
 - zsh plugins - zsh-syntax-highlighting, zsh-autosuggestions, autojump, zsh-history-substring-search
