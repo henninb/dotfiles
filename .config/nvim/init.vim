@@ -103,7 +103,7 @@ let g:closetag_filetypes = 'html,js'
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " open NERDTree automatically
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
 
 " Enable spell checking, s for spell check
 map <leader>s :setlocal spell! spelllang=en_us<cr>
