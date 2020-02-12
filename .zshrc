@@ -342,7 +342,7 @@ fi
 if [ "$MYSHELL" = "zsh" ]; then
   source $HOME/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source $HOME/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source $HOME/plugins/autojump/bin/autojump.zsh
+  #source $HOME/plugins/autojump/bin/autojump.zsh
   source $HOME/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
   source $HOME/plugins/zed-zsh/zed.zsh
   #eval "$(starship init zsh)"
