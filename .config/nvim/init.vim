@@ -341,3 +341,6 @@ map <C-c> <C-w>c
 " Shortcut split opening
 nnoremap <leader>h :split<cr>
 nnoremap <leader>v :vsplit<cr>
+
+autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
+autocmd VimLeave * silent exec "! echo -ne '\e[5 q'"

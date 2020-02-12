@@ -93,10 +93,10 @@ if [ ! -x "$(command -v fc-cache)" ]; then
   echo fc-cache not installed.
 fi
 
-if [ "$MYSHELL" = "zsh" ]; then
-  [ -f "$HOME/.autojump/etc/profile.d/autojump.sh" ] && source $HOME/.autojump/etc/profile.d/autojump.sh
-  [ -f "$HOME/.autojump/etc/profile.d/autojump.sh" ] && autoload -U compinit && compinit -u
-fi
+# if [ "$MYSHELL" = "zsh" ]; then
+#   [ -f "$HOME/.autojump/etc/profile.d/autojump.sh" ] && source $HOME/.autojump/etc/profile.d/autojump.sh
+#   [ -f "$HOME/.autojump/etc/profile.d/autojump.sh" ] && autoload -U compinit && compinit -u
+# fi
 
 # TODO: test this, not sure if/how this works
 HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
@@ -142,7 +142,6 @@ export OPENER=xdg-open
 export READER="zathura"
 export TERMINAL="urxvt"
 export BROWSER="firefox"
-
 
 # Tells 'less' not to paginate if less than a page
 export LESS="-F -X $LESS"
@@ -321,6 +320,8 @@ if [ "$MYSHELL" = "zsh" ]; then
   zle -N zle-line-init
   zle -N zle-keymap-select
 
+  # autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
+  # autocmd VimLeave * silent exec "! echo -ne '\e[5 q'"
   # # Change cursor shape for different vi modes.
   # function zle-keymap-select {
   #   if [[ ${KEYMAP} == vicmd ]] ||

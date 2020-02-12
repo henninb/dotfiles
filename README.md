@@ -56,6 +56,7 @@
 - rss reader - newsboat
 - log reader - lnav
 - package manager - yay, pacman, brew, apt, dnf
+- open - xdg-open
 
 
 
