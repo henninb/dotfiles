@@ -11,6 +11,11 @@
   dump = cat-file -p
   cob = checkout -b
   pom = push origin master
+  cm = commit -m
+  plom = pull origin master
+  f = "!git ls-files | grep -i"
+  aa = add -A .
+  unstage = reset HEAD --
 [push]
   default = simple
 [merge]
