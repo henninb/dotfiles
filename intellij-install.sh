@@ -11,18 +11,8 @@ rm -rf $HOME/.IntelliJIdea*/config/eval
 rm -rf $HOME/.IntelliJIdea*/config/options/other.xml
 rm -rf ~/.java/.userPrefs/jetbrains
 
-# echo "https://intellij-support.jetbrains.com/hc/en-us/community/posts/207155515-Programmatically-download-latest-version"
-# echo "https://data.services.jetbrains.com/products/releases?code=IIC"
-# echo https://www.jetbrains.com/updates/updates.xml
-# echo "curl https://www.jetbrains.com/idea/download/\#section\=linux | w3m -T text/html -dump"
-# echo https://www.jetbrains.com/idea/download/#section=linux
-# echo curl -A "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:59.0) Gecko/20100101 Firefox/59.0"
-# echo "curl  https://www.jetbrains.com/idea/download/#section=linux | w3m -T text/html -dump"
-
-#curl https://www.jetbrains.com/updates/updates.xml | grep "IntelliJ IDEA [0-9]\{4\}\.[0-9]\.[0-9] is available" | grep -o '[0-9]\{4\}\.[0-9]\.[0-9]'
-#VER=$(curl https://en.wikipedia.org/wiki/IntelliJ_IDEA | grep -o '[0-9]\{4\}\.[0-9]\.[0-9]' | head -1)
-VER=$(curl https://www.jetbrains.com/updates/updates.xml | grep "[0-9]\{4\}\.[0-9]\.[0-9]" | head -1 | grep -o '[0-9]\{4\}\.[0-9]\.[0-9]')
-#VER=$(curl https://www.jetbrains.com/updates/updates.xml | grep " [0-9]\{4\}\.[0-9]\.[0-9,] is available" | grep -o '[0-9]\{4\}\.[0-9]\.[0-9]')
+VER=$(curl 'https://data.services.jetbrains.com/products/releases?code=IIU&latest=true&type=release&build=&_=1581558835218' | jq '.IIU[0] .version' | cut -d \" -f2)
+#VER=$(curl https://www.jetbrains.com/updates/updates.xml | grep "[0-9]\{4\}\.[0-9]\.[0-9]" | head -1 | grep -o '[0-9]\{4\}\.[0-9]\.[0-9]')
 
 if  [ ! -z "$VER_OVERRIDE" ]; then
   VER=${VER_OVERRIDE}

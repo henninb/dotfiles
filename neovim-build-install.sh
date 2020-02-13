@@ -123,4 +123,8 @@ echo ":checkhealth"
 nvim +slient +VimEnter +PlugUpgrade +qall
 nvim +slient +VimEnter +PlugUpdate +qall
 
+# gem install neovim
+gem install --user neovim
+sudo npm install -g neovim
+
 exit 0
