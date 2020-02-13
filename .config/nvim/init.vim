@@ -319,9 +319,9 @@ nmap } }zz
 nmap { {zz
 
 
-" <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
+" <leader>f{char} to move to {char}
+map  <leader>f <Plug>(easymotion-bd-f)
+nmap <leader>f <Plug>(easymotion-overwin-f)
 
 map <F2> :.w !pbcopy<cr><cr>
 map <F3> :r !pbpaste<cr>
