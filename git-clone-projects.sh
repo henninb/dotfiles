@@ -15,15 +15,13 @@ git clone git@gitlab.com:BitExplorer/howto.git
 
 PLUGINS="autojump zsh-autosuggestions zsh-syntax-highlighting"
 for i in $PLUGINS; do
-  cd $HOME/plugins || exit
-  cd "$i" || exit
+  cd "$HOME/plugins/$i" || exit
   git pull
 done
 
 THEME="agnoster-zsh-theme alien dracula-zsh-theme spaceship-prompt"
 for i in $THEME; do
-  cd $HOME/themes || exit
-  cd "$i" || exit
+  cd "$HOME/themes/$i" || exit
   git pull
 done
 
