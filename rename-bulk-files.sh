@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo filetype
+
 for file in *' '*ttf
 do
   mv -- "$file" "${file// /_}"
