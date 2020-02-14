@@ -139,9 +139,10 @@ export VISUAL=nvim
 export EDITOR=nvim
 export PAGER=less
 export OPENER=xdg-open
-export READER="zathura"
-export TERMINAL="urxvt"
-export BROWSER="firefox"
+export READER=zathura
+export TERMINAL=urxvt
+export BROWSER=firefox
+export GIT_EDITOR=nvim
 
 # Tells 'less' not to paginate if less than a page
 export LESS="-F -X $LESS"
