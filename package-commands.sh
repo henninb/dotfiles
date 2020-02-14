@@ -7,5 +7,7 @@ else
   exit 1
 fi
 
+echo sudo pacman -R xmonad
+
 exit 0
 
