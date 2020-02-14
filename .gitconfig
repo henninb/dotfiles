@@ -26,3 +26,10 @@
 [core]
   pager = less -F -X
   editor = nvim
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = true
+  pager = true
