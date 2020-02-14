@@ -25,3 +25,4 @@
   external = git-diff-wrapper
 [core]
   pager = less -F -X
+  editor = nvim
