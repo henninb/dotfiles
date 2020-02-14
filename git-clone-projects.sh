@@ -1,31 +1,29 @@
 #!/bin/sh
 
 PROJECTS="raspi-finance-endpoint raspi-finance-ui raspi-finance-database raspi-finance raspi-finance-client raspi-finance-convert nfl-database src-common"
-for i in $(echo $PROJECTS); do
-  cd $HOME/projects
-  git clone git@github.com:BitExplorer/$i.git
-  cd $i
+for i in $PROJECTS; do
+  cd "$HOME/projects" || exit
+  git clone "git@github.com:BitExplorer/$i.git"
+  cd "$i" || exit
   git branch --set-upstream-to=origin/master master
   git config --local user.email henninb@msn.com
   git pull
 done
 
-cd $HOME/projects
+cd "$HOME/projects" || exit
 git clone git@gitlab.com:BitExplorer/howto.git
 
 PLUGINS="autojump zsh-autosuggestions zsh-syntax-highlighting"
-for i in $(echo $PLUGINS); do
-  cd $HOME/plugins
-  echo $i
-  cd $i
+for i in $PLUGINS; do
+  cd $HOME/plugins || exit
+  cd "$i" || exit
   git pull
 done
 
-THEME="agnoster-zsh-theme  alien  dracula-zsh-theme  spaceship-prompt"
-for i in $(echo $THEME); do
-  cd $HOME/themes
-  echo $i
-  cd $i
+THEME="agnoster-zsh-theme alien dracula-zsh-theme spaceship-prompt"
+for i in $THEME; do
+  cd $HOME/themes || exit
+  cd "$i" || exit
   git pull
 done
 
