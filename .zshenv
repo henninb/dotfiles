@@ -46,12 +46,12 @@ function gemerge() {
   if [ "$#" -ne 1 ]; then
     echo "Usage: ${FUNCNAME} <package>" >&2
   else
-    qlist -I | grep -v grep | grep $1
+    qlist -I | grep -v grep | grep "$1"
     if [ $? -ne 0 ]; then
-      echo $1 will emerge.
-      sudo emerge $1
+      echo "$1 will emerge."
+      sudo emerge "$1"
     else
-      echo  $1 already built.
+      echo  "$1 already built."
     fi
   fi
 }
@@ -60,10 +60,10 @@ function pjava() {
   if [ "$#" -ne 1 ]; then
     echo "Usage: ${FUNCNAME} <appname>" >&2
   else
-    mkdir -p src/main/java/$1
+    mkdir -p "src/main/java/$1"
     mkdir -p src/main/resources
     touch src/main/resources/application.yml
-    touch src/main/java/$1/Application.java
+    touch "src/main/java/$1/Application.java"
     mkdir -p src/test
 
     gradle wrapper
@@ -76,7 +76,7 @@ function git_sparse_clone() (
   rurl="$1" localdir="$2" && shift 2
 
   mkdir -p "$localdir"
-  cd "$localdir"
+  cd "$localdir" || exit
 
   git init
   git remote add -f origin "$rurl"
