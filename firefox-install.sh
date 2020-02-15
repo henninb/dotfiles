@@ -58,7 +58,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo rm -rf /opt/firefox
   sudo tar -xjvf firefox-${FOX_VER}.tar.bz2 -C /opt
   sudo chown -R firefox:firefox /opt/firefox
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   sudo apt install -y net-tools psmisc wget curl
   sudo rm -rf /opt/firefox
   sudo tar -xjvf firefox-${FOX_VER}.tar.bz2 -C /opt
@@ -69,10 +69,10 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo tar -xjvf firefox-${FOX_VER}.tar.bz2 -C /opt
   sudo chown -R firefox:firefox /opt/firefox
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
-echo "Installed version: $(/opt/firefox/firefox --version)"
+echo "Installed version: "$(/opt/firefox/firefox --version)"
 
 exit 0
