@@ -5,7 +5,8 @@ let plugpath = '~/.vim/bundle'
 
 " set TERM as a fix for screen and tmux
 if has('nvim')
-  let plugpath = '~/.local/share/nvim/bundle'
+  " let plugpath = '~/.local/share/nvim/bundle'
+  let plugpath = '~/.config/nvim/bundle'
   " if !empty($STY)
   "   let $TERM = 'screen-256color'
   " endif
@@ -58,7 +59,7 @@ endif
    Plug 'norcalli/nvim-colorizer.lua' " tool to show colors in vim r,g,b
    Plug 'tpope/vim-abolish'
    Plug 'MikeCoder/quickrun.vim'
-   Plug 'dracula/vim', { 'name': 'dracula' }  " theme
+   " Plug 'dracula/vim', { 'name': 'dracula' }  " theme
    Plug 'benmills/vimux' " tmux integration
    Plug 'git@github.com:alvan/vim-closetag.git'
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
