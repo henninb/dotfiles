@@ -73,6 +73,6 @@ else
   exit 1
 fi
 
-echo "Installed version: "$(/opt/firefox/firefox --version)"
+echo "Installed version: $(/opt/firefox/firefox --version)"
 
 exit 0
