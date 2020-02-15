@@ -58,6 +58,7 @@
 - package manager - yay, pacman, brew, apt, dnf
 - open - xdg-open
 - encryption - gnupg, keybase
+- terminal screen saver - cmatrix
 
 
 
