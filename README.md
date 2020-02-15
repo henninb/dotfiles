@@ -59,6 +59,7 @@
 - open - xdg-open
 - encryption - gnupg, keybase
 - terminal screen saver - cmatrix
+- window detailer - xprop
 
 
 
