@@ -53,7 +53,7 @@ myWorkspaces = ["general", "internet", "chat", "code"] ++ map show [5..9 :: Int]
 myKeys conf@XConfig {modMask = modm} = M.fromList $
     [
       ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
-          , ((modm .|. shiftMask, xK_p), spawn "dmenu_run -nb orange -nf '#444' -sb yellow -s  f black -fn Monospace-9:normal")
+          , ((modm .|. shiftMask, xK_p), spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal")
           , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
           , ((0, xK_Print), spawn "scrot")
           , ((modm, xK_i), spawn myBrowser)

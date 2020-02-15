@@ -75,7 +75,7 @@ myKeys conf@XConfig {XMonad.modMask = modMask} =
   , ((modMask,               xK_i), spawn myBrowser)
   , ((modMask .|. shiftMask, xK_i), spawn (myBrowser ++ " -private-window"))
   --, ((modMask .|. shiftMask, xK_p), spawn "rofi -show drun")
-  , ((modMask .|. shiftMask, xK_p), spawn "dmenu_run -nb orange -nf '#444' -sb yellow -s  f black -fn Monospace-9:normal")
+  , ((modMask .|. shiftMask, xK_p), spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal")
   , ((modMask .|. shiftMask, xK_x), spawn "xscreensaver-command -lock")
    -- close focused window
   , ((modMask .|. shiftMask, xK_BackSpace), kill)
