@@ -39,31 +39,30 @@ endif
    Plug 'git@github.com:tpope/vim-surround.git'
    Plug 'git@github.com:tpope/vim-commentary.git'
    Plug 'git@github.com:vim-syntastic/syntastic.git'
-   Plug 'git@github.com:svermeulen/vim-subversive.git'
-   Plug 'git@github.com:bronson/vim-trailing-whitespace.git'
+   Plug 'git@github.com:svermeulen/vim-subversive.git' " search and replace tool
+   Plug 'git@github.com:bronson/vim-trailing-whitespace.git' " remove trailing whitespace
    Plug 'git@github.com:vim-airline/vim-airline.git'
    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-   Plug 'git@github.com:dense-analysis/ale.git'
+   Plug 'git@github.com:dense-analysis/ale.git' " linter
    Plug 'udalov/kotlin-vim'
-   Plug 'sbdchd/neoformat'
-   Plug 'https://github.com/vim-scripts/CycleColor.git'
+   Plug 'sbdchd/neoformat' " for formatting code
+   " Plug 'https://github.com/vim-scripts/CycleColor.git'
    Plug 'git@github.com:prettier/vim-prettier.git', { 'do': 'yarn add prettier' }
    Plug 'git@github.com:c-brenn/repel.nvim.git'
    Plug 'git@github.com:scrooloose/nerdtree.git'
    Plug 'Xuyuanp/nerdtree-git-plugin'
    Plug 'git@github.com:rust-lang/rust.vim.git'
    Plug 'git@github.com:dhruvasagar/vim-zoom.git'
-   Plug 'git@github.com:easymotion/vim-easymotion.git'
-   Plug 'git@github.com:tpope/vim-fugitive.git'
-   Plug 'norcalli/nvim-colorizer.lua'
+   Plug 'git@github.com:easymotion/vim-easymotion.git' " improvements for motions
+   Plug 'git@github.com:tpope/vim-fugitive.git'  " for git
+   Plug 'norcalli/nvim-colorizer.lua' " tool to show colors in vim r,g,b
    Plug 'tpope/vim-abolish'
    Plug 'MikeCoder/quickrun.vim'
-   Plug 'dracula/vim', { 'name': 'dracula' }
-   Plug 'benmills/vimux'
+   Plug 'dracula/vim', { 'name': 'dracula' }  " theme
+   Plug 'benmills/vimux' " tmux integration
    Plug 'git@github.com:alvan/vim-closetag.git'
-if $OS != "Arch Linux"
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
-endif
+   " Plug 'jiangmiao/auto-pairs' " used for auto closing quotes etc
 "   Plug 'neovimhaskell/haskell-vim'
 "   Plug 'git@github.com:neovimhaskell/haskell-vim.git'
 "   Plug 'git@github.com:itchyny/vim-haskell-indent.git'
@@ -74,9 +73,9 @@ endif
 
 " coc config
 " CocCommand git.toggleGutters
+"  \ 'coc-pairs',
 let g:coc_global_extensions = [
   \ 'coc-snippets',
-  \ 'coc-pairs',
   \ 'coc-eslint',
   \ 'coc-prettier',
   \ 'coc-json',
@@ -86,6 +85,8 @@ let g:coc_global_extensions = [
   \ 'coc-python',
   \ 'coc-fsharp',
   \ ]
+
+" let g:pairs.disableLanguages = ['vim']
 
 let g:quickrun_known_file_types = {
   \"cpp": ["!g++ %", "./a.out"],
