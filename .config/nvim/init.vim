@@ -86,7 +86,8 @@ let g:coc_global_extensions = [
   \ 'coc-fsharp',
   \ ]
 
-" let g:pairs.disableLanguages = ['vim']
+autocmd FileType markdown let b:coc_pairs_disabled = ['`']
+autocmd FileType vim let b:coc_pairs_disabled = ['"']
 
 let g:quickrun_known_file_types = {
   \"cpp": ["!g++ %", "./a.out"],
