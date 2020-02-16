@@ -1,6 +1,6 @@
 # dotfiles
 
-- urxvt, st, neovim, polybar, zsh, ranger, lf, i3, xmonad, etc
+- Configuration  and install files for the software and OSs below.
 
 ## Operating Systems
 - Arch Linux
@@ -17,7 +17,7 @@
 - shell - zsh, fish, bash
 - shell prompt - spaceship, agnoster, alien, dracula
 - zsh plugins - zsh-syntax-highlighting, zsh-autosuggestions, autojump, zsh-history-substring-search
-- file manager - ranger, lf
+- file manager - ranger, lf, hunter
 - bar - polybar, dzen, xmobar
 - window manager - i3, xmonad
 - lock screen - i3block
@@ -47,7 +47,7 @@
 - burning images - k3b, cdrecord
 - podcast client - ???
 - process viewer - htop
-- email client - neomutt
+- email client - neomutt, mutt
 - wii emulator - dolphin-emu
 - cloud storage - nextcloud
 - game - xonotic
@@ -61,13 +61,9 @@
 - terminal screen saver - cmatrix
 - window detailer - xprop
 
-
-
-
 audacity
 handbrake
 blender
 steam
-mutt
 arduino
 gimp

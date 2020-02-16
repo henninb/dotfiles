@@ -9,5 +9,6 @@ echo cargo install ripgrep
 echo cargo install dust
 echo cargo install exa
 echo cargo install broot
+echo cargo install hunter
 
 exit 0
