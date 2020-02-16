@@ -81,10 +81,17 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-java',
   \ 'coc-git',
+  \ 'coc-css',
+  \ 'coc-html',
   \ 'coc-rls',
   \ 'coc-python',
   \ 'coc-fsharp',
   \ ]
+
+let g:ale_filetype_blacklist = [
+\   'nerdtree',
+\   'tags',
+\]
 
 autocmd FileType markdown let b:coc_pairs_disabled = ['`']
 autocmd FileType vim let b:coc_pairs_disabled = ['"']
@@ -245,7 +252,7 @@ nmap <leader>z :g/^$/d<cr>
 " remove trailing spaces
 " nmap <leader>s :%s/\s\+$//g<cr>
 " toggle line numbers
-nmap <leader>l :set nu! rnu! list!<cr> :CocCommand git.toggleGutters<cr>
+nmap <leader>l :set nu! rnu! list!<cr> :CocCommand git.toggleGutters<cr> :ALEToggle<cr>
 " toggle nerd tree
 nmap <leader>n :NERDTreeToggle<cr>
 "space separated to column
