@@ -9,6 +9,9 @@ echo cargo install ripgrep
 echo cargo install dust
 echo cargo install exa
 echo cargo install broot
+
+echo rustup default nightly
 echo cargo install hunter
+echo rustup default stable
 
 exit 0
