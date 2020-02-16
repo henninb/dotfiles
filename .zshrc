@@ -196,10 +196,10 @@ fi
 mkdir -p ~/.fonts
 ls -l ~/.fonts/{Monofur_Bold_for_Powerline.ttf,Monofur_Italic_for_Powerline.ttf,Monofur_for_Powerline.ttf} > /dev/null 2>&1
 if [ $? -ne 0 ]; then
-  cd ~/.fonts || exit
+  cd ~/.fonts || return
   unzip ../monofur-fonts.zip
   fc-cache -vf ~/.fonts/
-  cd - || exit
+  cd - || return
 fi
 
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
@@ -227,26 +227,26 @@ fi
 mkdir -p "$HOME/.config/compton"
 
 [ -f "$HOME/.config/nvim/init.vim" ] && ln -sfn "$HOME/.config/nvim/init.vim" "$HOME/.vimrc"
-[ -f "$HOME/.config/picom/picom.conf" ] && ln -sfn $HOME/.config/picom/picom.conf $HOME/.config/compton/compton.conf
-[ -f "$HOME/.xinitrc" ] && ln -sfn $HOME/.xinitrc $HOME/.xsession
+[ -f "$HOME/.config/picom/picom.conf" ] && ln -sfn "$HOME/.config/picom/picom.conf" "$HOME/.config/compton/compton.conf"
+[ -f "$HOME/.xinitrc" ] && ln -sfn "$HOME/.xinitrc" "$HOME/.xsession"
 [ -f /opt/arduino/arduino ] && ln -sfn /opt/arduino/arduino "$HOME/.local/bin/arduino"
 [ -f /opt/intellij/bin/idea.sh ] && ln -sfn /opt/intellij/bin/idea.sh "$HOME/.local/bin/idea.sh"
 [ -f /opt/intellij/bin/idea.sh ] && ln -sfn /opt/intellij/bin/idea.sh "$HOME/.local/bin/intellij"
 [ -f /opt/firefox/firefox ] && ln -sfn /opt/firefox/firefox "$HOME/.local/bin/firefox"
 [ -f /opt/vscode/bin/code ] && ln -sfn /opt/vscode/bin/code "$HOME/.local/bin/code"
-[ -f "$HOME/.tmux-rice.conf" ] && ln -sfn $HOME/.tmux-rice.conf "$HOME/.tmux.conf"
+[ -f "$HOME/.tmux-rice.conf" ] && ln -sfn "$HOME/.tmux-rice.conf" "$HOME/.tmux.conf"
 #ln -sfn $HOME/.config/polybar/config-default $HOME/.config/polybar/config
-[ -f $HOME/.config/polybar/config-master ] && ln -sfn $HOME/.config/polybar/config-master $HOME/.config/polybar/config
-[ -f $HOME/.ssh/config ] && chmod 600 $HOME/.ssh/config
-[ -f $HOME/.ssh/authorized_keys ] && chmod 600 $HOME/.ssh/authorized_keys
-[ -f $HOME/.ssh/config ] && chmod 600 $HOME/.ssh/config
-[ -f $HOME/.ssh/id_rsa ] && chmod 600 $HOME/.ssh/id_rsa
-[ -d $HOME/.ssh ] && chmod 700 $HOME/.ssh
-chmod 700 $HOME
-[ -d $HOME/.gnupg ] && chmod 700 $HOME/.gnupg
-[ -f $HOME/.ghci ] && chmod 644 $HOME/.ghci
+[ -f "$HOME/.config/polybar/config-master" ] && ln -sfn "$HOME/.config/polybar/config-master" "$HOME/.config/polybar/config"
+[ -f "$HOME/.ssh/config" ] && chmod 600 "$HOME/.ssh/config"
+[ -f "$HOME/.ssh/authorized_keys" ] && chmod 600 "$HOME/.ssh/authorized_keys"
+[ -f "$HOME/.ssh/config" ] && chmod 600 "$HOME/.ssh/config"
+[ -f "$HOME/.ssh/id_rsa" ] && chmod 600 "$HOME/.ssh/id_rsa"
+[ -d "$HOME/.ssh" ] && chmod 700 "$HOME/.ssh"
+chmod 700 "$HOME"
+[ -d "$HOME/.gnupg" ] && chmod 700 "$HOME/.gnupg"
+[ -f "$HOME/.ghci" ] && chmod 644 "$HOME/.ghci"
 
-[ -f $HOME/.zsh_history ] && sort -t ";" -k 2 -u $HOME/.zsh_history | sort -o $HOME/.zsh_history
+[ -f "$HOME/.zsh_history" ] && sort -t ";" -k 2 -u "$HOME/.zsh_history" | sort -o "$HOME/.zsh_history"
 
 
 [ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
@@ -283,17 +283,17 @@ source "$HOME/.zshrc-work-custom"
 if [ "$MYSHELL" = "bash" ]; then
   if [ "$(uname -s)" = "Darwin" ]; then
     powerline-daemon -q
-    source /usr/local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+    source "/usr/local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh"
   elif [ "$(uname -s)" = "Linux" ]; then
     if [ -f "$HOME/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh" ]; then
       powerline-daemon -q
-      source $HOME/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+      source "$HOME/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh"
     elif [ -f "$HOME/.local/lib64/python3.6/site-packages/powerline/bindings/bash/powerline.sh" ]; then
       powerline-daemon -q
-      source $HOME/.local/lib64/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+      source "$HOME/.local/lib64/python3.6/site-packages/powerline/bindings/bash/powerline.sh"
     elif [ -f "$HOME/.local/lib/python3.7/site-packages/powerline/bindings/shell/powerline.sh" ]; then
       powerline-daemon -q
-      source $HOME/.local/lib/python3.7/site-packages/powerline/bindings/bash/powerline.sh
+      source "$HOME/.local/lib/python3.7/site-packages/powerline/bindings/bash/powerline.sh"
     else
       pip3 install powerline-status --user
       #source $HOME/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
@@ -345,20 +345,20 @@ if [ "${MYSHELL}" = "zsh" ]; then
   # zle -N zle-keymap-select
 fi
 
-[ -f "$HOME/.config/broot/launcher/bash/1" ] && source $HOME/.config/broot/launcher/bash/1
+[ -f "$HOME/.config/broot/launcher/bash/1" ] && source "$HOME/.config/broot/launcher/bash/1"
 
 if [ "$MYSHELL" = "zsh" ]; then
-  source $HOME/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  source $HOME/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-  #source $HOME/plugins/autojump/bin/autojump.zsh
-  source $HOME/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-  source $HOME/plugins/zed-zsh/zed.zsh
+  source "$HOME/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  source "$HOME/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  #source "$HOME/plugins/autojump/bin/autojump.zsh"
+  source "$HOME/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
+  source "$HOME/plugins/zed-zsh/zed.zsh"
   #eval "$(starship init zsh)"
-  source $HOME/themes/spaceship-prompt/spaceship.zsh
-  #source $HOME/themes/alien/alien.zsh
-  #source $HOME/themes/dracula-zsh-theme/dracula.zsh-theme
-  #source $HOME/themes/agnoster-zsh-theme/agnoster.zsh-theme
-  #[ -f "$HOME/plugins/fzf.zsh" ] && source $HOME/plugins/fzf.zsh
+  source "$HOME/themes/spaceship-prompt/spaceship.zsh"
+  #source "$HOME/themes/alien/alien.zsh"
+  #source "$HOME/themes/dracula-zsh-theme/dracula.zsh-theme"
+  #source "$HOME/themes/agnoster-zsh-theme/agnoster.zsh-theme"
+  #[ -f "$HOME/plugins/fzf.zsh" ] && source "$HOME/plugins/fzf.zsh"
 elif [ "$MYSHELL" = "bash" ]; then
   eval "$(starship init bash)"
 else
@@ -392,7 +392,7 @@ export SAVEHIST=$HISTSIZE
 setopt EXTENDED_HISTORY
 
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
 bindkey "^A" vi-beginning-of-line
 bindkey "^E" vi-end-of-line
