@@ -4,7 +4,7 @@ if [ $# -eq 1 ]; then
   VER_OVERRIDE=$1
 fi
 
-NVER=$(curl https://github.com/neovim/neovim/releases/ | grep release | grep -v nightly | grep 'tar.gz' | head -1 | grep -o 'v[0-9.]\+[0-9]')
+NVER=$(curl -s https://github.com/neovim/neovim/releases/ | grep release | grep -v nightly | grep 'tar.gz' | head -1 | grep -o 'v[0-9.]\+[0-9]')
 ACTUAL_VER=$(nvim --version | grep -o 'v[0-9.]\+[0-9]')
 
 if [ "$ACTUAL_VER" = "$NVER" ]; then
@@ -26,7 +26,7 @@ elif [ "$OS" = "Darwin" ]; then
   brew install python
 elif [ "$OS" = "Manjaro Linux" ]; then
   echo manjaro
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux"]; then
   sudo apt install -y gperf luajit luarocks libuv1-dev libluajit-5.1-dev libunibilium-dev libmsgpack-dev libtermkey-dev libvterm-dev cmake libtool-bin
   sudo apt remove -y neovim
 elif [ "$OS" = "void" ]; then
@@ -79,7 +79,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   echo gentoo
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 

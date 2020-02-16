@@ -32,3 +32,4 @@ app-crypt/pinentry gnome-keyring
 >=x11-libs/pango-1.42.4-r2 X
 >=x11-libs/libxcb-1.13.1 xkb
 >=www-client/w3m-0.5.3_p20180125 imlib
+>=media-libs/gd-2.2.5-r2 fontconfig

@@ -3,18 +3,12 @@ filetype plugin indent on
 
 let plugpath = '~/.vim/bundle'
 
-" set TERM as a fix for screen and tmux
 if has('nvim')
-  " let plugpath = '~/.local/share/nvim/bundle'
   let plugpath = '~/.config/nvim/bundle'
-  " if !empty($STY)
-  "   let $TERM = 'screen-256color'
-  " endif
 endif
 
 if has('vim')
   if !empty($STY)
-    "let $TERM = 'xterm-256color'
     set term=screen-256color
   endif
 endif
@@ -35,7 +29,7 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-" curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
  call plug#begin(plugpath)
    Plug 'git@github.com:tpope/vim-surround.git'
    Plug 'git@github.com:tpope/vim-commentary.git'
@@ -44,15 +38,14 @@ endif
    Plug 'git@github.com:bronson/vim-trailing-whitespace.git' " remove trailing whitespace
    Plug 'git@github.com:vim-airline/vim-airline.git'
    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+   Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
    Plug 'git@github.com:dense-analysis/ale.git' " linter
-   Plug 'udalov/kotlin-vim'
    Plug 'sbdchd/neoformat' " for formatting code
    " Plug 'https://github.com/vim-scripts/CycleColor.git'
-   Plug 'git@github.com:prettier/vim-prettier.git', { 'do': 'yarn add prettier' }
+   " Plug 'git@github.com:prettier/vim-prettier.git', { 'do': 'yarn add prettier' }
    Plug 'git@github.com:c-brenn/repel.nvim.git'
    Plug 'git@github.com:scrooloose/nerdtree.git'
    Plug 'Xuyuanp/nerdtree-git-plugin'
-   Plug 'git@github.com:rust-lang/rust.vim.git'
    Plug 'git@github.com:dhruvasagar/vim-zoom.git'
    Plug 'git@github.com:easymotion/vim-easymotion.git' " improvements for motions
    Plug 'git@github.com:tpope/vim-fugitive.git'  " for git
@@ -61,11 +54,13 @@ endif
    Plug 'MikeCoder/quickrun.vim'
    " Plug 'dracula/vim', { 'name': 'dracula' }  " theme
    Plug 'benmills/vimux' " tmux integration
-   Plug 'git@github.com:alvan/vim-closetag.git'
+   Plug 'git@github.com:alvan/vim-closetag.git' "closing tags for html
+   Plug 'git@github.com:rust-lang/rust.vim.git'
+   Plug 'udalov/kotlin-vim'
+   Plug 'git@github.com:neovimhaskell/haskell-vim.git'
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
    " Plug 'jiangmiao/auto-pairs' " used for auto closing quotes etc
 "   Plug 'neovimhaskell/haskell-vim'
-"   Plug 'git@github.com:neovimhaskell/haskell-vim.git'
 "   Plug 'git@github.com:itchyny/vim-haskell-indent.git'
 "   Plug 'git@github.com:terryma/vim-multiple-cursors.git'
 "   Plug 'git@github.com:yuttie/comfortable-motion.vim.git'
@@ -74,6 +69,7 @@ endif
 
 " coc config
 " CocCommand git.toggleGutters
+" :CocUninstall coc-pairs
 "  \ 'coc-pairs',
 let g:coc_global_extensions = [
   \ 'coc-snippets',

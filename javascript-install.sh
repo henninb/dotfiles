@@ -41,6 +41,10 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 
 nvm install 10.16.0
 sudo npm install -g yarn
+
+sudo npm list -g --depth=0
+sudo npm list -g --depth=1
+
 # echo yarn add react
 # yarn add coc-python
 # yarn add coc-html

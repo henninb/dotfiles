@@ -29,7 +29,7 @@ elif [ "$OS" = "Arch Linux" ]; then
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y epel-release python python-devel
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge python
+  sudo emerge --update --newuse python
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y python36 py36-pip
 else
