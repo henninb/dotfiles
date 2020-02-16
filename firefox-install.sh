@@ -15,7 +15,7 @@ fi
 
 sudo groupadd firefox
 sudo useradd -g firefox firefox
-read -r "Press enter to continue"
+read -p "Press enter to continue"
 
 if [ ! -f "firefox-${FOX_VER}.tar.bz2" ]; then
   rm -rf firefox-*.tar.bz2

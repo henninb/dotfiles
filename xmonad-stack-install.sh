@@ -2,13 +2,8 @@
 
 curl -sSL https://get.haskellstack.org/ | sh
 stack update
-# cd projects
-# git clone https://github.com/jaagr/polybar.git
-# cd polybar
-# ./build.sh
-# cd $HOME
 
-if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt remove -y lightdm
   sudo apt remove -y gdm
   sudo apt remove -y lxdm
@@ -37,13 +32,13 @@ elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S extra/xorg-xfontsel
   sudo pacman --noconfirm --needed -S dzen2
   sudo pacman --noconfirm --needed -S conky
-  cd $HOME/projects
+  cd "$HOME/projects" || exit
   git clone https://aur.archlinux.org/yabar-git.git yabar-aur
-  cd yabar-aur
+  cd yabar-aur || exit
   makepkg -si
-  cd $HOME/projects
+  cd "$HOME/projects" || exit
   git clone https://aur.archlinux.org/lemonbar-git.git lemonbar-aur
-  cd lemonbar-aur
+  cd lemonbar-aur || exit
   makepkg -si
 elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman -Rsnc lightdm
@@ -61,7 +56,7 @@ elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S conky
   sudo pacman --noconfirm --needed -S nitrogen
 elif [ "$OS" = "FreeBSD" ]; then
-  ln -sfn $(find /usr/local/bin/ -type f -name "perl5*" | tail -1) $HOME/.local/bin/perl
+  ln -sfn "$(find /usr/local/bin/ -type f -name "perl5*" | tail -1)" "$HOME/.local/bin/perl"
   sudo pkg install -y neofetch
   sudo pkg install -y w3m
   sudo pkg install -y xz
@@ -142,55 +137,51 @@ elif [ "$OS" = "CentOS Linux" ]; then
     sudo yum install -y nitrogen
   fi
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
-stack install ghc
-if [ $? -ne 0 ]; then
+if ! stack install ghc ; then
   echo failed ghc.
   exit 1
 fi
 
-stack install hindent
-if [ $? -ne 0 ]; then
+if ! stack install hindent ; then
   echo failed hindent.
   exit 1
 fi
 
-stack install hlint
-if [ $? -ne 0 ]; then
+if ! stack install hlint. ; then
   echo failed hlint.
   exit 1
 fi
 
-stack install xmonad-contrib
-if [ $? -ne 0 ]; then
+if ! stack install xmonad-contrib ; then
   echo failed xmonad-contrib.
   exit 1
 fi
 
-stack install xmonad-extras
-if [ $? -ne 0 ]; then
+if ! stack install xmonad-extras ; then
   echo failed xmonad-extras.
   exit 1
 fi
 
 echo "seems to have the the flag with_xft. how to confirm?"
-cd $HOME/projects
+cd "$HOME/projects" || exit
 git clone git@github.com:jaor/xmobar.git
-cd xmobar
+cd xmobar || exit
 git pull origin master
-stack build
+#stack build
+stack build --flag xmobar:-with_xft --flag xmobar:-with_utf8 --flag xmobar:-with_threaded --flag xmobar:-with_dbus --flag xmobar:-with_mpd --flag xmobar:-with_mpris --flag xmobar:-with_inotify --flag xmobar:-with_alsa --flag xmobar:-with_datezone --flag xmobar:-with_xpm --flag xmobar:-with_uvmeter --flag xmobar:-with_weather
 stack install
 $HOME/.local/bin/xmonad --version
 
-if [ \( "$OS" = "Gentoo" \) -o \(  "$OS" = "FreeBSD" \) ]; then
-  cd $HOME/projects
+if [ "$OS" = "Gentoo" ] || [ "$OS" = "FreeBSD" ]; then
+  cd "$HOME/projects" || exit
   git clone https://github.com/minos-org/dzen2.git
-  cd dzen2
+  cd dzen2 || exit
   sudo make clean install
-  cd -
+  cd - || exit
 fi
 
 stack exec ghc-pkg list
