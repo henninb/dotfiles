@@ -41,7 +41,7 @@ endif
    Plug 'git@github.com:bronson/vim-trailing-whitespace.git' " remove trailing whitespace
    Plug 'git@github.com:vim-airline/vim-airline.git'
    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-   Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+   Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'} " for javascript
    Plug 'git@github.com:dense-analysis/ale.git' " linter
    Plug 'sbdchd/neoformat' " for formatting code
    " Plug 'https://github.com/vim-scripts/CycleColor.git'
@@ -62,7 +62,7 @@ endif
    Plug 'udalov/kotlin-vim'
    Plug 'git@github.com:neovimhaskell/haskell-vim.git'
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
-   " Plug 'jiangmiao/auto-pairs' " used for auto closing quotes etc
+   Plug 'jiangmiao/auto-pairs' " used for auto closing quotes etc
 "   Plug 'neovimhaskell/haskell-vim'
 "   Plug 'git@github.com:itchyny/vim-haskell-indent.git'
 "   Plug 'git@github.com:terryma/vim-multiple-cursors.git'
@@ -93,6 +93,8 @@ let g:ale_filetype_blacklist = [
 \   'tags',
 \]
 
+autocmd Filetype markdown,vim let b:autopairs_enabled = 0
+
 autocmd FileType markdown let b:coc_pairs_disabled = ['`']
 autocmd FileType vim let b:coc_pairs_disabled = ['"']
 
@@ -107,6 +109,11 @@ let g:quickrun_known_file_types = {
 " filetypes like xml, html, xhtml, ...
 " These are the file types where this plugin is enabled.
 let g:closetag_filetypes = 'html,js'
+
+"
+" let g:MyAltKey = '<Esc>'
+" let g:AutoPairsShortcutToggle = 'M-p'
+let g:AutoPairsShortcutToggle = '<leader>"'
 
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
