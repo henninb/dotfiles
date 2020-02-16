@@ -19,9 +19,10 @@ read -p "Press enter to continue"
 
 if [ ! -f "firefox-${FOX_VER}.tar.bz2" ]; then
   rm -rf firefox-*.tar.bz2
-  scp "pi@${RASPI_IP}:/home/pi/downloads/firefox-${FOX_VER}.tar.bz2" .
-  if ! wget "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${FOX_VER}/linux-x86_64/en-US/firefox-${FOX_VER}.tar.bz2" ; then
-    scp "firefox-${FOX_VER}.tar.bz2" "pi@${RASPI_IP}:/home/pi/downloads/"
+  if ! scp "pi@${RASPI_IP}:/home/pi/downloads/firefox-${FOX_VER}.tar.bz2" . ; then
+    if ! wget "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${FOX_VER}/linux-x86_64/en-US/firefox-${FOX_VER}.tar.bz2" ; then
+      scp "firefox-${FOX_VER}.tar.bz2" "pi@${RASPI_IP}:/home/pi/downloads/"
+    fi
   fi
 fi
 
