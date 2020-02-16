@@ -8,9 +8,9 @@ if [ ! -f "kafka_2.12-1.1.1.tgz" ]; then
   sudo mv kafka_2.12-1.1.1 /opt/kafka-client
 fi
 
-
-
 echo 'kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic ynot'
 echo kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic ynot
+
+which kafka-topics.sh
 
 exit 0
