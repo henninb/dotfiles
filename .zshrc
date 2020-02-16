@@ -1,43 +1,48 @@
 # TODO: needs to be tested
-[[ $- != *i* ]] && return
+#[ $- != *i* ] && return
+# [[ $- != *i* ]] && return
 
 # TODO: test this further
 if [ "$0" = "zsh" ]; then
-  export MYSHELL=zsh
+  MYSHELL=zsh
 elif [ "$0" = "bash" ]; then
-  export MYSHELL=bash
+  MYSHELL=bash
 else
-  export MYSHELL=$(ps -o args= -p $$ | egrep -m 1 -o '\w{0,5}sh'| head -1)
+  MYSHELL=$(ps -o args= -p $$ | grep -E -m 1 -o '\w{0,5}sh'| head -1)
 fi
+export MYSHELL
 
-[ -z "$MYSHELL" ] && echo SHELL not found: dollar zero $0 and need to find a fix.
-ln -sfn $HOME/.zshrc $HOME/.bashrc
+[ -z "$MYSHELL" ] && echo "SHELL not found: dollar zero $0 and need to find a fix."
+ln -sfn "$HOME/.zshrc" "$HOME/.bashrc"
 #[[ -o interactive ]] || exit 0
 
 if [ -f /etc/os-release ]; then
-  export OS=$(cat /etc/os-release | grep '^NAME=' | tr -d '"' | cut -d = -f2)
-  export OS_VER=$(cat /etc/os-release | egrep '^VERSION_ID=' | tr -d '"' | cut -d = -f2)
+  OS="$(grep '^NAME=' /etc/os-release | tr -d '"' | cut -d = -f2)"
+  OS_VER="$(grep '^VERSION_ID=' /etc/os-release | tr -d '"' | cut -d = -f2)"
 elif type lsb_release >/dev/null 2>&1; then
-  export OS=$(lsb_release -si)
-  export OS_VER=$(lsb_release -sr)
+  OS=$(lsb_release -si)
+  OS_VER=$(lsb_release -sr)
 elif [ -f /etc/lsb-release ]; then
   echo /etc/lsb-release
-  export OS=$(cat /etc/lsb-release | egrep '^DISTRIB_ID=' | tr -d '"' | cut -d = -f2)
-  export OS_VER=$(cat /etc/lsb-release | egrep '^DISTRIB_RELEASE='| tr -d '"' | cut -d = -f2)
+  OS=$(grep '^DISTRIB_ID=' /etc/lsb-release | tr -d '"' | cut -d = -f2)
+  OS_VER=$(grep '^DISTRIB_RELEASE=' /etc/lsb-release | tr -d '"' | cut -d = -f2)
 elif [ -f /etc/debian_version ]; then
-  export OS=Debian
-  export OS_VER=$(cat /etc/debian_version)
+  OS=Debian
+  OS_VER=$(cat /etc/debian_version)
 elif [ -f /etc/SuSe-release ]; then
   echo "should not enter here v1"
-  exit 1
+  return
 elif [ -f /etc/redhat-release ]; then
   echo "should not enter here v2"
-  exit 2
+  return
 else
   #FreeBSD branches here.
-  export OS=$(uname -s)
-  export OS_VER=$(uname -r)
+  OS=$(uname -s)
+  OS_VER=$(uname -r)
 fi
+
+export OS
+export OS_VER
 
 #SPACESHIP_PROMPT_ORDER=(user host dir git)
 SPACESHIP_PROMPT_ORDER=(exit_code host dir git jobs char)
@@ -78,12 +83,12 @@ SPACESHIP_HOST_SHOW=always
 SPACESHIP_USER_SHOW=false
 SPACESHIP_GIT_PREFIX=""
 
-if [ "$OS" = "Darwin" ]; then
-  ZSH_THEME="agnoster"
-else
-  ZSH_THEME="spaceship"
-#  ZSH_THEME="dracula"
-fi
+# if [ "$OS" = "Darwin" ]; then
+#   ZSH_THEME="agnoster"
+# else
+#   ZSH_THEME="spaceship"
+# #  ZSH_THEME="dracula"
+# fi
 
 if [ ! -x "$(command -v unzip)" ]; then
   echo unzip not installed.
@@ -102,23 +107,25 @@ fi
 HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
 
 
-if [ "$OSTYPE" = "linux-gnu" ]; then
-  if [ "$OS" = "Gentoo" ]; then
+if [ "${OSTYPE}" = "linux-gnu" ]; then
+  if [ "${OS}" = "Gentoo" ]; then
   #  echo ${JDK_HOME}
   #  echo fix java_home
-    export JAVA_HOME=$(readlink -f $(readlink -f $JDK_HOME))
+    JAVA_HOME=$(readlink -f $(readlink -f ${JDK_HOME}))
   elif [ -x "$(command -v javac)" ]; then
-    export JAVA_HOME=$(dirname $(dirname $(readlink -f $(readlink -f $(which javac)) || readlink -f $(which javac))))
+    JAVA_HOME=$(dirname $(dirname $(readlink -f $(readlink -f $(which javac)) || readlink -f $(which javac))))
   else
     echo install java
   fi
-elif [ "$OSTYPE" = "linux-gnueabihf" ]; then
-  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-armhf
+elif [ "${OSTYPE}" = "linux-gnueabihf" ]; then
+  JAVA_HOME=/usr/lib/jvm/java-8-openjdk-armhf
 elif [ "$OS" = "Darwin" ]; then
-  export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+  JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 else
   echo JAVA_HOME is not setup.
 fi
+
+export JAVA_HOME
 
 export PATH=$PYENV_ROOT/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
@@ -148,10 +155,10 @@ export GIT_EDITOR=nvim
 export LESS="-F -X $LESS"
 # TODO: will this continue to function?
 export GIT_PAGER=cat git diff
-export CHEF_USER=$(whoami)
+export CHEF_USER="$(whoami)"
 export NVM_DIR="$HOME/.nvm"
 export TMOUT=0
-export GPG_TTY=$(tty)
+export GPG_TTY="$(tty)"
 export PYENV_ROOT="$HOME/.pyenv"
 export VAGRANT_DEFAULT_PROVIDER=kvm
 # TODO is this required
@@ -160,19 +167,19 @@ export POWERLINE_BASH_SELECT=1
 export KEYTIMEOUT=1
 
 # for rust
-[ -s "$HOME/.cargo/env" ] && source $HOME/.cargo/env
+[ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
-[ -s "$HOME/.alias-master" ] && source $HOME/.alias-master
+[ -s "$HOME/.alias-master" ] && source "$HOME/.alias-master"
 
 if [ -x "$(command -v nvim)" ]; then
-  [ -s "$HOME/.alias-neovim" ] && source $HOME/.alias-neovim
+  [ -s "$HOME/.alias-neovim" ] && source "$HOME/.alias-neovim"
 fi
 
-if [ \( "$OS" = "FreeBSD" \) -o \(  "$OS" = "Alpine Linux" \) -o \(  "$OS" = "OpenBSD" \) -o \(  "$OS" = "Darwin" \) ]; then
-  [ -s "$HOME/.alias-bsd" ] && source $HOME/.alias-bsd
+if [ "$OS" = "FreeBSD" ] || [ "$OS" = "Alpine Linux" ] || [ "$OS" = "OpenBSD" ] || [ "$OS" = "Darwin" ]; then
+  [ -s "$HOME/.alias-bsd" ] && source "$HOME/.alias-bsd"
 fi
 
-[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ] && source $HOME/.sdkman/bin/sdkman-init.sh
+[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 if [ ! "$OS" = "FreeBSD" ]; then
   if [ -x "$(command -v chef)" ]; then
@@ -189,19 +196,19 @@ fi
 mkdir -p ~/.fonts
 ls -l ~/.fonts/{Monofur_Bold_for_Powerline.ttf,Monofur_Italic_for_Powerline.ttf,Monofur_for_Powerline.ttf} > /dev/null 2>&1
 if [ $? -ne 0 ]; then
-  cd ~/.fonts
+  cd ~/.fonts || exit
   unzip ../monofur-fonts.zip
   fc-cache -vf ~/.fonts/
-  cd -
+  cd - || exit
 fi
 
-[ -s "$NVM_DIR/nvm.sh" ] && source $NVM_DIR/nvm.sh
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
-[ ! -f "$HOME/.ssh/id_rsa.pub" ] && ssh-keygen -y -f $HOME/.ssh/id_rsa > $HOME/.ssh/id_rsa.pub
+[ ! -f "$HOME/.ssh/id_rsa.pub" ] && ssh-keygen -y -f "$HOME/.ssh/id_rsa" > "$HOME/.ssh/id_rsa.pub"
 
-[ ! -d "$HOME/.pyenv" ] && git clone https://github.com/pyenv/pyenv.git $HOME/.pyenv
+[ ! -d "$HOME/.pyenv" ] && git clone https://github.com/pyenv/pyenv.git "$HOME/.pyenv"
 
-grep -A 3 '\[branch "master"\]' $HOME/.git/config | grep 'remote = origin' > /dev/null
+grep -A 3 '\[branch "master"\]' "$HOME/.git/config" | grep 'remote = origin' > /dev/null
 if [ $? -ne 0 ]; then
   git branch --set-upstream-to=origin/master master
 fi
@@ -217,17 +224,17 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 #  export DISPLAY=localhost:10.0
 fi
 
-mkdir -p $HOME/.config/compton
+mkdir -p "$HOME/.config/compton"
 
-[ -f $HOME/.config/nvim/init.vim ] && ln -sfn $HOME/.config/nvim/init.vim $HOME/.vimrc
-[ -f $HOME/.config/picom/picom.conf ] && ln -sfn $HOME/.config/picom/picom.conf $HOME/.config/compton/compton.conf
-[ -f $HOME/.xinitrc ] && ln -sfn $HOME/.xinitrc $HOME/.xsession
-[ -f /opt/arduino/arduino ] && ln -sfn /opt/arduino/arduino $HOME/.local/bin/arduino
-[ -f /opt/intellij/bin/idea.sh ] && ln -sfn /opt/intellij/bin/idea.sh $HOME/.local/bin/idea.sh
-[ -f /opt/intellij/bin/idea.sh ] && ln -sfn /opt/intellij/bin/idea.sh $HOME/.local/bin/intellij
-[ -f /opt/firefox/firefox ] && ln -sfn /opt/firefox/firefox $HOME/.local/bin/firefox
-[ -f /opt/vscode/bin/code ] && ln -sfn /opt/vscode/bin/code $HOME/.local/bin/code
-[ -f $HOME/.tmux-rice.conf ] && ln -sfn $HOME/.tmux-rice.conf $HOME/.tmux.conf
+[ -f "$HOME/.config/nvim/init.vim" ] && ln -sfn "$HOME/.config/nvim/init.vim" "$HOME/.vimrc"
+[ -f "$HOME/.config/picom/picom.conf" ] && ln -sfn $HOME/.config/picom/picom.conf $HOME/.config/compton/compton.conf
+[ -f "$HOME/.xinitrc" ] && ln -sfn $HOME/.xinitrc $HOME/.xsession
+[ -f /opt/arduino/arduino ] && ln -sfn /opt/arduino/arduino "$HOME/.local/bin/arduino"
+[ -f /opt/intellij/bin/idea.sh ] && ln -sfn /opt/intellij/bin/idea.sh "$HOME/.local/bin/idea.sh"
+[ -f /opt/intellij/bin/idea.sh ] && ln -sfn /opt/intellij/bin/idea.sh "$HOME/.local/bin/intellij"
+[ -f /opt/firefox/firefox ] && ln -sfn /opt/firefox/firefox "$HOME/.local/bin/firefox"
+[ -f /opt/vscode/bin/code ] && ln -sfn /opt/vscode/bin/code "$HOME/.local/bin/code"
+[ -f "$HOME/.tmux-rice.conf" ] && ln -sfn $HOME/.tmux-rice.conf "$HOME/.tmux.conf"
 #ln -sfn $HOME/.config/polybar/config-default $HOME/.config/polybar/config
 [ -f $HOME/.config/polybar/config-master ] && ln -sfn $HOME/.config/polybar/config-master $HOME/.config/polybar/config
 [ -f $HOME/.ssh/config ] && chmod 600 $HOME/.ssh/config
@@ -242,11 +249,11 @@ chmod 700 $HOME
 [ -f $HOME/.zsh_history ] && sort -t ";" -k 2 -u $HOME/.zsh_history | sort -o $HOME/.zsh_history
 
 
-[ -s "$HOME/.rvm/scripts/rvm" ] && source $HOME/.rvm/scripts/rvm
+[ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
 [ -s "/etc/profile.d/rvm.sh" ] && source /etc/profile.d/rvm.sh
 
 if [ "$OS" = "Gentoo" ]; then
-  grep $(hostname) /etc/hosts > /dev/null
+  grep "$(hostname)" /etc/hosts > /dev/null
   if [ $? -ne 0 ]; then
     echo "Action required: add a hostname entry to /etc/hosts to prevent issues with xauth."
   fi
@@ -267,11 +274,11 @@ fi
 #  fi
 #fi
 
-mkdir -p $HOME/.xmonad
-touch $HOME/.xmonad/.active
-touch $HOME/.active-wm
-touch $HOME/.zshrc-work-custom
-source $HOME/.zshrc-work-custom
+mkdir -p "$HOME/.xmonad"
+touch "$HOME/.xmonad/.active"
+touch "$HOME/.active-wm"
+touch "$HOME/.zshrc-work-custom"
+source "$HOME/.zshrc-work-custom"
 
 if [ "$MYSHELL" = "bash" ]; then
   if [ "$(uname -s)" = "Darwin" ]; then
@@ -296,7 +303,7 @@ if [ "$MYSHELL" = "bash" ]; then
   fi
 fi
 
-if [ "$MYSHELL" = "zsh" ]; then
+if [ "${MYSHELL}" = "zsh" ]; then
   # vi mode
   bindkey -v
 
