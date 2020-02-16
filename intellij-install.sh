@@ -11,7 +11,7 @@ rm -rf $HOME/.IntelliJIdea*/config/eval
 rm -rf $HOME/.IntelliJIdea*/config/options/other.xml
 rm -rf ~/.java/.userPrefs/jetbrains
 
-VER=$(curl -q 'https://data.services.jetbrains.com/products/releases?code=IIU&latest=true&type=release&build=&_=1581558835218' | jq '.IIU[0] .version' | cut -d \" -f2)
+VER=$(curl -s 'https://data.services.jetbrains.com/products/releases?code=IIU&latest=true&type=release&build=&_=1581558835218' | jq '.IIU[0] .version' | cut -d \" -f2)
 #VER=$(curl https://www.jetbrains.com/updates/updates.xml | grep "[0-9]\{4\}\.[0-9]\.[0-9]" | head -1 | grep -o '[0-9]\{4\}\.[0-9]\.[0-9]')
 
 if  [ ! -z "$VER_OVERRIDE" ]; then
