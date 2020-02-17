@@ -34,7 +34,7 @@
 - irc client - irssi
 - network packet tools - tcpdump
 - markdown reader - glow
-- browser - firefox
+- browser - firefox, ddgr
 - database client - dbeaver, sqlplus
 - database server - postgresql
 - astronomy - stellarium
