@@ -4,5 +4,6 @@
 # For the restore, after you have unmounted and replaced the sd card with a fresh one:
 # sudo dd bs=4M if=/home/bruni/backup.img of=/dev/mmcblk0
 sudo dd of=raspi.img if=/dev/sdb bs=1M status=progress
+sudo dd bs=4M of=/dev/sdb if=raspi.img status=progress
 
 exit 0
