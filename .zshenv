@@ -2,22 +2,6 @@
 
 #export LC_ALL=en_US.UTF-8
 # make zsh/terminfo work for terms with application and cursor modes
-
-if [[ $- == *i* ]]; then
-  # Start blinking
-  export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
-  # Start bold
-  export LESS_TERMCAP_md=$(tput bold; tput setaf 2) # green
-  # Start stand out
-  export LESS_TERMCAP_so=$(tput bold; tput setaf 3) # yellow
-  # End standout
-  export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
-  # Start underline
-  export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 1) # red
-  # End bold, blinking, standout, underline
-  export LESS_TERMCAP_me=$(tput sgr0)
-fi
-
 case "$TERM" in
   xterm-termite)
     #echo termite-workaround
@@ -40,7 +24,21 @@ esac
 
 [ -n "$STY" ] && export TERM="screen-256color"
 [ -n "$TMUX" ] && export TERM="xterm-256color"
-#echo ${TERM}
+
+if [[ $- == *i* ]]; then
+  # Start blinking
+  export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
+  # Start bold
+  export LESS_TERMCAP_md=$(tput bold; tput setaf 2) # green
+  # Start stand out
+  export LESS_TERMCAP_so=$(tput bold; tput setaf 3) # yellow
+  # End standout
+  export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+  # Start underline
+  export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 1) # red
+  # End bold, blinking, standout, underline
+  export LESS_TERMCAP_me=$(tput sgr0)
+fi
 
 function gemerge() {
   if [ "$#" -ne 1 ]; then
