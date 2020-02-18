@@ -7,13 +7,13 @@ export PATH=/opt/kafka/bin:$PATH
 
 RASPI_IP=$(nmap -sP --host-timeout 10 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
 SCALA_VER=2.12
-NUM=$(curl -f https://kafka.apache.org/downloads | grep -o "kafka_${SCALA_VER}-[0-9.]\+[0-9]" | head -1 | sed 's/kafka_[0-9.]\+[0-9]-//')
+NUM=$(curl -sf https://kafka.apache.org/downloads | grep -o "kafka_${SCALA_VER}-[0-9.]\+[0-9]" | head -1 | sed 's/kafka_[0-9.]\+[0-9]-//')
 VER="${SCALA_VER}-${NUM}"
 FILE="kafka_${VER}"
 
 if [ ! -f "kafka_${VER}.tgz" ]; then
   rm -rf kafka_*.tgz
-  curl https://archive.apache.org/dist/kafka/${NUM}/kafka_${VER}.tgz --output kafka_${VER}.tgz
+  curl -s https://archive.apache.org/dist/kafka/${NUM}/kafka_${VER}.tgz --output kafka_${VER}.tgz
 fi
 
 sudo rm -rf /opt/kafka

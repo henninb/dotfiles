@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VER=$(curl https://www.python.org/downloads/ | grep -o 'Python-[0-9.]\+[0-9].tar.xz' | head -1 | sed 's/.tar.xz//' | sed 's/Python-//')
+VER=$(curl -s https://www.python.org/downloads/ | grep -o 'Python-[0-9.]\+[0-9].tar.xz' | head -1 | sed 's/.tar.xz//' | sed 's/Python-//')
 
 build() {
   if [ ! -f Python-${VER}.tar.xz ]; then
