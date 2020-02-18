@@ -7,7 +7,7 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   sudo apt install -y gnutls-devel
   sudo apt install -y gperf
   sudo apt install -y pkg-config
-  sudo apt install -y gtk-doc
+  sudo apt install -y gtk-doc-tools
   sudo apt install -y g++
   sudo apt install -y gnutls-dev
   sudo apt install -y libpcre2-dev
