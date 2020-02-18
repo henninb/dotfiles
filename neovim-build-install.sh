@@ -26,7 +26,7 @@ elif [ "$OS" = "Darwin" ]; then
   brew install python
 elif [ "$OS" = "Manjaro Linux" ]; then
   echo manjaro
-elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux"]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y gperf luajit luarocks libuv1-dev libluajit-5.1-dev libunibilium-dev libmsgpack-dev libtermkey-dev libvterm-dev cmake libtool-bin
   sudo apt remove -y neovim
 elif [ "$OS" = "void" ]; then
