@@ -7,14 +7,16 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   sudo apt install -y gnutls-devel
   sudo apt install -y gperf
   sudo apt install -y pkg-config
+  sudo apt install -y gtk-doc
   sudo apt install -y g++
   sudo apt install -y gnutls-dev
   sudo apt install -y libpcre2-dev
+  sudo apt install -y intltool
   #sudo apt install -y gtk3-devel
-  sudo apt install libgtk-3-dev
-  sudo apt-get install libgtk2.0-dev
+  sudo apt install -y libgtk-3-dev
+  sudo apt install -y libgtk2.0-dev
   #sudo apt install gnome-devel
-  sudo apt-get install gtk+3.0
+  sudo apt install -y gtk+3.0
 elif [ "$OS" = "FreeBSD" ]; then
   echo freebsd
   sudo pkg install -y gtk-doc
