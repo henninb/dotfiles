@@ -60,6 +60,7 @@
 - encryption - gnupg, keybase
 - terminal screen saver - cmatrix
 - window detailer - xprop
+- image clone - etcher
 
 audacity
 handbrake

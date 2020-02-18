@@ -6,4 +6,10 @@
 sudo dd of=raspi.img if=/dev/sdb bs=1M status=progress
 sudo dd bs=4M of=/dev/sdb if=raspi.img status=progress
 
+https://elinux.org/RPi_Resize_Flash_Partitions
+
+echo sudo mkdosfs -I -F32 /dev/sdb
+echo sudo mkfs.vfat /dev/sdb0
+sudo dd bs=1M if=2020-02-13-raspbian-buster.img of=/dev/sdb status=progress
+
 exit 0
