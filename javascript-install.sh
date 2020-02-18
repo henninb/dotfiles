@@ -7,7 +7,7 @@ unset NVM_DIR
 #   git clone https://github.com/nvm-sh/nvm.git $HOME/.nvm
 # fi
 
-if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
   #sudo apt update -y
@@ -35,12 +35,12 @@ else
   exit 1
 fi
 #cd ~/.nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | zsh
 
 #https://github.com/yarnpkg/yarn/archive/v1.21.1.tar.gz
 
 nvm install 10.16.0
-sudo npm install -g yarn
+npm install -g yarn
 
 sudo npm list -g --depth=0
 sudo npm list -g --depth=1
