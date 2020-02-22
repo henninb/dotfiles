@@ -72,7 +72,8 @@ fi
 if [ -x "$(command -v ${WM})" ] && [ "${WM}" = "bspwm" ]; then
   exec sxhkd &
   #exec bspwm  "$HOME/.config/bspwm/bspwmrc" 2>> "$HOME/xinit.log"
-  exec bspwm 2>> "$HOME/xinit.log"
+  #exec bspwm 2>> "$HOME/xinit.log"
+  exec bspwm -c ~/.config/bspwm/bspwmrc 2>~/.bspwm.err >~/.bspwm.out
 elif [ -x "$(command -v ${WM})" ]; then
   exec ${WM} 2>> "$HOME/xinit.log"
 else

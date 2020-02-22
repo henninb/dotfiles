@@ -1,14 +1,15 @@
 #### Autostart ####
 
 #sxhkd &
-echo "bspwmrc was called" > $HOME/.config/bspwm/called
+xeyes &
+# echo "bspwmrc was called" > $HOME/.config/bspwm/called
 
 #### Monitors ####
-bspc monitor HDMI-0 -d 1 2 3 4 5 6 7 8 9
+# bspc monitor HDMI-0 -d 1 2 3 4 5 6 7 8 9
 
 #### Polybar ####
 #find out the name of your monitor with xrandr
-xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_HDMI-0)
+# xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_HDMI-0)
 
 ###---Global Settings---###
 #bspc config automatic_scheme alternate
@@ -39,6 +40,6 @@ bspc config border_width 2
 bspc config window_gap 10
 
 ###---Rules---###
-bspc rule -a mpv state=fullscreen
-bspc rule -a Zathura state=tiled
-bspc rule -a Screenkey manage=off
+# bspc rule -a mpv state=fullscreen
+# bspc rule -a Zathura state=tiled
+# bspc rule -a Screenkey manage=off
