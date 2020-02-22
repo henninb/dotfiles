@@ -42,6 +42,7 @@
 - font - monofur
 - theme -dracula
 - audio player - cmus
+- media player daemon - mpd
 - image converter - imagemagik
 - image viewer - sxiv, feh
 - burning images - k3b, cdrecord
