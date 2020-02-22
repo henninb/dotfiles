@@ -69,8 +69,12 @@ fi
 #   exec sxhkd &
 # fi
 
-if [ -x "$(command -v ${WM})" ]; then
+if [ -x "$(command -v ${WM})" ] && [ "${WM}" = "bspwm" ]; then
+  exec sxhkd &
+  exec bspwm -c "$HOME/.config/bspwm/bspwmrc" 2>> "$HOME/xinit.log"
+elif [ -x "$(command -v ${WM})" ]; then
   exec ${WM} 2>> "$HOME/xinit.log"
 else
+  echo "failed to find ${WM}" >> "$HOME/xinit.log"
   exit 1
 fi
