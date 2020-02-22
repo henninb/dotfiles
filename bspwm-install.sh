@@ -28,6 +28,7 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
+  sudo pacman --noconfirm --needed -S bspwm
   sudo pacman --noconfirm --needed -S dmenu
   sudo pacman --noconfirm --needed -S feh
   sudo pacman --noconfirm --needed -S cmatrix
