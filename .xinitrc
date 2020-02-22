@@ -40,6 +40,10 @@ else
   echo xscreensaver is not installed >> "$HOME/xinit.log"
 fi
 
+if [ -x "$(command -v mpd)" ]; then
+  exec mpd &
+fi
+
 if [ -x "$(command -v picom)" ]; then
   exec picom &
 elif [ -x "$(command -v compton)" ]; then
