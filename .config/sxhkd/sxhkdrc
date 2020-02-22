@@ -1,2 +1,30 @@
 alt + shift + Return
     urxvt
+alt + Return
+    termite
+alt + shift + i
+    firefox -private-window
+alt + i
+    firefox
+alt + shift + p
+    dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal
+#alt + shift + BackSpace
+    #bspc  window -c
+#    bspc  window -k
+alt + shift + q
+	bspc quit 1 && pkill bar && pkill dzen2
+XF86AudioRaiseVolume
+    amixer -q -D pulse sset Master 2%+
+XF86AudioLowerVolume
+    amixer -q -D pulse sset Master 2%-
+XF86AudioMute
+    amixer -D pulse sset Master toggle
+#XF86AudioPlay
+#   $HOME/.config/bspwm/panel/notify_mpd -t
+#XF86AudioNext
+#   $HOME/.config/bspwm/panel/notify_mpd -n
+#XF86AudioPrev
+#   $HOME/.config/bspwm/panel/notify_mpd -p
+# make sxhkd reload its configuration files:
+alt + shift + Escape
+    pkill -USR1 -x sxhkd

@@ -20,24 +20,24 @@ xrdb -merge ~/.Xresources
 #xrdb -load ~/.Xresources
 
 #TODO: is this required?
-for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
-    [ -x "$f" ] && . "$f"
-done
-unset f
+# for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
+#     [ -x "$f" ] && . "$f"
+# done
+# unset f
 
 #echo sudo mkfontdir /usr/share/fonts/TTF
 #xset +fp ~/.fonts
 if [ -x "$(command -v feh)" ]; then
   #exec feh --bg-scale --randomize $HOME/backgrounds/* &
-  exec feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg &
+  exec feh --bg-scale "$HOME/backgrounds/minnesota-vikings-dark.jpg" &
 else
-  echo feh is not installed >> $HOME/xinit.log
+  echo feh is not installed >> "$HOME/xinit.log"
 fi
 
 if [ -x "$(command -v xscreensaver)" ]; then
   exec xscreensaver -no-splash &
 else
-  echo xscreensaver is not installed >> $HOME/xinit.log
+  echo xscreensaver is not installed >> "$HOME/xinit.log"
 fi
 
 if [ -x "$(command -v picom)" ]; then
@@ -45,11 +45,11 @@ if [ -x "$(command -v picom)" ]; then
 elif [ -x "$(command -v compton)" ]; then
   exec compton &
 else
-  echo picom and compton are not installed. >> $HOME/xinit.log
+  echo picom and compton are not installed. >> "$HOME/xinit.log"
 fi
 
-cd $HOME/.xmonad
-make $(cat "$HOME/.xmonad/.active") > /dev/null 2>&1
+cd "$HOME/.xmonad"
+make "$(cat "$HOME/.xmonad/.active")" > /dev/null 2>&1
 cd -
 
 #exec mate-session
@@ -59,13 +59,18 @@ cd -
 #exec xmonad
 
 if [ -s "$HOME/.active-wm" ]; then
-  WM=$(cat $HOME/.active-wm | head -1)
+  WM=$(cat "$HOME/.active-wm" | head -1)
 else
-  echo i3 > $HOME/.active-wm
+  echo i3 > "$HOME/.active-wm"
   WM=i3
 fi
+
+if [ "${WM}" = "bspwm" ]; then
+  exec sxhkd &
+fi
+
 if [ -x "$(command -v ${WM})" ]; then
-  exec ${WM} 2>> $HOME/xinit.log
+  exec ${WM} 2>> "$HOME/xinit.log"
 else
   exit 1
 fi
