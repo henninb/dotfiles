@@ -399,3 +399,10 @@ bindkey "^A" vi-beginning-of-line
 bindkey "^E" vi-end-of-line
 
 bindkey -r "^B"
+
+touch $HOME/env.secrets
+
+set -a
+. $HOME/env.secrets
+set +a
+
