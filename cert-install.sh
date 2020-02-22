@@ -17,7 +17,8 @@ APP=raspi-finance
 #   echo "$OS not configured."
 #   exit 1
 # fi
-SERVERNAME="$(hostname)"
+#SERVERNAME="$(hostname)"
+SERVERNAME=hornsup
 
 mkdir -p ssl
 
