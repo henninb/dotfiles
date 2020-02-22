@@ -61,6 +61,7 @@ cd -
 #exec awesome
 #exec qtile
 #exec xmonad
+#exec bspwm
 
 if [ -s "$HOME/.active-wm" ]; then
   WM=$(cat "$HOME/.active-wm" | head -1)
@@ -69,15 +70,10 @@ else
   WM=i3
 fi
 
-# if [ "${WM}" = "bspwm" ]; then
-#   exec sxhkd &
-# fi
-
 if [ -x "$(command -v ${WM})" ] && [ "${WM}" = "bspwm" ]; then
-  exec sxhkd &
+  # exec sxhkd &
   #exec bspwm  "$HOME/.config/bspwm/bspwmrc" 2>> "$HOME/xinit.log"
-  #exec bspwm 2>> "$HOME/xinit.log"
-  exec bspwm -c ~/.config/bspwm/bspwmrc 2>~/.bspwm.err >~/.bspwm.out
+  exec bspwm 2>> "$HOME/xinit.log"
 elif [ -x "$(command -v ${WM})" ]; then
   exec ${WM} 2>> "$HOME/xinit.log"
 else

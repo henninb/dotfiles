@@ -19,7 +19,7 @@
 - zsh plugins - zsh-syntax-highlighting, zsh-autosuggestions, autojump, zsh-history-substring-search
 - file manager - ranger, lf, hunter
 - bar - polybar, dzen, xmobar
-- window manager - i3, xmonad
+- window manager - i3, xmonad, bspwm
 - lock screen - i3block
 - terminal multiplexer - tmux, screen, tmate
 - media player - vlc, mpv
@@ -61,6 +61,7 @@
 - terminal screen saver - cmatrix
 - window detailer - xprop
 - image clone - etcher
+- git client - tig
 
 audacity
 handbrake
@@ -68,3 +69,5 @@ blender
 steam
 arduino
 gimp
+
+tint2
