@@ -65,9 +65,9 @@ else
   WM=i3
 fi
 
-if [ "${WM}" = "bspwm" ]; then
-  exec sxhkd &
-fi
+# if [ "${WM}" = "bspwm" ]; then
+#   exec sxhkd &
+# fi
 
 if [ -x "$(command -v ${WM})" ]; then
   exec ${WM} 2>> "$HOME/xinit.log"

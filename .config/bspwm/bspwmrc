@@ -1,3 +1,14 @@
+#### Autostart ####
+
+sxhkd &
+
+#### Monitors ####
+bspc monitor HDMI-0 -d 1 2 3 4 5 6 7 8 9
+
+#### Polybar ####
+#find out the name of your monitor with xrandr
+xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_HDMI-0)
+
 ###---Global Settings---###
 bspc config automatic_scheme alternate
 bspc config initial_polarity second_child
