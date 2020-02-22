@@ -11,11 +11,10 @@ alt + shift + p
 #alt + shift + Delete
 #    xeyes
 #alt + shift + BackSpace
-#    xeyes
-    #bspc  window -c
-#    bspc  window -k
+#    bspc  window -c
+    bspc  window -k
 alt + shift + q
-	bspc quit 1 && pkill bar && pkill dzen2
+    bspc quit 1 && pkill bar && pkill dzen2
 XF86AudioRaiseVolume
     amixer -q -D pulse sset Master 2%+
 XF86AudioLowerVolume
