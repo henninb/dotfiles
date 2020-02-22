@@ -7,6 +7,7 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   sudo apt remove -y lightdm
   sudo apt remove -y gdm
   sudo apt install -y bspwm
+  sudo apt install -y xdo
   sudo apt install -y feh
   sudo apt install -y ranger
   sudo apt install -y libev-dev
@@ -29,6 +30,7 @@ elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
   sudo pacman --noconfirm --needed -S bspwm
+  sudo pacman --noconfirm --needed -S xdo
   sudo pacman --noconfirm --needed -S dmenu
   sudo pacman --noconfirm --needed -S feh
   sudo pacman --noconfirm --needed -S cmatrix
@@ -41,9 +43,8 @@ elif [ "$OS" = "Arch Linux" ]; then
 elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
-  sudo pacman --noconfirm --needed -S xterm
-  sudo pacman --noconfirm --needed -S i3lock
-  sudo pacman --noconfirm --needed -S rofi
+  sudo pacman --noconfirm --needed -S bspwm
+  sudo pacman --noconfirm --needed -S xdo
   sudo pacman --noconfirm --needed -S dmenu
   sudo pacman --noconfirm --needed -S feh
   sudo pacman --noconfirm --needed -S cmatrix
@@ -54,7 +55,7 @@ elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S w3m
   sudo pacman --noconfirm --needed -S vifm
 elif [ "$OS" = "Gentoo" ]; then
-  GENTOO_PKGS="bspwm dmenu ranger feh cmatrix cairo libmpdclient pulseaudio autocutsel vimfm w3m xclip"
+  GENTOO_PKGS="bspwm xdo dmenu sxhkd feh cmatrix cairo libmpdclient pulseaudio autocutsel vimfm w3m xclip"
   FAILURES=""
   for i in $(echo $GENTOO_PKGS); do
     sudo emerge --update --newuse $i
@@ -66,6 +67,7 @@ elif [ "$OS" = "Gentoo" ]; then
 elif [ "$OS" = "Fedora" ]; then
   echo
   sudo dnf install -y bspwm
+  sudo dnf install -y xdo
   sudo dnf install -y dmenu
   sudo dnf install -y neofetch
   sudo dnf install -y terminus-fonts-console
@@ -79,6 +81,7 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y libxcb-devel xcb-util-keysyms-devel xcb-util-devel xcb-util-wm-devel xcb-util-xrm-devel yajl-devel libXrandr-devel startup-notification-devel libev-devel xcb-util-cursor-devel libXinerama-devel libxkbcommon-devel libxkbcommon-x11-devel pcre-devel pango-devel git gcc automake libcurl-devel libmpdclient-devel wireless-tools-devel pulseaudio-libs-devel xcb-proto  cairo-devel i3-devel
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y bspwm
+  sudo pkg install -y xdo
   sudo pkg install -y feh
   sudo pkg install -y ranger
   sudo pkg install -y suckless-tools
@@ -93,7 +96,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo apt install -y xserver-xephyr
   sudo apt install -y polybar
 elif [ "$OS" = "CentOS Linux" ]; then
-  sudo yum install -y bspwm dmenu dolphin terminus-fonts-console terminus-fonts
+  sudo yum install -y bspwm xdo dmenu terminus-fonts-console terminus-fonts
 else
   echo $OS is not yet implemented.
   exit 1
