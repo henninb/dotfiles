@@ -129,13 +129,14 @@ export JAVA_HOME
 
 export PATH=$PYENV_ROOT/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/node_modules/.bin:$PATH
-export PATH=$HOME/.cargo/bin:$PATH
-export PATH=$HOME/.rvm/bin:$PATH
-export PATH=/opt/kafka/bin:$PATH
-export PATH=/opt/kafka-client/bin:$PATH
-export PATH=/opt/kotlinc/bin:$PATH
-export PATH=/opt/oracle-instantclient:$PATH
+export PATH="$HOME/node_modules/.bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.rvm/bin:$PATH"
+export PATH="/opt/kafka/bin:$PATH"
+export PATH="$HOME/.config/bspwm:$PATH"
+export PATH="/opt/kafka-client/bin:$PATH"
+export PATH="/opt/kotlinc/bin:$PATH"
+export PATH="/opt/oracle-instantclient:$PATH"
 export PATH="$HOME/.dynamic-colors/bin:$PATH"
 
 export GOPATH=$HOME/.local
