@@ -28,6 +28,12 @@ rm -rf "$HOME/ssl/${SERVERNAME}-${APP}-keystore.jks"
 #-storepass
 keytool -genkey -keyalg RSA -alias "${SERVERNAME}-${APP}" -keystore "$HOME/ssl/${SERVERNAME}-${APP}-keystore.jks" -storepass monday1 -keypass monday1 -validity 365 -keysize 4096 -dname "CN=$SERVERNAME, OU=$SERVERNAME, O=Brian LLC, L=Denton, ST=Texas, C=US"
 keytool -export -alias "${SERVERNAME}-${APP}" -file "$HOME/ssl/${SERVERNAME}-${APP}.der" -keystore "$HOME/ssl/${SERVERNAME}-${APP}-keystore.jks" -keypass monday1 -storepass monday1
+keytool -export -rfc -alias "${SERVERNAME}-${APP}" -file "$HOME/ssl/${SERVERNAME}-${APP}.pem" -keystore "$HOME/ssl/${SERVERNAME}-${APP}-keystore.jks" -keypass monday1 -storepass monday1
+
+#convert the cert to PEM:
+openssl x509 -inform der -in "$HOME/ssl/${SERVERNAME}-${APP}.der" -out "$HOME/ssl/${SERVERNAME}-${APP}-converted.pem"
+
+# keytool -exportcert -rfc -keystore server.jks -storepass password -alias server > server.pem
 #keytool -list -v -keystore keystore.jks
 #-dname "CN=$SERVERNAME, OU=$SERVERNAME, O=Brian LLC, L=Denton, ST=Texas, C=US"
 
@@ -40,13 +46,10 @@ openssl req -new -key "$HOME/ssl/ca.key.pem" -out "$HOME/ssl/${SERVERNAME}-${APP
 openssl x509 -req -days 365 -in "$HOME/ssl/ca.csr" -signkey "$HOME/ssl/ca.key.pem" -out "$HOME/ssl/ca.crt.pem"
 openssl x509 -req -days 365 -in "$HOME/ssl/${SERVERNAME}-${APP}.csr.pem" -signkey "$HOME/ssl/ca.key.pem" -out "$HOME/ssl/${SERVERNAME}-${APP}.crt.pem"
 
+echo curl --cacert archlinux-raspi-finance.pem https://archlinux:8080
+
 exit 0
 
-#export the .crt:
-keytool -export -alias ${SERVERNAME}_${APP} -file mydomain.der -keystore keystore.jks
-
-#convert the cert to PEM:
-openssl x509 -inform der -in mydomain.der -out certificate.pem
 
 #export the key:
 keytool -importkeystore -srckeystore mycert.jks -destkeystore keystore.p12 -deststoretype PKCS12
