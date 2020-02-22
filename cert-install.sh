@@ -48,6 +48,7 @@ openssl x509 -req -days 365 -in "$HOME/ssl/ca.csr" -signkey "$HOME/ssl/ca.key.pe
 openssl x509 -req -days 365 -in "$HOME/ssl/${SERVERNAME}-${APP}.csr.pem" -signkey "$HOME/ssl/ca.key.pem" -out "$HOME/ssl/${SERVERNAME}-${APP}.crt.pem"
 
 echo curl --cacert archlinux-raspi-finance.pem https://archlinux:8080
+echo curl --cacert hornsup-raspi-finance.pem https://hornsup:8080
 
 exit 0
 

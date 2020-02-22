@@ -8,7 +8,10 @@ alt + i
     firefox
 alt + shift + p
     dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal
+#alt + shift + Delete
+#    xeyes
 #alt + shift + BackSpace
+#    xeyes
     #bspc  window -c
 #    bspc  window -k
 alt + shift + q
