@@ -39,3 +39,13 @@ $ git config --local  user.email henninb@msn.com
 $ git tag -a v0.0.1 -m "first travis build"
 $ git push origin v0.0.1
 ```
+
+## git password
+```shell
+$ vi .git/config
+[filter "pw"]
+  clean = "sed -e 's/sasl_password = .*;/identify <PASSWORD>\";/'"
+
+$ vi .git/info/attributes
+config filter=pw
+```

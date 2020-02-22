@@ -1,1 +1,2 @@
 .tmux.conf eol=lf
+config filter=mypassword
