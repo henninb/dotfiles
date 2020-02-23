@@ -1,2 +1,4 @@
 .tmux.conf eol=lf
 config filter=irssi-pw
+config filter=ts-pw
+config filter=ks-pw
