@@ -5,6 +5,14 @@ set from="henninb08@gmail.com"
 set use_from = yes
 set envelope_from = yes
 
+set smtp_url="smtps://henninb08@gmail.com@smtp.gmail.com:465/"
+
+set sleep_time=0 # be faster
+set beep=no # no beep sound
+
+# You can use any gmail imap mailboxes
+mailboxes =INBOX =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Trash
+
 set smtp_url = "smtps://henninb08@gmail.com@smtp.gmail.com:465/"
 set imap_user = "henninb08@gmail.com"
 set imap_pass = "********"
