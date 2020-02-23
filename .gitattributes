@@ -3,5 +3,6 @@
 cert-install.sh filter=ts-pw
 cert-install.sh filter=ks-pw
 influxdb-install.sh filter=influxdb-pw
+influxdb-status.sh filter=influxdb-pw
 activemq-install.sh filter=activemq-pw
 chef-install.sh filter=chef-pw
