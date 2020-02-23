@@ -1,4 +1,4 @@
 .tmux.conf eol=lf
-config filter=irssi-pw
-config filter=ts-pw
-config filter=ks-pw
+.irssi/config filter=irssi-pw
+cert-install.sh filter=ts-pw
+cert-install.sh filter=ks-pw

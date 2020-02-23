@@ -19,7 +19,7 @@ APP=raspi-finance
 # fi
 #SERVERNAME="$(hostname)"
 SERVERNAME=hornsup
-KEYSTORE_PASSWORD="monday1"
+KEYSTORE_PASSWORD="********"
 TRUSTSTORE_PASSWORD="monday1"
 
 mkdir -p ssl
@@ -54,4 +54,4 @@ echo curl --cacert hornsup-raspi-finance.pem https://hornsup:8080
 exit 0
 
 #concert PKCS12 key to unencrypted PEM:
-openssl pkcs12 -in keystore.p12  -nodes -nocerts -out mydomain.key
+openssl pkcs12 -in keystore.p12 -nodes -nocerts -out mydomain.key
