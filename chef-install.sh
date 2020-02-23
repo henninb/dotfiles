@@ -1,6 +1,7 @@
 #!/bin/sh
 
-mkdir -p $HOME/projects
+CHEF_PASSWORD="********"
+mkdir -p "$HOME/projects"
 
 if [ "$OS" = "Linux Mint" ]; then
   curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chefdk -c stable
@@ -35,7 +36,7 @@ sudo chef-server-ctl status
 sudo chef-server-ctl install chef-manage
 sudo chef-server-ctl org-create home "home servers" -f home.pem
 sudo sudo chef-server-ctl org-list
-sudo chef-server-ctl user-create henninb Brian Henning henninb@gmail.com monday1 -f henninb.pem
+sudo chef-server-ctl user-create henninb Brian Henning henninb@gmail.com "$CHEF_PASSWORD" -f henninb.pem
 sudo chef-server-ctl user-list
 sudo chef-server-ctl org-user-add home henninb --admin
 echo admin user is created
