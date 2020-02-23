@@ -34,5 +34,5 @@
   ui = true
   pager = true
 # https://github.com/jchnkl/etc.irssi/blob/2a5e44fc297c45c594a39f94404dbff0b8a2e424/.irssi/readme.md
-#[filter "mypassword"]
-#  clean = "sed -e 's/sasl_password = .*;/identify <PASSWORD>\";/'"
+[filter "mypassword"]
+  clean = "sed -e 's/sasl_password = .*;/sasl_password \"<PASSWORD>\";/'"

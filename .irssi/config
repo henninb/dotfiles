@@ -25,7 +25,7 @@ chatnets = {
     max_whois = "1";
     sasl_mechanism = "PLAIN";
     sasl_username = "henninb";
-    sasl_password = "<PASSWORD>";
+    sasl_password "<PASSWORD>";
   };
   spotchat = { type = "IRC"; nick = "henninb"; };
 };
@@ -43,7 +43,7 @@ channels = (
   { name = "#scala"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#kotlin"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#python"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#java"; chatnet = "Freenode"; autojoin = "Yes"; },
+  { name = "#haskell"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#ruby"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#neovim"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#vim"; chatnet = "Freenode"; autojoin = "Yes"; },
