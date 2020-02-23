@@ -1,18 +1,19 @@
 #!/bin/sh
 
-read -p "Enter PASSWD: "  PASSWD
-if [ -z "$PASSWD" ]; then
-  echo "passwd is empty"
-  exit 1
-fi
+POSTFIX_PASSWORD="********"
+# read -p "Enter PASSWD: "  PASSWD
+# if [ -z "$PASSWD" ]; then
+#   echo "passwd is empty"
+#   exit 1
+# fi
 
-echo $PASSWD
+# echo $PASSWD
 
-cat > sasl_passwd <<'EOF'
-[smtp.gmail.com]:587    henninb08@gmail.com:passwd
+cat > sasl_passwd <<EOF
+[smtp.gmail.com]:587 henninb08@gmail.com:${POSTFIX_PASSWORD}
 EOF
 
-sed -i "s/passwd/$PASSWD/g" sasl_passwd
+#sed -i "s/passwd/$PASSWD/g" sasl_passwd
 cat sasl_passwd
 
 cat > main.cf <<'EOF'
