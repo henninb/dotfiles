@@ -17,6 +17,7 @@ EOF
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux"  ]; then
   sudo apt install -y ssmtp mailutils net-tools
+  sudo mv -v ssmtp.conf /etc/ssmtp/ssmtp.conf
 elif [ "$OS" = "CentOS Linux" ]; then
   echo here
 elif [ "$OS" = "Arch Linux" ]; then
