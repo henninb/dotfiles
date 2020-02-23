@@ -20,7 +20,7 @@ APP=raspi-finance
 #SERVERNAME="$(hostname)"
 SERVERNAME=hornsup
 KEYSTORE_PASSWORD="********"
-TRUSTSTORE_PASSWORD="monday1"
+TRUSTSTORE_PASSWORD="${KEYSTORE_PASSWORD}"
 
 mkdir -p ssl
 
