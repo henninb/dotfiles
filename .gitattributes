@@ -8,3 +8,4 @@ activemq-install.sh filter=activemq-pw
 chef-install.sh filter=chef-pw
 ssmtp-install.sh filter=ssmtp-pw
 postfix-install.sh filter=postfix-pw
+.muttrc filter=mutt-pw
