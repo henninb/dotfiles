@@ -1,21 +1,21 @@
 #!/bin/sh
 
-read -p "Enter PASSWD: "  PASSWD
-if [ -z "$PASSWD" ]; then
-  echo "passwd is empty"
-  exit 1
-fi
+SSMTP_PASSWORD="henninb08@gmail.com password"
+# read -p "Enter PASSWD: "  PASSWD
+# if [ -z "$PASSWD" ]; then
+#   echo "passwd is empty"
+#   exit 1
+# fi
+# echo "$PASSWD"
 
-echo $PASSWD
-
-cat > ssmtp.conf << 'EOF'
+cat > ssmtp.conf <<EOF
 mailhub=smtp.gmail.com:587
 AuthUser=henninb08@gmail.com
-AuthPass=password
+AuthPass=${SSMTP_PASSWORD}
 UseSTARTTLS=YES
 EOF
 
-if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux"  ]; then
   sudo apt install -y ssmtp mailutils net-tools
 elif [ "$OS" = "CentOS Linux" ]; then
   echo here

@@ -6,3 +6,4 @@ influxdb-install.sh filter=influxdb-pw
 influxdb-status.sh filter=influxdb-pw
 activemq-install.sh filter=activemq-pw
 chef-install.sh filter=chef-pw
+ssmtp-install.sh filter=ssmtp-pw
