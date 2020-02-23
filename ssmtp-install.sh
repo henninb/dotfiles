@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SSMTP_PASSWORD="password"
+SSMTP_PASSWORD="********"
 # read -p "Enter PASSWD: "  PASSWD
 # if [ -z "$PASSWD" ]; then
 #   echo "passwd is empty"
