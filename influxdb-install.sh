@@ -1,6 +1,6 @@
 #!/bin/sh
 
-INFLUXDB_PASSWORD=monday1
+INFLUXDB_PASSWORD="********"
 
 cat > influxdb.repo << 'EOF'
 [influxdb]
