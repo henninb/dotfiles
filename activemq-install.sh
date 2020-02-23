@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+ACTIVEMQ_PASSWORD="********"
 RASPI_IP=$(nmap -sP 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
 AMQ_VER=$(curl -fA 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:69.0) Gecko/20100101 Firefox/69.0' 'http://activemq.apache.org/components/classic/download/' | grep -o 'ActiveMQ [0-9.]\+[0-9]' | sed 's/ActiveMQ //')
 
@@ -45,7 +46,7 @@ if [ "$OS" = "Arch Linux" ]; then
   sudo ln -s /opt/apache-activemq-$AMQ_VER /opt/activemq
   sudo sed -i "s/managementContext createConnector=\"false\"/managementContext createConnector=\"true\"/" /opt/activemq/conf/activemq.xml
   sudo mv -v activemq.service /usr/lib/systemd/system/activemq.service
-  #sed -i "s/admin: admin, admin/admin: admin, monday1/g" /opt/activemq/conf/jetty-realm.properties
+  #sed -i "s/admin: admin, admin/admin: admin, ${ACTIVEMQ_PASSWORD}/g" /opt/activemq/conf/jetty-realm.properties
   sudo systemctl daemon-reload
   sudo systemctl enable activemq
   sudo systemctl start activemq
