@@ -1,2 +1,2 @@
 .tmux.conf eol=lf
-config filter=mypassword
+config filter=irssi-pw
