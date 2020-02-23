@@ -37,6 +37,6 @@
 [filter "irssi-pw"]
   clean = "sed -e 's/sasl_password = .*;/sasl_password \"********\";/'"
 [filter "ks-pw"]
-  clean = "sed -e 's/KEYSTORE_PASSWORD=\".*\"/KEYSTORE_PASSWORD\"********\"/'"
+  clean = "sed -e 's/KEYSTORE_PASSWORD=\".*\"/KEYSTORE_PASSWORD=\"********\"/'"
 [filter "ts-pw"]
-  clean = "sed -e 's/TRUSTSTORE_PASSWORD=\".*\"/TRUSTSTORE_PASSWORD\"********\"/'"
+  clean = "sed -e 's/TRUSTSTORE_PASSWORD=\".*\"/TRUSTSTORE_PASSWORD=\"********\"/'"

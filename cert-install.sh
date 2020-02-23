@@ -53,8 +53,5 @@ echo curl --cacert hornsup-raspi-finance.pem https://hornsup:8080
 
 exit 0
 
-#export the key:
-keytool -importkeystore -srckeystore mycert.jks -destkeystore keystore.p12 -deststoretype PKCS12
-
 #concert PKCS12 key to unencrypted PEM:
 openssl pkcs12 -in keystore.p12  -nodes -nocerts -out mydomain.key
