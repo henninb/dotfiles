@@ -2,7 +2,7 @@
 
 POSTGRESQL_PASSWORD=monday1
 
-cat > pg_hba.conf <<'EOF'
+cat > pg_hba.conf <<EOF
 # TYPE  DATABASE      USER   ADDRESS      METHOD
 local all             all                 ident
 host  all             all    0.0.0.0/0      md5
@@ -10,9 +10,9 @@ host  all             all    127.0.0.1/32   md5
 host  all             all    ::1/128        md5
 EOF
 
-cat > install_psql_settings.sql << 'EOF'
-CREATE ROLE vagrant WITH LOGIN PASSWORD 'monday1';
-CREATE ROLE henninb WITH LOGIN PASSWORD 'monday1';
+cat > install_psql_settings.sql <<EOF
+CREATE ROLE vagrant WITH LOGIN PASSWORD '${POSTGRESQL_PASSWORD}';
+CREATE ROLE henninb WITH LOGIN PASSWORD '${POSTGRESQL_PASSWORD}';
 ALTER USER vagrant CREATEDB;
 ALTER USER vagrant SUPERUSER;
 ALTER USER henninb CREATEDB;
@@ -22,7 +22,7 @@ GRANT ALL PRIVILEGES ON DATABASE finance_db TO vagrant;
 GRANT ALL PRIVILEGES ON DATABASE postgres TO vagrant;
 GRANT ALL PRIVILEGES ON DATABASE finance_db TO henninb;
 GRANT ALL PRIVILEGES ON DATABASE postgres TO henninb;
-ALTER USER postgres WITH PASSWORD 'monday1';
+ALTER USER postgres WITH PASSWORD '${POSTGRESQL_PASSWORD}';
 EOF
 
 if [ "$OS" = "Arch Linux" ]; then
