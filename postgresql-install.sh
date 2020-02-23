@@ -1,5 +1,7 @@
 #!/bin/sh
 
+POSTGRESQL_PASSWORD=monday1
+
 cat > pg_hba.conf <<'EOF'
 # TYPE  DATABASE      USER   ADDRESS      METHOD
 local all             all                 ident

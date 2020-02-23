@@ -1,5 +1,7 @@
 #!/bin/sh
 
+INFLUXDB_PASSWORD=monday1
+
 cat > influxdb.repo << 'EOF'
 [influxdb]
 name = InfluxDB Repository - RHEL \$releasever
@@ -40,13 +42,13 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   sudo systemctl restart influxdb
   sudo systemctl status influxdb
   sudo systemctl enable influxdb
-  echo "CREATE USER \"henninb\" WITH PASSWORD 'monday1' WITH ALL PRIVILEGES" | influx
+  echo "CREATE USER \"henninb\" WITH PASSWORD '${INFLUXDB_PASSWORD}' WITH ALL PRIVILEGES" | influx
   echo 'SHOW USERS' | influx
   sudo sed -i "s/# auth-enabled = false/auth-enabled = true/g" /etc/influxdb/influxdb.conf
   sudo systemctl restart influxdb
   sleep 4
-  curl -G http://localhost:8086/query -u henninb:monday1 --data-urlencode "q=SHOW DATABASES"
-  curl -i -XPOST http://localhost:8086/query -u henninb:monday1 --data-urlencode "q=CREATE DATABASE metrics"
+  curl -G http://localhost:8086/query -u "henninb:${INFLUXDB_PASSWORD}" --data-urlencode "q=SHOW DATABASES"
+  curl -i -XPOST http://localhost:8086/query -u "henninb:${INFLUXDB_PASSWORD}" --data-urlencode "q=CREATE DATABASE metrics"
   echo "netstat -na | grep LISTEN | grep tcp | grep 8086"
   netstat -na | grep LISTEN | grep tcp | grep 8086
   sudo fuser 8086/tcp
@@ -59,13 +61,13 @@ elif [ "$OS" = "Arch Linux" ]; then
   sudo systemctl restart influxdb
   sudo systemctl status influxdb
   sudo systemctl enable influxdb
-  echo "CREATE USER \"henninb\" WITH PASSWORD 'monday1' WITH ALL PRIVILEGES" | influx
+  echo "CREATE USER \"henninb\" WITH PASSWORD '${INFLUXDB_PASSWORD}' WITH ALL PRIVILEGES" | influx
   echo 'SHOW USERS' | influx
   sudo sed -i "s/# auth-enabled = false/auth-enabled = true/g" /etc/influxdb/influxdb.conf
   sudo systemctl restart influxdb
   sleep 4
-  curl -G http://localhost:8086/query -u henninb:monday1 --data-urlencode "q=SHOW DATABASES"
-  curl -i -XPOST http://localhost:8086/query -u henninb:monday1 --data-urlencode "q=CREATE DATABASE metrics"
+  curl -G http://localhost:8086/query -u "henninb:${INFLUXDB_PASSWORD}" --data-urlencode "q=SHOW DATABASES"
+  curl -i -XPOST http://localhost:8086/query -u "henninb:${INFLUXDB_PASSWORD}" --data-urlencode "q=CREATE DATABASE metrics"
   echo "netstat -na | grep LISTEN | grep tcp | grep 8086"
   netstat -na | grep LISTEN | grep tcp | grep 8086
   sudo fuser 8086/tcp
@@ -76,7 +78,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo systemctl restart influxdb
   sudo systemctl status influxdb
   sudo systemctl enable influxdb
-  echo "CREATE USER \"henninb\" WITH PASSWORD 'monday1' WITH ALL PRIVILEGES" | influx
+  echo "CREATE USER \"henninb\" WITH PASSWORD '${INFLUXDB_PASSWORD}' WITH ALL PRIVILEGES" | influx
   echo 'SHOW USERS' | influx
 else
   echo $OS is not yet implemented.

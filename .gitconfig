@@ -38,6 +38,8 @@
   clean = "sed -e 's/sasl_password = .*;/sasl_password \"********\";/'"
 [filter "ks-pw"]
   clean = "sed -e 's/KEYSTORE_PASSWORD=\".*\"/KEYSTORE_PASSWORD=\"********\"/'"
+[filter "influxdb-pw"]
+  clean = "sed -e 's/INFLUXDB_PASSWORD=\".*\"/INFLUXDB_PASSWORD=\"********\"/'"
 #  clean = 'sed -e 's/^\(KEY\|TRUST\)STORE_PASSWORD=.*/#set \1_pass=TODO/''
 #  clean = "sed -e 's/KEYSTORE_PASSWORD=\".*\"/KEYSTORE_PASSWORD=\"********\"/'"
 #  clean = "sed -e 's/^\(KEY\|TRUST\)STORE_PASSWORD=.*/ blah\1 STORE_PASSWORD=TODO/'"
