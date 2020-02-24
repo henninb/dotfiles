@@ -25,7 +25,7 @@ chatnets = {
     max_whois = "1";
     sasl_mechanism = "PLAIN";
     sasl_username = "henninb";
-    sasl_password "7315";
+    sasl_password = "<PASSWORD>";
   };
   spotchat = { type = "IRC"; nick = "henninb"; };
 };
