@@ -151,6 +151,7 @@ export READER=zathura
 export TERMINAL=urxvt
 export BROWSER=firefox
 export GIT_EDITOR=nvim
+# export GIT_CONFIG="$HOME/.gitconfig"
 
 # Tells 'less' not to paginate if less than a page
 export LESS="-F -X $LESS"
