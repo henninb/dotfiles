@@ -56,9 +56,9 @@ channels = (
   { name = "#dd-wrt"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#bhyve"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#mutt"; chatnet = "Freenode"; autojoin = "Yes"; },
+  { name = "#kvm"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#vagrant"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#irssi"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#kvm"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#rust-beginners"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#linuxmint-help"; chatnet = "spotchat"; autojoin = "Yes"; },
   { name = "#linuxmint-chat"; chatnet = "spotchat"; autojoin = "Yes"; }
