@@ -49,3 +49,16 @@ $ vi .git/config
 $ vi .git/info/attributes
 config filter=pw
 ```
+
+## git list settings
+```shell
+$ git config --list
+```
+
+## git encript on commit
+```
+[filter "crypt"]
+	clean = openssl enc ...
+	smudge = openssl enc -d ...
+	required
+```
