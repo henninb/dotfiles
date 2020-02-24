@@ -21,7 +21,6 @@
 [merge]
   tool = vimdiff
 [diff]
-#  tool = vimdiff
   external = git-diff-wrapper
 [core]
   pager = less -F -X
@@ -33,7 +32,8 @@
   interactive = auto
   ui = true
   pager = true
-# https://github.com/jchnkl/etc.irssi/blob/2a5e44fc297c45c594a39f94404dbff0b8a2e424/.irssi/readme.md
+[grep]
+    lineNumber = true
 [filter "irssi-pw"]
   clean = "sed -e 's/sasl_password = .*;/sasl_password \"********\";/'"
 [filter "ks-pw"]
@@ -50,6 +50,8 @@
   clean = "sed -e 's/POSTFIX_PASSWORD=\".*\"/POSTFIX_PASSWORD=\"********\"/'"
 [filter "mutt-pw"]
   clean = "sed -e 's/set imap_pass = \".*\"/set imap_pass = \"********\"/'"
+[filter "secrets"]
+  clean = "sed -e 's/_PASSWORD=\".*\"/_PASSWORD=\"********\"/'"
 #  clean = 'sed -e 's/^\(KEY\|TRUST\)STORE_PASSWORD=.*/#set \1_pass=TODO/''
 #  clean = "sed -e 's/KEYSTORE_PASSWORD=\".*\"/KEYSTORE_PASSWORD=\"********\"/'"
 #  clean = "sed -e 's/^\(KEY\|TRUST\)STORE_PASSWORD=.*/ blah\1 STORE_PASSWORD=TODO/'"

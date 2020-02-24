@@ -1,4 +1,3 @@
-.tmux.conf eol=lf
 .irssi/config filter=irssi-pw
 cert-install.sh filter=ts-pw
 cert-install.sh filter=ks-pw
@@ -9,3 +8,4 @@ chef-install.sh filter=chef-pw
 ssmtp-install.sh filter=ssmtp-pw
 postfix-install.sh filter=postfix-pw
 .muttrc filter=mutt-pw
+env.secrets filter=secrets
