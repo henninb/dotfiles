@@ -25,7 +25,7 @@ chatnets = {
     max_whois = "1";
     sasl_mechanism = "PLAIN";
     sasl_username = "henninb";
-    sasl_password = "<PASSWORD>";
+    sasl_password = "********";
   };
   spotchat = { type = "IRC"; nick = "henninb"; };
 };
@@ -54,10 +54,10 @@ channels = (
   { name = "#distrotube"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#pfsense"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#dd-wrt"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#bhyve"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#mutt"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#kvm"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#vagrant"; chatnet = "Freenode"; autojoin = "Yes"; },
+  { name = "#bhyve"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#irssi"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#rust-beginners"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#linuxmint-help"; chatnet = "spotchat"; autojoin = "Yes"; },
