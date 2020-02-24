@@ -35,7 +35,7 @@
 [grep]
     lineNumber = true
 [filter "irssi-pw"]
-  clean = "sed -e 's/sasl_password = .*;/sasl_password \"********\";/'"
+  clean = "sed -e 's/sasl_password = .*;/sasl_password = \"********\";/'"
 [filter "ks-pw"]
   clean = "sed -e 's/KEYSTORE_PASSWORD=\".*\"/KEYSTORE_PASSWORD=\"********\"/'"
 [filter "influxdb-pw"]
