@@ -62,3 +62,8 @@ $ git config --list
 	smudge = openssl enc -d ...
 	required
 ```
+
+## git issue found
+```
+https://github.com/ohmyzsh/ohmyzsh/commit/8f33231823dbf6c68ccc65fbb028fce6ff1efd74
+```
