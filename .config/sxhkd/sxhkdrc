@@ -30,3 +30,5 @@ XF86AudioMute
 # make sxhkd reload its configuration files:
 alt + shift + Escape
     pkill -USR1 -x sxhkd
+alt + {_,shift + }{1-9,0}
+      bspc {desktop -f,node -d} '^{1-9,10}' --follow
