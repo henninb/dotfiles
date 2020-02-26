@@ -31,10 +31,10 @@ EOF
 
 if [ ! -f "apache-activemq-$AMQ_VER-bin.tar.gz" ]; then
   rm -rf apache-activemq-*bin.tar.gz
-  scp pi@${RASPI_IP}:/home/pi/downloads/apache-activemq-$AMQ_VER-bin.tar.gz .
-  if [ $? -ne 0 ]; then
-    curl https://archive.apache.org/dist/activemq/$AMQ_VER/apache-activemq-$AMQ_VER-bin.tar.gz --output apache-activemq-$AMQ_VER-bin.tar.gz
-    scp apache-activemq-$AMQ_VER-bin.tar.gz pi@${RASPI_IP}:/home/pi/downloads/
+  scp "pi@${RASPI_IP}:/home/pi/downloads/apache-activemq-$AMQ_VER-bin.tar.gz" .
+  #if [ $? -ne 0 ]; then
+  if ! curl "https://archive.apache.org/dist/activemq/$AMQ_VER/apache-activemq-$AMQ_VER-bin.tar.gz" --output "apache-activemq-$AMQ_VER-bin.tar.gz" ; then
+    scp "apache-activemq-$AMQ_VER-bin.tar.gz" "pi@${RASPI_IP}:/home/pi/downloads/"
   fi
 fi
 
@@ -42,9 +42,9 @@ if [ "$OS" = "Arch Linux" ]; then
   sudo groupadd activemq
   sudo useradd -g activemq activemq
   sudo pacman --noconfirm --needed -S net-tools psmisc wget curl jre8-openjdk
-  sudo tar -zxvf apache-activemq-$AMQ_VER-bin.tar.gz -C /opt
-  sudo chown -R activemq:activemq /opt/apache-activemq-$AMQ_VER/
-  sudo ln -s /opt/apache-activemq-$AMQ_VER /opt/activemq
+  sudo tar -zxvf "apache-activemq-$AMQ_VER-bin.tar.gz" -C /opt
+  sudo chown -R activemq:activemq "/opt/apache-activemq-$AMQ_VER/"
+  sudo ln -s "/opt/apache-activemq-$AMQ_VER" /opt/activemq
   sudo sed -i "s/managementContext createConnector=\"false\"/managementContext createConnector=\"true\"/" /opt/activemq/conf/activemq.xml
   sudo mv -v activemq.service /usr/lib/systemd/system/activemq.service
   #sed -i "s/admin: admin, admin/admin: admin, ${ACTIVEMQ_PASSWORD}/g" /opt/activemq/conf/jetty-realm.properties

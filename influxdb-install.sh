@@ -35,7 +35,7 @@ cat > influxdb.conf <<'EOF'
 [tls]
 EOF
 
-if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y adduser libfontconfig
   sudo apt install -y influxdb influxdb-client
   sudo mv -v influxdb.conf /etc/influxdb/influxdb.conf
@@ -81,7 +81,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
   echo "CREATE USER \"henninb\" WITH PASSWORD '${INFLUXDB_PASSWORD}' WITH ALL PRIVILEGES" | influx
   echo 'SHOW USERS' | influx
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
