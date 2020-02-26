@@ -6,9 +6,9 @@ CENTOS_PKGS="epel-release mpg123 gcc ncurses-devel screen figlet neovim vim rtor
 
 FEDORA_PKGS="mpg123 gcc ncurses-devel screen figlet neovim vim rtorrent wget ranger fx zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg yarn alsa-utils cmus rsync tmux emacs stunnel wine mcrypt fetchmail pass fish lastpass-cli toilet strace rmlint w3m zsync neofetch vifm sxhkd zip unzip lnav festival tig mpd ncmpcpp jq tig"
 
-ARCHLINUX_PKGS="pacman-contrib mpg123 screen figlet neovim vim rtorrent wget ranger fx zsh gnupg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg yarn alsa-utils cmus rsync terminus-font netcat unzip zip zsync emacs tmux stunnel wine mcrypt dos2unix pass fish ctags astyle clang-format lynx sshfs toilet rmlint w3m scim rsync screenfetch scrot sxhkd vifm neofetch ripgrep dust sshpass calcuse lnav tmate most festival shellcheck ddgr tig mpd ncmpcpp"
+ARCHLINUX_PKGS="pacman-contrib mpg123 screen figlet neovim vim rtorrent wget ranger fx zsh gnupg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg yarn alsa-utils cmus rsync terminus-font netcat unzip zip zsync emacs tmux stunnel wine mcrypt dos2unix pass fish ctags astyle clang-format lynx sshfs toilet rmlint w3m scim rsync screenfetch scrot sxhkd vifm neofetch ripgrep dust sshpass calcuse lnav tmate most festival shellcheck ddgr tig mpd ncmpcpp mtr"
 
-MINT_PKGS="jq stunnel postfix mailutils mpg123 screen figlet vim rtorrent wget zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg alsa-utils cmus python-setuptools rsync tmux mcrypt wine64 yarn nodejs ssh-askpass iptables-persistent libguestfs-tools byobu fetchmail dos2unix pass fish ctags strace astyle clang-format rpm bastet mpv sshfs lynx etherwake cdrecord toilet zsync newsboat scrot sxhkd imagemagick vifm w3m-img groff zip unzip neofetch ripgrep sshpass calcurse lnav tmate most festival shellcheck ddgr tig"
+MINT_PKGS="jq stunnel postfix mailutils mpg123 screen figlet vim rtorrent wget zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg alsa-utils cmus python-setuptools rsync tmux mcrypt wine64 yarn nodejs ssh-askpass iptables-persistent libguestfs-tools byobu fetchmail dos2unix pass fish ctags strace astyle clang-format rpm bastet mpv sshfs lynx etherwake cdrecord toilet zsync newsboat scrot sxhkd imagemagick vifm w3m-img groff zip unzip neofetch ripgrep sshpass calcurse lnav tmate most festival shellcheck ddgr tig mtr"
 
 UBUNTU_PKGS="jq stunnel postfix mailutils mpg123 screen figlet vim rtorrent wget ranger fx zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip ffmpeg alsa-utils cmus python-setuptools rsync tmux emacs mcrypt wine yarn ssh-askpass iptables-persistent libguestfs-tools fetchmail dos2unix pass fish clang-format clisp rpm nsnake bastet netcat strace astyle ctags mpv sshfs lynx etherwake cdrecord toilet zsync newsboat sxhkd vifm w3m-img neofetch zip unzip lnav most ddgr tig"
 
@@ -21,15 +21,15 @@ RASPI_PKGS="jq vim-nox vim wget zsh gpg git mutt htop figlet screen pass neovim 
 MACOS_PKGS="ffmpeg figlet cmus imagemagick neofetch htop screen wget zsh fish zip unzip tmux dos2unix lynx azure-cli astyle emacs qemu ansible go nmap python2 python3 ripgrep exa sshpass reattach-to-user-namespace most shellcheck tig"
 
 mkdir -p .cli
-echo $CENTOS_PKGS > .cli/centos
-echo $ARCHLINUX_PKGS > .cli/archlinux
-echo $MINT_PKGS > .cli/mintlinux
-echo $UBNUNTU_PKGS > .cli/ubuntu
-echo $GENTOO_PKGS > .cli/gentoo
-echo $FREEBSD_PKGS > .cli/freebsd
-echo $RASPI_PKGS > .cli/raspi
-echo $FEDORA_PKGS > .cli/fedora
-echo $MACOS_PKGS > .cli/macos
+echo "$CENTOS_PKGS" > .cli/centos
+echo "$ARCHLINUX_PKGS" > .cli/archlinux
+echo "$MINT_PKGS" > .cli/mintlinux
+echo "$UBUNTU_PKGS" > .cli/ubuntu
+echo "$GENTOO_PKGS" > .cli/gentoo
+echo "$FREEBSD_PKGS" > .cli/freebsd
+echo "$RASPI_PKGS" > .cli/raspi
+echo "$FEDORA_PKGS" > .cli/fedora
+echo "$MACOS_PKGS" > .cli/macos
 
 if [ "$OS" = "Linux Mint" ]; then
   FAILURES=""
@@ -37,13 +37,13 @@ if [ "$OS" = "Linux Mint" ]; then
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
   sudo apt update
   for i in $(echo $MINT_PKGS); do
-    sudo apt install --download-only -y $i
+    sudo apt install --download-only -y "$i"
     if [ 0 -ne $? ]; then
       FAILURE="$i $FAILURE"
     fi
   done
   for i in $(echo $MINT_PKGS); do
-    sudo apt install -y $i
+    sudo apt install -y "$i"
     if [ 0 -ne $? ]; then
       FAILURE="$i $FAILURE"
     fi
@@ -53,13 +53,13 @@ if [ "$OS" = "Linux Mint" ]; then
 elif [ "$OS" = "Ubuntu" ]; then
   FAILURES=""
   for i in $(echo $UBUNTU_PKGS); do
-    sudo apt install -y $i
+    sudo apt install -y "$i"
     if [ 0 -ne $? ]; then
       FAILURE="$i $FAILURE"
     fi
   done
-  echo Failures: $FAILURE
-elif [ \( "$OS" = "Arch Linux" \) -o \( "$OS" = "Manjaro Linux" \) ]; then
+  echo Failures: "$FAILURE"
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   FAILURES=""
   for i in $(echo $ARCHLINUX_PKGS); do
     sudo pacman --noconfirm --needed -S $i
@@ -67,7 +67,7 @@ elif [ \( "$OS" = "Arch Linux" \) -o \( "$OS" = "Manjaro Linux" \) ]; then
       FAILURE="$i $FAILURE"
     fi
   done
-  echo Failures: $FAILURE
+  echo Failures: "$FAILURE"
 elif [ "$OS" = "Gentoo" ]; then
   FAILURES=""
   for i in $(echo $GENTOO_PKGS); do
@@ -133,7 +133,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
         FAILURE="$i $FAILURE"
       fi
     done
-    echo Failures: $FAILURE
+    echo "Failures: $FAILURE"
   else
     echo "centos7"
     curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
@@ -147,7 +147,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
         FAILURE="$i $FAILURE"
       fi
     done
-    echo Failures: $FAILURE
+    echo "Failures: $FAILURE"
   fi
 else
   echo "OS=$OS not setup yet."
@@ -158,6 +158,6 @@ wget -O - https://raw.githubusercontent.com/laurent22/joplin/master/Joplin_insta
 
 wget https://raw.githubusercontent.com/mevdschee/2048.c/master/2048.c -O 2048.c
 gcc -o 2048 2048.c
-mv 2048 $HOME/.local/bin
+mv 2048 "$HOME/.local/bin"
 
 exit 0
