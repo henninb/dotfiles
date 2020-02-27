@@ -20,6 +20,9 @@
 					"postgresql.dd.tag.string": "false"
 				},
 				"handlers": {}
+			},
+			"custom-properties": {
+				"database.meta.separate.connection": "false"
 			}
 		}
 	},
