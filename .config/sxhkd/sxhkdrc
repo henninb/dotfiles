@@ -10,11 +10,18 @@ alt + shift + p
     dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal
 #alt + shift + Delete
 #    xeyes
-#alt + shift + BackSpace
+alt + shift + BackSpace
 #    bspc  window -c
-    bspc  window -k
-alt + shift + q
-    bspc quit 1 && pkill bar && pkill dzen2
+#    bspc  window -k
+     super + shift + q
+    xdo close
+super + shift + Escape
+    bspwm_exit "bspc quit"
+alt + shift + Escape
+    bspwm_exit "bspc quit"
+# alt + shift + q
+#    prompt "Are you sure you would like to quit" "bspc quit"
+#    bspc quit 1 && pkill bar && pkill dzen2
 XF86AudioRaiseVolume
     amixer -q -D pulse sset Master 2%+
 XF86AudioLowerVolume
@@ -28,7 +35,7 @@ XF86AudioMute
 #XF86AudioPrev
 #   $HOME/.config/bspwm/panel/notify_mpd -p
 # make sxhkd reload its configuration files:
-alt + shift + Escape
-    pkill -USR1 -x sxhkd
+# alt + shift + Escape
+#    pkill -USR1 -x sxhkd
 alt + {_,shift + }{1-9,0}
       bspc {desktop -f,node -d} '^{1-9,10}' --follow
