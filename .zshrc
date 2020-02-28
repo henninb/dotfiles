@@ -168,6 +168,10 @@ export POWERLINE_BASH_CONTINUATION=1
 export POWERLINE_BASH_SELECT=1
 export KEYTIMEOUT=1
 
+export export LF_ICONS="\
+di=:\
+fi=:"
+
 # for rust
 [ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
