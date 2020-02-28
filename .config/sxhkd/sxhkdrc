@@ -8,17 +8,16 @@ alt + i
     firefox
 alt + shift + p
     dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal
-#alt + shift + Delete
-#    xeyes
-alt + shift + BackSpace
-#    bspc  window -c
-#    bspc  window -k
-     super + shift + q
-    xdo close
-super + shift + Escape
-    bspwm_exit "bspc quit"
 alt + shift + Escape
     bspwm_exit "bspc quit"
+alt + shift + BackSpace
+    xdo close
+#alt + shift + Delete
+#    xeyes
+#    bspc  window -c
+#    bspc  window -k
+#super + shift + Escape
+#    bspwm_exit "bspc quit"
 # alt + shift + q
 #    prompt "Are you sure you would like to quit" "bspc quit"
 #    bspc quit 1 && pkill bar && pkill dzen2
