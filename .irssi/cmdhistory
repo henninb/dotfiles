@@ -1,13 +1,3 @@
-: 1567128637:: :;thanks for your responses.
-: 1567285540:: :;/join awesome
-: 1567285649:: :;hi, is it possible to set the default behavior of Awesome in the config to default to tiled?
-: 1567734358:: :;hi, having trouble with xrdp, I am getting the following error. "KDSETMODE failed: Bad file descriptor". not finding a solution, any ideas?
-: 1568080674:: :;i have installed the plugin for prettier for nvim, is there a way to disable markdown for the plugin. when I save a large markdown file prettier pegs my cpu.
-: 1568420189:: :;when I call xmonad from xrdp either xmobar doesn't start or fails after starting. xmobar starts fine otherwise. any thoughts on how to troubleshoot?
-: 1568430561:: :;when I call xmonad from xrdp either xmobar doesn't start or fails after starting. xmobar starts fine otherwise. any ideas what to try?
-: 1568471384:: :;when I use my xmbar i see "updating..." in the top left. I set my loghook for ppOutput. what else should I look for?
-: 1568471495:: :; 
-: 1568471676:: :;vrs, i just verified I am using spawnPipe for xmobar in my xmonad.hs.
 : 1568471803:: :;vrs, it might be happening because of a different issue. when I start xmonad my xmobar is not starting automatically. I then start it from a terminal after startup.
 : 1568472201:: :;geekosaur, I am on arch and it is residing on /usr/bin
 : 1568472268:: :;geekosaur, this issue is only happening while I am using xrdp to remote into the system. the issue does NOT happen while i am on the console.
@@ -98,3 +88,13 @@
 : 1581209972:: :;irssi is really good.
 : 1581210285:: :;thanks for the chat
 : 1581210879:: :;/quit
+: 1582935470:: :;greetings
+: 1582935512:: :;I am looking to set a font up for lf, it looks like my default font is not displaying correctly. any advice on a good font?
+: 1582936457:: :;greetings, I am looking for some help with configurations for the lf file manager.
+: 1582936478:: :;anyone know how to set a font to display icons.
+: 1582936598:: :;agree pragmaticenigma, I am using monofur font and I think it has limited glyphs.
+: 1582936620:: :;i am using iterm, so I am not sure if I can install a secondary font.
+: 1582936761:: :;sarnold, i can try to change font, do you know what unicode char code i should test my font for? 
+: 1582936791:: :;i can try to see if i can find something in the lf repo.
+: 1582936912:: :;thanks for the tip. Font management can be a pain.
+: 1582938102:: :;/quit
