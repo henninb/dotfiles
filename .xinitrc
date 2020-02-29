@@ -2,28 +2,35 @@
 
 export PATH=${HOME}/.local/bin:${PATH}
 export PATH=/usr/local/sbin:/usr/sbin:${PATH}
-export LANG=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
-export LC_NUMERIC=en_US.UTF-8
-export LC_TIME=en_US.UTF-8
-export LC_COLLATE=C
-export LC_MONETARY=en_US.UTF-8
-export LC_MESSAGES=en_US.UTF-8
-export LC_PAPER=en_US.UTF-8
-export LC_NAME=en_US.UTF-8
-export LC_ADDRESS=en_US.UTF-8
-export LC_TELEPHONE=en_US.UTF-8
-export LC_MEASUREMENT=en_US.UTF-8
-export LC_IDENTIFICATION=en_US.UTF-8
+
+# export LANG=en_US.UTF-8
+# export LC_CTYPE=en_US.UTF-8
+# export LC_NUMERIC=en_US.UTF-8
+# export LC_TIME=en_US.UTF-8
+# export LC_COLLATE=C
+# export LC_MONETARY=en_US.UTF-8
+# export LC_MESSAGES=en_US.UTF-8
+# export LC_PAPER=en_US.UTF-8
+# export LC_NAME=en_US.UTF-8
+# export LC_ADDRESS=en_US.UTF-8
+# export LC_TELEPHONE=en_US.UTF-8
+# export LC_MEASUREMENT=en_US.UTF-8
+# export LC_IDENTIFICATION=en_US.UTF-8
+
+
+if [ -r /etc/default/locale ]; then
+. /etc/default/locale
+export LANG LANGUAGE
+fi
 
 xrdb -merge ~/.Xresources
 #xrdb -load ~/.Xresources
 
 #TODO: is this required?
-# for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
-#     [ -x "$f" ] && . "$f"
-# done
-# unset f
+for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
+    [ -x "$f" ] && . "$f"
+done
+unset f
 
 #echo sudo mkfontdir /usr/share/fonts/TTF
 #xset +fp ~/.fonts
@@ -64,7 +71,7 @@ cd -
 #exec bspwm
 
 if [ -s "$HOME/.active-wm" ]; then
-  WM=$(cat "$HOME/.active-wm" | head -1)
+  WM=$(head -1 < "$HOME/.active-wm")
 else
   echo i3 > "$HOME/.active-wm"
   WM=i3

@@ -63,6 +63,7 @@
 - window detailer - xprop
 - image clone - etcher
 - git client - tig
+- chat - discord
 
 audacity
 handbrake
