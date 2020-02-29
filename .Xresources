@@ -57,10 +57,12 @@
 /* *.color7:       #948e48 */
 /* *.color15:      #faf0a5 */
 
+URxvt.font: xft:monofur for Powerline:pixelsize=20, xft:Symbola:pixelsize=16
 !URxvt.font: xft:Hack Nerd Front Mono:pixelsize=16
 !URxvt.font: xft:monofur for Powerline:pixelsize=20, xft:Hack Nerd Front Mono:pixelsize=16
 !URxvt.font: xft:monofur for Powerline:pixelsize=20, xft:Hack Nerd Front Mono:pixelsize=16, xft:JetBrainsMono Nerd Font Mono:pixelsize=16
-URxvt.font: xft:JetBrainsMono Nerd Font Mono:pixelsize=16, xft:Hack Nerd Front Mono:pixelsize=16
+!URxvt.font: xft:JetBrainsMono Nerd Font Mono:pixelsize=16, xft:Hack Nerd Front Mono:pixelsize=16, xft:Symbola:pixelsize=16
+!URxvt.font: xft:JetBrainsMono Nerd Font Mono:pixelsize=16, xft:Hack Nerd Front Mono:pixelsize=16
 
 !URxvt.termName: rxvt-unicode-256color
 ! TODO: verify this term as it works on all platforms

@@ -169,6 +169,8 @@ Solution was to create a custom make file for Fedora
 ## Archlinux starship prompt causing issue when cd to ~/.git
 
 ## "icons" fonts not displaying in lf
+seems to be an issue with Urxvt
+the icons (glyphs) display in termite
 
 ## install the patches needed to get full functionality out of st
 
