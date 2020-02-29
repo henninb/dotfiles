@@ -9,10 +9,17 @@ echo cargo install ripgrep
 echo cargo install dust
 echo cargo install exa
 echo cargo install broot
-echo cargo install alacritty
+#echo cargo install alacritty
 
 echo rustup default nightly
 echo cargo install hunter
 echo rustup default stable
+
+cd projects || exit
+git clone git@github.com:alacritty/alacritty.git
+cd alacritty || exit
+git pull origin master
+cargo build --release
+
 
 exit 0
