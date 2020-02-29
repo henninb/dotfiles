@@ -39,11 +39,11 @@ myKeys = [
         , ((mod1Mask, xK_i), spawn "firefox")
         , ((mod1Mask, xK_n), spawn "standard-notes")
         , ((mod1Mask .|. shiftMask, xK_i), spawn ("firefox" ++ " -private-window"))
-        , ((mod1Mask, xK_Return), spawn "termite")
+--        , ((mod1Mask, xK_Return), spawn "termite")
+        , ((mod1Mask, xK_Return), spawn "alacritty")
         , ((mod1Mask .|. shiftMask, xK_Return), spawn "urxvt")
         --, ((mod1Mask .|. shiftMask, xK_BackSpace), kill)
         , ((mod1Mask .|. shiftMask, xK_BackSpace), kill)
-
         , ((mod1Mask,               xK_space ), sendMessage NextLayout)
           -- ((mod1Mask, xK_m), withFocused minimizeWindow),
           -- ((mod1Mask .|. shiftMask, xK_m), sendMessage RestoreNextMinimizedWin),

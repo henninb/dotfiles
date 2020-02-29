@@ -118,7 +118,8 @@ myKeys =
         , ((mod1Mask, xK_i), spawn myBrowser)
         , ((mod1Mask, xK_n), spawn "standard-notes")
         , ((mod1Mask .|. shiftMask, xK_i), spawn (myBrowser ++ " -private-window"))
-        , ((mod1Mask, xK_Return), spawn "termite")
+        --, ((mod1Mask, xK_Return), spawn "termite")
+        , ((mod1Mask, xK_Return), spawn "alacritty")
         , ((mod1Mask .|. shiftMask, xK_Return), spawn "urxvt")
         --, ((mod1Mask .|. shiftMask, xK_BackSpace), kill)
         , ((mod1Mask .|. shiftMask, xK_BackSpace), kill)
@@ -137,7 +138,8 @@ myKeys =
         --, ((0, xF86XK_AudioMute          ), spawn "amixer set Master toggle")
         , ((0, xF86XK_AudioMute          ), spawn "amixer -D pulse sset Master toggle")
         --, ((mod1Mask .|. shiftMask, xK_w), confirmPrompt myXPConfig "exit" (io exitSuccess))
-        , ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" (io exitSuccess))
+        --, ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" (io exitSuccess))
+        , ((mod1Mask .|. shiftMask, xK_Escape), confirmPrompt myXPConfig "exit" (io exitSuccess))
         --, ((mod1Mask, xK_space ), sendMessage ToggleLayout)
     ]
     -- ++

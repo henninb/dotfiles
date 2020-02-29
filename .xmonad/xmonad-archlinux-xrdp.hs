@@ -95,12 +95,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) =
     [
       --((modMask, xK_Return), spawn myTerminal)
     -- ((modMask, xK_Return), spawn "urxvt")
-    ((modMask, xK_Return), spawn "termite")
+    ((modMask, xK_Return), spawn "urxvt")
+  , ((modMask .|. shiftMask, xK_Return), spawn "alacritty")
   , ((modMask, xK_i), spawn myBrowser)
   , ((modMask .|. shiftMask, xK_i), spawn (myBrowser ++ " -private-window"))
   , ((modMask .|. shiftMask, xK_p), spawn "rofi -show drun")
-  , ((modMask .|. shiftMask, xK_t), spawn "terminator")
-  , ((modMask .|. shiftMask, xK_y), spawn "urxvt")
   , ((modMask .|. shiftMask, xK_x), spawn "xscreensaver-command -lock")
    -- close focused window
   , ((modMask .|. shiftMask, xK_BackSpace), kill)
@@ -147,8 +146,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) =
     --
   , ((modMask, xK_b), sendMessage ToggleStruts)
     -- Quit xmonad
-  --, ((modMask .|. shiftMask, xK_q), io (exitWith ExitSuccess))
-  , (( modMask.|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" (io exitSuccess))
+  --, (( modMask.|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" (io exitSuccess))
+  , (( modMask.|. shiftMask, xK_Escape), confirmPrompt myXPConfig "exit" (io exitSuccess))
   , ( (mod1Mask .|. shiftMask, xK_r), spawn "xmonad --recompile; xmonad --restart")
   , ((0, xK_F12), namedScratchpadAction myScratchPads "terminator")
   , ((0, xK_F11), namedScratchpadAction myScratchPads "firefox")

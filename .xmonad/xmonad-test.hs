@@ -124,7 +124,8 @@ myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
     -- launching apps
     [
-      ((modMask,                 xK_Return), spawn "termite")
+      --((modMask,                 xK_Return), spawn "termite")
+      ((modMask,                 xK_Return), spawn "alacritty")
     , ((modMask .|. shiftMask, xK_Return), spawn "urxvt")
 --    , ((modMask,                 xK_p     ), spawn "rofi -show run")
  --   , ((modMask,                 xK_o     ), spawn "rofi -show window")
