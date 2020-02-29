@@ -9,6 +9,7 @@ echo cargo install ripgrep
 echo cargo install dust
 echo cargo install exa
 echo cargo install broot
+echo cargo install alacritty
 
 echo rustup default nightly
 echo cargo install hunter
