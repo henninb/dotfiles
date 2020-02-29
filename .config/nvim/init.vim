@@ -28,9 +28,10 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-if ! empty(glob('~/.config/coc/extensions/node_modules/coc-pairs'))
-  autocmd VimEnter * CocUninstall coc-pairs
-endif
+" if ! empty(glob('~/.config/coc/extensions/node_modules/coc-pairs'))
+"   autocmd VimEnter * CocUninstall coc-pairs
+" endif
+
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 " curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
  call plug#begin(plugpath)
