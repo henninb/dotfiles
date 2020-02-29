@@ -21,10 +21,10 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y epel-release
   #sudo subscription-manager repos
   sudo yum install wine
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   sudo apt install -y wine64
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 

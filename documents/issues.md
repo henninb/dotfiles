@@ -175,3 +175,7 @@ the icons (glyphs) display in termite
 ## install the patches needed to get full functionality out of st
 
 ## fix polybar config such that the font is larger
+
+## title of a linux window
+```xdotool getactivewindow```
+```xprop```
