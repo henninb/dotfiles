@@ -52,7 +52,7 @@ cmd tar %tar cvf "$f.tar" "$f"
 cmd targz %tar cvzf "$f.tar.gz" "$f"
 cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
 
-cmd dragon %dragon-drag-and-drop -a -x $fx
+cmd dragon %dragon -a -x $fx
 cmd cpdragon %cpdragon
 cmd mvdragon %mvdragon
 cmd dlfile %file_downloader
