@@ -176,6 +176,9 @@ echo stack exec ghc-pkg check
 
 echo rofi
 echo nitrogen
+echo compton
+echo lf
+echo alacritty
 
 exit 0
 
