@@ -37,7 +37,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y dzen2
   sudo xbps-install -y xdo
   sudo xbps-install -y sxhkd
-  sudo xbps-install -y xorg-minimal
+  sudo xbps-install -y xorg
   sudo xbps-install -y xrdb
   sudo xbps-install -y dmenu
 elif [ "$OS" = "Arch Linux" ]; then
