@@ -1,0 +1,56 @@
+
+# Handle SIGTRAP signals sent by refbar to update the status bar immediately.
+trap 'update' 5
+
+# Set the deliminter character.
+delim="|"
+
+status() { \
+
+	   amixer get Master | grep -o "[0-9]*%\|\[on\]\|\[off\]" | sed "s/\[on\]//;s/\[off\]//" | head -2
+
+	   echo "$delim"
+
+	   # Wifi quality percentage and  icon if ethernet is connected.
+	   grep "^\s*w" /proc/net/wireless | awk '{ print "", int($3 * 100 / 70) "%" }'
+	   sed "s/down//;s/up//;s/unknown//" /sys/class/net/e*/operstate
+
+	   # Show unread mail using notmuch
+	   command -v notmuch >/dev/null 2>&1 &&
+	       echo "$delim" &&
+	       echo " "$(notmuch  count -- "tag:unread")
+	   echo "$delim"
+
+	   # Will show all batteries with approximate icon for remaining power.
+	   for x in /sys/class/power_supply/BAT?/capacity;
+	   do
+	       lvl=$(cat $x)
+	       case $lvl in
+		   100|9[0-9])	echo " $lvl%" ;;
+		   8[0-9]|7[0-9])	echo " $lvl%" ;;
+		   6[0-9]|5[0-9])	echo " $lvl%" ;;
+		   4[0-9]|3[0-9])	echo " $lvl%" ;;
+		   *)		echo " $lvl%" ;;
+	       esac
+	   done && echo "$delim"
+
+	   # Date and time.
+	   date '+%Y %b %d (%a) %H%M'
+}
+
+update() { \
+	   # tr replaces newlines with space
+	   echo "$(status | tr '\n' ' ')" &
+	   wait
+}
+
+
+while :; do
+    update
+    # Sleep for a minute after changing the status bar before updating it
+    # again. We run sleep in the background and use wait until it finishes,
+    # because traps can interrupt wait immediately, but they can't do that
+    # with sleep.
+    sleep 1m &
+    wait
+done

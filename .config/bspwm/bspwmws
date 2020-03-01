@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# Handle SIGTRAP signals sent by refbar to update the status bar immediately.
+trap 'update' 5
+
+workspace() { \
+	      WS=$(bspc wm -g |
+		       sed -Ee 's/:m/ \n  M\>/g' \
+			   -e 's/:O|:F/ \n ^fg(#E2D134)/g' \
+			   -e 's/:o/ \n ^fg(#717171)/g' \
+			   -e 's/:U/ \n ^fg(#F2D134)/g' \
+			   -e 's/:u/ \n ^fg(#932727)/g' \
+			   -e 's/:/ \n  /g' \
+			   | grep "fg" \
+			   | sed 's/Desktop/S/g' \
+			   | tr '\n' '@' \
+			   | sed 's/@/^fg()\|/g')
+
+	      echo $WS
+}
+
+update() { \
+	   echo "| $(workspace)" &
+	   wait
+}
+
+
+while :; do
+    update
+    # Sleep for a minute after changing the status bar before updating it
+    # again. We run sleep in the background and use wait until it finishes,
+    # because traps can interrupt wait immediately, but they can't do that
+    # with sleep.
+    sleep 1m &
+    wait
+done
