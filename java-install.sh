@@ -16,7 +16,7 @@ elif [ "$OS" = "Linux Mint" ]; then
   sudo apt upgrade -y
   sudo apt install -y openjdk-8-jdk
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
