@@ -66,6 +66,7 @@
 - chat - discord
 - image editor - gimp
 - compositor - compton
+- video editor - kdenlive
 
 audacity
 handbrake
