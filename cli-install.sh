@@ -20,7 +20,7 @@ RASPI_PKGS="jq vim-nox vim wget zsh gpg git mutt htop figlet screen pass neovim 
 
 MACOS_PKGS="ffmpeg figlet cmus imagemagick neofetch htop screen wget zsh fish zip unzip tmux dos2unix lynx azure-cli astyle emacs qemu ansible go nmap python2 python3 ripgrep exa sshpass reattach-to-user-namespace most shellcheck tig"
 
-VOID_PKGS="fontforge ffmpeg figlet cmus zip unzip ctags astyle toilet unix2dos fish jq neofetch tig most vimfm netcat htop ffmpeg emacs mcrypt tmux screen nmon mpd nnn"
+VOID_PKGS="fontforge ffmpeg figlet cmus zip unzip ctags astyle toilet unix2dos fish jq neofetch tig most vimfm netcat htop ffmpeg emacs mcrypt tmux screen nmon mpd nnn nmap"
 
 mkdir -p .cli
 echo "$CENTOS_PKGS" > .cli/centos
