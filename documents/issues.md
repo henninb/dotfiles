@@ -168,17 +168,17 @@ Solution was to create a custom make file for Fedora
 
 ## Archlinux starship prompt causing issue when cd to ~/.git
 
-## "icons" fonts not displaying in lf (urxvt over xrdp)
+## "icons" fonts not displaying in lf (urxvt)
 seems to be an issue with Urxvt
 the icons (glyphs) display in termite
 https://github.com/powerline/powerline/issues/60
 
 I looked further into the lf font issue. I am using xrdp to access my arch box. When I remote into arch, that is when I am facing the font issue. when I access lf directly on the console the fonts are showing up just fine. This issue only happens in urxvt.
 
+issue is with font spacing, need to better understand the issue
+
 ## install the patches needed to get full functionality out of st
 
-## fix polybar config such that the font is larger
-
-## title of a linux window
+## discover the title of a linux window
 ```xdotool getactivewindow```
 ```xprop```

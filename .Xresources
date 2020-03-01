@@ -20,48 +20,18 @@
 *.color7:     #BFBFBF
 *.color15:    #E6E6E6
 
-/* ! special */
-/* *.foreground:   #948e48 */
-/* *.background:   #201602 */
-/* *.cursorColor:  #948e48 */
-
-/* ! black */
-/* *.color0:       #201602 */
-/* *.color8:       #6c6823 */
-
-/* ! red */
-/* *.color1:       #c35359 */
-/* *.color9:       #c35359 */
-
-/* ! green */
-/* *.color2:       #18974e */
-/* *.color10:      #18974e */
-
-/* ! yellow */
-/* *.color3:       #a88339 */
-/* *.color11:      #a88339 */
-
-/* ! blue */
-/* *.color4:       #477ca1 */
-/* *.color12:      #477ca1 */
-
-/* ! magenta */
-/* *.color5:       #8868b3 */
-/* *.color13:      #8868b3 */
-
-/* ! cyan */
-/* *.color6:       #75a738 */
-/* *.color14:      #75a738 */
-
-/* ! white */
-/* *.color7:       #948e48 */
-/* *.color15:      #faf0a5 */
 
 ! font spacing issue
 !Xft.rgba: none
 !Xft.hintstyle: hintfull
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: none
+Xft.hinting: true
+Xft.autohint: true
+Xft.hintstyle: hintslight
 
-URxvt.font: xft:monofur for Powerline:pixelsize=20, xft:Symbola:pixelsize=20
+URxvt.font: xft:monofur for Powerline:pixelsize=20, xft:Symbola:pixelsize=12
 !URxvt.font: xft:monofur for Powerline:pixelsize=20
 !URxvt.font: xft:Symbola:pixelsize=20, xft:monofur for Powerline:pixelsize=20
 !URxvt.font: xft:Hack Nerd Front Mono:pixelsize=16
@@ -82,7 +52,7 @@ URxvt.termName: xterm-256color
 !xterm*faceName: xft:mono:medium:size=10
 
 ! urxvt -letsp 5   # this works in lf for showing glyphs
-URxvt*letterSpace: 0
+URxvt*letterSpace: 2
 URxvt.imLocale: en_US.UTF-8
 !URxvt.letterSpace: 1
 URxvt.lineSpace: 0

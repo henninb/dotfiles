@@ -11,6 +11,10 @@
 - FreeBSD
 - MacOS
 
+## Operating Systems - Security/Privacy
+- qubes
+- tails
+
 ## Software
 - terminal - urxvt, termite, st, alacritty
 - editor - neovim, doom emacs, vscode, intellij, vscodium
@@ -39,7 +43,7 @@
 - database server - postgresql
 - astronomy - stellarium
 - notes - standard note, joplin
-- font - monofur
+- font - monofur, jetbrains, symbola
 - theme -dracula
 - audio player - cmus
 - media player daemon - mpd
@@ -73,5 +77,4 @@ handbrake
 blender
 steam
 arduino
-
 tint2
