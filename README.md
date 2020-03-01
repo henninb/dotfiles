@@ -12,7 +12,7 @@
 - MacOS
 
 ## Software
-- terminal - urxvt, termite, st
+- terminal - urxvt, termite, st, alacritty
 - editor - neovim, doom emacs, vscode, intellij, vscodium
 - shell - zsh, fish, bash
 - shell prompt - spaceship, agnoster, alien, dracula
@@ -26,7 +26,7 @@
 - cloud media player - olivia
 - software defined radio - gqrx, CubicSDR
 - spreadsheet -sc-im
-- programming - java, kotlin, rust, haskell, python, js
+- programming - java, kotlin, rust, haskell, python, js, scala
 - containerization - docker
 - hypervisor - kvm, qemu
 - remote desktop server - xrdp
@@ -34,7 +34,7 @@
 - irc client - irssi
 - network packet tools - tcpdump
 - markdown reader - glow
-- browser - firefox, ddgr
+- browser - firefox, ddgr, lynx
 - database client - dbeaver, sqlplus
 - database server - postgresql
 - astronomy - stellarium
@@ -56,7 +56,7 @@
 - calendar - calcurse
 - rss reader - newsboat
 - log reader - lnav
-- package manager - yay, pacman, brew, apt, dnf
+- package manager - yay, pacman, brew, apt, dnf, emerge, pkg
 - open - xdg-open
 - encryption - gnupg, keybase
 - terminal screen saver - cmatrix
@@ -64,12 +64,13 @@
 - image clone - etcher
 - git client - tig
 - chat - discord
+- image editor - gimp
+- compositor - compton
 
 audacity
 handbrake
 blender
 steam
 arduino
-gimp
 
 tint2
