@@ -9,6 +9,8 @@ elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt upgrade -y
   sudo ln -s /usr/bin/perl5.28.1 /usr/bin/perl5
   #sudo apt install -y rxvt-unicode xsel
+elif [ "$OS" = "void" ]; then
+  echo
 elif [ "$OS" = "Ubuntu" ]; then
   sudo apt update
   sudo apt upgrade -y
