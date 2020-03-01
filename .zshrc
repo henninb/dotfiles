@@ -409,3 +409,6 @@ set -a
 . $HOME/env.secrets
 set +a
 
+autoload -Uz tetriscurses
+
+echo tetriscurses

@@ -54,14 +54,15 @@ if [ $? -ne 0 ]; then
   echo "autogen failed."
   exit 1
 fi
-./configure --enable-everything --enable-perl --enable-smart-resize --enable-256-color --enable-unicode3
+#./configure --enable-everything --enable-perl --enable-smart-resize --enable-256-color --enable-unicode3
+./configure --enable-everything --enable-perl --enable-smart-resize --enable-256-color
 if [ $? -ne 0 ]; then
   echo "configure failed."
   exit 1
 fi
 
 if [ "$OS" = "Fedora" ]; then
-  cp $HOME/urxvt-Makefile-fedora $HOME/projects/rxvt-unicode-9.22/src/Makefile
+  cp "$HOME/urxvt-Makefile-fedora" "$HOME/projects/rxvt-unicode-9.22/src/Makefile"
 fi
 
 make

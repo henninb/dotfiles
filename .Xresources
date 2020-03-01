@@ -57,23 +57,32 @@
 /* *.color7:       #948e48 */
 /* *.color15:      #faf0a5 */
 
-URxvt.font: xft:monofur for Powerline:pixelsize=20, xft:Symbola:pixelsize=16
+! font spacing issue
+!Xft.rgba: none
+!Xft.hintstyle: hintfull
+
+URxvt.font: xft:monofur for Powerline:pixelsize=20, xft:Symbola:pixelsize=20
+!URxvt.font: xft:monofur for Powerline:pixelsize=20
+!URxvt.font: xft:Symbola:pixelsize=20, xft:monofur for Powerline:pixelsize=20
 !URxvt.font: xft:Hack Nerd Front Mono:pixelsize=16
 !URxvt.font: xft:monofur for Powerline:pixelsize=20, xft:Hack Nerd Front Mono:pixelsize=16
 !URxvt.font: xft:monofur for Powerline:pixelsize=20, xft:Hack Nerd Front Mono:pixelsize=16, xft:JetBrainsMono Nerd Font Mono:pixelsize=16
+!URxvt.font: xft:JetBrainsMono Nerd Font Mono:pixelsize=16
 !URxvt.font: xft:JetBrainsMono Nerd Font Mono:pixelsize=16, xft:Hack Nerd Front Mono:pixelsize=16, xft:Symbola:pixelsize=16
 !URxvt.font: xft:JetBrainsMono Nerd Font Mono:pixelsize=16, xft:Hack Nerd Front Mono:pixelsize=16
-URxvt.boldFont: xft:monofur for Powerline:style=Bold:size=16
+!URxvt.boldFont: xft:monofur for Powerline:style=Bold:size=16
 !URxvt.letterSpace: true
 
 ! TODO: verify this term as it works on all platforms
 !URxvt.termName: rxvt-256color
 ! TODO: testing on gentoo.
-!URxvt.termName: xterm-256color
+URxvt.termName: xterm-256color
 ! TODO: validate
 !URxvt.termName: rxvt-unicode-256color
+!xterm*faceName: xft:mono:medium:size=10
 
-URxvt.letterSpace: 0
+! urxvt -letsp 5   # this works in lf for showing glyphs
+URxvt*letterSpace: 0
 URxvt.imLocale: en_US.UTF-8
 !URxvt.letterSpace: 1
 URxvt.lineSpace: 0
@@ -81,7 +90,7 @@ URxvt.geometry: 92x24
 URxvt.internalBorder: 24
 URxvt.cursorBlink: true
 URxvt.cursorUnderline: false
-URxvt.saveline: 4096
+URxvt.saveline: 9999
 URxvt.scrollBar: true
 URxvt.scrollBar_right: true
 URxvt.urgentOnBell: true
