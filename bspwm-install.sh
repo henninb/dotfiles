@@ -28,6 +28,7 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   sudo apt install -y xserver-xephyr
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y base-devel libX11-devel libXft-devel libXinerama-devel
+  sudo xbps-install -y bspwm
   sudo xbps-install -y xscreensaver
   sudo xbps-install -y feh
   sudo xbps-install -y xdotool
@@ -36,7 +37,9 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y dzen2
   sudo xbps-install -y xdo
   sudo xbps-install -y sxhkd
-  sudo xbps-install -y  xorg-minimal
+  sudo xbps-install -y xorg-minimal
+  sudo xbps-install -y xrdb
+  sudo xbps-install -y dmenu
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm

@@ -8,6 +8,8 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install libxcb-damage0-dev
   sudo apt install uthash-dev
   sudo apt install libxdg-basedir-dev
+elif [ "$OS" = "void" ]; then
+  sudo xbps-install -S m   meson ninja
 else
   echo "$OS is not yet implemented."
   exit 1

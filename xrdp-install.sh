@@ -63,7 +63,6 @@ export LC_TELEPHONE=en_US.UTF-8
 export LC_MEASUREMENT=en_US.UTF-8
 export LC_IDENTIFICATION=en_US.UTF-8
 
-
 #xset +fp ~/.fonts
 xrdb -merge ~/.Xresources
 
@@ -137,6 +136,38 @@ if [ "$OS" = "Arch Linux" ]; then
   #chmod 755 $HOME/startwm.sh
   #sudo cp -v /etc/xrdp/startwm.sh /etc/xrdp/startwm.sh.bak.$$
   #sudo mv -v startwm.sh /etc/xrdp/startwm.sh
+elif [ "$OS" = "void" ]; then
+  cd /tmp
+  curl -LO https://www.openssl.org/source/openssl-1.1.1.tar.gz
+  tar -xvfz openssl-1.1.1
+  cd openssl-1.1.1
+  ./config --prefix=/opt/openssl/1.1.1
+  make
+  sudo make install
+  sudo usermod -a -G tty $(id -un)
+  cd $HOME/projects
+  git clone --recursive https://github.com/neutrinolabs/xrdp
+  cd xrdp
+  ./bootstrap
+  ./configure
+  make
+  if [ $? -ne 0 ]; then
+    echo build failed for xrdp.
+    exit 1
+  fi
+  sudo make install
+
+  cd $HOME/projects
+  git clone git@github.com:neutrinolabs/xorgxrdp.git
+  cd xorgxrdp
+  ./bootstrap
+  ./configure XRDP_CFLAGS=-I$HOME/projects/xrdp/common XRDP_LIBS=" "
+  make
+  if [ $? -ne 0 ]; then
+    echo build failed for xorgxrdp.
+    exit 1
+  fi
+  sudo make install
 elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -a -G tty $(id -un)
   cd $HOME/projects
