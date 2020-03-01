@@ -26,10 +26,10 @@ elif [ "$OS" = "Linux Mint" ]; then
 elif [ "$OS" = "Arch Linux" ]; then
   # urxvt needs to be installed from the package
   sudo pacman -S --noconfirm --needed rxvt-unicode xsel
-  exit 0
+  #exit 0
   s#udo pacman -S awesome-terminal-fonts
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 

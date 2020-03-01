@@ -14,6 +14,8 @@ tput colors
 echo
 echo /usr/share/terminfo/r/rxvt-256color to ~/.terminfo/r/rxvt-256color
 
+echo di=🗀 🗎
+
 echo
 echo should be red
 tput setab 160 && echo foo

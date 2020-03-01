@@ -1,7 +1,8 @@
 alt + shift + Return
     urxvt
 alt + Return
-    termite
+#    termite
+    alacritty
 alt + shift + i
     firefox -private-window
 alt + i

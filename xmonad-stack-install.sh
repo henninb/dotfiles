@@ -24,7 +24,6 @@ elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman -Rsnc lxdm
   sudo pacman --noconfirm --needed -S xscreensaver
   sudo pacman --noconfirm --needed -S feh
-  sudo pacman --noconfirm --needed -S nitrogen
   sudo pacman --noconfirm --needed -S xdotool
   sudo pacman --noconfirm --needed -S cmake
   sudo pacman --noconfirm --needed -S w3m
@@ -32,14 +31,17 @@ elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S extra/xorg-xfontsel
   sudo pacman --noconfirm --needed -S dzen2
   sudo pacman --noconfirm --needed -S conky
-  cd "$HOME/projects" || exit
-  git clone https://aur.archlinux.org/yabar-git.git yabar-aur
-  cd yabar-aur || exit
-  makepkg -si
-  cd "$HOME/projects" || exit
-  git clone https://aur.archlinux.org/lemonbar-git.git lemonbar-aur
-  cd lemonbar-aur || exit
-  makepkg -si
+  sudo pacman --noconfirm --needed -S xdo
+  # yay install yabar
+  # yay install lemonbar
+  # cd "$HOME/projects" || exit
+  # git clone https://aur.archlinux.org/yabar-git.git yabar-aur
+  # cd yabar-aur || exit
+  # makepkg -si
+  # cd "$HOME/projects" || exit
+  # git clone https://aur.archlinux.org/lemonbar-git.git lemonbar-aur
+  # cd lemonbar-aur || exit
+  # makepkg -si
 elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
@@ -69,7 +71,7 @@ elif [ "$OS" = "void" ]; then
   VOID_PKGS="xscreensaver feh xdotool w3m neofetch dzen2 xz make gcc gmp-devel"
   FAILURES=""
   for i in $(echo $VOID_PKGS); do
-    sudo xbps-install -y $i
+    sudo xbps-install -y "$i"
     if [ 0 -ne $? ]; then
       FAILURE="$i $FAILURE"
     fi
@@ -80,12 +82,12 @@ elif [ "$OS" = "Gentoo" ]; then
   GENTOO_PKGS="xscreensaver feh xdotool w3m neofetch conky ranger nitrogen"
   FAILURES=""
   for i in $(echo $GENTOO_PKGS); do
-    sudo emerge --update --newuse $i
+    sudo emerge --update --newuse "$i"
     if [ 0 -ne $? ]; then
       FAILURE="$i $FAILURE"
     fi
   done
-  echo Failures: $FAILURE
+  echo "Failures: $FAILURE"
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf remove -y lightdm
   sudo dnf remove -y gdm
@@ -146,10 +148,10 @@ if ! stack install ghc ; then
   exit 1
 fi
 
-if ! stack install hindent ; then
-  echo failed hindent.
-  exit 1
-fi
+# if ! stack install hindent ; then
+#   echo failed hindent.
+#   exit 1
+# fi
 
 if ! stack install hlint. ; then
   echo failed hlint.
