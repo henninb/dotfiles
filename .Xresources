@@ -63,6 +63,8 @@ URxvt.font: xft:monofur for Powerline:pixelsize=20, xft:Symbola:pixelsize=16
 !URxvt.font: xft:monofur for Powerline:pixelsize=20, xft:Hack Nerd Front Mono:pixelsize=16, xft:JetBrainsMono Nerd Font Mono:pixelsize=16
 !URxvt.font: xft:JetBrainsMono Nerd Font Mono:pixelsize=16, xft:Hack Nerd Front Mono:pixelsize=16, xft:Symbola:pixelsize=16
 !URxvt.font: xft:JetBrainsMono Nerd Font Mono:pixelsize=16, xft:Hack Nerd Front Mono:pixelsize=16
+URxvt.boldFont: xft:monofur for Powerline:style=Bold:size=16
+!URxvt.letterSpace: true
 
 ! TODO: verify this term as it works on all platforms
 !URxvt.termName: rxvt-256color

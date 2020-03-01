@@ -20,8 +20,9 @@ elif [ "$OS" = "Fedora" ]; then
 elif [ "$OS" = "FreeBSD" ]; then
   echo freebsd
 elif [ "$OS" = "Linux Mint" ]; then
-  sudo apt update
-  sudo apt upgrade -y
+  echo
+  # sudo apt update
+  # sudo apt upgrade -y
   #sudo apt install -y rxvt-unicode xsel
 elif [ "$OS" = "Arch Linux" ]; then
   # urxvt needs to be installed from the package
@@ -53,7 +54,7 @@ if [ $? -ne 0 ]; then
   echo "autogen failed."
   exit 1
 fi
-./configure --enable-everything --enable-perl --enable-smart-resize --enable-256-color
+./configure --enable-everything --enable-perl --enable-smart-resize --enable-256-color --enable-unicode3
 if [ $? -ne 0 ]; then
   echo "configure failed."
   exit 1
@@ -74,21 +75,13 @@ cd $HOME
 git clone https://github.com/sos4nt/dynamic-colors ~/.dynamic-colors
 
 echo urxvt -fn "xft:Bitstream Vera Sans Mono:pixelsize=15"
-echo urxvt -fn "xft:FontAwesome:pixelsize=15"
 echo urxvt --font "xft:Inconsolata for Powerline:size=10"
-echo urxvt --font "xft:DejaVu Sans Mono for Powerline:size 16"
-echo urxvt -fn "xft:Source Code Pro:size=10,xft:Source Han Sans,xft:DejaVu Serif:size=9"
-echo urxvt -font "xft:Deja Vu Sans Mono:size=12"
-echo urxvt -font "xft:SauceCodePro NF:pixelsize=9"
-
 echo fc-match Monospace
 fc-match Monospace
-fc-match FontAwesome
 fc-match 'Courier New:slant=0:weight=100:pixelsize=24:antialias=False:autohint=True:minspace=True'
 # echo cat /etc/default/locale
 # echo sudo locale-gen en_US.UTF-8
 # echo locale -a
 # echo update-locale LANG=en_US.UTF-8
-echo https://github.com/ryanoasis/nerd-fonts
 
 exit 0
