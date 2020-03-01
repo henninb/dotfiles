@@ -31,6 +31,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y bspwm
   sudo xbps-install -y xscreensaver
   sudo xbps-install -y feh
+  sudo xbps-install -y polybar
   sudo xbps-install -y xdotool
   sudo xbps-install -y cmake
   sudo xbps-install -y w3m

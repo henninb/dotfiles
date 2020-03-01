@@ -10,7 +10,6 @@ ACTUAL_VER=$(/opt/firefox/firefox --version | grep -o '[0-9.]\+[0-9]')
 
 if [ "$ACTUAL_VER" = "$FOX_VER" ]; then
   echo "already at the latest version $FOX_VER."
-  exit 0
 fi
 
 sudo groupadd firefox
@@ -34,6 +33,7 @@ if [ "$OS" = "Arch Linux" ]; then
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y wget
   sudo xbps-install -y gtk+3-devel
+  sudo xbps-install -y dbus-glib
   sudo rm -rf /opt/firefox
   sudo tar -xjvf "firefox-${FOX_VER}.tar.bz2" -C /opt
   sudo chown -R firefox:firefox /opt/firefox

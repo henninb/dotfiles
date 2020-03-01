@@ -45,6 +45,8 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   ../configure --prefix=/usr --sysconfdir=/etc
   make
   sudo make install
+elif [ "$OS" = "void" ]; then
+  echo
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
