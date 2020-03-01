@@ -9,7 +9,6 @@ ACTUAL_VER=$(nvim --version | grep -o 'v[0-9.]\+[0-9]')
 
 if [ "$ACTUAL_VER" = "$NVER" ]; then
   echo already at the latest version $NVER.
-  exit 0
 fi
 
 if  [ ! -z "$VER_OVERRIDE" ]; then
@@ -35,6 +34,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y cmake
   sudo xbps-install -y libtool
   sudo xbps-install -y patch
+  sudo xbps-install -y gcc
   sudo xbps-install -y gcc-c++
   sudo xbps-install -y pkg-config
   sudo xbps-install -y m4

@@ -11,12 +11,12 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y xscreensaver
   sudo apt install -y feh
   sudo apt install -y w3m
-  sudo apt install -y neofetch
   sudo apt install -y dzen2
   sudo apt install -y cmake
   sudo apt install -y libxpm-dev
   sudo apt install -y xdotool
   sudo apt install -y xdo
+  sudo apt install -y sxhkd
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
@@ -26,9 +26,9 @@ elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S xdotool
   sudo pacman --noconfirm --needed -S cmake
   sudo pacman --noconfirm --needed -S w3m
-  sudo pacman --noconfirm --needed -S neofetch
   sudo pacman --noconfirm --needed -S dzen2
   sudo pacman --noconfirm --needed -S xdo
+  sudo pacman --noconfirm --needed -S sxhkd
   # yay install yabar
   # yay install lemonbar
   # cd "$HOME/projects" || exit

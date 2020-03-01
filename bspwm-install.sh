@@ -26,6 +26,17 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   sudo apt install -y w3m-img
   sudo apt install -y vifm
   sudo apt install -y xserver-xephyr
+elif [ "$OS" = "void" ]; then
+  sudo xbps-install -y base-devel libX11-devel libXft-devel libXinerama-devel
+  sudo xbps-install -y xscreensaver
+  sudo xbps-install -y feh
+  sudo xbps-install -y xdotool
+  sudo xbps-install -y cmake
+  sudo xbps-install -y w3m
+  sudo xbps-install -y dzen2
+  sudo xbps-install -y xdo
+  sudo xbps-install -y sxhkd
+  sudo xbps-install -y  xorg-minimal
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
@@ -98,7 +109,7 @@ elif [ "$OS" = "FreeBSD" ]; then
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y bspwm xdo dmenu terminus-fonts-console terminus-fonts
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
