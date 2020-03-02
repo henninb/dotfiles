@@ -13,6 +13,7 @@ fc-list -f 'Fontpath "%{file|dirname}"\n' : | sort -u
 
 echo -e "\uE0A0"
 echo -e "\uE0B0"
+echo -e "SKULL AND CROSSBONES (U+2620) \U02620"
 
 echo /etc/fonts/conf.d
 
