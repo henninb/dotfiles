@@ -25,6 +25,11 @@ alias h='history'
 alias j='jobs -l'
 alias ports='netstat -tulanp'
 
+alias reboot='sudo /sbin/reboot'
+alias poweroff='sudo /sbin/poweroff'
+alias halt='sudo /sbin/halt'
+alias shutdown='sudo /sbin/shutdown'
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
