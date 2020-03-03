@@ -37,9 +37,11 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y w3m
   sudo xbps-install -y dzen2
   sudo xbps-install -y xdo
+  sudo xbps-install -y xclip
   sudo xbps-install -y sxhkd
   sudo xbps-install -y xorg
   sudo xbps-install -y xrdb
+  sudo xbps-install -y xrdp
   sudo xbps-install -y dmenu
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman -Rsnc lightdm
@@ -90,6 +92,7 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y feh
   sudo dnf install -y cmatrix
   sudo dnf install -y xclip
+  sudo dnf install -y xcopy
   sudo dnf install -y sxhkd
   sudo dnf install -y w3m
   sudo dnf install -y vifm
