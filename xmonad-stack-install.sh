@@ -17,6 +17,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y xdotool
   sudo apt install -y xdo
   sudo apt install -y sxhkd
+  sudo apt install -y dunst
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
@@ -29,6 +30,7 @@ elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S dzen2
   sudo pacman --noconfirm --needed -S xdo
   sudo pacman --noconfirm --needed -S sxhkd
+  sudo pacman --noconfirm --needed -S dunst
   # yay install yabar
   # yay install lemonbar
   # cd "$HOME/projects" || exit
@@ -62,7 +64,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y perl5
 elif [ "$OS" = "void" ]; then
   sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
-  VOID_PKGS="xscreensaver feh xdotool w3m neofetch dzen2 xz make gcc gmp-devel"
+  VOID_PKGS="xscreensaver feh xdotool w3m neofetch dzen2 xz make gcc gmp-devel dunst"
   FAILURES=""
   for i in $(echo $VOID_PKGS); do
     if ! sudo xbps-install -y "$i"; then

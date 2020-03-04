@@ -2,8 +2,17 @@
 
 #### Autostart ####
 
-sxhkd &
-polybar default &
+if [ -x "$(command -v dunst)" ]; then
+  dunst &
+fi
+
+if [ -x "$(command -v sxhkd)" ]; then
+  sxhkd &
+fi
+
+if [ -x "$(command -v polybar)" ]; then
+  polybar default &
+fi
 
 #### Monitors ####
 bspc monitor HDMI-0 -d 1 2 3 4 5 6 7 8 9
