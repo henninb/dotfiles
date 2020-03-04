@@ -1,4 +1,4 @@
-shell: /bin/bash
+shell: zsh
 bar:
     format: "{time}||CPU: {cpu} MEM: {memory}"
     colours:
