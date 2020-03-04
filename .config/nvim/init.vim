@@ -229,11 +229,17 @@ if exists(":PrettierAsync")
   autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 endif
 
-autocmd BufNewFile,BufRead .xinitrc set filetype=sh
-autocmd BufNewFile,BufRead xmobarrc set filetype=haskell
-autocmd BufNewFile,BufRead Gemfile set filetype=ruby
-autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
-autocmd BufNewFile,BufRead Berksfile set filetype=ruby
+autocmd BufRead .zshrc set filetype=sh
+autocmd BufRead .zshenv set filetype=sh
+autocmd BufRead .zshrc-work-custom set filetype=sh
+autocmd BufRead .alias-master set filetype=sh
+autocmd BufRead .alias-neovim set filetype=sh
+autocmd BufRead .alias-bsd set filetype=sh
+autocmd BufRead .xinitrc set filetype=sh
+autocmd BufRead xmobarrc set filetype=haskell
+autocmd BufRead Gemfile set filetype=ruby
+autocmd BufRead Vagrantfile set filetype=ruby
+autocmd BufRead Berksfile set filetype=ruby
 "autocmd BufWritePre .zshrc %s/\s\+$//e
 if exists(":FixWhitespace")
   autocmd BufWritePre .zshrc,*.sql,*.sh,*.json,.vimrc FixWhitespace

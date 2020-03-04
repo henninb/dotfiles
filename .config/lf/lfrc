@@ -62,3 +62,12 @@ map dr dragon
 map dm mvdragon
 map dc cpdragon
 map dl file_downloader
+
+# Basic Functions
+map . set hidden!
+map DD delete
+map p paste
+map x cut
+map y copy
+map <enter> open
+map r rename

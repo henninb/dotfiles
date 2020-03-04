@@ -325,7 +325,7 @@ if [ "${MYSHELL}" = "zsh" ]; then
 
   function zle-line-init zle-keymap-select {
     RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
-    RPS2=$RPS1
+    RPS2="$RPS1"
     zle reset-prompt
   }
 
@@ -390,9 +390,9 @@ bindkey "^[[B" history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-export HISTFILE=/$HOME/.zsh_history
+export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=1000000000
-export SAVEHIST=$HISTSIZE
+export SAVEHIST="$HISTSIZE"
 setopt EXTENDED_HISTORY
 
 
@@ -403,10 +403,10 @@ bindkey "^E" vi-end-of-line
 
 bindkey -r "^B"
 
-touch $HOME/env.secrets
+touch "$HOME/env.secrets"
 
 set -a
-. $HOME/env.secrets
+. "$HOME/env.secrets"
 set +a
 
 autoload -Uz tetriscurses
