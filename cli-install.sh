@@ -172,4 +172,7 @@ wget https://raw.githubusercontent.com/mevdschee/2048.c/master/2048.c -O 2048.c
 gcc -o 2048 2048.c
 mv 2048 "$HOME/.local/bin"
 
+# install shox
+curl -s "https://raw.githubusercontent.com/liamg/shox/master/scripts/install.sh" | sudo bash
+
 exit 0
