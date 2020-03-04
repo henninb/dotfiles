@@ -1,0 +1,7 @@
+shell: /bin/bash
+bar:
+    format: "{time}||CPU: {cpu} MEM: {memory}"
+    colours:
+      bg: blue
+      fg: white
+    padding: 0
