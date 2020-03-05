@@ -137,11 +137,14 @@ if [ "$OS" = "Arch Linux" ]; then
   #sudo cp -v /etc/xrdp/startwm.sh /etc/xrdp/startwm.sh.bak.$$
   #sudo mv -v startwm.sh /etc/xrdp/startwm.sh
 elif [ "$OS" = "void" ]; then
+  sudo xbps-install -y pam-devel
+  sudo xbps-install -y xorg-server-devel
   cd /tmp
   curl -LO https://www.openssl.org/source/openssl-1.1.1.tar.gz
-  tar -xvfz openssl-1.1.1
+  tar xvf openssl-1.1.1.tar.gz
   cd openssl-1.1.1
-  ./config --prefix=/opt/openssl/1.1.1
+  #./config --prefix=/opt/openssl/1.1.1
+  ./config --prefix=/usr
   make
   sudo make install
   sudo usermod -a -G tty $(id -un)
@@ -149,6 +152,7 @@ elif [ "$OS" = "void" ]; then
   git clone --recursive https://github.com/neutrinolabs/xrdp
   cd xrdp
   ./bootstrap
+  #./configure OPENSSL_CFLAGS=-I/opt/openssl/1.1.1/include OPENSSL_LIBS="-L/opt/openssl/1.1.1/lib -lssl -lcrypto"
   ./configure
   make
   if [ $? -ne 0 ]; then

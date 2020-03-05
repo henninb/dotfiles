@@ -10,5 +10,7 @@ fi
 echo sudo pacman -R xmonad
 echo sudo pacman -Rsnc picom
 
+echo xbps-query -Rs xorg
+
 exit 0
 
