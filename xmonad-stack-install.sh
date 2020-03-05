@@ -18,6 +18,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y xdo
   sudo apt install -y sxhkd
   sudo apt install -y dunst
+  sudo apt install -y wmname
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
@@ -31,6 +32,7 @@ elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S xdo
   sudo pacman --noconfirm --needed -S sxhkd
   sudo pacman --noconfirm --needed -S dunst
+  sudo pacman --noconfirm --needed -S wmname
   # yay install yabar
   # yay install lemonbar
   # cd "$HOME/projects" || exit
@@ -62,9 +64,10 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y xdotool
   sudo pkg install -y xdo
   sudo pkg install -y perl5
+  sudo pkg install -y wmname
 elif [ "$OS" = "void" ]; then
   sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
-  VOID_PKGS="xscreensaver feh xdotool w3m neofetch dzen2 xz make gcc gmp-devel dunst"
+  VOID_PKGS="xscreensaver feh xdotool w3m neofetch dzen2 xz make gcc gmp-devel dunst wmname"
   FAILURES=""
   for i in $(echo $VOID_PKGS); do
     if ! sudo xbps-install -y "$i"; then
@@ -74,7 +77,7 @@ elif [ "$OS" = "void" ]; then
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --unmerge dzen
-  GENTOO_PKGS="xscreensaver feh xdotool w3m neofetch conky ranger nitrogen"
+  GENTOO_PKGS="xscreensaver feh xdotool w3m neofetch dunst wmname"
   FAILURES=""
   for i in $(echo $GENTOO_PKGS); do
     if ! sudo emerge --update --newuse "$i"; then
@@ -94,6 +97,8 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y w3m
   sudo dnf install -y xscreensaver
   sudo dnf install -y dzen2
+  sudo dnf install -y dunst
+  sudo dnf install -y wmname
   echo iwlib missing
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
