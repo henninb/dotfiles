@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo Xorg
+pgrep -x Xorg
 sudo rm -rfv /run/xrdp.pid
 sudo rm -rfv /var/log/xrdp.log
 sudo pkill -x xrdp

@@ -2,12 +2,13 @@
 
 DEBIAN_FRONTEND=noninteractive
 
-ARCHLINUX_PKGS="xorg-server vlc firefox riot-desktop i3-wm handbrake dolphin-emu dbeaver terminator handbrake rofi feh dolphin-emu xorg xorg-server xorg-xeyes xorg-xinit seahorse termite rxvt-unicode gqrx gitk audacity zathura sxiv mpv"
-MINT_PKGS="vlc firefox riot-desktop i3-wm handbrake dolphin-emu vim-gtk3 i3status i3blocks i3 xterm i3lock rofi terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious rxvt gitk audacity gqrx-sdr"
+ARCHLINUX_PKGS="xorg-server vlc firefox riot-desktop i3-wm handbrake dolphin-emu dbeaver terminator handbrake rofi feh dolphin-emu xorg xorg-server xorg-xeyes xorg-xinit seahorse termite rxvt-unicode gqrx gitk audacity zathura sxiv mpv gimp"
+MINT_PKGS="vlc firefox riot-desktop i3-wm handbrake dolphin-emu vim-gtk3 i3status i3blocks i3 xterm i3lock rofi terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious rxvt gitk audacity gqrx-sdr gimp"
 CENTOS_PKGS="vlc firefox riot-desktop handbrake dolphin-emu gvim terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious rxvt"
-UBUNTU_PKGS="gqrx vlc firefox riot-desktop handbrake dolphin-emu vim-gtk3 terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious rxvt gitk audacity"
+UBUNTU_PKGS="gqrx vlc firefox riot-desktop handbrake dolphin-emu vim-gtk3 terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious rxvt gitk audacity gimp"
 FREEBSD_PKGS="vlc firefox riot-desktop i3-wm handbrake dolphin-emu vim-gtk3 i3status i3blocks i3 xterm i3lock rofi terminator feh dolphin suckless-tools qt5ct audacity"
 GENTOO_PKGS="vlc i3 handbrake terminator rofi games-emulation/dolphin firefox seahorse xeyes xterm i3status audacity"
+VOID_PKGS="vlc handbrake terminator audacity dolphin-emu zathura dbeaver"
 
 FEDORA_PKGS="gvim gqrx"
 
@@ -55,6 +56,15 @@ elif [ "$OS" = "CentOS Linux" ]; then
   FAILURES=""
   for i in $(echo $CENTOS_PKGS); do
     sudo yum install -y $i
+    if [ 0 -ne $? ]; then
+      FAILURE="$i $FAILURE"
+    fi
+  done
+  echo failures $FAILURE
+elif [ "$OS" = "void" ]; then
+  FAILURES=""
+  for i in $(echo $VOID_PKGS); do
+    sudo xbps-install -y $i
     if [ 0 -ne $? ]; then
       FAILURE="$i $FAILURE"
     fi
