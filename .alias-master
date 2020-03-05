@@ -29,7 +29,7 @@ alias reboot='sudo /sbin/reboot'
 alias poweroff='sudo /sbin/poweroff'
 alias halt='sudo /sbin/halt'
 alias shutdown='sudo /sbin/shutdown'
-alias rxprdp='sudo systemctl restart xrdp'
+alias rxrdp='sudo systemctl restart xrdp'
 
 alias ..='cd ..'
 alias ...='cd ../..'
