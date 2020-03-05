@@ -59,3 +59,13 @@ super + m
 
 #super + shift + {r, s}
 #  prompt {"Are you sure you would like to reboot?" "sudo reboot", "Are you sure you would like to shutdown" "sudo shutdown"}
+
+# ===================================
+# ========== User-specific ==========
+# ===================================
+super + r
+    urxvt -e lf
+
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
