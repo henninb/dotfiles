@@ -59,6 +59,11 @@ else
   echo picom and compton are not installed. >> "$HOME/xinit.log"
 fi
 
+if [ -x "$(command -v wmname)" ]; then
+  wmname LG3D
+fi
+
+
 cd "$HOME/.xmonad"
 make "$(cat "$HOME/.xmonad/.active")" > /dev/null 2>&1
 cd -
