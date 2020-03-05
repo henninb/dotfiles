@@ -10,6 +10,7 @@ alt + i
 alt + shift + p
     dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal
 alt + shift + Escape
+    #script
     bspwm_exit "bspc quit"
 alt + shift + BackSpace
     xdo close
@@ -41,12 +42,13 @@ alt + {_,shift + }{1-9,0}
     bspc {desktop -f,node -d} '^{1-9,10}' --follow
 
  # Toggle fullscreen on and off
-super + f
-  bspfullscreen
+alt + f
+    #script
+    bspfullscreen
 
 # Toggle floating on and off
-super + o
-  bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
+alt + o
+    bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
 
 # Pulse Controls
 super + {Up, Down}
