@@ -132,10 +132,7 @@ if [ "$OS" = "Arch Linux" ]; then
   cd $HOME
   #chmod 755 startwm.sh
   #sudo cp -v Xwrapper.config /etc/xorg/Xwrapper.config
-  sudo cp -v Xwrapper.config /etc/X11/Xwrapper.config
-  #chmod 755 $HOME/startwm.sh
-  #sudo cp -v /etc/xrdp/startwm.sh /etc/xrdp/startwm.sh.bak.$$
-  #sudo mv -v startwm.sh /etc/xrdp/startwm.sh
+  sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y pam-devel
   sudo xbps-install -y xorg-server-devel
@@ -172,6 +169,8 @@ elif [ "$OS" = "void" ]; then
     exit 1
   fi
   sudo make install
+  sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
+  sudo mv -v startwm.sh /etc/xrdp/startwm.sh
 elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -a -G tty $(id -un)
   cd $HOME/projects
@@ -199,10 +198,9 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo make install
 
   #USE="server" sudo emerge  --update --newuse net-misc/tigervnc
+  cd $HOME
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
   sudo mv -v xrdp.rc /etc/init.d/xrdp
-
-  cd $HOME
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
 elif [ "$OS" = "Fedora" ]; then
     sudo dnf install -y libtool
