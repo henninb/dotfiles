@@ -38,6 +38,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y dzen2
   sudo xbps-install -y xdo
   sudo xbps-install -y xclip
+  sudo xbps-install -y xdg-utils
   sudo xbps-install -y sxhkd
   sudo xbps-install -y xorg
   sudo xbps-install -y xrdb

@@ -13,6 +13,9 @@ fi
 
 if [ "$OS" = "FreeBSD" ]; then
   sudo pkg install gtk3 gmake intltool pkgconf automake pcre2 libtool gtk-doc
+elif [ "$OS" = "void" ]; then
+  echo
+  sudo xbps-install -Sy ncurses-devel
 elif [ "$OS" = "Darwin" ]; then
   brew install wget
 elif [ "$OS" = "CentOS Linux" ]; then
@@ -31,7 +34,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
     sudo yum install -y gtk3
     sudo yum install -y openssl-devel
   fi
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y libgtk-3-dev pkg-config autoconf libglib2.0-dev gtk-doc-tools libpcre2-dev libgirepository1.0-dev gperf libvte-2.91-dev libvte-dev valac unzip intltool
   sudo apt install -y libperl-dev libssl-dev libncurses-dev
 else
