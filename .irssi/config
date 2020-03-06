@@ -55,6 +55,7 @@ channels = (
   { name = "#pfsense"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#dd-wrt"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#mutt"; chatnet = "Freenode"; autojoin = "Yes"; },
+  { name = "#alacritty"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#kvm"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#vagrant"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#bhyve"; chatnet = "Freenode"; autojoin = "Yes"; },
