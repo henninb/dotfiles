@@ -370,3 +370,23 @@ nnoremap <leader>v :vsplit<cr>
 
 " quit vim when 0 buffers left on nerdtree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" TODO: test the below
+"Neovim terminal
+if has('nvim')
+    "let g:loaded_python_provider = 0
+    let g:python_host_skip_check = 1
+    let g:python_host_prog = 'python'
+
+    "let g:loaded_python3_provider = 0
+    let g:python3_host_skip_check = 1
+    let g:python3_host_prog = 'python3'
+
+  set termguicolors
+    tnoremap <C-q> <C-\><C-n>
+
+    function! Term()
+        :e term://zsh
+    endfunction
+    command! Term :call Term()
+endif
