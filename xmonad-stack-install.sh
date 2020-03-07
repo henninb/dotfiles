@@ -158,6 +158,11 @@ if ! stack install xmonad-extras ; then
   exit 1
 fi
 
+if ! stack install dbus ; then
+  echo failed xmonad-extras.
+  exit 1
+fi
+
 echo "seems to have the the flag with_xft. how to confirm?"
 cd "$HOME/projects" || exit
 git clone git@github.com:jaor/xmobar.git
