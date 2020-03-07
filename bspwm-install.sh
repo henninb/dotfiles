@@ -27,9 +27,9 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   sudo apt install -y vifm
   sudo apt install -y xserver-xephyr
 elif [ "$OS" = "void" ]; then
-  sudo xbps-install -y base-devel libX11-devel libXft-devel libXinerama-devel
-  sudo xbps-install -y bspwm
-  sudo xbps-install -y xscreensaver
+  sudo xbps-install -Sy base-devel libX11-devel libXft-devel libXinerama-devel
+  sudo xbps-install -Sy bspwm
+  sudo xbps-install -Sy xscreensaver
   sudo xbps-install -y feh
   sudo xbps-install -y polybar
   sudo xbps-install -y xdotool
