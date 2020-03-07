@@ -1,5 +1,3 @@
--- IMPORT                                                                    {{{
---------------------------------------------------------------------------------
 import XMonad
 
 import XMonad.Actions.CycleWS
@@ -223,18 +221,19 @@ myProgramKeys =
   , ("M-S-i"      , addName "Open firefox private" $ spawn (myBrowser ++ " -private-window"))
   , ("M-<Return>"        , addName "open default terminal" $ spawn myTerminal)
   , ("M-S-<Return>"      , addName "open backup terminal" $ spawn "alacritty")
-  , ("M-S-<BackSpace>"  , addName "close a window" $ spawn "kill")
-  , ("M-S-<Delete>"     , addName "close a window" $ spawn "kill")
+  , ("M-S-<Backspace>"   , addName "" $ spawn "xdo close")
+--  , ("M-S-<Backspace>"   , addName "" $ kill)
+--  , ("M-S-<Delete>"     , addName "close a window" $ spawn "kill")
   , ("M-S-<Escape>"     , addName "exit xmonad" $ spawn "xmonad_exit")
   , ("M-S-p"            , addName "open dmenu" $ spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
   ]
 
 myWindowManagerKeys =
   [ ("M-b"        , addName "Do (not) respect polybar" $ sendMessage ToggleStruts)
-  , ("M-S-b"      , addName "Increase spacing between windows" $ incSpacing mySpacing)
-  , ("M-v"        , addName "Set default spacing between windows" $ setSpacing mySpacing)
-  , ("M-S-v"      , addName "Decrease spacing between windows" $ incSpacing (-mySpacing))
-  , ("M-c"        , addName "Set to default large spacing between windows" $ setSpacing myLargeSpacing)
+  --, ("M-S-b"      , addName "Increase spacing between windows" $ incSpacing mySpacing)
+  --, ("M-v"        , addName "Set default spacing between windows" $ setSpacing mySpacing)
+  --, ("M-S-v"      , addName "Decrease spacing between windows" $ incSpacing (-mySpacing))
+  --, ("M-c"        , addName "Set to default large spacing between windows" $ setScreenWindowSpacing myLargeSpacing)
   , ("M-u"        , addName "Switch view to project" $ switchProjectPrompt warmPromptTheme)
   , ("M-S-u"      , addName "Send current window to project" $ shiftToProjectPrompt coldPromptTheme)
   , ("M-S-h"      , addName "Move to previous non empty workspace" $ moveTo Prev NonEmptyWS)
