@@ -21,6 +21,7 @@ foreground = ${xrdb:color257:#ebdbb2}
 
 
 ; TODO: need a monitor - monitor rpd0
+; monitor =
 
 [bar/default]
 enable-ipc = true
@@ -92,7 +93,7 @@ time = "%I:%M%p"
 
 format-prefix = "| "
 format-prefix-foreground = ${colors.gray}
-format-underline = ${colors.blue}
+;format-underline = ${colors.blue}
 
 label = %date% %time%
 
