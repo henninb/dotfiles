@@ -174,9 +174,9 @@ myWorkspaces = [wsGEN, wsWRK, wsSYS, wsMED, wsTMP, wsGAM, "7", "8", "9"]
 --------------------------------------------------------------------------------
 projects :: [Project]
 projects =
-  [ Project { projectName      = "study"
-            , projectDirectory = "~/Documents/studie/master"
-            , projectStartHook = Just $ do spawn "tilix -e tmux"
+  [ Project { projectName      = "work"
+            , projectDirectory = "~/"
+            , projectStartHook = Just $ do spawn "urxvt -e tmux"
                                            spawn myTerminal
             }
   , Project { projectName      = "term"
@@ -184,23 +184,8 @@ projects =
             , projectStartHook = Just $ do spawn myBrowser
                                            spawn myTerminal
             }
-  , Project { projectName      = "program"
-            , projectDirectory = "~/Documents/program"
-            , projectStartHook = Just $ do spawn myBrowser
-                                           spawn "tilix -e tmux"
-            }
-  , Project { projectName      = "system"
-            , projectDirectory = "~/Documents/"
-            , projectStartHook = Just $ do spawn "tilix -e ncmpcpp"
-                                           spawn "tilix -e ncmpcpp"
-                                           spawn "tilix -e htop"
-            }
-
   ]
 
------------------------------------------------------------------------------}}}
--- KEYBINDINGS                                                               {{{
---------------------------------------------------------------------------------
 showKeybindings :: [((KeyMask, KeySym), NamedAction)] -> NamedAction
 showKeybindings x = addName "Show Keybindings" $ io $ do
   h <- spawnPipe "zenity --text-info --font=adobe courier"
@@ -211,16 +196,14 @@ showKeybindings x = addName "Show Keybindings" $ io $ do
 myAdditionalKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
   myProgramKeys ++ myWindowManagerKeys ++ myMediaKeys
 
--- mappings
---https://gist.github.com/micrub/aeebe7eb4d2df9e5e203e76a0fd89542
 myProgramKeys =
   [
   ("M-S-e"        , addName "open emacs" $ spawn "urxvt -e emacs")
-  --, ("M-S-s"      , addName "Sleep" $ spawn "systemctl suspend")
+  , ("M-e"      , addName "open neovim" $ spawn "urxvt -e nvim")
   , ("M-i"        , addName "Open firefox" $ spawn myBrowser)
   , ("M-S-i"      , addName "Open firefox private" $ spawn (myBrowser ++ " -private-window"))
-  , ("M-<Return>"        , addName "open default terminal" $ spawn myTerminal)
-  , ("M-S-<Return>"      , addName "open backup terminal" $ spawn "alacritty")
+  , ("M-S-<Return>"      , addName "open default terminal" $ spawn myTerminal)
+  , ("M-<Return>"        , addName "open backup terminal" $ spawn "alacritty")
   , ("M-S-<Backspace>"   , addName "" $ spawn "xdo close")
 --  , ("M-S-<Backspace>"   , addName "" $ kill)
 --  , ("M-S-<Delete>"     , addName "close a window" $ spawn "kill")
@@ -229,15 +212,16 @@ myProgramKeys =
   ]
 
 myWindowManagerKeys =
-  [ ("M-b"        , addName "Do (not) respect polybar" $ sendMessage ToggleStruts)
+  [
+  --("M-b"        , addName "Do (not) respect polybar" $ sendMessage ToggleStruts)
   --, ("M-S-b"      , addName "Increase spacing between windows" $ incSpacing mySpacing)
   --, ("M-v"        , addName "Set default spacing between windows" $ setSpacing mySpacing)
   --, ("M-S-v"      , addName "Decrease spacing between windows" $ incSpacing (-mySpacing))
   --, ("M-c"        , addName "Set to default large spacing between windows" $ setScreenWindowSpacing myLargeSpacing)
-  , ("M-u"        , addName "Switch view to project" $ switchProjectPrompt warmPromptTheme)
-  , ("M-S-u"      , addName "Send current window to project" $ shiftToProjectPrompt coldPromptTheme)
-  , ("M-S-h"      , addName "Move to previous non empty workspace" $ moveTo Prev NonEmptyWS)
-  , ("M-S-l"      , addName "Move to next non empty workspace" $ moveTo Next NonEmptyWS)
+  --, ("M-u"        , addName "Switch view to project" $ switchProjectPrompt warmPromptTheme)
+  --, ("M-S-u"      , addName "Send current window to project" $ shiftToProjectPrompt coldPromptTheme)
+  --, ("M-S-h"      , addName "Move to previous non empty workspace" $ moveTo Prev NonEmptyWS)
+  --, ("M-S-l"      , addName "Move to next non empty workspace" $ moveTo Next NonEmptyWS)
   ]
 
 myMediaKeys =
@@ -267,8 +251,8 @@ myManageHook = composeAll
     , className =? "Gimp"             --> doFloat
     , resource  =? "desktop_window"   --> doIgnore
     , className =? "feh"              --> doFloat
-    , className =? "Gpick"            --> doFloat
-    , role      =? "pop-up"           --> doFloat ]
+    , role      =? "pop-up"           --> doFloat
+    ]
   where
     role = stringProperty "WM_WINDOW_ROLE"
 
