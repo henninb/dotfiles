@@ -159,12 +159,12 @@ coldPromptTheme = myPromptTheme
 -----------------------------------------------------------------------------}}}
 -- WORKSPACES                                                                {{{
 --------------------------------------------------------------------------------
-wsGEN = "\xf269"
-wsWRK = "\xf02d"
-wsSYS = "\xf300"
-wsMED = "\xf001"
-wsTMP = "\xf2db"
-wsGAM = "\xf11b"
+wsGEN = "1"
+wsWRK = "2"
+wsSYS = "3"
+wsMED = "4"
+wsTMP = "5"
+wsGAM = "6"
 
 myWorkspaces :: [String]
 myWorkspaces = [wsGEN, wsWRK, wsSYS, wsMED, wsTMP, wsGAM, "7", "8", "9"]
@@ -311,7 +311,7 @@ myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
 --------------------------------------------------------------------------------
 myStartupHook = do
   setWMName "LG3D"
-  spawn "$HOME/.config/polybar/launch-master.sh"
+  spawn "$HOME/.config/polybar/launch-master.sh xmonad"
   --spawn "dropbox"
 
 -----------------------------------------------------------------------------}}}

@@ -169,4 +169,5 @@ bindsym XF86AudioMute exec "amixer -q -D pulse sset Master toggle"
 #   status_command i3blocks
 # }
 
-exec_always --no-startup-id $HOME/.config/polybar/launch-master.sh
+# exec_always --no-startup-id $HOME/.config/polybar/launch-master.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch-master.sh i3
