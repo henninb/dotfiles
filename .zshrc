@@ -13,7 +13,6 @@ fi
 export MYSHELL
 
 [ -z "$MYSHELL" ] && echo "SHELL not found: dollar zero $0 and need to find a fix."
-ln -sfn "$HOME/.zshrc" "$HOME/.bashrc"
 #[[ -o interactive ]] || exit 0
 
 if [ -f /etc/os-release ]; then
@@ -133,7 +132,6 @@ export PATH="$HOME/node_modules/.bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.rvm/bin:$PATH"
 export PATH="/opt/kafka/bin:$PATH"
-#export PATH="$HOME/.config/bspwm:$PATH"
 export PATH="/opt/kafka-client/bin:$PATH"
 export PATH="/opt/kotlinc/bin:$PATH"
 export PATH="/opt/oracle-instantclient:$PATH"
@@ -239,8 +237,7 @@ mkdir -p "$HOME/.config/compton"
 [ -f /opt/firefox/firefox ] && ln -sfn /opt/firefox/firefox "$HOME/.local/bin/firefox"
 [ -f /opt/vscode/bin/code ] && ln -sfn /opt/vscode/bin/code "$HOME/.local/bin/code"
 [ -f "$HOME/.tmux-rice.conf" ] && ln -sfn "$HOME/.tmux-rice.conf" "$HOME/.tmux.conf"
-#ln -sfn $HOME/.config/polybar/config-default $HOME/.config/polybar/config
-[ -f "$HOME/.config/polybar/config-master" ] && ln -sfn "$HOME/.config/polybar/config-master" "$HOME/.config/polybar/config"
+[ -f "$HOME/.config/polybar/config-master.ini" ] && ln -sfn "$HOME/.config/polybar/config-master.ini" "$HOME/.config/polybar/config"
 [ -f "$HOME/.ssh/config" ] && chmod 600 "$HOME/.ssh/config"
 [ -f "$HOME/.ssh/authorized_keys" ] && chmod 600 "$HOME/.ssh/authorized_keys"
 [ -f "$HOME/.ssh/config" ] && chmod 600 "$HOME/.ssh/config"

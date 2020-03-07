@@ -382,7 +382,8 @@ if has('nvim')
     let g:python3_host_skip_check = 1
     let g:python3_host_prog = 'python3'
 
-  set termguicolors
+    "TODO: termguicolors is not good for urxvt
+    "set termguicolors
     tnoremap <C-q> <C-\><C-n>
 
     function! Term()

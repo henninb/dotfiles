@@ -14,7 +14,7 @@ if [ -x "$(command -v sxhkd)" ]; then
 fi
 
 if [ -x "$(command -v polybar)" ]; then
-  polybar default &
+  polybar bspwm &
 fi
 
 # if [ -x "$(command -v wmname)" ]; then
