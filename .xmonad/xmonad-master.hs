@@ -51,7 +51,8 @@ xdisplays = withDisplay $ io . getScreenInfo
 myTerminal = "urxvt"
 myBrowser = "firefox"
 myFont = "xft:SauceCodePro NF:pixelsize=16"
-myBar = "xmobar ~/.config/xmobar/xmobarrc"
+--myBar = "xmobar ~/.config/xmobar/xmobarrc"
+myBar = "$HOME/.config/polybar/launch-master.sh"
 -- myBar = "dzen2 -y -1"
 -- myBar = "dzen2 -bg lightblue -fg grey80 -fn fixed"
 -- myBar = "date | dzen2 -p -bg black -fg grey80 -fn fixed"
@@ -76,7 +77,7 @@ myKeys conf@XConfig {XMonad.modMask = modMask} =
   , ((modMask,               xK_i), spawn myBrowser)
   , ((modMask .|. shiftMask, xK_i), spawn (myBrowser ++ " -private-window"))
   --, ((modMask .|. shiftMask, xK_p), spawn "rofi -show drun")
-  , ((modMask .|. shiftMask, xK_p), spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal")
+  , ((modMask .|. shiftMask, xK_p), spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
   , ((modMask .|. shiftMask, xK_x), spawn "xscreensaver-command -lock")
    -- close focused window
   , ((modMask .|. shiftMask, xK_BackSpace), kill)

@@ -176,6 +176,13 @@ if [ "$OS" = "Gentoo" ] || [ "$OS" = "FreeBSD" ]; then
   cd - || exit
 fi
 
+go get github.com/godbus/dbus
+cd "$HOME/projects"
+git clone https://github.com/xintron/xmonad-log.git
+cd xmonad-log
+go build
+mv xmonad-log $HOME/.local/bin
+
 stack exec ghc-pkg list
 echo stack exec ghc-pkg unregister mypackage
 echo stack exec ghc-pkg recache

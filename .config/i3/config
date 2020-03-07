@@ -29,7 +29,7 @@ bindsym $mod+Shift+t gaps inner current set 15; gaps outer current set 15
 
 # program launcher
 bindsym $mod+n exec standard-notes
-bindsym $mod+Shift+p exec dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal
+bindsym $mod+Shift+p exec dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'
 #bindsym $mod+Shift+p exec rofi -show drun -theme dmenu
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -123,10 +123,7 @@ bindsym $mod+Shift+r restart
 for_window [class="Firefox"] move to workspace 4
 for_window [class="Steam"] move to workspace 3
 
-# exit i3
-#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
-#bindsym $mod+Shift+q exec i3-msg exit
-bindsym $mod+Shift+q exec i3_exit
+bindsym $mod+Shift+Escape exec i3_exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

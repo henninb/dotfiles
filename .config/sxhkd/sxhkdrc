@@ -1,16 +1,15 @@
 alt + shift + Return
     urxvt
 alt + Return
-#    termite
     alacritty
 alt + shift + i
     firefox -private-window
 alt + i
     firefox
 alt + shift + p
-    dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn Monospace-9:normal
+    dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'
 alt + shift + Escape
-    bspwm_exit "bspc quit"
+    bspwm_exit
 alt + shift + BackSpace
     xdo close
 #alt + shift + Delete
@@ -45,8 +44,8 @@ alt + {_,shift + }{1-9,0}
 #     bspfullscreen
 
 # Toggle floating on and off
-alt + o
-    bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
+# alt + o
+#     bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
 
 # Pulse Controls
 super + {Up, Down}

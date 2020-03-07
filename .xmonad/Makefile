@@ -30,6 +30,16 @@ simple:
 	@echo simple > .active
 	@mv -v xmonad ${HOME}/.local/bin
 	@hlint xmonad-simple.hs
+polybar:
+	@echo need to learn about the stack.yaml file
+	@echo stack init .
+	@rm -rf *.hi *.o xmonad
+	@ln -sfn xmonad-polybar.hs xmonad.hs
+	@stack ghc -- --make xmonad.hs
+	@rm -rf *.hi *.o
+	@echo polybar > .active
+	@mv -v xmonad ${HOME}/.local/bin
+	@hlint xmonad-polybar.hs
 rice:
 	@stack path --local-bin
 	@echo need to learn about the stack.yaml file
