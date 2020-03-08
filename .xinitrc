@@ -18,13 +18,16 @@ export LC_MEASUREMENT=en_US.UTF-8
 export LC_IDENTIFICATION=en_US.UTF-8
 
 
-# if [ -r /etc/default/locale ]; then
-# . /etc/default/locale
-# export LANG LANGUAGE
-# fi
+if [ -x "$(command -v xrdb)" ]; then
+  #xrdb -merge ~/.Xresources
+  xrdb -load "$HOME/.Xresources" >> "$HOME/xinit.log"
+fi
 
-xrdb -merge ~/.Xresources
-#xrdb -load ~/.Xresources
+for f in /etc/X11/Xsession.d/*; do
+  echo $f >> "$HOME/xinit.log"
+  [ -x "$f" ] && . "$f"
+done
+unset f
 
 #TODO: is this required?
 for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
@@ -32,8 +35,6 @@ for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
 done
 unset f
 
-#echo sudo mkfontdir /usr/share/fonts/TTF
-#xset +fp ~/.fonts
 if [ -x "$(command -v feh)" ]; then
   #exec feh --bg-scale --randomize $HOME/backgrounds/* &
   exec feh --bg-scale "$HOME/backgrounds/minnesota-vikings-dark.jpg" &
@@ -48,7 +49,7 @@ else
 fi
 
 if [ -x "$(command -v mpd)" ]; then
-  exec mpd &
+  exec mpd  &
 fi
 
 if [ -x "$(command -v picom)" ]; then
@@ -56,17 +57,17 @@ if [ -x "$(command -v picom)" ]; then
 elif [ -x "$(command -v compton)" ]; then
   exec compton &
 else
-  echo picom and compton are not installed. >> "$HOME/xinit.log"
+  echo Neither picom nor compton are installed. >> "$HOME/xinit.log"
 fi
 
 if [ -x "$(command -v wmname)" ]; then
-  wmname LG3D
+  wmname LG3D >> "$HOME/xinit.log"
 fi
 
 
-cd "$HOME/.xmonad"
-make "$(cat "$HOME/.xmonad/.active")" > /dev/null 2>&1
-cd -
+# cd "$HOME/.xmonad"
+# make "$(cat "$HOME/.xmonad/.active")" > /dev/null 2>&1
+# cd -
 
 #exec mate-session
 #exec i3
@@ -75,20 +76,27 @@ cd -
 #exec xmonad
 #exec bspwm
 
-if [ -s "$HOME/.active-wm" ]; then
-  WM=$(head -1 < "$HOME/.active-wm")
+WM=$(head -1 < "$HOME/.active-wm")
+if [ -s "$HOME/.active-wm" ] && [ -x "$(command -v "${WM}")" ]; then
+  echo "Found window manager = ${WM}." >> "$HOME/xinit.log"
 else
   echo i3 > "$HOME/.active-wm"
   WM=i3
+  echo "Set to default window manager = ${WM}." >> "$HOME/xinit.log"
 fi
 
-if [ -x "$(command -v ${WM})" ] && [ "${WM}" = "bspwm" ]; then
+if [ "${WM}" = "bspwm" ]; then
   # exec sxhkd &
   #exec bspwm  "$HOME/.config/bspwm/bspwmrc" 2>> "$HOME/xinit.log"
   exec bspwm 2>> "$HOME/xinit.log"
+elif [ "${WM}" = "xmonad" ]; then
+  export "$(dbus-launch)"
+  #dbus-update-activation-environment
+  #echo "$DBUS_SESSION_BUS_ADDRESS" >> "$HOME/xinit.log"
+  exec xmonad 2>> "$HOME/xinit.log"
 elif [ -x "$(command -v ${WM})" ]; then
   exec ${WM} 2>> "$HOME/xinit.log"
 else
-  echo "failed to find ${WM}" >> "$HOME/xinit.log"
+  echo "failed to find window manager ${WM}." >> "$HOME/xinit.log"
   exit 1
 fi
