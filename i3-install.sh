@@ -32,10 +32,9 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   sudo apt install -y w3m
   sudo apt install -y w3m-img
   sudo apt install -y vifm
-  sudo apt install -y compton
   sudo apt install -y xserver-xephyr
   cd ~/projects
-  git clone https://www.github.com/Airblader/i3 i3-gaps
+  git clone git@github.com:Airblader/i3 i3-gaps
   cd i3-gaps
   git checkout gaps && git pull
   autoreconf --force --install
@@ -107,7 +106,6 @@ elif [ "$OS" = "Gentoo" ]; then
 elif [ "$OS" = "Fedora" ]; then
   echo
   sudo dnf install -y i3status
-  sudo dnf install -y i3
   sudo dnf install -y i3-ipc
   sudo dnf install -y i3lock
   sudo dnf install -y xterm
@@ -125,7 +123,7 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y vifm
   sudo dnf install -y picom
   sudo dnf install -y libxcb-devel xcb-util-keysyms-devel xcb-util-devel xcb-util-wm-devel xcb-util-xrm-devel yajl-devel libXrandr-devel startup-notification-devel libev-devel xcb-util-cursor-devel libXinerama-devel libxkbcommon-devel libxkbcommon-x11-devel pcre-devel pango-devel git gcc automake libcurl-devel libmpdclient-devel wireless-tools-devel pulseaudio-libs-devel xcb-proto  cairo-devel i3-devel
-  cd ~/projects
+  cd "$HOME/projects"
   git clone https://github.com/vivien/i3blocks.git
   cd i3blocks
   ./autogen.sh
@@ -133,6 +131,18 @@ elif [ "$OS" = "Fedora" ]; then
   make
   sudo make install
   cd -
+
+  cd "$HOME/projects"
+  git clone git@github.com:Airblader/i3 i3-gaps
+  cd i3-gaps
+  git checkout gaps && git pull
+  autoreconf --force --install
+  rm -rf build
+  mkdir build
+  cd build
+  ../configure --prefix=/usr --sysconfdir=/etc
+  make
+  sudo make install
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y i3status
   sudo pkg install -y i3blocks
@@ -153,13 +163,12 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y w3m
   sudo pkg install -y w3m-img
   sudo pkg install -y vifm
-  sudo pkg install -y compton
   sudo apt install -y xserver-xephyr
   sudo apt install -y polybar
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y i3status i3 i3lock xterm i3lock terminator dmenu dolphin terminus-fonts-console terminus-fonts
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
@@ -168,6 +177,5 @@ git clone --recursive https://github.com/jaagr/polybar.git
 cd polybar
 ./build.sh
 cd $HOME
-
 
 exit 0
