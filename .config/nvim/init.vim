@@ -59,6 +59,7 @@ endif
    " Plug 'dracula/vim', { 'name': 'dracula' }  " theme
    Plug 'benmills/vimux' " tmux integration
    Plug 'git@github.com:alvan/vim-closetag.git' "closing tags for html
+   Plug 'kovetskiy/sxhkd-vim'
    Plug 'git@github.com:rust-lang/rust.vim.git'
    Plug 'udalov/kotlin-vim'
    Plug 'git@github.com:neovimhaskell/haskell-vim.git'

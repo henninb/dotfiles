@@ -6,18 +6,18 @@ alt + shift + i
     firefox -private-window
 alt + i
     firefox
+alt + e
+    urxvt -e nvim
+alt + shift + e
+    emacs
+alt + r
+    urxvt -e lf
 alt + shift + p
     dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'
 alt + shift + Escape
     bspwm_exit
 alt + shift + BackSpace
     xdo close
-#alt + shift + Delete
-#    xeyes
-#    bspc  window -c
-#    bspc  window -k
-#super + shift + Escape
-#    bspwm_exit "bspc quit"
 XF86AudioRaiseVolume
     amixer -q -D pulse sset Master 2%+
 XF86AudioLowerVolume
@@ -57,9 +57,7 @@ super + m
 # ===================================
 # ========== User-specific ==========
 # ===================================
-super + r
-    urxvt -e lf
 
 # set the window state
 super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
