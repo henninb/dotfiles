@@ -211,6 +211,8 @@ elif [ "$OS" = "Fedora" ]; then
     sudo dnf install -y libXfixes-devel
     sudo dnf install -y libXrandr-devel
     sudo dnf install -y xrdp
+    sudo mv -v startwm.sh /etc/xrdp/startwm.sh
+    sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
     echo centos8
