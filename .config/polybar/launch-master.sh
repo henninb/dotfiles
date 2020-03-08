@@ -10,7 +10,7 @@ WM=$1
 killall -q polybar
 
 # Wait until the processes have been shut down
-while pgrep -u "${UID}" -x polybar >/dev/null; do sleep 1; done
+while pgrep -x polybar >/dev/null; do sleep 1; done
 
 polybar -c "$HOME/.config/polybar/config-master.ini" "${WM}" 2>> "$HOME/polybar.log" &
 echo $? >> "$HOME/polybar.log"
