@@ -23,17 +23,17 @@ if [ -x "$(command -v xrdb)" ]; then
   xrdb -load "$HOME/.Xresources" >> "$HOME/xinit.log"
 fi
 
-for f in /etc/X11/Xsession.d/*; do
-  echo $f >> "$HOME/xinit.log"
-  [ -x "$f" ] && . "$f"
-done
-unset f
+#for f in /etc/X11/Xsession.d/*; do
+#  echo $f >> "$HOME/xinit.log"
+#  [ -x "$f" ] && . "$f"
+#done
+#unset f
 
-#TODO: is this required?
-for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
-    [ -x "$f" ] && . "$f"
-done
-unset f
+##TODO: is this required?
+#for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
+#    [ -x "$f" ] && . "$f"
+#done
+#unset f
 
 if [ -x "$(command -v feh)" ]; then
   #exec feh --bg-scale --randomize $HOME/backgrounds/* &
@@ -52,18 +52,20 @@ if [ -x "$(command -v mpd)" ]; then
   exec mpd  &
 fi
 
-if [ -x "$(command -v picom)" ]; then
-  exec picom &
-elif [ -x "$(command -v compton)" ]; then
-  exec compton &
-else
-  echo Neither picom nor compton are installed. >> "$HOME/xinit.log"
+echo "$OS is running." >> "$HOME/xinit.log"
+if [ ! "$OS" = "Fedora" ]; then
+  if [ -x "$(command -v picom)" ]; then
+    exec picom &
+  elif [ -x "$(command -v compton)" ]; then
+    exec compton &
+  else
+    echo Neither picom nor compton are installed. >> "$HOME/xinit.log"
+  fi
 fi
 
 if [ -x "$(command -v wmname)" ]; then
   wmname LG3D >> "$HOME/xinit.log"
 fi
-
 
 # cd "$HOME/.xmonad"
 # make "$(cat "$HOME/.xmonad/.active")" > /dev/null 2>&1

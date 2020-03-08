@@ -99,6 +99,7 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y dzen2
   sudo dnf install -y dunst
   sudo dnf install -y wmname
+  sudo dnf install -y dbus-x11
   echo iwlib missing
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
@@ -183,7 +184,7 @@ fi
 
 go get github.com/godbus/dbus
 cd "$HOME/projects"
-git clone git@github.com/xintron/xmonad-log.git
+git clone git@github.com:xintron/xmonad-log.git
 cd xmonad-log
 go build
 mv xmonad-log "$HOME/.local/bin"
