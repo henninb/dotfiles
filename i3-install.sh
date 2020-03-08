@@ -109,10 +109,8 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y i3-ipc
   sudo dnf install -y i3lock
   sudo dnf install -y xterm
-  sudo dnf install -y terminator
   sudo dnf install -y dmenu
   #sudo dnf install -y dolphin
-  sudo dnf install -y neofetch
   sudo dnf install -y terminus-fonts-console
   sudo dnf install -y terminus-fonts
   sudo dnf install -y feh
