@@ -136,7 +136,7 @@ elif [ "$OS" = "Fedora" ]; then
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y i3status
   sudo pkg install -y i3blocks
-  sudo pkg install -y i3
+  sudo pkg install -y i3-gaps
   sudo pkg install -y xterm
   sudo pkg install -y i3lock
   sudo pkg install -y rofi
