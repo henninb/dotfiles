@@ -51,7 +51,7 @@ import qualified Codec.Binary.UTF8.String as UTF8
 main :: IO ()
 main = do
   dbus <- D.connectSession
-  D.requestName dbus (D.busName_ "org.xmonad.Log")
+  D.requestName dbus (D.busName_ "org.xmonad.log")
     [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
 
   xmonad

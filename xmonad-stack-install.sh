@@ -183,10 +183,17 @@ fi
 
 go get github.com/godbus/dbus
 cd "$HOME/projects"
-git clone https://github.com/xintron/xmonad-log.git
+git clone git@github.com/xintron/xmonad-log.git
 cd xmonad-log
 go build
-mv xmonad-log $HOME/.local/bin
+mv xmonad-log "$HOME/.local/bin"
+cd -
+
+cd "$HOME/projects"
+git clone git@github.com:troydm/xmonad-dbus.git
+cd xmonad-dbus
+stack build
+cd -
 
 stack exec ghc-pkg list
 echo stack exec ghc-pkg unregister mypackage

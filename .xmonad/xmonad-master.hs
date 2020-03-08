@@ -1,11 +1,3 @@
--------------------------------------------------
---   __   __                                _  --
---   \ \ / /                               | | --
---    \ V / _ __ ___   ___  _ __   __ _  __| | --
---     > < | '_ ` _ \ / _ \| '_ \ / _` |/ _` | --
---    / . \| | | | | | (_) | | | | (_| | (_| | --
---   /_/ \_\_| |_| |_|\___/|_| |_|\__,_|\__,_| --
--------------------------------------------------
 import XMonad
 import System.Exit
 import System.IO
@@ -44,6 +36,10 @@ import XMonad.Prompt.ConfirmPrompt ( confirmPrompt )
 
 import Graphics.X11.Xinerama (getScreenInfo)
 import Graphics.X11.Xlib.Types (Rectangle)
+--import qualified XMonad.DBus as D
+import qualified DBus as D
+import qualified DBus.Client as D
+import qualified Codec.Binary.UTF8.String as UTF8
 
 xdisplays :: X [Rectangle]
 xdisplays = withDisplay $ io . getScreenInfo
@@ -192,6 +188,37 @@ myMouseBindings XConfig {XMonad.modMask = modMask} =
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
   ]
 
+-- myLogHook :: D.Client -> PP
+-- myLogHook dbus = def { ppOutput = D.send dbus }
+myLogHook :: D.Client -> PP
+myLogHook dbus = def
+    { ppOutput = dbusOutput dbus
+    , ppCurrent = wrap ("%{F" ++ "#2266d0" ++ "} ") " %{F-}"
+    , ppVisible = wrap ("%{F" ++ "#83a598" ++ "} ") " %{F-}"
+    , ppUrgent = wrap ("%{F" ++ "#fb4934" ++ "} ") " %{F-}"
+    , ppHidden = wrap " " " "
+    , ppWsSep = ""
+    , ppSep = " | "
+    , ppTitle = myAddSpaces 25
+    }
+
+dbusOutput :: D.Client -> String -> IO ()
+dbusOutput dbus str = do
+    let signal = (D.signal objectPath interfaceName memberName) {
+            D.signalBody = [D.toVariant $ UTF8.decodeString str]
+        }
+    D.emit dbus signal
+  where
+    objectPath = D.objectPath_ "/org/xmonad/Log"
+    interfaceName = D.interfaceName_ "org.xmonad.Log"
+    memberName = D.memberName_ "Update"
+
+myAddSpaces :: Int -> String -> String
+myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
+  where
+    sstr = shorten len str
+
+
 myLayoutHook =
   avoidStruts
     (toggleLayouts Full Grid |||
@@ -211,19 +238,13 @@ delta = 3 / 100
 main = do
 
   xmproc <- spawnPipe myBar
-  -- capture logs
-  --xmproc <- spawnPipe "/usr/bin/xmobar /home/henninb/.config/xmobar/xmobarrc >>/tmp/xmobar.log 2>&1"
-  -- works
-  -- xmproc <- spawnPipe "/usr/bin/xmobar ~/.config/xmobar/xmobarrc"
-  --xmproc <- spawnPipe "polybar desktop"
---  xmeyes <- spawnPipe("xeyes")
-  -- n <- countScreens
-  -- xmproc <- mapM(\i -> spawnPipe $ "xmobar" ++ show i ++ "-x " ++ show i) [0..n-1]
-  -- xmproc <- spawnPipe ("xmobar -x " ++ show sid)
+  --dbus <- D.connectSession
+  --D.requestAccess dbus
   xmonad $
     -- ewmh $
     docks $
     defaults
+      --{ logHook = myLogHook
       { logHook =
           dynamicLogWithPP $
           xmobarPP

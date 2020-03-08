@@ -1,7 +1,6 @@
 all:
 	@make master
 master:
-	@echo need to learn about the stack.yaml file
 	@echo stack init .
 	@rm -rf *.hi *.o xmonad
 	@ln -sfn xmonad-master.hs xmonad.hs
@@ -11,7 +10,6 @@ master:
 	@mv -v xmonad ${HOME}/.local/bin
 	@hlint xmonad-master.hs
 test:
-	@echo need to learn about the stack.yaml file
 	@echo stack init .
 	@rm -rf *.hi *.o
 	@ln -sfn xmonad-test.hs xmonad.hs
@@ -20,8 +18,16 @@ test:
 	@echo test > .active
 	@mv -v xmonad ${HOME}/.local/bin
 	@hlint xmonad-test.hs
+ws:
+	@echo stack init .
+	@rm -rf *.hi *.o
+	@ln -sfn xmonad-ws.hs xmonad.hs
+	@stack ghc -- --make xmonad.hs
+	@rm -rf *.hi *.o
+	@echo ws > .active
+	@mv -v xmonad ${HOME}/.local/bin
+	@hlint xmonad-ws.hs
 simple:
-	@echo need to learn about the stack.yaml file
 	@echo stack init .
 	@rm -rf *.hi *.o xmonad
 	@ln -sfn xmonad-simple.hs xmonad.hs
@@ -31,7 +37,6 @@ simple:
 	@mv -v xmonad ${HOME}/.local/bin
 	@hlint xmonad-simple.hs
 polybar:
-	@echo need to learn about the stack.yaml file
 	@echo stack init .
 	@rm -rf *.hi *.o xmonad
 	@ln -sfn xmonad-polybar.hs xmonad.hs
@@ -42,7 +47,6 @@ polybar:
 	@hlint xmonad-polybar.hs
 rice:
 	@stack path --local-bin
-	@echo need to learn about the stack.yaml file
 	@echo stack init .
 	@rm -rf *.hi *.o lib/*.o lib/*.hi xmonad
 	@ln -sfn xmonad-rice.hs xmonad.hs
@@ -53,7 +57,6 @@ rice:
 	@hlint xmonad-rice.hs
 	@hlint lib/*.hs
 example:
-	@echo compiled xmobar without xft support?
 	@rm -rf *.hi *.o xmonad
 	@ln -sfn xmonad-example.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs

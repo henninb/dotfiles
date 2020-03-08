@@ -93,7 +93,9 @@ elif [ "${WM}" = "xmonad" ]; then
   export "$(dbus-launch)"
   #dbus-update-activation-environment
   #echo "$DBUS_SESSION_BUS_ADDRESS" >> "$HOME/xinit.log"
-  exec xmonad 2>> "$HOME/xinit.log"
+  #exec xmonad 2>> "$HOME/xinit.log"
+  exec dbus-launch xmonad 2>> "$HOME/xinit.log"
+  #exec xmonad 2>> "$HOME/xinit.log"
 elif [ -x "$(command -v ${WM})" ]; then
   exec ${WM} 2>> "$HOME/xinit.log"
 else
