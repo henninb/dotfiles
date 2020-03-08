@@ -45,7 +45,7 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   make
   sudo make install
 elif [ "$OS" = "void" ]; then
-  sudo xbps-install -y i3
+  sudo xbps-install -y i3-gaps
   sudo xbps-install -y i3lock
   sudo xbps-install -y sxhkd
   sudo xbps-install -y i3blocks
