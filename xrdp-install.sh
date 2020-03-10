@@ -327,8 +327,8 @@ sudo fuser 3350/tcp
 
 # debian based
 echo sudo add-apt-repository ppa:martinx/xrdp-hwe-18.04
-echo sudo apt-get update
-echo sudo apt-get install xrdp xorgxrdp
+echo sudo apt -y update
+echo sudo apt -y install xrdp xorgxrdp
 
 xrdp --version
 

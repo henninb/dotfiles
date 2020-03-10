@@ -2,7 +2,7 @@
 
 if [ "$OS" = "Linux Mint" ]; then
   wget https://dl.grafana.com/oss/release/grafana_5.4.2_amd64.deb
-  sudo apt-get install -y adduser libfontconfig
+  sudo apt install -y adduser libfontconfig
   sudo dpkg -i grafana_5.4.2_amd64.deb
   sudo systemctl start grafana-server
   sudo systemctl status grafana-server
