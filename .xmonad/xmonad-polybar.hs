@@ -198,19 +198,19 @@ myAdditionalKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
 
 myProgramKeys =
   [
-    --("M-S-e"        , addName "open emacs" $ spawn "urxvt -e emacs")
-    ("M-S-e"        , addName "open emacs" $ spawn "emacs")
-  , ("M-e"      , addName "open neovim" $ spawn "urxvt -e nvim")
-  , ("M-r"      , addName "open lf" $ spawn "urxvt -e lf")
-  , ("M-i"        , addName "Open firefox" $ spawn "brave-browser")
-  , ("M-S-i"      , addName "Open firefox private" $ spawn ("firefox" ++ " -private-window"))
+    --("M-S-e"           , addName "open emacs" $ spawn "urxvt -e emacs")
+    ("M-S-e"             , addName "open emacs" $ spawn "emacs")
+  , ("M-e"               , addName "open neovim" $ spawn "urxvt -e nvim")
+  , ("M-r"               , addName "open lf" $ spawn "urxvt -e lf")
+  , ("M-i"               , addName "Open firefox" $ spawn "brave-browser")
+  , ("M-S-i"             , addName "Open firefox private" $ spawn ("firefox" ++ " -private-window"))
   , ("M-S-<Return>"      , addName "open default terminal" $ spawn myTerminal)
   , ("M-<Return>"        , addName "open backup terminal" $ spawn "alacritty")
   , ("M-S-<Backspace>"   , addName "" $ spawn "xdo close")
 --  , ("M-S-<Backspace>"   , addName "" $ kill)
 --  , ("M-S-<Delete>"     , addName "close a window" $ spawn "kill")
-  , ("M-S-<Escape>"     , addName "exit xmonad" $ spawn "xmonad_exit")
-  , ("M-S-p"            , addName "open dmenu" $ spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
+  , ("M-S-<Escape>"      , addName "exit xmonad" $ spawn "xmonad_exit")
+  , ("M-S-p"             , addName "open dmenu" $ spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
   ]
 
 myWindowManagerKeys =
