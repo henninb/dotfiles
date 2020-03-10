@@ -198,7 +198,8 @@ myAdditionalKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
 
 myProgramKeys =
   [
-  ("M-S-e"        , addName "open emacs" $ spawn "urxvt -e emacs")
+    --("M-S-e"        , addName "open emacs" $ spawn "urxvt -e emacs")
+    ("M-S-e"        , addName "open emacs" $ spawn "emacs")
   , ("M-e"      , addName "open neovim" $ spawn "urxvt -e nvim")
   , ("M-i"        , addName "Open firefox" $ spawn myBrowser)
   , ("M-S-i"      , addName "Open firefox private" $ spawn (myBrowser ++ " -private-window"))
