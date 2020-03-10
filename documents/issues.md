@@ -180,5 +180,20 @@ issue is with font spacing, need to better understand the issue
 ## install the patches needed to get full functionality out of st
 
 ## discover the title of a linux window
-```xdotool getactivewindow```
-```xprop```
+```
+xdotool getactivewindow
+xprop
+```
+
+## ghc compiler issues - Can't find GHC-8.8.1
+stack path
+stack setup
+$HOME/.stack/global-project/stack.yaml
+resolver: lts-14.3
+8.6.5
+stack --resolver lts-14.24
+stack --resolver lts-14.25
+stack --resolver lts-14.27
+stack --resolver ghc-8.6.5 setup
+stack --resolver ghc-8.6.5 init
+

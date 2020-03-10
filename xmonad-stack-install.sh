@@ -67,7 +67,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y wmname
 elif [ "$OS" = "void" ]; then
   sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
-  VOID_PKGS="xscreensaver feh xdotool w3m neofetch dzen2 xz make gcc gmp-devel dunst wmname"
+  VOID_PKGS="xscreensaver feh xdotool w3m neofetch dzen2 xz make gcc gmp-devel dunst wmname libXScrnSaver-devel alsa-lib-devel"
   FAILURES=""
   for i in $(echo $VOID_PKGS); do
     if ! sudo xbps-install -y "$i"; then
@@ -146,7 +146,7 @@ fi
 
 if ! stack install hlint. ; then
   echo failed hlint.
-  exit 1
+  #exit 1
 fi
 
 if ! stack install xmonad-contrib ; then
@@ -160,7 +160,7 @@ if ! stack install xmonad-extras ; then
 fi
 
 if ! stack install dbus ; then
-  echo failed xmonad-extras.
+  echo failed dbus.
   exit 1
 fi
 
