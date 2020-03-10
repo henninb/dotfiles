@@ -20,9 +20,10 @@ bindsym $mod+Shift+Return exec urxvt
 #bindsym $mod+Shift+l exec i3lock
 bindsym $mod+Shift+x exec i3lock -c 00000f
 bindsym $mod+Shift+i exec firefox -private-window
-bindsym $mod+i exec firefox
+bindsym $mod+i exec brave-browser
 bindsym $mod+e exec urxvt -e zsh -c nvim
 bindsym $mod+Shift+e exec emacs
+bindsym $mod+r exec urxvt -e zsh -c lf
 bindsym $mod+Shift+BackSpace kill
 
 # gaps settings

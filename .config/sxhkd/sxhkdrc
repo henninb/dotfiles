@@ -5,7 +5,7 @@ alt + Return
 alt + shift + i
     firefox -private-window
 alt + i
-    firefox
+    brave-browser
 alt + e
     urxvt -e nvim
 alt + shift + e

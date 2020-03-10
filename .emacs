@@ -1,4 +1,5 @@
 ; gem pristine --all
+;;; .emacs
 (setq user-full-name "Brian Henning"
       user-mail-address "henninb@msn.com")
 
@@ -10,13 +11,12 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
-
 (require 'package)
 (setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -33,7 +33,7 @@
 ;(menu-bar-mode -1)
 ;(toggle-scroll-bar -1)
 ;(tool-bar-mode -1)
-;(blink-cursor-mode -1)
+(blink-cursor-mode 1)
 
 ; visual helpers
 (global-hl-line-mode +1)
@@ -106,6 +106,11 @@
 (use-package diminish
   :ensure t)
 
+;; M-x text-mode
+;; M-x python-mode
+;; M-x shell-script-mode
+(setq-default major-mode 'text-mode)
+
 
 ;; load evil
 ; (use-package evil
@@ -167,9 +172,25 @@
   :config
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
-; git package
+;; M-x package-install RET magit RET
+;; git package
 (use-package magit
-  :bind (("C-M-g" . magit-status)))
+  :ensure t
+  :bind (("C-M-g" . magit-status))
+  )
+
+  (use-package emms
+    :ensure t
+    :config
+    (require 'emms-setup)
+    (emms-all)
+    (emms-default-players)
+   ; (setq emms-source-file-default-directory "~/Music/")
+      (require 'emms-mode-line)
+  (emms-mode-line 1)
+  (require 'emms-playing-time)
+  (emms-playing-time 1)
+    )
 
 (defun toggle-evilmode ()
   (interactive)
