@@ -15,7 +15,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S yarn
 elif [ "$OS" = "void" ]; then
-  echo void
+  echo
 elif [ "$OS" = "Gentoo" ]; then
   #echo "=sys-apps/yarn-1.15.2 ~amd64" | sudo tee -a /etc/portage/package.accept_keywords
   #echo "=dev-libs/openssl-1.1.1b-r2 ~amd64" | sudo tee -a /etc/portage/package.accept_keywords

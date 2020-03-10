@@ -375,20 +375,26 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " TODO: test the below
 "Neovim terminal
 if has('nvim')
-    "let g:loaded_python_provider = 0
-    let g:python_host_skip_check = 1
-    let g:python_host_prog = 'python'
+  let g:python_host_skip_check = 0
+  " let g:python_host_prog = 'python'
+  let g:python3_host_skip_check = 0
+  " let g:python3_host_prog = 'python3'
 
-    "let g:loaded_python3_provider = 0
-    let g:python3_host_skip_check = 1
-    let g:python3_host_prog = 'python3'
+  "TODO: termguicolors is not good for urxvt
+  "set termguicolors
+  tnoremap <C-q> <C-\><C-n>
 
-    "TODO: termguicolors is not good for urxvt
-    "set termguicolors
-    tnoremap <C-q> <C-\><C-n>
-
-    function! Term()
-        :e term://zsh
-    endfunction
-    command! Term :call Term()
+  function! Term()
+      :e term://zsh
+  endfunction
+  command! Term :call Term()
 endif
+
+set clipboard+=unnamedplus
+
+function! ClipboardYank()
+  call system('xclip -i -selection clipboard', @@)
+endfunction
+function! ClipboardPaste()
+  let @@ = system('xclip -o -selection clipboard')
+endfunction
