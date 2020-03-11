@@ -10,4 +10,6 @@ sudo apt -y update
 
 sudo apt install -y brave-browser
 
+yay -S brave-bin
+
 exit 0
