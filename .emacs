@@ -27,7 +27,7 @@
   (require 'use-package))
 
 
- (unless (package-installed-p 'evil)
+(unless (package-installed-p 'evil)
    (package-install 'evil))
 
 ;(menu-bar-mode -1)
@@ -210,6 +210,26 @@
 )
 
 ;(global-set-key (kbd "M-u") 'toggle-evilmode)
+
+(use-package haskell-mode
+  :ensure t
+)
+
+(use-package rust-mode
+  :ensure t
+)
+
+(use-package markdown-mode
+  :ensure t
+)
+
+(use-package kotlin-mode
+  :ensure t
+)
+
+(use-package json-mode
+  :ensure t
+)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
