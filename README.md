@@ -16,14 +16,14 @@
 - tails
 
 ## Software
-- terminal - urxvt, termite, st, alacritty
-- editor - neovim, doom emacs, vscode, intellij, vscodium
+- terminal - urxvt, alacritty, termite, st
+- editor - neovim, emacs, vscode, intellij, vscodium, neovim-gtk
 - shell - zsh, fish, bash
 - shell prompt - spaceship, agnoster, alien, dracula
 - zsh plugins - zsh-syntax-highlighting, zsh-autosuggestions, autojump, zsh-history-substring-search
-- file manager - ranger, lf, hunter
+- file manager - ranger, lf, hunter, spacefm
 - bar - polybar, dzen, xmobar
-- window manager - i3, xmonad, bspwm
+- window manager - xmonad, bspwm, i3
 - lock screen - i3block
 - terminal multiplexer - tmux, screen, tmate
 - media player - vlc, mpv
@@ -35,17 +35,17 @@
 - hypervisor - kvm, qemu
 - remote desktop server - xrdp
 - remote desktop client - xfreerdp
-- irc client - irssi
+- irc client - irssi, emacs (erc)
 - network packet tools - tcpdump
 - markdown reader - glow
-- browser - firefox, ddgr, lynx
+- browser - brave, firefox, ddgr, lynx
 - database client - dbeaver, sqlplus
 - database server - postgresql
 - astronomy - stellarium
 - notes - standard note, joplin
 - font - monofur, jetbrains, symbola
-- theme -dracula
-- audio player - cmus
+- theme - dracula
+- audio player - cmus, emacs ()
 - media player daemon - mpd
 - image converter - imagemagik
 - image viewer - sxiv, feh
@@ -66,7 +66,7 @@
 - terminal screen saver - cmatrix
 - window detailer - xprop
 - image clone - etcher
-- git client - tig
+- git client - tig, emacs (magit)
 - chat - discord
 - image editor - gimp
 - compositor - compton
