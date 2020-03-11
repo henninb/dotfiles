@@ -177,9 +177,9 @@
 (use-package magit
   :ensure t
   :bind (("C-M-g" . magit-status))
-  )
+)
 
-  (use-package emms
+(use-package emms
     :ensure t
     :config
     (require 'emms-setup)
@@ -190,7 +190,7 @@
   (emms-mode-line 1)
   (require 'emms-playing-time)
   (emms-playing-time 1)
-    )
+)
 
 (defun toggle-evilmode ()
   (interactive)
