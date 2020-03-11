@@ -2,9 +2,9 @@
 
 if [ "$2" = "/dev/null" ]; then
   if [ -x "$(command -v nvim)" ]; then
-    nvim $1
+    nvim "$1"
   else
-    vim $1
+    vim "$1"
   fi
 else
   if [ -x "$(command -v nvim)" ]; then
