@@ -17,6 +17,9 @@ export LC_TELEPHONE=en_US.UTF-8
 export LC_MEASUREMENT=en_US.UTF-8
 export LC_IDENTIFICATION=en_US.UTF-8
 
+# needed for spacefm theme
+export GTK2_RC_FILES=/usr/share/themes/Ant-Dracula/gtk-2.0/gtkrc
+
 
 if [ -x "$(command -v xrdb)" ]; then
   #xrdb -merge ~/.Xresources
