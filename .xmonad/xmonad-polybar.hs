@@ -44,9 +44,6 @@ import System.IO (hClose)
 
 import qualified Codec.Binary.UTF8.String as UTF8
 
------------------------------------------------------------------------------}}}
--- MAIN                                                                      {{{
---------------------------------------------------------------------------------
 --TODO: move some programs automatically to workspaces
 main :: IO ()
 main = do
@@ -55,17 +52,12 @@ main = do
     [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
 
   xmonad
-    $ dynamicProjects projects
     $ withUrgencyHook NoUrgencyHook
     $ ewmh
     $ addDescrKeys ((myModMask, xK_F1), xMessage) myAdditionalKeys
-    -- $ addDescrKeys ((myModMask, xK_F1), showKeybindings) myAdditionalKeys
     $ myConfig { logHook = dynamicLogWithPP (myLogHook dbus) }
 
------------------------------------------------------------------------------}}}
--- GLOBAL VARIABLES                                                          {{{
---------------------------------------------------------------------------------
--- General config
+
 myTerminal     = "urxvt"
 --myModMask      = mod4Mask
 myModMask      = mod1Mask
@@ -73,11 +65,10 @@ myBorderWidth  = 1
 myBrowser      = "firefox"
 mySpacing :: Int
 mySpacing      = 5
-myLargeSpacing :: Int
-myLargeSpacing = 30
-noSpacing :: Int
-noSpacing      = 0
-prompt         = 20
+--myLargeSpacing :: Int
+--myLargeSpacing = 30
+--noSpacing :: Int
+--noSpacing      = 0
 
 -- Colours
 fg        = "#ebdbb2"
@@ -101,12 +92,8 @@ white     = "#eeeeee"
 pur2      = "#5b51c9"
 blue2     = "#2266d0"
 
--- Font
-myFont = "xft:monofur for Powerline:" ++ "fontformat=truetype:size=10:antialias=true"
+--myFont = "xft:monofur for Powerline:" ++ "fontformat=truetype:size=10:antialias=true"
 
------------------------------------------------------------------------------}}}
--- LAYOUT                                                                    {{{
---------------------------------------------------------------------------------
 myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ perWS
 
 -- layout per workspace
@@ -116,7 +103,6 @@ perWS = onWorkspace wsGEN my3FT $
         onWorkspace wsMED my3FT $
         onWorkspace wsTMP myFTM $
         onWorkspace wsGAM myFT myAll -- all layouts for all other workspaces
-
 
 myFT  = myTile ||| myFull
 myFTM = myTile ||| myFull ||| myMagn
@@ -128,30 +114,6 @@ myTile = renamed [Replace "Main"] $ spacing mySpacing $ Tall 1 (3/100) (1/2)
 my3cmi = renamed [Replace "3Col"] $ spacing mySpacing $ ThreeColMid 1 (3/100) (1/2)
 myMagn = renamed [Replace "Mag"]  $ noBorders $ limitWindows 3 $ magnifiercz' 1.4 $ FixedColumn 1 20 80 10
 
--- Prompt themes
-myPromptTheme = def
-  { font              = myFont
-  , bgColor           = darkgreen
-  , fgColor           = white
-  , fgHLight          = white
-  , bgHLight          = pur2
-  , borderColor       = pur2
-  , promptBorderWidth = 0
-  , height            = prompt
-  , position          = Top
-  }
-
-warmPromptTheme = myPromptTheme
-  { bgColor           = yellow
-  , fgColor           = darkred
-  , position          = Top
-  }
-
-coldPromptTheme = myPromptTheme
-  { bgColor           = aqua
-  , fgColor           = darkgreen
-  , position          = Top
-  }
 
 wsGEN = "1"
 wsWRK = "2"
@@ -164,7 +126,8 @@ myWorkspaces :: [String]
 myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 myKeys1 :: [(String, X ())]
-myKeys1 = [   ("M-S-e", spawn "emacs")
+myKeys1 = [
+              ("M-S-e", spawn "emacs")
             , ("M-e", spawn "urxvt -e nvim")
             , ("M-r", spawn "urxvt -e lf")
           ]
@@ -186,12 +149,12 @@ projects =
             }
   ]
 
-showKeybindings :: [((KeyMask, KeySym), NamedAction)] -> NamedAction
-showKeybindings x = addName "Show Keybindings" $ io $ do
-  h <- spawnPipe "zenity --text-info --font=adobe courier"
-  hPutStr h (unlines $ showKm x)
-  hClose h
-  return ()
+--showKeybindings :: [((KeyMask, KeySym), NamedAction)] -> NamedAction
+-- showKeybindings x = addName "Show Keybindings" $ io $ do
+--  h <- spawnPipe "zenity --text-info --font=adobe courier"
+--  hPutStr h (unlines $ showKm x)
+--  hClose h
+--  return ()
 
 myAdditionalKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
   myProgramKeys ++ myWindowManagerKeys ++ myMediaKeys
@@ -288,6 +251,7 @@ myStartupHook = do
   spawn "$HOME/.config/polybar/launch-master.sh xmonad"
   --spawn "dropbox"
 
+--myConfig :: XConfig
 myConfig = def
   { terminal            = myTerminal
   , layoutHook          = myLayouts
