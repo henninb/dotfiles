@@ -1,8 +1,5 @@
 import XMonad
 
-import XMonad.Actions.CycleWS
-import XMonad.Actions.DynamicProjects
-
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
@@ -11,11 +8,8 @@ import XMonad.Hooks.Minimize
 import XMonad.Hooks.Place
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.UrgencyHook
-
 import XMonad.Util.EZConfig
 import XMonad.Util.NamedActions
-import XMonad.Util.Run
-
 import XMonad.Layout.FixedColumn
 import XMonad.Layout.LimitWindows
 import XMonad.Layout.Magnifier
@@ -24,25 +18,19 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Renamed
 import XMonad.Layout.Spacing
-import XMonad.Layout.Tabbed
 import XMonad.Layout.ThreeColumns
-
-import XMonad.Prompt
 
 import qualified DBus as D
 import qualified DBus.Client as D
 import qualified XMonad.Layout.BoringWindows as B
 
-import System.Exit
-import Graphics.X11.ExtraTypes.XF86
-
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
-import Data.Ratio ((%))
-
-import System.IO (hClose)
-
 import qualified Codec.Binary.UTF8.String as UTF8
+--import Data.Ratio ((%))
+
+--import System.IO (hClose)
+
 
 --TODO: move some programs automatically to workspaces
 main :: IO ()
@@ -56,8 +44,13 @@ main = do
     $ ewmh
     $ addDescrKeys ((myModMask, xK_F1), xMessage) myAdditionalKeys
     $ myConfig { logHook = dynamicLogWithPP (myLogHook dbus) }
+    `additionalKeysP`
+    --`additionalKeys`
+    [("M-S-<Backspace>", kill)]
+    `removeKeys`
+    []
 
-
+myTerminal :: String
 myTerminal     = "urxvt"
 --myModMask      = mod4Mask
 myModMask      = mod1Mask
@@ -65,34 +58,20 @@ myBorderWidth  = 1
 myBrowser      = "firefox"
 mySpacing :: Int
 mySpacing      = 5
---myLargeSpacing :: Int
---myLargeSpacing = 30
---noSpacing :: Int
---noSpacing      = 0
 
--- Colours
-fg        = "#ebdbb2"
+-- Colors
+bg :: String
 bg        = "#282828"
-gray      = "#a89984"
-bg1       = "#3c3836"
-bg2       = "#505050"
-bg3       = "#665c54"
-bg4       = "#7c6f64"
-
-green     = "#b8bb26"
-darkgreen = "#98971a"
+red :: String
 red       = "#fb4934"
-darkred   = "#cc241d"
-yellow    = "#fabd2f"
+blue ::String
 blue      = "#83a598"
+purple :: String
 purple    = "#d3869b"
-aqua      = "#8ec07c"
-white     = "#eeeeee"
-
+pur2 :: String
 pur2      = "#5b51c9"
+blue2 :: String
 blue2     = "#2266d0"
-
---myFont = "xft:monofur for Powerline:" ++ "fontformat=truetype:size=10:antialias=true"
 
 myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ perWS
 
@@ -135,27 +114,6 @@ myKeys1 = [
 myKeys :: [((ButtonMask, KeySym), X ())]
 myKeys = [ ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock") ]
 
-projects :: [Project]
-projects =
-  [ Project { projectName      = "work"
-            , projectDirectory = "~/"
-            , projectStartHook = Just $ do spawn "urxvt -e tmux"
-                                           spawn myTerminal
-            }
-  , Project { projectName      = "term"
-            , projectDirectory = "~/projects/"
-            , projectStartHook = Just $ do spawn myBrowser
-                                           spawn myTerminal
-            }
-  ]
-
---showKeybindings :: [((KeyMask, KeySym), NamedAction)] -> NamedAction
--- showKeybindings x = addName "Show Keybindings" $ io $ do
---  h <- spawnPipe "zenity --text-info --font=adobe courier"
---  hPutStr h (unlines $ showKm x)
---  hClose h
---  return ()
-
 myAdditionalKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
   myProgramKeys ++ myWindowManagerKeys ++ myMediaKeys
 
@@ -168,7 +126,7 @@ myProgramKeys =
   , ("M-S-i"             , addName "Open firefox private" $ spawn ("firefox" ++ " -private-window"))
   , ("M-S-<Return>"      , addName "open default terminal" $ spawn myTerminal)
   , ("M-<Return>"        , addName "open backup terminal" $ spawn "alacritty")
-  , ("M-S-<Backspace>"   , addName "" $ spawn "xdo close")
+  --, ("M-S-<Backspace>"   , addName "" $ spawn "xdo close")
   , ("M-S-<Escape>"      , addName "exit xmonad" $ spawn "xmonad_exit")
   , ("M-S-p"             , addName "open dmenu" $ spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
   ]
