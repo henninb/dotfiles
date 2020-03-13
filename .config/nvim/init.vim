@@ -398,3 +398,9 @@ endfunction
 function! ClipboardPaste()
   let @@ = system('xclip -o -selection clipboard')
 endfunction
+
+" Hex read
+nmap <leader>hr :%!xxd<cr> :set filetype=xxd<cr>
+
+" Hex write
+nmap <leader>hw :%!xxd -r<cr> :set binary<cr> :set filetype=<cr>

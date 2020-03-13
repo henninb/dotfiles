@@ -14,6 +14,7 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 ;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
@@ -230,6 +231,46 @@
 (use-package json-mode
   :ensure t
 )
+
+;(use-package eval-in-repl-python
+(use-package eval-in-repl
+ :ensure t
+)
+
+;;C-c C-p
+;;; Python support ;;
+(require 'python) ; if not done elsewhere
+(require 'eval-in-repl-python)
+ (add-hook 'python-mode-hook
+ '(lambda ()
+ (local-set-key (kbd "<C-return>") 'eir-eval-in-python)))
+(setq python-shell-completion-native-disabled-interpreters '("python"))
+
+;(eval-in-repl-javascript)
+;;python2 -m pip install --user --upgrade virtualenv
+;;pip install virtualenv
+;;pip3 install virtualenv
+;; use elpy mode for python
+(use-package elpy
+  :ensure t
+)
+
+;; recreates an empty *scratch* buffer if it is killed.
+(defun prepare-scratch-for-kill ()
+  (save-excursion
+    (set-buffer (get-buffer-create "*scratch*"))
+    (add-hook 'kill-buffer-query-functions 'kill-scratch-buffer t)))
+
+(defun kill-scratch-buffer ()
+  (let (kill-buffer-query-functions)
+    (kill-buffer (current-buffer)))
+  ;; no way, *scratch* shall live
+  (prepare-scratch-for-kill)
+  ;; Since we "killed" it, don't let caller try too
+  nil)
+
+(prepare-scratch-for-kill)
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

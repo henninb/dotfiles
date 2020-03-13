@@ -11,7 +11,25 @@
 1.5 command-line
 1.6 Ex-mode
 
-master motions and operators di" - delete inside double quote on a line - example line is: text before key="value"
+## hex convert
+```
+hexdump -C file.txt
+perl -pi -e 's/\x{c2}\x{a0}//g' file.txt
+```
+
+## hex mode
+```
+:%!xxd
+```
+
+## inverse hex mode
+```
+:%!xxd -r
+```
+
+## master motions and operators
+`di"` - delete inside double quote on a line - example line is: text before key="value"
+
 ## delete inside single quote on a line - example line is: text before key='value'
 ```
 di'

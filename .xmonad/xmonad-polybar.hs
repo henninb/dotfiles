@@ -128,9 +128,6 @@ myTile = renamed [Replace "Main"] $ spacing mySpacing $ Tall 1 (3/100) (1/2)
 my3cmi = renamed [Replace "3Col"] $ spacing mySpacing $ ThreeColMid 1 (3/100) (1/2)
 myMagn = renamed [Replace "Mag"]  $ noBorders $ limitWindows 3 $ magnifiercz' 1.4 $ FixedColumn 1 20 80 10
 
------------------------------------------------------------------------------}}}
--- THEMES                                                                    {{{
---------------------------------------------------------------------------------
 -- Prompt themes
 myPromptTheme = def
   { font              = myFont
@@ -156,9 +153,6 @@ coldPromptTheme = myPromptTheme
   , position          = Top
   }
 
------------------------------------------------------------------------------}}}
--- WORKSPACES                                                                {{{
---------------------------------------------------------------------------------
 wsGEN = "1"
 wsWRK = "2"
 wsSYS = "3"
@@ -167,11 +161,17 @@ wsTMP = "5"
 wsGAM = "6"
 
 myWorkspaces :: [String]
-myWorkspaces = [wsGEN, wsWRK, wsSYS, wsMED, wsTMP, wsGAM, "7", "8", "9"]
+myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
------------------------------------------------------------------------------}}}
--- PROJECTS                                                                  {{{
---------------------------------------------------------------------------------
+myKeys1 :: [(String, X ())]
+myKeys1 = [   ("M-S-e", spawn "emacs")
+            , ("M-e", spawn "urxvt -e nvim")
+            , ("M-r", spawn "urxvt -e lf")
+          ]
+
+myKeys :: [((ButtonMask, KeySym), X ())]
+myKeys = [ ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock") ]
+
 projects :: [Project]
 projects =
   [ Project { projectName      = "work"
@@ -198,7 +198,6 @@ myAdditionalKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
 
 myProgramKeys =
   [
-    --("M-S-e"           , addName "open emacs" $ spawn "urxvt -e emacs")
     ("M-S-e"             , addName "open emacs" $ spawn "emacs")
   , ("M-e"               , addName "open neovim" $ spawn "urxvt -e nvim")
   , ("M-r"               , addName "open lf" $ spawn "urxvt -e lf")
@@ -207,8 +206,6 @@ myProgramKeys =
   , ("M-S-<Return>"      , addName "open default terminal" $ spawn myTerminal)
   , ("M-<Return>"        , addName "open backup terminal" $ spawn "alacritty")
   , ("M-S-<Backspace>"   , addName "" $ spawn "xdo close")
---  , ("M-S-<Backspace>"   , addName "" $ kill)
---  , ("M-S-<Delete>"     , addName "close a window" $ spawn "kill")
   , ("M-S-<Escape>"      , addName "exit xmonad" $ spawn "xmonad_exit")
   , ("M-S-p"             , addName "open dmenu" $ spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
   ]
@@ -245,9 +242,6 @@ myMediaKeys =
   , ("C-S-/"                   , addName "Toggle play/pause" $ spawn "mpc toggle")
   ]
 
------------------------------------------------------------------------------}}}
--- MANAGEHOOK                                                                {{{
---------------------------------------------------------------------------------
 myManageHook = composeAll
     [ className =? "MPlayer"          --> doFloat
     , className =? "Gimp"             --> doFloat
@@ -260,9 +254,6 @@ myManageHook = composeAll
 
 myManageHook' = composeOne [ isFullscreen -?> doFullFloat ]
 
------------------------------------------------------------------------------}}}
--- LOGHOOK                                                                   {{{
---------------------------------------------------------------------------------
 myLogHook :: D.Client -> PP
 myLogHook dbus = def
     { ppOutput = dbusOutput dbus
@@ -292,17 +283,11 @@ myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
   where
     sstr = shorten len str
 
------------------------------------------------------------------------------}}}
--- STARTUPHOOK                                                               {{{
---------------------------------------------------------------------------------
 myStartupHook = do
   setWMName "LG3D"
   spawn "$HOME/.config/polybar/launch-master.sh xmonad"
   --spawn "dropbox"
 
------------------------------------------------------------------------------}}}
--- CONFIG                                                                    {{{
---------------------------------------------------------------------------------
 myConfig = def
   { terminal            = myTerminal
   , layoutHook          = myLayouts
@@ -323,4 +308,3 @@ myConfig = def
   , workspaces          = myWorkspaces
   , modMask             = myModMask
   }
------------------------------------------------------------------------------}}}
