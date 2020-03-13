@@ -27,12 +27,7 @@ import qualified XMonad.Layout.BoringWindows as B
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import qualified Codec.Binary.UTF8.String as UTF8
---import Data.Ratio ((%))
 
---import System.IO (hClose)
-
-
---TODO: move some programs automatically to workspaces
 main :: IO ()
 main = do
   dbus <- D.connectSession
@@ -42,13 +37,10 @@ main = do
   xmonad
     $ withUrgencyHook NoUrgencyHook
     $ ewmh
-    $ addDescrKeys ((myModMask, xK_F1), xMessage) myAdditionalKeys
     $ myConfig { logHook = dynamicLogWithPP (myLogHook dbus) }
-    `additionalKeysP`
-    --`additionalKeys`
-    [("M-S-<Backspace>", kill)]
-    `removeKeys`
-    []
+    `additionalKeysP` myKeys1
+    -- `additionalKeys` []
+    --`removeKeys` []
 
 myTerminal :: String
 myTerminal     = "urxvt"
@@ -106,12 +98,20 @@ myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 myKeys1 :: [(String, X ())]
 myKeys1 = [
-              ("M-S-e", spawn "emacs")
-            , ("M-e", spawn "urxvt -e nvim")
-            , ("M-r", spawn "urxvt -e lf")
+    ("M-S-e"             , spawn "emacs")
+  , ("M-e"               , spawn "urxvt -e nvim")
+  , ("M-r"               , spawn "urxvt -e lf")
+  , ("M-i"               , spawn "brave-browser")
+  , ("M-S-i"             , spawn ("firefox" ++ " -private-window"))
+  , ("M-S-<Return>"      , spawn myTerminal)
+  , ("M-<Return>"        , spawn "alacritty")
+  , ("M-S-<Backspace>"   , spawn "xdo close")
+  , ("M-S-<Escape>"      , spawn "xmonad_exit")
+  , ("M-S-p"             , spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
           ]
 
-myKeys :: [((ButtonMask, KeySym), X ())]
+myKeys :: [((KeyMask, KeySym), X ())]
+--myKeys :: [((ButtonMask, KeySym), X ())]
 myKeys = [ ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock") ]
 
 myAdditionalKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
@@ -133,31 +133,18 @@ myProgramKeys =
 
 myWindowManagerKeys =
   [
-  --("M-b"        , addName "Do (not) respect polybar" $ sendMessage ToggleStruts)
-  --, ("M-S-b"      , addName "Increase spacing between windows" $ incSpacing mySpacing)
-  --, ("M-v"        , addName "Set default spacing between windows" $ setSpacing mySpacing)
-  --, ("M-S-v"      , addName "Decrease spacing between windows" $ incSpacing (-mySpacing))
-  --, ("M-c"        , addName "Set to default large spacing between windows" $ setScreenWindowSpacing myLargeSpacing)
-  --, ("M-u"        , addName "Switch view to project" $ switchProjectPrompt warmPromptTheme)
-  --, ("M-S-u"      , addName "Send current window to project" $ shiftToProjectPrompt coldPromptTheme)
-  --, ("M-S-h"      , addName "Move to previous non empty workspace" $ moveTo Prev NonEmptyWS)
-  --, ("M-S-l"      , addName "Move to next non empty workspace" $ moveTo Next NonEmptyWS)
   ]
 
 myMediaKeys =
   [ ("<XF86MonBrightnessUp>"   , addName "Increase backlight" $ spawn "xbacklight -inc 10")
-  -- mpc
   , ("<XF86AudioPrev>"         , addName "Previous track" $ spawn "mpc prev")
   , ("<XF86AudioNext>"         , addName "Next track" $ spawn "mpc next")
   , ("<XF86AudioPlay>"         , addName "Toggle play/pause" $ spawn "mpc toggle")
-  -- volume
   , ("<XF86AudioRaiseVolume>"  , addName "Raise volume" $ spawn "pactl set-sink-volume 1 +5%")
   , ("<XF86AudioLowerVolume>"  , addName "Lower volume" $ spawn "pactl set-sink-volume 1 -5%")
   , ("<XF86AudioMute>"         , addName "Toggle mute" $ spawn "pactl set-sink-mute 1 toggle")
-  -- volume: for if meta keys are not available
   , ("C-S-="                   , addName "Raise volume" $ spawn "pactl set-sink-volume 1 +5%")
   , ("C-S--"                   , addName "Lower volume" $ spawn "pactl set-sink-volume 1 -5%")
-  -- media keys if meta keys are not available
   , ("C-S-,"                   , addName "Previous track" $ spawn "mpc prev")
   , ("C-S-."                   , addName "Next track" $ spawn "mpc next")
   , ("C-S-/"                   , addName "Toggle play/pause" $ spawn "mpc toggle")
