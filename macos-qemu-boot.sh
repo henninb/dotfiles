@@ -9,6 +9,8 @@ OVMF=$VMDIR/firmware
 echo udisksctl mount -b /dev/sda1
 
 if [ "$(uname -n)" = "silverfox" ]; then
+  echo udisksctl mount -b /dev/sda1
+  echo  "to exit the mac ctl+alt+g"
   qemu-system-x86_64 \
     -enable-kvm \
     -m 6G \
@@ -28,11 +30,11 @@ if [ "$(uname -n)" = "silverfox" ]; then
     -drive id=ESP,if=none,format=qcow2,file=/media/henninb/Data/ESP.qcow2 \
     -device ide-hd,bus=sata.2,drive=ESP \
     -drive id=SystemDisk,if=none,file=/media/henninb/Data/macos-qemu-disk.qcow2 \
-    -device ide-hd,bus=sata.4,drive=SystemDisk
-    elif [ "$(uname -n)" = "archlinux" ]; then
+    -device ide-hd,bus=sata.4,drive=SystemDisk \
+    -nogrphic -vnc :0 -k en-us
+elif [ "$(uname -n)" = "archlinux" ]; then
   echo udisksctl mount -b /dev/sda1
-  echo leave a mac
-  echo  "ctl+alt+g"
+  echo  "to exit the mac ctl+alt+g"
 
   qemu-system-x86_64 \
     -enable-kvm \
@@ -55,7 +57,7 @@ if [ "$(uname -n)" = "silverfox" ]; then
     -drive id=SystemDisk,if=none,file=/run/media/henninb/MyVolume/macos-qemu-disk.qcow2 \
     -device ide-hd,bus=sata.4,drive=SystemDisk
 else
-  echo
+  echo need to configure
 fi
 
 exit 0

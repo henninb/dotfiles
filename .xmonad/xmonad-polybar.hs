@@ -19,6 +19,7 @@ import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Renamed
 import XMonad.Layout.Spacing
 import XMonad.Layout.ThreeColumns
+import XMonad.Layout.WindowArranger
 
 import qualified DBus as D
 import qualified DBus.Client as D
@@ -75,15 +76,31 @@ perWS = onWorkspace wsGEN my3FT $
         onWorkspace wsTMP myFTM $
         onWorkspace wsGAM myFT myAll -- all layouts for all other workspaces
 
-myFT  = myTile ||| myFull
-myFTM = myTile ||| myFull ||| myMagn
-my3FT = myTile ||| myFull ||| my3cmi
-myAll = myTile ||| myFull ||| my3cmi ||| myMagn
+myFT  = myTileLayout ||| myFullLayout
+myFTM = myTileLayout ||| myFullLayout ||| myMagn
+my3FT = myTileLayout ||| myFullLayout ||| my3cmi
+myAll = myTileLayout ||| myFullLayout ||| my3cmi ||| myMagn
 
-myFull = renamed [Replace "Full"] $ spacing 0 $ noBorders Full
-myTile = renamed [Replace "Main"] $ spacing mySpacing $ Tall 1 (3/100) (1/2)
-my3cmi = renamed [Replace "3Col"] $ spacing mySpacing $ ThreeColMid 1 (3/100) (1/2)
-myMagn = renamed [Replace "Mag"]  $ noBorders $ limitWindows 3 $ magnifiercz' 1.4 $ FixedColumn 1 20 80 10
+myFullLayout = renamed [Replace "Full"]
+--    $ spacing 0
+    $ noBorders Full
+myTileLayout = renamed [Replace "Main"]
+--    $ spacing mySpacing
+    $ Tall 1 (3/100) (1/2)
+my3cmi = renamed [Replace "3Col"]
+--    $ spacing mySpacing
+    $ ThreeColMid 1 (3/100) (1/2)
+myMagn = renamed [Replace "Mag"]
+    $ noBorders
+    $ limitWindows 3
+    $ magnifiercz' 1.4
+    $ FixedColumn 1 20 80 10
+commonLayout = renamed [Replace "common"]
+    $ avoidStruts
+--    $ gaps [(U,5), (D,5)]
+--    $ spacing 10
+    $ Tall 1 (5/100) (1/3)
+
 
 
 wsGEN = "1"
@@ -92,6 +109,9 @@ wsSYS = "3"
 wsMED = "4"
 wsTMP = "5"
 wsGAM = "6"
+ws7 = "7"
+ws8 = "8"
+ws9 = "9"
 
 myWorkspaces :: [String]
 myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -108,6 +128,26 @@ myKeys1 = [
   , ("M-S-<Backspace>"   , spawn "xdo close")
   , ("M-S-<Escape>"      , spawn "xmonad_exit")
   , ("M-S-p"             , spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
+
+        , ("M-m", windows W.focusMaster)             -- Move focus to the master window
+        , ("M-j", windows W.focusDown)               -- Move focus to the next window
+        , ("M-k", windows W.focusUp)                 -- Move focus to the prev window
+        , ("M-S-m", windows W.swapMaster)            -- Swap the focused window and the master window
+        , ("M-S-j", windows W.swapDown)              -- Swap the focused window with the next window
+        , ("M-S-k", windows W.swapUp)                -- Swap the focused window with the prev window
+        , ("M-<Up>", sendMessage (MoveUp 10))             --  Move focused window to up
+        , ("M-<Down>", sendMessage (MoveDown 10))         --  Move focused window to down
+        , ("M-<Right>", sendMessage (MoveRight 10))       --  Move focused window to right
+        , ("M-<Left>", sendMessage (MoveLeft 10))         --  Move focused window to left
+        , ("M-S-<Up>", sendMessage (IncreaseUp 10))       --  Increase size of focused window up
+        , ("M-S-<Down>", sendMessage (IncreaseDown 10))   --  Increase size of focused window down
+        , ("M-S-<Right>", sendMessage (IncreaseRight 10)) --  Increase size of focused window right
+        , ("M-S-<Left>", sendMessage (IncreaseLeft 10))   --  Increase size of focused window left
+        , ("M-C-<Up>", sendMessage (DecreaseUp 10))       --  Decrease size of focused window up
+        , ("M-C-<Down>", sendMessage (DecreaseDown 10))   --  Decrease size of focused window down
+        , ("M-C-<Right>", sendMessage (DecreaseRight 10)) --  Decrease size of focused window right
+        , ("M-C-<Left>", sendMessage (DecreaseLeft 10))   --  Decrease size of focused window left
+
           ]
 
 myKeys :: [((KeyMask, KeySym), X ())]
@@ -199,7 +239,7 @@ myStartupHook = do
 --myConfig :: XConfig
 myConfig = def
   { terminal            = myTerminal
-  , layoutHook          = myLayouts
+  , layoutHook          = windowArrange myLayouts
   , manageHook          = placeHook(smart(0.5, 0.5))
       <+> manageDocks
       <+> myManageHook
