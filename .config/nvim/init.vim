@@ -40,7 +40,6 @@ endif
    Plug 'git@github.com:vim-syntastic/syntastic.git'
    Plug 'git@github.com:svermeulen/vim-subversive.git' " search and replace tool
    Plug 'git@github.com:bronson/vim-trailing-whitespace.git' " remove trailing whitespace
-   Plug 'git@github.com:vim-airline/vim-airline.git'
    Plug 'neoclide/coc.nvim', {'branch': 'release'}
    Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'} " for javascript
    Plug 'git@github.com:dense-analysis/ale.git' " linter
@@ -65,6 +64,7 @@ endif
    Plug 'git@github.com:neovimhaskell/haskell-vim.git'
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
    Plug 'ryanoasis/vim-devicons'
+   Plug 'git@github.com:vim-airline/vim-airline.git'
 "   Plug 'jiangmiao/auto-pairs' " used for auto closing quotes etc
 "   Plug 'neovimhaskell/haskell-vim'
 "   Plug 'git@github.com:itchyny/vim-haskell-indent.git'
