@@ -20,6 +20,7 @@ import XMonad.Layout.Renamed
 import XMonad.Layout.Spacing
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.WindowArranger
+import XMonad.Layout.Gaps
 
 import qualified DBus as D
 import qualified DBus.Client as D
@@ -76,13 +77,14 @@ perWS = onWorkspace wsGEN my3FT $
         onWorkspace wsTMP myFTM $
         onWorkspace wsGAM myFT myAll -- all layouts for all other workspaces
 
-myFT  = myTileLayout ||| myFullLayout
+myFT  = myTileLayout ||| myFullLayout ||| commonLayout
 myFTM = myTileLayout ||| myFullLayout ||| myMagn
 my3FT = myTileLayout ||| myFullLayout ||| my3cmi
 myAll = myTileLayout ||| myFullLayout ||| my3cmi ||| myMagn
 
 myFullLayout = renamed [Replace "Full"]
---    $ spacing 0
+    -- $ spacing 0
+    $ gaps [(U,5), (D,5)]
     $ noBorders Full
 myTileLayout = renamed [Replace "Main"]
 --    $ spacing mySpacing
@@ -97,7 +99,7 @@ myMagn = renamed [Replace "Mag"]
     $ FixedColumn 1 20 80 10
 commonLayout = renamed [Replace "common"]
     $ avoidStruts
---    $ gaps [(U,5), (D,5)]
+    $ gaps [(U,5), (D,5)]
 --    $ spacing 10
     $ Tall 1 (5/100) (1/3)
 
@@ -129,66 +131,66 @@ myKeys1 = [
   , ("M-S-<Escape>"      , spawn "xmonad_exit")
   , ("M-S-p"             , spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
 
-        , ("M-m", windows W.focusMaster)             -- Move focus to the master window
-        , ("M-j", windows W.focusDown)               -- Move focus to the next window
-        , ("M-k", windows W.focusUp)                 -- Move focus to the prev window
-        , ("M-S-m", windows W.swapMaster)            -- Swap the focused window and the master window
-        , ("M-S-j", windows W.swapDown)              -- Swap the focused window with the next window
-        , ("M-S-k", windows W.swapUp)                -- Swap the focused window with the prev window
-        , ("M-<Up>", sendMessage (MoveUp 10))             --  Move focused window to up
-        , ("M-<Down>", sendMessage (MoveDown 10))         --  Move focused window to down
-        , ("M-<Right>", sendMessage (MoveRight 10))       --  Move focused window to right
-        , ("M-<Left>", sendMessage (MoveLeft 10))         --  Move focused window to left
-        , ("M-S-<Up>", sendMessage (IncreaseUp 10))       --  Increase size of focused window up
-        , ("M-S-<Down>", sendMessage (IncreaseDown 10))   --  Increase size of focused window down
-        , ("M-S-<Right>", sendMessage (IncreaseRight 10)) --  Increase size of focused window right
-        , ("M-S-<Left>", sendMessage (IncreaseLeft 10))   --  Increase size of focused window left
-        , ("M-C-<Up>", sendMessage (DecreaseUp 10))       --  Decrease size of focused window up
-        , ("M-C-<Down>", sendMessage (DecreaseDown 10))   --  Decrease size of focused window down
-        , ("M-C-<Right>", sendMessage (DecreaseRight 10)) --  Decrease size of focused window right
-        , ("M-C-<Left>", sendMessage (DecreaseLeft 10))   --  Decrease size of focused window left
+  , ("M-m", windows W.focusMaster)             -- Move focus to the master window
+  , ("M-j", windows W.focusDown)               -- Move focus to the next window
+  , ("M-k", windows W.focusUp)                 -- Move focus to the prev window
+  , ("M-S-m", windows W.swapMaster)            -- Swap the focused window and the master window
+  , ("M-S-j", windows W.swapDown)              -- Swap the focused window with the next window
+  , ("M-S-k", windows W.swapUp)                -- Swap the focused window with the prev window
+  , ("M-<Up>", sendMessage (MoveUp 10))             --  Move focused window to up
+  , ("M-<Down>", sendMessage (MoveDown 10))         --  Move focused window to down
+  , ("M-<Right>", sendMessage (MoveRight 10))       --  Move focused window to right
+  , ("M-<Left>", sendMessage (MoveLeft 10))         --  Move focused window to left
+  , ("M-S-<Up>", sendMessage (IncreaseUp 10))       --  Increase size of focused window up
+  , ("M-S-<Down>", sendMessage (IncreaseDown 10))   --  Increase size of focused window down
+  , ("M-S-<Right>", sendMessage (IncreaseRight 10)) --  Increase size of focused window right
+  , ("M-S-<Left>", sendMessage (IncreaseLeft 10))   --  Increase size of focused window left
+  , ("M-C-<Up>", sendMessage (DecreaseUp 10))       --  Decrease size of focused window up
+  , ("M-C-<Down>", sendMessage (DecreaseDown 10))   --  Decrease size of focused window down
+  , ("M-C-<Right>", sendMessage (DecreaseRight 10)) --  Decrease size of focused window right
+  , ("M-C-<Left>", sendMessage (DecreaseLeft 10))   --  Decrease size of focused window left
 
-          ]
+  ]
 
 myKeys :: [((KeyMask, KeySym), X ())]
 --myKeys :: [((ButtonMask, KeySym), X ())]
 myKeys = [ ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock") ]
 
-myAdditionalKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
-  myProgramKeys ++ myWindowManagerKeys ++ myMediaKeys
+-- myAdditionalKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
+--   myProgramKeys ++ myWindowManagerKeys ++ myMediaKeys
 
-myProgramKeys =
-  [
-    ("M-S-e"             , addName "open emacs" $ spawn "emacs")
-  , ("M-e"               , addName "open neovim" $ spawn "urxvt -e nvim")
-  , ("M-r"               , addName "open lf" $ spawn "urxvt -e lf")
-  , ("M-i"               , addName "Open firefox" $ spawn "brave-browser")
-  , ("M-S-i"             , addName "Open firefox private" $ spawn ("firefox" ++ " -private-window"))
-  , ("M-S-<Return>"      , addName "open default terminal" $ spawn myTerminal)
-  , ("M-<Return>"        , addName "open backup terminal" $ spawn "alacritty")
-  , ("M-S-<Backspace>"   , addName "" $ spawn "xdo close")
-  , ("M-S-<Escape>"      , addName "exit xmonad" $ spawn "xmonad_exit")
-  , ("M-S-p"             , addName "open dmenu" $ spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
-  ]
+-- myProgramKeys =
+--   [
+--     ("M-S-e"             , addName "open emacs" $ spawn "emacs")
+--   , ("M-e"               , addName "open neovim" $ spawn "urxvt -e nvim")
+--   , ("M-r"               , addName "open lf" $ spawn "urxvt -e lf")
+--   , ("M-i"               , addName "Open firefox" $ spawn "brave-browser")
+--   , ("M-S-i"             , addName "Open firefox private" $ spawn ("firefox" ++ " -private-window"))
+--   , ("M-S-<Return>"      , addName "open default terminal" $ spawn myTerminal)
+--   , ("M-<Return>"        , addName "open backup terminal" $ spawn "alacritty")
+--   , ("M-S-<Backspace>"   , addName "" $ spawn "xdo close")
+--   , ("M-S-<Escape>"      , addName "exit xmonad" $ spawn "xmonad_exit")
+--   , ("M-S-p"             , addName "open dmenu" $ spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
+--   ]
 
-myWindowManagerKeys =
-  [
-  ]
+-- myWindowManagerKeys =
+--   [
+--   ]
 
-myMediaKeys =
-  [ ("<XF86MonBrightnessUp>"   , addName "Increase backlight" $ spawn "xbacklight -inc 10")
-  , ("<XF86AudioPrev>"         , addName "Previous track" $ spawn "mpc prev")
-  , ("<XF86AudioNext>"         , addName "Next track" $ spawn "mpc next")
-  , ("<XF86AudioPlay>"         , addName "Toggle play/pause" $ spawn "mpc toggle")
-  , ("<XF86AudioRaiseVolume>"  , addName "Raise volume" $ spawn "pactl set-sink-volume 1 +5%")
-  , ("<XF86AudioLowerVolume>"  , addName "Lower volume" $ spawn "pactl set-sink-volume 1 -5%")
-  , ("<XF86AudioMute>"         , addName "Toggle mute" $ spawn "pactl set-sink-mute 1 toggle")
-  , ("C-S-="                   , addName "Raise volume" $ spawn "pactl set-sink-volume 1 +5%")
-  , ("C-S--"                   , addName "Lower volume" $ spawn "pactl set-sink-volume 1 -5%")
-  , ("C-S-,"                   , addName "Previous track" $ spawn "mpc prev")
-  , ("C-S-."                   , addName "Next track" $ spawn "mpc next")
-  , ("C-S-/"                   , addName "Toggle play/pause" $ spawn "mpc toggle")
-  ]
+-- myMediaKeys =
+--   [ ("<XF86MonBrightnessUp>"   , addName "Increase backlight" $ spawn "xbacklight -inc 10")
+--   , ("<XF86AudioPrev>"         , addName "Previous track" $ spawn "mpc prev")
+--   , ("<XF86AudioNext>"         , addName "Next track" $ spawn "mpc next")
+--   , ("<XF86AudioPlay>"         , addName "Toggle play/pause" $ spawn "mpc toggle")
+--   , ("<XF86AudioRaiseVolume>"  , addName "Raise volume" $ spawn "pactl set-sink-volume 1 +5%")
+--   , ("<XF86AudioLowerVolume>"  , addName "Lower volume" $ spawn "pactl set-sink-volume 1 -5%")
+--   , ("<XF86AudioMute>"         , addName "Toggle mute" $ spawn "pactl set-sink-mute 1 toggle")
+--   , ("C-S-="                   , addName "Raise volume" $ spawn "pactl set-sink-volume 1 +5%")
+--   , ("C-S--"                   , addName "Lower volume" $ spawn "pactl set-sink-volume 1 -5%")
+--   , ("C-S-,"                   , addName "Previous track" $ spawn "mpc prev")
+--   , ("C-S-."                   , addName "Next track" $ spawn "mpc next")
+--   , ("C-S-/"                   , addName "Toggle play/pause" $ spawn "mpc toggle")
+--   ]
 
 myManageHook = composeAll
     [ className =? "MPlayer"          --> doFloat
