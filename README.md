@@ -10,6 +10,10 @@
 - Fedora
 - FreeBSD
 - MacOS
+- HaikuOS
+
+## Operating Systems - Yet to Explore
+- Bedrock Linux
 
 ## Operating Systems - Security/Privacy
 - qubes
