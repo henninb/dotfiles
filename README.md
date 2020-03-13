@@ -48,7 +48,8 @@
 - audio player - cmus, emacs ()
 - media player daemon - mpd
 - image converter - imagemagik
-- image viewer - sxiv, feh
+- image viewer - sxiv
+- wallpaper manager - feh, nitrogen
 - burning images - k3b, cdrecord
 - podcast client - ???
 - process viewer - htop
