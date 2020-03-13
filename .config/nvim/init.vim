@@ -64,6 +64,7 @@ endif
    Plug 'udalov/kotlin-vim'
    Plug 'git@github.com:neovimhaskell/haskell-vim.git'
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
+   Plug 'ryanoasis/vim-devicons'
 "   Plug 'jiangmiao/auto-pairs' " used for auto closing quotes etc
 "   Plug 'neovimhaskell/haskell-vim'
 "   Plug 'git@github.com:itchyny/vim-haskell-indent.git'
