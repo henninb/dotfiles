@@ -255,7 +255,20 @@
 
 (use-package helm
    :ensure t
- )
+)
+
+(use-package ido
+   :ensure t
+)
+
+; music player
+(use-package bongo
+   :ensure t
+     :init (progn
+    (setq bongo-default-directory "~/media/"
+    bongo-confirm-flush-playlist nil
+    bongo-insert-whole-directory-trees nil))
+)
 
 ;; recreates an empty *scratch* buffer if it is killed.
 (defun prepare-scratch-for-kill ()
@@ -281,7 +294,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" default)))
+    ("e1ecb0536abec692b5a5e845067d75273fe36f24d01210bf0aa5842f2a7e029f" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" default)))
  '(package-selected-packages
    (quote
     (diminish use-package smart-mode-line-powerline-theme doom-themes))))

@@ -19,11 +19,11 @@ fi
 mkdir -p media
 
 fun_download() {
-  if [ ! -f media/$2 ]; then
-    youtube-dl -f bestaudio --extract-audio $1 --output media/$2
+  if [ ! -f "media/$2" ]; then
+    youtube-dl -f bestaudio --extract-audio "$1" --output "media/$2"
     echo $(basename media/$2 .opus)
   else
-    echo $2 already exists.
+    echo "$2 already exists."
   fi
 }
 
@@ -94,7 +94,7 @@ fun_download 'https://www.youtube.com/watch?v=AxOsIoejw4E' Hallelujah.opus
 fun_download 'https://www.youtube.com/watch?v=1SiylvmFI_8' arms_of_the_angels.opus
 
 echo find -name "*.opus" -exec ffmpeg -i {} {}.mp3 \;
-echo ffmpeg -i Helene_Fischer_Atemlos_durch_die_Nacht.opus -acodec opus Helene_Fischer_Atemlos_durch_die_Nacht.opus.mp3
+echo ffmpeg -i Helene_Fischer_Atemlos_durch_die_Nacht.opus Helene_Fischer_Atemlos_durch_die_Nacht.opus.mp3
 echo cvlc can play any media via the command line
 
 exit 0
