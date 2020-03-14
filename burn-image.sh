@@ -13,7 +13,9 @@ echo does not write dvdr+ disks
 if [ -x "$(command -v wodim)" ]; then
   wodim dev=/dev/sr0 --scanbus
   #sudo wodim dev=/dev/sr0 -v -data "${FILE}"
-  sudo wodim -eject -tao speed=0 dev=/dev/sr0 -v -data  "${FILE}"
+  #sudo wodim -eject -tao speed=0 dev=/dev/sr0 -v -data  "${FILE}"
+  #sudo wodim -dao speed=0 dev=/dev/sr0 -v -data "${FILE}"
+  sudo wodim speed=0 dev=/dev/sr0 -v -data "${FILE}"
   #driver=mmc_dvdplusr
   #driveropts=burnfree
 else
