@@ -1,20 +1,17 @@
-sudo xbps-install -S  ConsoleKit2
+#!/bin/sh
 
-pulseaudio
- xbps-install -S alsa-utils
+sudo xbps-install -S ConsoleKit2 pulseaudio alsa-utils
 
+sudo ln -s /etc/sv/alsa /var/service/
+sudo ln -s /etc/sv/dbus /var/service/
+sudo ln -s /etc/sv/cgmanager /var/service/
+sudo ln -s /etc/sv/consolekit /var/service/
+sudo usermod -a -G pulse-access henninb
 
- voidbox ~  master [!] ❯ ln -s /etc/sv/alsa /var/service/                       -- INSERT --
-ln: failed to create symbolic link '/var/service/alsa': Permission denied
-voidbox ~  master [!] ❯ sudo ln -s /etc/sv/alsa /var/service/                  -- INSERT --
-voidbox ~  master [!] ❯ sudo ln -s /etc/sv/dbus /var/service/                  -- INSERT --
-voidbox ~  master [!] ❯ sudo ln -s /etc/sv/cgmanager /var/service/             -- INSERT --
-voidbox ~  master [!] ❯ sudo ln -s /etc/sv/consolekit /var/service/            -- INSERT --
-voidbox ~  master [!] ❯ sudo usermod -a -G pulse-access henninb                -- INSERT --
-voidbox ~  master [!] ❯
+# in .xinitrc
+# start-pulseaudio-x11 &
 
-
-in .xinitrc
-start-pulseaudio-x11 &
-
+# manually start
 pulseaudio --start
+
+exit 0
