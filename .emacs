@@ -255,6 +255,10 @@
   :ensure t
 )
 
+(use-package helm
+   :ensure t
+ )
+
 ;; recreates an empty *scratch* buffer if it is killed.
 (defun prepare-scratch-for-kill ()
   (save-excursion

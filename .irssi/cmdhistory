@@ -1,8 +1,3 @@
-: 1568471803:: :;vrs, it might be happening because of a different issue. when I start xmonad my xmobar is not starting automatically. I then start it from a terminal after startup.
-: 1568472201:: :;geekosaur, I am on arch and it is residing on /usr/bin
-: 1568472268:: :;geekosaur, this issue is only happening while I am using xrdp to remote into the system. the issue does NOT happen while i am on the console.
-: 1568472348:: :;my .xsession-errors file is empty.
-: 1568472682:: :;i tried hardcoding the path, but it didn't help.
 : 1568472852:: :;geekosaur, https://github.com/BitExplorer/dotfiles/blob/master/.xmonad/xmonad.hs
 : 1568472937:: :;geekosaur, yes
 : 1568472949:: :;and yes I am using that xmobarrc
@@ -98,3 +93,8 @@
 : 1582936791:: :;i can try to see if i can find something in the lf repo.
 : 1582936912:: :;thanks for the tip. Font management can be a pain.
 : 1582938102:: :;/quit
+: 1584147134:: :;when I Mx shell, I want the window to come virtically on the bottom, how can I configure this by default?
+: 1584147311:: :;oni-onion, thanks -- does it always open a second window?
+: 1584147980:: :;i am using emacs gui (macos) - I am running Mx shell, can i open a file for editing in emacs?
+: 1584148933:: :;basically I should access files from within emacs itself? 
+: 1584152002:: :;/quit

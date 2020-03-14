@@ -9,3 +9,7 @@ Cx,4,0
 ```
 Cx-g
 ```
+
+## emacsclient
+use emacsclient as $EDITOR
+emacsclient -create-frame --alternate-editor=""
