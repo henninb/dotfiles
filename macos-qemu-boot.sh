@@ -31,7 +31,8 @@ if [ "$(uname -n)" = "silverfox" ]; then
     -device ide-hd,bus=sata.2,drive=ESP \
     -drive id=SystemDisk,if=none,file=/media/henninb/Data/macos-qemu-disk.qcow2 \
     -device ide-hd,bus=sata.4,drive=SystemDisk \
-    -nogrphic -vnc :0 -k en-us
+    -nogrphic -vnc :0 -k en-us \
+#elif [ "$(uname -n)" = "archlinux" ]; then
 elif [ "$(uname -n)" = "archlinux" ]; then
   echo udisksctl mount -b /dev/sda1
   echo  "to exit the mac ctl+alt+g"
