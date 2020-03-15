@@ -134,6 +134,7 @@ export PATH="$HOME/.rvm/bin:$PATH"
 export PATH="/opt/kafka/bin:$PATH"
 export PATH="/opt/kafka-client/bin:$PATH"
 export PATH="/opt/kotlinc/bin:$PATH"
+export PATH="/opt/sbt/bin:$PATH"
 export PATH="/opt/oracle-instantclient:$PATH"
 export PATH="$HOME/.dynamic-colors/bin:$PATH"
 
