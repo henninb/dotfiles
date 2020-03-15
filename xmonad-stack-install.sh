@@ -196,6 +196,7 @@ cd "$HOME/projects"
 git clone git@github.com:troydm/xmonad-dbus.git
 cd xmonad-dbus
 stack build
+stack install
 cd -
 
 stack exec ghc-pkg list
