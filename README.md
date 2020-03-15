@@ -55,7 +55,7 @@
 - image viewer - sxiv
 - wallpaper manager - feh, nitrogen
 - burning images - k3b, cdrecord
-- podcast client - ???
+- podcast client - newsboat, castget
 - process viewer - htop
 - email client - neomutt, mutt
 - wii emulator - dolphin-emu
