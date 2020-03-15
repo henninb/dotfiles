@@ -27,6 +27,7 @@ fi
 cd "$HOME/projects" || exit
 git clone https://git.suckless.org/st
 cd st || exit
+git pull origin master
 if ! sudo make clean install ; then
   echo "make failed."
   exit 1
