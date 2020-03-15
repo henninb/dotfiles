@@ -154,10 +154,11 @@ fi
 
 failures=""
 
-# if ! stack install hindent ; then
-#   echo failed hindent.
+if ! stack install hindent ; then
+  echo failed hindent.
+  failures="$failures hindent"
 #   exit 1
-# fi
+fi
 
 if ! stack install hlint. ; then
   echo failed hlint.
