@@ -22,6 +22,8 @@ MACOS_PKGS="ffmpeg figlet cmus imagemagick neofetch htop screen wget zsh fish zi
 
 VOID_PKGS="fontforge ffmpeg figlet cmus zip unzip ctags astyle toilet unix2dos fish jq neofetch tig most vimfm netcat htop ffmpeg emacs mcrypt tmux screen nmon mpd nnn nmap ntp ntfs-3g"
 
+SOLUS_PKGS="fontforge ffmpeg figlet cmus zip unzip ctags astyle toilet unix2dos fish jq neofetch tig most vimfm netcat htop ffmpeg emacs mcrypt tmux screen nmon mpd nnn nmap ntp ntfs-3g"
+
 mkdir -p .cli
 echo "$CENTOS_PKGS" > .cli/centos
 echo "$ARCHLINUX_PKGS" > .cli/archlinux
