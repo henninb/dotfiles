@@ -15,6 +15,8 @@ elif [ "$OS" = "FreeBSD" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse zsh
   sudo emerge --update --newuse media-fonts/urw-fonts
+elif [ "$OS" = "Solus" ]; then
+  sudo eopkg install -y zsh
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y zsh
   sudo xbps-install -y curl

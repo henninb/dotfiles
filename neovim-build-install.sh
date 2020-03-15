@@ -28,8 +28,23 @@ elif [ "$OS" = "Manjaro Linux" ]; then
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y gperf luajit luarocks libuv1-dev libluajit-5.1-dev libunibilium-dev libmsgpack-dev libtermkey-dev libvterm-dev cmake libtool-bin gettext
   sudo apt remove -y neovim
+elif [ "$OS" = "Solus" ]; then
+  sudo eopkg install -y make
+  sudo eopkg install -y cmake
+  sudo eopkg install -y libtool
+  sudo eopkg install -y patch
+  sudo eopkg install -y gcc
+  sudo eopkg install -y gcc-c++
+  sudo eopkg install -y pkg-config
+  sudo eopkg install -y m4
+  sudo eopkg install -y automake
+  sudo eopkg install -y gettext
+  sudo eopkg install -y gperf
+  sudo eopkg install -y luajit
+  sudo eopkg install -y python3-pip
+  sudo eopkg install -y python3-devel
+  sudo eopkg install -y python-pip
 elif [ "$OS" = "void" ]; then
-  echo void
   sudo xbps-install -y make
   sudo xbps-install -y cmake
   sudo xbps-install -y libtool
