@@ -19,6 +19,8 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y sxhkd
   sudo apt install -y dunst
   sudo apt install -y wmname
+  sudo apt install -y blueberry
+  #sudo apt install -y icu-devtools libicu-dev
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
@@ -73,6 +75,15 @@ elif [ "$OS" = "void" ]; then
   FAILURES=""
   for i in $(echo $VOID_PKGS); do
     if ! sudo xbps-install -y "$i"; then
+      FAILURE="$i $FAILURE"
+    fi
+  done
+  echo "Failures: $FAILURE"
+elif [ "$OS" = "Solus" ]; then
+  SOLUS_PKGS="feh xdotool w3m neofetch xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo"
+  FAILURES=""
+  for i in $(echo $SOLUS_PKGS); do
+    if ! sudo eopkg install -y "$i"; then
       FAILURE="$i $FAILURE"
     fi
   done
@@ -141,6 +152,8 @@ if ! stack install ghc ; then
   exit 1
 fi
 
+failures=""
+
 # if ! stack install hindent ; then
 #   echo failed hindent.
 #   exit 1
@@ -148,22 +161,26 @@ fi
 
 if ! stack install hlint. ; then
   echo failed hlint.
+  failures="$failures hlint"
   #exit 1
 fi
 
 if ! stack install xmonad-contrib ; then
   echo failed xmonad-contrib.
-  exit 1
+  failures="$failures xmonad-contrib"
+#  exit 1
 fi
 
 if ! stack install xmonad-extras ; then
   echo failed xmonad-extras.
-  exit 1
+  failures="$failures xmonad-extras"
+ # exit 1
 fi
 
 if ! stack install dbus ; then
   echo failed dbus.
-  exit 1
+  failures="$failures dbus"
+  #exit 1
 fi
 
 echo "seems to have the the flag with_xft. how to confirm?"
@@ -209,6 +226,8 @@ echo nitrogen
 echo compton
 echo lf
 echo alacritty
+
+echo "failures = $failures"
 
 exit 0
 

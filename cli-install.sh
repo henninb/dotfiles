@@ -22,7 +22,7 @@ MACOS_PKGS="ffmpeg figlet cmus imagemagick neofetch htop screen wget zsh fish zi
 
 VOID_PKGS="fontforge ffmpeg figlet cmus zip unzip ctags astyle toilet unix2dos fish jq neofetch tig most vimfm netcat htop ffmpeg emacs mcrypt tmux screen nmon mpd nnn nmap ntp ntfs-3g"
 
-SOLUS_PKGS="fontforge ffmpeg figlet cmus zip unzip ctags astyle toilet unix2dos fish jq neofetch tig most vimfm netcat htop ffmpeg emacs mcrypt tmux screen nmon mpd nnn nmap ntp ntfs-3g"
+SOLUS_PKGS="fontforge ffmpeg figlet cmus zip unzip ctags dos2unix fish jq neofetch tig most vimfm netcat htop ffmpeg emacs mcrypt tmux screen nmon mpd nnn nmap ntp ntfs-3g"
 
 mkdir -p .cli
 echo "$CENTOS_PKGS" > .cli/centos
@@ -69,6 +69,15 @@ elif [ "$OS" = "void" ]; then
   FAILURES=""
   for i in $(echo $VOID_PKGS); do
     if ! sudo xbps-install -y "$i"; then
+      FAILURE="$i $FAILURE"
+    fi
+  done
+  echo Failures: "$FAILURE"
+elif [ "$OS" = "Solus" ]; then
+  echo
+  FAILURES=""
+  for i in $(echo $SOLUS_PKGS); do
+    if ! sudo eopkg install -y "$i"; then
       FAILURE="$i $FAILURE"
     fi
   done
