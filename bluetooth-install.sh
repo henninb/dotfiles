@@ -3,8 +3,9 @@
 # https://askubuntu.com/questions/689281/pulseaudio-can-not-load-bluetooth-module-15-10-16-04-16-10
 # https://ubuntuforums.org/showthread.php?t=2308489
 
-if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
+if [ "$OS" = "Linux Mint" ] ||  [ "$OS" = "Ubuntu" ]; then
   sudo apt install -y bluez-tools pulseaudio-module-bluetooth expect
+  sudo apt install -y blueberry
 elif [ "$OS" = "Fedora" ]; then
   echo
   sudo dnf install -y bluez-tools
@@ -12,17 +13,19 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y expect
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S bluez-tools expect bluez-utils pulseaudio-bluetooth blueman pulseaudio-alsa bluez-hid2hci bluedevil
-  cd projects
+  cd "$HOME/projects" || exit
   git clone https://aur.archlinux.org/asoundconf.git
   git clone https://aur.archlinux.org/bluez-utils-compat.git
+  yay -S asoundconf
+  yay -S bluez-utils-compat
   echo /etc/pulse/default.pa
   echo /etc/pulse/system.pa
   echo load-module module-bluetooth-policy
   echo load-module module-bluetooth-discover
   echo Change to privacy = off but set Controller = le in /etc/bluetooth/main.conf
-  sudo usermod -a -G lp $(id -un)
+  sudo usermod -a -G lp "$(id -un)"
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 echo sudo hciconfig hci0 up
