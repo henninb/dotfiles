@@ -3,12 +3,11 @@
 sudo mkdir -p /usr/share/i3blocks/
 #sudo cp iface cpu_usage memory /usr/share/i3blocks
 
-if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
-  sudo apt remove -y lightdm
-  sudo apt remove -y gdm
+if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
+  # sudo apt remove -y lightdm
+  # sudo apt remove -y gdm
   sudo apt install -y i3status
   sudo apt install -y i3blocks
-  sudo apt install -y i3
   sudo apt install -y xterm
   sudo apt install -y i3lock
   sudo apt install -y rofi
@@ -33,14 +32,14 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   sudo apt install -y w3m-img
   sudo apt install -y vifm
   sudo apt install -y xserver-xephyr
-  cd ~/projects
+  cd "$HOME/projects" || exit
   git clone git@github.com:Airblader/i3 i3-gaps
-  cd i3-gaps
+  cd i3-gaps || exit
   git checkout gaps && git pull
   autoreconf --force --install
   rm -rf build
   mkdir build
-  cd build
+  cd build || exit
   ../configure --prefix=/usr --sysconfdir=/etc
   make
   sudo make install
