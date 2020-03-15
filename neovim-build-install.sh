@@ -27,6 +27,7 @@ elif [ "$OS" = "Manjaro Linux" ]; then
   echo manjaro
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y gperf luajit luarocks libuv1-dev libluajit-5.1-dev libunibilium-dev libmsgpack-dev libtermkey-dev libvterm-dev cmake libtool-bin gettext
+  sudo apt install -y g++
   sudo apt remove -y neovim
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -c system.devel
