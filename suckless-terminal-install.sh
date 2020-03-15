@@ -4,7 +4,6 @@
 if [ "$OS" = "Gentoo" ]; then
   echo
 elif [ "$OS" = "Raspbian GNU/Linux" ]; then
-  #sudo apt install -y rxvt-unicode xsel
   echo
 elif [ "$OS" = "FreeBSD" ]; then
   echo
@@ -14,34 +13,36 @@ elif [ "$OS" = "Fedora" ]; then
   echo
 elif [ "$OS" = "Linux Mint" ]; then
   echo
+elif [ "$OS" = "void" ]; then
+  echo
+elif [ "$OS" = "Solus" ]; then
+  echo
 elif [ "$OS" = "Arch Linux" ]; then
   echo
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
-cd $HOME/projects
+cd "$HOME/projects" || exit
 git clone https://git.suckless.org/st
-cd st
-make
-if [ $? -ne 0 ]; then
+cd st || exit
+if ! sudo make clean install ; then
   echo "make failed."
   exit 1
 fi
-sudo make install
-cd $HOME
 
-cd $HOME/projects
+tic -sx st.info
+cd "$HOME" || exit
+
+cd "$HOME/projects" || exit
 git clone git@github.com:Tharre/st-transparency.git
-cd st-transparency
-make
-if [ $? -ne 0 ]; then
+cd st-transparency || exit
+if ! make ; then
   echo "make failed."
   exit 1
 fi
-mv st $HOME/.local/bin/st-transparency
-cd $HOME
+mv st "$HOME/.local/bin/st-transparency"
+cd "$HOME" || exit
 
 exit 0
-
