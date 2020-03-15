@@ -261,6 +261,8 @@
    :ensure t
 )
 
+(use-package rtags
+             )
 ; music player
 (use-package bongo
    :ensure t
