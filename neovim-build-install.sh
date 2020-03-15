@@ -29,6 +29,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y gperf luajit luarocks libuv1-dev libluajit-5.1-dev libunibilium-dev libmsgpack-dev libtermkey-dev libvterm-dev cmake libtool-bin gettext
   sudo apt remove -y neovim
 elif [ "$OS" = "Solus" ]; then
+  sudo eopkg install -c system.devel
   sudo eopkg install -y make
   sudo eopkg install -y cmake
   sudo eopkg install -y libtool
