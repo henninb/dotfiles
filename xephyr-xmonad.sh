@@ -7,7 +7,6 @@ echo export DISPLAY=:1
 
 exit 0
 
-
 xrandr --prop
 lshw -c display
 #Not giving standard mode: 1152x864, 75Hz
