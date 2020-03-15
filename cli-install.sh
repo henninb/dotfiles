@@ -185,5 +185,6 @@ mv 2048 "$HOME/.local/bin"
 
 # install shox
 curl -s "https://raw.githubusercontent.com/liamg/shox/master/scripts/install.sh" | sudo bash
+sudo rm -rf shox
 
 exit 0
