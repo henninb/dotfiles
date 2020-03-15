@@ -24,9 +24,10 @@ elif [ "$OS" = "Gentoo" ]; then
   #sudo emerge -pf sys-apps/yarn
   #sudo emerge -upDN sys-apps/yarn
   #sudo emerge sys-apps/yarn
+elif [ "$OS" = "Solus" ]; then
+  echo Solus
 elif [ "$OS" = "CentOS Linux" ]; then
   echo centos
-  #exit 1
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y yarn gcc python27 gmake
   sudo pkg install -y yarn-node10-1.16.0
@@ -38,6 +39,8 @@ fi
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | zsh
 
 #https://github.com/yarnpkg/yarn/archive/v1.21.1.tar.gz
+
+source "$HOME/.nvm/nvm.sh"
 
 nvm install 10.16.0
 npm install -g yarn

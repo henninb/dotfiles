@@ -12,6 +12,8 @@ elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt update 2>&1 | tee -a update.log.$$
   sudo apt upgrade -y 2>&1 | tee -a update.log.$$
   sudo apt autoremove -y 2>&1 | tee -a update.log.$$
+elif [ "$OS" = "Solus" ]; then
+  sudo eopkg upgrade -y
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -Suy
 elif [ "$OS" = "Manjaro Linux" ]; then
