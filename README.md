@@ -5,6 +5,7 @@
 ## Operating Systems
 - Arch Linux
 - Void Linux
+- Solus Linux
 - Mint Linux
 - Gentoo
 - Fedora
