@@ -12,9 +12,9 @@ if [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S vagrant
   gem install formatador
   gem install bundler
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
-  if [ ! -f vagrant_${VAGRANT_VER}.deb ]; then
-    wget -O vagrant_${VAGRANT_VER}.deb https://releases.hashicorp.com/vagrant/${VAGRANT_VER}/vagrant_${VAGRANT_VER}_x86_64.deb
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
+  if [ ! -f "vagrant_${VAGRANT_VER}.deb" ]; then
+    wget -O "vagrant_${VAGRANT_VER}.deb" "https://releases.hashicorp.com/vagrant/${VAGRANT_VER}/vagrant_${VAGRANT_VER}_x86_64.deb"
   fi
   sudo dpkg -i vagrant_${VAGRANT_VER}.deb
   echo /opt/vagrant/bin/vagrant
@@ -105,7 +105,7 @@ echo vagrant-qemu
 echo vagrant-mutate
 echo vagrant mutate precise32.box libvirt
 
-cd projects
+cd "$HOME/projects"
 git clone https://github.com/chef/bento
 echo packer build -only qemu -var 'headless=true' centos-7.6-x86_64.json
 cd -

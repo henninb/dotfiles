@@ -37,7 +37,7 @@ elif [ "$OS" = "Fedora" ]; then
   #netstat -tulp
   sudo fuser 3000/tcp
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
