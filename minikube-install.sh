@@ -1,7 +1,7 @@
 #!/bin/sh
 
-mkdir -p $HOME/.docker
-touch $HOME/.docker/config.json
+mkdir -p "$HOME/.docker"
+touch "$HOME/.docker/config.json"
 
 if [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S ethtool socat
@@ -52,7 +52,7 @@ if [ "$OS" = "Arch Linux" ]; then
   echo "kubectl get nodes"
   echo "minikube stop"
   echo "minikube delete"
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   if [ ! -f /usr/local/bin/minikube ]; then
 #    curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     wget -q https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 -O minikube
@@ -108,7 +108,7 @@ elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
   echo "minikube stop"
   echo "minikube delete"
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
