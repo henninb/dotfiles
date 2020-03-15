@@ -12,5 +12,14 @@ killall -q polybar
 # Wait until the processes have been shut down
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
-polybar -c "$HOME/.config/polybar/config-master.ini" "${WM}" 2>> "$HOME/polybar.log" &
-echo $? >> "$HOME/polybar.log"
+echo polybar master called. >> "$HOME/polybar.log"
+echo "XRDP_SESSION $XRDP_SESSION" >> "$HOME/polybar.log"
+
+if [ -n "${XRDP_SESSION}" ]; then
+  echo xrdp environment >> "$HOME/polybar.log"
+  polybar -c "$HOME/.config/polybar/config-master.ini" "${WM}-rdp" 2>> "$HOME/polybar.log" &
+else
+  echo xrdp environment not found >> "$HOME/polybar.log"
+  polybar -c "$HOME/.config/polybar/config-master.ini" "${WM}" 2>> "$HOME/polybar.log" &
+fi
+echo "result code: $?" >> "$HOME/polybar.log"
