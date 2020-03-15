@@ -133,6 +133,8 @@ if [ "$OS" = "Arch Linux" ]; then
   #chmod 755 startwm.sh
   #sudo cp -v Xwrapper.config /etc/xorg/Xwrapper.config
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
+elif [ "$OS" = "Solus" ]; then
+  echo
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y pam-devel
   sudo xbps-install -y xorg-server-devel
