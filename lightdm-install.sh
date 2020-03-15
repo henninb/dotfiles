@@ -5,12 +5,50 @@ echo dm-tool
 echo  dm-tool switch-to-greeter
 echo lightdm --test-mode --debug
 sudo apt install -y lightdm
+sudo apt install -y lightdm-gtk-greeter
 
 cat > lightdm.conf <<EOF
 [Seat:*]
 autologin-guest=false
-autologin-user=henninb
+#autologin-user=henninb
 autologin-user-timeout=0
+greeter-session=lightdm-gtk-greeter
 EOF
+
+cat > bspwm.desktop << EOF
+[Desktop Entry]
+Name=bspwm
+Comment=bspwm dynamic tiling window manager
+Exec=bspwm
+TryExec=bspwm
+Type=Application
+X-LightDM-DesktopName=bspwm
+DesktopNames=bspwm
+Keywords=tiling;wm;windowmanager;window;manager;
+EOF
+
+cat > xmonad.desktop << EOF
+[Desktop Entry]
+Name=xmonad
+Comment=xmonad dynamic tiling window manager
+Exec=xmonad
+TryExec=xmonad
+Type=Application
+X-LightDM-DesktopName=bspwm
+DesktopNames=xmonad
+Keywords=tiling;wm;windowmanager;window;manager;
+EOF
+
+sudo cp bspwm.desktop /usr/share/xsessions/
+sudo cp xmonad.desktop /usr/share/xsessions/
+
+# sudo apt install -y python3-pyqt5.qtwebengine
+# sudo apt install -y liblightdm-gobject-1-dev
+# sudo apt install -y python3-gi
+
+# cd "$HOME/projects"
+# git clone https://github.com/Antergos/web-greeter.git
+# cd web-greeter
+# sudo make install
 
 exit 0

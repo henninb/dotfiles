@@ -65,6 +65,7 @@ endif
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
    Plug 'ryanoasis/vim-devicons'
    Plug 'git@github.com:vim-airline/vim-airline.git'
+   Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " colors for hex
 "   Plug 'jiangmiao/auto-pairs' " used for auto closing quotes etc
 "   Plug 'neovimhaskell/haskell-vim'
 "   Plug 'git@github.com:itchyny/vim-haskell-indent.git'
@@ -95,6 +96,20 @@ let g:ale_filetype_blacklist = [
 \   'nerdtree',
 \   'tags',
 \]
+
+" Neovim default
+"let g:Hexokinase_highlighters = [ 'virtual' ]
+let g:Hexokinase_highlighters = [ 'sign_column' ]
+" All possible values
+let g:Hexokinase_optInPatterns = [
+\     'full_hex',
+\     'triple_hex',
+\     'rgb',
+\     'rgba',
+\     'hsl',
+\     'hsla',
+\     'colour_names'
+\ ]
 
 autocmd Filetype markdown,vim let b:autopairs_enabled = 0
 
