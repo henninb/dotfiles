@@ -1,11 +1,3 @@
-: 1568472852:: :;geekosaur, https://github.com/BitExplorer/dotfiles/blob/master/.xmonad/xmonad.hs
-: 1568472937:: :;geekosaur, yes
-: 1568472949:: :;and yes I am using that xmobarrc
-: 1568473098:: :;geekosaur, it may be that you are correct in your point above because xmobar appears to not get called or fail on startup.
-: 1568473264:: :;i wonder if there is any thing I should set in my .xinitrc to prepare the enviornment for xmonad/xmobar.
-: 1568473304:: :;i say that because xrdp is calling .xinitrc
-: 1568487383:: :;for xmobar to function correctly are there any enviroment variable required as it is spawned from the xmonad.hs? mine xmobar is failiing to stay up.
-: 1568487841:: :;geekosaur, here is what the logs have "<stdin>: hGetLine: end of file"
 : 1568488092:: :;geekosaur, i know I have looked this over and everything seems correct.
 : 1568488360:: :;i copied your exact command and produced the same line "<stdin>: hGetLine: end of file" 
 : 1568488375:: :;found in /tmp/xmobar.errors
@@ -98,3 +90,11 @@
 : 1584147980:: :;i am using emacs gui (macos) - I am running Mx shell, can i open a file for editing in emacs?
 : 1584148933:: :;basically I should access files from within emacs itself? 
 : 1584152002:: :;/quit
+: 1584361000:: :;i am trying to install xdo and not xdotool in fedora, can any one advise on where to find it src or binary?
+: 1584361185:: :;rindof, from what I can tell I could not find it in dnf :(.
+: 1584361442:: :;rindolf, you got it.
+: 1584361535:: :;i see that too Southern_Gentlem, but I think this the github page ^^^ is what I need to look at.
+: 1584361541:: :;thanks for the help.
+: 1584361968:: :;hi Rindolf, working on that now. thanks!
+: 1584362035:: :;works perfectly rindolf.
+: 1584362943:: :;/quit
