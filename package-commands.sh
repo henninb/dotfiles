@@ -12,5 +12,7 @@ echo sudo pacman -Rsnc picom
 
 echo xbps-query -Rs xorg
 
+echo dnf repoquery -l xorg-x11-server-Xorg
+
 exit 0
 

@@ -31,6 +31,15 @@ depend() {
 }
 EOF
 
+cat > 45-allow.colord.pkla <<EOF
+[Allow Colord all Users]
+Identity=unix-user:*
+Action=org.freedesktop.color-manager.create-device;org.freedesktop.color-manager.create-profile;org.freedesktop.color-manager.delete-device;org.freedesktop.color-manager.delete-profile;org.freedesktop.color-manager.modify-device;org.freedesktop.color-manager.modify-profile
+ResultAny=no
+ResultInactive=no
+ResultActive=yes
+EOF
+
 # cat > xrdp.ini <<'EOF'
 # [tightvnc]
 # name=RDP_To_TightVNC
@@ -75,7 +84,7 @@ xrdb -merge ~/.Xresources
 exit 0
 EOF
 
-cat > Xwrapper.config <<'EOF'
+cat > Xwrapper.config <<EOF
 allowed_users=anybody
 needs_root_rights=yes
 EOF
@@ -86,7 +95,7 @@ chmod 755 startwm.sh
 chmod 755 xrdp.rc
 
 if [ "$OS" = "Arch Linux" ]; then
-  mkdir -p $HOME/projects
+  mkdir -p "$HOME/projects"
   sudo pacman --noconfirm --needed -S patch autoconf automake pkg-config fakeroot lsof nasm net-tools libtool xorg-server-devel make terminator
 
   # cd $HOME/projects
@@ -100,38 +109,34 @@ if [ "$OS" = "Arch Linux" ]; then
   # # makepkg -si
 
   echo xrdp v0.9.11 was release on 8-19-2019
-  cd $HOME/projects
+  cd "$HOME/projects" || exit
   git clone --recursive git@github.com:neutrinolabs/xrdp.git
-  cd xrdp
+  cd xrdp || exit
   git pull origin master
   ./bootstrap
   ./configure
   make clean
-  make
-  if [ $? -ne 0 ]; then
+  if ! make; then
     echo build failed for xrdp.
     exit 1
   fi
   sudo make install
 
-  cd $HOME/projects
+  cd "$HOME/projects" || exit
   git clone --recursive git@github.com:neutrinolabs/xorgxrdp.git
-  cd xorgxrdp
+  cd xorgxrdp || exit
   git pull origin master
   ./bootstrap
-  ./configure XRDP_CFLAGS=-I$HOME/projects/xrdp/common XRDP_LIBS=" "
+  ./configure XRDP_CFLAGS=-I"$HOME/projects/xrdp/common" XRDP_LIBS=" "
   make clean
-  make
-  if [ $? -ne 0 ]; then
+  if ! make; then
     echo build failed for xrdp-xorgxrdp.
     exit 1
   fi
   sudo make install
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
 
-  cd $HOME
-  #chmod 755 startwm.sh
-  #sudo cp -v Xwrapper.config /etc/xorg/Xwrapper.config
+  cd "$HOME" || exit
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
 elif [ "$OS" = "Solus" ]; then
   echo
@@ -191,7 +196,7 @@ elif [ "$OS" = "Gentoo" ]; then
   git clone git@github.com:neutrinolabs/xorgxrdp.git
   cd xorgxrdp
   ./bootstrap
-  ./configure XRDP_CFLAGS=-I$HOME/projects/xrdp/common XRDP_LIBS=" "
+  ./configure XRDP_CFLAGS=-I"$HOME/projects/xrdp/common" XRDP_LIBS=" "
   make
   if [ $? -ne 0 ]; then
     echo build failed for xorgxrdp.
@@ -200,7 +205,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo make install
 
   #USE="server" sudo emerge  --update --newuse net-misc/tigervnc
-  cd $HOME
+  cd "$HOME"
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
   sudo mv -v xrdp.rc /etc/init.d/xrdp
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
@@ -212,9 +217,47 @@ elif [ "$OS" = "Fedora" ]; then
     sudo dnf install -y libX11-devel
     sudo dnf install -y libXfixes-devel
     sudo dnf install -y libXrandr-devel
-    sudo dnf install -y xrdp
+    sudo dnf install -y xorg-x11-server-devel
+    #sudo dnf install -y xrdp
+    #sudo dnf install -y xorgxrdp
+
+    # echo xrdp v0.9.11 was release on 8-19-2019
+    cd "$HOME/projects" || exit
+    git clone --recursive git@github.com:neutrinolabs/xrdp.git
+    cd xrdp || exit
+    git pull origin master
+    ./bootstrap
+    ./configure
+    make clean
+    if ! make; then
+      echo build failed for xrdp.
+      exit 1
+    fi
+    sudo make install
+
+    cd "$HOME/projects" || exit
+    git clone --recursive git@github.com:neutrinolabs/xorgxrdp.git
+    cd xorgxrdp || exit
+    git checkout master
+    git pull origin master
+    ./bootstrap
+    autoreconf --install
+    ./configure XRDP_CFLAGS=-I$HOME/projects/xrdp/common XRDP_LIBS=" "
+    make clean
+    if ! make; then
+      echo build failed for xrdp-xorgxrdp.
+      exit 1
+    fi
+    sudo make install
+    sudo mv -v startwm.sh /etc/xrdp/startwm.sh
+
+    cd "$HOME" || exit
+
     sudo mv -v startwm.sh /etc/xrdp/startwm.sh
     sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
+    sudo mv -v 45-allow.colord.pkla /etc/polkit-1/localauthority/50-local.d/
+    sudo systemctl disable firewalld
+    sudo systemctl stop firewalld
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
     echo centos8
@@ -232,72 +275,68 @@ elif [ "$OS" = "CentOS Linux" ]; then
     sudo yum install -y libtool openssl-devel pam-devel xorg-x11-server-devel nasm
   fi
 
-  cd $HOME/projects
+  cd "$HOME/projects" || exit
   git clone --recursive https://github.com/neutrinolabs/xrdp
-  cd xrdp
+  cd xrdp || exit
   ./bootstrap
   ./configure
-  make
-  if [ $? -ne 0 ]; then
+  if ! make ; then
     echo build failed for xrdp.
     exit 1
   fi
   sudo make install
 
-  cd $HOME/projects
+  cd "$HOME/projects" || exit
   git clone git@github.com:neutrinolabs/xorgxrdp.git
-  cd xorgxrdp
+  cd xorgxrdp || exit
   ./bootstrap
-  ./configure XRDP_CFLAGS=-I$HOME/projects/xrdp/common XRDP_LIBS=" "
-  make
-  if [ $? -ne 0 ]; then
+  ./configure XRDP_CFLAGS=-I"$HOME/projects/xrdp/common" XRDP_LIBS=" "
+  if ! make ; then
     echo build failed for xorgxrdp.
     exit 1
   fi
   sudo make install
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
-  sudo usermod -a -G tty $(id -un)
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
+  sudo usermod -a -G tty "$(id -un)"
   #echo sudo apt install -y xrdp xorgxrdp
   sudo apt install -y rdesktop freerdp-x11 lsof
   sudo apt install -y libpam0g-dev
   sudo apt install -y nasm
   sudo apt install -y xserver-xorg-dev
-  cd $HOME/projects
+  cd "$HOME/projects" || exit
   git clone --recursive https://github.com/neutrinolabs/xrdp
-  cd xrdp
+  cd xrdp || exit
   ./bootstrap
   ./configure
-  make
-  if [ $? -ne 0 ]; then
+  if ! make ; then
     echo build failed for xrdp.
     exit 1
   fi
   sudo make install
 
-  cd $HOME/projects
+  cd "$HOME/projects" || exit
   git clone git@github.com:neutrinolabs/xorgxrdp.git
-  cd xorgxrdp
+  cd xorgxrdp || exit
   ./bootstrap
-  ./configure XRDP_CFLAGS=-I$HOME/projects/xrdp/common XRDP_LIBS=" "
-  make
-  if [ $? -ne 0 ]; then
+  ./configure XRDP_CFLAGS=-I"$HOME/projects/xrdp/common" XRDP_LIBS=" "
+  if ! make ; then
     echo build failed for xorgxrdp.
     exit 1
   fi
   sudo make install
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
-elif [ \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   #sudo apt purge -y xserver-xorg-legacy
   sudo apt install -y libpam0g-dev xserver-xorg-dev lsof
   sudo apt install -y xrdp xorgxrdp rdesktop freerdp2-x11
 
-  sudo usermod -a -G dialout $(id -un)
-  cd $HOME
+  sudo usermod -a -G dialout "$(id -un)"
+  cd "$HOME" || exit
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
