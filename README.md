@@ -28,7 +28,7 @@
 - zsh plugins - zsh-syntax-highlighting, zsh-autosuggestions, autojump, zsh-history-substring-search
 - file manager - ranger, lf, hunter, spacefm
 - bar - polybar, dzen, xmobar
-- window manager - xmonad, bspwm, i3
+- window manager - xmonad, bspwm, i3, qtile
 - lock screen - i3block
 - terminal multiplexer - tmux, screen, tmate
 - media player - vlc, mpv
@@ -50,7 +50,7 @@
 - notes - standard note, joplin
 - font - monofur, jetbrains, symbola
 - theme - dracula
-- audio player - cmus, emacs ()
+- audio player - cmus, emacs (bongo)
 - media player daemon - mpd
 - image converter - imagemagik
 - image viewer - sxiv
