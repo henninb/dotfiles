@@ -114,6 +114,10 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y wmname
   sudo dnf install -y dbus-x11
   echo iwlib missing
+  cd "$HOME/projects" || exit
+  git clone git@github.com:baskerville/xdo.git
+  cd xdo || exit
+  sudo make install
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
     echo centos8
@@ -203,7 +207,7 @@ if [ "$OS" = "Gentoo" ] || [ "$OS" = "FreeBSD" ]; then
 fi
 
 go get github.com/godbus/dbus
-cd "$HOME/projects"
+cd "$HOME/projects" || exit
 git clone git@github.com:xintron/xmonad-log.git
 cd xmonad-log
 go build

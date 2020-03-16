@@ -197,3 +197,6 @@ stack --resolver lts-14.27
 stack --resolver ghc-8.6.5 setup
 stack --resolver ghc-8.6.5 init
 
+
+## unifying logitech tool
+solaar
