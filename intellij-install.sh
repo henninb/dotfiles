@@ -4,6 +4,8 @@ if [ $# -eq 1 ]; then
   VER_OVERRIDE="$1"
 fi
 
+sudo dnf install -y jq
+
 RASPI_IP=$(nmap -sP --host-timeout 10 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
 
 find ~/.IntelliJIdea* -type d -exec touch -t $(date +"%Y%m%d%H%M") {} \;
