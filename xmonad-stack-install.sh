@@ -4,7 +4,7 @@ curl -sSL https://get.haskellstack.org/ | sh
 stack update
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt remove -y lightdm
+  #sudo apt remove -y lightdm
   sudo apt remove -y gdm
   sudo apt remove -y lxdm
   sudo apt install -y libxss-dev
@@ -56,8 +56,13 @@ elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S xdotool
   sudo pacman --noconfirm --needed -S cmake
   sudo pacman --noconfirm --needed -S w3m
-  sudo pacman --noconfirm --needed -S neofetch
   sudo pacman --noconfirm --needed -S dzen2
+  sudo pacman --noconfirm --needed -S xdo
+  sudo pacman --noconfirm --needed -S sxhkd
+  sudo pacman --noconfirm --needed -S dunst
+  sudo pacman --noconfirm --needed -S wmname
+  sudo pacman --noconfirm --needed -S pulseaudio
+  sudo pacman --noconfirm --needed -S alsa-utils
 elif [ "$OS" = "FreeBSD" ]; then
   ln -sfn "$(find /usr/local/bin/ -type f -name "perl5*" | tail -1)" "$HOME/.local/bin/perl"
   sudo pkg install -y neofetch
@@ -80,7 +85,7 @@ elif [ "$OS" = "void" ]; then
   done
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Solus" ]; then
-  SOLUS_PKGS="feh xdotool w3m neofetch xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo polybar"
+  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo polybar"
   FAILURES=""
   for i in $(echo $SOLUS_PKGS); do
     if ! sudo eopkg install -y "$i"; then
@@ -90,7 +95,7 @@ elif [ "$OS" = "Solus" ]; then
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --unmerge dzen
-  GENTOO_PKGS="xscreensaver feh xdotool w3m neofetch dunst wmname"
+  GENTOO_PKGS="xscreensaver feh xdotool w3m dunst wmname xdo"
   FAILURES=""
   for i in $(echo $GENTOO_PKGS); do
     if ! sudo emerge --update --newuse "$i"; then
