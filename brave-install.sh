@@ -12,4 +12,8 @@ sudo apt install -y brave-browser
 
 yay -S brave-bin
 
+sudo eselect repository enable brave-overlay
+sudo emerge --sync
+sudo emerge www-client/brave-bin-1.5.111
+
 exit 0
