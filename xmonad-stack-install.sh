@@ -95,13 +95,17 @@ elif [ "$OS" = "Solus" ]; then
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --unmerge dzen
-  GENTOO_PKGS="xscreensaver feh xdotool w3m dunst wmname xdo"
+  GENTOO_PKGS="xscreensaver feh xdotool w3m dunst wmname"
   FAILURES=""
   for i in $(echo $GENTOO_PKGS); do
     if ! sudo emerge --update --newuse "$i"; then
       FAILURE="$i $FAILURE"
     fi
   done
+  cd "$HOME/projects" || exit
+  git clone git@github.com:baskerville/xdo.git
+  cd xdo || exit
+  sudo make install
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf remove -y lightdm
