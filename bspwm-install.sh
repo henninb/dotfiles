@@ -73,11 +73,10 @@ elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S w3m
   sudo pacman --noconfirm --needed -S vifm
 elif [ "$OS" = "Gentoo" ]; then
-  GENTOO_PKGS="bspwm xdo dmenu sxhkd feh cmatrix cairo libmpdclient pulseaudio autocutsel vimfm w3m xclip"
+  GENTOO_PKGS="bspwm dmenu sxhkd feh cmatrix cairo libmpdclient pulseaudio autocutsel vimfm w3m xclip"
   FAILURES=""
   for i in $(echo $GENTOO_PKGS); do
-    sudo emerge --update --newuse $i
-    if [ 0 -ne $? ]; then
+    if ! sudo emerge --update --newuse "$i"; then
       FAILURE="$i $FAILURE"
     fi
   done

@@ -108,9 +108,8 @@ HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
 
 if [ "${OSTYPE}" = "linux-gnu" ]; then
   if [ "${OS}" = "Gentoo" ]; then
-  #  echo ${JDK_HOME}
-  #  echo fix java_home
-    JAVA_HOME=$(readlink -f $(readlink -f ${JDK_HOME}))
+    JAVA_HOME=$(java-config -o)
+    # JAVA_HOME=$(readlink -f $(readlink -f ${JDK_HOME}))
   elif [ -x "$(command -v javac)" ]; then
     JAVA_HOME=$(dirname "$(dirname "$(readlink -f "$(readlink -f "$(which javac)")" || readlink -f "$(which javac)")")")
   else
