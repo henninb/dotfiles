@@ -5,6 +5,7 @@ if [ $# -eq 1 ]; then
 fi
 
 sudo dnf install -y jq
+sudo emerge --update --newuse jq
 
 RASPI_IP=$(nmap -sP --host-timeout 10 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
 
