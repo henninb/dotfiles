@@ -329,12 +329,20 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
 elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   #sudo apt purge -y xserver-xorg-legacy
-  sudo apt install -y libpam0g-dev xserver-xorg-dev lsof
-  sudo apt install -y xrdp xorgxrdp rdesktop freerdp2-x11
+  sudo apt install -y libpam0g-dev
+  sudo apt install -y xserver-xorg-dev
+  sudo apt install -y lsof
+  sudo apt install -y xrdp
+  sudo apt install -y feh
+  sudo apt install -y dmenu
+  sudo apt install -y xorgxrdp
+  sudo apt install -y rdesktop
+  sudo apt install -y freerdp2-x11
 
   sudo usermod -a -G dialout "$(id -un)"
   cd "$HOME" || exit
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
+  sudo mv -v startwm.sh /etc/xrdp/startwm.sh
 else
   echo "$OS is not yet implemented."
   exit 1
@@ -365,11 +373,6 @@ sudo fuser 3350/tcp
 #cat $HOME/.xorgxrdp.10.log
 #$HOME/.xsession
 #setpriv --no-new-privs Xorg :10 -auth .Xauthority -config xrdp/xorg.conf -noreset -nolisten tcp -logfile $HOME/.xorgxrdp.%s.log
-
-# debian based
-echo sudo add-apt-repository ppa:martinx/xrdp-hwe-18.04
-echo sudo apt -y update
-echo sudo apt -y install xrdp xorgxrdp
 
 xrdp --version
 
