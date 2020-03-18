@@ -9,13 +9,15 @@ if [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse pciutils
   sudo eselect kernel list
   echo sudo eselect kernel set 1
+  sudo eselect kernel set 2
 
   echo TODO: should I be exiting here?
   echo TODO: add audio into the kernel
-  exit 1
-  cd /usr/src/linux
+  # exit 1
+  cd /usr/src/linux || exit
   cp -v /usr/src/linux/.config ~/kernel-config-$(uname -r)
 
+  echo sudo make mrpropper
   sudo make menuconfig
   sudo make -j$(nproc)
   sudo mount /dev/sdc1 /boot
@@ -27,3 +29,5 @@ if [ "$OS" = "Gentoo" ]; then
 fi
 
 exit 0
+
+
