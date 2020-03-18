@@ -14,6 +14,7 @@ yay -S brave-bin
 
 sudo eselect repository enable brave-overlay
 sudo emerge --sync
-sudo emerge www-client/brave-bin-1.5.111
+echo "www-client/brave-bin **" | sudo tee -a /etc/portage/package.accept_keywords
+sudo emerge www-client/brave-bin
 
 exit 0

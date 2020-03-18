@@ -52,3 +52,4 @@
 =x11-wm/qtile-0.14.2 ~amd64
 =dev-python/cairocffi-1.0.2 ~amd64
 =games-puzzle/bastet-0.43.2 ~amd64
+www-client/brave-bin **

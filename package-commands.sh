@@ -14,5 +14,8 @@ echo xbps-query -Rs xorg
 
 echo dnf repoquery -l xorg-x11-server-Xorg
 
+# delete a package
+echo emerge -C mypackage
+
 exit 0
 
