@@ -1,5 +1,4 @@
-=sys-kernel/linux-firmware-20190514 linux-fw-redistributable no-source-code
-=sys-kernel/linux-firmware-20190118 linux-fw-redistributable no-source-code
+=sys-kernel/linux-firmware-20200302 linux-fw-redistributable no-source-code
 >=dev-java/oracle-jdk-bin-1.8.0.202:1.8 Oracle-BCLA-JavaSE
 =media-libs/fdk-aac-2.0.0 FraunhoferFDK
 =media-libs/fdk-aac-0.1.5 FraunhoferFDK

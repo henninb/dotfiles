@@ -53,3 +53,7 @@
 =dev-python/cairocffi-1.0.2 ~amd64
 =games-puzzle/bastet-0.43.2 ~amd64
 www-client/brave-bin **
+=sys-kernel/gentoo-kernel-5.5.9 ~amd64
+=sys-kernel/installkernel-gentoo-2 ~amd64
+=sys-apps/debianutils-4.9.1 ~amd64
+

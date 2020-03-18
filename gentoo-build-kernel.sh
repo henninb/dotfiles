@@ -1,6 +1,7 @@
 #!/bin/sh
 
 if [ "$OS" = "Gentoo" ]; then
+  echo emerge -uDNa @world
   sudo emerge --update --newuse sys-kernel/gentoo-sources
   sudo emerge --update --newuse zfs
   sudo emerge --update --newuse aufs-sources
@@ -13,13 +14,13 @@ if [ "$OS" = "Gentoo" ]; then
 
   echo TODO: should I be exiting here?
   echo TODO: add audio into the kernel
-  # exit 1
+  exit 1
   cd /usr/src/linux || exit
   cp -v /usr/src/linux/.config ~/kernel-config-$(uname -r)
 
   echo sudo make mrpropper
   sudo make menuconfig
-  sudo make -j$(nproc)
+  sudo make -j"$(nproc)"
   sudo mount /dev/sdc1 /boot
   sudo make modules_install
   sudo make install
@@ -29,6 +30,10 @@ if [ "$OS" = "Gentoo" ]; then
   echo sudo reboot
 fi
 
+echo qpkg  -v gentoo-sources
+# sudo emerge -C sys-kernel/gentoo-sources-4.19.97
+echo sudo rm -r /usr/src/linux-${old_kernel}* || { echo "Failed to remove old kernel sources"; exit 1; }
+echo sudo rm -r /boot/*${old_kernel}* || { echo "Failed to remove boot files"; exit 1; }	
+echo sudo rm -r /lib/modules/${old_kernel}* || { echo "Failed to remove modules"; exit 1; }
+
 exit 0
-
-
