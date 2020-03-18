@@ -25,6 +25,7 @@ if [ "$OS" = "Gentoo" ]; then
   sudo make install
   echo sudo grub-install /dev/sdc
   sudo grub-mkconfig -o /boot/grub/grub.cfg
+  sudo grep gnulinux /boot/grub/grub.cfg
   echo sudo reboot
 fi
 
