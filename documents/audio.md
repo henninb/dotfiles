@@ -2,6 +2,8 @@
 
 alsamixer
 ```
+lsmod | grep audio
+arecord -l
 pacmd list-sinks
 pacmd list-sinks| grep alsa_output
 ```
