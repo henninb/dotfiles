@@ -29,12 +29,11 @@ elif [ "$OS" = "Gentoo" ]; then
   if [ $? -ne 0 ]; then
     sudo emerge-webrsync 2>&1 | tee -a update.log.$$
   fi
-  #sudo emerge --oneshot portage
-  sudo emerge --update --newuse portage
+  sudo emerge -uN portage
   sudo emerge -uDUf --keep-going --with-bdeps=y @world 2>&1 | tee -a update.log.$$
   sudo emerge -uDU --keep-going --with-bdeps=y @world 2>&1 | tee -a update.log.$$
   #sudo emerge --update --newuse --deep @world 2>&1 | tee -a update.log.$$
-  sudo emerge --update --newuse --deep --with-bdeps=y @world 2>&1 | tee -a update.log.$$
+  sudo emerge -uDN --keep-going --with-bdeps=y @world 2>&1 | tee -a update.log.$$
   sudo emerge --depclean 2>&1 | tee -a update.log.$$
   echo sudo emerge @preserved-rebuild
   echo sudo etc-update
