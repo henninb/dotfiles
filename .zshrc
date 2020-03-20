@@ -408,5 +408,4 @@ set -a
 set +a
 
 autoload -Uz tetriscurses
-
-echo tetriscurses
+# echo tetriscurses
