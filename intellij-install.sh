@@ -6,6 +6,7 @@ fi
 
 sudo dnf install -y jq
 sudo emerge --update --newuse jq
+sudo pacman --noconfirm --needed -S jq
 
 RASPI_IP=$(nmap -sP --host-timeout 10 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
 
@@ -35,8 +36,8 @@ fi
 sudo groupadd intellij
 sudo useradd -g intellij intellij
 
-if [ "$OS" = "Arch Linux" ]; then
-  sudo pacman --noconfirm --needed -S net-tools psmisc wget curl
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+  sudo pacman --noconfirm --needed -S net-tools psmisc wget curl jq
   sudo rm -rf /opt/intellij
   sudo rm -rf /opt/idea-IU-*/
   sudo tar -xvf "ideaIU-${VER}.tar.gz" -C /opt
