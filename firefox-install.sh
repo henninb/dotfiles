@@ -29,7 +29,7 @@ if [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S net-tools psmisc wget curl gtk3 dbus-glib libxt dbus-glib
   sudo rm -rf /opt/firefox
   sudo tar -xjvf "firefox-${FOX_VER}.tar.bz2" -C /opt
-  chown -R firefox:firefox /opt/firefox
+  sudo chown -R firefox:firefox /opt/firefox
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y wget
   sudo xbps-install -y gtk+3-devel
