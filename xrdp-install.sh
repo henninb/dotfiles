@@ -96,7 +96,7 @@ chmod 755 xrdp.rc
 
 if [ "$OS" = "Arch Linux" ]; then
   mkdir -p "$HOME/projects"
-  sudo pacman --noconfirm --needed -S patch autoconf automake pkg-config fakeroot lsof nasm net-tools libtool xorg-server-devel make terminator
+  sudo pacman --noconfirm --needed -S patch autoconf automake pkg-config fakeroot lsof nasm net-tools libtool xorg-server-devel make libxfont2
 
   # cd $HOME/projects
   # git clone https://aur.archlinux.org/xrdp.git xrdp-aur
@@ -125,6 +125,7 @@ if [ "$OS" = "Arch Linux" ]; then
   cd "$HOME/projects" || exit
   git clone --recursive git@github.com:neutrinolabs/xorgxrdp.git
   cd xorgxrdp || exit
+  git checkout master
   git pull origin master
   ./bootstrap
   ./configure XRDP_CFLAGS=-I"$HOME/projects/xrdp/common" XRDP_LIBS=" "
