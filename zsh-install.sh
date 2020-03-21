@@ -8,6 +8,7 @@ if [ "$OS" = "CentOS Linux" ]; then
   fi
 elif [ \( "$OS" = "Arch Linux" \) -o \( "$OS" = "Manjaro Linux" \) ]; then
   sudo pacman  --noconfirm --needed -S zsh
+  sudo pacman  --noconfirm --needed -S unzip
 elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
   sudo apt install -y zsh
 elif [ "$OS" = "FreeBSD" ]; then

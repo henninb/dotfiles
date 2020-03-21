@@ -5,6 +5,10 @@ if [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse dev-java/openjdk-bin
 elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y openjdk-8-jdk
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+  sudo pacman  --noconfirm --needed -S jdk8-openjdk
+  echo sudo pacman  --noconfirm --needed -S jdk-openjdk
+  echo
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -S openjdk
 elif [ "$OS" = "Ubuntu" ]; then

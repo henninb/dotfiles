@@ -409,3 +409,4 @@ set +a
 
 autoload -Uz tetriscurses
 # echo tetriscurses
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
