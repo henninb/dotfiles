@@ -1,0 +1,7 @@
+mint    http
+void    http
+solus   http
+freebsd http
+manjaro http
+archlinux   http
+gentoo  https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20200318T214502Z/install-amd64-minimal-20200318T214502Z.iso
