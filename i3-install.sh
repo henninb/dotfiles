@@ -49,34 +49,13 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y sxhkd
   sudo xbps-install -y i3blocks
   sudo xbps-install -y w3m
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
   sudo pacman --noconfirm --needed -S i3status
   sudo pacman --noconfirm --needed -S i3blocks
 #  sudo pacman --noconfirm --needed -S i3-wm
   sudo pacman --noconfirm --needed -S i3-gaps
-  sudo pacman --noconfirm --needed -S xterm
-  sudo pacman --noconfirm --needed -S i3lock
-  sudo pacman --noconfirm --needed -S rofi
-  sudo pacman --noconfirm --needed -S termite
-  sudo pacman --noconfirm --needed -S terminator
-  sudo pacman --noconfirm --needed -S dmenu
-  sudo pacman --noconfirm --needed -S feh
-  sudo pacman --noconfirm --needed -S cmatrix
-  sudo pacman --noconfirm --needed -S ranger
-  sudo pacman --noconfirm --needed -S terminus-font
-  sudo pacman --noconfirm --needed -S xclip
-  sudo pacman --noconfirm --needed -S sxhkd
-  sudo pacman --noconfirm --needed -S w3m
-  sudo pacman --noconfirm --needed -S vifm
-  sudo pacman --noconfirm --needed -S picom
-elif [ "$OS" = "Manjaro Linux" ]; then
-  sudo pacman -Rsnc lightdm
-  sudo pacman -Rsnc gdm
-  sudo pacman --noconfirm --needed -S i3status
-  sudo pacman --noconfirm --needed -S i3blocks
-  sudo pacman --noconfirm --needed -S i3-wm
   sudo pacman --noconfirm --needed -S xterm
   sudo pacman --noconfirm --needed -S i3lock
   sudo pacman --noconfirm --needed -S rofi

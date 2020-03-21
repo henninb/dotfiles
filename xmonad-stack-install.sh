@@ -21,7 +21,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y wmname
   sudo apt install -y blueberry
   #sudo apt install -y icu-devtools libicu-dev
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
   sudo pacman -Rsnc lxdm
@@ -34,6 +34,7 @@ elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S xdo
   sudo pacman --noconfirm --needed -S sxhkd
   sudo pacman --noconfirm --needed -S dunst
+  sudo pacman --noconfirm --needed -S dmenu
   sudo pacman --noconfirm --needed -S wmname
   sudo pacman --noconfirm --needed -S pulseaudio
   sudo pacman --noconfirm --needed -S alsa-utils
@@ -47,22 +48,22 @@ elif [ "$OS" = "Arch Linux" ]; then
   # git clone https://aur.archlinux.org/lemonbar-git.git lemonbar-aur
   # cd lemonbar-aur || exit
   # makepkg -si
-elif [ "$OS" = "Manjaro Linux" ]; then
-  sudo pacman -Rsnc lightdm
-  sudo pacman -Rsnc gdm
-  sudo pacman -Rsnc lxdm
-  sudo pacman --noconfirm --needed -S xscreensaver
-  sudo pacman --noconfirm --needed -S feh
-  sudo pacman --noconfirm --needed -S xdotool
-  sudo pacman --noconfirm --needed -S cmake
-  sudo pacman --noconfirm --needed -S w3m
-  sudo pacman --noconfirm --needed -S dzen2
-  sudo pacman --noconfirm --needed -S xdo
-  sudo pacman --noconfirm --needed -S sxhkd
-  sudo pacman --noconfirm --needed -S dunst
-  sudo pacman --noconfirm --needed -S wmname
-  sudo pacman --noconfirm --needed -S pulseaudio
-  sudo pacman --noconfirm --needed -S alsa-utils
+# elif [ "$OS" = "Manjaro Linux" ]; then
+#   sudo pacman -Rsnc lightdm
+#   sudo pacman -Rsnc gdm
+#   sudo pacman -Rsnc lxdm
+#   sudo pacman --noconfirm --needed -S xscreensaver
+#   sudo pacman --noconfirm --needed -S feh
+#   sudo pacman --noconfirm --needed -S xdotool
+#   sudo pacman --noconfirm --needed -S cmake
+#   sudo pacman --noconfirm --needed -S w3m
+#   sudo pacman --noconfirm --needed -S dzen2
+#   sudo pacman --noconfirm --needed -S xdo
+#   sudo pacman --noconfirm --needed -S sxhkd
+#   sudo pacman --noconfirm --needed -S dunst
+#   sudo pacman --noconfirm --needed -S wmname
+#   sudo pacman --noconfirm --needed -S pulseaudio
+#   sudo pacman --noconfirm --needed -S alsa-utils
 elif [ "$OS" = "FreeBSD" ]; then
   ln -sfn "$(find /usr/local/bin/ -type f -name "perl5*" | tail -1)" "$HOME/.local/bin/perl"
   sudo pkg install -y neofetch

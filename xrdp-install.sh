@@ -97,6 +97,8 @@ chmod 755 xrdp.rc
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   mkdir -p "$HOME/projects"
   sudo pacman --noconfirm --needed -S patch autoconf automake pkg-config fakeroot lsof nasm net-tools libtool xorg-server-devel make libxfont2
+  sudo pacman --noconfirm --needed -S xorg-server
+  sudo pacman --noconfirm --needed -S xorg-xinit
 
   # cd $HOME/projects
   # git clone https://aur.archlinux.org/xrdp.git xrdp-aur

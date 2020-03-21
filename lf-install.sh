@@ -1,5 +1,7 @@
 #!/bin/sh
 
+sudo pacman -S go
+
 if [ ! -x "$(command -v go)" ]; then
   echo go not installed.
   exit 1
