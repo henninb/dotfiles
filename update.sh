@@ -23,6 +23,11 @@ elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman  --noconfirm --needed -Syu 2>&1 | tee -a update.log.$$
   echo sudo pacman -Scc
   echo paccache -r
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  # sudo zypper dist-upgrade
+  # sudo zypper refersh
+  sudo zypper ref
+  sudo zypper update
 elif [ "$OS" = "Gentoo" ]; then
   sudo eselect news read
   sudo emerge --sync 2>&1 | tee -a update.log.$$
