@@ -44,6 +44,19 @@ elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y python3-pip
   sudo eopkg install -y python3-devel
   sudo eopkg install -y python-pip
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper install -y make
+  sudo zypper install -y cmake
+  sudo zypper install -y libtool
+  sudo zypper install -y patch
+  sudo zypper install -y gcc
+  sudo zypper install -y gcc-c++
+  sudo zypper install -y pkg-config
+  sudo zypper install -y m4
+  sudo zypper install -y automake
+  sudo zypper install -y gettext
+  sudo zypper install -y gperf
+  sudo zypper install -y luajit
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y make
   sudo xbps-install -y cmake
