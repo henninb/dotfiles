@@ -57,6 +57,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y gettext
   sudo zypper install -y gperf
   sudo zypper install -y luajit
+  sudo zypper install -y gettext-tools
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y make
   sudo xbps-install -y cmake
