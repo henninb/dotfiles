@@ -30,6 +30,8 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y xcb-proto
   sudo apt install -y libxcb-ewmh-dev
   sudo apt install -y libssl-dev
+elif [ "$OS" = "Arch Linux" ]; then
+  sudo pacman --noconfirm --needed -S libmpdclient
 elif [ "$OS" = "Gentoo" ]; then
   GENTOO_PKGS="jsoncpp"
   FAILURES=""

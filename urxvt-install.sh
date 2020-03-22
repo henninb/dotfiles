@@ -11,27 +11,22 @@ elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   #sudo apt install -y rxvt-unicode xsel
 elif [ "$OS" = "void" ]; then
   echo
-elif [ "$OS" = "Ubuntu" ]; then
-  sudo apt update
-  sudo apt upgrade -y
-  #sudo apt install -y rxvt-unicode xsel
 elif [ "$OS" = "Fedora" ]; then
+  echo
   #sudo dnf install rxvt-unicode
   sudo dnf install fontawesome-fonts
-  echo add libs
 elif [ "$OS" = "FreeBSD" ]; then
   echo freebsd
-elif [ "$OS" = "Linux Mint" ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   echo
   # sudo apt update
   # sudo apt upgrade -y
   #sudo apt install -y rxvt-unicode xsel
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   # urxvt needs to be installed from the package
-  # sudo pacman -S --noconfirm --needed rxvt-unicode xsel
-  #exit 0
+  sudo pacman -S --noconfirm --needed rxvt-unicode xsel
+  exit 0
   #sudo pacman -S awesome-terminal-fonts
-  echo
 else
   echo "$OS is not yet implemented."
   exit 1
