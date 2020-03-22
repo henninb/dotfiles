@@ -206,3 +206,10 @@ https://github.com/neutrinolabs/xrdp/issues/911
 
 ## rice polybar
 https://github.com/Th0rgal/horus-nix-home
+
+
+## startx permission issue
+```shell
+$ startx /usr/bin/i3 -- vt1
+$ startx -- :1 vt5
+```
