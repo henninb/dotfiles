@@ -5,22 +5,24 @@ if [ "$OS" = "Linux Mint" ]; then
   #sudo usermod -a -G wheel brian
   sudo useradd -m -G wheel -s /bin/zsh brian
   # add group to existing list of secondary groups
-  sudo usermod  -a -G tomcat henninb
-  sudo usermod  -a -G firefox henninb
-  sudo usermod  -a -G intellij henninb
-  sudo usermod  -a -G arduino henninb
+  sudo usermod -a -G tomcat henninb
+  sudo usermod -a -G firefox henninb
+  sudo usermod -a -G intellij henninb
+  sudo usermod -a -G arduino henninb
 #sudo adduser -m -G wheel -s /bin/bash henninb
 elif [ "$OS" = "Arch Linux" ]; then
   id -g wheel &>/dev/null || sudo groupadd wheel
   sudo useradd -m -G wheel -s /bin/bash brian
   id brian
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo usermod -G wheel henninb
 elif [ "$OS" = "Fedora" ]; then
   sudo groupadd wheel
   id -u brian &>/dev/null || sudo useradd -m -G wheel -s /bin/bash brian
-  sudo usermod  -a -G tomcat henninb
-  sudo usermod  -a -G firefox henninb
-  sudo usermod  -a -G intellij henninb
-  sudo usermod  -a -G arduino henninb
+  sudo usermod -a -G tomcat henninb
+  sudo usermod -a -G firefox henninb
+  sudo usermod -a -G intellij henninb
+  sudo usermod -a -G arduino henninb
 elif [ "$OS" = "Gentoo" ]; then
   sudo useradd -m -G wheel -s /bin/zsh brian
 else
