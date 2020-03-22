@@ -6,10 +6,10 @@ if [ "$OS" = "CentOS Linux" ]; then
   else
     sudo yum install -y zsh
   fi
-elif [ \( "$OS" = "Arch Linux" \) -o \( "$OS" = "Manjaro Linux" \) ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman  --noconfirm --needed -S zsh
   sudo pacman  --noconfirm --needed -S unzip
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y zsh
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y zsh
@@ -29,7 +29,7 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y util-linux-user
   sudo dnf install -y zsh
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
@@ -50,28 +50,28 @@ fi
 ## download plugins and themes
 echo curl -fsSL https://starship.rs/install.sh | bash
 
-git clone git://github.com/zsh-users/zsh-autosuggestions.git ${HOME}/plugins/zsh-autosuggestions
+git clone git://github.com/zsh-users/zsh-autosuggestions.git "${HOME}/plugins/zsh-autosuggestions"
 
-git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ${HOME}/plugins/zsh-syntax-highlighting
+git clone git://github.com/zsh-users/zsh-syntax-highlighting.git "${HOME}/plugins/zsh-syntax-highlighting"
 
-git clone git://github.com/wting/autojump.git $HOME/plugins/autojump
+git clone git://github.com/wting/autojump.git "$HOME/plugins/autojump"
 
-git clone --recursive git://github.com/eendroroy/zed-zsh $HOME/plugins/zed-zsh
+git clone --recursive git://github.com/eendroroy/zed-zsh "$HOME/plugins/zed-zsh"
 
-git clone git://github.com/zsh-users/zsh-history-substring-search.git $HOME/plugins/zsh-history-substring-search
+git clone git://github.com/zsh-users/zsh-history-substring-search.git "$HOME/plugins/zsh-history-substring-search"
 
-git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
 $HOME/.fzf/install
 
-git clone git://github.com/denysdovhan/spaceship-prompt.git ${HOME}/themes/spaceship-prompt
+git clone git://github.com/denysdovhan/spaceship-prompt.git "${HOME}/themes/spaceship-prompt"
 
-git clone git://github.com/eendroroy/alien.git $HOME/themes/alien
-cd $HOME/themes/alien
+git clone git://github.com/eendroroy/alien.git "$HOME/themes/alien"
+cd "$HOME/themes/alien"
 git submodule update --init --recursive
 cd -
 
-git clone git@github.com:agnoster/agnoster-zsh-theme.git $HOME/themes/agnoster-zsh-theme
-git clone git@github.com:dracula/zsh.git $HOME/themes/dracula-zsh-theme
+git clone git@github.com:agnoster/agnoster-zsh-theme.git "$HOME/themes/agnoster-zsh-theme"
+git clone git@github.com:dracula/zsh.git "$HOME/themes/dracula-zsh-theme"
 
 
 ## download plugins and themes
