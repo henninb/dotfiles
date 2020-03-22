@@ -203,3 +203,6 @@ solaar
 
 # xrdp failed to start
 https://github.com/neutrinolabs/xrdp/issues/911
+
+## rice polybar
+https://github.com/Th0rgal/horus-nix-home
