@@ -261,6 +261,27 @@ elif [ "$OS" = "Fedora" ]; then
     sudo mv -v 45-allow.colord.pkla /etc/polkit-1/localauthority/50-local.d/
     sudo systemctl disable firewalld
     sudo systemctl stop firewalld
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+    sudo zypper install -y libtool
+    sudo zypper install -y openssl-devel
+    sudo zypper install -y pam-devel
+    sudo zypper install -y nasm
+    sudo zypper install -y libX11-devel
+    sudo zypper install -y libXfixes-devel
+    sudo zypper install -y libXrandr-devel
+    # sudo zypper install -y xorg-x11-server-devel
+    cd "$HOME/projects" || exit
+    git clone --recursive git@github.com:neutrinolabs/xrdp.git
+    cd xrdp || exit
+    git pull origin master
+    ./bootstrap
+    ./configure
+    make clean
+    if ! make; then
+      echo build failed for xrdp.
+      exit 1
+    fi
+    sudo make install
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
     echo centos8
