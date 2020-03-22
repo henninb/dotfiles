@@ -31,6 +31,8 @@ if [ "$OS" = "Arch Linux" ]; then
   sudo tar -xjvf "firefox-${FOX_VER}.tar.bz2" -C /opt
   sudo chown -R firefox:firefox /opt/firefox
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper install -f libcairo2
+  sudo zypper install -y dbus-1-glib
   sudo rm -rf /opt/firefox
   sudo tar -xjvf "firefox-${FOX_VER}.tar.bz2" -C /opt
   sudo chown -R firefox:firefox /opt/firefox
