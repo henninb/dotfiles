@@ -269,6 +269,9 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
     sudo zypper install -y libX11-devel
     sudo zypper install -y libXfixes-devel
     sudo zypper install -y libXrandr-devel
+    sudo zypper install -y xorg-x11-server
+    sudo zypper install -y xorg-x11-server-sdk
+    sudo zypper install -y libXfont2-devel
     # sudo zypper install -y xorg-x11-server-devel
     cd "$HOME/projects" || exit
     git clone --recursive git@github.com:neutrinolabs/xrdp.git
@@ -282,6 +285,21 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
       exit 1
     fi
     sudo make install
+
+  cd "$HOME/projects" || exit
+  git clone git@github.com:neutrinolabs/xorgxrdp.git
+  cd xorgxrdp || exit
+  ./bootstrap
+  ./configure XRDP_CFLAGS=-I"$HOME/projects/xrdp/common" XRDP_LIBS=" "
+  if ! make ; then
+    echo build failed for xorgxrdp.
+    exit 1
+  fi
+  sudo make install
+  sudo mv -v startwm.sh /etc/xrdp/startwm.sh
+  sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
+  sudo systemctl stop firewalld
+  sudo systemctl disable firewalld
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
     echo centos8
