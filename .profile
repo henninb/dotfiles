@@ -4,3 +4,5 @@ case $(tty) in /dev/tty[0-9]*)
 esac
 
 [ -t 0 ] && echo "TTY available" || echo "No TTY available"
+
+export PATH="$HOME/.cargo/bin:$PATH"

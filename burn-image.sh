@@ -7,10 +7,10 @@ fi
 
 FILE=$1
 
-wodim  dev=/dev/sr0 -checkdrive -prcap
-echo does not write dvdr+ disks
+echo My external burner does not write dvdr+ disks.
 
 if [ -x "$(command -v wodim)" ]; then
+  wodim  dev=/dev/sr0 -checkdrive -prcap
   wodim dev=/dev/sr0 --scanbus
   #sudo wodim dev=/dev/sr0 -v -data "${FILE}"
   #sudo wodim -eject -tao speed=0 dev=/dev/sr0 -v -data  "${FILE}"
@@ -18,14 +18,15 @@ if [ -x "$(command -v wodim)" ]; then
   sudo wodim speed=0 dev=/dev/sr0 -v -data "${FILE}"
   #driver=mmc_dvdplusr
   #driveropts=burnfree
+elif [ -x "$(command -v cdrecord)" ]; then
+  sudo cdrecord -scanbus
+  sudo cdrecord -v -eject speed=4 dev=ATAPI:0,0,0 "${FILE}"
+  echo ls -l /dev/cdrom
 else
-  echo wodim is not installed.
+  echo "neither wodim nor cdrecord installed."
 fi
 
 echo sudo mount -t iso9660 /dev/cdrom /media/cdrom
 echo sudo mkdir -p /media/cdrom
-echo cdrecord -scanbus
-echo cdrecord -v -eject speed=48 dev=ATAPI:0,0,0 CentOS-8-x86_64-1905-boot.iso
-echo ls -l /dev/cdrom
 
 exit 0

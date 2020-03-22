@@ -26,6 +26,15 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   sudo apt install -y w3m-img
   sudo apt install -y vifm
   sudo apt install -y xserver-xephyr
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper install -y bspwm
+  sudo zypper install -y xscreensaver
+  sudo zypper install -y xdo
+  sudo zypper install -y feh
+  sudo zypper install -y xclip
+  sudo zypper install -y sxhkd
+  sudo zypper install -y w3m
+  sudo zypper install -y w3m-img
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -Sy base-devel libX11-devel libXft-devel libXinerama-devel
   sudo xbps-install -Sy bspwm
