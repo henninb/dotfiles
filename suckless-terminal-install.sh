@@ -46,4 +46,14 @@ fi
 mv st "$HOME/.local/bin/st-transparency"
 cd "$HOME" || exit
 
+cd "$HOME/projects" || exit
+git clone git@github.com:LukeSmithxyz/st.git st-luke
+cd st-luke || exit
+if ! make ; then
+  echo "make failed."
+  exit 1
+fi
+mv st "$HOME/.local/bin/st-luke"
+cd "$HOME" || exit
+
 exit 0
