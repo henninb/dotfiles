@@ -1,6 +1,8 @@
 #!/bin/sh
 exec tail -n +3 "$0"
 
+# this file name should be 40_custom
+
 # installed in bedroom on arch
 menuentry "CentOS-7 5.0.2-1" {
   set root=(hd2,4)
@@ -23,7 +25,22 @@ menuentry "Mint 19.3" {
 # to get UUID
 # sudo blkid
 menuentry "Arch Linux" {
-  set root=(hd1,gpt6)
+  set root=(hd1,gpt7)
   linux /vmlinuz-linux root=/dev/nvme1n1p6
   initrd /initramfs-linux.img
+}
+
+menuentry "Windows 10 gpt2" {
+  set root=(hd1,gpt2)
+  chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+}
+
+menuentry "System Reboot" {
+  echo "System Reboot"
+  reboot
+}
+
+menuentry "System Shutdown" {
+  echo "System Shutdown"
+  halt
 }
