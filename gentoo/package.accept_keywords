@@ -56,4 +56,6 @@ www-client/brave-bin **
 =sys-kernel/gentoo-kernel-5.5.9 ~amd64
 =sys-kernel/installkernel-gentoo-2 ~amd64
 =sys-apps/debianutils-4.9.1 ~amd64
-
+sys-kernel/spl ~amd64
+sys-fs/zfs-kmod ~amd64
+sys-fs/zfs ~amd64
