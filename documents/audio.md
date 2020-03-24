@@ -3,6 +3,7 @@
 alsamixer
 ```
 lsmod | grep audio
+sudo usermod -a -G audio henninb
 arecord -l
 pacmd list-sinks
 pacmd list-sinks| grep alsa_output

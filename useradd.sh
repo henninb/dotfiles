@@ -25,8 +25,9 @@ elif [ "$OS" = "Fedora" ]; then
   sudo usermod -a -G arduino henninb
 elif [ "$OS" = "Gentoo" ]; then
   sudo useradd -m -G wheel -s /bin/zsh brian
+  sudo usermod -a -G audio henninb
 else
-   echo $OS is not yet implemented.
+   echo "$OS is not yet implemented."
 fi
 
 exit 0
