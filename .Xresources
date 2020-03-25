@@ -31,7 +31,7 @@ Xft.hinting: true
 Xft.autohint: true
 Xft.hintstyle: hintslight
 
-URxvt.font: xft:monofur for Powerline:pixelsize=20, xft:Symbola:pixelsize=12
+URxvt.font: xft:monofur for Powerline:pixelsize=20, xft:Symbola:pixelsize=12, xft:FuraCode Nerd Font:pixelsize=12
 !URxvt.font: xft:monofur for Powerline:pixelsize=20
 !URxvt.font: xft:Symbola:pixelsize=20, xft:monofur for Powerline:pixelsize=20
 !URxvt.font: xft:Hack Nerd Front Mono:pixelsize=16
