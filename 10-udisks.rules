@@ -5,6 +5,7 @@ polkit.addRule(function(action, subject) {
     }
 });
 
+///etc/polkit-1/localauthority.conf.d/51-ubuntu-admin.conf
 // Allow udisks2 to mount devices without authentication
 // for users in the "storage" group.
 polkit.addRule(function(action, subject) {
