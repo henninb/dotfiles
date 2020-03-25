@@ -213,3 +213,7 @@ https://github.com/Th0rgal/horus-nix-home
 $ startx /usr/bin/i3 -- vt1
 $ startx -- :1 vt5
 ```
+
+
+## disk mounting issue
+ /etc/polkit-1/rules.d/10-udisks.rules
