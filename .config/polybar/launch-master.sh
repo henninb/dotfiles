@@ -17,9 +17,9 @@ echo "XRDP_SESSION $XRDP_SESSION" >> "$HOME/polybar.log"
 
 if [ -n "${XRDP_SESSION}" ]; then
   echo xrdp environment >> "$HOME/polybar.log"
-  polybar -c "$HOME/.config/polybar/config-master.ini" "${WM}-rdp" 2>> "$HOME/polybar.log" &
+  polybar -c "$HOME/.config/polybar/config-test.ini" "${WM}-rdp" 2>> "$HOME/polybar.log" &
 else
   echo xrdp environment not found >> "$HOME/polybar.log"
-  polybar -c "$HOME/.config/polybar/config-master.ini" "${WM}" 2>> "$HOME/polybar.log" &
+  polybar -c "$HOME/.config/polybar/config-test.ini" "${WM}" 2>> "$HOME/polybar.log" &
 fi
 echo "result code: $?" >> "$HOME/polybar.log"
