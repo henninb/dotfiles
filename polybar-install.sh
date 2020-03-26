@@ -30,7 +30,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y xcb-proto
   sudo apt install -y libxcb-ewmh-dev
   sudo apt install -y libssl-dev
-  sudo apt install -y jsoncpp
+  sudo apt install -y libjsoncpp-dev
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y alsa
   sudo zypper install -y cairo-devel
