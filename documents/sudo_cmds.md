@@ -4,6 +4,7 @@
 ```
 #sudo visudo
 henninb ALL=(ALL) NOPASSWD: ALL
+%wheel ALL=(ALL) NOPASSWD: ALL
 ```
 
 ## disable pwfeedback - ** while typing sudo passwords
