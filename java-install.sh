@@ -9,6 +9,10 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman  --noconfirm --needed -S jdk8-openjdk
   echo sudo pacman  --noconfirm --needed -S jdk-openjdk
   echo
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  # sudo zypper install -y java-11-openjdk
+  # sudo zypper install -y java-1_8_0-openjdk
+  sudo zypper install -y java-1_8_0-openjdk-devel
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -S openjdk
 elif [ "$OS" = "Ubuntu" ]; then
