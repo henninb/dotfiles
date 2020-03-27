@@ -13,6 +13,8 @@ fi
 
 if [ "$OS" = "FreeBSD" ]; then
   sudo pkg install gtk3 gmake intltool pkgconf automake pcre2 libtool gtk-doc
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper install ncurses-devel
 elif [ "$OS" = "void" ]; then
   echo
   sudo xbps-install -Sy ncurses-devel

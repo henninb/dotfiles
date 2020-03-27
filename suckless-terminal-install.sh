@@ -1,10 +1,14 @@
 #!/bin/sh
 
-
 if [ "$OS" = "Gentoo" ]; then
   echo
 elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  # export CFLAGS='-std=c99'
+  # export CC='gcc -std=c99'
+  # export CC=gcc
+  echo $CC
 elif [ "$OS" = "FreeBSD" ]; then
   echo
 elif [ "$OS" = "Ubuntu" ]; then
@@ -28,7 +32,7 @@ cd "$HOME/projects" || exit
 git clone https://git.suckless.org/st
 cd st || exit
 git pull origin master
-if ! sudo make clean install ; then
+if ! sudo make clean install CC=gcc ; then
   echo "make failed."
   exit 1
 fi
@@ -39,7 +43,7 @@ cd "$HOME" || exit
 cd "$HOME/projects" || exit
 git clone git@github.com:Tharre/st-transparency.git
 cd st-transparency || exit
-if ! make ; then
+if ! make CC=gcc; then
   echo "make failed."
   exit 1
 fi
@@ -49,7 +53,7 @@ cd "$HOME" || exit
 cd "$HOME/projects" || exit
 git clone git@github.com:LukeSmithxyz/st.git st-luke
 cd st-luke || exit
-if ! make ; then
+if ! make CC=gcc; then
   echo "make failed."
   exit 1
 fi
