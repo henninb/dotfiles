@@ -65,6 +65,19 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y libxcb-ewmh-devel
   sudo zypper install -y libssl-devel
   sudo zypper install -y jsoncpp
+  sudo zypper install -y libcurl-devel
+  sudo zypper install -y xcb-proto-devel
+  sudo zypper install -y libxcb-devel
+  sudo zypper install -y xcb-util-devel
+  sudo zypper install -y libxcb-ewmh2
+  sudo zypper install -y xcb-util-wm-devel
+  # sudo zypper install -y i3-gaps
+  sudo zypper install -y i3
+  # sudo zypper install -y libxcb-image0
+  sudo zypper install -y xcb-util-image-devel
+  sudo zypper install -y jsoncpp-devel
+  sudo zypper install -y fontawesome-fonts
+  sudo zypper install -y alsa-devel
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S libmpdclient
   sudo pacman --noconfirm --needed -S jsoncpp
@@ -83,7 +96,8 @@ fi
 
 
 export USE_GCC="ON"
-export ENABLE_I3="ON"
+export ENABLE_I3="OFF"
+# export ENABLE_ALSA="ON"
 export ENABLE_ALSA="ON"
 export ENABLE_PULSEAUDIO="ON"
 export ENABLE_NETWORK="ON"
@@ -98,16 +112,10 @@ cd polybar
 ./build.sh
 cd $HOME
 
+echo -- Font not found: unifont:fontformat=truetype
+echo -- Font not found: siji:pixelsize=10
+echo ** Execute 'sudo make install'? [Y/n] y
+echo ** Install example configuration? [y/N]: n
+
+
 exit 0
-
-    JOB_COUNT" ]] && JOB_COUNT=1
-
-      cmake                                       \
-    -DCMAKE_CXX_COMPILER="${CXX}"             \
-    -DENABLE_ALSA:BOOL="${ENABLE_ALSA}"       \
-    -DENABLE_PULSEAUDIO:BOOL="${ENABLE_PULSEAUDIO}"\
-    -DENABLE_I3:BOOL="${ENABLE_I3}"           \
-    -DENABLE_MPD:BOOL="${ENABLE_MPD}"         \
-    -DENABLE_NETWORK:BOOL="${ENABLE_NETWORK}" \
-    -DENABLE_CURL:BOOL="${ENABLE_CURL}"       \
-    -DBUILD_IPC_MSG:BOOL="${ENABLE_IPC_MSG}"   \
