@@ -31,6 +31,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y libxcb-ewmh-dev
   sudo apt install -y libssl-dev
   sudo apt install -y libjsoncpp-dev
+  sudo apt install -y pulseaudio
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y alsa
   sudo zypper install -y cairo-devel
@@ -88,3 +89,24 @@ cd polybar
 cd $HOME
 
 exit 0
+
+  if [[ "$AUTO" == ON ]]; then
+    [[ -z "$USE_GCC" ]] && USE_GCC="OFF"
+    [[ -z "$ENABLE_I3" ]] && ENABLE_I3="OFF"
+    [[ -z "$ENABLE_ALSA" ]] && ENABLE_ALSA="OFF"
+    [[ -z "$ENABLE_PULSEAUDIO" ]] && ENABLE_PULSEAUDIO="OFF"
+    [[ -z "$ENABLE_NETWORK" ]] && ENABLE_NETWORK="OFF"
+    [[ -z "$ENABLE_MPD" ]] && ENABLE_MPD="OFF"
+    [[ -z "$ENABLE_CURL" ]] && ENABLE_CURL="OFF"
+    [[ -z "$ENABLE_IPC_MSG" ]] && ENABLE_IPC_MSG="OFF"
+    [[ -z "$JOB_COUNT" ]] && JOB_COUNT=1
+
+      cmake                                       \
+    -DCMAKE_CXX_COMPILER="${CXX}"             \
+    -DENABLE_ALSA:BOOL="${ENABLE_ALSA}"       \
+    -DENABLE_PULSEAUDIO:BOOL="${ENABLE_PULSEAUDIO}"\
+    -DENABLE_I3:BOOL="${ENABLE_I3}"           \
+    -DENABLE_MPD:BOOL="${ENABLE_MPD}"         \
+    -DENABLE_NETWORK:BOOL="${ENABLE_NETWORK}" \
+    -DENABLE_CURL:BOOL="${ENABLE_CURL}"       \
+    -DBUILD_IPC_MSG:BOOL="${ENABLE_IPC_MSG}"   \
