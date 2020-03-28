@@ -82,6 +82,16 @@ else
 fi
 
 
+export USE_GCC="ON"
+export ENABLE_I3="ON"
+export ENABLE_ALSA="ON"
+export ENABLE_PULSEAUDIO="ON"
+export ENABLE_NETWORK="ON"
+export ENABLE_MPD="ON"
+export ENABLE_CURL="ON"
+export ENABLE_IPC_MSG="ON"
+export JOB_COUNT=$(nproc)
+
 cd $HOME/projects/
 git clone --recursive https://github.com/jaagr/polybar.git
 cd polybar
@@ -90,16 +100,7 @@ cd $HOME
 
 exit 0
 
-  if [[ "$AUTO" == ON ]]; then
-    [[ -z "$USE_GCC" ]] && USE_GCC="OFF"
-    [[ -z "$ENABLE_I3" ]] && ENABLE_I3="OFF"
-    [[ -z "$ENABLE_ALSA" ]] && ENABLE_ALSA="OFF"
-    [[ -z "$ENABLE_PULSEAUDIO" ]] && ENABLE_PULSEAUDIO="OFF"
-    [[ -z "$ENABLE_NETWORK" ]] && ENABLE_NETWORK="OFF"
-    [[ -z "$ENABLE_MPD" ]] && ENABLE_MPD="OFF"
-    [[ -z "$ENABLE_CURL" ]] && ENABLE_CURL="OFF"
-    [[ -z "$ENABLE_IPC_MSG" ]] && ENABLE_IPC_MSG="OFF"
-    [[ -z "$JOB_COUNT" ]] && JOB_COUNT=1
+    JOB_COUNT" ]] && JOB_COUNT=1
 
       cmake                                       \
     -DCMAKE_CXX_COMPILER="${CXX}"             \

@@ -6,6 +6,7 @@ echo  dm-tool switch-to-greeter
 echo lightdm --test-mode --debug
 sudo apt install -y lightdm
 sudo apt install -y lightdm-gtk-greeter
+sudo apt install -y slick-greeter
 
 cat > lightdm.conf <<EOF
 [Seat:*]
