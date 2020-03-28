@@ -235,7 +235,7 @@ myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
 
 myStartupHook = do
   setWMName "LG3D"
-  spawn "$HOME/.config/polybar/launch-master.sh xmonad"
+  spawn "$HOME/.config/polybar/launch.sh xmonad"
   --spawn "dropbox"
 
 --myConfig :: XConfig

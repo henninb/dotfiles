@@ -15,7 +15,7 @@ fi
 
 if [ -x "$(command -v polybar)" ]; then
   #polybar bspwm &
-  $HOME/.config/polybar/launch-master.sh bspwm
+  $HOME/.config/polybar/launch.sh bspwm
 fi
 
 # if [ -x "$(command -v wmname)" ]; then

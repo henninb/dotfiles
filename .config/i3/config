@@ -173,4 +173,4 @@ bindsym XF86AudioMute exec "amixer -q -D pulse sset Master toggle"
 # }
 
 # exec_always --no-startup-id $HOME/.config/polybar/launch-master.sh
-exec_always --no-startup-id $HOME/.config/polybar/launch-master.sh i3
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh i3
