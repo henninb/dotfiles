@@ -10,6 +10,8 @@ ARCHLINUX_PKGS="pacman-contrib mpg123 screen figlet neovim vim rtorrent wget ran
 
 MINT_PKGS="jq stunnel postfix mailutils mpg123 screen figlet vim rtorrent wget zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg alsa-utils cmus python-setuptools rsync tmux mcrypt wine64 yarn nodejs ssh-askpass iptables-persistent libguestfs-tools byobu fetchmail dos2unix pass fish ctags strace astyle clang-format rpm bastet mpv sshfs lynx etherwake cdrecord toilet zsync newsboat scrot sxhkd imagemagick vifm w3m-img groff zip unzip neofetch ripgrep sshpass calcurse lnav tmate most festival shellcheck ddgr tig mtr nnn trash-cli colordiff"
 
+SUSE_PKGS="jq stunnel postfix mailutils mpg123 screen figlet vim rtorrent wget zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg alsa-utils cmus python-setuptools rsync tmux mcrypt wine64 yarn nodejs ssh-askpass iptables-persistent libguestfs-tools byobu fetchmail dos2unix pass fish ctags strace astyle clang-format rpm bastet mpv sshfs lynx etherwake cdrecord toilet zsync newsboat scrot sxhkd imagemagick vifm w3m-img groff zip unzip neofetch ripgrep sshpass calcurse lnav tmate most festival shellcheck ddgr tig mtr nnn trash-cli colordiff"
+
 UBUNTU_PKGS="jq stunnel postfix mailutils mpg123 screen figlet vim rtorrent wget ranger fx zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip ffmpeg alsa-utils cmus python-setuptools rsync tmux emacs mcrypt wine yarn ssh-askpass iptables-persistent libguestfs-tools fetchmail dos2unix pass fish clang-format clisp rpm nsnake bastet netcat strace astyle ctags mpv sshfs lynx etherwake cdrecord toilet zsync newsboat sxhkd vifm w3m-img neofetch zip unzip lnav most ddgr tig nnn colordiff"
 
 GENTOO_PKGS="dev-lang/rust-bin postfix stunnel mpg123 app-misc/screen figlet vim rtorrent wget ranger zsh gnupg fossil subversion git mutt neomutt irssi htop nmon nmap tmux rsync libnova ffmpeg yarn alsa-utils cmus rsync dev-python/pip net-misc/netdate emacs mcrypt zip unzip dev-lang/smlnj dev-lisp/clisp layman dos2unix fish pass strace ctags astyle ntp mlton rpm eix bastet lsof sys-fs/fuse pulseaudio vifm sxhkd alsa-utils neofetch ripgrep sshpass lnav nnn trash-cli colordiff"
@@ -64,8 +66,15 @@ elif [ "$OS" = "Ubuntu" ]; then
     fi
   done
   echo Failures: "$FAILURE"
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  FAILURES=""
+  for i in $(echo $SUSE_PKGS); do
+    if ! sudo zypper install -y "$i"; then
+      FAILURE="$i $FAILURE"
+    fi
+  done
+  echo Failures: "$FAILURE"
 elif [ "$OS" = "void" ]; then
-  echo
   FAILURES=""
   for i in $(echo $VOID_PKGS); do
     if ! sudo xbps-install -y "$i"; then
@@ -74,7 +83,6 @@ elif [ "$OS" = "void" ]; then
   done
   echo Failures: "$FAILURE"
 elif [ "$OS" = "Solus" ]; then
-  echo
   FAILURES=""
   for i in $(echo $SOLUS_PKGS); do
     if ! sudo eopkg install -y "$i"; then

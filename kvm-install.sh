@@ -29,12 +29,26 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y dnsmasq
   sudo zypper install -y spice-client-gtk
   sudo zypper install -y virt-viewer
+  sudo zypper install -y virt-manager
   sudo zypper install -y gir1.2-spiceclientgtk-3.0
   sudo zypper install -y libguestfs-tools
   sudo usermod -a -G libvirt $(id -un)
   sudo usermod -a -G kvm $(id -un)
   sudo systemctl start libvirtd
   sudo systemctl enable libvirtd
+  sudo virsh net-autostart default
+
+  sudo virsh pool-define /dev/stdin <<EOF
+<pool type='dir'>
+  <name>default</name>
+  <target>
+    <path>/var/lib/libvirt/images</path>
+  </target>
+</pool>
+EOF
+
+  sudo virsh pool-start default
+  sudo virsh pool-autostart default
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   #sudo pacman -Syu libvirt qemu virt-manager spice-client-gtk virt-viewer gir1.2-spiceclientgtk-3.0
   sudo pacman --noconfirm --needed -Syu dmidecode
