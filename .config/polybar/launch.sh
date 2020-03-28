@@ -22,5 +22,5 @@ else
   echo xrdp environment not found >> "$HOME/polybar.log"
   # polybar -c "$HOME/.config/polybar/config-test.ini" "${WM}" 2>> "$HOME/polybar.log" &
 fi
-polybar -c "$HOME/.config/polybar/config-test.ini" "${WM}" 2>> "$HOME/polybar.log" &
+polybar -c "$HOME/.config/polybar/config-master.ini" "${WM}" 2>> "$HOME/polybar.log" &
 echo "result code: $?" >> "$HOME/polybar.log"

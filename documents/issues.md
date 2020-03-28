@@ -214,6 +214,13 @@ $ startx /usr/bin/i3 -- vt1
 $ startx -- :1 vt5
 ```
 
-
 ## disk mounting issue
  /etc/polkit-1/rules.d/10-udisks.rules
+
+## fonts in polybar
+```shell
+# "Un-disable" bitmap fonts
+sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf
+# Clear the font cache
+sudo fc-cache -f -v
+```
