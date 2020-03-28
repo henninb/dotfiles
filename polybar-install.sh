@@ -111,7 +111,7 @@ cd $HOME
 
 export USE_GCC="ON"
 export ENABLE_I3="ON"
-# export ENABLE_ALSA="ON"
+[ "$OS" = "openSUSE Tumbleweed" ] && export ENABLE_I3="OFF"
 export ENABLE_ALSA="ON"
 export ENABLE_PULSEAUDIO="ON"
 export ENABLE_NETWORK="ON"
@@ -119,12 +119,14 @@ export ENABLE_MPD="ON"
 export ENABLE_CURL="ON"
 export ENABLE_IPC_MSG="ON"
 export JOB_COUNT=$(nproc)
+export INSTALL="ON"
+export INSTALL_CONF="OFF"
 
-cd $HOME/projects/
-git clone --recursive git@:github.com:jaagr/polybar.git
-cd polybar
-./build.sh
-cd $HOME
+# cd $HOME/projects/
+# git clone --recursive git@:github.com:jaagr/polybar.git
+# cd polybar
+# ./build.sh
+# cd $HOME
 
 echo -- Font not found: unifont:fontformat=truetype
 echo -- Font not found: siji:pixelsize=10
