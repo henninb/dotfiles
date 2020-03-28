@@ -4,6 +4,8 @@ if [ "$OS" = "Gentoo" ]; then
   sudo emerge gnupg pass
 elif [ "$OS" = "Linux Mint" ]; then
   sudo apt install -y gnupg
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  echo
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S gnupg
   sudo pacman --noconfirm --needed -S pass

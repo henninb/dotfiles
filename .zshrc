@@ -105,25 +105,26 @@ fi
 # TODO: test this, not sure if/how this works
 HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
 
-
-if [ "${OSTYPE}" = "linux-gnu" ]; then
+if [ "${OSTYPE}" = "linux-gnu" ] || [ "${OSTYPE}" = "linux" ]; then
   if [ "${OS}" = "Gentoo" ]; then
     JAVA_HOME=$(java-config -o)
+    export JAVA_HOME
     # JAVA_HOME=$(readlink -f $(readlink -f ${JDK_HOME}))
   elif [ -x "$(command -v javac)" ]; then
     JAVA_HOME=$(dirname "$(dirname "$(readlink -f "$(readlink -f "$(which javac)")" || readlink -f "$(which javac)")")")
+    export JAVA_HOME
   else
-    echo install java
+    echo JAVA_HOME is not setup.
   fi
 elif [ "${OSTYPE}" = "linux-gnueabihf" ]; then
   JAVA_HOME=/usr/lib/jvm/java-8-openjdk-armhf
+  export JAVA_HOME
 elif [ "$OS" = "Darwin" ]; then
   JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+  export JAVA_HOME
 else
   echo JAVA_HOME is not setup.
 fi
-
-export JAVA_HOME
 
 export PATH=$PYENV_ROOT/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
