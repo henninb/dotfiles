@@ -1,5 +1,7 @@
 #!/bin/sh
 
+sudo zypper install -y ntp
+
 if [ "$OS" = "FreeBSD" ]; then
   date
   sudo ntpdate -s time.nist.gov
