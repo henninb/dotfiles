@@ -21,9 +21,23 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y wmname
   sudo apt install -y blueberry
   #sudo apt install -y icu-devtools libicu-dev
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper install -y libxss-devel
+  sudo zypper install -y xscreensaver
+  sudo zypper install -y feh
+  sudo zypper install -y w3m
+  sudo zypper install -y dzen2
+  sudo zypper install -y cmake
+  sudo zypper install -y libxpm-devel
+  sudo zypper install -y xdotool
+  sudo zypper install -y xdo
+  sudo zypper install -y sxhkd
+  sudo zypper install -y dunst
+  sudo zypper install -y wmname
+  sudo zypper install -y blueberry
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
-  sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
+  sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc lxdm
   sudo pacman --noconfirm --needed -S xscreensaver
   sudo pacman --noconfirm --needed -S feh
