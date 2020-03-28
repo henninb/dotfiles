@@ -21,8 +21,9 @@ if [ "$OS" = "Linux Mint" ] || [  "$OS" = "Ubuntu" ]; then
   sudo virsh -c qemu:///system list
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y qemu-kvm
-  sudo zypper install -y libvirt-daemon-system 
-  sudo zypper install -y libvirt-clients 
+  sudo zypper install -y libvirt-daemon-system
+  sudo zypper install -y libvirt-clients
+  sudo zypper install -y libvirt
   sudo zypper install -y bridge-utils
   sudo zypper install -y ebtables
   sudo zypper install -y dnsmasq
@@ -30,6 +31,10 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y virt-viewer
   sudo zypper install -y gir1.2-spiceclientgtk-3.0
   sudo zypper install -y libguestfs-tools
+  sudo usermod -a -G libvirt $(id -un)
+  sudo usermod -a -G kvm $(id -un)
+  sudo systemctl start libvirtd
+  sudo systemctl enable libvirtd
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   #sudo pacman -Syu libvirt qemu virt-manager spice-client-gtk virt-viewer gir1.2-spiceclientgtk-3.0
   sudo pacman --noconfirm --needed -Syu dmidecode
