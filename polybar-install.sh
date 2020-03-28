@@ -78,6 +78,10 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y jsoncpp-devel
   sudo zypper install -y fontawesome-fonts
   sudo zypper install -y alsa-devel
+  sudo zypper install -y gtk-doc
+  sudo zypper install -y autogen
+  sudo zypper install -y json-glib-devel
+  sudo zypper install -y gobject-introspection
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S libmpdclient
   sudo pacman --noconfirm --needed -S jsoncpp
@@ -94,9 +98,19 @@ else
   echo
 fi
 
+git@github.com:altdesktop/i3ipc-glib.git
+cd $HOME/projects/
+git clone --recursive git@github.com:altdesktop/i3ipc-glib.git
+cd i3ipc-glib
+./autogen.sh
+if ! sudo make install; then
+  echo failed i3-ipc
+  exit 1
+fi
+cd $HOME
 
 export USE_GCC="ON"
-export ENABLE_I3="OFF"
+export ENABLE_I3="ON"
 # export ENABLE_ALSA="ON"
 export ENABLE_ALSA="ON"
 export ENABLE_PULSEAUDIO="ON"
@@ -107,15 +121,15 @@ export ENABLE_IPC_MSG="ON"
 export JOB_COUNT=$(nproc)
 
 cd $HOME/projects/
-git clone --recursive https://github.com/jaagr/polybar.git
+git clone --recursive git@:github.com:jaagr/polybar.git
 cd polybar
 ./build.sh
 cd $HOME
 
 echo -- Font not found: unifont:fontformat=truetype
 echo -- Font not found: siji:pixelsize=10
-echo ** Execute 'sudo make install'? [Y/n] y
-echo ** Install example configuration? [y/N]: n
+echo Execute 'sudo make install'? [Y/n] y
+echo Install example configuration? [y/N]: n
 
 
 exit 0
