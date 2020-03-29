@@ -1,6 +1,8 @@
 #!/bin/sh
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
+  sudo apt install -y cmake
+  sudo apt install -y g++
   sudo apt install -y libev-dev
   sudo apt install -y libasound2-dev
   sudo apt install -y libxcb1-dev
@@ -131,8 +133,9 @@ export INSTALL="ON"
 export INSTALL_CONF="OFF"
 
 cd $HOME/projects/
-git clone --recursive git@:github.com:jaagr/polybar.git
+git clone --recursive git@github.com:polybar/polybar.git
 cd polybar
+git pull origin master
 ./build.sh
 cd $HOME
 

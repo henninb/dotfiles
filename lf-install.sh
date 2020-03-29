@@ -1,6 +1,7 @@
 #!/bin/sh
 
 sudo pacman -S go
+sudo apt install -y golang
 
 if [ ! -x "$(command -v go)" ]; then
   echo go not installed.
