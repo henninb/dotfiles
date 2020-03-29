@@ -41,11 +41,11 @@ if [ ! -f "rxvt-unicode-9.22.tar.bz2" ]; then
     echo "wget failed."
     exit 1
   fi
-  tar xvf rxvt-unicode-9.22.tar.bz2
-  if [ $? -ne 0 ]; then
-    echo "tar failed."
-    exit 1
-  fi
+fi
+tar xvf rxvt-unicode-9.22.tar.bz2
+if [ $? -ne 0 ]; then
+  echo "tar failed."
+  exit 1
 fi
 cd rxvt-unicode-9.22
 make clean
@@ -54,8 +54,8 @@ if [ $? -ne 0 ]; then
   echo "autogen failed."
   exit 1
 fi
-#./configure --enable-everything --enable-perl --enable-smart-resize --enable-256-color --enable-unicode3
-./configure --enable-everything --enable-perl --enable-smart-resize --enable-256-color
+./configure --enable-everything --enable-perl --enable-smart-resize --enable-256-color --enable-unicode3
+# ./configure --enable-everything --enable-smart-resize --enable-256-color
 if [ $? -ne 0 ]; then
   echo "configure failed."
   exit 1
