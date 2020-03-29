@@ -130,11 +130,11 @@ export JOB_COUNT=$(nproc)
 export INSTALL="ON"
 export INSTALL_CONF="OFF"
 
-# cd $HOME/projects/
-# git clone --recursive git@:github.com:jaagr/polybar.git
-# cd polybar
-# ./build.sh
-# cd $HOME
+cd $HOME/projects/
+git clone --recursive git@:github.com:jaagr/polybar.git
+cd polybar
+./build.sh
+cd $HOME
 
 echo -- Font not found: unifont:fontformat=truetype
 echo -- Font not found: siji:pixelsize=10
