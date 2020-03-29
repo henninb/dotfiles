@@ -82,6 +82,9 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y autogen
   sudo zypper install -y json-glib-devel
   sudo zypper install -y gobject-introspection
+elif [ "$OS" = "void" ]; then
+  sudo xbps-install libcurl-devel
+  sudo xbps-install libmpdclient-devel
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S libmpdclient
   sudo pacman --noconfirm --needed -S jsoncpp
@@ -98,16 +101,16 @@ else
   echo
 fi
 
-git@github.com:altdesktop/i3ipc-glib.git
-cd $HOME/projects/
-git clone --recursive git@github.com:altdesktop/i3ipc-glib.git
-cd i3ipc-glib
-./autogen.sh
-if ! sudo make install; then
-  echo failed i3-ipc
-  exit 1
-fi
-cd $HOME
+# git@github.com:altdesktop/i3ipc-glib.git
+# cd $HOME/projects/
+# git clone --recursive git@github.com:altdesktop/i3ipc-glib.git
+# cd i3ipc-glib
+# ./autogen.sh
+# if ! sudo make install; then
+#   echo failed i3-ipc
+#   exit 1
+# fi
+# cd $HOME
 
 export USE_GCC="ON"
 export ENABLE_I3="ON"
