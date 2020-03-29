@@ -53,6 +53,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y xrdb
   sudo xbps-install -y xrdp
   sudo xbps-install -y dmenu
+  sudo xbps-install -y font-awesome5
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
