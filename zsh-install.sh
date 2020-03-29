@@ -61,7 +61,7 @@ git clone --recursive git://github.com/eendroroy/zed-zsh "$HOME/plugins/zed-zsh"
 git clone git://github.com/zsh-users/zsh-history-substring-search.git "$HOME/plugins/zsh-history-substring-search"
 
 git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
-$HOME/.fzf/install
+$HOME/.fzf/install --key-bindings --completion --no-update-rc
 
 git clone git://github.com/denysdovhan/spaceship-prompt.git "${HOME}/themes/spaceship-prompt"
 
