@@ -87,6 +87,8 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install libmpdclient-devel
   sudo xbps-install pulseaudio-devel
   sudo xbps-install jsoncpp-devel
+  sudo xbps-install wireless_tools-devel
+  sudo xbps-install i3-devel
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S libmpdclient
   sudo pacman --noconfirm --needed -S jsoncpp
@@ -120,7 +122,7 @@ export ENABLE_I3="ON"
 export ENABLE_ALSA="ON"
 export ENABLE_PULSEAUDIO="ON"
 export ENABLE_NETWORK="ON"
-[ "$OS" = "void" ] && export ENABLE_NETWORK="OFF"
+# [ "$OS" = "void" ] && export ENABLE_NETWORK="OFF"
 export ENABLE_MPD="ON"
 export ENABLE_CURL="ON"
 export ENABLE_IPC_MSG="ON"
