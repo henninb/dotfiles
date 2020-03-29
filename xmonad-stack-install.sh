@@ -35,6 +35,11 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y dunst
   sudo zypper install -y wmname
   sudo zypper install -y blueberry
+  sudo zypper install -y gmp-devel
+  sudo zypper install -y alsa-lib-devel
+  sudo zypper install -y libxrandr-devel
+  sudo zypper install -y libxft-devel
+  sudo zypper install -y libXss-devel
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman -Rsnc gdm
   sudo pacman -Rsnc lightdm
@@ -52,32 +57,6 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S wmname
   sudo pacman --noconfirm --needed -S pulseaudio
   sudo pacman --noconfirm --needed -S alsa-utils
-  # yay install yabar
-  # yay install lemonbar
-  # cd "$HOME/projects" || exit
-  # git clone https://aur.archlinux.org/yabar-git.git yabar-aur
-  # cd yabar-aur || exit
-  # makepkg -si
-  # cd "$HOME/projects" || exit
-  # git clone https://aur.archlinux.org/lemonbar-git.git lemonbar-aur
-  # cd lemonbar-aur || exit
-  # makepkg -si
-# elif [ "$OS" = "Manjaro Linux" ]; then
-#   sudo pacman -Rsnc lightdm
-#   sudo pacman -Rsnc gdm
-#   sudo pacman -Rsnc lxdm
-#   sudo pacman --noconfirm --needed -S xscreensaver
-#   sudo pacman --noconfirm --needed -S feh
-#   sudo pacman --noconfirm --needed -S xdotool
-#   sudo pacman --noconfirm --needed -S cmake
-#   sudo pacman --noconfirm --needed -S w3m
-#   sudo pacman --noconfirm --needed -S dzen2
-#   sudo pacman --noconfirm --needed -S xdo
-#   sudo pacman --noconfirm --needed -S sxhkd
-#   sudo pacman --noconfirm --needed -S dunst
-#   sudo pacman --noconfirm --needed -S wmname
-#   sudo pacman --noconfirm --needed -S pulseaudio
-#   sudo pacman --noconfirm --needed -S alsa-utils
 elif [ "$OS" = "FreeBSD" ]; then
   ln -sfn "$(find /usr/local/bin/ -type f -name "perl5*" | tail -1)" "$HOME/.local/bin/perl"
   sudo pkg install -y neofetch

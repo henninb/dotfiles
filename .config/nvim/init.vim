@@ -49,6 +49,7 @@ endif
    Plug 'git@github.com:c-brenn/repel.nvim.git'
    Plug 'git@github.com:scrooloose/nerdtree.git'
    Plug 'Xuyuanp/nerdtree-git-plugin'
+   Plug 'unblevable/quick-scope'                  "  color movements
    Plug 'git@github.com:dhruvasagar/vim-zoom.git'
    Plug 'git@github.com:easymotion/vim-easymotion.git' " improvements for motions
    Plug 'git@github.com:tpope/vim-fugitive.git'  " for git

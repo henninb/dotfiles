@@ -118,7 +118,7 @@ fi
 
 export USE_GCC="ON"
 export ENABLE_I3="ON"
-[ "$OS" = "openSUSE Tumbleweed" ] && export ENABLE_I3="OFF"
+# [ "$OS" = "openSUSE Tumbleweed" ] && export ENABLE_I3="OFF"
 export ENABLE_ALSA="ON"
 export ENABLE_PULSEAUDIO="ON"
 export ENABLE_NETWORK="ON"
