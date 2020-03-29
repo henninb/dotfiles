@@ -38,9 +38,11 @@ fi
 #cd ~/.nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | zsh
 
+export NVM_DIR="$HOME/.nvm"
+
 #https://github.com/yarnpkg/yarn/archive/v1.21.1.tar.gz
 
-source "$HOME/.nvm/nvm.sh"
+[ ! "$OS" = "Linux Mint" ] && source "$HOME/.nvm/nvm.sh"
 
 nvm install 10.16.0
 npm install -g yarn
