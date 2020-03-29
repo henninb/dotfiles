@@ -122,6 +122,9 @@ elif [ "${OSTYPE}" = "linux-gnueabihf" ]; then
 elif [ "$OS" = "Darwin" ]; then
   JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
   export JAVA_HOME
+elif [ "$OS" = "FreeBSD" ]; then
+  JAVA_HOME=/usr/local/linux-oracle-jdk1.8.0
+  export JAVA_HOME
 else
   echo JAVA_HOME is not setup.
 fi
