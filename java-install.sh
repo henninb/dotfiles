@@ -9,6 +9,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman  --noconfirm --needed -S jdk8-openjdk
   echo sudo pacman  --noconfirm --needed -S jdk-openjdk
   echo
+elif [ "$OS" = "FreeBSD" ]; then
+  sudo portmaster -o java/openjdk8 linux-oracle-jdk18
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper install -y java-11-openjdk
   # sudo zypper install -y java-1_8_0-openjdk
