@@ -35,8 +35,6 @@
 =sys-apps/yarn-1.16.0 ~amd64
 =sys-fs/aufs-headers-4.14_p20190603 ~amd64
 =sys-fs/aufs-util-4.14_p20190603 ~amd64
-=sys-kernel/aufs-sources-5.2.1 ~amd64
-=sys-kernel/vanilla-sources-5.2.0 ~amd64
 =dev-qt/qtnetwork-5.12.4 ~amd64
 =dev-qt/qtxmlpatterns-5.12.4 ~amd64
 =dev-util/jenkins-bin-2.186 ~amd64
@@ -55,6 +53,7 @@
 www-client/brave-bin **
 # =sys-kernel/gentoo-kernel-5.5.9 ~amd64
 =sys-kernel/gentoo-kernel-5.4.27 ~amd64
+=sys-kernel/gentoo-kernel-4.14.83 ~amd64
 =sys-kernel/installkernel-gentoo-2 ~amd64
 =sys-apps/debianutils-4.9.1 ~amd64
 sys-kernel/spl ~amd64
