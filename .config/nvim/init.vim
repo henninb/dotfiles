@@ -65,7 +65,8 @@ endif
    Plug 'git@github.com:neovimhaskell/haskell-vim.git'
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
    Plug 'ryanoasis/vim-devicons'
-   Plug 'git@github.com:vim-airline/vim-airline.git'
+   " Plug 'git@github.com:vim-airline/vim-airline.git' " line manager
+   Plug 'git@github.com:itchyny/lightline.vim.git'    "line manager
    " Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " colors for hex
 "   Plug 'jiangmiao/auto-pairs' " used for auto closing quotes etc
 "   Plug 'neovimhaskell/haskell-vim'
@@ -97,6 +98,11 @@ let g:ale_filetype_blacklist = [
 \   'nerdtree',
 \   'tags',
 \]
+
+let g:lightline = {
+      \ 'colorscheme': 'darcula',
+      \ }
+
 
 " Neovim default
 "let g:Hexokinase_highlighters = [ 'virtual' ]
