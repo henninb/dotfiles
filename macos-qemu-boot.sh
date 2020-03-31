@@ -27,9 +27,9 @@ if [ "$(uname -n)" = "silverfox" ]; then
     -netdev user,id=net0,hostfwd=tcp::2222-:22 \
     -device e1000-82545em,netdev=net0,id=net0,mac=52:54:00:c9:18:27 \
     -device ich9-ahci,id=sata \
-    -drive id=ESP,if=none,format=qcow2,file=/media/henninb/Data/ESP.qcow2 \
+    -drive id=ESP,if=none,format=qcow2,file=/run/media/henninb/MyVolume/ESP.qcow2 \
     -device ide-hd,bus=sata.2,drive=ESP \
-    -drive id=SystemDisk,if=none,file=/media/henninb/Data/macos-qemu-disk.qcow2 \
+    -drive id=SystemDisk,if=none,file=/run/media/henninb/MyVolume/macos-qemu-disk.qcow2 \
     -device ide-hd,bus=sata.4,drive=SystemDisk \
     -nogrphic -vnc :0 -k en-us \
 #elif [ "$(uname -n)" = "archlinux" ]; then

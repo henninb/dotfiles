@@ -6,9 +6,8 @@ if [ "$OS" = "Gentoo" ]; then
 elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y openjdk-8-jdk
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
-  sudo pacman  --noconfirm --needed -S jdk8-openjdk
-  echo sudo pacman  --noconfirm --needed -S jdk-openjdk
-  echo
+  sudo pacman --noconfirm --needed -S jdk8-openjdk
+  # echo sudo pacman --noconfirm --needed -S jdk-openjdk
 elif [ "$OS" = "FreeBSD" ]; then
   sudo portmaster -o java/openjdk8 linux-oracle-jdk18
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
