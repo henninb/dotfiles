@@ -120,7 +120,8 @@ elif [ "${OSTYPE}" = "linux-gnueabihf" ]; then
   JAVA_HOME=/usr/lib/jvm/java-8-openjdk-armhf
   export JAVA_HOME
 elif [ "$OS" = "Darwin" ]; then
-  JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+  # JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+  JAVA_HOME="$(/usr/libexec/java_home)"
   export JAVA_HOME
 elif [ "$OS" = "FreeBSD" ]; then
   JAVA_HOME=/usr/local/openjdk8
