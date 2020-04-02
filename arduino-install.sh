@@ -20,6 +20,7 @@ sudo chown -R arduino:arduino "/opt/arduino-${VER}/"
 sudo usermod -a -G arduino "$(whoami)"
 # sudo usermod -a -G uucp "$(whoami)"
 sudo usermod -a -G tty "$(whoami)"
+sudo usermod -a -G dialout "$(whoami)"
 sudo pacman -S minicom
 sudo pacman -S moserial
 echo stty -F /dev/ttyUSB0 hupcl
@@ -31,7 +32,9 @@ echo stty -a -F /dev/ttyUSB0
 # cd arduino-cli
 # cd "$HOME"
 # curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
-wget 'https://dl.google.com/go/go1.12.linux-amd64.tar.gz'
+wget 'https://dl.google.com/go/go1.14.1.linux-amd64.tar.gz'
+tar xvf go1.14.1.linux-amd64.tar.gz
+sudo mv -v go /usr/local
 go get -u github.com/arduino/arduino-cli
 
 # arduino-cli core search arduino
@@ -40,6 +43,7 @@ go get -u github.com/arduino/arduino-cli
 # arduino-cli core search samd
 
 # Arduino board support like Leonardo/Uno
+arduino-cli core update-index
 arduino-cli core install arduino:avr
 # Or if you need SAMD21/SAMD51 support:
 arduino-cli core install arduino:samd
