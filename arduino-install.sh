@@ -51,7 +51,8 @@ arduino-cli core install esp8266:esp8266
 
 arduino-cli sketch new example-arduino
 arduino-cli compile --fqbn arduino:avr:uno example-arduino
-arduino-cli compile --fqbn esp8266:esp8266:d1 example-arduino
+arduino-cli compile --fqbn esp8266:esp8266:d1_mini example-arduino
+arduino-cli compile --fqbn esp32:esp32:d1_mini32 example-arduino
 arduino-cli upload --port /dev/ttyUSB0 --fqbn arduino:avr:uno example-arduino¬
 
 arduino-cli board list
