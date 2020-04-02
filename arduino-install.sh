@@ -18,6 +18,10 @@ sudo chown -R arduino:arduino /opt/arduino/
 sudo chown -R arduino:arduino "/opt/arduino-${VER}/"
 
 sudo usermod -a -G arduino "$(whoami)"
+# sudo usermod -a -G uucp "$(whoami)"
+sudo usermod -a -G tty "$(whoami)"
+sudo pacman -S minicom
+sudo pacman -S moserial
 
 # cd "$HOME/projects"
 # git clone git@github.com:arduino/arduino-cli.git

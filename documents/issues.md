@@ -224,3 +224,14 @@ sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf
 # Clear the font cache
 sudo fc-cache -f -v
 ```
+
+## arduino issues
+[ 3898.185671] usb 1-8.1: new full-speed USB device number 15 using xhci_hcd
+[ 3898.213330] usb 1-8.1: Device not responding to setup address.
+[ 3898.446318] usb 1-8.1: Device not responding to setup address.
+[ 3898.652370] usb 1-8.1: device not accepting address 15, error -71
+[ 3898.732364] usb 1-8.1: new full-speed USB device number 16 using xhci_hcd
+[ 3898.759288] usb 1-8.1: Device not responding to setup address.
+[ 3898.993299] usb 1-8.1: Device not responding to setup address.
+[ 3899.199011] usb 1-8.1: device not accepting address 16, error -71
+[ 3899.200818] usb 1-8-port1: unable to enumerate USB device

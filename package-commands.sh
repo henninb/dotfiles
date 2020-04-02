@@ -9,6 +9,7 @@ fi
 
 echo sudo pacman -R xmonad
 echo sudo pacman -Rsnc picom
+pacman -Qkk
 
 echo xbps-query -Rs xorg
 
