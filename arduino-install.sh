@@ -43,7 +43,8 @@ arduino-cli core install arduino:avr
 # Or if you need SAMD21/SAMD51 support:
 arduino-cli core install arduino:samd
 
-arduino-cli compile --fqbn arduino:avr:uno MyFirstSketch
-arduino-cli upload --port /dev/ttyUSB0 --fqbn arduino:avr:uno MyFirstSketch
+arduino-cli sketch new example-arduino
+arduino-cli compile --fqbn arduino:avr:uno example-arduino
+arduino-cli upload --port /dev/ttyUSB0 --fqbn arduino:avr:uno example-arduino¬
 
 exit 0
