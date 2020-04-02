@@ -46,10 +46,12 @@ go get -u github.com/arduino/arduino-cli
 arduino-cli core update-index
 arduino-cli core install arduino:avr
 # Or if you need SAMD21/SAMD51 support:
-arduino-cli core install arduino:samd
+# arduino-cli core install arduino:samd
+arduino-cli core install esp8266:esp8266
 
 arduino-cli sketch new example-arduino
 arduino-cli compile --fqbn arduino:avr:uno example-arduino
+arduino-cli compile --fqbn esp8266:esp8266:d1 example-arduino
 arduino-cli upload --port /dev/ttyUSB0 --fqbn arduino:avr:uno example-arduino¬
 
 arduino-cli board list
