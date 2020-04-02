@@ -145,6 +145,7 @@ elif [ "$OS" = "Solus" ]; then
   echo
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y pam-devel
+  sudo xbps-install -y libXrandr-devel
   sudo xbps-install -y xorg-server-devel
   cd /tmp
   curl -LO https://www.openssl.org/source/openssl-1.1.1.tar.gz
