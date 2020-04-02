@@ -137,13 +137,13 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
     exit 1
   fi
   sudo make install
-  sudo mv -v startwm.sh /etc/xrdp/startwm.sh
-
   cd "$HOME" || exit
+  sudo mv -v startwm.sh /etc/xrdp/startwm.sh
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
 elif [ "$OS" = "Solus" ]; then
   echo
 elif [ "$OS" = "void" ]; then
+  sudo xbps-install -y nasm
   sudo xbps-install -y pam-devel
   sudo xbps-install -y libXrandr-devel
   sudo xbps-install -y xorg-server-devel
@@ -180,6 +180,7 @@ elif [ "$OS" = "void" ]; then
     exit 1
   fi
   sudo make install
+  cd "$HOME" || exit
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
 elif [ "$OS" = "Gentoo" ]; then
@@ -256,7 +257,6 @@ elif [ "$OS" = "Fedora" ]; then
     sudo mv -v startwm.sh /etc/xrdp/startwm.sh
 
     cd "$HOME" || exit
-
     sudo mv -v startwm.sh /etc/xrdp/startwm.sh
     sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
     sudo mv -v 45-allow.colord.pkla /etc/polkit-1/localauthority/50-local.d/
@@ -298,6 +298,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
     exit 1
   fi
   sudo make install
+  cd "$HOME" || exit
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
   sudo systemctl stop firewalld
@@ -340,6 +341,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
     exit 1
   fi
   sudo make install
+  cd "$HOME" || exit
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   sudo usermod -a -G tty "$(id -un)"
@@ -369,6 +371,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
     exit 1
   fi
   sudo make install
+  cd "$HOME" || exit
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
 elif [ "$OS" = "Raspbian GNU/Linux" ]; then
