@@ -16,7 +16,7 @@ if [ "$OS" = "Gentoo" ]; then
   echo TODO: add audio into the kernel
   exit 1
   cd /usr/src/linux || exit
-  cp -v /usr/src/linux/.config ~/kernel-config-$(uname -r)
+  cp -v /usr/src/linux/.config "${HOME}/kernel-config-$(uname -r)"
 
   echo sudo make mrpropper
   sudo make menuconfig
@@ -33,7 +33,7 @@ fi
 echo qpkg  -v gentoo-sources
 # sudo emerge -C sys-kernel/gentoo-sources-4.19.97
 echo sudo rm -r /usr/src/linux-${old_kernel}* || { echo "Failed to remove old kernel sources"; exit 1; }
-echo sudo rm -r /boot/*${old_kernel}* || { echo "Failed to remove boot files"; exit 1; }	
+echo sudo rm -r /boot/*${old_kernel}* || { echo "Failed to remove boot files"; exit 1; }
 echo sudo rm -r /lib/modules/${old_kernel}* || { echo "Failed to remove modules"; exit 1; }
 
 exit 0
