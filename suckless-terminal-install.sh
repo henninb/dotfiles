@@ -18,7 +18,8 @@ elif [ "$OS" = "Fedora" ]; then
 elif [ "$OS" = "Linux Mint" ]; then
   echo
 elif [ "$OS" = "void" ]; then
-  echo
+  sudo xbps-install -y libX11-devel
+  sudo xbps-install -y libXft-devel
 elif [ "$OS" = "Solus" ]; then
   echo
 elif [ "$OS" = "Arch Linux" ]; then
