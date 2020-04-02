@@ -1,0 +1,16 @@
+board_manager:
+  additional_urls: []
+daemon:
+  port: "50051"
+directories:
+  data: /home/henninb/.arduino15
+  downloads: /home/henninb/.arduino15/staging
+  user: /home/henninb/Arduino
+logging:
+  file: ""
+  format: text
+  level: info
+board_manager:
+  additional_urls:
+    - http://arduino.esp8266.com/stable/package_esp8266com_index.json
+    - https://dl.espressif.com/dl/package_esp32_index.json
