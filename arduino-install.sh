@@ -31,6 +31,7 @@ echo stty -a -F /dev/ttyUSB0
 # cd arduino-cli
 # cd "$HOME"
 # curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+wget 'https://dl.google.com/go/go1.12.linux-amd64.tar.gz'
 go get -u github.com/arduino/arduino-cli
 
 # arduino-cli core search arduino
