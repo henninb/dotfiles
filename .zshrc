@@ -143,7 +143,7 @@ export PATH="/opt/oracle-instantclient:$PATH"
 export PATH="$HOME/.dynamic-colors/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 
-export GOROOT=/usr/local/go
+[ -d /usr/local/go ] && export GOROOT=/usr/local/go
 export GOPATH=$HOME/.local
 export SDKMAN_DIR="$HOME/.sdkman"
 
