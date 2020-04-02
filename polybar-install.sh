@@ -85,12 +85,14 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y json-glib-devel
   sudo zypper install -y gobject-introspection
 elif [ "$OS" = "void" ]; then
-  sudo xbps-install libcurl-devel
-  sudo xbps-install libmpdclient-devel
-  sudo xbps-install pulseaudio-devel
-  sudo xbps-install jsoncpp-devel
-  sudo xbps-install wireless_tools-devel
-  sudo xbps-install i3-devel
+  sudo xbps-install -y libcurl-devel
+  sudo xbps-install -y libmpdclient-devel
+  sudo xbps-install -y pulseaudio-devel
+  sudo xbps-install -y jsoncpp-devel
+  sudo xbps-install -y wireless_tools-devel
+  sudo xbps-install -y i3-devel
+  sudo xbps-install -y cairo-devel
+  sudo xbps-install -y alsa-lib-devel
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S libmpdclient
   sudo pacman --noconfirm --needed -S jsoncpp
@@ -143,6 +145,8 @@ echo -- Font not found: unifont:fontformat=truetype
 echo -- Font not found: siji:pixelsize=10
 echo Execute 'sudo make install'? [Y/n] y
 echo Install example configuration? [y/N]: n
+
+pkg-config --debug --print-provides cairo-fc
 
 
 exit 0
