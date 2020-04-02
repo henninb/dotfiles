@@ -15,6 +15,7 @@ elif [ "$OS" = "Raspbian GNU/Linux" ]; then
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg upgrade -y
 elif [ "$OS" = "void" ]; then
+  sudo xbps-install -u xbps
   sudo xbps-install -Suy
 elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman  --noconfirm --needed -Syu 2>&1 | tee -a update.log.$$
