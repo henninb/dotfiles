@@ -20,6 +20,8 @@ export LC_IDENTIFICATION=en_US.UTF-8
 # needed for spacefm theme
 # export GTK2_RC_FILES=/usr/share/themes/Ant-Dracula/gtk-2.0/gtkrc
 
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 
 if [ -x "$(command -v xrdb)" ]; then
   #xrdb -merge ~/.Xresources
