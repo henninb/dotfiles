@@ -184,6 +184,9 @@ elif [ "$OS" = "void" ]; then
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
 elif [ "$OS" = "Gentoo" ]; then
+  sudo emerge  --update --newuse x11-libs/libX11
+  sudo emerge  --update --newuse x11-libs/libXfixes
+  sudo emerge  --update --newuse x11-libs/libXrandr
   sudo usermod -a -G tty $(id -un)
   cd $HOME/projects
   git clone --recursive https://github.com/neutrinolabs/xrdp
