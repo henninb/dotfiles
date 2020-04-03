@@ -19,13 +19,13 @@ sudo make modules_install
 sudo cp System.map /boot/System.map-5.6.2
 sudo cp arch/x86/boot/bzImage /boot/vmlinuz-5.6.2
 sudo cp .config /boot/config-5.6.2
-sudo dracut -f initramfs-5.6.2.img 5.6.2_1
+# /lib/modules/5.6.2-1-default/
+sudo dracut -f initramfs-5.6.2.img 5.6.2-1-default
 sudo cp initramfs-5.6.2.img /boot/
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-sudo update-grub
-echo sudo update-grub
+# sudo update-grub
+# echo sudo update-grub
 # uname -a
-echo "run on suse"
-echo sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 exit 0

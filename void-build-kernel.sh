@@ -23,7 +23,7 @@ sudo cp initramfs-5.6.2.img /boot/
 sudo update-grub
 echo sudo update-grub
 # uname -a
-echo "run on suse"
+echo "run on suse as void is dependant on suse's grub"
 echo sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 exit 0

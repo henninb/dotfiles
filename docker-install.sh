@@ -19,7 +19,13 @@ if [ "$OS" = "Arch Linux" ]; then
   sudo iptables -t nat -L
   #sudo firewall-cmd --permanent --zone=trusted --change-interface=docker0
   #sudo firewall-cmd --reload
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper install -y docker docker-compose
+  sudo usermod -G docker -a $USER
+  sudo systemctl enable docker
+  sudo systemctl start docker
+  sudo systemctl status docker
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   sudo apt-key fingerprint 0EBFCD88
@@ -70,7 +76,7 @@ elif [ "$OS" = "Gentoo" ]; then
   /usr/share/docker/contrib/check-config.sh
   echo https://github.com/tianon/docker-overlay
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
