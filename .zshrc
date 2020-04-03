@@ -107,8 +107,12 @@ HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
 
 if [ "${OSTYPE}" = "linux-gnu" ] || [ "${OSTYPE}" = "linux" ]; then
   if [ "${OS}" = "Gentoo" ]; then
-    JAVA_HOME=$(java-config -o)
-    export JAVA_HOME
+    if [ -x "$(command -v java-config)" ]; then
+      JAVA_HOME=$(java-config -o)
+      export JAVA_HOME
+    else
+      echo "install java-config on gentoo"
+    fi
     # JAVA_HOME=$(readlink -f $(readlink -f ${JDK_HOME}))
   elif [ -x "$(command -v javac)" ]; then
     JAVA_HOME=$(dirname "$(dirname "$(readlink -f "$(readlink -f "$(which javac)")" || readlink -f "$(which javac)")")")

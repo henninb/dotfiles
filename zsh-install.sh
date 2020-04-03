@@ -15,7 +15,9 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y zsh
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse zsh
+  sudo emerge --update --newuse fontconfig
   sudo emerge --update --newuse media-fonts/urw-fonts
+  sudo emerge --update --newuse java-config
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y zsh
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
