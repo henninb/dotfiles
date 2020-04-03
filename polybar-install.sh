@@ -146,7 +146,6 @@ echo -- Font not found: siji:pixelsize=10
 echo Execute 'sudo make install'? [Y/n] y
 echo Install example configuration? [y/N]: n
 
-pkg-config --debug --print-provides cairo-fc
-
+echo pkg-config --debug --print-provides cairo-fc
 
 exit 0

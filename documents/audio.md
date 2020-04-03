@@ -16,3 +16,7 @@ pacmd set-default-sink "alsa_output.usb-Blue_Microphones_Yeti_Stereo_Microphone_
 
 ## mixer
 alsamixer
+
+
+## audio recorder
+sudo zypper -y audio-recorder

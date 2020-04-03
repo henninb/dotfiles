@@ -27,6 +27,7 @@ elif [ "$OS" = "Arch Linux" ]; then
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper dist-upgrade
   # sudo zypper refersh
+  sudo zypper dup
   sudo zypper ref
   sudo zypper update
 elif [ "$OS" = "Gentoo" ]; then
