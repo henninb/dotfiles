@@ -1,8 +1,14 @@
 #!/bin/sh
 
-wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.2.tar.xz
+if [ ! -f linux-5.6.2.tar.xz ]; then
+  wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.2.tar.xz
+fi
 tar xf linux-5.6.2.tar.xz
 cd linux-5.6.2
+
+if [ ! -f .config ]; then
+  make menuconfig
+fi
 
 make -j"$(nproc)"
 
