@@ -12,7 +12,7 @@ VOID_PKGS="gimp vlc handbrake terminator audacity dolphin-emu zathura dbeaver"
 
 FEDORA_PKGS="gvim gqrx"
 
-MACOS_PKGS=""
+MACOS_PKGS="alacritty iterm2"
 
 if [ "$OS" = "Arch Linux" ]; then
   FAILURES=""
