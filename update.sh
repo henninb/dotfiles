@@ -8,6 +8,8 @@ elif [ "$OS" = "Ubuntu" ]; then
   sudo apt update
   sudo apt upgrade -y
   sudo apt autoremove -y
+elif [ "$OS" = "Darwin" ]; then
+  softwareupdate -l
 elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt update 2>&1 | tee -a update.log.$$
   sudo apt upgrade -y 2>&1 | tee -a update.log.$$
