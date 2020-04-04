@@ -235,3 +235,7 @@ sudo fc-cache -f -v
 [ 3898.993299] usb 1-8.1: Device not responding to setup address.
 [ 3899.199011] usb 1-8.1: device not accepting address 16, error -71
 [ 3899.200818] usb 1-8-port1: unable to enumerate USB device
+
+## issue with nvm
+NVM is not compatible with the npm config "prefix" option
+nvm unalias default
