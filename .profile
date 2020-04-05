@@ -28,5 +28,7 @@ else
   OS=$(uname -s)
   OS_VER=$(uname -r)
 fi
+export OS
+export OS_VER
 
 export PATH=$HOME/.local/bin:$PATH
