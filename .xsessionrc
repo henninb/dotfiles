@@ -1,0 +1,1 @@
+echo xsessionrc called > /tmp/xsessionrc
