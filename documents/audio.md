@@ -31,3 +31,22 @@ cat /proc/asound/cards
 sudo zypper -y audio-recorder
 
 
+cat /proc/asound/cards
+ 0 [PCH            ]: HDA-Intel - HDA Intel PCH
+                      HDA Intel PCH at 0xdf440000 irq 137
+ 1 [NVidia         ]: HDA-Intel - HDA NVidia
+                      HDA NVidia at 0xdf080000 irq 17
+ 2 [BT600          ]: USB-Audio - Plantronics BT600
+                      Plantronics Plantronics BT600 at usb-0000:00:14.0-2.1, full speed
+ 3 [Microphone     ]: USB-Audio - Yeti Stereo Microphone
+                      Blue Microphones Yeti Stereo Microphone at usb-0000:00:14.0-10, full speed
+
+sudo usermod -a -G audio henninb
+arecord --list-pcms
+
+vi /etc/modprobe.d/alsa-base.conf
+
+sudo alsa force-reload
+
+sudo usermod -a -G audio henninb
+aplay --list-device
