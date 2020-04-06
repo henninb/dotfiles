@@ -346,13 +346,15 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo make install
   cd "$HOME" || exit
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
-elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo usermod -a -G tty "$(id -un)"
   #echo sudo apt install -y xrdp xorgxrdp
   sudo apt install -y rdesktop freerdp-x11 lsof
   sudo apt install -y libpam0g-dev
   sudo apt install -y nasm
   sudo apt install -y xserver-xorg-dev
+  sudo apt install -y libxfixes-dev
+  sudo apt install -y libxrandr-dev
   cd "$HOME/projects" || exit
   git clone --recursive https://github.com/neutrinolabs/xrdp
   cd xrdp || exit
@@ -377,22 +379,23 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   cd "$HOME" || exit
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
-elif [ "$OS" = "Raspbian GNU/Linux" ]; then
-  #sudo apt purge -y xserver-xorg-legacy
-  sudo apt install -y libpam0g-dev
-  sudo apt install -y xserver-xorg-dev
-  sudo apt install -y lsof
-  sudo apt install -y xrdp
-  sudo apt install -y feh
-  sudo apt install -y dmenu
-  sudo apt install -y xorgxrdp
-  sudo apt install -y rdesktop
-  sudo apt install -y freerdp2-x11
+#elif [ "$OS" = "Raspbian GNU/Linux" ]; then
+#  #sudo apt purge -y xserver-xorg-legacy
+#  sudo apt install -y libpam0g-dev
+#  sudo apt install -y xserver-xorg-dev
+#  sudo apt install -y nasm
+#  sudo apt install -y lsof
+#  sudo apt install -y xrdp
+#  sudo apt install -y feh
+#  sudo apt install -y dmenu
+#  sudo apt install -y xorgxrdp
+#  sudo apt install -y rdesktop
+#  sudo apt install -y freerdp2-x11
 
-  sudo usermod -a -G dialout "$(id -un)"
-  cd "$HOME" || exit
-  sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
-  sudo mv -v startwm.sh /etc/xrdp/startwm.sh
+#  sudo usermod -a -G dialout "$(id -un)"
+#  cd "$HOME" || exit
+#  sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
+#  sudo mv -v startwm.sh /etc/xrdp/startwm.sh
 else
   echo "$OS is not yet implemented."
   exit 1
