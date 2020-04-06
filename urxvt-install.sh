@@ -5,9 +5,10 @@ mkdir -p $HOME/.urxvt/perl-extensions
 if [ "$OS" = "Gentoo" ]; then
   echo sudo emerge --update --newuse rxvt-unicode
 elif [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt update
-  sudo apt upgrade -y
+  # sudo apt update
+  # sudo apt upgrade -y
   sudo ln -s /usr/bin/perl5.28.1 /usr/bin/perl5
+  sudo apt install -y libperl-dev
   #sudo apt install -y rxvt-unicode xsel
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo
@@ -21,6 +22,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   echo freebsd
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   echo
+  sudo apt install -y libperl-dev
   # sudo apt update
   # sudo apt upgrade -y
   #sudo apt install -y rxvt-unicode xsel
