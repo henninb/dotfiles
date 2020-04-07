@@ -35,6 +35,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y libjsoncpp-dev
   sudo apt install -y pulseaudio
   sudo apt install -y i3
+  sudo apt install -y libcairo-dev
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y alsa
   sudo zypper install -y cairo-devel
