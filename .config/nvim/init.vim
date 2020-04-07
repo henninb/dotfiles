@@ -404,6 +404,7 @@ if has('nvim')
   " let g:python3_host_prog = 'python3'
 
   "TODO: termguicolors is not good for urxvt
+  " tput colors
   "set termguicolors
   tnoremap <C-q> <C-\><C-n>
 
