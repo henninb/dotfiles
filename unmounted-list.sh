@@ -21,5 +21,6 @@ echo udisksctl mount -b /dev/sdc1
 
 echo sudo ntfsfix /dev/sda1
 echo sudo mkfs.ext4 /dev/sda1
+echo sudo mkfs.vfat -F 32 /dev/sdb1
 
 exit 0
