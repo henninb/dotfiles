@@ -2,6 +2,7 @@
 
 # sudo zypper install -y flex
 # sudo zypper install -y libelf-devel
+sudo apt install libncurses-dev
 
 if [ ! -f linux-5.6.2.tar.xz ]; then
   wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.2.tar.xz
