@@ -34,3 +34,12 @@ while y < 231:
 
 
 echo("\n")
+
+for n in range(232, 256):
+    out(n)
+    if n == 237 or n == 243 or n == 249:
+        echo("\n")
+
+echo("\n")
+os.system("tput setaf 7")
+os.system("tput setab 0")
