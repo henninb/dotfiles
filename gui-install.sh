@@ -50,6 +50,7 @@ elif [ "$OS" = "Linux Mint" ]; then
   echo "deb https://dbeaver.io/debs/dbeaver-ce /" | sudo tee /etc/apt/sources.list.d/dbeaver.list
   echo "deb https://deb.etcher.io stable etcher" | sudo tee /etc/apt/sources.list.d/balena-etcher.list
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
+  sudo add-apt-repository ppa:danielrichter2007/grub-customizer
   sudo apt update
   sudo apt install -y dbeaver-ce
   sudo apt install -y balena-etcher-electron

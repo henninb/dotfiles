@@ -352,6 +352,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y rdesktop freerdp-x11 lsof
   sudo apt install -y libpam0g-dev
   sudo apt install -y nasm
+  sudo apt install -y libssl-dev
   sudo apt install -y xserver-xorg-dev
   sudo apt install -y libxfixes-dev
   sudo apt install -y libxrandr-dev
