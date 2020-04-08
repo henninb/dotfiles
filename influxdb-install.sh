@@ -52,6 +52,9 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   echo "netstat -na | grep LISTEN | grep tcp | grep 8086"
   netstat -na | grep LISTEN | grep tcp | grep 8086
   sudo fuser 8086/tcp
+elif [ "$OS" = "Darwin" ]; then
+  brew install influxdb
+  echo influxd -config /usr/local/etc/influxdb.conf
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge influxdb
   sudo mv -v influxdb.conf /etc/influxdb/influxdb.conf
