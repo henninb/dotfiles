@@ -5,11 +5,11 @@
     "coc-fsharp": ">=0.1.63",
     "coc-git": ">=1.7.9",
     "coc-html": ">=1.2.4",
-    "coc-java": ">=1.4.8",
+    "coc-java": ">=1.4.9",
     "coc-json": ">=1.2.5",
     "coc-prettier": ">=1.1.12",
     "coc-python": ">=1.2.9",
     "coc-rls": ">=1.1.4",
-    "coc-snippets": ">=2.1.23"
+    "coc-snippets": ">=2.1.24"
   }
 }
