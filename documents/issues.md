@@ -239,3 +239,6 @@ sudo fc-cache -f -v
 ## issue with nvm
 NVM is not compatible with the npm config "prefix" option
 nvm unalias default
+
+## issue with pacman timeout
+sudo vi /etc/pacman.d/mirrorlist
