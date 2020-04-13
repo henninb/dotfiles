@@ -36,6 +36,21 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y pulseaudio
   sudo apt install -y i3
   sudo apt install -y libcairo-dev
+elif [ "$OS" = "Solus" ]; then
+  sudo eopkg install -c system.devel
+  sudo eopkg install -y libcairo-devel
+  sudo eopkg install -y alsa-lib-devel
+  sudo eopkg install -y curl-devel
+  sudo eopkg install -y libmpdclient-devel
+  sudo eopkg install -y wireless-tools-devel
+  sudo eopkg install -y pulseaudio-devel
+  sudo eopkg install -y xcb-proto
+  sudo eopkg install -y xcb-util-wm-devel
+  sudo eopkg install -y xcb-util-image-devel
+  sudo eopkg install -y xcb-util-wm-devel
+  sudo eopkg install -y jsoncpp-devel
+  sudo eopkg install -y i3-devel
+  sudo eopkg install -y xcb-util-devel
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y alsa
   sudo zypper install -y cairo-devel
@@ -108,7 +123,8 @@ elif [ "$OS" = "Gentoo" ]; then
   done
   echo "Failures: $FAILURE"
 else
-  echo
+  echo "$OS is not implemented."
+  exit 1
 fi
 
 # git@github.com:altdesktop/i3ipc-glib.git
