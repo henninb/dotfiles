@@ -142,6 +142,39 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
 elif [ "$OS" = "Solus" ]; then
   echo
+  sudo eopkg install -y nasm
+  sudo eopkg install -y pam-devel
+  sudo eopkg install -y libxrandr-devel
+  sudo eopkg install -y xorg-server-devel
+  sudo eopkg install -y libxfont2-devel
+  cd $HOME/projects
+  git clone --recursive https://github.com/neutrinolabs/xrdp
+  cd xrdp
+  ./bootstrap
+  ./configure
+  make
+  if [ $? -ne 0 ]; then
+    echo build failed for xrdp.
+    exit 1
+  fi
+  sudo make install
+
+
+  cd $HOME/projects
+  git clone git@github.com:neutrinolabs/xorgxrdp.git
+  cd xorgxrdp
+  ./bootstrap
+  ./configure XRDP_CFLAGS=-I$HOME/projects/xrdp/common XRDP_LIBS=" "
+  make
+  if [ $? -ne 0 ]; then
+    echo build failed for xorgxrdp.
+    exit 1
+  fi
+  sudo make install
+  cd "$HOME" || exit
+  sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
+  sudo mv -v startwm.sh /etc/xrdp/startwm.sh
+
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y nasm
   sudo xbps-install -y pam-devel
@@ -160,7 +193,6 @@ elif [ "$OS" = "void" ]; then
   git clone --recursive https://github.com/neutrinolabs/xrdp
   cd xrdp
   ./bootstrap
-  #./configure OPENSSL_CFLAGS=-I/opt/openssl/1.1.1/include OPENSSL_LIBS="-L/opt/openssl/1.1.1/lib -lssl -lcrypto"
   ./configure
   make
   if [ $? -ne 0 ]; then

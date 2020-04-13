@@ -3,7 +3,7 @@
 sudo mkdir -p /usr/share/i3blocks/
 #sudo cp iface cpu_usage memory /usr/share/i3blocks
 
-if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt remove -y lightdm
   sudo apt remove -y gdm
   sudo apt install -y bspwm
@@ -35,6 +35,15 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y sxhkd
   sudo zypper install -y w3m
   sudo zypper install -y w3m-img
+elif [ "$OS" = "Solus" ]; then
+  sudo eopkg install -y bspwm
+  sudo eopkg install -y xscreensaver
+  sudo eopkg install -y xdo
+  sudo eopkg install -y feh
+  sudo eopkg install -y xclip
+  sudo eopkg install -y sxhkd
+  sudo eopkg install -y w3m
+  echo
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -Sy base-devel libX11-devel libXft-devel libXinerama-devel
   sudo xbps-install -Sy bspwm
