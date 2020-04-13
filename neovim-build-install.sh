@@ -28,7 +28,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y g++
   sudo apt remove -y neovim
 elif [ "$OS" = "Solus" ]; then
-  sudo eopkg install -c system.devel
+  sudo eopkg install -cy system.devel
   sudo eopkg install -y make
   sudo eopkg install -y cmake
   sudo eopkg install -y libtool

@@ -8,6 +8,7 @@ if [ ! -f "arduino-${VER}-linux64.tar.xz" ]; then
   curl https://downloads.arduino.cc/arduino-${VER}-linux64.tar.xz --output "arduino-${VER}-linux64.tar.xz"
 fi
 
+sudo mkdir -p /opt
 sudo rm -rf /opt/arduino
 sudo rm -rf "/opt/arduino-${VER}"
 sudo tar -xJvf "arduino-${VER}-linux64.tar.xz" -C /opt
