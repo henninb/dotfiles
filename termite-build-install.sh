@@ -27,6 +27,7 @@ elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y gtk-doc
   sudo eopkg install -y libgnutls-devel
   sudo eopkg install -y pango-devel
+  sudo eopkg install -y libgtk-3-devel
 elif [ "$OS" = "Gentoo" ]; then
   echo gentoo
 elif [ "$OS" = "Arch Linux" ]; then

@@ -84,3 +84,4 @@ blender
 steam
 arduino
 tint2
+jitsi
