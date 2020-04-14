@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y make
   sudo apt install -y gtk-doc
   sudo apt install -y intltool
@@ -18,12 +18,15 @@ if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspb
   #sudo apt install gnome-devel
   sudo apt install -y gtk+3.0
 elif [ "$OS" = "FreeBSD" ]; then
-  echo freebsd
   sudo pkg install -y gtk-doc
   sudo apt install -y g++
   sudo pkg install -y autoconf
   sudo pkg install -y autotools
   sudo pkg install -y autogen
+elif [ "$OS" = "Solus" ]; then
+  sudo eopkg install -y gtk-doc
+  sudo eopkg install -y libgnutls-devel
+  sudo eopkg install -y pango-devel
 elif [ "$OS" = "Gentoo" ]; then
   echo gentoo
 elif [ "$OS" = "Arch Linux" ]; then
