@@ -141,7 +141,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
 elif [ "$OS" = "Solus" ]; then
-  sudo eopkg install -cy system.devel
+  sudo eopkg install -c system.devel
   sudo eopkg install -y nasm
   sudo eopkg install -y pam-devel
   sudo eopkg install -y libxrandr-devel
