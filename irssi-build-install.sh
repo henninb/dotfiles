@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VER=$(curl https://irssi.org/download/ | grep -o 'irssi-[0-9.]\+[0-9].tar.gz' | head -1 | sed 's/.tar.gz//' | sed 's/irssi-//')
+VER=$(curl -s https://irssi.org/download/ | grep -o 'irssi-[0-9.]\+[0-9].tar.gz' | head -1 | sed 's/.tar.gz//' | sed 's/irssi-//')
 echo gpg --keyserver pgp.mit.edu --recv-keys '7EE6 5E30 82A5 FB06 AC7C 368D 00CC B587 DDBE F0E1'
 echo gpg --verify irssi-${VER}.tar.gz.asc
 
@@ -14,10 +14,11 @@ fi
 if [ "$OS" = "FreeBSD" ]; then
   sudo pkg install gtk3 gmake intltool pkgconf automake pcre2 libtool gtk-doc
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo zypper install ncurses-devel
+  sudo zypper install -y ncurses-devel
 elif [ "$OS" = "void" ]; then
-  echo
   sudo xbps-install -Sy ncurses-devel
+elif [ "$OS" = "Solus" ]; then
+  sudo eopkg install -y ncurses-devel
 elif [ "$OS" = "Darwin" ]; then
   brew install wget
 elif [ "$OS" = "CentOS Linux" ]; then
