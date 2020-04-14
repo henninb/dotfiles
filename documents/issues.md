@@ -238,3 +238,7 @@ nvm unalias default
 
 ## issue with pacman timeout
 sudo vi /etc/pacman.d/mirrorlist
+
+## issues with authentication solus
+
+cat /etc/pam.d/xrdp-sesman

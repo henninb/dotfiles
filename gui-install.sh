@@ -16,6 +16,8 @@ GENTOO_PKGS="vlc i3 handbrake terminator rofi games-emulation/dolphin firefox se
 
 VOID_PKGS="gimp vlc handbrake terminator audacity dolphin-emu zathura dbeaver"
 
+SOLUS_PKGS="gimp vlc handbrake terminator audacity dolphin-emu zathura dbeaver"
+
 FEDORA_PKGS="gvim gqrx"
 
 MACOS_PKGS="alacritty iterm2"
@@ -32,6 +34,8 @@ elif [ "$OS" = "Darwin" ]; then
   brew cask install vlc
   brew cask install alacritty
   brew cask install iterm2
+elif [ "$OS" = "Solus" ]; then
+  echo
 elif [ "$OS" = "Gentoo" ]; then
   FAILURES=""
   for i in $(echo $GENTOO_PKGS); do

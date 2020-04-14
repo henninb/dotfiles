@@ -15,6 +15,8 @@ elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt upgrade -y 2>&1 | tee -a update.log.$$
   sudo apt autoremove -y 2>&1 | tee -a update.log.$$
 elif [ "$OS" = "Solus" ]; then
+  sudo eopkg remove -y libreoffice-common
+  sudo eopkg remove -y lightdm
   sudo eopkg upgrade -y
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -u xbps
