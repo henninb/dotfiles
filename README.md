@@ -21,19 +21,19 @@
 - tails
 
 ## Software
-- terminal - urxvt, alacritty, termite, st
+- terminal - alacritty, urxvt, termite, st
 - editor - neovim, emacs, vscode, intellij, vscodium, neovim-gtk
 - shell - zsh, fish, bash
 - shell prompt - spaceship, agnoster, alien, dracula
 - zsh plugins - zsh-syntax-highlighting, zsh-autosuggestions, autojump, zsh-history-substring-search
-- file manager - ranger, lf, hunter, spacefm
+- file manager - lf, ranger, hunter, spacefm
 - bar - polybar, dzen, xmobar
-- window manager - xmonad, bspwm, i3, qtile
+- window manager - bspwm, xmonad, i3, qtile
 - lock screen - i3block
 - terminal multiplexer - tmux, screen, tmate
 - media player - vlc, mpv
 - cloud media player - olivia
-- software defined radio - gqrx, CubicSDR
+- software defined radio - gqrx
 - spreadsheet -sc-im
 - programming - java, kotlin, rust, haskell, python, js, scala
 - containerization - docker
@@ -41,11 +41,11 @@
 - remote desktop server - xrdp
 - remote desktop client - xfreerdp
 - irc client - irssi, emacs (erc)
-- network packet tools - tcpdump
+- network packet tools - tcpdump, wireshark
 - markdown reader - glow
 - browser - brave, firefox, ddgr, lynx
 - database client - dbeaver, sqlplus
-- database server - postgresql
+- database server - postgresql, influx
 - astronomy - stellarium
 - notes - standard note, joplin
 - font - monofur, jetbrains, symbola
@@ -66,14 +66,14 @@
 - calendar - calcurse
 - rss reader - newsboat
 - log reader - lnav
-- package manager - yay, pacman, brew, apt, dnf, emerge, pkg
+- package manager - yay, pacman, brew, apt, dnf, emerge, pkg, eopkg
 - open - xdg-open
 - encryption - gnupg, keybase
 - terminal screen saver - cmatrix
 - window detailer - xprop
 - image clone - etcher
 - git client - tig, emacs (magit)
-- chat - discord
+- chat - discord, slack
 - image editor - gimp
 - compositor - compton
 - video editor - kdenlive
