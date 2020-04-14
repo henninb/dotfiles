@@ -33,9 +33,13 @@ echo stty -a -F /dev/ttyUSB0
 # cd arduino-cli
 # cd "$HOME"
 # curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
-wget 'https://dl.google.com/go/go1.14.1.linux-amd64.tar.gz'
+if [ ! -f "go1.14.1.linux-amd64.tar.gz" ]; then
+  wget 'https://dl.google.com/go/go1.14.1.linux-amd64.tar.gz'
+fi
 tar xvf go1.14.1.linux-amd64.tar.gz
 sudo mv -v go /usr/local
+
+echo "go get -u github.com/arduino/arduino-cli"
 go get -u github.com/arduino/arduino-cli
 
 # arduino-cli core search arduino
@@ -60,10 +64,10 @@ arduino-cli upload --port /dev/ttyUSB0 --fqbn arduino:avr:uno example-arduino¬
 
 arduino-cli board list
 
-/home/henninb/.arduino15/packages/esp8266/hardware/esp8266/2.6.3/tools/esptool/esptool.py erase_flash
+$HOME/.arduino15/packages/esp8266/hardware/esp8266/2.6.3/tools/esptool/esptool.py erase_flash
 
-/home/henninb/.arduino15/packages/esp32/hardware/esp32/1.0.4/tools/esptool.py erase_flash
+$HOME/.arduino15/packages/esp32/hardware/esp32/1.0.4/tools/esptool.py erase_flash
 
-/home/henninb/.arduino15/packages/esp32/hardware/esp32/1.0.4/tools/esptool.py read_mac
+$HOME/.arduino15/packages/esp32/hardware/esp32/1.0.4/tools/esptool.py read_mac
 
 exit 0
