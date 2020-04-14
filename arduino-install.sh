@@ -28,17 +28,6 @@ echo stty -F /dev/ttyUSB0 hupcl
 echo stty -F /dev/ttyUSB0 -hupcl
 echo stty -a -F /dev/ttyUSB0
 
-# cd "$HOME/projects"
-# git clone git@github.com:arduino/arduino-cli.git
-# cd arduino-cli
-# cd "$HOME"
-# curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
-if [ ! -f "go1.14.1.linux-amd64.tar.gz" ]; then
-  wget 'https://dl.google.com/go/go1.14.1.linux-amd64.tar.gz'
-fi
-tar xvf go1.14.1.linux-amd64.tar.gz
-sudo mv -v go /usr/local
-
 echo "go get -u github.com/arduino/arduino-cli"
 go get -u github.com/arduino/arduino-cli
 
