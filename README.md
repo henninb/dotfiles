@@ -28,7 +28,7 @@
 - zsh plugins - zsh-syntax-highlighting, zsh-autosuggestions, autojump, zsh-history-substring-search
 - file manager - lf, ranger, hunter, spacefm
 - bar - polybar, dzen, xmobar
-- window manager - bspwm, xmonad, i3, qtile
+- window manager - bspwm, xmonad, i3, spectr, qtile
 - lock screen - i3block
 - terminal multiplexer - tmux, screen, tmate
 - media player - vlc, mpv
