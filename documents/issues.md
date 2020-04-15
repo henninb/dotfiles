@@ -153,7 +153,7 @@ A better workaround would be to get the hostname from `xauth list` and add it as
 PERL="perl" perl /usr/share/perl5/ExtUtils/xsubpp -C++ -typemap /usr/share/perl5/ExtUtils/typemap -typemap 'typemap.iom' -typemap 'typemap' -prototypes ./rxvtperl.xs >rxvtperl.C
 Can't open perl script "/usr/share/perl5/ExtUtils/xsubpp": No such file or directory
 
-Solution was to create a custom make file for Fedora
+- Solution was to create a custom make file for Fedora
 
 ## Urxvt paste not working with middle mouse click - mintlinux
 - this appears to be happening after enabling perl extentions
@@ -167,15 +167,16 @@ Solution was to create a custom make file for Fedora
 ## Urxvt zsh plugin (zsh-autosuggestions) not working?
 
 ## Archlinux starship prompt causing issue when cd to ~/.git
+- no solution as of now
 
 ## "icons" fonts not displaying in lf (urxvt)
-seems to be an issue with Urxvt
-the icons (glyphs) display in termite
-https://github.com/powerline/powerline/issues/60
+- seems to be an issue with Urxvt
+- the icons (glyphs) display in termite
+- https://github.com/powerline/powerline/issues/60
 
-I looked further into the lf font issue. I am using xrdp to access my arch box. When I remote into arch, that is when I am facing the font issue. when I access lf directly on the console the fonts are showing up just fine. This issue only happens in urxvt.
+- I looked further into the lf font issue. I am using xrdp to access my arch box. When I remote into arch, that is when I am facing the font issue. when I access lf directly on the console the fonts are showing up just fine. This issue only happens in urxvt.
 
-issue is with font spacing, need to better understand the issue
+- issue is with font spacing, need to better understand the issue
 
 ## install the patches needed to get full functionality out of st
 
@@ -197,16 +198,14 @@ stack --resolver lts-14.27
 stack --resolver ghc-8.6.5 setup
 stack --resolver ghc-8.6.5 init
 
-
 ## unifying logitech tool
 solaar
 
 # xrdp failed to start
-https://github.com/neutrinolabs/xrdp/issues/911
+- https://github.com/neutrinolabs/xrdp/issues/911
 
 ## rice polybar
-https://github.com/Th0rgal/horus-nix-home
-
+- https://github.com/Th0rgal/horus-nix-home
 
 ## startx permission issue
 ```shell
@@ -216,6 +215,7 @@ $ startx -- :1 vt5
 
 ## disk mounting issue
  /etc/polkit-1/rules.d/10-udisks.rules
+ created a script for access
 
 ## fonts in polybar
 ```shell
@@ -224,21 +224,30 @@ sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf
 # Clear the font cache
 sudo fc-cache -f -v
 ```
+install font awesome
 
-## arduino issues
+## usb device issues
+```
 [ 3898.185671] usb 1-8.1: new full-speed USB device number 15 using xhci_hcd
 [ 3898.213330] usb 1-8.1: Device not responding to setup address.
 [ 3898.446318] usb 1-8.1: Device not responding to setup address.
 [ 3898.652370] usb 1-8.1: device not accepting address 15, error -71
+```
 
-GRUB_CMDLINE_LINUX_DEFAULT="usbcore.autosuspend=-1"
+- did not work
+`GRUB_CMDLINE_LINUX_DEFAULT="usbcore.autosuspend=-1"`
 ## issue with nvm
 NVM is not compatible with the npm config "prefix" option
 nvm unalias default
 
 ## issue with pacman timeout
 sudo vi /etc/pacman.d/mirrorlist
+- removed the bad mirror
 
 ## issues with authentication solus
 
 cat /etc/pam.d/xrdp-sesman
+- not sure how to fix this issue
+
+## issue with tty1 on sulus
+- disable getty@tty1.service
