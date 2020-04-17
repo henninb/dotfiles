@@ -2,7 +2,7 @@
 
 DEBIAN_FRONTEND=noninteractive
 
-ARCHLINUX_PKGS="xorg-server vlc riot-desktop i3-wm handbrake dolphin-emu dbeaver terminator handbrake rofi feh dolphin-emu xorg xorg-server xorg-xeyes xorg-xinit seahorse termite rxvt-unicode gqrx gitk audacity zathura sxiv mpv gimp brave fslint grub-customizer"
+ARCHLINUX_PKGS="xorg-server vlc riot-desktop i3-wm handbrake dolphin-emu dbeaver terminator handbrake rofi feh dolphin-emu xorg xorg-server xorg-xeyes xorg-xinit seahorse termite rxvt-unicode gqrx gitk audacity zathura sxiv mpv gimp brave fslint grub-customizer hardinfo ksystemlog"
 
 MINT_PKGS="vlc riot-desktop handbrake dolphin-emu vim-gtk3 xterm rofi terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious gitk audacity gqrx-sdr gimp"
 
@@ -111,5 +111,19 @@ fi
 
 echo "obs-studio - open broadcast software"
 echo "kdenlive - video software"
+
+#CPU-X
+yay -S cpu-x
+echo https://github.com/X0rg/CPU-X
+#Hardinfo
+echo https://github.com/lpereira/hardinfo
+#Nutty
+echo https://babluboy.github.io/nutty/
+yay -S nutty
+#Stacer
+echo https://github.com/oguzhaninan/Stacer
+yay -S stacer
+#Ksystemlog
+echo https://kde.org/applications/system/org.kde.ksystemlog
 
 exit 0
