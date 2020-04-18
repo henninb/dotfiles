@@ -16,4 +16,7 @@ sudo /usr/share/logstash/bin/logstash-plugin update logstash-filter-dns
 
 git clone git@github.com:deviantony/docker-elk.git
 
+echo elastic
+echo changeme
+
 exit 0
