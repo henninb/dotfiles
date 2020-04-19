@@ -9,6 +9,7 @@
 - Mint Linux
 - Gentoo
 - Fedora
+- Raspian
 - FreeBSD
 - MacOS
 - HaikuOS
@@ -19,6 +20,10 @@
 ## Operating Systems - Security/Privacy
 - qubes
 - tails
+
+## Router Operating Systems
+- ddwrt
+- pfsense
 
 ## Software
 - terminal - alacritty, urxvt, termite, st
@@ -85,3 +90,5 @@ steam
 arduino
 tint2
 jitsi
+keepassxc
+telegram

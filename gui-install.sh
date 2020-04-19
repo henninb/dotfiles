@@ -2,7 +2,7 @@
 
 DEBIAN_FRONTEND=noninteractive
 
-ARCHLINUX_PKGS="xorg-server vlc riot-desktop i3-wm handbrake dolphin-emu dbeaver terminator handbrake rofi feh dolphin-emu xorg xorg-server xorg-xeyes xorg-xinit seahorse termite rxvt-unicode gqrx gitk audacity zathura sxiv mpv gimp brave fslint grub-customizer hardinfo ksystemlog"
+ARCHLINUX_PKGS="xorg-server vlc riot-desktop i3-wm handbrake dolphin-emu dbeaver terminator handbrake rofi feh dolphin-emu xorg xorg-server xorg-xeyes xorg-xinit seahorse termite rxvt-unicode gqrx gitk audacity zathura sxiv mpv gimp brave fslint grub-customizer hardinfo ksystemlog keepassxc"
 
 MINT_PKGS="vlc riot-desktop handbrake dolphin-emu vim-gtk3 xterm rofi terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious gitk audacity gqrx-sdr gimp"
 
@@ -18,7 +18,7 @@ VOID_PKGS="gimp vlc handbrake terminator audacity dolphin-emu zathura dbeaver"
 
 SOLUS_PKGS="gimp vlc handbrake terminator audacity dolphin-emu zathura dbeaver"
 
-FEDORA_PKGS="gvim gqrx"
+FEDORA_PKGS="gvim gqrx keepassxc"
 
 MACOS_PKGS="alacritty iterm2"
 
@@ -125,5 +125,6 @@ echo https://github.com/oguzhaninan/Stacer
 yay -S stacer
 #Ksystemlog
 echo https://kde.org/applications/system/org.kde.ksystemlog
+echo sudo snap install keepassxc
 
 exit 0
