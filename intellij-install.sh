@@ -4,17 +4,31 @@ if [ $# -eq 1 ]; then
   VER_OVERRIDE="$1"
 fi
 
+cat > '_@user_Darcula.icls' <<EOF
+<scheme name="_@user_Darcula" version="142" parent_scheme="Darcula">
+  <option name="FONT_SCALE" value="1.0" />
+  <metaInfo>
+    <property name="created">2020-01-01T13:05:54</property>
+    <property name="ide">idea</property>
+    <property name="ideVersion">2019.3.1.0.0</property>
+    <property name="modified">2020-01-01T13:07:16</property>
+    <property name="originalScheme">Darcula</property>
+  </metaInfo>
+  <option name="CONSOLE_FONT_NAME" value="monofur for Powerline" />
+  <option name="CONSOLE_FONT_SIZE" value="16" />
+  <option name="CONSOLE_LINE_SPACING" value="1.2" />
+</scheme>
+EOF
+
 sudo dnf install -y jq
 sudo emerge --update --newuse jq
 sudo pacman --noconfirm --needed -S jq
 
 # RASPI_IP=$(nmap -sP --host-timeout 10 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
 
-find ~/.IntelliJIdea* -type d -exec touch -t $(date +"%Y%m%d%H%M") {} \;
-rm -rf "$HOME/.IntelliJIdea2019.3/config/eval"
-rm -rf "$HOME/.IntelliJIdea*/config/eval"
-rm -rf "$HOME/.IntelliJIdea*/config/options/other.xml"
-rm -rf "$HOME/.IntelliJIdea2019.3/config/options/other.xml"
+find ~/.config/JetBrains/IntelliJIdea2020.1 -type d -exec touch -t $(date +"%Y%m%d%H%M") {} \;
+rm -rf "$HOME/.config/JetBrains/IntelliJIdea2020.1/config/eval"
+rm -rf "$HOME/.config/JetBrains/IntelliJIdea2020.1/config/options/other.xml"
 rm -rf ~/.java/.userPrefs/jetbrains
 
 VER=$(curl -s 'https://data.services.jetbrains.com/products/releases?code=IIU&latest=true&type=release&build=&_=1581558835218' | jq '.IIU[0] .version' | cut -d \" -f2)
@@ -121,8 +135,8 @@ fi
 sudo usermod -a -G intellij "$(whoami)"
 echo "$VER"
 
-ls -ld "$HOME/.IntelliJIdea2019.3/config/eval"
-ls -ld "$HOME/.IntelliJIdea2019.3/config/options/other.xml"
-ls -ld "$HOME/.java/.userPrefs/jetbrains"
+# ls -ld "$HOME/.IntelliJIdea2020.1/config/eval"
+# ls -ld "$HOME/.IntelliJIdea2020.1/config/options/other.xml"
+# ls -ld "$HOME/.java/.userPrefs/jetbrains"
 
 exit 0
