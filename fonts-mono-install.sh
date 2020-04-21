@@ -18,5 +18,6 @@ fc-cache -vf ~/.fonts/
 echo "fc-list | grep -i jet"
 fc-list | grep -i "symbo"
 fc-list : family | grep -i awesome
+echo https://www.fontsquirrel.com/
 
 exit 0
