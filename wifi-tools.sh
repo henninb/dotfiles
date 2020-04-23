@@ -5,12 +5,14 @@ sudo emerge --update --newuse networkmanager
 sudo pacman --noconfirm --needed -S networkmanager
 
 sudo systemctl start NetworkManager
+sudo rc-service NetworkManager start
 
 nmcli -version
 nmcli device
-nmcli device show
+echo nmcli device show
 echo nmcli r wifi on
 nmcli device wifi list
 sudo nmcli -a d wifi connect NSA_classified
+ip addr show
 
 exit 0
