@@ -5,3 +5,4 @@ freebsd http
 manjaro http
 archlinux   http
 gentoo  https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20200318T214502Z/install-amd64-minimal-20200318T214502Z.iso
+ubuntu  https://mirror.cs.jmu.edu/pub/ubuntu-iso/20.04/ubuntu-20.04-live-server-amd64.iso
