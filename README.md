@@ -92,3 +92,4 @@ tint2
 jitsi
 keepassxc
 telegram
+inkscape
