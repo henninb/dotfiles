@@ -1,15 +1,16 @@
 #!/bin/sh
 
-sudo apt install  network-manager
-echo sudo emerge networkmanager
+sudo apt install -y network-manager
+sudo emerge --update --newuse networkmanager
+sudo pacman --noconfirm --needed -S networkmanager
 
-sudo pacman -S networkmanager
 sudo systemctl start NetworkManager
 
-nmcli d
+nmcli -version
+nmcli device
 nmcli device show
 echo nmcli r wifi on
-nmcli d wifi list
-echo nmcli d wifi connect [ssid] password [password]
+nmcli device wifi list
+sudo nmcli -a d wifi connect NSA_classified
 
 exit 0
