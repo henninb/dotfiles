@@ -3,9 +3,14 @@
 sudo apt install -y network-manager
 sudo emerge --update --newuse networkmanager
 sudo pacman --noconfirm --needed -S networkmanager
+sudo xbps-install NetworkManager
+sudo xbps-install dkms
 
 sudo systemctl start NetworkManager
 sudo rc-service NetworkManager start
+
+sudo ln -s /etc/sv/NetworkManager /var/service
+sudo ln -s /etc/sv/dbus /var/service
 
 nmcli -version
 nmcli device
