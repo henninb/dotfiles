@@ -26,6 +26,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y w3m-img
   sudo apt install -y vifm
   sudo apt install -y xserver-xephyr
+  sudo apt install -y xserver-xorg
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y bspwm
   sudo zypper install -y xscreensaver
