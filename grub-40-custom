@@ -2,7 +2,13 @@
 exec tail -n +3 "$0"
 
 # this file name should be 40_custom
+# sudo cp grub_40_custom /etc/grub.d/40_custom
 
+menuentry "Ubuntu 20.04 - bh" {
+  set root=(fd0)
+  linux /boot/vmlinuz-5.4.0-26-generic root=UUID=6a0dfb06-5737-4b44-92fc-334f6ba0dc7e rw quiet
+  initrd /boot/initrd.img-5.4.0-26-generic
+}
 # installed in bedroom on arch
 menuentry "CentOS-7 5.0.2-1" {
   set root=(hd2,4)
