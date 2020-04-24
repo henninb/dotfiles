@@ -1,6 +1,7 @@
 #!/bin/sh
 
 sudo apt install -y network-manager
+sudo apt install -y wicd-curses
 sudo emerge --update --newuse networkmanager
 sudo pacman --noconfirm --needed -S networkmanager
 sudo pacman --noconfirm --needed -S dialog
@@ -24,5 +25,6 @@ sudo nmcli networking off
 
 echo works on archlinux
 sudo wifi-menu wlp7s0
+echo wicd-curses
 
 exit 0
