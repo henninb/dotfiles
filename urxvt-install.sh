@@ -21,8 +21,8 @@ elif [ "$OS" = "Fedora" ]; then
 elif [ "$OS" = "FreeBSD" ]; then
   echo freebsd
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
-  echo
   sudo apt install -y libperl-dev
+  sudo apt install -y libx11-dev
   # sudo apt update
   # sudo apt upgrade -y
   #sudo apt install -y rxvt-unicode xsel
