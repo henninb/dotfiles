@@ -3,6 +3,7 @@
 sudo apt install -y network-manager
 sudo emerge --update --newuse networkmanager
 sudo pacman --noconfirm --needed -S networkmanager
+sudo pacman --noconfirm --needed -S dialog
 sudo xbps-install NetworkManager
 sudo xbps-install dkms
 
@@ -20,5 +21,8 @@ nmcli device wifi list
 sudo nmcli -a d wifi connect NSA_classified
 ip addr show
 sudo nmcli networking off
+
+echo works on archlinux
+sudo wifi-menu wlp7s0
 
 exit 0
