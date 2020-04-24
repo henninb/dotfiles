@@ -1,6 +1,10 @@
 #!/bin/sh
 
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y --no-modify-path
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > rustup-init
+chmod 755 rustup-init
+./rustup-init -y --no-modify-path
 rustup --version > /dev/null && rustup update
 rustup --version > /dev/null || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 #echo source $HOME/.cargo/env
