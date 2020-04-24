@@ -75,6 +75,14 @@ elif [ "$OS" = "Linux Mint" ]; then
     fi
   done
   echo failures $FAILURE
+elif [ "$OS" = "Ubuntu" ]; then
+  for i in $(echo $UBUNTU_PKGS); do
+    sudo apt install -y $i
+    if [ 0 -ne $? ]; then
+      FAILURE="$i $FAILURE"
+    fi
+  done
+  echo failures $FAILURE
 elif [ "$OS" = "CentOS Linux" ]; then
   FAILURES=""
   for i in $(echo $CENTOS_PKGS); do
