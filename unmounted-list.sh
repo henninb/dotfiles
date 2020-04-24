@@ -23,5 +23,6 @@ echo sshfs pi:/home/pi/downloads downloads
 echo sudo ntfsfix /dev/sda1
 echo sudo mkfs.ext4 /dev/sda1
 echo sudo mkfs.vfat -F 32 /dev/sdb1
+echo sudo gdisk -l /dev/sda
 
 exit 0
