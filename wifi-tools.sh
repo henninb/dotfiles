@@ -19,5 +19,6 @@ echo nmcli r wifi on
 nmcli device wifi list
 sudo nmcli -a d wifi connect NSA_classified
 ip addr show
+sudo nmcli networking off
 
 exit 0
