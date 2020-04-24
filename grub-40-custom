@@ -3,6 +3,8 @@ exec tail -n +3 "$0"
 
 # this file name should be 40_custom
 # sudo cp grub_40_custom /etc/grub.d/40_custom
+# sudo update-grub
+# validate /boot/grub/grub.cfg
 
 menuentry "Ubuntu 20.04 - bh" {
   set root=(fd0)
