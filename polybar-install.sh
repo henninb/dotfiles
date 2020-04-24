@@ -36,6 +36,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y pulseaudio
   sudo apt install -y i3
   sudo apt install -y libcairo-dev
+  sudo apt install -y python3-xcbgen
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -c system.devel
   sudo eopkg install -y libcairo-devel
