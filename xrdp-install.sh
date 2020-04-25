@@ -72,8 +72,12 @@ export LC_TELEPHONE=en_US.UTF-8
 export LC_MEASUREMENT=en_US.UTF-8
 export LC_IDENTIFICATION=en_US.UTF-8
 
+export FONTCONFIG_PATH=/etc/fonts
 #xset +fp ~/.fonts
 xrdb -merge ~/.Xresources
+if [ $? -ne 0 ]; then
+  echo "xrdb not found"
+fi
 
 # for troubleshooting uncomment
 #exec xterm

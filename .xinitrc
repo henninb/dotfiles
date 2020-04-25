@@ -26,6 +26,8 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 if [ -x "$(command -v xrdb)" ]; then
   #xrdb -merge ~/.Xresources
   xrdb -load "$HOME/.Xresources" >> "$HOME/xinit.log"
+else
+  echo "xrdb not installed."
 fi
 
 #for f in /etc/X11/Xsession.d/*; do

@@ -10,7 +10,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y xdo
   sudo apt install -y neofetch
   sudo apt install -y feh
-  sudo apt install -y ranger
+  sudo apt install -y x11-xserver-utils
   sudo apt install -y libev-dev
   sudo apt install -y libasound2-dev
   sudo apt install -y libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool libcurl4-openssl-dev python-xcbgen

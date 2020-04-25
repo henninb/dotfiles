@@ -10,8 +10,10 @@ fi
 
 PROJECTS="monofur-fonts.zip jetbrains-fonts.zip symbola.zip FiraCode_2.zip"
 for i in $(echo $PROJECTS); do
-  cd ~/.fonts || exit
-  unzip -o "../$i"
+  cd "$HOME/.fonts" || exit
+  unzip -o "$HOME/$i"
+  cd /usr/local/share/fonts
+  sudo unzip -o "$HOME/$i"
 done
 fc-cache -vf ~/.fonts/
 

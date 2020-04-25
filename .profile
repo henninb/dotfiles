@@ -32,3 +32,5 @@ export OS
 export OS_VER
 
 export PATH=$HOME/.local/bin:$PATH
+
+export FONTCONFIG_PATH=/etc/fonts
