@@ -27,6 +27,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y vifm
   sudo apt install -y xserver-xephyr
   sudo apt install -y xserver-xorg
+  sudo apt install -y xscreensaver
   sudo apt install -y xinit
   sudo apt install -y dmenu
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
