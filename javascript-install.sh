@@ -45,7 +45,11 @@ export NVM_DIR="$HOME/.nvm"
 [ ! "$OS" = "Linux Mint" ] && source "$HOME/.nvm/nvm.sh"
 
 # nvm install 10.16.0
-nvm install 13.8.0
+echo logout and login
+echo nvm install 13.8.0
+
+exit 0
+
 npm install -g yarn
 
 sudo npm list -g --depth=0
