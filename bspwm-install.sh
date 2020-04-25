@@ -8,6 +8,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt remove -y gdm
   sudo apt install -y bspwm
   sudo apt install -y xdo
+  sudo apt install -y neofetch
   sudo apt install -y feh
   sudo apt install -y ranger
   sudo apt install -y libev-dev
@@ -40,6 +41,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y w3m
   sudo zypper install -y w3m-img
   sudo zypper install -y dmenu
+  sudo zypper install -y neofetch
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y bspwm
   sudo eopkg install -y xscreensaver
@@ -49,6 +51,7 @@ elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y sxhkd
   sudo eopkg install -y w3m
   sudo eopkg install -y dmenu
+  sudo eopkg install -y neofetch
   echo
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -Sy base-devel libX11-devel libXft-devel libXinerama-devel
@@ -70,6 +73,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y dmenu
   sudo xbps-install -y font-awesome5
   sudo xbps-install -y dmenu
+  sudo xbps-install -y neofetch
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
@@ -84,6 +88,7 @@ elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S sxhkd
   sudo pacman --noconfirm --needed -S w3m
   sudo pacman --noconfirm --needed -S dmenu
+  sudo pacman --noconfirm --needed -S neofetch
 elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
@@ -98,6 +103,7 @@ elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S sxhkd
   sudo pacman --noconfirm --needed -S w3m
   sudo pacman --noconfirm --needed -S dmenu
+  sudo pacman --noconfirm --needed -S neofetch
 elif [ "$OS" = "Gentoo" ]; then
   GENTOO_PKGS="bspwm dmenu sxhkd feh cmatrix cairo libmpdclient pulseaudio autocutsel vimfm w3m xclip"
   FAILURES=""
