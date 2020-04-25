@@ -388,6 +388,10 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y xserver-xorg-dev
   sudo apt install -y libxfixes-dev
   sudo apt install -y libxrandr-dev
+  sudo apt install -y autoconf
+  sudo apt install -y libtool
+  sudo apt install -y pkg-config
+  sudo apt install -y make
   cd "$HOME/projects" || exit
   git clone --recursive https://github.com/neutrinolabs/xrdp
   cd xrdp || exit
