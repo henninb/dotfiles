@@ -6,6 +6,6 @@ if [ $# -ne 1 ]; then
 fi
 FILE=$1
 
-echo sudo dd if=${FILE} of=/dev/sdc bs=4M && sync
+echo sudo dd if=${FILE} of=/dev/sdc bs=4M status=progress && sync
 
 exit 0
