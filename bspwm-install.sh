@@ -28,6 +28,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y xserver-xephyr
   sudo apt install -y xserver-xorg
   sudo apt install -y xinit
+  sudo apt install -y dmenu
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y bspwm
   sudo zypper install -y xscreensaver
@@ -37,6 +38,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y sxhkd
   sudo zypper install -y w3m
   sudo zypper install -y w3m-img
+  sudo zypper install -y dmenu
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y bspwm
   sudo eopkg install -y xscreensaver
@@ -45,6 +47,7 @@ elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y xclip
   sudo eopkg install -y sxhkd
   sudo eopkg install -y w3m
+  sudo eopkg install -y dmenu
   echo
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -Sy base-devel libX11-devel libXft-devel libXinerama-devel
@@ -65,6 +68,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y xrdp
   sudo xbps-install -y dmenu
   sudo xbps-install -y font-awesome5
+  sudo xbps-install -y dmenu
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
@@ -78,7 +82,7 @@ elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S xclip
   sudo pacman --noconfirm --needed -S sxhkd
   sudo pacman --noconfirm --needed -S w3m
-  sudo pacman --noconfirm --needed -S vifm
+  sudo pacman --noconfirm --needed -S dmenu
 elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
@@ -92,7 +96,7 @@ elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S xclip
   sudo pacman --noconfirm --needed -S sxhkd
   sudo pacman --noconfirm --needed -S w3m
-  sudo pacman --noconfirm --needed -S vifm
+  sudo pacman --noconfirm --needed -S dmenu
 elif [ "$OS" = "Gentoo" ]; then
   GENTOO_PKGS="bspwm dmenu sxhkd feh cmatrix cairo libmpdclient pulseaudio autocutsel vimfm w3m xclip"
   FAILURES=""
@@ -116,7 +120,6 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y xcopy
   sudo dnf install -y sxhkd
   sudo dnf install -y w3m
-  sudo dnf install -y vifm
   sudo dnf install -y libxcb-devel xcb-util-keysyms-devel xcb-util-devel xcb-util-wm-devel xcb-util-xrm-devel yajl-devel libXrandr-devel startup-notification-devel libev-devel xcb-util-cursor-devel libXinerama-devel libxkbcommon-devel libxkbcommon-x11-devel pcre-devel pango-devel git gcc automake libcurl-devel libmpdclient-devel wireless-tools-devel pulseaudio-libs-devel xcb-proto  cairo-devel i3-devel
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y bspwm

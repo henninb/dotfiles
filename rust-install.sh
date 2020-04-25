@@ -1,6 +1,8 @@
 #!/bin/sh
 
 # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y --no-modify-path
+sudo apt install -y cmake
+sudo apt install -y g++
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > rustup-init
 chmod 755 rustup-init

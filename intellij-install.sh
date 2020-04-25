@@ -23,6 +23,7 @@ EOF
 sudo dnf install -y jq
 sudo emerge --update --newuse jq
 sudo pacman --noconfirm --needed -S jq
+sudo apt install -y jq
 
 # RASPI_IP=$(nmap -sP --host-timeout 10 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
 
