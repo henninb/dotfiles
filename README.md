@@ -16,6 +16,7 @@
 
 ## Operating Systems - Yet to Explore
 - Bedrock Linux
+- Clear Linux
 
 ## Operating Systems - Security/Privacy
 - qubes
@@ -93,3 +94,4 @@ jitsi
 keepassxc
 telegram
 inkscape
+team viewer
