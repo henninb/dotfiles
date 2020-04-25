@@ -1,7 +1,3 @@
-: 1568489736:: :;14:00 < geekosaur> (the parentheses you have do nothing)
-: 1568489736:: :;14:04 < henninb> geekosaur, here is what the logs have "<stdin>: hGetLine: end of file"
-: 1568489736:: :;14:06 < geekosaur> that sounds like it's not being started by that invocation at all
-: 1568489736:: :;14:06 < geekosaur> you are using spawnPipe and you use xmproc later in the logHook, so it should be held open
 : 1568489736:: :;14:08 < henninb> geekosaur, i know I have looked this over and everything seems correct.
 : 1568489736:: :;14:11 < geekosaur> btw, which "logs" are you talking about? the one I suggested creating above, or some other one?
 : 1568489736:: :;14:12 < henninb> i copied your exact command and produced the same line "<stdin>: hGetLine: end of file"
@@ -98,3 +94,7 @@
 : 1584929134:: :;/quit
 : 1586902716:: :;i am trying to authenticate to xrdp and I am getting an authentication issue (password). any advise on what to look into?
 : 1586902737:: :;i check the /etc/pam.d/xrdp-sesman file and it is set to system-auth.
+: 1587854402:: :;/quit
+: 1587854561:: :;hi all, cdrecord does a package exist for this software or other command line option?
+: 1587855118:: :;found it under cdrtools.
+: 1587855243:: :;/quit
