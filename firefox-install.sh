@@ -71,6 +71,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo chown -R firefox:firefox /opt/firefox
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   sudo apt install -y net-tools psmisc wget curl
+  sudo apt install -y libgtk-3-dev
   sudo rm -rf /opt/firefox
   sudo tar -xjvf "firefox-${FOX_VER}.tar.bz2" -C /opt
   sudo chown -R firefox:firefox /opt/firefox
