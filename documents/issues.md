@@ -252,4 +252,16 @@ cat /etc/pam.d/xrdp-sesman
 ## issue with tty1 on sulus
 - disable getty@tty1.service
 - list of linux display manager gdm gdm3 lightdm kdm sdm
+- reinstall lightdm and start - 
+```sudo systemctl enable --now lightdm```
+eopkg history 
+slick-greeter (potentially need to be removed)
 
+To boot to console:
+sudo systemctl set-default multi-user.target
+You must then edit /etc/default/grub by removing splash from the GRUB command line. (Remember to update GRUB afterward: sudo update-grub).
+To get to the Unity desktop from the console, you must enter the command:
+sudo systemctl start lightdm.service
+(The usual startx command doesn't work with Unity.)
+To restore boot to GUI:
+sudo systemctl set-default graphical.target
