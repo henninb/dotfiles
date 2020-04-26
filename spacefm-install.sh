@@ -5,6 +5,11 @@ sudo apt install -y libgtk2.0-dev
 
 echo "add #include <sys/sysmacros.h> to the  src/main.c"
 
+sudo xbps-install -y intltool
+sudo xbps-install -y glib-devel
+sudo xbps-install -S ffmpegthumbnailer
+sudo xbps-install ffmpegthumbnailer-devel
+
 cd "$HOME/projects"
 git clone git@github.com:IgnorantGuru/spacefm.git
 cd spacefm

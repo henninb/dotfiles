@@ -12,6 +12,21 @@ output.elasticsearch:
   password: "changeme"
 EOF
 
+
+sudo apt install apt-transport-https
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+sudo add-apt-repository "deb https://artifacts.elastic.co/packages/7.x/apt stable main"
+sudo apt install elasticsearch
+echo /etc/elasticsearch/elasticsearch.yml
+echo network.host: 0.0.0.0
+echo cluster.name: myCluster1
+echo node.name: "myNode1"
+
+sudo systemctl enable elasticsearch
+sudo systemctl start elasticsearch
+curl -X GET "http://localhost:9200/?pretty"
+
+
 docker pull elasticsearch:7.6.2
 docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:7.6.2
 
