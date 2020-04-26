@@ -25,6 +25,8 @@
 [core]
   pager = less -F -X
   editor = nvim
+[advice]
+  detachedHead = false
 [color]
   diff = auto
   status = auto
