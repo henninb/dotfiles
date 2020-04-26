@@ -21,6 +21,7 @@ echo /etc/elasticsearch/elasticsearch.yml
 echo network.host: 0.0.0.0
 echo cluster.name: myCluster1
 echo node.name: "myNode1"
+echo discovery.seed_hosts: []
 
 sudo systemctl enable elasticsearch
 sudo systemctl start elasticsearch

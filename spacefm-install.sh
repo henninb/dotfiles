@@ -1,6 +1,11 @@
 #!/bin/sh
 
-sudo apt install -y spacefm udevil libudev-dev libffmpegthumbnailer-dev intltool libtool
+sudo apt install -y udevil 
+sudo apt install -y libudev-dev
+sudo apt install -y libffmpegthumbnailer-dev
+sudo apt install -y intltool
+sudo apt install -y libtool
+sudo apt install -y libtool-bin
 sudo apt install -y libgtk2.0-dev
 
 echo "add #include <sys/sysmacros.h> to the  src/main.c"
@@ -8,7 +13,7 @@ echo "add #include <sys/sysmacros.h> to the  src/main.c"
 sudo xbps-install -y intltool
 sudo xbps-install -y glib-devel
 sudo xbps-install -S ffmpegthumbnailer
-sudo xbps-install ffmpegthumbnailer-devel
+sudo xbps-install -y ffmpegthumbnailer-devel
 
 cd "$HOME/projects"
 git clone git@github.com:IgnorantGuru/spacefm.git
