@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #sudo apt install -y yarn
-unset NVM_DIR
+# unset NVM_DIR
 
 # if [ ! -f "$HOME/.nvm" ]; then
 #   git clone https://github.com/nvm-sh/nvm.git $HOME/.nvm
@@ -40,47 +40,13 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | zsh
 
 export NVM_DIR="$HOME/.nvm"
 
-#https://github.com/yarnpkg/yarn/archive/v1.21.1.tar.gz
-
-[ ! "$OS" = "Linux Mint" ] && source "$HOME/.nvm/nvm.sh"
+. "$HOME/.nvm/nvm.sh"
+if [ $? -ne 0 ]; then
+  source "$HOME/.nvm/nvm.sh"
+fi
 
 # nvm install 10.16.0
-echo logout and login
-echo nvm install 13.8.0
-
-exit 0
-
-npm install -g yarn
-
-sudo npm list -g --depth=0
-sudo npm list -g --depth=1
-
-# echo yarn add react
-# yarn add coc-python
-# yarn add coc-html
-# yarn add coc-java
-# yarn add coc-powershell
-# yarn add coc-rls
-# yarn add coc-svg
-# yarn add coc-git
-# yarn add coc-fsharp
-# echo yarn add coc-gocode
-# echo yarn add coc-eslint
-# yarn add coc-xml
-# yarn add coc-clojure
-# yarn add coc-vimlsp
-# yarn add coc-go
-# yarn add coc-docker
-# yarn add coc-elixir
-# yarn add coc-lua
-# yarn add coc-sql
-# yarn add coc-angular
-# yarn add coc-json
-# yarn add coc-css
-# yarn add coc-yaml
-# yarn add eslint
-# yarn add prettier
-# yarn add eslint-plugin-prettier
-# yarn add eslint-config-prettier
+# echo logout and login
+nvm install 13.8.0
 
 exit 0
