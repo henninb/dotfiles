@@ -1,15 +1,3 @@
-: 1568503654:: :;/join #xrdp
-: 1568503680:: :;is there a shell command to tell if you are running xrdp?
-: 1568504322:: :;definately gives me the pid, but if i am in the terminal how would I know that the terminal was started inside an xrdp session?
-: 1568504912:: :;is there a shell command to identify if I am running xmonad, awesome, or i3?
-: 1568506567:: :;i tried that "Cannot get window manager info properties." from xmonad.
-: 1568508089:: :;thanks tabby
-: 1568510521:: :;for xmonad does anyone know if yabar can be used with instead of xmobar?
-: 1568510739:: :;for xmonad does anyone know if yabar can be used with instead of xmobar? or what other bar options ar there?
-: 1569777986:: :;hi, which font should I install paired with ohmyzsh and urxvt? I am having trouble getting icons to show?
-: 1570836685:: :;i am having a font issue, when starting urxvt I set the font in the .Xdefault (Urxvt.font: xft:SauceCodePro NF:pixelsize=16), but the font doesn't take, any advice?
-: 1570837562:: :;thanks sarnold, from what I read the .Xresources is on demand.
-: 1570837835:: :;sarnold did you install your fonts or are these part of the default on the system?
 : 1570837991:: :;ok, I will put it in my .xinitrc, thanks sarnold
 : 1571535444:: :;/join #fedora
 : 1571535536:: :;fedora30 - urxvt, not able to view gliphs, any advice?
@@ -98,3 +86,15 @@
 : 1587862962:: :;anyone have suggestions on how to install brave on void?
 : 1587863067:: :;maldridge, agree or a appImage. i did not see one, but I will check for one.
 : 1587863885:: :;/quit
+: 1587897044:: :;can someone please point me to the config files that controls the tty console, i.e. which console has the gui on it?
+: 1587897239:: :;marcthe12, tty, wheen i press ctl-alt-f1 it may take me to the gui.
+: 1587897292:: :;thanks marcthe12, is that file in the /etc dir?
+: 1587897330:: :;ubuntu 20.04
+: 1587897478:: :;marcthe12, thanks for the tip. 
+: 1587898873:: :;hello, i have removed the default display manager for solus, and now when I boot I am not getting the console login prompt. i can ssh to the machine just fine. is there another config change I need to make?
+: 1587899296:: :;bungie i believe, i uninstalled it about a week ago.
+: 1587899388:: :;sorry, yes. 
+: 1587899420:: :;i believe I uninstalled the lightdm package.
+: 1587899549:: :;i will try that, if I want to use xinit instead of lightdm is there a configuration change I can make?
+: 1587900705:: :;thanks for your help Justin
+: 1587900846:: :;/quit
