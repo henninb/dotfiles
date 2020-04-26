@@ -148,10 +148,4 @@ else
   exit 1
 fi
 
-cd $HOME/projects/
-git clone --recursive https://github.com/jaagr/polybar.git
-cd polybar
-./build.sh
-cd $HOME
-
 exit 0

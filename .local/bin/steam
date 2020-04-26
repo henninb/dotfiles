@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$OS" = "Linux Mint" ]; then
+if [ -x "$(command -v /usr/games/steam)" ]; then
   nohup /usr/games/steam > /dev/null 2>&1 &
 else
   flatpak run com.valvesoftware.Steam &

@@ -15,7 +15,8 @@ wget https://flathub.org/repo/appstream/com.valvesoftware.Steam.flatpakref
 if [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S flatpak
   flatpak install flathub com.valvesoftware.Steam
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
+  sudo apt install -y steam-installer
   sudo apt install -y flatpak
   #flatpak install --user flathub org.freedesktop.Platform.openh264
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
