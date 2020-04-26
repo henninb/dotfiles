@@ -252,10 +252,10 @@ cat /etc/pam.d/xrdp-sesman
 ## issue with tty1 on sulus
 - disable getty@tty1.service
 - list of linux display manager gdm gdm3 lightdm kdm sdm
-- reinstall lightdm and start - 
-```sudo systemctl enable --now lightdm```
-eopkg history 
-slick-greeter (potentially need to be removed)
+eopkg history
+cd /etc/systemd/system
+rm display-manager.service
+sudo systemctl list-unit-files
 
 To boot to console:
 sudo systemctl set-default multi-user.target
