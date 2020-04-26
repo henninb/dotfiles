@@ -3,7 +3,7 @@
 sudo apt install -y spacefm udevil libudev-dev libffmpegthumbnailer-dev intltool libtool
 sudo apt install -y libgtk2.0-dev
 
-# sudo apt install -y autotools-dev bash build-essential intltool pkg-config fakeroot shared-mime-info desktop-file-utils libc6 libcairo2 libglib2.0-0 libglib2.0-dev libpango1.0-0 libx11-6 libx11-dev libudev1 libudev-dev libffmpegthumbnailer-dev
+echo "add #include <sys/sysmacros.h> to the  src/main.c"
 
 cd "$HOME/projects"
 git clone git@github.com:IgnorantGuru/spacefm.git
@@ -13,3 +13,15 @@ make
 sudo make install
 
 exit 0
+
+diff --git a/src/main.c b/src/main.c
+index 645e2ec..9453a3b 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -23,6 +23,7 @@
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <sys/un.h>
++#include <sys/sysmacros.h>
+ 
+ #include <signal.h>
