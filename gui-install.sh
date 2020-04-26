@@ -8,7 +8,7 @@ MINT_PKGS="vlc riot-desktop handbrake dolphin-emu vim-gtk3 xterm rofi terminator
 
 CENTOS_PKGS="vlc firefox riot-desktop handbrake dolphin-emu gvim terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious rxvt gimp inkscape"
 
-UBUNTU_PKGS="gqrx vlc handbrake dolphin-emu vim-gtk3 terminator feh dolphin gnome-boxes cockpit seahorse mplayer audacious gitk audacity gimp inkscape fslint"
+UBUNTU_PKGS="gqrx vlc handbrake dolphin-emu vim-gtk3 terminator feh dolphin gnome-boxes cockpit seahorse mplayer audacious gitk audacity gimp inkscape cpu-x"
 
 FREEBSD_PKGS="vlc firefox riot-desktop i3-wm handbrake dolphin-emu vim-gtk3 xterm rofi terminator qt5ct audacity gimp inkscape"
 
