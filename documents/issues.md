@@ -257,6 +257,9 @@ cd /etc/systemd/system
 rm display-manager.service
 sudo systemctl list-unit-files
 
+view the logs
+sudo journalctl
+
 To boot to console:
 sudo systemctl set-default multi-user.target
 You must then edit /etc/default/grub by removing splash from the GRUB command line. (Remember to update GRUB afterward: sudo update-grub).
