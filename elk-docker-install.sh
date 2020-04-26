@@ -27,6 +27,9 @@ sudo systemctl enable elasticsearch
 sudo systemctl start elasticsearch
 curl -X GET "http://localhost:9200/?pretty"
 
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.6.2-amd64.deb
+sudo dpkg -i filebeat-7.6.2-amd64.deb
+
 
 docker pull elasticsearch:7.6.2
 docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:7.6.2
