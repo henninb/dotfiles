@@ -250,7 +250,7 @@ cat /etc/pam.d/xrdp-sesman
 - not sure how to fix this issue
 
 ## issue with tty1 on sulus
-- disable getty@tty1.service
+- workaround is to switch to tty2 CTL-Alt-F2
 - list of linux display manager gdm gdm3 lightdm kdm sdm
 eopkg history
 cd /etc/systemd/system
