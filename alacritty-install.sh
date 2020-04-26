@@ -1,6 +1,10 @@
 #!/bin/sh
 
+sudo apt install -y libxcb-shape0-dev
+sudo apt install -y libxcb-xfixes0-dev
+
 cd projects || exit
+rm -rf alacritty
 git clone git@github.com:alacritty/alacritty.git
 cd alacritty || exit
 git pull origin master

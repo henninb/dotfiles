@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y --no-modify-path
+sudo apt install -y curl
 sudo apt install -y cmake
 sudo apt install -y g++
 sudo apt install -y libexpat-dev

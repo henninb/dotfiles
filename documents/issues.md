@@ -244,10 +244,12 @@ nvm unalias default
 sudo vi /etc/pacman.d/mirrorlist
 - removed the bad mirror
 
-## issues with authentication solus
+## issues with xrdp authentication solus
 
 cat /etc/pam.d/xrdp-sesman
 - not sure how to fix this issue
 
 ## issue with tty1 on sulus
 - disable getty@tty1.service
+- list of linux display manager gdm gdm3 lightdm kdm sdm
+
