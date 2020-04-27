@@ -79,7 +79,7 @@ elif [ "$OS" = "void" ]; then
   done
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Solus" ]; then
-  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo polybar"
+  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel"
   FAILURES=""
   for i in $(echo $SOLUS_PKGS); do
     if ! sudo eopkg install -y "$i"; then
