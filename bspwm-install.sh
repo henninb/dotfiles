@@ -53,6 +53,7 @@ elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y w3m
   sudo eopkg install -y dmenu
   sudo eopkg install -y neofetch
+  sudo eopkg install -y font-awesome-ttf
   echo
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -Sy base-devel libX11-devel libXft-devel libXinerama-devel
