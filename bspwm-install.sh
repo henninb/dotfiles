@@ -46,6 +46,7 @@ elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y bspwm
   sudo eopkg install -y xscreensaver
   sudo eopkg install -y xdo
+  sudo eopkg install -y xrdb
   sudo eopkg install -y feh
   sudo eopkg install -y xclip
   sudo eopkg install -y sxhkd
