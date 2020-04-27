@@ -88,6 +88,17 @@ fi
 exit 0
 EOF
 
+cat > xrdp-sesman <<EOF
+/etc/pam.d/xrdp-sesman
+auth      required  pam_securetty.so
+auth      required  pam_unix.so shadow nullok
+auth      required  pam_nologin.so
+account   required  pam_unix.so
+password  required  pam_cracklib.so retry=3
+password  required  pam_unix.so shadow nullok use_authtok
+session   required  pam_unix.so
+EOF
+
 cat > Xwrapper.config <<EOF
 allowed_users=anybody
 needs_root_rights=yes
@@ -163,7 +174,6 @@ elif [ "$OS" = "Solus" ]; then
   fi
   sudo make install
 
-
   cd $HOME/projects
   git clone git@github.com:neutrinolabs/xorgxrdp.git
   cd xorgxrdp
@@ -178,7 +188,6 @@ elif [ "$OS" = "Solus" ]; then
   cd "$HOME" || exit
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
-
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y nasm
   sudo xbps-install -y pam-devel
