@@ -25,6 +25,12 @@ echo discovery.seed_hosts: []
 
 sudo systemctl enable elasticsearch
 sudo systemctl start elasticsearch
+netstat -na | grep LISTEN | grep tcp | grep 9200
+netstat -na | grep LISTEN | grep tcp | grep 9300
+#netstat -tulp
+sudo fuser 9300/tcp
+sudo fuser 9200/tcp
+
 curl -X GET "http://localhost:9200/?pretty"
 
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.6.2-amd64.deb
