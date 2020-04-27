@@ -12,6 +12,8 @@ elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   #sudo apt install -y rxvt-unicode xsel
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo
+elif [ "$OS" = "Solus" ]; then
+  echo
 elif [ "$OS" = "void" ]; then
   echo
 elif [ "$OS" = "Fedora" ]; then
