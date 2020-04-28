@@ -15,6 +15,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y fontconfig
 elif [ "$OS" = "Clear Linux OS" ]; then
   sudo swupd bundle-add zsh
+  sudo swupd bundle-add fonts-basic
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y zsh
 elif [ "$OS" = "Gentoo" ]; then
