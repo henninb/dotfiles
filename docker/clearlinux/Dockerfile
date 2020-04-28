@@ -8,6 +8,11 @@ RUN swupd bundle-add sysadmin-basic
 
 RUN useradd henninb
 RUN usermod -G wheel -a henninb
+RUN usermod -G wheelnopw -a henninb
+RUN echo "root password"
+RUN echo -e "admin\nadmin" | passwd
+# RUN echo empty password
+# RUN echo henninb:U6aMy0wojraho | chpasswd -e
 RUN mkdir /etc/sudoers.d/
 RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers.d/sudoers
 RUN chmod 600 /etc/sudoers.d/sudoers

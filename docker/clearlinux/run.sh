@@ -2,7 +2,7 @@
 
 cp $HOME/.ssh/id_rsa .
 cp $HOME/.ssh/known_hosts .
-sudo docker build -t clearbox .
+sudo -S -u root docker build -t clearbox .
 if [ $? -ne 0 ]; then
   echo  failed docker build.
   #sudo docker build -t clearbox -f Dockerfile.debug .
