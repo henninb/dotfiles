@@ -34,33 +34,33 @@ fi
 #bspc config automatic_scheme alternate
 echo top of the config >> $HOME/bspwm.log
 bspc config initial_polarity second_child 2>> $HOME/bspwm.log
-echo 01 2>> $HOME/bspwm.log
-bspc config pointer_modifier lock 2>> $HOME/bspwm.log
-echo 01 2>> $HOME/bspwm.log
-bspc config pointer_action1 move 2>> $HOME/bspwm.log
-echo 01 2>> $HOME/bspwm.log
-bspc config pointer_action2 resize_side 2>> $HOME/bspwm.log
-echo 01 2>> $HOME/bspwm.log
-bspc config pointer_action3 resize_corner 2>> $HOME/bspwm.log
-echo 01 2>> $HOME/bspwm.log
-bspc config click_to_focus none 2>> $HOME/bspwm.log
-echo 01 2>> $HOME/bspwm.log
+echo 01 >> $HOME/bspwm.log
+bspc config pointer_modifier lock >> $HOME/bspwm.log
+echo 01 >> $HOME/bspwm.log
+bspc config pointer_action1 move >> $HOME/bspwm.log
+echo 01 >> $HOME/bspwm.log
+bspc config pointer_action2 resize_side >> $HOME/bspwm.log
+echo 01 >> $HOME/bspwm.log
+bspc config pointer_action3 resize_corner >> $HOME/bspwm.log
+echo 01 >> $HOME/bspwm.log
+bspc config click_to_focus none >> $HOME/bspwm.log
+echo 01 >> $HOME/bspwm.log
 bspc config focus_follows_pointer true
-echo 01 2>> $HOME/bspwm.log
+echo 01 >> $HOME/bspwm.log
 bspc config remove_disabled_monitors true
-echo 01 2>> $HOME/bspwm.log
+echo 01 >> $HOME/bspwm.log
 bspc config remove_unplugged_monitors true
-echo 01 2>> $HOME/bspwm.log
+echo 01 >> $HOME/bspwm.log
 bspc config merge_overlapping_monitors true
-echo 01 2>> $HOME/bspwm.log
+echo 01 >> $HOME/bspwm.log
 bspc config normal_border_color "#4c566a"
-echo 01 2>> $HOME/bspwm.log
+echo 01 >> $HOME/bspwm.log
 bspc config active_border_color "#1e1e1e"
-echo 01 2>> $HOME/bspwm.log
+echo 01 >> $HOME/bspwm.log
 bspc config focused_border_color "#406ea5"
-echo 01 2>> $HOME/bspwm.log
+echo 01 >> $HOME/bspwm.log
 bspc config presel_feedback_color "#5e81ac"
-echo 01 2>> $HOME/bspwm.log
+echo 01 >> $HOME/bspwm.log
 #bspc config urgent_border_color "#dd2727"
 
 ###---Monitor And Desktop Settings----###
@@ -87,3 +87,4 @@ bspc monitor HDMI-0 -d 1 2 3 4 5 6 7 8 9
 bspc monitor HDMI-1 -d 1 2 3 4 5 6 7 8 9
 bspc monitor rdp0 -d 1 2 3 4 5 6 7 8 9
 bspc monitor -d 1 2 3 4 5 6 7 8 9
+echo end of script >> $HOME/bspwm.log
