@@ -1,14 +1,16 @@
 FROM clearlinux
 # docker pull clearlinux
-
-# RUN swupd bundle-add git
-# RUN swupd bundle-add zsh
-# RUN swupd bundle-add sudo
-# RUN swupd bundle-add sysadmin-basic
+RUN whoami
+RUN swupd bundle-add git
+RUN swupd bundle-add zsh
+RUN swupd bundle-add sudo
+RUN swupd bundle-add sysadmin-basic
 
 RUN useradd henninb
 RUN usermod -G wheel -a henninb
-RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers
+RUN mkdir /etc/sudoers.d/
+RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers.d/sudoers
+RUN chmod 600 /etc/sudoers.d/sudoers
 
 RUN mkdir -p /home/henninb/.ssh
 RUN chown henninb:wheel /home/henninb/.ssh && chmod 700 /home/henninb/.ssh
@@ -29,8 +31,8 @@ RUN rm -rf /home/henninb/.bashrc
 RUN rm -rf /home/henninb/.profile
 RUN rm -rf /home/henninb/.bash_profile
 RUN git init .
-# RUN git remote add origin git@github.com:BitExplorer/dotfiles.git
-# RUN git pull origin master
-# RUN git branch --set-upstream-to=origin/master master
+RUN git remote add origin git@github.com:BitExplorer/dotfiles.git
+RUN git pull origin master
+RUN git branch --set-upstream-to=origin/master master
 
 CMD ["/bin/bash"]
