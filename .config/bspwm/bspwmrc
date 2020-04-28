@@ -3,8 +3,6 @@
 export _JAVA_AWT_WM_NONREPARTENTING=1
 #export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
-#### Autostart ####
-
 date >> $HOME/bspwm.log
 if [ -x "$(command -v dunst)" ]; then
   echo dunst was called. >> $HOME/bspwm.log
@@ -21,11 +19,6 @@ if [ -x "$(command -v polybar)" ]; then
   echo polybar was called. >> $HOME/bspwm.log
 fi
 
-#### Monitors ####
-# bspc monitor HDMI-0 -d 1 2 3 4 5 6 7 8 9
-# bspc monitor HDMI-1 -d 1 2 3 4 5 6 7 8 9
-# bspc monitor rdp0 -d 1 2 3 4 5 6 7 8 9
-
 #### Polybar ####
 #find out the name of your monitor with xrandr
 # xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_HDMI-0)
@@ -33,58 +26,139 @@ fi
 ###---Global Settings---###
 #bspc config automatic_scheme alternate
 echo top of the config >> $HOME/bspwm.log
-bspc config initial_polarity second_child 2>> $HOME/bspwm.log
-echo 01 >> $HOME/bspwm.log
-bspc config pointer_modifier lock >> $HOME/bspwm.log
-echo 01 >> $HOME/bspwm.log
-bspc config pointer_action1 move >> $HOME/bspwm.log
-echo 01 >> $HOME/bspwm.log
-bspc config pointer_action2 resize_side >> $HOME/bspwm.log
-echo 01 >> $HOME/bspwm.log
-bspc config pointer_action3 resize_corner >> $HOME/bspwm.log
-echo 01 >> $HOME/bspwm.log
-bspc config click_to_focus none >> $HOME/bspwm.log
-echo 01 >> $HOME/bspwm.log
-bspc config focus_follows_pointer true
-echo 01 >> $HOME/bspwm.log
-bspc config remove_disabled_monitors true
-echo 01 >> $HOME/bspwm.log
-bspc config remove_unplugged_monitors true
-echo 01 >> $HOME/bspwm.log
-bspc config merge_overlapping_monitors true
-echo 01 >> $HOME/bspwm.log
-bspc config normal_border_color "#4c566a"
-echo 01 >> $HOME/bspwm.log
-bspc config active_border_color "#1e1e1e"
-echo 01 >> $HOME/bspwm.log
-bspc config focused_border_color "#406ea5"
-echo 01 >> $HOME/bspwm.log
-bspc config presel_feedback_color "#5e81ac"
-echo 01 >> $HOME/bspwm.log
-#bspc config urgent_border_color "#dd2727"
+if ! bspc config initial_polarity second_child; then
+  echo bspc config initial_polarity second_child failed. >> $HOME/bspwm.log
+else
+  echo bspc config initial_polarity second_child success. >> "$HOME/bspwm.log"
+fi
+
+if ! bspc config pointer_modifier lock; then
+  echo bspc config pointer_modifier lock failed. >> $HOME/bspwm.log
+else
+  echo bspc config pointer_modifier lock success. >> "$HOME/bspwm.log"
+fi
+
+if ! bspc config pointer_action1 move; then
+  echo bspc config pointer_action1 move failed. >> $HOME/bspwm.log
+else
+  echo bspc config pointer_action1 move success. >> "$HOME/bspwm.log"
+fi
+
+if ! bspc config pointer_action2 resize_side; then
+  echo bspc config pointer_action2 resize_side failed. >> $HOME/bspwm.log
+else
+  echo bspc config pointer_action2 resize_side success. >> "$HOME/bspwm.log"
+fi
+
+if ! bspc config pointer_action3 resize_corner; then
+  echo bspc config pointer_action3 resize_corner failed. >> $HOME/bspwm.log
+else
+  echo bspc config pointer_action3 resize_corner success. >> "$HOME/bspwm.log"
+fi
+
+if ! bspc config click_to_focus none; then
+  echo bspc config click_to_focus none failed. >> $HOME/bspwm.log
+else
+  echo bspc config click_to_focus none success. >> "$HOME/bspwm.log"
+fi
+
+if ! bspc config focus_follows_pointer true; then
+  echo bspc config focus_follows_pointer true failed. >> $HOME/bspwm.log
+else
+  echo bspc config focus_follows_pointer true success. >> "$HOME/bspwm.log"
+fi
+
+if ! bspc config remove_disabled_monitors true; then
+  echo bspc config remove_disabled_monitors true failed. >> $HOME/bspwm.log
+else
+  echo bspc config remove_disabled_monitors true success. >> "$HOME/bspwm.log"
+fi
+
+if ! bspc config remove_unplugged_monitors true; then
+  echo bspc config remove_unplugged_monitors failed. >> $HOME/bspwm.log
+else
+  echo bspc config remove_unplugged_monitors success. >> $HOME/bspwm.log
+fi
+
+if ! bspc config merge_overlapping_monitors true; then
+  echo bspc config merge_overlapping_monitors true failed. >> $HOME/bspwm.log
+else
+  echo bspc config merge_overlapping_monitors true success. >> "$HOME/bspwm.log"
+fi
+
+if ! bspc config normal_border_color "#4c566a"; then
+  echo "bspc config normal_border_color #4c566a failed." >> "$HOME/bspwm.log"
+else
+  echo "bspc config normal_border_color #4c566a success." >> "HOME/bspwm.log"
+fi
+
+if ! bspc config active_border_color "#1e1e1e"; then
+  echo  "bspc config active_border_color #1e1e1e failed." >> "$HOME/bspwm.log"
+else
+  echo "bspc config active_border_color #1e1e1e success." >> "HOME/bspwm.log"
+fi
+
+if ! bspc config focused_border_color "#406ea5"; then
+  echo "bspc config focused_border_color #406ea5 failed." >> "$HOME/bspwm.log"
+else
+  echo bspc config focused_border_color "#406ea5 success." >> "HOME/bspwm.log"
+fi
+
+if ! bspc config presel_feedback_color "#5e81ac"; then
+  echo "bspc config presel_feedback_color #5e81ac failed." >> "$HOME/bspwm.log"
+else
+  echo "bspc config presel_feedback_color #5e81ac success." >> "HOME/bspwm.log"
+fi
+
+if ! bspc config urgent_border_color "#dd2727"; then
+  echo "bspc config urgent_border_color #dd2727 failed." >> "$HOME/bspwm.log"
+else
+  echo "bspc config urgent_border_color #dd2727 success." >> "HOME/bspwm.log"
+fi
 
 ###---Monitor And Desktop Settings----###
-bspc config top_padding 27
-echo 01 2>> $HOME/bspwm.log
-bspc config bottom_padding 0
-echo 01 2>> $HOME/bspwm.log
-bspc config left_padding 0
-echo 01 2>> $HOME/bspwm.log
-bspc config right_padding 0
-echo 01 2>> $HOME/bspwm.log
-bspc config border_width 2
-echo 01 2>> $HOME/bspwm.log
-bspc config window_gap 8
+if ! bspc config top_padding 27; then
+  echo bspc config top_padding 27 failed. >> "$HOME/bspwm.log"
+else
+  echo bspc config top_padding 27 success. >> "HOME/bspwm.log"
+fi
+if ! bspc config bottom_padding 0; then
+  echo  bspc config bottom_padding 0 failed. >> "$HOME/bspwm.log"
+else
+  echo bspc config bottom_padding 0 success. >> "HOME/bspwm.log"
+fi
+if ! bspc config left_padding 0; then
+  echo  bspc config left_padding 0 failed. >> "$HOME/bspwm.log"
+else
+  echo bspc config left_padding 0 success. >> "HOME/bspwm.log"
+fi
+if ! bspc config right_padding 0; then
+  echo  bspc config right_padding 0 failed. >> "$HOME/bspwm.log"
+else
+  echo bspc config right_padding 0 success. >> "HOME/bspwm.log"
+fi
+if ! bspc config border_width 2; then
+  echo  bspc config border_width 2 failed. >> "$HOME/bspwm.log"
+else
+  echo bspc config border_width 2 success. >> "HOME/bspwm.log"
+fi
+if ! bspc config window_gap 8; then
+  echo  bspc config window_gap 8 failed. >> "$HOME/bspwm.log"
+else
+  echo bspc config window_gap 8 success. >> "HOME/bspwm.log"
+fi
 echo end of the config >> $HOME/bspwm.log
 
 ###---Rules---###
-bspc rule -a mpv state=fullscreen
-bspc rule -a Zathura state=tiled
+# bspc rule -a mpv state=fullscreen
+# bspc rule -a Zathura state=tiled
 # bspc rule -a Screenkey manage=off
 
-echo monitor setup >> $HOME/bspwm.log
+echo monitor setup start >> $HOME/bspwm.log
 bspc monitor HDMI-0 -d 1 2 3 4 5 6 7 8 9
 bspc monitor HDMI-1 -d 1 2 3 4 5 6 7 8 9
 bspc monitor rdp0 -d 1 2 3 4 5 6 7 8 9
 bspc monitor -d 1 2 3 4 5 6 7 8 9
+echo monitor setup end >> $HOME/bspwm.log
+
 echo end of script >> $HOME/bspwm.log
