@@ -32,7 +32,19 @@ if [ "$OS" = "Arch Linux" ]; then
   sudo -u postgres sh -c 'initdb -D /var/lib/postgres/data'
   sudo systemctl enable postgresql
   sudo systemctl start postgresql
-  sudo systemctl status postgresql
+  sudo mv -v pg_hba.conf /var/lib/postgres/data/pg_hba.conf
+  sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/postgres/data/postgresql.conf
+  sudo systemctl restart postgresql
+  mv -v install_psql_settings.sql /tmp
+  sudo -u postgres sh -c 'cd /tmp && psql postgres -U postgres < /tmp/install_psql_settings.sql'
+  rm -v /tmp/install_psql_settings.sql
+  sudo netstat -lntp | grep postgres
+  sudo fuser 5432/tcp
+elif [ "$OS" = "Solus" ]; then
+  sudo eopkg install postgresql
+  sudo -u postgres sh -c 'initdb -D /var/lib/postgres/data'
+  sudo systemctl enable postgresql
+  sudo systemctl start postgresql
   sudo mv -v pg_hba.conf /var/lib/postgres/data/pg_hba.conf
   sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/postgres/data/postgresql.conf
   sudo systemctl restart postgresql
@@ -48,7 +60,6 @@ elif [ "$OS" = "Fedora" ]; then
   sudo postgresql-setup initdb
   sudo systemctl enable postgresql
   sudo systemctl start postgresql
-  sudo systemctl status postgresql
   sudo mv -v pg_hba.conf /var/lib/pgsql/data/pg_hba.conf
   sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/pgsql/data/postgresql.conf
   sudo systemctl restart postgresql
