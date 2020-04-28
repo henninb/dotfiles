@@ -95,3 +95,5 @@ keepassxc
 telegram
 inkscape
 team viewer
+twint - twitter client
+beeflang
