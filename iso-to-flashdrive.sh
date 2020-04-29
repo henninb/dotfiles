@@ -6,6 +6,11 @@ if [ $# -ne 1 ]; then
 fi
 FILE=$1
 
+if [ ! -f "$FILE" ]; then
+  echo "$FILE is not found."
+  exit 1
+fi
+
 echo sudo dd if=${FILE} of=/dev/sdc bs=4M status=progress && sync
 
 exit 0
