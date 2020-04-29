@@ -8,10 +8,9 @@
 # fi
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-  #sudo apt update -y
-#  sudo apt install -y gcc yarn
+  sudo apt install -y curl python-software-properties
+  curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
+  sudo apt install -y nodejs
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S nodejs
 elif [ "$OS" = "void" ]; then
@@ -23,9 +22,9 @@ elif [ "$OS" = "Solus" ]; then
 elif [ "$OS" = "CentOS Linux" ]; then
   echo centos
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install -y yarn gcc python27 gmake
+  sudo pkg install -y gcc python27 gmake
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | zsh
