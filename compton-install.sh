@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$OS" = "Arch Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S uthash
   sudo pacman --noconfirm --needed -S ninja
   sudo pacman --noconfirm --needed -S meson

@@ -9,7 +9,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   SERVERNAME=gentoo
   echo $SERVERNAME
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   SERVERNAME=arch
   echo $SERVERNAME
 elif [ "$OS" = "FreeBSD" ]; then
@@ -147,7 +147,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge apache
   sudo emerge net-tools
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S net-tools apache curl
   sudo mkdir -p /var/www
   sudo mv -v main.html /var/www/index.html

@@ -1,23 +1,6 @@
 #!/bin/sh
 
 APP=raspi-finance
-# if [ "$OS" = "Linux Mint" ]; then
-#   SERVERNAME=silverfox
-#   echo $SERVERNAME
-# elif [ "$OS" = "CentOS Linux" ]; then
-#   SERVERNAME=centos
-#   echo $SERVERNAME
-# elif [ "$OS" = "Arch Linux" ]; then
-#   SERVERNAME=archlinux
-#   echo $SERVERNAME
-# elif [ "$OS" = "FreeBSD" ]; then
-#   SERVERNAME=bsd
-#   echo $SERVERNAME
-# else
-#   echo "$OS not configured."
-#   exit 1
-# fi
-#SERVERNAME="$(hostname)"
 SERVERNAME=hornsup
 KEYSTORE_PASSWORD="********"
 TRUSTSTORE_PASSWORD="${KEYSTORE_PASSWORD}"

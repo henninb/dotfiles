@@ -4,7 +4,7 @@ RASPI_IP=$(nmap -sP --host-timeout 10 192.168.100.0/24 | grep raspb | grep -o '[
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y alien fakeroot
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S libnsl
 elif [ "$OS" = "Darwin" ]; then
   echo noop
@@ -84,7 +84,7 @@ elif [ "$OS" = "Fedora" ]; then
   sudo yum localinstall -y oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
   sudo yum localinstall -y oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm
   sudo yum localinstall -y oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S fakeroot
   sudo pacman --noconfirm --needed -S rpm
   sudo rpm -i --nodeps oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm
