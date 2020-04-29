@@ -7,7 +7,13 @@ fi
 
 FILE=$1
 
+if [ ! -f "$FILE" ]; then
+  echo "$FILE is not found."
+  exit 1
+fi
+
 echo My external burner does not write dvdr+ disks.
+sudo eopkg install -y cdrtools
 
 if [ -x "$(command -v wodim)" ]; then
   wodim  dev=/dev/sr0 -checkdrive -prcap
