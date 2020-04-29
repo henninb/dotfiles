@@ -111,7 +111,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y i3-devel
   sudo xbps-install -y cairo-devel
   sudo xbps-install -y alsa-lib-devel
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S libmpdclient
   sudo pacman --noconfirm --needed -S jsoncpp
 elif [ "$OS" = "Gentoo" ]; then

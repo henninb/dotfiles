@@ -58,7 +58,7 @@ elif [ "$OS" = "Darwin" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge influxdb
   sudo mv -v influxdb.conf /etc/influxdb/influxdb.conf
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S influxdb net-tools
   sudo mv -v influxdb.conf /etc/influxdb/influxdb.conf
   sudo systemctl restart influxdb

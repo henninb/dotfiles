@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   SERVERNAME=mint
   echo $SERVERNAME
 elif [ "$OS" = "CentOS Linux" ]; then
@@ -80,8 +80,7 @@ sudo cp -v $HOME/ca.crt.pem /etc/pki/tls/certs
 sudo cp -v $HOME/${SERVERNAME}_apache.crt.pem /etc/pki/tls/certs
 sudo cp -v $HOME/ca.key.pem /etc/pki/tls/private
 
-if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
-#if [ "$OS" = "Linux Mint" ]; then
+if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y apache2
   sudo a2enmod ssl
   sudo a2ensite $SERVERNAME

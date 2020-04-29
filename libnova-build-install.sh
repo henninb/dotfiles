@@ -1,8 +1,8 @@
 #!/bin/sh
 
-if [ "$OS" = "Arch Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   echo "arch"
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo "debian"
 elif [ "$OS" = "CentOS Linux" ]; then
   echo "cent"

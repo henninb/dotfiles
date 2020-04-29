@@ -67,7 +67,7 @@ ExecStop=/opt/kafka/bin/kafka-server-stop.sh
 WantedBy=multi-user.target
 EOF
 
-if [ "$OS" = "Arch Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S net-tools psmisc wget curl jdk8-openjdk
   sudo mv -v kafka.service /etc/systemd/system/
   sudo mv -v zookeeper.service /etc/systemd/system/
@@ -78,7 +78,7 @@ if [ "$OS" = "Arch Linux" ]; then
   sudo systemctl start zookeeper
   sudo systemctl start kafka
   sudo systemctl status kafka
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y net-tools psmisc wget curl openjdk-8-jdk
   sudo update-alternatives --config java
   sudo mv -v kafka.service /lib/systemd/system

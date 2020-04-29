@@ -38,7 +38,7 @@ if [ ! -f "apache-activemq-$AMQ_VER-bin.tar.gz" ]; then
   fi
 fi
 
-if [ "$OS" = "Arch Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo groupadd activemq
   sudo useradd -g activemq activemq
   sudo pacman --noconfirm --needed -S net-tools psmisc wget curl jre8-openjdk
@@ -102,7 +102,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo rc-service activemq start
   sleep 3
   curl http://localhost:8161 --output index.html
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y net-tools psmisc wget curl openjdk-8-jdk
   sudo tar -zxvf apache-activemq-$AMQ_VER-bin.tar.gz -C /opt
   sudo chown -R activemq:activemq /opt/apache-activemq-$AMQ_VER/

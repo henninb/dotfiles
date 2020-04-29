@@ -22,7 +22,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y libXft-devel
 elif [ "$OS" = "Solus" ]; then
   echo
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   echo
 else
   echo "$OS is not yet implemented."

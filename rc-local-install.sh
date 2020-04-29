@@ -28,12 +28,12 @@ EOF
 sudo mv rc.local /etc/rc.local
 sudo chmod 755 /etc/rc.local
 
-if [ "$OS" = "Arch Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo mv -v rc-local.service /etc/systemd/system/rc-local.service
   sudo systemctl enable rc-local
   sudo systemctl start rc-local
   sudo systemctl status rc-local
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo systemctl stop getty@ttyS0
   sudo systemctl disable getty@ttyS0
   sudo rm -vrf /lib/systemd/system/rc.service

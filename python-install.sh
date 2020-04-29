@@ -21,12 +21,12 @@ pip_ins() {
   fi
 }
 
-if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y python3.7 python3.7-venv python-pip python3-pip libssl-dev libffi-dev python-setuptools python3.7-dev
   echo build
   alias pip='pip3'
   alias python='python3'
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S python python-pip python2-pip python2
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y epel-release python python-pip wget gcc python-devel

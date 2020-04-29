@@ -25,7 +25,7 @@ GRANT ALL PRIVILEGES ON DATABASE postgres TO henninb;
 ALTER USER postgres WITH PASSWORD '${POSTGRESQL_PASSWORD}';
 EOF
 
-if [ "$OS" = "Arch Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman -R postgresql
   sudo systemctl disable postgresql
   sudo pacman --noconfirm --needed -S postgresql

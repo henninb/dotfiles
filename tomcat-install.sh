@@ -26,7 +26,7 @@ else
   exit 1
 fi
 
-if [ "$OS" = "Arch Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo groupadd tomcat
   sudo useradd -g tomcat tomcat
   sudo pacman --noconfirm --needed -S net-tools psmisc wget curl
@@ -44,7 +44,7 @@ elif [ "$OS" = "FreeBSD" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   sudo tar -zxvf apache-tomcat-${TOMCAT_VER}.tar.gz -C /opt
   sudo ln -s /opt/apache-tomcat-${TOMCAT_VER} /opt/tomcat
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo groupadd tomcat
   sudo useradd -g tomcat tomcat
   sudo apt install -y net-tools psmisc wget curl

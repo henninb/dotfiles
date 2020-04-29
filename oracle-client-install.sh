@@ -2,7 +2,7 @@
 
 RASPI_IP=$(nmap -sP --host-timeout 10 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
 
-if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
+if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y alien fakeroot
 elif [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S libnsl
@@ -51,7 +51,7 @@ if [ ! "$OS" = "Darwin" ]; then
   fi
 fi
 
-if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) ]; then
+if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   fakeroot alien oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm
   fakeroot alien oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
   fakeroot alien oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm

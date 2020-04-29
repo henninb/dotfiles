@@ -77,22 +77,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y font-awesome5
   sudo xbps-install -y dmenu
   sudo xbps-install -y neofetch
-elif [ "$OS" = "Arch Linux" ]; then
-  sudo pacman -Rsnc lightdm
-  sudo pacman -Rsnc gdm
-  sudo pacman --noconfirm --needed -S bspwm
-  sudo pacman --noconfirm --needed -S xdo
-  sudo pacman --noconfirm --needed -S dmenu
-  sudo pacman --noconfirm --needed -S feh
-  sudo pacman --noconfirm --needed -S cmatrix
-  sudo pacman --noconfirm --needed -S ranger
-  sudo pacman --noconfirm --needed -S terminus-font
-  sudo pacman --noconfirm --needed -S xclip
-  sudo pacman --noconfirm --needed -S sxhkd
-  sudo pacman --noconfirm --needed -S w3m
-  sudo pacman --noconfirm --needed -S dmenu
-  sudo pacman --noconfirm --needed -S neofetch
-elif [ "$OS" = "Manjaro Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
   sudo pacman --noconfirm --needed -S bspwm

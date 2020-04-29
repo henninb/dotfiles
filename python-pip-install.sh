@@ -21,7 +21,7 @@ pip_ins() {
   fi
 }
 
-if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y python3.7 python3.7-venv python-pip python3-pip libssl-dev libffi-dev python-setuptools python3.7-dev
 elif [ "$OS" = "Arch Linux" ]; then
   #sudo pacman --noconfirm --needed -S python python-pip python2-pip python2

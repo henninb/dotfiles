@@ -1,12 +1,10 @@
 #!/bin/sh
 
-if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt remove gdm
   sudo apt remove lightdm
   sudo apt install -y qtile
-elif [ "$OS" = "Arch Linux" ]; then
-  sudo pacman --noconfirm --needed -S qtile
-elif [ "$OS" = "Manjaro Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman -Rsnc gdb
   sudo pacman -Rsnc lightdm
   sudo pacman --noconfirm --needed -S qtile

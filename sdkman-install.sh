@@ -8,7 +8,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse zip unzip
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y zip unzip
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y zip unzip
 else
   echo $OS not configured.

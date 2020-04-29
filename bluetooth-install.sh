@@ -11,7 +11,7 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y bluez-tools
   sudo dnf install -y pulseaudio-module-bluetooth
   sudo dnf install -y expect
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S bluez-tools expect bluez-utils pulseaudio-bluetooth blueman pulseaudio-alsa bluez-hid2hci bluedevil
   cd "$HOME/projects" || exit
   git clone https://aur.archlinux.org/asoundconf.git

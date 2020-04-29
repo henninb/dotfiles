@@ -8,7 +8,7 @@ elif [ "$OS" = "Solus" ]; then
   echo
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S gnupg
   sudo pacman --noconfirm --needed -S pass
 elif [ "$OS" = "CentOS Linux" ]; then
