@@ -17,6 +17,7 @@
 ## Operating Systems - Yet to Explore
 - Bedrock Linux
 - Clear Linux
+- Linux From Scratch
 
 ## Operating Systems - Security/Privacy
 - qubes
