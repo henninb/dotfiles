@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# RASPI_IP=$(nmap -sP 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
-
 if [ "$OS" = "Darwin" ]; then
   code --version
   sudo rm -rf /opt/vscode

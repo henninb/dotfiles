@@ -25,15 +25,12 @@ sudo emerge --update --newuse jq
 sudo pacman --noconfirm --needed -S jq
 sudo apt install -y jq
 
-# RASPI_IP=$(nmap -sP --host-timeout 10 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
-
 find ~/.config/JetBrains/IntelliJIdea2020.1 -type d -exec touch -t $(date +"%Y%m%d%H%M") {} \;
 rm -rf "$HOME/.config/JetBrains/IntelliJIdea2020.1/config/eval"
 rm -rf "$HOME/.config/JetBrains/IntelliJIdea2020.1/config/options/other.xml"
 rm -rf ~/.java/.userPrefs/jetbrains
 
 VER=$(curl -s 'https://data.services.jetbrains.com/products/releases?code=IIU&latest=true&type=release&build=&_=1581558835218' | jq '.IIU[0] .version' | cut -d \" -f2)
-#VER=$(curl https://www.jetbrains.com/updates/updates.xml | grep "[0-9]\{4\}\.[0-9]\.[0-9]" | head -1 | grep -o '[0-9]\{4\}\.[0-9]\.[0-9]')
 
 # if  [ ! -z "$VER_OVERRIDE" ]; then
 #   VER=${VER_OVERRIDE}

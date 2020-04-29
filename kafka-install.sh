@@ -5,7 +5,6 @@ export PATH=/opt/kafka/bin:$PATH
 #https://www.apache.org/dyn/closer.cgi?path=/kafka/2.2.0/kafka_2.12-2.2.0.tgz
 #https://kafka.apache.org/downloads
 
-RASPI_IP=$(nmap -sP --host-timeout 10 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
 SCALA_VER=2.12
 NUM=$(curl -sf https://kafka.apache.org/downloads | grep -o "kafka_${SCALA_VER}-[0-9.]\+[0-9]" | head -1 | sed 's/kafka_[0-9.]\+[0-9]-//')
 VER="${SCALA_VER}-${NUM}"

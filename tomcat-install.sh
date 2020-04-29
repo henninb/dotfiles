@@ -1,6 +1,5 @@
 #!/bin/sh
 
-RASPI_IP=$(nmap -sP --host-timeout 10 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
 TOMCAT_VER=8.5.46
 
 cat > tomcat.service <<'EOF'
@@ -17,7 +16,7 @@ Group=root
 WantedBy=multi-user.target
 EOF
 
-if [ ! \( -f "apache-tomcat-${TOMCAT_VER}.tar.gz" \) ]; then
+if [ ! -f "apache-tomcat-${TOMCAT_VER}.tar.gz" ]; then
   rm -rf apache-tomcat-*.tar.gz
   #wget "http://apache.cs.utah.edu/tomcat/tomcat-8/v${TOMCAT_VER}/bin/apache-tomcat-${TOMCAT_VER}.tar.gz"
   curl -s "http://apache.cs.utah.edu/tomcat/tomcat-8/v${TOMCAT_VER}/bin/apache-tomcat-${TOMCAT_VER}.tar.gz" --output "apache-tomcat-${TOMCAT_VER}.tar.gz"
