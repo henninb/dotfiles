@@ -19,6 +19,11 @@ if [ "$OS" = "Arch Linux" ]; then
   sudo iptables -t nat -L
   #sudo firewall-cmd --permanent --zone=trusted --change-interface=docker0
   #sudo firewall-cmd --reload
+elif [ "$OS" = "Solus" ]; then
+  sudo eopkg install -y docker
+  sudo usermod -G docker -a $USER
+  sudo systemctl enable docker
+  sudo systemctl start docker
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y docker docker-compose
   sudo usermod -G docker -a $USER
