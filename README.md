@@ -97,3 +97,4 @@ inkscape
 team viewer
 twint - twitter client
 beeflang
+Battle for Wesnoth
