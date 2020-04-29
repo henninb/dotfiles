@@ -90,13 +90,12 @@ EOF
 
 cat > xrdp-sesman <<EOF
 /etc/pam.d/xrdp-sesman
-auth      required  pam_securetty.so
-auth      required  pam_unix.so shadow nullok
-auth      required  pam_nologin.so
-account   required  pam_unix.so
-password  required  pam_cracklib.so retry=3
-password  required  pam_unix.so shadow nullok use_authtok
-session   required  pam_unix.so
+auth       required     pam_unix.so shadow
+auth       required     pam_env.so
+password    required    pam_unix.so
+account     required    pam_unix.so
+account     required    pam_nologin.so
+session     required    pam_unix.so
 EOF
 
 cat > Xwrapper.config <<EOF

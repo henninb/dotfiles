@@ -51,9 +51,9 @@ openssl x509 -req -days 365 -in "$HOME/ssl/${SERVERNAME}-${APP}.csr.pem" -signke
 echo curl --cacert archlinux-raspi-finance.pem https://archlinux:8080
 echo curl --cacert hornsup-raspi-finance.pem https://hornsup:8080
 
-cp -v ssl/hornsup-raspi-finance-keystore.jks /home/henninb/projects/raspi-finance-convert/ssl
+cp -v ssl/hornsup-raspi-finance-keystore.jks $HOME/projects/raspi-finance-convert/ssl
 
-cp -v ssl/hornsup-raspi-finance-keystore.jks /home/henninb/projects/raspi-finance-endpoint/ssl
+cp -v ssl/hornsup-raspi-finance-keystore.jks $HOME/projects/raspi-finance-endpoint/ssl
 
 exit 0
 
