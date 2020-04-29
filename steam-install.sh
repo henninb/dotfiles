@@ -30,6 +30,8 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge flatpak
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   flatpak install --user com.valvesoftware.Steam.flatpakref
+elif [ "$OS" = "Solus" ]; then
+  sudo eopkg install -y steam
 elif [ "$OS" = "Fedora" ]; then
   flatpak install --user com.valvesoftware.Steam.flatpakref
 else
