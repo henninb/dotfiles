@@ -497,4 +497,5 @@ if [ -e /home/henninb/.nix-profile/etc/profile.d/nix.sh ]; then . "${HOME}/.nix-
 
 #myip="$(dig +short myip.opendns.com @resolver1.opendns.com)"
 
+# Added to address Alacritty issue
 export LIBGL_ALWAYS_SOFTWARE=1
