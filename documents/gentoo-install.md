@@ -1,17 +1,36 @@
+# gentoo install
 download minimal
 
 https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation
 
-1) boot > gentoo
+## boot
+```
+boot > gentoo
+```
 
-2) ip addr show                # network configures automatically on gentoo for VirtualBox
-2a) rc-service start dhcpcd
-3) passwd root             # set root password
-4) rc-service sshd start
+## network configures automatically on gentoo for VirtualBox
+```
+ip addr show
+```
 
-5) putty login from remote
+#
+```
+rc-service start dhcpcd
+```
 
-6) cfdisk (use dos)
+## set root password
+```
+passwd root
+```
+
+## start sshd server
+```
+rc-service sshd start
+```
+
+5) remote ssh login from remote
+
+6) cfdisk /dev/sde (use dos)
 
 /dev/sda1	ext2	(bootloader)	512M
 /dev/sda2	ext4	Rest of the disk	Root partition
@@ -29,17 +48,16 @@ ntpd -q -g
 mount /dev/sda2 /mnt/gentoo
 cd /mnt/gentoo
 
-#wget http://gentoo.ussg.indiana.edu/releases/amd64/autobuilds/current-stage3-amd64/stage3-amd64-20170302.tar.bz2
-#wget http://gentoo.ussg.indiana.edu/releases/amd64/autobuilds/current-stage3-amd64/stage3-amd64-20181223T214502Z.tar.xz
-#wget http://gentoo.ussg.indiana.edu/releases/amd64/autobuilds/current-stage3-amd64/stage3-amd64-20190103T214502Z.tar.xz
-wget http://gentoo.ussg.indiana.edu/releases/amd64/autobuilds/current-stage3-amd64/stage3-amd64-20190115T214502Z.tar.xz
+wget http://gentoo.ussg.indiana.edu/releases/amd64/autobuilds/current-stage3-amd64/stage3-amd64-20200422T214502Z.tar.xz
 
 tar xvJpf stage3-*.tar.xz --xattrs --numeric-owner
 
 # use flags
 vi /mnt/gentoo/etc/portage/make.conf
 MAKEOPTS="-j2"
+ACCEPT_LICENSE="*"
 
+# not required
 sudo emerge ufed
 
 # not required
@@ -73,7 +91,7 @@ emerge --config sys-libs/timezone-data
 vi /etc/fstab
 /dev/sda1   /boot        ext2    defaults,noatime     0 2
 /dev/sda2   /            ext4    noatime              0 1
-  
+
 /dev/cdrom  /mnt/cdrom   auto    noauto,user          0 0
 
 vi /etc/conf.d/hostname
@@ -148,7 +166,7 @@ Password: osboxes.org
 
 update all packages
 
-emerge -auvDN world 
-emerge -a --depclean 
-revdepend-rebuild -i 
+emerge -auvDN world
+emerge -a --depclean
+revdepend-rebuild -i
 
