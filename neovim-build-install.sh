@@ -109,6 +109,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
   fi
 elif [ "$OS" = "Gentoo" ]; then
   echo gentoo
+  sudo emerge  --update --newuse cmake
 else
   echo "$OS is not yet implemented."
   exit 1

@@ -14,4 +14,8 @@ sudo cp -v make.conf /etc/portage/make.conf
 
 echo "ruby_targets_ruby25" | sudo tee -a /etc/portage/use.mask
 
+#sudo mkdir -p /usr/portage/local/profiles
+#echo $(hostname) |sudo tee /usr/portage/local/profiles/repo_name
+
+
 exit 0
