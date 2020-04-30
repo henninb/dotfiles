@@ -11,7 +11,7 @@ alias gd='git diff'
 alias gitls='git ls-tree --full-tree -r --name-only HEAD'
 alias gp=gitpush
 #alias gb='git branch '
-
+alias gituntracked='git ls-files . --ignored --exclude-standard --others'
 #alias hg='history | grep'
 alias hg='cat $HOME/.zsh_history | grep'
 
