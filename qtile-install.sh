@@ -10,18 +10,17 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S qtile
 elif [ "$OS" = "Gentoo" ]; then
   GENTOO_PKGS="qtile"
-  FAILURES=""
-  for i in $(echo $GENTOO_PKGS); do
-    sudo emerge --update --newuse $i
-    if [ 0 -ne $? ]; then
+  FAILURE=""
+  for i in $GENTOO_PKGS; do
+    if ! sudo emerge --update --newuse "$i"; then
       FAILURE="$i $FAILURE"
     fi
   done
-  echo Failures: $FAILURE
+  echo "Failures: $FAILURE"
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y qtile
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 

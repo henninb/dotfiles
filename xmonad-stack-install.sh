@@ -72,7 +72,7 @@ elif [ "$OS" = "void" ]; then
   sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
   VOID_PKGS="xscreensaver feh xdotool w3m neofetch dzen2 xz make gcc gmp-devel dunst wmname libXScrnSaver-devel alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio"
   FAILURES=""
-  for i in $(echo $VOID_PKGS); do
+  for i in $VOID_PKGS; do
     if ! sudo xbps-install -y "$i"; then
       FAILURE="$i $FAILURE"
     fi
@@ -81,8 +81,8 @@ elif [ "$OS" = "void" ]; then
 elif [ "$OS" = "Solus" ]; then
   echo sudo ln -s /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so.5.9
   SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel"
-  FAILURES=""
-  for i in $(echo $SOLUS_PKGS); do
+  FAILURE=""
+  for i in $SOLUS_PKGS; do
     if ! sudo eopkg install -y "$i"; then
       FAILURE="$i $FAILURE"
     fi
@@ -91,8 +91,8 @@ elif [ "$OS" = "Solus" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --unmerge dzen
   GENTOO_PKGS="xscreensaver feh xdotool w3m dunst wmname"
-  FAILURES=""
-  for i in $(echo $GENTOO_PKGS); do
+  FAILURE=""
+  for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then
       FAILURE="$i $FAILURE"
     fi

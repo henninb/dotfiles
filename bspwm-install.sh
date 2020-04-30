@@ -94,13 +94,13 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S neofetch
 elif [ "$OS" = "Gentoo" ]; then
   GENTOO_PKGS="bspwm dmenu sxhkd feh cmatrix cairo libmpdclient pulseaudio autocutsel vimfm w3m xclip"
-  FAILURES=""
-  for i in $(echo $GENTOO_PKGS); do
+  FAILURE=""
+  for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then
       FAILURE="$i $FAILURE"
     fi
   done
-  echo Failures: $FAILURE
+  echo "Failures: $FAILURE"
 elif [ "$OS" = "Fedora" ]; then
   echo
   sudo dnf install -y bspwm
