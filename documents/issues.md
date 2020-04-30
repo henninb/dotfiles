@@ -249,7 +249,7 @@ sudo vi /etc/pacman.d/mirrorlist
 cat /etc/pam.d/xrdp-sesman
 - not sure how to fix this issue
 
-## issue with tty1 on sulus
+## issue with tty1 on sulus - lack of console login
 - workaround is to switch to tty2 CTL-Alt-F2
 - list of linux display manager gdm gdm3 lightdm kdm sdm
 eopkg history
@@ -261,10 +261,10 @@ view the logs
 sudo journalctl
 
 To boot to console:
-sudo systemctl set-default multi-user.target
+sudo systemctl set-default multi-user
 You must then edit /etc/default/grub by removing splash from the GRUB command line. (Remember to update GRUB afterward: sudo update-grub).
 To get to the Unity desktop from the console, you must enter the command:
 sudo systemctl start lightdm.service
 (The usual startx command doesn't work with Unity.)
 To restore boot to GUI:
-sudo systemctl set-default graphical.target
+sudo systemctl set-default graphical
