@@ -84,6 +84,7 @@
 - image editor - gimp
 - compositor - compton
 - video editor - kdenlive
+- video conference - jitsi
 
 audacity
 handbrake

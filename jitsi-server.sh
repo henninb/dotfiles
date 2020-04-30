@@ -8,11 +8,13 @@ sudo apt-get -y update
 
 
 # Install the full suite:
-sudo apt -y install jitsi-meet
+sudo apt-get -y install jitsi-meet
 
 # or only the packages you need like for example:
 # sudo apt -y install jitsi-videobridge
 # sudo apt -y install jicofo
 # sudo apt -y install jigasi
+
+echo 443 is the default port
 
 exit 0
