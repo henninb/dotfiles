@@ -494,3 +494,7 @@ autoload -Uz tetriscurses
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 if [ -e /home/henninb/.nix-profile/etc/profile.d/nix.sh ]; then . "${HOME}/.nix-profile/etc/profile.d/nix.sh"; fi
+
+#myip="$(dig +short myip.opendns.com @resolver1.opendns.com)"
+
+export LIBGL_ALWAYS_SOFTWARE=1

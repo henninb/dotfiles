@@ -8,7 +8,7 @@ cat > pacman.conf << 'EOF'
 Include = /etc/pacman.d/mirrorlist
 EOF
 
-if [ "$OS" = "Arch Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   # grep "^[multilib]" /etc/pacman.conf
   # if [ $? -ne 0 ]; then
   #   cat pacman.conf | sudo tee -a /etc/pacman.conf

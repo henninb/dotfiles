@@ -27,6 +27,7 @@
   editor = nvim
 [advice]
   detachedHead = false
+  addIgnoredFile = false
 [color]
   diff = auto
   status = auto

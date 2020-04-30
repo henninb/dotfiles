@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$OS" = "Linux Mint" ]; then
+if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   id -g wheel &>/dev/null || sudo groupadd wheel
   #sudo usermod -a -G wheel brian
   sudo useradd -m -G wheel -s /bin/zsh brian
@@ -12,7 +12,7 @@ if [ "$OS" = "Linux Mint" ]; then
   sudo usermod -a -G wheel henninb
   sudo usermod -a -G uucp henninb
 #sudo adduser -m -G wheel -s /bin/bash henninb
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   id -g wheel &>/dev/null || sudo groupadd wheel
   sudo useradd -m -G wheel -s /bin/zsh brian
   id brian

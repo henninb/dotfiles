@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$OS" = "Arch Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S ntfs-3g
 elif [ "$OS" = "Fedora" ]; then
   echo

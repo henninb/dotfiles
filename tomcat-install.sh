@@ -1,6 +1,5 @@
 #!/bin/sh
 
-RASPI_IP=$(nmap -sP --host-timeout 10 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
 TOMCAT_VER=8.5.46
 
 cat > tomcat.service <<'EOF'
@@ -17,7 +16,7 @@ Group=root
 WantedBy=multi-user.target
 EOF
 
-if [ ! \( -f "apache-tomcat-${TOMCAT_VER}.tar.gz" \) ]; then
+if [ ! -f "apache-tomcat-${TOMCAT_VER}.tar.gz" ]; then
   rm -rf apache-tomcat-*.tar.gz
   #wget "http://apache.cs.utah.edu/tomcat/tomcat-8/v${TOMCAT_VER}/bin/apache-tomcat-${TOMCAT_VER}.tar.gz"
   curl -s "http://apache.cs.utah.edu/tomcat/tomcat-8/v${TOMCAT_VER}/bin/apache-tomcat-${TOMCAT_VER}.tar.gz" --output "apache-tomcat-${TOMCAT_VER}.tar.gz"
@@ -26,7 +25,7 @@ else
   exit 1
 fi
 
-if [ "$OS" = "Arch Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo groupadd tomcat
   sudo useradd -g tomcat tomcat
   sudo pacman --noconfirm --needed -S net-tools psmisc wget curl
@@ -44,7 +43,7 @@ elif [ "$OS" = "FreeBSD" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   sudo tar -zxvf apache-tomcat-${TOMCAT_VER}.tar.gz -C /opt
   sudo ln -s /opt/apache-tomcat-${TOMCAT_VER} /opt/tomcat
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo groupadd tomcat
   sudo useradd -g tomcat tomcat
   sudo apt install -y net-tools psmisc wget curl

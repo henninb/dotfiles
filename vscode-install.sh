@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# RASPI_IP=$(nmap -sP 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
-
 if [ "$OS" = "Darwin" ]; then
   code --version
   sudo rm -rf /opt/vscode
@@ -22,7 +20,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   id -g vscode >/dev/null || sudo groupadd vscode
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo rm -rf /opt/vscode
   rm -rf code-stable-latest.tar.gz
   wget https://go.microsoft.com/fwlink/?LinkID=620884 -O code-stable-latest.tar.gz

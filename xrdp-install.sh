@@ -88,6 +88,16 @@ fi
 exit 0
 EOF
 
+cat > xrdp-sesman <<EOF
+/etc/pam.d/xrdp-sesman
+auth       required     pam_unix.so shadow
+auth       required     pam_env.so
+password    required    pam_unix.so
+account     required    pam_unix.so
+account     required    pam_nologin.so
+session     required    pam_unix.so
+EOF
+
 cat > Xwrapper.config <<EOF
 allowed_users=anybody
 needs_root_rights=yes
@@ -156,21 +166,18 @@ elif [ "$OS" = "Solus" ]; then
   cd xrdp
   ./bootstrap
   ./configure
-  make
-  if [ $? -ne 0 ]; then
+  if ! make; then
     echo build failed for xrdp.
     exit 1
   fi
   sudo make install
-
 
   cd $HOME/projects
   git clone git@github.com:neutrinolabs/xorgxrdp.git
   cd xorgxrdp
   ./bootstrap
   ./configure XRDP_CFLAGS=-I$HOME/projects/xrdp/common XRDP_LIBS=" "
-  make
-  if [ $? -ne 0 ]; then
+  if ! make; then
     echo build failed for xorgxrdp.
     exit 1
   fi
@@ -178,7 +185,6 @@ elif [ "$OS" = "Solus" ]; then
   cd "$HOME" || exit
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
-
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y nasm
   sudo xbps-install -y pam-devel
@@ -193,7 +199,7 @@ elif [ "$OS" = "void" ]; then
   make
   sudo make install
   sudo usermod -a -G tty $(id -un)
-  cd $HOME/projects
+  cd "$HOME/projects"
   git clone --recursive https://github.com/neutrinolabs/xrdp
   cd xrdp
   ./bootstrap
@@ -264,7 +270,6 @@ elif [ "$OS" = "Fedora" ]; then
     sudo dnf install -y xorg-x11-server-devel
     #sudo dnf install -y xrdp
     #sudo dnf install -y xorgxrdp
-
     # echo xrdp v0.9.11 was release on 8-19-2019
     cd "$HOME/projects" || exit
     git clone --recursive git@github.com:neutrinolabs/xrdp.git
@@ -420,23 +425,6 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   cd "$HOME" || exit
   sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
   sudo mv -v startwm.sh /etc/xrdp/startwm.sh
-#elif [ "$OS" = "Raspbian GNU/Linux" ]; then
-#  #sudo apt purge -y xserver-xorg-legacy
-#  sudo apt install -y libpam0g-dev
-#  sudo apt install -y xserver-xorg-dev
-#  sudo apt install -y nasm
-#  sudo apt install -y lsof
-#  sudo apt install -y xrdp
-#  sudo apt install -y feh
-#  sudo apt install -y dmenu
-#  sudo apt install -y xorgxrdp
-#  sudo apt install -y rdesktop
-#  sudo apt install -y freerdp2-x11
-
-#  sudo usermod -a -G dialout "$(id -un)"
-#  cd "$HOME" || exit
-#  sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
-#  sudo mv -v startwm.sh /etc/xrdp/startwm.sh
 else
   echo "$OS is not yet implemented."
   exit 1

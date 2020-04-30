@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   SERVERNAME=mint
   echo $SERVERNAME
 elif [ "$OS" = "CentOS Linux" ]; then
@@ -9,7 +9,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   SERVERNAME=gentoo
   echo $SERVERNAME
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   SERVERNAME=arch
   echo $SERVERNAME
 elif [ "$OS" = "FreeBSD" ]; then
@@ -80,8 +80,7 @@ sudo cp -v $HOME/ca.crt.pem /etc/pki/tls/certs
 sudo cp -v $HOME/${SERVERNAME}_apache.crt.pem /etc/pki/tls/certs
 sudo cp -v $HOME/ca.key.pem /etc/pki/tls/private
 
-if [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
-#if [ "$OS" = "Linux Mint" ]; then
+if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y apache2
   sudo a2enmod ssl
   sudo a2ensite $SERVERNAME
@@ -148,7 +147,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge apache
   sudo emerge net-tools
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S net-tools apache curl
   sudo mkdir -p /var/www
   sudo mv -v main.html /var/www/index.html

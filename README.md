@@ -17,6 +17,7 @@
 ## Operating Systems - Yet to Explore
 - Bedrock Linux
 - Clear Linux
+- Linux From Scratch
 
 ## Operating Systems - Security/Privacy
 - qubes
@@ -48,10 +49,10 @@
 - remote desktop client - xfreerdp
 - irc client - irssi, emacs (erc)
 - network packet tools - tcpdump, wireshark
-- markdown reader - glow
+- markdown viewer - glow
 - browser - brave, firefox, ddgr, lynx
 - database client - dbeaver, sqlplus
-- database server - postgresql, influx
+- database server - postgresql, influx, mongodb, elastic
 - astronomy - stellarium
 - notes - standard note, joplin
 - font - monofur, jetbrains, symbola
@@ -61,16 +62,15 @@
 - image converter - imagemagik
 - image viewer - sxiv
 - wallpaper manager - feh, nitrogen
-- burning images - k3b, cdrecord
+- burning images - cdrecord, wodim, k3b
 - podcast client - newsboat, castget
 - process viewer - htop, glances
 - email client - neomutt, mutt
 - wii emulator - dolphin-emu
 - cloud storage - nextcloud
-- game - xonotic
+- games - xonotic, wesnoth
 - pdf reader - zathura
 - calendar - calcurse
-- rss reader - newsboat
 - log reader - lnav
 - package manager - yay, pacman, brew, apt, dnf, emerge, pkg, eopkg
 - open - xdg-open
@@ -79,19 +79,20 @@
 - window detailer - xprop
 - image clone - etcher
 - git client - tig, emacs (magit)
-- chat - discord, slack
+- video chat/chat - discord, slack, zoom, telegram
 - image editor - gimp
 - compositor - compton
 - video editor - kdenlive
+- video transcoder - handbrake
+- video chat server - jitsi
+- audio editor/recorder - audacity
+- vector graphics - inkscape
+- 3D creation - blender
 
-audacity
-handbrake
-blender
 steam
 arduino
 tint2
-jitsi
 keepassxc
-telegram
-inkscape
 team viewer
+twint - twitter client
+beeflang

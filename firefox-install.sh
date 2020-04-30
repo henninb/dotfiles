@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-RASPI_IP=$(nmap -sP --host-timeout 10 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
 FOX_VER=$(curl -sfI 'https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US' | grep -o 'firefox-[0-9.]\+[0-9]' | sed 's/firefox-//')
 
 echo "$FOX_VER"
@@ -25,7 +24,7 @@ if [ ! -f "firefox-${FOX_VER}.tar.bz2" ]; then
   fi
 fi
 
-if [ "$OS" = "Arch Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S net-tools psmisc wget curl gtk3 dbus-glib libxt dbus-glib
   sudo rm -rf /opt/firefox
   sudo tar -xjvf "firefox-${FOX_VER}.tar.bz2" -C /opt

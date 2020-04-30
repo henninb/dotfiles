@@ -84,6 +84,7 @@ fi
 #exec qtile
 #exec xmonad
 #exec bspwm
+xrandr --listproviders >> "$HOME/xinit.log"
 
 WM=$(head -1 < "$HOME/.active-wm")
 if [ -s "$HOME/.active-wm" ] && [ -x "$(command -v "${WM}")" ]; then

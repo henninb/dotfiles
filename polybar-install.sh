@@ -111,7 +111,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y i3-devel
   sudo xbps-install -y cairo-devel
   sudo xbps-install -y alsa-lib-devel
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S libmpdclient
   sudo pacman --noconfirm --needed -S jsoncpp
 elif [ "$OS" = "Gentoo" ]; then
@@ -124,20 +124,9 @@ elif [ "$OS" = "Gentoo" ]; then
   done
   echo "Failures: $FAILURE"
 else
-  echo "$OS is not implemented."
+  echo "OS='$OS' is not implemented or is not defined."
   exit 1
 fi
-
-# git@github.com:altdesktop/i3ipc-glib.git
-# cd $HOME/projects/
-# git clone --recursive git@github.com:altdesktop/i3ipc-glib.git
-# cd i3ipc-glib
-# ./autogen.sh
-# if ! sudo make install; then
-#   echo failed i3-ipc
-#   exit 1
-# fi
-# cd $HOME
 
 export USE_GCC="ON"
 export ENABLE_I3="ON"
@@ -159,12 +148,5 @@ cd polybar
 git pull origin master
 ./build.sh
 cd $HOME
-
-echo -- Font not found: unifont:fontformat=truetype
-echo -- Font not found: siji:pixelsize=10
-echo Execute 'sudo make install'? [Y/n] y
-echo Install example configuration? [y/N]: n
-
-echo pkg-config --debug --print-provides cairo-fc
 
 exit 0

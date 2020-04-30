@@ -9,10 +9,10 @@ sync-uri = https://github.com/fosero/flatpak-overlay.git
 auto-sync = Yes
 EOF
 
-if [ "$OS" = "Arch Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S flatpak
   flatpak install flathub com.valvesoftware.Steam
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   rm -rf com.valvesoftware.Steam.flatpakref com.visualstudio.code.flatpakref
   wget https://flathub.org/repo/appstream/com.valvesoftware.Steam.flatpakref
   wget https://flathub.org/repo/appstream/com.visualstudio.code.flatpakref

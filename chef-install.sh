@@ -19,7 +19,7 @@ elif [ "$OS" = "Ubuntu" ]; then
   fi
   sudo dpkg -i chef-server-core_12.19.31-1_amd64.deb
   sudo gem install knife-block
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   cd $HOME/projects
   git clone https://aur.archlinux.org/chef-dk.git
   cd chef-dk

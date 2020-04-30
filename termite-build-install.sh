@@ -28,9 +28,10 @@ elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y libgnutls-devel
   sudo eopkg install -y pango-devel
   sudo eopkg install -y libgtk-3-devel
+  sudo eopkg install -y pcre2-devel
 elif [ "$OS" = "Gentoo" ]; then
   echo gentoo
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman -Rsn termite
   sudo pacman -S gtk-doc
   sudo pacman -S intltool

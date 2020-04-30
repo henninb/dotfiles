@@ -268,3 +268,8 @@ sudo systemctl start lightdm.service
 (The usual startx command doesn't work with Unity.)
 To restore boot to GUI:
 sudo systemctl set-default graphical
+
+## solus sleeps after 20 minutes
+```
+systemctl mask sleep suspend hibernate hybrid-sleep
+```

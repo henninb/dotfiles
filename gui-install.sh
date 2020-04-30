@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
-DEBIAN_FRONTEND=noninteractive
+# DEBIAN_FRONTEND=noninteractive
 
-ARCHLINUX_PKGS="xorg-server vlc riot-desktop i3-wm handbrake dolphin-emu dbeaver terminator handbrake rofi feh dolphin-emu xorg xorg-server xorg-xeyes xorg-xinit seahorse termite rxvt-unicode gqrx gitk audacity zathura sxiv mpv gimp inkscape brave fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss"
+ARCHLINUX_PKGS="xorg-server vlc riot-desktop i3-wm handbrake dolphin-emu dbeaver terminator handbrake rofi feh dolphin-emu xorg xorg-server xorg-xeyes xorg-xinit seahorse termite rxvt-unicode gqrx gitk audacity zathura sxiv mpv gimp inkscape brave fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio"
 
 MINT_PKGS="vlc riot-desktop handbrake dolphin-emu vim-gtk3 xterm rofi terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious gitk audacity gqrx-sdr gimp inkscape"
 
@@ -23,12 +23,15 @@ FEDORA_PKGS="gvim gqrx keepassxc"
 MACOS_PKGS="alacritty iterm2"
 
 if [ "$OS" = "Arch Linux" ]; then
-  FAILURES=""
-  for i in $(echo $ARCHLINUX_PKGS); do
+  FAILURE=""
+  for i in $ARCHLINUX_PKGS; do
     if ! sudo pacman --noconfirm --needed -S "$i"; then
       FAILURE="$i $FAILURE"
     fi
   done
+  yay -S cpu-x
+  yay -S stacer
+  yay -S nutty
   echo failures "$FAILURE"
 elif [ "$OS" = "Darwin" ]; then
   brew cask install vlc
@@ -36,26 +39,25 @@ elif [ "$OS" = "Darwin" ]; then
   brew cask install iterm2
 elif [ "$OS" = "Solus" ]; then
   echo
-  FAILURES=""
-  for i in $(echo $SOLUS_PKGS); do
+  FAILURE=""
+  for i in $SOLUS_PKGS; do
     if ! sudo eopkg install -y "$i"; then
       FAILURE="$i $FAILURE"
     fi
   done
   echo failures "$FAILURE"
 elif [ "$OS" = "Gentoo" ]; then
-  FAILURES=""
-  for i in $(echo $GENTOO_PKGS); do
+  FAILURE=""
+  for i in $GENTOO_PKGS; do
     echo sudo emerge -uf "$i"
     sudo emerge -uf "$i"
   done
-  for i in $(echo $GENTOO_PKGS); do
-    sudo emerge --update --newuse "$i"
-    if [ 0 -ne $? ]; then
+  for i in $GENTOO_PKGS; do
+    if ! sudo emerge --update --newuse "$i"; then
       FAILURE="$i $FAILURE"
     fi
   done
-  echo Failures: $FAILURE
+  echo "Failures: $FAILURE"
 elif [ "$OS" = "Linux Mint" ]; then
   echo sudo apt-add-repository ppa:dolphin-emu/ppa
   wget -O - https://dbeaver.io/debs/dbeaver.gpg.key | sudo apt-key add -
@@ -67,58 +69,52 @@ elif [ "$OS" = "Linux Mint" ]; then
   sudo apt install -y dbeaver-ce
   sudo apt install -y balena-etcher-electron
   sudo apt install -y grub-customizer
-  FAILURES=""
-  for i in $(echo $MINT_PKGS); do
-    sudo apt install -y $i
-    if [ 0 -ne $? ]; then
+  FAILURE=""
+  for i in $MINT_PKGS; do
+    if ! sudo apt install -y "$i"; then
       FAILURE="$i $FAILURE"
     fi
   done
-  echo failures $FAILURE
+  echo "failures $FAILURE"
 elif [ "$OS" = "Ubuntu" ]; then
-  for i in $(echo $UBUNTU_PKGS); do
-    sudo apt install -y $i
-    if [ 0 -ne $? ]; then
+  for i in $UBUNTU_PKGS; do
+    if ! sudo apt install -y "$i"; then
       FAILURE="$i $FAILURE"
     fi
   done
-  echo failures $FAILURE
+  echo "failures $FAILURE"
 elif [ "$OS" = "CentOS Linux" ]; then
-  FAILURES=""
-  for i in $(echo $CENTOS_PKGS); do
-    sudo yum install -y $i
-    if [ 0 -ne $? ]; then
+  FAILURE=""
+  for i in $CENTOS_PKGS; do
+    if ! sudo yum install -y "$i"; then
       FAILURE="$i $FAILURE"
     fi
   done
-  echo failures $FAILURE
+  echo "failures $FAILURE"
 elif [ "$OS" = "void" ]; then
-  FAILURES=""
-  for i in $(echo $VOID_PKGS); do
-    sudo xbps-install -y $i
-    if [ 0 -ne $? ]; then
+  FAILURE=""
+  for i in $VOID_PKGS; do
+    if ! sudo xbps-install -y "$i"; then
       FAILURE="$i $FAILURE"
     fi
   done
-  echo failures $FAILURE
+  echo "failures $FAILURE"
 elif [ "$OS" = "Linux Mint" ]; then
-  FAILURES=""
-  for i in $(echo $UBUNTU_PKGS); do
-    sudo apt install -y $i
-    if [ 0 -ne $? ]; then
+  FAILURE=""
+  for i in $UBUNTU_PKGS; do
+    if ! sudo apt install -y "$i"; then
       FAILURE="$i $FAILURE"
     fi
   done
-  echo failures $FAILURE
+  echo "failures $FAILURE"
 elif [ "$OS" = "FreeBSD" ]; then
-  FAILURES=""
-  for i in $(echo $UBUNTU_PKGS); do
-    sudo pkg install -y $i
-    if [ 0 -ne $? ]; then
+  FAILURE=""
+  for i in $FREEBSD_PKGS; do
+    if ! sudo pkg install -y "$i"; then
       FAILURE="$i $FAILURE"
     fi
   done
-  echo failures $FAILURE
+  echo "failures $FAILURE"
 else
   echo "$OS not configured."
   exit 1
@@ -128,16 +124,13 @@ echo "obs-studio - open broadcast software"
 echo "kdenlive - video software"
 
 #CPU-X
-yay -S cpu-x
 echo https://github.com/X0rg/CPU-X
 #Hardinfo
 echo https://github.com/lpereira/hardinfo
 #Nutty
 echo https://babluboy.github.io/nutty/
-yay -S nutty
 #Stacer
 echo https://github.com/oguzhaninan/Stacer
-yay -S stacer
 #Ksystemlog
 echo https://kde.org/applications/system/org.kde.ksystemlog
 echo sudo snap install keepassxc

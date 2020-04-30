@@ -46,12 +46,15 @@ elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y bspwm
   sudo eopkg install -y xscreensaver
   sudo eopkg install -y xdo
+  sudo eopkg install -y xrdb
   sudo eopkg install -y feh
   sudo eopkg install -y xclip
   sudo eopkg install -y sxhkd
   sudo eopkg install -y w3m
   sudo eopkg install -y dmenu
   sudo eopkg install -y neofetch
+  sudo eopkg install -y font-awesome-ttf
+  sudo eopkg install -y libxinerama-devel
   echo
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -Sy base-devel libX11-devel libXft-devel libXinerama-devel
@@ -74,22 +77,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y font-awesome5
   sudo xbps-install -y dmenu
   sudo xbps-install -y neofetch
-elif [ "$OS" = "Arch Linux" ]; then
-  sudo pacman -Rsnc lightdm
-  sudo pacman -Rsnc gdm
-  sudo pacman --noconfirm --needed -S bspwm
-  sudo pacman --noconfirm --needed -S xdo
-  sudo pacman --noconfirm --needed -S dmenu
-  sudo pacman --noconfirm --needed -S feh
-  sudo pacman --noconfirm --needed -S cmatrix
-  sudo pacman --noconfirm --needed -S ranger
-  sudo pacman --noconfirm --needed -S terminus-font
-  sudo pacman --noconfirm --needed -S xclip
-  sudo pacman --noconfirm --needed -S sxhkd
-  sudo pacman --noconfirm --needed -S w3m
-  sudo pacman --noconfirm --needed -S dmenu
-  sudo pacman --noconfirm --needed -S neofetch
-elif [ "$OS" = "Manjaro Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
   sudo pacman --noconfirm --needed -S bspwm
@@ -106,13 +94,13 @@ elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S neofetch
 elif [ "$OS" = "Gentoo" ]; then
   GENTOO_PKGS="bspwm dmenu sxhkd feh cmatrix cairo libmpdclient pulseaudio autocutsel vimfm w3m xclip"
-  FAILURES=""
-  for i in $(echo $GENTOO_PKGS); do
+  FAILURE=""
+  for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then
       FAILURE="$i $FAILURE"
     fi
   done
-  echo Failures: $FAILURE
+  echo "Failures: $FAILURE"
 elif [ "$OS" = "Fedora" ]; then
   echo
   sudo dnf install -y bspwm

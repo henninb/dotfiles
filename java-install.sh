@@ -4,6 +4,9 @@ if [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse dev-java/gradle-bin
   sudo emerge --update --newuse dev-java/openjdk-bin
   sudo java-config --set-system-vm openjdk-bin-8
+elif [ "$OS" = "Solus" ]; then
+  sudo eopkg install -y openjdk-8
+  # openjdk-8-devel
 elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y openjdk-8-jdk
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then

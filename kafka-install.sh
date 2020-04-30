@@ -5,7 +5,6 @@ export PATH=/opt/kafka/bin:$PATH
 #https://www.apache.org/dyn/closer.cgi?path=/kafka/2.2.0/kafka_2.12-2.2.0.tgz
 #https://kafka.apache.org/downloads
 
-RASPI_IP=$(nmap -sP --host-timeout 10 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
 SCALA_VER=2.12
 NUM=$(curl -sf https://kafka.apache.org/downloads | grep -o "kafka_${SCALA_VER}-[0-9.]\+[0-9]" | head -1 | sed 's/kafka_[0-9.]\+[0-9]-//')
 VER="${SCALA_VER}-${NUM}"
@@ -67,7 +66,7 @@ ExecStop=/opt/kafka/bin/kafka-server-stop.sh
 WantedBy=multi-user.target
 EOF
 
-if [ "$OS" = "Arch Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S net-tools psmisc wget curl jdk8-openjdk
   sudo mv -v kafka.service /etc/systemd/system/
   sudo mv -v zookeeper.service /etc/systemd/system/
@@ -78,7 +77,7 @@ if [ "$OS" = "Arch Linux" ]; then
   sudo systemctl start zookeeper
   sudo systemctl start kafka
   sudo systemctl status kafka
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y net-tools psmisc wget curl openjdk-8-jdk
   sudo update-alternatives --config java
   sudo mv -v kafka.service /lib/systemd/system

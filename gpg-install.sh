@@ -4,16 +4,18 @@ if [ "$OS" = "Gentoo" ]; then
   sudo emerge gnupg pass
 elif [ "$OS" = "Linux Mint" ]; then
   sudo apt install -y gnupg
+elif [ "$OS" = "Solus" ]; then
+  echo
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S gnupg
   sudo pacman --noconfirm --needed -S pass
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y gnupg pass pinentry
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y gnupg pass
-elif [ \( "$OS" = "Linux Mint" \) -o \(  "$OS" = "Ubuntu" \) -o \(  "$OS" = "Raspbian GNU/Linux" \) ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux"  ]; then
   sudo apt install -y gnupg pass pinentry-tty
   sudo update-alternatives --config pinentry
 elif [ "$OS" = "FreeBSD" ]; then

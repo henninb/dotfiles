@@ -1,23 +1,6 @@
 #!/bin/sh
 
 APP=raspi-finance
-# if [ "$OS" = "Linux Mint" ]; then
-#   SERVERNAME=silverfox
-#   echo $SERVERNAME
-# elif [ "$OS" = "CentOS Linux" ]; then
-#   SERVERNAME=centos
-#   echo $SERVERNAME
-# elif [ "$OS" = "Arch Linux" ]; then
-#   SERVERNAME=archlinux
-#   echo $SERVERNAME
-# elif [ "$OS" = "FreeBSD" ]; then
-#   SERVERNAME=bsd
-#   echo $SERVERNAME
-# else
-#   echo "$OS not configured."
-#   exit 1
-# fi
-#SERVERNAME="$(hostname)"
 SERVERNAME=hornsup
 KEYSTORE_PASSWORD="********"
 TRUSTSTORE_PASSWORD="${KEYSTORE_PASSWORD}"
@@ -51,9 +34,9 @@ openssl x509 -req -days 365 -in "$HOME/ssl/${SERVERNAME}-${APP}.csr.pem" -signke
 echo curl --cacert archlinux-raspi-finance.pem https://archlinux:8080
 echo curl --cacert hornsup-raspi-finance.pem https://hornsup:8080
 
-cp -v ssl/hornsup-raspi-finance-keystore.jks /home/henninb/projects/raspi-finance-convert/ssl
+cp -v ssl/hornsup-raspi-finance-keystore.jks $HOME/projects/raspi-finance-convert/ssl
 
-cp -v ssl/hornsup-raspi-finance-keystore.jks /home/henninb/projects/raspi-finance-endpoint/ssl
+cp -v ssl/hornsup-raspi-finance-keystore.jks $HOME/projects/raspi-finance-endpoint/ssl
 
 exit 0
 

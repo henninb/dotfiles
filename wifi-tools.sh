@@ -23,6 +23,9 @@ sudo nmcli -a d wifi connect NSA_classified
 ip addr show
 sudo nmcli networking off
 
+sudo nmcli connection delete id NSA_classified
+# sudo nmcli connection delete NSA_classified
+
 echo works on archlinux
 sudo wifi-menu wlp7s0
 echo wicd-curses
