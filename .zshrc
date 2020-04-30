@@ -497,4 +497,4 @@ if [ -e /home/henninb/.nix-profile/etc/profile.d/nix.sh ]; then . "${HOME}/.nix-
 
 #myip="$(dig +short myip.opendns.com @resolver1.opendns.com)"
 
-echo env LIBGL_ALWAYS_SOFTWARE=1 alacritty
+export LIBGL_ALWAYS_SOFTWARE=1
