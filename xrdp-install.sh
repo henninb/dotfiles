@@ -232,6 +232,7 @@ elif [ "$OS" = "Gentoo" ]; then
   #sudo emerge  --update --newuse x11-base/xorg-x11
   sudo emerge  --update --newuse x11-libs/libXfixes
   sudo emerge  --update --newuse x11-libs/libXrandr
+  #sudo emerge  --update --newuse x11-libs/libX11
   sudo usermod -a -G tty $(id -un)
   cd $HOME/projects
   git clone --recursive https://github.com/neutrinolabs/xrdp

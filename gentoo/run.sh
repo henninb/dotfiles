@@ -16,6 +16,7 @@ echo "ruby_targets_ruby25" | sudo tee -a /etc/portage/use.mask
 
 #sudo mkdir -p /usr/portage/local/profiles
 #echo $(hostname) |sudo tee /usr/portage/local/profiles/repo_name
+echo emerge --info
 
 
 exit 0
