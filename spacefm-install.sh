@@ -18,6 +18,8 @@ sudo eopkg install -y libgtk-2-devel
 sudo eopkg install -y libgtk-3-devel
 sudo eopkg install -y ffmpegthumbnailer-devel
 
+sudo emerge  --update --newuse ffmpegthumbnailer
+
 cd "$HOME/projects"
 git clone git@github.com:IgnorantGuru/spacefm.git
 cd spacefm
