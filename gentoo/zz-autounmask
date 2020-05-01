@@ -35,3 +35,4 @@ app-crypt/pinentry gnome-keyring
 >=media-libs/gd-2.2.5-r2 fontconfig
 >=media-libs/libglvnd-1.3.1 X
 >=app-text/ghostscript-gpl-9.50 cups
+>=sys-auth/polkit-0.110

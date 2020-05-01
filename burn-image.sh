@@ -14,6 +14,7 @@ fi
 
 echo My external burner does not write dvdr+ disks.
 sudo eopkg install -y cdrtools
+sudo emerge --update --newuse cdrtools
 
 if [ -x "$(command -v wodim)" ]; then
   wodim  dev=/dev/sr0 -checkdrive -prcap

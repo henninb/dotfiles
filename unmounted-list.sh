@@ -2,8 +2,9 @@
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S ntfs-3g
+elif [ "$OS" = "Gentoo" ]; then
+  sudo emerge  --update --newuse udisks
 elif [ "$OS" = "Fedora" ]; then
-  echo
   sudo dnf install -y parted
 else
   echo "$OS is not implemented."
