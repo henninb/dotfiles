@@ -16,7 +16,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
 elif [ "$OS" = "void" ]; then
   echo
 elif [ "$OS" = "Gentoo" ]; then
-  echo
+  sudo emerge  --update --newuse nodejs
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg install nodejs
 elif [ "$OS" = "CentOS Linux" ]; then
