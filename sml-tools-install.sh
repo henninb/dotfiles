@@ -9,7 +9,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y mlton
   exit 0
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge mlton
+  sudo emerge --update --newuse mlton
   exit 0
 else
   echo $OS is not yet implemented.

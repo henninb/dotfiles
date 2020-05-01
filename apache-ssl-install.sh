@@ -145,8 +145,8 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo fuser 80/tcp
   #sudo cp -v index.html /var/www/html
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge apache
-  sudo emerge net-tools
+  sudo emerge --update --newuse apache
+  sudo emerge --update --newuse net-tools
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S net-tools apache curl
   sudo mkdir -p /var/www

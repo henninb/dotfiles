@@ -16,7 +16,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
 
   sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge dev-util/jenkins-bin
+  sudo emerge --update --newuse dev-util/jenkins-bin
 else
   echo "$OS is not yet implemented."
   exit 1

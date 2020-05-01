@@ -76,10 +76,15 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo virsh net-list --all
   getent group kvm libvirt
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge app-emulation/qemu app-emulation/libvirt bridge-utils
-  sudo emerge -1v libvirt libvirt-glib virt-manager libvirt-python
-  sudo emerge net-misc/spice-gtk app-emulation/virt-viewer
-  sudo emerge virt-manager
+  sudo emerge --update --newuse bridge-utils
+  sudo emerge --update --newuse app-emulation/libvirt
+  sudo emerge --update --newuse bridge-utils
+  sudo emerge --update --newuse libvirt
+  sudo emerge --update --newuse libvirt-glib
+  sudo emerge --update --newuse libvirt-python
+  sudo emerge --update --newuse app-emulation/virt-viewer
+  sudo emerge --update --newuse net-misc/spice-gtk
+  sudo emerge --update --newuse virt-manager
   sudo rc-update add libvirtd default
   sudo rc-service libvirtd start
   sudo usermod -a -G libvirt $(id -un)

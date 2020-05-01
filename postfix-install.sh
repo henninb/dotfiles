@@ -75,7 +75,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo postmap /etc/postfix/sasl_passwd
   sudo systemctl restart postfix
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge postfix
+  sudo emerge --update --newuse postfix
   sudo mv -v sasl_passwd /etc/postfix/sasl_passwd
   sudo chmod 600 /etc/postfix/sasl_passwd
   sudo mv -v main_archlinux.cf /etc/postfix/main.cf

@@ -9,10 +9,12 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   yay -S brave-bin
 elif [ "$OS" = "Gentoo" ]; then
+  sudo emerge --update --newuse app-eselect/eselect-repository
+  sudo mkdir -p /etc/portage/repos.conf
   sudo eselect repository enable brave-overlay
   sudo emerge --sync
   echo "www-client/brave-bin **" | sudo tee -a /etc/portage/package.accept_keywords
-  sudo emerge www-client/brave-bin
+  sudo emerge --update --newuse www-client/brave-bin
 elif [ "$OS" = "fedora" ]; then
   sudo dnf install dnf-plugins-core
   sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/

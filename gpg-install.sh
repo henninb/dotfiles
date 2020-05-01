@@ -1,7 +1,8 @@
 #!/bin/sh
 
 if [ "$OS" = "Gentoo" ]; then
-  sudo emerge gnupg pass
+  sudo emerge --update --newuse gnupg
+  sudo emerge --update --newuse pass
 elif [ "$OS" = "Linux Mint" ]; then
   sudo apt install -y gnupg
 elif [ "$OS" = "Solus" ]; then

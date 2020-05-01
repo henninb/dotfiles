@@ -18,7 +18,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install dotnet-sdk-2.2
 elif [ "$OS" = "Gentoo" ]; then
   sudo mkdir -p /etc/portage/repos.conf
-  sudo emerge app-eselect/eselect-repository
+  sudo emerge --update --newuse app-eselect/eselect-repository
   sudo eselect repository enable dotnet
   sudo emaint -r dotnet sync
   sudo emerge --update --newuse dev-dotnet/dotnetcore-sdk-bin

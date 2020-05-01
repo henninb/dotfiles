@@ -33,7 +33,8 @@ elif [ "$OS" = "Fedora" ]; then
     sudo dnf install -y https://releases.hashicorp.com/vagrant/${VAGRANT_VER}/vagrant_${VAGRANT_VER}_x86_64.rpm
   fi
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge vagrant dev-ruby/pkg-config
+  sudo emerge --update --newuse vagrant
+  sudo emerge --update --newuse dev-ruby/pkg-config
 else
   echo "OS=$OS not yet configured."
   exit 1

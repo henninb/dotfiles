@@ -73,8 +73,8 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo service docker start
 elif [ "$OS" = "Gentoo" ]; then
   sudo eselect news read
-  sudo emerge sys-fs/btrfs-progs
-  sudo emerge app-emulation/docker
+  sudo emerge --update --newuse sys-fs/btrfs-progs
+  sudo emerge --update --newuse app-emulation/docker
   sudo rc-update add docker default
   sudo rc-service docker start
   sudo usermod -a -G docker $(id -un)

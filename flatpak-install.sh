@@ -29,14 +29,14 @@ elif [ "$OS" = "Gentoo" ]; then
   #sudo emerge layman
   sudo mv flatpak-overlay.conf /etc/portage/repos.conf/flatpak-overlay.conf
   sudo emerge --sync
-  sudo emerge flatpak
+  sudo emerge --update --newuse flatpak
   wget https://flathub.org/repo/appstream/com.valvesoftware.Steam.flatpakref
   wget https://flathub.org/repo/appstream/com.visualstudio.code.flatpakref
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   flatpak install --user com.valvesoftware.Steam.flatpakref
   flatpak install --user com.visualstudio.code.flatpakref
 else
-  echo $OS is not yet implemented
+  echo "$OS is not yet implemented."
   exit 1
 fi
 

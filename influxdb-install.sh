@@ -56,7 +56,7 @@ elif [ "$OS" = "Darwin" ]; then
   brew install influxdb
   echo influxd -config /usr/local/etc/influxdb.conf
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge influxdb
+  sudo emerge --update --newuse influxdb
   sudo mv -v influxdb.conf /etc/influxdb/influxdb.conf
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S influxdb net-tools
