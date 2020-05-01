@@ -115,7 +115,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S libmpdclient
   sudo pacman --noconfirm --needed -S jsoncpp
 elif [ "$OS" = "Gentoo" ]; then
-  GENTOO_PKGS="jsoncpp cmake x11-libs/cairo media-sound/alsa-utils libmpdclient wireless-tools pulseaudio"
+  GENTOO_PKGS="jsoncpp cmake x11-libs/cairo media-sound/alsa-utils libmpdclient wireless-tools pulseaudio i3"
   FAILURES=""
   for i in $(echo "$GENTOO_PKGS"); do
     if ! sudo emerge --update --newuse "$i"; then

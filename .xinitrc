@@ -55,6 +55,9 @@ else
   echo xscreensaver is not installed >> "$HOME/xinit.log"
 fi
 
+# gentoo could not resolve keysym xf86 fullscreen
+setxkbmap -option compose:ralt
+
 if [ -x "$(command -v mpd)" ]; then
   exec mpd  &
 fi
