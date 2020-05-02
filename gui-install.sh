@@ -135,4 +135,6 @@ echo https://github.com/oguzhaninan/Stacer
 echo https://kde.org/applications/system/org.kde.ksystemlog
 echo sudo snap install keepassxc
 
+echo https://github.com/balena-io/etcher/releases/download/v1.5.83/balenaEtcher-1.5.83-x64.AppImage
+
 exit 0
