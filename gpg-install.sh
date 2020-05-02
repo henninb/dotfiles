@@ -39,7 +39,9 @@ echo gpg --full-generate-key
 
 if [ ! -f "$HOME/private.key" ]; then
   echo ~/private.key is not found.
+  if ! scp pi:/home/pi/private.key "$HOME/private.key"; then
   exit 1
+  fi
 fi
 
 echo gpg --batch --import private.key

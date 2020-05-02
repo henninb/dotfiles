@@ -9,6 +9,9 @@ sudo apt install -y libtool-bin
 sudo apt install -y libgtk2.0-dev
 
 
+sudo dnf install -y systemd-devel
+sudo dnf install -y ffmpegthumbnailer-devel
+
 sudo xbps-install -y intltool
 sudo xbps-install -y glib-devel
 sudo xbps-install -S ffmpegthumbnailer
