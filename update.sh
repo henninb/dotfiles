@@ -64,6 +64,9 @@ elif [ "$OS" = "FreeBSD" ]; then
   #sudo freebsd-update install
   sudo freebsd-update fetch install 2>&1 | tee -a update.log.$$
   sudo pkg upgrade 2>&1 | tee -a update.log.$$
+  echo sudo pkg clean
+  echo sudo pkg update -f
+  echo sudo pkg bootstrap
 else
   echo $OS is not yet implemented.
   exit 1

@@ -23,6 +23,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
   echo centos
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y gcc python27 gmake
+  sudo pkg install npm-node12-6.12.1
 else
   echo "$OS is not yet implemented."
   exit 1
