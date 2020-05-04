@@ -322,6 +322,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
     sudo zypper install -y xorg-x11-server-sdk
     sudo zypper install -y libXfont2-devel
     sudo zypper install -y xorg-x11
+    sudo zypper install -y make
+    sudo zypper install -y gcc
     # sudo zypper install -y xorg-x11-server-devel
     cd "$HOME/projects" || exit
     git clone --recursive git@github.com:neutrinolabs/xrdp.git
