@@ -31,7 +31,7 @@
 ## Software
 - terminal - alacritty, urxvt, termite, st
 - editor - neovim, emacs, vscode, intellij, vscodium, neovim-gtk
-- shell - zsh, fish, bash
+- shell - zsh, fish, bash, dash, ksh
 - shell prompt - spaceship, agnoster, alien, dracula
 - zsh plugins - zsh-syntax-highlighting, zsh-autosuggestions, autojump, zsh-history-substring-search
 - file manager - lf, ranger, hunter, spacefm

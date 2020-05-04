@@ -273,3 +273,6 @@ sudo systemctl set-default graphical
 ```
 systemctl mask sleep suspend hibernate hybrid-sleep
 ```
+
+## fix shell to a POXIX shell (Archlinux)
+sudo ln -sfT /bin/dash /bin/sh
