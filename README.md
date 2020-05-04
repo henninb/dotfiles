@@ -18,6 +18,7 @@
 - Bedrock Linux
 - Clear Linux
 - Linux From Scratch
+- FreeNAS
 
 ## Operating Systems - Security/Privacy
 - qubes
