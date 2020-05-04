@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
-  id -g wheel &>/dev/null || sudo groupadd wheel
+  id -g wheel >/dev/null 2>&1 || sudo groupadd wheel
   #sudo usermod -a -G wheel brian
   sudo useradd -m -G wheel -s /bin/zsh brian
   # add group to existing list of secondary groups
@@ -13,7 +13,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   sudo usermod -a -G uucp henninb
 #sudo adduser -m -G wheel -s /bin/bash henninb
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
-  id -g wheel &>/dev/null || sudo groupadd wheel
+  id -g wheel >/dev/null 2>&1 || sudo groupadd wheel
   sudo useradd -m -G wheel -s /bin/zsh brian
   id brian
   sudo usermod -a -G uucp henninb
@@ -22,7 +22,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo usermod -G wheel henninb
 elif [ "$OS" = "Fedora" ]; then
   sudo groupadd wheel
-  id -u brian &>/dev/null || sudo useradd -m -G wheel -s /bin/bash brian
+  id -u brian >/dev/null 2>&1 || sudo useradd -m -G wheel -s /bin/bash brian
   sudo usermod -a -G tomcat henninb
   sudo usermod -a -G firefox henninb
   sudo usermod -a -G intellij henninb

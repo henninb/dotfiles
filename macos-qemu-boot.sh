@@ -1,8 +1,8 @@
 #!/bin/sh
 
 OSK="ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc"
-VMDIR=$PWD
-OVMF=$VMDIR/firmware
+VMDIR="$PWD"
+OVMF="$VMDIR/firmware"
 #export QEMU_AUDIO_DRV=pa
 #QEMU_AUDIO_DRV=pa
 
@@ -58,11 +58,13 @@ elif [ "$(uname -n)" = "archlinux" ]; then
     -drive id=SystemDisk,if=none,file=/run/media/henninb/MyVolume/macos-qemu-disk.qcow2 \
     -device ide-hd,bus=sata.4,drive=SystemDisk
 else
-  echo need to configure
+  echo "need to configure."
+  exit 1
 fi
 
 exit 0
 # needed for install only
 # needed for install only
-    -drive id=InstallMedia,format=raw,if=none,file=BaseSystem.img \
-    -device ide-hd,bus=sata.3,drive=InstallMedia \
+    -drive id=InstallMedia,format=raw,if=none,file=BaseSystem.img
+    -device ide-hd,bus=sata.3,drive=InstallMedia
+

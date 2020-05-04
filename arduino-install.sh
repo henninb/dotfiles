@@ -5,7 +5,7 @@ echo "$VER"
 
 if [ ! -f "arduino-${VER}-linux64.tar.xz" ]; then
   rm -rf arduino-*-linux64.tar.xz
-  curl https://downloads.arduino.cc/arduino-${VER}-linux64.tar.xz --output "arduino-${VER}-linux64.tar.xz"
+  curl "https://downloads.arduino.cc/arduino-${VER}-linux64.tar.xz" --output "arduino-${VER}-linux64.tar.xz"
 fi
 
 sudo mkdir -p /opt
@@ -14,7 +14,7 @@ sudo rm -rf "/opt/arduino-${VER}"
 sudo tar -xJvf "arduino-${VER}-linux64.tar.xz" -C /opt
 sudo ln -s "/opt/arduino-${VER}" /opt/arduino
 
-id -u arduino &>/dev/null || sudo useradd arduino -m
+id -u arduino >/dev/null 2>&1 || sudo useradd arduino -m
 sudo chown -R arduino:arduino /opt/arduino/
 sudo chown -R arduino:arduino "/opt/arduino-${VER}/"
 
