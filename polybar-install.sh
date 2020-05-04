@@ -92,7 +92,6 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y libxcb-ewmh2
   sudo zypper install -y xcb-util-wm-devel
   # sudo zypper install -y i3-gaps
-  sudo zypper install -y i3
   # sudo zypper install -y libxcb-image0
   sudo zypper install -y xcb-util-image-devel
   sudo zypper install -y jsoncpp-devel
@@ -102,6 +101,9 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y autogen
   sudo zypper install -y json-glib-devel
   sudo zypper install -y gobject-introspection
+  sudo zypper install -y cmake
+  sudo zypper install -y gcc-c++
+  sudo zypper install -y i3-devel
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y libcurl-devel
   sudo xbps-install -y libmpdclient-devel
