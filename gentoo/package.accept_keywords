@@ -62,3 +62,5 @@ sys-fs/zfs ~amd64
 =sys-fs/zfs-kmod-0.7.13*
 =app-admin/lnav-0.8.5 ~amd64
 =app-misc/nnn-3.1 ~amd64
+=app-text/grip-4.5.2 ~amd64
+=dev-python/path-and-address-2.0.1 ~amd64

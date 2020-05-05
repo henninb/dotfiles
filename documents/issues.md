@@ -280,5 +280,6 @@ sudo ln -sfT /bin/dash /bin/sh
 ## howto server up markdown in a browser
 ```
 grip documents/index.md 0.0.0.0
+cat README.md | grip --export - | less
 ```
 
