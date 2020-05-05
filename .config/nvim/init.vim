@@ -38,6 +38,7 @@ endif
    Plug 'git@github.com:tpope/vim-surround.git'
    Plug 'git@github.com:tpope/vim-commentary.git'
    Plug 'git@github.com:vim-syntastic/syntastic.git'
+   Plug 'vimwiki/vimwiki'
    Plug 'git@github.com:svermeulen/vim-subversive.git' " search and replace tool
    Plug 'git@github.com:bronson/vim-trailing-whitespace.git' " remove trailing whitespace
    Plug 'neoclide/coc.nvim', {'branch': 'release'}
