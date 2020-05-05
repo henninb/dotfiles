@@ -399,7 +399,7 @@ nnoremap <leader>v :vsplit<cr>
 " autocmd VimLeave * silent exec "! echo -ne '\e[5 q'"
 
 " enable spell check for markdown
-autocmd FileType markdown setlocal spell spelllang=en_us
+" autocmd FileType markdown setlocal spell spelllang=en_us
 
 " quit vim when 0 buffers left on nerdtree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
