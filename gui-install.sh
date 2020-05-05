@@ -12,7 +12,7 @@ UBUNTU_PKGS="gqrx vlc handbrake dolphin-emu vim-gtk3 terminator feh dolphin gnom
 
 FREEBSD_PKGS="vlc firefox riot-desktop i3-wm handbrake dolphin-emu vim-gtk3 xterm rofi terminator qt5ct audacity gimp inkscape"
 
-GENTOO_PKGS="vlc i3 handbrake terminator rofi games-emulation/dolphin firefox seahorse xeyes xterm i3status audacity"
+GENTOO_PKGS="vlc handbrake terminator rofi games-emulation/dolphin seahorse xterm audacity gimp inkscape kdenlive"
 
 VOID_PKGS="gimp incscape vlc handbrake terminator audacity dolphin-emu zathura dbeaver"
 
