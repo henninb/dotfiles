@@ -1,3 +1,3 @@
 index.md
 
-[a relative link](alacritty-cmds.md)
+[alacritty commands](alacritty-cmds.md)

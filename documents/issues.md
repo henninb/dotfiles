@@ -276,3 +276,9 @@ systemctl mask sleep suspend hibernate hybrid-sleep
 
 ## fix shell to a POXIX shell (Archlinux)
 sudo ln -sfT /bin/dash /bin/sh
+
+## howto server up markdown in a browser
+```
+grip documents/index.md 0.0.0.0
+```
+

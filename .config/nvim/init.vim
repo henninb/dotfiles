@@ -1,5 +1,8 @@
 syntax on
 filetype plugin indent on
+" added on 5/5/2020
+set nocompatible
+filetype plugin on
 
 let plugpath = '~/.vim/bundle'
 
@@ -39,6 +42,8 @@ endif
    Plug 'git@github.com:tpope/vim-commentary.git'
    Plug 'git@github.com:vim-syntastic/syntastic.git'
    Plug 'vimwiki/vimwiki'
+   Plug 'vim-pandoc/vim-pandoc' " Markdown Docs in Vim
+   Plug 'vim-pandoc/vim-pandoc-syntax' " Markdown Docs in Vim
    Plug 'git@github.com:svermeulen/vim-subversive.git' " search and replace tool
    Plug 'git@github.com:bronson/vim-trailing-whitespace.git' " remove trailing whitespace
    Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -393,6 +398,9 @@ nnoremap <leader>v :vsplit<cr>
 " autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
 " autocmd VimLeave * silent exec "! echo -ne '\e[5 q'"
 
+" enable spell check for markdown
+autocmd FileType markdown setlocal spell spelllang=en_us
+
 " quit vim when 0 buffers left on nerdtree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
@@ -431,6 +439,8 @@ nmap <leader>hr :%!xxd<cr> :set filetype=xxd<cr>
 nmap <leader>hw :%!xxd -r<cr> :set binary<cr> :set filetype=<cr>
 
 
+let g:vimwiki_list = [{'path': '~/documents/', 'syntax': 'markdown', 'ext': '.md'}]
+
 " enable true colors only if available
 let colorterm=$COLORTERM
 if colorterm=='truecolor' || colorterm=='24bit'
@@ -441,3 +451,4 @@ if colorterm=='truecolor' || colorterm=='24bit'
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   endif
 endif
+
