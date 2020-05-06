@@ -13,6 +13,9 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y nodejs
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S nodejs
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper install -y nodejs
+  echo
 elif [ "$OS" = "void" ]; then
   echo
 elif [ "$OS" = "Gentoo" ]; then
@@ -38,10 +41,14 @@ if [ $? -ne 0 ]; then
 fi
 
 echo nvm install 13.8.0
-
+[ ! -x "$(command -v npm)" ] && echo "npm is not installed." && exit 1
 if [ ! -x "$(command -v n)" ]; then
-  sudo npm install -g n
+  if ! npm install n; then
+    sudo npm install -g n
+    sudo n stable
+  else
+    n stable
+  fi
 fi
-sudo n stable
 
 exit 0

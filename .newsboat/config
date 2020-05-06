@@ -14,6 +14,9 @@ browser "w3m %u"
 macro m set browser "mpv %u"; open-in-browser ; set browser "w3m %u"
 macro l set browser "firefox %u"; open-in-browser ; set browser "w3m %u"
 
+macro a set browser "tsp youtube-dl --add-metadata -xic -f bestaudio/best"; open-in-browser ; set browser linkhandler
+macro v set browser "setsid nohup mpv"; open-in-browser ; set browser linkhandler
+
 # unbind keys
 unbind-key ENTER
 unbind-key j
@@ -24,6 +27,13 @@ unbind-key K
 # bind keys - vim style
 bind-key j down
 bind-key k up
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key G end
+bind-key g home
+
 bind-key l open
 bind-key h quit
 
@@ -40,3 +50,6 @@ color article            default   default
 highlight article "^(Title):.*$" blue default
 highlight article "https?://[^ ]+" red default
 highlight article "\\[image\\ [0-9]+\\]" green default
+
+highlight all "---.*---" yellow
+
