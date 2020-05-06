@@ -1,3 +1,19 @@
+-------------------------
+-------GIT_REPOS---------
+-------------------------
+https://gitlab.com/dwt1.atom "~GITLAB: dwt1 (distrotube)"
+https://github.com/LukeSmithxyz.atom "~GITHUB: LukeSmithxyz"
+-------------------------
+-------REDDIT------------
+-------------------------
+https://www.reddit.com/r/linux.rss "~REDDIT: r/linux"
+https://www.reddit.com/r/commandline.rss "~REDDIT: r/commandline"
+https://www.reddit.com/r/archlinux.rss "~REDDIT: r/archlinux"
+https://www.reddit.com/r/vim.rss "~REDDIT: r/vim"
+https://www.reddit.com/r/unixporn.rss "~REDDIT: r/unixporn"
+-------------------------
+-------PODCAST-----------
+-------------------------
 https://rss.art19.com/sword-and-scale
 http://feeds.feedburner.com/FreedomainRadioVolume6
 https://feeds.twit.tv/sn.xml
@@ -19,6 +35,9 @@ https://rss.art19.com/cults
 https://post.futurimedia.com/kfxn/playlist/rss/7.xml
 https://smlr.us/?feed=smlr-ogg
 https://dataskeptic.libsyn.com/rss
+-------------------------
+-------YOUTUBE-----------
+-------------------------
 https://www.youtube.com/feeds/videos.xml?channel_id=UC-8QAzbLcRglXeN_MY9blyw "YouTube Subscriptions"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC-91UA-Xy2Cvb98deRXuggA "YouTube Subscriptions"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC-EXTfLnOmCKVRJrv8xoGrQ "YouTube Subscriptions"
