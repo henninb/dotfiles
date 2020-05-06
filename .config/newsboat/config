@@ -14,14 +14,15 @@ external-url-viewer "urlscan -dc -r 'linkhandler {}'"
 # externel browser
 #browser "w3m %u"
 browser linkhandler
-macro , open-in-browser
+# macro , open-in-browser
 
-macro y set browser "mpv %u"; open-in-browser ; set browser "elinks %u"
-macro m set browser "mpv %u"; open-in-browser ; set browser "w3m %u"
+# ,v to activate a macro
+macro v set browser "mpv %u"; open-in-browser ; set browser "elinks %u"
+macro m set browser "cmus %u"; open-in-browser ; set browser "w3m %u"
 macro l set browser "firefox %u"; open-in-browser ; set browser "w3m %u"
 
-macro a set browser "tsp youtube-dl --add-metadata -xic -f bestaudio/best"; open-in-browser ; set browser linkhandler
-macro v set browser "setsid nohup mpv"; open-in-browser ; set browser linkhandler
+# macro a set browser "tsp youtube-dl --add-metadata -xic -f bestaudio/best"; open-in-browser ; set browser linkhandler
+# macro v set browser "setsid nohup mpv"; open-in-browser ; set browser linkhandler
 
 # unbind keys
 unbind-key ENTER
