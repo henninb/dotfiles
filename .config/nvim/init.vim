@@ -452,3 +452,4 @@ if colorterm=='truecolor' || colorterm=='24bit'
   endif
 endif
 
+noremap <leader>u :w<Home>silent <End> !urlview<cr>

@@ -159,7 +159,11 @@ export PAGER=less
 export OPENER=xdg-open
 export READER=zathura
 export TERMINAL=urxvt
-export BROWSER=firefox
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  export BROWSER=elinks
+else
+  export BROWSER=firefox
+fi
 export GIT_EDITOR=nvim
 # export GIT_CONFIG="$HOME/.gitconfig"
 

@@ -19,11 +19,11 @@ bind-key U show-urls
 
 # externel browser
 # browser "w3m %u"
-browser linkhandler
+# browser linkhandler
 # macro , open-in-browser
 
 # ,v to activate a macro
-# macro v set browser "mpv %u"; open-in-browser ; set browser "elinks %u"
+macro v set browser "mpv %u"; open-in-browser ; set browser "elinks %u"
 # macro m set browser "cmus %u"; open-in-browser ; set browser "w3m %u"
 # macro l set browser "firefox %u"; open-in-browser ; set browser "w3m %u"
 
