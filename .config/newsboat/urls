@@ -1,40 +1,51 @@
 -------------------------
 -------GIT_REPOS---------
 -------------------------
-https://gitlab.com/dwt1.atom "~GITLAB: dwt1 (distrotube)"
-https://github.com/LukeSmithxyz.atom "~GITHUB: LukeSmithxyz"
+https://gitlab.com/dwt1.atom "~GIT: Distrotube"
+https://github.com/LukeSmithxyz.atom "~GIT: LukeSmith"
 -------------------------
 -------REDDIT------------
 -------------------------
 https://www.reddit.com/r/linux.rss "~REDDIT: r/linux"
 https://www.reddit.com/r/commandline.rss "~REDDIT: r/commandline"
-https://www.reddit.com/r/archlinux.rss "~REDDIT: r/archlinux"
 https://www.reddit.com/r/vim.rss "~REDDIT: r/vim"
+https://www.reddit.com/r/emacs.rss "~REDDIT: r/emacs"
 https://www.reddit.com/r/unixporn.rss "~REDDIT: r/unixporn"
+https://www.reddit.com/r/bspwm.rss "~REDDIT: r/bspwm"
+https://www.reddit.com/r/i3wm.rss "~REDDIT: r/i3wm"
+https://www.reddit.com/r/gentoo.rss "~REDDIT: r/gentoo"
+https://www.reddit.com/r/freebsd.rss "~REDDIT: r/freebsd"
+https://www.reddit.com/r/voidlinux.rss "~REDDIT: r/voidlinux"
+https://www.reddit.com/r/archlinux.rss "~REDDIT: r/archlinux"
+https://www.reddit.com/r/solusproject.rss "~REDDIT: r/solusproject"
+https://www.reddit.com/r/clearlinux.rss "~REDDIT: r/clearlinux"
+https://www.reddit.com/r/ubuntu.rss "~REDDIT: r/ubuntu"
+https://www.reddit.com/r/linuxmint.rss "~REDDIT: r/linuxmint"
+https://www.reddit.com/r/pfsense.rss "~REDDIT: r/pfsense"
 -------------------------
 -------PODCAST-----------
 -------------------------
-https://rss.art19.com/sword-and-scale
-http://feeds.feedburner.com/FreedomainRadioVolume6
-https://feeds.twit.tv/sn.xml
-http://rss.art19.com/around-the-nfl
-http://www.atheist-experience.com/podcast.php
-http://feeds.feedburner.com/swak
-http://feeds.feedburner.com/reasonablepod
-http://feeds.feedburner.com/inkredulous
-http://arewealone.libsyn.com/rss
-https://feeds.fireside.fm/bsdnow/rss
-https://audioboom.com/channels/4940872.rss
-http://www.catholic.com/radio/podcast/podcast
-http://feeds.soundcloud.com/users/soundcloud:users:406683825/sounds.rss
-https://pinecast.com/feed/catholicstuff
-https://audioboom.com/channels/2399536.rss
-http://feeds.codenewbie.org/cnpodcast.xml
-http://feeds.soundcloud.com/users/soundcloud:users:261098918/sounds.rss
-https://rss.art19.com/cults
-https://post.futurimedia.com/kfxn/playlist/rss/7.xml
-https://smlr.us/?feed=smlr-ogg
-https://dataskeptic.libsyn.com/rss
+https://rss.art19.com/sword-and-scale "~PODCAST: Sward And Scale"
+http://feeds.feedburner.com/FreedomainRadioVolume6 "~PODCAST: "
+https://feeds.twit.tv/sn.xml "~PODCAST: Security Now"
+http://rss.art19.com/around-the-nfl "~PODCAST: Around the NFL"
+http://www.atheist-experience.com/podcast.php "~PODCAST: Atheist Experience"
+http://feeds.feedburner.com/swak "~PODCAST: "
+http://feeds.feedburner.com/reasonablepod "~PODCAST: "
+http://feeds.feedburner.com/inkredulous "~PODCAST: "
+http://arewealone.libsyn.com/rss "~PODCAST: "
+https://feeds.fireside.fm/bsdnow/rss "~PODCAST: BSD Now"
+https://audioboom.com/channels/4940872.rss "~PODCAST: "
+http://www.catholic.com/radio/podcast/podcast "~PODCAST: "
+http://feeds.soundcloud.com/users/soundcloud:users:406683825/sounds.rss "~PODCAST: "
+https://pinecast.com/feed/catholicstuff "~PODCAST: "
+https://audioboom.com/channels/2399536.rss "~PODCAST: "
+http://feeds.codenewbie.org/cnpodcast.xml "~PODCAST: "
+http://feeds.soundcloud.com/users/soundcloud:users:261098918/sounds.rss "~PODCAST: "
+https://rss.art19.com/cults "~PODCAST: Cults"
+https://post.futurimedia.com/kfxn/playlist/rss/7.xml "~PODCAST: "
+https://smlr.us/?feed=smlr-ogg "~PODCAST: Sunday Morning Linux Review"
+https://dataskeptic.libsyn.com/rss "~PODCAST: Data Skeptic"
 -------------------------
 -------YOUTUBE-----------
 -------------------------
