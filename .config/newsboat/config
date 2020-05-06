@@ -12,7 +12,11 @@ prepopulate-query-feeds yes
 external-url-viewer "urlscan -dc -r 'linkhandler {}'"
 
 # externel browser
-browser "w3m %u"
+#browser "w3m %u"
+browser linkhandler
+macro , open-in-browser
+
+macro y set browser "mpv %u"; open-in-browser ; set browser "elinks %u"
 macro m set browser "mpv %u"; open-in-browser ; set browser "w3m %u"
 macro l set browser "firefox %u"; open-in-browser ; set browser "w3m %u"
 
@@ -49,9 +53,23 @@ color info               default   black
 color article            default   default
 
 # highlights
-highlight article "^(Title):.*$" blue default
-highlight article "https?://[^ ]+" red default
-highlight article "\\[image\\ [0-9]+\\]" green default
+# highlight article "^(Title):.*$" blue default
+# highlight article "https?://[^ ]+" red default
+# highlight article "\\[image\\ [0-9]+\\]" green default
+
+# highlight all "---.*---" yellow
+
 
 highlight all "---.*---" yellow
+highlight feedlist ".*(0/0))" black
+highlight article "(^Feed:.*|^Title:.*|^Author:.*)" cyan default bold
+highlight article "(^Link:.*|^Date:.*)" default default
+highlight article "https?://[^ ]+" green default
+highlight article "^(Title):.*$" blue default
+highlight article "\\[[0-9][0-9]*\\]" magenta default bold
+highlight article "\\[image\\ [0-9]+\\]" green default bold
+highlight article "\\[embedded flash: [0-9][0-9]*\\]" green default bold
+highlight article ":.*\\(link\\)$" cyan default
+highlight article ":.*\\(image\\)$" blue default
+highlight article ":.*\\(embedded flash\\)$" magenta default
 

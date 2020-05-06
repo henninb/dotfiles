@@ -67,3 +67,8 @@ $ git config --list
 ```
 https://github.com/ohmyzsh/ohmyzsh/commit/8f33231823dbf6c68ccc65fbb028fce6ff1efd74
 ```
+
+## git remove stash
+```
+git stash drop <stash_id>
+```
