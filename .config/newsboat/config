@@ -14,9 +14,12 @@ macro m set browser "mpv %u"; open-in-browser ; set browser "w3m %u"
 
 # external-url-viewer "urlscan -dc -r 'linkhandler {}'"
 
+external-url-viewer "urlview"
+bind-key U show-urls
+
 # externel browser
 # browser "w3m %u"
-# browser linkhandler
+browser linkhandler
 # macro , open-in-browser
 
 # ,v to activate a macro
