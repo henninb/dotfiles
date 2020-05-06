@@ -9,6 +9,8 @@ prepopulate-query-feeds yes
 # auto-reload yes
 # max-items 50
 
+external-url-viewer "urlscan -dc -r 'linkhandler {}'"
+
 # externel browser
 browser "w3m %u"
 macro m set browser "mpv %u"; open-in-browser ; set browser "w3m %u"
