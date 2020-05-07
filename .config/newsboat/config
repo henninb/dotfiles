@@ -5,15 +5,13 @@ download-retries 4
 download-timeout 10
 prepopulate-query-feeds yes
 
+player mpv
+
 # general settings
 # auto-reload yes
 # max-items 50
 
-# browser "w3m %u"
-macro m set browser "mpv %u"; open-in-browser ; set browser "w3m %u"
-
 # external-url-viewer "urlscan -dc -r 'linkhandler {}'"
-
 external-url-viewer "urlview"
 bind-key U show-urls
 
@@ -22,13 +20,13 @@ bind-key U show-urls
 # browser linkhandler
 # macro , open-in-browser
 
+# ,v to activate a macro
+macro m set browser "mpv %u"; open-in-browser ; set browser "w3m %u"
 macro a set browser "tsp youtube-dl --add-metadata -xic -f bestaudio/best"; open-in-browser ; set browser linkhandler
 macro v set browser "setsid nohup mpv --no-video"; open-in-browser ; set browser linkhandler
-# ,v to activate a macro
 macro z set browser "mpv --no-video %u"; open-in-browser ; set browser "elinks %u"
 # macro m set browser "cmus %u"; open-in-browser ; set browser "w3m %u"
 # macro l set browser "firefox %u"; open-in-browser ; set browser "w3m %u"
-
 # macro a set browser "tsp youtube-dl --add-metadata -xic -f bestaudio/best"; open-in-browser ; set browser linkhandler
 # macro v set browser "setsid nohup mpv"; open-in-browser ; set browser linkhandler
 
