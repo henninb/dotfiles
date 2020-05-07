@@ -287,3 +287,8 @@ cat README.md | grip --export - | less
 ```
 ssh-keygen -f "~/.ssh/known_hosts" -R "192.168.100.124"
 ```
+
+## video card details
+```
+lspci | grep -i --color 'vga\|3d\|2d'
+```
