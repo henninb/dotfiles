@@ -283,7 +283,3 @@ grip documents/index.md 0.0.0.0
 cat README.md | grip --export - | less
 ```
 
-## ssh known_hosts cleanup
-```
-ssh-keygen -f "~/.ssh/known_hosts" -R "192.168.100.124"
-```
