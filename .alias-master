@@ -20,6 +20,8 @@ alias sysoff='shutdown -p now'
 #alias emacs="emacs -nw"
 alias vscode='code'
 
+alias rkh='f(){ssh-keygen -f "$HOME/.ssh/known_hosts" -R "$@";  unset -f f; }; f'
+
 alias sha1='openssl sha1'
 alias h='history'
 alias j='jobs -l'
