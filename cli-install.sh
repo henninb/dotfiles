@@ -10,6 +10,8 @@ ARCHLINUX_PKGS="pacman-contrib mpg123 screen figlet neovim vim rtorrent wget ran
 
 MINT_PKGS="jq stunnel postfix mailutils mpg123 screen figlet vim rtorrent wget zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg alsa-utils cmus python-setuptools rsync tmux mcrypt wine64 yarn nodejs ssh-askpass iptables-persistent libguestfs-tools byobu fetchmail dos2unix pass fish ctags strace astyle clang-format rpm bastet mpv sshfs lynx etherwake cdrecord toilet zsync newsboat scrot sxhkd imagemagick vifm w3m-img groff zip unzip neofetch ripgrep sshpass calcurse lnav tmate most festival shellcheck ddgr tig mtr nnn trash-cli colordiff ncdu locate fd-find grip urlscan elinks urlview task-spooler"
 
+CLEAR_PKGS="jq stunnel postfix mailutils mpg123 screen figlet vim rtorrent wget zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg alsa-utils cmus python-setuptools rsync tmux mcrypt wine64 yarn nodejs ssh-askpass iptables-persistent libguestfs-tools byobu fetchmail dos2unix pass fish ctags strace astyle clang-format rpm bastet mpv sshfs lynx etherwake cdrecord toilet zsync newsboat scrot sxhkd imagemagick vifm w3m-img groff zip unzip neofetch ripgrep sshpass calcurse lnav tmate most festival shellcheck ddgr tig mtr nnn trash-cli colordiff ncdu locate fd-find grip urlscan elinks urlview task-spooler"
+
 SUSE_PKGS="jq stunnel postfix mailutils mpg123 screen figlet vim rtorrent wget zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg alsa-utils cmus python-setuptools rsync tmux mcrypt wine64 yarn nodejs ssh-askpass iptables-persistent libguestfs-tools byobu fetchmail dos2unix pass fish ctags strace astyle clang-format rpm bastet mpv sshfs lynx etherwake cdrecord toilet zsync newsboat scrot sxhkd imagemagick vifm w3m-img groff zip unzip neofetch ripgrep sshpass calcurse lnav tmate most festival shellcheck ddgr tig mtr nnn trash-cli colordiff fd grip urlscan urlview task-spooler"
 
 UBUNTU_PKGS="jq stunnel postfix mailutils mpg123 screen figlet vim rtorrent wget ranger fx zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip ffmpeg alsa-utils cmus python-setuptools rsync tmux emacs mcrypt wine yarn ssh-askpass iptables-persistent libguestfs-tools fetchmail dos2unix pass fish clang-format clisp rpm nsnake bastet netcat strace astyle ctags mpv sshfs lynx etherwake cdrecord toilet zsync newsboat sxhkd vifm w3m-img neofetch zip unzip lnav most ddgr tig nnn colordiff locate fd-find dash grip elinks urlscan task-spooler"
@@ -55,6 +57,14 @@ if [ "$OS" = "Linux Mint" ]; then
   done
   sudo yarn global add prettier --prefix /usr/local
   echo "Failures: $FAILURE"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  FAILURE=""
+  for i in $CLEAR_PKGS; do
+    if ! sudo swupd bundle-add "$i"; then
+      FAILURE="$i $FAILURE"
+    fi
+  done
+  echo Failures: "$FAILURE"
 elif [ "$OS" = "Ubuntu" ]; then
   FAILURE=""
   for i in $UBUNTU_PKGS; do
