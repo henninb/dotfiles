@@ -1,5 +1,25 @@
 #!/bin/sh
 
+cat > heartbeat.conf <<EOF
+input {
+  heartbeat {
+    interval => 10
+    type => "heartbeat"
+  }
+}
+
+output {
+  stdout {
+    codec => rubydebug
+  }
+
+  elasticsearch {
+    hosts => ["http://localhost:9200"]
+    index => "pulse"
+  }
+}
+EOF
+
 cat > filebeat.yml <<EOF
 filebeat.inputs:
 - type: log
