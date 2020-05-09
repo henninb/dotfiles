@@ -6,6 +6,9 @@ sudo apt install -y libxcb-xfixes0-dev
 sudo swupd bundle-add devpkg-freetype
 sudo swupd bundle-add devpkg-libxml2
 sudo swupd bundle-add devpkg-expat
+sudo swupd bundle-add performance-tools
+sudo swupd bundle-add devpkg-libxcb
+
 
 cd projects || exit
 rm -rf alacritty
