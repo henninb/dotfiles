@@ -30,7 +30,14 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo systemctl enable docker
   sudo systemctl start docker
   sudo systemctl status docker
-elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
+elif [ "$OS" = "Ubuntu" ]; then
+  sudo apt install -y docker
+  sudo systemctl enable docker
+  sudo systemctl start docker
+  sudo usermod -a -G docker $(id -un)
+  sudo netstat -lntp | grep dockerd
+  sudo fuser 2375/tcp
+elif [ "$OS" = "Linux Mint" ]; then
   sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   sudo apt-key fingerprint 0EBFCD88
