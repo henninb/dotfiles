@@ -137,4 +137,6 @@ echo sudo snap install keepassxc
 
 echo https://github.com/balena-io/etcher/releases/download/v1.5.83/balenaEtcher-1.5.83-x64.AppImage
 
+echo Gnome MPV is now Celluloid
+
 exit 0
