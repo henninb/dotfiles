@@ -292,3 +292,7 @@ ssh-keygen -f "$HOME/.ssh/known_hosts" -R "192.168.100.124"
 ```
 lspci | grep -i --color 'vga\|3d\|2d'
 ```
+
+## solus startup with blank tty1
+$(tty) == /dev/tty1 and $SHLVL == 1
+xinit /usr/bin/gnome-session -- /usr/bin/X :0
