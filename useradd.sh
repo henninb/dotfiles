@@ -4,6 +4,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   id -g wheel >/dev/null 2>&1 || sudo groupadd wheel
   #sudo usermod -a -G wheel brian
   sudo useradd -m -G wheel -s /bin/zsh brian
+  sudo useradd flatpak
   # add group to existing list of secondary groups
   sudo usermod -a -G tomcat henninb
   sudo usermod -a -G firefox henninb
