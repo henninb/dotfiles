@@ -1,0 +1,5 @@
+#!/bin/sh
+
+flatpak run com.slack.Slack
+
+exit 0
