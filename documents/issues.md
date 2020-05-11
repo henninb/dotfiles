@@ -301,3 +301,9 @@ xinit /usr/bin/gnome-session -- /usr/bin/X :0
 ```
 sudo chvt 7
 ```
+
+## tty console setup
+- fix the tty setting in the file below
+```
+sudo vi /etc/login.def
+```
