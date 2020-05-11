@@ -305,5 +305,5 @@ sudo chvt 7
 ## tty console setup
 - fix the tty setting in the file below
 ```
-sudo vi /etc/login.def
+sudo vi /etc/logins.def
 ```
