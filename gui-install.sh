@@ -8,15 +8,15 @@ MINT_PKGS="vlc riot-desktop handbrake dolphin-emu vim-gtk3 xterm rofi terminator
 
 CENTOS_PKGS="vlc firefox riot-desktop handbrake dolphin-emu gvim terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious rxvt gimp inkscape"
 
-UBUNTU_PKGS="gqrx vlc handbrake dolphin-emu vim-gtk3 terminator feh dolphin gnome-boxes cockpit seahorse mplayer audacious gitk audacity gimp inkscape cpu-x kdenlive obs-studio"
+UBUNTU_PKGS="gqrx vlc handbrake dolphin-emu vim-gtk3 terminator feh dolphin gnome-boxes cockpit seahorse mplayer audacious gitk audacity gimp inkscape cpu-x kdenlive obs-studio mpv"
 
-FREEBSD_PKGS="vlc firefox riot-desktop i3-wm handbrake dolphin-emu vim-gtk3 xterm rofi terminator qt5ct audacity gimp inkscape"
+FREEBSD_PKGS="vlc firefox riot-desktop handbrake dolphin-emu vim-gtk3 xterm rofi terminator audacity gimp inkscape mpv"
 
-GENTOO_PKGS="vlc handbrake terminator rofi games-emulation/dolphin seahorse xterm audacity gimp inkscape kdenlive"
+GENTOO_PKGS="vlc handbrake terminator rofi games-emulation/dolphin seahorse xterm audacity gimp inkscape kdenlive mpv"
 
-VOID_PKGS="gimp incscape vlc handbrake terminator audacity dolphin-emu zathura dbeaver"
+VOID_PKGS="gimp incscape vlc handbrake terminator audacity dolphin-emu zathura dbeaver mpv"
 
-SOLUS_PKGS="gimp inkscape vlc handbrake terminator audacity dolphin-emu zathura dbeaver"
+SOLUS_PKGS="gimp inkscape vlc handbrake terminator audacity dolphin-emu zathura dbeaver gnome-mpv terminator mpv"
 
 FEDORA_PKGS="gvim gqrx keepassxc"
 
