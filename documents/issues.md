@@ -296,3 +296,8 @@ lspci | grep -i --color 'vga\|3d\|2d'
 ## solus startup with blank tty1
 $(tty) == /dev/tty1 and $SHLVL == 1
 xinit /usr/bin/gnome-session -- /usr/bin/X :0
+
+## tty console switch
+```
+sudo chvt 7
+```
