@@ -2,13 +2,13 @@
 
 # DEBIAN_FRONTEND=noninteractive
 
-ARCHLINUX_PKGS="xorg-server vlc riot-desktop i3-wm handbrake dolphin-emu dbeaver terminator handbrake rofi feh dolphin-emu xorg xorg-server xorg-xeyes xorg-xinit seahorse termite rxvt-unicode gqrx gitk audacity zathura sxiv mpv gimp inkscape brave fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio"
+ARCHLINUX_PKGS="xorg-server vlc riot-desktop i3-wm handbrake dolphin-emu dbeaver terminator handbrake rofi feh dolphin-emu xorg xorg-server xorg-xeyes xorg-xinit seahorse termite rxvt-unicode gqrx gitk audacity zathura sxiv mpv gimp inkscape brave fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio gnome-mpv"
 
-MINT_PKGS="vlc riot-desktop handbrake dolphin-emu vim-gtk3 xterm rofi terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious gitk audacity gqrx-sdr gimp inkscape"
+MINT_PKGS="vlc riot-desktop handbrake dolphin-emu vim-gtk3 xterm rofi terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious gitk audacity gqrx-sdr gimp inkscape gnome-mpv"
 
 CENTOS_PKGS="vlc firefox riot-desktop handbrake dolphin-emu gvim terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious rxvt gimp inkscape"
 
-UBUNTU_PKGS="gqrx vlc handbrake dolphin-emu vim-gtk3 terminator feh dolphin gnome-boxes cockpit seahorse mplayer audacious gitk audacity gimp inkscape cpu-x kdenlive obs-studio mpv"
+UBUNTU_PKGS="gqrx vlc handbrake dolphin-emu vim-gtk3 terminator feh dolphin gnome-boxes cockpit seahorse mplayer audacious gitk audacity gimp inkscape cpu-x kdenlive obs-studio mpv gnome-mpv"
 
 FREEBSD_PKGS="vlc firefox riot-desktop handbrake dolphin-emu vim-gtk3 xterm rofi terminator audacity gimp inkscape mpv"
 
