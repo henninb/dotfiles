@@ -307,3 +307,8 @@ sudo chvt 7
 ```
 sudo vi /etc/logins.def
 ```
+
+## info on the system environment
+```
+loginctl session-status
+```
