@@ -312,3 +312,7 @@ sudo vi /etc/logins.def
 ```
 loginctl session-status
 ```
+
+## steam on solus
+Gtk-Message: 10:16:50.304: Failed to load module "gail"
+Gtk-Message: 10:16:50.304: Failed to load module "atk-bridge"
