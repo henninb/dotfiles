@@ -83,12 +83,13 @@
 - video chat/chat - discord, slack, zoom, telegram
 - image editor - gimp
 - compositor - compton
-- video editor - kdenlive
+- video editor - openshot, kdenlive
 - video transcoder - handbrake
 - video chat server - jitsi
 - audio editor/recorder - audacity
 - vector graphics - inkscape
 - 3D creation - blender
+- screencast - simplescreenrecorder
 
 steam
 arduino
