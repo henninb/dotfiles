@@ -316,3 +316,8 @@ loginctl session-status
 ## steam on solus
 Gtk-Message: 10:16:50.304: Failed to load module "gail"
 Gtk-Message: 10:16:50.304: Failed to load module "atk-bridge"
+
+## Fix Hard Disk Bad Sectors in Linux
+```
+sudo e2fsck -cfpv /dev/sda1
+```
