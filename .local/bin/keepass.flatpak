@@ -1,0 +1,5 @@
+#!/bin/sh
+
+flatpak run org.keepassxc.KeePassXC
+
+exit 0
