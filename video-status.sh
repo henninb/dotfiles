@@ -5,6 +5,8 @@ sudo pacman -S mesa-vdpau
 sudo pacman -S libva-utils
 sudo pacman -S libva-vdpau-driver libvdpau-va-gl
 
+sudo apt install -y vulkan-utils
+
 echo "i believe this is for AMD graphics cards"
 sudo pacman -S vulkan-radeon
 
