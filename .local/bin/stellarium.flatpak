@@ -1,0 +1,5 @@
+#!/bin/sh
+
+flatpak run org.stellarium.Stellarium
+
+exit 0
