@@ -43,6 +43,7 @@ channels = (
   { name = "#solus"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#scala"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#pfsense"; chatnet = "Freenode"; autojoin = "Yes"; },
+  { name = "#ipfire"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#dd-wrt"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#kotlin"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#python"; chatnet = "Freenode"; autojoin = "Yes"; },
