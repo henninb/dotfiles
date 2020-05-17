@@ -99,6 +99,7 @@ elif [ "$OS" = "Solus" ]; then
   echo Failures: "$FAILURE"
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   FAILURE=""
+  yay install webmin
   for i in $ARCHLINUX_PKGS; do
     if ! sudo pacman --noconfirm --needed -S "$i"; then
       FAILURE="$i $FAILURE"

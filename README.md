@@ -102,3 +102,4 @@ https://lightningmanic.github.io/
 owncloud
 mumble
 bashtop
+webmin
