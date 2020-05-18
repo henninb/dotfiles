@@ -1,0 +1,54 @@
+*filter
+
+# 1. Logging.
+# 1.1. logdrop chain
+-N logdrop
+-A logdrop -j LOG --log-prefix "dropped: "
+-A logdrop -j DROP
+
+# 2. Set default policies for INPUT, OUTPUT and FORWARD chains
+-P INPUT DROP
+-P OUTPUT ACCEPT
+-P FORWARD DROP
+
+# 3. INPUT CHAIN
+# 3.0. Allow loopback
+-A INPUT -i lo -j ACCEPT
+# 3.1. Allow already established connections
+-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+# 3.2. log and drop invalid packets
+-A INPUT -m conntrack --ctstate INVALID -j logdrop
+# 3.3. Allow DHCP renew on eth0
+-A INPUT -p udp -m udp --dport 68 -i eth0 -j ACCEPT
+# 3.4. Allow any connections from lan
+-A INPUT -i eth1 -j ACCEPT
+# 3.5. Log and drop the rest
+-A INPUT -j logdrop
+
+# 4. Forwarding
+# 4.0. Allow forwarding from lan to wan
+-A FORWARD -i eth1 -o eth0 -j ACCEPT
+# 4.1. Allow forwarding from lan to lan
+-A FORWARD -i eth1 -o eth1 -j ACCEPT
+# 4.2. Allow forwarding from wan to lan, but only for already established connections
+-A FORWARD -i eth0 -o eth1 -m state --state RELATED,ESTABLISHED -j ACCEPT
+# 4.4. log and drop the rest in FORWARD chain
+-A FORWARD -j logdrop
+
+COMMIT
+
+*nat
+
+# Set default NAT policies to accept
+-P PREROUTING ACCEPT
+-P POSTROUTING ACCEPT
+-P OUTPUT ACCEPT
+
+# 5. NAT
+# 5.1. Enable NAT
+-A POSTROUTING -o eth0 -j MASQUERADE
+
+COMMIT
+
+*raw
+COMMIT
