@@ -165,3 +165,5 @@ accolades [ noun ]
 ## assertion	noun	a confident and forceful statement of fact or belief.
 ## null hypothesis	noun	(in a statistical test) the hypothesis that there is no significant difference between specified populations, any observed difference being due to sampling or experimental error.
 ## obsequious   adjective   ??
+
+## incommensurate - out of proposition with
