@@ -2,6 +2,8 @@
 # route -n
 # netstat -rn
 
+systemctl disable systemd-networkd-wait-online.service
+
 sudo apt install isc-dhcp-server
 sudo sysctl -w net.ipv4.ip_forward=1
 echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf
@@ -14,7 +16,7 @@ sudo ufw allow from 192.168.10.0/24
 sudo ufw allow from 192.168.20.0/24
 sudo ufw allow from 192.168.10.0/24 to any port 22
 sudo ufw allow from 192.168.100.0/24 to any port 22
-sudo ufw allow in on enp1s10 to any port 22
+sudo ufw allow in on enp2s0f0 to any port 22
 # sudo iptables -t nat -A POSTROUTING -o enp0s7 -j MASQUERADE
 
 /etc/ufw/before.rules
@@ -36,14 +38,14 @@ DEFAULT_FORWARD_POLICY="ACCEPT"
 ufw route allow in on eth1 out on eth2
 
 /etc/default/isc-dhcp-server
-INTERFACESv4="enp1s10 enx00e04c534458"
+INTERFACESv4="enp2s0f0 enp2s0f1"
 INTERFACESv6=""
 
 
 /etc/dhcp/dhcpd.conf
 subnet 192.168.10.0 netmask 255.255.255.0 {
  range 192.168.10.101 192.168.10.200;
- interface enp1s10;
+ interface enp2s0f0;
  option domain-name-servers 8.8.8.8, 8.8.8.4;
  option routers 192.168.10.1;
  option subnet-mask 255.255.255.0;
@@ -52,7 +54,7 @@ subnet 192.168.10.0 netmask 255.255.255.0 {
 
 subnet 192.168.20.0 netmask 255.255.255.0 {
  range 192.168.20.101 192.168.20.200;
- interface enx00e04c534458;
+ interface enp2s0f1;
  option domain-name-servers 8.8.8.8, 8.8.8.4;
  option routers 192.168.20.1;
  option subnet-mask 255.255.255.0;
@@ -65,8 +67,8 @@ auto enp0s7
 iface enp0s7 inet dhcp
 
 ## internal
-auto enp1s10
-iface enp1s10 inet static
+auto enp2s0f0
+iface enp2s0f0 inet static
   address 192.168.10.1
   netmask 255.255.255.0
   gateway 192.168.10.1
@@ -74,8 +76,8 @@ iface enp1s10 inet static
   broadcast 192.168.10.255
 
 ## internal
-auto enx00e04c534458
-iface enx00e04c534458 inet static
+auto enp2s0f1
+iface enp2s0f1 inet static
   address 192.168.20.1
   netmask 255.255.255.0
   gateway 192.168.20.1
