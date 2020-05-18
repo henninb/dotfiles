@@ -321,3 +321,7 @@ Gtk-Message: 10:16:50.304: Failed to load module "atk-bridge"
 ```
 sudo e2fsck -cfpv /dev/sda1
 ```
+
+
+## network A start job is running for wait for network to be configured
+systemctl disable systemd-networkd-wait-online.service
