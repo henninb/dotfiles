@@ -2,15 +2,16 @@
 # route -n
 # netstat -rn
 
-systemctl disable systemd-networkd-wait-online.service
+sudo apt install -y pppoeconf
+sudo apt install -y isc-dhcp-server
+sudo apt install -y ufw
+sudo apt install -y net-tools
 
-sudo apt install isc-dhcp-server
 sudo sysctl -w net.ipv4.ip_forward=1
 echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf
 cat /etc/sysctl.conf
 sudo pppoeconf
 sudo lshw -C network
-sudo apt install ufw
 sudo ufw allow from 192.168.100.97
 sudo ufw allow from 192.168.10.0/24
 sudo ufw allow from 192.168.20.0/24
