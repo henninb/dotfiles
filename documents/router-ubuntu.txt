@@ -40,6 +40,7 @@ ufw route allow in on eth1 out on eth2
 
 /etc/default/isc-dhcp-server
 INTERFACESv4="enp2s0f0 enp2s0f1"
+INTERFACESv4="enp1s0f0 enp1s0f1"
 INTERFACESv6=""
 
 
@@ -61,6 +62,33 @@ subnet 192.168.20.0 netmask 255.255.255.0 {
  option subnet-mask 255.255.255.0;
  option broadcast-address 192.168.20.255;
 }
+
+
+#sudo netplan --debug generate  # generate the config files
+#sudo netplan apply            # apply the new configuration
+#reboot                        # reboot the computer
+
+/etc/netplan/50-setup.yaml
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp2s0:
+      dhcp4: true
+      optional: true
+    enp1s0f0:
+      dhcp4: false
+      optional: true
+      addresses: [192.168.10.1/24]
+      nameservers:
+        addresses: [8.8.8.8,8.8.4.4]
+    enp1s0f1:
+      dhcp4: false
+      optional: true
+      addresses: [192.168.20.1/24]
+      nameservers:
+        addresses: [8.8.8.8,8.8.4.4]
+
 
 /etc/network/interfaces
 ## external
