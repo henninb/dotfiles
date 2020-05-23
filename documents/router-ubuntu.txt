@@ -69,6 +69,7 @@ subnet 192.168.20.0 netmask 255.255.255.0 {
 #reboot                        # reboot the computer
 
 /etc/netplan/50-setup.yaml
+sudo netplan apply
 network:
   version: 2
   renderer: networkd
