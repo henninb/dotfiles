@@ -127,7 +127,7 @@ elif [ "$OS" = "Ubuntu" ]; then
 elif [ "$OS" = "FreeBSD" ]; then
   sudo service postgresql stop
   sudo rm -rf /var/db/postgres/data11
-  sudo pkg install -y postgresql11-server-11.3
+  sudo pkg install -y postgresql11-server
   sudo sysrc postgresql_enable=YES
   sudo service postgresql initdb
   sudo service postgresql start
