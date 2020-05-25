@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "coc-css": ">=1.2.3",
-    "coc-eslint": ">=1.2.6",
+    "coc-eslint": ">=1.2.7",
     "coc-fsharp": ">=0.1.65",
     "coc-git": ">=1.7.13",
     "coc-html": ">=1.2.4",

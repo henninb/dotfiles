@@ -103,3 +103,5 @@ owncloud
 mumble
 bashtop
 webmin
+termonad
+kakoune
