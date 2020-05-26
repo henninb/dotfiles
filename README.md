@@ -105,3 +105,4 @@ bashtop
 webmin
 termonad
 kakoune
+taskwarrior
