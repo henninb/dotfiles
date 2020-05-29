@@ -18,6 +18,8 @@ elif [ "$OS" = "Clear Linux OS" ]; then
   sudo swupd bundle-add wget
   sudo swupd bundle-add fonts-basic
 elif [ "$OS" = "FreeBSD" ]; then
+  sudo pkg install -y coreutils 
+  sudo pkg install -y urwfonts 
   sudo pkg install -y zsh
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse zsh
