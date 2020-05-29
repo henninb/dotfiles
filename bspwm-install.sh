@@ -130,8 +130,8 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y w3m
   sudo pkg install -y w3m-img
   sudo pkg install -y vifm
-  sudo apt install -y xserver-xephyr
-  sudo apt install -y polybar
+  sudo pkg install -y xserver-xephyr
+  sudo pkg install -y polybar
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y bspwm xdo dmenu terminus-fonts-console terminus-fonts
 else
