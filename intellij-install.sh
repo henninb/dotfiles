@@ -75,6 +75,7 @@ elif [ "$OS" = "void" ]; then
   sudo chmod -R 775 /opt/idea-IU-*/
 elif [ "$OS" = "Solus" ]; then
   sudo mkdir -p /opt
+  sudo chmod 755 /opt
   sudo rm -rf /opt/intellij
   sudo rm -rf /opt/idea-IU-*/
   sudo tar -xvf "ideaIU-${VER}.tar.gz" -C /opt
