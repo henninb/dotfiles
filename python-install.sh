@@ -63,4 +63,6 @@ echo .local/lib/
 ls -ld .local/lib/python*
 python --version
 
+echo https://pypi.org/project/blessed/
+
 exit 0
