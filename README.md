@@ -58,8 +58,8 @@
 - notes - standard note, joplin
 - font - monofur, jetbrains, symbola
 - theme - dracula
-- audio player - cmus, emacs (bongo)
-- media player daemon - mpd
+- audio player - cmus, cantata, ncmpcpp, emacs (bongo)
+- audio player daemon - mpd
 - image converter - imagemagik
 - image viewer - sxiv
 - wallpaper manager - feh, nitrogen
