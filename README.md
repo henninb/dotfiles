@@ -30,7 +30,7 @@
 
 ## Software
 - terminal - alacritty, urxvt, termite, st
-- editor - neovim, emacs, vscode, intellij, vscodium, neovim-gtk
+- editor - neovim, emacs, vscode, intellij, vscodium, neovim-gtk, kakoune
 - shell - zsh, fish, bash, dash, ksh
 - shell prompt - spaceship, agnoster, alien, dracula
 - zsh plugins - zsh-syntax-highlighting, zsh-autosuggestions, autojump, zsh-history-substring-search
@@ -51,7 +51,7 @@
 - irc client - irssi, emacs (erc)
 - network packet tools - tcpdump, wireshark
 - markdown viewer - glow
-- browser - brave, firefox, ddgr, lynx
+- browser - brave, firefox, ddgr, lynx, elinks
 - database client - dbeaver, sqlplus
 - database server - postgresql, influx, mongodb, elastic
 - astronomy - stellarium
@@ -78,7 +78,7 @@
 - encryption - gnupg, keybase
 - terminal screen saver - cmatrix
 - window detailer - xprop
-- image clone - etcher
+- image clone - etcher, dd
 - git client - tig, emacs (magit)
 - video chat/chat - discord, slack, zoom, telegram
 - image editor - gimp
@@ -104,5 +104,4 @@ mumble
 bashtop
 webmin
 termonad
-kakoune
 taskwarrior
