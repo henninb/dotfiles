@@ -1,5 +1,7 @@
 #!/bin/sh
 
+lspci -k | grep -A 2 -E "(VGA|3D)"
+
 sudo pacman -S vdpauinfo
 sudo pacman -S mesa-vdpau
 sudo pacman -S libva-utils
