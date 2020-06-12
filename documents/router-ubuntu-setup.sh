@@ -127,7 +127,7 @@ ssh henninb@${dest} "sudo cp 50-setup.yaml /etc/netplan/"
 ssh henninb@${dest} "sudo cp isc-dhcp-server /etc/default/"
 
 echo sudo sysctl -w net.ipv4.ip_forward=1
-echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf
+echo 'echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf'
 echo cat /etc/sysctl.conf
 echo sudo pppoeconf
 
