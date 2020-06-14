@@ -105,3 +105,4 @@ bashtop
 webmin
 termonad
 taskwarrior
+https://www.ventoy.net/en/index.html - for ISOs
