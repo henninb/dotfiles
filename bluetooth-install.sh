@@ -60,12 +60,16 @@ echo pactl list short
 #AutoEnable=true
 
 echo hcitool scan
+
+# monitor bluetooth connection
+sudo btmon
 #sudo bluetoothctl -- power on
 sudo bluetoothctl -- scan on
 sudo bluetoothctl -- trust BC:F2:92:28:6D:45
 sudo bluetoothctl -- pairable on
 sudo bluetoothctl -- pair BC:F2:92:28:6D:45
 sudo bluetoothctl -- trust BC:F2:92:28:6D:45
+sudo bluetoothctl -- connect BC:F2:92:28:6D:45
 echo sudo l2ping BC:F2:92:28:6D:45
 
 #echo echo -e "<command1>\n<command2>\n" | bluetoothctl or bluetoothctl -- command
@@ -99,6 +103,13 @@ sudo pulseaudio --system
 
 sudo pactl unload-module module-bluetooth-discover
 sudo pactl load-module module-bluetooth-discover
+
+# reset keyboard
+sudo hciconfig hci0 reset
+sudo hidd --search
+
+sudo rm /var/lib/bluetooth/*
+# then restart bluetooth
 
 
 exit 0
