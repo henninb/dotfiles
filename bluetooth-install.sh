@@ -29,6 +29,10 @@ else
   exit 1
 fi
 echo sudo hciconfig hci0 up
+echo hciconfig -a hci0
+yay -S bluez-utils-compat
+sudo btmgmt ssp off
+rfkill list
 
 sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
