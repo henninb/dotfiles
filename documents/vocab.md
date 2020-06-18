@@ -1,5 +1,7 @@
 # Vocabulary
 
+## salient [adj]
+- most noticeable or important.
 ## presupposition [ noun ]
 - a thing tacitly assumed beforehand at the beginning of a line of argument or course of action
 ## tomfoolery
