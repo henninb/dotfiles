@@ -34,6 +34,13 @@ yay -S bluez-utils-compat
 sudo btmgmt ssp off
 rfkill list
 
+vi /etc/bluetooth/hcid.conf
+device 00:1E:52:FB:68:55 {
+    name "Apple Wireless Keyboard";
+    auth enable;
+    encrypt enable;
+}
+
 sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
 sudo systemctl status bluetooth
