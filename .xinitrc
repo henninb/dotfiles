@@ -30,6 +30,12 @@ else
   echo "xrdb not installed."
 fi
 
+if [ -x "$(command -v blueman-applet)" ]; then
+  blueman-applet &
+else
+  echo "blueman-applet not installed."
+fi
+
 #for f in /etc/X11/Xsession.d/*; do
 #  echo $f >> "$HOME/xinit.log"
 #  [ -x "$f" ] && . "$f"

@@ -34,9 +34,13 @@ echo hciconfig -a hci0
 yay -S bluez-utils-compat
 sudo btmgmt ssp off
 rfkill list
-
-vi /etc/bluetooth/hcid.conf
 bluedevil # kde
+
+/etc/bluetooth/main.conf
+AutoConnect=true
+vi /etc/bluetooth/input.conf
+UserspaceHID=true
+vi /etc/bluetooth/hcid.conf
 device 00:1E:52:FB:68:55 {
     name "Apple Wireless Keyboard";
     auth enable;
