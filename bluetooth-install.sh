@@ -36,6 +36,7 @@ sudo btmgmt ssp off
 rfkill list
 
 vi /etc/bluetooth/hcid.conf
+bluedevil # kde
 device 00:1E:52:FB:68:55 {
     name "Apple Wireless Keyboard";
     auth enable;
