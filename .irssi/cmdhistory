@@ -1,35 +1,3 @@
-: 1581209046:: :;is it more common to use emacs in a terminal or the GUI version? I would prefer to stay in the terminal.
-: 1581209106:: :;i do notice that the gui has a nicer look and feel.
-: 1581209235:: :;i was able to switch to the dracula theme (my personal preference), it looks really nice
-: 1581209259:: :;good to know ottabwz
-: 1581209301:: :;SquareHimself, do you have a way to toggle the themes?
-: 1581209332:: :;that is pretty amazing SquareHimself.
-: 1581209399:: :;like Derek says in his videos, you have to just use it and explore.
-: 1581209451:: :;agreed, the elisp is important to know the basics.
-: 1581209470:: :;which internal emacs terminal do you use?
-: 1581209497:: :;that is a fair point outtabwz
-: 1581209616:: :;it will take me some time, but it sounds interesting.
-: 1581209743:: :;i will give it a try.
-: 1581209972:: :;irssi is really good.
-: 1581210285:: :;thanks for the chat
-: 1581210879:: :;/quit
-: 1582935470:: :;greetings
-: 1582935512:: :;I am looking to set a font up for lf, it looks like my default font is not displaying correctly. any advice on a good font?
-: 1582936457:: :;greetings, I am looking for some help with configurations for the lf file manager.
-: 1582936478:: :;anyone know how to set a font to display icons.
-: 1582936598:: :;agree pragmaticenigma, I am using monofur font and I think it has limited glyphs.
-: 1582936620:: :;i am using iterm, so I am not sure if I can install a secondary font.
-: 1582936761:: :;sarnold, i can try to change font, do you know what unicode char code i should test my font for? 
-: 1582936791:: :;i can try to see if i can find something in the lf repo.
-: 1582936912:: :;thanks for the tip. Font management can be a pain.
-: 1582938102:: :;/quit
-: 1584147134:: :;when I Mx shell, I want the window to come virtically on the bottom, how can I configure this by default?
-: 1584147311:: :;oni-onion, thanks -- does it always open a second window?
-: 1584147980:: :;i am using emacs gui (macos) - I am running Mx shell, can i open a file for editing in emacs?
-: 1584148933:: :;basically I should access files from within emacs itself? 
-: 1584152002:: :;/quit
-: 1584361000:: :;i am trying to install xdo and not xdotool in fedora, can any one advise on where to find it src or binary?
-: 1584361185:: :;rindof, from what I can tell I could not find it in dnf :(.
 : 1584361442:: :;rindolf, you got it.
 : 1584361535:: :;i see that too Southern_Gentlem, but I think this the github page ^^^ is what I need to look at.
 : 1584361541:: :;thanks for the help.
@@ -98,3 +66,35 @@
 : 1589646039:: :;hi, i am setting up a router in ubuntu with 1 wan and two lans. can I setup the lans with 2 dhcp? I am able to get an address on lan1, but not on lan2. any advice?
 : 1589646041:: :;https://pastebin.com/dP8X0PCD
 : 1589647326:: :;/quit
+: 1592567157:: :;i have a bluetooth k480 keyboard that I cannot get working. do i need to do something special for HID devices?
+: 1592567203:: :;doesn't seem to pair.
+: 1592567211:: :;my mouse pairs, no problem
+: 1592567245:: :;i think so, I was able to pair just fine on a debian based distro.
+: 1592567348:: :;i am running btmon and here is what it says Status: Authentication Failure (0x05)
+: 1592567388:: :;i am using the applet for pairing and it says "failed to add device" when I run setup.
+: 1592567422:: :;i am not sure about the pin code.
+: 1592567467:: :;ok, I don't get prompted at all for any pin codes.
+: 1592567491:: :;let me try again with bluetoothctl
+: 1592567621:: :;thanks for the tips NetSysFire
+: 1592567635:: :;thanks for the tips NetSysFire and MrElendig.
+: 1592567654:: :;no not yet
+: 1592567667:: :;trying now
+: 1592567687:: :;i got it.
+: 1592567693:: :;thanks
+: 1592567715:: :;it finally prompted me to confirm my passcode.
+: 1592567743:: :;i used 
+: 1592567761:: :;i used bluetoothctl instead of the applet.
+: 1592567857:: :;is that in the standard arch repositories?
+: 1592567918:: :;thanks again, I was definately spinning on this issue for a while.
+: 1592573750:: :;/quit
+: 1592652288:: :;i am able to pair my bluetooth keyboard no problem, how do I auto connect on reboot?
+: 1592653044:: :;mkoskar
+: 1592653063:: :;mkoskar - i believe so, how can I verify?
+: 1592653112:: :;i simply manually connect on reboot.
+: 1592653136:: :;yes, via bluetoothctl
+: 1592653180:: :;i am considering creating a startup script, but i would prefer not to.
+: 1592653278:: :;yes, this device is trusted
+: 1592653529:: :;ok, i see an article that references /etc/btkbd.conf. I will look and see if that helps.
+: 1592653576:: :;thanks for sharing your thoughts mkoskar
+: 1592654068:: :;seems like the right 
+: 1592654071:: :;/quit
