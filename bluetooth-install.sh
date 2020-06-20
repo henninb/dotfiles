@@ -131,6 +131,8 @@ sudo rm /var/lib/bluetooth/*
 
 exit 0
 
+bluetoothctl: 5.54
+
 
 I had the same problem with this mouse, and I found the solution using the second approach mentioned here: https://unix.stackexchange.com/questions/177998/bluetooth-mouse-disconnects
 
