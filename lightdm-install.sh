@@ -40,6 +40,7 @@ DesktopNames=xmonad
 Keywords=tiling;wm;windowmanager;window;manager;
 EOF
 
+echo /usr/share/xsessions
 sudo cp bspwm.desktop /usr/share/xsessions/
 sudo cp xmonad.desktop /usr/share/xsessions/
 
