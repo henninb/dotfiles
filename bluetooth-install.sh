@@ -131,3 +131,20 @@ sudo rm /var/lib/bluetooth/*
 
 exit 0
 
+
+I had the same problem with this mouse, and I found the solution using the second approach mentioned here: https://unix.stackexchange.com/questions/177998/bluetooth-mouse-disconnects
+
+In short, create a rule file, namely "99-bluetooth.rules", in "/etc/udev/" and add this line in it:
+
+ACTION=="add", SUBSYSTEM=="bluetooth", ATTR{product}=="Microsoft Bluetooth Mouse
+
+
+# Configuration file for the input service
+
+# This section contains options which are not specific to any
+# particular interface
+[General]
+
+# Set idle timeout (in minutes) before the connection will
+# be disconnect (defaults to 0 for no timeout)
+IdleTimeout=0
