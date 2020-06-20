@@ -3,20 +3,20 @@
 export _JAVA_AWT_WM_NONREPARTENTING=1
 #export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
-date >> $HOME/bspwm.log
+date >> "$HOME/bspwm.log"
 if [ -x "$(command -v dunst)" ]; then
-  echo dunst was called. >> $HOME/bspwm.log
+  echo dunst was called. >> "$HOME/bspwm.log"
   dunst &
 fi
 
 if [ -x "$(command -v sxhkd)" ]; then
   sxhkd &
-  echo sxhkd was called. >> $HOME/bspwm.log
+  echo sxhkd was called. >> "$HOME/bspwm.log"
 fi
 
 if [ -x "$(command -v polybar)" ]; then
-  $HOME/.config/polybar/launch.sh bspwm
-  echo polybar was called. >> $HOME/bspwm.log
+  "$HOME/.config/polybar/launch.sh" bspwm
+  echo polybar was called. >> "$HOME/bspwm.log"
 fi
 
 #### Polybar ####
@@ -25,63 +25,63 @@ fi
 
 ###---Global Settings---###
 #bspc config automatic_scheme alternate
-echo top of the config >> $HOME/bspwm.log
+echo top of the config >> "$HOME/bspwm.log"
 if ! bspc config initial_polarity second_child; then
-  echo bspc config initial_polarity second_child failed. >> $HOME/bspwm.log
+  echo bspc config initial_polarity second_child failed. >> "$HOME/bspwm.log"
 else
   echo bspc config initial_polarity second_child success. >> "$HOME/bspwm.log"
 fi
 
 if ! bspc config pointer_modifier lock; then
-  echo bspc config pointer_modifier lock failed. >> $HOME/bspwm.log
+  echo bspc config pointer_modifier lock failed. >> "$HOME/bspwm.log"
 else
   echo bspc config pointer_modifier lock success. >> "$HOME/bspwm.log"
 fi
 
 if ! bspc config pointer_action1 move; then
-  echo bspc config pointer_action1 move failed. >> $HOME/bspwm.log
+  echo bspc config pointer_action1 move failed. >> "$HOME/bspwm.log"
 else
   echo bspc config pointer_action1 move success. >> "$HOME/bspwm.log"
 fi
 
 if ! bspc config pointer_action2 resize_side; then
-  echo bspc config pointer_action2 resize_side failed. >> $HOME/bspwm.log
+  echo bspc config pointer_action2 resize_side failed. >> "$HOME/bspwm.log"
 else
   echo bspc config pointer_action2 resize_side success. >> "$HOME/bspwm.log"
 fi
 
 if ! bspc config pointer_action3 resize_corner; then
-  echo bspc config pointer_action3 resize_corner failed. >> $HOME/bspwm.log
+  echo bspc config pointer_action3 resize_corner failed. >> "$HOME/bspwm.log"
 else
   echo bspc config pointer_action3 resize_corner success. >> "$HOME/bspwm.log"
 fi
 
 if ! bspc config click_to_focus none; then
-  echo bspc config click_to_focus none failed. >> $HOME/bspwm.log
+  echo bspc config click_to_focus none failed. >> "$HOME/bspwm.log"
 else
   echo bspc config click_to_focus none success. >> "$HOME/bspwm.log"
 fi
 
 if ! bspc config focus_follows_pointer true; then
-  echo bspc config focus_follows_pointer true failed. >> $HOME/bspwm.log
+  echo bspc config focus_follows_pointer true failed. >> "$HOME/bspwm.log"
 else
   echo bspc config focus_follows_pointer true success. >> "$HOME/bspwm.log"
 fi
 
 if ! bspc config remove_disabled_monitors true; then
-  echo bspc config remove_disabled_monitors true failed. >> $HOME/bspwm.log
+  echo bspc config remove_disabled_monitors true failed. >> "$HOME/bspwm.log"
 else
   echo bspc config remove_disabled_monitors true success. >> "$HOME/bspwm.log"
 fi
 
 if ! bspc config remove_unplugged_monitors true; then
-  echo bspc config remove_unplugged_monitors failed. >> $HOME/bspwm.log
+  echo bspc config remove_unplugged_monitors failed. >> "$HOME/bspwm.log"
 else
-  echo bspc config remove_unplugged_monitors success. >> $HOME/bspwm.log
+  echo bspc config remove_unplugged_monitors success. >> "$HOME/bspwm.log"
 fi
 
 if ! bspc config merge_overlapping_monitors true; then
-  echo bspc config merge_overlapping_monitors true failed. >> $HOME/bspwm.log
+  echo bspc config merge_overlapping_monitors true failed. >> "$HOME/bspwm.log"
 else
   echo bspc config merge_overlapping_monitors true success. >> "$HOME/bspwm.log"
 fi
