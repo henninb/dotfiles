@@ -60,3 +60,5 @@
 #  clean = "sed -e 's/^\(KEY\|TRUST\)STORE_PASSWORD=.*/ blah\1 STORE_PASSWORD=TODO/'"
 #[filter "ts-pw"]
 #  clean = "sed -e 's/TRUSTSTORE_PASSWORD=\".*\"/TRUSTSTORE_PASSWORD=\"********\"/'"
+[pull]
+	rebase = false
