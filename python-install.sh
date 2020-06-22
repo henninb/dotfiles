@@ -45,7 +45,6 @@ pip_ins ansible
 pip_ins ranger-fm
 pip_ins youtube-dl
 pip_ins powerline-status
-pip_ins yarn
 pip_ins cheat
 #pip_ins greg
 pip_ins mdv
@@ -54,6 +53,7 @@ pip_ins pssh
 #pip_ins parallel-ssh
 pip_ins azure_cli
 pip_ins glances
+pip_ins tuir #redit client
 
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 echo pyenv install 2.7.8

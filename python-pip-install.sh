@@ -35,7 +35,7 @@ elif [ "$OS" = "Gentoo" ]; then
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y python36 py36-pip
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
