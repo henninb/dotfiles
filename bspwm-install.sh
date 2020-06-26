@@ -31,6 +31,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y xscreensaver
   sudo apt install -y xinit
   sudo apt install -y dmenu
+  sudo apt install -y chafa
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y bspwm
   sudo zypper install -y xscreensaver
@@ -92,6 +93,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S w3m
   sudo pacman --noconfirm --needed -S dmenu
   sudo pacman --noconfirm --needed -S neofetch
+  sudo pacman --noconfirm --needed -S chafa
 elif [ "$OS" = "Gentoo" ]; then
   GENTOO_PKGS="bspwm dmenu sxhkd feh cmatrix x11-libs/cairo libmpdclient pulseaudio autocutsel w3m x11-misc/xclip"
   FAILURE=""
