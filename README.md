@@ -61,7 +61,7 @@
 - audio player - cmus, cantata, ncmpcpp, emacs (bongo)
 - audio player daemon - mpd
 - image converter - imagemagik
-- image viewer - sxiv
+- image viewer - sxiv, chafa
 - wallpaper manager - feh, nitrogen
 - burning images - cdrecord, wodim, k3b
 - podcast client - newsboat, castget
@@ -78,7 +78,7 @@
 - encryption - gnupg, keybase
 - terminal screen saver - cmatrix
 - window detailer - xprop
-- image clone - etcher, dd
+- image clone - dd, etcher
 - git client - tig, emacs (magit)
 - video chat/chat - discord, slack, zoom, telegram
 - image editor - gimp
