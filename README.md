@@ -43,7 +43,8 @@
 - cloud media player - olivia
 - software defined radio - gqrx
 - spreadsheet -sc-im
-- programming - java, kotlin, rust, haskell, python, js, scala
+- programming languages - java, kotlin, rust, haskell, python, js, scala
+- frameworks - SpringBoot, Micronaut
 - containerization - docker
 - hypervisor - kvm, qemu
 - remote desktop server - xrdp
