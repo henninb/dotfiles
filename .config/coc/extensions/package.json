@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "coc-css": ">=1.2.3",
+    "coc-css": ">=1.2.4",
     "coc-eslint": ">=1.2.7",
     "coc-fsharp": ">=0.1.65",
     "coc-git": ">=1.7.15",
