@@ -5,20 +5,19 @@
 # gh [remote] [branch]
 
 git rev-parse 2>/dev/null
-
-if [ $? != 0 ]; then
+if [ $? -ne 0 ]; then
     echo "Not a git repository."
     exit 1
 fi
 
 remote="origin"
-if [ ! -z "$1" ]; then
+if [ -n "$1" ]; then
     remote="$1"
 fi
 
 remote_url="remote.${remote}.url"
 
-giturl=$(git config --get $remote_url)
+giturl=$(git config --get "$remote_url")
 if [ -z "$giturl" ]; then
     echo "$remote_url not set."
     exit 1
@@ -37,7 +36,7 @@ else
   branch="$2"
 fi
 
-if [ ! -z "$branch" ]; then
+if [ -n "$branch" ]; then
   giturl="${giturl}/tree/${branch}"
 fi
 
