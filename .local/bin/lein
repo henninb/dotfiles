@@ -8,9 +8,9 @@ function msg {
     echo "$@" 1>&2
 }
 
-export LEIN_VERSION="2.9.2"
+export LEIN_VERSION="2.9.3"
 # Must be sha256sum, will be replaced by bin/release
-export LEIN_CHECKSUM='09805bd809656794cfe7d9155fd4b8bea2646092318690bf68e3c379574a2d3c'
+export LEIN_CHECKSUM='23e1df18bc97226d570f47335a8d543e1b759ea303544ea57d5309be3dedcbbb'
 
 case $LEIN_VERSION in
     *SNAPSHOT) SNAPSHOT="YES" ;;
@@ -84,6 +84,7 @@ function checksum_failed_message {
 	file. We expected a sha256 of
 	$2 and actually had
 	$3.
+	We used '$SHASUM_CMD' to verify the downloaded file.
 	EOS
 }
 
@@ -101,12 +102,12 @@ function self_install {
   $HTTP_CLIENT "$LEIN_JAR.pending" "$LEIN_URL"
   local exit_code=$?
   if [ $exit_code == 0 ]; then
-      printf "$LEIN_CHECKSUM $LEIN_JAR.pending\n" >> "$LEIN_JAR.pending.shasum"
+      printf "$LEIN_CHECKSUM  $LEIN_JAR.pending\n" > "$LEIN_JAR.pending.shasum"
       $SHASUM_CMD -c "$LEIN_JAR.pending.shasum"
       if [ $? == 0 ]; then
         mv -f "$LEIN_JAR.pending" "$LEIN_JAR"
       else
-        got_sum="$($SHASUM_CMD "$LEIN_JAR.pending.shasum" | awk '{ print $1 }')"
+        got_sum="$($SHASUM_CMD "$LEIN_JAR.pending" | cut -f 1 -d ' ')"
         checksum_failed_message "$LEIN_URL" "$LEIN_CHECKSUM" "$got_sum"
         rm "$LEIN_JAR.pending" 2> /dev/null
         exit 1
