@@ -8,7 +8,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   echo "reboot seems to be required"
   sudo netstat -lntp | grep dockerd
   sudo fuser 2375/tcp
-  sudo usermod -a -G docker $(id -un)
+  sudo usermod -a -G docker "$(id -un)"
   echo "/etc/docker/daemon.json"
   sudo mkdir -p /etc/systemd/system/docker.socket.d
   echo "loop" | sudo tee /etc/modules-load.d/loop.conf
@@ -21,12 +21,12 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   #sudo firewall-cmd --reload
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y docker
-  sudo usermod -G docker -a $USER
+  sudo usermod -G docker -a "$USER"
   sudo systemctl enable docker
   sudo systemctl start docker
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y docker docker-compose
-  sudo usermod -G docker -a $USER
+  sudo usermod -G docker -a "$USER"
   sudo systemctl enable docker
   sudo systemctl start docker
   sudo systemctl status docker
@@ -34,7 +34,7 @@ elif [ "$OS" = "Ubuntu" ]; then
   sudo apt install -y docker
   sudo systemctl enable docker
   sudo systemctl start docker
-  sudo usermod -a -G docker $(id -un)
+  sudo usermod -a -G docker "$(id -un)"
   sudo netstat -lntp | grep dockerd
   sudo fuser 2375/tcp
 elif [ "$OS" = "Linux Mint" ]; then
@@ -47,7 +47,7 @@ elif [ "$OS" = "Linux Mint" ]; then
   sudo apt install -y docker-ce docker-compose
   sudo systemctl enable docker
   sudo systemctl start docker
-  sudo usermod -a -G docker $(id -un)
+  sudo usermod -a -G docker "$(id -un)"
   sudo netstat -lntp | grep dockerd
   sudo fuser 2375/tcp
 elif [ "$OS" = "Fedora" ]; then
@@ -59,7 +59,7 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y docker-ce docker-ce-cli containerd.io
   sudo systemctl enable docker
   sudo systemctl start docker
-  sudo usermod -aG docker $(whoami)
+  sudo usermod -aG docker "$(whoami)"
   sudo netstat -lntp | grep dockerd
   sudo fuser 2375/tcp
 elif [ "$OS" = "CentOS Linux" ]; then
@@ -71,7 +71,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo systemctl enable docker
   sudo systemctl start docker
   sudo chkconfig docker on
-  sudo usermod -aG docker $(whoami)
+  sudo usermod -aG docker "$(whoami)"
   sudo netstat -lntp | grep dockerd
   sudo fuser 2375/tcp
 elif [ "$OS" = "FreeBSD" ]; then
@@ -84,7 +84,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse app-emulation/docker
   sudo rc-update add docker default
   sudo rc-service docker start
-  sudo usermod -a -G docker $(id -un)
+  sudo usermod -a -G docker "$(id -un)"
   /usr/share/docker/contrib/check-config.sh
   echo https://github.com/tianon/docker-overlay
 else
