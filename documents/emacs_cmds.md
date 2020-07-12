@@ -5,7 +5,12 @@
 Cx,4,0
 ```
 
-## quit within emacs
+## close the split buffer
+```
+Cx,0
+```
+
+## quit within emacs (i overwrote this)
 ```
 Cx-g
 ```
@@ -17,3 +22,27 @@ emacsclient -create-frame --alternate-editor=""
 ## emacsclient from a shell
 emacsclient -c -e "(print (+ 5 4))"
 emacsclient -e "(print (+ 5 4))"
+
+## startup Dired
+```
+Cx,d
+Cx,4,d
+```
+
+## startup magit
+```
+Mx,magit
+```
+
+## startup emms
+```
+Mx,emms
+```
+
+## install package magit
+```
+M-x package-install RET magit RET
+```
+
+## version of magit
+```M-x magit-version RET```

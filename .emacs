@@ -96,6 +96,9 @@
 ; map kill buffer binding
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 
+; map magit status binding
+(global-set-key (kbd "C-x g") 'magit-status)
+
 ; auto clean whitespace noise
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
@@ -175,7 +178,7 @@
 ;; git package
 (use-package magit
   :ensure t
-  :bind (("C-M-g" . magit-status))
+;;  :bind (("C-M-g" . magit-status))
 )
 
 (use-package emms
@@ -184,7 +187,7 @@
     (require 'emms-setup)
     (emms-all)
     (emms-default-players)
-   ; (setq emms-source-file-default-directory "~/Music/")
+;    (setq emms-source-file-default-directory "~/media/")
       (require 'emms-mode-line)
   (emms-mode-line 1)
   (require 'emms-playing-time)
