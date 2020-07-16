@@ -21,8 +21,8 @@
 - FreeNAS
 
 ## Operating Systems - Security/Privacy
-- qubes
-- tails
+- Qubes
+- Tails
 
 ## Router Operating Systems
 - ddwrt
@@ -59,7 +59,7 @@
 - notes - standard note, joplin
 - font - monofur, jetbrains, symbola
 - theme - dracula
-- audio player - cmus, cantata, ncmpcpp, emacs (bongo)
+- audio player - cmus, cantata, ncmpcpp, emacs (emms)
 - audio player daemon - mpd
 - image converter - imagemagik
 - image viewer - sxiv, chafa
