@@ -11,6 +11,9 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
+; required for bspwm 7/15/2020
+;(setq frame-resize-pixelwise t)
+
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
