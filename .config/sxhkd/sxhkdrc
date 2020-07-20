@@ -18,6 +18,8 @@ alt + shift + Escape
     bspwm_exit
 alt + shift + BackSpace
     xdo close
+alt + control + {t,s,f}
+    bspc node -t {tiled,floating,fullscreen}
 XF86AudioRaiseVolume
     amixer -q -D pulse sset Master 2%+
 XF86AudioLowerVolume
@@ -59,5 +61,5 @@ super + m
 # ===================================
 
 # set the window state
-super + {t,shift + t,s,f}
-    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+# super + {t,shift + t,s,f}
+#     bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
