@@ -91,6 +91,7 @@
 - vector graphics - inkscape
 - 3D creation - blender
 - screencast - simplescreenrecorder
+- file transfer - oneshot
 
 steam
 arduino
