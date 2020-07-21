@@ -3,11 +3,11 @@
     "coc-css": ">=1.2.4",
     "coc-eslint": ">=1.2.7",
     "coc-fsharp": ">=0.1.65",
-    "coc-git": ">=1.7.15",
+    "coc-git": ">=1.8.1",
     "coc-html": ">=1.2.4",
     "coc-java": ">=1.4.11",
     "coc-json": ">=1.2.6",
-    "coc-prettier": ">=1.1.15",
+    "coc-prettier": ">=1.1.17",
     "coc-python": ">=1.2.12",
     "coc-rls": ">=1.1.6",
     "coc-snippets": ">=2.1.28"
