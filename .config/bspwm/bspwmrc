@@ -19,6 +19,10 @@ if [ -x "$(command -v polybar)" ]; then
   echo polybar was called. >> "$HOME/bspwm.log"
 fi
 
+if [ -x "$(command -v wmname)" ]; then
+  wmname LG3D >> "$HOME/bspwm.log"
+fi
+
 #### Polybar ####
 #find out the name of your monitor with xrandr
 # xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_HDMI-0)
