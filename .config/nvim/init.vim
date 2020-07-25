@@ -73,6 +73,7 @@ endif
    Plug 'ryanoasis/vim-devicons'
    " Plug 'git@github.com:vim-airline/vim-airline.git' " line manager
    Plug 'git@github.com:itchyny/lightline.vim.git'    "line manager
+   Plug 'voldikss/vim-floaterm' " embedded terminal
    " Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " colors for hex
 "   Plug 'jiangmiao/auto-pairs' " used for auto closing quotes etc
 "   Plug 'neovimhaskell/haskell-vim'
