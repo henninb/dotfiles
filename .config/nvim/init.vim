@@ -396,6 +396,7 @@ map <C-c> <C-w>c
 " Shortcut split opening
 nnoremap <leader>h :split<cr>
 nnoremap <leader>v :vsplit<cr>
+nnoremap <leader>f :FloatermNew --height=0.5 --width=0.5 --position=left --wintype=normal lf<cr>
 
 " autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
 " autocmd VimLeave * silent exec "! echo -ne '\e[5 q'"
