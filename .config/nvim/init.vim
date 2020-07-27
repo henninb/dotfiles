@@ -74,6 +74,7 @@ endif
    " Plug 'git@github.com:vim-airline/vim-airline.git' " line manager
    Plug 'git@github.com:itchyny/lightline.vim.git'    "line manager
    Plug 'voldikss/vim-floaterm' " embedded terminal
+   Plug 'terryma/vim-multiple-cursors'
    " Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " colors for hex
 "   Plug 'jiangmiao/auto-pairs' " used for auto closing quotes etc
 "   Plug 'neovimhaskell/haskell-vim'
@@ -396,7 +397,8 @@ map <C-c> <C-w>c
 " Shortcut split opening
 nnoremap <leader>h :split<cr>
 nnoremap <leader>v :vsplit<cr>
-nnoremap <leader>f :FloatermNew --height=0.5 --width=0.5 --position=left --wintype=normal lf<cr>
+" nnoremap <leader>f :FloatermNew --height=0.5 --width=0.5 --position=left --wintype=normal lf<cr>
+nnoremap <leader>f :FloatermNew lf<cr>
 
 " autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
 " autocmd VimLeave * silent exec "! echo -ne '\e[5 q'"
