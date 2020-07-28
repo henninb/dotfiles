@@ -1,5 +1,5 @@
 all:
-	@make master
+	@make polybar
 master:
 	@echo stack init .
 	@rm -rf *.hi *.o xmonad
