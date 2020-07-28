@@ -55,17 +55,17 @@ mySpacing      = 5
 
 -- Colors
 bg :: String
-bg        = "#282828"
+bg = "#282828"
 red :: String
-red       = "#fb4934"
+red = "#fb4934"
 blue ::String
-blue      = "#83a598"
+blue = "#83a598"
 purple :: String
-purple    = "#d3869b"
+purple = "#d3869b"
 pur2 :: String
-pur2      = "#5b51c9"
+pur2 = "#5b51c9"
 blue2 :: String
-blue2     = "#2266d0"
+blue2 = "#2266d0"
 
 myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ perWS
 
@@ -238,24 +238,23 @@ myStartupHook = do
   spawn "$HOME/.config/polybar/launch.sh xmonad"
   --spawn "dropbox"
 
---myConfig :: XConfig
 myConfig = def
-  { terminal            = myTerminal
-  , layoutHook          = windowArrange myLayouts
-  , manageHook          = placeHook(smart(0.5, 0.5))
+  { terminal = myTerminal
+  , layoutHook = windowArrange myLayouts
+  , manageHook = placeHook(smart(0.5, 0.5))
       <+> manageDocks
       <+> myManageHook
       <+> myManageHook'
       <+> manageHook def
-  , handleEventHook     = docksEventHook
+  , handleEventHook = docksEventHook
       <+> minimizeEventHook
       <+> fullscreenEventHook
-  , startupHook         = myStartupHook
-  , focusFollowsMouse   = False
-  , clickJustFocuses    = False
-  , borderWidth         = myBorderWidth
-  , normalBorderColor   = bg
-  , focusedBorderColor  = pur2
-  , workspaces          = myWorkspaces
-  , modMask             = myModMask
+  , startupHook = myStartupHook
+  , focusFollowsMouse = False
+  , clickJustFocuses = False
+  , borderWidth = myBorderWidth
+  , normalBorderColor = bg
+  , focusedBorderColor = pur2
+  , workspaces = myWorkspaces
+  , modMask = myModMask
   }
