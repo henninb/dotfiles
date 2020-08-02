@@ -158,3 +158,14 @@ function mdless() {
     glow -s dark "$1" | less -r
   fi
 }
+
+function ytd() {
+  if [ "$#" -ne 1 ]; then
+    echo "Usage: ${FUNCNAME} <youtube_id>" >&2
+  else
+    echo "$1"
+    youtube-dl -f bestaudio --extract-audio "https://www.youtube.com/watch?v=$1" --output "$1.opus"
+    ffmpeg -i "$1.opus" "$1.mp3"
+    rm "$1.opus"
+  fi
+}
