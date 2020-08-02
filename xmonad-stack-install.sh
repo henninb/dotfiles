@@ -20,6 +20,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y dunst
   sudo apt install -y wmname
   sudo apt install -y blueberry
+  sudo apt install -y libbsd-dev
   #sudo apt install -y icu-devtools libicu-dev
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y libxss-devel
