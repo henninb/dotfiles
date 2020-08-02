@@ -1,6 +1,6 @@
 FROM docker.io/alpine:3.9
 
-ENV ACTIVEMQ_VERSION 5.15.9
+ENV ACTIVEMQ_VERSION 5.16.0
 ENV ACTIVEMQ apache-activemq-$ACTIVEMQ_VERSION
 ENV ACTIVEMQ_HOME /opt/activemq
 #ENV ACTIVEMQ_OPTS -Djava.io.tmpdir=/tmp
