@@ -11,6 +11,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y neofetch
   sudo apt install -y feh
   sudo apt install -y blueman
+  sudo apt install -y flameshot
   sudo apt install -y x11-xserver-utils
   sudo apt install -y libev-dev
   sudo apt install -y libasound2-dev
@@ -35,6 +36,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y chafa
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y bspwm
+  sudo zypper install -y flameshot
   sudo zypper install -y xscreensaver
   sudo zypper install -y xdo
   sudo zypper install -y feh
@@ -48,6 +50,7 @@ elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y bspwm
   sudo eopkg install -y xscreensaver
   sudo eopkg install -y xdo
+  sudo eopkg install -y flameshot
   sudo eopkg install -y xrdb
   sudo eopkg install -y feh
   sudo eopkg install -y xclip
@@ -84,6 +87,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman -Rsnc gdm
   sudo pacman --noconfirm --needed -S bspwm
   sudo pacman --noconfirm --needed -S xdo
+  sudo pacman --noconfirm --needed -S flameshot
   sudo pacman --noconfirm --needed -S dmenu
   sudo pacman --noconfirm --needed -S feh
   sudo pacman --noconfirm --needed -S cmatrix

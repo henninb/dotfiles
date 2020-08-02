@@ -76,6 +76,7 @@
 - log reader - lnav
 - package manager - yay, pacman, brew, apt, dnf, emerge, pkg, eopkg
 - open - xdg-open
+- screen shot - flameshot
 - encryption - gnupg, keybase
 - terminal screen saver - cmatrix
 - window detailer - xprop
