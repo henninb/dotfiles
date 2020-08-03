@@ -228,9 +228,9 @@
   :ensure t
 )
 
-(use-package kotlin-mode
-  :ensure t
-)
+; (use-package kotlin-mode
+;   :ensure t
+; )
 
 (use-package json-mode
   :ensure t
