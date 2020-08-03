@@ -20,7 +20,7 @@ alt + shift + BackSpace
     xdo close
 alt + control + {t,s,f}
     bspc node -t {tiled,floating,fullscreen}
-alt + ~
+alt + Print
     flameshot gui -p $HOME/Desktop
 XF86AudioRaiseVolume
     amixer -q -D pulse sset Master 2%+
@@ -28,7 +28,6 @@ XF86AudioLowerVolume
     amixer -q -D pulse sset Master 2%-
 XF86AudioMute
     amixer -D pulse sset Master toggle
-#alt + Print
 #XF86AudioPlay
 #   $HOME/.config/bspwm/panel/notify_mpd -t
 #XF86AudioNext
