@@ -36,6 +36,11 @@ else
   echo "blueman-applet not installed."
 fi
 
+if [ -x "$(command -v flameshot)" ]; then
+  flameshot &
+else
+  echo "flameshot not installed."
+fi
 #for f in /etc/X11/Xsession.d/*; do
 #  echo $f >> "$HOME/xinit.log"
 #  [ -x "$f" ] && . "$f"
