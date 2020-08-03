@@ -13,55 +13,47 @@ fi
 export MYSHELL
 
 [ -z "$MYSHELL" ] && echo "SHELL not found: dollar zero $0 and need to find a fix."
-#[[ -o interactive ]] || exit 0
-
-#if [ -f /etc/os-release ]; then
-#  OS="$(grep '^NAME=' /etc/os-release | tr -d '"' | cut -d = -f2)"
-#  OS_VER="$(grep '^VERSION_ID=' /etc/os-release | tr -d '"' | cut -d = -f2)"
-#elif type lsb_release >/dev/null 2>&1; then
-#  OS=$(lsb_release -si)
-#  OS_VER=$(lsb_release -sr)
-#elif [ -f /etc/lsb-release ]; then
-#  echo /etc/lsb-release
-#  OS=$(grep '^DISTRIB_ID=' /etc/lsb-release | tr -d '"' | cut -d = -f2)
-#  OS_VER=$(grep '^DISTRIB_RELEASE=' /etc/lsb-release | tr -d '"' | cut -d = -f2)
-#elif [ -f /etc/debian_version ]; then
-#  OS=Debian
-#  OS_VER=$(cat /etc/debian_version)
-#elif [ -f /etc/SuSe-release ]; then
-#  echo "should not enter here v1"
-#  return
-#elif [ -f /etc/redhat-release ]; then
-#  echo "should not enter here v2"
-#  return
-#else
-#  #FreeBSD branches here.
-#  OS=$(uname -s)
-#  OS_VER=$(uname -r)
-#fi
 
 export OS
 export OS_VER
 
 #SPACESHIP_PROMPT_ORDER=(user host dir git)
 SPACESHIP_PROMPT_ORDER=(exit_code host dir git jobs char)
+export SPACESHIP_PROMPT_ORDER
 SPACESHIP_PROMPT_ADD_NEWLINE=false
+export SPACESHIP_PROMPT_ADD_NEWLINE
 SPACESHIP_PROMPT_SEPARATE_LINE=false
+export SPACESHIP_PROMPT_SEPARATE_LINE
 SPACESHIP_CHAR_SYMBOL=❯
+export SPACESHIP_CHAR_SYMBOL
 SPACESHIP_CHAR_SUFFIX=" "
+export SPACESHIP_CHAR_SUFFIX
 SPACESHIP_HG_SHOW=false
+export SPACESHIP_HG_SHOW
 SPACESHIP_PACKAGE_SHOW=false
+export SPACESHIP_PACKAGE_SHOW
 SPACESHIP_NODE_SHOW=false
+export SPACESHIP_NODE_SHOW
 SPACESHIP_RUBY_SHOW=false
+export SPACESHIP_RUBY_SHOW
 SPACESHIP_ELM_SHOW=false
+export SPACESHIP_ELM_SHOW
 SPACESHIP_ELIXIR_SHOW=false
+export SPACESHIP_ELIXIR_SHOW
 SPACESHIP_XCODE_SHOW_LOCAL=false
+export SPACESHIP_XCODE_SHOW_LOCAL
 SPACESHIP_SWIFT_SHOW_LOCAL=false
+export SPACESHIP_SWIFT_SHOW_LOCAL
 SPACESHIP_GOLANG_SHOW=false
+export SPACESHIP_GOLANG_SHOW
 SPACESHIP_PHP_SHOW=false
+export SPACESHIP_PHP_SHOW
 SPACESHIP_RUST_SHOW=false
+export SPACESHIP_RUST_SHOW
 SPACESHIP_JULIA_SHOW=false
+export SPACESHIP_JULIA_SHOW
 SPACESHIP_DOCKER_SHOW=false
+export SPACESHIP_DOCKER_SHOW
 SPACESHIP_DOCKER_CONTEXT_SHOW=false
 SPACESHIP_AWS_SHOW=false
 SPACESHIP_CONDA_SHOW=false
@@ -75,7 +67,6 @@ SPACESHIP_TERRAFORM_SHOW=false
 SPACESHIP_VI_MODE_SHOW=false
 SPACESHIP_JOBS_SHOW=false
 SPACESHIP_DIR_PREFIX=""
-#SPACESHIP_DIR_TRUNC_PREFIX=/home/
 SPACESHIP_DIR_TRUNC_REPO=false
 SPACESHIP_HOST_PREFIX="@"
 SPACESHIP_HOST_SHOW=always
@@ -407,30 +398,24 @@ if [ "${MYSHELL}" = "zsh" ]; then
   # Fix backspace bug when switching modes
   bindkey "^?" backward-delete-char
 
-  function zle-line-init zle-keymap-select {
-    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
-    RPS2="$RPS1"
-    zle reset-prompt
+  function zle-keymap-select {
+    if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+        echo -ne '\e[1 q'
+    elif [[ ${KEYMAP} == main ]] ||
+         [[ ${KEYMAP} == viins ]] ||
+         [[ ${KEYMAP} = '' ]] ||
+         [[ $1 = 'beam' ]]; then
+        echo -ne '\e[5 q'
+    fi
   }
 
-  zle -N zle-line-init
-  zle -N zle-keymap-select
+  _fix_cursor() {
+     echo -ne '\e[5 q'
+  }
 
-  # autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
-  # autocmd VimLeave * silent exec "! echo -ne '\e[5 q'"
-  # # Change cursor shape for different vi modes.
-  # function zle-keymap-select {
-  #   if [[ ${KEYMAP} == vicmd ]] ||
-  #      [[ $1 = 'block' ]]; then
-  #     echo -ne '\e[1 q'
-  #   elif [[ ${KEYMAP} == main ]] ||
-  #        [[ ${KEYMAP} == viins ]] ||
-  #        [[ ${KEYMAP} = '' ]] ||
-  #        [[ $1 = 'beam' ]]; then
-  #     echo -ne '\e[5 q'
-  #   fi
-  # }
-  # zle -N zle-keymap-select
+  precmd_functions+=(_fix_cursor)
+
+  zle -N zle-keymap-select
 fi
 
 [ -f "$HOME/.config/broot/launcher/bash/1" ] && source "$HOME/.config/broot/launcher/bash/1"
@@ -497,6 +482,7 @@ autoload -Uz tetriscurses
 # echo tetriscurses
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# TODO: is this required?
 if [ -e /home/henninb/.nix-profile/etc/profile.d/nix.sh ]; then . "${HOME}/.nix-profile/etc/profile.d/nix.sh"; fi
 
 #myip="$(dig +short myip.opendns.com @resolver1.opendns.com)"
