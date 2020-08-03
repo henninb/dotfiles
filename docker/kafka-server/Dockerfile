@@ -44,7 +44,7 @@ WORKDIR $KAFKA_HOME
 USER kafka
 
 # must start in container in daemon mode
-#CMD ["/bin/sh", "-c", "bin/kafka console"]
-CMD ["/bin/sh" "bin/zookeeper-server-start.sh" "/opt/kafka/config/zookeeper.properties"]
+CMD ["/bin/sh", "-c", "bin/kafka console"]
+#CMD ["/bin/sh" "bin/zookeeper-server-start.sh" "/opt/kafka/config/zookeeper.properties"]
 #/bin/sh bin/zookeeper-server-start.sh /opt/kafka/config/zookeeper.properties
 
