@@ -69,4 +69,3 @@ USER activemq
 
 # must start in container in daemon mode
 CMD ["/bin/sh", "-c", "bin/activemq console"]
-
