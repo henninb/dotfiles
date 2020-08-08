@@ -219,7 +219,7 @@
 
 (use-package erc
   :custom
-  (erc-autojoin-channels-alist '(("freenode.net" "#archlinux" "#emacs")))
+  (erc-autojoin-channels-alist '(("freenode.net" "#archlinux" "#freebsd" "#ubuntu" "#gentoo" "#fedora" "#voidlinux" "#manjaro" "#solus" "#neovim" "#vim" "#emacs" "#xmonad" "#i3" "#bspwm""#scala" "#kotlin" "#python" "#ruby" "#haskell")))
   (erc-autojoin-timing 'ident)
   (erc-fill-function 'erc-fill-static)
   (erc-fill-static-center 22)
