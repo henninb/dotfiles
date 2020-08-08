@@ -329,3 +329,23 @@ systemctl disable systemd-networkd-wait-online.service
 sudo apt update && sudo apt install libxtst6 libxrandr2 libglib2.0-0 libgtk2.0-0 libpulse0 libgdk-pixbuf2.0-0
 
 STEAM_RUNTIME=0
+
+## Is it possible to configure xmonad to move a program from desktop 1 to 4 (i.e. super+mod+4) and to move to screen 4 without typing super+4 after?
+```
+karetsu can you not just set a custom keybind to do that?
+karetsu> the action being something like W.shift >>=
+                 W.greedyView (I forget the actual functions, I'm
+                 in windows)
+
+W.shift >>= W.greedyView should abstract to take
+                 whatever key you pass as the workspace number, its how you would've defined shift and greedyView in the first place I think
+karetsu i.e. I have `"<S> S-", W.shift` as my key
+                 binding for shift, I don't have to specify that for my 8 workspaces yeah, probably worth creating a new one just in
+                 case reassigning has other implications or
+                 breakages (sometimes you might just want to move something out the way?)
+ fizzie https://wiki.haskell.org/Xmonad/Frequently_asked_questions#Replacing_greedyView_with_view shows the example of how
+                to swap the default 'greedyView' with just 'view' (by using a list comprehension to do it for all 9 workspaces), you should be able to adapt that to your behavior.
+ fizzie There's also a variant in
+https://hackage.haskell.org/package/xmonad-contrib-0.16/docs/XMonad-Layout-IndependentScreens.html since IndependentScreens also
+                involves changing the normal workspace switch keys.
+```

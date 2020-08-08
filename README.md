@@ -109,3 +109,6 @@ webmin
 termonad
 taskwarrior
 https://www.ventoy.net/en/index.html - for ISOs
+
+translate-shell
+trans -t de "hi"

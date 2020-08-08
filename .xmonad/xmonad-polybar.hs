@@ -149,8 +149,11 @@ myKeys1 = [
   , ("M-C-<Down>", sendMessage (DecreaseDown 10))   --  Decrease size of focused window down
   , ("M-C-<Right>", sendMessage (DecreaseRight 10)) --  Decrease size of focused window right
   , ("M-C-<Left>", sendMessage (DecreaseLeft 10))   --  Decrease size of focused window left
-
   ]
+    -- ++
+    -- [((m .|. mod4Mask, k), windows $ f i)
+    --      | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
+    --      , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 myKeys :: [((KeyMask, KeySym), X ())]
 --myKeys :: [((ButtonMask, KeySym), X ())]

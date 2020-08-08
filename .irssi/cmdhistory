@@ -1,10 +1,3 @@
-: 1584361442:: :;rindolf, you got it.
-: 1584361535:: :;i see that too Southern_Gentlem, but I think this the github page ^^^ is what I need to look at.
-: 1584361541:: :;thanks for the help.
-: 1584361968:: :;hi Rindolf, working on that now. thanks!
-: 1584362035:: :;works perfectly rindolf.
-: 1584362943:: :;/quit
-: 1584492886:: :;hi, what version of the gcc compiler is required for compiling the kernel?
 : 1584492962:: :;ok, I am getting a "objtool/fixdep-in.o] Error 2" error right after I run make.
 : 1584492972:: :;not sure why
 : 1584493016:: :;i can compile everything else.
@@ -98,3 +91,10 @@
 : 1592653576:: :;thanks for sharing your thoughts mkoskar
 : 1592654068:: :;seems like the right 
 : 1592654071:: :;/quit
+: 1596886083:: :;is it possible to configure xmonad to move a program from desktop 1 to 4 (i.e. super+mod+4) and to move to screen 4 without typing super+4 after? 
+: 1596886425:: :;karetsu, possible to do so but I think I would like to do it for all 9 desktops.
+: 1596886455:: :;I will look into it.
+: 1596886630:: :;good point, I would basically be overridding the default behavior of super+shift+N (where N is the destop number).
+: 1596886798:: :;thanks fizzie and karetsu
+: 1596886849:: :;thank you both, I will take a look.
+: 1596889362:: :;/quit
