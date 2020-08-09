@@ -40,7 +40,7 @@ main = do
     $ withUrgencyHook NoUrgencyHook
     $ ewmh
     $ myConfig { logHook = dynamicLogWithPP (myLogHook dbus) }
-    `additionalKeysP` myKeys1
+    `additionalKeysP` myKeys
     -- `additionalKeys` []
     --`removeKeys` []
 
@@ -70,12 +70,12 @@ blue2 = "#2266d0"
 myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ perWS
 
 -- layout per workspace
-perWS = onWorkspace wsGEN my3FT $
-        onWorkspace wsWRK myAll $
-        onWorkspace wsSYS myFTM $
-        onWorkspace wsMED my3FT $
-        onWorkspace wsTMP myFTM $
-        onWorkspace wsGAM myFT myAll -- all layouts for all other workspaces
+perWS = onWorkspace ws1 my3FT $
+        onWorkspace ws2 myAll $
+        onWorkspace ws3 myFTM $
+        onWorkspace ws4 my3FT $
+        onWorkspace ws5 myFTM $
+        onWorkspace ws6 myFT myAll -- all layouts for all other workspaces
 
 myFT  = myTileLayout ||| myFullLayout ||| commonLayout
 myFTM = myTileLayout ||| myFullLayout ||| myMagn
@@ -83,34 +83,29 @@ my3FT = myTileLayout ||| myFullLayout ||| my3cmi
 myAll = myTileLayout ||| myFullLayout ||| my3cmi ||| myMagn
 
 myFullLayout = renamed [Replace "Full"]
-    -- $ spacing 0
     $ gaps [(U,5), (D,5)]
     $ noBorders Full
 myTileLayout = renamed [Replace "Main"]
---    $ spacing mySpacing
     $ Tall 1 (3/100) (1/2)
 my3cmi = renamed [Replace "3Col"]
---    $ spacing mySpacing
     $ ThreeColMid 1 (3/100) (1/2)
 myMagn = renamed [Replace "Mag"]
     $ noBorders
     $ limitWindows 3
     $ magnifiercz' 1.4
     $ FixedColumn 1 20 80 10
-commonLayout = renamed [Replace "common"]
+commonLayout = renamed [Replace "Com"]
     $ avoidStruts
     $ gaps [(U,5), (D,5)]
---    $ spacing 10
     $ Tall 1 (5/100) (1/3)
 
 
-
-wsGEN = "1"
-wsWRK = "2"
-wsSYS = "3"
-wsMED = "4"
-wsTMP = "5"
-wsGAM = "6"
+ws1 = "1"
+ws2 = "2"
+ws3 = "3"
+ws4 = "4"
+ws5 = "5"
+ws6 = "6"
 ws7 = "7"
 ws8 = "8"
 ws9 = "9"
@@ -118,8 +113,8 @@ ws9 = "9"
 myWorkspaces :: [String]
 myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
-myKeys1 :: [(String, X ())]
-myKeys1 = [
+myKeys :: [(String, X ())]
+myKeys = [
     ("M-S-e"             , spawn "emacs")
   , ("M-e"               , spawn "urxvt -e nvim")
   , ("M-r"               , spawn "urxvt -e lf")
@@ -155,9 +150,9 @@ myKeys1 = [
     --      | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
     --      , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
-myKeys :: [((KeyMask, KeySym), X ())]
+myKeys1 :: [((KeyMask, KeySym), X ())]
 --myKeys :: [((ButtonMask, KeySym), X ())]
-myKeys = [ ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock") ]
+myKeys1 = [ ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock") ]
 
 -- myAdditionalKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
 --   myProgramKeys ++ myWindowManagerKeys ++ myMediaKeys
@@ -239,7 +234,7 @@ myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
 myStartupHook = do
   setWMName "LG3D"
   spawn "$HOME/.config/polybar/launch.sh xmonad"
-  --spawn "dropbox"
+  --spawn "flashshot"
 
 myConfig = def
   { terminal = myTerminal
