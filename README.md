@@ -66,7 +66,7 @@
 - wallpaper manager - feh, nitrogen
 - burning images - cdrecord, wodim, k3b
 - podcast client - newsboat, castget
-- process viewer - htop, glances, bashtop
+- process viewer - htop, glances, bashtop, gotop
 - email client - neomutt, mutt
 - wii emulator - dolphin-emu
 - cloud storage - nextcloud
