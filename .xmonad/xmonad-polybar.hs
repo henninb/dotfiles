@@ -45,13 +45,13 @@ main = do
     --`removeKeys` []
 
 myTerminal :: String
-myTerminal     = "urxvt"
+myTerminal = "urxvt"
 --myModMask      = mod4Mask
-myModMask      = mod1Mask
-myBorderWidth  = 1
-myBrowser      = "firefox"
+myModMask = mod1Mask
+myBorderWidth = 1
+myBrowser = "firefox"
 mySpacing :: Int
-mySpacing      = 5
+mySpacing = 5
 
 -- Colors
 bg :: String
