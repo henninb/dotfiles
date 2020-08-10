@@ -85,6 +85,8 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo netstat -lntp | grep postgres
   sudo fuser 5432/tcp
 elif [ "$OS" = "Linux Mint" ]; then
+  sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main" > /etc/apt/sources.list.d/postgresql.list'
+  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
   sudo apt install -y postgresql
   sudo rm -rf /var/lib/pgsql/data/
   sudo postgresql-setup initdb
