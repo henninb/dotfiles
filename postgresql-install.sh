@@ -87,14 +87,17 @@ elif [ "$OS" = "CentOS Linux" ]; then
 elif [ "$OS" = "Linux Mint" ]; then
   sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main" > /etc/apt/sources.list.d/postgresql.list'
   wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-  sudo apt install -y postgresql
-  sudo rm -rf /var/lib/pgsql/data/
-  sudo postgresql-setup initdb
+  sudo rm -rf /var/lib/postgresql/10
+  sudo rm -rf /var/lib/postgresql/12
+  sudo chown postgres:postgres /var/lib/postgresql
+  sudo apt install -y postgresql-12
+  # sudo postgresql-setup initdb
+  sudo -u postgres sh -c 'export PGDATA=/var/lib/postgresql/12/main && /usr/lib/postgresql/12/bin/pg_ctl initdb'
   sudo systemctl enable postgresql
   sudo systemctl start postgresql
   sudo systemctl status postgresql
-  sudo mv -v pg_hba.conf /etc/postgresql/10/main/pg_hba.conf
-  sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql/10/main/postgresql.conf
+  sudo mv -v pg_hba.conf /var/lib/postgresql/12/main/pg_hba.conf
+  sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/postgresql/12/main/postgresql.conf
   sudo systemctl restart postgresql
   mv -v install_psql_settings.sql /tmp
   sudo -u postgres sh -c 'cd /tmp && psql postgres -U postgres < /tmp/install_psql_settings.sql'
@@ -144,8 +147,13 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo service postgresql restart
   netstat -na | grep 5432 | grep LIST
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
+
+echo /usr/lib/postgresql/12/bin/pg_ctl
+echo /usr/lib/postgresql/12/bin/pg_ctl  -D /var/lib/postgresql/12/main stop
+echo /usr/lib/postgresql/12/bin/pg_ctl  -D /var/lib/postgresql/12/main start
+
 
 exit 0

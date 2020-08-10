@@ -17,4 +17,8 @@ if [ $? -ne 0 ]; then
   echo 5432 port not up, postgesql not running.
 fi
 
+echo first sudo su - postgres
+echo /usr/lib/postgresql/12/bin/pg_ctl  -D /var/lib/postgresql/12/main stop
+echo /usr/lib/postgresql/12/bin/pg_ctl  -D /var/lib/postgresql/12/main start
+
 exit 0
