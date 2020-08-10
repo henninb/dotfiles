@@ -18,7 +18,9 @@ if [ $? -ne 0 ]; then
 fi
 
 echo first sudo su - postgres
-echo /usr/lib/postgresql/12/bin/pg_ctl  -D /var/lib/postgresql/12/main stop
-echo /usr/lib/postgresql/12/bin/pg_ctl  -D /var/lib/postgresql/12/main start
+echo /usr/lib/postgresql/12/bin/pg_ctl -D /var/lib/postgresql/12/main stop
+echo /usr/lib/postgresql/12/bin/pg_ctl -D /var/lib/postgresql/12/main start
+echo /usr/lib/postgresql/12/bin/pg_ctl restart -m immediate
+echo /usr/lib/postgresql/12/bin/pg_resetwal -f /var/lib/postgresql/12/main/
 
 exit 0
