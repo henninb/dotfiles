@@ -89,7 +89,7 @@ myWorkspaces =
   --       | (i, ws) <- zip [1 .. 9] l
   --       , let n = i
   --       ]
-myKeys conf@(XConfig {XMonad.modMask = modMask}) =
+myKeys conf@XConfig {XMonad.modMask = modMask} =
     M.fromList $
       -- launch a terminal
     [
@@ -182,8 +182,7 @@ myXPConfig = def
 --  , ((modMask .|. mod1Mask, xK_u), spawn "setxkbmap -layout us")
 --  , ((modMask, xK_o), namedScratchpadAction myScratchPads "terminal")
 --  , ((modMask, xK_p), namedScratchpadAction myScratchPads "music")
-myStartupHook = do
-  spawn "/usr/bin/stalonetray"-- spawn "nm-applet"
+myStartupHook = spawn "/usr/bin/stalonetray" -- spawn "nm-applet"
 
 myScratchPads =
   [
@@ -207,7 +206,7 @@ myManageHook =
   namedScratchpadManageHook myScratchPads
 
 --      , className =? "mpv"          --> doFullFloat
-myMouseBindings (XConfig {XMonad.modMask = modMask}) =
+myMouseBindings XConfig {XMonad.modMask = modMask} =
   M.fromList $
     -- mod-button1, Set the window to floating mode and move by dragging
   [ ( (modMask, button1)
@@ -222,9 +221,9 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) =
 
 myLayoutHook =
   avoidStruts
-    (toggleLayouts Full (Grid) |||
+    (toggleLayouts Full Grid |||
      toggleLayouts Full (ThreeColMid 1 (1 / 20) (1 / 2)) |||
-     simpleTabbed ||| toggleLayouts Full (tiled) ||| Mirror tiled)
+     simpleTabbed ||| toggleLayouts Full tiled ||| Mirror tiled)
   where
     -- default tiling algorithm partitions the screen into two panes
     tiled = Tall nmaster delta ratio
@@ -274,7 +273,7 @@ defaults =
     { terminal = myTerminal
     , workspaces = myWorkspaces
     , keys = myKeys
-    , layoutHook = smartBorders $ myLayoutHook
+    , layoutHook = smartBorders myLayoutHook
     , handleEventHook = handleEventHook def <+> docksEventHook
     , focusedBorderColor = "#2E9AFE"
     , normalBorderColor = "#000000"
