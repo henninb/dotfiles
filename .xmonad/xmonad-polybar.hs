@@ -120,6 +120,7 @@ myKeys = [
   , ("M-r"               , spawn "urxvt -e lf")
   , ("M-i"               , spawn "brave-browser")
   , ("M-S-i"             , spawn ("firefox" ++ " -private-window"))
+  -- , ("M-<Print>"      , spawn "flameshot gui -p $HOME/Desktop")
   , ("M-S-<Return>"      , spawn myTerminal)
   , ("M-<Return>"        , spawn "alacritty")
   , ("M-S-<Backspace>"   , spawn "xdo close")
@@ -145,8 +146,9 @@ myKeys = [
   , ("M-C-<Right>", sendMessage (DecreaseRight 10)) --  Decrease size of focused window right
   , ("M-C-<Left>", sendMessage (DecreaseLeft 10))   --  Decrease size of focused window left
   ]
-    -- ++
-    -- [((m .|. mod4Mask, k), windows $ f i)
+     -- ++
+    -- []
+    -- ((m .|. mod4Mask, k), windows $ f i)
     --      | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
     --      , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
@@ -256,3 +258,9 @@ myConfig = def
   , workspaces = myWorkspaces
   , modMask = myModMask
   }
+-- myDefaults = myConfig
+             `additionalKeysP`
+             [ ("<Print>", spawn "flameshot gui -p $HOME/Desktop"),
+               ("M-<Print>", spawn "flameshot gui -p $HOME/Desktop"),
+               ("C-<Print>", spawn "xeyes")
+             ]
