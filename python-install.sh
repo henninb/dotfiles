@@ -52,8 +52,9 @@ pip_ins pexect
 pip_ins pssh
 #pip_ins parallel-ssh
 pip_ins azure_cli
-pip_ins glances
+pip_ins glances #process watcher
 pip_ins tuir #redit client
+pip_ins mlbv
 
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 echo pyenv install 2.7.8
