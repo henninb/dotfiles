@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PROJECTS="raspi-finance-endpoint raspi-finance-ui raspi-finance-database raspi-finance raspi-finance-client raspi-finance-convert nfl-database src-common example-java example-scala example-kotlin raspi-finance-react raspi-finance-endpoint-micronaut raspi-finance-haskell raspi-finance-cmdline raspi-finance-ncurses"
+PROJECTS="raspi-finance-endpoint raspi-finance-ui raspi-finance-database raspi-finance raspi-finance-client raspi-finance-convert nfl-database src-common example-java example-scala example-kotlin raspi-finance-react raspi-finance-endpoint-micronaut raspi-finance-haskell raspi-finance-cmdline raspi-finance-ncurses raspi-finance-reports"
 for i in $PROJECTS; do
   cd "$HOME/projects" || exit
   git clone "git@github.com:BitExplorer/$i.git"
