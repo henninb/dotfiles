@@ -100,7 +100,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S neofetch
   sudo pacman --noconfirm --needed -S chafa
 elif [ "$OS" = "Gentoo" ]; then
-  GENTOO_PKGS="bspwm dmenu sxhkd feh cmatrix x11-libs/cairo libmpdclient pulseaudio autocutsel w3m x11-misc/xclip"
+  GENTOO_PKGS="bspwm dmenu sxhkd feh cmatrix x11-libs/cairo libmpdclient pulseaudio autocutsel w3m x11-misc/xclip xinit"
   FAILURE=""
   for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then
