@@ -8,14 +8,10 @@ https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation
 boot > gentoo
 ```
 
-## network configures automatically on gentoo for VirtualBox
+## network configures automatically on gentoo for VirtualBox and most baremetal
 ```
+rc-service sshd start
 ip addr show
-```
-
-#
-```
-rc-service start dhcpcd
 ```
 
 ## set root password
@@ -25,12 +21,18 @@ passwd root
 
 ## start sshd server
 ```
-rc-service sshd start
+rc-service dhcpcd start
 ```
 
-5) remote ssh login from remote
+## remote ssh login from remote
+```
+ssh root@192.168.100.124
+```
 
-6) cfdisk /dev/sde (use dos)
+## partition the drive as show below (use dos)
+```
+cfdisk /dev/sda
+```
 
 /dev/sda1	ext2	(bootloader)	512M
 /dev/sda2	ext4	Rest of the disk	Root partition
@@ -48,9 +50,15 @@ ntpd -q -g
 mount /dev/sda2 /mnt/gentoo
 cd /mnt/gentoo
 
-wget http://gentoo.ussg.indiana.edu/releases/amd64/autobuilds/current-stage3-amd64/stage3-amd64-20200422T214502Z.tar.xz
+## download stage3
+```
+wget http://gentoo.ussg.indiana.edu/releases/amd64/autobuilds/current-stage3-amd64/stage3-amd64-20200819T214503Z.tar.xz
+```
 
+## extract stage3 and be sure to verify success
+```
 tar xvJpf stage3-*.tar.xz --xattrs --numeric-owner
+```
 
 # use flags
 vi /mnt/gentoo/etc/portage/make.conf
@@ -63,7 +71,9 @@ sudo emerge ufed
 # not required
 sudo emerge eix
 
+## set the mirror list
 mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf
+
 
 cp -L /etc/resolv.conf /mnt/gentoo/etc/
 
@@ -77,16 +87,28 @@ chroot /mnt/gentoo /bin/bash
 source /etc/profile
 export PS1="(chroot) $PS1"
 
+## user maintenence
+```
 useradd -m -G users henninb
 passwd henninb
 passwd root
+usermod -aG wheel henninb
+```
 
 mount /dev/sda1 /boot
 
+## run the webrsync (clock needs to be accurate and DNS needs to be functional)
+```
 emerge-webrsync
+eselect news read
+emerge --ask vim
+```
 
+## setup local time zone
+```
 echo "US/Central" > /etc/timezone
 emerge --config sys-libs/timezone-data
+```
 
 vi /etc/fstab
 /dev/sda1   /boot        ext2    defaults,noatime     0 2
@@ -96,7 +118,6 @@ vi /etc/fstab
 
 vi /etc/conf.d/hostname
 
-emerge --ask vim
 emerge --ask sys-kernel/gentoo-sources
 etc-update
 emerge --ask sys-kernel/genkernel
@@ -106,6 +127,8 @@ emerge --ask app-admin/sysklogd
 emerge --ask net-misc/dhcpcd
 emerge --ask sudo
 emerge --ask sys-boot/grub:2
+
+ip addr show
 
 vi /etc/conf.d/net
 # virtualbox guest
@@ -123,10 +146,6 @@ rc-update add net.eth0 default
 ln -s net.lo net.enp3s0
 rc-update add net.enp3s0 default
 
-#not sure if this is required
-#vi /etc/conf.d/modules
-#e1000
-
 #edit sudoers
 vi /etc/sudoers
 
@@ -137,18 +156,20 @@ rc-update add sshd default
 
 usermod -aG wheel henninb
 
-# will take a long time
+# will take a long time (42 min)
 genkernel all
 tail -f /var/log/genkernel.log
 
-ls /boot/kernel* /boot/initramfs*
+## verify the kernel
+ls /boot/vmlinuz* /boot/initramfs*
 
+## grub install
 grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 reboot
 
 
-#optional
+## optional
 #emerge --ask app-emulation/virtualbox-guest-additions
 #gpasswd -a henninb vboxguest
 
