@@ -1,3 +1,4 @@
+=sys-kernel/linux-firmware-20200817 linux-fw-redistributable no-source-code
 =sys-kernel/linux-firmware-20200302 linux-fw-redistributable no-source-code
 =sys-kernel/linux-firmware-20200316 linux-fw-redistributable no-source-code
 =sys-kernel/linux-firmware-20190118 linux-fw-redistributable no-source-code
