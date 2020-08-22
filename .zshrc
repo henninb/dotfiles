@@ -99,7 +99,7 @@ HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
 if [ "${OSTYPE}" = "linux-gnu" ] || [ "${OSTYPE}" = "linux" ]; then
   if [ "${OS}" = "Gentoo" ]; then
     if [ -x "$(command -v java-config)" ]; then
-      JAVA_HOME=$(java-config -o)
+      JAVA_HOME=$(java-config -o) 2> /dev/null
       export JAVA_HOME
     else
       echo "install java-config on gentoo"
