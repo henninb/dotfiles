@@ -39,6 +39,6 @@ app-crypt/pinentry gnome-keyring
 # required by www-client/brave-bin-1.7.98::brave-overlay
 # required by www-client/brave-bin (argument)
 >=app-text/ghostscript-gpl-9.50 cups
->=sys-auth/polkit-0.110
+>=sys-auth/polkit-0.110 elogind
 # required by x11-libs/libva-vdpau-driver-0.7.4-r5::gentoo
 >=x11-libs/libva-2.5.0-r1 X
