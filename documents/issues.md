@@ -349,3 +349,11 @@ karetsu i.e. I have `"<S> S-", W.shift` as my key
 https://hackage.haskell.org/package/xmonad-contrib-0.16/docs/XMonad-Layout-IndependentScreens.html since IndependentScreens also
                 involves changing the normal workspace switch keys.
 ```
+
+loginctl user-status
+Failed to create bus connection: No such file or directory
+   77  sudo rc-update add dbus default
+   72  sudo rc-service dbus start
+   77  sudo rc-update add elogind default
+   78  sudo rc-service elogind start
+

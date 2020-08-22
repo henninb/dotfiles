@@ -100,7 +100,9 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S neofetch
   sudo pacman --noconfirm --needed -S chafa
 elif [ "$OS" = "Gentoo" ]; then
-  GENTOO_PKGS="bspwm dmenu sxhkd feh cmatrix x11-libs/cairo libmpdclient pulseaudio autocutsel w3m x11-misc/xclip xinit xorg-server"
+  sudo usermod -aG tty henninb
+  sudo usermod -aG video henninb
+  GENTOO_PKGS="bspwm dmenu sxhkd feh cmatrix x11-libs/cairo libmpdclient pulseaudio autocutsel w3m x11-misc/xclip xinit xorg-server dbus elogind"
   FAILURE=""
   for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then
@@ -108,6 +110,8 @@ elif [ "$OS" = "Gentoo" ]; then
     fi
   done
   echo "Failures: $FAILURE"
+  sudo rc-update add dbus default
+  sudo rc-update add elogind default
 elif [ "$OS" = "Fedora" ]; then
   echo
   sudo dnf install -y bspwm
