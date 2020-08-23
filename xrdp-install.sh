@@ -237,8 +237,10 @@ elif [ "$OS" = "Gentoo" ]; then
   cd $HOME/projects
   git clone --recursive https://github.com/neutrinolabs/xrdp
   cd xrdp
+  git checkout v0.9.13.1
   ./bootstrap
   ./configure
+  # ./configure --enable-fuse --enable-mp3lame --enable-pixman
   make
   if [ $? -ne 0 ]; then
     echo build failed for xrdp.
@@ -249,6 +251,7 @@ elif [ "$OS" = "Gentoo" ]; then
   cd $HOME/projects
   git clone git@github.com:neutrinolabs/xorgxrdp.git
   cd xorgxrdp
+  git checkout v0.9.13.1
   ./bootstrap
   ./configure XRDP_CFLAGS=-I"$HOME/projects/xrdp/common" XRDP_LIBS=" "
   make
