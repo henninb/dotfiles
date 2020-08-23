@@ -43,3 +43,4 @@ app-crypt/pinentry gnome-keyring
 # required by x11-libs/libva-vdpau-driver-0.7.4-r5::gentoo
 >=x11-libs/libva-2.5.0-r1 X
 >=sys-auth/pambase-20200304 elogind
+>=x11-libs/gdk-pixbuf-2.40.0 X

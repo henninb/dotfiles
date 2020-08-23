@@ -99,10 +99,12 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S dmenu
   sudo pacman --noconfirm --needed -S neofetch
   sudo pacman --noconfirm --needed -S chafa
+  sudo pacman --noconfirm --needed -S xscreensaver
+  sudo pacman --noconfirm --needed -S dunst
 elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG tty henninb
   sudo usermod -aG video henninb
-  GENTOO_PKGS="bspwm dmenu sxhkd feh cmatrix x11-libs/cairo libmpdclient pulseaudio autocutsel w3m x11-misc/xclip xinit xorg-server dbus elogind"
+  GENTOO_PKGS="bspwm dmenu sxhkd feh cmatrix x11-libs/cairo libmpdclient pulseaudio autocutsel w3m x11-misc/xclip xinit xorg-server dbus elogind x11-misc/xscreensaver x11-misc/wmname x11-misc/dunst"
   FAILURE=""
   for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then
