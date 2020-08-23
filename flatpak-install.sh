@@ -26,15 +26,17 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y flatpak
 elif [ "$OS" = "Gentoo" ]; then
-  #sudo emerge layman
+  #sudo emerge --update --newuse layman
+  sudo mkdir -p /etc/portage/repos.conf
   sudo mv flatpak-overlay.conf /etc/portage/repos.conf/flatpak-overlay.conf
-  sudo emerge --sync
+  sudo emaint -r flatpak-overlay sync
+  # sudo emerge --sync
   sudo emerge --update --newuse flatpak
-  wget https://flathub.org/repo/appstream/com.valvesoftware.Steam.flatpakref
-  wget https://flathub.org/repo/appstream/com.visualstudio.code.flatpakref
+  # wget https://flathub.org/repo/appstream/com.valvesoftware.Steam.flatpakref
+  # wget https://flathub.org/repo/appstream/com.visualstudio.code.flatpakref
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-  flatpak install --user com.valvesoftware.Steam.flatpakref
-  flatpak install --user com.visualstudio.code.flatpakref
+  # flatpak install --user com.valvesoftware.Steam.flatpakref
+  # flatpak install --user com.visualstudio.code.flatpakref
 else
   echo "$OS is not yet implemented."
   exit 1
