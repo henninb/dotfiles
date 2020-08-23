@@ -112,6 +112,10 @@ elif [ "$OS" = "Gentoo" ]; then
   echo "Failures: $FAILURE"
   sudo rc-update add dbus default
   sudo rc-update add elogind default
+  cd "$HOME/projects" || exit
+  git clone git@github.com:baskerville/xdo.git
+  cd xdo || exit
+  sudo make install
 elif [ "$OS" = "Fedora" ]; then
   echo
   sudo dnf install -y bspwm
