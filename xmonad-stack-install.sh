@@ -90,17 +90,22 @@ elif [ "$OS" = "Solus" ]; then
   done
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Gentoo" ]; then
+  sudo usermod -aG tty henninb
+  sudo usermod -aG video henninb
   sudo emerge --unmerge dzen
-  GENTOO_PKGS="xscreensaver feh xdotool w3m dunst wmname"
+  GENTOO_PKGS="xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind"
   FAILURE=""
   for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then
       FAILURE="$i $FAILURE"
     fi
   done
+  sudo rc-update add dbus default
+  sudo rc-update add elogind default
   cd "$HOME/projects" || exit
   git clone git@github.com:baskerville/xdo.git
   cd xdo || exit
+  make
   sudo make install
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Fedora" ]; then
