@@ -117,7 +117,7 @@ myXPKeymap = M.fromList $
      , (xK_b, moveCursor Prev)       -- move cursor forward
      , (xK_f, moveCursor Next)       -- move cursor backward
      , (xK_BackSpace, killWord Prev) -- kill the previous word
-     , (xK_y, pasteString)           -- paste a string
+     , (xK_v, pasteString)           -- paste a string
      , (xK_g, quit)                  -- quit out of prompt
      , (xK_bracketleft, quit)
      ]
