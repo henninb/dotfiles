@@ -21,6 +21,13 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.WindowArranger
 import XMonad.Layout.Gaps
+import XMonad.Actions.Submap
+-- Prompt
+import XMonad.Prompt
+import XMonad.Prompt.FuzzyMatch
+import Control.Arrow (first)
+
+import qualified XMonad.Actions.Search as S
 
 import qualified DBus as D
 import qualified DBus.Client as D
@@ -41,31 +48,130 @@ main = do
     $ ewmh
     $ myConfig { logHook = dynamicLogWithPP (myLogHook dbus) }
     `additionalKeysP` myKeys
-    -- `additionalKeys` []
-    --`removeKeys` []
+    `additionalKeys` []
+    `removeKeys` []
 
 myTerminal :: String
 myTerminal = "urxvt"
 --myModMask      = mod4Mask
-myModMask = mod1Mask
+
+altKeyMask :: KeyMask
+altKeyMask = mod1Mask
+
+myFont :: String
+myFont = "xft:Mononoki Nerd Font:bold:size=9:antialias=true:hinting=true"
+
+myBorderWidth :: Dimension
 myBorderWidth = 1
+
+myBrowser :: String
 myBrowser = "firefox"
+
 mySpacing :: Int
 mySpacing = 5
 
--- Colors
-bg :: String
-bg = "#282828"
+-- Purple
+myBorderColor :: String
+myBorderColor = "#282828"
+
 red :: String
 red = "#fb4934"
-blue ::String
-blue = "#83a598"
-purple :: String
-purple = "#d3869b"
-pur2 :: String
-pur2 = "#5b51c9"
-blue2 :: String
-blue2 = "#2266d0"
+
+myFocusBorderColor :: String
+myFocusBorderColor = "#5b51c9"
+
+archwiki, ebay, news, reddit, urban :: S.SearchEngine
+archwiki = S.searchEngine "archwiki" "https://wiki.archlinux.org/index.php?search="
+ebay     = S.searchEngine "ebay" "https://www.ebay.com/sch/i.html?_nkw="
+news     = S.searchEngine "news" "https://news.google.com/search?q="
+reddit   = S.searchEngine "reddit" "https://www.reddit.com/search/?q="
+urban    = S.searchEngine "urban" "https://www.urbandictionary.com/define.php?term="
+
+searchList :: [(String, S.SearchEngine)]
+searchList = [ ("a", archwiki)
+    , ("d", S.duckduckgo)
+    , ("e", ebay)
+    , ("g", S.google)
+    , ("h", S.hoogle)
+    , ("i", S.images)
+    , ("n", news)
+    , ("r", reddit)
+    , ("s", S.stackage)
+    , ("t", S.thesaurus)
+    , ("v", S.vocabulary)
+    , ("b", S.wayback)
+    , ("u", urban)
+    , ("w", S.wikipedia)
+    , ("y", S.youtube)
+    , ("z", S.amazon)
+  ]
+
+myXPKeymap :: M.Map (KeyMask,KeySym) (XP ())
+myXPKeymap = M.fromList $
+     map (first $ (,) controlMask)   -- control + <key>
+     [ (xK_z, killBefore)            -- kill line backwards
+     , (xK_k, killAfter)             -- kill line forwards
+     , (xK_a, startOfLine)           -- move to the beginning of the line
+     , (xK_e, endOfLine)             -- move to the end of the line
+     , (xK_m, deleteString Next)     -- delete a character foward
+     , (xK_b, moveCursor Prev)       -- move cursor forward
+     , (xK_f, moveCursor Next)       -- move cursor backward
+     , (xK_BackSpace, killWord Prev) -- kill the previous word
+     , (xK_y, pasteString)           -- paste a string
+     , (xK_g, quit)                  -- quit out of prompt
+     , (xK_bracketleft, quit)
+     ]
+     ++
+     map (first $ (,) altKeyMask)       -- meta key + <key>
+     [ (xK_BackSpace, killWord Prev) -- kill the prev word
+     , (xK_f, moveWord Next)         -- move a word forward
+     , (xK_b, moveWord Prev)         -- move a word backward
+     , (xK_d, killWord Next)         -- kill the next word
+     , (xK_n, moveHistory W.focusUp')   -- move up thru history
+     , (xK_p, moveHistory W.focusDown') -- move down thru history
+     ]
+     ++
+     map (first $ (,) 0) -- <key>
+     [ (xK_Return, setSuccess True >> setDone True)
+     , (xK_KP_Enter, setSuccess True >> setDone True)
+     , (xK_BackSpace, deleteString Prev)
+     , (xK_Delete, deleteString Next)
+     , (xK_Left, moveCursor Prev)
+     , (xK_Right, moveCursor Next)
+     , (xK_Home, startOfLine)
+     , (xK_End, endOfLine)
+     , (xK_Down, moveHistory W.focusUp')
+     , (xK_Up, moveHistory W.focusDown')
+     , (xK_Escape, quit)
+     ]
+
+dtXPConfig :: XPConfig
+dtXPConfig = def
+      { font                = myFont
+      , bgColor             = "#292d3e"
+      , fgColor             = "#d0d0d0"
+      , bgHLight            = "#c792ea"
+      , fgHLight            = "#000000"
+      , borderColor         = "#535974"
+      , promptBorderWidth   = 0
+      , promptKeymap        = myXPKeymap
+      , position            = Top
+      , height              = 20
+      , historySize         = 256
+      , historyFilter       = id
+      , defaultText         = []
+      , autoComplete        = Just 100000  -- set Just 100000 for .1 sec
+      , showCompletionOnTab = False
+      -- , searchPredicate     = isPrefixOf
+      , searchPredicate     = fuzzyMatch
+      , alwaysHighlight     = True
+      , maxComplRows        = Nothing      -- set to Just 5 for 5 rows
+      }
+
+dtXPConfig' :: XPConfig
+dtXPConfig' = dtXPConfig
+      { autoComplete        = Nothing
+      }
 
 myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ perWS
 
@@ -120,33 +226,40 @@ myKeys = [
   , ("M-r"               , spawn "urxvt -e lf")
   , ("M-i"               , spawn "brave-browser")
   , ("M-S-i"             , spawn ("firefox" ++ " -private-window"))
-  -- , ("M-<Print>"      , spawn "flameshot gui -p $HOME/Desktop")
+  , ("M-<Print>"         , spawn "flameshot gui -p $HOME/Desktop")
   , ("M-S-<Return>"      , spawn myTerminal)
   , ("M-<Return>"        , spawn "alacritty")
   , ("M-S-<Backspace>"   , spawn "xdo close")
   , ("M-S-<Escape>"      , spawn "xmonad_exit")
   , ("M-S-p"             , spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
+  -- , ("M-a-n"             , spawn "mpc next")
+  -- , ("M-a-p"             , spawn "mpc prev")
+  -- , ("M-a-z"             , spawn "mpc random")
+  -- , ("M-a-<Space>"       , spawn "mpc toggle")
 
-  , ("M-m", windows W.focusMaster)             -- Move focus to the master window
-  , ("M-j", windows W.focusDown)               -- Move focus to the next window
-  , ("M-k", windows W.focusUp)                 -- Move focus to the prev window
-  , ("M-S-m", windows W.swapMaster)            -- Swap the focused window and the master window
-  , ("M-S-j", windows W.swapDown)              -- Swap the focused window with the next window
-  , ("M-S-k", windows W.swapUp)                -- Swap the focused window with the prev window
-  , ("M-<Up>", sendMessage (MoveUp 10))             --  Move focused window to up
-  , ("M-<Down>", sendMessage (MoveDown 10))         --  Move focused window to down
-  , ("M-<Right>", sendMessage (MoveRight 10))       --  Move focused window to right
-  , ("M-<Left>", sendMessage (MoveLeft 10))         --  Move focused window to left
-  , ("M-S-<Up>", sendMessage (IncreaseUp 10))       --  Increase size of focused window up
-  , ("M-S-<Down>", sendMessage (IncreaseDown 10))   --  Increase size of focused window down
-  , ("M-S-<Right>", sendMessage (IncreaseRight 10)) --  Increase size of focused window right
-  , ("M-S-<Left>", sendMessage (IncreaseLeft 10))   --  Increase size of focused window left
-  , ("M-C-<Up>", sendMessage (DecreaseUp 10))       --  Decrease size of focused window up
-  , ("M-C-<Down>", sendMessage (DecreaseDown 10))   --  Decrease size of focused window down
-  , ("M-C-<Right>", sendMessage (DecreaseRight 10)) --  Decrease size of focused window right
-  , ("M-C-<Left>", sendMessage (DecreaseLeft 10))   --  Decrease size of focused window left
+  , ("M-m", windows W.focusMaster)
+  , ("M-j", windows W.focusDown)
+  , ("M-k", windows W.focusUp)
+  , ("M-S-m", windows W.swapMaster)
+  , ("M-S-j", windows W.swapDown)
+  , ("M-S-k", windows W.swapUp)
+  , ("M-<Up>", sendMessage (MoveUp 10))
+  , ("M-<Down>", sendMessage (MoveDown 10))
+  , ("M-<Right>", sendMessage (MoveRight 10))
+  , ("M-<Left>", sendMessage (MoveLeft 10))
+  , ("M-S-<Up>", sendMessage (IncreaseUp 10))
+  , ("M-S-<Down>", sendMessage (IncreaseDown 10))
+  , ("M-S-<Right>", sendMessage (IncreaseRight 10))
+  , ("M-S-<Left>", sendMessage (IncreaseLeft 10))
+  , ("M-C-<Up>", sendMessage (DecreaseUp 10))
+  , ("M-C-<Down>", sendMessage (DecreaseDown 10))
+  , ("M-C-<Right>", sendMessage (DecreaseRight 10))
+  , ("M-C-<Left>", sendMessage (DecreaseLeft 10))
   ]
-     -- ++
+    -- Appending search engine prompts to keybindings list.
+    ++ [("M-s " ++ k, S.promptSearch dtXPConfig' f) | (k,f) <- searchList ]
+    ++ [("M-S-s " ++ k, S.selectSearch f) | (k,f) <- searchList ]
+    -- ++
     -- []
     -- ((m .|. mod4Mask, k), windows $ f i)
     --      | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
@@ -154,43 +267,15 @@ myKeys = [
 
 myKeys1 :: [((KeyMask, KeySym), X ())]
 --myKeys :: [((ButtonMask, KeySym), X ())]
-myKeys1 = [ ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock") ]
+myKeys1 = [ ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
+        , ((mod1Mask, xK_a), submap . M.fromList $
+       [ ((0, xK_n),     spawn "mpc next")
+       , ((0, xK_p),     spawn "mpc prev")
+       , ((0, xK_z),     spawn "mpc random")
+       , ((0, xK_space), spawn "mpc toggle")
+       ])
+          ]
 
--- myAdditionalKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
---   myProgramKeys ++ myWindowManagerKeys ++ myMediaKeys
-
--- myProgramKeys =
---   [
---     ("M-S-e"             , addName "open emacs" $ spawn "emacs")
---   , ("M-e"               , addName "open neovim" $ spawn "urxvt -e nvim")
---   , ("M-r"               , addName "open lf" $ spawn "urxvt -e lf")
---   , ("M-i"               , addName "Open firefox" $ spawn "brave-browser")
---   , ("M-S-i"             , addName "Open firefox private" $ spawn ("firefox" ++ " -private-window"))
---   , ("M-S-<Return>"      , addName "open default terminal" $ spawn myTerminal)
---   , ("M-<Return>"        , addName "open backup terminal" $ spawn "alacritty")
---   , ("M-S-<Backspace>"   , addName "" $ spawn "xdo close")
---   , ("M-S-<Escape>"      , addName "exit xmonad" $ spawn "xmonad_exit")
---   , ("M-S-p"             , addName "open dmenu" $ spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
---   ]
-
--- myWindowManagerKeys =
---   [
---   ]
-
--- myMediaKeys =
---   [ ("<XF86MonBrightnessUp>"   , addName "Increase backlight" $ spawn "xbacklight -inc 10")
---   , ("<XF86AudioPrev>"         , addName "Previous track" $ spawn "mpc prev")
---   , ("<XF86AudioNext>"         , addName "Next track" $ spawn "mpc next")
---   , ("<XF86AudioPlay>"         , addName "Toggle play/pause" $ spawn "mpc toggle")
---   , ("<XF86AudioRaiseVolume>"  , addName "Raise volume" $ spawn "pactl set-sink-volume 1 +5%")
---   , ("<XF86AudioLowerVolume>"  , addName "Lower volume" $ spawn "pactl set-sink-volume 1 -5%")
---   , ("<XF86AudioMute>"         , addName "Toggle mute" $ spawn "pactl set-sink-mute 1 toggle")
---   , ("C-S-="                   , addName "Raise volume" $ spawn "pactl set-sink-volume 1 +5%")
---   , ("C-S--"                   , addName "Lower volume" $ spawn "pactl set-sink-volume 1 -5%")
---   , ("C-S-,"                   , addName "Previous track" $ spawn "mpc prev")
---   , ("C-S-."                   , addName "Next track" $ spawn "mpc next")
---   , ("C-S-/"                   , addName "Toggle play/pause" $ spawn "mpc toggle")
---   ]
 
 myManageHook = composeAll
     [ className =? "MPlayer"          --> doFloat
@@ -207,8 +292,8 @@ myManageHook' = composeOne [ isFullscreen -?> doFullFloat ]
 myLogHook :: D.Client -> PP
 myLogHook dbus = def
     { ppOutput = dbusOutput dbus
-    , ppCurrent = wrap ("%{F" ++ blue2 ++ "} ") " %{F-}"
-    , ppVisible = wrap ("%{F" ++ blue ++ "} ") " %{F-}"
+    , ppCurrent = wrap ("%{F" ++ myFocusBorderColor ++ "} ") " %{F-}"
+    , ppVisible = wrap ("%{F" ++ myFocusBorderColor ++ "} ") " %{F-}"
     , ppUrgent = wrap ("%{F" ++ red ++ "} ") " %{F-}"
     , ppHidden = wrap " " " "
     , ppWsSep = ""
@@ -238,6 +323,7 @@ myStartupHook = do
   spawn "$HOME/.config/polybar/launch.sh xmonad"
   --spawn "flashshot"
 
+-- myConfig :: XPConfig
 myConfig = def
   { terminal = myTerminal
   , layoutHook = windowArrange myLayouts
@@ -253,14 +339,16 @@ myConfig = def
   , focusFollowsMouse = False
   , clickJustFocuses = False
   , borderWidth = myBorderWidth
-  , normalBorderColor = bg
-  , focusedBorderColor = pur2
+  , normalBorderColor = myBorderColor
+  , focusedBorderColor = myFocusBorderColor
   , workspaces = myWorkspaces
-  , modMask = myModMask
+  , modMask = altKeyMask
   }
--- myDefaults = myConfig
              `additionalKeysP`
              [ ("<Print>", spawn "flameshot gui -p $HOME/Desktop"),
                ("M-<Print>", spawn "flameshot gui -p $HOME/Desktop"),
-               ("C-<Print>", spawn "xeyes")
+               ("C-<Print>", spawn "flameshot gui -p $HOME/Desktop")
+             ]
+             `additionalKeys`
+             [
              ]
