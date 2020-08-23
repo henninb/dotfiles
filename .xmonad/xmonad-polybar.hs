@@ -145,8 +145,8 @@ myXPKeymap = M.fromList $
      , (xK_Escape, quit)
      ]
 
-dtXPConfig :: XPConfig
-dtXPConfig = def
+myXPConfig :: XPConfig
+myXPConfig = def
       { font                = myFont
       , bgColor             = "#292d3e"
       , fgColor             = "#d0d0d0"
@@ -168,8 +168,8 @@ dtXPConfig = def
       , maxComplRows        = Nothing      -- set to Just 5 for 5 rows
       }
 
-dtXPConfig' :: XPConfig
-dtXPConfig' = dtXPConfig
+myXPConfig' :: XPConfig
+myXPConfig' = myXPConfig
       { autoComplete        = Nothing
       }
 
@@ -257,7 +257,7 @@ myKeys = [
   , ("M-C-<Left>", sendMessage (DecreaseLeft 10))
   ]
     -- Appending search engine prompts to keybindings list.
-    ++ [("M-s " ++ k, S.promptSearch dtXPConfig' f) | (k,f) <- searchList ]
+    ++ [("M-s " ++ k, S.promptSearch myXPConfig' f) | (k,f) <- searchList ]
     ++ [("M-S-s " ++ k, S.selectSearch f) | (k,f) <- searchList ]
     -- ++
     -- []
