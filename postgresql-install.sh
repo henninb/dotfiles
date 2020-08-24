@@ -106,14 +106,14 @@ elif [ "$OS" = "Linux Mint" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   sudo eselect news read
   sudo emerge --update --newuse dev-db/postgresql
-  sudo emerge --config dev-db/postgresql:11
+  sudo emerge --config dev-db/postgresql:12
   #sudo rc-update add postgresql default
   #sudo postgresql-setup initdb
-  sudo mv -v pg_hba.conf  /var/lib/postgresql/11/data/pg_hba.conf
-  sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/postgresql/11/data/postgresql.conf
-  echo sudo /etc/init.d/postgresql-11 start
-  sudo rc-update add postgresql-11 default
-  sudo rc-service postgresql-11 start
+  sudo mv -v pg_hba.conf  /var/lib/postgresql/12/data/pg_hba.conf
+  sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/postgresql/12/data/postgresql.conf
+  echo sudo /etc/init.d/postgresql-12 start
+  sudo rc-update add postgresql-12 default
+  sudo rc-service postgresql-12 start
   netstat -na | grep 5432 | grep LIST
 elif [ "$OS" = "Ubuntu" ]; then
   sudo apt install -y postgresql

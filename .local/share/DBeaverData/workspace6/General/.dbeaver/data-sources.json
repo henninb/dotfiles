@@ -18,11 +18,23 @@
 					"@dbeaver-show-template-db@": "false",
 					"postgresql.dd.plain.string": "false",
 					"postgresql.dd.tag.string": "false"
-				},
-				"handlers": {}
+				}
 			},
 			"custom-properties": {
 				"database.meta.separate.connection": "false"
+			}
+		},
+		"dbeaver-sample-database-sqlite-1": {
+			"provider": "generic",
+			"driver": "sqlite_jdbc",
+			"name": "DBeaver Sample Database (SQLite)",
+			"save-password": true,
+			"show-system-objects": true,
+			"read-only": false,
+			"configuration": {
+				"database": "/home/henninb/.local/share/DBeaverData/workspace6/.metadata/sample-database-sqlite-1/Chinook.db",
+				"url": "jdbc:sqlite:/home/henninb/.local/share/DBeaverData/workspace6/.metadata/sample-database-sqlite-1/Chinook.db",
+				"type": "dev"
 			}
 		}
 	},
