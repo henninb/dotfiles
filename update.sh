@@ -48,6 +48,8 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge -uDN --keep-going --with-bdeps=y @world 2>&1 | tee -a update.log.$$
   sudo emerge --depclean 2>&1 | tee -a update.log.$$
   echo sudo emerge @preserved-rebuild
+  echo eselect editor list
+  echo emerge --depclean -p
   echo sudo etc-update
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
