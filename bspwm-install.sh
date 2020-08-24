@@ -102,8 +102,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S xscreensaver
   sudo pacman --noconfirm --needed -S dunst
 elif [ "$OS" = "Gentoo" ]; then
-  sudo usermod -aG tty henninb
-  sudo usermod -aG video henninb
+  sudo usermod -aG tty "$(id -un)"
+  sudo usermod -aG video "$(id -un)"
   GENTOO_PKGS="bspwm dmenu sxhkd feh cmatrix x11-libs/cairo libmpdclient pulseaudio autocutsel w3m x11-misc/xclip xinit xorg-server dbus elogind x11-misc/xscreensaver x11-misc/wmname x11-misc/dunst"
   FAILURE=""
   for i in $GENTOO_PKGS; do

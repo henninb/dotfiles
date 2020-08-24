@@ -90,8 +90,8 @@ elif [ "$OS" = "Solus" ]; then
   done
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Gentoo" ]; then
-  sudo usermod -aG tty henninb
-  sudo usermod -aG video henninb
+  sudo usermod -aG tty "$(id -un)"
+  sudo usermod -aG video "$(id -un)"
   sudo emerge --unmerge dzen
   GENTOO_PKGS="xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind"
   FAILURE=""
