@@ -114,3 +114,5 @@ translate-shell
 trans -t de "hi"
 http://dotshare.it/
 pip install mlbv
+lazygit
+lazydocker
