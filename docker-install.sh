@@ -1,5 +1,9 @@
 #!/bin/sh
 
+cat > daemon.json <<'EOF'
+{ "dns" : [ "8.8.8.8", "8.8.4.4" ]}
+EOF
+
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman  --noconfirm --needed -S docker
   sudo systemctl enable docker
@@ -93,6 +97,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -a -G docker "$(id -un)"
   echo /usr/share/docker/contrib/check-config.sh
   echo https://github.com/tianon/docker-overlay
+  echo sudo cp -v daemon.json /etc/docker/daemon.json
 else
   echo "$OS is not yet implemented."
   exit 1
