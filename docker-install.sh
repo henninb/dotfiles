@@ -90,7 +90,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo rc-update add docker default
   sudo rc-service docker start
   sudo usermod -a -G docker "$(id -un)"
-  /usr/share/docker/contrib/check-config.sh
+  echo /usr/share/docker/contrib/check-config.sh
   echo https://github.com/tianon/docker-overlay
 else
   echo "$OS is not yet implemented."

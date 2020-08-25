@@ -5,7 +5,7 @@ if [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse sys-kernel/gentoo-sources
   sudo emerge --update --newuse zfs
   # sudo emerge --update --newuse aufs-sources
-
+  sudo PYTHON_SINGLE_TARGET="python3_7 (-pypy3) -python3_6" emerge --update --newuse dracut
   sudo emerge --update --newuse fakeroot
   sudo emerge --update --newuse pciutils
   sudo eselect kernel list
@@ -14,7 +14,7 @@ if [ "$OS" = "Gentoo" ]; then
 
   echo TODO: should I be exiting here?
   echo TODO: add audio into the kernel
-  # exit 1
+  exit 1
   cd /usr/src/linux || exit
   cp -v /usr/src/linux/.config "${HOME}/kernel-config-$(uname -r)"
 
@@ -24,6 +24,7 @@ if [ "$OS" = "Gentoo" ]; then
   sudo mount /dev/sda1 /boot
   sudo make modules_install
   sudo make install
+  cd /boot && sudo dracut --kver 5.4.60-gentoo
   echo sudo grub-install /dev/sda
   sudo grub-mkconfig -o /boot/grub/grub.cfg
   sudo grep gnulinux /boot/grub/grub.cfg
