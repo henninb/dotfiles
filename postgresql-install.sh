@@ -109,8 +109,10 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --config dev-db/postgresql:12
   #sudo rc-update add postgresql default
   #sudo postgresql-setup initdb
+  sudo cp -v pg_hba.conf /etc/postgresql-12/
   sudo mv -v pg_hba.conf  /var/lib/postgresql/12/data/pg_hba.conf
   sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/postgresql/12/data/postgresql.conf
+  sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql-12/postgresql.conf
   echo sudo /etc/init.d/postgresql-12 start
   sudo rc-update add postgresql-12 default
   sudo rc-service postgresql-12 start
