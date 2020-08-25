@@ -86,6 +86,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse fakeroot
   sudo emerge --update --newuse pciutils
   sudo emerge --update --newuse sys-fs/btrfs-progs
+  sudo emerge --update --newuse docker-compose
   sudo emerge --update --newuse app-emulation/docker
   sudo rc-update add docker default
   sudo rc-service docker start
