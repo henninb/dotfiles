@@ -54,6 +54,8 @@ main = do
 myTerminal :: String
 myTerminal = "urxvt"
 --myModMask      = mod4Mask
+-- modMask = 115 -- Windows start button
+-- modMask = xK_Meta_L
 
 altKeyMask :: KeyMask
 altKeyMask = mod1Mask
@@ -172,6 +174,13 @@ myXPConfig' :: XPConfig
 myXPConfig' = myXPConfig
       { autoComplete        = Nothing
       }
+
+-- TODO: not sure what this code does right now
+keyBindings conf = let m = modMask conf in
+     M.fromList
+    [((m .|. altKeyMask, k), windows $ f i) |
+     (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9],
+     (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
 myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ perWS
 

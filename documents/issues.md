@@ -330,7 +330,7 @@ sudo apt update && sudo apt install libxtst6 libxrandr2 libglib2.0-0 libgtk2.0-0
 
 STEAM_RUNTIME=0
 
-## Is it possible to configure xmonad to move a program from desktop 1 to 4 (i.e. super+mod+4) and to move to screen 4 without typing super+4 after?
+## Is it possible to configure xmonad to move a program from desktop 1 to 4 (i.e. super+shift+4) and to move to screen 4 without typing super+4 after?
 ```
 karetsu can you not just set a custom keybind to do that?
 karetsu> the action being something like W.shift >>=
