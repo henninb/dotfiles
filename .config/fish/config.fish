@@ -1,6 +1,10 @@
+# if the contents of the file .config/fish/fishfile does not contain spacefish then
+# fisher add matchai/spacefish
 #set --erase fish_greeting
 set --universal fish_greeting
 
+
+# install fisher add matchai/spacefish
 set SPACEFISH_PROMPT_ORDER exit_code host dir git jobs char
 set SPACEFISH_PROMPT_ADD_NEWLINE false
 set SPACEFISH_PROMPT_SEPARATE_LINE false
@@ -51,18 +55,15 @@ else if [ -f /etc/debian_version ];
   set OS Debian
   set OS_VER (cat /etc/debian_version)
 else if [ -f /etc/SuSe-release ];
-  echo "should not get here v1."
   exit 1
 else if [ -f /etc/redhat-release ];
-  echo "should not get here v2."
   exit 2
 else
-  echo "should not get here v3."
   set OS (uname -s)
   set OS_VER (uname -r)
 end
 
-source $HOME/.alias-master
+# source $HOME/.alias-master
 
 if [ -x (command -v nvim) ];
   source $HOME/.alias-neovim
