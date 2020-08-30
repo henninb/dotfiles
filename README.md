@@ -19,6 +19,7 @@
 - Clear Linux
 - Linux From Scratch
 - FreeNAS
+- OpenCore
 
 ## Operating Systems - Security/Privacy
 - Qubes
@@ -115,4 +116,4 @@ trans -t de "hi"
 http://dotshare.it/
 pip install mlbv
 lazygit - go get github.com/jesseduffield/lazygit
-lazydocker
+lazydocker - go get github.com/jesseduffield/lazydocker
