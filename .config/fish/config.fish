@@ -72,3 +72,13 @@ end
 if [ \( "$OS" = "FreeBSD" \) -o \(  "$OS" = "Alpine Linux" \) -o \(  "$OS" = "OpenBSD" \) -o \(  "$OS" = "Darwin" \) ];
   source $HOME/.alias-bsd
 end
+
+alias gs='git status'
+
+function gp
+  echo $argv | read -l arg1
+  git pull
+  git add .
+  git commit -m "$arg1"
+  git push
+end
