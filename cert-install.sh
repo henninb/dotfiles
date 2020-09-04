@@ -2,14 +2,16 @@
 
 APP=raspi-finance
 SERVERNAME=hornsup
-KEYSTORE_PASSWORD="********"
+
+[ -z "$KEYSTORE_PASSWORD" ] && { echo "please set KEYSTORE_PASSWORD"; exit 1; }
+#KEYSTORE_PASSWORD="********"
 TRUSTSTORE_PASSWORD="${KEYSTORE_PASSWORD}"
 
-if [ "$KEYSTORE_PASSWORD" = "********" ]; then
-  echo "use a real password"
-fi
+# if [ "$KEYSTORE_PASSWORD" = "********" ]; then
+#   echo "use a real password"
+# fi
 
-mkdir -p ssl
+mkdir -p "$HOME/ssl"
 
 echo generate private key
 openssl genrsa -out "$HOME/ssl/ca.key.pem" 4096
@@ -38,9 +40,8 @@ openssl x509 -req -days 365 -in "$HOME/ssl/${SERVERNAME}-${APP}.csr.pem" -signke
 echo curl --cacert archlinux-raspi-finance.pem https://archlinux:8080
 echo curl --cacert hornsup-raspi-finance.pem https://hornsup:8080
 
-cp -v ssl/hornsup-raspi-finance-keystore.jks "$HOME/projects/raspi-finance-convert/ssl"
-
-cp -v ssl/hornsup-raspi-finance-keystore.jks "$HOME/projects/raspi-finance-endpoint/ssl"
+cp -v "$HOME/ssl/hornsup-raspi-finance-keystore.jks" "$HOME/projects/raspi-finance-convert/ssl"
+cp -v "$HOME/ssl/hornsup-raspi-finance-keystore.jks" "$HOME/projects/raspi-finance-endpoint/ssl"
 
 exit 0
 
