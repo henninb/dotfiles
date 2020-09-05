@@ -82,3 +82,13 @@ colors:
 background_opacity: 1.0
 # background_opacity: 0.95
 
+key_bindings:
+  # (Windows, Linux, and BSD only)
+  - { key: P,        mods: Control,       action: Paste            }
+  - { key: Insert,   mods: Shift,         action: Paste            }
+  - { key: Y,        mods: Control,       action: Copy             }
+  - { key: Equals,   mods: Control,       action: IncreaseFontSize }
+  - { key: Add,      mods: Control,       action: IncreaseFontSize }
+  - { key: Subtract, mods: Control,       action: DecreaseFontSize }
+  - { key: Minus,    mods: Control,       action: DecreaseFontSize }
+  - { key: Space,    mods: Control,       action: ToggleViMode }
