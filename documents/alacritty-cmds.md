@@ -11,3 +11,8 @@ Ctl-Shift-p
 Ctl-minus
 Ctl-plus
 ```
+
+## Vim mode
+```
+Ctl-shift-space
+```
