@@ -245,6 +245,12 @@ myKeys = [
   -- , ("M-a-p"             , spawn "mpc prev")
   -- , ("M-a-z"             , spawn "mpc random")
   -- , ("M-a-<Space>"       , spawn "mpc toggle")
+  , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
+  , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
+  , ("<XF86AudioPlay>", spawn "cmus toggle")
+  , ("<XF86AudioPrev>", spawn "cmus prev")
+  , ("<XF86AudioNext>", spawn "cmus next")
+
 
   , ("M-m", windows W.focusMaster)
   , ("M-j", windows W.focusDown)
