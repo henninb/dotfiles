@@ -236,7 +236,8 @@ myKeys = [
   , ("M-i"               , spawn "brave-browser")
   , ("M-S-i"             , spawn ("firefox" ++ " -private-window"))
   , ("M-<Print>"         , spawn "flameshot gui -p $HOME/Desktop")
-  , ("M-S-<Return>"      , spawn "tdrop -am -w 1355 -y 25 urxvt -name 'urxvt-float'")
+  -- , ("M-S-<Return>"      , spawn "tdrop -am -w 1355 -y 25 urxvt -name 'urxvt-float'")
+  , ("M-S-<Return>"      , spawn "tdrop -am -w 1355 -y 25 st -T 'st-float'")
   , ("M-<Return>"        , spawn myTerminal)
   , ("M-S-<Backspace>"   , spawn "xdo close")
   , ("M-S-<Escape>"      , spawn "xmonad_exit")
@@ -296,6 +297,7 @@ myKeys1 = [ ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
 myManageHook = composeAll
     [ className =? "MPlayer"          --> doFloat
     , title     =? "urxvt-float"      --> doFloat --custom window title
+    , title     =? "st-float"      --> doFloat --custom window title
     , className =? "Gimp"             --> doFloat
     , resource  =? "desktop_window"   --> doIgnore
     , className =? "feh"              --> doFloat
