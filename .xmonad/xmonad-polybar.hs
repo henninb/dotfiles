@@ -52,7 +52,7 @@ main = do
     `removeKeys` []
 
 myTerminal :: String
-myTerminal = "urxvt"
+myTerminal = "alacritty"
 --myModMask      = mod4Mask
 -- modMask = 115 -- Windows start button
 -- modMask = xK_Meta_L
@@ -236,10 +236,11 @@ myKeys = [
   , ("M-i"               , spawn "brave-browser")
   , ("M-S-i"             , spawn ("firefox" ++ " -private-window"))
   , ("M-<Print>"         , spawn "flameshot gui -p $HOME/Desktop")
-  , ("M-S-<Return>"      , spawn myTerminal)
-  , ("M-<Return>"        , spawn "alacritty")
+  , ("M-S-<Return>"      , spawn "tdrop -am -w 1355 -y 25 urxvt -name 'urxvt-float'")
+  , ("M-<Return>"        , spawn myTerminal)
   , ("M-S-<Backspace>"   , spawn "xdo close")
   , ("M-S-<Escape>"      , spawn "xmonad_exit")
+  , ("M-<Escape>"      , spawn "xmonad --restart")
   , ("M-S-p"             , spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
   -- , ("M-a-n"             , spawn "mpc next")
   -- , ("M-a-p"             , spawn "mpc prev")
@@ -247,10 +248,10 @@ myKeys = [
   -- , ("M-a-<Space>"       , spawn "mpc toggle")
   , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
   , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
+  -- TODO: These 3 commands are currently not working
   , ("<XF86AudioPlay>", spawn "cmus toggle")
   , ("<XF86AudioPrev>", spawn "cmus prev")
   , ("<XF86AudioNext>", spawn "cmus next")
-
 
   , ("M-m", windows W.focusMaster)
   , ("M-j", windows W.focusDown)
@@ -294,6 +295,7 @@ myKeys1 = [ ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
 
 myManageHook = composeAll
     [ className =? "MPlayer"          --> doFloat
+    , title     =? "urxvt-float"      --> doFloat --custom window title
     , className =? "Gimp"             --> doFloat
     , resource  =? "desktop_window"   --> doIgnore
     , className =? "feh"              --> doFloat
