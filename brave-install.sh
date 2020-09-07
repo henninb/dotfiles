@@ -15,7 +15,8 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --sync
   echo "www-client/brave-bin **" | sudo tee -a /etc/portage/package.accept_keywords
   sudo emerge --update --newuse www-client/brave-bin
-  sudo ln -s /usr/bin/brave-bin /usr/bin/brave
+  # sudo ln -s /usr/bin/brave-bin /usr/bin/brave
+  sudo ln -s /usr/bin/brave-bin /usr/bin/brave-browser
 elif [ "$OS" = "fedora" ]; then
   sudo dnf install dnf-plugins-core
   sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
