@@ -299,9 +299,13 @@ myManageHook = composeAll
     , title     =? "urxvt-float"      --> doFloat --custom window title
     , title     =? "st-float"      --> doFloat --custom window title
     , className =? "Gimp"             --> doFloat
-    , resource  =? "desktop_window"   --> doIgnore
+    , title     =? "Oracle VM VirtualBox Manager"  --> doFloat
+    , title     =? "Welcome to IntelliJ IDEA"      --> doFloat
+    , className =? "jetbrains-idea"   --> doFloat  -- not sure if this working
+    , resource  =? "desktop_window"   --> doIgnore -- TODO: not sure what this does
     , className =? "feh"              --> doFloat
-    , role      =? "pop-up"           --> doFloat
+    , role      =? "pop-up"           --> doFloat  -- TODO: not sure what this does
+    , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
     ]
   where
     role = stringProperty "WM_WINDOW_ROLE"
@@ -337,6 +341,8 @@ myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
   where
     sstr = shorten len str
 
+-- TODO: spawnOnce should be used?
+myStartupHook :: X ()
 myStartupHook = do
   setWMName "LG3D"
   spawn "$HOME/.config/polybar/launch.sh xmonad"
