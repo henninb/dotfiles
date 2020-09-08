@@ -306,6 +306,8 @@ myManageHook = composeAll
     , className =? "feh"              --> doFloat
     , role      =? "pop-up"           --> doFloat  -- TODO: not sure what this does
     , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
+    , (className =? "Notepadqq" <&&> title =? "Search") --> doFloat
+    , (className =? "Notepadqq" <&&> title =? "Advanced Search") --> doFloat
     ]
   where
     role = stringProperty "WM_WINDOW_ROLE"
