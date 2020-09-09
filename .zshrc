@@ -253,10 +253,6 @@ if [ -x "$(command -v nvim)" ]; then
   [ -s "$HOME/.alias-neovim" ] && source "$HOME/.alias-neovim"
 fi
 
-if [ "$OS" = "FreeBSD" ] || [ "$OS" = "Alpine Linux" ] || [ "$OS" = "OpenBSD" ] || [ "$OS" = "Darwin" ]; then
-  [ -s "$HOME/.alias-bsd" ] && source "$HOME/.alias-bsd"
-fi
-
 [ -s "$HOME/.sdkman/bin/sdkman-init.sh" ] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 if [ ! "$OS" = "FreeBSD" ]; then
@@ -271,13 +267,16 @@ if [ ! "$OS" = "FreeBSD" ]; then
   fi
 fi
 
-mkdir -p ~/.fonts
-ls -l ~/.fonts/{Monofur_Bold_for_Powerline.ttf,Monofur_Italic_for_Powerline.ttf,Monofur_for_Powerline.ttf} > /dev/null 2>&1
-if [ $? -ne 0 ]; then
+if [ -z "$(find ~/.fonts -maxdepth 1 -type f  \( -name Monofur_Bold_for_Powerline.ttf -o -name Monofur_Italic_for_Powerline.ttf -o -name Monofur_for_Powerline.ttf \))" ]; then
+  mkdir -p ~/.fonts
   cd ~/.fonts || return
   unzip ../monofur-fonts.zip
   fc-cache -vf ~/.fonts/
   cd - || return
+fi
+
+if [ "$OS" = "FreeBSD" ] || [ "$OS" = "Alpine Linux" ] || [ "$OS" = "OpenBSD" ] || [ "$OS" = "Darwin" ]; then
+  [ -s "$HOME/.alias-bsd" ] && source "$HOME/.alias-bsd"
 fi
 
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
@@ -286,8 +285,10 @@ fi
 
 [ ! -d "$HOME/.pyenv" ] && git clone https://github.com/pyenv/pyenv.git "$HOME/.pyenv"
 
+# TODO: rewrite with the -z
+# if grep -q -A 3 '\[branch "master"\]' "$HOME/.git/config" | grep 'remote = origin'; then
 grep -A 3 '\[branch "master"\]' "$HOME/.git/config" | grep 'remote = origin' > /dev/null
-if [ $? -ne 0 ]; then
+ if [ $? -ne 0 ]; then
   git branch --set-upstream-to=origin/master master
 fi
 

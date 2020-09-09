@@ -60,7 +60,16 @@ alias v='vim'
 alias grep='grep --color'
 
 if [ -x "$(command -v exa)" ]; then
-  alias ls='exa --icons --color=always --group-directories-first' # my preferred listing
+  function ls() {
+    if [ "$1" = "-ltr" ]; then
+      exa -l -r --sort oldest --color=always --icons --group-directories-first
+    elif [ $# -eq 0 ]; then
+      exa --color=always --icons --group-directories-first
+    else
+      exa "$*" --color=always --icons --group-directories-first
+    fi
+  }
+  #alias ls='exa --icons --color=always --group-directories-first' # my preferred listing
   alias la='exa -a --color=always --group-directories-first'  # all files and dirs
   alias ll='exa -l --color=always --group-directories-first'  # long format
   alias lt='exa -aT --color=always --group-directories-first' # tree listing
