@@ -349,7 +349,9 @@ myStartupHook :: X ()
 myStartupHook = do
   setWMName "LG3D"
   spawn "$HOME/.config/polybar/launch.sh xmonad"
-  --spawn "flashshot"
+  spawn "flameshot"
+  spawn "dunst"
+  spawn "blueman-applet"
 
 -- myConfig :: XPConfig
 myConfig = def

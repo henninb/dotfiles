@@ -9,6 +9,18 @@ if [ -x "$(command -v dunst)" ]; then
   dunst &
 fi
 
+if [ -x "$(command -v flameshot)" ]; then
+  flameshot &
+else
+  echo "flameshot not installed."
+fi
+
+if [ -x "$(command -v blueman-applet)" ]; then
+  blueman-applet &
+else
+  echo "blueman-applet not installed."
+fi
+
 if [ -x "$(command -v sxhkd)" ]; then
   sxhkd &
   echo sxhkd was called. >> "$HOME/bspwm.log"

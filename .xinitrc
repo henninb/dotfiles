@@ -22,7 +22,6 @@ export LC_IDENTIFICATION=en_US.UTF-8
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-
 if [ -x "$(command -v xrdb)" ]; then
   #xrdb -merge ~/.Xresources
   xrdb -load "$HOME/.Xresources" >> "$HOME/xinit.log"
@@ -30,17 +29,6 @@ else
   echo "xrdb not installed."
 fi
 
-if [ -x "$(command -v blueman-applet)" ]; then
-  blueman-applet &
-else
-  echo "blueman-applet not installed."
-fi
-
-if [ -x "$(command -v flameshot)" ]; then
-  flameshot &
-else
-  echo "flameshot not installed."
-fi
 #for f in /etc/X11/Xsession.d/*; do
 #  echo $f >> "$HOME/xinit.log"
 #  [ -x "$f" ] && . "$f"
@@ -66,11 +54,13 @@ else
   echo xscreensaver is not installed >> "$HOME/xinit.log"
 fi
 
-# gentoo could not resolve keysym xf86 fullscreen
+# Addd for gentoo - could not resolve keysym xf86 fullscreen
 setxkbmap -option compose:ralt
 
 if [ -x "$(command -v mpd)" ]; then
-  exec mpd  &
+  exec mpd &
+else
+  echo "mpd is not installed."
 fi
 
 echo "$OS is running." >> "$HOME/xinit.log"
@@ -84,20 +74,19 @@ if [ ! "$OS" = "Fedora" ]; then
   fi
 fi
 
+# used for java application window naming
 if [ -x "$(command -v wmname)" ]; then
   wmname LG3D >> "$HOME/xinit.log"
 fi
 
-# cd "$HOME/.xmonad"
-# make "$(cat "$HOME/.xmonad/.active")" > /dev/null 2>&1
-# cd -
-
+# list of different WMs
 #exec mate-session
 #exec i3
 #exec awesome
 #exec qtile
 #exec xmonad
 #exec bspwm
+
 xrandr --listproviders >> "$HOME/xinit.log"
 
 WM=$(head -1 < "$HOME/.active-wm")
@@ -110,16 +99,10 @@ else
 fi
 
 if [ "${WM}" = "bspwm" ]; then
-  # exec sxhkd &
-  #exec bspwm  "$HOME/.config/bspwm/bspwmrc" 2>> "$HOME/xinit.log"
   exec bspwm 2>> "$HOME/xinit.log"
 elif [ "${WM}" = "xmonad" ]; then
   export "$(dbus-launch)"
-  #dbus-update-activation-environment
-  #echo "$DBUS_SESSION_BUS_ADDRESS" >> "$HOME/xinit.log"
-  #exec xmonad 2>> "$HOME/xinit.log"
   exec dbus-launch xmonad 2>> "$HOME/xinit.log"
-  #exec xmonad 2>> "$HOME/xinit.log"
 elif [ -x "$(command -v ${WM})" ]; then
   exec ${WM} 2>> "$HOME/xinit.log"
 else
