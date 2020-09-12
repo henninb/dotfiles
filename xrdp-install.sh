@@ -5,8 +5,8 @@ xrdp_build() {
   cd "$HOME/projects" || exit
   git clone --recursive git@github.com:neutrinolabs/xrdp.git
   cd xrdp || exit
+  git fetch
   git checkout v0.9.14
-  git pull origin master
   make clean
   if ! ./bootstrap; then
     echo bootstrap failed
@@ -26,9 +26,8 @@ xorgxrdp_build() {
   cd "$HOME/projects" || exit
   git clone --recursive git@github.com:neutrinolabs/xorgxrdp.git
   cd xorgxrdp || exit
+  git fetch
   git checkout v0.2.14
-  git checkout master
-  git pull origin master
   if ! ./bootstrap; then
     echo bootstrap failed
     exit 2
@@ -180,10 +179,10 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y pam-devel
   sudo xbps-install -y libXrandr-devel
   sudo xbps-install -y xorg-server-devel
-  cd /tmp
+  cd /tmp || exit
   curl -LO https://www.openssl.org/source/openssl-1.1.1.tar.gz
   tar xvf openssl-1.1.1.tar.gz
-  cd openssl-1.1.1
+  cd openssl-1.1.1 || exit
   #./config --prefix=/opt/openssl/1.1.1
   ./config --prefix=/usr
   make
