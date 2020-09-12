@@ -8,14 +8,14 @@ NVER=$(curl -s https://github.com/neovim/neovim/releases/ | grep release | grep 
 ACTUAL_VER=$(nvim --version | grep -o 'v[0-9.]\+[0-9]')
 
 if [ "$ACTUAL_VER" = "$NVER" ]; then
-  echo already at the latest version $NVER.
+  echo "already at the latest version $NVER."
 fi
 
-if  [ ! -z "$VER_OVERRIDE" ]; then
+if  [ -n "$VER_OVERRIDE" ]; then
   VER=${VER_OVERRIDE}
 fi
 
-echo $VER
+echo "$VER"
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] ; then
   sudo pacman  --noconfirm --needed -S make luajit luarocks cmake base-devel
@@ -115,28 +115,26 @@ else
   exit 1
 fi
 
-cd projects
+cd projects || exit
 
 git clone git@github.com:neovim/neovim.git
-cd neovim
+cd neovim || exit
 git checkout master
-git pull origin master
-git checkout tags/$NVER
-make CMAKE_BUILD_TYPE=RelWithDebInfo
-if [ $? -ne 0 ]; then
+git fetch
+git checkout "tags/$NVER"
+if ! make CMAKE_BUILD_TYPE=RelWithDebInfo; then
   echo make failed.
   exit 1
 fi
 
-sudo make install
-if [ $? -ne 0 ]; then
+if ! sudo make install; then
   echo make install failed.
   exit 1
 fi
 
 echo make install_local
 sudo make clean
-cd $HOME
+cd "$HOME" || exit
 
 #echo nvim -u NORC file
 #echo "previous $ACTUAL_VER"
