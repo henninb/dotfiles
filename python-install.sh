@@ -3,21 +3,21 @@
 VER=$(curl https://www.python.org/downloads/ | grep -o 'Python-[0-9.]\+[0-9].tar.xz' | head -1 | sed 's/.tar.xz//' | sed 's/Python-//')
 
 build() {
-  if [ ! -f Python-${VER}.tar.xz ]; then
+  if [ ! -f "Python-${VER}.tar.xz" ]; then
     rm -rf Python-*.tar.xz
-    wget https://www.python.org/ftp/python/${VER}/Python-${VER}.tar.xz
+    wget "https://www.python.org/ftp/python/${VER}/Python-${VER}.tar.xz"
   fi
-  tar -xf Python-${VER}.tar.xz
-  cd Python-${VER}
+  tar -xf "Python-${VER}.tar.xz"
+  cd "Python-${VER}" || exit
   ./configure --enable-optimizations
-  make -j$(nproc)
+  make -j "$(nproc)"
   sudo make altinstall
 }
 
 pip_ins() {
-  pip show $1 > /dev/null
+  pip show "$1" > /dev/null
   if [ $? -ne 0 ]; then
-    pip install $1 --user
+    pip install "$1" --user
   fi
 }
 
