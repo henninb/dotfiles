@@ -1,0 +1,11 @@
+--- Makefile	2020-09-12 06:35:47.329477158 -0500
++++ Makefile.new	2020-09-12 06:36:59.616143428 -0500
+@@ -236,7 +236,7 @@
+ AWK = gawk
+ CC = gcc
+ CCDEPMODE = depmode=gcc3
+-CFLAGS = -g -O2 -Wall -Wwrite-strings -Werror
++CFLAGS = -g -O2 -Wall -Wwrite-strings
+ CPP = gcc -E
+ CPPFLAGS = 
+ CYGPATH_W = echo

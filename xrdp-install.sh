@@ -124,14 +124,20 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   # cd xorgxrdp-aur
   # # makepkg -si
 
-  echo xrdp v0.9.11 was release on 8-19-2019
+  echo xrdp v0.9.14
   cd "$HOME/projects" || exit
   git clone --recursive git@github.com:neutrinolabs/xrdp.git
   cd xrdp || exit
+  git checkout v0.9.14
   git pull origin master
-  ./bootstrap
-  ./configure
   make clean
+  if ! ./bootstrap; then
+    echo bootstrap failed
+    exit 2
+  fi
+  # ./configure
+  ./configure --enable-fuse --enable-mp3lame --enable-pixman
+  patch common/Makefile < "$HOME/xrdp-log-Makefile-patch"
   if ! make; then
     echo build failed for xrdp.
     exit 1
@@ -141,11 +147,14 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   cd "$HOME/projects" || exit
   git clone --recursive git@github.com:neutrinolabs/xorgxrdp.git
   cd xorgxrdp || exit
+  git checkout v0.2.14
   git checkout master
   git pull origin master
-  ./bootstrap
+  if ! ./bootstrap; then
+    echo bootstrap failed
+    exit 2
+  fi
   ./configure XRDP_CFLAGS=-I"$HOME/projects/xrdp/common" XRDP_LIBS=" "
-  make clean
   if ! make; then
     echo build failed for xrdp-xorgxrdp.
     exit 1
@@ -161,9 +170,9 @@ elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y libxrandr-devel
   sudo eopkg install -y xorg-server-devel
   sudo eopkg install -y libxfont2-devel
-  cd $HOME/projects
+  cd "$HOME/projects" || exit
   git clone --recursive https://github.com/neutrinolabs/xrdp
-  cd xrdp
+  cd xrdp || exit
   ./bootstrap
   ./configure
   if ! make; then
