@@ -352,6 +352,9 @@ myStartupHook = do
   spawn "flameshot"
   spawn "dunst"
   spawn "blueman-applet"
+  spawn "mpd"
+  spawn "xscreensaver -no-splash"
+  spawn "feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg"
 
 -- myConfig :: XPConfig
 myConfig = def

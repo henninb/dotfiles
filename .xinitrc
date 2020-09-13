@@ -41,27 +41,27 @@ fi
 #done
 #unset f
 
-if [ -x "$(command -v feh)" ]; then
-  #exec feh --bg-scale --randomize $HOME/backgrounds/* &
-  exec feh --bg-scale "$HOME/backgrounds/minnesota-vikings-dark.jpg" &
-else
-  echo feh is not installed >> "$HOME/xinit.log"
-fi
+#if [ -x "$(command -v feh)" ]; then
+#  #exec feh --bg-scale --randomize $HOME/backgrounds/* &
+#  exec feh --bg-scale "$HOME/backgrounds/minnesota-vikings-dark.jpg" &
+#else
+#  echo feh is not installed >> "$HOME/xinit.log"
+#fi
 
-if [ -x "$(command -v xscreensaver)" ]; then
-  exec xscreensaver -no-splash &
-else
-  echo xscreensaver is not installed >> "$HOME/xinit.log"
-fi
+# if [ -x "$(command -v xscreensaver)" ]; then
+#   exec xscreensaver -no-splash &
+# else
+#   echo xscreensaver is not installed >> "$HOME/xinit.log"
+# fi
 
 # Addd for gentoo - could not resolve keysym xf86 fullscreen
 setxkbmap -option compose:ralt
 
-if [ -x "$(command -v mpd)" ]; then
-  exec mpd &
-else
-  echo "mpd is not installed."
-fi
+# if [ -x "$(command -v mpd)" ]; then
+#   exec mpd &
+# else
+#   echo "mpd is not installed."
+# fi
 
 echo "$OS is running." >> "$HOME/xinit.log"
 if [ ! "$OS" = "Fedora" ]; then
@@ -74,10 +74,11 @@ if [ ! "$OS" = "Fedora" ]; then
   fi
 fi
 
+# may not need it here
 # used for java application window naming
-if [ -x "$(command -v wmname)" ]; then
-  wmname LG3D >> "$HOME/xinit.log"
-fi
+# if [ -x "$(command -v wmname)" ]; then
+#   wmname LG3D >> "$HOME/xinit.log"
+# fi
 
 # list of different WMs
 #exec mate-session

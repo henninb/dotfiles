@@ -16,11 +16,15 @@ alt + shift + p
     dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'
 alt + shift + Escape
     bspwm_exit
+alt + Escape
+    $HOME/.config/bspwm/bspwmrc
 alt + shift + BackSpace
     xdo close
 alt + control + {t,s,f}
     bspc node -t {tiled,floating,fullscreen}
 alt + Print
+    flameshot gui -p $HOME/Desktop
+Print
     flameshot gui -p $HOME/Desktop
 XF86AudioRaiseVolume
     amixer -q -D pulse sset Master 2%+
