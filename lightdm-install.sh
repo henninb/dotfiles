@@ -37,9 +37,17 @@ DesktopNames=xmonad
 Keywords=tiling;wm;windowmanager;window;manager;
 EOF
 
-echo /usr/share/xsessions
-sudo cp bspwm.desktop /usr/share/xsessions/
-sudo cp xmonad.desktop /usr/share/xsessions/
+sudo apt install -y lightdm
+sudo apt install -y lightdm-gtk-greeter
+sudo apt install -y slick-greeter
+
+sudo pacman --noconfirm --needed -S lightdm
+sudo pacman --noconfirm --needed -S lightdm-gtk-greeter
+# sudo pacman --noconfirm --needed -S slick-greeter
+#echo /usr/share/xsessions
+sudo mv -v bspwm.desktop /usr/share/xsessions/
+sudo mv -v xmonad.desktop /usr/share/xsessions/
+sudo mv -v lightdm.conf /etc/lightdm/
 
 # sudo apt install -y python3-pyqt5.qtwebengine
 # sudo apt install -y liblightdm-gobject-1-dev
@@ -50,12 +58,5 @@ sudo cp xmonad.desktop /usr/share/xsessions/
 # cd web-greeter
 # sudo make install
 
-sudo apt install -y lightdm
-sudo apt install -y lightdm-gtk-greeter
-sudo apt install -y slick-greeter
-
-sudo pacman --noconfirm --needed -S lightdm
-sudo pacman --noconfirm --needed -S lightdm-gtk-greeter
-sudo pacman --noconfirm --needed -S slick-greeter
 
 exit 0
