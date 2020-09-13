@@ -49,6 +49,8 @@ sudo mv -v bspwm.desktop /usr/share/xsessions/
 sudo mv -v xmonad.desktop /usr/share/xsessions/
 sudo mv -v lightdm.conf /etc/lightdm/
 
+sudo systemctl enable lightdm
+
 # sudo apt install -y python3-pyqt5.qtwebengine
 # sudo apt install -y liblightdm-gobject-1-dev
 # sudo apt install -y python3-gi
