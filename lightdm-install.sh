@@ -35,7 +35,7 @@ Comment=xmonad dynamic tiling window manager
 Exec=xmonad
 TryExec=xmonad
 Type=Application
-X-LightDM-DesktopName=bspwm
+X-LightDM-DesktopName=xmonad
 DesktopNames=xmonad
 Keywords=tiling;wm;windowmanager;window;manager;
 EOF
