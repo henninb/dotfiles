@@ -8,9 +8,11 @@ echo lightdm --test-mode --debug
 cat > lightdm.conf <<EOF
 [Seat:*]
 autologin-guest=false
+session-wrapper=/etc/lightdm/Xsession
 #autologin-user=henninb
-autologin-user-timeout=0
-greeter-session=lightdm-gtk-greeter
+#autologin-user-timeout=0
+#greeter-session=lightdm-gtk-greeter
+greeter-session=lightdm-webkit2-greeter
 EOF
 
 cat > bspwm.desktop << EOF
@@ -64,6 +66,8 @@ sudo systemctl enable lightdm
 # git clone https://github.com/Antergos/web-greeter.git
 # cd web-greeter
 # sudo make install
+ls /usr/share/xgreeters
+echo at-spi-bus-launcher 
 
 
 exit 0
