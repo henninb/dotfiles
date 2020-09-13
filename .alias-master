@@ -63,8 +63,8 @@ if [ -x "$(command -v exa)" ]; then
   function ls() {
     if [ "$1" = "-ltr" ]; then
       exa -l -r --sort oldest --color=always --icons --group-directories-first
-    # elif [ "$1" = "-l" ]; then
-    #   echo
+    elif [ "$1" = "-l" ]; then
+      exa -l --color=always --icons --group-directories-first
     elif [ $# -eq 0 ]; then
       exa --color=always --icons --group-directories-first
     else
