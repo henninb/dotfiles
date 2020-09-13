@@ -49,6 +49,11 @@ sudo mv -v bspwm.desktop /usr/share/xsessions/
 sudo mv -v xmonad.desktop /usr/share/xsessions/
 sudo mv -v lightdm.conf /etc/lightdm/
 
+# set it back to startx
+# sudo systemctl set-default multi-user
+# rm /etc/systemd/system/default.target
+sudo systemctl set-default graphical
+sudo systemctl disable lxdm
 sudo systemctl enable lightdm
 
 # sudo apt install -y python3-pyqt5.qtwebengine
