@@ -11,8 +11,8 @@ autologin-guest=false
 session-wrapper=/etc/lightdm/Xsession
 #autologin-user=henninb
 #autologin-user-timeout=0
-#greeter-session=lightdm-gtk-greeter
-greeter-session=lightdm-webkit2-greeter
+greeter-session=lightdm-gtk-greeter
+#greeter-session=lightdm-webkit2-greeter
 EOF
 
 cat > bspwm.desktop << EOF
@@ -43,6 +43,9 @@ sudo apt install -y lightdm
 sudo apt install -y lightdm-gtk-greeter
 sudo apt install -y slick-greeter
 
+sudo dnf install -y lightdm
+sudo dnf install -y lightdm-gtk-greeter
+
 sudo pacman --noconfirm --needed -S lightdm
 sudo pacman --noconfirm --needed -S lightdm-gtk-greeter
 # sudo pacman --noconfirm --needed -S slick-greeter
@@ -50,6 +53,7 @@ sudo pacman --noconfirm --needed -S lightdm-gtk-greeter
 sudo mv -v bspwm.desktop /usr/share/xsessions/
 sudo mv -v xmonad.desktop /usr/share/xsessions/
 sudo mv -v lightdm.conf /etc/lightdm/
+sudo touch /etc/lightdm/Xsession
 
 # set it back to startx
 # sudo systemctl set-default multi-user
