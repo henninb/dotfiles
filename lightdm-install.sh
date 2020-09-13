@@ -4,9 +4,6 @@ echo /etc/lightdm/lightdm
 echo dm-tool
 echo  dm-tool switch-to-greeter
 echo lightdm --test-mode --debug
-sudo apt install -y lightdm
-sudo apt install -y lightdm-gtk-greeter
-sudo apt install -y slick-greeter
 
 cat > lightdm.conf <<EOF
 [Seat:*]
@@ -19,7 +16,7 @@ EOF
 cat > bspwm.desktop << EOF
 [Desktop Entry]
 Name=bspwm
-Comment=bspwm dynamic tiling window manager
+Comment=bspwm tiling window manager
 Exec=bspwm
 TryExec=bspwm
 Type=Application
@@ -52,5 +49,13 @@ sudo cp xmonad.desktop /usr/share/xsessions/
 # git clone https://github.com/Antergos/web-greeter.git
 # cd web-greeter
 # sudo make install
+
+sudo apt install -y lightdm
+sudo apt install -y lightdm-gtk-greeter
+sudo apt install -y slick-greeter
+
+sudo pacman --noconfirm --needed -S lightdm
+sudo pacman --noconfirm --needed -S lightdm-gtk-greeter
+sudo pacman --noconfirm --needed -S slick-greeter
 
 exit 0
