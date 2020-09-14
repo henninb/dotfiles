@@ -4,9 +4,6 @@ curl -sSL https://get.haskellstack.org/ | sh
 stack update
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  #sudo apt remove -y lightdm
-  sudo apt remove -y gdm
-  sudo apt remove -y lxdm
   sudo apt install -y libxss-dev
   sudo apt install -y xscreensaver
   sudo apt install -y feh
@@ -34,6 +31,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y xdo
   sudo zypper install -y sxhkd
   sudo zypper install -y dunst
+  sudo zypper install -y flameshot
   sudo zypper install -y wmname
   sudo zypper install -y blueberry
   sudo zypper install -y gmp-devel
@@ -42,9 +40,6 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y libxft-devel
   sudo zypper install -y libXss-devel
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
-  sudo pacman -Rsnc gdm
-  sudo pacman -Rsnc lightdm
-  sudo pacman -Rsnc lxdm
   sudo pacman --noconfirm --needed -S xscreensaver
   sudo pacman --noconfirm --needed -S feh
   sudo pacman --noconfirm --needed -S xdotool
@@ -55,6 +50,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S sxhkd
   sudo pacman --noconfirm --needed -S dunst
   sudo pacman --noconfirm --needed -S dmenu
+  sudo pacman --noconfirm --needed -S flameshot
   sudo pacman --noconfirm --needed -S wmname
   sudo pacman --noconfirm --needed -S pulseaudio
   sudo pacman --noconfirm --needed -S alsa-utils
@@ -64,6 +60,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y w3m
   sudo pkg install -y xz
   sudo pkg install -y xscreensaver
+  sudo pkg install -y flameshot
   sudo pkg install -y feh
   sudo pkg install -y xdotool
   sudo pkg install -y xdo
@@ -71,7 +68,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y wmname
 elif [ "$OS" = "void" ]; then
   sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
-  VOID_PKGS="xscreensaver feh xdotool w3m neofetch dzen2 xz make gcc gmp-devel dunst wmname libXScrnSaver-devel alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio"
+  VOID_PKGS="xscreensaver feh xdotool w3m neofetch dzen2 xz make gcc gmp-devel dunst wmname libXScrnSaver-devel alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio flameshot"
   FAILURES=""
   for i in $VOID_PKGS; do
     if ! sudo xbps-install -y "$i"; then
@@ -81,7 +78,7 @@ elif [ "$OS" = "void" ]; then
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Solus" ]; then
   echo sudo ln -s /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so.5.9
-  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel"
+  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot"
   FAILURE=""
   for i in $SOLUS_PKGS; do
     if ! sudo eopkg install -y "$i"; then
@@ -93,7 +90,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG tty "$(id -un)"
   sudo usermod -aG video "$(id -un)"
   sudo emerge --unmerge dzen
-  GENTOO_PKGS="xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind"
+  GENTOO_PKGS="xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot"
   FAILURE=""
   for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then
@@ -109,9 +106,9 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo make install
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Fedora" ]; then
-  sudo dnf remove -y lightdm
-  sudo dnf remove -y gdm
-  sudo dnf remove -y lxdm
+  # sudo dnf remove -y lightdm
+  # sudo dnf remove -y gdm
+  # sudo dnf remove -y lxdm
   sudo dnf install -y alsa-lib-devel
   sudo dnf install -y libXScrnSaver-devel
   sudo dnf install -y feh
@@ -122,6 +119,7 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y dzen2
   sudo dnf install -y dunst
   sudo dnf install -y wmname
+  sudo dnf install -y flameshot
   sudo dnf install -y dbus-x11
   echo iwlib missing
   cd "$HOME/projects" || exit
@@ -131,22 +129,21 @@ elif [ "$OS" = "Fedora" ]; then
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
     echo centos8
-    sudo dnf remove -y lightdm
-    sudo dnf remove -y gdm
-    sudo dnf remove -y lxdm
+    # sudo dnf remove -y lightdm
+    # sudo dnf remove -y gdm
+    # sudo dnf remove -y lxdm
     sudo dnf install -y alsa-lib-devel
     sudo dnf install -y libXScrnSaver-devel
     sudo dnf install -y feh
     sudo dnf install -y ranger
     sudo dnf install -y neofetch
     sudo dnf install -y w3m
+    sudo dnf install -y dunst
+    sudo dnf install -y flameshot
     sudo dnf install -y xscreensaver
     sudo dnf install -y dzen2
   else
     echo centos7
-    sudo yum remove -y lightdm
-    sudo yum remove -y gdm
-    sudo yum remove -y lxdm
     sudo yum install -y alsa-lib-devel
     sudo yum install -y libXScrnSaver-devel
     sudo yum install -y feh
