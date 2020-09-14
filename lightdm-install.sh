@@ -60,6 +60,8 @@ sudo touch /etc/lightdm/Xsession
 # rm /etc/systemd/system/default.target
 sudo systemctl set-default graphical
 sudo systemctl disable lxdm
+sudo systemctl unmask lightdm
+sudo systemctl daemon-reload
 sudo systemctl enable lightdm
 
 # sudo apt install -y python3-pyqt5.qtwebengine
@@ -71,7 +73,12 @@ sudo systemctl enable lightdm
 # cd web-greeter
 # sudo make install
 ls /usr/share/xgreeters
-echo at-spi-bus-launcher 
+echo at-spi-bus-launcher
+echo  /etc/lightdm/users.conf
+echo /usr/libexec/at-spi-bus-launcher
+echo gnome-session-properties
+echo export NO_AT_BRIDGE=1
+echo in /etc/environment
 
 
 exit 0
