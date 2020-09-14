@@ -16,6 +16,7 @@ session-wrapper=/etc/lightdm/Xsession
 greeter-session=lightdm-gtk-greeter
 #greeter-session=lightdm-webkit2-greeter
 #greeter-session=slick-greeter
+greeter-hide-users=false
 EOF
 
 cat > bspwm.desktop << EOF
@@ -80,6 +81,7 @@ sudo systemctl enable lightdm
 # git clone https://github.com/Antergos/web-greeter.git
 # cd web-greeter
 # sudo make install
+echo /etc/pam.d/lightdm
 ls /etc/lightdm/slick-greeter.conf
 ls /usr/share/xgreeters
 lightdm --show-config
