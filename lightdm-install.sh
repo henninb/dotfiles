@@ -90,3 +90,16 @@ lightdm --show-config
 
 
 exit 0
+
+accountsservice
+DEBUG: Registering seat with bus path /org/freedesktop/DisplayManager/Seat0
+DEBUG: Loading users from org.freedesktop.Accounts
+/org/freedesktop/Accounts/User1001 added
+ DEBUG: User /org/freedesktop/Accounts/User1002 added
+ DEBUG: User /org/freedesktop/Accounts/User1000 added
+ DEBUG: User /org/freedesktop/Accounts/User1007 added
+ DEBUG: User /org/freedesktop/Accounts/User64055 added
+ DEBUG: User /org/freedesktop/Accounts/User1004 added
+ DEBUG: User /org/freedesktop/Accounts/User1003 added
+ DEBUG: User /org/freedesktop/Accounts/User1005 added
+ DEBUG: User /org/freedesktop/Accounts/User1006 added
