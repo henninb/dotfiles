@@ -13,6 +13,7 @@ session-wrapper=/etc/lightdm/Xsession
 #autologin-user-timeout=0
 greeter-session=lightdm-gtk-greeter
 #greeter-session=lightdm-webkit2-greeter
+#greeter-session=slick-greeter
 EOF
 
 cat > bspwm.desktop << EOF
@@ -42,6 +43,7 @@ EOF
 sudo apt install -y lightdm
 sudo apt install -y lightdm-gtk-greeter
 sudo apt install -y slick-greeter
+sudo apt install -y lightdm-settings
 
 # TODO: I am unable to get lightdm functional on one ubuntu system
 #sudo apt install -y gdm3
@@ -76,7 +78,9 @@ sudo systemctl enable lightdm
 # git clone https://github.com/Antergos/web-greeter.git
 # cd web-greeter
 # sudo make install
+ls /etc/lightdm/slick-greeter.conf
 ls /usr/share/xgreeters
+lightdm --show-config
 # echo at-spi-bus-launcher
 # echo  /etc/lightdm/users.conf
 # echo /usr/libexec/at-spi-bus-launcher
