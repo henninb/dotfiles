@@ -94,6 +94,7 @@
 - 3D creation - blender
 - screencast - simplescreenrecorder
 - file transfer - oneshot
+- desktop manager - lightdm, gdm3
 
 steam
 arduino
