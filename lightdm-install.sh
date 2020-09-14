@@ -45,7 +45,7 @@ sudo apt install -y slick-greeter
 
 # TODO: I am unable to get lightdm functional on one ubuntu system
 #sudo apt install -y gdm3
-sudo dpkg-reconfigure gdm3
+#sudo dpkg-reconfigure gdm3
 
 sudo dnf install -y lightdm
 sudo dnf install -y lightdm-gtk-greeter
@@ -77,12 +77,12 @@ sudo systemctl enable lightdm
 # cd web-greeter
 # sudo make install
 ls /usr/share/xgreeters
-echo at-spi-bus-launcher
-echo  /etc/lightdm/users.conf
-echo /usr/libexec/at-spi-bus-launcher
-echo gnome-session-properties
-echo export NO_AT_BRIDGE=1
-echo in /etc/environment
+# echo at-spi-bus-launcher
+# echo  /etc/lightdm/users.conf
+# echo /usr/libexec/at-spi-bus-launcher
+# echo gnome-session-properties
+# echo export NO_AT_BRIDGE=1
+# echo in /etc/environment
 
 
 exit 0
