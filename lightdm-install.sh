@@ -6,11 +6,13 @@ echo  dm-tool switch-to-greeter
 echo lightdm --test-mode --debug
 
 cat > lightdm.conf <<EOF
-[Seat:*]
+#[Seat:*]
+[SeatDefaults]
 autologin-guest=false
 session-wrapper=/etc/lightdm/Xsession
 #autologin-user=henninb
 #autologin-user-timeout=0
+#pam-service=lightdm-autologin
 greeter-session=lightdm-gtk-greeter
 #greeter-session=lightdm-webkit2-greeter
 #greeter-session=slick-greeter
