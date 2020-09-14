@@ -43,6 +43,10 @@ sudo apt install -y lightdm
 sudo apt install -y lightdm-gtk-greeter
 sudo apt install -y slick-greeter
 
+# TODO: I am unable to get lightdm functional on one ubuntu system
+#sudo apt install -y gdm3
+sudo dpkg-reconfigure gdm3
+
 sudo dnf install -y lightdm
 sudo dnf install -y lightdm-gtk-greeter
 
