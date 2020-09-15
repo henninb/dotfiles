@@ -112,6 +112,9 @@ lightdm --show-config
 # echo in /etc/environment
 sudo journalctl -b -u lightdm.service
 
+echo /etc/pam.d/lightdm
+echo remove pam_kwallet.so is in libpam-kwallet4 and pam_kwallet5.so by libpam-kwallet5
+
 exit 0
 
 accountsservice
