@@ -110,6 +110,7 @@ lightdm --show-config
 # echo gnome-session-properties
 # echo export NO_AT_BRIDGE=1
 # echo in /etc/environment
+sudo journalctl -b -u lightdm.service
 
 exit 0
 
