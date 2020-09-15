@@ -61,7 +61,18 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S lightdm-gtk-greeter
   # sudo pacman --noconfirm --needed -S slick-greeter
 elif [ "$OS" = "Gentoo" ]; then
-  echo
+  USE="introspection elogind" emerge --update --newuse sys-apps/accountsservice
+  sudo emerge  --update --newuse lightdm
+  sudo emerge  --update --newuse lightdm-gtk-greeter
+  sudo touch /etc/lightdm/slick-greeter.conf
+
+  echo /etc/conf.d/xdm
+  echo DISPLAYMANAGER = "lightdm"
+  #sudo rc-update add lightdm default
+  sudo rc-update add dbus default
+  sudo rc-update add xdm default
+  sudo rc-service dbus start
+  sudo rc-service xdm start
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y lightdm
   sudo dnf install -y lightdm-gtk-greeter
