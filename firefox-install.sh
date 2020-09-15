@@ -12,7 +12,7 @@ if [ "$ACTUAL_VER" = "$FOX_VER" ]; then
 fi
 
 sudo groupadd firefox
-sudo useradd -g firefox firefox
+sudo useradd -s /sbin/nologin -g firefox firefox
 read -p "Press enter to continue"
 
 if [ ! -f "firefox-${FOX_VER}.tar.bz2" ]; then

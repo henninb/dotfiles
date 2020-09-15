@@ -19,7 +19,7 @@ sudo rm -rf /opt/kafka
 sudo rm -rf /opt/kafka_${VER}
 sudo tar -zxvf kafka_${VER}.tgz -C /opt
 sudo ln -s /opt/kafka_${VER} /opt/kafka
-sudo useradd kafka -m
+sudo useradd -s /sbin/nologin kafka -m
 sudo chown -R kafka:kafka /opt/kafka/
 sudo chown -R kafka:kafka /opt/kafka_${VER}/
 

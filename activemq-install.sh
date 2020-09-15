@@ -39,7 +39,7 @@ fi
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo groupadd activemq
-  sudo useradd -g activemq activemq
+  sudo useradd -s /sbin/nologin -g activemq activemq
   sudo pacman --noconfirm --needed -S net-tools psmisc wget curl jre8-openjdk
   sudo tar -zxvf "apache-activemq-$AMQ_VER-bin.tar.gz" -C /opt
   sudo chown -R activemq:activemq "/opt/apache-activemq-$AMQ_VER/"
@@ -62,7 +62,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   echo "admin:admin"
 elif [ "$OS" = "openSUSE Leap" ]; then
   sudo groupadd activemq
-  sudo useradd -g activemq activemq
+  sudo useradd -s /sbin/nologin -g activemq activemq
   sudo zypper install curl wget
   sudo tar -zxvf apache-activemq-$AMQ_VER-bin.tar.gz -C /opt
   sudo chown -R activemq:activemq /opt/apache-activemq-$AMQ_VER/
@@ -87,11 +87,11 @@ elif [ "$OS" = "FreeBSD" ]; then
   rm -rf activemq.service
 elif [ "$OS" = "Gentoo" ]; then
   sudo groupadd activemq
-  sudo useradd -g activemq activemq
+  sudo useradd -s /sbin/nologin -g activemq activemq
   sudo eselect news read
   sudo emerge -uf dev-java/oracle-jdk-bin dev-java/openjdk-bin
   sudo groupadd activemq
-  sudo useradd -g activemq activemq
+  sudo useradd -s /sbin/nologin -g activemq activemq
   sudo tar -zxvf apache-activemq-$AMQ_VER-bin.tar.gz -C /opt
   sudo chown -R activemq:activemq /opt/apache-activemq-$AMQ_VER/
   sudo ln -s /opt/apache-activemq-$AMQ_VER /opt/activemq
@@ -118,7 +118,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   pidof systemd
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo groupadd activemq
-  sudo useradd -g activemq activemq
+  sudo useradd -s /sbin/nologin -g activemq activemq
   sudo yum install -y net-tools wget curl java-1.8.0-openjdk
   sudo tar -zxvf apache-activemq-$AMQ_VER-bin.tar.gz -C /opt
   sudo chown -R activemq:activemq /opt/apache-activemq-$AMQ_VER/

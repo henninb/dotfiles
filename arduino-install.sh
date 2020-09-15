@@ -14,7 +14,7 @@ sudo rm -rf "/opt/arduino-${VER}"
 sudo tar -xJvf "arduino-${VER}-linux64.tar.xz" -C /opt
 sudo ln -s "/opt/arduino-${VER}" /opt/arduino
 
-id -u arduino >/dev/null 2>&1 || sudo useradd arduino -m
+id -u arduino >/dev/null 2>&1 || sudo useradd -s /sbin/nologin arduino -m
 sudo chown -R arduino:arduino /opt/arduino/
 sudo chown -R arduino:arduino "/opt/arduino-${VER}/"
 

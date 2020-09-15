@@ -35,4 +35,11 @@ else
    echo "$OS is not yet implemented."
 fi
 
+sudo usermod -s /sbin/nologin firefox
+sudo usermod -s /sbin/nologin arduino
+sudo usermod -s /sbin/nologin intellij
+sudo usermod -s /sbin/nologin activemq
+sudo usermod -s /sbin/nologin tomcat
+sudo usermod -s /sbin/nologin kafka
+
 exit 0

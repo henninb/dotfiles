@@ -48,7 +48,7 @@ if [ ! -f "ideaIU-${VER}.tar.gz" ]; then
 fi
 
 sudo groupadd intellij
-sudo useradd -g intellij intellij
+sudo useradd -s /sbin/nologin -g intellij intellij
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S net-tools psmisc wget curl jq
