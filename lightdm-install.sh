@@ -18,9 +18,10 @@ greeter-session=lightdm-gtk-greeter
 greeter-hide-users=false
 EOF
 
-cat > lightdm-gtk-greeter.con <<EOF
+cat > lightdm-gtk-greeter.conf <<EOF
 [greeter]
 background=/usr/share/backgrounds/custom/lightdm.jpg
+at-spi-enabled = false
 EOF
 
 cat > bspwm.desktop << EOF
