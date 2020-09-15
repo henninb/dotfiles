@@ -123,3 +123,5 @@ DEBUG: Loading users from org.freedesktop.Accounts
  DEBUG: User /org/freedesktop/Accounts/User1003 added
  DEBUG: User /org/freedesktop/Accounts/User1005 added
  DEBUG: User /org/freedesktop/Accounts/User1006 added
+
+ sudo dbus-send --system --type=method_call --print-reply --dest=org.freedesktop.Accounts /org/freedesktop/Accounts/User$(id -u "$USER") org.freedesktop.Accounts.User.SetXSession string:xmonad
