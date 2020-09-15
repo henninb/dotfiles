@@ -44,3 +44,11 @@ app-crypt/pinentry gnome-keyring
 >=x11-libs/libva-2.5.0-r1 X
 >=sys-auth/pambase-20200304 elogind
 >=x11-libs/gdk-pixbuf-2.40.0 X
+>=gnome-base/gnome-control-center-3.36.4 networkmanager
+>=net-print/cups-2.3.3-r1 dbus
+>=net-fs/samba-4.11.11 client
+>=media-libs/harfbuzz-2.6.7 icu
+>=sys-apps/dbus-1.12.18 X
+>=app-text/xmlto-0.0.28-r3 text
+>=virtual/libusb-1-r2 udev
+>=dev-libs/libusb-1.0.21-r1 udev
