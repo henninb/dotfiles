@@ -12,9 +12,9 @@ session-wrapper=/etc/lightdm/Xsession
 #autologin-user=henninb
 #autologin-user-timeout=0
 #pam-service=lightdm-autologin
-greeter-session=lightdm-gtk-greeter
+#greeter-session=lightdm-gtk-greeter
 #greeter-session=lightdm-webkit2-greeter
-#greeter-session=slick-greeter
+greeter-session=slick-greeter
 greeter-hide-users=false
 EOF
 
@@ -74,12 +74,12 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   cat /etc/X11/default-display-manager
   systemctl status display-manager
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
-  #echo switched home directory for lightdm to: /var/lib/lightdm-data/lightdm
   sudo pacman --noconfirm --needed -S lightdm
   sudo pacman --noconfirm --needed -S lightdm-gtk-greeter
   yay -S lightdm-slick-greeter
-  usermod -d /var/lib/lightdm-data/lightdm lightdm
-  usermod -d /var/lib/lightdm lightdm
+  echo home dir change is not required
+  echo usermod -d /var/lib/lightdm-data/lightdm lightdm
+  echo usermod -d /var/lib/lightdm lightdm
   systemctl status display-manager
 elif [ "$OS" = "Gentoo" ]; then
   sudo USE="introspection elogind" emerge --update --newuse sys-apps/accountsservice
@@ -100,6 +100,7 @@ elif [ "$OS" = "Gentoo" ]; then
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y lightdm
   sudo dnf install -y lightdm-gtk-greeter
+  sudo dnf install -y lightdm-slick-greeter
 fi
 
 #echo /usr/share/xsessions
