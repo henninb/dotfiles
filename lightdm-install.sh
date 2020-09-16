@@ -47,18 +47,20 @@ Type=Application
 X-LightDM-DesktopName=bspwm
 DesktopNames=bspwm
 Keywords=tiling;wm;windowmanager;window;manager;
+X-GDM-SessionRegisters=true
 EOF
 
 cat > xmonad.desktop << EOF
 [Desktop Entry]
 Name=xmonad
 Comment=xmonad dynamic tiling window manager
-Exec=xmonad
-TryExec=xmonad
+Exec=dbus-launch xmonad
+TryExec=dbus-launch xmonad
 Type=Application
 X-LightDM-DesktopName=xmonad
 DesktopNames=xmonad
 Keywords=tiling;wm;windowmanager;window;manager;
+X-LightDM-SessionRegisters=true
 EOF
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
