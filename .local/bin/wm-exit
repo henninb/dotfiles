@@ -1,18 +1,26 @@
 #!/bin/sh
 
-while [ "$select" != "NO" ] && [ "$select" != "YES" ]; do
-    select=$(printf "NO\nYES" | dmenu -nb '#151515' -nf '#999999' -sb '#f00060' -sf '#000000' -fn 'monofur for Powerline' -i -p "Do you really want to exit the wm?")
-    [ -z "$select" ] && exit 0
-done
-[ "$select" = "NO" ] && exit 0
+export LANG="en_US.utf8"
 
-WM=blah
-if [ "${WM}" = "xmonad" ]; then
+wm=$1
+
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 [xmonad|bspwm|i3]"
+  exit 1
+fi
+
+while [ "${select}" != "NO" ] && [ "${select}" != "YES" ]; do
+    select=$(printf "NO\nYES" | dmenu -nb '#151515' -nf '#999999' -sb '#f00060' -sf '#000000' -fn 'monofur for Powerline' -i -p "Do you really want to exit the wm?")
+    [ -z "${select}" ] && exit 0
+done
+[ "${select}" = "NO" ] && exit 0
+
+if [ "${wm}" = "xmonad" ]; then
   pkill -x xmonad
-elif [ "${WM}" = "bspwm" ]; then
-  echo
-elif [ "${WM}" = "i3" ]; then
-  echo
+elif [ "${wm}" = "bspwm" ]; then
+  bspc quit
+elif [ "${wm}" = "i3" ]; then
+  i3-msg exit
 else
   echo
 fi

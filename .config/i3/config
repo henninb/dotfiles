@@ -126,7 +126,7 @@ bindsym $mod+Shift+r restart
 for_window [class="Firefox"] move to workspace 4
 for_window [class="Steam"] move to workspace 3
 
-bindsym $mod+Shift+Escape exec i3_exit
+bindsym $mod+Shift+Escape exec wm-exit i3
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

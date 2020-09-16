@@ -15,7 +15,7 @@ alt + r
 alt + shift + p
     dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'
 alt + shift + Escape
-    bspwm_exit
+    wm-exit bspwm
 alt + Escape
     $HOME/.config/bspwm/bspwmrc
 alt + shift + BackSpace
