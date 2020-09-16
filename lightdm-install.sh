@@ -8,6 +8,7 @@ cat > lightdm.conf <<EOF
 [SeatDefaults]
 autologin-guest=false
 #session-wrapper=/etc/lightdm/Xsession
+#session-wrapper=/etc/X11/xinit/Xsession
 session-wrapper=/etc/X11/Xsession
 #autologin-user=henninb
 #autologin-user-timeout=0
