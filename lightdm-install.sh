@@ -55,12 +55,17 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   sudo apt install -y slick-greeter
   sudo apt install -y lightdm-settings
   sudo apt install -y gdm3
+  sudo apt install -y sddm
+  sudo apt install -y lxdm
   sudo dpkg-reconfigure lightdm
+  cat /etc/X11/default-display-manager
+  systemctl status display-manager
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   echo switched home directory for lightdm to: /var/lib/lightdm-data/lightdm
   sudo pacman --noconfirm --needed -S lightdm
   sudo pacman --noconfirm --needed -S lightdm-gtk-greeter
   # sudo pacman --noconfirm --needed -S slick-greeter
+  systemctl status display-manager
 elif [ "$OS" = "Gentoo" ]; then
   sudo USE="introspection elogind" emerge --update --newuse sys-apps/accountsservice
   sudo emerge --update --newuse lightdm
@@ -95,10 +100,11 @@ sudo touch /var/lib/AccountsService/users/brian
 # rm /etc/systemd/system/default.target
 # set startup to use a dm
 sudo systemctl set-default graphical
-sudo systemctl disable lxdm
+# sudo systemctl disable lxdm
 sudo systemctl unmask lightdm
 sudo systemctl daemon-reload
 sudo systemctl enable lightdm
+systemctl status display-manager
 
 echo /etc/pam.d/lightdm
 ls /etc/lightdm/slick-greeter.conf
