@@ -104,6 +104,8 @@ echo /etc/pam.d/lightdm
 ls /etc/lightdm/slick-greeter.conf
 ls /usr/share/xgreeters
 lightdm --show-config
+
+echo sudo touch /etc/securetty
 # echo at-spi-bus-launcher
 # echo  /etc/lightdm/users.conf
 # echo /usr/libexec/at-spi-bus-launcher
