@@ -24,6 +24,11 @@ background=/usr/share/backgrounds/custom/lightdm.jpg
 at-spi-enabled = false
 EOF
 
+cat > accountsservice-user << EOF
+[User]
+SystemAccount=true
+EOF
+
 cat > bspwm.desktop << EOF
 [Desktop Entry]
 Name=bspwm
