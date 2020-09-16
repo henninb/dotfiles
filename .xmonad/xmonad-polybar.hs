@@ -240,7 +240,7 @@ myKeys = [
   , ("M-S-<Return>"      , spawn "tdrop -am -w 1355 -y 25 st -T 'st-float'")
   , ("M-<Return>"        , spawn myTerminal)
   , ("M-S-<Backspace>"   , spawn "xdo close")
-  , ("M-S-<Escape>"      , spawn "xmonad_exit")
+  , ("M-S-<Escape>"      , spawn "xmonad-exit")
   , ("M-<Escape>"      , spawn "xmonad --restart")
   , ("M-S-p"             , spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
   -- , ("M-a-n"             , spawn "mpc next")
