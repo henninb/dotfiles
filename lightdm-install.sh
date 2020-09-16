@@ -68,24 +68,23 @@ Keywords=tiling;wm;windowmanager;window;manager;
 EOF
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
-  # TODO: I am unable to get lightdm functional on one ubuntu system at this time
   sudo apt install -y lightdm
   sudo apt install -y lightdm-gtk-greeter
   sudo apt install -y slick-greeter
   sudo apt install -y lightdm-settings
-  sudo apt install -y gdm3
-  sudo apt install -y sddm
-  sudo apt install -y lxdm
+  # sudo apt install -y gdm3
+  # sudo apt install -y sddm
+  # sudo apt install -y lxdm
   sudo dpkg-reconfigure lightdm
-  cat /etc/X11/default-display-manager
+#  cat /etc/X11/default-display-manager
   systemctl status display-manager
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S lightdm
   sudo pacman --noconfirm --needed -S lightdm-gtk-greeter
   yay -S lightdm-slick-greeter
-  echo home dir change is not required
-  echo usermod -d /var/lib/lightdm-data/lightdm lightdm
-  echo usermod -d /var/lib/lightdm lightdm
+  # echo home dir change is not required
+  # echo usermod -d /var/lib/lightdm-data/lightdm lightdm
+  # echo usermod -d /var/lib/lightdm lightdm
   systemctl status display-manager
 elif [ "$OS" = "Gentoo" ]; then
   sudo USE="introspection elogind" emerge --update --newuse sys-apps/accountsservice
@@ -111,13 +110,11 @@ else
 fi
 
 sudo mv -v slick-greeter.conf /etc/lightdm/slick-greeter.conf
-#echo /usr/share/xsessions
 sudo mv -v bspwm.desktop /usr/share/xsessions/
 sudo mv -v xmonad.desktop /usr/share/xsessions/
 sudo mkdir -p /usr/share/backgrounds/custom
 sudo cp -p "$HOME/.config/lightdm/greeter.jpg" /usr/share/backgrounds/custom/
 sudo mv -v lightdm.conf /etc/lightdm/
-sudo touch /etc/lightdm/Xsession
 
 sudo cp -v accountsservice-user /var/lib/AccountsService/users/henninb
 sudo cp -v accountsservice-user /var/lib/AccountsService/users/brian
@@ -129,14 +126,11 @@ echo loginctl session-status
 # rm /etc/systemd/system/default.target
 # set startup to use a dm
 sudo systemctl set-default graphical
-# sudo systemctl disable lxdm
-sudo systemctl unmask lightdm
 sudo systemctl daemon-reload
 sudo systemctl enable lightdm
 systemctl status display-manager
 
 echo /etc/pam.d/lightdm
-ls /etc/lightdm/slick-greeter.conf
 ls /usr/share/xgreeters
 echo lightdm --show-config
 
@@ -150,19 +144,20 @@ sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/grafana
 sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/kafka
 sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/activemq
 sudo cp "$HOME/.local/bin/xmonad-start" /usr/local/bin
+sudo cp "$HOME/.local/bin/xmonad-log" /usr/local/bin
+sudo cp "$HOME/.local/bin/xmonad-dbus" /usr/local/bin
 # echo at-spi-bus-launcher
 # echo  /etc/lightdm/users.conf
 # echo /usr/libexec/at-spi-bus-launcher
 # echo gnome-session-properties
 # echo export NO_AT_BRIDGE=1
 # echo in /etc/environment
-sudo journalctl -b -u lightdm.service
-
-echo /etc/pam.d/lightdm
-echo remove pam_kwallet.so is in libpam-kwallet4 and pam_kwallet5.so by libpam-kwallet5
+#sudo journalctl -b -u lightdm.service
 
 exit 0
 
+echo /etc/pam.d/lightdm
+echo remove pam_kwallet.so is in libpam-kwallet4 and pam_kwallet5.so by libpam-kwallet5
 accountsservice
 DEBUG: Registering seat with bus path /org/freedesktop/DisplayManager/Seat0
 DEBUG: Loading users from org.freedesktop.Accounts
