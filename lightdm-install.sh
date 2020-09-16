@@ -134,6 +134,7 @@ lightdm --show-config
 echo sudo touch /etc/securetty
 
 sudo cp accountsservice-user /var/lib/AccountsService/users/firefox
+sudo cp "$HOME/.local/bin/xmonad-start" /usr/local/bin
 # echo at-spi-bus-launcher
 # echo  /etc/lightdm/users.conf
 # echo /usr/libexec/at-spi-bus-launcher
