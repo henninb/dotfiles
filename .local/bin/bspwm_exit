@@ -1,13 +1,10 @@
 #!/bin/sh
 
+export LANG="en_US.utf8"
+
 while [ "$select" != "NO" ] && [ "$select" != "YES" ]; do
     select=$(printf "NO\nYES" | dmenu -nb '#151515' -nf '#999999' -sb '#f00060' -sf '#000000' -fn 'monofur for Powerline' -i -p "Do you really want to exit?")
     [ -z "$select" ] && exit 0
 done
 [ "$select" = "NO" ] && exit 0
-echo "$select"
 bspc quit
-
-# if [ "$(printf "No\nYes" | dmenu -i -p "Do you really want to exit?" -nb '#151515' -nf '#999999' -sb '#f00060' -sf '#000000' -fn 'monofur for Powerline')" = "Yes" ]; then
-#     $1
-# fi
