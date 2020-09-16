@@ -110,7 +110,7 @@ sudo cp -p "$HOME/.config/lightdm/greeter.jpg" /usr/share/backgrounds/custom/
 sudo mv -v lightdm.conf /etc/lightdm/
 sudo touch /etc/lightdm/Xsession
 # to disable brian
-sudo touch /var/lib/AccountsService/users/brian
+sudo touch /var/lib/AccountsService/users/henninb
 
 # set startup back to startx/.initrx
 # sudo systemctl set-default multi-user
