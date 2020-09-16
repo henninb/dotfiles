@@ -74,10 +74,12 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   cat /etc/X11/default-display-manager
   systemctl status display-manager
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
-  echo switched home directory for lightdm to: /var/lib/lightdm-data/lightdm
+  #echo switched home directory for lightdm to: /var/lib/lightdm-data/lightdm
   sudo pacman --noconfirm --needed -S lightdm
   sudo pacman --noconfirm --needed -S lightdm-gtk-greeter
-  # sudo pacman --noconfirm --needed -S slick-greeter
+  yay -S lightdm-slick-greeter
+  usermod -d /var/lib/lightdm-data/lightdm lightdm
+  usermod -d /var/lib/lightdm lightdm
   systemctl status display-manager
 elif [ "$OS" = "Gentoo" ]; then
   sudo USE="introspection elogind" emerge --update --newuse sys-apps/accountsservice
