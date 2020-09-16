@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo dm-tool
-echo  dm-tool switch-to-greeter
+echo dm-tool switch-to-greeter
 echo lightdm --test-mode --debug
 
 cat > lightdm.conf <<EOF
@@ -33,6 +33,11 @@ cat > accountsservice-user << EOF
 [org.freedesktop.DisplayManager.AccountsService]
 BackgroundFile='/usr/share/backgrounds/custom/greeter.jpg'
 
+[User]
+SystemAccount=false
+EOF
+
+cat > accountsservice-user-disable << EOF
 [User]
 SystemAccount=true
 EOF
@@ -87,8 +92,6 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo USE="introspection elogind" emerge --update --newuse sys-apps/accountsservice
   sudo emerge --update --newuse lightdm
   sudo emerge --update --newuse lightdm-gtk-greeter
-  #sudo touch /etc/lightdm/slick-greeter.conf
-  sudo mv -v slick-greeter.conf /etc/lightdm/slick-greeter.conf
 
   sudo USE="introspection ipv6 tcpd elogind" emerge --update --newuse gdm
 
@@ -103,8 +106,12 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y lightdm
   sudo dnf install -y lightdm-gtk-greeter
   sudo dnf install -y lightdm-slick-greeter
+else
+  echo "OS: not configured."
+  exit 1
 fi
 
+sudo mv -v slick-greeter.conf /etc/lightdm/slick-greeter.conf
 #echo /usr/share/xsessions
 sudo mv -v bspwm.desktop /usr/share/xsessions/
 sudo mv -v xmonad.desktop /usr/share/xsessions/
@@ -112,8 +119,11 @@ sudo mkdir -p /usr/share/backgrounds/custom
 sudo cp -p "$HOME/.config/lightdm/greeter.jpg" /usr/share/backgrounds/custom/
 sudo mv -v lightdm.conf /etc/lightdm/
 sudo touch /etc/lightdm/Xsession
-# to disable brian
-sudo touch /var/lib/AccountsService/users/henninb
+
+sudo cp -v accountsservice-user /var/lib/AccountsService/users/henninb
+sudo cp -v accountsservice-user /var/lib/AccountsService/users/brian
+
+echo loginctl session-status
 
 # set startup back to startx/.initrx
 # sudo systemctl set-default multi-user
@@ -129,11 +139,17 @@ systemctl status display-manager
 echo /etc/pam.d/lightdm
 ls /etc/lightdm/slick-greeter.conf
 ls /usr/share/xgreeters
-lightdm --show-config
+echo lightdm --show-config
 
 echo sudo touch /etc/securetty
 
-sudo cp accountsservice-user /var/lib/AccountsService/users/firefox
+sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/firefox
+sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/intellij
+sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/arduino
+sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/tomcat
+sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/grafana
+sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/kafka
+sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/activemq
 sudo cp "$HOME/.local/bin/xmonad-start" /usr/local/bin
 # echo at-spi-bus-launcher
 # echo  /etc/lightdm/users.conf
