@@ -20,8 +20,13 @@ EOF
 
 cat > lightdm-gtk-greeter.conf <<EOF
 [greeter]
-background=/usr/share/backgrounds/custom/lightdm.jpg
+background=/usr/share/backgrounds/custom/greeter.jpg
 at-spi-enabled = false
+EOF
+
+cat > slick-greeter.conf <<EOF
+[greeter]
+background=/usr/share/backgrounds/custom/greeter.jpg
 EOF
 
 cat > accountsservice-user << EOF
@@ -75,7 +80,8 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo USE="introspection elogind" emerge --update --newuse sys-apps/accountsservice
   sudo emerge --update --newuse lightdm
   sudo emerge --update --newuse lightdm-gtk-greeter
-  sudo touch /etc/lightdm/slick-greeter.conf
+  #sudo touch /etc/lightdm/slick-greeter.conf
+  sudo mv -v slick-greeter.conf /etc/lightdm/slick-greeter.conf
 
   sudo USE="introspection ipv6 tcpd elogind" emerge --update --newuse gdm
 
@@ -95,6 +101,7 @@ fi
 sudo mv -v bspwm.desktop /usr/share/xsessions/
 sudo mv -v xmonad.desktop /usr/share/xsessions/
 sudo mkdir -p /usr/share/backgrounds/custom
+sudo cp -p "$HOME/.config/lightdm/greeter.jpg" /usr/share/backgrounds/custom/
 sudo mv -v lightdm.conf /etc/lightdm/
 sudo touch /etc/lightdm/Xsession
 # to disable brian
