@@ -30,6 +30,9 @@ background=/usr/share/backgrounds/custom/greeter.jpg
 EOF
 
 cat > accountsservice-user << EOF
+[org.freedesktop.DisplayManager.AccountsService]
+BackgroundFile='/usr/share/backgrounds/custom/greeter.jpg'
+
 [User]
 SystemAccount=true
 EOF
