@@ -1,8 +1,5 @@
 #!/bin/sh
 
-echo dm-tool
-echo dm-tool switch-to-greeter
-echo lightdm --test-mode --debug
 
 cat > lightdm.conf <<EOF
 [SeatDefaults]
@@ -120,7 +117,6 @@ sudo mv -v lightdm.conf /etc/lightdm/
 sudo cp -v accountsservice-user /var/lib/AccountsService/users/henninb
 sudo cp -v accountsservice-user /var/lib/AccountsService/users/brian
 
-echo loginctl session-status
 
 # set startup back to startx/.initrx
 # sudo systemctl set-default multi-user
@@ -131,11 +127,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable lightdm
 systemctl status display-manager
 
-echo /etc/pam.d/lightdm
-ls /usr/share/xgreeters
-echo lightdm --show-config
-
-echo sudo touch /etc/securetty
+# echo sudo touch /etc/securetty
 
 sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/firefox
 sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/intellij
@@ -144,9 +136,10 @@ sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/tomcat
 sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/grafana
 sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/kafka
 sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/activemq
-sudo cp "$HOME/.local/bin/xmonad-start" /usr/local/bin
-sudo cp "$HOME/.local/bin/xmonad-log" /usr/local/bin
-sudo cp "$HOME/.local/bin/xmonad-dbus" /usr/local/bin
+sudo cp -v "$HOME/.local/bin/xmonad-start" /usr/local/bin
+sudo cp -v "$HOME/.local/bin/xmonad-log" /usr/local/bin
+sudo cp -v "$HOME/.local/bin/xmonad-dbus" /usr/local/bin
+sudo cp -v "$HOME/.local/bin/xmonad-exit" /usr/local/bin
 # echo at-spi-bus-launcher
 # echo  /etc/lightdm/users.conf
 # echo /usr/libexec/at-spi-bus-launcher
@@ -156,6 +149,15 @@ sudo cp "$HOME/.local/bin/xmonad-dbus" /usr/local/bin
 #sudo journalctl -b -u lightdm.service
 
 exit 0
+
+echo dm-tool
+echo dm-tool switch-to-greeter
+echo lightdm --test-mode --debug
+
+echo loginctl session-status
+echo /etc/pam.d/lightdm
+ls /usr/share/xgreeters
+echo lightdm --show-config
 
 echo /etc/pam.d/lightdm
 echo remove pam_kwallet.so is in libpam-kwallet4 and pam_kwallet5.so by libpam-kwallet5
