@@ -51,6 +51,30 @@ DesktopNames=bspwm
 Keywords=tiling;wm;windowmanager;window;manager;
 EOF
 
+cat > i3.desktop << EOF
+[Desktop Entry]
+Name=i3
+Comment=i3 tiling window manager
+Exec=i3
+TryExec=i3
+Type=Application
+X-LightDM-DesktopName=i3
+DesktopNames=i3
+Keywords=tiling;wm;windowmanager;window;manager;
+EOF
+
+cat > spectrwm.desktop << EOF
+[Desktop Entry]
+Name=spectrwm
+Comment=i3 tiling window manager
+Exec=spectrwm
+TryExec=spectrwm
+Type=Application
+X-LightDM-DesktopName=spectrwm
+DesktopNames=spectrwm
+Keywords=tiling;wm;windowmanager;window;manager;
+EOF
+
 cat > xmonad.desktop << EOF
 [Desktop Entry]
 Name=xmonad
@@ -108,6 +132,8 @@ fi
 sudo mv -v slick-greeter.conf /etc/lightdm/slick-greeter.conf
 sudo mv -v bspwm.desktop /usr/share/xsessions/
 sudo mv -v xmonad.desktop /usr/share/xsessions/
+sudo mv -v i3.desktop /usr/share/xsessions/
+sudo mv -v spectrwm.desktop /usr/share/xsessions/
 sudo mkdir -p /usr/share/backgrounds/custom
 sudo cp -p "$HOME/.config/lightdm/greeter.jpg" /usr/share/backgrounds/custom/
 sudo mv -v lightdm.conf /etc/lightdm/
