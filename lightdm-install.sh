@@ -49,6 +49,7 @@ Type=Application
 X-LightDM-DesktopName=bspwm
 DesktopNames=bspwm
 Keywords=tiling;wm;windowmanager;window;manager;
+XSession=bspwm
 EOF
 
 cat > i3.desktop << EOF
@@ -61,6 +62,7 @@ Type=Application
 X-LightDM-DesktopName=i3
 DesktopNames=i3
 Keywords=tiling;wm;windowmanager;window;manager;
+XSession=i3
 EOF
 
 cat > spectrwm.desktop << EOF
@@ -73,6 +75,7 @@ Type=Application
 X-LightDM-DesktopName=spectrwm
 DesktopNames=spectrwm
 Keywords=tiling;wm;windowmanager;window;manager;
+XSession=spectrwm
 EOF
 
 cat > xmonad.desktop << EOF
@@ -85,6 +88,7 @@ Type=Application
 X-LightDM-DesktopName=xmonad
 DesktopNames=xmonad
 Keywords=tiling;wm;windowmanager;window;manager;
+XSession=xmonad
 EOF
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
