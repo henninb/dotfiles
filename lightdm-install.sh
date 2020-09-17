@@ -101,6 +101,9 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S lightdm
   sudo pacman --noconfirm --needed -S lightdm-gtk-greeter
+  sudo cp -v "$HOME/Xsession-archlinux" /etc/X11/Xsession
+  sudo cp -v "$HOME/Xsession-archlinux" /etc/lightdm/Xsession
+  sudo cp -v /usr/share/xgreeters/lightdm-slick-greeter.desktop /usr/share/xgreeters/slick-greeter.desktop
   yay -S lightdm-slick-greeter
   # echo home dir change is not required
   # echo usermod -d /var/lib/lightdm-data/lightdm lightdm
