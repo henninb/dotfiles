@@ -295,51 +295,16 @@ myKeys = [
     --   , ("M-S-9",     windows $ W.greedyView ws9)
     --   ]
 
-
-
-      -- mod-[1..9], go to workspace n
-  -- mod-shift-[1..9], send window to workspace n
-    -- ++ [(m ++ k, windows $ f w)
-    --    | (w, k) <- zip (XMonad.workspaces c) (map show [1..9])
-    --    , (m, f) <- [("M-",W.view), ("M-S-",W.shift)]] -- was W.greedyView
-
-    -- ++ [ (shift++key, windows $ f i) | (f,shift) <- [ (W.greedyView, "M-") , (W.shift, "M-S-") ], (i,key) <- zip myWorkspaces numPadKeys ]
-
-    -- ++ [(mask ++ "M-" ++ [key], screenWorkspace scr >>= flip whenJust (windows . action))
-    --       | (key, scr)  <- zip "wer" [1,2,3,4,5,6,7,8,9] -- was [0..] *** change to match your screen order ***
-    --       , (action, mask) <- [ (W.view, "") , (W.shift, "S-")]
-    --     ]
-     --liftM2 (.) W.greedyView W.shift
-    -- ++
-    -- []
-    -- ((m .|. mod4Mask, k), windows $ f i)
-    --      | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
-    --      , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
-numPadKeys = [ "<KP_End>",  "<KP_Down>",  "<KP_Page_Down>" -- 1, 2, 3
-                     , "<KP_Left>", "<KP_Begin>", "<KP_Right>"     -- 4, 5, 6
-                     , "<KP_Home>", "<KP_Up>",    "<KP_Page_Up>"   -- 7, 8, 9
-                     , "<KP_Insert>"] -- 0
-
-myKeys1 :: [((KeyMask, KeySym), X ())]
---myKeys :: [((ButtonMask, KeySym), X ())]
-myKeys1 = [ ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
-        , ((mod1Mask, xK_a), submap . M.fromList $
-       [ ((0, xK_n),     spawn "mpc next")
-       , ((0, xK_p),     spawn "mpc prev")
-       , ((0, xK_z),     spawn "mpc random")
-       , ((0, xK_space), spawn "mpc toggle")
-       ])
-          ]
-
-
 myManageHook = composeAll
     [ className =? "MPlayer"          --> doFloat
     , title     =? "urxvt-float"      --> doFloat --custom window title
-    , title     =? "st-float"      --> doFloat --custom window title
+    , title     =? "st-float"         --> doFloat --custom window title
     , className =? "Gimp"             --> doFloat
+    , className =? "Emacs"            --> viewShift "6"
     , title     =? "Oracle VM VirtualBox Manager"  --> doFloat
     , title     =? "Welcome to IntelliJ IDEA"      --> doFloat
     , className =? "jetbrains-idea"   --> doFloat  -- not sure if this working
+    , className =? "jetbrains-idea"   --> viewShift "5"
     , resource  =? "desktop_window"   --> doIgnore -- TODO: not sure what this does
     , className =? "feh"              --> doFloat
     , role      =? "pop-up"           --> doFloat  -- TODO: not sure what this does
