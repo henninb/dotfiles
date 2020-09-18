@@ -27,6 +27,8 @@ import XMonad.Prompt
 import XMonad.Prompt.FuzzyMatch
 import Control.Arrow (first)
 
+import Control.Monad (liftM2)
+
 import qualified XMonad.Actions.Search as S
 
 import qualified DBus as D
@@ -309,9 +311,12 @@ myManageHook = composeAll
     , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
     , (className =? "Notepadqq" <&&> title =? "Search") --> doFloat
     , (className =? "Notepadqq" <&&> title =? "Advanced Search") --> doFloat
+    , className =? "Xmessage" --> doFloat
+    , role =? "browser" --> viewShift "4"
     ]
   where
-    role = stringProperty "WM_WINDOW_ROLE"
+    role = stringProperty "WM_WINDOW_ROLE";
+    viewShift = doF . liftM2 (.) W.greedyView W.shift
 
 myManageHook' = composeOne [ isFullscreen -?> doFullFloat ]
 
