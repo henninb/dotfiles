@@ -119,3 +119,4 @@ pip install mlbv
 lazygit - go get github.com/jesseduffield/lazygit
 lazydocker - go get github.com/jesseduffield/lazydocker
 tdrop
+redshift

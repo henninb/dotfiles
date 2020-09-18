@@ -215,7 +215,8 @@ commonLayout = renamed [Replace "Com"]
     $ avoidStruts
     $ gaps [(U,5), (D,5)]
     $ Tall 1 (5/100) (1/3)
-
+myTiled = renamed [Replace "test1" ]
+    $ Tall 1 (1/2)
 
 ws1 = "1"
 ws2 = "2"
@@ -243,8 +244,10 @@ myKeys = [
   , ("M-<Return>"        , spawn myTerminal)
   , ("M-S-<Backspace>"   , spawn "xdo close")
   , ("M-S-<Escape>"      , spawn "wm-exit xmonad")
-  , ("M-<Escape>"      , spawn "xmonad --restart")
+  , ("M-<Escape>"        , spawn "xmonad --restart")
   , ("M-S-p"             , spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
+  , ("M-x"               , spawn "exec= redshift -O 3500")
+  , ("M-S-x"             , spawn "exec= redshift -x")
   -- , ("M-a-n"             , spawn "mpc next")
   -- , ("M-a-p"             , spawn "mpc prev")
   -- , ("M-a-z"             , spawn "mpc random")
@@ -278,11 +281,44 @@ myKeys = [
     -- Appending search engine prompts to keybindings list.
     ++ [("M-s " ++ k, S.promptSearch myXPConfig' f) | (k,f) <- searchList ]
     ++ [("M-S-s " ++ k, S.selectSearch f) | (k,f) <- searchList ]
+    -- bspwm like feature
+    ++ [("M-" ++ ws, windows $ W.greedyView ws) | ws <- myWorkspaces ]
+    ++ [("M-S-" ++ ws, windows $ W.greedyView ws . W.shift ws) | ws <- myWorkspaces ]
+    -- ++ [("M-S-1",     windows $ W.greedyView ws1 . W.shift ws1)
+    --   , ("M-S-2",     windows $ W.greedyView ws2 . W.shift ws2)
+    --   , ("M-S-3",     windows $ W.greedyView ws3 . W.shift ws3)
+    --   , ("M-S-4",     windows $ W.greedyView ws4 . W.shift ws4)
+    --   , ("M-S-5",     windows $ W.greedyView ws5)
+    --   , ("M-S-6",     windows $ W.greedyView ws6)
+    --   , ("M-S-7",     windows $ W.greedyView ws7)
+    --   , ("M-S-8",     windows $ W.greedyView ws8)
+    --   , ("M-S-9",     windows $ W.greedyView ws9)
+    --   ]
+
+
+
+      -- mod-[1..9], go to workspace n
+  -- mod-shift-[1..9], send window to workspace n
+    -- ++ [(m ++ k, windows $ f w)
+    --    | (w, k) <- zip (XMonad.workspaces c) (map show [1..9])
+    --    , (m, f) <- [("M-",W.view), ("M-S-",W.shift)]] -- was W.greedyView
+
+    -- ++ [ (shift++key, windows $ f i) | (f,shift) <- [ (W.greedyView, "M-") , (W.shift, "M-S-") ], (i,key) <- zip myWorkspaces numPadKeys ]
+
+    -- ++ [(mask ++ "M-" ++ [key], screenWorkspace scr >>= flip whenJust (windows . action))
+    --       | (key, scr)  <- zip "wer" [1,2,3,4,5,6,7,8,9] -- was [0..] *** change to match your screen order ***
+    --       , (action, mask) <- [ (W.view, "") , (W.shift, "S-")]
+    --     ]
+     --liftM2 (.) W.greedyView W.shift
     -- ++
     -- []
     -- ((m .|. mod4Mask, k), windows $ f i)
     --      | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
     --      , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+numPadKeys = [ "<KP_End>",  "<KP_Down>",  "<KP_Page_Down>" -- 1, 2, 3
+                     , "<KP_Left>", "<KP_Begin>", "<KP_Right>"     -- 4, 5, 6
+                     , "<KP_Home>", "<KP_Up>",    "<KP_Page_Up>"   -- 7, 8, 9
+                     , "<KP_Insert>"] -- 0
 
 myKeys1 :: [((KeyMask, KeySym), X ())]
 --myKeys :: [((ButtonMask, KeySym), X ())]
@@ -307,7 +343,7 @@ myManageHook = composeAll
     , resource  =? "desktop_window"   --> doIgnore -- TODO: not sure what this does
     , className =? "feh"              --> doFloat
     , role      =? "pop-up"           --> doFloat  -- TODO: not sure what this does
-    , title      =? "Discord Updater" --> doFloat
+    , title     =? "Discord Updater" --> doFloat
     , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
     , (className =? "Notepadqq" <&&> title =? "Search") --> doFloat
     , (className =? "Notepadqq" <&&> title =? "Advanced Search") --> doFloat
@@ -315,7 +351,7 @@ myManageHook = composeAll
     , role =? "browser" --> viewShift "4"
     ]
   where
-    role = stringProperty "WM_WINDOW_ROLE";
+    role = stringProperty "WM_WINDOW_ROLE"
     viewShift = doF . liftM2 (.) W.greedyView W.shift
 
 myManageHook' = composeOne [ isFullscreen -?> doFullFloat ]
@@ -352,14 +388,19 @@ myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
 -- TODO: spawnOnce should be used?
 myStartupHook :: X ()
 myStartupHook = do
-  setWMName "LG3D"
-  spawn "$HOME/.config/polybar/launch.sh xmonad"
-  spawn "flameshot"
-  spawn "dunst"
-  spawn "blueman-applet"
-  spawn "mpd"
-  spawn "xscreensaver -no-splash"
-  spawn "feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg"
+    setWMName "LG3D"
+    spawn "$HOME/.config/polybar/launch.sh xmonad"
+    spawn "flameshot"
+    -- spawn "dunst"
+    spawn "exec= pkill dunst;dunst &"
+    spawn "blueman-applet"
+    spawn "mpd"
+    spawn "xscreensaver -no-splash"
+    spawn "feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg"
+  where
+    -- added a random where clause
+    x = 3
+
 
 -- myConfig :: XPConfig
 myConfig = def
