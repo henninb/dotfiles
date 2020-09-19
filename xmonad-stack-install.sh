@@ -18,6 +18,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y clipmenu
   sudo apt install -y lxappearance
   sudo apt install -y dunst
+  sudo apt install -y flameshot
   sudo apt install -y wmname
   sudo apt install -y blueberry
   sudo apt install -y libbsd-dev
