@@ -77,7 +77,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y wmname
 elif [ "$OS" = "void" ]; then
   sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
-  VOID_PKGS="xscreensaver feh xdotool w3m neofetch lxappearance volumeicon clipmenu xz make gcc gmp-devel dunst wmname libXScrnSaver-devel alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio flameshot"
+  VOID_PKGS="xscreensaver feh xdotool w3m neofetch lxappearance volumeicon clipmenu xz make gcc gmp-devel dunst wmname libXScrnSaver-devel alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio flameshot volumeicon blueman"
   FAILURES=""
   for i in $VOID_PKGS; do
     if ! sudo xbps-install -y "$i"; then
@@ -87,7 +87,7 @@ elif [ "$OS" = "void" ]; then
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Solus" ]; then
   echo sudo ln -s /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so.5.9
-  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon"
+  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon blueman"
   FAILURE=""
   for i in $SOLUS_PKGS; do
     if ! sudo eopkg install -y "$i"; then
@@ -99,7 +99,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG tty "$(id -un)"
   sudo usermod -aG video "$(id -un)"
   sudo emerge --unmerge dzen
-  GENTOO_PKGS="xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot xappearance volumeicon newofetch"
+  GENTOO_PKGS="xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot xappearance volumeicon newofetch blueman"
   FAILURE=""
   for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then
