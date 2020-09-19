@@ -15,3 +15,8 @@ export LC_ADDRESS=en_US.UTF-8
 export LC_TELEPHONE=en_US.UTF-8
 export LC_MEASUREMENT=en_US.UTF-8
 export LC_IDENTIFICATION=en_US.UTF-8
+
+export CM_SELECTION="primary clipboard"
+export CM_DEBUG=0
+export CM_OUTPUT_CLIP=1
+export CM_MAX_CLIPS=25

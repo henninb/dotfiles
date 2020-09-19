@@ -12,6 +12,8 @@ alt + shift + e
     emacs
 alt + r
     urxvt -e lf
+alt + p
+    clipmenu -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'
 alt + shift + p
     dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'
 alt + shift + Escape

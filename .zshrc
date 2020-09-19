@@ -491,6 +491,3 @@ if [ -e /home/henninb/.nix-profile/etc/profile.d/nix.sh ]; then . "${HOME}/.nix-
 
 # Added to address Alacritty issue
 export LIBGL_ALWAYS_SOFTWARE=1
-
-export CM_SELECTION="clipboard"
-export CM_DEBUG=1

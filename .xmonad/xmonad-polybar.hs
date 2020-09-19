@@ -246,6 +246,8 @@ myKeys = [
   , ("M-S-<Escape>"      , spawn "wm-exit xmonad")
   , ("M-<Escape>"        , spawn "xmonad --restart")
   , ("M-S-p"             , spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
+  , ("M-p"               , spawn "clipmenu -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
+  -- , ("M-p"               , spawn "clipmenu -i -fn 'monofur for Powerline' -nb orange -nf '#444' -sb yellow -sf black")
   , ("M-x"               , spawn "exec= redshift -O 3500")
   , ("M-S-x"             , spawn "exec= redshift -x")
   -- , ("M-a-n"             , spawn "mpc next")
@@ -356,9 +358,8 @@ myStartupHook = do
     setWMName "LG3D"
     spawn "$HOME/.config/polybar/launch.sh xmonad"
     spawn "flameshot"
-    -- spawn "dunst"
-    spawn "exec= pkill dunst;dunst &"
-    spawn "exec= pkill clipmenud;clipmenud &"
+    spawn "dunst"
+    spawn "clipmenud"
     spawn "blueman-applet"
     spawn "mpd"
     spawn "volumeicon"
