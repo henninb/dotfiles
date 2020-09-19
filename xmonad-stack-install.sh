@@ -8,12 +8,15 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y xscreensaver
   sudo apt install -y feh
   sudo apt install -y w3m
-  sudo apt install -y dzen2
+  # sudo apt install -y dzen2
   sudo apt install -y cmake
   sudo apt install -y libxpm-dev
   sudo apt install -y xdotool
   sudo apt install -y xdo
   sudo apt install -y sxhkd
+  sudo apt install -y volumeicon
+  sudo apt install -y clipmenu
+  sudo apt install -y lxappearance
   sudo apt install -y dunst
   sudo apt install -y wmname
   sudo apt install -y blueberry
@@ -24,15 +27,18 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y xscreensaver
   sudo zypper install -y feh
   sudo zypper install -y w3m
-  sudo zypper install -y dzen2
+  # sudo zypper install -y dzen2
   sudo zypper install -y cmake
   sudo zypper install -y libxpm-devel
   sudo zypper install -y xdotool
   sudo zypper install -y xdo
   sudo zypper install -y sxhkd
   sudo zypper install -y dunst
+  sudo zypper install -y volumeicon
+  sudo zypper install -y clipmenu
   sudo zypper install -y flameshot
   sudo zypper install -y wmname
+  sudo zypper install -y lxappearance
   sudo zypper install -y blueberry
   sudo zypper install -y gmp-devel
   sudo zypper install -y alsa-lib-devel
@@ -45,10 +51,12 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S xdotool
   sudo pacman --noconfirm --needed -S cmake
   sudo pacman --noconfirm --needed -S w3m
-  sudo pacman --noconfirm --needed -S dzen2
+  sudo pacman --noconfirm --needed -S lxappearance
   sudo pacman --noconfirm --needed -S xdo
   sudo pacman --noconfirm --needed -S sxhkd
   sudo pacman --noconfirm --needed -S dunst
+  sudo pacman --noconfirm --needed -S volumeicon
+  sudo pacman --noconfirm --needed -S clipmenu
   sudo pacman --noconfirm --needed -S dmenu
   sudo pacman --noconfirm --needed -S flameshot
   sudo pacman --noconfirm --needed -S wmname
@@ -68,7 +76,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y wmname
 elif [ "$OS" = "void" ]; then
   sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
-  VOID_PKGS="xscreensaver feh xdotool w3m neofetch dzen2 xz make gcc gmp-devel dunst wmname libXScrnSaver-devel alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio flameshot"
+  VOID_PKGS="xscreensaver feh xdotool w3m neofetch lxappearance volumeicon clipmenu xz make gcc gmp-devel dunst wmname libXScrnSaver-devel alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio flameshot"
   FAILURES=""
   for i in $VOID_PKGS; do
     if ! sudo xbps-install -y "$i"; then
@@ -78,7 +86,7 @@ elif [ "$OS" = "void" ]; then
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Solus" ]; then
   echo sudo ln -s /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so.5.9
-  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot"
+  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon"
   FAILURE=""
   for i in $SOLUS_PKGS; do
     if ! sudo eopkg install -y "$i"; then
@@ -90,7 +98,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG tty "$(id -un)"
   sudo usermod -aG video "$(id -un)"
   sudo emerge --unmerge dzen
-  GENTOO_PKGS="xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot"
+  GENTOO_PKGS="xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot xappearance volumeicon newofetch"
   FAILURE=""
   for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then

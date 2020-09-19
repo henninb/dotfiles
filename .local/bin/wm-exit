@@ -9,20 +9,16 @@ if [ $# -ne 1 ]; then
   exit 1
 fi
 
-while [ "${select}" != "NO" ] && [ "${select}" != "YES" ]; do
-    select=$(printf "NO\nYES" | dmenu -nb '#151515' -nf '#999999' -sb '#f00060' -sf '#000000' -fn 'monofur for Powerline' -i -p "Do you really want to exit the wm?")
+while [ "${select}" != "Cancel" ] && [ "${select}" != "Logout" ] && [ "${select}" != "Shutdown" ] && [ "${select}" != "Reboot" ]; do
+    select=$(printf "Cancel\nLogout\nShutdown\nReboot" | dmenu -nb '#151515' -nf '#999999' -sb '#f00060' -sf '#000000' -fn 'monofur for Powerline' -i -p "Action?")
     [ -z "${select}" ] && exit 0
 done
-[ "${select}" = "NO" ] && exit 0
+[ "${select}" = "Cancel" ] && exit 0
 
-if [ "${wm}" = "xmonad" ]; then
-  pkill -x xmonad
-elif [ "${wm}" = "bspwm" ]; then
-  bspc quit
-elif [ "${wm}" = "i3" ]; then
-  i3-msg exit
-else
-  echo
-fi
+[ "${select}" = "Logout" ] && [ "${wm}" = "xmonad" ] && pkill -x xmonad
+[ "${select}" = "Logout" ] && [ "${wm}" = "bspwm" ] && bspc quit
+[ "${select}" = "Logout" ] && [ "${wm}" = "i3" ] && i3-msg exit
+[ "${select}" = "Shutdown" ] && sudo shutdown -h now
+[ "${select}" = "Reboot" ] && sudo shutdown -r now
 
 exit 0

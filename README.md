@@ -69,7 +69,7 @@
 - podcast client - newsboat, castget
 - process viewer - htop, glances, bashtop, gotop
 - email client - neomutt, mutt
-- wii emulator - dolphin-emu
+- wii game emulator - dolphin-emu
 - cloud storage - nextcloud
 - games - xonotic, wesnoth
 - pdf reader - zathura
@@ -78,16 +78,16 @@
 - package manager - yay, pacman, brew, apt, dnf, emerge, pkg, eopkg
 - open - xdg-open
 - screen shot - flameshot
-- encryption - gnupg, keybase
+- encryption tools - gnupg, keybase
 - terminal screen saver - cmatrix
 - window detailer - xprop
 - image clone - dd, etcher
-- git client - tig, emacs (magit)
+- source control client - git, lazygit, tig, emacs (magit)
 - video chat/chat - discord, slack, zoom, telegram
 - image editor - gimp
 - compositor - compton
 - video editor - openshot, kdenlive
-- video transcoder - handbrake
+- video transcoder - handbrake, ffmpeg
 - video chat server - jitsi
 - audio editor/recorder - audacity
 - vector graphics - inkscape
@@ -95,29 +95,31 @@
 - screencast - simplescreenrecorder
 - file transfer - oneshot
 - desktop manager - lightdm, gdm3
+- desktop greeter - slick-greeter
+- clipboard manager - clipmenu
+- color temperature tool - redshift
+- password manager - kepassxc
+- gtk theme tool - lxappearance
 
-steam
+## Software - Yet to Explore
+- steam
 arduino
 tint2
-keepassxc
 team viewer
 twint - twitter client
 beeflang
 https://lightningmanic.github.io/
 owncloud
 mumble
-bashtop
 webmin
 termonad
 taskwarrior
 https://www.ventoy.net/en/index.html - for ISOs
-
-translate-shell
-trans -t de "hi"
+translate-shell - trans -t de "hi"
 http://dotshare.it/
 pip install mlbv
 lazygit - go get github.com/jesseduffield/lazygit
 lazydocker - go get github.com/jesseduffield/lazydocker
 tdrop
-redshift
-clipmenu
+trayer (non-polybar)
+- polkit settings manager - lxsession

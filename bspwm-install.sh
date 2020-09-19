@@ -10,6 +10,8 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y xdo
   sudo apt install -y neofetch
   sudo apt install -y feh
+  sudo apt install -y xappearance
+  sudo apt install -y volumeicon
   sudo apt install -y blueman
   sudo apt install -y flameshot
   sudo apt install -y x11-xserver-utils

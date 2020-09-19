@@ -361,6 +361,7 @@ myStartupHook = do
     spawn "exec= pkill clipmenud;clipmenud &"
     spawn "blueman-applet"
     spawn "mpd"
+    spawn "volumeicon"
     spawn "xscreensaver -no-splash"
     spawn "feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg"
   where
