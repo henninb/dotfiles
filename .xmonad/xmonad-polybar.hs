@@ -358,6 +358,7 @@ myStartupHook = do
     spawn "flameshot"
     -- spawn "dunst"
     spawn "exec= pkill dunst;dunst &"
+    spawn "exec= pkill clipmenud;clipmenud &"
     spawn "blueman-applet"
     spawn "mpd"
     spawn "xscreensaver -no-splash"
