@@ -9,7 +9,6 @@ sudo swupd bundle-add devpkg-expat
 sudo swupd bundle-add performance-tools
 sudo swupd bundle-add devpkg-libxcb
 
-
 cd projects || exit
 rm -rf alacritty
 git clone git@github.com:alacritty/alacritty.git
