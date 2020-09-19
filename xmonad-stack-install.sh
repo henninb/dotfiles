@@ -14,7 +14,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y xdotool
   sudo apt install -y xdo
   sudo apt install -y sxhkd
-  sudo apt install -y volumeicon
+  sudo apt install -y volumeicon-alsa
   sudo apt install -y clipmenu
   sudo apt install -y lxappearance
   sudo apt install -y dunst
