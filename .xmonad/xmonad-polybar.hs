@@ -360,6 +360,7 @@ myStartupHook = do
     spawn "flameshot"
     spawn "dunst"
     spawn "clipmenud"
+    spawn "copyq"
     spawn "blueman-applet"
     spawn "mpd"
     spawn "volumeicon"

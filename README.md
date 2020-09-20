@@ -96,7 +96,7 @@
 - file transfer - oneshot
 - desktop manager - lightdm, gdm3
 - desktop greeter - slick-greeter
-- clipboard manager - clipmenu
+- clipboard manager - clipmenu, copyq
 - color temperature tool - redshift
 - password manager - kepassxc
 - gtk theme tool - lxappearance
@@ -123,3 +123,4 @@ lazydocker - go get github.com/jesseduffield/lazydocker
 tdrop
 trayer (non-polybar)
 - polkit settings manager - lxsession
+- copyq
