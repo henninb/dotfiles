@@ -283,7 +283,7 @@ myKeys = [
   -- , ("M-p"               , spawn "clipmenu -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
   -- , ("M-p"               , spawn "clipmenu -i -fn 'monofur for Powerline' -nb orange -nf '#444' -sb yellow -sf black")
   , ("M-v"               , sendKey noModMask xF86XK_Paste)
-  , ("M-S-v"               , sendKey noModMask xF86XK_Select)
+  -- , ("M-S-v"               , sendKey noModMask xF86XK_Select)
   , ("M-x"               , spawn "exec= redshift -O 3500")
   , ("M-S-x"             , spawn "exec= redshift -x")
   -- , ("M-a-n"             , spawn "mpc next")
