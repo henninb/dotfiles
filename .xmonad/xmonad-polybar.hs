@@ -29,6 +29,9 @@ import Control.Arrow (first)
 
 import Control.Monad (liftM2)
 
+import Graphics.X11.ExtraTypes
+import XMonad.Util.Paste (sendKey)
+
 import qualified XMonad.Actions.Search as S
 
 import qualified DBus as D
@@ -239,6 +242,29 @@ ws9 = "9"
 myWorkspaces :: [String]
 myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
+  -- [ ((mod1Mask, xK_c), clipboardCopy)
+  --   , ((mod1Mask, xK_v), clipboardPaste)
+    -- ]
+
+-- clipboardCopy :: X ()
+-- clipboardCopy =
+--   withFocused $ \w ->
+--     b <- isTerminal w
+--     if b
+--     then (sendKey noModMask xF86XK_Copy)
+--     else (sendKey controlMask xK_c)
+
+-- clipboardPaste :: X ()
+-- clipboardPaste =
+--   withFocused $ \w ->
+--       b <- isTerminal w
+--       if b
+--         then sendKey noModMask xF86XK_Paste
+--         else sendKey controlMask xK_v
+
+isTerminal :: Window -> X Bool
+isTerminal = fmap (== "Alacritty") . runQuery className
+
 myKeys :: [(String, X ())]
 myKeys = [
     ("M-S-e"             , spawn "emacs")
@@ -254,8 +280,10 @@ myKeys = [
   , ("M-S-<Escape>"      , spawn "wm-exit xmonad")
   , ("M-<Escape>"        , spawn "xmonad --restart")
   , ("M-S-p"             , spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
-  , ("M-p"               , spawn "clipmenu -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
+  -- , ("M-p"               , spawn "clipmenu -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
   -- , ("M-p"               , spawn "clipmenu -i -fn 'monofur for Powerline' -nb orange -nf '#444' -sb yellow -sf black")
+  , ("M-v"               , sendKey noModMask xF86XK_Paste)
+  , ("M-S-v"               , sendKey noModMask xF86XK_Select)
   , ("M-x"               , spawn "exec= redshift -O 3500")
   , ("M-S-x"             , spawn "exec= redshift -x")
   -- , ("M-a-n"             , spawn "mpc next")
@@ -265,9 +293,9 @@ myKeys = [
   , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
   , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
   -- TODO: These 3 commands are currently not working
-  , ("<XF86AudioPlay>", spawn "cmus toggle")
-  , ("<XF86AudioPrev>", spawn "cmus prev")
-  , ("<XF86AudioNext>", spawn "cmus next")
+  -- , ("<XF86AudioPlay>", spawn "cmus toggle")
+  -- , ("<XF86AudioPrev>", spawn "cmus prev")
+  -- , ("<XF86AudioNext>", spawn "cmus next")
 
   , ("M-m", windows W.focusMaster)
   , ("M-j", windows W.focusDown)
@@ -367,7 +395,7 @@ myStartupHook = do
     spawn "$HOME/.config/polybar/launch.sh xmonad"
     spawn "flameshot"
     spawn "dunst"
-    spawn "clipmenud"
+    -- spawn "clipmenud"
     spawn "copyq"
     spawn "blueman-applet"
     spawn "mpd"
