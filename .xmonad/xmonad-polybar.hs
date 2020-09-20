@@ -286,16 +286,15 @@ myKeys = [
   -- , ("M-S-v"               , sendKey noModMask xF86XK_Select)
   , ("M-x"               , spawn "exec= redshift -O 3500")
   , ("M-S-x"             , spawn "exec= redshift -x")
-  -- , ("M-a-n"             , spawn "mpc next")
-  -- , ("M-a-p"             , spawn "mpc prev")
-  -- , ("M-a-z"             , spawn "mpc random")
-  -- , ("M-a-<Space>"       , spawn "mpc toggle")
+  -- , ("M-a-n"             , spawn "mpc --port 6601 next")
+  -- , ("M-a-p"             , spawn "mpc --port 6601 prev")
+  -- , ("M-a-z"             , spawn "mpc --port 6601 random")
+  -- , ("M-a-<Space>"       , spawn "mpc --port 6601 toggle")
   , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
   , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
-  -- TODO: These 3 commands are currently not working
-  -- , ("<XF86AudioPlay>", spawn "cmus toggle")
-  -- , ("<XF86AudioPrev>", spawn "cmus prev")
-  -- , ("<XF86AudioNext>", spawn "cmus next")
+  , ("<XF86AudioPlay>", spawn "mpc --port 6601 toggle")
+  , ("<XF86AudioPrev>", spawn "mpc --port 6601 prev")
+  , ("<XF86AudioNext>", spawn "mpc --port 6601 next")
 
   , ("M-m", windows W.focusMaster)
   , ("M-j", windows W.focusDown)
@@ -397,7 +396,7 @@ myStartupHook = do
     spawn "dunst"
     -- spawn "clipmenud"
     spawn "copyq"
-    spawn "sonata"
+    -- spawn "sonata"
     spawn "blueman-applet"
     spawn "mpd"
     spawn "volumeicon"
