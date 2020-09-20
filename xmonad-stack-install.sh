@@ -20,6 +20,8 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y dunst
   sudo apt install -y sonata
   sudo apt install -y copyq
+  sudo apt install -y mpc
+  sudo apt install -y mpd
   sudo apt install -y flameshot
   sudo apt install -y wmname
   sudo apt install -y blueberry
@@ -37,6 +39,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y xdo
   sudo zypper install -y sxhkd
   sudo zypper install -y dunst
+  sudo zypper install -y mpc
+  sudo zypper install -y mpd
   sudo zypper install -y volumeicon
   sudo zypper install -y clipmenu
   sudo zypper install -y copyq
@@ -63,6 +67,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S volumeicon
   sudo pacman --noconfirm --needed -S clipmenu
   sudo pacman --noconfirm --needed -S copyq
+  sudo pacman --noconfirm --needed -S mpc
+  sudo pacman --noconfirm --needed -S mpd
   sudo pacman --noconfirm --needed -S dmenu
   sudo pacman --noconfirm --needed -S flameshot
   sudo pacman --noconfirm --needed -S sonata
@@ -83,7 +89,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y wmname
 elif [ "$OS" = "void" ]; then
   sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
-  VOID_PKGS="xscreensaver feh xdotool w3m neofetch lxappearance volumeicon clipmenu xz make gcc gmp-devel dunst wmname libXScrnSaver-devel alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio flameshot volumeicon blueman"
+  VOID_PKGS="xscreensaver feh xdotool w3m neofetch lxappearance volumeicon clipmenu xz make gcc gmp-devel dunst wmname libXScrnSaver-devel alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd"
   FAILURES=""
   for i in $VOID_PKGS; do
     if ! sudo xbps-install -y "$i"; then
@@ -93,7 +99,7 @@ elif [ "$OS" = "void" ]; then
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Solus" ]; then
   echo sudo ln -s /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so.5.9
-  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon blueman copyq sonata clipmenu"
+  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon blueman copyq sonata clipmenu mpd mpc"
   FAILURE=""
   for i in $SOLUS_PKGS; do
     if ! sudo eopkg install -y "$i"; then
@@ -105,7 +111,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG tty "$(id -un)"
   sudo usermod -aG video "$(id -un)"
   sudo emerge --unmerge dzen
-  GENTOO_PKGS="xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot xappearance volumeicon newofetch blueman copyq sonata clipmenu"
+  GENTOO_PKGS="xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot xappearance volumeicon newofetch blueman copyq sonata clipmenu mpc mpd"
   FAILURE=""
   for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then
@@ -132,6 +138,8 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y xscreensaver
   sudo dnf install -y dunst
   sudo dnf install -y wmname
+  sudo dnf install -y mpc
+  sudo dnf install -y mpd
   sudo dnf install -y copyq
   sudo dnf install -y clipmenu
   sudo dnf install -y sonata
