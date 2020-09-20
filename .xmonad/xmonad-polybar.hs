@@ -397,6 +397,7 @@ myStartupHook = do
     spawn "dunst"
     -- spawn "clipmenud"
     spawn "copyq"
+    spawn "sonata"
     spawn "blueman-applet"
     spawn "mpd"
     spawn "volumeicon"

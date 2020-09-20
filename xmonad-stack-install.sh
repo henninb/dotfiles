@@ -18,6 +18,8 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y clipmenu
   sudo apt install -y lxappearance
   sudo apt install -y dunst
+  sudo apt install -y sonata
+  sudo apt install -y copyq
   sudo apt install -y flameshot
   sudo apt install -y wmname
   sudo apt install -y blueberry
@@ -37,6 +39,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y dunst
   sudo zypper install -y volumeicon
   sudo zypper install -y clipmenu
+  sudo zypper install -y copyq
+  sudo zypper install -y sonata
   sudo zypper install -y flameshot
   sudo zypper install -y wmname
   sudo zypper install -y lxappearance
@@ -58,8 +62,10 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S dunst
   sudo pacman --noconfirm --needed -S volumeicon
   sudo pacman --noconfirm --needed -S clipmenu
+  sudo pacman --noconfirm --needed -S copyq
   sudo pacman --noconfirm --needed -S dmenu
   sudo pacman --noconfirm --needed -S flameshot
+  sudo pacman --noconfirm --needed -S sonata
   sudo pacman --noconfirm --needed -S wmname
   sudo pacman --noconfirm --needed -S pulseaudio
   sudo pacman --noconfirm --needed -S alsa-utils
@@ -87,7 +93,7 @@ elif [ "$OS" = "void" ]; then
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Solus" ]; then
   echo sudo ln -s /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so.5.9
-  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon blueman"
+  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon blueman copyq sonata clipmenu"
   FAILURE=""
   for i in $SOLUS_PKGS; do
     if ! sudo eopkg install -y "$i"; then
@@ -99,7 +105,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG tty "$(id -un)"
   sudo usermod -aG video "$(id -un)"
   sudo emerge --unmerge dzen
-  GENTOO_PKGS="xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot xappearance volumeicon newofetch blueman"
+  GENTOO_PKGS="xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot xappearance volumeicon newofetch blueman copyq sonata clipmenu"
   FAILURE=""
   for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then
@@ -121,13 +127,16 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y alsa-lib-devel
   sudo dnf install -y libXScrnSaver-devel
   sudo dnf install -y feh
-  sudo dnf install -y ranger
   sudo dnf install -y neofetch
   sudo dnf install -y w3m
   sudo dnf install -y xscreensaver
-  sudo dnf install -y dzen2
   sudo dnf install -y dunst
   sudo dnf install -y wmname
+  sudo dnf install -y copyq
+  sudo dnf install -y clipmenu
+  sudo dnf install -y sonata
+  sudo dnf install -y flameshot
+  sudo dnf install -y blueman
   sudo dnf install -y flameshot
   sudo dnf install -y dbus-x11
   echo iwlib missing
