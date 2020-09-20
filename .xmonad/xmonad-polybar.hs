@@ -49,9 +49,9 @@ main = do
     $ withUrgencyHook NoUrgencyHook
     $ ewmh
     $ myConfig { logHook = dynamicLogWithPP (myLogHook dbus) }
+    `removeKeys` myRemoveKeys
     `additionalKeysP` myKeys
     `additionalKeys` []
-    `removeKeys` []
 
 myTerminal :: String
 myTerminal = "alacritty"
@@ -83,6 +83,14 @@ red = "#fb4934"
 
 myFocusBorderColor :: String
 myFocusBorderColor = "#5b51c9"
+
+myRemoveKeys = [
+                 (altKeyMask .|. shiftMask, xK_space)
+               , (altKeyMask, xK_q)
+               , (altKeyMask .|. shiftMask, xK_q)
+               , (altKeyMask .|. shiftMask, xK_c)
+               , (altKeyMask, xK_space)
+               ]
 
 archwiki, ebay, news, reddit, urban :: S.SearchEngine
 archwiki = S.searchEngine "archwiki" "https://wiki.archlinux.org/index.php?search="
@@ -305,11 +313,11 @@ myManageHook = composeAll
     , className =? "Emacs"            --> viewShift "6"
     , title     =? "Oracle VM VirtualBox Manager"  --> doFloat
     , title     =? "Welcome to IntelliJ IDEA"      --> doFloat
-    , className =? "jetbrains-idea"   --> doFloat  -- not sure if this working
+    , className =? "jetbrains-idea"   --> doFloat
     , className =? "jetbrains-idea"   --> viewShift "5"
     , resource  =? "desktop_window"   --> doIgnore -- TODO: not sure what this does
     , className =? "feh"              --> doFloat
-    , role      =? "pop-up"           --> doFloat  -- TODO: not sure what this does
+    , role      =? "pop-up"           --> doFloat
     , title     =? "Discord Updater" --> doFloat
     , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
     , (className =? "Notepadqq" <&&> title =? "Search") --> doFloat
