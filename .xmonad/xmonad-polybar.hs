@@ -242,10 +242,6 @@ ws9 = "9"
 myWorkspaces :: [String]
 myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
-  -- [ ((mod1Mask, xK_c), clipboardCopy)
-  --   , ((mod1Mask, xK_v), clipboardPaste)
-    -- ]
-
 -- clipboardCopy :: X ()
 -- clipboardCopy =
 --   withFocused $ \w ->
@@ -281,21 +277,15 @@ myKeys = [
   , ("M-<Escape>"        , spawn "xmonad --restart")
   , ("M-S-p"             , spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
   -- , ("M-p"               , spawn "clipmenu -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
-  -- , ("M-p"               , spawn "clipmenu -i -fn 'monofur for Powerline' -nb orange -nf '#444' -sb yellow -sf black")
   , ("M-v"               , sendKey noModMask xF86XK_Paste)
   -- , ("M-S-v"               , sendKey noModMask xF86XK_Select)
   , ("M-x"               , spawn "exec= redshift -O 3500")
   , ("M-S-x"             , spawn "exec= redshift -x")
-  -- , ("M-a-n"             , spawn "mpc --port 6601 next")
-  -- , ("M-a-p"             , spawn "mpc --port 6601 prev")
-  -- , ("M-a-z"             , spawn "mpc --port 6601 random")
-  -- , ("M-a-<Space>"       , spawn "mpc --port 6601 toggle")
   , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
   , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
   , ("<XF86AudioPlay>", spawn "mpc --port 6601 toggle")
   , ("<XF86AudioPrev>", spawn "mpc --port 6601 prev")
   , ("<XF86AudioNext>", spawn "mpc --port 6601 next")
-
   , ("M-m", windows W.focusMaster)
   , ("M-j", windows W.focusDown)
   , ("M-k", windows W.focusUp)
@@ -323,13 +313,6 @@ myKeys = [
     ++ [("M-S-" ++ ws, windows $ W.greedyView ws . W.shift ws) | ws <- myWorkspaces ]
     -- ++ [("M-S-1",     windows $ W.greedyView ws1 . W.shift ws1)
     --   , ("M-S-2",     windows $ W.greedyView ws2 . W.shift ws2)
-    --   , ("M-S-3",     windows $ W.greedyView ws3 . W.shift ws3)
-    --   , ("M-S-4",     windows $ W.greedyView ws4 . W.shift ws4)
-    --   , ("M-S-5",     windows $ W.greedyView ws5)
-    --   , ("M-S-6",     windows $ W.greedyView ws6)
-    --   , ("M-S-7",     windows $ W.greedyView ws7)
-    --   , ("M-S-8",     windows $ W.greedyView ws8)
-    --   , ("M-S-9",     windows $ W.greedyView ws9)
     --   ]
 
 myManageHook = composeAll
@@ -402,10 +385,6 @@ myStartupHook = do
     spawn "volumeicon"
     spawn "xscreensaver -no-splash"
     spawn "feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg"
-  where
-    -- added a random where clause
-    x = 3
-
 
 -- myConfig :: XPConfig
 myConfig = def
@@ -428,11 +407,9 @@ myConfig = def
   , workspaces = myWorkspaces
   , modMask = altKeyMask
   }
-             `additionalKeysP`
-             [ ("<Print>", spawn "flameshot gui -p $HOME/Desktop"),
-               ("M-<Print>", spawn "flameshot gui -p $HOME/Desktop"),
-               ("C-<Print>", spawn "flameshot gui -p $HOME/Desktop")
-             ]
-             `additionalKeys`
-             [
-             ]
+   `additionalKeysP`
+   [
+   ]
+   `additionalKeys`
+   [
+   ]
