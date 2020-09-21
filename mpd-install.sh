@@ -56,6 +56,7 @@ sudo pacman --noconfirm --needed -S mpc
 sudo usermod -a -G mpd "$(id -un)"
 
 sudo mv -v ~/media/*.mp3 /var/lib/mpd/music/
+sudo chmod g+wx /var/lib/mpd/music/
 
 sudo systemctl disable mpd.socket
 sudo systemctl stop mpd.socket
