@@ -48,12 +48,16 @@ EOF
 sudo mv -v mpd.conf /etc/mpd.conf
 sudo mkdir -p /var/log/mpd
 sudo mkdir -p /var/lib/mpd/playlists
+sudo chown -R mpd:audio /var/log/mpd /var/lib/mpd
 sudo chown -R mpd:mpd /var/log/mpd /var/lib/mpd
 
 sudo pacman --noconfirm --needed -S mpd
 sudo pacman --noconfirm --needed -S mpc
 
 sudo usermod -a -G mpd "$(id -un)"
+sudo usermod -a -G audio "$(id -un)"
+sudo usermod -a -G pulse "$(id -un)"
+sudo usermod -a -G pulse-access "$(id -un)"
 
 sudo mv -v ~/media/*.mp3 /var/lib/mpd/music/
 sudo chmod g+wx /var/lib/mpd/music/
