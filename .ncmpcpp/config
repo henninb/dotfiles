@@ -1,5 +1,5 @@
 ncmpcpp_directory = "~/.ncmpcpp"
 mpd_host = "127.0.0.1"
-mpd_port = "6601"
-# mpd_music_dir = "/var/lib/mpd/music"
-mpd_music_dir = "~/media"
+mpd_port = "6600"
+mpd_music_dir = "/var/lib/mpd/music"
+#mpd_music_dir = "~/media"

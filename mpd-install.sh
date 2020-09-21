@@ -5,7 +5,7 @@ db_file "/var/lib/mpd/tag_cache"
 music_directory "/var/lib/mpd/music"
 playlist_directory "/var/lib/mpd/playlists"
 
-user "mpd"
+# user "mpd"
 #bind_to_address "::1"
 bind_to_address "127.0.0.1"
 # bind_to_address "any"
@@ -35,12 +35,15 @@ decoder {
 
 # aplay --list-device
 audio_output {
-    type "alsa"
-    name "BT600"
-    device "hw:2,0"
+  type "pulse"
+  name "pulse audio"
+#  type "alsa"
+#  name "BT600"
+#  device "hw:2,0"
 }
-EOF
 
+
+EOF
 
 sudo mv -v mpd.conf /etc/mpd.conf
 sudo mkdir -p /var/log/mpd
@@ -52,9 +55,12 @@ sudo pacman --noconfirm --needed -S mpc
 
 sudo usermod -a -G mpd "$(id -un)"
 
-sudo systemctl enable mpd.socket
-
 sudo mv -v ~/media/*.mp3 /var/lib/mpd/music/
+
+sudo systemctl disable mpd.socket
+sudo systemctl stop mpd.socket
+sudo systemctl enable mpd.service
+sudo systemctl start mpd.service
 
 #cd ~/media && find . -name '.mp3' -o -name '.flac'|sed -e 's%^./%%g' &gt; all.m3u;mpd ~/.config/mpd/mpd.conf && mpc clear;mpc load all.m3u;mpc update
 
