@@ -37,6 +37,7 @@ decoder {
 audio_output {
   type "pulse"
   name "pulse audio"
+  server "127.0.0.1"
 #  type "alsa"
 #  name "BT600"
 #  device "hw:2,0"
