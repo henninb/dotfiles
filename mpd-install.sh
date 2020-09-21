@@ -50,6 +50,8 @@ sudo chown -R mpd:mpd /var/log/mpd /var/lib/mpd
 sudo pacman --noconfirm --needed -S mpd
 sudo pacman --noconfirm --needed -S mpc
 
+sudo usermod -a -G mpd "$(id -un)"
+
 sudo systemctl enable mpd.socket
 
 sudo mv -v ~/media/*.mp3 /var/lib/mpd/music/
