@@ -381,7 +381,7 @@ myStartupHook = do
     spawn "copyq"
     -- spawn "sonata"
     spawn "blueman-applet"
-    spawn "mpd"
+    -- spawn "mpd"
     spawn "volumeicon"
     spawn "xscreensaver -no-splash"
     spawn "feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg"
