@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mkdir -p $HOME/.urxvt/perl-extensions
+mkdir -p "$HOME/.urxvt/perl-extensions"
 
 if [ "$OS" = "Gentoo" ]; then
   echo sudo emerge --update --newuse rxvt-unicode
@@ -38,23 +38,20 @@ else
   exit 1
 fi
 
-cd $HOME/projects
+cd "$HOME/projects" || exit
 if [ ! -f "rxvt-unicode-9.22.tar.bz2" ]; then
-  wget http://dist.schmorp.de/rxvt-unicode/Attic/rxvt-unicode-9.22.tar.bz2
-  if [ $? -ne 0 ]; then
+  if ! wget http://dist.schmorp.de/rxvt-unicode/Attic/rxvt-unicode-9.22.tar.bz2; then
     echo "wget failed."
     exit 1
   fi
 fi
-tar xvf rxvt-unicode-9.22.tar.bz2
-if [ $? -ne 0 ]; then
+if ! tar xvf rxvt-unicode-9.22.tar.bz2; then
   echo "tar failed."
   exit 1
 fi
-cd rxvt-unicode-9.22
+cd rxvt-unicode-9.22 || exit
 make clean
-./autogen.sh
-if [ $? -ne 0 ]; then
+if ! ./autogen.sh; then
   echo "autogen failed."
   exit 1
 fi

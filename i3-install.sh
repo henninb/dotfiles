@@ -98,23 +98,23 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y vifm
   sudo dnf install -y picom
   sudo dnf install -y libxcb-devel xcb-util-keysyms-devel xcb-util-devel xcb-util-wm-devel xcb-util-xrm-devel yajl-devel libXrandr-devel startup-notification-devel libev-devel xcb-util-cursor-devel libXinerama-devel libxkbcommon-devel libxkbcommon-x11-devel pcre-devel pango-devel git gcc automake libcurl-devel libmpdclient-devel wireless-tools-devel pulseaudio-libs-devel xcb-proto  cairo-devel i3-devel
-  cd "$HOME/projects"
+  cd "$HOME/projects" || exit
   git clone https://github.com/vivien/i3blocks.git
-  cd i3blocks
+  cd i3blocks || exit
   ./autogen.sh
   ./configure
   make
   sudo make install
-  cd -
+  cd - || exit
 
-  cd "$HOME/projects"
+  cd "$HOME/projects" || exit
   git clone git@github.com:Airblader/i3 i3-gaps
-  cd i3-gaps
+  cd i3-gaps || exit
   git checkout gaps && git pull
   autoreconf --force --install
   rm -rf build
   mkdir build
-  cd build
+  cd build || exit
   ../configure --prefix=/usr --sysconfdir=/etc
   make
   sudo make install

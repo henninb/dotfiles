@@ -12,7 +12,7 @@ PROJECTS="monofur-fonts.zip jetbrains-fonts.zip symbola.zip FiraCode_2.zip font-
 for i in $PROJECTS; do
   cd "$HOME/.fonts" || exit
   unzip -o "$HOME/$i"
-  cd /usr/local/share/fonts
+  cd /usr/local/share/fonts || exit
   sudo unzip -o "$HOME/$i"
 done
 fc-cache -vf ~/.fonts/

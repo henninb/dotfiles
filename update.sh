@@ -71,7 +71,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   echo sudo pkg update -f
   echo sudo pkg bootstrap
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 

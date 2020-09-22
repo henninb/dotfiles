@@ -65,6 +65,6 @@ fi
 exit 0
 # needed for install only
 # needed for install only
-    -drive id=InstallMedia,format=raw,if=none,file=BaseSystem.img
-    -device ide-hd,bus=sata.3,drive=InstallMedia
+    # -drive id=InstallMedia,format=raw,if=none,file=BaseSystem.img
+    # -device ide-hd,bus=sata.3,drive=InstallMedia
 

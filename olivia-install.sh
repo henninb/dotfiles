@@ -21,9 +21,9 @@ sudo apt install -y libtag1-dev
 sudo apt install -y qt5-default
 sudo apt install -y libqt5webkit5-dev
 
-cd $HOME/projects
+cd "$HOME/projects" || exit
 git clone git@github.com:keshavbhatt/olivia.git
-cd olivia
+cd olivia || exit
 qmake
 make
 sudo make install

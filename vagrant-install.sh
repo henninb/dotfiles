@@ -23,13 +23,13 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y zlib1g-dev libvirt-dev
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y libvirt-devel.x86_64
-  if [ -z $(which vagrant) ]; then
+  if [ ! -x "$(command -v vagrant)" ]; then
     sudo yum install -y https://releases.hashicorp.com/vagrant/${VAGRANT_VER}/vagrant_${VAGRANT_VER}_x86_64.rpm
   fi
   #sudo yum install -y vagrant
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y libvirt-devel
-  if [ -z $(which vagrant 2> /dev/null) ]; then
+  if [ ! -x "$(command -v vagrant)" ]; then
     sudo dnf install -y https://releases.hashicorp.com/vagrant/${VAGRANT_VER}/vagrant_${VAGRANT_VER}_x86_64.rpm
   fi
 elif [ "$OS" = "Gentoo" ]; then
@@ -55,10 +55,8 @@ fi
 #   echo vagrant plugin install vagrant-scp
 # fi
 
-vagrant plugin list | grep vagrant-libvirt
-if [ $? -ne 0 ]; then
-  vagrant plugin install vagrant-libvirt
-  if [ $? -ne 0 ]; then
+if ! vagrant plugin list | grep vagrant-libvirt; then
+  if ! vagrant plugin install vagrant-libvirt; then
     echo failed to install vagrant-libvirt
     exit 1
   fi
@@ -106,9 +104,9 @@ echo vagrant-qemu
 echo vagrant-mutate
 echo vagrant mutate precise32.box libvirt
 
-cd "$HOME/projects"
+cd "$HOME/projects" || exit
 git clone https://github.com/chef/bento
 echo packer build -only qemu -var 'headless=true' centos-7.6-x86_64.json
-cd -
+cd - || exit
 
 exit 0
