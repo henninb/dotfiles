@@ -42,28 +42,36 @@ audio_output {
 #  name "BT600"
 #  device "hw:2,0"
 }
-
-
 EOF
+
+if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
+  sudo apt install -y mpd
+  sudo apt install -y mpc
+  sudo apt install -y ncmpcpp
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+  sudo pacman --noconfirm --needed -S mpd
+  sudo pacman --noconfirm --needed -S mpc
+  sudo pacman --noconfirm --needed -S ncmpcpp
+else
+  echo "OS is not configured"
+fi
+
+sudo useradd mpd -s /sbin/nologin
 
 sudo mv -v mpd.conf /etc/mpd.conf
 sudo mkdir -p /var/log/mpd
 sudo mkdir -p /var/lib/mpd/playlists
+sudo mkdir -p /var/lib/mpd/music
 sudo chown -R mpd:audio /var/log/mpd /var/lib/mpd
 sudo chown -R mpd:mpd /var/log/mpd /var/lib/mpd
-
-sudo apt install -y mpd
-sudo apt install -y mpc
-sudo pacman --noconfirm --needed -S mpd
-sudo pacman --noconfirm --needed -S mpc
+sudo chmod g+wx /var/lib/mpd/music/
 
 sudo usermod -a -G mpd "$(id -un)"
 sudo usermod -a -G audio "$(id -un)"
 sudo usermod -a -G pulse "$(id -un)"
 sudo usermod -a -G pulse-access "$(id -un)"
 
-sudo mv -v ~/media/*.mp3 /var/lib/mpd/music/
-sudo chmod g+wx /var/lib/mpd/music/
+[ -f "*.mp3" ] && sudo mv -v ~/media/*.mp3 /var/lib/mpd/music/
 
 sudo systemctl disable mpd.socket
 sudo systemctl stop mpd.socket
