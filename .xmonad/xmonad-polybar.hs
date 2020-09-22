@@ -10,6 +10,7 @@ import XMonad.Hooks.SetWMName
 import XMonad.Hooks.UrgencyHook
 import XMonad.Util.EZConfig
 import XMonad.Util.NamedActions
+import XMonad.Util.SpawnOnce
 import XMonad.Layout.FixedColumn
 import XMonad.Layout.LimitWindows
 import XMonad.Layout.Magnifier
@@ -374,17 +375,17 @@ myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
 myStartupHook :: X ()
 myStartupHook = do
     setWMName "LG3D"
-    spawn "$HOME/.config/polybar/launch.sh xmonad"
-    spawn "flameshot"
-    spawn "dunst"
+    spawnOnce "$HOME/.config/polybar/launch.sh xmonad"
+    spawnOnce "flameshot"
+    spawnOnce "dunst"
     -- spawn "clipmenud"
-    spawn "copyq"
+    spawnOnce "copyq"
     -- spawn "sonata"
-    spawn "blueman-applet"
+    spawnOnce "blueman-applet"
     -- spawn "mpd"
-    spawn "volumeicon"
-    spawn "xscreensaver -no-splash"
-    spawn "feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg"
+    spawnOnce "volumeicon"
+    spawnOnce "xscreensaver -no-splash"
+    spawnOnce "feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg"
 
 -- myConfig :: XPConfig
 myConfig = def
