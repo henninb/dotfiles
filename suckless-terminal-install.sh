@@ -8,7 +8,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # export CFLAGS='-std=c99'
   # export CC='gcc -std=c99'
   # export CC=gcc
-  echo $CC
+  echo "$CC"
 elif [ "$OS" = "FreeBSD" ]; then
   echo
 elif [ "$OS" = "Ubuntu" ]; then

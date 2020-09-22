@@ -1,7 +1,7 @@
 #!/bin/sh
 
-cd projects
+cd projects || exit
 git clone git@github.com:ryanoasis/nerd-fonts.git
 
-cd -
+cd - || exit
 exit 0

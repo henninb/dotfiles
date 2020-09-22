@@ -12,8 +12,8 @@ mkdir -p ~/local/crosstool-ng
 sudo apt install -y bison cvs flex gperf texinfo automake libtool help2man
 wget http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-1.24.0.tar.xz
 tar xvf crosstool-ng-1.24.0.tar.xz
-cd crosstool-ng-1.24.0
-./configure --prefix=$HOME/.local
+cd crosstool-ng-1.24.0 || exit
+./configure --prefix="$HOME/.local"
 make
 make install
 

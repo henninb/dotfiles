@@ -43,44 +43,39 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y gnutls-devel
   sudo dnf install -y gperf
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
-mkdir -p $HOME/projects
-cd $HOME/projects
+mkdir -p "$HOME/projects"
+cd "$HOME/projects" || exit
 git clone --recursive git@github.com:thestinger/termite.git
 git clone git@github.com:thestinger/vte-ng.git
 
-cd $HOME/projects/vte-ng
-./autogen.sh --disable-introspection --disable-vala
-if [ $? -ne 0 ]; then
+cd "$HOME/projects/vte-ng" || exit
+if ! ./autogen.sh --disable-introspection --disable-vala; then
   echo failed autogen
   exit 1
 fi
 
-make
-if [ $? -ne 0 ]; then
+if ! make; then
   echo failed make
   exit 1
 fi
 
-sudo make install
-if [ $? -ne 0 ]; then
+if ! sudo make install; then
   echo failed install
   exit 1
 fi
 
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
-cd $HOME/projects/termite
-make
-if [ $? -ne 0 ]; then
+cd "$HOME/projects/termite" || exit
+if ! make; then
   echo failed make
   exit 1
 fi
 
-sudo make install
-if [ $? -ne 0 ]; then
+if ! sudo make install; then
   echo failed install
   exit 1
 fi

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 sudo apt install -y libxml2-utils
-sudo lshw -xml > hardware.xml
+sudo lshw -xml | tee hardware.xml
 #xmllint --xpath "string(//list/node[@id="silverfox"])" hardware.xml
 #xmllint --xpath "string(//list/node)" hardware.xml
 #xmllint --xpath "string(//list/node/node/@id)" hardware.xml

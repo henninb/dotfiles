@@ -1,8 +1,8 @@
 #!/bin/sh
 
-cd projects
+cd projects || exit
 git clone https://github.com/chronitis/curseradio.git
-cd curseradio
+cd curseradio || exit
 sudo python setup.py install
 
 exit 0

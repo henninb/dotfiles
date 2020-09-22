@@ -16,7 +16,8 @@ echo X11DisplayOffset 10
 echo DISPLAY=host:display:screen
 
 
-cat /var/run/sshd.pid | sudo xargs kill -1
+# cat /var/run/sshd.pid | sudo xargs kill -1
+sudo kill -1 "$(cat /var/run/sshd.pid)"
 xauth list
 echo xhost + # insecure
 netstat -an | grep 'tcp.*6000.*LISTEN'
