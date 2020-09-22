@@ -16,7 +16,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   SERVERNAME=bsd
   echo $SERVERNAME
 else
-  echo $OS not configured
+  echo "$OS not configured"
   exit 1
 fi
 
@@ -65,7 +65,7 @@ cat > main.html <<'EOF'
 EOF
 
 echo generate private key
-openssl genrsa -out $HOME/ca.key.pem 4096
+openssl genrsa -out "$HOME/ca.key.pem" 4096
 
 echo generate CSR - certificate signing request
 openssl req -new -key $HOME/ca.key.pem -out $HOME/ca.csr -subj "/C=US/ST=Texas/L=Denton/O=Brian LLC/OU=$SERVERNAME/CN=$SERVERNAME"

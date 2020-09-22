@@ -20,14 +20,14 @@ elif [ "$OS" = "Ubuntu" ]; then
   sudo dpkg -i chef-server-core_12.19.31-1_amd64.deb
   sudo gem install knife-block
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
-  cd $HOME/projects
+  cd "$HOME/projects" || exit
   git clone https://aur.archlinux.org/chef-dk.git
-  cd chef-dk
+  cd chef-dk || exit
   makepkg -si
   #gem install knife-block
   cd ..
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 

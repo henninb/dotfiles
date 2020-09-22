@@ -29,6 +29,7 @@ else
   echo "$OS is not yet implemented."
   exit 1
 fi
+
 echo sudo hciconfig hci0 up
 echo hciconfig -a hci0
 yay -S bluez-utils-compat
@@ -36,24 +37,22 @@ sudo btmgmt ssp off
 rfkill list
 bluedevil # kde
 
-/etc/bluetooth/main.conf
-AutoConnect=true
-vi /etc/bluetooth/input.conf
-UserspaceHID=true
-vi /etc/bluetooth/hcid.conf
-device 00:1E:52:FB:68:55 {
-    name "Apple Wireless Keyboard";
-    auth enable;
-    encrypt enable;
-}
+# /etc/bluetooth/main.conf
+# AutoConnect=true
+# vi /etc/bluetooth/input.conf
+# UserspaceHID=true
+# vi /etc/bluetooth/hcid.conf
+# device 00:1E:52:FB:68:55 {
+#     name "Apple Wireless Keyboard";
+#     auth enable;
+#     encrypt enable;
+# }
 
 sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
 sudo systemctl status bluetooth
 
-if [ ! -f sn-725.mp3 ]; then
-  wget https://media.grc.com/sn/sn-725.mp3 -O sn-725.mp3
-fi
+[ ! -f sn-725.mp3 ] && wget https://media.grc.com/sn/sn-725.mp3 -O sn-725.mp3
 
 amixer -D pulse sset Master 5%+
 echo alsamixer -c 1

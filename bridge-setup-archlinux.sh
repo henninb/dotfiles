@@ -32,7 +32,7 @@ if [ "$OS" = "Arch Linux" ]; then
   sudo systemctl disable dhcpcd.service
 else
   rm br0.netdev uplink.network br0.network
-  echo $OS not implemented.
+  echo "$OS not implemented."
   exit 1
 fi
 

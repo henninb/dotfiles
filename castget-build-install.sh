@@ -16,7 +16,7 @@ wget http://savannah.nongnu.org/download/castget/castget-1.2.4.tar.bz2 -O castge
 
 tar xvf castget-1.2.4.tar.bz2
 
-cd castget-1.2.4
+cd castget-1.2.4 || exit
 ./configure
 make
 sudo make install

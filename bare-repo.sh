@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-cd projects
+cd projects || exit
 git clone --bare git@github.com:BitExplorer/dotfiles.git
 
 exit 0

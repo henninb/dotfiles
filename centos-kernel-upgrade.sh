@@ -11,7 +11,7 @@ if [ "$OS" = "CentOS Linux" ]; then
   sudo yum --enablerepo=elrepo-kernel install -y kernel-ml kernel-ml-headers kernel-ml-devel
   rpm -qa kernel
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 

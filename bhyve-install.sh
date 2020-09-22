@@ -31,7 +31,7 @@ if [ "$OS" = "FreeBSD" ]; then
   sudo vm init
   echo sudo cp '/usr/local/share/examples/vm-bhyve/* /vm/.templates/'
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 

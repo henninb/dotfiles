@@ -6,7 +6,7 @@ sudo lshw -xml > hardware.xml
 #xmllint --xpath "string(//list/node)" hardware.xml
 #xmllint --xpath "string(//list/node/node/@id)" hardware.xml
 SERIAL=$(xmllint --xpath "string(//list/node/node/serial)" hardware.xml)
-echo $SERIAL
+echo "$SERIAL"
 
 exit 1
 

@@ -1,7 +1,7 @@
 #!/bin/sh
 
-cd projects
+cd projects || exit
 git clone https://github.com/cebix/macemu.git
-cd macemu
+cd macemu || exit
 
 exit 0
