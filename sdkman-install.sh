@@ -11,16 +11,14 @@ elif [ "$OS" = "CentOS Linux" ]; then
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y zip unzip
 else
-  echo $OS not configured.
+  echo "$OS not configured."
   exit 1
 fi
 curl -s "https://get.sdkman.io" > sdkman.sh
-sh sdkman.sh
-#which source
-if [ $? -ne 0 ]; then
-  . $HOME/.sdkman/bin/sdkman-init.sh
+if ! sh sdkman.sh; then
+  . "$HOME/.sdkman/bin/sdkman-init.sh"
 else
-  source $HOME/.sdkman/bin/sdkman-init.sh
+  source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
 echo sdk install gradle
 echo sdk install maven

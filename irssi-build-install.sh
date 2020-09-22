@@ -2,12 +2,12 @@
 
 VER=$(curl -s https://irssi.org/download/ | grep -o 'irssi-[0-9.]\+[0-9].tar.gz' | head -1 | sed 's/.tar.gz//' | sed 's/irssi-//')
 echo gpg --keyserver pgp.mit.edu --recv-keys '7EE6 5E30 82A5 FB06 AC7C 368D 00CC B587 DDBE F0E1'
-echo gpg --verify irssi-${VER}.tar.gz.asc
+echo gpg --verify "irssi-${VER}.tar.gz.asc"
 
 ACTUAL_VER=$(irssi --version | grep -o 'irssi [0-9.]\+[0-9]' | sed 's/irssi //')
 
 if [ "$ACTUAL_VER" = "$VER" ]; then
-  echo already at the latest version $VER.
+  echo "already at the latest version $VER."
   exit 0
 fi
 
@@ -41,7 +41,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y libgtk-3-dev pkg-config autoconf libglib2.0-dev gtk-doc-tools libpcre2-dev libgirepository1.0-dev gperf libvte-2.91-dev libvte-dev valac unzip intltool
   sudo apt install -y libperl-dev libssl-dev libncurses-dev
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
@@ -55,19 +55,19 @@ openssl x509 -in freenode.pem -outform der | sha1sum -b | cut -d' ' -f1
 mkdir -p ~/.irssi/certs
 mv freenode.pem ~/.irssi/certs
 
-cd projects
+cd "$HOME/projects" || exit
 
 if [ ! -f "irssi-${VER}.tar.gz" ]; then
 #  curl https://github.com/irssi/irssi/releases/download/${VER}/irssi-${VER}.tar.gz --output irssi-${VER}.tar.gz
   rm -rf irssi-*.tar.gz
-  wget https://github.com/irssi/irssi/releases/download/${VER}/irssi-${VER}.tar.gz
+  wget "https://github.com/irssi/irssi/releases/download/${VER}/irssi-${VER}.tar.gz"
 fi
-tar xvzf irssi-${VER}.tar.gz
+tar xvzf "irssi-${VER}.tar.gz"
 
 sudo mkdir -p /usr/local/lib/irssi/modules/
 
 git clone https://github.com/irssi/irssi
-cd irssi-${VER}
+cd "irssi-${VER}" || exit
 #sh autogen.sh
 ./configure
 make

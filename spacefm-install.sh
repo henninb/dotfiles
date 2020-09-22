@@ -8,7 +8,6 @@ sudo apt install -y libtool
 sudo apt install -y libtool-bin
 sudo apt install -y libgtk2.0-dev
 
-
 sudo dnf install -y systemd-devel
 sudo dnf install -y ffmpegthumbnailer-devel
 
@@ -23,9 +22,9 @@ sudo eopkg install -y ffmpegthumbnailer-devel
 
 sudo emerge  --update --newuse ffmpegthumbnailer
 
-cd "$HOME/projects"
+cd "$HOME/projects" || exit
 git clone git@github.com:IgnorantGuru/spacefm.git
-cd spacefm
+cd spacefm || exit
 ./autogen.sh
 make
 if ! sudo make install; then
@@ -37,15 +36,3 @@ fi
 echo "install ant-dracula-theme-install.sh"
 
 exit 0
-
-diff --git a/src/main.c b/src/main.c
-index 645e2ec..9453a3b 100644
---- a/src/main.c
-+++ b/src/main.c
-@@ -23,6 +23,7 @@
- #include <sys/types.h>
- #include <sys/socket.h>
- #include <sys/un.h>
-+#include <sys/sysmacros.h>
-
- #include <signal.h>

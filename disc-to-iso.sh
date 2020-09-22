@@ -6,6 +6,6 @@ if [ $# -ne 1 ]; then
 fi
 FILE=$1
 
-sudo dd if=/dev/sr0 of=$FILE
+sudo dd if=/dev/sr0 of="$FILE"
 
 exit 0
