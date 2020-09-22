@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec dbus-launch xmonad
+exec dbus-launch xmonad >> /tmp/xmonad.log
