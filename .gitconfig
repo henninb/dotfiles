@@ -16,6 +16,7 @@
   f = "!git ls-files | grep -i"
   aa = add -A .
   unstage = reset HEAD --
+  check-file = "!f() { if [ $# -eq 0 ]; then echo 'Filename missing!'; else tracked=$(git ls-files ${1}); if [[ -z ${tracked} ]]; then echo 'File not tracked'; else echo 'File tracked'; fi; fi;  };  f"
 [push]
   default = simple
 [merge]
@@ -61,4 +62,4 @@
 #[filter "ts-pw"]
 #  clean = "sed -e 's/TRUSTSTORE_PASSWORD=\".*\"/TRUSTSTORE_PASSWORD=\"********\"/'"
 [pull]
-	rebase = false
+  rebase = false
