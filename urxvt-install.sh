@@ -66,13 +66,12 @@ if [ "$OS" = "Fedora" ]; then
   cp "$HOME/urxvt-Makefile-fedora" "$HOME/projects/rxvt-unicode-9.22/src/Makefile"
 fi
 
-make
-if [ $? -ne 0 ]; then
+if ! make; then
   echo "make failed."
   exit 1
 fi
 sudo make install
-cd $HOME
+cd "$HOME" || exit
 
 git clone https://github.com/sos4nt/dynamic-colors ~/.dynamic-colors
 

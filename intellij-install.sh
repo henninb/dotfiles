@@ -2,6 +2,7 @@
 
 if [ $# -eq 1 ]; then
   VER_OVERRIDE="$1"
+  echo "override=$VER_OVERRIDE"
 fi
 
 cat > '_@user_Darcula.icls' <<EOF
@@ -25,7 +26,7 @@ sudo emerge --update --newuse jq
 sudo pacman --noconfirm --needed -S jq
 sudo apt install -y jq
 
-find ~/.config/JetBrains/IntelliJIdea2020.1 -type d -exec touch -t $(date +"%Y%m%d%H%M") {} \;
+find ~/.config/JetBrains/IntelliJIdea2020.1 -type d -exec touch -t "$(date +'%Y%m%d%H%M')" {} \;
 rm -rf "$HOME/.config/JetBrains/IntelliJIdea2020.1/config/eval"
 rm -rf "$HOME/.config/JetBrains/IntelliJIdea2020.1/config/options/other.xml"
 rm -rf ~/.java/.userPrefs/jetbrains

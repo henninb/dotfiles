@@ -92,7 +92,7 @@ elif [ "$OS" = "FreeBSD" ]; then
 elif [ "$OS" = "void" ]; then
   sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
   VOID_PKGS="xscreensaver feh xdotool w3m neofetch lxappearance volumeicon clipmenu xz make gcc gmp-devel dunst wmname libXScrnSaver-devel alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd"
-  FAILURES=""
+  FAILURE=""
   for i in $VOID_PKGS; do
     if ! sudo xbps-install -y "$i"; then
       FAILURE="$i $FAILURE"
@@ -231,7 +231,7 @@ git pull origin master
 #stack build
 stack build --flag xmobar:-with_xft --flag xmobar:-with_utf8 --flag xmobar:-with_threaded --flag xmobar:-with_dbus --flag xmobar:-with_mpd --flag xmobar:-with_mpris --flag xmobar:-with_inotify --flag xmobar:-with_alsa --flag xmobar:-with_datezone --flag xmobar:-with_xpm --flag xmobar:-with_uvmeter --flag xmobar:-with_weather
 stack install
-$HOME/.local/bin/xmonad --version
+"$HOME/.local/bin/xmonad" --version
 
 if [ "$OS" = "Gentoo" ] || [ "$OS" = "FreeBSD" ]; then
   cd "$HOME/projects" || exit
@@ -244,17 +244,17 @@ fi
 go get github.com/godbus/dbus
 cd "$HOME/projects" || exit
 git clone git@github.com:xintron/xmonad-log.git
-cd xmonad-log
+cd xmonad-log || exit
 go build
 mv xmonad-log "$HOME/.local/bin"
-cd -
+cd - || exit
 
-cd "$HOME/projects"
+cd "$HOME/projects" || exit
 git clone git@github.com:troydm/xmonad-dbus.git
-cd xmonad-dbus
+cd xmonad-dbus || exit
 stack build
 stack install
-cd -
+cd - || exit
 
 stack exec ghc-pkg list
 echo stack exec ghc-pkg unregister mypackage

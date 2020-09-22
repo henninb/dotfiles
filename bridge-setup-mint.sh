@@ -58,7 +58,7 @@ elif [ "$OS" = "Ubuntu" ]; then
   sudo ip link set br0 up
   #sudo dhclient br0
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 exit 0
@@ -101,21 +101,21 @@ sudo vi /etc/netctl/bridge
 sudo netctl enable bridge
 # archlinux
 # bridge setup DHCP enp9s0
-Description="bridge archlinux"
-Interface=br0
-Connection=bridge
-BindsToInterfaces=(enp9s0)
-IP=dhcp
-    bridge_ports enp9s0
+# Description="bridge archlinux"
+# Interface=br0
+# Connection=bridge
+# BindsToInterfaces=(enp9s0)
+# IP=dhcp
+#     bridge_ports enp9s0
 
 
-sudo vi /etc/netctl/enp9s0
-sudo netctl enable enp9s0
-Description="ethernet connection"
-Interface=enp9s0
-Connection=ethernet
-BindsToInterfaces=(enp9s0)
-IP=no
+# sudo vi /etc/netctl/enp9s0
+# sudo netctl enable enp9s0
+# Description="ethernet connection"
+# Interface=enp9s0
+# Connection=ethernet
+# BindsToInterfaces=(enp9s0)
+# IP=no
 
 
 #Adding the line: nameserver 192.168.100.254 /etc/resolvconf/resolv.conf.d/head
@@ -142,8 +142,8 @@ sudo cat /etc/iptables/rules.v4| grep bridge
 sudo iptables -S | grep bridge
 
 sudo iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT
-sudo iptables-save > firewall.rules
-sudo iptables-restore < firewall.rules
+sudo iptables-save | tee firewall.rules
+sudo iptables-restore | tee firewall.rules
 sudo sysctl -p
 
 

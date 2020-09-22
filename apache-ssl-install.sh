@@ -23,7 +23,7 @@ fi
 sudo mkdir -p /etc/pki/tls/certs
 sudo mkdir -p /etc/pki/tls/private
 
-cat > mint_ssl.conf <<'EOF'
+cat > mint_ssl.conf <<EOF
 <IfModule mod_ssl.c>
   <VirtualHost *:443>
     DocumentRoot /var/www/
@@ -35,7 +35,7 @@ cat > mint_ssl.conf <<'EOF'
 </IfModule>
 EOF
 
-cat > bsd_ssl.conf <<'EOF'
+cat > bsd_ssl.conf <<EOF
 Listen 443
 SSLProtocol ALL -SSLv2 -SSLv3
 SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
@@ -43,7 +43,7 @@ SSLPassPhraseDialog  builtin
 SSLSessionCacheTimeout  300
 EOF
 
-cat > arch_ssl.conf <<'EOF'
+cat > arch_ssl.conf <<EOF
 <IfModule mod_ssl.c>
   <VirtualHost *:443>
     DocumentRoot /var/www/
@@ -55,7 +55,7 @@ cat > arch_ssl.conf <<'EOF'
 </IfModule>
 EOF
 
-cat > main.html <<'EOF'
+cat > main.html <<EOF
 <html>
   <head><title>apache server</title></head>
   <body>
@@ -68,7 +68,7 @@ echo generate private key
 openssl genrsa -out "$HOME/ca.key.pem" 4096
 
 echo generate CSR - certificate signing request
-openssl req -new -key $HOME/ca.key.pem -out $HOME/ca.csr -subj "/C=US/ST=Texas/L=Denton/O=Brian LLC/OU=$SERVERNAME/CN=$SERVERNAME"
+openssl req -new -key $HOME/ca.key.pem -out "$HOME/ca.csr" -subj "/C=US/ST=Texas/L=Denton/O=Brian LLC/OU=$SERVERNAME/CN=$SERVERNAME"
 
 openssl req -new -key $HOME/ca.key.pem -out $HOME/${SERVERNAME}_apache.csr.pem -subj "/C=US/ST=Texas/L=Denton/O=Brian LLC/OU=$SERVERNAME/CN=$SERVERNAME"
 
