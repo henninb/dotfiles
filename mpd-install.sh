@@ -52,6 +52,8 @@ sudo mkdir -p /var/lib/mpd/playlists
 sudo chown -R mpd:audio /var/log/mpd /var/lib/mpd
 sudo chown -R mpd:mpd /var/log/mpd /var/lib/mpd
 
+sudo apt install -y mpd
+sudo apt install -y mpc
 sudo pacman --noconfirm --needed -S mpd
 sudo pacman --noconfirm --needed -S mpc
 
