@@ -9,7 +9,7 @@ if [ "$OS" = "CentOS Linux" ]; then
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman  --noconfirm --needed -S zsh
   sudo pacman  --noconfirm --needed -S unzip
-elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux"] || [ "$OS" = "elementary OS" ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ] || [ "$OS" = "elementary OS" ]; then
   sudo apt install -y zsh
   sudo apt install -y unzip
   sudo apt install -y fontconfig
@@ -18,8 +18,8 @@ elif [ "$OS" = "Clear Linux OS" ]; then
   sudo swupd bundle-add wget
   sudo swupd bundle-add fonts-basic
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install -y coreutils 
-  sudo pkg install -y urwfonts 
+  sudo pkg install -y coreutils
+  sudo pkg install -y urwfonts
   sudo pkg install -y zsh
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse zsh
