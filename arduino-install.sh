@@ -53,10 +53,10 @@ arduino-cli upload --port /dev/ttyUSB0 --fqbn arduino:avr:uno example-arduino¬
 
 arduino-cli board list
 
-$HOME/.arduino15/packages/esp8266/hardware/esp8266/2.6.3/tools/esptool/esptool.py erase_flash
+"$HOME/.arduino15/packages/esp8266/hardware/esp8266/2.6.3/tools/esptool/esptool.py" erase_flash
 
-$HOME/.arduino15/packages/esp32/hardware/esp32/1.0.4/tools/esptool.py erase_flash
+"$HOME/.arduino15/packages/esp32/hardware/esp32/1.0.4/tools/esptool.py" erase_flash
 
-$HOME/.arduino15/packages/esp32/hardware/esp32/1.0.4/tools/esptool.py read_mac
+"$HOME/.arduino15/packages/esp32/hardware/esp32/1.0.4/tools/esptool.py" read_mac
 
 exit 0

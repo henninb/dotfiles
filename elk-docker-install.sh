@@ -71,9 +71,9 @@ sudo /usr/share/logstash/bin/logstash-plugin update logstash-input-udp
 sudo /usr/share/logstash/bin/logstash-plugin install logstash-filter-dns
 sudo /usr/share/logstash/bin/logstash-plugin update logstash-filter-dns
 
-cd "$HOME/projects"
+cd "$HOME/projects" || exit
 git clone git@github.com:deviantony/docker-elk.git
-cd docker-elk
+cd docker-elk || exit
 docker-compose up
 
 echo elastic

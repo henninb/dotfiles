@@ -13,7 +13,9 @@ fi
 
 sudo groupadd firefox
 sudo useradd -s /sbin/nologin -g firefox firefox
-read -p "Press enter to continue"
+echo "Press enter to continue"
+read -r x
+echo "$x" > /dev/null
 
 if [ ! -f "firefox-${FOX_VER}.tar.bz2" ]; then
   rm -rf firefox-*.tar.bz2

@@ -4,7 +4,7 @@ lsusb
 
 git clone https://github.com/brektrou/rtl8821CU.git
 git clone https://github.com/lwfinger/rtl8723bu.git
-cd rtl8723bu
+cd rtl8723bu || exit
 nano Makefile
 make
 sudo make install

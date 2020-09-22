@@ -1,7 +1,8 @@
 #!/bin/sh
 
 POSTFIX_PASSWORD="********"
-# read -p "Enter PASSWD: "  PASSWD
+echo "Enter PASSWD: "
+read -r POSTFIX_PASSWORD
 # if [ -z "$PASSWD" ]; then
 #   echo "passwd is empty"
 #   exit 1
@@ -51,11 +52,11 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo mv -v main.cf /etc/postfix/main.cf
 
   sudo apt install -y postfix mailutils
-  cd /etc/postfix
+  cd /etc/postfix || exit
   sudo chown -R postfix .
   sudo chgrp -R postfix .
   sudo chmod -R ugo+rwx .
-  cd -
+  cd - || exit
   sudo chmod 644 /etc/postfix/*.cf
   sudo postmap /etc/postfix/sasl_passwd
   sudo systemctl restart postfix
@@ -66,11 +67,11 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo restorecon -v /etc/postfix/main.cf
 
   sudo yum install -y net-tools mailx postfix cyrus-sasl cyrus-sasl-plain
-  cd /etc/postfix
+  cd /etc/postfix || exit
   sudo chown -R postfix .
   sudo chgrp -R postfix .
   sudo chmod -R ugo+rwx .
-  cd -
+  cd - || exit
   sudo chmod 644 /etc/postfix/*.cf
   sudo postmap /etc/postfix/sasl_passwd
   sudo systemctl restart postfix
@@ -85,11 +86,11 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo mv -v main_archlinux.cf /etc/postfix/main.cf
   sudo pacman --noconfirm --needed -S postfix mailutils net-tools
   sudo mkfifo /var/spool/postfix/public/pickup
-  cd /etc/postfix
+  cd /etc/postfix || exit
   sudo chown -R postfix .
   sudo chgrp -R postfix .
   sudo chmod -R ugo+rwx .
-  cd -
+  cd - || exit
   sudo chmod 644 /etc/postfix/*.cf
   sudo postmap /etc/postfix/sasl_passwd
   sudo systemctl restart postfix

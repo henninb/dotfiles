@@ -8,20 +8,20 @@ export PATH=/opt/kafka/bin:$PATH
 SCALA_VER=2.12
 NUM=$(curl -sf https://kafka.apache.org/downloads | grep -o "kafka_${SCALA_VER}-[0-9.]\+[0-9]" | head -1 | sed 's/kafka_[0-9.]\+[0-9]-//')
 VER="${SCALA_VER}-${NUM}"
-FILE="kafka_${VER}"
+# FILE="kafka_${VER}"
 
 if [ ! -f "kafka_${VER}.tgz" ]; then
   rm -rf kafka_*.tgz
-  curl -s https://archive.apache.org/dist/kafka/${NUM}/kafka_${VER}.tgz --output kafka_${VER}.tgz
+  curl -s "https://archive.apache.org/dist/kafka/${NUM}/kafka_${VER}.tgz" --output "kafka_${VER}.tgz"
 fi
 
 sudo rm -rf /opt/kafka
-sudo rm -rf /opt/kafka_${VER}
-sudo tar -zxvf kafka_${VER}.tgz -C /opt
-sudo ln -s /opt/kafka_${VER} /opt/kafka
+sudo rm -rf "/opt/kafka_${VER}"
+sudo tar -zxvf "kafka_${VER}.tgz" -C /opt
+sudo ln -s "/opt/kafka_${VER}" /opt/kafka
 sudo useradd -s /sbin/nologin kafka -m
 sudo chown -R kafka:kafka /opt/kafka/
-sudo chown -R kafka:kafka /opt/kafka_${VER}/
+sudo chown -R kafka:kafka "/opt/kafka_${VER}/"
 
 sudo sed -i "s/#listeners=PLAINTEXT:\/\/:9092/listeners=PLAINTEXT:\/\/:9092,SSL:\/\/:9093/g" /opt/kafka/config/server.properties
 sudo sed -i "s/#advertised.listeners=PLAINTEXT:\/\/your.host.name:9092/advertised.listeners=PLAINTEXT:\/\/:9092,SSL:\/\/:9093/g" /opt/kafka/config/server.properties
@@ -100,11 +100,13 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo systemctl start kafka
   sudo systemctl status kafka
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
-read -p "Press enter to continue"
+echo "Press enter to continue"
+read -r x
+echo "$x" > /dev/null
 
 netstat -na | grep LISTEN | grep tcp | grep 9092
 netstat -na | grep LISTEN | grep tcp | grep 2181
