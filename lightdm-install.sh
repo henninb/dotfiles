@@ -91,7 +91,7 @@ cat > openbox.desktop << EOF
 [Desktop Entry]
 Name=openbox
 Comment=openbox window manager
-Exec=spectrwm
+Exec=openbox
 TryExec=openbox
 Type=Application
 X-LightDM-DesktopName=openbox

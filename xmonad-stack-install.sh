@@ -70,6 +70,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S mpc
   sudo pacman --noconfirm --needed -S mpd
   sudo pacman --noconfirm --needed -S dmenu
+  sudo pacman --noconfirm --needed -S xlockmore
   sudo pacman --noconfirm --needed -S flameshot
   sudo pacman --noconfirm --needed -S sonata
   sudo pacman --noconfirm --needed -S wmname
