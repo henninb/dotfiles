@@ -1,8 +1,8 @@
 #!/bin/sh
 
-mkdir -p $HOME/.fonts/
-mkdir -p $HOME/.config/fontconfig/conf.d
-mkdir -p $HOME/.fontconfig
+mkdir -p "$HOME/.fonts/"
+mkdir -p "$HOME/.config/fontconfig/conf.d"
+mkdir -p "$HOME/.fontconfig"
 
 for family in serif sans-serif monospace Arial Helvetica Verdana "Times New Roman" "Courier New"; do
   echo -n "$family: "
@@ -40,32 +40,32 @@ fi
 # zip DejaVu_Sans_Mono.zip *.ttf
 # rm *.ttf
 
-cd $HOME/projects
+cd "$HOME/projects" || exit
 git clone git@github.com:powerline/powerline.git powerline
 
 echo Powerline fonts
-cd $HOME/projects
+cd "$HOME/projects" || exit
 git clone git@github.com:powerline/fonts.git powerline-fonts
-cd powerline-fonts
+cd powerline-fonts || exit
 echo for the linux console
 sudo cp -r Terminus/PSF/*.psf.gz /usr/share/consolefonts
 echo for putty on windows and iterm2 on OSX
-zip $HOME/DejaVuSansMono.zip DejaVuSansMono/*.ttf
+zip "$HOME/DejaVuSansMono.zip DejaVuSansMono/*.ttf"
 
-cd $HOME/projects
+cd "$HOME/projects" || exit
 git clone git@github.com:gabrielelana/awesome-terminal-fonts.git
-cd awesome-terminal-fonts
+cd awesome-terminal-fonts || exit
 cp fonts/* ~/.fonts/
 
 fc-cache -vf ~/.fonts/
 exit 1
 
-cd $HOME/projects
+cd "$HOME/projects" || exit
 echo git clone git@github.com:ryanoasis/nerd-fonts.git
 
-cd $HOME/projects
+cd "$HOME/projects" || exit
 mkdir sauce-code-pro-nerd-font
-cd sauce-code-pro-nerd-font
+cd sauce-code-pro-nerd-font || exit
 git init
 git remote add -f origin git@github.com:ryanoasis/nerd-fonts.git
 git config core.sparseCheckout true

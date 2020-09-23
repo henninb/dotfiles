@@ -9,7 +9,7 @@ elif [ "$OS" = "Darwin" ]; then
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y libnsl
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
@@ -19,30 +19,27 @@ fi
 if [ ! "$OS" = "Darwin" ]; then
   if [ ! -f "oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm" ]; then
     scp pi@pi:/home/pi/downloads/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm .
-    if ! scp "pi@pi:/home/pi/downloads/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm .; then
+    if ! scp "pi@pi:/home/pi/downloads/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm" .; then
       wget https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm
       scp oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm pi@pi:/home/pi/downloads/
     fi
   fi
 
   if [ ! -f "oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm" ]; then
-    scp pi@pi:/home/pi/downloads/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm .
-    if [ $? -ne 0 ]; then
+    if ! scp pi@pi:/home/pi/downloads/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm .; then
       wget https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
       scp oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm pi@pi:/home/pi/downloads/
     fi
   fi
 
   if [ ! -f "oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm" ]; then
-    scp pi@pi:/home/pi/downloads/oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm .
-    if [ $? -ne 0 ]; then
+    if ! scp pi@pi:/home/pi/downloads/oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm .; then
       echo wget https://www.oracle.com/database/technologies/instant-client/precompiler-112010-downloads.html
     fi
   fi
 
   if [ ! -f "oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm" ]; then
-    scp pi@pi:/home/pi/downloads/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm .
-    if [ $? -ne 0 ]; then
+    if ! scp pi@pi:/home/pi/downloads/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm .; then
       wget https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm
        scp oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm pi@pi:/home/pi/downloads/
     fi
@@ -67,7 +64,7 @@ elif [ "$OS" = "Darwin" ]; then
     wget https://download.oracle.com/otn_software/mac/instantclient/193000/instantclient-sqlplus-macos.x64-19.3.0.0.0dbru.zip
   fi
 
-  cd /opt
+  cd /opt || exit
   sudo unzip -o "$HOME/instantclient-sqlplus-macos.x64-19.3.0.0.0dbru.zip"
   sudo unzip -o "$HOME/instantclient-basic-macos.x64-19.3.0.0.0dbru.zip"
    sudo rm -rf instantclient_19_3 oracle-instantclient
@@ -113,7 +110,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo rpm -i --nodeps oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm
   sudo rpm -i --nodeps oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
