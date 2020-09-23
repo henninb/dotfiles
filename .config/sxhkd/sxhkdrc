@@ -1,5 +1,5 @@
-alt + shift + Return
-    urxvt
+# alt + shift + Return
+#     urxvt
 alt + Return
     alacritty
 alt + shift + i
@@ -12,8 +12,8 @@ alt + shift + e
     emacs
 alt + r
     urxvt -e lf
-alt + p
-    clipmenu -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'
+#alt + p
+#    clipmenu -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'
 alt + shift + p
     dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'
 alt + shift + Escape
@@ -24,8 +24,6 @@ alt + shift + BackSpace
     xdo close
 alt + control + {t,s,f}
     bspc node -t {tiled,floating,fullscreen}
-alt + Print
-    flameshot gui -p $HOME/Desktop
 Print
     flameshot gui -p $HOME/Desktop
 XF86AudioRaiseVolume
@@ -34,12 +32,12 @@ XF86AudioLowerVolume
     amixer -q -D pulse sset Master 2%-
 XF86AudioMute
     amixer -D pulse sset Master toggle
-#XF86AudioPlay
-#   $HOME/.config/bspwm/panel/notify_mpd -t
-#XF86AudioNext
-#   $HOME/.config/bspwm/panel/notify_mpd -n
-#XF86AudioPrev
-#   $HOME/.config/bspwm/panel/notify_mpd -p
+XF86AudioPlay
+    mpc toggle
+XF86AudioNext
+    mpc next
+XF86AudioPrev
+    mpc prev
 # make sxhkd reload its configuration files:
 # alt + shift + Escape
 #    pkill -USR1 -x sxhkd
@@ -55,11 +53,11 @@ alt + {_,shift + }{1-9,0}
 #     bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
 
 # Pulse Controls
-super + {Up, Down}
-    pulsevolctrl "output-vol" "alsa_output.pci-0000_00_1f.3.analog-stereo" {+2%, -2%}
+# super + {Up, Down}
+#     pulsevolctrl "output-vol" "alsa_output.pci-0000_00_1f.3.analog-stereo" {+2%, -2%}
 
-super + m
-    pulsevolctrl "output-mute" "alsa_output.pci-0000_00_1f.3.analog-stereo"
+# super + m
+#     pulsevolctrl "output-mute" "alsa_output.pci-0000_00_1f.3.analog-stereo"
 
 #super + shift + {r, s}
 #  prompt {"Are you sure you would like to reboot?" "sudo reboot", "Are you sure you would like to shutdown" "sudo shutdown"}
