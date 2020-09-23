@@ -1,0 +1,64 @@
+if [ -x "$(command -v dunst)" ]; then
+  echo dunst was called. >> "$HOME/bspwm.log"
+  dunst &
+else
+  echo dunst is not installed. >> "$HOME/bspwm.log"
+fi
+
+if [ -x "$(command -v flameshot)" ]; then
+  flameshot &
+else
+  echo "flameshot not installed." >> "$HOME/bspwm.log"
+fi
+
+if [ -x "$(command -v blueman-applet)" ]; then
+  blueman-applet &
+else
+  echo "blueman-applet not installed." >> "$HOME/bspwm.log"
+fi
+
+if [ -x "$(command -v mpd)" ]; then
+  exec mpd &
+else
+  echo "mpd is not installed." >> "$HOME/bspwm.log"
+fi
+
+if [ -x "$(command -v volumeicon)" ]; then
+  exec volumeicon &
+else
+  echo "volumeicon is not installed." >> "$HOME/bspwm.log"
+fi
+
+if [ -x "$(command -v feh)" ]; then
+  #exec feh --bg-scale --randomize $HOME/backgrounds/* &
+  exec feh --bg-scale "$HOME/backgrounds/minnesota-vikings-dark.jpg" &
+else
+  echo feh is not installed >> "$HOME/bspwm.log"
+fi
+
+
+if [ -x "$(command -v xscreensaver)" ]; then
+  exec xscreensaver -no-splash &
+else
+  echo xscreensaver is not installed >> "$HOME/bspwm.log"
+fi
+
+if [ -x "$(command -v sxhkd)" ]; then
+  sxhkd &
+  echo sxhkd was called. >> "$HOME/bspwm.log"
+else
+  echo sxhkd is not installed >> "$HOME/bspwm.log"
+fi
+
+#if [ -x "$(command -v polybar)" ]; then
+#  "$HOME/.config/polybar/launch.sh" bspwm
+#  echo polybar was called. >> "$HOME/bspwm.log"
+#else
+#  echo polybar is not installed >> "$HOME/bspwm.log"
+#fi
+
+if [ -x "$(command -v wmname)" ]; then
+  wmname LG3D >> "$HOME/bspwm.log"
+else
+  echo wmname is not installed >> "$HOME/bspwm.log"
+fi

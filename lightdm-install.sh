@@ -66,7 +66,7 @@ EOF
 cat > spectrwm.desktop << EOF
 [Desktop Entry]
 Name=spectrwm
-Comment=i3 tiling window manager
+Comment=spectrwm tiling window manager
 Exec=spectrwm
 TryExec=spectrwm
 Type=Application
@@ -84,6 +84,18 @@ TryExec=xmonad-start
 Type=Application
 X-LightDM-DesktopName=xmonad
 DesktopNames=xmonad
+Keywords=tiling;wm;windowmanager;window;manager;
+EOF
+
+cat > openbox.desktop << EOF
+[Desktop Entry]
+Name=openbox
+Comment=openbox window manager
+Exec=spectrwm
+TryExec=openbox
+Type=Application
+X-LightDM-DesktopName=openbox
+DesktopNames=openbox
 Keywords=tiling;wm;windowmanager;window;manager;
 EOF
 
@@ -137,6 +149,7 @@ sudo mv -v bspwm.desktop /usr/share/xsessions/
 sudo mv -v xmonad.desktop /usr/share/xsessions/
 sudo mv -v i3.desktop /usr/share/xsessions/
 sudo mv -v spectrwm.desktop /usr/share/xsessions/
+sudo mv -v openbox.desktop /usr/share/xsessions/
 sudo mkdir -p /usr/share/backgrounds/custom
 sudo cp -p "$HOME/.config/lightdm/greeter.jpg" /usr/share/backgrounds/custom/
 sudo mv -v lightdm.conf /etc/lightdm/
