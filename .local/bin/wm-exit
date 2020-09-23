@@ -5,7 +5,7 @@ export LANG="en_US.utf8"
 wm=$1
 
 if [ $# -ne 1 ]; then
-  echo "Usage: $0 [xmonad|bspwm|i3]"
+  echo "Usage: $0 [xmonad|bspwm|i3|spectrwm]"
   exit 1
 fi
 
@@ -18,6 +18,7 @@ done
 [ "${select}" = "Logout" ] && [ "${wm}" = "xmonad" ] && pkill -x xmonad
 [ "${select}" = "Logout" ] && [ "${wm}" = "bspwm" ] && bspc quit
 [ "${select}" = "Logout" ] && [ "${wm}" = "i3" ] && i3-msg exit
+[ "${select}" = "Logout" ] && [ "${wm}" = "spectrwm" ] && pkill -x spectrwm
 [ "${select}" = "Shutdown" ] && sudo shutdown -h now
 [ "${select}" = "Reboot" ] && sudo shutdown -r now
 
