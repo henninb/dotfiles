@@ -6,7 +6,7 @@ if [ $# -ne 1 ]; then
 fi
 FILE=$1
 
-gpg -r 'henninb@gmail.com' -e $FILE
+gpg -r 'henninb@gmail.com' -e "$FILE"
 
 exit 0
 

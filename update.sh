@@ -37,8 +37,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper update
 elif [ "$OS" = "Gentoo" ]; then
   sudo eselect news read
-  sudo emerge --sync 2>&1 | tee -a update.log.$$
-  if [ $? -ne 0 ]; then
+  if ! sudo emerge --sync 2>&1 | tee -a update.log.$$; then
     sudo emerge-webrsync 2>&1 | tee -a update.log.$$
   fi
   sudo emerge -uN portage

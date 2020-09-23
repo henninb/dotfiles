@@ -35,7 +35,7 @@ elif [ "$OS" = "Solus" ]; then
 elif [ "$OS" = "Fedora" ]; then
   flatpak install --user com.valvesoftware.Steam.flatpakref
 else
-  echo $OS is not yet implemented
+  echo "$OS is not yet implemented"
   exit 1
 fi
 

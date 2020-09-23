@@ -18,9 +18,9 @@ VOID_PKGS="gimp incscape vlc handbrake terminator audacity dolphin-emu zathura d
 
 SOLUS_PKGS="gimp inkscape vlc handbrake terminator audacity dolphin-emu zathura dbeaver gnome-mpv terminator mpv openshot"
 
-FEDORA_PKGS="gvim gqrx keepassxc"
+#FEDORA_PKGS="gvim gqrx keepassxc"
 
-MACOS_PKGS="alacritty iterm2"
+#MACOS_PKGS="alacritty iterm2"
 
 if [ "$OS" = "Arch Linux" ]; then
   FAILURE=""

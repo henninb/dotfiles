@@ -7,6 +7,6 @@ fi
 FILE=$1
 #git log --follow -- vscode_cmds.md
 #git log --follow -- jq.txt
-git log --follow -- $FILE
+git log --follow -- "$FILE"
 
 exit 0

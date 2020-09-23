@@ -6,8 +6,8 @@ if [ $# -ne 1 ]; then
 fi
 
 FILE=$1
-BASENAME=$(basename ${FILE} .gpg)
+BASENAME=$(basename "${FILE}" .gpg)
 
-gpg -d $FILE > ${BASENAME}
+gpg -d "$FILE" | tee "${BASENAME}"
 
 exit 0

@@ -141,8 +141,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   mv -v install_psql_settings.sql /tmp
   sudo -u postgres sh -c 'cd /tmp && psql postgres -U postgres < /tmp/install_psql_settings.sql'
   #sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/db/postgres/data11/postgresql.conf
-  sudo grep "^listen_addresses = '*'" /var/db/postgres/data11/postgresql.conf
-  if [ $? -ne 0 ]; then
+  if ! sudo grep "^listen_addresses = '*'" /var/db/postgres/data11/postgresql.conf; then
     echo "listen_addresses = '*'" | sudo tee -a /var/db/postgres/data11/postgresql.conf
   fi
   sudo mv -v pg_hba.conf /var/db/postgres/data11/pg_hba.conf

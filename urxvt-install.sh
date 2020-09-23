@@ -55,9 +55,7 @@ if ! ./autogen.sh; then
   echo "autogen failed."
   exit 1
 fi
-./configure --enable-everything --enable-perl --enable-smart-resize --enable-256-color --enable-unicode3
-# ./configure --enable-everything --enable-smart-resize --enable-256-color
-if [ $? -ne 0 ]; then
+if ! ./configure --enable-everything --enable-perl --enable-smart-resize --enable-256-color --enable-unicode3; then
   echo "configure failed."
   exit 1
 fi

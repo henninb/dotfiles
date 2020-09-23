@@ -10,7 +10,7 @@ if [ ! -f "linux-5.6.4.tar.xz" ]; then
   wget "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$VER.tar.xz"
 fi
 tar xf "linux-$VER.tar.xz"
-cd "linux-$VER"
+cd "linux-$VER" || exit
 
 if [ ! -f .config ]; then
   make menuconfig

@@ -48,7 +48,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
   echo Gentoo openrc
   exit 1
 else
-  echo $OS not configured.
+  echo "$OS not configured."
   exit 1
 fi
 

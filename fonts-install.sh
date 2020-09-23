@@ -101,42 +101,42 @@ fc-match 'Courier New:slant=0:weight=100:pixelsize=24:antialias=False:autohint=T
 
 exit 0
 
-Open PuTTY and make changes to the settings:
-click on default
-click on load
+#Open PuTTY and make changes to the settings:
+#click on default
+#click on load
 
-Under appearance section
-select the DejaVu_Sans_Mono font
-#Select font quality Clear Type
-#  Under Translation select character set UTF-8
-#  Apply settings and restart the PuTTY session
+#Under appearance section
+#select the DejaVu_Sans_Mono font
+##Select font quality Clear Type
+##  Under Translation select character set UTF-8
+##  Apply settings and restart the PuTTY session
 
 
-echo Linux Console
-https://phoikoi.io/2016/11/09/powerline-console.html
-/etc/default/console-setup
-Before
-# CONFIGURATION FILE FOR SETUPCON
+#echo Linux Console
+#https://phoikoi.io/2016/11/09/powerline-console.html
+#/etc/default/console-setup
+#Before
+## CONFIGURATION FILE FOR SETUPCON
 
-# Consult the console-setup(5) manual page.
+## Consult the console-setup(5) manual page.
 
-ACTIVE_CONSOLES="/dev/tty[1-6]"
+#ACTIVE_CONSOLES="/dev/tty[1-6]"
 
-CHARMAP="UTF-8"
+#CHARMAP="UTF-8"
 
-CODESET="Lat15"
-FONTFACE="TerminusBold"
-FONTSIZE="14x28"
+#CODESET="Lat15"
+#FONTFACE="TerminusBold"
+#FONTSIZE="14x28"
 
-VIDEOMODE=
-After
-# CONFIGURATION FILE FOR SETUPCON
+#VIDEOMODE=
+#After
+## CONFIGURATION FILE FOR SETUPCON
 
-# Consult the console-setup(5) manual page.
+## Consult the console-setup(5) manual page.
 
-ACTIVE_CONSOLES="/dev/tty[1-6]"
+#ACTIVE_CONSOLES="/dev/tty[1-6]"
 
-CHARMAP="UTF-8"
+#CHARMAP="UTF-8"
 
-VIDEOMODE=
-FONT="ter-powerline-v32b.psf.gz"
+#VIDEOMODE=
+#FONT="ter-powerline-v32b.psf.gz"
