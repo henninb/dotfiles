@@ -7,16 +7,16 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
 elif [ "$OS" = "CentOS Linux" ]; then
   echo "cent"
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse $i
+  echo sudo emerge --update --newuse
   exit 0
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
-cd projects
+cd "$HOME/projects" || exit
 git clone git://git.code.sf.net/p/libnova/libnova libnova
-cd libnova
+cd libnova || exit
 ./autogen.sh
 ./configure
 make

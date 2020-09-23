@@ -7,10 +7,10 @@ for sfile in $files; do
   #echo $sfile
   if git ls-files --error-unmatch "$sfile" >/dev/null 2>&1; then
     if ! shellcheck "$sfile" >/dev/null 2>&1; then
-      count=$(shellcheck "$sfile" | grep -c SC)
-      if [ "$count" -lt 6 ]; then
+      # count=$(shellcheck "$sfile" | grep -c SC)
+      # if [ "$count" -lt 6 ]; then
         echo "$sfile"
-      fi
+      # fi
     fi
   fi
 done
