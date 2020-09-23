@@ -11,17 +11,15 @@ if [ "$(uname -s)" = "Linux" ]; then
   ls /sys/class/net/
 
   D='/sys/class/net'
-  for nic in $( ls $D )
-  do
-      echo $nic
-      if  grep -q up $D/$nic/operstate
-      then
-          echo -n '   '
-          cat $D/$nic/address
+  for nic in $(ls -1 "$D"); do
+      echo "$nic"
+      if grep -q up "$D/$nic/operstate"; then
+          echo '   '
+          cat "$D/$nic/address"
       fi
   done
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 

@@ -6,14 +6,12 @@ else
   sudo systemctl status postgresql
 fi
 echo 'netstat -na | grep tcp | grep LIST | grep 5432'
-netstat -na | grep tcp | grep LIST | grep 5432
-if [ $? -ne 0 ]; then
+if ! netstat -na | grep tcp | grep LIST | grep 5432; then
   echo 5432 port not up, postgesql not running.
 fi
 
 echo 'sudo fuser 5432/tcp'
-sudo fuser 5432/tcp
-if [ $? -ne 0 ]; then
+if ! sudo fuser 5432/tcp; then
   echo 5432 port not up, postgesql not running.
 fi
 

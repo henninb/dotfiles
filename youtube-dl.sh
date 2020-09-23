@@ -21,7 +21,7 @@ mkdir -p media
 fun_download() {
   if [ ! -f "media/$2" ]; then
     youtube-dl -f bestaudio --extract-audio "$1" --output "media/$2"
-    echo $(basename media/$2 .opus)
+    basename "media/$2" .opus
   else
     echo "$2 already exists."
   fi

@@ -10,8 +10,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
 
   if [ ! -f /usr/local/bin/minikube ]; then
     #curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-    wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 -O minikube
-    if [ $? -ne 0 ]; then
+    if ! wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 -O minikube; then
       echo failure 1
       exit 1
     fi
@@ -20,8 +19,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   fi
 
   if [ ! -f /usr/local/bin/kubectl ]; then
-    curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-    if [ $? -ne 0 ]; then
+    if ! curl -Lo kubectl "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"; then
       echo failure 2
       exit 2
     fi
@@ -31,8 +29,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   kubectl version -o json
 
   if [ ! -f /usr/local/bin/docker-machine-driver-kvm2 ]; then
-    curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2
-    if [ $? -ne 0 ]; then
+    if ! curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2; then
       echo failure 3
       exit 3
     fi
@@ -40,8 +37,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
     sudo mv -v docker-machine-driver-kvm2 /usr/local/bin/
   fi
 
-  minikube start --vm-driver kvm2
-  if [ $? -ne 0 ]; then
+  if ! minikube start --vm-driver kvm2; then
     echo failure 4
     exit 4
   fi
@@ -55,8 +51,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   if [ ! -f /usr/local/bin/minikube ]; then
 #    curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-    wget -q https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 -O minikube
-    if [ $? -ne 0 ]; then
+    if ! wget -q https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 -O minikube; then
       echo failure 1
       exit 1
     fi
@@ -71,10 +66,9 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
       echo failure 6
       exit 6
     fi
-    echo $VER
+    echo "$VER"
     echo "https://storage.googleapis.com/kubernetes-release/release/$VER/bin/linux/amd64/kubectl"
-    wget -q "https://storage.googleapis.com/kubernetes-release/release/$VER/bin/linux/amd64/kubectl" -O kubectl
-    if [ $? -ne 0 ]; then
+    if ! wget -q "https://storage.googleapis.com/kubernetes-release/release/$VER/bin/linux/amd64/kubectl" -O kubectl; then
       echo failure 2
       exit 2
     fi
@@ -84,8 +78,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
 
   if [ ! -f /usr/local/bin/docker-machine-driver-kvm2 ]; then
     #curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2
-    wget -q https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2 -o docker-machine-driver-kvm2
-    if [ $? -ne 0 ]; then
+    if ! wget -q https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2 -o docker-machine-driver-kvm2; then
       echo failure 3
       exit 3
     fi
@@ -94,9 +87,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   fi
 
   kubectl version -o json
-  minikube start --vm-driver kvm2
-  #minikube start --vm-driver none
-  if [ $? -ne 0 ]; then
+  if ! minikube start --vm-driver kvm2; then
     echo failure 101
     exit 101
   fi
@@ -114,14 +105,14 @@ fi
 
 exit 0
 
-mkdir -p $HOME/projects
-cd $HOME/projects
+mkdir -p "$HOME/projects"
+cd "$HOME/projects" || exit
 rm -rf kubernetes-bin
 rm -rf kubernetes
 git clone https://aur.archlinux.org/kubernetes-bin.git
 git clone https://aur.archlinux.org/kubernetes.git
 git clone https://aur.archlinux.org/minikube.git
-cd minikube
+cd minikube || exit
 #cd kubernetes-bin
 makepkg -si
 #sudo kubeadm init

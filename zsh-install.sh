@@ -37,8 +37,8 @@ elif [ "$OS" = "Darwin" ]; then
   brew install coreutils
   brew install fontconfig
   brew install zsh
-  for f in $(compaudit);do sudo chown $(whoami):admin $f;done;
-  for f in $(compaudit);do sudo chmod 755 $f;done;
+  for f in $(compaudit);do sudo chown "$(whoami):admin" "$f";done;
+  for f in $(compaudit);do sudo chmod 755 "$f";done;
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y util-linux-user
   sudo dnf install -y zsh

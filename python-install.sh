@@ -15,8 +15,7 @@ build() {
 }
 
 pip_ins() {
-  pip show "$1" > /dev/null
-  if [ $? -ne 0 ]; then
+  if ! pip show "$1" > /dev/null; then
     pip install "$1" --user
   fi
 }
@@ -35,7 +34,7 @@ elif [ "$OS" = "Gentoo" ]; then
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y python36 py36-pip
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 
