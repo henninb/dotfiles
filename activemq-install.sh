@@ -1,6 +1,9 @@
 #!/usr/bin/env sh
 
 ACTIVEMQ_PASSWORD="********"
+echo "Enter PASSWD: "
+read -r ACTIVEMQ_PASSWORD
+echo "$ACTIVEMQ_PASSWORD"
 
 AMQ_VER=$(curl -fA 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:69.0) Gecko/20100101 Firefox/69.0' 'http://activemq.apache.org/components/classic/download/' | grep -o 'ActiveMQ [0-9.]\+[0-9]' | sed 's/ActiveMQ //')
 
@@ -64,19 +67,19 @@ elif [ "$OS" = "openSUSE Leap" ]; then
   sudo groupadd activemq
   sudo useradd -s /sbin/nologin -g activemq activemq
   sudo zypper install curl wget
-  sudo tar -zxvf apache-activemq-$AMQ_VER-bin.tar.gz -C /opt
-  sudo chown -R activemq:activemq /opt/apache-activemq-$AMQ_VER/
-  sudo ln -s /opt/apache-activemq-$AMQ_VER /opt/activemq
+  sudo tar -zxvf "apache-activemq-$AMQ_VER-bin.tar.gz" -C /opt
+  sudo chown -R activemq:activemq "/opt/apache-activemq-$AMQ_VER/"
+  sudo ln -s "/opt/apache-activemq-$AMQ_VER" /opt/activemq
   sudo sed -i "s/managementContext createConnector=\"false\"/managementContext createConnector=\"true\"/" /opt/activemq/conf/activemq.xml
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y activemq
-  grep "fdesc /dev/fd fdescfs rw 0 0" /etc/fstab
-  if [ $? -ne 0 ]; then
+  count=$(grep -c 1 "fdesc /dev/fd fdescfs rw 0 0" /etc/fstab)
+  if [ "$count" -ne 1 ]; then
     echo "fdesc /dev/fd fdescfs rw 0 0" | sudo tee /etc/fstab
   fi
 
-  grep "proc /proc procfs rw 0 0" /etc/fstab
-  if [ $? -ne 0 ]; then
+  count=$(grep -c 1 "proc /proc procfs rw 0 0" /etc/fstab)
+  if [ "$count" -ne 1 ]; then
     echo "proc /proc procfs rw 0 0" | sudo tee /etc/fstab
   fi
   sudo sysrc activemq_enable="YES"
@@ -92,9 +95,9 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge -uf dev-java/oracle-jdk-bin dev-java/openjdk-bin
   sudo groupadd activemq
   sudo useradd -s /sbin/nologin -g activemq activemq
-  sudo tar -zxvf apache-activemq-$AMQ_VER-bin.tar.gz -C /opt
-  sudo chown -R activemq:activemq /opt/apache-activemq-$AMQ_VER/
-  sudo ln -s /opt/apache-activemq-$AMQ_VER /opt/activemq
+  sudo tar -zxvf "apache-activemq-$AMQ_VER-bin.tar.gz" -C /opt
+  sudo chown -R activemq:activemq "/opt/apache-activemq-$AMQ_VER/"
+  sudo ln -s "/opt/apache-activemq-$AMQ_VER" /opt/activemq
   sudo mv -v activemq.start /etc/local.d/
   sudo mv -v activemq.stop /etc/local.d/
   sudo rc-update add activemq default
@@ -103,9 +106,9 @@ elif [ "$OS" = "Gentoo" ]; then
   curl http://localhost:8161 --output index.html
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y net-tools psmisc wget curl openjdk-8-jdk
-  sudo tar -zxvf apache-activemq-$AMQ_VER-bin.tar.gz -C /opt
-  sudo chown -R activemq:activemq /opt/apache-activemq-$AMQ_VER/
-  sudo ln -s /opt/apache-activemq-$AMQ_VER /opt/activemq
+  sudo tar -zxvf "apache-activemq-$AMQ_VER-bin.tar.gz" -C /opt
+  sudo chown -R activemq:activemq "/opt/apache-activemq-$AMQ_VER/"
+  sudo ln -s "/opt/apache-activemq-$AMQ_VER" /opt/activemq
   sudo sed -i "s/managementContext createConnector=\"false\"/managementContext createConnector=\"true\"/" /opt/activemq/conf/activemq.xml
   sudo mv -v activemq.service /lib/systemd/system
   #sed -i "s/admin: admin, admin/admin: admin, ${ACTIVEMQ_PASSWORD}/g" /opt/activemq/conf/jetty-realm.properties
@@ -120,9 +123,9 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo groupadd activemq
   sudo useradd -s /sbin/nologin -g activemq activemq
   sudo yum install -y net-tools wget curl java-1.8.0-openjdk
-  sudo tar -zxvf apache-activemq-$AMQ_VER-bin.tar.gz -C /opt
-  sudo chown -R activemq:activemq /opt/apache-activemq-$AMQ_VER/
-  sudo ln -s /opt/apache-activemq-$AMQ_VER /opt/activemq
+  sudo tar -zxvf "apache-activemq-$AMQ_VER-bin.tar.gz" -C /opt
+  sudo chown -R activemq:activemq "/opt/apache-activemq-$AMQ_VER/"
+  sudo ln -s "/opt/apache-activemq-$AMQ_VER /opt/activemq"
   sudo sed -i "s/managementContext createConnector=\"false\"/managementContext createConnector=\"true\"/" /opt/activemq/conf/activemq.xml
   sudo mv -v activemq.service /etc/systemd/system
   sudo systemctl daemon-reload
@@ -134,7 +137,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
   netstat -na | grep tcp | grep LIST | grep 61613
   pidof systemd
 else
-  echo $OS is not yet implemented.
+  echo "$OS is not yet implemented."
   exit 1
 fi
 

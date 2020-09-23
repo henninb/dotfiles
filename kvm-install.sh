@@ -1,8 +1,7 @@
 #!/usr/bin/env sh
 
 sudo mkdir -p /var/kvm/images
-grep wheel /etc/group
-if [ $? -eq 0 ]; then
+if [ "$(grep -c 1 wheel /etc/group)" -ne 1 ]; then
   sudo chown root:wheel /var/kvm/images
 else
   sudo chown root /var/kvm/images
@@ -14,8 +13,8 @@ if [ "$OS" = "Linux Mint" ] || [  "$OS" = "Ubuntu" ]; then
   sudo apt install -y ebtables dnsmasq spice-client-gtk virt-viewer gir1.2-spiceclientgtk-3.0 libguestfs-tools
   # may need a reboot
   sudo apt install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
-  sudo adduser $(id -un) kvm
-  sudo adduser $(id -un) libvirt
+  sudo adduser "$(id -un)" kvm
+  sudo adduser "$(id -un)" libvirt
   sudo apt install -y virt-manager
   sudo apt install -y qemu-utils
   sudo virsh -c qemu:///system list
@@ -32,8 +31,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y virt-manager
   sudo zypper install -y gir1.2-spiceclientgtk-3.0
   sudo zypper install -y libguestfs-tools
-  sudo usermod -a -G libvirt $(id -un)
-  sudo usermod -a -G kvm $(id -un)
+  sudo usermod -a -G libvirt "$(id -un)"
+  sudo usermod -a -G kvm "$(id -un)"
   sudo systemctl start libvirtd
   sudo systemctl enable libvirtd
   sudo virsh net-autostart default
@@ -68,8 +67,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo systemctl status libvirtd
   sudo systemctl status iptables
 
-  sudo usermod -a -G libvirt $(id -un)
-  sudo usermod -a -G kvm $(id -un)
+  sudo usermod -a -G libvirt "$(id -un)"
+  sudo usermod -a -G kvm "$(id -un)"
 
   sudo virsh list --all
   sudo virsh net-autostart default
@@ -87,8 +86,8 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse virt-manager
   sudo rc-update add libvirtd default
   sudo rc-service libvirtd start
-  sudo usermod -a -G libvirt $(id -un)
-  sudo usermod -a -G kvm $(id -un)
+  sudo usermod -a -G libvirt "$(id -un)"
+  sudo usermod -a -G kvm "$(id -un)"
   echo grep KVM /usr/src/linux/.config
   lsmod | grep kvm
 elif [ "$OS" = "Fedora" ]; then
@@ -98,8 +97,8 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y libvirt
   sudo dnf install -y qemu
   sudo dnf install -y virt-manager
-  sudo usermod -a -G libvirt $(id -un)
-  sudo usermod -a -G kvm $(id -un)
+  sudo usermod -a -G libvirt "$(id -un)"
+  sudo usermod -a -G kvm "$(id -un)"
   sudo systemctl start libvirtd
   sudo systemctl enable libvirtd
   sudo virsh list --all
@@ -113,8 +112,8 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y libvirt
   sudo yum install -y qemu
   sudo yum install -y virt-manager
-  sudo usermod -a -G libvirt $(id -un)
-  sudo usermod -a -G kvm $(id -un)
+  sudo usermod -a -G libvirt "$(id -un)"
+  sudo usermod -a -G kvm "$(id -un)"
   sudo systemctl start libvirtd
   sudo systemctl enable libvirtd
   sudo virsh list --all
@@ -126,7 +125,7 @@ else
 fi
 
 if [ -f "/etc/sysctl.conf" ]; then
-  cat /etc/sysctl.conf | grep net.ipv4.ip_forward
+  grep net.ipv4.ip_forward /etc/sysctl.conf
 else
   echo sysctl.conf is not found
 fi

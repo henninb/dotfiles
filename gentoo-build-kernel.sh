@@ -32,9 +32,12 @@ if [ "$OS" = "Gentoo" ]; then
 fi
 
 echo qpkg  -v gentoo-sources
+echo "Please type the old kernel version"
+old_kernel=4.9.1
+read -r old_kernel
 # sudo emerge -C sys-kernel/gentoo-sources-4.19.97
-echo sudo rm -r /usr/src/linux-${old_kernel}* || { echo "Failed to remove old kernel sources"; exit 1; }
-echo sudo rm -r /boot/*${old_kernel}* || { echo "Failed to remove boot files"; exit 1; }
-echo sudo rm -r /lib/modules/${old_kernel}* || { echo "Failed to remove modules"; exit 1; }
+echo sudo rm -r "/usr/src/linux-${old_kernel}*" || { echo "Failed to remove old kernel sources"; exit 1; }
+echo sudo rm -r "/boot/*${old_kernel}*" || { echo "Failed to remove boot files"; exit 1; }
+echo sudo rm -r "/lib/modules/${old_kernel}*" || { echo "Failed to remove modules"; exit 1; }
 
 exit 0

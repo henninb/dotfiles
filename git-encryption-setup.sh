@@ -11,13 +11,13 @@
 function global_setup {
 
     mkdir -p ~/.gitencrypt
-    pushd ~/.gitencrypt
+    pushd ~/.gitencrypt || exit
 
     touch clean_filter_openssl smudge_filter_openssl diff_filter_openssl
-    chmod 755 *
+    chmod 755 "*"
 
-    GENERATED_SALT=`uuidgen | sed s/-//g | cut -c -16`
-    GENERATED_PASS=`uuidgen | sed s/-//g`
+    GENERATED_SALT=$(uuidgen | sed s/-//g | cut -c -16)
+    GENERATED_PASS=$(uuidgen | sed s/-//g)
 
     echo "GITENCRYPT_PASSWORD=$GENERATED_PASS" > password
     echo "GITENCRYPT_SALT=$GENERATED_SALT" >> password
@@ -34,7 +34,7 @@ EOF
 
     echo "Generating ~/.gitencrypt/smudge_filter_openssl"
 
-    cat > smudge_filter_openssl <<EOF
+cat > smudge_filter_openssl <<EOF
 #!/bin/bash
 # No salt is needed for decryption.
 source ~/.gitencrypt/password
@@ -53,7 +53,7 @@ source ~/.gitencrypt/password
 openssl enc -d -base64 -aes-256-ecb -k \$GITENCRYPT_PASSWORD -in "\$1" 2> /dev/null || cat "\$1"
 EOF
 
-    popd
+    popd || exit
 }
 
 function repo_setup {
@@ -69,7 +69,7 @@ function repo_setup {
     renormalize=true
 EOF
 
-    cat >> .git/config <<'EOF'
+cat >> .git/config <<'EOF'
 [filter "openssl"]
     smudge = ~/.gitencrypt/smudge_filter_openssl
     clean = ~/.gitencrypt/clean_filter_openssl
@@ -81,7 +81,7 @@ EOF
 }
 
 if [ -e ~/.gitencrypt ]; then
-    echo "~/.gitencrypt already exists. Refusing to clobber existing global setup."
+    echo "$HOME/.gitencrypt already exists. Refusing to clobber existing global setup."
 else
     global_setup
 fi

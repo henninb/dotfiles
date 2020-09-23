@@ -118,8 +118,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S jsoncpp
 elif [ "$OS" = "Gentoo" ]; then
   GENTOO_PKGS="jsoncpp cmake x11-libs/cairo media-sound/alsa-utils libmpdclient wireless-tools pulseaudio i3"
-  FAILURES=""
-  for i in $(echo "$GENTOO_PKGS"); do
+  FAILURE=""
+  for i in $($GENTOO_PKGS); do
     if ! sudo emerge --update --newuse "$i"; then
       FAILURE="$i $FAILURE"
     fi
@@ -140,15 +140,16 @@ export ENABLE_NETWORK="ON"
 export ENABLE_MPD="ON"
 export ENABLE_CURL="ON"
 export ENABLE_IPC_MSG="ON"
-export JOB_COUNT=$(nproc)
+JOB_COUNT="$(nproc)"
+export JOB_COUNT
 export INSTALL="ON"
 export INSTALL_CONF="OFF"
 
-cd $HOME/projects/
+cd "$HOME/projects/" || exit
 git clone --recursive git@github.com:polybar/polybar.git
-cd polybar
+cd polybar || exit
 git pull origin master
 ./build.sh
-cd $HOME
+cd "$HOME" || exit
 
 exit 0

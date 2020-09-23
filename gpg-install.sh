@@ -22,7 +22,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y gnupg sysutils/password-store
 else
-  echo $OS not configured.
+  echo "$OS not configured."
   exit 1
 fi
 
@@ -70,7 +70,7 @@ echo foo | tee /tmp/test && gpg -r 'henninb@gmail.com' -e /tmp/test
 gpg -d /tmp/test.gpg
 
 gpgconf --kill gpg-agent
-ps -ef| grep gpg-agent | grep -v grep
+pgrep gpg-agent
 gpg-connect-agent reloadagent /bye
 
 exit 0
