@@ -1,26 +1,20 @@
 if [ -x "$(command -v dunst)" ]; then
   echo dunst was called. >> "$HOME/bspwm.log"
-  dunst &
+  exec dunst &
 else
   echo dunst is not installed. >> "$HOME/bspwm.log"
 fi
 
 if [ -x "$(command -v flameshot)" ]; then
-  flameshot &
+  exec flameshot &
 else
   echo "flameshot not installed." >> "$HOME/bspwm.log"
 fi
 
 if [ -x "$(command -v blueman-applet)" ]; then
-  blueman-applet &
+  exec blueman-applet &
 else
   echo "blueman-applet not installed." >> "$HOME/bspwm.log"
-fi
-
-if [ -x "$(command -v mpd)" ]; then
-  exec mpd &
-else
-  echo "mpd is not installed." >> "$HOME/bspwm.log"
 fi
 
 if [ -x "$(command -v volumeicon)" ]; then
@@ -36,18 +30,10 @@ else
   echo feh is not installed >> "$HOME/bspwm.log"
 fi
 
-
 if [ -x "$(command -v xscreensaver)" ]; then
   exec xscreensaver -no-splash &
 else
   echo xscreensaver is not installed >> "$HOME/bspwm.log"
-fi
-
-if [ -x "$(command -v sxhkd)" ]; then
-  sxhkd &
-  echo sxhkd was called. >> "$HOME/bspwm.log"
-else
-  echo sxhkd is not installed >> "$HOME/bspwm.log"
 fi
 
 #if [ -x "$(command -v polybar)" ]; then
@@ -58,7 +44,7 @@ fi
 #fi
 
 if [ -x "$(command -v wmname)" ]; then
-  wmname LG3D >> "$HOME/bspwm.log"
+  exec wmname LG3D >> "$HOME/bspwm.log"
 else
   echo wmname is not installed >> "$HOME/bspwm.log"
 fi
