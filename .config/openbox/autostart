@@ -1,50 +1,9 @@
-if [ -x "$(command -v dunst)" ]; then
-  echo dunst was called. >> "$HOME/openbox.log"
-  exec dunst &
-else
-  echo dunst is not installed. >> "$HOME/openbox.log"
-fi
+dunst &
+flameshot &
+blueman-applet &
+volumeicon &
+feh --bg-scale "$HOME/backgrounds/minnesota-vikings-dark.jpg" &
+xscreensaver -no-splash &
+tint2 &
+#wmname LG3D
 
-if [ -x "$(command -v flameshot)" ]; then
-  exec flameshot &
-else
-  echo "flameshot not installed." >> "$HOME/openbox.log"
-fi
-
-if [ -x "$(command -v blueman-applet)" ]; then
-  exec blueman-applet &
-else
-  echo "blueman-applet not installed." >> "$HOME/openbox.log"
-fi
-
-if [ -x "$(command -v volumeicon)" ]; then
-  exec volumeicon &
-else
-  echo "volumeicon is not installed." >> "$HOME/openbox.log"
-fi
-
-if [ -x "$(command -v feh)" ]; then
-  #exec feh --bg-scale --randomize $HOME/backgrounds/* &
-  exec feh --bg-scale "$HOME/backgrounds/minnesota-vikings-dark.jpg" &
-else
-  echo feh is not installed >> "$HOME/openbox.log"
-fi
-
-if [ -x "$(command -v xscreensaver)" ]; then
-  exec xscreensaver -no-splash &
-else
-  echo xscreensaver is not installed >> "$HOME/openbox.log"
-fi
-
-#if [ -x "$(command -v polybar)" ]; then
-#  "$HOME/.config/polybar/launch.sh" openbox
-#  echo polybar was called. >> "$HOME/openbox.log"
-#else
-#  echo polybar is not installed >> "$HOME/openbox.log"
-#fi
-
-if [ -x "$(command -v wmname)" ]; then
-  wmname LG3D >> "$HOME/openbox.log"
-else
-  echo wmname is not installed >> "$HOME/openbox.log"
-fi
