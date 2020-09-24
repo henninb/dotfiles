@@ -40,7 +40,8 @@ fi
 
 if [ -x "$(command -v copyq)" ]; then
   echo copyq was called. >> "$HOME/bspwm.log"
-  copyq &
+  # copyq &
+  (sleep 5; copyq) &
 else
   echo copyq is not installed. >> "$HOME/bspwm.log"
 fi
