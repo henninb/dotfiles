@@ -18,7 +18,7 @@ floating_modifier $mod
 bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+Return exec urxvt
 #bindsym $mod+Shift+l exec i3lock
-bindsym $mod+Shift+x exec i3lock -c 00000f
+#bindsym $mod+Shift+x exec i3lock -c 00000f
 bindsym $mod+Shift+i exec firefox -private-window
 bindsym $mod+i exec brave-browser
 bindsym $mod+e exec urxvt -e zsh -c nvim
@@ -31,7 +31,7 @@ bindsym $mod+t split toggle
 bindsym $mod+Shift+t gaps inner current set 15; gaps outer current set 15
 
 # program launcher
-bindsym $mod+n exec standard-notes
+# bindsym $mod+n exec standard-notes
 bindsym $mod+Shift+p exec dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'
 #bindsym $mod+Shift+p exec rofi -show drun -theme dmenu
 
@@ -155,16 +155,12 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # audio control
-bindsym XF86AudioRaiseVolume exec "amixer -q -D pulse sset Master 2%+"
-bindsym XF86AudioLowerVolume exec "amixer -q -D pulse sset Master 2%-"
-bindsym XF86AudioMute exec "amixer -q -D pulse sset Master toggle"
-#amixer -q -D pulse sset Master toggle
-
-# Pulse Audio controls
-# sudo apt install pavucontrol
-# bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-# bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
-# bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+bindsym XF86AudioRaiseVolume exec "amixer set Master 5%+ unmute"
+bindsym XF86AudioLowerVolume exec "amixer set Master 5%- unmute"
+bindsym XF86AudioMute exec "amixer set Master toggle"
+bindsym XF86AudioPrev exec "mpc prev"
+bindsym XF86AudioNext exec "mpc next"
+bindsym XF86AudioPlay exec "mpc toggle"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # bar {
