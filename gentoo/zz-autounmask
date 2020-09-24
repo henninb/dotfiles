@@ -52,3 +52,4 @@ app-crypt/pinentry gnome-keyring
 >=app-text/xmlto-0.0.28-r3 text
 >=virtual/libusb-1-r2 udev
 >=dev-libs/libusb-1.0.21-r1 udev
+>=dev-qt/qtsingleapplication-2.6.1_p20171024 X
