@@ -1,1 +1,6 @@
 #!/bin/sh
+
+feh --bg-scale "$HOME/backgrounds/minnesota-vikings-dark.jpg"
+#WAL=$(ls $DIR/*.png | shuf -n1)
+
+exit 0
