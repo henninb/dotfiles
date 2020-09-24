@@ -1,0 +1,37 @@
+#!/bin/bash
+
+hdd() {
+  hdd="$(df -h | awk 'NR==4{print $3, $5}')"
+  echo -e "HDD: $hdd"
+}
+
+mem() {
+  mem=$(free | awk '/Mem/ {printf "%dM/%dM\n", $3 / 1024.0, $2 / 1024.0 }')
+  echo -e "$mem"
+}
+
+cpu() {
+  read -r cpu a b c previdle rest < /proc/stat
+  prevtotal=$((a+b+c+previdle))
+  sleep 0.5
+  read -r cpu a b c idle rest < /proc/stat
+  total=$((a+b+c+idle))
+  cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
+  echo -e "CPU: $cpu%"
+}
+
+vol() {
+    vol=$(amixer get Master | awk -F'[][]' 'END{ print $4":"$2 }' | sed 's/on://g')
+    echo -e "VOL: $vol"
+}
+
+date1() {
+  echo -e "$(date +"%m/%d/%y %r")"
+}
+
+SLEEP_SEC=1
+while :; do
+  echo "$(cpu) +@fg=0; | +@fg=2; +@fn=0; $(mem) +@fg=0; | +@fg=3; +@fn=0; $(hdd) +@fg=0; | +@fg=4; +@fn=0; $(vol) +@fg=0; | $(date1)"
+	sleep $SLEEP_SEC
+done
+

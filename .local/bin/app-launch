@@ -1,0 +1,12 @@
+#!/bin/sh
+
+export LANG="en_US.utf8"
+
+if [ $# -ne 0 ]; then
+  echo "Usage: $0 <noargs>"
+  exit 1
+fi
+
+dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'
+
+exit 0

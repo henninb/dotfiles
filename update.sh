@@ -28,7 +28,9 @@ elif [ "$OS" = "Arch Linux" ]; then
   du -sh /var/cache/pacman/pkg
   sudo pacman  --noconfirm --needed -Syu 2>&1 | tee -a update.log.$$
   echo sudo pacman -Scc
-  echo paccache -r
+  sudo paccache -r
+  sudo paccache -rk 1
+  sudo paccache -ruk0
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper dist-upgrade
   # sudo zypper refersh
