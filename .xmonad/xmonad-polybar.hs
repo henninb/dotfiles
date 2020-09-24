@@ -284,6 +284,7 @@ myKeys = [
   , ("M-S-x"             , spawn "exec= redshift -x")
   , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
   , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
+  , ("<XF86AudioMute>", spawn "amixer set Master toggle")
   , ("<XF86AudioPlay>", spawn "mpc toggle")
   , ("<XF86AudioPrev>", spawn "mpc prev")
   , ("<XF86AudioNext>", spawn "mpc next")

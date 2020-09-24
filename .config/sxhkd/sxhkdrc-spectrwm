@@ -17,13 +17,13 @@ alt + r
 alt + shift + p
     dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'
 alt + shift + Escape
-    wm-exit bspwm
-alt + Escape
-    $HOME/.config/bspwm/bspwmrc
+    wm-exit spectrwm
+# alt + Escape
+#     $HOME/.config/bspwm/bspwmrc
 alt + shift + BackSpace
     xdo close
-alt + control + {t,s,f}
-    bspc node -t {tiled,floating,fullscreen}
+# alt + control + {t,s,f}
+#     bspc node -t {tiled,floating,fullscreen}
 Print
     flameshot gui -p $HOME/Desktop
 XF86AudioRaiseVolume
@@ -31,7 +31,7 @@ XF86AudioRaiseVolume
 XF86AudioLowerVolume
     amixer set Master 5%- unmute
 XF86AudioMute
-    amixer -D pulse sset Master toggle
+    amixer set Master toggle
 XF86AudioPlay
     mpc toggle
 XF86AudioNext
@@ -41,8 +41,8 @@ XF86AudioPrev
 # make sxhkd reload its configuration files:
 # alt + shift + Escape
 #    pkill -USR1 -x sxhkd
-alt + {_,shift + }{1-9,0}
-    bspc {desktop -f,node -d} '^{1-9,10}' --follow
+# alt + {_,shift + }{1-9,0}
+#     bspc {desktop -f,node -d} '^{1-9,10}' --follow
 
  # Toggle fullscreen on and off
 # alt + f

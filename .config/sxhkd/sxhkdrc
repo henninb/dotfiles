@@ -27,11 +27,11 @@ alt + control + {t,s,f}
 Print
     flameshot gui -p $HOME/Desktop
 XF86AudioRaiseVolume
-    amixer -q -D pulse sset Master 2%+
+    amixer set Master 5%+ unmute
 XF86AudioLowerVolume
-    amixer -q -D pulse sset Master 2%-
+    amixer set Master 5%- unmute
 XF86AudioMute
-    amixer -D pulse sset Master toggle
+   amixer set Master toggle
 XF86AudioPlay
     mpc toggle
 XF86AudioNext
