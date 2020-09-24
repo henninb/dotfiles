@@ -38,6 +38,13 @@ else
   echo feh is not installed >> "$HOME/bspwm.log"
 fi
 
+if [ -x "$(command -v copyq)" ]; then
+  echo copyq was called. >> "$HOME/bspwm.log"
+  copyq &
+else
+  echo copyq is not installed. >> "$HOME/bspwm.log"
+fi
+
 if [ -x "$(command -v xscreensaver)" ]; then
   exec xscreensaver -no-splash &
 else
