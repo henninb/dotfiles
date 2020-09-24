@@ -1,0 +1,71 @@
+# alt + shift + Return
+#     urxvt
+alt + Return
+    alacritty
+alt + shift + i
+    firefox -private-window
+alt + i
+    brave-browser
+alt + e
+    urxvt -e nvim
+alt + shift + e
+    emacs
+alt + r
+    urxvt -e lf
+#alt + p
+#    clipmenu -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'
+alt + shift + p
+    dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'
+alt + shift + Escape
+    wm-exit bspwm
+alt + Escape
+    $HOME/.config/bspwm/bspwmrc
+alt + shift + BackSpace
+    xdo close
+alt + control + {t,s,f}
+    bspc node -t {tiled,floating,fullscreen}
+Print
+    flameshot gui -p $HOME/Desktop
+XF86AudioRaiseVolume
+    amixer set Master 5%+ unmute
+XF86AudioLowerVolume
+    amixer set Master 5%- unmute
+XF86AudioMute
+    amixer -D pulse sset Master toggle
+XF86AudioPlay
+    mpc toggle
+XF86AudioNext
+    mpc next
+XF86AudioPrev
+    mpc prev
+# make sxhkd reload its configuration files:
+# alt + shift + Escape
+#    pkill -USR1 -x sxhkd
+alt + {_,shift + }{1-9,0}
+    bspc {desktop -f,node -d} '^{1-9,10}' --follow
+
+ # Toggle fullscreen on and off
+# alt + f
+#     bspfullscreen
+
+# Toggle floating on and off
+# alt + o
+#     bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
+
+# Pulse Controls
+# super + {Up, Down}
+#     pulsevolctrl "output-vol" "alsa_output.pci-0000_00_1f.3.analog-stereo" {+2%, -2%}
+
+# super + m
+#     pulsevolctrl "output-mute" "alsa_output.pci-0000_00_1f.3.analog-stereo"
+
+#super + shift + {r, s}
+#  prompt {"Are you sure you would like to reboot?" "sudo reboot", "Are you sure you would like to shutdown" "sudo shutdown"}
+
+# ===================================
+# ========== User-specific ==========
+# ===================================
+
+# set the window state
+# super + {t,shift + t,s,f}
+#     bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
