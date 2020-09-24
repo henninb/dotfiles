@@ -4,8 +4,6 @@ sudo mkdir -p /usr/share/i3blocks/
 #sudo cp iface cpu_usage memory /usr/share/i3blocks
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt remove -y lightdm
-  sudo apt remove -y gdm
   sudo apt install -y bspwm
   sudo apt install -y xdo
   sudo apt install -y neofetch
