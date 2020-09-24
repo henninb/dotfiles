@@ -5,6 +5,7 @@ sudo apt install -y libxcb-xtest0-dev
 sudo apt install -y libx11-xcb-dev
 sudo apt install -y libxcb-util-dev
 sudo apt install -y libxcb-keysyms1-dev
+sudo apt install -y libxt-dev
 
 sudo apt install -y trayer
 sudo apt install -y copyq
