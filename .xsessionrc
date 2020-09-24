@@ -1,1 +1,1 @@
-echo 'xsessionrc called' > /tmp/xsessionrc
+export PATH=$HOME/.local/bin:$PATH
