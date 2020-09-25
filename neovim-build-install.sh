@@ -148,6 +148,8 @@ python2 -m pip install --user --upgrade pynvim
 python3 -m pip install --user --upgrade pynvim
 pip2 uninstall neovim
 pip3 uninstall neovim
+pip3 install neovim-remote
+sudo gem install neovim
 echo ":checkhealth"
 
 nvim +slient +VimEnter +PlugUpgrade +qall

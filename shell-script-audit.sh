@@ -1,5 +1,6 @@
 #!/bin/sh
 
+sudo apt install shellcheck
 #find . -maxdepth 1 -type f -exec ls -ld "{}" \;
 files=$(find . -maxdepth 1 -type f -name "*.sh")
 
