@@ -9,6 +9,12 @@
 
 python3 -m pip install --user --upgrade youtube-dl
 
+youtube-dl --version
+
+echo "Press enter to continue"
+read -r x
+echo "$x" > /dev/null
+
 if [ "$OS" = "CentOS Linux" ]; then
   sudo yum install epel-release -y
   sudo rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro

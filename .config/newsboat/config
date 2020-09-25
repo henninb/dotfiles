@@ -21,21 +21,20 @@ browser "elinks %u"
 # browser linkhandler
 # macro , open-in-browser
 
-# ,v to activate a macro
-macro m set browser "mpv %u"; open-in-browser ; set browser "elinks %u"
-macro a set browser "tsp youtube-dl --add-metadata --extract-audio -xic -f bestaudio/best"; open-in-browser ; set browser "elinks %u"
-# macro a set browser "youtube-dl --add-metadata -xic -f bestaudio/best"; open-in-browser ; set browser "elinks %u"
-# -f bestaudio --extract-audio
-# macro v set browser "setsid nohup mpv --no-video"; open-in-browser ; set browser "elinks %u"
+# macros are active when prefixed with a comma (example: ,v)
+
+# works perfectly with youtube
+macro a set browser "tsp youtube-dl --add-metadata --extract-audio -xic -f bestaudio/best --output '$HOME/media/%(title)s.%(ext)s'; open-in-browser ; set browser "elinks %u"
+
+# works perfectly with youtube
+macro p set browser "tsp mpv --no-video %u"; open-in-browser ; set browser "elinks %u"
+
+macro m set browser "tsp mpv %u"; open-in-browser ; set browser "elinks %u"
+
 macro v set browser "setsid mpv --no-video"; open-in-browser ; set browser "elinks %u"
-macro z set browser "tsp mpv --no-video %u"; open-in-browser ; set browser "elinks %u"
 
-macro m set browser "mpv --ytdl --ontop --no-border --force-window --autofit=960x540 --geometry=-20-50 %u > /dev/null &"; open-in-browser ; set browser "$BROWSER %u"
+macro n set browser "tsp mpv --ytdl --ontop --no-border --force-window --autofit=960x540 --geometry=-20-50 %u > /dev/null &"; open-in-browser ; set browser "elinks %u"
 
-# macro m set browser "cmus %u"; open-in-browser ; set browser "w3m %u"
-# macro l set browser "firefox %u"; open-in-browser ; set browser "w3m %u"
-# macro a set browser "tsp youtube-dl --add-metadata -xic -f bestaudio/best"; open-in-browser ; set browser linkhandler
-# macro v set browser "setsid nohup mpv"; open-in-browser ; set browser linkhandler
 
 # unbind keys
 unbind-key ENTER
