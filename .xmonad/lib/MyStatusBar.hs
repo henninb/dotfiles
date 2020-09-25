@@ -41,14 +41,9 @@ font4 = "takaopgothic-9"             -- debian
 dzenArgs = " -p -e 'button3=' -fn '"++font1++"' "
 dzenColors = " -fg '"++fgColor++"' -bg '"++bgColor++"' "
 
-------------------------------------------------------------------------
--- Top
-
 csbdTopBackground = "echo '^fg("++dcColor++")^p(;-10)^r("++screenWidth++"x5)' |"
     ++ " dzen2 -ta c -h 35 -w "++screenWidth++" "
     ++ dzenArgs ++ dzenColors
-
-------------------------------------------------------------------------
 
 csbdTopLeftScript = "\
  \  echo -n '^fg("++dcColor++")\
@@ -69,8 +64,6 @@ csbdTopLeft = "sleep 0.5 && "
     ++ " |" -- pipe
     ++ " dzen2 -ta l -h 21 -y 4 -w 350 -x 0 "
     ++ dzenArgs ++ dzenColors
-
-------------------------------------------------------------------------
 
 scriptCPU = "\
  \  echo -n '^fg("++spColor++") :: ^fg()\
@@ -103,7 +96,6 @@ csbdTopRight = "sleep 0.5 && "
     ++ " dzen2 -ta r -h 21 -y 4 -w 350 -x -350 "
     ++ dzenArgs ++ dzenColors
 
-------------------------------------------------------------------------
 
 csbdTopCenterScript = "\
  \  echo -n '^fg("++spColor++")';\
@@ -118,22 +110,15 @@ csbdTopCenter = "sleep 0.5 && "
     ++ " -w `expr "++screenWidth++" - 600` -x 300 "
     ++ dzenArgs ++ dzenColors
 
-------------------------------------------------------------------------
--- Bottom
-
 csbdBottomBackground = ""
     ++ "echo '^fg("++dcColor++")^p(;21)^r("++screenWidth++"x5)' |"
     ++ " dzen2 -ta c -h 35 -y -35 -w "++screenWidth++" "
     ++ dzenArgs ++ dzenColors
 
-------------------------------------------------------------------------
-
 csbdBottomLeft = "sleep 1; "
     ++ " dzen2 -ta l -h 25 -y -30 "
     ++ " -w `expr "++screenWidth++" / 2` "
     ++ dzenArgs ++ dzenColors
-
-------------------------------------------------------------------------
 
 scriptClock = "\
  \  echo -n '^i(.xmonad/assets/monitor/clock.xbm) ';\
@@ -154,8 +139,6 @@ csbdBottomRight = "sleep 1.5 && "
     ++ " dzen2 -ta r -h 25 -y -30 -w 200 -x -200 "
     ++ dzenArgs ++ dzenColors
 
-------------------------------------------------------------------------
-
 csbdBottomCenter = "sleep 2; "
     ++ " dzen2 -ta c -h 20 -y -25 "
 --  ++ " -w 500 -x `expr "++screenWidth++" / 2 - 250` "
@@ -165,5 +148,4 @@ csbdBottomCenter = "sleep 2; "
 
 --    test your color
 --    ++ " -fg '#afafaf' -bg '#6d6d6d' "
-
 

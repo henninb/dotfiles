@@ -8,10 +8,11 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y xscreensaver
   sudo apt install -y feh
   sudo apt install -y w3m
-  # sudo apt install -y dzen2
+  sudo apt install -y lxpolkit
   sudo apt install -y cmake
   sudo apt install -y libxpm-dev
   sudo apt install -y xdotool
+  sudo apt install -y xclip
   sudo apt install -y xdo
   sudo apt install -y sxhkd
   sudo apt install -y volumeicon-alsa
@@ -36,6 +37,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y cmake
   sudo zypper install -y libxpm-devel
   sudo zypper install -y xdotool
+  sudo zypper install -y xclip
   sudo zypper install -y xdo
   sudo zypper install -y sxhkd
   sudo zypper install -y dunst
@@ -62,15 +64,16 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S w3m
   sudo pacman --noconfirm --needed -S lxappearance
   sudo pacman --noconfirm --needed -S xdo
+  sudo pacman --noconfirm --needed -S xclip
   sudo pacman --noconfirm --needed -S sxhkd
   sudo pacman --noconfirm --needed -S dunst
   sudo pacman --noconfirm --needed -S volumeicon
   sudo pacman --noconfirm --needed -S clipmenu
+  sudo pacman --noconfirm --needed -S lxsession
   sudo pacman --noconfirm --needed -S copyq
   sudo pacman --noconfirm --needed -S mpc
   sudo pacman --noconfirm --needed -S mpd
   sudo pacman --noconfirm --needed -S dmenu
-  sudo pacman --noconfirm --needed -S xlockmore
   sudo pacman --noconfirm --needed -S flameshot
   sudo pacman --noconfirm --needed -S sonata
   sudo pacman --noconfirm --needed -S wmname
@@ -144,8 +147,8 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y mpc
   sudo dnf install -y mpd
   sudo dnf install -y copyq
-  sudo dnf install -y clipmenu
-  sudo dnf install -y sonata
+  # sudo dnf install -y clipmenu
+  # sudo dnf install -y sonata
   sudo dnf install -y flameshot
   sudo dnf install -y blueman
   sudo dnf install -y flameshot
@@ -170,17 +173,16 @@ elif [ "$OS" = "CentOS Linux" ]; then
     sudo dnf install -y dunst
     sudo dnf install -y flameshot
     sudo dnf install -y xscreensaver
-    sudo dnf install -y dzen2
+    # sudo dnf install -y dzen2
   else
     echo centos7
     sudo yum install -y alsa-lib-devel
     sudo yum install -y libXScrnSaver-devel
     sudo yum install -y feh
-    sudo yum install -y ranger
     sudo yum install -y neofetch
     sudo yum install -y w3m
     sudo yum install -y xscreensaver
-    sudo yum install -y dzen2
+    # sudo yum install -y dzen2
   fi
 else
   echo "$OS is not yet implemented."
@@ -195,33 +197,29 @@ fi
 failures=""
 
 if ! stack install hindent ; then
-  echo failed hindent.
-  failures="$failures hindent"
-#   exit 1
+  if ! stack --resolver lts-14.22 install hindent; then
+    failures="$failures hindent"
+  fi
 fi
 
-if ! stack install hlint. ; then
+if ! stack install hlint ; then
   echo failed hlint.
   failures="$failures hlint"
-  #exit 1
 fi
 
 if ! stack install xmonad-contrib ; then
   echo failed xmonad-contrib.
   failures="$failures xmonad-contrib"
-#  exit 1
 fi
 
 if ! stack install xmonad-extras ; then
   echo failed xmonad-extras.
   failures="$failures xmonad-extras"
- # exit 1
 fi
 
 if ! stack install dbus ; then
   echo failed dbus.
   failures="$failures dbus"
-  #exit 1
 fi
 
 echo "seems to have the the flag with_xft. how to confirm?"
@@ -229,7 +227,7 @@ cd "$HOME/projects" || exit
 git clone git@github.com:jaor/xmobar.git
 cd xmobar || exit
 git pull origin master
-#stack build
+echo stack build
 stack build --flag xmobar:-with_xft --flag xmobar:-with_utf8 --flag xmobar:-with_threaded --flag xmobar:-with_dbus --flag xmobar:-with_mpd --flag xmobar:-with_mpris --flag xmobar:-with_inotify --flag xmobar:-with_alsa --flag xmobar:-with_datezone --flag xmobar:-with_xpm --flag xmobar:-with_uvmeter --flag xmobar:-with_weather
 stack install
 "$HOME/.local/bin/xmonad" --version
@@ -262,12 +260,6 @@ echo stack exec ghc-pkg unregister mypackage
 echo stack exec ghc-pkg recache
 echo stack exec ghc-pkg check
 
-echo rofi
-echo nitrogen
-echo compton
-echo lf
-echo alacritty
-
 echo "failures = $failures"
 
 exit 0
@@ -293,5 +285,3 @@ exit 0
 
 # echo https://brianbuccola.com/how-to-install-xmonad-and-xmobar-via-stack/
 # ghc-pkg list
-
-# exit 0

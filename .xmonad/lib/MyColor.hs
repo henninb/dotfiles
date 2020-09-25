@@ -2,7 +2,6 @@ module MyColor
 ( myColor
 ) where
 
--- colorschemes
 import Data.Map as M
 
 -- Dzen2 Bar
