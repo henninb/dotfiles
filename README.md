@@ -36,16 +36,17 @@
 - shell prompt - spaceship, agnoster, alien, dracula
 - zsh plugins - zsh-syntax-highlighting, zsh-autosuggestions, autojump, zsh-history-substring-search
 - file manager - lf, ranger, hunter, spacefm
-- bar - polybar, dzen, xmobar
-- window manager - bspwm, xmonad, i3, spectr, qtile
+- bar - polybar
+- launcher - dmenu
+- window manager - bspwm, xmonad, i3, spectrwm, qtile
 - lock screen - i3block
 - terminal multiplexer - tmux, screen, tmate
-- media player - vlc, mpv
+- media player - vlc, mpv, mpd
 - cloud media player - olivia
 - software defined radio - gqrx
 - spreadsheet -sc-im
-- programming languages - java, kotlin, rust, haskell, python, js, scala
-- frameworks - SpringBoot, Micronaut
+- programming languages - java, kotlin, rust, haskell, python, javascript, scala
+- frameworks - SpringBoot, Micronaut, react
 - containerization - docker
 - hypervisor - kvm, qemu
 - remote desktop server - xrdp
@@ -60,7 +61,7 @@
 - notes - standard note, joplin
 - font - monofur, jetbrains, symbola
 - theme - dracula
-- audio player - cmus, cantata, ncmpcpp, emacs (emms)
+- audio player - cmus, mpd, cantata, ncmpcpp, emacs (emms)
 - audio player daemon - mpd
 - image converter - imagemagik
 - image viewer - sxiv, chafa
@@ -94,9 +95,9 @@
 - 3D creation - blender
 - screencast - simplescreenrecorder
 - file transfer - oneshot
-- desktop manager - lightdm, gdm3
+- desktop manager - lightdm
 - desktop greeter - slick-greeter
-- clipboard manager - clipmenu, copyq
+- clipboard manager - copyq, clipmenu
 - color temperature tool - redshift
 - password manager - kepassxc
 - gtk theme tool - lxappearance
