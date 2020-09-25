@@ -1,5 +1,7 @@
+HLINT := $(shell command -v hlint 2> /dev/null)
+
 all:
-	@make polybar
+	@make default
 master:
 	@echo stack init .
 	@rm -rf *.hi *.o xmonad
@@ -9,42 +11,15 @@ master:
 	echo master > .active
 	@sudo mv -v xmonad /usr/local/bin
 	@hlint xmonad-master.hs
-test:
-	@echo stack init .
-	@rm -rf *.hi *.o
-	@ln -sfn xmonad-test.hs xmonad.hs
-	@stack ghc -- --make xmonad.hs
-	@rm -rf *.hi *.o
-	@echo test > .active
-	@sudo mv -v xmonad /usr/local/bin
-	@hlint xmonad-test.hs
-ws:
-	@echo stack init .
-	@rm -rf *.hi *.o
-	@ln -sfn xmonad-ws.hs xmonad.hs
-	@stack ghc -- --make xmonad.hs
-	@rm -rf *.hi *.o
-	@echo ws > .active
-	@sudo mv -v xmonad /usr/local/bin
-	@hlint xmonad-ws.hs
-simple:
+default:
 	@echo stack init .
 	@rm -rf *.hi *.o xmonad
-	@ln -sfn xmonad-simple.hs xmonad.hs
+	@ln -sfn xmonad-default.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs
 	@rm -rf *.hi *.o
-	@echo simple > .active
+	@echo default > .active
 	@sudo mv -v xmonad /usr/local/bin
-	@hlint xmonad-simple.hs
-polybar:
-	@echo stack init .
-	@rm -rf *.hi *.o xmonad
-	@ln -sfn xmonad-polybar.hs xmonad.hs
-	@stack ghc -- --make xmonad.hs
-	@rm -rf *.hi *.o
-	@echo polybar > .active
-	@sudo mv -v xmonad /usr/local/bin
-	@hlint xmonad-polybar.hs
+	@hlint xmonad-default.hs
 rice:
 	@stack path --local-bin
 	@echo stack init .
@@ -54,17 +29,7 @@ rice:
 	@rm -rf *.hi *.o lib/*.o lib/*.hi
 	@echo rice > .active
 	@sudo mv -v xmonad /usr/local/bin
+ifdef HLINT
 	@hlint xmonad-rice.hs
 	@hlint lib/*.hs
-example:
-	@rm -rf *.hi *.o xmonad
-	@ln -sfn xmonad-example.hs xmonad.hs
-	@stack ghc -- --make xmonad.hs
-#	@stack ghc -- --make xmobar.hs
-	@rm -rf *.hi *.o
-	@echo example > .active
-	@sudo mv -v xmonad /usr/local/bin
-	@hlint xmonad-example.hs
-restart:
-	@echo restart xrdp
-	@sudo systemctl restart xrdp
+endif
