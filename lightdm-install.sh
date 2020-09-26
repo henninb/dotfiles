@@ -169,6 +169,8 @@ systemctl status display-manager
 
 # echo sudo touch /etc/securetty
 
+[ -f /etc/X11/xinit/Xsession ] && [ ! -f /etc/X11/Xsession ] && sudo cp /etc/X11/xinit/Xsession /etc/X11/Xsession
+
 sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/firefox
 sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/intellij
 sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/arduino
@@ -176,10 +178,10 @@ sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/tomcat
 sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/grafana
 sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/kafka
 sudo cp -v accountsservice-user-disable /var/lib/AccountsService/users/activemq
-sudo cp -v "$HOME/.local/bin/xmonad-start" /usr/local/bin
-sudo cp -v "$HOME/.local/bin/xmonad-log" /usr/local/bin
-sudo cp -v "$HOME/.local/bin/xmonad-dbus" /usr/local/bin
-sudo cp -v "$HOME/.local/bin/wm-exit" /usr/local/bin
+# sudo cp -v "$HOME/.local/bin/xmonad-start" /usr/local/bin
+# sudo cp -v "$HOME/.local/bin/xmonad-log" /usr/local/bin
+# sudo cp -v "$HOME/.local/bin/xmonad-dbus" /usr/local/bin
+# sudo cp -v "$HOME/.local/bin/wm-exit" /usr/local/bin
 # echo at-spi-bus-launcher
 # echo  /etc/lightdm/users.conf
 # echo /usr/libexec/at-spi-bus-launcher
