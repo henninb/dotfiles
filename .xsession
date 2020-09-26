@@ -20,3 +20,5 @@ export CM_SELECTION="primary clipboard"
 export CM_DEBUG=0
 export CM_OUTPUT_CLIP=1
 export CM_MAX_CLIPS=25
+
+setxkbmap -option compose:ralt
