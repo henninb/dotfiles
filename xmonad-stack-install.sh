@@ -140,6 +140,7 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y w3m
   sudo dnf install -y xscreensaver
   sudo dnf install -y dunst
+  sudo dnf install -y voluemeicon
   sudo dnf install -y wmname
   sudo dnf install -y mpc
   sudo dnf install -y mpd
