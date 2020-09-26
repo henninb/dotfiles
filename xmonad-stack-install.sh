@@ -19,7 +19,6 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y clipmenu
   sudo apt install -y lxappearance
   sudo apt install -y dunst
-  sudo apt install -y sonata
   sudo apt install -y copyq
   sudo apt install -y mpc
   sudo apt install -y mpd
@@ -46,7 +45,6 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y volumeicon
   sudo zypper install -y clipmenu
   sudo zypper install -y copyq
-  sudo zypper install -y sonata
   sudo zypper install -y flameshot
   sudo zypper install -y wmname
   sudo zypper install -y lxappearance
@@ -75,7 +73,6 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S mpd
   sudo pacman --noconfirm --needed -S dmenu
   sudo pacman --noconfirm --needed -S flameshot
-  sudo pacman --noconfirm --needed -S sonata
   sudo pacman --noconfirm --needed -S wmname
   sudo pacman --noconfirm --needed -S pulseaudio
   sudo pacman --noconfirm --needed -S alsa-utils
@@ -105,7 +102,7 @@ elif [ "$OS" = "void" ]; then
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Solus" ]; then
   echo sudo ln -s /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so.5.9
-  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon blueman copyq sonata clipmenu mpd mpc"
+  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon blueman copyq clipmenu mpd mpc"
   FAILURE=""
   for i in $SOLUS_PKGS; do
     if ! sudo eopkg install -y "$i"; then
@@ -116,8 +113,8 @@ elif [ "$OS" = "Solus" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG tty "$(id -un)"
   sudo usermod -aG video "$(id -un)"
-  sudo emerge --unmerge dzen
-  GENTOO_PKGS="xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot xappearance volumeicon newofetch blueman copyq sonata clipmenu media-sound/mpc mpd net-wireless/blueman"
+  # sudo emerge --unmerge dzen
+  GENTOO_PKGS="xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot xappearance volumeicon neofetch blueman copyq clipmenu media-sound/mpc mpd net-wireless/blueman"
   FAILURE=""
   for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then
@@ -146,9 +143,10 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y wmname
   sudo dnf install -y mpc
   sudo dnf install -y mpd
+  sudo dnf install -y lxsession
+  sudo dnf install -y sxhkd
   sudo dnf install -y copyq
   # sudo dnf install -y clipmenu
-  # sudo dnf install -y sonata
   sudo dnf install -y flameshot
   sudo dnf install -y blueman
   sudo dnf install -y flameshot
@@ -222,15 +220,15 @@ if ! stack install dbus ; then
   failures="$failures dbus"
 fi
 
-echo "seems to have the the flag with_xft. how to confirm?"
-cd "$HOME/projects" || exit
-git clone git@github.com:jaor/xmobar.git
-cd xmobar || exit
-git pull origin master
-echo stack build
-stack build --flag xmobar:-with_xft --flag xmobar:-with_utf8 --flag xmobar:-with_threaded --flag xmobar:-with_dbus --flag xmobar:-with_mpd --flag xmobar:-with_mpris --flag xmobar:-with_inotify --flag xmobar:-with_alsa --flag xmobar:-with_datezone --flag xmobar:-with_xpm --flag xmobar:-with_uvmeter --flag xmobar:-with_weather
-stack install
-"$HOME/.local/bin/xmonad" --version
+# echo "seems to have the the flag with_xft. how to confirm?"
+# cd "$HOME/projects" || exit
+# git clone git@github.com:jaor/xmobar.git
+# cd xmobar || exit
+# git pull origin master
+# echo stack build
+# stack build --flag xmobar:-with_xft --flag xmobar:-with_utf8 --flag xmobar:-with_threaded --flag xmobar:-with_dbus --flag xmobar:-with_mpd --flag xmobar:-with_mpris --flag xmobar:-with_inotify --flag xmobar:-with_alsa --flag xmobar:-with_datezone --flag xmobar:-with_xpm --flag xmobar:-with_uvmeter --flag xmobar:-with_weather
+# stack install
+#"$HOME/.local/bin/xmonad" --version
 
 if [ "$OS" = "Gentoo" ] || [ "$OS" = "FreeBSD" ]; then
   cd "$HOME/projects" || exit
@@ -240,7 +238,10 @@ if [ "$OS" = "Gentoo" ] || [ "$OS" = "FreeBSD" ]; then
   cd - || exit
 fi
 
-go get github.com/godbus/dbus
+if ! go get github.com/godbus/dbus; then
+  echo "failed to install go dbus."
+  exit 1
+fi
 cd "$HOME/projects" || exit
 git clone git@github.com:xintron/xmonad-log.git
 cd xmonad-log || exit
@@ -260,7 +261,7 @@ echo stack exec ghc-pkg unregister mypackage
 echo stack exec ghc-pkg recache
 echo stack exec ghc-pkg check
 
-echo "failures = $failures"
+echo "install failures = $failures"
 
 exit 0
 
