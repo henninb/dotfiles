@@ -65,6 +65,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S xclip
   sudo pacman --noconfirm --needed -S sxhkd
   sudo pacman --noconfirm --needed -S dunst
+  sudo pacman --noconfirm --needed -S jq
   sudo pacman --noconfirm --needed -S volumeicon
   sudo pacman --noconfirm --needed -S clipmenu
   sudo pacman --noconfirm --needed -S lxsession
@@ -88,11 +89,12 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y feh
   sudo pkg install -y xdotool
   sudo pkg install -y xdo
+  sudo pkg install -y jq
   sudo pkg install -y perl5
   sudo pkg install -y wmname
 elif [ "$OS" = "void" ]; then
   sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
-  VOID_PKGS="xscreensaver feh xdotool w3m neofetch lxappearance volumeicon clipmenu xz make gcc gmp-devel dunst wmname libXScrnSaver-devel alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd"
+  VOID_PKGS="xscreensaver feh xdotool w3m neofetch lxappearance volumeicon clipmenu xz make gcc gmp-devel dunst wmname libXScrnSaver-devel alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd jq"
   FAILURE=""
   for i in $VOID_PKGS; do
     if ! sudo xbps-install -y "$i"; then
@@ -106,7 +108,16 @@ elif [ "$OS" = "Solus" ]; then
     echo "to address: error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory"
     exit 1
   fi
-  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon blueman copyq clipmenu mpd mpc neofetch"
+  sudo eopkg install -y gettext-devel
+  cd "$HOME/projects" || exit
+  git clone git@github.com:Maato/volumeicon.git
+  cd volumeicon || exit
+  ./autogen.sh
+  ./configure
+  make
+  sudo make install
+  cd "$HOME" || exit
+  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon blueman copyq clipmenu mpd mpc neofetch jq"
   FAILURE=""
   sudo eopkg install -c system.devel
   for i in $SOLUS_PKGS; do
