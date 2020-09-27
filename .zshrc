@@ -137,7 +137,7 @@ export PATH="/opt/sbt/bin:$PATH"
 export PATH="/opt/oracle-instantclient:$PATH"
 export PATH="$HOME/.dynamic-colors/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
-export PATH="/opt/balenaEtcher:$PATH"
+export PATH="/usr/local/bin:$PATH"
 
 [ -d /usr/local/go ] && export GOROOT=/usr/local/go
 export GOPATH=$HOME/.local
