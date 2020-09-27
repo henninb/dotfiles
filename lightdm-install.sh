@@ -160,9 +160,6 @@ sudo mv -v lightdm.conf /etc/lightdm/
 sudo cp -v accountsservice-user /var/lib/AccountsService/users/henninb
 sudo cp -v accountsservice-user /var/lib/AccountsService/users/brian
 
-exit 1
-
-
 # set startup back to startx/.initrx
 # sudo systemctl set-default multi-user
 # rm /etc/systemd/system/default.target
