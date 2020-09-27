@@ -2,9 +2,11 @@
 
 #curl -s "wttr.in/Minneapolis?format=j1" | sed 30q > /tmp/minneapolis.json
 
-weather=$(curl -s "wttr.in/Minneapolis?format=j1" | jq '.current_condition' | jq '.[]' | jq '.weatherDesc' | jq '.[].value' | tr -d '"')
+weather=$(curl -s "wttr.in/Minneapolis?format=j1" | jq '.current_condition' | jq '.[]' | jq '.weatherDesc' | jq -r '.[].value')
+#| tr -d '"')
 
-temp=$(curl -s "wttr.in/Minneapolis?format=j1" | jq '.current_condition' | jq '.[]' | jq '.temp_F' | tr -d '"')
+temp=$(curl -s "wttr.in/Minneapolis?format=j1" | jq '.current_condition' | jq '.[]' | jq -r '.temp_F')
+#| tr -d '"')
 
 nocloud=""
 cloud=""
