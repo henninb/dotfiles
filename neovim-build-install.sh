@@ -30,7 +30,8 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
 elif [ "$OS" = "Clear Linux OS" ]; then
   echo
 elif [ "$OS" = "Solus" ]; then
-  sudo eopkg install -cy system.devel
+  sudo eopkg install -c system.devel
+    # sudo eopkg it -c system.devel 
   sudo eopkg install -y make
   sudo eopkg install -y cmake
   sudo eopkg install -y libtool
