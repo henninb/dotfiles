@@ -1,0 +1,34 @@
+#!/bin/bash
+
+#curl -s "wttr.in/Minneapolis?format=j1" | sed 30q > /tmp/minneapolis.json
+
+weather=$(curl -s "wttr.in/Minneapolis?format=j1" | jq '.current_condition' | jq '.[]' | jq '.weatherDesc' | jq '.[].value' | tr -d '"')
+
+temp=$(curl -s "wttr.in/Minneapolis?format=j1" | jq '.current_condition' | jq '.[]' | jq '.temp_F' | tr -d '"')
+
+nocloud=""
+cloud=""
+lotempicon=""
+midtempicon=""
+hitempicon=""
+
+TEMP() {
+if [ "$temp" -gt 80 ]; then
+	echo -e "$hitempicon $temp"
+elif [ "$temp" -ge 50 ] && [ "$temp" -le 79 ]; then
+	echo -e "$midtempicon $temp"
+elif [ "$temp" -le 49 ]; then
+	echo "$lotempicon $temp"
+fi
+}
+
+WEATHER() {
+if [ "$weather" = "Clear" ]; then
+	echo -e "$nocloud $weather"
+
+else
+	echo -e "$cloud $weather"
+fi
+}
+
+echo "$(WEATHER) $(TEMP)"
