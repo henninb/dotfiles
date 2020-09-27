@@ -12,7 +12,8 @@ if [ ! -f "$FILE" ]; then
 fi
 
 dmesg | grep -A 5 'Direct-Access' | grep sd | grep -i log
+#drive=$(dmesg | grep -A 5 'Direct-Access' | grep sd | grep -i log)
 
-echo sudo dd if=${FILE} of=/dev/sdc bs=4M status=progress && sync
+echo sudo dd "if=${FILE}" of=/dev/sdc bs=4M status=progress && sync
 
 exit 0
