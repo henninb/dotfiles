@@ -101,7 +101,11 @@ elif [ "$OS" = "void" ]; then
   done
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Solus" ]; then
-  echo sudo ln -s /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so.5.9
+  if ! sudo ln -s /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so.5.9; then
+    echo "failed to create the link, check the script"
+    echo "to address: error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory"
+    exit 1
+  fi
   SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon blueman copyq clipmenu mpd mpc neofetch"
   FAILURE=""
   sudo eopkg install -c system.devel
