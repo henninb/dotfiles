@@ -28,6 +28,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S python python3
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y epel-release python python-devel
+elif [ "$OS" = "Solus" ]; then
+  echo
 elif [ "$OS" = "void" ]; then
   echo
 elif [ "$OS" = "Gentoo" ]; then

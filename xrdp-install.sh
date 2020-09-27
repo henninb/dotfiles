@@ -167,6 +167,9 @@ elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y libxrandr-devel
   sudo eopkg install -y xorg-server-devel
   sudo eopkg install -y libxfont2-devel
+  sudo eopkg install -y fuse-devel
+  sudo eopkg install -y lame-devel
+  sudo eopkg install -y libxfixes-devel
 
   xrdp_build
   xorgxrdp_build
