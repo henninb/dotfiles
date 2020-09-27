@@ -135,6 +135,9 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo rc-update add xdm default
   sudo rc-service dbus start
   sudo rc-service xdm start
+elif [ "$OS" = "Solus" ]; then
+  echo slick-greeter
+  sudo mkdir -p /etc/lightdm
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y lightdm
   sudo dnf install -y lightdm-gtk-greeter
@@ -156,6 +159,8 @@ sudo mv -v lightdm.conf /etc/lightdm/
 
 sudo cp -v accountsservice-user /var/lib/AccountsService/users/henninb
 sudo cp -v accountsservice-user /var/lib/AccountsService/users/brian
+
+exit 1
 
 
 # set startup back to startx/.initrx
