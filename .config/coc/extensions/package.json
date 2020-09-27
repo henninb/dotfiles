@@ -10,6 +10,6 @@
     "coc-prettier": ">=1.1.17",
     "coc-python": ">=1.2.12",
     "coc-rls": ">=1.1.6",
-    "coc-snippets": ">=2.2.0"
+    "coc-snippets": ">=2.2.1"
   }
 }

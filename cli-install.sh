@@ -185,7 +185,7 @@ else
   exit 1
 fi
 
-wget -O - https://raw.githubusercontent.com/laurent22/joplin/master/Joplin_install_and_update.sh | bash
+#wget -O - https://raw.githubusercontent.com/laurent22/joplin/master/Joplin_install_and_update.sh | bash
 
 wget https://raw.githubusercontent.com/mevdschee/2048.c/master/2048.c -O 2048.c
 gcc -o 2048 2048.c
