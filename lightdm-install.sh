@@ -102,9 +102,12 @@ EOF
 slickgreeter_build() {
   sudo pacman -S vala
   sudo pacman -S gnome-common
+  sudo eopkg install -y gnome-common
+  sudo eopkg install -y vala
   cd "$HOME/projects" || exit
   echo slick-greeter clone
   git clone git@github.com:linuxmint/slick-greeter.git
+  git clone git@github.com:canonical/lightdm.git
   cd slick-greeter || exit
   ./autogen.sh
   make
