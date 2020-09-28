@@ -101,27 +101,27 @@
 - color temperature tool - redshift
 - password manager - kepassxc
 - gtk theme tool - lxappearance
+- audio mixer - amixer, ncpamixer
 
-## Software - Yet to Explore
+## Software - Yet to Review
 - steam
-arduino
-tint2
-team viewer
-twint - twitter client
-beeflang
-https://lightningmanic.github.io/
-owncloud
-mumble
-webmin
-termonad
-taskwarrior
-https://www.ventoy.net/en/index.html - for ISOs
-translate-shell - trans -t de "hi"
-http://dotshare.it/
-pip install mlbv
-lazygit - go get github.com/jesseduffield/lazygit
-lazydocker - go get github.com/jesseduffield/lazydocker
-tdrop
-trayer (non-polybar)
+- arduino
+- tint2
+- team viewer
+- twint - twitter client
+- beeflang
+- https://lightningmanic.github.io/
+- owncloud
+- mumble
+- webmin
+- termonad
+- taskwarrior
+- https://www.ventoy.net/en/index.html - for ISOs
+- translate-shell - trans -t de "hi"
+- http://dotshare.it/
+- pip install mlbv
+- lazygit - go get github.com/jesseduffield/lazygit
+- lazydocker - go get github.com/jesseduffield/lazydocker
+- tdrop
+- trayer (non-polybar)
 - polkit settings manager - lxsession
-- copyq

@@ -53,7 +53,8 @@ echo list cert hash
 openssl x509 -in freenode.pem -outform der | sha1sum -b | cut -d' ' -f1
 
 mkdir -p ~/.irssi/certs
-mv freenode.pem ~/.irssi/certs
+mv -v freenode.pem ~/.irssi/certs
+sudo mkdir -p /usr/local/lib/irssi/modules/
 
 cd "$HOME/projects" || exit
 
@@ -64,10 +65,8 @@ if [ ! -f "irssi-${VER}.tar.gz" ]; then
 fi
 tar xvzf "irssi-${VER}.tar.gz"
 
-sudo mkdir -p /usr/local/lib/irssi/modules/
-
-git clone https://github.com/irssi/irssi
-cd "irssi-${VER}" || exit
+git clone git@github.com:irssi/irssi
+cd "irssi${VER}" || exit
 #sh autogen.sh
 ./configure
 make

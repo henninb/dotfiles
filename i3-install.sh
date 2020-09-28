@@ -99,7 +99,8 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y picom
   sudo dnf install -y libxcb-devel xcb-util-keysyms-devel xcb-util-devel xcb-util-wm-devel xcb-util-xrm-devel yajl-devel libXrandr-devel startup-notification-devel libev-devel xcb-util-cursor-devel libXinerama-devel libxkbcommon-devel libxkbcommon-x11-devel pcre-devel pango-devel git gcc automake libcurl-devel libmpdclient-devel wireless-tools-devel pulseaudio-libs-devel xcb-proto  cairo-devel i3-devel
   cd "$HOME/projects" || exit
-  git clone https://github.com/vivien/i3blocks.git
+  #git clone https://github.com/vivien/i3blocks.git
+  git clone git@github.com:vivien/i3blocks.git
   cd i3blocks || exit
   ./autogen.sh
   ./configure

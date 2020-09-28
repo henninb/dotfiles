@@ -71,7 +71,8 @@ fi
 sudo make install
 cd "$HOME" || exit
 
-git clone https://github.com/sos4nt/dynamic-colors ~/.dynamic-colors
+#git clone https://github.com/sos4nt/dynamic-colors ~/.dynamic-colors
+git clone git@github.com:sos4nt/dynamic-colors ~/.dynamic-colors
 
 echo urxvt -fn "xft:Bitstream Vera Sans Mono:pixelsize=15"
 echo urxvt --font "xft:Inconsolata for Powerline:size=10"

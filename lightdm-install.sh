@@ -99,6 +99,18 @@ DesktopNames=openbox
 Keywords=tiling;wm;windowmanager;window;manager;
 EOF
 
+slickgreeter_build() {
+  sudo pacman -S vala
+  sudo pacman -S gnome-common
+  cd "$HOME/projects" || exit
+  echo slick-greeter clone
+  git clone git@github.com:linuxmint/slick-greeter.git
+  cd slick-greeter || exit
+  ./autogen.sh
+  make
+  sudo make install
+}
+
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   sudo apt install -y lightdm
   sudo apt install -y lightdm-gtk-greeter
@@ -136,7 +148,6 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo rc-service dbus start
   sudo rc-service xdm start
 elif [ "$OS" = "Solus" ]; then
-  echo slick-greeter
   sudo mkdir -p /etc/lightdm
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y lightdm
