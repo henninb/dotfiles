@@ -21,7 +21,6 @@ sxhkd
 termite
 vifm
 vim
-xmobar
 xmonad
 xresources
 zsh
@@ -95,9 +94,6 @@ case "$choice" in
 	;;
 	vim)
 		choice="$HOME/.vimrc"
-	;;
-	xmobar)
-		choice="$HOME/.config/xmobar/xmobarrc2"
 	;;
 	xmonad)
 		choice="$HOME/.xmonad/xmonad.hs"

@@ -1,3 +1,4 @@
+{-# LANGUAGE RebindableSyntax #-}
 import XMonad
 
 import XMonad.Hooks.DynamicLog
@@ -8,6 +9,7 @@ import XMonad.Hooks.Minimize
 import XMonad.Hooks.Place
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.UrgencyHook
+import XMonad.Hooks.FadeInactive
 import XMonad.Util.EZConfig
 import XMonad.Util.NamedActions
 import XMonad.Util.SpawnOnce
@@ -28,20 +30,33 @@ import XMonad.Prompt
 import XMonad.Prompt.FuzzyMatch
 import Control.Arrow (first)
 
-import Control.Monad (liftM2)
 
 import Graphics.X11.ExtraTypes
 import XMonad.Util.Paste (sendKey)
 
 import qualified XMonad.Actions.Search as S
 
+import XMonad.Util.Run(spawnPipe, safeSpawn)
+
 import qualified DBus as D
 import qualified DBus.Client as D
 import qualified XMonad.Layout.BoringWindows as B
 
+-- import System.Posix.Files(createNamedPipe)
+-- -- import Prelude hiding (catch,(>>))
+-- import System.IO.Error hiding (catch)
+-- import Control.Exception
+-- import System.Posix.Temp(mkdtemp)
+-- import System.Directory(removeFile)
+-- import Data.List.Split(splitOn)
+import Control.Monad (forM_, join, liftM2)
+
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import qualified Codec.Binary.UTF8.String as UTF8
+import Prelude
+
+import System.Environment (setEnv, getEnv)
 
 main :: IO ()
 main = do
@@ -49,10 +64,13 @@ main = do
   D.requestName dbus (D.busName_ "org.xmonad.log")
     [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
 
+  safeSpawn "mkfifo" ["/tmp/.xmonad-info"]
   xmonad
     $ withUrgencyHook NoUrgencyHook
     $ ewmh
-    $ myConfig { logHook = dynamicLogWithPP (myLogHook dbus) }
+    -- $ myConfig { logHook = dynamicLogWithPP (myLogHook dbus) }
+    -- $ myConfig { logHook = dynamicLogWithPP polybarLogHookNew }
+    $ myConfig { logHook = fadeInactiveLogHook 0.9 <+> dynamicLogWithPP polybarLogHookNew }
     `removeKeys` myRemoveKeys
     `additionalKeysP` myKeys
     `additionalKeys` []
@@ -259,7 +277,7 @@ myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 --         then sendKey noModMask xF86XK_Paste
 --         else sendKey controlMask xK_v
 
-isTerminal :: Window -> X Bool
+-- isTerminal :: Window -> X Bool
 isTerminal = fmap (== "Alacritty") . runQuery className
 
 myKeys :: [(String, X ())]
@@ -356,7 +374,7 @@ myLogHook dbus = def
     }
 
 -- Emit a DBus signal on log updates
-dbusOutput :: D.Client -> String -> IO ()
+-- dbusOutput :: D.Client -> String -> IO ()
 dbusOutput dbus str = do
     let signal = (D.signal objectPath interfaceName memberName) {
             D.signalBody = [D.toVariant $ UTF8.decodeString str]
@@ -367,15 +385,33 @@ dbusOutput dbus str = do
     interfaceName = D.interfaceName_ "org.xmonad.Log"
     memberName = D.memberName_ "Update"
 
-myAddSpaces :: Int -> String -> String
+-- myAddSpaces :: Int -> String -> String
 myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
   where
     sstr = shorten len str
+
+polybarOutput str =
+  io $ appendFile "/tmp/.xmonad-info" (str ++ "\n")
+
+polybarLogHookNew = def
+    { ppOutput = polybarOutput
+    , ppCurrent = wrap "%{F#aaff77}" "%{F-}"
+    , ppVisible = wrap "" ""
+    , ppUrgent = wrap "%{F#ff5555}" "%{F-}"
+    , ppHidden = wrap "%{F#66}" "%{F-}"
+    , ppWsSep = "  "
+    , ppSep = "    "
+    -- , ppTitle = \_ -> ""
+    , ppTitle = const ""
+    }
 
 -- TODO: spawnOnce should be used?
 myStartupHook :: X ()
 myStartupHook = do
     setWMName "LG3D"
+    -- spawnOnce "export DESKTOP_SESSION=xmonad"
+    liftIO (setEnv "DESKTOP_SESSION" "xmonad")
+    liftIO (setEnv "DESKTOP_SESSION_TEST" "xmonad")
     spawnOnce "$HOME/.config/polybar/launch.sh xmonad"
     spawnOnce "flameshot"
     spawnOnce "dunst"
