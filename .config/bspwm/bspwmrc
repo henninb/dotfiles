@@ -2,6 +2,7 @@
 
 export _JAVA_AWT_WM_NONREPARTENTING=1
 export LANG="en_US.utf8"
+export DESKTOP_SESSION=bspwm
 #export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
 date >> "$HOME/bspwm.log"

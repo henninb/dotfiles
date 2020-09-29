@@ -20,7 +20,7 @@ echo arandr
 cd "$HOME/projects" || exit
 git clone git@github.com:conformal/spectrwm.git
 cd spectrwm || exit
-patch spectrwm.c "$HOME/patch-spectrwm.c"
+#patch spectrwm.c "$HOME/patch-spectrwm.c"
 cd linux || exit
 make
 sudo make install
