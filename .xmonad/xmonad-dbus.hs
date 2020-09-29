@@ -38,9 +38,10 @@ import qualified XMonad.Actions.Search as S
 
 import XMonad.Util.Run(spawnPipe, safeSpawn)
 
+import qualified DBus as D
+import qualified DBus.Client as D
 import qualified XMonad.Layout.BoringWindows as B
 import Control.Monad (forM_, join, liftM2)
-
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import qualified Codec.Binary.UTF8.String as UTF8
@@ -50,11 +51,15 @@ import System.Environment (setEnv, getEnv)
 
 main :: IO ()
 main = do
+  dbus <- D.connectSession
+  D.requestName dbus (D.busName_ "org.xmonad.log")
+    [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
+
   safeSpawn "mkfifo" ["/tmp/.xmonad-info"]
   xmonad
     $ withUrgencyHook NoUrgencyHook
     $ ewmh
-    $ myConfig { logHook = fadeInactiveLogHook 0.9 <+> dynamicLogWithPP polybarLogHook }
+    $ myConfig { logHook = dynamicLogWithPP (myLogHook dbus) }
     `removeKeys` myRemoveKeys
     `additionalKeysP` myKeys
     `additionalKeys` []
@@ -345,6 +350,30 @@ myManageHook = composeAll
 
 myManageHook' = composeOne [ isFullscreen -?> doFullFloat ]
 
+myLogHook :: D.Client -> PP
+myLogHook dbus = def
+    { ppOutput = dbusOutput dbus
+    , ppCurrent = wrap ("%{F" ++ myFocusBorderColor ++ "} ") " %{F-}"
+    , ppVisible = wrap ("%{F" ++ myFocusBorderColor ++ "} ") " %{F-}"
+    , ppUrgent = wrap ("%{F" ++ red ++ "} ") " %{F-}"
+    , ppHidden = wrap " " " "
+    , ppWsSep = ""
+    , ppSep = " | "
+    , ppTitle = myAddSpaces 25
+    }
+
+-- Emit a DBus signal on log updates
+dbusOutput :: D.Client -> String -> IO ()
+dbusOutput dbus str = do
+    let signal = (D.signal objectPath interfaceName memberName) {
+            D.signalBody = [D.toVariant $ UTF8.decodeString str]
+        }
+    D.emit dbus signal
+  where
+    objectPath = D.objectPath_ "/org/xmonad/Log"
+    interfaceName = D.interfaceName_ "org.xmonad.Log"
+    memberName = D.memberName_ "Update"
+
 myAddSpaces :: Int -> String -> String
 myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
   where
@@ -353,26 +382,15 @@ myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
 polybarOutput str =
   io $ appendFile "/tmp/.xmonad-info" (str ++ "\n")
 
--- polybarLogHook = def
---     { ppOutput = polybarOutput
---     , ppCurrent = wrap "%{F#aaff77}" "%{F-}"
---     , ppVisible = wrap "" ""
---     , ppUrgent = wrap "%{F#ff5555}" "%{F-}"
---     , ppHidden = wrap "%{F#66}" "%{F-}"
---     , ppWsSep = "  "
---     , ppSep = "    "
---     , ppTitle = const ""
---     }
-
-polybarLogHook = def
+polybarLogHookNew = def
     { ppOutput = polybarOutput
-    , ppCurrent = wrap ("%{F" ++ myFocusBorderColor ++ "} ") " %{F-}"
-    , ppVisible = wrap ("%{F" ++ myFocusBorderColor ++ "} ") " %{F-}"
-    , ppUrgent = wrap ("%{F" ++ red ++ "} ") " %{F-}"
-    , ppHidden = wrap " " " "
-    , ppWsSep = ""
-    , ppSep = " | "
-    , ppTitle = myAddSpaces 25
+    , ppCurrent = wrap "%{F#aaff77}" "%{F-}"
+    , ppVisible = wrap "" ""
+    , ppUrgent = wrap "%{F#ff5555}" "%{F-}"
+    , ppHidden = wrap "%{F#66}" "%{F-}"
+    , ppWsSep = "  "
+    , ppSep = "    "
+    , ppTitle = const ""
     }
 
 -- TODO: spawnOnce should be used?
@@ -389,11 +407,11 @@ myStartupHook = do
     spawnOnce "copyq"
     -- spawn "sonata"
     spawnOnce "blueman-applet"
-    -- spawn "mpd"
     spawnOnce "volumeicon"
     spawnOnce "xscreensaver -no-splash"
     spawnOnce "feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg"
 
+-- myConfig :: XPConfig
 myConfig = def
   { terminal = myTerminal
   , layoutHook = windowArrange myLayouts

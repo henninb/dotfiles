@@ -2,32 +2,30 @@ HLINT := $(shell command -v hlint 2> /dev/null)
 
 all:
 	@make default
-master:
-	@echo stack init .
+dbus:
+	@echo build dbus
 	@rm -rf *.hi *.o xmonad
-	@ln -sfn xmonad-master.hs xmonad.hs
+	@ln -sfn xmonad-dbus.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs
 	@rm -rf *.hi *.o
-	echo master > .active
 	@sudo mv -v xmonad /usr/local/bin
-	@hlint xmonad-master.hs
+	@hlint xmonad-dbus.hs
 default:
-	@echo stack init .
+	@echo build default
 	@rm -rf *.hi *.o xmonad
 	@ln -sfn xmonad-default.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs
 	@rm -rf *.hi *.o
-	@echo default > .active
 	@sudo mv -v xmonad /usr/local/bin
 	@hlint xmonad-default.hs
 rice:
+	@echo build rice
 	@stack path --local-bin
 	@echo stack init .
 	@rm -rf *.hi *.o lib/*.o lib/*.hi xmonad
 	@ln -sfn xmonad-rice.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs -i -ilib -fforce-recomp
 	@rm -rf *.hi *.o lib/*.o lib/*.hi
-	@echo rice > .active
 	@sudo mv -v xmonad /usr/local/bin
 ifdef HLINT
 	@hlint xmonad-rice.hs
