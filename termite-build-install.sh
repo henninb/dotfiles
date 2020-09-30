@@ -17,6 +17,8 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y libgtk2.0-dev
   #sudo apt install gnome-devel
   sudo apt install -y gtk+3.0
+elif [ "$OS" = "Solus" ]; then
+  sudo mkdir -p /etc/ld.so.conf.d/
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y gtk-doc
   sudo apt install -y g++

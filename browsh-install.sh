@@ -5,6 +5,8 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   sudo dpkg -i browsh_1.6.4_linux_amd64.deb
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   yay -S browsh-bin
+elif [ "$OS" = "Solus" ]; then
+  echo
 else
   echo "$OS is not yet implemented."
   exit 1

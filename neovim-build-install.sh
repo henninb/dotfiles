@@ -139,10 +139,11 @@ cd "$HOME" || exit
 
 #echo nvim -u NORC file
 #echo "previous $ACTUAL_VER"
-curl -O https://bootstrap.pypa.io/get-pip.py
+curl -s -O https://bootstrap.pypa.io/get-pip.py
 sudo python3 get-pip.py
 sudo python2 get-pip.py
 
+sudo mkdir -p /usr/local/share/nvim
 sudo chmod -R a+r /usr/local/share/nvim
 sudo chmod -R a+x /usr/local/share/nvim
 python2 -m pip install --user --upgrade pynvim
