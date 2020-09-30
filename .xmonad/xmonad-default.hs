@@ -272,7 +272,8 @@ myKeys :: [(String, X ())]
 myKeys = [
     ("M-S-e"             , spawn "emacs")
   , ("M-e"               , spawn "urxvt -e nvim")
-  , ("M-r"               , spawn "urxvt -e lf")
+  , ("M-f"               , spawn "urxvt -e lf")
+  , ("M-S-f"             , spawn "spacefm")
   , ("M-i"               , spawn "brave-browser")
   , ("M-S-i"             , spawn ("firefox" ++ " -private-window"))
   , ("M-<Print>"         , spawn "flameshot gui -p $HOME/Desktop")
