@@ -23,14 +23,16 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -u xbps
   sudo xbps-install -Suy
 elif [ "$OS" = "Manjaro Linux" ]; then
-  sudo pacman  --noconfirm --needed -Syu 2>&1 | tee -a update.log.$$
+  sudo pacman --noconfirm --needed -Syu 2>&1 | tee -a update.log.$$
+  yay -Syu
 elif [ "$OS" = "Arch Linux" ]; then
   du -sh /var/cache/pacman/pkg
-  sudo pacman  --noconfirm --needed -Syu 2>&1 | tee -a update.log.$$
+  sudo pacman --noconfirm --needed -Syu 2>&1 | tee -a update.log.$$
   echo sudo pacman -Scc
-  sudo paccache -r
-  sudo paccache -rk 1
-  sudo paccache -ruk0
+  sudo paccache -r 2>&1 | tee -a update.log.$$
+  sudo paccache -rk 1 2>&1 | tee -a update.log.$$
+  sudo paccache -ruk0 2>&1 | tee -a update.log.$$
+  yay -Syu 2>&1 | tee -a update.log.$$
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper dist-upgrade
   # sudo zypper refersh
