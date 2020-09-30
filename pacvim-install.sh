@@ -4,6 +4,8 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install libcurses5-dev
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S libcurses5
+elif [ "$OS" = "Solus" ]; then
+  echo
 else
   echo "$OS is not yet implemented."
   exit 1
