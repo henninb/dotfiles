@@ -81,6 +81,7 @@ xrandr --listproviders >> "$HOME/xinit.log"
 WM=$(head -1 < "$HOME/.active-wm")
 if [ -s "$HOME/.active-wm" ] && [ -x "$(command -v "${WM}")" ]; then
   echo "Found window manager = ${WM}." >> "$HOME/xinit.log"
+  export DESKTOP_SESSION=${WM}
 else
   echo i3 > "$HOME/.active-wm"
   WM=i3

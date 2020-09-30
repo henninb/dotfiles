@@ -54,7 +54,8 @@ main = do
   xmonad
     $ withUrgencyHook NoUrgencyHook
     $ ewmh
-    $ myConfig { logHook = fadeInactiveLogHook 0.9 <+> dynamicLogWithPP polybarLogHook }
+    -- $ myConfig { logHook = fadeInactiveLogHook 0.9 <+> dynamicLogWithPP polybarLogHook }
+    $ myConfig { logHook = dynamicLogWithPP polybarLogHook }
     `removeKeys` myRemoveKeys
     `additionalKeysP` myKeys
     `additionalKeys` []
@@ -261,7 +262,7 @@ myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 --         then sendKey noModMask xF86XK_Paste
 --         else sendKey controlMask xK_v
 
--- isTerminal :: Window -> X Bool
+isTerminal :: Window -> X Bool
 isTerminal = fmap (== "Alacritty") . runQuery className
 
 myKeys :: [(String, X ())]
@@ -381,7 +382,6 @@ myStartupHook = do
     setWMName "LG3D"
     -- spawnOnce "export DESKTOP_SESSION=xmonad"
     liftIO (setEnv "DESKTOP_SESSION" "xmonad")
-    liftIO (setEnv "DESKTOP_SESSION_TEST" "xmonad")
     spawnOnce "$HOME/.config/polybar/launch.sh xmonad"
     spawnOnce "flameshot"
     spawnOnce "dunst"
