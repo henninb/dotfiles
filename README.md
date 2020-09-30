@@ -76,7 +76,7 @@
 - pdf reader - zathura
 - calendar - calcurse
 - log reader - lnav
-- package manager - yay, pacman, brew, apt, dnf, emerge, pkg, eopkg
+- package manager - yay, pacman, brew, apt, dnf, emerge, pkg, eopkg, flatpak
 - open - xdg-open
 - screen shot - flameshot
 - encryption tools - gnupg, keybase
