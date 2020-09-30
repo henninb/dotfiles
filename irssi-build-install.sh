@@ -66,7 +66,7 @@ fi
 tar xvzf "irssi-${VER}.tar.gz"
 
 git clone git@github.com:irssi/irssi
-cd "irssi${VER}" || exit
+cd "irssi-${VER}" || exit
 #sh autogen.sh
 ./configure
 make
