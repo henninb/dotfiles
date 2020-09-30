@@ -1,5 +1,7 @@
 #!/bin/sh
 
+sudo mkdir -p /usr/local/share/fonts/
+
 if [ ! -f "symbola.zip" ]; then
   wget -q 'https://fontlibrary.org/assets/downloads/symbola/cf81aeb303c13ce765877d31571dc5c7/symbola.zip'
 fi

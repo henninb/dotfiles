@@ -120,7 +120,7 @@ elif [ "$OS" = "Solus" ]; then
   make
   sudo make install
   cd "$HOME" || exit
-  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon blueman copyq clipmenu mpd mpc neofetch jq redshift"
+  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon blueman copyq clipmenu mpd sudo eopkg install mpc-client neofetch jq redshift"
   FAILURE=""
   sudo eopkg install -c system.devel
   for i in $SOLUS_PKGS; do
