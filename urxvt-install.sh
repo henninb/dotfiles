@@ -30,9 +30,10 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   #sudo apt install -y rxvt-unicode xsel
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   # urxvt needs to be installed from the package
-  sudo pacman -S --noconfirm --needed rxvt-unicode xsel
-  exit 0
+  # sudo pacman -S --noconfirm --needed rxvt-unicode xsel
+  # exit 0
   #sudo pacman -S awesome-terminal-fonts
+  echo
 else
   echo "$OS is not yet implemented."
   exit 1

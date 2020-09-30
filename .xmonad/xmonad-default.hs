@@ -94,9 +94,12 @@ myFocusBorderColor = "#5b51c9"
 myRemoveKeys = [
                  (altKeyMask .|. shiftMask, xK_space)
                , (altKeyMask, xK_q)
+               , (altKeyMask, xK_e)
+               , (altKeyMask, xK_p)
+               , (altKeyMask, xK_x)
                , (altKeyMask .|. shiftMask, xK_q)
                , (altKeyMask .|. shiftMask, xK_c)
-               , (altKeyMask, xK_space)
+               -- , (altKeyMask, xK_space)
                ]
 
 archwiki, ebay, news, reddit, urban :: S.SearchEngine
@@ -376,7 +379,6 @@ polybarLogHook = def
     , ppTitle = myAddSpaces 25
     }
 
--- TODO: spawnOnce should be used?
 myStartupHook :: X ()
 myStartupHook = do
     setWMName "LG3D"
@@ -385,7 +387,8 @@ myStartupHook = do
     spawnOnce "$HOME/.config/polybar/launch.sh xmonad"
     spawnOnce "flameshot"
     spawnOnce "dunst"
-    -- spawn "clipmenud"
+    spawnOnce "sxhkd -c ~/.config/sxhkd/sxhkdrc-xmonad"
+    -- spawn "clipmenud" --should I run copyq or clipmenu
     spawnOnce "copyq"
     -- spawn "sonata"
     spawnOnce "blueman-applet"
