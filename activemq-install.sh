@@ -78,7 +78,7 @@ elif [ "$OS" = "FreeBSD" ]; then
     echo "fdesc /dev/fd fdescfs rw 0 0" | sudo tee /etc/fstab
   fi
 
-  count=$(grep -c 1 "proc /proc procfs rw 0 0" /etc/fstab)
+  count=$(grep -c "proc /proc procfs rw 0 0" /etc/fstab)
   if [ "$count" -ne 1 ]; then
     echo "proc /proc procfs rw 0 0" | sudo tee /etc/fstab
   fi

@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 sudo mkdir -p /var/kvm/images
-if [ "$(grep -c 1 wheel /etc/group)" -ne 1 ]; then
+if [ "$(grep -c wheel /etc/group)" -ne 1 ]; then
   sudo chown root:wheel /var/kvm/images
 else
   sudo chown root /var/kvm/images
@@ -74,10 +74,20 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo virsh net-autostart default
   sudo virsh net-list --all
   getent group kvm libvirt
+elif [ "$OS" = "Solus" ]; then
+  echo
+  sudo eopkg install -y libvirt
+  # sudo eopkg install -y virt-manager
+  sudo usermod -a -G libvirt "$(id -un)"
+  sudo usermod -a -G kvm "$(id -un)"
+  sudo systemctl enable libvirtd
+  sudo systemctl start libvirtd
+  sudo virsh list --all
+  sudo virsh net-autostart default
+  sudo virsh net-list --all
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse bridge-utils
   sudo emerge --update --newuse app-emulation/libvirt
-  sudo emerge --update --newuse bridge-utils
   sudo emerge --update --newuse libvirt
   sudo emerge --update --newuse libvirt-glib
   sudo emerge --update --newuse libvirt-python
