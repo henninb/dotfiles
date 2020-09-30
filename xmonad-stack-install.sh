@@ -27,6 +27,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y wmname
   sudo apt install -y blueberry
   sudo apt install -y libbsd-dev
+  sudo apt install -y font-awesome-4
   #sudo apt install -y icu-devtools libicu-dev
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y libxss-devel
@@ -74,6 +75,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S copyq
   sudo pacman --noconfirm --needed -S mpc
   sudo pacman --noconfirm --needed -S mpd
+  sudo pacman --noconfirm --needed -S font-awesome-4
   sudo pacman --noconfirm --needed -S dmenu
   sudo pacman --noconfirm --needed -S flameshot
   sudo pacman --noconfirm --needed -S redshift
@@ -120,7 +122,7 @@ elif [ "$OS" = "Solus" ]; then
   make
   sudo make install
   cd "$HOME" || exit
-  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon blueman copyq clipmenu mpd sudo eopkg install mpc-client neofetch jq redshift"
+  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon blueman copyq clipmenu mpd sudo eopkg install mpc-client neofetch jq redshift font-awesome-4"
   FAILURE=""
   sudo eopkg install -c system.devel
   for i in $SOLUS_PKGS; do
