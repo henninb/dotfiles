@@ -25,11 +25,13 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   #sudo firewall-cmd --reload
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y docker
+  sudo eopkg install -y docker-compose
   sudo usermod -G docker -a "$USER"
   sudo systemctl enable docker
   sudo systemctl start docker
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo zypper install -y docker docker-compose
+  sudo zypper install -y docker
+  sudo zypper install -y docker-compose
   sudo usermod -G docker -a "$USER"
   sudo systemctl enable docker
   sudo systemctl start docker
