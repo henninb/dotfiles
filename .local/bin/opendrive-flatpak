@@ -1,5 +1,0 @@
-#!/bin/sh
-
-flatpak run io.github.liberodark.OpenDrive
-
-exit 0

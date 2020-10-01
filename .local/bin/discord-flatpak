@@ -1,5 +1,0 @@
-#!/bin/sh
-
-flatpak run com.discordapp.Discord
-
-exit 0

@@ -1,5 +1,0 @@
-#!/bin/sh
-
-flatpak run org.telegram.desktop
-
-exit 0

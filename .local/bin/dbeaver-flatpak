@@ -1,5 +1,0 @@
-#!/bin/sh
-
-flatpak run io.dbeaver.DBeaverCommunity
-
-exit 0

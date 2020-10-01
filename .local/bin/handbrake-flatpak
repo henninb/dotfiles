@@ -1,5 +1,0 @@
-#!/bin/sh
-
-flatpak run fr.handbrake.ghb
-
-exit 0

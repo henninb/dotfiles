@@ -1,5 +1,0 @@
-#!/bin/sh
-
-flatpak run io.github.celluloid_player.Celluloid
-
-exit 0
