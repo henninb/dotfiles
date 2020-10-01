@@ -11,10 +11,8 @@ EOF
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-#sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak --user -y install flathub io.dbeaver.DBeaverCommunity
 
-flatpak install flathub io.dbeaver.DBeaverCommunity
-#flatpak install -y --user flathub com.discordapp.Discord
 chmod 755 dbeaver-flatpak
 mv -v dbeaver-flatpak "$HOME/.local/bin/"
 

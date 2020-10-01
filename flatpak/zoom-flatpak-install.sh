@@ -11,8 +11,8 @@ EOF
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-if ! flatpak install -y flathub us.zoom.Zoom; then
-  flatpak install flathub us.zoom.Zoom
+if ! flatpak --user -y install flathub us.zoom.Zoom; then
+  flatpak -y install flathub us.zoom.Zoom
 fi
 
 chmod 755 zoom-flatpak

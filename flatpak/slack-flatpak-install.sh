@@ -11,9 +11,8 @@ EOF
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-#sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak --user -y install flathub com.slack.Slack
 
-flatpak install flathub com.slack.Slack
 chmod 755 slack-flatpak
 mv slack-flatpak "$HOME/.local/bin/"
 

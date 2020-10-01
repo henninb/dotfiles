@@ -1,11 +1,19 @@
 #!/bin/sh
 
-sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+cat > telegram-flatpak <<EOF
+#!/bin/sh
+
+flatpak run org.telegram.desktop
+
+exit 0
+EOF
+
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-flatpak install flathub org.telegram.desktop
-echo flatpak install --user flathub org.telegram.desktop
-echo flatpak run org.telegram.desktop
+flatpak --user -y install flathub org.telegram.desktop
+
+chmod 755 telegram-flatpak
+mv telegram-flatpak "$HOME/.local/bin/"
 
 exit 0
