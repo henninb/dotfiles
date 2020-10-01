@@ -393,6 +393,7 @@ myStartupHook = do
     spawnOnce "copyq"
     -- spawn "sonata"
     spawnOnce "blueman-applet"
+    spawnOnce "conky -c $HOME/.xmonad/system-overview"
     -- spawn "mpd"
     spawnOnce "volumeicon"
     spawnOnce "xscreensaver -no-splash"
