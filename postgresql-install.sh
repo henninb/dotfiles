@@ -146,7 +146,8 @@ elif [ "$OS" = "FreeBSD" ]; then
   fi
   sudo mv -v pg_hba.conf /var/db/postgres/data11/pg_hba.conf
   sudo service postgresql restart
-  netstat -na | grep 5432 | grep LIST
+  # netstat -na | grep 5432 | grep LIST
+  ss -tulpn4 | grep 5432
 else
   echo "$OS is not yet implemented."
   exit 1
@@ -155,6 +156,5 @@ fi
 echo /usr/lib/postgresql/12/bin/pg_ctl
 echo /usr/lib/postgresql/12/bin/pg_ctl  -D /var/lib/postgresql/12/main stop
 echo /usr/lib/postgresql/12/bin/pg_ctl  -D /var/lib/postgresql/12/main start
-
 
 exit 0

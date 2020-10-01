@@ -6,7 +6,7 @@ else
   sudo systemctl status postgresql
 fi
 echo 'netstat -na | grep tcp | grep LIST | grep 5432'
-if ! netstat -na | grep tcp | grep LIST | grep 5432; then
+if ! ss -tulpn4 | grep 5432; then
   echo 5432 port not up, postgesql not running.
 fi
 
