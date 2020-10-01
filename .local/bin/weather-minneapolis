@@ -1,35 +1,40 @@
 #!/bin/bash
 
-#curl -s "wttr.in/Minneapolis?format=j1" | sed 30q > /tmp/minneapolis.json
-
-weather=$(curl -s "wttr.in/Minneapolis?format=j1" | jq '.current_condition' | jq '.[]' | jq '.weatherDesc' | jq -r '.[].value')
-#| tr -d '"')
-
-temp=$(curl -s "wttr.in/Minneapolis?format=j1" | jq '.current_condition' | jq '.[]' | jq -r '.temp_F')
-#| tr -d '"')
-
 nocloud=""
 cloud=""
 lotempicon=""
 midtempicon=""
 hitempicon=""
 
+weather=None
+temp=0
+
+if curl -s "wttr.in/Minneapolis?format=j1" > /tmp/.weather-minneapolis; then
+  if jq < /tmp/.weather-minneapolis >/dev/null 2>&1; then
+    weather=$(jq -r '.current_condition | .[] | .weatherDesc .[].value' < /tmp/.weather-minneapolis)
+    temp=$(jq -r '.current_condition | .[] | .temp_F' < /tmp/.weather-minneapolis)
+  else
+    exit 1
+  fi
+else
+  exit 2
+fi
+
 TEMP() {
 if [ "$temp" -gt 80 ]; then
-	echo -e "$hitempicon $temp"
+  echo -e "$hitempicon $temp"
 elif [ "$temp" -ge 50 ] && [ "$temp" -le 79 ]; then
-	echo -e "$midtempicon $temp"
+  echo -e "$midtempicon $temp"
 elif [ "$temp" -le 49 ]; then
-	echo "$lotempicon $temp"
+  echo "$lotempicon $temp"
 fi
 }
 
 WEATHER() {
 if [ "$weather" = "Clear" ]; then
-	echo -e "$nocloud $weather"
-
+  echo -e "$nocloud $weather"
 else
-	echo -e "$cloud $weather"
+  echo -e "$cloud $weather"
 fi
 }
 
