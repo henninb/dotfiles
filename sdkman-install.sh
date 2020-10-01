@@ -6,6 +6,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed  -S zip unzip
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse zip unzip
+elif [ "$OS" = "Solus" ]; then
+  sudo eopkg install -y zip unzip
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y zip unzip
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
@@ -23,9 +25,10 @@ fi
 echo sdk install gradle
 echo sdk install maven
 
-sdk install java 9.0.4-open
-sdk install java 10.0.2-open
-sdk install java 11.0.2-open
-sdk install java 12.0.1-open
+echo sdk list java
+echo sdk install java 9.0.4-open
+echo sdk install java 10.0.2-open
+echo sdk install java 11.0.2-open
+echo sdk install java 12.0.1-open
 
 exit 0
