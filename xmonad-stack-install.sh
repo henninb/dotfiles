@@ -25,6 +25,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y mpd
   sudo apt install -y vifm
   sudo apt install -y flameshot
+  sudo apt install -y conky
   sudo apt install -y wmname
   sudo apt install -y blueberry
   sudo apt install -y libbsd-dev
@@ -49,6 +50,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y volumeicon
   sudo zypper install -y clipmenu
   sudo zypper install -y copyq
+  sudo zypper install -y conky
   sudo zypper install -y vifm
   sudo zypper install -y flameshot
   sudo zypper install -y wmname
@@ -75,6 +77,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S clipmenu
   sudo pacman --noconfirm --needed -S lxsession
   sudo pacman --noconfirm --needed -S copyq
+  sudo pacman --noconfirm --needed -S conky
   sudo pacman --noconfirm --needed -S mpc
   sudo pacman --noconfirm --needed -S mpd
   sudo pacman --noconfirm --needed -S font-awesome-4
@@ -102,7 +105,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y wmname
 elif [ "$OS" = "void" ]; then
   sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
-  VOID_PKGS="xscreensaver feh xdotool w3m neofetch lxappearance volumeicon clipmenu xz make gcc gmp-devel dunst wmname libXScrnSaver-devel alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd jq redshift vifm"
+  VOID_PKGS="xscreensaver feh xdotool w3m neofetch lxappearance volumeicon clipmenu xz make gcc gmp-devel dunst wmname libXScrnSaver-devel alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd jq redshift vifm conky"
   FAILURE=""
   for i in $VOID_PKGS; do
     if ! sudo xbps-install -y "$i"; then
@@ -125,7 +128,7 @@ elif [ "$OS" = "Solus" ]; then
   make
   sudo make install
   cd "$HOME" || exit
-  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon blueman copyq clipmenu mpd sudo eopkg install mpc-client neofetch jq redshift font-awesome-4 vifm"
+  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon blueman copyq clipmenu mpd sudo eopkg install mpc-client neofetch jq redshift font-awesome-4 vifm conky"
   FAILURE=""
   sudo eopkg install -c system.devel
   for i in $SOLUS_PKGS; do
@@ -169,6 +172,7 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y mpc
   sudo dnf install -y mpd
   sudo dnf install -y lxsession
+  sudo dnf install -y conky
   sudo dnf install -y sxhkd
   sudo dnf install -y copyq
   # sudo dnf install -y clipmenu
