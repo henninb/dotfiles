@@ -11,7 +11,7 @@ EOF
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-if ! flatpak install -y flathub com.visualstudio.code; then
+if ! flatpak --user -y install flathub com.visualstudio.code; then
   flatpak install flathub com.visualstudio.code
 fi
 chmod 755 vscode-flatpak
