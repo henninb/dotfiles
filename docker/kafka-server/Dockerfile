@@ -21,6 +21,8 @@ RUN addgroup -g 71 operator
 RUN adduser -u 9997 -D -G operator kafka
 RUN chown -R kafka:operator /opt/kafka/
 RUN ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
+RUN sed -i "s/#listeners=PLAINTEXT:\/\/:9092/listeners=PLAINTEXT:\/\/:9092,SSL:\/\/:9093/g" /opt/kafka/config/server.properties
+RUN sed -i "s/#advertised.listeners=PLAINTEXT:\/\/your.host.name:9092/advertised.listeners=PLAINTEXT:\/\/:9092,SSL:\/\/:9093/g" /opt/kafka/config/server.properties
 
 WORKDIR $KAFKA_HOME
 
