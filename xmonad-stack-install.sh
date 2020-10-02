@@ -26,6 +26,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y vifm
   sudo apt install -y flameshot
   sudo apt install -y conky
+  sudo apt install -y mpdris2
   sudo apt install -y wmname
   sudo apt install -y blueberry
   sudo apt install -y libbsd-dev
@@ -52,6 +53,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y copyq
   sudo zypper install -y conky
   sudo zypper install -y vifm
+  sudo zypper install -y mpdris2
   sudo zypper install -y flameshot
   sudo zypper install -y wmname
   sudo zypper install -y lxappearance
@@ -77,6 +79,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S clipmenu
   sudo pacman --noconfirm --needed -S lxsession
   sudo pacman --noconfirm --needed -S copyq
+  sudo pacman --noconfirm --needed -S mpdris2
   sudo pacman --noconfirm --needed -S conky
   sudo pacman --noconfirm --needed -S mpc
   sudo pacman --noconfirm --needed -S mpd
