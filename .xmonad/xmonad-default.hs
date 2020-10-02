@@ -298,6 +298,7 @@ myKeys = [
   , ("<XF86AudioNext>", spawn "mpc next")
   , ("M-<F1>", spawnToWorkspace "discord-flatpak" "9")
   , ("M-<F2>", spawnToWorkspace "spacefm" "8")
+  , ("M-<F3>", spawn "intellij")
   , ("M-m", windows W.focusMaster)
   , ("M-j", windows W.focusDown)
   , ("M-k", windows W.focusUp)
