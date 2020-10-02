@@ -207,6 +207,7 @@ noremap <leader>W :w !sudo tee % > /dev/null
 "colorscheme evening
 "colorscheme 256-jungle
 "colorscheme darkblue
+"source $HOME/.config/nvim/pack/plugins/start/dracula/autoload/dracula.vim
 colorscheme dracula
 
 " Enable scrolling via mouse
