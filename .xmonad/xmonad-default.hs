@@ -14,6 +14,7 @@ import XMonad.Util.EZConfig
 import XMonad.Util.NamedActions
 import XMonad.Util.SpawnOnce
 import XMonad.Layout.FixedColumn
+import XMonad.Actions.SpawnOn
 import XMonad.Layout.LimitWindows
 import XMonad.Layout.Magnifier
 import XMonad.Layout.Minimize
@@ -295,6 +296,8 @@ myKeys = [
   , ("<XF86AudioPlay>", spawn "mpc toggle")
   , ("<XF86AudioPrev>", spawn "mpc prev")
   , ("<XF86AudioNext>", spawn "mpc next")
+  , ("M-<F1>", spawnToWorkspace "discord-flatpak" "9")
+  , ("M-<F2>", spawnToWorkspace "spacefm" "8")
   , ("M-m", windows W.focusMaster)
   , ("M-j", windows W.focusDown)
   , ("M-k", windows W.focusUp)
@@ -330,6 +333,7 @@ myManageHook = composeAll
     , title     =? "st-float"         --> doFloat --custom window title
     , className =? "Gimp"             --> doFloat
     , className =? "Emacs"            --> viewShift "6"
+    -- , className =? "discord"          --> viewShift "9"
     , title     =? "Oracle VM VirtualBox Manager"  --> doFloat
     , title     =? "Welcome to IntelliJ IDEA"      --> doFloat
     , className =? "jetbrains-idea"   --> doFloat
@@ -347,6 +351,7 @@ myManageHook = composeAll
   where
     role = stringProperty "WM_WINDOW_ROLE"
     viewShift = doF . liftM2 (.) W.greedyView W.shift
+    -- myShift = doF . liftM2 (.) W.greedyView
 
 myManageHook' = composeOne [ isFullscreen -?> doFullFloat ]
 
@@ -380,6 +385,11 @@ polybarLogHook = def
     , ppTitle = myAddSpaces 25
     }
 
+spawnToWorkspace :: String -> String -> X ()
+spawnToWorkspace program workspace = do
+                       spawn program
+                       windows $ W.greedyView workspace . W.shift "1"
+
 myStartupHook :: X ()
 myStartupHook = do
     setWMName "LG3D"
@@ -391,6 +401,8 @@ myStartupHook = do
     spawnOnce "sxhkd -c ~/.config/sxhkd/sxhkdrc-xmonad"
     -- spawn "clipmenud" --should I run copyq or clipmenu
     spawnOnce "copyq"
+    spawnOn "1" "alacritty"
+    spawnOn "2" "alacritty"
     -- spawn "sonata"
     spawnOnce "blueman-applet"
     spawnOnce "conky -c $HOME/.xmonad/system-overview"
@@ -398,12 +410,14 @@ myStartupHook = do
     spawnOnce "volumeicon"
     spawnOnce "xscreensaver -no-splash"
     spawnOnce "feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg"
+    -- spawnToWorkspace "discord-flatpak" "9"
 
 myConfig = def
   { terminal = myTerminal
   , layoutHook = windowArrange myLayouts
   , manageHook = placeHook(smart(0.5, 0.5))
       <+> manageDocks
+      <+> manageSpawn
       <+> myManageHook
       <+> myManageHook'
       <+> manageHook def

@@ -1,4 +1,4 @@
 #!/bin/sh
 
 export DESKTOP_SESSION=xmonad
-exec dbus-launch xmonad >> /tmp/xmonad.log
+exec dbus-launch --exit-with-session xmonad >> /tmp/xmonad.log

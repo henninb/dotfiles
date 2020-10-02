@@ -18,7 +18,7 @@ fi
 docker rm example -f
 docker build -t example .
 # docker run -it --name example -d example
-docker run --rm example
+docker run --name example --rm example
 
 # dotnet $PATH_FSI example.fs
 # fsharpi --nologo --load:example.fs

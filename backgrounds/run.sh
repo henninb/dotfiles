@@ -1,5 +1,5 @@
 #!/bin/sh
 
-feh --bg-scale winter_bridge.jpg
+feh --bg-scale winter-bridge.jpg
 
 exit 0
