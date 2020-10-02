@@ -11,7 +11,7 @@ temp=0
 
 if curl -s "wttr.in/Minneapolis?format=j1" > /tmp/.weather-minneapolis; then
   if jq < /tmp/.weather-minneapolis >/dev/null 2>&1; then
-    weather=$(jq -r '.current_condition | .[] | .weatherDesc .[].value' < /tmp/.weather-minneapolis)
+    weather=$(jq -r '.current_condition | .[] | .weatherDesc | .[].value' < /tmp/.weather-minneapolis)
     temp=$(jq -r '.current_condition | .[] | .temp_F' < /tmp/.weather-minneapolis)
   else
     exit 1
