@@ -296,7 +296,7 @@ myKeys = [
   , ("<XF86AudioPlay>", spawn "mpc toggle")
   , ("<XF86AudioPrev>", spawn "mpc prev")
   , ("<XF86AudioNext>", spawn "mpc next")
-  , ("M-<F1>", spawnToWorkspace "discord-flatpak" "9")
+  , ("M-<F1>", spawnToWorkspace "discord-flatpak" ws9)
   , ("M-<F2>", spawnToWorkspace "spacefm" "8")
   , ("M-<F3>", spawn "intellij")
   , ("M-m", windows W.focusMaster)
@@ -334,9 +334,10 @@ myManageHook = composeAll
     , title     =? "st-float"         --> doFloat --custom window title
     , className =? "Gimp"             --> doFloat
     , className =? "Emacs"            --> viewShift "6"
-    -- , className =? "discord"          --> viewShift "9"
+    , className =? "discord"          --> viewShift "9"
     , title     =? "Oracle VM VirtualBox Manager"  --> doFloat
     , title     =? "Welcome to IntelliJ IDEA"      --> doFloat
+    , title     =? "Welcome to IntelliJ IDEA"      --> viewShift "5"
     , className =? "jetbrains-idea"   --> doFloat
     , className =? "jetbrains-idea"   --> viewShift "5"
     , resource  =? "desktop_window"   --> doIgnore -- TODO: not sure what this does
@@ -389,7 +390,7 @@ polybarLogHook = def
 spawnToWorkspace :: String -> String -> X ()
 spawnToWorkspace program workspace = do
                        spawn program
-                       windows $ W.greedyView workspace . W.shift "1"
+                       windows $ W.greedyView workspace . W.shift workspace
 
 myStartupHook :: X ()
 myStartupHook = do
