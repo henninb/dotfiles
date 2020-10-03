@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # mqtt server
-sudo pacman -S mosquitto
+sudo pacman -noconfirm --needed -S mosquitto
+sudo apt install -y mosquitto
 sudo systemctl enable mosquitto
 sudo systemctl start mosquitto
 
