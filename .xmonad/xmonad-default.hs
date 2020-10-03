@@ -285,6 +285,8 @@ myKeys = [
   , ("M-S-<Escape>"      , spawn "wm-exit xmonad")
   , ("M-<Escape>"        , spawn "xmonad --restart")
   , ("M-S-p"             , spawn "dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
+  -- , ((modMask x , xK_p), spawn "passmenu --type")
+  -- , ((modMask x .|. shiftMask, xK_p), spawn "lastpass-dmenu --typeit-login")
   -- , ("M-p"               , spawn "clipmenu -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
   , ("M-v"               , sendKey noModMask xF86XK_Paste)
   -- , ("M-S-v"               , sendKey noModMask xF86XK_Select)
