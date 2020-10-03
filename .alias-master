@@ -61,9 +61,13 @@ alias grep='grep --color'
 
 if [ -x "$(command -v exa)" ]; then
   function ls() {
-    if [ "$1" = "-ltr" ]; then
+    if [ $# -eq 1 ] && [ "$1" = "-ltr" ]; then
       exa -l -r --sort oldest --color=always --icons --group-directories-first
-    elif [ "$1" = "-l" ]; then
+    elif [ $# -eq 2 ] && [ "$1" = "-ltr" ]; then
+      exa -l -r --sort oldest --color=always --icons --group-directories-first "$2"
+    elif [ $# -eq 2 ] && [ "$1" = "-l" ]; then
+      exa -l --color=always --icons --group-directories-first "$2"
+    elif [ $# -eq 1 ] && [ "$1" = "-l" ]; then
       exa -l --color=always --icons --group-directories-first
     elif [ $# -eq 0 ]; then
       exa --color=always --icons --group-directories-first
@@ -71,6 +75,7 @@ if [ -x "$(command -v exa)" ]; then
       exa "$*" --color=always --icons --group-directories-first
     fi
   }
+  alias l.='ls .*'
   #alias ls='exa --icons --color=always --group-directories-first' # my preferred listing
   alias la='exa -a --color=always --group-directories-first'  # all files and dirs
   alias ll='exa -l --color=always --group-directories-first'  # long format
