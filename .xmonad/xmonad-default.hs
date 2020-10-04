@@ -68,6 +68,8 @@ myTerminal = "alacritty"
 -- modMask = 115 -- Windows start button
 -- modMask = xK_Meta_L
 
+-- xmodmap - shows the key mapping
+-- TODO: need to fix as the Win [M1] key is now useless
 altKeyMask :: KeyMask
 altKeyMask = mod1Mask
 
@@ -308,13 +310,14 @@ myKeys = [
   , ("<XF86AudioPlay>", spawn "mpc toggle")
   , ("<XF86AudioPrev>", spawn "mpc prev")
   , ("<XF86AudioNext>", spawn "mpc next")
-  , ("M-<F1>", spawnToWorkspace "discord-flatpak" ws9)
+  -- , ("M-<F1>", spawnToWorkspace "discord-flatpak" ws9)
   , ("M-<F2>", spawnToWorkspace "spacefm" "8")
   , ("M-<F3>", spawn "intellij")
-  , ("M-M1-n", spawn ("urxvt" ++ " -e newsboat"))
-  , ("M-M1-f", spawn ("urxvt" ++ " -e lf"))
-  , ("M-M1-e", spawn ("urxvt" ++ " -e nvim"))
-  , ("M-M1-m", spawn ("urxvt" ++ " -e ncpamixer"))
+  , ("M-C-t", spawn ("st" ++ " -e htop"))
+  , ("M-C-n", spawn ("st" ++ " -e newsboat"))
+  , ("M-C-f", spawn ("st" ++ " -e lf"))
+  , ("M-C-e", spawn ("st" ++ " -e nvim"))
+  , ("M-C-m", spawn ("st" ++ " -e ncpamixer"))
   , ("M-m", windows W.focusMaster)
   , ("M-j", windows W.focusDown)
   , ("M-k", windows W.focusUp)
@@ -350,7 +353,7 @@ myManageHook = composeAll
     , title     =? "st-float"         --> doFloat --custom window title
     , className =? "Gimp"             --> doFloat
     , className =? "Emacs"            --> viewShift "6"
-    , className =? "discord"          --> viewShift "9"
+    -- , className =? "discord"          --> viewShift "9"
     , title     =? "Oracle VM VirtualBox Manager"  --> doFloat
     , title     =? "Welcome to IntelliJ IDEA"      --> doFloat
     , title     =? "Welcome to IntelliJ IDEA"      --> viewShift "5"
@@ -376,25 +379,18 @@ myManageHook' = composeOne [ isFullscreen -?> doFullFloat ]
 myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                  , NS "discord" spawnDiscord findDiscord manageDiscord ]
     where
-    -- spawnTerm  = "urxvt" ++  " -n scratchpad"
+    h = 0.9
+    w = 0.9
+    t = 0.95 -h
+    l = 0.95 -w
     spawnTerm  = "st" ++  " -n scratchpad"
     findTerm   = resource =? "scratchpad"
-    -- manageTerm = customFloating $ W.RationalRect 0.05 0.05 0.9 0.9
-    manageTerm = customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
-                 -- where
-                 -- h = 0.9
-                 -- w = 0.9
-                 -- t = 0.95 -h
-                 -- l = 0.95 -w
+    manageTerm = customFloating $ W.RationalRect l t w h
+    -- manageTerm = customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
     spawnDiscord  = "discord-flatpak"
     findDiscord   = resource =? "discord"
-    -- manageDiscord = customFloating $ W.RationalRect l t w h
-    manageDiscord = customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
-                 -- where
-                 -- h = 0.9
-                 -- w = 0.9
-                 -- t = 0.95 -h
-                 -- l = 0.95 -w
+    manageDiscord = customFloating $ W.RationalRect l t w h
+    -- manageDiscord = customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
 
 myAddSpaces :: Int -> String -> String
 myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
