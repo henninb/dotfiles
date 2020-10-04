@@ -31,6 +31,7 @@ import XMonad.Prompt
 import XMonad.Prompt.FuzzyMatch
 import Control.Arrow (first)
 
+import XMonad.Util.NamedScratchpad
 
 import Graphics.X11.ExtraTypes
 import XMonad.Util.Paste (sendKey)
@@ -237,6 +238,12 @@ commonLayout = renamed [Replace "Com"]
 myTiled = renamed [Replace "test1" ]
     $ Tall 1 (1/2)
 
+xmobarEscape :: String -> String
+xmobarEscape = concatMap doubleLts
+    where
+        doubleLts '<' = "<<"
+        doubleLts x   = [x]
+
 ws1 = "1"
 ws2 = "2"
 ws3 = "3"
@@ -248,7 +255,7 @@ ws8 = "8"
 ws9 = "9"
 
 myWorkspaces :: [String]
-myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+myWorkspaces = [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9]
 
 -- clipboardCopy :: X ()
 -- clipboardCopy =
@@ -279,7 +286,10 @@ myKeys = [
   , ("M-S-i"             , spawn ("firefox" ++ " -private-window"))
   , ("M-<Print>"         , spawn "flameshot gui -p $HOME/Desktop")
   -- , ("M-S-<Return>"      , spawn "tdrop -am -w 1355 -y 25 urxvt -name 'urxvt-float'")
-  , ("M-S-<Return>"      , spawn "tdrop -am -w 1355 -y 25 st -T 'st-float'")
+  , ("M-<F12>"      , namedScratchpadAction myScratchPads "terminal")
+  , ("M-<F11>"      , namedScratchpadAction myScratchPads "discord")
+  -- , ("M-<F12>"      , spawn "tdrop -am -w 1355 -y 25 st -T 'st-float'")
+  , ("M-S-<Return>"      , spawn "urxvt")
   , ("M-<Return>"        , spawn myTerminal)
   , ("M-S-<Backspace>"   , spawn "xdo close")
   , ("M-S-<Escape>"      , spawn "wm-exit xmonad")
@@ -290,8 +300,8 @@ myKeys = [
   -- , ("M-p"               , spawn "clipmenu -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
   , ("M-v"               , sendKey noModMask xF86XK_Paste)
   -- , ("M-S-v"               , sendKey noModMask xF86XK_Select)
-  , ("M-x"               , spawn "exec= redshift -O 3500")
-  , ("M-S-x"             , spawn "exec= redshift -x")
+  , ("M-x"               , spawn "redshift -O 3500")
+  , ("M-S-x"             , spawn "redshift -x")
   , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
   , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
   , ("<XF86AudioMute>", spawn "amixer set Master toggle")
@@ -301,6 +311,10 @@ myKeys = [
   , ("M-<F1>", spawnToWorkspace "discord-flatpak" ws9)
   , ("M-<F2>", spawnToWorkspace "spacefm" "8")
   , ("M-<F3>", spawn "intellij")
+  , ("M-M1-n", spawn ("urxvt" ++ " -e newsboat"))
+  , ("M-M1-f", spawn ("urxvt" ++ " -e lf"))
+  , ("M-M1-e", spawn ("urxvt" ++ " -e nvim"))
+  , ("M-M1-m", spawn ("urxvt" ++ " -e ncpamixer"))
   , ("M-m", windows W.focusMaster)
   , ("M-j", windows W.focusDown)
   , ("M-k", windows W.focusUp)
@@ -351,13 +365,36 @@ myManageHook = composeAll
     , (className =? "Notepadqq" <&&> title =? "Advanced Search") --> doFloat
     , className =? "Xmessage" --> doFloat
     , role =? "browser" --> viewShift "4"
-    ]
+    ]  <+> namedScratchpadManageHook myScratchPads
   where
     role = stringProperty "WM_WINDOW_ROLE"
     viewShift = doF . liftM2 (.) W.greedyView W.shift
     -- myShift = doF . liftM2 (.) W.greedyView
 
 myManageHook' = composeOne [ isFullscreen -?> doFullFloat ]
+
+myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
+                 , NS "discord" spawnDiscord findDiscord manageDiscord ]
+    where
+    -- spawnTerm  = "urxvt" ++  " -n scratchpad"
+    spawnTerm  = "st" ++  " -n scratchpad"
+    findTerm   = resource =? "scratchpad"
+    -- manageTerm = customFloating $ W.RationalRect 0.05 0.05 0.9 0.9
+    manageTerm = customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
+                 -- where
+                 -- h = 0.9
+                 -- w = 0.9
+                 -- t = 0.95 -h
+                 -- l = 0.95 -w
+    spawnDiscord  = "discord-flatpak"
+    findDiscord   = resource =? "discord"
+    -- manageDiscord = customFloating $ W.RationalRect l t w h
+    manageDiscord = customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
+                 -- where
+                 -- h = 0.9
+                 -- w = 0.9
+                 -- t = 0.95 -h
+                 -- l = 0.95 -w
 
 myAddSpaces :: Int -> String -> String
 myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
@@ -377,6 +414,8 @@ polybarOutput str =
 --     , ppSep = "    "
 --     , ppTitle = const ""
 --     }
+windowCount :: X (Maybe String)
+windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 
 polybarLogHook = def
     { ppOutput = polybarOutput
@@ -387,6 +426,7 @@ polybarLogHook = def
     , ppWsSep = ""
     , ppSep = " | "
     , ppTitle = myAddSpaces 25
+    , ppExtras  = [windowCount]                           -- # of windows current works
     }
 
 spawnToWorkspace :: String -> String -> X ()
