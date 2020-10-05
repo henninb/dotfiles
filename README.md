@@ -128,3 +128,4 @@
 - trayer (non-polybar)
 - polkit settings manager - lxsession
 - mpdris2
+- playerctl
