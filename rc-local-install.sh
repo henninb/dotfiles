@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat > rc-local.service <<'EOF'
+cat > rc-local.service <<EOF
 [Unit]
 Description=/etc/rc.local Compatibility
 ConditionPathExists=/etc/rc.local
@@ -17,7 +17,7 @@ SysVStartPriority=99
 WantedBy=multi-user.target
 EOF
 
-cat > rc.local <<'EOF'
+cat > rc.local <<EOF
 #!/bin/sh
 
 echo hellotest
@@ -42,7 +42,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo systemctl start rc-local
   sudo systemctl status rc-local
 elif [ "$OS" = "CentOS Linux" ]; then
-  echo "work on centos"
+  echo "TODO: work on centos"
   exit 1
 elif [ "$OS" = "CentOS Linux" ]; then
   echo Gentoo openrc
