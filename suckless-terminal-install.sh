@@ -30,35 +30,61 @@ else
 fi
 
 cd "$HOME/projects" || exit
-git clone https://git.suckless.org/st
-cd st || exit
-git pull origin master
-if ! sudo make clean install CC=gcc ; then
+rm -rf st-original
+git clone https://git.suckless.org/st st-original
+cd st-original || exit
+
+if ! make CC=gcc ; then
   echo "make failed."
   exit 1
 fi
+mv -v st "$HOME/.local/bin/st-original"
 
-tic -sx st.info
+# tic -sx st.info
 cd "$HOME" || exit
 
 cd "$HOME/projects" || exit
+rm -rf st-transparency
 git clone git@github.com:Tharre/st-transparency.git
 cd st-transparency || exit
 if ! make CC=gcc; then
   echo "make failed."
   exit 1
 fi
-mv st "$HOME/.local/bin/st-transparency"
+mv -v st "$HOME/.local/bin/st-transparency"
 cd "$HOME" || exit
 
 cd "$HOME/projects" || exit
+rm -rf st-luke
 git clone git@github.com:LukeSmithxyz/st.git st-luke
 cd st-luke || exit
 if ! make CC=gcc; then
   echo "make failed."
   exit 1
 fi
-mv st "$HOME/.local/bin/st-luke"
+mv -v st "$HOME/.local/bin/st-luke"
+cd "$HOME" || exit
+
+cd "$HOME/projects" || exit
+rm -rf st-brodie
+git clone git@github.com:BrodieRobertson/st.git st-brodie
+cd st-brodie || exit
+if ! make CC=gcc; then
+  echo "make failed."
+  exit 1
+fi
+mv -v st "$HOME/.local/bin/st-brodie"
+cd "$HOME" || exit
+
+cd "$HOME/projects" || exit
+rm -rf st
+git clone git@github.com:BitExplorer/st.git
+cd st || exit
+if ! make CC=gcc; then
+  echo "make failed."
+  exit 1
+fi
+sudo mv -v st /usr/local/bin
 cd "$HOME" || exit
 
 exit 0
