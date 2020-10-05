@@ -94,6 +94,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S vifm
   sudo pacman --noconfirm --needed -S pulseaudio
   sudo pacman --noconfirm --needed -S alsa-utils
+  yay -S mpdris2
   sudo systemctl disable mpd.socket
   sudo systemctl stop mpd.socket
 elif [ "$OS" = "FreeBSD" ]; then
