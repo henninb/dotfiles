@@ -437,7 +437,6 @@ spawnToWorkspace program workspace = do
 myStartupHook :: X ()
 myStartupHook = do
     setWMName "LG3D"
-    -- spawnOnce "export DESKTOP_SESSION=xmonad"
     liftIO (setEnv "DESKTOP_SESSION" "xmonad")
     spawnOnce "$HOME/.config/polybar/launch.sh xmonad"
     spawnOnce "flameshot"
@@ -447,10 +446,9 @@ myStartupHook = do
     spawnOnce "copyq"
     spawnOn "1" "alacritty"
     spawnOn "2" "alacritty"
-    -- spawn "sonata"
     spawnOnce "blueman-applet"
     spawnOnce "conky -c $HOME/.xmonad/system-overview"
-    -- spawn "mpd"
+    spawnOnce "mpDris2" -- required for mpd
     spawnOnce "volumeicon"
     spawnOnce "xscreensaver -no-splash"
     spawnOnce "feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg"
