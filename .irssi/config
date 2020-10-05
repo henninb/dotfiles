@@ -68,6 +68,9 @@ channels = (
   { name = "#linuxmint-chat"; chatnet = "spotchat"; autojoin = "Yes"; }
 );
 
+# /bind ^[Oa next_window
+# /bind ^[Ob previous_window
+
 aliases = {
   ATAG = "WINDOW SERVER";
   ADDALLCHANS = "SCRIPT EXEC foreach my \\$channel (Irssi::channels()) { Irssi::command(\"CHANNEL ADD -auto \\$channel->{name} \\$channel->{server}->{tag} \\$channel->{key}\")\\;}";
@@ -321,7 +324,7 @@ statusbar = {
   };
 };
 settings = {
-  core = {
+  core = { 
     real_name = "henninb";
     user_name = "henninb";
     nick = "henninb";
@@ -335,3 +338,7 @@ settings = {
 };
 hilights = ( { text = "nick"; nick = "yes"; word = "yes"; } );
 logs = { };
+keyboard = (
+  { key = "^J"; id = "next_window"; data = ""; },
+  { key = "^K"; id = "previous_window"; data = ""; },
+);

@@ -101,6 +101,7 @@ myRemoveKeys = [
                , (altKeyMask, xK_e)
                , (altKeyMask, xK_p)
                , (altKeyMask, xK_x)
+               , (controlMask, xK_p)
                , (altKeyMask .|. shiftMask, xK_q)
                , (altKeyMask .|. shiftMask, xK_c)
                -- , (altKeyMask, xK_space)
