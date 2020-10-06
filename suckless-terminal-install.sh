@@ -77,6 +77,17 @@ mv -v st "$HOME/.local/bin/st-brodie"
 cd "$HOME" || exit
 
 cd "$HOME/projects" || exit
+rm -rf st-distrotube
+git clone git@gitlab.com:dwt1/st-distrotube.git st-distrotube
+cd st-distrotube || exit
+if ! make CC=gcc; then
+  echo "make failed."
+  exit 1
+fi
+mv -v st "$HOME/.local/bin/st-distrotube"
+
+cd "$HOME" || exit
+cd "$HOME/projects" || exit
 rm -rf st
 git clone git@github.com:BitExplorer/st.git
 cd st || exit
