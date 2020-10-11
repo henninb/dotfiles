@@ -78,4 +78,6 @@ else
   exit 1
 fi
 
+flatpak update -y
+
 exit 0
