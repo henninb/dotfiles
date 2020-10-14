@@ -26,11 +26,11 @@ sudo emerge --update --newuse jq
 sudo pacman --noconfirm --needed -S jq
 sudo apt install -y jq
 
-pkill -f "com.intellij.idea.Main"
+pkill -f "intellij.idea.Main"
 
-find ~/.config/JetBrains/IntelliJIdea2020.1 -type d -exec touch -t "$(date +'%Y%m%d%H%M')" {} \;
-rm -rf "$HOME/.config/JetBrains/IntelliJIdea2020.1/config/eval"
-rm -rf "$HOME/.config/JetBrains/IntelliJIdea2020.1/config/options/other.xml"
+find ~/.config/JetBrains/IntelliJIdea2020.2 -type d -exec touch -t "$(date +'%Y%m%d%H%M')" {} \;
+rm -rf "$HOME/.config/JetBrains/IntelliJIdea2020.2/eval"
+rm -rf "$HOME/.config/JetBrains/IntelliJIdea2020.2/options/other.xml"
 rm -rf ~/.java/.userPrefs/jetbrains
 
 VER=$(curl -s 'https://data.services.jetbrains.com/products/releases?code=IIU&latest=true&type=release&build=&_=1581558835218' | jq '.IIU[0] .version' | cut -d \" -f2)
