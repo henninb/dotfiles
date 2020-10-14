@@ -78,6 +78,6 @@ else
   exit 1
 fi
 
-flatpak update -y
+flatpak update --user -y
 
 exit 0
