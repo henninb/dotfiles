@@ -26,6 +26,8 @@ sudo emerge --update --newuse jq
 sudo pacman --noconfirm --needed -S jq
 sudo apt install -y jq
 
+pkill -f "com.intellij.idea.Main"
+
 find ~/.config/JetBrains/IntelliJIdea2020.1 -type d -exec touch -t "$(date +'%Y%m%d%H%M')" {} \;
 rm -rf "$HOME/.config/JetBrains/IntelliJIdea2020.1/config/eval"
 rm -rf "$HOME/.config/JetBrains/IntelliJIdea2020.1/config/options/other.xml"
