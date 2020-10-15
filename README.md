@@ -129,3 +129,5 @@
 - polkit settings manager - lxsession
 - mpdris2
 - playerctl
+- git clone https://github.com/sdushantha/fontpreview
+- https://vim-bootstrap.com
