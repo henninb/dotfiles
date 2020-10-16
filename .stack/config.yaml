@@ -12,4 +12,4 @@ templates:
     author-email: henninb@msn.com
 #    copyright:
     github-username: bitexplorer
-  allow-newer: true
+# allow-newer: true
