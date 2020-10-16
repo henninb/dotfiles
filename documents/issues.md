@@ -357,3 +357,6 @@ Failed to create bus connection: No such file or directory
    77  sudo rc-update add elogind default
    78  sudo rc-service elogind start
 
+
+## setting screen resolution
+- xrandr --size 1920x1080
