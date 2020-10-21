@@ -43,5 +43,6 @@ export CM_OUTPUT_CLIP=1
 export CM_MAX_CLIPS=25
 
 # TODO: required for monitor to work at 1080p
-# xrandr --output HDMI-1 --mode 1920x1080
+xrandr --output HDMI-1 --mode 1920x1080
+xrandr --output HDMI-0 --mode 1920x1080
 xrandr --size 1920x1080
