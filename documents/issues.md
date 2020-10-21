@@ -361,4 +361,5 @@ Failed to create bus connection: No such file or directory
 ## setting screen resolution
 - xrandr --size 1920x1080
 - xrandr --output HDMI-1 --mode 1920x1080
+- xrandr --output HDMI-0 --mode 1920x1080
 - sudo vim /etc/profile.d/external_monitor_resol.sh
