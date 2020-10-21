@@ -41,3 +41,6 @@ export CM_SELECTION="primary clipboard"
 export CM_DEBUG=0
 export CM_OUTPUT_CLIP=1
 export CM_MAX_CLIPS=25
+
+# TODO: required for monitor to work at 1080p
+xrandr --output HDMI-1 --mode 1920x1080
