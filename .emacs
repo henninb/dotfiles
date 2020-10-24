@@ -20,6 +20,7 @@
 ;(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
 (package-initialize)
+(package-refresh-contents)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -71,6 +72,10 @@
 
 ; smart mode line
 (use-package smart-mode-line-powerline-theme
+  :ensure t)
+
+; language support mode
+(use-package lsp-mode
   :ensure t)
 
 (use-package smart-mode-line
@@ -331,11 +336,22 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   (quote
-    ("e1ecb0536abec692b5a5e845067d75273fe36f24d01210bf0aa5842f2a7e029f" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" default)))
+   '("e1ecb0536abec692b5a5e845067d75273fe36f24d01210bf0aa5842f2a7e029f" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" default))
+ '(erc-autojoin-channels-alist
+   '(("freenode.net" "#archlinux" "#freebsd" "#ubuntu" "#gentoo" "#fedora" "#voidlinux" "#manjaro" "#solus" "#neovim" "#vim" "#emacs" "#xmonad" "#i3" "#bspwm" "#scala" "#kotlin" "#python" "#ruby" "#haskell")))
+ '(erc-autojoin-timing 'ident)
+ '(erc-fill-function 'erc-fill-static)
+ '(erc-fill-static-center 22)
+ '(erc-hide-list '("JOIN" "PART" "QUIT"))
+ '(erc-lurker-hide-list '("JOIN" "PART" "QUIT"))
+ '(erc-lurker-threshold-time 43200)
+ '(erc-prompt-for-nickserv-password nil)
+ '(erc-server-reconnect-attempts 5)
+ '(erc-server-reconnect-timeout 3)
+ '(erc-track-exclude-types
+   '("JOIN" "MODE" "NICK" "PART" "QUIT" "324" "329" "332" "333" "353" "477"))
  '(package-selected-packages
-   (quote
-    (diminish use-package smart-mode-line-powerline-theme doom-themes))))
+   '(diminish use-package smart-mode-line-powerline-theme doom-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
