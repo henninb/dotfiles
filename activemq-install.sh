@@ -7,7 +7,7 @@ echo "$ACTIVEMQ_PASSWORD"
 
 AMQ_VER=$(curl -fA 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:69.0) Gecko/20100101 Firefox/69.0' 'http://activemq.apache.org/components/classic/download/' | grep -o 'ActiveMQ [0-9.]\+[0-9]' | sed 's/ActiveMQ //')
 
-cat > activemq.service <<'EOF'
+cat > activemq.service <<EOF
 [Unit]
 Description=activemq message queue
 After=network.target
@@ -21,12 +21,12 @@ Group=root
 WantedBy=multi-user.target
 EOF
 
-cat > activemq.start <<'EOF'
+cat > activemq.start <<EOF
 #!/bin/sh
 /opt/activemq/bin/activemq start
 EOF
 
-cat > activemq.stop <<'EOF'
+cat > activemq.stop <<EOF
 #!/bin/sh
 /opt/activemq/bin/activemq stop
 EOF
