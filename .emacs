@@ -20,7 +20,8 @@
 ;(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
 (package-initialize)
-(package-refresh-contents)
+(unless package-archive-contents
+  (package-refresh-contents))
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -75,8 +76,22 @@
   :ensure t)
 
 ; language support mode
+(defun efs/lsp-mode-setup ()
+  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+  (lsp-headerline-breadcrumb-mode))
+
 (use-package lsp-mode
-  :ensure t)
+  :commands (lsp lsp-deferred)
+  :hook (lsp-mode . efs/lsp-mode-setup)
+  :init
+  (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
+  :config
+  (lsp-enable-which-key-integration t))
+
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode)
+  :custom
+  (lsp-ui-doc-position 'bottom))
 
 (use-package smart-mode-line
   :ensure t
