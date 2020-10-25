@@ -131,3 +131,4 @@
 - playerctl
 - git clone https://github.com/sdushantha/fontpreview
 - https://vim-bootstrap.com
+- sqlite
