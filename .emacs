@@ -393,7 +393,9 @@
 (prepare-scratch-for-kill)
 
 ;; Set default connection mode to SSH for tramp
-(setq tramp-default-method "ssh")
+(require 'tramp)
+(setq tramp-verbose 10)
+; (setq tramp-default-method "ssh")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

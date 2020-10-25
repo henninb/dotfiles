@@ -140,7 +140,7 @@ function niceProcess() {
       CURRENT_NICE=$(ps -Afl -C ${PID} | awk '{print $11}' | grep -v NI | head -n 1)
       if [ "${CURRENT_NICE}" != "${NICE_VAL}" ]; then
         echo "RUNNING: sudo renice -n \"${NICE_VAL}\" -p ${PID}"
-        sudo renice -n "${NICE_VAL}" -p ${PID}
+        sudo renice -n "${NICE_VAL}" -p "${PID}"
         #ps -Afl -C ${PID}
       else
         echo ${NICE_VAL}
@@ -169,3 +169,6 @@ function ytd() {
     rm "$1.opus"
   fi
 }
+
+# fix for emacs tramp 10/25/2020
+[ $TERM = "dumb" ] && unsetopt zle && PS1='$ '

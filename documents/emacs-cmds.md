@@ -46,3 +46,9 @@ M-x package-install RET magit RET
 
 ## version of magit
 ```M-x magit-version RET```
+
+## tramp
+```
+Cx,Cf
+/ssh:henninb@192.168.100.208:/home/henninb/.zshrc
+```
