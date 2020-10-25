@@ -10,12 +10,20 @@ else
   echo "$KOTLIN_VER"
 fi
 
+cd "$HOME/projects/" || exit
 if [ ! -f "kotlin-compiler-${KOTLIN_VER}.zip" ]; then
   wget "https://github.com/JetBrains/kotlin/releases/download/v${KOTLIN_VER}/kotlin-compiler-${KOTLIN_VER}.zip"
   # wget "https://github.com/JetBrains/kotlin/releases/download/v1.4.0/kotlin-compiler-1.4.0.zip
 fi
 cd /opt || exit
-sudo unzip -o "$HOME/kotlin-compiler-${KOTLIN_VER}.zip"
+sudo unzip -o "$HOME/projects/kotlin-compiler-${KOTLIN_VER}.zip"
 echo "$KOTLIN_VER"
+
+# curl -sSLO https://github.com/pinterest/ktlint/releases/download/0.39.0/ktlint
+# curl -sSLO https://github.com/pinterest/ktlint/releases/download/0.39.0/ktlint
+# chmod a+x ktlint
+# echo sudo mv ktlint /usr/local/bin/
+cd "$HOME/projects/" || exit
+curl -sSLO https://github.com/pinterest/ktlint/archive/0.39.0.tar.gz
 
 exit 0

@@ -1,6 +1,8 @@
+;;; package --- my setup
 ; gem pristine --all
 ;;; .emacs
 (setq user-full-name "Brian Henning"
+      ;;; Code: this is my setup
       user-mail-address "henninb@msn.com")
 
 (setq gc-cons-threshold 50000000)
@@ -15,10 +17,16 @@
 ;(setq frame-resize-pixelwise t)
 
 (require 'package)
-(setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
-;(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
+
+; original
+;(setq package-enable-at-startup nil)
+;(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+;(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("melpa-stable" . "https://stable.melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
@@ -30,6 +38,8 @@
 (eval-when-compile
   (require 'use-package))
 
+;; Add my elisp path to load-path
+(push "~/.emacs.d/elisp" load-path)
 
 (unless (package-installed-p 'evil)
    (package-install 'evil))
@@ -65,6 +75,7 @@
 ;(set-face-attribute 'default nil :height 150)
 
 ; theme
+;(use-package spacegray-theme :defer t)
 (use-package doom-themes
   :ensure t
   :config
@@ -72,8 +83,11 @@
   (doom-themes-visual-bell-config))
 
 ; smart mode line
-(use-package smart-mode-line-powerline-theme
-  :ensure t)
+;(use-package smart-mode-line-powerline-theme
+;  :ensure t)
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
 
 ; language support mode
 (defun efs/lsp-mode-setup ()
@@ -196,6 +210,13 @@
   :diminish flycheck-mode
   :config
   (add-hook 'after-init-hook #'global-flycheck-mode))
+
+(use-package flycheck-kotlin :ensure t)
+
+; (eval-after-load 'flycheck
+;   (progn
+;     (require 'flycheck-kotlin)
+;     (flycheck-kotlin-setup)))
 
 ;; M-x package-install RET magit RET
 ;; git package
@@ -344,6 +365,8 @@
 
 (prepare-scratch-for-kill)
 
+;; Set default connection mode to SSH
+(setq tramp-default-method "ssh")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -365,8 +388,9 @@
  '(erc-server-reconnect-timeout 3)
  '(erc-track-exclude-types
    '("JOIN" "MODE" "NICK" "PART" "QUIT" "324" "329" "332" "333" "353" "477"))
+ '(lsp-ui-doc-position 'bottom t)
  '(package-selected-packages
-   '(diminish use-package smart-mode-line-powerline-theme doom-themes)))
+   '(flycheck-rust diminish use-package smart-mode-line-powerline-theme doom-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
