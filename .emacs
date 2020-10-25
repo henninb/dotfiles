@@ -44,7 +44,7 @@
 (unless (package-installed-p 'evil)
    (package-install 'evil))
 
-;(menu-bar-mode -1)
+(menu-bar-mode 1)
 ;(toggle-scroll-bar -1)
 ;(tool-bar-mode -1)
 (blink-cursor-mode 1)
@@ -89,6 +89,7 @@
   :ensure t
   :init (doom-modeline-mode 1))
 
+
 ; language support mode
 (defun efs/lsp-mode-setup ()
   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
@@ -112,6 +113,32 @@
   :config
   (setq sml/theme 'powerline)
   (add-hook 'after-init-hook 'sml/setup))
+
+(use-package fish-completion
+  :ensure t
+  :hook (eshell-mode . fish-completion-mode))
+
+; TODO: how to enable this?
+(use-package eshell-syntax-highlighting
+  :ensure t
+  :after esh-mode
+  :config
+  (eshell-syntax-highlighting-global-mode +1))
+
+; TODO: how to enable this?
+; (use-package esh-autosuggest
+;   :hook (eshell-mode . esh-autosuggest-mode)
+;   :config
+;   (setq esh-autosuggest-delay 0.5)
+;   (set-face-foreground 'company-preview-common "#4b5668")
+;   (set-face-background 'company-preview nil))
+
+(use-package eshell-toggle
+  :bind ("C-M-'" . eshell-toggle)
+  :custom
+  (eshell-toggle-size-fraction 3)
+  (eshell-toggle-use-projectile-root t)
+  (eshell-toggle-run-command nil))
 
 ; send backup files to the temp directory
 (setq backup-directory-alist
@@ -365,7 +392,7 @@
 
 (prepare-scratch-for-kill)
 
-;; Set default connection mode to SSH
+;; Set default connection mode to SSH for tramp
 (setq tramp-default-method "ssh")
 
 (custom-set-variables
@@ -390,7 +417,7 @@
    '("JOIN" "MODE" "NICK" "PART" "QUIT" "324" "329" "332" "333" "353" "477"))
  '(lsp-ui-doc-position 'bottom t)
  '(package-selected-packages
-   '(flycheck-rust diminish use-package smart-mode-line-powerline-theme doom-themes)))
+   '(## flycheck-rust diminish use-package smart-mode-line-powerline-theme doom-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
