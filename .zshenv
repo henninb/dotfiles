@@ -68,7 +68,7 @@ if [[ $- == *i* ]]; then
   export LESS_TERMCAP_me=$(tput sgr0)
 fi
 
-function gemerge() {
+gemerge() {
   if [ "$#" -ne 1 ]; then
     echo "Usage: ${FUNCNAME} <package>" >&2
   else
@@ -82,7 +82,7 @@ function gemerge() {
   fi
 }
 
-function pjava() {
+pjava() {
   if [ "$#" -ne 1 ]; then
     echo "Usage: ${FUNCNAME} <appname>" >&2
   else
@@ -98,7 +98,7 @@ function pjava() {
   fi
 }
 
-function git_sparse_clone() (
+git_sparse_clone() (
   rurl="$1" localdir="$2" && shift 2
 
   mkdir -p "$localdir"
@@ -117,7 +117,7 @@ function git_sparse_clone() (
   git pull origin master
 )
 
-function gitpush() {
+gitpush() {
   if [ "$#" -lt 1 ]; then
     echo "Usage: ${FUNCNAME} <messages>" >&2
   else
@@ -128,7 +128,7 @@ function gitpush() {
   fi
 }
 
-function niceProcess() {
+niceProcess() {
   if [ "$#" -ne 1 ]; then
     echo "Usage: ${FUNCNAME} <process_name>" >&2
   else
@@ -151,7 +151,7 @@ function niceProcess() {
   fi
 }
 
-function mdless() {
+mdless() {
   if [ "$#" -lt 1 ]; then
     echo "Usage: ${FUNCNAME} <mdfile>" >&2
   else
@@ -159,7 +159,7 @@ function mdless() {
   fi
 }
 
-function ytd() {
+ytd() {
   if [ "$#" -ne 1 ]; then
     echo "Usage: ${FUNCNAME} <youtube_id>" >&2
   else

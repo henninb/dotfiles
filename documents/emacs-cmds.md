@@ -51,4 +51,5 @@ M-x package-install RET magit RET
 ```
 Cx,Cf
 /ssh:henninb@192.168.100.208:/home/henninb/.zshrc
+Cg to quit
 ```
