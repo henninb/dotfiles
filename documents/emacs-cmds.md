@@ -1,19 +1,13 @@
 # emacs commands
 
 ## close window and buffer
-```
-Cx,4,0
-```
+```C-x,4,0```
 
 ## close the split buffer
-```
-Cx,0
-```
+```C-x,0```
 
-## quit within emacs (i overwrote this)
-```
-Cx-g
-```
+## quit within emacs (custom)
+``` C-x-g ```
 
 ## emacsclient as a server
 use emacsclient as $EDITOR
@@ -24,32 +18,25 @@ emacsclient -c -e "(print (+ 5 4))"
 emacsclient -e "(print (+ 5 4))"
 
 ## startup Dired
-```
-Cx,d
-Cx,4,d
-```
+``` C-x,d or C-x,4,d ```
 
 ## startup magit
-```
-Mx,magit
-```
+``` M-x,magit ```
 
 ## startup emms
-```
-Mx,emms
-```
+``` M-x,emms ```
 
 ## install package magit
-```
-M-x package-install RET magit RET
-```
+``` M-x package-install RET magit RET ```
 
 ## version of magit
 ```M-x magit-version RET```
 
 ## tramp
-```
-Cx,Cf
-/ssh:henninb@192.168.100.208:/home/henninb/.zshrc
-Cg to quit
-```
+``` C-x,C-f /ssh:henninb@192.168.100.208:/home/henninb/.zshrc```
+```~/.authinfo.gpg```
+```(setq password-cache-expiry nil)```
+```which requires the package password-cache.el```
+
+## evaluate an expression
+``` M-: (= 0 1) RET ```

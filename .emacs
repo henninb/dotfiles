@@ -146,6 +146,13 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
+; added on 10/27/2020
+(use-package auth-source
+  :ensure t
+)
+
+; machine 12.34.56.789 login lawlist password 12345678 port ssh
+(setq auth-sources '("/home/henninb/.authinfo"))
 
 ; fix the yes no prompts
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -357,9 +364,18 @@
   :ensure t
 )
 
+;; TODO: helm or ivy?
 (use-package helm
    :ensure t
 )
+
+(use-package helm-dired-history
+  :ensure t
+)
+
+(require 'savehist)
+(add-to-list 'savehist-additional-variables 'helm-dired-history-variable)
+(savehist-mode 1)
 
 (use-package ido
    :ensure t
