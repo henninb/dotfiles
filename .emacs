@@ -115,10 +115,10 @@
   (lsp-ui-doc-position 'bottom))
 
 (use-package smart-mode-line
-  :ensure t
-  :config
-  (setq sml/theme 'powerline)
-  (add-hook 'after-init-hook 'sml/setup))
+  :ensure t )
+;   :config
+;   (setq sml/theme 'powerline)
+;   (add-hook 'after-init-hook 'sml/setup))
 
 (use-package fish-completion
   :ensure t
@@ -416,8 +416,8 @@
 
 ;; Set default connection mode to SSH for tramp
 (require 'tramp)
-(setq tramp-verbose 10)
-; (setq tramp-default-method "ssh")
+;(setq tramp-verbose 10)
+(setq tramp-default-method "ssh")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -444,7 +444,7 @@
  '(eshell-toggle-use-projectile-root t t)
  '(lsp-ui-doc-position 'bottom t)
  '(package-selected-packages
-   '(vterm ## flycheck-rust diminish use-package smart-mode-line-powerline-theme doom-themes)))
+   '(bongo helm-dired-history helm elpy eval-in-repl json-mode markdown-mode rust-mode haskell-mode emms magit flycheck-kotlin flycheck company which-key crux expand-region smartparens diminish eshell-syntax-highlighting fish-completion doom-modeline doom-themes evil use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
