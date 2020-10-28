@@ -39,7 +39,8 @@
   (require 'use-package))
 
 ;; Add my elisp path to load-path
-(push "~/.emacs.d/elisp" load-path)
+;(push "~/.emacs.d/elisp" load-path)
+(load-file "~/.emacs.d/elisp/example.el")
 
 (unless (package-installed-p 'evil)
    (package-install 'evil))
