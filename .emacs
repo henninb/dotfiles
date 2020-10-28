@@ -74,6 +74,11 @@
 (set-frame-font "monofur for Powerline-18" nil t)
 ;(set-face-attribute 'default nil :height 150)
 
+
+; best terminal emulator for me
+(use-package vterm
+  :ensure t)
+
 ; theme
 ;(use-package spacegray-theme :defer t)
 (use-package doom-themes
@@ -433,9 +438,12 @@
  '(erc-server-reconnect-timeout 3)
  '(erc-track-exclude-types
    '("JOIN" "MODE" "NICK" "PART" "QUIT" "324" "329" "332" "333" "353" "477"))
+ '(eshell-toggle-run-command nil t)
+ '(eshell-toggle-size-fraction 3 t)
+ '(eshell-toggle-use-projectile-root t t)
  '(lsp-ui-doc-position 'bottom t)
  '(package-selected-packages
-   '(## flycheck-rust diminish use-package smart-mode-line-powerline-theme doom-themes)))
+   '(vterm ## flycheck-rust diminish use-package smart-mode-line-powerline-theme doom-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
