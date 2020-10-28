@@ -22,3 +22,6 @@ export CM_OUTPUT_CLIP=1
 export CM_MAX_CLIPS=25
 
 setxkbmap -option compose:ralt
+# added on 10/28/2020 for making caps lock key work like the control key
+#setxkbmap -option ctrl:swapcaps     # Swap Left Control and Caps Lock
+setxkbmap -option ctrl:nocaps       # Make Caps Lock a Control key
