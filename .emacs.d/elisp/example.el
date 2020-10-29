@@ -11,6 +11,12 @@
 ;                         (concat "export PS1=\"\033[33m" buffer "\033[0m:\033[35m\\W\033[0m>\"")))
 
 
+(defun pi-shell ()
+    (interactive)
+    (let ((default-directory "/ssh:pi:"))
+      (vterm)))
+;      (shell)))
+
 (defvar remote-shell-fav-hosts (make-hash-table :test 'equal)
   "Table of host aliases for IPs or other actual references.")
 

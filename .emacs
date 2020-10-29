@@ -421,6 +421,10 @@
 ;(setq tramp-verbose 10)
 (setq tramp-default-method "ssh")
 
+(add-to-list 'tramp-connection-properties
+             (list (regexp-quote "/ssh:user@host:")
+                   "remote-shell" "/bin/bash"))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
