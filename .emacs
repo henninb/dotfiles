@@ -46,8 +46,8 @@
    (package-install 'evil))
 
 (menu-bar-mode 1)
-;(toggle-scroll-bar -1)
-;(tool-bar-mode -1)
+(toggle-scroll-bar -1)
+(tool-bar-mode -1)
 (blink-cursor-mode 1)
 
 ; visual helpers
@@ -72,13 +72,12 @@
             scroll-conservatively 100000
                   scroll-preserve-screen-position 1)
 
-(set-frame-font "monofur for Powerline-18" nil t)
-;(set-face-attribute 'default nil :height 150)
 
 
-; best terminal emulator for me
+; best terminal emulator for me 10/27/2020
 (use-package vterm
-  :ensure t)
+  :ensure t ;; install if not already installed
+  )
 
 ; theme
 ;(use-package spacegray-theme :defer t)
@@ -95,6 +94,9 @@
   :ensure t
   :init (doom-modeline-mode 1))
 
+
+(set-frame-font "monofur for Powerline 12" nil t)
+;(set-face-attribute 'default nil :height 150)
 
 ; language support mode
 (defun efs/lsp-mode-setup ()
@@ -154,7 +156,7 @@
 
 ; added on 10/27/2020
 (use-package auth-source
-  :ensure t
+  :ensure t ; install if not already installed
 )
 
 ; machine 12.34.56.789 login lawlist password 12345678 port ssh

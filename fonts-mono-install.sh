@@ -20,6 +20,7 @@ done
 fc-cache -vf ~/.fonts/
 
 echo "fc-list | grep -i jet"
+echo "fc-list | grep -i monofur"
 fc-list | grep -i "symbo"
 fc-list : family | grep -i awesome
 echo https://www.fontsquirrel.com/
