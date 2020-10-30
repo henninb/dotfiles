@@ -162,14 +162,20 @@ in the default home directory unless DIRECTORY is specified."
 (defun my-remote-shell (server)
     (interactive)
     (let ((default-directory (format "/ssh:%s:" server)))
-      (vterm)))
+      (shell)))
 
+; doesnt seem to work with vterm
 (defun pi-shell ()
     (interactive)
     (let ((default-directory "/ssh:pi:"))
       (vterm)))
-;      (shell)))
+
 (defun gentoo-shell()
   (interactive)
   (my-remote-shell "gentoo")
+  )
+
+(defun pi-shell-v2()
+  (interactive)
+  (my-remote-shell "pi")
   )
