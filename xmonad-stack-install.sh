@@ -24,6 +24,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y copyq
   sudo apt install -y mpc
   sudo apt install -y mpd
+  sudo apt install -y vimb
   sudo apt install -y vifm
   sudo apt install -y flameshot
   sudo apt install -y conky
@@ -86,6 +87,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S conky
   sudo pacman --noconfirm --needed -S mpc
   sudo pacman --noconfirm --needed -S mpd
+  sudo pacman --noconfirm --needed -S vimb
   sudo pacman --noconfirm --needed -S font-awesome-4
   sudo pacman --noconfirm --needed -S dmenu
   sudo pacman --noconfirm --needed -S flameshot
