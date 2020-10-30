@@ -11,11 +11,6 @@
 ;                         (concat "export PS1=\"\033[33m" buffer "\033[0m:\033[35m\\W\033[0m>\"")))
 
 
-(defun pi-shell ()
-    (interactive)
-    (let ((default-directory "/ssh:pi:"))
-      (vterm)))
-;      (shell)))
 
 (defvar remote-shell-fav-hosts (make-hash-table :test 'equal)
   "Table of host aliases for IPs or other actual references.")
@@ -125,3 +120,56 @@ in the default home directory unless DIRECTORY is specified."
 ; (let ((my-favs '("pi")) (command "ls"))
 ;   (remote-shell-commands t t)
 ;   (remote-shell-commands-show command))
+
+; (defvar my-global-utility-menu-def
+;   '(
+;     ("Emacs REPL" . ielm)
+;     ("Emacs Edit Init" . (lambda () (find-file user-init-file)))
+;     )
+
+; (defun my-global-utility-popup ()
+;   "Pop up my menu. Hit RET immediately to select the default item."
+;   (interactive)
+;   (custom-popup my-global-utility-menu-def "Select: ", 1))
+
+; (global-set-key (kbd "<f12>") 'my-global-utility-popup)
+
+(easy-menu-define my-menu global-map "My server menu"
+  '("Servers"
+    ("primary"
+    ["pi" (my-remote-shell "pi") t]
+    ["archlinux" (my-remote-shell "archlinux") t]
+    ["silverfox" (my-remote-shell "silverfox") t]
+    ["gentoo" (my-remote-shell "gentoo") t]
+    )
+    ("secondary"
+     ["option1" my-obscure-function t]
+     )
+    ))
+
+(defvar my-number-list
+  '("one", "two", "three", "four", "five")
+  )
+
+(defun my-menu ()
+  (interactive)
+  ; (x-popup-menu (list '(200 200) (selected-window)) my-menu)
+  (tmm-prompt my-menu)
+  )
+
+(global-set-key (kbd "<f12>") 'my-menu)
+
+(defun my-remote-shell (server)
+    (interactive)
+    (let ((default-directory (format "/ssh:%s:" server)))
+      (vterm)))
+
+(defun pi-shell ()
+    (interactive)
+    (let ((default-directory "/ssh:pi:"))
+      (vterm)))
+;      (shell)))
+(defun gentoo-shell()
+  (interactive)
+  (my-remote-shell "gentoo")
+  )
