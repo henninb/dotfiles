@@ -72,7 +72,6 @@
             scroll-conservatively 100000
                   scroll-preserve-screen-position 1)
 
-
 ; prompt for gpg
 ; (unless dw/is-termux
 ;   (setq epa-pinentry-mode 'loopback)
@@ -380,6 +379,10 @@
 (use-package eval-in-repl
  :ensure t
 )
+
+(use-package fsharp-mode
+ :ensure t
+ :mode ".fs[iylx]?\\'")
 
 ;;C-c C-p
 ;;; Python support ;;
