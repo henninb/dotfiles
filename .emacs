@@ -137,6 +137,10 @@
   :config
   (eshell-syntax-highlighting-global-mode +1))
 
+(use-package eterm-256color
+   :ensure t
+   :hook (term-mode . eterm-256color-mode))
+
 ; TODO: how to enable this?
 ; (use-package esh-autosuggest
 ;   :hook (eshell-mode . esh-autosuggest-mode)
@@ -395,6 +399,11 @@
   :ensure t
 )
 
+(use-package ccls
+  :ensure t
+  :hook ((c-mode c++-mode objc-mode cuda-mode) .
+         (lambda () (require 'ccls) (lsp))))
+
 ;; TODO: helm or ivy?
 (use-package helm
    :ensure t
@@ -403,6 +412,16 @@
 (use-package helm-dired-history
   :ensure t
 )
+
+ (use-package dired-single
+    :ensure t
+    :defer t)
+
+(use-package dired-ranger
+    :defer t)
+
+(use-package dired-collapse
+    :defer t)
 
 (require 'savehist)
 (add-to-list 'savehist-additional-variables 'helm-dired-history-variable)
