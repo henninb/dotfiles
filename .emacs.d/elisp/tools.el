@@ -1,16 +1,4 @@
- ; (defun anr-shell (buffer)
-;   "Opens a new shell buffer where the given buffer is located."
-;   (interactive "sBuffer: ")
-;   (pop-to-buffer (concat "*" buffer "*"))
-;   (unless (eq major-mode 'shell-mode)
-;     (dired buffer)
-;     (shell buffer)
-;     (sleep-for 0 200)
-;     (delete-region (point-min) (point-max))
-;     (comint-simple-send (get-buffer-process (current-buffer))
-;                         (concat "export PS1=\"\033[33m" buffer "\033[0m:\033[35m\\W\033[0m>\"")))
-
-
+;; remote shell tools
 
 (defvar remote-shell-fav-hosts (make-hash-table :test 'equal)
   "Table of host aliases for IPs or other actual references.")
@@ -25,6 +13,13 @@ return an empty map."
              (hash-table-empty-p remote-shell-fav-hosts))
     (remote-shell-fav-hosts-get))
   remote-shell-fav-hosts)
+
+(defun remote-shell-fav-hosts-get ()
+  "My hook to the remote-shell processes in order to connect to
+    my OpenStack controller, and create a hashtable of host names as
+    the keys, and IP addresses as the values."
+  (interactive)
+  )
 
 (defun remote-shell-fav-hosts-list ()
   "Simply returns a list of known hosts from the cached map, or
@@ -179,3 +174,8 @@ in the default home directory unless DIRECTORY is specified."
   (interactive)
   (my-remote-shell "pi")
   )
+
+(defun eshell-there (host)
+  (interactive "sHost: ")
+  (let ((default-directory (format "/ssh:%s:" host)))
+    (eshell host)))

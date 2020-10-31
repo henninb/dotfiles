@@ -73,10 +73,14 @@
                   scroll-preserve-screen-position 1)
 
 
+; prompt for gpg
+; (unless dw/is-termux
+;   (setq epa-pinentry-mode 'loopback)
+;   (pinentry-start))
 
 ; best terminal emulator for me 10/27/2020
 (use-package vterm
-  :ensure t ;; install if not already installed
+  :ensure t ;; install package if not installed
   )
 
 ; theme
@@ -207,8 +211,21 @@
 ;   (evil-mode)
 
 ; toggle evil mode Ctl-z
+(setq evil-want-keybinding nil)
  (require 'evil)
    (evil-mode 1)
+
+(use-package evil-collection
+  :after evil
+  :ensure t ;; install package if not installed
+  :custom
+  (evil-collection-outline-bind-tab-p nil)
+  :config
+  (evil-collection-init))
+
+(use-package evil-nerd-commenter
+  :ensure t ;; install package if not installed
+  :bind ("M-/" . evilnc-comment-or-uncomment-lines))
 
 ; smart parens in  emacs
 (use-package smartparens
@@ -280,6 +297,14 @@
   (emms-playing-time 1)
 )
 
+(use-package super-save
+  :ensure t ; install package if not installed
+  :defer 1
+  :diminish super-save-mode
+  :config
+  (super-save-mode +1)
+  (setq super-save-auto-save-when-idle t))
+
 (defun toggle-evilmode ()
   (interactive)
   (if (bound-and-true-p evil-local-mode)
@@ -326,8 +351,6 @@
 ; ;; C-c e f. connect to freenode
 ; (global-set-key "\C-cef" (lambda () (interactive)
  ;    (erc :server "irc.freenode.net" :port "6667" :nick "henninb")))
-
-;(global-set-key (kbd "M-u") 'toggle-evilmode)
 
 (use-package haskell-mode
   :ensure t
