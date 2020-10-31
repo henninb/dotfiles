@@ -284,7 +284,7 @@
 ;; M-x package-install RET magit RET
 ;; git package
 (use-package magit
-  :ensure t
+  :ensure t ; install package if not installed
 ;;  :bind (("C-M-g" . magit-status))
 )
 
