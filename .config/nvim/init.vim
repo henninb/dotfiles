@@ -46,8 +46,7 @@ endif
    Plug 'vim-pandoc/vim-pandoc-syntax' " Markdown Docs in Vim
    Plug 'git@github.com:svermeulen/vim-subversive.git' " search and replace tool
    Plug 'git@github.com:bronson/vim-trailing-whitespace.git' " remove trailing whitespace
-   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-   " Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'} " for javascript
+   " Plug 'neoclide/coc.nvim', {'branch': 'release'}
    Plug 'git@github.com:dense-analysis/ale.git' " linter
    Plug 'sbdchd/neoformat' " for formatting code
    " Plug 'https://github.com/vim-scripts/CycleColor.git'
@@ -88,28 +87,28 @@ endif
 " coc config
 " CocCommand git.toggleGutters
 " :CocUninstall coc-pairs
-"  \ 'coc-pairs',
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-eslint',
-  \ 'coc-prettier',
-  \ 'coc-json',
-  \ 'coc-java',
-  \ 'coc-git',
-  \ 'coc-css',
-  \ 'coc-html',
-  \ 'coc-rls',
-  \ 'coc-python',
-  \ 'coc-fsharp',
-  \ ]
+
+" let g:coc_global_extensions = [
+"   \ 'coc-snippets',
+"   \ 'coc-eslint',
+"   \ 'coc-prettier',
+"   \ 'coc-json',
+"   \ 'coc-java',
+"   \ 'coc-git',
+"   \ 'coc-css',
+"   \ 'coc-html',
+"   \ 'coc-rls',
+"   \ 'coc-python',
+"   \ 'coc-fsharp',
+"   \ ]
 
 let g:ale_filetype_blacklist = [
 \   'nerdtree',
 \   'tags',
 \]
 
-autocmd VimLeavePre * :call coc#rpc#kill()
-autocmd VimLeave * if get(g:, 'coc_process_pid', 0) | call system('kill -9 -'.g:coc_process_pid) | endif
+" autocmd VimLeavePre * :call coc#rpc#kill()
+" autocmd VimLeave * if get(g:, 'coc_process_pid', 0) | call system('kill -9 -'.g:coc_process_pid) | endif
 
 let g:lightline = {
       \ 'colorscheme': 'darcula',
