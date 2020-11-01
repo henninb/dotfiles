@@ -402,10 +402,10 @@
   :ensure t
 )
 
-(use-package ccls
-  :ensure t
-  :hook ((c-mode c++-mode objc-mode cuda-mode) .
-         (lambda () (require 'ccls) (lsp))))
+; (use-package ccls
+;   :ensure t
+;   :hook ((c-mode c++-mode objc-mode cuda-mode) .
+;          (lambda () (require 'ccls) (lsp))))
 
 ;; TODO: helm or ivy?
 (use-package helm
