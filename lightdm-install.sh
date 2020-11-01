@@ -2,6 +2,7 @@
 
 
 cat > lightdm.conf <<EOF
+#[Seat:*]
 [SeatDefaults]
 autologin-guest=false
 #session-wrapper=/etc/lightdm/Xsession

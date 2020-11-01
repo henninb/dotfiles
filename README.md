@@ -133,3 +133,4 @@
 - https://vim-bootstrap.com
 - sqlite
 - vimb - vim based web browser
+- sudo npm add -g how2
