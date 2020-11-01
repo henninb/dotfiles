@@ -108,6 +108,9 @@ let g:ale_filetype_blacklist = [
 \   'tags',
 \]
 
+autocmd VimLeavePre * :call coc#rpc#kill()
+autocmd VimLeave * if get(g:, 'coc_process_pid', 0) | call system('kill -9 -'.g:coc_process_pid) | endif
+
 let g:lightline = {
       \ 'colorscheme': 'darcula',
       \ }
