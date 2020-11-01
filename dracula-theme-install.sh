@@ -18,18 +18,19 @@ unzip -o dracula-gtk-theme.zip
 mv -v gtk-master dracula-gtk-theme
 
 if [ ! -d "$HOME/.themes/dracula-gtk-theme" ]; then
-mv -v dracula-gtk-theme "$HOME/.themes"
+  mv -v dracula-gtk-theme "$HOME/.themes"
 fi
 
 if [ ! -d "$HOME/.themes/ant-dracula-gtk-theme" ]; then
-mv -v ant-dracula-gtk-theme "$HOME/.themes"
+  mv -v ant-dracula-gtk-theme "$HOME/.themes"
 fi
 
-# sudo mv ant-dracula-theme /usr/share/themes/Ant-Dracula
-# gsettings set org.gnome.desktop.interface gtk-theme "Ant-Dracula"
-# gsettings set org.gnome.desktop.wm.preferences theme "Ant-Dracula"
 
 gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
 gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
 
 exit 0
+
+# sudo mv ant-dracula-theme /usr/share/themes/Ant-Dracula
+# gsettings set org.gnome.desktop.interface gtk-theme "Ant-Dracula"
+# gsettings set org.gnome.desktop.wm.preferences theme "Ant-Dracula"
