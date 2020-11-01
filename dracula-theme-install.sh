@@ -25,7 +25,6 @@ if [ ! -d "$HOME/.themes/ant-dracula-gtk-theme" ]; then
   mv -v ant-dracula-gtk-theme "$HOME/.themes"
 fi
 
-
 gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
 gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
 
