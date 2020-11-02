@@ -40,14 +40,14 @@ endif
  call plug#begin(plugpath)
    Plug 'git@github.com:tpope/vim-surround.git'
    Plug 'git@github.com:tpope/vim-commentary.git'
-   Plug 'git@github.com:vim-syntastic/syntastic.git'
    Plug 'vimwiki/vimwiki'
    Plug 'vim-pandoc/vim-pandoc' " Markdown Docs in Vim
    Plug 'vim-pandoc/vim-pandoc-syntax' " Markdown Docs in Vim
    Plug 'git@github.com:svermeulen/vim-subversive.git' " search and replace tool
    Plug 'git@github.com:bronson/vim-trailing-whitespace.git' " remove trailing whitespace
    " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-   Plug 'ycm-core/YouCompleteMe' "coc alternative
+   Plug 'ycm-core/YouCompleteMe' "coc alternative for language server
+   Plug 'git@github.com:vim-syntastic/syntastic.git' "syntax checker for languages
    Plug 'git@github.com:dense-analysis/ale.git' " linter
    Plug 'sbdchd/neoformat' " for formatting code
    " Plug 'https://github.com/vim-scripts/CycleColor.git'
