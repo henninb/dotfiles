@@ -134,3 +134,4 @@
 - sqlite
 - vimb - vim based web browser
 - sudo npm add -g how2
+- procs - rust rewrite of ps
