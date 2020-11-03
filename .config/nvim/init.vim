@@ -45,6 +45,8 @@ endif
    Plug 'vim-pandoc/vim-pandoc-syntax' " Markdown Docs in Vim
    Plug 'git@github.com:svermeulen/vim-subversive.git' " search and replace tool
    Plug 'git@github.com:bronson/vim-trailing-whitespace.git' " remove trailing whitespace
+   Plug 'neovim/nvim-lspconfig'
+   Plug 'nvim-lua/completion-nvim'
    " Plug 'neoclide/coc.nvim', {'branch': 'release'}
    Plug 'ycm-core/YouCompleteMe' "coc alternative for language server
    Plug 'git@github.com:vim-syntastic/syntastic.git' "syntax checker for languages
