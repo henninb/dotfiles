@@ -133,7 +133,6 @@
 - https://vim-bootstrap.com
 - sqlite
 - vimb - vim based web browser
-- sudo npm add -g how2
 - procs - rust rewrite of ps
 - bat - is a cat alternative
 - how2 - stack overflow - sudo npm add -g how-2
