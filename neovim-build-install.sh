@@ -113,7 +113,11 @@ elif [ "$OS" = "CentOS Linux" ]; then
   fi
 elif [ "$OS" = "Gentoo" ]; then
   echo gentoo
-  sudo emerge  --update --newuse cmake
+  sudo emerge --update --newuse cmake
+  sudo emerge --update --newuse luajit
+  sudo luarocks build mpack
+  sudo luarocks build lpeg
+  sudo luarocks build inspect
 else
   echo "$OS is not yet implemented."
   exit 1
