@@ -125,7 +125,7 @@ git clone git@github.com:neovim/neovim.git
 cd neovim || exit
 git checkout master
 git fetch
-if git checkout "tags/$NVER"; then
+if ! git checkout "tags/$NVER"; then
   echo "git checkout tag version $NVER failed."
   exit 1
 fi
