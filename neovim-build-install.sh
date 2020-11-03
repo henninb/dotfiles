@@ -18,7 +18,10 @@ fi
 echo "$VER"
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] ; then
-  sudo pacman  --noconfirm --needed -S make luajit luarocks cmake base-devel
+  sudo pacman --noconfirm --needed -S make luajit luarocks cmake base-devel lua51-lpeg lua51-mpack
+  sudo luarocks build mpack
+  sudo luarocks build lpeg
+  sudo luarocks build inspect
 elif [ "$OS" = "Darwin" ]; then
   echo darwin
   brew install python3
@@ -123,7 +126,10 @@ cd neovim || exit
 git checkout master
 git fetch
 git checkout "tags/$NVER"
-if ! make CMAKE_BUILD_TYPE=RelWithDebInfo; then
+make distclean
+sed -i 's/CONFIGURE_COMMAND ""//g' third-party/cmake/BuildLibvterm.cmake
+# if ! make CMAKE_BUILD_TYPE=RelWithDebInfo; then
+if ! make CMAKE_BUILD_TYPE=RelWithDebInfo USE_BUNDLED=OFF; then
   echo make failed.
   exit 1
 fi
