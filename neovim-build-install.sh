@@ -12,10 +12,10 @@ if [ "$ACTUAL_VER" = "$NVER" ]; then
 fi
 
 if  [ -n "$VER_OVERRIDE" ]; then
-  VER=${VER_OVERRIDE}
+  NVER=${VER_OVERRIDE}
 fi
 
-echo "$VER"
+echo "$NVER"
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] ; then
   sudo pacman --noconfirm --needed -S make luajit luarocks cmake base-devel lua51-lpeg lua51-mpack
