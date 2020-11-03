@@ -105,6 +105,16 @@
 | gtk theme tool | lxappearance |
 | audio mixer | amixer, ncpamixer |
 
+## Language Servers
+- ccls
+- hls
+- ada_language_server
+- clojure-lsp
+- dockerfile-language-server
+- fsharp_language_server
+- gopls
+- kotlin-language-server
+
 ## Software - Yet to Review
 - steam
 - arduino
