@@ -106,14 +106,13 @@
 | audio mixer | amixer, ncpamixer |
 
 ## Language Servers
-- ccls
-- hls
-- ada_language_server
-- clojure-lsp
+- c - ccls
+- haskell - git@github.com:haskell/haskell-language-server.git
 - dockerfile-language-server
-- fsharp_language_server
-- gopls
-- kotlin-language-server
+- fsharp - fsharp_language_server
+- go - gopls
+- kotlin - git@github.com:fwcd/kotlin-language-server.git
+- python - 
 
 ## Software - Yet to Review
 - steam
