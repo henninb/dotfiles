@@ -45,46 +45,41 @@ endif
    Plug 'vim-pandoc/vim-pandoc-syntax' " Markdown Docs in Vim
    Plug 'git@github.com:svermeulen/vim-subversive.git' " search and replace tool
    Plug 'git@github.com:bronson/vim-trailing-whitespace.git' " remove trailing whitespace
-   Plug 'neovim/nvim-lspconfig'
+   Plug 'neovim/nvim-lspconfig' " navtive nvim langauge server
+   Plug 'nvim-lua/diagnostic-nvim'
+   Plug 'nvim-lua/lsp-status.nvim'
    Plug 'nvim-lua/completion-nvim'
    " Plug 'neoclide/coc.nvim', {'branch': 'release'}
    Plug 'ycm-core/YouCompleteMe' "coc alternative for language server
    Plug 'git@github.com:vim-syntastic/syntastic.git' "syntax checker for languages
    Plug 'git@github.com:dense-analysis/ale.git' " linter
+
+   Plug 'fwcd/kotlin-language-server', { 'do': './gradlew :server:installDist' } " kotlin language sesrver
+   Plug 'udalov/kotlin-vim' " kotlin syntax highlighting
+   Plug 'git@github.com:alvan/vim-closetag.git' "closing tags for html
    Plug 'sbdchd/neoformat' " for formatting code
-   " Plug 'https://github.com/vim-scripts/CycleColor.git'
    " Plug 'git@github.com:prettier/vim-prettier.git', { 'do': 'yarn add prettier' }
    Plug 'git@github.com:c-brenn/repel.nvim.git'
-   Plug 'git@github.com:scrooloose/nerdtree.git'
-   Plug 'Xuyuanp/nerdtree-git-plugin'
+   Plug 'git@github.com:scrooloose/nerdtree.git' " file manager for vim
+   Plug 'Xuyuanp/nerdtree-git-plugin' " git integration for nerd tree
    Plug 'unblevable/quick-scope'                  "  color movements
    Plug 'git@github.com:dhruvasagar/vim-zoom.git'
    Plug 'git@github.com:easymotion/vim-easymotion.git' " improvements for motions
-   Plug 'git@github.com:tpope/vim-fugitive.git'  " for git
+   Plug 'git@github.com:tpope/vim-fugitive.git'  " git integration for vim
    Plug 'norcalli/nvim-colorizer.lua' " tool to show colors in vim r,g,b
    Plug 'tpope/vim-abolish'
    Plug 'MikeCoder/quickrun.vim'
    " Plug 'dracula/vim', { 'name': 'dracula' }  " theme
    Plug 'benmills/vimux' " tmux integration
-   Plug 'git@github.com:alvan/vim-closetag.git' "closing tags for html
    Plug 'kovetskiy/sxhkd-vim'
    Plug 'git@github.com:rust-lang/rust.vim.git'
-   Plug 'udalov/kotlin-vim'
-   Plug 'git@github.com:neovimhaskell/haskell-vim.git'
+   Plug 'git@github.com:neovimhaskell/haskell-vim.git' " what does this do?
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
    Plug 'ryanoasis/vim-devicons'
    " Plug 'git@github.com:vim-airline/vim-airline.git' " line manager
    Plug 'git@github.com:itchyny/lightline.vim.git'    "line manager
    Plug 'voldikss/vim-floaterm' " embedded terminal
    Plug 'terryma/vim-multiple-cursors'
-   " Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " colors for hex
-"   Plug 'jiangmiao/auto-pairs' " used for auto closing quotes etc
-"   Plug 'neovimhaskell/haskell-vim'
-"   Plug 'git@github.com:itchyny/vim-haskell-indent.git'
-"   Plug 'git@github.com:terryma/vim-multiple-cursors.git'
-"   Plug 'git@github.com:yuttie/comfortable-motion.vim.git'
-"   Plug 'git@github.com:morhetz/gruvbox.git'
-"   Plug 'valloric/youcompleteme' "a code-completion engine
  call plug#end()
 
 " coc config
@@ -111,22 +106,20 @@ lua <<EOF
   require'nvim_lsp'.dockerls.setup{}
   require'nvim_lsp'.bashls.setup{}
   require'nvim_lsp'.rust_analyzer.setup{}
-  require'nvim_lsp'.solargraph.setup{
-    filetypes = { "ruby", "rb" }
-  }
   require'nvim_lsp'.tsserver.setup{}
+  require'nvim_lsp'.kotlin_language_server.setup{}
   require'nvim_lsp'.yamlls.setup{
     filetypes = { "yaml", "yml" }
   }
   require'nvim_lsp'.hls.setup{
- cmd = {"haskell-language-server", "--lsp"};
- init_options = {
+  cmd = {"haskell-language-server", "--lsp"};
+  init_options = {
    languageServerHaskell = {
      hlintOn = true;
      formattingProvider = "ormolu";
      diagnosticsOnChange = false;
    }
- }
+  }
 }
 EOF
 
