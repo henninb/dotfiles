@@ -103,7 +103,6 @@ endif
 " Neovim LSP setup
 lua <<EOF
   require'nvim_lsp'.gopls.setup{}
-  require'nvim_lsp'.dockerls.setup{}
   require'nvim_lsp'.bashls.setup{}
   require'nvim_lsp'.rust_analyzer.setup{}
   require'nvim_lsp'.tsserver.setup{}
@@ -302,9 +301,10 @@ autocmd BufRead xmobarrc set filetype=haskell
 autocmd BufRead Gemfile set filetype=ruby
 autocmd BufRead Vagrantfile set filetype=ruby
 autocmd BufRead Berksfile set filetype=ruby
+" autocmd BufRead Dockerfile set filetype=ruby
 "autocmd BufWritePre .zshrc %s/\s\+$//e
 if exists(":FixWhitespace")
-  autocmd BufWritePre .zshrc,*.sql,*.sh,*.json,.vimrc FixWhitespace
+  autocmd BufWritePre .zshrc,*.sql,*.sh,*.kt,*.java,*.json,.vimrc FixWhitespace
 endif
 
 let g:haskell_enable_quantification = 1
