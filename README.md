@@ -146,7 +146,7 @@
 - https://vim-bootstrap.com
 - sqlite
 - vimb - vim based web browser
-- procs - rust rewrite of ps
+- procs - rust rewrite of ps [cargo install procs]
 - bat - is a cat alternative
 - how2 - stack overflow - sudo npm add -g how-2
-- skim (sk) - rust rewrite of fzf
+- skim (sk) - rust rewrite of fzf [cargo install skim]
