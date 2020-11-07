@@ -45,20 +45,23 @@ endif
    Plug 'vim-pandoc/vim-pandoc-syntax' " Markdown Docs in Vim
    Plug 'git@github.com:svermeulen/vim-subversive.git' " search and replace tool
    Plug 'git@github.com:bronson/vim-trailing-whitespace.git' " remove trailing whitespace
+
+" dev plugins
    Plug 'neovim/nvim-lspconfig' " navtive nvim langauge server
    Plug 'nvim-lua/diagnostic-nvim'
    Plug 'nvim-lua/lsp-status.nvim'
    Plug 'nvim-lua/completion-nvim'
    " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-   Plug 'ycm-core/YouCompleteMe' "coc alternative for language server
+   " Plug 'ycm-core/YouCompleteMe' "coc alternative for language server
    Plug 'git@github.com:vim-syntastic/syntastic.git' "syntax checker for languages
    Plug 'git@github.com:dense-analysis/ale.git' " linter
 
    Plug 'fwcd/kotlin-language-server', { 'do': './gradlew :server:installDist' } " kotlin language sesrver
    Plug 'udalov/kotlin-vim' " kotlin syntax highlighting
-   Plug 'git@github.com:alvan/vim-closetag.git' "closing tags for html
    Plug 'sbdchd/neoformat' " for formatting code
+   Plug 'git@github.com:alvan/vim-closetag.git' "closing tags for html
    " Plug 'git@github.com:prettier/vim-prettier.git', { 'do': 'yarn add prettier' }
+
    Plug 'git@github.com:c-brenn/repel.nvim.git'
    Plug 'git@github.com:scrooloose/nerdtree.git' " file manager for vim
    Plug 'Xuyuanp/nerdtree-git-plugin' " git integration for nerd tree
@@ -103,7 +106,10 @@ endif
 " Neovim LSP setup
 lua <<EOF
   require'nvim_lsp'.gopls.setup{}
-  require'nvim_lsp'.bashls.setup{}
+  require'nvim_lsp'.bashls.setup{
+ log_level = vim.lsp.protocol.MessageType.Log;
+ message_level = vim.lsp.protocol.MessageType.Log;
+  }
   require'nvim_lsp'.rust_analyzer.setup{}
   require'nvim_lsp'.tsserver.setup{}
   require'nvim_lsp'.kotlin_language_server.setup{}
