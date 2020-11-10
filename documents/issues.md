@@ -367,3 +367,12 @@ Failed to create bus connection: No such file or directory
 ## imagemagick gentoo compile
 - magick convert rose.jpg rose.png
 - sudo EXTRA_ECONF="--with-png --with-jpeg" emerge imagemagick"
+
+## jdt language server install
+```
+    install coc-java (:CocInstall coc-java)
+    download the lastest snapshot of jdtls on http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz
+    decompress the tar.gz to a local folder (/home/luiz/jdtls in my case)
+    add java.jdt.ls.home in coc-settings.json ("java.jdt.ls.home" : "/home/luiz/jdtls" in my case)
+    open some java file
+```
