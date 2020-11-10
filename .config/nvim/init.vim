@@ -83,6 +83,9 @@ endif
    Plug 'git@github.com:itchyny/lightline.vim.git'    "line manager
    Plug 'voldikss/vim-floaterm' " embedded terminal
    Plug 'terryma/vim-multiple-cursors'
+   Plug 'liuchengxu/vim-which-key'
+   Plug 'justinmk/vim-sneak'
+   " sneak
  call plug#end()
 
 " coc config
@@ -176,6 +179,8 @@ let g:closetag_filetypes = 'html,js'
 " let g:MyAltKey = '<Esc>'
 " let g:AutoPairsShortcutToggle = 'M-p'
 let g:AutoPairsShortcutToggle = '<leader>"'
+
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
