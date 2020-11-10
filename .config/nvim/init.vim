@@ -47,11 +47,11 @@ endif
    Plug 'git@github.com:bronson/vim-trailing-whitespace.git' " remove trailing whitespace
 
 " dev plugins
-   Plug 'neovim/nvim-lspconfig' " navtive nvim langauge server
-   Plug 'nvim-lua/diagnostic-nvim'
-   Plug 'nvim-lua/lsp-status.nvim'
-   Plug 'nvim-lua/completion-nvim'
-   " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+   " Plug 'neovim/nvim-lspconfig' " navtive nvim langauge server
+   " Plug 'nvim-lua/diagnostic-nvim'
+   " Plug 'nvim-lua/lsp-status.nvim'
+   " Plug 'nvim-lua/completion-nvim'
+   Plug 'neoclide/coc.nvim', {'branch': 'release'}
    " Plug 'ycm-core/YouCompleteMe' "coc alternative for language server
    Plug 'git@github.com:vim-syntastic/syntastic.git' "syntax checker for languages
    Plug 'git@github.com:dense-analysis/ale.git' " linter
@@ -69,6 +69,7 @@ endif
    Plug 'git@github.com:dhruvasagar/vim-zoom.git'
    Plug 'git@github.com:easymotion/vim-easymotion.git' " improvements for motions
    Plug 'git@github.com:tpope/vim-fugitive.git'  " git integration for vim
+   Plug 'airblade/vim-gitgutter'  " shows git status in the gutter of vim
    Plug 'norcalli/nvim-colorizer.lua' " tool to show colors in vim r,g,b
    Plug 'tpope/vim-abolish'
    Plug 'MikeCoder/quickrun.vim'
@@ -81,6 +82,7 @@ endif
    Plug 'ryanoasis/vim-devicons'
    " Plug 'git@github.com:vim-airline/vim-airline.git' " line manager
    Plug 'git@github.com:itchyny/lightline.vim.git'    "line manager
+   Plug 'mhinz/vim-startify' " start screen for vim
    Plug 'voldikss/vim-floaterm' " embedded terminal
    Plug 'terryma/vim-multiple-cursors'
    Plug 'liuchengxu/vim-which-key'
@@ -88,6 +90,14 @@ endif
    " sneak
  call plug#end()
 
+source $HOME/.config/nvim/plug-config/ale.vim
+source $HOME/.config/nvim/plug-config/coc/coc.vim
+source $HOME/.config/nvim/plug-config/coc/coc-extensions.vim
+source $HOME/.config/nvim/plug-config/git-gutter.vim
+source $HOME/.config/nvim/plug-config/easy-motion.vim
+source $HOME/.config/nvim/plug-config/sneak.vim
+source $HOME/.config/nvim/plug-config/start-screen.vim
+source $HOME/.config/nvim/plug-config/vim-commentary.vim
 " coc config
 " CocCommand git.toggleGutters
 " :CocUninstall coc-pairs
@@ -107,34 +117,35 @@ endif
 "   \ ]
 
 " Neovim LSP setup
-lua <<EOF
-  require'nvim_lsp'.gopls.setup{}
-  require'nvim_lsp'.bashls.setup{
- log_level = vim.lsp.protocol.MessageType.Log;
- message_level = vim.lsp.protocol.MessageType.Log;
-  }
-  require'nvim_lsp'.rust_analyzer.setup{}
-  require'nvim_lsp'.tsserver.setup{}
-  require'nvim_lsp'.kotlin_language_server.setup{}
-  require'nvim_lsp'.yamlls.setup{
-    filetypes = { "yaml", "yml" }
-  }
-  require'nvim_lsp'.hls.setup{
-  cmd = {"haskell-language-server", "--lsp"};
-  init_options = {
-   languageServerHaskell = {
-     hlintOn = true;
-     formattingProvider = "ormolu";
-     diagnosticsOnChange = false;
-   }
-  }
-}
-EOF
+" lua <<EOF
+"   require'nvim_lsp'.gopls.setup{}
+"   require'nvim_lsp'.bashls.setup{
+"  log_level = vim.lsp.protocol.MessageType.Log;
+"  message_level = vim.lsp.protocol.MessageType.Log;
+"   }
+"   require'nvim_lsp'.rust_analyzer.setup{}
+"   require'nvim_lsp'.tsserver.setup{}
+"   require'nvim_lsp'.kotlin_language_server.setup{}
+"   require'nvim_lsp'.yamlls.setup{
+"     filetypes = { "yaml", "yml" }
+"   }
+"   require'nvim_lsp'.hls.setup{
+"   cmd = {"haskell-language-server", "--lsp"};
+"   init_options = {
+"    languageServerHaskell = {
+"      hlintOn = true;
+"      formattingProvider = "ormolu";
+"      diagnosticsOnChange = false;
+"    }
+"   }
+" }
+" EOF
 
-let g:ale_filetype_blacklist = [
-\   'nerdtree',
-\   'tags',
-\]
+" let g:ale_filetype_blacklist = [
+" \   'nerdtree',
+" \   'tags',
+" \]
+
 
 " autocmd VimLeavePre * :call coc#rpc#kill()
 " autocmd VimLeave * if get(g:, 'coc_process_pid', 0) | call system('kill -9 -'.g:coc_process_pid) | endif
