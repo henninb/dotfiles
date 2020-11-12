@@ -101,7 +101,7 @@
 | desktop greeter        | slick-greeter                                                                        |
 | clipboard manager      | copyq, clipmenu                                                                      |
 | color temperature tool | redshift                                                                             |
-| password manager       | kepassxc                                                                             |
+| password manager       | kepassxc, pass, passmenu, pass-otp                                                   |
 | gtk theme tool         | lxappearance                                                                         |
 | audio mixer            | amixer, ncpamixer                                                                    |
 
@@ -151,3 +151,4 @@
 - how2 - stack overflow - sudo npm add -g how-2
 - skim (sk) - rust rewrite of fzf [cargo install skim]
 - try this nvim setup - git clone git@github.com:ChristianChiarulli/nvim.git
+- zbar - zbarimg - decodes barcodes into text
