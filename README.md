@@ -117,6 +117,7 @@
 - python -
 - go - gopls
 - rust -
+- scala -
 
 ## Software - Yet to Review
 - steam
