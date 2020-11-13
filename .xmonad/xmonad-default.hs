@@ -286,6 +286,7 @@ myKeys = [
   , ("M-f"               , spawn "urxvt -e lf")
   , ("M-S-f"             , spawn "spacefm")
   , ("M-i"               , spawn "brave-browser")
+  , ("M-y"               , spawn "passmenu -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
   , ("M-S-i"             , spawn ("firefox" ++ " -private-window"))
   , ("M-<Print>"         , spawn "flameshot gui -p $HOME/Desktop")
   -- , ("M-S-<Return>"      , spawn "tdrop -am -w 1355 -y 25 urxvt -name 'urxvt-float'")
