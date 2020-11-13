@@ -500,4 +500,4 @@ export LIBGL_ALWAYS_SOFTWARE=1
 # export MPD_PORT=6000
 
 # fix for emacs tramp 10/25/2020
-[ $TERM = "dumb" ] && unsetopt zle && PS1='$ '
+[ "$TERM" = "dumb" ] && unsetopt zle && PS1='$ '
