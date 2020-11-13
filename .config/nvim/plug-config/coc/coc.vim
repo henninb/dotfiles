@@ -1,3 +1,7 @@
+
+" limit memory usage in coc
+let g:coc_node_args = ['--max-old-space-size=8192']
+
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :

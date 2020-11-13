@@ -55,26 +55,39 @@ export SPACESHIP_JULIA_SHOW
 SPACESHIP_DOCKER_SHOW=false
 export SPACESHIP_DOCKER_SHOW
 SPACESHIP_DOCKER_CONTEXT_SHOW=false
-export SPACESHIP_CONTEXT_SHOW
+export SPACESHIP_DOCKER_CONTEXT_SHOW
 SPACESHIP_AWS_SHOW=false
-export SPACESHIP_AWMS_SHOW
+export SPACESHIP_AWS_SHOW
 SPACESHIP_CONDA_SHOW=false
 export SPACESHIP_CONDA_SHOW
 SPACESHIP_VENV_SHOW=false
+export SPACESHIP_VENV_SHOW
 SPACESHIP_PYENV_SHOW=false
+export SPACESHIP_PYENV_SHOW
 SPACESHIP_DOTNET_SHOW=false
+export SPACESHIP_DOTNET_SHOW
 SPACESHIP_EMBER_SHOW=false
+export SPACESHIP_EMBER_SHOW
 SPACESHIP_KUBECONTEXT_SHOW=false
+export SPACESHIP_KUBECONTEXT_SHOW
 SPACESHIP_TERRAFORM_SHOW=false
-SPACESHIP_TERRAFORM_SHOW=false
+export SPACESHIP_TERRAFORM_SHOW
 SPACESHIP_VI_MODE_SHOW=false
+export SPACESHIP_VI_MODE_SHOW
 SPACESHIP_JOBS_SHOW=false
+export SPACESHIP_JOBS_SHOW
 SPACESHIP_DIR_PREFIX=""
+export SPACESHIP_DIR_PREFIX
 SPACESHIP_DIR_TRUNC_REPO=false
+export SPACESHIP_DIR_TRUNC_REPO
 SPACESHIP_HOST_PREFIX="@"
+export SPACESHIP_HOST_PREFIX
 SPACESHIP_HOST_SHOW=always
+export SPACESHIP_HOST_SHOW
 SPACESHIP_USER_SHOW=false
+export SPACESHIP_USER_SHOW
 SPACESHIP_GIT_PREFIX=""
+export SPACESHIP_GIT_PREFIX
 
 # if [ "$OS" = "Darwin" ]; then
 #   ZSH_THEME="agnoster"
@@ -291,8 +304,7 @@ fi
 
 # TODO: rewrite with the -z
 # if grep -q -A 3 '\[branch "master"\]' "$HOME/.git/config" | grep 'remote = origin'; then
-grep -A 3 '\[branch "master"\]' "$HOME/.git/config" | grep 'remote = origin' > /dev/null
- if [ $? -ne 0 ]; then
+if ! grep -A 3 '\[branch "master"\]' "$HOME/.git/config" | grep 'remote = origin' > /dev/null; then
   git branch --set-upstream-to=origin/master master
 fi
 
@@ -338,8 +350,7 @@ chmod 700 "$HOME"
 [ -s "/etc/profile.d/rvm.sh" ] && source /etc/profile.d/rvm.sh
 
 if [ "$OS" = "Gentoo" ]; then
-  grep "$(hostname)" /etc/hosts > /dev/null
-  if [ $? -ne 0 ]; then
+  if ! grep "$(hostname)" /etc/hosts > /dev/null; then
     echo "Action required: add a hostname entry to /etc/hosts to prevent issues with xauth."
   fi
 fi
