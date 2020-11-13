@@ -55,17 +55,23 @@ export OS_VER
 
 if [[ $- == *i* ]]; then
   # Start blinking
-  export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
+  LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
+  export LESS_TERMCAP_mb
   # Start bold
-  export LESS_TERMCAP_md=$(tput bold; tput setaf 2) # green
+  LESS_TERMCAP_md=$(tput bold; tput setaf 2) # green
+  export LESS_TERMCAP_md
   # Start stand out
-  export LESS_TERMCAP_so=$(tput bold; tput setaf 3) # yellow
+  LESS_TERMCAP_so=$(tput bold; tput setaf 3) # yellow
+  export LESS_TERMCAP_so
   # End standout
-  export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+  LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+  export LESS_TERMCAP_se
   # Start underline
-  export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 1) # red
+  LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 1) # red
+  export LESS_TERMCAP_us
   # End bold, blinking, standout, underline
-  export LESS_TERMCAP_me=$(tput sgr0)
+  LESS_TERMCAP_me=$(tput sgr0)
+  export LESS_TERMCAP_me
 fi
 
 gemerge() {
