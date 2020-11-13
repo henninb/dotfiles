@@ -81,9 +81,10 @@ endif
    Plug 'git@github.com:rust-lang/rust.vim.git'
    Plug 'git@github.com:neovimhaskell/haskell-vim.git' " what does this do?
    Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
-   Plug 'ryanoasis/vim-devicons'
-   " Plug 'git@github.com:vim-airline/vim-airline.git' " line manager
-   Plug 'git@github.com:itchyny/lightline.vim.git'    "line manager
+   Plug 'git@github.com:ryanoasis/vim-devicons'
+   Plug 'git@github.com:vim-airline/vim-airline.git' " line manager
+   Plug 'git@github.com:vim-airline/vim-airline-themes' " theme for the airline line manager
+   " Plug 'git@github.com:itchyny/lightline.vim.git'    "line manager
    Plug 'mhinz/vim-startify' " start screen for vim
    Plug 'voldikss/vim-floaterm' " embedded terminal
    Plug 'terryma/vim-multiple-cursors'
@@ -100,6 +101,7 @@ source $HOME/.config/nvim/plug-config/easy-motion.vim
 source $HOME/.config/nvim/plug-config/sneak.vim
 source $HOME/.config/nvim/plug-config/start-screen.vim
 source $HOME/.config/nvim/plug-config/vim-commentary.vim
+source $HOME/.config/nvim/plug-config/airline.vim
 " luafile $HOME/.config/nvim/plug-config/treesitter.lua
 " coc config
 " CocCommand git.toggleGutters

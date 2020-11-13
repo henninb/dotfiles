@@ -1,4 +1,10 @@
 {
   "java.jdt.ls.home": "/home/henninb/jdtls",
-  "git.enableGutters": true
+  "git.enableGutters": false,
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "coc.source.file.ignoreHidden": false,
+  "codeLens.enable": true,
+  "diagnostic.errorSign": "•",
+  "diagnostic.warningSign": "•",
+  "diagnostic.infoSign": "•"
 }
