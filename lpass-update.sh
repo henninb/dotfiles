@@ -19,3 +19,9 @@ for i in $(cat f.txt); do
 done
 
 exit 0
+
+
+while IFS= read -r line
+do
+  echo "Line: $line"
+done < f.txt
