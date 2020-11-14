@@ -103,6 +103,7 @@ source $HOME/.config/nvim/plug-config/sneak.vim
 source $HOME/.config/nvim/plug-config/start-screen.vim
 source $HOME/.config/nvim/plug-config/vim-commentary.vim
 source $HOME/.config/nvim/plug-config/airline.vim
+source $HOME/.config/nvim/plug-config/syntastic.vim
 luafile $HOME/.config/nvim/plug-config/treesitter.lua
 " coc config
 " CocCommand git.toggleGutters
