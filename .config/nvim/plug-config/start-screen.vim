@@ -32,9 +32,9 @@ function! StartifyEntryFormat()
 let g:startify_bookmarks = [
             \ { 'c': '~/.xmonad/xmonad.hs' },
             \ { 'i': '~/.config/nvim/init.vim' },
-            \ { 'i': '~/.config/nvim/plug-config/start-screen.vim' },
+            \ { 's': '~/.config/nvim/plug-config/start-screen.vim' },
             \ { 'z': '~/.zshrc' },
-            \ '~/projects',
+            \ { 'p': '~/projects'},
             \ ]
 
 let g:startify_enable_special = 0
