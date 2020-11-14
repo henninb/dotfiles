@@ -1,5 +1,5 @@
 {
-  // "java.jdt.ls.home": "/home/henninb/jdtls",
+  "java.jdt.ls.home": "/home/henninb/jdtls",
   "git.enableGutters": false,
   "coc.preferences.extensionUpdateCheck": "daily",
   "coc.source.file.ignoreHidden": false,
