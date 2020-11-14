@@ -381,3 +381,6 @@ Failed to create bus connection: No such file or directory
 ```
 /home/henninb/.config/nvim/bundle/nvim-treesitter/parser
 ```
+
+## jdt issue
+the build path should include:src/main/java

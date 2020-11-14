@@ -20,15 +20,15 @@ let g:coc_global_extensions = [
   \ 'coc-yank',
   \ 'coc-json',
   \ 'coc-marketplace',
+  \ 'coc-java',
   \ ]
   " \ 'coc-tabnine',
   " \ 'coc-pairs',
   " \ 'coc-highlight',
   " \ 'coc-java-debug',
-  " \ 'coc-java',
   " \ 'coc-snippets',
   " \ 'coc-fzf-preview',
   " \ 'coc-floaterm',
   " \ 'coc-prettier',
-  " \ 'coc-sh',
+  " \ 'coc-sh', " performance issues with cpu and memory
 
