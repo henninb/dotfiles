@@ -2,11 +2,11 @@
 " :let g:startify_custom_header = [system("figlet who")]
 
 let g:startify_custom_header = [
-\ '  _                      _       _      ',
-\ ' | |__   ___ _ __  _ __ (_)_ __ | |__   ',
-\ ' |  _ \ / _ \  _ \|  _ \| |  _ \|  _ \  ',
-\ ' | | | |  __/ | | | | | | | | | | |_) | ',
-\ ' |_| |_|\___|_| |_|_| |_|_|_| |_|_.__/  ',
+\ '  _                      _       _',
+\ ' | |__   ___ _ __  _ __ (_)_ __ | |__',
+\ ' |  _ \ / _ \  _ \|  _ \| |  _ \|  _ \',
+\ ' | | | |  __/ | | | | | | | | | | |_) |',
+\ ' |_| |_|\___|_| |_|_| |_|_|_| |_|_.__/',
 \]
 
 let g:startify_session_dir = '~/.config/nvim/session'
@@ -32,6 +32,7 @@ function! StartifyEntryFormat()
 let g:startify_bookmarks = [
             \ { 'c': '~/.xmonad/xmonad.hs' },
             \ { 'i': '~/.config/nvim/init.vim' },
+            \ { 'i': '~/.config/nvim/plug-config/start-screen.vim' },
             \ { 'z': '~/.zshrc' },
             \ '~/projects',
             \ ]

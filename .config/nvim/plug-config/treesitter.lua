@@ -1,11 +1,54 @@
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "json", "c", "yaml", "clojure", "html", "typescript", "lua", "bash", "toml", "css", "rust", "scala", "haskell", "tsx", "cpp", "query", "ocaml", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "c", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
-    enable = true,              -- false will disable the whole extension
+    enable = true,
   },
 }
 
-require "nvim-treesitter.configs".setup {
+-- ABI version mismatch for java
+-- require'nvim-treesitter.configs'.setup {
+--   ensure_installed = "java",
+--   highlight = {
+--     enable = true,
+--   },
+-- }
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "typescript",
+  highlight = {
+    enable = true,
+  },
+}
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "cpp",
+  highlight = {
+    enable = true,
+  },
+}
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "clojure",
+  highlight = {
+    enable = true,
+  },
+}
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "ocaml",
+  highlight = {
+    enable = true,
+  },
+}
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "lua",
+  highlight = {
+    enable = true,
+  },
+}
+
+require 'nvim-treesitter.configs'.setup {
   playground = {
     enable = true,
     disable = {},
@@ -14,6 +57,7 @@ require "nvim-treesitter.configs".setup {
   }
 }
 
+-- nvim-treesitter.config
 -- require'nvim-treesitter.configs'.setup {
 --   refactor = {
 --     highlight_current_scope = { enable = false },

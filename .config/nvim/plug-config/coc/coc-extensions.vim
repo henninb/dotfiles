@@ -1,6 +1,5 @@
 let g:coc_global_extensions = [
   \ 'coc-actions',
-  \ 'coc-sh',
   \ 'coc-lists',
   \ 'coc-emmet',
   \ 'coc-tasks',
@@ -31,4 +30,5 @@ let g:coc_global_extensions = [
   " \ 'coc-fzf-preview',
   " \ 'coc-floaterm',
   " \ 'coc-prettier',
+  " \ 'coc-sh',
 

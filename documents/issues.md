@@ -376,3 +376,8 @@ Failed to create bus connection: No such file or directory
     add java.jdt.ls.home in coc-settings.json ("java.jdt.ls.home" : "/home/luiz/jdtls" in my case)
     open some java file
 ```
+
+## treesitter issues
+```
+/home/henninb/.config/nvim/bundle/nvim-treesitter/parser
+```

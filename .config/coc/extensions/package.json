@@ -16,7 +16,6 @@
     "coc-marketplace": ">=1.8.0",
     "coc-pyright": ">=1.1.85",
     "coc-python": ">=1.2.13",
-    "coc-sh": ">=0.6.0",
     "coc-stylelintplus": ">=1.2.0",
     "coc-svg": ">=0.0.13",
     "coc-tasks": ">=0.1.0",
