@@ -1,6 +1,3 @@
-
-" :let g:startify_custom_header = [system("figlet who")]
-
 let g:startify_custom_header = [
 \ '  _                      _       _',
 \ ' | |__   ___ _ __  _ __ (_)_ __ | |__',
@@ -30,11 +27,15 @@ function! StartifyEntryFormat()
     endfunction
 
 let g:startify_bookmarks = [
-            \ { 'c': '~/.xmonad/xmonad.hs' },
+            \ { 'x': '~/.xmonad/xmonad.hs' },
             \ { 'i': '~/.config/nvim/init.vim' },
             \ { 's': '~/.config/nvim/plug-config/start-screen.vim' },
+            \ { 'a': '~/.config/alacritty/alacritty.yml' },
             \ { 'z': '~/.zshrc' },
             \ { 'p': '~/projects'},
+            \ { 'c': '~/projects/src-common'},
+            \ { 'e': '~/projects/raspi-finance-endpoint'},
+            \ { 'r': '~/projects/raspi-finance-react'},
             \ ]
 
 let g:startify_enable_special = 0
