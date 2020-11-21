@@ -153,3 +153,5 @@
 - skim (sk) - rust rewrite of fzf [cargo install skim]
 - try this nvim setup - git clone git@github.com:ChristianChiarulli/nvim.git
 - zbar - zbarimg - decodes barcodes into text
+- stacer - electron clean up
+- eix - gentoo search
