@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+[ $# -eq 1 ] || {
+    echo 'mdview [FILE]'
+    echo 'render markdown files in a terminal'
+    exit 1
+}
+pandoc -f markdown -t html $1 | w3m -T text/html
