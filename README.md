@@ -155,3 +155,4 @@
 - zbar - zbarimg - decodes barcodes into text
 - stacer - electron clean up
 - eix - gentoo search
+- stack install pandoc
