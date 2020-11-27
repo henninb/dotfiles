@@ -3,7 +3,7 @@
 cat > zoom-flatpak <<EOF
 #!/bin/sh
 
-flatpak run us.zoom.Zoom
+flatpak run --filesystem=home us.zoom.Zoom
 
 exit 0
 EOF
@@ -17,5 +17,8 @@ fi
 
 chmod 755 zoom-flatpak
 mv zoom-flatpak "$HOME/.local/bin/"
+
+# sudo flatpak override us.zoom.Zoom --filesystem=host
+# sudo flatpak run --filesystem=home us.zoom.Zoom
 
 exit 0

@@ -156,3 +156,4 @@
 - stacer - electron clean up
 - eix - gentoo search
 - stack install pandoc
+- ncdu - tui disk space checker
