@@ -20,7 +20,6 @@ let g:coc_global_extensions = [
   \ 'coc-yank',
   \ 'coc-json',
   \ 'coc-marketplace',
-  \ 'coc-java',
   \ ]
   " \ 'coc-tabnine',
   " \ 'coc-pairs',
@@ -31,4 +30,5 @@ let g:coc_global_extensions = [
   " \ 'coc-floaterm',
   " \ 'coc-prettier',
   " \ 'coc-sh', " performance issues with cpu and memory
+  "\ 'coc-java',
 
