@@ -2,6 +2,7 @@
 " limit memory usage in coc
 let g:coc_node_args = ['--max-old-space-size=8192']
 
+" solved the orphan coc process issues
 autocmd VimLeavePre * :call coc#rpc#kill()
 autocmd VimLeave * if get(g:, 'coc_process_pid', 0) | call system('kill -9 -'.g:coc_process_pid) | endif
 
