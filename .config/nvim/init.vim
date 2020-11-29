@@ -516,3 +516,7 @@ if colorterm=='truecolor' || colorterm=='24bit'
 endif
 
 noremap <leader>u :w<Home>silent <End> !urlview<cr>
+
+" highlight nonascii chars
+syntax match nonascii "[^\x00-\x7F]"
+highlight nonascii guibg=Red ctermbg=2
