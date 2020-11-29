@@ -1,5 +1,0 @@
-docker run --name postgresql-server -d --restart unless-stopped -p 5432:5432 -e POSTGRES_PASSWORD=monday1 -v ${PWD}/database-data:/var/lib/postgresql/data postgres:12.3
-
-docker exec -it postgresql-server psql -U postgres
-
-docker run --name postgresql-server -d --restart unless-stopped -p 5432:5432 -e POSTGRES_PASSWORD=monday1 -v $(pwd)/database-data:/var/lib/postgresql/data postgres:12.3

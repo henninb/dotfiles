@@ -1,0 +1,28 @@
+#!/bin/sh
+
+cat > /tmp/sql-setup <<EOF
+CREATE ROLE vagrant WITH LOGIN PASSWORD 'monday1';
+CREATE ROLE henninb WITH LOGIN PASSWORD 'monday1';
+ALTER USER vagrant CREATEDB;
+ALTER USER vagrant SUPERUSER;
+ALTER USER henninb CREATEDB;
+ALTER USER henninb SUPERUSER;
+CREATE DATABASE finance_db;
+GRANT ALL PRIVILEGES ON DATABASE finance_db TO vagrant;
+GRANT ALL PRIVILEGES ON DATABASE postgres TO vagrant;
+GRANT ALL PRIVILEGES ON DATABASE finance_db TO henninb;
+GRANT ALL PRIVILEGES ON DATABASE finance_test_db TO henninb;
+GRANT ALL PRIVILEGES ON DATABASE postgres TO henninb;
+ALTER USER postgres WITH PASSWORD 'monday1';
+EOF
+
+mkdir -p $HOME/postgresql-data
+
+#docker run --name postgresql-server -d --restart unless-stopped -p 5432:5432 -e POSTGRES_PASSWORD=monday1 -v ${PWD}/database-data:/var/lib/postgresql/data postgres:12.5
+
+docker run --name postgresql-server -d --restart unless-stopped -p 5432:5432 -e POSTGRES_PASSWORD=monday1 --user 1000:1000 -v $HOME/postgresql-data:/var/lib/postgresql/data postgres:12.5
+
+echo docker exec -it postgresql-server psql -U postgres
+cat /tmp/sql-setup
+
+exit 0
