@@ -14,7 +14,7 @@
     "coc-json": ">=1.3.2",
     "coc-lists": ">=1.3.16",
     "coc-marketplace": ">=1.8.0",
-    "coc-pyright": ">=1.1.89",
+    "coc-pyright": ">=1.1.91",
     "coc-python": ">=1.2.13",
     "coc-stylelintplus": ">=1.2.0",
     "coc-svg": ">=0.0.13",
