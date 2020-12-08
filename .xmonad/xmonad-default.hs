@@ -442,6 +442,7 @@ myStartupHook = do
     spawnOnce "$HOME/.config/polybar/launch.sh xmonad"
     spawnOnce "flameshot"
     spawnOnce "dunst"
+    -- spawnOnce "picom"
     spawnOnce "sxhkd -c ~/.config/sxhkd/sxhkdrc-xmonad"
     -- spawn "clipmenud" --should I run copyq or clipmenu
     spawnOnce "copyq"
