@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PROJECTS="example-ratpack raspi-finance-endpoint raspi-finance-database raspi-finance-convert nfl-database src-common example-java example-scala example-kotlin raspi-finance-react raspi-finance-endpoint-micronaut raspi-finance-ncurses raspi-finance-reports st cribbage cribbage-fsharp hardware-endpoint"
+PROJECTS="ratpack-gorm example-ratpack raspi-finance-endpoint raspi-finance-database raspi-finance-convert nfl-database src-common example-java example-scala example-kotlin raspi-finance-react raspi-finance-endpoint-micronaut raspi-finance-ncurses raspi-finance-reports st cribbage cribbage-fsharp hardware-endpoint"
 for i in $PROJECTS; do
   cd "$HOME/projects" || exit
   git clone "git@github.com:BitExplorer/$i.git"
