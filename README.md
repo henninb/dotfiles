@@ -49,7 +49,7 @@
 | spreadsheet            | sc-im                                                                                |
 | programming languages  | java, kotlin, rust, haskell, python, javascript, scala, groovy                       |
 | frameworks             | SpringBoot, Micronaut, react                                                         |
-| containerization       | docker                                                                               |
+| containerization       | docker, podman                                                                       |
 | hypervisor             | kvm, qemu                                                                            |
 | remote desktop server  | xrdp                                                                                 |
 | remote desktop client  | xfreerdp                                                                             |
