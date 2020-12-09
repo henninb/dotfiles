@@ -1,31 +1,36 @@
 #!/bin/sh
 
-RASPI_IP=$(nmap -sP --host-timeout 10 192.168.100.0/24 | grep raspb | grep -o '[0-9.]\+[0-9]')
-echo $RASPI_IP
-
 if [ ! -f "oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm" ]; then
-  scp pi@$RASPI_IP:/home/pi/downloads/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm .
+  if ! scp pi:/home/pi/downloads/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm .; then
+    wget https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm
+  fi
 fi
 
 if [ ! -f "oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm" ]; then
-  scp pi@$RASPI_IP:/home/pi/downloads/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm .
+  if ! scp pi:/home/pi/downloads/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm .; then
+    wget https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
+  fi
 fi
 
 if [ ! -f "oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm" ]; then
-  scp pi@$RASPI_IP:/home/pi/downloads/oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm .
+  if ! scp pi:/home/pi/downloads/oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm .; then
+    echo wget https://www.oracle.com/database/technologies/instant-client/precompiler-112010-downloads.html
+  fi
 fi
 
 if [ ! -f "oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm" ]; then
-  scp pi@$RASPI_IP:/home/pi/downloads/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm .
+  if ! scp pi:/home/pi/downloads/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm .; then
+    wget https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm
+  fi
 fi
 
-sudo docker image build -t oracle_client .
-docker stop oracle_client
-docker rm oracle_client -f
-#sudo docker run --name=oracle_client -h oracle_client --restart unless-stopped -d oracle_client
-sudo docker run --name=oracle_client -h oracle_client -d oracle_client
-echo $?
-docker exec -it --user henninb oracle_client /bin/bash
-echo $?
+if ! docker image build -t oracle-client .; then
+  echo "failed to build oracle-client"
+  exit 1
+fi
+
+docker stop oracle-client
+docker run --name=oracle-client -h oracle-client --rm -d oracle-client
+docker exec -it --user henninb oracle-client /bin/bash
 
 exit 0

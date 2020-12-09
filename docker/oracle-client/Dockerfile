@@ -26,16 +26,17 @@ ADD oracle-instantclient${VER}-devel-*.rpm /tmp
 ADD oracle-instantclient${VER}-precomp-*.rpm /tmp
 ADD oracle-instantclient${VER}-sqlplus-*.rpm /tmp
 
-#ADD *x86_64.rpm /tmp/
-
-RUN yum install -y libaio.x86_64 glibc.x86_64 libaio.i686 glibc.i686
+RUN yum install -y libaio.x86_64 glibc.x86_64 libaio.i686 glibc.i686 libnsl
 RUN yum -y localinstall /tmp/oracle* --nogpgcheck
 RUN mkdir -p $ORACLE_HOME/network/admin
 COPY ./tnsnames.ora $ORACLE_HOME/network/admin/tnsnames.ora
 RUN chmod a+r $ORACLE_HOME/network/admin/tnsnames.ora
-RUN useradd henninb
-COPY ./loop.sh /tmp
+RUN useradd -m henninb
+
+RUN echo 'ping localhost &' > /bootstrap.sh
+RUN echo 'sleep infinity' >> /bootstrap.sh
+RUN chmod +x /bootstrap.sh
+
 USER henninb
-#ENTRYPOINT /bin/sh
-#CMD ["/bin/sh"]
-ENTRYPOINT ["/tmp/loop.sh"]
+WORKDIR /home/henninb
+CMD /bootstrap.sh
