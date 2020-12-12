@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo docker pull quay.io/maksymbilenko/oracle-12c
+echo docker pull store/oracle/database-enterprise:12.2.0.1
 mkdir -p ~/oracle-data
 docker image build -t oracle-database-server .
 docker stop oracle-database-server
