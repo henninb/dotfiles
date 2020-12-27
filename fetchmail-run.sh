@@ -19,5 +19,10 @@ echo touch /var/spool/mail/henninb
 # sudo newaliases
 # echo archlinux.localdomain >> /etc/hosts
 # echo sudo postconf -e 'message_size_limit = 104857600'
+# I am setting up the following values in main.cf
+
+# mailbox_size_limit = 0
+# message_size_limit = 0
+# virtual_mailbox_limit = 0
 
 exit 0

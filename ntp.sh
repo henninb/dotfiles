@@ -14,6 +14,6 @@ else
   date
 fi
 
-sudo date -s "27 DEC 2020 12:24:00"
+echo sudo date -s "27 DEC 2020 12:24:00"
 
 exit 0
