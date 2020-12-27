@@ -39,7 +39,8 @@ if [ "$(uname -n)" = "silverfox" ]; then
 fi
 
 # Arch Linux
-if ip addr show | grep 192.168.100.218; then
+if [ "$(uname -n)" = "archlinux" ]; then
+# if ip addr show | grep 192.168.100.208; then
   sudo grub-editenv - set next_entry='Windows 10 gpt2'
   sudo grub-editenv - set saved_entry=1
   sudo grub-mkconfig -o /boot/grub/grub.cfg
