@@ -18,5 +18,6 @@ echo touch /var/spool/mail/henninb
 #sudo systemctl restart postfix
 # sudo newaliases
 # echo archlinux.localdomain >> /etc/hosts
+# echo sudo postconf -e 'message_size_limit = 104857600'
 
 exit 0
