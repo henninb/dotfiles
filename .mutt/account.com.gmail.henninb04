@@ -1,0 +1,7 @@
+set smtp_url = "smtps://henninb04@gmail.com@smtp.gmail.com:465/"
+set smtp_pass = ""
+set imap_user = "henninb04@gmail.com"
+set imap_pass = ""
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set ssl_force_tls = yes
