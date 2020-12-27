@@ -157,3 +157,4 @@
 - eix - gentoo search
 - stack install pandoc
 - ncdu - tui disk space checker
+- abook - address book
