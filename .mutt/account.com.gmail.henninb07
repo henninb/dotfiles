@@ -9,3 +9,5 @@ set postponed = "+[Gmail]/Drafts"
 set header_cache = ~/.mutt/com.gmail.henninb07/cache/headers
 set message_cachedir = ~/.mutt/com.gmail.henninb07/cache/bodies
 set ssl_force_tls = yes
+set from = "henninb07@gmail.com"
+set realname = "Brian Henning"
