@@ -5,3 +5,7 @@ set imap_pass = ""
 set folder = "imaps://imap.gmail.com:993"
 set spoolfile = "+INBOX"
 set ssl_force_tls = yes
+set postponed = "+[Gmail]/Drafts"
+set header_cache = ~/.mutt/com.gmail.henninb07/cache/headers
+set message_cachedir = ~/.mutt/com.gmail.henninb07/cache/bodies
+set ssl_force_tls = yes
