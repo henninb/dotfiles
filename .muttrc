@@ -5,6 +5,9 @@ set envelope_from = yes
 set sleep_time=0 # be faster
 set beep=no # no beep sound
 set folder = ~/Mail
+set query_command = "abook --mutt-query '%s'"
+macro index,pager a "<pipe-message>abook --add-email-quiet<return>" "Add this sender to Abook"
+bind editor        <Tab> complete-query
 
 # Folder hooks
 folder-hook 'account.com.gmail.henninb01' 'source ~/.mutt/account.com.gmail.henninb01'
