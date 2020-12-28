@@ -1,29 +1,34 @@
-# set my_pass="`pass gmail.com/henninb08`"
-#set imap_pass = "********"
 set realname = "Brian Henning"
 set from="henninb08@gmail.com"
 set use_from = yes
 set envelope_from = yes
-
-set smtp_url="smtps://henninb08@gmail.com@smtp.gmail.com:465/"
-
 set sleep_time=0 # be faster
 set beep=no # no beep sound
+set folder = ~/Mail
 
-# You can use any gmail imap mailboxes
-mailboxes =INBOX =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Trash
+# Folder hooks
+folder-hook 'account.com.gmail.henninb01' 'source ~/.mutt/account.com.gmail.henninb01'
+folder-hook 'account.com.gmail.henninb02' 'source ~/.mutt/account.com.gmail.henninb02'
+folder-hook 'account.com.gmail.henninb03' 'source ~/.mutt/account.com.gmail.henninb03'
+folder-hook 'account.com.gmail.henninb04' 'source ~/.mutt/account.com.gmail.henninb04'
+folder-hook 'account.com.gmail.henninb05' 'source ~/.mutt/account.com.gmail.henninb05'
+folder-hook 'account.com.gmail.henninb06' 'source ~/.mutt/account.com.gmail.henninb06'
+folder-hook 'account.com.gmail.henninb07' 'source ~/.mutt/account.com.gmail.henninb07'
+folder-hook 'account.com.gmail.henninb08' 'source ~/.mutt/account.com.gmail.henninb08'
 
-set smtp_url = "smtps://henninb08@gmail.com@smtp.gmail.com:465/"
-set imap_user = "henninb08@gmail.com"
-set imap_pass = "********"
-set folder = "imaps://imap.gmail.com:993"
-set spoolfile = "+INBOX"
-set ssl_force_tls = yes
+# Macros for switching accounts
+macro index <f1> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.henninb01<enter><change-folder>!<enter>'
+macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.henninb02<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.henninb03<enter><change-folder>!<enter>'
+macro index <f4> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.henninb04<enter><change-folder>!<enter>'
+macro index <f5> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.henninb05<enter><change-folder>!<enter>'
+macro index <f6> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.henninb06<enter><change-folder>!<enter>'
+macro index <f7> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.henninb07<enter><change-folder>!<enter>'
+macro index <f8> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.henninb08<enter><change-folder>!<enter>'
 
 # G to get mail
 bind index G imap-fetch-mail
-set editor = "vim"
+set editor = "nvim"
 set charset = "utf-8"
 set record = ''
-
 set sort = reverse-date-received
