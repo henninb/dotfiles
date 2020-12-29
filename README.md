@@ -158,3 +158,4 @@
 - stack install pandoc
 - ncdu - tui disk space checker
 - abook - address book
+- spamassassin - spam email removal
