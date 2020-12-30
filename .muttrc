@@ -1,5 +1,4 @@
 set realname = "Brian Henning"
-set from="henninb08@gmail.com"
 set use_from = yes
 set envelope_from = yes
 set sleep_time=0 # be faster
@@ -18,16 +17,23 @@ folder-hook 'account.com.gmail.henninb05' 'source ~/.mutt/account.com.gmail.henn
 folder-hook 'account.com.gmail.henninb06' 'source ~/.mutt/account.com.gmail.henninb06'
 folder-hook 'account.com.gmail.henninb07' 'source ~/.mutt/account.com.gmail.henninb07'
 folder-hook 'account.com.gmail.henninb08' 'source ~/.mutt/account.com.gmail.henninb08'
+folder-hook 'account.com.gmail.brian.henning' 'source ~/.mutt/account.com.gmail.brian.henning'
 
 # Macros for switching accounts
-macro index,pager <f1> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.henninb01<enter><change-folder>!<enter>;<check-stats>' "henninb01"
-macro index,pager <f2> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.henninb02<enter><change-folder>!<enter>;<check-stats>' "henninb02"
-macro index,pager <f3> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.henninb03<enter><change-folder>!<enter>;<check-stats>' "henninb03"
-macro index,pager <f4> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.henninb04<enter><change-folder>!<enter>;<check-stats>' "henninb04"
-macro index,pager <f5> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.henninb05<enter><change-folder>!<enter>;<check-stats>' "henninb05"
-macro index,pager <f6> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.henninb06<enter><change-folder>!<enter>;<check-stats>' "henninb06"
-macro index,pager <f7> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.henninb07<enter><change-folder>!<enter>;<check-stats>' "henninb07"
-macro index,pager <f8> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.henninb08<enter><change-folder>!<enter>;<check-stats>' "henninb08"
+macro index,pager <f1> '<enter-command>source ~/.mutt/account.com.gmail.henninb01<enter><change-folder>!<enter><enter-command>source ~/.muttrc<enter>'
+macro index,pager <f2> '<enter-command>source ~/.mutt/account.com.gmail.henninb02<enter><change-folder>!<enter><enter-command>source ~/.muttrc<enter>'
+macro index,pager <f3> '<enter-command>source ~/.mutt/account.com.gmail.henninb03<enter><change-folder>!<enter><enter-command>source ~/.muttrc<enter>'
+macro index,pager <f4> '<enter-command>source ~/.mutt/account.com.gmail.henninb04<enter><change-folder>!<enter><enter-command>source ~/.muttrc<enter>'
+macro index,pager <f5> '<enter-command>source ~/.mutt/account.com.gmail.henninb05<enter><change-folder>!<enter><enter-command>source ~/.muttrc<enter>'
+macro index,pager <f6> '<enter-command>source ~/.mutt/account.com.gmail.henninb06<enter><change-folder>!<enter><enter-command>source ~/.muttrc<enter>'
+macro index,pager <f7> '<enter-command>source ~/.mutt/account.com.gmail.henninb07<enter><change-folder>!<enter><enter-command>source ~/.muttrc<enter>'
+macro index,pager <f8> '<enter-command>source ~/.mutt/account.com.gmail.henninb08<enter><change-folder>!<enter><enter-command>source ~/.muttrc<enter>'
+macro index,pager <f9> '<enter-command>source ~/.mutt/account.com.gmail.brian.henning<enter><change-folder>!<enter><enter-command>source ~/.muttrc<enter>'
+
+set ssl_starttls = yes
+set ssl_force_tls = yes
+set imap_check_subscribed
+set mail_check = 120
 
 # G to get mail
 bind index G imap-fetch-mail

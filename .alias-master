@@ -112,6 +112,6 @@ alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 alias audio-hdmi='pacmd set-card-profile 0 output:hdmi-stereo+input:analog-stereo'
 
 alias lg='lazygit'
-alias mutt='neomutt'
+# alias mutt='neomutt'
 
 # alias mpc='mpc --port 6601'
