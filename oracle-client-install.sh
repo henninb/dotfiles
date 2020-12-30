@@ -4,6 +4,8 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y alien fakeroot
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S libnsl
+elif [ "$OS" = "Gentoo" ]; then
+  echo noop
 elif [ "$OS" = "Darwin" ]; then
   echo noop
 elif [ "$OS" = "Fedora" ]; then
