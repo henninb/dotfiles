@@ -1,0 +1,14 @@
+#alias me Brian Henning <henninb01@gmail.com>
+
+set smtp_url = "smtps://brian.henning@gmail.com@smtp.gmail.com:465/"
+set smtp_pass = ""
+set imap_user = "brian.henning@gmail.com"
+set imap_pass = ""
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set header_cache = ~/.mutt/com.gmail.brian.henning/cache/headers
+set message_cachedir = ~/.mutt/com.gmail.brian.henning/cache/bodies
+set ssl_force_tls = yes
+set from = "brian.henning@gmail.com"
+set realname = "Brian Henning"
