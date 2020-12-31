@@ -18,6 +18,7 @@ folder-hook 'account.com.gmail.henninb06' 'source ~/.mutt/account.com.gmail.henn
 folder-hook 'account.com.gmail.henninb07' 'source ~/.mutt/account.com.gmail.henninb07'
 folder-hook 'account.com.gmail.henninb08' 'source ~/.mutt/account.com.gmail.henninb08'
 folder-hook 'account.com.gmail.brian.henning' 'source ~/.mutt/account.com.gmail.brian.henning'
+folder-hook 'account.com.gmail.henninb' 'source ~/.mutt/account.com.gmail.henninb'
 
 # Macros for switching accounts
 macro index,pager <f1> '<enter-command>source ~/.mutt/account.com.gmail.henninb01<enter><change-folder>!<enter><enter-command>source ~/.muttrc<enter>'
@@ -29,6 +30,7 @@ macro index,pager <f6> '<enter-command>source ~/.mutt/account.com.gmail.henninb0
 macro index,pager <f7> '<enter-command>source ~/.mutt/account.com.gmail.henninb07<enter><change-folder>!<enter><enter-command>source ~/.muttrc<enter>'
 macro index,pager <f8> '<enter-command>source ~/.mutt/account.com.gmail.henninb08<enter><change-folder>!<enter><enter-command>source ~/.muttrc<enter>'
 macro index,pager <f9> '<enter-command>source ~/.mutt/account.com.gmail.brian.henning<enter><change-folder>!<enter><enter-command>source ~/.muttrc<enter>'
+macro index,pager <f10> '<enter-command>source ~/.mutt/account.com.gmail.henninb<enter><change-folder>!<enter><enter-command>source ~/.muttrc<enter>'
 
 set ssl_starttls = yes
 set ssl_force_tls = yes
