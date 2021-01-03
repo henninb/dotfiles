@@ -157,8 +157,8 @@ else
   exit 1
 fi
 
-echo /usr/lib/postgresql/12/bin/pg_ctl
-echo /usr/lib/postgresql/12/bin/pg_ctl  -D /var/lib/postgresql/12/main stop
-echo /usr/lib/postgresql/12/bin/pg_ctl  -D /var/lib/postgresql/12/main start
+echo /usr/lib/postgresql/13/bin/pg_ctl
+echo /usr/lib/postgresql/13/bin/pg_ctl  -D /var/lib/postgresql/13/main stop
+echo /usr/lib/postgresql/13/bin/pg_ctl  -D /var/lib/postgresql/13/main start
 
 exit 0
