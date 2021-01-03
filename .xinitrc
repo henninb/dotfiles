@@ -41,36 +41,12 @@ fi
 #done
 #unset f
 
-#if [ -x "$(command -v feh)" ]; then
-#  #exec feh --bg-scale --randomize $HOME/backgrounds/* &
-#  exec feh --bg-scale "$HOME/backgrounds/minnesota-vikings-dark.jpg" &
-#else
-#  echo feh is not installed >> "$HOME/xinit.log"
-#fi
-
 # Addd for gentoo - could not resolve keysym xf86 fullscreen
 setxkbmap -option compose:ralt
 # added on 10/28/2020 for making caps lock key work like the control key
 setxkbmap -option ctrl:nocaps       # Make Caps Lock a Control key
 setxkbmap -option ctrl:swapcaps     # Swap Left Control and Caps Lock
 #xmodmap ~/.xmodmap
-
-echo "$OS is running." >> "$HOME/xinit.log"
-if [ ! "$OS" = "Fedora" ]; then
-  if [ -x "$(command -v picom)" ]; then
-    exec picom &
-  elif [ -x "$(command -v compton)" ]; then
-    exec compton &
-  else
-    echo Neither picom nor compton are installed. >> "$HOME/xinit.log"
-  fi
-fi
-
-# may not need it here
-# used for java application window naming
-# if [ -x "$(command -v wmname)" ]; then
-#   wmname LG3D >> "$HOME/xinit.log"
-# fi
 
 # list of different WMs
 #exec mate-session
