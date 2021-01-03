@@ -33,10 +33,10 @@ let g:startify_bookmarks = [
             \ { 'a': '~/.config/alacritty/alacritty.yml' },
             \ { 'c': '~/.config/nvim/coc-settings.json' },
             \ { 'z': '~/.zshrc' },
-            \ { 'p': '~/projects'},
-            \ { 'c': '~/projects/src-common'},
-            \ { 'e': '~/projects/raspi-finance-endpoint'},
-            \ { 'r': '~/projects/raspi-finance-react'},
+            \ { '1': '~/projects'},
+            \ { '2': '~/projects/src-common'},
+            \ { '3': '~/projects/raspi-finance-endpoint'},
+            \ { '4': '~/projects/raspi-finance-react'},
             \ ]
 
 let g:startify_enable_special = 0

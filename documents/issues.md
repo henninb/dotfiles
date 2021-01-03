@@ -384,3 +384,6 @@ Failed to create bus connection: No such file or directory
 
 ## jdt issue
 the build path should include:src/main/java
+
+## debugging
+strace -o output.strace vim finance_db-extra.sql
