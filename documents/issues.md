@@ -386,4 +386,7 @@ Failed to create bus connection: No such file or directory
 the build path should include:src/main/java
 
 ## debugging
-strace -o output.strace vim finance_db-extra.sql
+```
+strace -o vim.strace vim finance_db-extra.sql
+sudo strace -p 132313
+```
