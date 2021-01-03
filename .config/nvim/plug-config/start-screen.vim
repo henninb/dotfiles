@@ -31,6 +31,7 @@ let g:startify_bookmarks = [
             \ { 'i': '~/.config/nvim/init.vim' },
             \ { 's': '~/.config/nvim/plug-config/start-screen.vim' },
             \ { 'a': '~/.config/alacritty/alacritty.yml' },
+            \ { 'c': '~/.config/nvim/coc-settings.json' },
             \ { 'z': '~/.zshrc' },
             \ { 'p': '~/projects'},
             \ { 'c': '~/projects/src-common'},
