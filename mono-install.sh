@@ -4,7 +4,6 @@ sudo dnf install mono-complete
 sudo pacman --noconfirm --needed -S wine-mono
 yay -S fsharp
 
-
 # cd ~/projects
 # git clone https://aur.archlinux.org/msbuild-stable.git msbuild-stable-aur
 # cd msbuild-stable-aur

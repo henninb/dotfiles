@@ -116,6 +116,4 @@ else
   exit 1
 fi
 
-#rm -rf oracle-instantclient19.3-*
-
 exit 0
