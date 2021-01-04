@@ -23,6 +23,7 @@
   log-simple = log --oneline --abbrev-commit --date=relative --format=format:'%h - (%ar) [%an] %s %d'
   last = log -1 HEAD
   wip = !sh -c 'git add . && git commit -am "wip"'
+	ls = log --oneline --decorate
 [push]
   default = simple
 [diff]

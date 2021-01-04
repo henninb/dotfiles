@@ -9,6 +9,7 @@ alias ga='git add '
 alias gc='git commit'
 alias gd='git diff'
 alias gitls='git ls-tree --full-tree -r --name-only HEAD'
+alias gundo='git reset --soft HEAD~1'
 alias gp=gitpush
 #alias gb='git branch '
 alias gituntracked='git ls-files . --ignored --exclude-standard --others'
