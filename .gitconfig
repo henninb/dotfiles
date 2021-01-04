@@ -15,14 +15,19 @@
   plom = pull origin master
   f = "!git ls-files | grep -i"
   aa = add -A .
+  reauthor = !bash -c 'git rebase --onto $1 --exec \"git commit --amend --author=$2\" $1' --
   unstage = reset HEAD --
   check-file = "!f() { if [ $# -eq 0 ]; then echo 'Filename missing!'; else tracked=$(git ls-files ${1}); if [[ -z ${tracked} ]]; then echo 'File not tracked'; else echo 'File tracked'; fi; fi;  };  f"
 [push]
   default = simple
+[diff]
+  tool = nvimdiff4
+[difftool]
+  trustExitCode = true
+  prompt = false
 [merge]
-  tool = vimdiff
-; [diff]
-;   external = git-diff-wrapper
+  tool = nvimdiff4
+  conflictstyle = diff3
 [core]
   pager = less -F -X
   editor = nvim
