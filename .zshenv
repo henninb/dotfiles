@@ -176,5 +176,9 @@ ytd() {
   fi
 }
 
+squash() {
+  git rebase -i HEAD~${1:-2}
+}
+
 # fix for emacs tramp 10/25/2020
 [ "$TERM" = "dumb" ] && unsetopt zle && PS1='$ '
