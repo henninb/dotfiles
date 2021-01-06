@@ -180,5 +180,24 @@ squash() {
   git rebase -i HEAD~${1:-2}
 }
 
+## ex: git add -- $(choose)
+choose() {
+    git status -s | awk '{print $2}' | fzf
+}
+
+gco() {
+    local f="$(choose)"
+    if ! [ -z "$f" ]; then
+        git checkout -- "$f"
+    fi
+}
+
+gadd() {
+    local f="$(choose)"
+    if ! [ -z "$f" ]; then
+        git add -- "$f"
+    fi
+}
+
 # fix for emacs tramp 10/25/2020
 [ "$TERM" = "dumb" ] && unsetopt zle && PS1='$ '
