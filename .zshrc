@@ -156,7 +156,7 @@ export PATH="$HOME/.dynamic-colors/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
-export CDPATH=~/projects
+export CDPATH=~/projects:~
 
 [ -d /usr/local/go ] && export GOROOT=/usr/local/go
 export GOPATH=$HOME/.local
