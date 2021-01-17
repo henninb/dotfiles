@@ -9,7 +9,6 @@ let g:coc_global_extensions = [
   \ 'coc-cssmodules',
   \ 'coc-stylelintplus',
   \ 'coc-emoji',
-  \ 'coc-bookmark',
   \ 'coc-yaml',
   \ 'coc-python',
   \ 'coc-pyright',
@@ -20,15 +19,15 @@ let g:coc_global_extensions = [
   \ 'coc-yank',
   \ 'coc-json',
   \ 'coc-marketplace',
+  \ 'coc-sh',
+  \ 'coc-java',
+  \ 'coc-snippets',
   \ ]
   " \ 'coc-tabnine',
   " \ 'coc-pairs',
   " \ 'coc-highlight',
   " \ 'coc-java-debug',
-  " \ 'coc-snippets',
   " \ 'coc-fzf-preview',
   " \ 'coc-floaterm',
   " \ 'coc-prettier',
-  " \ 'coc-sh', " performance issues with cpu and memory
-  "\ 'coc-java',
 
