@@ -140,3 +140,15 @@ vim scp://pi@192.168.100.125/home/pi/.bashrc
 :set nu!
 
 :set nonu nornu
+
+## edit the q macro
+```
+:let @q=''
+echo @q
+:registers
+0yypjkkf=D0i"^[lx^[$a"^[x^[j0dt=x^[kJi:^[lx^[j0
+:let @q='0yyp^[0dt=xk0f=D'
+
+```
+Note2: <1b> is Esc; you can insert this with Ctrl+v and then Esc. It may also show up as ^[ (depending on the display setting).
+

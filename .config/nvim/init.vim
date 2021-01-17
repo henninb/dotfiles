@@ -222,6 +222,8 @@ set ruler
 " Blink cursor on error instead of beeping
 set visualbell
 
+set fixendofline
+
 " White space
 set wrap
 set tabstop=4
