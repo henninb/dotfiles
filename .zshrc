@@ -110,7 +110,7 @@ fi
 # fi
 
 # TODO: test this, not sure if/how this works
-HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
+HISTORY_IGNORE="(ls|cd)"
 export HISTORY_IGNORE
 
 if [ "${OSTYPE}" = "linux-gnu" ] || [ "${OSTYPE}" = "linux" ]; then
@@ -475,6 +475,7 @@ setopt histignoredups
 # requires plugin history-substring-search
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
+# ability to use the vim keys while searching history [must be in vim mode]
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 

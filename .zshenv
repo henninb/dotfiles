@@ -74,6 +74,15 @@ if [[ $- == *i* ]]; then
   export LESS_TERMCAP_me
 fi
 
+zshaddhistory() {
+  whence ${${(z)1}[1]} >| /dev/null || return 1
+
+  # case ${1%% *} in
+  #   (vlc|mpc) return 1;;
+  # esac
+  # return 0;
+}
+
 gemerge() {
   if [ "$#" -ne 1 ]; then
     echo "Usage: ${FUNCNAME} <package>" >&2
