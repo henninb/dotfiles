@@ -14,7 +14,7 @@ elif [ "$OS" = "Solus" ]; then
 elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y openjdk-8-jdk
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
-  sudo pacman --noconfirm --needed -S jdk8-openjdk
+  sudo pacman --noconfirm --needed -S jdk11-openjdk
   # echo sudo pacman --noconfirm --needed -S jdk-openjdk
 elif [ "$OS" = "FreeBSD" ]; then
   sudo portmaster -o java/openjdk8 linux-oracle-jdk18

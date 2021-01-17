@@ -161,5 +161,6 @@ fi
 echo /usr/lib/postgresql/13/bin/pg_ctl
 echo /usr/lib/postgresql/13/bin/pg_ctl  -D /var/lib/postgresql/13/main stop
 echo /usr/lib/postgresql/13/bin/pg_ctl  -D /var/lib/postgresql/13/main start
+echo rm -rf /var/lib/postgres/data
 
 exit 0
