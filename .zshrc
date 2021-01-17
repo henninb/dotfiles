@@ -482,6 +482,7 @@ export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=1000000000
 export SAVEHIST="$HISTSIZE"
 setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_SPACE
 
 
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
