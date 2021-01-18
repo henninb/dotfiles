@@ -141,7 +141,7 @@ vim scp://pi@192.168.100.125/home/pi/.bashrc
 
 :set nonu nornu
 
-## edit the q macro
+## edit the '@q' macro
 ```
 :let @q=''
 echo @q
@@ -152,3 +152,7 @@ echo @q
 ```
 Note2: <1b> is Esc; you can insert this with Ctrl+v and then Esc. It may also show up as ^[ (depending on the display setting).
 
+## macros - to handle performance issues
+```
+set lazyredraw
+```
