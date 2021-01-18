@@ -6,6 +6,7 @@ EOF
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman  --noconfirm --needed -S docker
+  sudo pacman  --noconfirm --needed -S docker-compose
   sudo systemctl enable docker
   sudo systemctl start docker
   sudo systemctl status docker
