@@ -101,7 +101,7 @@
 | desktop greeter        | slick-greeter                                                                        |
 | clipboard manager      | copyq, clipmenu                                                                      |
 | color temperature tool | redshift                                                                             |
-| password manager       | kepassxc, pass, passmenu, pass-otp                                                   |
+| password manager       | kepassxc, pass, passmenu, pass-otp, gopass                                           |
 | gtk theme tool         | lxappearance                                                                         |
 | audio mixer            | amixer, ncpamixer                                                                    |
 
