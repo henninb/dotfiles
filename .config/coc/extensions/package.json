@@ -6,7 +6,7 @@
     "coc-emmet": ">=1.1.6",
     "coc-emoji": ">=1.2.3",
     "coc-eslint": ">=1.4.5",
-    "coc-explorer": ">=0.15.3",
+    "coc-explorer": ">=0.15.5",
     "coc-fsharp": ">=0.2.7",
     "coc-git": ">=2.2.0",
     "coc-html": ">=1.4.1",
