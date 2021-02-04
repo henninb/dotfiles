@@ -3,6 +3,18 @@
 # https://askubuntu.com/questions/689281/pulseaudio-can-not-load-bluetooth-module-15-10-16-04-16-10
 # https://ubuntuforums.org/showthread.php?t=2308489
 
+cat > hcid.conf <<EOF
+options {
+
+    # Security Manager mode
+    #   none - Security manager disabled
+    #   auto - Use local PIN for incoming connections
+    #   user - Always ask user for a PIN
+    #
+    security none;
+}
+EOF
+
 if [ "$OS" = "Linux Mint" ] ||  [ "$OS" = "Ubuntu" ]; then
   sudo apt install -y bluez-tools pulseaudio-module-bluetooth expect
   sudo apt install -y blueberry
