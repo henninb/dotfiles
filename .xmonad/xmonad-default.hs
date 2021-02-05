@@ -73,6 +73,9 @@ myTerminal = "alacritty"
 altKeyMask :: KeyMask
 altKeyMask = mod1Mask
 
+superKeyMask :: KeyMask
+superKeyMask = mod4Mask
+
 myFont :: String
 myFont = "xft:Mononoki Nerd Font:bold:size=9:antialias=true:hinting=true"
 
@@ -96,15 +99,15 @@ myFocusBorderColor :: String
 myFocusBorderColor = "#5b51c9"
 
 myRemoveKeys = [
-                 (altKeyMask .|. shiftMask, xK_space)
-               , (altKeyMask, xK_q)
-               , (altKeyMask, xK_e)
-               , (altKeyMask, xK_p)
-               , (altKeyMask, xK_x)
+                 (superKeyMask .|. shiftMask, xK_space)
+               , (superKeyMask, xK_q)
+               , (superKeyMask, xK_e)
+               , (superKeyMask, xK_p)
+               , (superKeyMask, xK_x)
                , (controlMask, xK_p)
-               , (altKeyMask .|. shiftMask, xK_q)
-               , (altKeyMask .|. shiftMask, xK_c)
-               -- , (altKeyMask, xK_space)
+               , (superKeyMask .|. shiftMask, xK_q)
+               , (superKeyMask .|. shiftMask, xK_c)
+               -- , (superKeyMask, xK_space)
                ]
 
 archwiki, ebay, news, reddit, urban :: S.SearchEngine
@@ -149,7 +152,7 @@ myXPKeymap = M.fromList $
      , (xK_bracketleft, quit)
      ]
      ++
-     map (first $ (,) altKeyMask)       -- meta key + <key>
+     map (first $ (,) superKeyMask)       -- meta key + <key>
      [ (xK_BackSpace, killWord Prev) -- kill the prev word
      , (xK_f, moveWord Next)         -- move a word forward
      , (xK_b, moveWord Prev)         -- move a word backward
@@ -203,7 +206,7 @@ myXPConfig' = myXPConfig
 -- TODO: not sure what this code does right now
 keyBindings conf = let m = modMask conf in
      M.fromList
-    [((m .|. altKeyMask, k), windows $ f i) |
+    [((m .|. superKeyMask, k), windows $ f i) |
      (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9],
      (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
@@ -475,7 +478,7 @@ myConfig = def
   , normalBorderColor = myBorderColor
   , focusedBorderColor = myFocusBorderColor
   , workspaces = myWorkspaces
-  , modMask = altKeyMask
+  , modMask = superKeyMask
   }
    `additionalKeysP`
    [
