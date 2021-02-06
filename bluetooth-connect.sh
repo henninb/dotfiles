@@ -2,8 +2,7 @@
 
 address=""
 
-touch bluetooth.txt
-for address in $(cat bluetooth.txt);do
+for address in $(cat /opt/bluetooth.txt);do
   status=$(bluetoothctl info "$address" | grep Connected | grep -v grep)
   echo "status=$status"
   if echo "$status" | grep -q "no"; then
