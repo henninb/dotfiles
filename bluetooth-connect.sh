@@ -6,7 +6,7 @@ for address in $(cat /opt/bluetooth.txt);do
   status=$(bluetoothctl info "$address" | grep Connected | grep -v grep)
   echo "status=$status"
   if echo "$status" | grep -q "no"; then
-    echo
+    bluetoothctl remove "$address" >/dev/null 2>&1
     bluetoothctl disconnect "$address" >/dev/null 2>&1
     bluetoothctl trust "$address" >/dev/null 2>&1
     bluetoothctl connect "$address"
