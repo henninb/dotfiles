@@ -15,6 +15,8 @@ options {
 }
 EOF
 
+sudo cp hcid.conf /etc/bluetooth
+
 if [ "$OS" = "Linux Mint" ] ||  [ "$OS" = "Ubuntu" ]; then
   sudo apt install -y bluez-tools pulseaudio-module-bluetooth expect
   sudo apt install -y blueberry
