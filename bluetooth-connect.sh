@@ -2,6 +2,8 @@
 
 address=""
 
+pactl load-module module-bluetooth-discover
+
 for address in $(cat /opt/bluetooth.txt);do
   status=$(bluetoothctl info "$address" | grep Connected | grep -v grep)
   echo "status=$status for $address"
