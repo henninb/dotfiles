@@ -25,13 +25,14 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -S openjdk
 elif [ "$OS" = "Ubuntu" ]; then
-  sudo apt install -y openjdk-8-jdk
+  #sudo apt install -y openjdk-8-jdk
+  sudo apt install -y openjdk-11-jdk
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install java-1.8.0-openjdk-devel
 elif [ "$OS" = "Linux Mint" ]; then
   sudo apt update
   sudo apt upgrade -y
-  sudo apt install -y openjdk-8-jdk
+  sudo apt install -y openjdk-11-jdk
 else
   echo "$OS is not yet implemented."
   exit 1
