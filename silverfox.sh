@@ -10,4 +10,4 @@ sudo ip addr add dev enp0s31f6 192.168.100.218/24
 ip a show
 sudo route add default gw 192.168.100.254 enp0s31f6
 echo sudo vi /etc/resolv.conf
-
+echo journalctl -u networking.service
