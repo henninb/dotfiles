@@ -61,7 +61,7 @@ endif
    Plug 'sbdchd/neoformat' " for formatting code
    Plug 'git@github.com:alvan/vim-closetag.git' "closing tags for html
    " Plug 'git@github.com:prettier/vim-prettier.git', { 'do': 'yarn add prettier' }
-   Plug 'nvim-treesitter/nvim-treesitter'
+"   Plug 'nvim-treesitter/nvim-treesitter'
    " Plug 'nvim-treesitter/completion-treesitter'
    " Plug 'nvim-treesitter/playground'
 
@@ -104,7 +104,7 @@ source $HOME/.config/nvim/plug-config/start-screen.vim
 source $HOME/.config/nvim/plug-config/vim-commentary.vim
 source $HOME/.config/nvim/plug-config/airline.vim
 source $HOME/.config/nvim/plug-config/syntastic.vim
-luafile $HOME/.config/nvim/plug-config/treesitter.lua
+"luafile $HOME/.config/nvim/plug-config/treesitter.lua
 " coc config
 " CocCommand git.toggleGutters
 " :CocUninstall coc-pairs
