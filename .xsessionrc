@@ -1,4 +1,5 @@
 export PATH=$HOME/.local/bin:$PATH
 # The XKEYBOARD keymap compiler (xkbcomp) reports:
 # > Internal error:   Could not resolve keysym XF86FullScreen
-setxkbmap -option compose:ralt
+#setxkbmap -option compose:ralt
+setxkbmap -device 9 -option altwin:swap_alt_win
