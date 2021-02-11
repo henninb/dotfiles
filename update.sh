@@ -25,7 +25,7 @@ elif [ "$OS" = "void" ]; then
 elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -Syu 2>&1 | tee -a update-$$.log
   yay -Syu
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux"] || [ "$OS" = "ArcoLinux" ]; then
   du -sh /var/cache/pacman/pkg
   sudo pacman --noconfirm --needed -Syu 2>&1 | tee -a update-$$.log
   echo sudo pacman -Scc

@@ -6,7 +6,7 @@ if [ "$OS" = "CentOS Linux" ]; then
   else
     sudo yum install -y zsh
   fi
-elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman  --noconfirm --needed -S zsh
   sudo pacman  --noconfirm --needed -S unzip
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ] || [ "$OS" = "elementary OS" ]; then
