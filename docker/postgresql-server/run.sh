@@ -30,8 +30,7 @@ EOF
 sudo mkdir -p /opt/postgresql-data
 sudo mv -v pg_hba.conf /opt/postgresql-data/pg_hba.conf
 sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /opt/postgresql-data/postgresql.conf
-cd /tmp
-echo sudo -u postgres sh -c 'cd /tmp && psql postgres -U postgres < /tmp/install_psql_settings.sql'
+docker-compose up -d
 
 exit 0
 
