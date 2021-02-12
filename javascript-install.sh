@@ -11,7 +11,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y curl python-software-properties
   curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
   sudo apt install -y nodejs
-elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S nodejs
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y nodejs
