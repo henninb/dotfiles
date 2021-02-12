@@ -13,7 +13,7 @@ elif [ "$OS" = "Solus" ]; then
   # openjdk-8-devel
 elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y openjdk-8-jdk
-elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S jdk11-openjdk
   # echo sudo pacman --noconfirm --needed -S jdk-openjdk
 elif [ "$OS" = "FreeBSD" ]; then
