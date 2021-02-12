@@ -53,7 +53,7 @@ fi
 sudo groupadd intellij
 sudo useradd -s /sbin/nologin -g intellij intellij
 
-if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S net-tools psmisc wget curl jq
   sudo rm -rf /opt/intellij
   sudo rm -rf /opt/idea-IU-*/
