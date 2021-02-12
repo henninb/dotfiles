@@ -116,6 +116,7 @@ elif [ "$OS" = "void" ]; then
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S libmpdclient
   sudo pacman --noconfirm --needed -S jsoncpp
+  sudo pacman --noconfirm --needed -S python-sphinx
 elif [ "$OS" = "Gentoo" ]; then
   GENTOO_PKGS="jsoncpp cmake x11-libs/cairo media-sound/alsa-utils libmpdclient wireless-tools pulseaudio i3"
   FAILURE=""
@@ -131,7 +132,7 @@ else
 fi
 
 export USE_GCC="ON"
-export ENABLE_I3="ON"
+export ENABLE_I3="OFF"
 # [ "$OS" = "openSUSE Tumbleweed" ] && export ENABLE_I3="OFF"
 export ENABLE_ALSA="ON"
 export ENABLE_PULSEAUDIO="ON"
