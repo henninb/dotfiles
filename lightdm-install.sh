@@ -126,7 +126,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   sudo dpkg-reconfigure lightdm
 #  cat /etc/X11/default-display-manager
   systemctl status display-manager
-elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S lightdm
   sudo pacman --noconfirm --needed -S lightdm-gtk-greeter
   sudo cp -v "$HOME/Xsession-archlinux" /etc/X11/Xsession

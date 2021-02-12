@@ -456,6 +456,8 @@ myStartupHook = do
     spawnOn "1" "alacritty"
     spawnOn "2" "alacritty"
     spawnOnce "blueman-applet"
+    spawnOnce "nm-applet"
+    spawnOnce "pamac-tray"
     spawnOnce "conky -c $HOME/.xmonad/system-overview"
     spawnOnce "mpDris2" -- required for mpd
     spawnOnce "volumeicon"
