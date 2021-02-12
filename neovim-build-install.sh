@@ -18,7 +18,7 @@ fi
 echo "$NVER"
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S make luajit luarocks cmake base-devel lua51-lpeg lua51-mpack tree-sitter msgpack-c libluv unibilium libtermkey libvterm
+  sudo pacman --noconfirm --needed -S make luajit luarocks cmake base-devel lua51-lpeg lua51-mpack tree-sitter msgpack-c libluv unibilium libtermkey libvterm gperf
   sudo luarocks build mpack
   sudo luarocks build lpeg
   sudo luarocks build inspect
