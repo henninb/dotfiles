@@ -4,7 +4,7 @@ cat > daemon.json <<EOF
 { "dns" : [ "8.8.8.8", "8.8.4.4" ]}
 EOF
 
-if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman  --noconfirm --needed -S docker
   sudo pacman  --noconfirm --needed -S docker-compose
   sudo systemctl enable docker
