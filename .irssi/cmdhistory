@@ -1,5 +1,3 @@
-: 1584494628:: :;/quit
-: 1584927680:: :;hi, how do i "disable" zfs-kmod from building when I emerge world? thanks
 : 1584928577:: :;Kelsar, you are probably correct. I have version 5.5.9 kernel but it looks like 5.4 is the latest supported.
 : 1584929134:: :;/quit
 : 1586902716:: :;i am trying to authenticate to xrdp and I am getting an authentication issue (password). any advise on what to look into?
@@ -98,3 +96,5 @@
 : 1605989136:: :;tdr to enable the test version is that a USE flag?
 : 1605989562:: :;tdr, thank you again. I was able to find it and I started the install.
 : 1605990014:: :;/quit
+: 1612821188:: :;on boot my wired nic is not  enabled and not getting getting an IP after upgrading to 20. systemd is reporting started and exit 0 for the networking.service.  I don't  see any info in journald. Any thoughts  as to what I can try to get networking up and running on boot?
+: 1612823649:: :;/quit
