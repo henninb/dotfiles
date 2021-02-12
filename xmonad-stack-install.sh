@@ -96,6 +96,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S vifm
   sudo pacman --noconfirm --needed -S pulseaudio
   sudo pacman --noconfirm --needed -S alsa-utils
+  sudo pacman --noconfirm --needed -S gtk-update-icon-cache
   yay -S mpdris2
   sudo systemctl disable mpd.socket
   sudo systemctl stop mpd.socket
