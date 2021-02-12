@@ -66,7 +66,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y libxrandr-devel
   sudo zypper install -y libxft-devel
   sudo zypper install -y libXss-devel
-elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] [ "$OS" = "ArcoLinux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S xscreensaver
   sudo pacman --noconfirm --needed -S feh
   sudo pacman --noconfirm --needed -S xdotool
