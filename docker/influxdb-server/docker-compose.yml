@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   influxdb-server:
-    image: influxdb:1.8.3
+    image: influxdb:1.8.4
     # user: "${CURRENT_UID}:${CURRENT_GID}"
     container_name: influxdb-server
     volumes:
