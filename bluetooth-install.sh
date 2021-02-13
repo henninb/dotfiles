@@ -26,7 +26,7 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y bluez-tools
   sudo dnf install -y pulseaudio-module-bluetooth
   sudo dnf install -y expect
-elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S bluez-tools expect bluez-utils pulseaudio-bluetooth blueman pulseaudio-alsa bluez-hid2hci bluedevil
   cd "$HOME/projects" || exit
   git clone https://aur.archlinux.org/asoundconf.git
@@ -66,7 +66,7 @@ sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
 sudo systemctl status bluetooth
 
-[ ! -f sn-725.mp3 ] && wget https://media.grc.com/sn/sn-725.mp3 -O sn-725.mp3
+# [ ! -f sn-725.mp3 ] && wget https://media.grc.com/sn/sn-725.mp3 -O sn-725.mp3
 
 amixer -D pulse sset Master 5%+
 echo alsamixer -c 1
