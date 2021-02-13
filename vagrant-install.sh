@@ -6,7 +6,7 @@ unset GEM_PATH
 
 VAGRANT_VER=2.2.6
 
-if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
   #sudo pacman -Rs vagrant
   sudo pacman --noconfirm --needed -S vagrant

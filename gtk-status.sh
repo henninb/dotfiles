@@ -11,6 +11,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse x11-libs/gtk+:2
   sudo emerge --update --newuse x11-libs/gtk+:3
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+  echo
 else
   echo "$OS is not implemented."
 fi

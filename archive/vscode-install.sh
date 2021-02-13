@@ -31,7 +31,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   id -g vscode >/dev/null || sudo groupadd vscode
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo
-elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "AroLinux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo rm -rf /opt/vscode
   rm -rf code-stable-latest.tar.gz
   wget https://go.microsoft.com/fwlink/?LinkID=620884 -O code-stable-latest.tar.gz

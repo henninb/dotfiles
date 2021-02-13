@@ -12,7 +12,7 @@ EOF
 rm -rf com.valvesoftware.Steam.flatpakref*
 wget https://flathub.org/repo/appstream/com.valvesoftware.Steam.flatpakref
 
-if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S flatpak
   flatpak install flathub com.valvesoftware.Steam
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
