@@ -34,11 +34,9 @@ docker-compose up -d
 
 exit 0
 
-sudo docker image build -t postgresql-server .
-docker stop postgresql-server
-docker rm postgresql-server -f
-sudo docker run --name=postgresql-server -h postgresql-server --restart unless-stopped -d postgresql-server
-echo docker exec -it --user root postgresql-server /bin/bash
-echo docker exec -it postgresql-server /bin/bash
-
-exit 0
+# sudo docker image build -t postgresql-server .
+# docker stop postgresql-server
+# docker rm postgresql-server -f
+# sudo docker run --name=postgresql-server -h postgresql-server --restart unless-stopped -d postgresql-server
+# echo docker exec -it --user root postgresql-server /bin/bash
+# echo docker exec -it postgresql-server /bin/bash

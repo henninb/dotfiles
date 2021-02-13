@@ -1,0 +1,49 @@
+version: "3.7"
+services:
+  elasticsearch-server:
+    image: elasticsearch:7.10.1
+    container_name: elasticsearch-server
+    environment:
+      - discovery.type=single-node
+    volumes:
+      - elasticsearch-volume:/usr/share/elasticsearch/data:rw
+    ports:
+      - "9200:9200"
+      # - "9300:9300"
+    expose:
+      - "9200"
+    extra_hosts:
+      - "hornsup:${HOST_IP}"
+    depends_on:
+      - logstash-server
+  kibana-server:
+    image: kibana:7.10.1
+    container_name: kibana-server
+    ports:
+      - "5601:5601"
+    expose:
+      - "5601"
+    depends_on:
+      - elasticsearch-server
+    extra_hosts:
+      - "hornsup:${HOST_IP}"
+      - "elasticsearch:${HOST_IP}"
+  logstash-server:
+    image: logstash:7.10.1
+    container_name: logstash-server
+    environment:
+      - monitoring.elasticsearch.hosts=http://hornsup:9200
+    ports:
+      - "9600:9600"
+      - "4560:4560"
+    expose:
+      - "9600"
+      - "4560"
+    volumes:
+      - ./logstash-pipeline:/usr/share/logstash/pipeline
+    extra_hosts:
+      - "hornsup:${HOST_IP}"
+      - "elasticsearch:${HOST_IP}"
+volumes:
+  elasticsearch-volume:
+    driver: local
