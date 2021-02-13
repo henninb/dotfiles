@@ -48,7 +48,7 @@ EOF
 
   sudo virsh pool-start default
   sudo virsh pool-autostart default
-elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   #sudo pacman -Syu libvirt qemu virt-manager spice-client-gtk virt-viewer gir1.2-spiceclientgtk-3.0
   sudo pacman --noconfirm --needed -Syu dmidecode
   sudo pacman --noconfirm --needed -Syu libvirt

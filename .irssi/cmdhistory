@@ -1,9 +1,3 @@
-: 1584928577:: :;Kelsar, you are probably correct. I have version 5.5.9 kernel but it looks like 5.4 is the latest supported.
-: 1584929134:: :;/quit
-: 1586902716:: :;i am trying to authenticate to xrdp and I am getting an authentication issue (password). any advise on what to look into?
-: 1586902737:: :;i check the /etc/pam.d/xrdp-sesman file and it is set to system-auth.
-: 1587854402:: :;/quit
-: 1587854561:: :;hi all, cdrecord does a package exist for this software or other command line option?
 : 1587855118:: :;found it under cdrtools.
 : 1587855243:: :;/quit
 : 1587862010:: :;hi all, i am trying to install 'libffmpegthumbnailer'. can't find it in the repo. any ideas?
@@ -98,3 +92,9 @@
 : 1605990014:: :;/quit
 : 1612821188:: :;on boot my wired nic is not  enabled and not getting getting an IP after upgrading to 20. systemd is reporting started and exit 0 for the networking.service.  I don't  see any info in journald. Any thoughts  as to what I can try to get networking up and running on boot?
 : 1612823649:: :;/quit
+: 1613167140:: :;hi -- is there a simple trayer application that show if there are new updates in archlinux?
+: 1613167181:: :;i am using xmonad with polybar jonathon.
+: 1613167355:: :;thanks jonathon, I will see what I can find.
+: 1613167569:: :;pamac-tray did the trick jonathon.
+: 1613167671:: :;for now it works :) thanks
+: 1613170249:: :;/quit

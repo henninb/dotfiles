@@ -6,7 +6,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
   sudo apt -y update
   sudo apt install -y brave-browser
-elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   yay -S brave-bin
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse app-eselect/eselect-repository

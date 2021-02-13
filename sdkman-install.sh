@@ -2,7 +2,7 @@
 
 if [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y zip unzip
-elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed  -S zip unzip
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse zip unzip

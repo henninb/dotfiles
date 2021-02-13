@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   echo "arch"
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo "debian"

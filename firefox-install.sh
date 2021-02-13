@@ -26,7 +26,7 @@ if [ ! -f "firefox-${FOX_VER}.tar.bz2" ]; then
   fi
 fi
 
-if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S net-tools psmisc wget curl gtk3 dbus-glib libxt dbus-glib
   sudo rm -rf /opt/firefox
   sudo tar -xjvf "firefox-${FOX_VER}.tar.bz2" -C /opt

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S ntfs-3g
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge  --update --newuse udisks

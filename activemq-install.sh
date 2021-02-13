@@ -40,7 +40,7 @@ if [ ! -f "apache-activemq-$AMQ_VER-bin.tar.gz" ]; then
   fi
 fi
 
-if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo groupadd activemq
   sudo useradd -s /sbin/nologin -g activemq activemq
   sudo pacman --noconfirm --needed -S net-tools psmisc wget curl jre8-openjdk

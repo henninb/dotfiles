@@ -2,7 +2,7 @@
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y alien fakeroot
-elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S libnsl
 elif [ "$OS" = "Gentoo" ]; then
   echo noop
@@ -81,7 +81,7 @@ elif [ "$OS" = "Fedora" ]; then
   sudo yum localinstall -y oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
   sudo yum localinstall -y oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm
   sudo yum localinstall -y oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm
-elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S fakeroot
   sudo pacman --noconfirm --needed -S rpm
   sudo rpm -i --nodeps oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm

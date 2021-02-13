@@ -148,7 +148,7 @@ sudo mkdir -p /etc/X11
 chmod 755 startwm.sh
 chmod 755 xrdp.rc
 
-if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   mkdir -p "$HOME/projects"
   sudo pacman --noconfirm --needed -S patch autoconf automake pkg-config fakeroot lsof nasm net-tools libtool xorg-server-devel make libxfont2
   sudo pacman --noconfirm --needed -S xorg-server

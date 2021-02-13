@@ -48,7 +48,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   sudo apt install -y mpd
   sudo apt install -y mpc
   sudo apt install -y ncmpcpp
-elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S mpd
   sudo pacman --noconfirm --needed -S mpc
   sudo pacman --noconfirm --needed -S ncmpcpp

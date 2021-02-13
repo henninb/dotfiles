@@ -49,7 +49,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y sxhkd
   sudo xbps-install -y i3blocks
   sudo xbps-install -y w3m
-elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman -Rsnc lightdm
   sudo pacman -Rsnc gdm
   sudo pacman --noconfirm --needed -S i3status

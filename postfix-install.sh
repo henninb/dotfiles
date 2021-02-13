@@ -80,7 +80,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo mv -v sasl_passwd /etc/postfix/sasl_passwd
   sudo chmod 600 /etc/postfix/sasl_passwd
   sudo mv -v main_archlinux.cf /etc/postfix/main.cf
-elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "AroLinux" ]; then
   sudo mv -v sasl_passwd /etc/postfix/sasl_passwd
   sudo chmod 600 /etc/postfix/sasl_passwd
   sudo mv -v main_archlinux.cf /etc/postfix/main.cf

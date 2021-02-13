@@ -23,7 +23,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo chown root:mail /etc/ssmtp/ssmtp.conf
 elif [ "$OS" = "CentOS Linux" ]; then
   echo here
-elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   echo here
 else
   echo "$OS not implemented"
