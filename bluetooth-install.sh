@@ -15,7 +15,7 @@ options {
 }
 EOF
 
-sudo cp hcid.conf /etc/bluetooth
+sudo mv -v hcid.conf /etc/bluetooth
 
 if [ "$OS" = "Linux Mint" ] ||  [ "$OS" = "Ubuntu" ]; then
   sudo apt install -y bluez-tools pulseaudio-module-bluetooth expect
@@ -29,8 +29,8 @@ elif [ "$OS" = "Fedora" ]; then
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S bluez-tools expect bluez-utils pulseaudio-bluetooth blueman pulseaudio-alsa bluez-hid2hci bluedevil
   cd "$HOME/projects" || exit
-  git clone https://aur.archlinux.org/asoundconf.git
-  git clone https://aur.archlinux.org/bluez-utils-compat.git
+  # git clone https://aur.archlinux.org/asoundconf.git
+  # git clone https://aur.archlinux.org/bluez-utils-compat.git
   yay -S asoundconf
   yay -S bluez-utils-compat
   echo /etc/pulse/default.pa
