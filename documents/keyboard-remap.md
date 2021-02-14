@@ -7,6 +7,10 @@ To restore the default behavior just use:
 setxkbmap -option
 
 
+# fkeys for the mac
+echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode
+
+
 https://superuser.com/questions/760602/how-to-remap-keys-under-linux-for-a-specific-keyboard-only
 
 
