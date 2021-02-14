@@ -16,6 +16,8 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y libtool
   sudo apt install -y libtool-bin
   sudo apt install -y libgtk2.0-dev
+elif [ "$OS" = "ArcoLinux" ]; then
+  echo
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y gtk3-devel
 elif [ "$OS" = "Gentoo" ]; then
@@ -38,6 +40,7 @@ cd "$HOME/projects" || exit
 git clone git@github.com:IgnorantGuru/spacefm.git
 cd spacefm || exit
 ./autogen.sh
+patch src/main.c < "$HOME/-spacefm-main-patch"
 make
 if ! sudo make install; then
   echo vi projects/spacefm/src/main.c

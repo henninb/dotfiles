@@ -87,3 +87,4 @@ options hid_apple fnmode=2 swap_opt_cmd=1
 
 
 echo 0 > /sys/module/hid_apple/parameters/fnmode
+echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode
