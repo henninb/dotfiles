@@ -1,14 +1,18 @@
 #!/bin/sh
 
 VER=$(curl -s -f https://www.arduino.cc/en/main/software | grep -o 'arduino-[0-9.]\+[0-9]-windows.exe' | sed 's/arduino-//' | sed 's/-windows.exe//')
-echo "$VER"
+echo "VER=$VER"
+
+VER=1.8.13
 
 if [ ! -f "arduino-${VER}-linux64.tar.xz" ]; then
   rm -rf arduino-*-linux64.tar.xz
   curl "https://downloads.arduino.cc/arduino-${VER}-linux64.tar.xz" --output "arduino-${VER}-linux64.tar.xz"
 fi
 
-sudo mkdir -p /opt
+echo "https://downloads.arduino.cc/arduino-${VER}-linux64.tar.xz"
+
+sudo mkdir -p /opt/
 sudo rm -rf /opt/arduino
 sudo rm -rf "/opt/arduino-${VER}"
 sudo tar -xJvf "arduino-${VER}-linux64.tar.xz" -C /opt
@@ -22,13 +26,14 @@ sudo usermod -a -G arduino "$(whoami)"
 # sudo usermod -a -G uucp "$(whoami)"
 sudo usermod -a -G tty "$(whoami)"
 sudo usermod -a -G dialout "$(whoami)"
-sudo pacman -S minicom
-sudo pacman -S moserial
+sudo pacman --noconfirm --needed -S minicom
+sudo pacman --noconfirm --needed -S moserial
 echo stty -F /dev/ttyUSB0 hupcl
 echo stty -F /dev/ttyUSB0 -hupcl
 echo stty -a -F /dev/ttyUSB0
 
 echo "go get -u github.com/arduino/arduino-cli"
+export GO111MODULE=on
 go get -u github.com/arduino/arduino-cli
 
 # arduino-cli core search arduino
