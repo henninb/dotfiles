@@ -58,24 +58,26 @@ setxkbmap -option ctrl:swapcaps     # Swap Left Control and Caps Lock
 
 xrandr --listproviders >> "$HOME/xinit.log"
 
-WM=$(head -1 < "$HOME/.active-wm")
-if [ -s "$HOME/.active-wm" ] && [ -x "$(command -v "${WM}")" ]; then
-  echo "Found window manager = ${WM}." >> "$HOME/xinit.log"
-  export DESKTOP_SESSION=${WM}
-else
-  echo i3 > "$HOME/.active-wm"
-  WM=i3
-  echo "Set to default window manager = ${WM}." >> "$HOME/xinit.log"
-fi
+# WM=$(head -1 < "$HOME/.active-wm")
+# if [ -s "$HOME/.active-wm" ] && [ -x "$(command -v "${WM}")" ]; then
+#   echo "Found window manager = ${WM}." >> "$HOME/xinit.log"
+#   export DESKTOP_SESSION=${WM}
+# else
+#   echo i3 > "$HOME/.active-wm"
+#   WM=i3
+#   echo "Set to default window manager = ${WM}." >> "$HOME/xinit.log"
+# fi
 
-if [ "${WM}" = "bspwm" ]; then
-  exec bspwm 2>> "$HOME/xinit.log"
-elif [ "${WM}" = "xmonad" ]; then
-  export "$(dbus-launch)"
-  exec dbus-launch xmonad 2>> "$HOME/xinit.log"
-elif [ -x "$(command -v ${WM})" ]; then
-  exec ${WM} 2>> "$HOME/xinit.log"
-else
-  echo "failed to find window manager ${WM}." >> "$HOME/xinit.log"
-  exit 1
-fi
+# if [ "${WM}" = "bspwm" ]; then
+#   exec bspwm 2>> "$HOME/xinit.log"
+# elif [ "${WM}" = "xmonad" ]; then
+#   export "$(dbus-launch)"
+#   exec dbus-launch xmonad 2>> "$HOME/xinit.log"
+# elif [ -x "$(command -v ${WM})" ]; then
+#   exec ${WM} 2>> "$HOME/xinit.log"
+# else
+#   echo "failed to find window manager ${WM}." >> "$HOME/xinit.log"
+#   exit 1
+# fi
+
+exec xmonad-start 2>> "$HOME/xinit.log"

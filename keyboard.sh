@@ -79,3 +79,11 @@ xinput --list | grep -i keyboard | grep -iv "Virtual core" | grep -iv Button
 xinput --list | grep -i keyboard | egrep -iv 'virtual|video|button|bus'
 
 xinput list --id-only 'Logitech G700 Laser Mouse'
+
+
+sudo vim /etc/modprobe.d/hid_apple.conf
+# For Keychron keyboard -- https://wiki.archlinux.org/index.php/Apple_Keyboard
+options hid_apple fnmode=2 swap_opt_cmd=1
+
+
+echo 0 > /sys/module/hid_apple/parameters/fnmode
