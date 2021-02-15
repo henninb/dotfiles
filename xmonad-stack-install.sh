@@ -1,5 +1,10 @@
 #!/usr/bin/env sh
 
+if [ ! -x "$(command -v go)" ]; then
+  echo "golang needs to be installed"
+  exit 1
+fi
+
 curl -sSL https://get.haskellstack.org/ | sh
 stack update
 
@@ -227,35 +232,35 @@ else
   exit 1
 fi
 
-if ! stack install ghc ; then
+if ! stack install ghc; then
   echo failed ghc.
   exit 1
 fi
 
 failures=""
 
-if ! stack install hindent ; then
+if ! stack install hindent; then
   if ! stack --resolver lts-14.22 install hindent; then
     failures="$failures hindent"
   fi
 fi
 
-if ! stack install hlint ; then
+if ! stack install hlint; then
   echo failed hlint.
   failures="$failures hlint"
 fi
 
-if ! stack install xmonad-contrib ; then
+if ! stack install xmonad-contrib; then
   echo failed xmonad-contrib.
   failures="$failures xmonad-contrib"
 fi
 
-if ! stack install xmonad-extras ; then
+if ! stack install xmonad-extras; then
   echo failed xmonad-extras.
   failures="$failures xmonad-extras"
 fi
 
-if ! stack install dbus ; then
+if ! stack install dbus; then
   echo failed dbus.
   failures="$failures dbus"
 fi
@@ -277,6 +282,8 @@ if [ "$OS" = "Gentoo" ] || [ "$OS" = "FreeBSD" ]; then
   sudo make clean install
   cd - || exit
 fi
+
+sudo cp -v "$HOME/.local/bin/xmonad-start" /usr/local/bin/xmonad-start
 
 if ! go get github.com/godbus/dbus; then
   echo "failed to install go dbus."
@@ -304,25 +311,3 @@ echo stack exec ghc-pkg check
 echo "install failures = $failures"
 
 exit 0
-
-# cd $HOME/projects
-# git clone git@github.com:xmonad/xmonad.git
-# cd xmonad
-# git checkout tags/v0.13
-# stack setup
-# stack build
-# stack install
-# $HOME/.local/bin/xmonad --version
-
-# cd $HOME/projects
-# git clone git@github.com:jaor/xmobar.git
-# cd xmobar
-# git checkout tags/v0.31
-
-# echo exec xmonad
-# xmonad --recompile
-# echo pid of systemd
-# pidof systemd
-
-# echo https://brianbuccola.com/how-to-install-xmonad-and-xmobar-via-stack/
-# ghc-pkg list
