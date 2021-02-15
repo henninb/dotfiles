@@ -40,12 +40,27 @@ cd "$HOME/projects" || exit
 git clone git@github.com:IgnorantGuru/spacefm.git
 cd spacefm || exit
 ./autogen.sh
-patch src/main.c < "$HOME/-spacefm-main-patch"
-make
+if ! patch src/main.c < "$HOME/spacefm-main-patch"; then
+  echo "main patch failed."
+  exit 1
+fi
+
+if ! patch -p1 -i $HOME/spacefm-settings-patch; then
+  echo "settings patch failed."
+  exit 1
+fi
+
+if ! make; then
+  echo "build failed"
+  echo "add #include <sys/sysmacros.h> to the  src/main.c"
+  exit 2
+
+fi
 if ! sudo make install; then
   echo vi projects/spacefm/src/main.c
   echo "add #include <sys/sysmacros.h> to the  src/main.c"
   echo "this will fix the major/minor failure to compile"
+  exit 3
 fi
 
 echo "sh ./ant-dracula-theme-install.sh"

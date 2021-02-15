@@ -25,6 +25,7 @@ if [ ! -d "$HOME/.themes/ant-dracula-gtk-theme" ]; then
   mv -v ant-dracula-gtk-theme "$HOME/.themes"
 fi
 
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
 gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
 
