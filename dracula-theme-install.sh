@@ -26,8 +26,15 @@ if [ ! -d "$HOME/.themes/ant-dracula-gtk-theme" ]; then
 fi
 
 export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
-gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
-gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
+if ! gsettings set org.gnome.desktop.interface gtk-theme "Dracula"; then
+  echo "cannot set the theme, check the dbus settings"
+  exit 1
+fi
+
+if ! gsettings set org.gnome.desktop.wm.preferences theme "Dracula"; then
+  echo "cannot set the theme, check the dbus settings"
+  exit 1
+fi
 
 exit 0
 
