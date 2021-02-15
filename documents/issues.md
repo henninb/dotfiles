@@ -267,10 +267,10 @@ sudo journalctl
 sudo systemctl set-default multi-user
 ```
 
-## adjust grub as needed (removing splash as needed)
+## adjust grub as needed (removing splash as needed) and update grub
 ```
 sudo vim /etc/default/grub
-sudo update-grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ## To get to the desktop from the console (The usual startx command doesn't work with graphical.)
