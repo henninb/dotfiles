@@ -257,27 +257,41 @@ cd /etc/systemd/system
 rm display-manager.service
 sudo systemctl list-unit-files
 
-view the logs
+## view the logs for systemd
+```
 sudo journalctl
+```
 
-To boot to console:
+## To boot to console
+```
 sudo systemctl set-default multi-user
-You must then edit /etc/default/grub by removing splash from the GRUB command line. (Remember to update GRUB afterward: sudo update-grub).
-To get to the Unity desktop from the console, you must enter the command:
-sudo systemctl start lightdm.service
-(The usual startx command doesn't work with Unity.)
-To restore boot to GUI:
-sudo systemctl set-default graphical
+```
 
-## solus sleeps after 20 minutes
+## adjust grub as needed (removing splash as needed)
+```
+sudo vim /etc/default/grub
+sudo update-grub
+```
+
+## To get to the desktop from the console (The usual startx command doesn't work with graphical.)
+```
+sudo systemctl start lightdm.service
+```
+
+## To restore boot to Graphical
+```
+sudo systemctl set-default graphical
+```
+
+## solus - shutoff the sleeps after 20 minutes
 ```
 systemctl mask sleep suspend hibernate hybrid-sleep
 ```
 
-## fix shell to a POXIX shell (Archlinux)
+## setup the shell to a POXIX shell in Archlinux
 sudo ln -sfT /bin/dash /bin/sh
 
-## howto server up markdown in a browser
+## howto serve up markdown in a browser
 ```
 grip documents/index.md 0.0.0.0
 cat README.md | grip --export - | less
@@ -300,6 +314,7 @@ xinit /usr/bin/gnome-session -- /usr/bin/X :0
 ## tty console switch
 ```
 sudo chvt 7
+sudo chvt 2
 ```
 
 ## tty console setup
