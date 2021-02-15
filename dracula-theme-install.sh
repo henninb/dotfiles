@@ -36,7 +36,7 @@ if ! gsettings set org.gnome.desktop.wm.preferences theme "Dracula"; then
   exit 1
 fi
 
-gsettings set org.gnome.desktop.wm.preferences theme
+gsettings get org.gnome.desktop.wm.preferences theme
 
 exit 0
 
