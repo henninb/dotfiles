@@ -13,11 +13,11 @@ if [ ! -f "ant-dracula-gtk-theme.zip" ]; then
   wget https://github.com/EliverLara/Ant-Dracula/archive/master.zip -O ant-dracula-gtk-theme.zip
 fi
 
-rm -rf ant-dracula-theme Ant-Dracula
+rm -rf ant-dracula-theme AntDracula
 rm -rf gtk-master Dracula
 
 unzip -oq ant-dracula-gtk-theme.zip
-mv -v gtk-master Ant-Dracula
+mv -v gtk-master AntDracula
 unzip -oq dracula-gtk-theme.zip
 mv -v gtk-master Dracula
 
@@ -25,8 +25,8 @@ if [ ! -d "$theme_path/Dracula" ]; then
   sudo mv -v Dracula "$theme_path"
 fi
 
-if [ ! -d "$theme_path/Ant-dracula" ]; then
-  sudo mv -v Ant-Dracula "$theme_path"
+if [ ! -d "$theme_path/AntDracula" ]; then
+  sudo mv -v AntDracula "$theme_path"
 fi
 
 export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
