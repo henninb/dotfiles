@@ -107,9 +107,10 @@ else
   flatpak update --user -y
 fi
 
-if [ ! -x "$(command -v npm)" ]; then
+if [ ! -x "$(command -v nvm)" ]; then
   echo "npm needs to be installed."
 else
+  nvm install-latest-npm
   echo "npm version"
   npm --version
 fi
