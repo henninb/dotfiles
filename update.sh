@@ -1,5 +1,7 @@
 #!/bin/sh
 
+golang_ver=$(curl -s 'https://golang.org/VERSION?m=text')
+
 if [ "$OS" = "Linux Mint" ]; then
   sudo apt update
   sudo apt upgrade -y
@@ -78,6 +80,48 @@ else
   exit 1
 fi
 
-flatpak update --user -y
+if [ ! -x "$(command -v go)" ]; then
+  echo "golang needs to be installed"
+else
+  if grep -q "$golang_ver" <<< "$(go version)"; then
+    echo "golang is already up to date"
+  else
+    echo "updating golang"
+  fi
+  go version
+fi
+
+if [ ! -x "$(command -v stack)" ]; then
+  echo "stack is being installed"
+  curl -sSL 'https://get.haskellstack.org' | sh
+  stack --version
+else
+  stack update
+  echo "stack version"
+  stack --version
+fi
+
+if [ ! -x "$(command -v flatpak)" ]; then
+  echo "flatpak needs to be installed."
+else
+  flatpak update --user -y
+fi
+
+if [ ! -x "$(command -v npm)" ]; then
+  echo "npm needs to be installed."
+else
+  echo "npm version"
+  npm --version
+fi
+
+if [ ! -x "$(command -v rustup)" ]; then
+  curl --proto '=https' --tlsv1.2 -sSf 'https://sh.rustup.rs' > rustup-init
+  chmod 755 rustup-init
+  ./rustup-init -y --no-modify-path
+else
+  rustc --version
+  rustup update
+  rustc --version
+fi
 
 exit 0

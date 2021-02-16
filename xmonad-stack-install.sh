@@ -5,7 +5,7 @@ if [ ! -x "$(command -v go)" ]; then
   exit 1
 fi
 
-curl -sSL https://get.haskellstack.org/ | sh
+curl -sSL 'https://get.haskellstack.org' | sh
 stack update
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
