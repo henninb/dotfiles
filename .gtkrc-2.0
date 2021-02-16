@@ -2,7 +2,7 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/henninb/.gtkrc-2.0.mine"
-gtk-theme-name="Ant-Dracula"
+gtk-theme-name="Dracula"
 gtk-icon-theme-name="Adwaita"
 gtk-font-name="monofur for Powerline 11"
 gtk-cursor-theme-name="Adwaita"

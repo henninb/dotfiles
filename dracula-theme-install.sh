@@ -1,6 +1,10 @@
 #!/bin/sh
 
-mkdir "$HOME/.themes"
+pkg-config --exists gtk+-3.0 && echo "gtk+ 3.0 is installed" || echo "gtk+ 3.0 is not installed"
+pkg-config --exists gtk+-2.0 && echo "gtk+ 2.0 is installed" || echo "gtk+ 2.0 is not installed"
+
+theme_path=/usr/share/themes
+mkdir -p "$HOME/.local/share/themes"
 if [ ! -f "dracula-gtk-theme.zip" ]; then
   wget https://github.com/dracula/gtk/archive/master.zip -O dracula-gtk-theme.zip
 fi
@@ -9,20 +13,20 @@ if [ ! -f "ant-dracula-gtk-theme.zip" ]; then
   wget https://github.com/EliverLara/Ant-Dracula/archive/master.zip -O ant-dracula-gtk-theme.zip
 fi
 
-rm -rf ant-dracula-theme ant-dracula-gtk-theme
-rm -rf gtk-master dracula-gtk-theme
+rm -rf ant-dracula-theme Ant-Dracula
+rm -rf gtk-master Dracula
 
-unzip -o ant-dracula-gtk-theme.zip
-mv -v gtk-master ant-dracula-gtk-theme
-unzip -o dracula-gtk-theme.zip
-mv -v gtk-master dracula-gtk-theme
+unzip -oq ant-dracula-gtk-theme.zip
+mv -v gtk-master Ant-Dracula
+unzip -oq dracula-gtk-theme.zip
+mv -v gtk-master Dracula
 
-if [ ! -d "$HOME/.themes/dracula-gtk-theme" ]; then
-  mv -v dracula-gtk-theme "$HOME/.themes"
+if [ ! -d "$theme_path/Dracula" ]; then
+  sudo mv -v Dracula "$theme_path"
 fi
 
-if [ ! -d "$HOME/.themes/ant-dracula-gtk-theme" ]; then
-  mv -v ant-dracula-gtk-theme "$HOME/.themes"
+if [ ! -d "$theme_path/Ant-dracula" ]; then
+  sudo mv -v Ant-Dracula "$theme_path"
 fi
 
 export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
@@ -37,5 +41,6 @@ if ! gsettings set org.gnome.desktop.wm.preferences theme "Dracula"; then
 fi
 
 gsettings get org.gnome.desktop.wm.preferences theme
+echo lxappearance
 
 exit 0
