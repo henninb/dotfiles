@@ -288,7 +288,7 @@ myKeys = [
   , ("M-e"               , spawn "urxvt -e nvim")
   , ("M-f"               , spawn "urxvt -e lf")
   , ("M-S-f"             , spawn "spacefm")
-  , ("M-i"               , spawn "brave-browser")
+  , ("M-i"               , spawn "brave-browser --incognito")
   , ("M-y"               , spawn "passmenu -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'")
   , ("M-S-i"             , spawn ("firefox" ++ " -private-window"))
   , ("M-<Print>"         , spawn "flameshot gui -p $HOME/Desktop")

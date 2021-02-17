@@ -1,4 +1,3 @@
-# TODO: setup for lightdm
 export PATH=${HOME}/.local/bin:${PATH}
 export PATH=/usr/local/sbin:/usr/sbin:${PATH}
 

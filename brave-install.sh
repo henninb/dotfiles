@@ -8,6 +8,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   sudo apt install -y brave-browser
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   yay -S brave-bin
+  echo sudo ln -sfn /bin/brave /usr/local/bin/brave-browser
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse app-eselect/eselect-repository
   sudo mkdir -p /etc/portage/repos.conf
