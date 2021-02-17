@@ -9,7 +9,9 @@ DEVICE=$1
 
 sudo ip link set dev "${DEVICE}" up
 sudo dhclient "${DEVICE}"
+ping -c 4 192.168.100.254
 
+echo examples
 echo sudo ip addr add dev "${DEVICE}" 192.168.100.218/24
 echo sudo route add default gw 192.168.100.254 "${DEVICE}"
 echo sudo vi /etc/resolv.conf

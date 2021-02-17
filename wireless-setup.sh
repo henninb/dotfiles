@@ -1,36 +1,41 @@
 #!/bin/sh
 
-lsusb
+echo lsusb
 
-git clone https://github.com/brektrou/rtl8821CU.git
-git clone https://github.com/lwfinger/rtl8723bu.git
-cd rtl8723bu || exit
-nano Makefile
-make
-sudo make install
-sudo modprobe -v 8723bu
+echo wifi passowrd
+read -r wifi_password
 
-nmcli
-nmcli dev status
-
-nmcli d wifi list
-
-nmtui
-
-NetworkManager-tui
-
-ip link show | grep w
-
-sudo iwlist scan
-sudo iwconfig wlp0s20u7 essid NSA_classified key s:password
-
-sudo eopkg install -y wpa_supplicant
 cat > wpa_supplicant.conf <<EOF
 network={
  ssid="ssid_name"
- psk="password"
+ psk="$wifi_password"
 }
 EOF
+
+cd "$HOME/projects" || exit
+git clone https://github.com/brektrou/rtl8821CU.git
+git clone https://github.com/lwfinger/rtl8723bu.git
+cd rtl8723bu || exit
+make
+# sudo make install
+# sudo modprobe -v 8723bu
+
+#nmcli
+nmcli dev status
+sudo iwlist scan
+
+echo nmcli d wifi list
+
+echo nmtui
+exit 0
+
+# NetworkManager-tui
+
+ip link show | grep w
+
+sudo iwconfig wlp0s20u7 essid NSA_classified key s:password
+
+sudo eopkg install -y wpa_supplicant
 
 wpa_passphrase NSA_classified passphrase | sudo tee /etc/wpa_supplicant.conf
 dhclient interface
@@ -48,7 +53,6 @@ nmcli d wifi list --rescan yes
 
 exit 0
 
-Bus 002 Device 007: ID 0bda:c811 Realtek Semiconductor Corp.
 nmcli nm wifi on
 nmcli nm wifi off
 on newer version:
