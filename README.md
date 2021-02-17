@@ -161,3 +161,4 @@
 - spamassassin - spam email removal
 - osquery - osqueryi is a virtual database tool
 - yay -S archiver - the arc tool
+- simplescreenrecorder - sudo pacman -S simplescreenrecorder
