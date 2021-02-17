@@ -1,0 +1,19 @@
+#!/bin/sh
+
+options=$1
+
+if grep -q "incognito" <<< "$options"; then
+  firefox_options="-private-window"
+fi
+
+if [ -x "$(command -v brave)" ]; then
+  exec brave "$options"
+elif [ -x "$(command -v brave-browser)" ]; then
+  exec brave-browser "$options"
+elif [ -x "$(command -v firefox)" ]; then
+  exec firefox "$firefox_options"
+else
+  echo "no browser found"
+fi
+
+exit 0

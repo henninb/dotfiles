@@ -20,7 +20,10 @@ export CM_DEBUG=0
 export CM_OUTPUT_CLIP=1
 export CM_MAX_CLIPS=25
 
-# setxkbmap -option compose:ralt
-# added on 10/28/2020 for making caps lock key work like the control key
-# setxkbmap -option ctrl:swapcaps     # Swap Left Control and Caps Lock
-# setxkbmap -option ctrl:nocaps       # Make Caps Lock a Control key
+# turn the capslock key to be an escape key
+# turn right alt key becomes the compose key
+setxkbmap -option "caps:escape,compose:ralt"
+
+# swap the apt and windows keys on my K-63 keyboard
+# turn the capslock key to be an escape key
+setxkbmap -device 9 -option "altwin:swap_alt_win,caps:escape"

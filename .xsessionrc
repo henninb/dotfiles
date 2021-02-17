@@ -1,6 +1,23 @@
 export PATH=$HOME/.local/bin:$PATH
-# The XKEYBOARD keymap compiler (xkbcomp) reports:
-# > Internal error:   Could not resolve keysym XF86FullScreen
+
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export LC_NUMERIC=en_US.UTF-8
+export LC_TIME=en_US.UTF-8
+export LC_COLLATE=C
+export LC_MONETARY=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+export LC_PAPER=en_US.UTF-8
+export LC_NAME=en_US.UTF-8
+export LC_ADDRESS=en_US.UTF-8
+export LC_TELEPHONE=en_US.UTF-8
+export LC_MEASUREMENT=en_US.UTF-8
+export LC_IDENTIFICATION=en_US.UTF-8
+
+export CM_SELECTION="primary clipboard"
+export CM_DEBUG=0
+export CM_OUTPUT_CLIP=1
+export CM_MAX_CLIPS=25
 
 # set the default behavior
 # setxkbmap -option
