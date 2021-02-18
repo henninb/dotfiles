@@ -106,9 +106,11 @@ source $HOME/.config/nvim/plug-config/start-screen.vim
 source $HOME/.config/nvim/plug-config/vim-commentary.vim
 source $HOME/.config/nvim/plug-config/airline.vim
 source $HOME/.config/nvim/plug-config/syntastic.vim
-if has('nvim')
+
+if has('nvim-0.5')
   luafile $HOME/.config/nvim/plug-config/treesitter.lua
 endif
+
 " coc config
 " CocCommand git.toggleGutters
 " :CocUninstall coc-pairs
