@@ -329,7 +329,6 @@ mkdir -p "$HOME/.config/compton"
 #[ -f "$HOME/.xinitrc" ] && ln -sfn "$HOME/.xinitrc" "$HOME/.xsession"
 # [ -f "$HOME/.profile" ] && ln -sfn "$HOME/.profile" "$HOME/.xprofile"
 [ -f /opt/arduino/arduino ] && ln -sfn /opt/arduino/arduino "$HOME/.local/bin/arduino"
-[ -f /opt/intellij/bin/idea.sh ] && ln -sfn /opt/intellij/bin/idea.sh "$HOME/.local/bin/idea.sh"
 [ -f /opt/intellij/bin/idea.sh ] && ln -sfn /opt/intellij/bin/idea.sh "$HOME/.local/bin/intellij"
 [ -f /opt/firefox/firefox ] && ln -sfn /opt/firefox/firefox "$HOME/.local/bin/firefox"
 # [ -f /bin/brave ] && ln -sfn /bin/brave "$HOME/.local/bin/brave-browser"
@@ -348,29 +347,11 @@ chmod 700 "$HOME"
 [ -f "$HOME/.zsh_history" ] && sort -t ";" -k 2 -u "$HOME/.zsh_history" | sort -o "$HOME/.zsh_history"
 
 
-[ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
-[ -s "/etc/profile.d/rvm.sh" ] && source /etc/profile.d/rvm.sh
-
 if [ "$OS" = "Gentoo" ]; then
   if ! grep "$(hostname)" /etc/hosts > /dev/null; then
     echo "Action required: add a hostname entry to /etc/hosts to prevent issues with xauth."
   fi
 fi
-
-#if [ "$MYSHELL" = "zsh" ]; then
-#  if [ "$OS" = "Darwin" ]; then
-#    #control arrow
-#    # bindkey "^[^[[D" backward-word
-#    # bindkey "^[^[[C" forward-word
-#    # option arrow
-#    bindkey "[D" backward-word
-#    bindkey "[C" forward-word
-#  else
-#    #control arraws trigger forward and backward by word
-#    bindkey "^[[1;5C" forward-word
-#    bindkey "^[[1;5D" backward-word
-#  fi
-#fi
 
 mkdir -p "$HOME/.xmonad"
 touch "$HOME/.xmonad/.active"
@@ -405,15 +386,6 @@ if [ "${MYSHELL}" = "zsh" ]; then
   # vi mode
   bindkey -v
 
-  # Use vim keys in tab complete menu:
-  # bindkey -M menuselect 'h' vi-backward-char
-  # bindkey -M menuselect 'j' vi-down-line-or-history
-  # bindkey -M menuselect 'k' vi-up-line-or-history
-  # bindkey -M menuselect 'l' vi-forward-char
-  # bindkey -M menuselect 'left' vi-backward-char
-  # bindkey -M menuselect 'down' vi-down-line-or-history
-  # bindkey -M menuselect 'up' vi-up-line-or-history
-  # bindkey -M menuselect 'right' vi-forward-char
   # Fix backspace bug when switching modes
   bindkey "^?" backward-delete-char
 
@@ -447,8 +419,6 @@ if [ "$MYSHELL" = "zsh" ]; then
   source "$HOME/plugins/zed-zsh/zed.zsh"
   #eval "$(starship init zsh)"
   source "$HOME/themes/spaceship-prompt/spaceship.zsh"
-  #source "$HOME/themes/alien/alien.zsh"
-  #source "$HOME/themes/dracula-zsh-theme/dracula.zsh-theme"
   #source "$HOME/themes/agnoster-zsh-theme/agnoster.zsh-theme"
   #[ -f "$HOME/plugins/fzf.zsh" ] && source "$HOME/plugins/fzf.zsh"
 elif [ "$MYSHELL" = "bash" ]; then
@@ -507,7 +477,8 @@ autoload -Uz tetriscurses
 # TODO: is this required?
 # if [ -e /home/henninb/.nix-profile/etc/profile.d/nix.sh ]; then . "${HOME}/.nix-profile/etc/profile.d/nix.sh"; fi
 
-#myip="$(dig +short myip.opendns.com @resolver1.opendns.com)"
+myip="$(dig +short myip.opendns.com @resolver1.opendns.com)"
+export myip
 
 # Added to address Alacritty issue
 export LIBGL_ALWAYS_SOFTWARE=1
