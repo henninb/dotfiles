@@ -58,7 +58,9 @@ endif
    if has('nvim')
      Plug 'neoclide/coc.nvim', {'branch': 'release'}
      Plug 'udalov/kotlin-vim' " kotlin syntax highlighting
-     Plug 'nvim-treesitter/nvim-treesitter'
+     if has('nvim-0.5')
+       Plug 'nvim-treesitter/nvim-treesitter'
+     endif
      Plug 'fwcd/kotlin-language-server', { 'do': './gradlew :server:installDist' } " kotlin language sesrver
      Plug 'git@github.com:rust-lang/rust.vim.git'
      Plug 'git@github.com:neovimhaskell/haskell-vim.git' " what does this do?
