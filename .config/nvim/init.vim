@@ -265,14 +265,15 @@ nnoremap <leader>* 0y$/\V<c-r>"<cr>
 " Map leader to write a root
 noremap <leader>W :w !sudo tee % > /dev/null
 
-"colorscheme evening
 "colorscheme 256-jungle
 "colorscheme darkblue
 "source $HOME/.config/nvim/pack/plugins/start/dracula/autoload/dracula.vim
 "source $HOME/.config/nvim/autoload/dracula.vim
-if has('nvim')
+try
   colorscheme dracula
-endif
+catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme evening
+endtry
 
 " Enable scrolling via mouse
 " if has('mouse')
