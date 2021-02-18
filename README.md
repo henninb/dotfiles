@@ -95,8 +95,6 @@
 | audio editor/recorder  | audacity                                                                             |
 | vector graphics        | inkscape                                                                             |
 | 3D creation            | blender                                                                              |
-| screencast             | simplescreenrecorder                                                                 |
-| file transfer          | oneshot                                                                              |
 | desktop manager        | lightdm                                                                              |
 | desktop greeter        | slick-greeter                                                                        |
 | clipboard manager      | copyq, clipmenu                                                                      |
@@ -104,6 +102,9 @@
 | password manager       | kepassxc, pass, passmenu, pass-otp, gopass                                           |
 | gtk theme tool         | lxappearance                                                                         |
 | audio mixer            | amixer, ncpamixer                                                                    |
+| screen recorder        | simplescreenrecorder                                                                 |
+| disk space             | ncdu                                                                                 |
+
 
 ## Language Servers
 - c - ccls
@@ -161,4 +162,3 @@
 - spamassassin - spam email removal
 - osquery - osqueryi is a virtual database tool
 - yay -S archiver - the arc tool
-- simplescreenrecorder - sudo pacman -S simplescreenrecorder
