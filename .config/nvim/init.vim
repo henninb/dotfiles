@@ -51,17 +51,22 @@ endif
    " Plug 'nvim-lua/diagnostic-nvim'
    " Plug 'nvim-lua/lsp-status.nvim'
    " Plug 'nvim-lua/completion-nvim'
-   Plug 'neoclide/coc.nvim', {'branch': 'release'}
    " Plug 'ycm-core/YouCompleteMe' "coc alternative for language server
    Plug 'git@github.com:vim-syntastic/syntastic.git' "syntax checker for languages
    Plug 'git@github.com:dense-analysis/ale.git' " linter
 
-   Plug 'fwcd/kotlin-language-server', { 'do': './gradlew :server:installDist' } " kotlin language sesrver
-   Plug 'udalov/kotlin-vim' " kotlin syntax highlighting
+   if has('nvim')
+     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+     Plug 'udalov/kotlin-vim' " kotlin syntax highlighting
+     Plug 'nvim-treesitter/nvim-treesitter'
+     Plug 'fwcd/kotlin-language-server', { 'do': './gradlew :server:installDist' } " kotlin language sesrver
+     Plug 'git@github.com:rust-lang/rust.vim.git'
+     Plug 'git@github.com:neovimhaskell/haskell-vim.git' " what does this do?
+     Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
+   endif
    Plug 'sbdchd/neoformat' " for formatting code
    Plug 'git@github.com:alvan/vim-closetag.git' "closing tags for html
    " Plug 'git@github.com:prettier/vim-prettier.git', { 'do': 'yarn add prettier' }
-   Plug 'nvim-treesitter/nvim-treesitter'
    " Plug 'nvim-treesitter/completion-treesitter'
    " Plug 'nvim-treesitter/playground'
 
@@ -79,9 +84,6 @@ endif
    " Plug 'dracula/vim', { 'name': 'dracula' }  " theme
    Plug 'benmills/vimux' " tmux integration
    Plug 'kovetskiy/sxhkd-vim'
-   Plug 'git@github.com:rust-lang/rust.vim.git'
-   Plug 'git@github.com:neovimhaskell/haskell-vim.git' " what does this do?
-   Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
    Plug 'git@github.com:ryanoasis/vim-devicons'
    Plug 'git@github.com:vim-airline/vim-airline.git' " line manager
    Plug 'git@github.com:vim-airline/vim-airline-themes' " theme for the airline line manager
@@ -104,7 +106,9 @@ source $HOME/.config/nvim/plug-config/start-screen.vim
 source $HOME/.config/nvim/plug-config/vim-commentary.vim
 source $HOME/.config/nvim/plug-config/airline.vim
 source $HOME/.config/nvim/plug-config/syntastic.vim
-luafile $HOME/.config/nvim/plug-config/treesitter.lua
+if has('nvim')
+  luafile $HOME/.config/nvim/plug-config/treesitter.lua
+endif
 " coc config
 " CocCommand git.toggleGutters
 " :CocUninstall coc-pairs
@@ -266,7 +270,9 @@ noremap <leader>W :w !sudo tee % > /dev/null
 "colorscheme darkblue
 "source $HOME/.config/nvim/pack/plugins/start/dracula/autoload/dracula.vim
 "source $HOME/.config/nvim/autoload/dracula.vim
-colorscheme dracula
+if has('nvim')
+  colorscheme dracula
+endif
 
 " Enable scrolling via mouse
 " if has('mouse')
