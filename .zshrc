@@ -298,7 +298,7 @@ if [ "$OS" = "FreeBSD" ] || [ "$OS" = "Alpine Linux" ] || [ "$OS" = "OpenBSD" ] 
   [ -s "$HOME/.alias-bsd" ] && source "$HOME/.alias-bsd"
 fi
 
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && chmod 755 "$NVM_DIR/nvm.sh" && source "$NVM_DIR/nvm.sh"
 
 [ ! -f "$HOME/.ssh/id_rsa.pub" ] && ssh-keygen -y -f "$HOME/.ssh/id_rsa" > "$HOME/.ssh/id_rsa.pub"
 

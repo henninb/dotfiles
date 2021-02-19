@@ -12,7 +12,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
   sudo apt install -y nodejs
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S nodejs
+  echo sudo pacman --noconfirm --needed -S nodejs
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y nodejs
   echo
@@ -31,16 +31,18 @@ else
   echo "$OS is not yet implemented."
   exit 1
 fi
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | zsh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | zsh
 
 export NVM_DIR="$HOME/.nvm"
 
+chmod 755 "$HOME/.nvm/nvm.sh"
 . "$HOME/.nvm/nvm.sh"
 if [ $? -ne 0 ]; then
   source "$HOME/.nvm/nvm.sh"
 fi
 
-echo nvm install 13.8.0
+nvm install 14.15.5
+
 [ ! -x "$(command -v npm)" ] && echo "npm is not installed." && exit 1
 if [ ! -x "$(command -v n)" ]; then
   if ! npm install n; then
