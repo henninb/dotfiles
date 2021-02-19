@@ -31,6 +31,21 @@ fi
 export OS
 export OS_VER
 
+export SUDO_EDITOR=nvim
+export VISUAL=nvim
+export EDITOR=nvim
+export PAGER=less
+export OPENER=xdg-open
+export READER=zathura
+export TERMINAL=alacritty
+
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  export BROWSER=elinks
+else
+  export BROWSER=firefox
+fi
+export GIT_EDITOR=nvim
+
 export PATH=$HOME/.local/bin:$PATH
 export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"
 export XDG_DATA_DIRS="/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share:$XDG_DATA_DIRS"

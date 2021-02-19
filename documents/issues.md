@@ -400,8 +400,13 @@ Failed to create bus connection: No such file or directory
 ## jdt issue
 the build path should include:src/main/java
 
-## debugging
+## debugging linux applications
 ```
 strace -o vim.strace vim finance_db-extra.sql
 sudo strace -p 132313
+```
+
+## change the global editor in archlinux
+```
+sudo vi /etc/environment
 ```

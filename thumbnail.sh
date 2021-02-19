@@ -6,7 +6,8 @@ FontSize=200
 Text=$1
 TextColor='#FFFFFF'
 #Resize='50%'
-Original="$HOME/.local/share/myimages/thumbnail.jpg"
+#Original="$HOME/.local/share/myimages/thumbnail.jpg"
+Original="$HOME/.local/share/myimages/light-green-with-vim.jpg"
 Output="$HOME/Desktop/output-${date}.jpg"
 
 Err(){
@@ -16,20 +17,16 @@ Err(){
 
 [ $# -ne 1 ] && Err 1 'Thumbnail annotation string required.'
 
-if [ -x "$(command -v convert)" ]; then
-  echo "need to install an app"
+if [ ! -x "$(command -v convert)" ]; then
+  echo "Need to install an app"
   exit 1
 fi
 
-if [ -x "$(command -v feh)" ]; then
-  echo "please install feh and try to run the script again."
+if [ ! -x "$(command -v feh)" ]; then
+  echo "Please install feh and try to run the script again."
   exit 1
 fi
 
-# command -v convert 1> /dev/null 2>&1 || Err 1 "Dependency 'convert' not met."
-# command -v feh 1> /dev/null 2>&1 || Err 1 "Dependency 'feh' not met."
-
-# I know these can be combined, but I'm finding it easier to split them up.
 if ! convert "$Original" -auto-level -background '#000000' -vignette 0x120+-60-60 -quality 100 "$Output"; then
   echo "convert failed."
   exit 1
@@ -49,3 +46,4 @@ convert "$Output" -fill "$TextColor" -strokewidth 4 -stroke Black\
 
 # If '0', then no errors occurred, so display image.
 [ $Err -eq 0 ] && feh "$Output"
+""
