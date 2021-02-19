@@ -22,3 +22,13 @@ maui /  ❯ sudo find . -name "*lightdm-gobject*"
 ./usr/lib64/liblightdm-gobject-1.so.0.0.0
 
 XDG_DATA_DIRS
+
+
+
+arcolinux ~  master ❯ sudo find / -name "liblightdm-gobject*"
+/usr/lib/liblightdm-gobject-1.so
+/usr/lib/pkgconfig/liblightdm-gobject-1.pc
+/usr/lib/liblightdm-gobject-1.so.0
+/usr/lib/liblightdm-gobject-1.so.0.0.0
+/usr/share/vala/vapi/liblightdm-gobject-1.deps
+/usr/share/vala/vapi/liblightdm-gobject-1.vapi
