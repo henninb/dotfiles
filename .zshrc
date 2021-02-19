@@ -162,19 +162,19 @@ export CDPATH=~/projects:~
 export GOPATH=$HOME/.local
 export SDKMAN_DIR="$HOME/.sdkman"
 
-export SUDO_EDITOR=nvim
-export VISUAL=nvim
-export EDITOR=nvim
-export PAGER=less
-export OPENER=xdg-open
-export READER=zathura
-export TERMINAL=urxvt
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  export BROWSER=elinks
-else
-  export BROWSER=firefox
-fi
-export GIT_EDITOR=nvim
+# export SUDO_EDITOR=nvim
+# export VISUAL=nvim
+# export EDITOR=nvim
+# export PAGER=less
+# export OPENER=xdg-open
+# export READER=zathura
+# export TERMINAL=alacritty
+# if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+#   export BROWSER=elinks
+# else
+#   export BROWSER=firefox
+# fi
+# export GIT_EDITOR=nvim
 # export GIT_CONFIG="$HOME/.gitconfig"
 
 # Tells 'less' not to paginate if less than a page
