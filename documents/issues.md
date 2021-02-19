@@ -410,3 +410,13 @@ sudo strace -p 132313
 ```
 sudo vi /etc/environment
 ```
+
+## nvim version issue
+NVIM v0.5.0-682-g997147e4b
+Build type: RelWithDebInfo
+LuaJIT 2.0.5
+Error detected while processing /home/henninb/.config/nvim/bundle/nvim-treesitter/plugin/nvim-treesitter.vim:
+line   15:
+E5108: Error executing lua ...nfig/nvim/bundle/nvim-treesitter/lua/nvim-treesitter.lua:2: nvim-treesitter requires a more recent Neovim nigh
+tly version!
+Press ENTER or type command to continue
