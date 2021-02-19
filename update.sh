@@ -108,9 +108,9 @@ else
 fi
 
 if [ ! -x "$(command -v nvm)" ]; then
-  echo "npm needs to be installed."
+  echo "nvm needs to be installed."
 else
-  nvm install-latest-npm
+  nvm install --lts
   echo "npm version"
   npm --version
 fi
