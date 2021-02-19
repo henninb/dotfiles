@@ -64,7 +64,7 @@ endif
      Plug 'fwcd/kotlin-language-server', { 'do': './gradlew :server:installDist' } " kotlin language sesrver
      Plug 'git@github.com:rust-lang/rust.vim.git'
      Plug 'git@github.com:neovimhaskell/haskell-vim.git' " what does this do?
-     Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
+     " Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
    endif
    Plug 'sbdchd/neoformat' " for formatting code
    Plug 'git@github.com:alvan/vim-closetag.git' "closing tags for html
