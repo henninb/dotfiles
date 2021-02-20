@@ -114,3 +114,4 @@ sudo usermod -s /sbin/nologin intellij
 sudo usermod -s /sbin/nologin activemq
 sudo usermod -s /sbin/nologin tomcat
 sudo usermod -s /sbin/nologin kafka
+sudo usermod -s /sbin/nologin oracle
