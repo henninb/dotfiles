@@ -22,4 +22,17 @@ cat /etc/default/keyboard
 echo hid_apple.conf
 cat /etc/modprobe.d/hid_apple.conf
 
+
+cat > 00-keyboard.conf <<EOF
+Section "InputClass"
+        Identifier "system-keyboard"
+        MatchIsKeyboard "on"
+        Option "XkbOptions" "caps:escape"
+EndSection
+EOF
+
+if [ ! -f "/etc/X11/xorg.conf.d/00-keyboard.conf" ]; then
+  sudo mv -v 00-keyboard.conf /etc/X11/xorg.conf.d/
+fi
+
 exit 0
