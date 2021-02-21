@@ -1,9 +1,0 @@
-#!/bin/sh
-
-if [ -x "$(command -v /usr/games/steam)" ]; then
-  nohup /usr/games/steam > /dev/null 2>&1 &
-else
-  echo steam does not appear to be installed.
-fi
-
-exit 0
