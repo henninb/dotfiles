@@ -5,6 +5,7 @@ cat > lightdm.conf <<EOF
 #[Seat:*]
 [SeatDefaults]
 autologin-guest=false
+greeter-setup-script=numlockx on
 #session-wrapper=/etc/lightdm/Xsession
 #session-wrapper=/etc/X11/xinit/Xsession
 session-wrapper=/etc/X11/Xsession
