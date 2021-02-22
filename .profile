@@ -39,6 +39,17 @@ export OPENER=xdg-open
 export READER=zathura
 export TERMINAL=alacritty
 
+if [ -x "$(command -v bat)" ]; then
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi
+
+### "vim" as manpager
+# export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
+
+### "nvim" as manpager
+# export MANPAGER="nvim -c 'set ft=man' -"
+
+
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   export BROWSER=elinks
 else

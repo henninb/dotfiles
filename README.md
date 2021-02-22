@@ -75,6 +75,7 @@
 | wii game emulator      | dolphin-emu                                                                          |
 | cloud storage          | nextcloud                                                                            |
 | games                  | xonotic, wesnoth                                                                     |
+| game platform          | minigalaxy, steam                                                                    |
 | pdf reader             | zathura                                                                              |
 | calendar               | calcurse                                                                             |
 | log reader             | lnav                                                                                 |

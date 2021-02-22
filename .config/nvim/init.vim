@@ -89,6 +89,7 @@ endif
    Plug 'git@github.com:ryanoasis/vim-devicons'
    Plug 'git@github.com:vim-airline/vim-airline.git' " line manager
    Plug 'git@github.com:vim-airline/vim-airline-themes' " theme for the airline line manager
+   " Plug 'dracula/vim', { 'as': 'dracula' }
    " Plug 'git@github.com:itchyny/lightline.vim.git'    "line manager
    Plug 'mhinz/vim-startify' " start screen for vim
    Plug 'voldikss/vim-floaterm' " embedded terminal
