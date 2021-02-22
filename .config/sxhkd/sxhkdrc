@@ -15,7 +15,7 @@ alt + r
 #alt + p
 #    clipmenu -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'
 alt + shift + p
-    dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'
+    dmenu_run -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'
 alt + shift + Escape
     wm-exit bspwm
 alt + Escape
