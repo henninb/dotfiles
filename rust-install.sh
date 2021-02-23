@@ -18,6 +18,7 @@ echo cargo install exa
 echo cargo install broot
 #echo cargo install alacritty
 echo cargo install fd-find
+echo cargo install leftwm
 
 echo rustup default nightly
 echo cargo install hunter

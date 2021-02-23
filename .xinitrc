@@ -42,10 +42,11 @@ fi
 #unset f
 
 # Addd for gentoo - could not resolve keysym xf86 fullscreen
-setxkbmap -option compose:ralt
+# setxkbmap -option compose:ralt
 # added on 10/28/2020 for making caps lock key work like the control key
-setxkbmap -option ctrl:nocaps       # Make Caps Lock a Control key
-setxkbmap -option ctrl:swapcaps     # Swap Left Control and Caps Lock
+# setxkbmap -option ctrl:nocaps       # Make Caps Lock a Control key
+# setxkbmap -option ctrl:swapcaps     # Swap Left Control and Caps Lock
+setxkbmap -option "caps:escape"
 #xmodmap ~/.xmodmap
 
 # list of different WMs
@@ -55,6 +56,8 @@ setxkbmap -option ctrl:swapcaps     # Swap Left Control and Caps Lock
 #exec qtile
 #exec xmonad
 #exec bspwm
+#exec leftwm
+#exec spectrewm
 
 xrandr --listproviders >> "$HOME/xinit.log"
 
