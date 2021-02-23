@@ -24,6 +24,7 @@
   last = log -1 HEAD
   wip = !sh -c 'git add . && git commit -am "wip"'
 	ls = log --oneline --decorate
+	new = !git init && git symbolic-ref HEAD refs/heads/main
 [push]
   default = simple
 [diff]
