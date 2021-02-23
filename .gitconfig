@@ -74,3 +74,5 @@
 #  clean = "sed -e 's/TRUSTSTORE_PASSWORD=\".*\"/TRUSTSTORE_PASSWORD=\"********\"/'"
 [pull]
   rebase = false
+[init]
+	defaultBranch = main
