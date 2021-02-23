@@ -470,6 +470,7 @@ myStartupHook = do
     spawnOnce "blueman-applet"
     spawnOnce "nm-applet"
     spawnOnce "pamac-tray"
+    spawnOnce "numlockx on"
     spawnOnce "conky -c $HOME/.xmonad/system-overview"
     spawnOnce "mpDris2" -- required for mpd
     spawnOnce "volumeicon"
@@ -480,6 +481,7 @@ myStartupHook = do
 myConfig = def
   { terminal = myTerminal
   , layoutHook = windowArrange myLayouts
+  , mouseBindings = myMouseBindings
   , manageHook = placeHook(smart(0.5, 0.5))
       <+> manageDocks
       <+> manageSpawn
