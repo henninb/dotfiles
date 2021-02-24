@@ -420,3 +420,37 @@ line   15:
 E5108: Error executing lua ...nfig/nvim/bundle/nvim-treesitter/lua/nvim-treesitter.lua:2: nvim-treesitter requires a more recent Neovim nigh
 tly version!
 Press ENTER or type command to continue
+
+
+## Xorg issue
+```
+org: ../xserver/dix/privates.c:384: dixRegisterPrivateKey: Assertion `!global_keys[type].created' failed.
+(EE)
+(EE) Backtrace:
+(EE) 0: /usr/lib/Xorg (xorg_backtrace+0x53) [0x55cf7e581f63]
+(EE) 1: /usr/lib/Xorg (0x55cf7e43b000+0x151da5) [0x55cf7e58cda5]
+(EE) 2: /usr/lib/libc.so.6 (0x7f22052fe000+0x3cf80) [0x7f220533af80]
+(EE) 3: /usr/lib/libc.so.6 (gsignal+0x145) [0x7f220533aef5]
+(EE) 4: /usr/lib/libc.so.6 (abort+0x116) [0x7f2205324862]
+(EE) 5: /usr/lib/libc.so.6 (0x7f22052fe000+0x26747) [0x7f2205324747]
+(EE) 6: /usr/lib/libc.so.6 (0x7f22052fe000+0x35646) [0x7f2205333646]
+(EE) 7: /usr/lib/Xorg (dixRegisterPrivateKey+0x0) [0x55cf7e4d0870]
+(EE) 8: /usr/lib/xorg/modules/libglamoregl.so (glamor_init+0xc9) [0x7f21f8077fb9]
+(EE) 9: /usr/lib/xorg/modules/drivers/modesetting_drv.so (0x7f2205830000+0x140fd) [0x7f22058440fd]
+(EE) 10: /usr/lib/Xorg (AddGPUScreen+0x10e) [0x55cf7e4b440e]
+(EE) 11: /usr/lib/Xorg (0x55cf7e43b000+0x185eb9) [0x55cf7e5c0eb9]
+(EE) 12: /usr/lib/Xorg (0x55cf7e43b000+0x1bb288) [0x55cf7e5f6288]
+(EE) 13: /usr/lib/Xorg (0x55cf7e43b000+0x1bb52b) [0x55cf7e5f652b]
+(EE) 14: /usr/lib/Xorg (InitInput+0xf5) [0x55cf7e5a6435]
+(EE) 15: /usr/lib/Xorg (0x55cf7e43b000+0x39798) [0x55cf7e474798]
+(EE) 16: /usr/lib/libc.so.6 (__libc_start_main+0xd5) [0x7f2205325b25]
+(EE) 17: /usr/lib/Xorg (_start+0x2e) [0x55cf7e4755de]
+(EE)
+(EE)
+Fatal server error:
+(EE) Caught signal 6 (Aborted). Server aborting
+(EE)
+(EE)
+Please consult the The X.Org Foundation support
+	 at http://wiki.x.org
+```
