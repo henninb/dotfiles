@@ -1,0 +1,7 @@
+#!/bin/sh
+
+git branch -m master main
+git fetch
+git branch -u origin/main
+
+exit 0

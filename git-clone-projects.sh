@@ -1,17 +1,14 @@
 #!/bin/sh
 
-PROJECTS="ratpack-gorm example-ratpack raspi-finance-endpoint raspi-finance-database raspi-finance-convert nfl-database src-common example-java example-scala example-kotlin raspi-finance-react raspi-finance-endpoint-micronaut raspi-finance-ncurses raspi-finance-reports st cribbage cribbage-fsharp hardware-endpoint"
+PROJECTS="ratpack-gorm example-ratpack raspi-finance-endpoint raspi-finance-database src-common example-java example-scala example-kotlin raspi-finance-react raspi-finance-endpoint-micronaut raspi-finance-ncurses raspi-finance-reports st cribbage cribbage-fsharp"
 for i in $PROJECTS; do
   cd "$HOME/projects" || exit
   git clone "git@github.com:BitExplorer/$i.git"
   cd "$i" || exit
-  git branch --set-upstream-to=origin/master master
+  git branch --set-upstream-to=origin/main main
   git config --local user.email henninb@msn.com
-  git pull
+  git pull origin main
 done
-
-cd "$HOME/projects" || exit
-git clone git@gitlab.com:BitExplorer/howto.git
 
 PLUGINS="autojump zsh-autosuggestions zsh-syntax-highlighting"
 for i in $PLUGINS; do
@@ -27,5 +24,8 @@ done
 
 echo distrotube
 echo git clone git@gitlab.com:dwt1/wallpapers.git
+
+cd "$HOME/projects" || exit
+git clone git@gitlab.com:BitExplorer/howto.git
 
 exit 0
