@@ -424,6 +424,9 @@ Press ENTER or type command to continue
 
 ## Xorg issue
 ```
+xf86: remove device 0 /sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/drm/card1
+failed to find screen to remove
+
 org: ../xserver/dix/privates.c:384: dixRegisterPrivateKey: Assertion `!global_keys[type].created' failed.
 (EE)
 (EE) Backtrace:
@@ -454,3 +457,8 @@ Fatal server error:
 Please consult the The X.Org Foundation support
 	 at http://wiki.x.org
 ```
+
+[root@arcolinux xinitrc.d]# ls
+40-libcanberra-gtk-module.sh  50-systemd-user.sh  80xapp-gtk3-module.sh
+[root@arcolinux xinitrc.d]# pwd
+/etc/X11/xinit/xinitrc.d
