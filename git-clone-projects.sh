@@ -5,7 +5,7 @@ for i in $PROJECTS; do
   cd "$HOME/projects" || exit
   git clone "git@github.com:BitExplorer/$i.git" 2> /dev/null
   cd "$i" || exit
-  # master-to-main 2> /dev/null
+  #master-to-main 2> /dev/null
   if ! git branch --set-upstream-to=origin/main main > /dev/null 2>&1; then
     echo need to convert to main branch
     continue

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 git branch -m master main
-git fetch -all
+git fetch --all
 git branch -u origin/main
 
 exit 0
