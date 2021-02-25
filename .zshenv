@@ -129,17 +129,17 @@ git_sparse_clone() (
     echo "$i" >> .git/info/sparse-checkout
   done
 
-  git pull origin master
+  git pull origin main
 )
 
 gitpush() {
   if [ "$#" -lt 1 ]; then
     echo "Usage: ${FUNCNAME} <messages>" >&2
   else
-    git pull
-    git add .
+    git pull origin
+    git add origin
     git commit -m "$*"
-    git push
+    git push origin
   fi
 }
 
