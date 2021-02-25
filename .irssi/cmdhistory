@@ -1,11 +1,3 @@
-: 1587855118:: :;found it under cdrtools.
-: 1587855243:: :;/quit
-: 1587862010:: :;hi all, i am trying to install 'libffmpegthumbnailer'. can't find it in the repo. any ideas?
-: 1587862162:: :;let me try that walee-cl. 
-: 1587862203:: :;walee-cl I need the devel package of it.
-: 1587862288:: :;agree waleee-cl.
-: 1587862442:: :;i will try and install ffmpeg-devel
-: 1587862663:: :;got it working  waleee-cl, ffmpegthumbnailer-devel
 : 1587862672:: :;thank you
 : 1587862780:: :;not sure what atm means, but there was one. i did run 'sudo xbps-install -S ffmpegthumbnailer' prior to installing.
 : 1587862815:: :;ok, that makes sense.
@@ -98,3 +90,11 @@
 : 1613167569:: :;pamac-tray did the trick jonathon.
 : 1613167671:: :;for now it works :) thanks
 : 1613170249:: :;/quit
+: 1614207867:: :;hi I am having issues in lightdm and found the following error "xf86: remove device 0 /sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/drm/card1
+: 1614207867:: :;failed to find screen to remove
+: 1614207888:: :;has anyone seen that before?
+: 1614207957:: :;im using xmonad with archlinux
+: 1614208000:: :;it only happens intermitently so it is really hard to track down.
+: 1614208172:: :;no, single display
+: 1614208240:: :;the error is in /var/log/lightdm/x-0.log
+: 1614208404:: :;no problem, I can try and dig some more
