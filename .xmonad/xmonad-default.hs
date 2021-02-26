@@ -334,7 +334,7 @@ myKeys = [
   , ("<XF86AudioPrev>", spawn "mpc prev")
   , ("<XF86AudioNext>", spawn "mpc next")
   -- , ("M-<F1>", spawnToWorkspace "discord-flatpak" ws9)
-  , ("M-<F2>", spawnToWorkspace "spacefm" "8")
+  , ("M-<F2>", spawnToWorkspace "spacefm" ( myWorkspaces !! 7 ))
   , ("M-<F3>", spawn "intellij")
   , ("M-C-t", spawn ("st" ++ " -e htop"))
   , ("M-C-n", spawn ("st" ++ " -e newsboat"))
@@ -363,12 +363,14 @@ myKeys = [
     -- Appending search engine prompts to keybindings list.
     ++ [("M-s " ++ k, S.promptSearch myXPConfig' f) | (k,f) <- searchList ]
     ++ [("M-S-s " ++ k, S.selectSearch f) | (k,f) <- searchList ]
-    -- bspwm like feature
+    -- change active workspace
     ++ [("M-" ++ ws, windows $ W.greedyView ws) | ws <- myWorkspaces ]
+    -- move window and change active workspace
     ++ [("M-S-" ++ ws, windows $ W.greedyView ws . W.shift ws) | ws <- myWorkspaces ]
-    -- ++ [("M-S-1",     windows $ W.greedyView ws1 . W.shift ws1)
-    --   , ("M-S-2",     windows $ W.greedyView ws2 . W.shift ws2)
-    --   ]
+    -- move window
+    ++ [("M1-S-" ++ ws, windows $ W.shift ws) | ws <- myWorkspaces ]
+    -- ++ [("M1-S-1",     windows $ W.shift ws1)
+    --   , ("M1-S-2",     windows $ W.shift ws2) ]
 
 -- haskell is 0-indexed
 myManageHook = composeAll
