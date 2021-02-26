@@ -53,7 +53,7 @@ fi
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   export BROWSER=elinks
 else
-  export BROWSER=firefox
+  export BROWSER=browser
 fi
 export GIT_EDITOR=nvim
 

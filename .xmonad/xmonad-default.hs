@@ -47,6 +47,7 @@ import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import qualified Codec.Binary.UTF8.String as UTF8
 import Prelude
+import Data.Maybe
 
 import System.Environment (setEnv, getEnv)
 
@@ -259,9 +260,14 @@ ws6 = "6"
 ws7 = "7"
 ws8 = "8"
 ws9 = "9"
+ws0 = "0"
 
 myWorkspaces :: [String]
-myWorkspaces = [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9]
+myWorkspaces = [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0]
+myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
+
+clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
+    where i = fromJust $ M.lookup ws myWorkspaceIndices
 
 -- clipboardCopy :: X ()
 -- clipboardCopy =
@@ -364,22 +370,23 @@ myKeys = [
     --   , ("M-S-2",     windows $ W.greedyView ws2 . W.shift ws2)
     --   ]
 
+-- haskell is 0-indexed
 myManageHook = composeAll
     [ className =? "MPlayer"          --> doFloat
     , title     =? "urxvt-float"      --> doFloat --custom window title
     , title     =? "st-float"         --> doFloat --custom window title
     , className =? "Gimp"             --> doFloat
-    -- , className =? "Emacs"            --> viewShift "6"
-    -- , className =? "discord"          --> viewShift "9"
+    , className =? "Emacs"            --> viewShift ( myWorkspaces !! 6 )
+    -- , className =? "discord"          --> viewShift ( myWorkspaces !! 8 )
     , title     =? "Oracle VM VirtualBox Manager"  --> doFloat
     , title     =? "Welcome to IntelliJ IDEA"      --> doFloat
-    , title     =? "Welcome to IntelliJ IDEA"      --> viewShift "5"
+    , title     =? "Welcome to IntelliJ IDEA"      --> viewShift ( myWorkspaces !! 4 )
     , className =? "audacity"                      --> doFloat
-    , className =? "audacity"                      --> viewShift "6"
+    , className =? "audacity"                      --> viewShift ( myWorkspaces !! 5 )
     , className =? "Audacity"                      --> doFloat
-    , className =? "Audacity"                      --> viewShift "6"
+    , className =? "Audacity"                      --> viewShift ( myWorkspaces !! 5 )
     , className =? "jetbrains-idea"   --> doFloat
-    , className =? "jetbrains-idea"   --> viewShift "5"
+    , className =? "jetbrains-idea"   --> viewShift ( myWorkspaces !! 4 )
     , resource  =? "desktop_window"   --> doIgnore -- TODO: not sure what this does
     , className =? "feh"              --> doFloat
     , role      =? "pop-up"           --> doFloat
@@ -388,7 +395,7 @@ myManageHook = composeAll
     , (className =? "Notepadqq" <&&> title =? "Search") --> doFloat
     , (className =? "Notepadqq" <&&> title =? "Advanced Search") --> doFloat
     , className =? "Xmessage" --> doFloat
-    , role =? "browser" --> viewShift "4"
+    , role =? "browser" --> viewShift ( myWorkspaces !! 3 )
     ]  <+> namedScratchpadManageHook myScratchPads
   where
     role = stringProperty "WM_WINDOW_ROLE"
