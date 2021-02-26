@@ -306,9 +306,9 @@ fi
 
 # TODO: rewrite with the -z
 # if grep -q -A 3 '\[branch "master"\]' "$HOME/.git/config" | grep 'remote = origin'; then
-if ! grep -A 3 '\[branch "master"\]' "$HOME/.git/config" | grep 'remote = origin' > /dev/null; then
-  git branch --set-upstream-to=origin/master master
-fi
+# if ! grep -A 3 '\[branch "master"\]' "$HOME/.git/config" | grep 'remote = origin' > /dev/null; then
+#   git branch --set-upstream-to=origin/master master
+# fi
 
 # workaround for font colors
 # sed -i 's/blue $CURRENT_FG/39d $CURRENT_FG/' ~/.oh-my-zsh/themes/agnoster.zsh-theme

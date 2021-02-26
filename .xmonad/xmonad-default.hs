@@ -433,23 +433,15 @@ myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
 polybarOutput str =
   io $ appendFile "/tmp/.xmonad-info" (str ++ "\n")
 
--- polybarLogHook = def
---     { ppOutput = polybarOutput
---     , ppCurrent = wrap "%{F#aaff77}" "%{F-}"
---     , ppVisible = wrap "" ""
---     , ppUrgent = wrap "%{F#ff5555}" "%{F-}"
---     , ppHidden = wrap "%{F#66}" "%{F-}"
---     , ppWsSep = "  "
---     , ppSep = "    "
---     , ppTitle = const ""
---     }
 windowCount :: X (Maybe String)
 windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 
 polybarLogHook = def
     { ppOutput = polybarOutput
-    , ppCurrent = wrap ("%{F" ++ myFocusBorderColor ++ "} ") " %{F-}"
+    -- , ppCurrent = xmobarColor "#98be65" "" . wrap "[" "]"
+    , ppCurrent = wrap ("%{F" ++ myFocusBorderColor ++ "} ") " %{F-}" . wrap "[" "]"
     , ppVisible = wrap ("%{F" ++ myFocusBorderColor ++ "} ") " %{F-}"
+    --, ppVisible = xmobarColor "#5b51c9" ""
     , ppUrgent = wrap ("%{F" ++ red ++ "} ") " %{F-}"
     , ppHidden = wrap " " " "
     , ppWsSep = ""
