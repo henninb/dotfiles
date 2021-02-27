@@ -136,10 +136,10 @@ gitpush() {
   if [ "$#" -lt 1 ]; then
     echo "Usage: ${FUNCNAME} <messages>" >&2
   else
-    git pull origin
-    git add origin
+    git pull origin main
+    git add .
     git commit -m "$*"
-    git push origin
+    git push origin main
   fi
 }
 

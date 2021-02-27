@@ -48,6 +48,7 @@ import qualified Data.Map        as M
 import qualified Codec.Binary.UTF8.String as UTF8
 import Prelude
 import Data.Maybe
+import Text.XHtml (tag, strAttr, renderHtml, (<<), (!), primHtml)
 
 import System.Environment (setEnv, getEnv)
 
@@ -454,6 +455,10 @@ polybarLogHook = def
     , ppTitle = myAddSpaces 25
     , ppExtras  = [windowCount]                           -- # of windows current works
     }
+
+    where color   = strAttr "color"
+          font    = strAttr "font" "Terminus"
+          bold    = strAttr "weight" "bold"
 
 spawnToWorkspace :: String -> String -> X ()
 spawnToWorkspace program workspace = do
