@@ -99,6 +99,10 @@ red = "#fb4934"
 myFocusBorderColor :: String
 myFocusBorderColor = "#5b51c9"
 
+-- dracula
+-- myNormalBorderColor = "#BFBFBF"
+-- myFocusedBorderColor = "#89DDFF"
+
 myRemoveKeys = [
                  (superKeyMask .|. shiftMask, xK_space)
                , (superKeyMask, xK_q)
@@ -439,13 +443,14 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 polybarLogHook = def
     { ppOutput = polybarOutput
     -- , ppCurrent = xmobarColor "#98be65" "" . wrap "[" "]"
-    , ppCurrent = wrap ("%{F" ++ myFocusBorderColor ++ "} ") " %{F-}" . wrap "[" "]"
-    , ppVisible = wrap ("%{F" ++ myFocusBorderColor ++ "} ") " %{F-}"
+    , ppCurrent = wrap ("%{F" ++ "#7CFC00" ++ "} ") " %{F-}" . wrap "[" "]"
+    , ppVisible = wrap ("%{F" ++ "#FF1493" ++ "} ") " %{F-}"
     --, ppVisible = xmobarColor "#5b51c9" ""
+    , ppHiddenNoWindows = wrap "%{F#928374}*%{F-}" " "
     , ppUrgent = wrap ("%{F" ++ red ++ "} ") " %{F-}"
     , ppHidden = wrap " " " "
     , ppWsSep = ""
-    , ppSep = " | "
+    , ppSep = " %{F#928374}|%{F-} "
     , ppTitle = myAddSpaces 25
     , ppExtras  = [windowCount]                           -- # of windows current works
     }
