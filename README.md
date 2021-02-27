@@ -74,7 +74,7 @@
 | email client           | neomutt, mutt                                                                        |
 | wii game emulator      | dolphin-emu                                                                          |
 | cloud storage          | nextcloud                                                                            |
-| games                  | xonotic, wesnoth                                                                     |
+| games                  | xonotic, wesnoth, 0ad                                                                |
 | game platform          | minigalaxy, steam                                                                    |
 | pdf reader             | zathura                                                                              |
 | calendar               | calcurse                                                                             |
@@ -96,7 +96,7 @@
 | audio editor/recorder  | audacity                                                                             |
 | vector graphics        | inkscape                                                                             |
 | 3D creation            | blender                                                                              |
-| desktop manager        | lightdm                                                                              |
+| desktop manager        | lightdm, sddm                                                                        |
 | desktop greeter        | slick-greeter                                                                        |
 | clipboard manager      | copyq, clipmenu                                                                      |
 | color temperature tool | redshift                                                                             |
