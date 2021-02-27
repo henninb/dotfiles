@@ -443,11 +443,9 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 
 polybarLogHook = def
     { ppOutput = polybarOutput
-    -- , ppCurrent = xmobarColor "#98be65" "" . wrap "[" "]"
-    , ppCurrent = wrap ("%{F" ++ "#7CFC00" ++ "} ") " %{F-}" . wrap "[" "]"
+    , ppCurrent = wrap ("%{F" ++ "#FF69B4" ++ "} ") " %{F-}" . wrap "[" "]" -- could try ff1d8e
     , ppVisible = wrap ("%{F" ++ "#FF1493" ++ "} ") " %{F-}"
-    --, ppVisible = xmobarColor "#5b51c9" ""
-    , ppHiddenNoWindows = wrap "%{F#928374}*%{F-}" " "
+    , ppHiddenNoWindows = wrap ("%{F" ++ "#928374" ++ "} ") " %{F-}"
     , ppUrgent = wrap ("%{F" ++ red ++ "} ") " %{F-}"
     , ppHidden = wrap " " " "
     , ppWsSep = ""
