@@ -64,7 +64,7 @@ arduino-cli compile --fqbn esp32:esp32:d1_mini32 example-arduino
 
 arduino-cli compile --fqbn STM32:stm32:GenF3 ~/Arduino/blink-blue-pill
 arduino-cli compile --fqbn stm32duino:STM32F1:genericSTM32F103C6 ~/Arduino/blink-blue-pill
-arduino-cli upload --port /dev/ttyUSB0 stm32duino:STM32F1:genericSTM32F103C6:upload_method=serialMethod ~/Arduino/blink-blue-pill
+arduino-cli upload --port /dev/ttyUSB0 --fqbn stm32duino:STM32F1:genericSTM32F103C6:upload_method=serialMethod ~/Arduino/blink-blue-pill
 
 arduino-cli compile --fqbn esp32:esp32:d1_mini32 ~/Arduino/esp32-ntp-print
 arduino-cli upload --port /dev/ttyUSB1 --fqbn esp32:esp32:d1_mini32 ~/Arduino/esp32-ntp-print
