@@ -49,8 +49,11 @@ arduino-cli core install arduino:avr
 arduino-cli core install esp8266:esp8266
 arduino-cli core install esp32:esp32
 arduino-cli core install stm32duino:STM32F1
+arduino-cli core install STM32:stm32
 
-arduino-cli core search stm32 --additional-urls 'http://dan.drown.org/stm32duino/package_STM32duino_index.json'
+arduino-cli board listall
+
+# arduino-cli core search stm32 --additional-urls 'http://dan.drown.org/stm32duino/package_STM32duino_index.json'
 
 pip install pyserial --user
 
@@ -59,7 +62,10 @@ arduino-cli compile --fqbn arduino:avr:uno example-arduino
 arduino-cli compile --fqbn esp8266:esp8266:d1_mini example-arduino
 arduino-cli compile --fqbn esp32:esp32:d1_mini32 example-arduino
 
-arduino-cli compile --fqbn stm32duino:STM32F1 ~/Arduino/blink-blue-pill
+arduino-cli compile --fqbn STM32:stm32:GenF3 ~/Arduino/blink-blue-pill
+arduino-cli compile --fqbn stm32duino:STM32F1:genericSTM32F103C6 ~/Arduino/blink-blue-pill
+arduino-cli upload --port /dev/ttyUSB0 stm32duino:STM32F1:genericSTM32F103C6:upload_method=serialMethod ~/Arduino/blink-blue-pill
+
 arduino-cli compile --fqbn esp32:esp32:d1_mini32 ~/Arduino/esp32-ntp-print
 arduino-cli upload --port /dev/ttyUSB1 --fqbn esp32:esp32:d1_mini32 ~/Arduino/esp32-ntp-print
 
