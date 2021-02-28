@@ -155,7 +155,8 @@ export PATH="/opt/oracle-instantclient:$PATH"
 export PATH="$HOME/.dynamic-colors/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
-
+# export PATH="/opt/STM32CubeProgrammer/bin:$PATH"
+export PATH="$HOME/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin:$PATH"
 export CDPATH=~/projects:~
 
 [ -d /usr/local/go ] && export GOROOT=/usr/local/go
