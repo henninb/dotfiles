@@ -1,4 +1,9 @@
 #!/bin/sh
 
 export DESKTOP_SESSION=xmonad
-exec dbus-launch --exit-with-session xmonad >> /tmp/xmonad.log
+
+echo XDG_SESSION_TYPE >> /tmp/xmonad.log
+echo "$(date) $XDG_SESSION_TYPE" >> /tmp/xmonad.log
+#flameshot &
+#exec dbus-launch --exit-with-session xmonad >> /tmp/xmonad.log
+exec xmonad >> /tmp/xmonad

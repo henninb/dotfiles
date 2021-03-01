@@ -482,3 +482,6 @@ Traceback (most recent call last):
     self._bus = Gio.bus_get_sync(bus_type)
 gi.repository.GLib.Error: g-io-error-quark: Could not connect: Connection refused (39)
 ```
+
+Unit dbus-org.freedesktop.home1.service not found
+sudo mv  /usr/lib/security/pam_systemd_home.so  /usr/lib/security/pam_systemd_home.so.bak
