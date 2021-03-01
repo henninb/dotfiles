@@ -131,8 +131,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S lightdm
   sudo pacman --noconfirm --needed -S lightdm-gtk-greeter
   yay -S lightdm-settings
-  sudo cp -v "$HOME/Xsession-archlinux" /etc/X11/Xsession
-  sudo cp -v "$HOME/Xsession-archlinux" /etc/lightdm/Xsession
+  # sudo cp -v "$HOME/Xsession-archlinux" /etc/X11/Xsession
+  # sudo cp -v "$HOME/Xsession-archlinux" /etc/lightdm/Xsession
   sudo cp -v /usr/share/xgreeters/lightdm-slick-greeter.desktop /usr/share/xgreeters/slick-greeter.desktop
   yay -S lightdm-slick-greeter
   # echo home dir change is not required
