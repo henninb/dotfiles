@@ -41,6 +41,8 @@ fi
 #done
 #unset f
 
+# flameshot &
+
 # Addd for gentoo - could not resolve keysym xf86 fullscreen
 # setxkbmap -option compose:ralt
 # added on 10/28/2020 for making caps lock key work like the control key

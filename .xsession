@@ -14,6 +14,10 @@ export LC_ADDRESS=en_US.UTF-8
 export LC_TELEPHONE=en_US.UTF-8
 export LC_MEASUREMENT=en_US.UTF-8
 export LC_IDENTIFICATION=en_US.UTF-8
+export LC_ALL="en_US.UTF-8"
+
+# export LC_ALL=C
+# export LANG=C
 
 export CM_SELECTION="primary clipboard"
 export CM_DEBUG=0
@@ -27,3 +31,7 @@ setxkbmap -option "caps:escape,compose:ralt"
 # swap the apt and windows keys on my K-63 keyboard
 # turn the capslock key to be an escape key
 setxkbmap -device 9 -option "altwin:swap_alt_win,caps:escape"
+
+echo "$(date) start flameshot from xsesson" | tee -a "$HOME/xsession.log"
+env |grep UTF | tee -a "$HOME/xsession.log"
+flameshot &

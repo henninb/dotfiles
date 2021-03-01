@@ -274,6 +274,16 @@ myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y 
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
 
+-- runFlameshot :: String -> X ()
+-- runFlameshot mode = do
+--   ssDir <- io getCaptureDir
+--   spawnCmd "flameshot" $ mode : ["-p", ssDir]
+
+-- -- TODO this will steal focus from the current window (and puts it
+-- -- in the root window?) ...need to fix
+-- runAreaCapture :: X ()
+-- runAreaCapture = runFlameshot "gui"
+
 -- clipboardCopy :: X ()
 -- clipboardCopy =
 --   withFocused $ \w ->
@@ -314,7 +324,8 @@ myKeys = [
   , ("M-i"               , spawn "browser")
   , ("M-S-i"             , spawn ("browser" ++ " --incognito"))
   , ("M-y"               , spawn "passmenu -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
-  , ("M-<Print>"         , spawn "flameshot gui -p $HOME/Desktop")
+  , ("M-<Print>"         , spawn "flameshot gui -p $HOME/screenshots")
+  , ("M-<F4>"         , spawn "exec flameshot gui -p $HOME/screenshots")
   -- , ("M-S-<Return>"      , spawn "tdrop -am -w 1355 -y 25 urxvt -name 'urxvt-float'")
   , ("M-<F12>"      , namedScratchpadAction myScratchPads "terminal")
   , ("M-<F11>"      , namedScratchpadAction myScratchPads "discord")
@@ -395,6 +406,8 @@ myManageHook = composeAll
     , className =? "jetbrains-idea"   --> doFloat
     , className =? "jetbrains-idea"   --> viewShift ( myWorkspaces !! 4 )
     , resource  =? "desktop_window"   --> doIgnore -- TODO: not sure what this does
+    -- Float flameshot's imgur window
+    -- , className =? "flameshot" <&&> fmap (isInfixOf "Upload to Imgur") title --> doFloat
     , className =? "feh"              --> doFloat
     , role      =? "pop-up"           --> doFloat
     , title     =? "Discord Updater" --> doFloat
@@ -469,7 +482,8 @@ myStartupHook = do
     setWMName "LG3D"
     liftIO (setEnv "DESKTOP_SESSION" "xmonad")
     spawnOnce "$HOME/.config/polybar/launch.sh xmonad"
-    spawnOnce "flameshot"
+    -- spawnOnce "flameshot"
+    -- spawnOnce "flameshot >$HOME/flameshot.log 2>&1 &" -- Flameshot needs to be running in order to open the GUI
     spawnOnce "dunst"
     -- spawnOnce "picom"
     spawnOnce "sxhkd -c ~/.config/sxhkd/sxhkdrc-xmonad"
@@ -500,7 +514,7 @@ myConfig = def
       <+> manageHook def
   , handleEventHook = docksEventHook
       <+> minimizeEventHook
-      -- <+> fullscreenEventHook -- negative impact to flameshot
+      <+> fullscreenEventHook -- may have negative impact to flameshot
   , startupHook = myStartupHook
   , focusFollowsMouse = False
   , clickJustFocuses = False
