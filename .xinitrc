@@ -41,7 +41,7 @@ fi
 #done
 #unset f
 
-# flameshot &
+flameshot &
 
 # Addd for gentoo - could not resolve keysym xf86 fullscreen
 # setxkbmap -option compose:ralt
