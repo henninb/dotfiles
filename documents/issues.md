@@ -462,3 +462,8 @@ Please consult the The X.Org Foundation support
 40-libcanberra-gtk-module.sh  50-systemd-user.sh  80xapp-gtk3-module.sh
 [root@arcolinux xinitrc.d]# pwd
 /etc/X11/xinit/xinitrc.d
+
+## flameshot issues starting
+/usr/bin/flameshot & bash -c "sleep 0.5 && /usr/bin/flameshot gui"
+flameshot gui --delay 1000
+qt5-qmake qt5-default qttools5-dev-tools
