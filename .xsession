@@ -33,5 +33,3 @@ setxkbmap -option "caps:escape,compose:ralt"
 setxkbmap -device 9 -option "altwin:swap_alt_win,caps:escape"
 
 echo "$(date) start flameshot from xsesson" | tee -a "$HOME/xsession.log"
-env |grep UTF | tee -a "$HOME/xsession.log"
-flameshot &
