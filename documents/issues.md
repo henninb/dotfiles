@@ -467,3 +467,18 @@ Please consult the The X.Org Foundation support
 /usr/bin/flameshot & bash -c "sleep 0.5 && /usr/bin/flameshot gui"
 flameshot gui --delay 1000
 qt5-qmake qt5-default qttools5-dev-tools
+
+
+## blueman
+```
+(blueman-applet:9703): Gtk-WARNING **: 12:17:29.578: Theme parsing error: gtk-dark.css:6361:24: 'none' is not a valid color name
+blueman-applet version 2.1.4 starting
+Traceback (most recent call last):
+  File "/bin/blueman-applet", line 42, in <module>
+    BluemanApplet()
+  File "/usr/lib/python3.9/site-packages/blueman/main/Applet.py", line 30, in __init__
+    self.DbusSvc = DbusService("org.blueman.Applet", "org.blueman.Applet", "/org/blueman/applet",
+  File "/usr/lib/python3.9/site-packages/blueman/main/DbusService.py", line 27, in __init__
+    self._bus = Gio.bus_get_sync(bus_type)
+gi.repository.GLib.Error: g-io-error-quark: Could not connect: Connection refused (39)
+```
