@@ -422,7 +422,7 @@ tly version!
 Press ENTER or type command to continue
 
 
-## Xorg issue
+## Xorg issue with lightdm
 ```
 xf86: remove device 0 /sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/drm/card1
 failed to find screen to remove

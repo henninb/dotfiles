@@ -500,7 +500,7 @@ myConfig = def
       <+> manageHook def
   , handleEventHook = docksEventHook
       <+> minimizeEventHook
-      <+> fullscreenEventHook
+      -- <+> fullscreenEventHook -- negative impact to flameshot
   , startupHook = myStartupHook
   , focusFollowsMouse = False
   , clickJustFocuses = False

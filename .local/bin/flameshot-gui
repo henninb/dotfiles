@@ -1,0 +1,9 @@
+# exec --no-startup-id flameshot gui
+exec flameshot gui
+#exec flameshot gui -p $HOME
+#flameshot gui -d 5000
+#flameshot gui --raw > /tmp/image.png
+# scrot -d 2 -u 'scrot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)/screen ; viewnior $$(xdg-user-dir PICTURES)/screen/$f'
+# flameshot &
+# flameshot gui -p ~/images/captures
+# flameshot gui -r | xclip -selection clipboard -t image/png
