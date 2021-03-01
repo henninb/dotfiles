@@ -482,7 +482,7 @@ myStartupHook = do
     setWMName "LG3D"
     liftIO (setEnv "DESKTOP_SESSION" "xmonad")
     spawnOnce "$HOME/.config/polybar/launch.sh xmonad"
-    -- spawnOnce "flameshot"
+    spawnOnce "flameshot"
     -- spawnOnce "flameshot >$HOME/flameshot.log 2>&1 &" -- Flameshot needs to be running in order to open the GUI
     spawnOnce "dunst"
     -- spawnOnce "picom"
