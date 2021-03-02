@@ -27,6 +27,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y dunst
   sudo apt install -y playerctl
   sudo apt install -y copyq
+  sudo apt install -y numlockx
   sudo apt install -y mpc
   sudo apt install -y mpd
   sudo apt install -y vimb
