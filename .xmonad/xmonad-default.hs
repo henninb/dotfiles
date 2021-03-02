@@ -456,7 +456,8 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 
 polybarLogHook = def
     { ppOutput = polybarOutput
-    , ppCurrent = wrap ("%{B" ++ "#008000" ++ "}" ++ "%{F" ++ "#FF69B4" ++ "}") " %{B- F-}" . wrap "[" "]" -- hotpink foreground, could try ff1d8e
+    , ppCurrent = wrap ("%{B" ++ "#400473" ++ "}" ++ "%{F" ++ "#FF69B4" ++ "}") " %{B- F-}" . wrap "[" "]" -- hotpink foreground, could try ff1d8e
+    -- , ppCurrent = wrap ("%{B" ++ "#008000" ++ "}" ++ "%{F" ++ "#FF69B4" ++ "}") " %{B- F-}" . wrap "[" "]" -- hotpink foreground, could try ff1d8e --background green
     -- , ppCurrent = wrap ("%{B" ++ "#343434" ++ "}" ++ "%{F" ++ "#FF69B4" ++ "}") " %{B- F-}" . wrap "[" "]" -- hotpink foreground, could try ff1d8e
     , ppVisible = wrap ("%{F" ++ "#FF1493" ++ "} ") " %{F-}"
     , ppHiddenNoWindows = wrap ("%{F" ++ "#928374" ++ "} ") " %{F-}" --lightgrey foreground
