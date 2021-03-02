@@ -1,5 +1,3 @@
-: 1587862672:: :;thank you
-: 1587862780:: :;not sure what atm means, but there was one. i did run 'sudo xbps-install -S ffmpegthumbnailer' prior to installing.
 : 1587862815:: :;ok, that makes sense.
 : 1587862962:: :;anyone have suggestions on how to install brave on void?
 : 1587863067:: :;maldridge, agree or a appImage. i did not see one, but I will check for one.
@@ -98,3 +96,5 @@
 : 1614208172:: :;no, single display
 : 1614208240:: :;the error is in /var/log/lightdm/x-0.log
 : 1614208404:: :;no problem, I can try and dig some more
+: 1614600635:: :;I am running xmonad and cannot get 'flameshot gui' to display. here is a pastebin of the strace https://pastebin.com/jhEWAZ8E , please share any thoughts. ty
+: 1614602263:: :;/quit
