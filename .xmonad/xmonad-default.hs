@@ -48,7 +48,8 @@ import qualified Data.Map        as M
 import qualified Codec.Binary.UTF8.String as UTF8
 import Prelude
 import Data.Maybe
-import Text.XHtml (tag, strAttr, renderHtml, (<<), (!), primHtml)
+import XMonad.Actions.GroupNavigation
+import XMonad.Hooks.RefocusLast
 
 import System.Environment (setEnv, getEnv)
 
@@ -332,6 +333,9 @@ myKeys = [
   -- , ("M-<F12>"      , spawn "tdrop -am -w 1355 -y 25 st -T 'st-float'")
   , ("M-S-<Return>"      , spawn "urxvt")
   , ("M-<Return>"        , spawn myTerminal)
+  , ("M1-<Tab>"          , nextMatch Backward (return True))
+       -- ,("M-<F5>"      ,toggleFocus)
+  -- , ("M1-<Tab>"          , spawn "xeyes")
   , ("M-S-<Backspace>"   , spawn "xdo close")
   , ("M-S-<Escape>"      , spawn "wm-exit xmonad")
   , ("M-<Escape>"        , spawn "xmonad --restart")
@@ -468,10 +472,6 @@ polybarLogHook = def
     , ppTitle = myAddSpaces 25
     , ppExtras  = [windowCount]                           -- # of windows current works
     }
-
-    where color   = strAttr "color"
-          font    = strAttr "font" "Terminus"
-          bold    = strAttr "weight" "bold"
 
 spawnToWorkspace :: String -> String -> X ()
 spawnToWorkspace program workspace = do
