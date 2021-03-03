@@ -32,4 +32,4 @@ setxkbmap -option "caps:escape,compose:ralt"
 # turn the capslock key to be an escape key
 setxkbmap -device 9 -option "altwin:swap_alt_win,caps:escape"
 
-echo "$(date) start flameshot from xsesson" | tee -a "$HOME/xsession.log"
+echo "$(date) start xsesson" | tee -a "$HOME/xsession.log"
