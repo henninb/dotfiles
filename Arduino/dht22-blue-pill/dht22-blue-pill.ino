@@ -2,8 +2,6 @@
  * Use STM32 "blue pill" board to read a DHT22 temperature and humidity sensor
  * (and wink a LED.)
  *
- * Paul M Dunphy VE1DX
- * April 2020
  * https://www.hackster.io/VE1DX/use-an-stm32f103c8t6-blue-pill-with-the-arduino-ide-11bd1c
  *
  */
@@ -14,13 +12,13 @@
 
 #define DHTTYPE DHT22
 
-int LEDpin = PA8;  // Physical pin 29
+//int dhtPin = PA8;  // Physical pin 29
 
 DHT dht(DHTPIN, DHTTYPE);  // Initilize object dht for class DHT
                            // with DHT pin with STM32 and DHT type as DHT22
 
 void setup() {
-  pinMode(LEDpin, OUTPUT);
+  //pinMode(DHTPIN, OUTPUT);
   Serial.begin(9600);
   dht.begin();          // Initialize DHT22 to read Temperature and humidity values.
   delay(3000);          // Wait 3 seconds for it to stabilize
@@ -28,24 +26,26 @@ void setup() {
 
 
 void loop() {
+    // Wait a few seconds between measurements.
+  delay(2000);
 
-  int i;
-
-  for (int i = 1; i <= 8; i++) {
-    digitalWrite(LEDpin, HIGH);
-    delay(250);
-    digitalWrite(LEDpin, LOW);
-    delay(250);
+  // Reading temperature or humidity takes about 250 milliseconds!
+  // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
+  float h = dht.readHumidity();
+  // Read temperature as Celsius
+  float c = dht.readTemperature();
+  
+  // Check if any reads failed and exit early (to try again).
+  if (isnan(h) || isnan(c)) {
+    Serial.println("Failed to read from DHT sensor!");
+    return;
   }
 
-  float h = dht.readHumidity();       // Get Humidity value
-  float t = dht.readTemperature();    // Get Temperature value
+  Serial.print("Humidity: "); 
+  Serial.print(h);
+  Serial.print(" %\t");
+  Serial.print("Temperature: "); 
+  Serial.print(c * 1.8 + 32);
+  Serial.println(" *F ");
 
-  Serial.print(t,1);                  // Print to serial monitor screen
-  Serial.print("      ");
-  Serial.print(h,1);
-  Serial.println();
-
-  digitalWrite(LEDpin, LOW);
-  delay(1000);
 }
