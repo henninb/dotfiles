@@ -1,15 +1,14 @@
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
   while (!Serial);
   pinMode(PC13, OUTPUT);
-  Serial.println("STM32 blink test");
 }
 
 void loop() {
+  Serial.println("Hello from STM32");
   digitalWrite(PC13, HIGH);
   delay(1000);
   digitalWrite(PC13, LOW);
-  delay(1000);
-  Serial.print("Hello from STM32! ");
+  delay(3000);
   Serial.println(millis() / 1000);
 }
