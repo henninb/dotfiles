@@ -21,6 +21,7 @@ void setup() {
   //pinMode(DHTPIN, OUTPUT);
   Serial.begin(9600);
   dht.begin();          // Initialize DHT22 to read Temperature and humidity values.
+  pinMode(PC13, OUTPUT);
   delay(3000);          // Wait 3 seconds for it to stabilize
 }
 
@@ -48,4 +49,7 @@ void loop() {
   Serial.print(c * 1.8 + 32);
   Serial.println(" *F ");
 
+  digitalWrite(PC13, HIGH);
+  delay(1000);
+  digitalWrite(PC13, LOW);
 }

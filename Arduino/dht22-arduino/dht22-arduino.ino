@@ -3,9 +3,6 @@
 #define DHTPIN 2     // what pin we're connected to
 #define DHTTYPE DHT22   // DHT 22  (AM2302)
 
-int maxHum = 60;
-int maxTemp = 40;
-
 DHT dht(DHTPIN, DHTTYPE);
 
 void setup() {
