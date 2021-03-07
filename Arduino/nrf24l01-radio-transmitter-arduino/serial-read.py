@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 
-# import time
 import serial
-import codecs
 
 ser = serial.Serial(
   port='/dev/ttyUSB0',
@@ -18,5 +16,3 @@ while 1:
   string = payload.decode('UTF-8').strip("\r\n")
   if string != "":
     print(string)
-  # else:
-  #   print("is not empty")
