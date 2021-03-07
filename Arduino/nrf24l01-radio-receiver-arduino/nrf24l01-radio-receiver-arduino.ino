@@ -1,12 +1,13 @@
 /*
-GND
-Positive 5v on the YL-105 Breakoutboard
-CS to Arduino pin 8
-CE to Arduino pin 7
-MOSI to Arduino pin 11 (mandatory)
-MISO to Arduino pin 12 (mandatory)
-SCK to Arduino pin 13 (mandatory)
- */
+  YL-105 Breakoutboard to Arduino
+  GND -> GND
+  VCC -> 5v
+  CE -> pin 7
+  CS -> pin 8
+  SCK -> 13
+  MISO -> pin 12
+  MOSI -> pin 11
+*/
 
 #include <SPI.h>
 #include <RF24.h>
@@ -15,7 +16,7 @@ RF24 radio(7, 8); // using pin 7 for the CE pin, and pin 8 for the CSN pin
 
 int ReceivedMessage[1] = {000}; // Used to store value received by the NRF24L01
 
-const uint64_t pipe = 0xE6E6E6E6E6E6; // Needs to be the same for communicating between 2 NRF24L01 
+const uint64_t pipe = 0xE6E6E6E6E6E6; // Needs to be the same for communicating between 2 NRF24L01
 
 void setup() {
   Serial.begin(9600);
@@ -30,10 +31,8 @@ void setup() {
   }
 
   Serial.println(F("RF24 example receiver."));
-
-  radio.openReadingPipe(1,pipe); // Get NRF24L01 ready to receive
-
-  radio.startListening(); // Listen to see if information received 
+  radio.openReadingPipe(1, pipe); // Get NRF24L01 ready to receive
+  radio.startListening(); // Listen to see if information received
 }
 
 /*
@@ -57,19 +56,19 @@ if(radio.available()){
 
 
 void loop(void){
-  while (radio.available()) {
-  radio.read(ReceivedMessage, 1); // Read information from the NRF24L01
+  if (radio.available()) {
+    radio.read(ReceivedMessage, 1); // Read information from the NRF24L01
 
-  if (ReceivedMessage[0] == 111) {
-    Serial.println(F("Got message"));
-    delay(10);
-  } else {
-    Serial.println(F("Not message"));
-    delay(10);
+    if (ReceivedMessage[0] == 111) {
+      Serial.println(F("Got message"));
+      delay(10);
+    } else {
+      Serial.println(F("Not message"));
+      delay(10);
+    }
   }
-  } 
-  //else {
-  //  Serial.println(F("radio not available"));
-  //  delay(1000);
-  //}
+  else {
+    Serial.println(F("radio not available"));
+    delay(1000);
+  }
 }
