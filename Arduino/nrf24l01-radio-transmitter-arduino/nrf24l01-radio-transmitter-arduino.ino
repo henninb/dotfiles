@@ -39,14 +39,13 @@ void setup() {
 
 void loop() {
   transmitMessage[0] = 111;
-  radio.write(transmitMessage, 1); // Send value through NRF24L01
-  sprintf(buffer, "transmit message = '%d'", transmitMessage[0]);
-  Serial.println(buffer);
+
+   if(!radio.write(transmitMessage, sizeof(int))){
+     Serial.println("radio write is not transmitting.");
+   }else{
+     sprintf(buffer, "transmit message = '%d'", transmitMessage[0]);
+     Serial.println(buffer);
+   }
   delay(1000);
   digitalWrite(LED_BUILTIN, (millis() / 1000) % 2);
-  /* Serial.println(F("sent message")); */
-  /* digitalWrite(LED_BUILTIN, HIGH); */
-  /* delay(1000); */
-  /* digitalWrite(LED_BUILTIN, LOW); */
-  /* delay(1000); */
 }

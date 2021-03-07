@@ -4,7 +4,7 @@
   VCC -> 5v
   CE -> pin 7
   CS -> pin 8
-  SCK -> 13
+  SCK -> pin 13
   MISO -> pin 12
   MOSI -> pin 11
 */
@@ -18,6 +18,7 @@ int ReceivedMessage[1] = {0}; // Used to store value received by the NRF24L01
 
 const uint64_t pipe = 0xE6E6E6E6E6E6; // Needs to be the same for communicating between 2 NRF24L01
 char buffer[50] = {0};
+int length = 0;
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
@@ -34,6 +35,8 @@ void setup() {
 
   Serial.println(F("RF24 example receiver."));
   radio.openReadingPipe(1, pipe); // Get NRF24L01 ready to receive
+  /* radio.setPALevel(RF24_PA_MIN); */
+  /* SPI.setClockDivider(SPI_CLOCK_DIV8) ; */
   radio.startListening(); // Listen to see if information received
 }
 
@@ -57,25 +60,14 @@ if(radio.available()){
 */
 
 
-void loop(void){
-  if (radio.available()) {
-    radio.read(ReceivedMessage, 1); // Read information from the NRF24L01
-
-
+void loop() {
+  while (radio.available()) {
+    Serial.println("radio is available");
+    length = radio.getDynamicPayloadSize();  //# or radio.getPayloadSize() for static payload sizes¬
+    //received_payload = radio.read(length)
+    radio.read(ReceivedMessage, sizeof(int));
     sprintf(buffer, "received message = '%d'", ReceivedMessage[0]);
     Serial.println(buffer);
     delay(1000);
-
-    /* if (ReceivedMessage[0] == 111) { */
-    /*   Serial.println(F("Got message")); */
-    /*   delay(10); */
-    /* } else { */
-    /*   Serial.println(F("Not message")); */
-    /*   delay(10); */
-    /* } */
-  }
-  else {
-    /* Serial.println(F("radio not available")); */
-    /* delay(1000); */
   }
 }
