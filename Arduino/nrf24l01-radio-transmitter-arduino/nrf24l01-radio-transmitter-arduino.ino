@@ -1,25 +1,27 @@
 /*
-GND
-Positive 5v on the YL-105 Breakoutboard
-CS to Arduino pin 8 (defined in the code)
-CE to Arduino pin 7 (defined in the code)
-MOSI to Arduino pin 11 (mandatory)
-MISO to Arduino pin 12 (mandatory)
-SCK to Arduino pin 13 (mandatory)
+   YL-105 Breakoutboard to Arduino
+   GND -> GND
+   VCC -> 5v
+   CE -> pin 7
+   CS -> pin 8
+   SCK -> 13
+   MISO -> pin 12
+   MOSI -> pin 11
  */
+
 #include <SPI.h>
 #include <RF24.h>
 
 // instantiate an object for the nRF24L01 transceiver
 RF24 radio(7, 8); // using pin 7 for the CE pin, and pin 8 for the CSN pin
 
-int SentMessage[1] = {000};
+int transmitMessage[1] = {0};
 
-const uint64_t pipe = 0xE6E6E6E6E6E6; // Needs to be the same for communicating between 2 NRF24L01 
-
+const uint64_t pipe = 0xE6E6E6E6E6E6; // Needs to be the same for communicating between 2 NRF24L01
+char buffer[50] = {0};
 
 void setup() {
-
+  pinMode(LED_BUILTIN, OUTPUT);
   Serial.begin(9600);
   while (!Serial) {
     // some boards need to wait to ensure access to serial over USB
@@ -33,13 +35,18 @@ void setup() {
 
   Serial.println(F("RF24 example transmitter."));
   radio.openWritingPipe(pipe); // Get NRF24L01 ready to transmit
-   
 }
 
 void loop() {
-
-SentMessage[0] = 111;
-radio.write(SentMessage, 1); // Send value through NRF24L01
-Serial.println(F("sent message"));
-delay(1000);
+  transmitMessage[0] = 111;
+  radio.write(transmitMessage, 1); // Send value through NRF24L01
+  sprintf(buffer, "transmit message = '%d'", transmitMessage[0]);
+  Serial.println(buffer);
+  delay(1000);
+  digitalWrite(LED_BUILTIN, (millis() / 1000) % 2);
+  /* Serial.println(F("sent message")); */
+  /* digitalWrite(LED_BUILTIN, HIGH); */
+  /* delay(1000); */
+  /* digitalWrite(LED_BUILTIN, LOW); */
+  /* delay(1000); */
 }
