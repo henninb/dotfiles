@@ -11,8 +11,8 @@
  */
 
 #include <SPI.h>
-//#include <RF24.h>
-#include <RF24-STM.h>
+#include <RF24.h>
+//#include <RF24-STM.h>
 
 // instantiate an object for the nRF24L01 transceiver
 RF24 radio(PA0, PA4); // using pin PA0 for the CE pin, and pin PA4 for the CSN pin

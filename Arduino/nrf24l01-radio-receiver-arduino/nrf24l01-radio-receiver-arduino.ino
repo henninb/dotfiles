@@ -5,8 +5,8 @@
   CE -> pin 7
   CS -> pin 8
   SCK -> pin 13
-  MISO -> pin 12
-  MOSI -> pin 11
+  MISO -> pin 11
+  MOSI -> pin 12
 */
 
 #include <SPI.h>
@@ -65,8 +65,8 @@ void loop() {
     Serial.println("radio is available");
     length = radio.getDynamicPayloadSize();  //# or radio.getPayloadSize() for static payload sizes¬
     //received_payload = radio.read(length)
-    radio.read(ReceivedMessage, sizeof(int));
-    sprintf(buffer, "received message = '%d'", ReceivedMessage[0]);
+    radio.read(buffer, sizeof(10));
+    //sprintf(buffer, "received message = '%d' of length= %d", ReceivedMessage[0], length);
     Serial.println(buffer);
     delay(1000);
   }
