@@ -14,7 +14,7 @@
 
 RF24 radio(7, 8); // using pin 7 for the CE pin, and pin 8 for the CSN pin
 
-int ReceivedMessage[1] = {0}; // Used to store value received by the NRF24L01
+char receivedPayload[100] = {};
 
 const uint64_t pipe = 0xE6E6E6E6E6E6; // Needs to be the same for communicating between 2 NRF24L01
 char buffer[50] = {0};
@@ -33,6 +33,15 @@ void setup() {
     while (1) {} // hold in infinite loop
   }
 
+  radio.setPALevel(RF24_PA_LOW);     // RF24_PA_MAX is default.
+
+  // to use ACK payloads, we need to enable dynamic payload lengths (for all nodes)
+  //radio.enableDynamicPayloads();    // ACK payloads are dynamically sized
+
+  // Acknowledgement packets have no payloads by default. We need to enable
+  // this feature for all nodes (TX & RX) to use ACK payloads.
+  //radio.enableAckPayload();
+
   Serial.println(F("RF24 example receiver."));
   radio.openReadingPipe(1, pipe); // Get NRF24L01 ready to receive
   /* radio.setPALevel(RF24_PA_MIN); */
@@ -40,34 +49,13 @@ void setup() {
   radio.startListening(); // Listen to see if information received
 }
 
-/*
-void loop(){
-bool done=false;
-if(radio.available()){
-  while(!done){
-    radio.read(ReceivedMessage, 1);
-
-    if(ReceivedMessage==111) {
-      Serial.println(F("Got message"));
-    }
-    done = true;
-    delay(1000);
-  }
-} else {
-  Serial.println("No Radio Available");
-}
-}
-*/
-
-
 void loop() {
   while (radio.available()) {
     Serial.println("radio is available");
     length = radio.getDynamicPayloadSize();  //# or radio.getPayloadSize() for static payload sizes¬
-    //received_payload = radio.read(length)
-    radio.read(buffer, sizeof(10));
-    //sprintf(buffer, "received message = '%d' of length= %d", ReceivedMessage[0], length);
+    radio.read(&receivedPayload, length);
+    sprintf(buffer, "received message = '%s' of length= %d", receivedPayload, length);
     Serial.println(buffer);
-    delay(1000);
+    delay(10);
   }
 }

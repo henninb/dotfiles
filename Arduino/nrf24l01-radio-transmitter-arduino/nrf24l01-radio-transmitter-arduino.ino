@@ -17,7 +17,7 @@ RF24 radio(7, 8); // using pin 7 for the CE pin, and pin 8 for the CSN pin
 
 int transmitMessage[1] = {0};
 
-char *message = "myMessage";
+char *message = "x marks the spot";
 
 const uint64_t pipe = 0xE6E6E6E6E6E6; // Needs to be the same for communicating between 2 NRF24L01
 char buffer[50] = {0};
@@ -28,6 +28,16 @@ void setup() {
   while (!Serial) {
     // some boards need to wait to ensure access to serial over USB
   }
+
+
+  radio.setPALevel(RF24_PA_LOW);     // RF24_PA_MAX is default.
+
+  // to use ACK payloads, we need to enable dynamic payload lengths (for all nodes)
+  //radio.enableDynamicPayloads();    // ACK payloads are dynamically sized
+
+  // Acknowledgement packets have no payloads by default. We need to enable
+  // this feature for all nodes (TX & RX) to use ACK payloads.
+  //radio.enableAckPayload();
 
   // initialize the transceiver on the SPI bus
   if (!radio.begin()) {
@@ -40,7 +50,7 @@ void setup() {
 }
 
 void loop() {
-  transmitMessage[0] = 111;
+  /* transmitMessage[0] = 111; */
 
    //if(!radio.write(transmitMessage, sizeof(int))){
    if(!radio.write(message, sizeof(message))){
