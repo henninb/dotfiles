@@ -19,7 +19,7 @@ RF24 radio(PA0, PA4); // using pin PA0 for the CE pin, and pin PA4 for the CSN p
 
 int transmitMessage[1] = {0};
 int val = 0;
-char *message = "x marks the spot";
+char *message = "xx";
 
 const uint64_t pipe = 0xE6E6E6E6E6E6; // Needs to be the same for communicating between 2 NRF24L01
 char buffer[50] = {0};

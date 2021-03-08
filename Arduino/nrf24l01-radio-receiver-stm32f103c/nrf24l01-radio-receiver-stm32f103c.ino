@@ -12,6 +12,7 @@
 
 #include <SPI.h>
 #include <RF24.h>
+/* #include <RF24-STM.h> */
 
 RF24 radio(PA0, PA4); // using pin PA0 for the CE pin, and pin PA4 for the CSN pin
 
@@ -22,7 +23,8 @@ char buffer[50] = {0};
 int length = 0;
 
 void setup() {
-  pinMode(LED_BUILTIN, OUTPUT);
+  Serial.println(F("RF24 example receiver."));
+  pinMode(PC13, OUTPUT);
   Serial.begin(9600);
   while (!Serial) {
     // some boards need to wait to ensure access to serial over USB
@@ -31,9 +33,12 @@ void setup() {
   // initialize the transceiver on the SPI bus
   if (!radio.begin()) {
     Serial.println(F("Receiving radio hardware is not responding."));
-    while (1) {} // hold in infinite loop
+    while (1) {
+      Serial.println("harware issue?");
+    } // hold in infinite loop
   }
 
+  /* radio.begin(); */
   radio.setPALevel(RF24_PA_LOW);     // RF24_PA_MAX is default.
 
   // to use ACK payloads, we need to enable dynamic payload lengths (for all nodes)
@@ -43,7 +48,6 @@ void setup() {
   // this feature for all nodes (TX & RX) to use ACK payloads.
   //radio.enableAckPayload();
 
-  Serial.println(F("RF24 example receiver."));
   radio.openReadingPipe(1, pipe); // Get NRF24L01 ready to receive
   /* radio.setPALevel(RF24_PA_MIN); */
   /* SPI.setClockDivider(SPI_CLOCK_DIV8) ; */
@@ -51,12 +55,15 @@ void setup() {
 }
 
 void loop() {
+  /* Serial.println("start receiving..."); */
   while (radio.available()) {
-    Serial.println("radio is available");
+    /* Serial.println("radio is available"); */
     length = radio.getDynamicPayloadSize();  //# or radio.getPayloadSize() for static payload sizes¬
-    radio.read(&receivedPayload, length);
+    radio.read(&receivedPayload, 32);
     sprintf(buffer, "received message = '%s' of length= %d", receivedPayload, length);
     Serial.println(buffer);
-    delay(10);
+    digitalWrite(PC13, HIGH);
+    delay(500);
+    digitalWrite(PC13, LOW);
   }
 }

@@ -14,5 +14,5 @@ ser = serial.Serial(
 while 1:
   payload = ser.readline()
   string = payload.decode('UTF-8').strip("\r\n")
-  if string != "":
-    print(string)
+  # if string != "":
+  print(string)
