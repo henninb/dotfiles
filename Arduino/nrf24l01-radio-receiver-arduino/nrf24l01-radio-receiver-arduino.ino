@@ -12,9 +12,19 @@
 #include <SPI.h>
 #include <RF24.h>
 
+struct data {
+    signed int temperature; // 2 bytes, -32,768 to 32,767, same as short
+    unsigned maxTemp;       // 2 bytes, 0 to 65,535
+    double humidity;        // 4 bytes 32-bit floating point (Due=8 bytes, 64-bit)
+    float dewPoint;         // 4 bytes 32-bit floating point, same as double
+    byte ID;                // 1 byte
+    // Total 13, you can have max 32 bytes here
+};
+
 RF24 radio(7, 8); // using pin 7 for the CE pin, and pin 8 for the CSN pin
 
-char receivedPayload[100] = {};
+/* char receivedPayload[100] = {}; */
+data myDataRx;
 
 const uint64_t pipe = 0xE6E6E6E6E6E6; // Needs to be the same for communicating between 2 NRF24L01
 char buffer[50] = {0};
@@ -47,15 +57,29 @@ void setup() {
   /* radio.setPALevel(RF24_PA_MIN); */
   /* SPI.setClockDivider(SPI_CLOCK_DIV8) ; */
   radio.startListening(); // Listen to see if information received
+  /* radio.printDetails(); */
 }
 
 void loop() {
   while (radio.available()) {
     Serial.println("radio is available");
-    length = radio.getDynamicPayloadSize();  //# or radio.getPayloadSize() for static payload sizes¬
-    radio.read(&receivedPayload, length);
-    sprintf(buffer, "received message = '%s' of length= %d", receivedPayload, length);
-    Serial.println(buffer);
+    /* length = radio.getDynamicPayloadSize();  //# or radio.getPayloadSize() for static payload sizes¬ */
+    radio.read(&myDataRx, sizeof(data));
+        Serial.println(radio.getPALevel());
+        Serial.print("Channel: ");
+        Serial.println(radio.getChannel());
+        Serial.print("ID         : ");
+        Serial.println(myDataRx.ID);
+        Serial.print("Temperature: ");
+        Serial.println(myDataRx.temperature);
+        Serial.print("Max Temp.  : ");
+        Serial.println(myDataRx.maxTemp);
+        Serial.print("Humidity   : ");
+        Serial.println(myDataRx.humidity);
+        Serial.print("Dew Point  : ");
+        Serial.println(myDataRx.dewPoint);
+    /* sprintf(buffer, "received message = '%s' of length= %d", receivedPayload, length); */
+    /* Serial.println(buffer); */
     delay(10);
   }
 }
