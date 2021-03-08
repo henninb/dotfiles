@@ -36,11 +36,15 @@ void setup() {
   while (!Serial) {
     // some boards need to wait to ensure access to serial over USB
   }
+  Serial.println("RF24 example receiver.");
 
   // initialize the transceiver on the SPI bus
   if (!radio.begin()) {
-    Serial.println(F("Receiving radio hardware is not responding."));
-    while (1) {} // hold in infinite loop
+    Serial.println("Receiving radio hardware is not responding.");
+    while (1) {
+      Serial.println("hardware issues");
+      delay(1000);
+    } // hold in infinite loop
   }
 
   radio.setPALevel(RF24_PA_LOW);     // RF24_PA_MAX is default.
@@ -52,7 +56,6 @@ void setup() {
   // this feature for all nodes (TX & RX) to use ACK payloads.
   //radio.enableAckPayload();
 
-  Serial.println(F("RF24 example receiver."));
   radio.openReadingPipe(1, pipe); // Get NRF24L01 ready to receive
   /* radio.setPALevel(RF24_PA_MIN); */
   /* SPI.setClockDivider(SPI_CLOCK_DIV8) ; */
@@ -65,18 +68,20 @@ void loop() {
     Serial.println("radio is available");
     /* length = radio.getDynamicPayloadSize();  //# or radio.getPayloadSize() for static payload sizes¬ */
     radio.read(&myDataRx, sizeof(data));
+        Serial.println("Receiving data ......");
+        Serial.print("  PALevel: ");
         Serial.println(radio.getPALevel());
-        Serial.print("Channel: ");
+        Serial.print("  Channel: ");
         Serial.println(radio.getChannel());
-        Serial.print("ID         : ");
+        Serial.print("  ID         : ");
         Serial.println(myDataRx.ID);
-        Serial.print("Temperature: ");
+        Serial.print("  Temperature: ");
         Serial.println(myDataRx.temperature);
-        Serial.print("Max Temp.  : ");
+        Serial.print("  Max Temp.  : ");
         Serial.println(myDataRx.maxTemp);
-        Serial.print("Humidity   : ");
+        Serial.print("  Humidity   : ");
         Serial.println(myDataRx.humidity);
-        Serial.print("Dew Point  : ");
+        Serial.print("  Dew Point  : ");
         Serial.println(myDataRx.dewPoint);
     /* sprintf(buffer, "received message = '%s' of length= %d", receivedPayload, length); */
     /* Serial.println(buffer); */
