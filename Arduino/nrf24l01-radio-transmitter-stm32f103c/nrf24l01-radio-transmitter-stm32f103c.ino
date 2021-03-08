@@ -25,6 +25,7 @@ const uint64_t pipe = 0xE6E6E6E6E6E6; // Needs to be the same for communicating 
 char buffer[50] = {0};
 
 void setup() {
+  Serial.println("RF24 example transmitter.");
   pinMode(PC13, OUTPUT);
   Serial.begin(9600);
   while (!Serial) {
@@ -32,7 +33,7 @@ void setup() {
   }
 
   // initialize the transceiver on the SPI bus
-  if ( radio.begin() ) {
+  if ( !radio.begin() ) {
     Serial.println(F("Transmitting radio hardware is not responding."));
     while (1) {} // hold in infinite loop
   }
@@ -40,7 +41,6 @@ void setup() {
 
   radio.setPALevel(RF24_PA_LOW);     // RF24_PA_MAX is default.
 
-  Serial.println("RF24 example transmitter.");
   radio.openWritingPipe(pipe); // Get NRF24L01 ready to transmit
 }
 

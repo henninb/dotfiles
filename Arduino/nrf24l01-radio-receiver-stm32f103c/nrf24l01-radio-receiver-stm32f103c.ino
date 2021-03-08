@@ -34,7 +34,8 @@ void setup() {
   if (!radio.begin()) {
     Serial.println(F("Receiving radio hardware is not responding."));
     while (1) {
-      Serial.println("harware issue?");
+      Serial.println("harware issue, wrong pin?");
+      delay(7000);
     } // hold in infinite loop
   }
 
