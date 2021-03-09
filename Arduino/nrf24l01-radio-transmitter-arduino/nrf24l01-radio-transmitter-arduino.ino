@@ -63,15 +63,16 @@ void setup() {
 }
 
 void loop() {
+    radio.stopListening();
     myDataTx.ID = 'B';
     myDataTx.temperature = 72;
     myDataTx.maxTemp = 93;
     myDataTx.humidity = 50.37;
     myDataTx.dewPoint = 69.4;
    if( !radio.write(&myDataTx, sizeof(myDataTx)) ) {
-     Serial.println("radio write failed the receiver is not online or responding.");
+     Serial.println("radio write failed, the receiver is not online or responding.");
    } else {
-     Serial.println("\nTransmitting data below......");
+     Serial.println("Transmitting data below......");
      Serial.print("  PALevel (1 == RF24_PA_LOW): ");
      Serial.println(radio.getPALevel());
      Serial.print("  Channel: ");
@@ -87,6 +88,24 @@ void loop() {
      Serial.print("  Dew Point  : ");
      Serial.println(myDataTx.dewPoint);
    }
-  delay(1000);
+  /* delay(1000); */
   digitalWrite(LED_BUILTIN, (millis() / 1000) % 2);
+
+      // Now listen for a response
+    radio.startListening();
+
+    // But we won't listen for long
+    unsigned long started_waiting_at = millis();
+
+    // Loop here until we get indication that some data is ready for us to read (or we time out)
+    while (!radio.available()) {
+        // Oh dear, no response received within our timescale
+        if (millis() - started_waiting_at > 250) {
+            Serial.print("  TX: Got no reply ");
+            delay(2000);
+            return;
+        }
+    }
+    radio.read(&myDataTx, sizeof(myDataTx));
+    delay(250);
 }

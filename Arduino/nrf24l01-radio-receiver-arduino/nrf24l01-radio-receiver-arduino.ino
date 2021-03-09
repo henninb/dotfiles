@@ -26,9 +26,8 @@ RF24 radio(7, 8); // using pin 7 for the CE pin, and pin 8 for the CSN pin
 /* char receivedPayload[100] = {}; */
 tempDataType myDataRx;
 
-const uint64_t pipe = 0xE6E6E6E6E6E6; // Needs to be the same for communicating between 2 NRF24L01
-char buffer[50] = {0};
-int length = 0;
+const uint64_t readerPipe = 0xE6E6E6E6E6E6;
+const uint64_t writerPipe = 0xB3B4B5B601;
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
@@ -56,7 +55,8 @@ void setup() {
   // this feature for all nodes (TX & RX) to use ACK payloads.
   //radio.enableAckPayload();
 
-  radio.openReadingPipe(1, pipe); // Get NRF24L01 ready to receive
+  radio.openReadingPipe(1, readerPipe); // Get NRF24L01 ready to receive
+  radio.openWritingPipe(writerPipe);
   /* radio.setPALevel(RF24_PA_MIN); */
   /* SPI.setClockDivider(SPI_CLOCK_DIV8) ; */
   radio.setAutoAck(true);
@@ -66,7 +66,7 @@ void setup() {
 
 void loop() {
   while (radio.available()) {
-    radio.read(&myDataRx, sizeof(tempDataType));
+    radio.read(&myDataRx, sizeof(myDataRx));
     Serial.println("Receiving data ......");
     Serial.print("  PALevel (1 == RF24_PA_LOW): ");
     Serial.println(radio.getPALevel());
@@ -83,5 +83,14 @@ void loop() {
     Serial.print("  Dew Point  : ");
     Serial.println(myDataRx.dewPoint);
     delay(10);
+    radio.stopListening();
+
+    if (!radio.write(&myDataRx, sizeof(myDataRx))) {
+      Serial.println("  RX: No ACK");
+    } else {
+      Serial.println("  RX: ACK");
+    }
+
+    radio.startListening();
   }
 }
