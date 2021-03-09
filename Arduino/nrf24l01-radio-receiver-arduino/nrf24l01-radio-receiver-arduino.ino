@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <RF24.h>
 
-struct data {
+struct tempDataType {
     signed int temperature; // 2 bytes, -32,768 to 32,767, same as short
     unsigned maxTemp;       // 2 bytes, 0 to 65,535
     double humidity;        // 4 bytes 32-bit floating point (Due=8 bytes, 64-bit)
@@ -24,7 +24,7 @@ struct data {
 RF24 radio(7, 8); // using pin 7 for the CE pin, and pin 8 for the CSN pin
 
 /* char receivedPayload[100] = {}; */
-data myDataRx;
+tempDataType myDataRx;
 
 const uint64_t pipe = 0xE6E6E6E6E6E6; // Needs to be the same for communicating between 2 NRF24L01
 char buffer[50] = {0};
@@ -59,32 +59,29 @@ void setup() {
   radio.openReadingPipe(1, pipe); // Get NRF24L01 ready to receive
   /* radio.setPALevel(RF24_PA_MIN); */
   /* SPI.setClockDivider(SPI_CLOCK_DIV8) ; */
+  radio.setAutoAck(true);
   radio.startListening(); // Listen to see if information received
   /* radio.printDetails(); */
 }
 
 void loop() {
   while (radio.available()) {
-    Serial.println("radio is available");
-    /* length = radio.getDynamicPayloadSize();  //# or radio.getPayloadSize() for static payload sizes¬ */
-    radio.read(&myDataRx, sizeof(data));
-        Serial.println("Receiving data ......");
-        Serial.print("  PALevel: ");
-        Serial.println(radio.getPALevel());
-        Serial.print("  Channel: ");
-        Serial.println(radio.getChannel());
-        Serial.print("  ID         : ");
-        Serial.println(myDataRx.ID);
-        Serial.print("  Temperature: ");
-        Serial.println(myDataRx.temperature);
-        Serial.print("  Max Temp.  : ");
-        Serial.println(myDataRx.maxTemp);
-        Serial.print("  Humidity   : ");
-        Serial.println(myDataRx.humidity);
-        Serial.print("  Dew Point  : ");
-        Serial.println(myDataRx.dewPoint);
-    /* sprintf(buffer, "received message = '%s' of length= %d", receivedPayload, length); */
-    /* Serial.println(buffer); */
+    radio.read(&myDataRx, sizeof(tempDataType));
+    Serial.println("Receiving data ......");
+    Serial.print("  PALevel (1 == RF24_PA_LOW): ");
+    Serial.println(radio.getPALevel());
+    Serial.print("  Channel: ");
+    Serial.println(radio.getChannel());
+    Serial.print("  ID         : ");
+    Serial.println(myDataRx.ID);
+    Serial.print("  Temperature: ");
+    Serial.println(myDataRx.temperature);
+    Serial.print("  Max Temp.  : ");
+    Serial.println(myDataRx.maxTemp);
+    Serial.print("  Humidity   : ");
+    Serial.println(myDataRx.humidity);
+    Serial.print("  Dew Point  : ");
+    Serial.println(myDataRx.dewPoint);
     delay(10);
   }
 }

@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <RF24.h>
 
-struct data {
+struct tempDataType {
     signed int temperature; // 2 bytes, -32,768 to 32,767, same as short
     unsigned maxTemp;       // 2 bytes, 0 to 65,535
     double humidity;        // 4 bytes 32-bit floating point (Due=8 bytes, 64-bit)
@@ -24,10 +24,10 @@ struct data {
 // instantiate an object for the nRF24L01 transceiver
 RF24 radio(7, 8); // using pin 7 for the CE pin, and pin 8 for the CSN pin
 
-data myDataTx;
+tempDataType myDataTx;
 
-const uint64_t pipe = 0xE6E6E6E6E6E6; // Needs to be the same for communicating between 2 NRF24L01
-char buffer[50] = {0};
+const uint64_t writePipe = 0xE6E6E6E6E6E6;
+const uint64_t readPipe = 0xB3B4B5B601;
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
@@ -47,7 +47,6 @@ void setup() {
   //radio.enableAckPayload();
   /* radio.printDetails(); */
 
-  Serial.println("transmitter setup.");
   // initialize the transceiver on the SPI bus
   if (!radio.begin()) {
     Serial.println("Transmitting radio hardware is not responding.");
@@ -57,9 +56,10 @@ void setup() {
     } // hold in infinite loop
   }
 
+  radio.setAutoAck(true);
   radio.setPALevel(RF24_PA_LOW);     // RF24_PA_MAX is default.
-
-  radio.openWritingPipe(pipe); // Get NRF24L01 ready to transmit
+  radio.openReadingPipe(1, readPipe);
+  radio.openWritingPipe(writePipe); // Get NRF24L01 ready to transmit
 }
 
 void loop() {
@@ -69,7 +69,7 @@ void loop() {
     myDataTx.humidity = 50.37;
     myDataTx.dewPoint = 69.4;
    if( !radio.write(&myDataTx, sizeof(myDataTx)) ) {
-     Serial.println("radio write is not transmitting as the receiver is not online or responding.");
+     Serial.println("radio write failed the receiver is not online or responding.");
    } else {
      Serial.println("\nTransmitting data below......");
      Serial.print("  PALevel (1 == RF24_PA_LOW): ");
