@@ -18,12 +18,12 @@
 #include <RF24-STM.h>
 
 struct tempDataType {
-    signed int temperature; // 2 bytes, -32,768 to 32,767, same as short
-    unsigned maxTemp;       // 2 bytes, 0 to 65,535
-    float humidity;        // 4 bytes 32-bit floating point (Due=8 bytes, 64-bit)
-    float dewPoint;         // 4 bytes 32-bit floating point, same as double
+    short temperature;           // 2 bytes
+    short temperature_decimal;   // 2 bytes
+    short humidity;        // 2 bytes
+    short humidity_decimal;        // 2 bytes
     byte ID;                // 1 byte
-    // Total 13, you can have max 32 bytes here
+    // Total 9, you can have max 32 bytes here
 };
 
 // instantiate an object for the nRF24L01 transceiver
@@ -65,9 +65,9 @@ void loop() {
     radio.stopListening();
     myDataTx.ID = 'B';
     myDataTx.temperature = 73;
-    myDataTx.maxTemp = 93;
-    myDataTx.humidity = 50.37;
-    myDataTx.dewPoint = 69.4;
+    myDataTx.temperature_decimal = 55;
+    myDataTx.humidity = 50;
+    myDataTx.humidity_decimal = 50;
    if( !radio.write(&myDataTx, sizeof(myDataTx)) ) {
      /* radio.printDetails(); */
      Serial.println("radio write failed, the receiver is not online or responding.");
@@ -90,20 +90,14 @@ void loop() {
      Serial.println(myDataTx.ID);
      Serial.print("  Temperature: ");
      Serial.println(myDataTx.temperature);
-     Serial.print("  Max Temp.  : ");
-     Serial.println(myDataTx.maxTemp);
+     Serial.print("  Temperature Decimal: ");
+     Serial.println(myDataTx.temperature_decimal);
      Serial.print("  Humidity   : ");
      Serial.println(myDataTx.humidity);
-     Serial.print("  Dew Point  : ");
-     Serial.println(myDataTx.dewPoint);
-     Serial.print("  sizeof(double): ");
-     Serial.println(sizeof(double));
-     Serial.print("  sizeof(float): ");
-     Serial.println(sizeof(float));
-     Serial.print("  sizeof(byte): ");
-     Serial.println(sizeof(byte));
-     Serial.print("  sizeof(signed int): ");
-     Serial.println(sizeof(signed int));
+     Serial.print("  Humidity Decimal: ");
+     Serial.println(myDataTx.humidity_decimal);
+     Serial.print("  sizeof(short): ");
+     Serial.println(sizeof(short));
    }
   /* delay(250); */
   /* digitalWrite(LED_BUILTIN, (millis() / 1000) % 2); */

@@ -14,12 +14,12 @@
 #include <RF24.h>
 
 struct tempDataType {
-    signed int temperature; // 2 bytes, -32,768 to 32,767, same as short
-    unsigned maxTemp;       // 2 bytes, 0 to 65,535
-    double humidity;        // 4 bytes 32-bit floating point (Due=8 bytes, 64-bit)
-    float dewPoint;         // 4 bytes 32-bit floating point, same as double
+    short temperature;           // 2 bytes
+    short temperature_decimal;   // 2 bytes
+    short humidity;        // 2 bytes
+    short humidity_decimal;        // 2 bytes
     byte ID;                // 1 byte
-    // Total 13, you can have max 32 bytes here
+    // Total 9, you can have max 32 bytes here
 };
 
 RF24 radio(7, 8); // using pin 7 for the CE pin, and pin 8 for the CSN pin
@@ -77,12 +77,14 @@ void loop() {
     Serial.println(myDataRx.ID);
     Serial.print("  Temperature: ");
     Serial.println(myDataRx.temperature);
-    Serial.print("  Max Temp.  : ");
-    Serial.println(myDataRx.maxTemp);
+    Serial.print("  Temperature Decimal: ");
+    Serial.println(myDataRx.temperature_decimal);
     Serial.print("  Humidity   : ");
     Serial.println(myDataRx.humidity);
-    Serial.print("  Dew Point  : ");
-    Serial.println(myDataRx.dewPoint);
+    Serial.print("  Humidity Decimal: ");
+    Serial.println(myDataRx.humidity_decimal);
+    Serial.print("  sizeof(short): ");
+    Serial.println(sizeof(short));
     delay(10);
     radio.stopListening();
 
