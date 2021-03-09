@@ -1,24 +1,24 @@
 /*
-NRF24L01(YL-105)   Arduino_ Uno    Arduino_Mega    Blue_Pill(stm32f01C)
+   NRF24L01(YL-105)   Arduino_ Uno    Arduino_Mega    Blue_Pill(stm32f01C)
   __________________________________________________________________________
   VCC        |       5v        |     5v        |     5v
   GND        |       GND       |     GND       |     GND
   CSN        |   Pin10 SPI/SS  | Pin10 SPI/SS  |     A4 NSS1 (PA4) 3.3v
   CE         |   Pin9          | Pin9          |     B0 digital (PB0) 3.3v
   SCK        |   Pin13         | Pin52         |     A5 SCK1   (PA5) 3.3v
-  MISO       |   Pin12         | Pin50         |     A6 MISO1  (PA6) 3.3v
-  MOSI       |   Pin11         | Pin51         |     A7 MOSI1  (PA7) 3.3v
+  MISO       |   Pin11 (MOSI)  | Pin50         |     A7 MISI1  (PA7) 3.3v
+  MOSI       |   Pin12 (MOS0)  | Pin51         |     A6 MOSO1  (PA6) 3.3v
  */
 
 #include <SPI.h>
 #include <RF24.h>
 
 struct tempDataType {
+    byte ID;                // 1 byte
     signed int temperature; // 2 bytes, -32,768 to 32,767, same as short
     unsigned maxTemp;       // 2 bytes, 0 to 65,535
     double humidity;        // 4 bytes 32-bit floating point (Due=8 bytes, 64-bit)
     float dewPoint;         // 4 bytes 32-bit floating point, same as double
-    byte ID;                // 1 byte
     // Total 13, you can have max 32 bytes here
 };
 
