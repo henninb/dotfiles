@@ -1,12 +1,13 @@
 /*
-   YL-105 Breakoutboard to Arduino
-   GND -> GND
-   VCC -> 5v
-   CE -> pin 7
-   CS -> pin 8
-   SCK -> pin 13
-   MISO -> pin 11
-   MOSI -> pin 12
+NRF24L01(YL-105)   Arduino_ Uno    Arduino_Mega    Blue_Pill(stm32f01C)
+  __________________________________________________________________________
+  VCC        |       5v        |     5v        |     5v
+  GND        |       GND       |     GND       |     GND
+  CSN        |   Pin10 SPI/SS  | Pin10 SPI/SS  |     A4 NSS1 (PA4) 3.3v
+  CE         |   Pin9          | Pin9          |     B0 digital (PB0) 3.3v
+  SCK        |   Pin13         | Pin52         |     A5 SCK1   (PA5) 3.3v
+  MISO       |   Pin12         | Pin50         |     A6 MISO1  (PA6) 3.3v
+  MOSI       |   Pin11         | Pin51         |     A7 MOSI1  (PA7) 3.3v
  */
 
 #include <SPI.h>
