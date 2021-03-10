@@ -18,14 +18,17 @@ struct tempDataType {
     short temperature_decimal;   // 2 bytes
     short humidity;        // 2 bytes
     short humidity_decimal;        // 2 bytes
-    byte ID;                // 1 byte
+    byte id;                // 1 byte
     // Total 9, you can have max 32 bytes here
 };
+
+char buffer[10] = {0};
 
 RF24 radio(7, 8); // using pin 7 for the CE pin, and pin 8 for the CSN pin
 
 /* char receivedPayload[100] = {}; */
 tempDataType myDataRx;
+int loopCount = 0;
 
 const uint64_t readerPipe = 0xE6E6E6E6E6E6;
 const uint64_t writerPipe = 0xB3B4B5B601;
@@ -66,6 +69,8 @@ void setup() {
 }
 
 void loop() {
+  radio.startListening();
+  delay(200);
   while (radio.available()) {
     radio.read(&myDataRx, sizeof(myDataRx));
     Serial.println("Receiving data ......");
@@ -73,27 +78,42 @@ void loop() {
     Serial.println(radio.getPALevel());
     Serial.print("  Channel: ");
     Serial.println(radio.getChannel());
-    Serial.print("  ID         : ");
-    Serial.println(myDataRx.ID);
-    Serial.print("  Temperature: ");
+    Serial.print("  id: ");
+    Serial.println(myDataRx.id);
+    Serial.print("  Temperature Left: ");
     Serial.println(myDataRx.temperature);
-    Serial.print("  Temperature Decimal: ");
+    Serial.print("  Temperature Right: ");
     Serial.println(myDataRx.temperature_decimal);
-    Serial.print("  Humidity   : ");
+    Serial.print("  Humidity Left: ");
     Serial.println(myDataRx.humidity);
-    Serial.print("  Humidity Decimal: ");
+    Serial.print("  Humidity Right: ");
     Serial.println(myDataRx.humidity_decimal);
-    Serial.print("  sizeof(short): ");
-    Serial.println(sizeof(short));
+    sprintf(buffer, "%d.%d", myDataRx.temperature, myDataRx.temperature_decimal);
+    Serial.print("  Temerature: ");
+    Serial.println(buffer);
+    sprintf(buffer, "%d.%d", myDataRx.humidity, myDataRx.humidity_decimal);
+    Serial.print("  Humidity: ");
+    Serial.println(buffer);
+    /* Serial.print("  sizeof(short): "); */
+    /* Serial.println(sizeof(short)); */
+    /* sprintf(buffer, "x%04X", myDataRx.bom); */
+    /* Serial.print("  bom: "); */
+    /* Serial.println(buffer); */
     delay(10);
     radio.stopListening();
 
     if (!radio.write(&myDataRx, sizeof(myDataRx))) {
       Serial.println("  RX: No ACK");
+      return;
     } else {
       Serial.println("  RX: ACK");
     }
-
-    radio.startListening();
   }
+    /* radio.startListening(); */
+    loopCount++;
+    if( loopCount > 50 ) {
+      Serial.print("Outer Loop count exceeded threshold.");
+      /* Serial.println(loopCount); */
+      loopCount = 0;
+    }
 }

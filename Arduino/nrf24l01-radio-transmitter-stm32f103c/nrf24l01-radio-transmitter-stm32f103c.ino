@@ -1,7 +1,8 @@
 /*
+   //not required however it works
    git@github.com:jaretburkett/RF24-STM.git
 
-   NRF24L01(YL-105)   Arduino_ Uno    Arduino_Mega    Blue_Pill(stm32f01C)
+NRF24L01(YL-105)   Arduino_ Uno    Arduino_Mega    Blue_Pill(stm32f01C)
   __________________________________________________________________________
   VCC        |       5v        |     5v        |     5v
   GND        |       GND       |     GND       |     GND
@@ -14,15 +15,15 @@
  */
 
 #include <SPI.h>
-//#include <RF24.h>
-#include <RF24-STM.h>
+#include <RF24.h>
+//#include <RF24-STM.h>
 
 struct tempDataType {
     short temperature;           // 2 bytes
     short temperature_decimal;   // 2 bytes
-    short humidity;        // 2 bytes
-    short humidity_decimal;        // 2 bytes
-    byte ID;                // 1 byte
+    short humidity;              // 2 bytes
+    short humidity_decimal;      // 2 bytes
+    byte id;                     // 1 byte
     // Total 9, you can have max 32 bytes here
 };
 
@@ -33,6 +34,7 @@ tempDataType myDataTx;
 
 const uint64_t writePipe = 0xE6E6E6E6E6E6;
 const uint64_t readPipe = 0xB3B4B5B601;
+
 
 void setup() {
   pinMode(PC13, OUTPUT);
@@ -62,12 +64,18 @@ void setup() {
 }
 
 void loop() {
+
+    float temperature = 3.14;
+    float humidity = 54.32;
+    short leftSideOfDecimalPoint = (short) temperature;
+    short rightSideOfDecimalPoint = (temperature - leftSideOfDecimalPoint) * 100;
+    digitalWrite(PC13, LOW);
     radio.stopListening();
-    myDataTx.ID = 'B';
-    myDataTx.temperature = 73;
-    myDataTx.temperature_decimal = 55;
-    myDataTx.humidity = 50;
-    myDataTx.humidity_decimal = 50;
+    myDataTx.id = 'B';
+    myDataTx.temperature = (short) temperature;
+    myDataTx.temperature_decimal = (temperature - myDataTx.temperature) * 100;
+    myDataTx.humidity = (short) humidity;
+    myDataTx.humidity_decimal = (humidity - myDataTx.humidity) * 100;
    if( !radio.write(&myDataTx, sizeof(myDataTx)) ) {
      /* radio.printDetails(); */
      Serial.println("radio write failed, the receiver is not online or responding.");
@@ -75,19 +83,21 @@ void loop() {
      Serial.println(radio.getPALevel());
      Serial.print("  DataRate: ");
      Serial.println(radio.getDataRate());
-     radio.print_status(radio.get_status());
+     delay(500);
+     return;
+     /* radio.print_status(radio.get_status()); */
      /* Serial.print("  Status: "); */
      /* Serial.println(radio.get_status()); */
    } else {
      Serial.println("Transmitting data below......");
-     radio.printDetails();
-     radio.print_status(radio.get_status());
+     /* radio.printDetails(); */
+     /* radio.print_status(radio.get_status()); */
      Serial.print("  PALevel (1 == RF24_PA_LOW): ");
      Serial.println(radio.getPALevel());
      /* Serial.print("  Channel: "); */
      /* Serial.println(radio.getChannel()); */
-     Serial.print("  ID         : ");
-     Serial.println(myDataTx.ID);
+     Serial.print("  id         : ");
+     Serial.println(myDataTx.id);
      Serial.print("  Temperature: ");
      Serial.println(myDataTx.temperature);
      Serial.print("  Temperature Decimal: ");
@@ -96,10 +106,13 @@ void loop() {
      Serial.println(myDataTx.humidity);
      Serial.print("  Humidity Decimal: ");
      Serial.println(myDataTx.humidity_decimal);
-     Serial.print("  sizeof(short): ");
-     Serial.println(sizeof(short));
+     /* Serial.print("  sizeof(short): "); */
+     /* Serial.println(sizeof(short)); */
+     /* Serial.print("  sizeof(float): "); */
+     /* Serial.println(sizeof(float)); */
+     /* Serial.print("  sizeof(int): "); */
+     /* Serial.println(sizeof(int)); */
    }
-  /* delay(250); */
   /* digitalWrite(LED_BUILTIN, (millis() / 1000) % 2); */
 
       // Now listen for a response
@@ -118,5 +131,6 @@ void loop() {
         }
     }
     radio.read(&myDataTx, sizeof(myDataTx));
-    delay(250);
+    delay(500);
+    digitalWrite(PC13, HIGH);
 }
