@@ -18,7 +18,7 @@ NRF24L01(YL-105)   Arduino_ Uno    Arduino_Mega    Blue_Pill(stm32f01C)
 #include <RF24.h>
 //#include <RF24-STM.h>
 
-struct tempDataType {
+struct WeatherType {
     short temperature;           // 2 bytes
     short temperature_decimal;   // 2 bytes
     short humidity;              // 2 bytes
@@ -30,7 +30,7 @@ struct tempDataType {
 // instantiate an object for the nRF24L01 transceiver
 RF24 radio(PB0, PA4); // using pin PB0 for the CE pin, and pin PA4 for the CSN pin
 
-tempDataType myDataTx;
+WeatherType myDataTx;
 
 const uint64_t writePipe = 0xE6E6E6E6E6E6;
 const uint64_t readPipe = 0xB3B4B5B601;
@@ -45,44 +45,48 @@ void setup() {
   Serial.println("RF24 example transmitter.");
 
   // initialize the transceiver on the SPI bus
-  /* if ( !radio.begin() ) { */
-  /*   Serial.println(F("Transmitting radio hardware is not responding.")); */
-  /*   while (1) {} // hold in infinite loop */
-  /* } */
-  radio.begin();
-  delay(500);
+  if (!radio.begin()) {
+    Serial.println("Receiving radio hardware is not responding.");
+    while (1) {
+      Serial.println("hardware issues");
+      delay(1000);
+    }
+  }
 
   // Use a channel unlikely to be used by Wifi, Microwave ovens etc
-  radio.setChannel(76);
-  // Give receiver a chance
-  radio.setRetries(200, 50);
+  /* radio.setChannel(76); */
+  /* // Give receiver a chance */
+  /* radio.setRetries(200, 50); */
 
   radio.setAutoAck(true);
-  radio.setPALevel(RF24_PA_LOW);     // RF24_PA_MAX is default.
+  /* radio.setPALevel(RF24_PA_LOW); */
+  radio.setPALevel(RF24_PA_MAX);     // RF24_PA_MAX is default.
   radio.openReadingPipe(1, readPipe);
   radio.openWritingPipe(writePipe); // Get NRF24L01 ready to transmit
+  radio.stopListening();
 }
 
 void loop() {
-
     float temperature = 3.14;
     float humidity = 54.32;
     short leftSideOfDecimalPoint = (short) temperature;
-    short rightSideOfDecimalPoint = (temperature - leftSideOfDecimalPoint) * 100;
+    short rightSideOfDecimalPoint = (temperature - leftSideOfDecimalPoint) * 1000;
     digitalWrite(PC13, LOW);
-    radio.stopListening();
     myDataTx.id = 'B';
     myDataTx.temperature = (short) temperature;
-    myDataTx.temperature_decimal = (temperature - myDataTx.temperature) * 100;
+    myDataTx.temperature_decimal = (temperature - myDataTx.temperature) * 1000;
     myDataTx.humidity = (short) humidity;
-    myDataTx.humidity_decimal = (humidity - myDataTx.humidity) * 100;
+    myDataTx.humidity_decimal = (humidity - myDataTx.humidity) * 1000;
    if( !radio.write(&myDataTx, sizeof(myDataTx)) ) {
      /* radio.printDetails(); */
      Serial.println("radio write failed, the receiver is not online or responding.");
+     Serial.println("radio write failed, transmitter may not have enough power.");
      Serial.print("  PALevel (1 == RF24_PA_LOW): ");
      Serial.println(radio.getPALevel());
      Serial.print("  DataRate: ");
      Serial.println(radio.getDataRate());
+     Serial.print("  Channel: ");
+     Serial.println(radio.getChannel());
      delay(500);
      return;
      /* radio.print_status(radio.get_status()); */
@@ -94,43 +98,37 @@ void loop() {
      /* radio.print_status(radio.get_status()); */
      Serial.print("  PALevel (1 == RF24_PA_LOW): ");
      Serial.println(radio.getPALevel());
-     /* Serial.print("  Channel: "); */
-     /* Serial.println(radio.getChannel()); */
-     Serial.print("  id         : ");
+     Serial.print("  Channel: ");
+     Serial.println(radio.getChannel());
+     Serial.print("  id: ");
      Serial.println(myDataTx.id);
-     Serial.print("  Temperature: ");
+     Serial.print("  Temperature Whole: ");
      Serial.println(myDataTx.temperature);
      Serial.print("  Temperature Decimal: ");
      Serial.println(myDataTx.temperature_decimal);
-     Serial.print("  Humidity   : ");
+     Serial.print("  Humidity Whole: ");
      Serial.println(myDataTx.humidity);
      Serial.print("  Humidity Decimal: ");
      Serial.println(myDataTx.humidity_decimal);
-     /* Serial.print("  sizeof(short): "); */
-     /* Serial.println(sizeof(short)); */
-     /* Serial.print("  sizeof(float): "); */
-     /* Serial.println(sizeof(float)); */
-     /* Serial.print("  sizeof(int): "); */
-     /* Serial.println(sizeof(int)); */
    }
   /* digitalWrite(LED_BUILTIN, (millis() / 1000) % 2); */
 
       // Now listen for a response
-    radio.startListening();
+    /* radio.startListening(); */
 
-    // But we won't listen for long
-    unsigned long started_waiting_at = millis();
+    /* // But we won't listen for long */
+    /* unsigned long started_waiting_at = millis(); */
 
-    // Loop here until we get indication that some data is ready for us to read (or we time out)
-    while (!radio.available()) {
-        // Oh dear, no response received within our timescale
-        if (millis() - started_waiting_at > 1000) {
-            Serial.print("  TX: Got no reply ");
-            delay(2000);
-            return;
-        }
-    }
-    radio.read(&myDataTx, sizeof(myDataTx));
-    delay(500);
+    /* // Loop here until we get indication that some data is ready for us to read (or we time out) */
+    /* while (!radio.available()) { */
+    /*     // Oh dear, no response received within our timescale */
+    /*     if (millis() - started_waiting_at > 1000) { */
+    /*         Serial.print("  TX: Got no reply "); */
+    /*         delay(2000); */
+    /*         return; */
+    /*     } */
+    /* } */
+    /* radio.read(&myDataTx, sizeof(myDataTx)); */
     digitalWrite(PC13, HIGH);
+    delay(10000);
 }

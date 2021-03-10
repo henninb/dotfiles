@@ -50,7 +50,8 @@ void setup() {
     }
   }
 
-  radio.setPALevel(RF24_PA_LOW);     // RF24_PA_MAX is default.
+  /* radio.setPALevel(RF24_PA_LOW);     // RF24_PA_MAX is default. */
+  radio.setPALevel(RF24_PA_MAX);     // RF24_PA_MAX is default.
 
   // to use ACK payloads, we need to enable dynamic payload lengths (for all nodes)
   //radio.enableDynamicPayloads();    // ACK payloads are dynamically sized
@@ -112,8 +113,8 @@ void loop() {
   }
     /* radio.startListening(); */
     consecutiveLoopCount++;
-    if( consecutiveLoopCount > 50 ) {
-      Serial.print("INFO: Outer Loop count exceeded threshold of 50.");
+    if( consecutiveLoopCount > 100 ) {
+      Serial.println("INFO: Outer Loop count exceeded threshold of 100.");
       consecutiveLoopCount = 0;
     }
 }

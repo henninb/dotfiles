@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from datetime import datetime
 # import time
 # import codecs
 import serial
@@ -17,6 +18,7 @@ while 1:
   payload = ser.readline()
   string = payload.decode('UTF-8').strip("\r\n")
   if string != "":
-    print(string)
+    # datetime.now()
+    print(str(datetime.now()) + "  " + string)
   # else:
   #   print("is not empty")
