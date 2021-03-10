@@ -13,7 +13,7 @@
 #include <SPI.h>
 #include <RF24.h>
 
-struct tempDataType {
+struct WeatherType {
     short temperature;           // 2 bytes
     short temperature_decimal;   // 2 bytes
     short humidity;        // 2 bytes
@@ -27,8 +27,8 @@ char buffer[10] = {0};
 RF24 radio(7, 8); // using pin 7 for the CE pin, and pin 8 for the CSN pin
 
 /* char receivedPayload[100] = {}; */
-tempDataType myDataRx;
-int loopCount = 0;
+WeatherType rxData;
+int consecutiveLoopCount = 0;
 
 const uint64_t readerPipe = 0xE6E6E6E6E6E6;
 const uint64_t writerPipe = 0xB3B4B5B601;
@@ -47,7 +47,7 @@ void setup() {
     while (1) {
       Serial.println("hardware issues");
       delay(1000);
-    } // hold in infinite loop
+    }
   }
 
   radio.setPALevel(RF24_PA_LOW);     // RF24_PA_MAX is default.
@@ -72,48 +72,48 @@ void loop() {
   radio.startListening();
   delay(200);
   while (radio.available()) {
-    radio.read(&myDataRx, sizeof(myDataRx));
+    radio.read(&rxData, sizeof(rxData));
     Serial.println("Receiving data ......");
     Serial.print("  PALevel (1 == RF24_PA_LOW): ");
     Serial.println(radio.getPALevel());
     Serial.print("  Channel: ");
     Serial.println(radio.getChannel());
     Serial.print("  id: ");
-    Serial.println(myDataRx.id);
-    Serial.print("  Temperature Left: ");
-    Serial.println(myDataRx.temperature);
-    Serial.print("  Temperature Right: ");
-    Serial.println(myDataRx.temperature_decimal);
-    Serial.print("  Humidity Left: ");
-    Serial.println(myDataRx.humidity);
-    Serial.print("  Humidity Right: ");
-    Serial.println(myDataRx.humidity_decimal);
-    sprintf(buffer, "%d.%d", myDataRx.temperature, myDataRx.temperature_decimal);
+    Serial.println(rxData.id);
+    /* Serial.print("  Temperature Left: "); */
+    /* Serial.println(rxData.temperature); */
+    /* Serial.print("  Temperature Right: "); */
+    /* Serial.println(rxData.temperature_decimal); */
+    /* Serial.print("  Humidity Left: "); */
+    /* Serial.println(rxData.humidity); */
+    /* Serial.print("  Humidity Right: "); */
+    /* Serial.println(rxData.humidity_decimal); */
+    sprintf(buffer, "%d.%d", rxData.temperature, rxData.temperature_decimal);
     Serial.print("  Temerature: ");
     Serial.println(buffer);
-    sprintf(buffer, "%d.%d", myDataRx.humidity, myDataRx.humidity_decimal);
+    sprintf(buffer, "%d.%d", rxData.humidity, rxData.humidity_decimal);
     Serial.print("  Humidity: ");
     Serial.println(buffer);
+    consecutiveLoopCount = 0;
     /* Serial.print("  sizeof(short): "); */
     /* Serial.println(sizeof(short)); */
-    /* sprintf(buffer, "x%04X", myDataRx.bom); */
+    /* sprintf(buffer, "x%04X", rxData.bom); */
     /* Serial.print("  bom: "); */
     /* Serial.println(buffer); */
     delay(10);
-    radio.stopListening();
+    /* radio.stopListening(); */
 
-    if (!radio.write(&myDataRx, sizeof(myDataRx))) {
-      Serial.println("  RX: No ACK");
-      return;
-    } else {
-      Serial.println("  RX: ACK");
-    }
+    /* if (!radio.write(&rxData, sizeof(rxData))) { */
+    /*   Serial.println("  RX: No ACK"); */
+    /*   return; */
+    /* } else { */
+    /*   Serial.println("  RX: ACK"); */
+    /* } */
   }
     /* radio.startListening(); */
-    loopCount++;
-    if( loopCount > 50 ) {
-      Serial.print("Outer Loop count exceeded threshold.");
-      /* Serial.println(loopCount); */
-      loopCount = 0;
+    consecutiveLoopCount++;
+    if( consecutiveLoopCount > 50 ) {
+      Serial.print("INFO: Outer Loop count exceeded threshold of 50.");
+      consecutiveLoopCount = 0;
     }
 }
