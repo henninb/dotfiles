@@ -16,9 +16,7 @@ ser = serial.Serial(
 
 while 1:
   payload = ser.readline()
-  string = payload.decode('UTF-8').strip("\r\n")
-  if string != "":
-    # datetime.now()
-    print(str(datetime.now()) + "  " + string)
-  # else:
-  #   print("is not empty")
+  print(payload)
+  # string = payload.decode('UTF-8').strip("\r\n")
+  # if string != "":
+  #   print(str(datetime.now()) + "  " + string)
