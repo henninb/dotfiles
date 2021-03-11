@@ -2,9 +2,10 @@
 #include <time.h>
 
 /*
- 	GPIO 0	GPIO 2
+GPIO 0	GPIO 2
 UART Download Mode (Programming)	0	1
 Flash Startup (Normal)	1	1
+
 */
 
 const char* ssid       = "YOUR_SSID";
@@ -29,7 +30,7 @@ void printLocalTime()
 void setup()
 {
   Serial.begin(115200);
-  
+
   //connect to WiFi
   Serial.printf("Connecting to %s ", ssid);
   WiFi.begin(ssid, password);
@@ -38,7 +39,7 @@ void setup()
       Serial.print(".");
   }
   Serial.println(" CONNECTED");
-  
+
   //init and get the time
   configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
   printLocalTime();
@@ -50,7 +51,7 @@ void setup()
 
 void loop()
 {
-  
+
     for(int i=0; i<17; i=i+8) {
     chipId |= ((ESP.getEfuseMac() >> (40 - i)) & 0xff) << i;
   }
@@ -58,7 +59,7 @@ void loop()
   Serial.printf("ESP32 Chip model = %s Rev %d\n", ESP.getChipModel(), ESP.getChipRevision());
   Serial.printf("This chip has %d cores\n", ESP.getChipCores());
   Serial.print("Chip ID: "); Serial.println(chipId);
-  
+
   delay(3000);
   delay(1000);
   printLocalTime();
