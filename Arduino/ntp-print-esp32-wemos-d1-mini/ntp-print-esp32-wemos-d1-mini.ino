@@ -1,5 +1,11 @@
 #include <WiFi.h>
-#include "time.h"
+#include <time.h>
+
+/*
+ 	GPIO 0	GPIO 2
+UART Download Mode (Programming)	0	1
+Flash Startup (Normal)	1	1
+*/
 
 const char* ssid       = "YOUR_SSID";
 const char* password   = "YOUR_PASS";
