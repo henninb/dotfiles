@@ -1,0 +1,1 @@
+You could build just the module which is available if you configure the kernel item “USE_SERIAL_CP210X” (“USB CP210x family of UART Bridge Controllers” is in kernel config “Device Drivers -> USB support -> USB Serial Converter support”).
