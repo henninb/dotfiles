@@ -164,3 +164,4 @@
 - osquery - osqueryi is a virtual database tool
 - yay -S archiver - the arc tool
 - git@github.com:sagb/alttab.git - alt tab for a minimal WM
+- sudo pacman -S usbview
