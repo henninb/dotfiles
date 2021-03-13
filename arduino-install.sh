@@ -36,6 +36,8 @@ echo "go get -u github.com/arduino/arduino-cli"
 export GO111MODULE=on
 go get -u github.com/arduino/arduino-cli
 
+pip install esptool --user
+
 # arduino-cli core search arduino
 # arduino-cli core search leonardo
 # arduino-cli core search uno
