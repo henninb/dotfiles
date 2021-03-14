@@ -1,4 +1,5 @@
 /*
+  Operational Mode
   ESP01    | FTDI
   VCC      | 3.3V
   GND      | GND
@@ -6,7 +7,12 @@
   RX       | TX
 
   CHPD  - 3.3V
-  GPIO0  - GND
+  GPIO0  - DTR
+  1000uF capacitor (between VCC and GND), shorter leg GND
+
+  Optional RST - to button for resetting the program or to RTS on the FTDI
+
+  Programming Mode
 */
 
 void setup() {
