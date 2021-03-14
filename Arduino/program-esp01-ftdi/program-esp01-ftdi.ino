@@ -5,14 +5,25 @@
   GND      | GND
   TX       | RX
   RX       | TX
+  GPIO0    | DTR
 
   CHPD  - 3.3V
-  GPIO0  - DTR
   1000uF capacitor (between VCC and GND), shorter leg GND
+  Optional RST - to button for resetting
+*/
 
-  Optional RST - to button for resetting the program or to RTS on the FTDI
-
+/*
   Programming Mode
+  ESP01    | FTDI
+  VCC      | 3.3V
+  GND      | GND
+  TX       | RX
+  RX       | TX
+  RST      |RTS
+  GPIO0    |DTR
+
+  CHPD  - 3.3V
+  1000uF capacitor (between VCC and GND), shorter leg GND
 */
 
 void setup() {
