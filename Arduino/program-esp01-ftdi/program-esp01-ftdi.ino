@@ -1,7 +1,12 @@
 /*
-  ESP01 programmer (modified)
-  to program ensure the connection
-  unplug after programming
+  ESP01    | FTDI
+  VCC      | 3.3V
+  GND      | GND
+  TX       | RX
+  RX       | TX
+
+  CHPD  - 3.3V
+  GPIO0  - GND
 */
 
 void setup() {
