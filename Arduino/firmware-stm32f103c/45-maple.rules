@@ -1,15 +1,19 @@
+# One possibility is that the modem manager thinks that the Maple serial port (which technically advertises itself as a stripped down modem) is a real modem and it’s trying to use it as such, preventing you from accessing it to reset it.
+# ID_MM_DEVICE_IGNORE = 1
 ATTRS{idProduct}=="1001", ATTRS{idVendor}=="0110", MODE="664", GROUP="uucp"
 ATTRS{idProduct}=="1002", ATTRS{idVendor}=="0110", MODE="664", GROUP="uucp"
 ATTRS{idProduct}=="0003", ATTRS{idVendor}=="1eaf", MODE="664", GROUP="uucp" SYMLINK+="maple"
-ATTRS{idProduct}=="0004", ATTRS{idVendor}=="1eaf", MODE="664", GROUP="uucp" SYMLINK+="maple"
-c# ATTRS{idProduct}=="17cb", ATTRS{idVendor}=="0b05", MODE="664", GROUP="uucp", ENV{ID_MM_DEVICE_IGNORE}="1"
+ATTRS{idProduct}=="0004", ATTRS{idVendor}=="1eaf", MODE="664", ENV{ID_MM_DEVICE_IGNORE}="1", GROUP="uucp" SYMLINK+="maple"
+# ATTRS{idProduct}=="17cb", ATTRS{idVendor}=="0b05", MODE="664", GROUP="uucp", ENV{ID_MM_DEVICE_IGNORE}="1"
 ATTRS{idProduct}=="17cb", ATTRS{idVendor}=="0b05", MODE="664", GROUP="uucp"
 
 
-c# # 0483:5740 - STM32F4 Dsicovery in USB Serial Mode (CN5)
-c# ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", ENV{ID_MM_DEVICE_IGNORE}="1"
-c# ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", ENV{MTP_NO_PROBE}="1"
-c# SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", MODE:="0666"
-c# KERNEL=="ttyACM*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", MODE:="0666"
-c# # 0483:df11 - STM32F4 Discovery in DFU mode (CN5)
-c# SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE:="0666"
+# ATTRS{idVendor}=="1eaf" ATTRS{idProduct}=="0004", ENV{ID_MM_DEVICE_IGNORE}="1"
+
+# # 0483:5740 - STM32F4 Dsicovery in USB Serial Mode (CN5)
+# ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", ENV{ID_MM_DEVICE_IGNORE}="1"
+# ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", ENV{MTP_NO_PROBE}="1"
+# SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", MODE:="0666"
+# KERNEL=="ttyACM*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", MODE:="0666"
+# # 0483:df11 - STM32F4 Discovery in DFU mode (CN5)
+# SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE:="0666"
