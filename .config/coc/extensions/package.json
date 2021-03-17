@@ -14,7 +14,7 @@
     "coc-json": ">=1.3.4",
     "coc-lists": ">=1.4.0",
     "coc-marketplace": ">=1.8.0",
-    "coc-pyright": ">=1.1.120",
+    "coc-pyright": ">=1.1.122",
     "coc-python": ">=1.2.13",
     "coc-sh": ">=0.6.0",
     "coc-snippets": ">=2.4.1",
