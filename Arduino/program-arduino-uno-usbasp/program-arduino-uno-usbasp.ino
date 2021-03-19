@@ -1,3 +1,9 @@
+/*
+
+Set the Programmer to 5V
+
+*/
+
 void setup() {
   Serial.begin(9600);
   while( !Serial);
@@ -11,5 +17,5 @@ void loop() {
   digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
   delay(1000);                       // wait for a second
   digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
-  delay(500);                       // wait for a second
+  delay(5000);                       // wait for a second
 }
