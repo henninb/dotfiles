@@ -22,6 +22,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   sudo usermod -a -G docker "$(id -un)"
   sudo usermod -a -G uucp "$(id -un)"
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+  sudo groupadd -g 20 dialout
   id -g wheel >/dev/null 2>&1 || sudo groupadd wheel
   id -u brian >/dev/null 2>&1 || sudo useradd -m -G wheel -s /bin/bash brian
   id -u flatpak >/dev/null 2>&1 || sudo useradd flatpak -s /sbin/nologin

@@ -38,3 +38,22 @@ https://github.com/dhylands/usb-ser-mon/blob/master/usb_ser_mon/mk-udev-rules-st
 dfu-util -d 1EAF:0003 -a 2 -D /tmp/arduino_build_556777/blink-stm32f103c.ino.bin --dfuse-address /usr/share/arduino -R
 
 dfu-util 0.10
+
+
+arcolinux ~  main [!] ❯ udevadm info --export-db | grep -i acm
+E: DRIVER=cdc_acm
+P: /devices/pci0000:00/0000:00:14.0/usb3/3-1/3-1:1.0/tty/ttyACM0
+N: ttyACM0
+E: DEVPATH=/devices/pci0000:00/0000:00:14.0/usb3/3-1/3-1:1.0/tty/ttyACM0
+E: DEVNAME=/dev/ttyACM0
+E: ID_USB_DRIVER=cdc_acm
+E: DRIVER=cdc_acm
+
+
+sudo systemctl status ModemManager
+
+
+sudo udevadm control --reload-rules
+
+arcolinux ~  main [!] ❯ lsusb
+Bus 003 Device 034: ID 1eaf:0004 Leaflabs Maple serial interface
