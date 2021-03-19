@@ -11,3 +11,6 @@ during upload the auto-reset-function is not working, though you need to press t
 OR: DTR -> 100nanoFahrrad capacitor  -> RESET (on Arduino)  then the auto-reset function is given!!
 
 not working as of 3/19/2021
+
+
+avrdude -v -patmega328p -c arduino -P /dev/ttyUSB0 -b115200 -D -Uflash:w:/tmp/arduino_build_956759/blink-arduino.ino.hex:i

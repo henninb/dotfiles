@@ -13,6 +13,8 @@ VCC – Provides 5V or 3.3V voltage output as per the requirement
 CTS – Enable or disable the programming mode of the device
 GND – Ground pin
 
+avrdude -c avrisp -p m328p -P com8 -b 19200 -U flash:r:adduinoDownload.hex:i
+
 */
 
 void setup() {
