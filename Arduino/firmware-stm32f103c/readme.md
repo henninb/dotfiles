@@ -57,3 +57,6 @@ sudo udevadm control --reload-rules
 
 arcolinux ~  main [!] ❯ lsusb
 Bus 003 Device 034: ID 1eaf:0004 Leaflabs Maple serial interface
+
+
+failed to set dtr/rts
