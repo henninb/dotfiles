@@ -1,4 +1,14 @@
+/*
+Via FTDI converter
+Move boot0 into the 1 position
 
+FTDI | stm32f103
+RX   | PC9
+TX   | PC10
+GND  | GND
+3.3V | 3.3V
+
+*/
 
 void setup() {
   Serial.begin(9600);
