@@ -39,9 +39,9 @@ void loop() {
         Serial.print("message: ");
         Serial.println(message);
       }
-      /* if( strncmp(message, "start", 5) == 1 ) { */
+      if( strncmp(message, "start", 5) == 0 ) {
         Serial2.println("test");
-      /* } */
+      }
       memset(message, '\0', sizeof(message));
     } else {
       message[idx] = incomingByte;
