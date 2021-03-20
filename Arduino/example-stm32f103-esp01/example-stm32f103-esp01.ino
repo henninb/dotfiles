@@ -18,8 +18,7 @@ PC2 (TX2) | RX
 */
 
 char incomingByte = 0;
-char output[100] = {0};
-bool flag = true;
+char message[100] = {0};
 int idx = 0;
 
 void setup()
@@ -36,13 +35,16 @@ void loop() {
     incomingByte = (char) Serial2.read();
     if( incomingByte == '\n' ) {
       idx = 0;
-      if( strlen(output) > 0 ) {
+      if( strlen(message) > 0 ) {
         Serial.print("message: ");
-        Serial.println(output);
+        Serial.println(message);
       }
-      memset(output, '\0', sizeof(output));
+      /* if( strncmp(message, "start", 5) == 1 ) { */
+        Serial2.println("test");
+      /* } */
+      memset(message, '\0', sizeof(message));
     } else {
-      output[idx] = incomingByte;
+      message[idx] = incomingByte;
       idx++;
     }
   } else {
