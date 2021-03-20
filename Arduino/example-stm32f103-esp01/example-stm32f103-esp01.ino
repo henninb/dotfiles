@@ -1,5 +1,4 @@
 //Interfacing ESP8266 Wi-Fi with STM32F103C8
-//NOTE: Serial2 (TX2, RX2)is connected with ESP8266(RX,TX)respectively with baud rate (9600)
 /*
 FTDI | stm32f103
 RX   | TX1 (PC9)
@@ -14,6 +13,8 @@ GND       | GND
 PC3 (RX2) | TX
 PC2 (TX2) | RX
 
+1000uF capacitor between power and ground (to prevent power issues)
+
 */
 
 char incomingByte = 0;
@@ -23,7 +24,7 @@ int idx = 0;
 
 void setup()
 {
-   Serial.begin(9600);     //begins serial monitor with baud rate 9600
+   Serial.begin(9600);
    while (!Serial);
    Serial2.begin(9600);   //begins serial communication with esp8266 with baud rate 9600 (Change according to your esp8266 module)
    while (!Serial2);
