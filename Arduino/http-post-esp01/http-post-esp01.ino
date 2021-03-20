@@ -112,21 +112,18 @@ void loop() {
 
     StaticJsonDocument<100> jsonStructure;
     jsonStructure["fieldName"] = "fieldValue";
-    jsonStructure["Random"] = String(random(40));
+    jsonStructure["random"] = String(random(40));
     String payload;
     serializeJson(jsonStructure, payload);
+    Serial.print("Payload: ");
     Serial.println(payload);
 
     int httpResponseCode = http.POST(payload);
+    Serial.print("HTTP response code: ");
     Serial.println(httpResponseCode);
-
-    //uint32 x = spi_flash_get_id();
-    //SPIFFS.info(fs_info);
     getFlashDetails();
 
-  //Serial.println(millis() / 1000);
-
-    Serial.println("connected");
+    Serial.print("Connected with IP address: ");
     Serial.println(WiFi.localIP());
   }
 }

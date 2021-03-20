@@ -21,15 +21,17 @@ void loop() {
     incomingByte = (char) Serial2.read();
     if( incomingByte == '\n' ) {
       idx = 0;
-      Serial.print("message: ");
-      Serial.println(output);
+      if( strlen(output) > 0 ) {
+        Serial.print("message: ");
+        Serial.println(output);
+      }
       memset(output, '\0', sizeof(output));
     } else {
       output[idx] = incomingByte;
       idx++;
     }
-    delay(100);
+    /* delay(10); */
   } else {
-    delay(1000);
+    /* delay(1000); */
   }
 }
