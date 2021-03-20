@@ -77,7 +77,6 @@ void getFlashDetails() {
   delay(5000);
 }
 
-
 void loop() {
   Serial.println("Hello from ESP01");
   digitalWrite(BUILTIN_LED, HIGH);
@@ -85,7 +84,7 @@ void loop() {
   digitalWrite(BUILTIN_LED, LOW);
   delay(1000);
 
-  
+
   now = time(NULL);
   struct tm *timeinfo;
 
@@ -104,10 +103,10 @@ void loop() {
   sprintf(timeString, "%04d-%02d-%02d %02d:%02d:%02d", year, month, day, hour, mins, sec);
   Serial.print("Time is: ");
   Serial.println(timeString);
-   
+
   if(WiFi.status()== WL_CONNECTED) {
     HTTPClient http;
-      
+
     http.begin(serverName);
     http.addHeader("Content-Type", "application/json");
 
@@ -117,7 +116,7 @@ void loop() {
     String payload;
     serializeJson(jsonStructure, payload);
     Serial.println(payload);
-    
+
     int httpResponseCode = http.POST(payload);
     Serial.println(httpResponseCode);
 
@@ -126,7 +125,7 @@ void loop() {
     getFlashDetails();
 
   //Serial.println(millis() / 1000);
-  
+
     Serial.println("connected");
     Serial.println(WiFi.localIP());
   }
