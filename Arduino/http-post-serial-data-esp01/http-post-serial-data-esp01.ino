@@ -7,6 +7,7 @@
 
 /*
  * install ArduinoJson library
+ char* serverName = "http://192.168.100.247:8080/weather";
  */
 
 /*
@@ -19,6 +20,7 @@
   CHPD  - 3.3V
   GPIO15 - GND
   GPIO0  - GND
+
 */
 
 const char* ntpServer = "pool.ntp.org";
@@ -75,31 +77,7 @@ void setup() {
   }
   Serial.println("setup completed.");
 
-  //Serial.println("Timer set to 5 seconds (timerDelay variable), it will take 5 seconds before publishing the first reading.");
 }
-
-
-/* void getFlashDetails() { */
-
-/*   uint32_t realSize = ESP.getFlashChipRealSize(); */
-/*   uint32_t ideSize = ESP.getFlashChipSize(); */
-/*   FlashMode_t ideMode = ESP.getFlashChipMode(); */
-
-/*   Serial.printf("Flash real id:   %08X\n", ESP.getFlashChipId()); */
-/*   Serial.printf("Flash real size: %u bytes\n\n", realSize); */
-
-/*   Serial.printf("Flash ide  size: %u bytes\n", ideSize); */
-/*   Serial.printf("Flash ide speed: %u Hz\n", ESP.getFlashChipSpeed()); */
-/*   Serial.printf("Flash ide mode:  %s\n", (ideMode == FM_QIO ? "QIO" : ideMode == FM_QOUT ? "QOUT" : ideMode == FM_DIO ? "DIO" : ideMode == FM_DOUT ? "DOUT" : "UNKNOWN")); */
-
-/*   if (ideSize != realSize) { */
-/*     Serial.println("Flash Chip configuration wrong!"); */
-/*   } else { */
-/*     Serial.println("Flash Chip configuration ok."); */
-/*   } */
-
-/*   delay(5000); */
-/* } */
 
 void loop() {
   Serial.println("Hello from ESP01");
@@ -128,36 +106,6 @@ void loop() {
   Serial.print("Timestamp: ");
   Serial.println(timeString);
   Serial.println("start");
-  /* while( Serial.available() == 0 ) { */
-  /*   count++; */
-  /*   if( count > 1000 ) { */
-  /*     Serial.println("1000 times it was not available"); */
-  /*     /1* delay(100); *1/ */
-  /*     break; */
-  /*   } */
-  /* } //while no input on the serial device */
-  /* count = 0; */
-  /* while( Serial.available() ) { */
-  /*   /1* Serial.println("in avail loop"); *1/ */
-  /*   incomingByte = (char) Serial.read(); */
-  /*   if( incomingByte == '\n' ) { */
-  /*     idx = 0; */
-  /*     /1* if( strlen(message) > 0 ) { *1/ */
-  /*     Serial.print("from stm32f013: "); */
-  /*     Serial.println(message); */
-  /*     /1* } *1/ */
-  /*     memset(message, '\0', sizeof(message)); */
-  /*     break; */
-  /*   } else { */
-  /*     message[idx] = incomingByte; */
-  /*     idx++; */
-  /*   } */
-  /* } */
-  /* String value = Serial.readString(); */
-  /* if( value.length() > 0 ) { */
-  /*   Serial.print("value: "); */
-  /*   Serial.println(value); */
-  /* } */
   String result = readInput();
 
 
@@ -177,11 +125,18 @@ void loop() {
     Serial.print("Payload: ");
     Serial.println(payload);
 
-    Serial.print("Sending post payload to http://");
+    Serial.print("Sending post payload to: ");
     Serial.println(serverName);
     int httpResponseCode = http.POST(payload);
     Serial.print("HTTP response code: ");
     Serial.println(httpResponseCode);
+    if(httpResponseCode != HTTP_CODE_OK ) {
+      Serial.printf("[HTTP] POST failed: %s\n", http.errorToString(httpResponseCode).c_str());
+    } else {
+      String payload = http.getString();
+      Serial.println(payload);
+    }
+    http.end();
 
     Serial.print("Connected with IP address: ");
     Serial.println(WiFi.localIP());
