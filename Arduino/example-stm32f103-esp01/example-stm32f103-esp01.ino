@@ -20,6 +20,7 @@ Connect to DHT22 to 3.3V or 5V rail and Pin PA1 of the stm32f103
 */
 
 #include <DHT.h>
+#include <ArduinoJson.h>
 
 #define DEBUG 1
 
@@ -31,6 +32,7 @@ char temperatureHumidityString[20] = {0};
 char temperatureString[10] = {0};
 char humidityString[10] = {0};
 int idx = 0;
+int serialWaitCounrt = 0;
 
 
 String readInput() {
@@ -41,7 +43,7 @@ String readInput() {
 
         // Process message when new line character is received
     if (received == '\n') {
-      Serial.print("Received from esp01: ");
+      Serial.print("Received data from esp01: ");
       inData.trim();
       Serial.println(inData);
 
@@ -58,14 +60,14 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
 #ifdef DEBUG
-  Serial.println("setup started...");
+  Serial.println("setup stm32f103 started...");
 #endif
   Serial2.begin(9600);   //begins serial communication with esp8266 with baud rate 9600 (Change according to your esp8266 module)
   while (!Serial2);
   dht.begin();
   delay(3000);          // Wait 3 seconds for it to stabilize the dht22
 #ifdef DEBUG
-  Serial.println("setup completed...");
+  Serial.println("setup stm32f103 completed...");
 #endif
 }
 
@@ -80,30 +82,25 @@ void loop() {
     return;
   }
 
-  while (Serial2.available() ) {
-    incomingByte = (char) Serial2.read();
-    if( incomingByte == '\n' ) {
-      idx = 0;
-      if( strlen(message) > 0 ) {
-#ifdef DEBUG
-        Serial.print("message: ");
-        Serial.println(message);
-#endif
-      }
-      if( strncmp(message, "start", 5) == 0 ) {
-        dtostrf(temperature, 3, 3, temperatureString);
-        Serial.print("Temperature: ");
-        Serial.println(temperatureString);
-        dtostrf(humidity, 3, 3, humidityString);
-        Serial.print("Humidity: ");
-        Serial.println(humidityString);
-        sprintf(temperatureHumidityString, "%s,%s", temperatureString, humidityString);
-        Serial2.println(temperatureHumidityString);
-      }
-      memset(message, '\0', sizeof(message));
-    } else {
-      message[idx] = incomingByte;
-      idx++;
-    }
+  StaticJsonDocument<100> jsonStructure;
+  jsonStructure["location"] = "garage";
+  jsonStructure["timestamp"] = "empty";
+  jsonStructure["temperature"] = temperature;
+  jsonStructure["humidity"] = humidity;
+
+  String payload;
+  serializeJson(jsonStructure, payload);
+  Serial.print("Payload: ");
+  Serial.println(payload);
+  delay(2000);
+
+  if ( Serial2.available() ) {
+      Serial2.println(payload);
+      return;
   }
+  /* serialWaitCounrt++; */
+  /* if( serialWaitCounrt > 1000 ) { */
+  /*   Serial.println("Waiting for ESP01 [Serial2] to produce data."); */
+  /*   serialWaitCounrt = 0; */
+  /* } */
 }
