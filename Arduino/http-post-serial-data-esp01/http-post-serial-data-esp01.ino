@@ -177,12 +177,14 @@ void loop() {
     Serial.print("Payload: ");
     Serial.println(payload);
 
+    Serial.print("Sending post payload to http://");
+    Serial.println(serverName);
     int httpResponseCode = http.POST(payload);
     Serial.print("HTTP response code: ");
     Serial.println(httpResponseCode);
 
     Serial.print("Connected with IP address: ");
     Serial.println(WiFi.localIP());
-    delay(5000);
+    delay(15000);
   }
 }

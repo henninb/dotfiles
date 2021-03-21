@@ -27,7 +27,32 @@ DHT dht(PA1, DHT22);
 
 char incomingByte = 0;
 char message[100] = {0};
+char temperatureHumidityString[20] = {0};
+char temperatureString[10] = {0};
+char humidityString[10] = {0};
 int idx = 0;
+
+
+String readInput() {
+  String inData = "";
+  while (Serial.available() > 0) {
+    char received = Serial.read();
+    inData += received;
+
+        // Process message when new line character is received
+    if (received == '\n') {
+      Serial.print("Received from esp01: ");
+      inData.trim();
+      Serial.println(inData);
+
+      if( strncmp(message, "start", 5) == 0 ) {
+        Serial2.println(temperatureHumidityString);
+      }
+
+      return inData;
+    }
+  }
+}
 
 void setup() {
   Serial.begin(9600);
@@ -45,7 +70,6 @@ void setup() {
 }
 
 void loop() {
-  /* delay(2000); */
   float humidity = dht.readHumidity();
   float temperature = dht.readTemperature(true);
 
@@ -56,7 +80,7 @@ void loop() {
     return;
   }
 
-  if (Serial2.available() > 0) {
+  while (Serial2.available() ) {
     incomingByte = (char) Serial2.read();
     if( incomingByte == '\n' ) {
       idx = 0;
@@ -67,13 +91,19 @@ void loop() {
 #endif
       }
       if( strncmp(message, "start", 5) == 0 ) {
-        Serial2.println(temperature);
+        dtostrf(temperature, 3, 3, temperatureString);
+        Serial.print("Temperature: ");
+        Serial.println(temperatureString);
+        dtostrf(humidity, 3, 3, humidityString);
+        Serial.print("Humidity: ");
+        Serial.println(humidityString);
+        sprintf(temperatureHumidityString, "%s,%s", temperatureString, humidityString);
+        Serial2.println(temperatureHumidityString);
       }
       memset(message, '\0', sizeof(message));
     } else {
       message[idx] = incomingByte;
       idx++;
     }
-  } else {
   }
 }
