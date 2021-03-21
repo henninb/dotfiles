@@ -37,6 +37,21 @@ int idx = 0;
 
 time_t now;
 
+String getValue(String data, char separator, int index) {
+  int found = 0;
+  int strIndex[] = { 0, -1 };
+  int maxIndex = data.length() - 1;
+
+  for (int i = 0; i <= maxIndex && found <= index; i++) {
+    if (data.charAt(i) == separator || i == maxIndex) {
+      found++;
+      strIndex[0] = strIndex[1] + 1;
+      strIndex[1] = (i == maxIndex) ? i+1 : i;
+    }
+  }
+  return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
+}
+
 String readInput() {
   String inData = "";
   while (Serial.available() > 0) {
@@ -107,7 +122,9 @@ void loop() {
   Serial.println(timeString);
   Serial.println("start");
   String result = readInput();
-
+  String temperature = getValue(result, ',', 0);
+  String humidity = getValue(result, ',', 1);
+  Serial.println(result);
 
   if(WiFi.status()== WL_CONNECTED) {
     HTTPClient http;
@@ -118,7 +135,8 @@ void loop() {
     StaticJsonDocument<100> jsonStructure;
     jsonStructure["location"] = "garage";
     jsonStructure["timestamp"] = timeString;
-    jsonStructure["temperature"] = result;
+    jsonStructure["temperature"] = temperature;
+    jsonStructure["humidity"] = humidity;
 
     String payload;
     serializeJson(jsonStructure, payload);
