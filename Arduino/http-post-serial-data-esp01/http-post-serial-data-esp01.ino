@@ -58,9 +58,8 @@ String readInput() {
     char received = Serial.read();
     inData += received;
 
-        // Process message when new line character is received
     if (received == '\n') {
-      Serial.print("Received from stm32f013: ");
+      Serial.print("Received data from stm32f013: ");
       inData.trim();
       Serial.println(inData);
       return inData;
@@ -118,13 +117,28 @@ void loop() {
 
   char timeString[25] = {0};
   sprintf(timeString, "%04d-%02d-%02d %02d:%02d:%02d", year, month, day, hour, mins, sec);
-  Serial.print("Timestamp: ");
-  Serial.println(timeString);
+  /* Serial.print("Timestamp: "); */
+  /* Serial.println(timeString); */
   Serial.println("start");
   String result = readInput();
   String temperature = getValue(result, ',', 0);
   String humidity = getValue(result, ',', 1);
-  Serial.println(result);
+  /* Serial.print("ESP01 temperature: "); */
+  /* Serial.println(temperature); */
+  /* Serial.print("ESP01 humidity: "); */
+  /* Serial.println(humidity); */
+  /* Serial.print("ESP01 Result: "); */
+  /* Serial.println(result); */
+
+  if( temperature.length() == 0 ) {
+    Serial.println("temperature cannot be of zero length.");
+    return;
+  }
+
+  if( humidity.length() == 0 ) {
+    Serial.println("humidity cannot be of zero length.");
+    return;
+  }
 
   if(WiFi.status()== WL_CONNECTED) {
     HTTPClient http;
@@ -143,21 +157,23 @@ void loop() {
     Serial.print("Payload: ");
     Serial.println(payload);
 
-    Serial.print("Sending post payload to: ");
-    Serial.println(serverName);
+    /* Serial.print("Sending post payload to: "); */
+    /* Serial.println(serverName); */
     int httpResponseCode = http.POST(payload);
-    Serial.print("HTTP response code: ");
-    Serial.println(httpResponseCode);
+    /* Serial.print("HTTP response code: "); */
+    /* Serial.println(httpResponseCode); */
     if(httpResponseCode != HTTP_CODE_OK ) {
-      Serial.printf("[HTTP] POST failed: %s\n", http.errorToString(httpResponseCode).c_str());
+      Serial.print("HTTP POST Failure: ");
+      Serial.println(http.errorToString(httpResponseCode).c_str());
     } else {
       String payload = http.getString();
+      Serial.print("HTTP Response: ");
       Serial.println(payload);
     }
     http.end();
 
-    Serial.print("Connected with IP address: ");
-    Serial.println(WiFi.localIP());
-    delay(15000);
+    /* Serial.print("Connected with IP address: "); */
+    /* Serial.println(WiFi.localIP()); */
+    delay(5000);
   }
 }
