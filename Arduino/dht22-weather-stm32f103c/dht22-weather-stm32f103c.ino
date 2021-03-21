@@ -1,40 +1,28 @@
 /*
- * Use STM32 "blue pill" board to read a DHT22 temperature and humidity sensor
- * (and wink a LED.)
- *
- * https://www.hackster.io/VE1DX/use-an-stm32f103c8t6-blue-pill-with-the-arduino-ide-11bd1c
- *
+Connect to DHT22 to 3.3V or 5V rail and Pin PA1 of the stm32f103
  */
 
-#include <DHT.h>   // Adafruit Unified Sensor version 1.3.8
+#include <DHT.h>
 
-#define DHTPIN PA1  // Physical pin 11
+#define USE_FAHRENHEIT true
 
-#define DHTTYPE DHT22
-
-//int dhtPin = PA8;  // Physical pin 29
-
-DHT dht(DHTPIN, DHTTYPE);  // Initilize object dht for class DHT
-                           // with DHT pin with STM32 and DHT type as DHT22
+DHT dht(PA1, DHT22);
 
 void setup() {
-  //pinMode(DHTPIN, OUTPUT);
   Serial.begin(9600);
-  dht.begin();          // Initialize DHT22 to read Temperature and humidity values.
-  //pinMode(PC13, OUTPUT);
+  while (!Serial);
+  dht.begin();
   delay(3000);          // Wait 3 seconds for it to stabilize
 }
 
-
 void loop() {
-    // Wait a few seconds between measurements.
+    // Wait 2 seconds between measurements.
   delay(2000);
 
   // Reading temperature or humidity takes about 250 milliseconds!
   // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
   float humidity = dht.readHumidity();
-  // Read temperature as Celsius
-  float temperature = dht.readTemperature(true);
+  float temperature = dht.readTemperature(USE_FAHRENHEIT);
 
   // Check if any reads failed and exit early (to try again).
   if (isnan(humidity) || isnan(temperature)) {
@@ -48,5 +36,4 @@ void loop() {
   Serial.print("Temperature: ");
   Serial.print(temperature);
   Serial.println(" *F ");
-
 }
