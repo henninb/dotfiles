@@ -1,4 +1,6 @@
 /*
+not working as of 3/21/2021
+
 Connect the Black (Ground) wire to the ground of your chip
 Connect the Red (VCC) wire to the power/VCC/5V pin of your chip
 Connect the White (DTR) wire to the Reset pin
