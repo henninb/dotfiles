@@ -35,22 +35,20 @@ char incomingByte = 0;
 char message[100] = {0};
 int idx = 0;
 
-/* time_t now; */
+/* String getValue(String data, char separator, int index) { */
+/*   int found = 0; */
+/*   int strIndex[] = { 0, -1 }; */
+/*   int maxIndex = data.length() - 1; */
 
-String getValue(String data, char separator, int index) {
-  int found = 0;
-  int strIndex[] = { 0, -1 };
-  int maxIndex = data.length() - 1;
-
-  for (int i = 0; i <= maxIndex && found <= index; i++) {
-    if (data.charAt(i) == separator || i == maxIndex) {
-      found++;
-      strIndex[0] = strIndex[1] + 1;
-      strIndex[1] = (i == maxIndex) ? i+1 : i;
-    }
-  }
-  return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
-}
+/*   for (int i = 0; i <= maxIndex && found <= index; i++) { */
+/*     if (data.charAt(i) == separator || i == maxIndex) { */
+/*       found++; */
+/*       strIndex[0] = strIndex[1] + 1; */
+/*       strIndex[1] = (i == maxIndex) ? i+1 : i; */
+/*     } */
+/*   } */
+/*   return found > index ? data.substring(strIndex[0], strIndex[1]) : ""; */
+/* } */
 
 String readInput() {
   String inData = "";
@@ -93,89 +91,30 @@ void setup() {
   Serial.println("");
   Serial.print("Connected to WiFi network with IP Address: ");
   Serial.println(WiFi.localIP());
-  /* configTime(CST, 0, ntpServer); */
-  /* while (now < EPOCH_1_1_2019) { */
-  /*   now = time(NULL); */
-  /*   delay(500); */
-  /*   Serial.print("*"); */
-  /* } */
-  /* Serial.println(""); */
   Serial.println("ESP01 setup completed.");
 }
 
 void loop() {
+#ifdef DEBUG
   Serial.println("Hello from ESP01");
-  /* digitalWrite(BUILTIN_LED, HIGH); */
-  /* delay(1000); */
-  /* digitalWrite(BUILTIN_LED, LOW); */
-  /* delay(1000); */
-
-
-  /* now = time(NULL); */
-  /* struct tm *timeinfo; */
-
-  /* time(&now); */
-  /* timeinfo = localtime(&now); */
-
-  /* int year = timeinfo->tm_year + 1900; */
-  /* int month = timeinfo->tm_mon + 1; */
-  /* int day = timeinfo->tm_mday; */
-  /* int hour = timeinfo->tm_hour; */
-  /* int mins = timeinfo->tm_min; */
-  /* int sec = timeinfo->tm_sec; */
-  /* int day_of_week = timeinfo->tm_wday; */
-
-  /* char timeString[25] = {0}; */
-  /* sprintf(timeString, "%04d-%02d-%02d %02d:%02d:%02d", year, month, day, hour, mins, sec); */
-  /* Serial.print("Timestamp: "); */
-  /* Serial.println(timeString); */
+#endif
   String payload;
   do {
     payload = readInput();
     Serial.print(".");
-    /* delay(1); */
   } while ( payload.length() == 0 );
   Serial.println("");
-
-  /* if(result.length() == 0 ) { */
-  /*   Serial.println("Problem with the result data."); */
-  /*   return; */
-  /* } */
-  /* Serial.print("ESP01 temperature: "); */
-  /* Serial.println(temperature); */
-  /* Serial.print("ESP01 humidity: "); */
-  /* Serial.println(humidity); */
-  /* Serial.print("ESP01 Result: "); */
-  /* Serial.println(result); */
-
 
   if(WiFi.status()== WL_CONNECTED) {
     HTTPClient http;
 
     http.begin(serverName);
     http.addHeader("Content-Type", "application/json");
-
-
-    /* Serial.print("Sending post payload to: "); */
-    /* Serial.println(serverName); */
     int httpResponseCode = http.POST(payload);
-    /* Serial.print("HTTP response code: "); */
-    /* Serial.println(httpResponseCode); */
-
-    /* if(httpResponseCode != HTTP_CODE_OK ) { */
-    /*   Serial.print("HTTP POST Failure: "); */
-    /*   Serial.println(http.errorToString(httpResponseCode).c_str()); */
-    /* } else { */
-    /*   String payload = http.getString(); */
-    /*   Serial.print("HTTP Response: "); */
-    /*   Serial.println(payload); */
-    /* } */
-    /* http.end(); */
-
-    /* Serial.print("Connected with IP address: "); */
-    /* Serial.println(WiFi.localIP()); */
-    /* delay(1000); */
+    http.end();
   } else {
+  #ifdef DEBUG
     Serial.println("not connected to the network.");
+  #endif
   }
 }
