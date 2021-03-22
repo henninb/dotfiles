@@ -1,6 +1,12 @@
 //#include <TinyWireM.h>
 //#include <USI_TWI_Master.h>
 
+/*
+ * 5V to Arduino 5V pin
+ * GND to Arduino GND pin
+ * CLK to Arduino Analog #5
+ * DAT to Arduino Analog #4
+*/
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
