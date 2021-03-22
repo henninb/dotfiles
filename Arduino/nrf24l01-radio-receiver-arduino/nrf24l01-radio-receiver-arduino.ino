@@ -12,19 +12,24 @@
 
 #include <SPI.h>
 #include <RF24.h>
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
 
 struct WeatherType {
-    short temperature;           // 2 bytes
-    short temperature_decimal;   // 2 bytes
-    short humidity;        // 2 bytes
-    short humidity_decimal;        // 2 bytes
-    byte id;                // 1 byte
-    // Total 9, you can have max 32 bytes here
+  short temperature;           // 2 bytes
+  short temperature_decimal;   // 2 bytes
+  short humidity;        // 2 bytes
+  short humidity_decimal;        // 2 bytes
+  byte id;                // 1 byte
+  // Total 9, you can have max 32 bytes here
 };
 
 char buffer[10] = {0};
 
 RF24 radio(7, 8); // using pin 7 for the CE pin, and pin 8 for the CSN pin
+
+//LiquidCrystal_I2C lcd(0x27, 16, 2);
+LiquidCrystal_I2C lcd(0x3f, 16, 2);
 
 /* char receivedPayload[100] = {}; */
 WeatherType rxData;
@@ -67,6 +72,11 @@ void setup() {
   radio.setAutoAck(true);
   radio.startListening(); // Listen to see if information received
   /* radio.printDetails(); */
+  lcd.begin();
+  lcd.backlight();
+  lcd.setCursor(0, 1);
+  lcd.clear();
+  Wire.begin();
 }
 
 void loop() {
@@ -111,10 +121,12 @@ void loop() {
     /*   Serial.println("  RX: ACK"); */
     /* } */
   }
-    /* radio.startListening(); */
-    consecutiveLoopCount++;
-    if( consecutiveLoopCount > 100 ) {
-      Serial.println("INFO: Outer Loop count exceeded threshold of 100.");
-      consecutiveLoopCount = 0;
-    }
+  /* radio.startListening(); */
+  consecutiveLoopCount++;
+  if( consecutiveLoopCount > 100 ) {
+    Serial.println("INFO: Outer Loop count exceeded threshold of 100.");
+    lcd.clear();
+    lcd.print("Transmitter not sending data.");
+    consecutiveLoopCount = 0;
+  }
 }
