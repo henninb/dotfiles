@@ -2,7 +2,7 @@
 #include <DHT.h>
 #include <SparkFunBME280.h>
 #include <Wire.h>
-
+#include "config.h"
 
 //for Wemos deepSleep -- connect D0 to the reset
 //Reprogram as the ESP is sleeping, disconnect D0 - RST and try again
@@ -14,24 +14,24 @@
 
 const int ESP_DEEP_SLEEP = 600; //10 min
 //const int ESP_DEEP_SLEEP = 10; //10 sec, for testing
-const char* ssid = "";
-const char* password = "";
+/* const char* ssid = ""; */
+/* const char* password = ""; */
 const char* thingspeak_host = "api.thingspeak.com";
 const char* sparkfun_host = "data.sparkfun.com";
 
-String sparkfun_publicKey = "VGx32qxAwKU6gxAxr35d";
-String sparkfun_privateKey = "9YdNabdAE4hYbNnNzDK2";
+String sparkfun_publicKey = "";
+String sparkfun_privateKey = "";
 
 String location = "default";
 
 //https://thingspeak.com/channels/185740
-String THINGSPEAK_API_KEY_LOWER_BATHROOM = "MZD68NFBVARXYGSS"; //Write API Key
+String THINGSPEAK_API_KEY_LOWER_BATHROOM = ""; //Write API Key
 //https://thingspeak.com/channels/185750
-String THINGSPEAK_API_KEY_OFFICE = "MXZYRWQOV5OXDXYW"; //Write API Key
+String THINGSPEAK_API_KEY_OFFICE = ""; //Write API Key
 //https://thingspeak.com/channels/185752
-String THINGSPEAK_API_KEY_MASTER_BEDROOM = "YENSBOB2IR4YONGO"; //Write API Key
+String THINGSPEAK_API_KEY_MASTER_BEDROOM = ""; //Write API Key
 //https://thingspeak.com/channels/185753
-String THINGSPEAK_API_KEY_GARAGE = "ENHGMN9AD81HESF3"; //Write API Key
+String THINGSPEAK_API_KEY_GARAGE = ""; //Write API Key
 
 //String THINGSPEAK_API_KEY = String(THINGSPEAK_API_KEY_LOWER_BATHROOM);
 String THINGSPEAK_API_KEY = "default";
@@ -48,8 +48,9 @@ void setup() {
  pinMode(D0, WAKEUP_PULLUP);
 
 #ifdef USE_SERIAL_PRINT_FLAG
-  Serial.begin(115200);
-  //Serial.begin(9600);
+  //Serial.begin(115200);
+  Serial.begin(9600);
+  while(!Serial);
 #endif
 
 #ifdef USE_SERIAL_PRINT_FLAG
@@ -69,7 +70,8 @@ void setup() {
   }
 
 #ifdef USE_SERIAL_PRINT_FLAG
-  Serial.println("\nWiFi connected");
+  Serial.println("");
+  Serial.println("WiFi connected");
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP());
 #endif
@@ -86,6 +88,7 @@ void setup() {
   delay(10);  //Make sure sensor had enough time to turn on. BME280 requires 2ms to start up.
   bme280.begin();
   delay(10);
+  Serial.println("setup completed for the wemos d1 mini.");
 }
 
 void setLocation(String myLocation) {
@@ -104,12 +107,12 @@ void setLocation(String myLocation) {
   }
 }
 void postSparkfunMetrics(const char *hostname, String privateKey, String publicKey, String farenheit, String humidity, String location) {
-  WiFiClient client1;
+  WiFiClient wifiClient;
   String url;
   unsigned long timeout;
   String line;
 
-  if( !client1.connect(hostname, 80) ) {
+  if( !wifiClient.connect(hostname, 80) ) {
 #ifdef USE_SERIAL_PRINT_FLAG
     Serial.println("WARN: connection failed");
 #endif
@@ -127,23 +130,23 @@ void postSparkfunMetrics(const char *hostname, String privateKey, String publicK
   url += "&loc=";
   url += location;
 
-  client1.print(String("GET ") + url + " HTTP/1.1\r\n" + "Host: " + hostname + "\r\n" +   "Connection: close\r\n\r\n");
+  wifiClient.print(String("GET ") + url + " HTTP/1.1\r\n" + "Host: " + hostname + "\r\n" +   "Connection: close\r\n\r\n");
   delay(10);
 
   timeout = millis();
-  while ( client1.available() == 0 ) {
+  while ( wifiClient.available() == 0 ) {
     if (millis() - timeout > 5000) {
 #ifdef USE_SERIAL_PRINT_FLAG
       Serial.println("WARN: client Timeout on sparkfun.");
 #endif
-      client1.stop();
+      wifiClient.stop();
       return;
     }
   }
 
   // Read all the lines of the reply from server and print them to Serial
-  while( client1.available() ) {
-    line = client1.readStringUntil('\r');
+  while( wifiClient.available() ) {
+    line = wifiClient.readStringUntil('\r');
 #ifdef USE_SERIAL_PRINT_FLAG
     Serial.print(line);
 #endif
@@ -151,12 +154,12 @@ void postSparkfunMetrics(const char *hostname, String privateKey, String publicK
 }
 
 void postThingspeakMetrics(const char *hostname, String api_key, String farenheit, String humidity) {
-  WiFiClient client1;
+  WiFiClient wifiClient;
   String url;
   unsigned long timeout;
   String line;
 
-  if( !client1.connect(hostname, 80) ) {
+  if( !wifiClient.connect(hostname, 80) ) {
 #ifdef USE_SERIAL_PRINT_FLAG
     Serial.println("WARN: connection failed");
 #endif
@@ -170,23 +173,23 @@ void postThingspeakMetrics(const char *hostname, String api_key, String farenhei
   url += "&field2=";
   url += String(humidity);
 
-  client1.print(String("GET ") + url + " HTTP/1.1\r\n" + "Host: " + hostname + "\r\n" +   "Connection: close\r\n\r\n");
+  wifiClient.print(String("GET ") + url + " HTTP/1.1\r\n" + "Host: " + hostname + "\r\n" +   "Connection: close\r\n\r\n");
   delay(10);
 
   timeout = millis();
-  while ( client1.available() == 0 ) {
+  while ( wifiClient.available() == 0 ) {
     if (millis() - timeout > 5000) {
 #ifdef USE_SERIAL_PRINT_FLAG
       Serial.println("WARN: Client Timeout !");
 #endif
-      client1.stop();
+      wifiClient.stop();
       return;
     }
   }
 
   // Read all the lines of the reply from server and print them to Serial
-  while( client1.available() ) {
-    line = client1.readStringUntil('\r');
+  while( wifiClient.available() ) {
+    line = wifiClient.readStringUntil('\r');
 
   }
 #ifdef USE_SERIAL_PRINT_FLAG
