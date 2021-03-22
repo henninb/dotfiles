@@ -92,7 +92,7 @@ void loop() {
   serializeJson(jsonStructure, payload);
   Serial.print("Payload: ");
   Serial.println(payload);
-  delay(2000);
+  delay(5000);
 
   if ( Serial2.available() ) {
       Serial2.println(payload);

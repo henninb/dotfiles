@@ -73,6 +73,7 @@ String readInput() {
   }
 
   Serial.println("empty return.");
+  delay(1000);
   return "";
 }
 
@@ -105,7 +106,7 @@ void loop() {
   } while ( payload.length() == 0 );
   Serial.println("");
 
-  if(WiFi.status()== WL_CONNECTED) {
+  if(WiFi.status() == WL_CONNECTED) {
     HTTPClient http;
 
     http.begin(serverName);
