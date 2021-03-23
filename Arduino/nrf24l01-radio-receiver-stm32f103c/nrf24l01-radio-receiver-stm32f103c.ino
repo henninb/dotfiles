@@ -13,39 +13,61 @@
  */
 
 #include <SPI.h>
-/* #include <RF24.h> */
-#include <RF24-STM.h>
+#include <RF24.h>
+/* #include <RF24-STM.h> */
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+
+struct WeatherType {
+  short temperature;           // 2 bytes
+  short temperature_decimal;   // 2 bytes
+  short humidity;        // 2 bytes
+  short humidity_decimal;        // 2 bytes
+  byte id;                // 1 byte
+  // Total 9, you can have max 32 bytes here
+};
+
+char payload[10] = {0};
 
 RF24 radio(PB0, PA4); // using pin PA0 for the CE pin, and pin PA4 for the CSN pin
 
-char receivedPayload[100] = {};
+//LiquidCrystal_I2C lcd(0x27, 16, 2);
+LiquidCrystal_I2C lcd(0x3f, 16, 2);
 
-const uint64_t pipe = 0xE6E6E6E6E6E6; // Needs to be the same for communicating between 2 NRF24L01
-char buffer[50] = {0};
-int length = 0;
+WeatherType rxData;
+int consecutiveLoopCount = 0;
+
+const uint64_t readerPipe = 0xE6E6E6E6E6E6;
+const uint64_t writerPipe = 0xB3B4B5B601;
 
 void setup() {
   pinMode(PC13, OUTPUT);
   Serial.begin(9600);
-  while (!Serial) {
-    // some boards need to wait to ensure access to serial over USB
-  }
-  Serial.println("RF24 example receiver.");
+  while (!Serial);
+  Serial.println("RF24 receiver setup.");
+  /* lcd.begin(); */
+  /* lcd.backlight(); */
+  /* lcd.setCursor(0, 1); */
+  /* lcd.clear(); */
+  /* Wire.begin(); */
 
-  // initialize the transceiver on the SPI bus
-  /* if (!radio.begin()) { */
-  /*   Serial.println(F("Receiving radio hardware is not responding.")); */
-  /*   while (1) { */
-  /*     Serial.println("harware issue, wrong pin?"); */
-  /*     delay(7000); */
-  /*   } // hold in infinite loop */
-  /* } */
+    // initialize the transceiver on the SPI bus
+  if (!radio.begin()) {
+    Serial.println("Receiving radio hardware is not responding.");
+    while (1) {
+      /* lcd.clear(); */
+      /* lcd.print("hardware issue"); */
+      Serial.println("hardware issues");
+      delay(1000);
+    }
+  }
+
   radio.begin();
 
   /* radio.begin(); */
   radio.setPALevel(RF24_PA_LOW);     // RF24_PA_MAX is default.
 
-  radio.setDataRate(RF24_2MBPS);
+  /* radio.setDataRate(RF24_2MBPS); */
   // to use ACK payloads, we need to enable dynamic payload lengths (for all nodes)
   //radio.enableDynamicPayloads();    // ACK payloads are dynamically sized
 
@@ -53,24 +75,41 @@ void setup() {
   // this feature for all nodes (TX & RX) to use ACK payloads.
   //radio.enableAckPayload();
 
-  radio.setRetries(200, 50);
+  /* radio.setRetries(200, 50); */
 
-  radio.openReadingPipe(1, pipe); // Get NRF24L01 ready to receive
+  radio.openReadingPipe(1, readerPipe); // Get NRF24L01 ready to receive
+  radio.openWritingPipe(writerPipe);
   /* radio.setPALevel(RF24_PA_MIN); */
   /* SPI.setClockDivider(SPI_CLOCK_DIV8) ; */
+  radio.setAutoAck(true);
   radio.startListening(); // Listen to see if information received
+  Serial.println("RF24 receiver setup complete.");
 }
 
 void loop() {
-  /* Serial.println("start receiving..."); */
+  radio.startListening();
+  delay(200);
   while (radio.available()) {
-    /* Serial.println("radio is available"); */
-    length = radio.getDynamicPayloadSize();  //# or radio.getPayloadSize() for static payload sizes¬
-    radio.read(&receivedPayload, 32);
-    sprintf(buffer, "received message = '%s' of length= %d", receivedPayload, length);
-    Serial.println(buffer);
-    digitalWrite(PC13, HIGH);
-    delay(500);
-    digitalWrite(PC13, LOW);
+    radio.read(&rxData, sizeof(rxData));
+    Serial.println("Receiving data ......");
+    Serial.print("  PALevel (1 == RF24_PA_LOW): ");
+    Serial.println(radio.getPALevel());
+    Serial.print("  Channel: ");
+    Serial.println(radio.getChannel());
+    Serial.print("  id: ");
+    Serial.println(rxData.id);
+    sprintf(payload, "%d.%d", rxData.temperature, rxData.temperature_decimal);
+    Serial.print("  Temerature: ");
+    Serial.println(payload);
+    sprintf(payload, "%d.%d", rxData.humidity, rxData.humidity_decimal);
+    Serial.print("  Humidity: ");
+    Serial.println(payload);
+    consecutiveLoopCount = 0;
+    delay(10);
+  }
+  consecutiveLoopCount++;
+  if( consecutiveLoopCount > 100 ) {
+    Serial.println("INFO: Outer Loop count exceeded threshold of 100.");
+    consecutiveLoopCount = 0;
   }
 }
