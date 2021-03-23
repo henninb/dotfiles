@@ -24,7 +24,7 @@ struct WeatherType {
   // Total 9, you can have max 32 bytes here
 };
 
-char buffer[10] = {0};
+char payload[10] = {0};
 
 RF24 radio(7, 8); // using pin 7 for the CE pin, and pin 8 for the CSN pin
 
@@ -44,12 +44,19 @@ void setup() {
   while (!Serial) {
     // some boards need to wait to ensure access to serial over USB
   }
-  Serial.println("RF24 example receiver.");
+  Serial.println("RF24 receiver setup.");
+  lcd.begin();
+  lcd.backlight();
+  lcd.setCursor(0, 1);
+  lcd.clear();
+  Wire.begin();
 
   // initialize the transceiver on the SPI bus
   if (!radio.begin()) {
     Serial.println("Receiving radio hardware is not responding.");
     while (1) {
+      lcd.clear();
+      lcd.print("hardware issue");
       Serial.println("hardware issues");
       delay(1000);
     }
@@ -72,11 +79,7 @@ void setup() {
   radio.setAutoAck(true);
   radio.startListening(); // Listen to see if information received
   /* radio.printDetails(); */
-  lcd.begin();
-  lcd.backlight();
-  lcd.setCursor(0, 1);
-  lcd.clear();
-  Wire.begin();
+  Serial.println("RF24 receiver setup complete.");
 }
 
 void loop() {
@@ -99,18 +102,18 @@ void loop() {
     /* Serial.println(rxData.humidity); */
     /* Serial.print("  Humidity Right: "); */
     /* Serial.println(rxData.humidity_decimal); */
-    sprintf(buffer, "%d.%d", rxData.temperature, rxData.temperature_decimal);
+    sprintf(payload, "%d.%d", rxData.temperature, rxData.temperature_decimal);
     Serial.print("  Temerature: ");
-    Serial.println(buffer);
-    sprintf(buffer, "%d.%d", rxData.humidity, rxData.humidity_decimal);
+    Serial.println(payload);
+    sprintf(payload, "%d.%d", rxData.humidity, rxData.humidity_decimal);
     Serial.print("  Humidity: ");
-    Serial.println(buffer);
+    Serial.println(payload);
     consecutiveLoopCount = 0;
     /* Serial.print("  sizeof(short): "); */
     /* Serial.println(sizeof(short)); */
-    /* sprintf(buffer, "x%04X", rxData.bom); */
+    /* sprintf(payload, "x%04X", rxData.bom); */
     /* Serial.print("  bom: "); */
-    /* Serial.println(buffer); */
+    /* Serial.println(payload); */
     delay(10);
     /* radio.stopListening(); */
 
@@ -125,8 +128,45 @@ void loop() {
   consecutiveLoopCount++;
   if( consecutiveLoopCount > 100 ) {
     Serial.println("INFO: Outer Loop count exceeded threshold of 100.");
-    lcd.clear();
-    lcd.print("Transmitter not sending data.");
+    /* lcd.clear(); */
+    /* lcd.print("Transmitter not sending data."); */
+    scrollInFromRight(0, "No TX is sending data to this RX.");
     consecutiveLoopCount = 0;
+  }
+}
+
+void scrollInFromRight (int line, char str1[]) {
+  int i = strlen(str1);
+  int k = 0;
+  int j = 0;
+
+  for (j = 16; j >= 0; j--) {
+
+    lcd.setCursor(0, line);
+
+    for (k = 0; k <= 15; k++) {
+      lcd.print(" "); // Clear line
+    }
+
+    lcd.setCursor(j, line);
+    lcd.print(str1);
+    delay(350);
+  }
+}
+
+void scrollInFromLeft( int line, char str1[] ) {
+  int i = 40 - strlen(str1);
+  int k = 0;
+  int j = 0;
+
+  line = line - 1;
+
+  for( j = i; j <= i + 16; j++ ) {
+    for ( k = 0; k <= 15; k++ ) {
+      lcd.print(" ");
+    }
+    lcd.setCursor(j, line);
+    lcd.print(str1);
+    delay(350);
   }
 }

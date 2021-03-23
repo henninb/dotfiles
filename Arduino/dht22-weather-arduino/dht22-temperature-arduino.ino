@@ -1,13 +1,16 @@
 #include <DHT.h>
 
-#define DHTPIN 2     // what pin we're connected to
-#define DHTTYPE DHT22   // DHT 22  (AM2302)
+/*
+  5V to 5V
+  GND to GND
+  Data to Pin 2
+*/
 
-DHT dht(DHTPIN, DHTTYPE);
+DHT dht(2, DHT22);
 
 void setup() {
-  //pinMode(fan, OUTPUT);
   Serial.begin(9600);
+  while (!Serial);
   dht.begin();
 }
 
@@ -16,12 +19,9 @@ void loop() {
   delay(2000);
 
   // Reading temperature or humidity takes about 250 milliseconds!
-  // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
   float humidity = dht.readHumidity();
-  // Read temperature as Celsius
   float temperature = dht.readTemperature(true);
 
-  // Check if any reads failed and exit early (to try again).
   if (isnan(humidity) || isnan(temperature)) {
     Serial.println("Failed to read from DHT sensor!");
     return;

@@ -1,13 +1,11 @@
-#include <DHT.h>   // Adafruit Unified Sensor version 1.3.8
+#include <DHT.h>
 
 #define DHTPIN 2
 
 #define DHTTYPE DHT22
 
-//int dhtPin = PA8;  // Physical pin 29
 
-DHT dht(DHTPIN, DHTTYPE);  // Initilize object dht for class DHT
-                           // with DHT pin with STM32 and DHT type as DHT22
+DHT dht(DHTPIN, DHT22);
 
 void setup() {
   //pinMode(DHTPIN, OUTPUT);
