@@ -9,5 +9,6 @@
   "editor.wordWrap": "wordWrapColumn",
   "editor.renderWhiteSpace": "all",
   "editor.insertSpaces": false,
-  "workbench.colorTheme": "Dracula"
+  "workbench.colorTheme": "Dracula",
+  "C_Cpp.updateChannel": "Insiders"
 }

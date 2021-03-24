@@ -32,13 +32,14 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo rm -rf /opt/vscode
-  rm -rf code-stable-latest.tar.gz
-  wget https://go.microsoft.com/fwlink/?LinkID=620884 -O code-stable-latest.tar.gz
-  sudo tar -xvf code-stable-latest.tar.gz -C /opt
-  sudo mv /opt/VSCode-linux-x64 /opt/vscode
-  sudo chmod -R 775 /opt/vscode
-  id -g vscode > /dev/null || sudo groupadd vscode
+  yay -S visual-studio-code-bin
+  # sudo rm -rf /opt/vscode
+  # rm -rf code-stable-latest.tar.gz
+  # wget https://go.microsoft.com/fwlink/?LinkID=620884 -O code-stable-latest.tar.gz
+  # sudo tar -xvf code-stable-latest.tar.gz -C /opt
+  # sudo mv /opt/VSCode-linux-x64 /opt/vscode
+  # sudo chmod -R 775 /opt/vscode
+  # id -g vscode > /dev/null || sudo groupadd vscode
 else
   echo "$OS is not yet implemented."
   exit 1

@@ -37,6 +37,7 @@ export GO111MODULE=on
 go get -u github.com/arduino/arduino-cli
 
 pip install esptool --user
+pip install platformio --user
 
 # arduino-cli core search arduino
 # arduino-cli core search leonardo

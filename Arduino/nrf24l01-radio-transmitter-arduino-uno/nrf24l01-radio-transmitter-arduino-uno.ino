@@ -15,6 +15,7 @@
  DHT22 GND to GND on Arduino
  */
 
+#include <Arduino.h>
 #include <SPI.h>
 #include <RF24.h>
 #include <DHT.h>
