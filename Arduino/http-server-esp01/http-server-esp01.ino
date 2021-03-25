@@ -3,6 +3,7 @@
 #include <ESP8266WebServer.h>
 #include <EEPROM.h>
 
+void createWebServer();
 //Variables
 int i = 0;
 int statusCode;
@@ -176,8 +177,7 @@ void setupAP(void)
   Serial.println("over");
 }
 
-void createWebServer()
-{
+void createWebServer() {
  {
     server.on("/", []() {
 
