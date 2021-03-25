@@ -25,8 +25,9 @@ Connect to DHT22 to 3.3V or 5V rail and Pin PA1 of the stm32f103
 #define DEBUG 1
 
 DHT dht(PA1, DHT22);
-/* HardwareSerial Serial2(UART1, HALF_DUPLEX_ENABLED); */
-HardwareSerial Serial2(USART1, HALF_DUPLEX_ENABLED);
+/* HardwareSerial Serial2(UART2, HALF_DUPLEX_ENABLED); */
+/* HardwareSerial Serial2(USART1, HALF_DUPLEX_ENABLED); */
+HardwareSerial Serial2(USART2);   // or HardWareSerial Serial2 (PA3, PA2);
 
 char incomingByte = 0;
 char message[100] = {0};
@@ -41,6 +42,7 @@ void setup() {
   while (!Serial);
 #ifdef DEBUG
   Serial.println("setup stm32f103...");
+  pinMode(PC13,OUTPUT);
 #endif
   Serial2.begin(9600);   //begins serial communication with esp8266 with baud rate 9600 (Change according to your esp8266 module)
   while (!Serial2);
@@ -72,15 +74,14 @@ void loop() {
   serializeJson(jsonStructure, payload);
   Serial.print("Payload: ");
   Serial.println(payload);
-  delay(5000);
+  digitalWrite(PC13, HIGH);
+  delay(1000);
+  digitalWrite(PC13, LOW);
+  delay(4000);
 
   if ( Serial2.available() ) {
       Serial2.println(payload);
+      Serial.println("Sent data to Serial2.");
       return;
   }
-  /* serialWaitCounrt++; */
-  /* if( serialWaitCounrt > 1000 ) { */
-  /*   Serial.println("Waiting for ESP01 [Serial2] to produce data."); */
-  /*   serialWaitCounrt = 0; */
-  /* } */
 }
