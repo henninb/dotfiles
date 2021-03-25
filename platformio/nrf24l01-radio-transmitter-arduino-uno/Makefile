@@ -1,5 +1,5 @@
 all: platformio
 platformio:
-	platformio run
+	@platformio run
 install:
-	platformio run -t upload
+	@platformio run -t upload

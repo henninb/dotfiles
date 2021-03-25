@@ -1,13 +1,30 @@
-#include <WS2812B.h>
+/* #include <WS2812B.h> */
+#include <Adafruit_NeoPixel.h>
 
 #define NUM_LEDS 16
+
+uint8_t red( uint32_t );
+uint8_t green( uint32_t );
+uint8_t blue( uint32_t );
+uint32_t Wheel(byte );
+void colorWipe(uint32_t, uint8_t );
+void rainbow( uint8_t );
+void rainbowCycle( uint8_t );
+void theaterChase( uint32_t, uint8_t );
+void theaterChaseRainbow( uint8_t );
+void pulseWhite( uint8_t );
+void rainbowFade2White( uint8_t, int, int );
+void whiteOverRainbow( uint8_t, uint8_t, uint8_t  );
+void fullWhite();
 /*
   git@github.com:rogerclarkmelbourne/WS2812B_STM32_Libmaple.git
  * Note. Library uses SPI1
  * Connect the WS2812B data input to MOSI on your board.
  *
  */
-WS2812B strip = WS2812B(NUM_LEDS);
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LEDS, PA1, NEO_GRB + NEO_KHZ800);
+
+/* WS2812B strip = WS2812B(NUM_LEDS); */
 // Note. Gamma is not really supported in the library, its only included as some functions used in this example require Gamma
 uint8_t LEDGamma[] = {
     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
@@ -52,10 +69,8 @@ void loop() {
 }
 
 // Fill the dots one after the other with a color
-void colorWipe(uint32_t c, uint8_t wait)
-{
-  for(uint16_t i=0; i<strip.numPixels(); i++)
-  {
+void colorWipe(uint32_t c, uint8_t wait) {
+  for(uint16_t i=0; i<strip.numPixels(); i++) {
       strip.setPixelColor(i, c);
       strip.show();
       delay(wait);
@@ -66,8 +81,7 @@ void rainbow(uint8_t wait) {
   uint16_t i, j;
 
   for(j=0; j<256; j++) {
-    for(i=0; i<strip.numPixels(); i++)
-  {
+    for(i=0; i<strip.numPixels(); i++) {
       strip.setPixelColor(i, Wheel((i+j) & 255));
     }
     strip.show();
@@ -78,14 +92,11 @@ void rainbow(uint8_t wait) {
 
 
 // Slightly different, this makes the rainbow equally distributed throughout
-void rainbowCycle(uint8_t wait)
-{
+void rainbowCycle(uint8_t wait) {
   uint16_t i, j;
 
-  for(j=0; j<256*5; j++)
-  { // 5 cycles of all colors on wheel
-    for(i=0; i< strip.numPixels(); i++)
-  {
+  for(j=0; j<256*5; j++) { // 5 cycles of all colors on wheel
+    for(i=0; i< strip.numPixels(); i++) {
       strip.setPixelColor(i, Wheel(((i * 256 / strip.numPixels()) + j) & 255));
     }
     strip.show();
@@ -95,21 +106,14 @@ void rainbowCycle(uint8_t wait)
 
 // Input a value 0 to 255 to get a color value.
 // The colours are a transition r - g - b - back to r.
-uint32_t Wheel(byte WheelPos)
-{
-  if(WheelPos < 85)
-  {
+uint32_t Wheel(byte WheelPos) {
+  if(WheelPos < 85) {
     return strip.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
-  }
-  else
-  {
-    if(WheelPos < 170)
-    {
+  } else {
+    if(WheelPos < 170) {
      WheelPos -= 85;
      return strip.Color(255 - WheelPos * 3, 0, WheelPos * 3);
-    }
-    else
-    {
+    } else {
      WheelPos -= 170;
      return strip.Color(0, WheelPos * 3, 255 - WheelPos * 3);
     }

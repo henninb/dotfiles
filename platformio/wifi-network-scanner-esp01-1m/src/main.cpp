@@ -1,5 +1,6 @@
 #include <ESP8266WiFi.h>
 #include <EEPROM.h>
+#include "config.h"
 
 
 #define RESET_EEPROM false
@@ -8,8 +9,8 @@ int addr_ssid = 0;         // ssid index
 int addr_password = 20;    // password index
 
 void setup() {
-EEPROM.begin(512);
-Serial.begin(9600);
+  EEPROM.begin(512);
+  Serial.begin(9600);
 
   int numberOfNetworks = WiFi.scanNetworks();
 
@@ -30,10 +31,10 @@ Serial.begin(9600);
   }
 
   Serial.println("");
-  Serial.print("Write WiFi SSID at address "); Serial.println(addr_ssid);
+  Serial.print("Write WiFi SSID at address ");
+  Serial.println(addr_ssid);
   Serial.print("");
-  for (int i = 0; i < ssid.length(); ++i)
-  {
+  for (unsigned int i = 0; i < ssid.length(); ++i ) {
     EEPROM.write(addr_ssid + i, ssid[i]);
     Serial.print(ssid[i]); Serial.print("");
   }

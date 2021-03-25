@@ -84,8 +84,6 @@ void loop() {
     }
     Serial.print("Actual Temperature: ");
     Serial.println(temperature);
-    short leftSideOfDecimalPoint = (short) temperature;
-    short rightSideOfDecimalPoint = (temperature - leftSideOfDecimalPoint) * 1000;
     digitalWrite(LED_BUILTIN, LOW);
     myDataTx.id = 'C';
     myDataTx.temperature = (short) temperature;

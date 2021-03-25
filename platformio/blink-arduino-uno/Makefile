@@ -1,5 +1,5 @@
-all: platformio
-platformio:
+all: build
+build:
 	@platformio run
 arduino-cli:
 	@arduino-cli compile --fqbn arduino:avr:uno .
@@ -13,3 +13,5 @@ install-usbasp:
 	@arduino-cli upload -P usbasp --fqbn arduino:avr:uno .
 install:
 	@platformio run
+clean:
+	@pio run --target clean

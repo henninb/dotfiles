@@ -69,8 +69,6 @@ void setup() {
 void loop() {
     float temperature = 3.14;
     float humidity = 54.32;
-    short leftSideOfDecimalPoint = (short) temperature;
-    short rightSideOfDecimalPoint = (temperature - leftSideOfDecimalPoint) * 1000;
     digitalWrite(PC13, LOW);
     myDataTx.id = 'B';
     myDataTx.temperature = (short) temperature;

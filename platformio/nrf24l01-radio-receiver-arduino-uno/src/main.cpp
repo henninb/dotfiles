@@ -130,43 +130,7 @@ void loop() {
     Serial.println("INFO: Outer Loop count exceeded threshold of 100.");
     /* lcd.clear(); */
     /* lcd.print("Transmitter not sending data."); */
-    scrollInFromRight(0, "No TX is sending data to this RX.");
+    /* scrollInFromRight(0, "No TX is sending data to this RX."); */
     consecutiveLoopCount = 0;
-  }
-}
-
-void scrollInFromRight (int line, char str1[]) {
-  int i = strlen(str1);
-  int k = 0;
-  int j = 0;
-
-  for (j = 16; j >= 0; j--) {
-
-    lcd.setCursor(0, line);
-
-    for (k = 0; k <= 15; k++) {
-      lcd.print(" "); // Clear line
-    }
-
-    lcd.setCursor(j, line);
-    lcd.print(str1);
-    delay(350);
-  }
-}
-
-void scrollInFromLeft( int line, char str1[] ) {
-  int i = 40 - strlen(str1);
-  int k = 0;
-  int j = 0;
-
-  line = line - 1;
-
-  for( j = i; j <= i + 16; j++ ) {
-    for ( k = 0; k <= 15; k++ ) {
-      lcd.print(" ");
-    }
-    lcd.setCursor(j, line);
-    lcd.print(str1);
-    delay(350);
   }
 }

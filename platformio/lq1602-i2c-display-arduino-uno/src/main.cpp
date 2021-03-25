@@ -9,9 +9,11 @@
 //#include <TinyWireM.h>
 //#include <USI_TWI_Master.h>
 
+int isPrime( int );
+
   // Set the LCD address to 0x27 for a 16 chars and 2 line display
   //LiquidCrystal_I2C lcd(0x27, 16, 2);
-  LiquidCrystal_I2C lcd(0x3f, 16, 2);
+LiquidCrystal_I2C lcd(0x3f, 16, 2);
 
 int idx = 0;
 
@@ -66,7 +68,7 @@ int isPrime(int number) {
 }
 
 void scrollInFromRight (int line, char str1[]) {
-  int i = strlen(str1);
+  /* int i = strlen(str1); */
   int k = 0;
   int j = 0;
 
@@ -103,8 +105,8 @@ void scrollInFromLeft( int line, char str1[] ) {
 
 // is not working as of 3/23/2021
 void scanI2c() {
-  byte error;
-  byte address;
+  /* byte error; */
+  /* byte address = 0; */
   int nDevices = 0;
 
   Serial.println("Scanning...");

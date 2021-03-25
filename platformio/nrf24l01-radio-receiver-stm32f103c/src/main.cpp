@@ -14,7 +14,6 @@
 
 #include <SPI.h>
 #include <RF24.h>
-/* #include <RF24-STM.h> */
 #include <Wire.h>
 /* #include <LiquidCrystal_I2C.h> */
 
