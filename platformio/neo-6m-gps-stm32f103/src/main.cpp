@@ -1,11 +1,27 @@
 #include <TinyGPS++.h>
 #include <SoftwareSerial.h>
 
+/*
+FTDI | stm32f103
+RX   | TX1 (PC9)
+TX   | RX1 (PC10)
+GND  | GND
+3.3V | 3.3V
+
+stm32f103 | NEO-6M
+GND       | GND
+3.3V      | 3.3V
+3.3V      | CH-PD
+PC3 (RX2) | TX
+PC2 (TX2) | RX
+
+ */
+
 void displayInfo();
 
 // Choose two Arduino pins to use for software serial
-int RXPin = 2;
-int TXPin = 3;
+int RXPin = PC_3;
+int TXPin = PC_2;
 
 int GPSBaud = 9600;
 
@@ -13,17 +29,21 @@ int GPSBaud = 9600;
 TinyGPSPlus gps;
 
 // Create a software serial port called "gpsSerial"
-SoftwareSerial gpsSerial(RXPin, TXPin);
+/* SoftwareSerial gpsSerial(RXPin, TXPin); */
+HardwareSerial gpsSerial(USART2);   // or HardWareSerial Serial2 (PA3, PA2);
 
 void setup() {
-  // Start the Arduino hardware serial port at 9600 baud
   Serial.begin(9600);
+  while (!Serial);
 
   // Start the software serial port at the GPS's default baud
   gpsSerial.begin(GPSBaud);
+  while (!gpsSerial);
+  Serial.println("setup complete.");
 }
 
 void loop() {
+  Serial.println("start of loop");
   // This sketch displays information every time a new sentence is correctly encoded.
   while (gpsSerial.available() > 0)
     if (gps.encode(gpsSerial.read()))
@@ -31,8 +51,7 @@ void loop() {
 
   // If 5000 milliseconds pass and there are no characters coming in
   // over the software serial port, show a "No GPS detected" error
-  if (millis() > 5000 && gps.charsProcessed() < 10)
-  {
+  if (millis() > 5000 && gps.charsProcessed() < 10) {
     Serial.println("No GPS detected");
     while(true);
   }
