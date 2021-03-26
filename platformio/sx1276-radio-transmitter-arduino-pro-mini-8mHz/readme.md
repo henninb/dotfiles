@@ -12,3 +12,18 @@ Waiting for packet to complete...
 
 
 https://github.com/beadone/Arduino-LoRa-95-915-RX-and-TX/blob/master/LoRa_95_915_TX.ino
+
+
+Semtech SX1276/77/78/79	Arduino
+VCC	3.3V
+GND	GND
+SCK	SCK
+MISO	MISO
+MOSI	MOSI
+NSS	10
+NRESET	9
+DIO0	2
+
+
+rfm95
+
