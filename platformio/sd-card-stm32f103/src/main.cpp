@@ -32,7 +32,7 @@ SdFile root;
 // Arduino Ethernet shield: pin 4
 // Adafruit SD shields and modules: pin 10
 // Sparkfun SD shield: pin 8
-const int chipSelect = 4;
+const int chipSelect = PA4;
 const int pinCS = 1;
 
 void setup() {
@@ -48,7 +48,7 @@ void setup() {
   }
 
   // Create/Open file
-  File myFile = SD.open("test.txt", FILE_WRITE);
+  File myFile = SD.open("gps-data.txt", FILE_WRITE);
 
   // if the file opened okay, write to it:
   if (myFile) {
@@ -61,7 +61,7 @@ void setup() {
     Serial.println("error opening test.txt");
   }
   // Reading the file
-  myFile = SD.open("test.txt");
+  myFile = SD.open("gps-data.txt");
   if (myFile) {
     Serial.println("Read:");
     // Reading the whole file
