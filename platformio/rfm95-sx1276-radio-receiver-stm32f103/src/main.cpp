@@ -36,6 +36,8 @@ RH_RF95 rf95(RFM95_CS, RFM95_INT);
 // Blinky on receipt
 #define LED PC13
 
+int consecutiveLoopCount = 0;
+
 void setup() {
   pinMode(LED, OUTPUT);
   pinMode(RFM95_RST, OUTPUT);
@@ -45,7 +47,7 @@ void setup() {
   Serial.begin(9600);
   delay(100);
 
-  Serial.println("Arduino LoRa RX Test!");
+  Serial.println("LoRa RX");
 
   // manual reset
   digitalWrite(RFM95_RST, LOW);
@@ -77,7 +79,8 @@ void setup() {
 }
 
 void loop() {
-  if (rf95.available()) {
+  while (rf95.available()) {
+    consecutiveLoopCount = 0;
     // Should be a message for us now
     uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
     uint8_t len = sizeof(buf);
@@ -85,19 +88,29 @@ void loop() {
     if (rf95.recv(buf, &len)) {
       digitalWrite(LED, HIGH);
       RH_RF95::printBuffer("Received: ", buf, len);
-      Serial.print("Got: ");
+      Serial.print("Received: ");
       Serial.println((char*)buf);
        Serial.print("RSSI: ");
       Serial.println(rf95.lastRssi(), DEC);
 
       // Send a reply
-      uint8_t data[] = "And hello back to you";
-      rf95.send(data, sizeof(data));
-      rf95.waitPacketSent();
-      Serial.println("Sent a reply");
-      digitalWrite(LED, LOW);
+      /* uint8_t data[] = "And hello back to you"; */
+      /* rf95.send(data, sizeof(data)); */
+      /* rf95.waitPacketSent(); */
+      /* Serial.println("Sent a reply"); */
+      /* digitalWrite(LED, LOW); */
     } else {
       Serial.println("Receive failed");
     }
+  }
+
+  consecutiveLoopCount++;
+  if( consecutiveLoopCount > 100 ) {
+    Serial.println("INFO: Outer Loop count exceeded threshold of 1000.");
+    delay(500);
+    /* lcd.clear(); */
+    /* lcd.print("Transmitter not sending data."); */
+    /* scrollInFromRight(0, "No TX is sending data to this RX."); */
+    consecutiveLoopCount = 0;
   }
 }

@@ -1,12 +1,30 @@
 #include <SPI.h>
 #include <LoRa.h>
 
+
+/*
+ *
+ *   RF95    | Arduino Uno | stm32f103
+  ---------------------------------
+  GND     | ??          | ??
+  3.3V    | VCC         | 3.3
+  DIO0    | 2           | B0 digital (PB0)
+  NSS     | 10 (SS)     | A4 NSS1 (PA4) 3.3v
+  SCK     | 13 (SCK)    | A5 SCK1   (PA5) 3.3v
+  MISI    | 11 (MOSI)   | A7 MISI1  (PA7) 3.3v
+  MISO    | 12 (MOS0)   | A6 MOSO1  (PA6) 3.3v
+  */
+
+int counter = 0;
+
 void setup() {
   Serial.begin(9600);
   while (!Serial);
 
-  Serial.println("LoRa Receiver");
+  Serial.println("LoRa transmitter");
+  delay(1000);
 
+  LoRa.setPins(10, 3, 2); // set CS, reset, IRQ pin
   if (!LoRa.begin(915E6)) {
     Serial.println("Starting LoRa failed!");
     while (1);
@@ -14,19 +32,17 @@ void setup() {
 }
 
 void loop() {
-  // try to parse packet
-  int packetSize = LoRa.parsePacket();
-  if (packetSize) {
-    // received a packet
-    Serial.print("Received packet '");
+  Serial.print("Sending packet: ");
+  Serial.println(counter);
 
-    // read packet
-    while (LoRa.available()) {
-      Serial.print((char)LoRa.read());
-    }
+  // send packet
+  LoRa.beginPacket();
+  LoRa.print("hello ");
+  LoRa.print(counter);
+  LoRa.endPacket(true);
 
-    // print RSSI of packet
-    Serial.print("' with RSSI ");
-    Serial.println(LoRa.packetRssi());
-  }
+  counter++;
+  Serial.println("send message completed.");
+
+  delay(5000);
 }
