@@ -1,7 +1,7 @@
-all: platformio
-platformio:
-	@pio lib install "adafruit/DHT sensor library"
-	@pio lib install "adafruit/Adafruit Unified Sensor"
+all: build
+build:
 	@platformio run
 install:
 	@platformio run -t upload
+clean:
+	@platformio run -t clean

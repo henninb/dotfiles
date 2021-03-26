@@ -12,6 +12,6 @@ install-arduinoasisp:
 install-usbasp:
 	@arduino-cli upload -P usbasp --fqbn arduino:avr:uno .
 install:
-	@platformio run
+	@platformio run -t upload
 clean:
 	@pio run --target clean
