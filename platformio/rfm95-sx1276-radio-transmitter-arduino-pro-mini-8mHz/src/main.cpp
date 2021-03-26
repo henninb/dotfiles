@@ -9,6 +9,18 @@
 #include <SPI.h>
 #include <RH_RF95.h>
 
+/*
+  RF95    | Arduino Uno | stm32f103
+  ---------------------------------
+  GND     | ??          | ??
+  3.3V    | VCC         | 3.3
+  DIO0    | 2           | B0 digital (PB0)
+  NSS     | 10 (SS)     | A4 NSS1 (PA4) 3.3v
+  SCK     | 13 (SCK)    | A5 SCK1   (PA5) 3.3v
+  MISI    | 11 (MOSI)   | A7 MISI1  (PA7) 3.3v
+  MISO    | 12 (MOS0)   | A6 MOSO1  (PA6) 3.3v
+  */
+
 #define RFM95_CS 10
 #define RFM95_RST 9
 #define RFM95_INT 2
@@ -27,7 +39,7 @@ void setup() {
   Serial.begin(9600);
   delay(100);
 
-  Serial.println("Arduino LoRa TX Test!");
+  Serial.println("LoRa TX");
 
   // manual reset
   digitalWrite(RFM95_RST, LOW);
@@ -55,6 +67,7 @@ void setup() {
   // If you are using RFM95/96/97/98 modules which uses the PA_BOOST transmitter pin, then
   // you can set transmitter powers from 5 to 23 dBm:
   rf95.setTxPower(23, false);
+  Serial.println("setup complete.");
 }
 
 int16_t packetnum = 0;  // packet counter, we increment per xmission
