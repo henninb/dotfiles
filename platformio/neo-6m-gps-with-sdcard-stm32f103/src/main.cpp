@@ -1,6 +1,7 @@
 #include <TinyGPS++.h>
 #include <SoftwareSerial.h>
 #include <SD.h>
+#include <ArduinoJson.h>
 
 /*
 FTDI | stm32f103
@@ -43,13 +44,6 @@ void setup() {
   pinMode(ledPin,OUTPUT);
   if (SD.begin(csPin)) {
     Serial.println("SD card is ready to use.");
-    myFile = SD.open("gps-data.txt", FILE_WRITE);
-    if (myFile) {
-      Serial.println("file is open for writting...");
-    } else {
-      Serial.println("something went wrong with the file opening process.");
-      while(true);
-    }
   } else {
     Serial.println("SD card initialization failed");
     Serial.println("please be sure you have put an SD card in the slot.");
@@ -77,17 +71,32 @@ void loop() {
 }
 
 void displayInfo() {
+    StaticJsonDocument<100> jsonStructure;
+    myFile = SD.open("gps-data.txt", FILE_WRITE);
+    if (myFile) {
+      Serial.println("file is open for writting...");
+    } else {
+      Serial.println("something went wrong with the file opening process.");
+      while(true);
+    }
   if (gps.location.isValid()) {
+  /* if (true) { */
     digitalWrite(ledPin, HIGH);
     delay(1000);
     digitalWrite(ledPin, LOW);
     delay(1000);
-    String location = "";
-    location = location + "Latitude: " + String(gps.location.lat(), 6) + " \r\n";
-    location = location + "Longitude: " + String(gps.location.lng(), 6) + " \r\n";
-    location = location + "Altitude: " + String(gps.altitude.meters(), 6) + " \r\n";
-    Serial.println(location);
-    myFile.println(location);
+    /* String location = ""; */
+    jsonStructure["latitude"] = String(gps.location.lat(), 6);
+    jsonStructure["longitude"] = String(gps.location.lng(), 6);
+    /* location = location + "Latitude: " + String(gps.location.lat(), 6) + " \r\n"; */
+    /* location = location + "Longitude: " + String(gps.location.lng(), 6)"; */
+    /* location = location + "Altitude: " + String(gps.altitude.meters(), 6); */
+    Serial.println("found long and lat.");
+    /* if( myFile ) { */
+    /*   /1* myFile.println(location); *1/ */
+    /* } else { */
+    /*   Serial.println("cannot write to file"); */
+    /* } */
   } else {
     Serial.println("Location data is not vaild from the gps.");
     digitalWrite(ledPin, HIGH);
@@ -106,7 +115,12 @@ void displayInfo() {
     date = date + String(gps.date.month()) + "-";
     date = date + String(gps.date.day());
     Serial.println(date);
-    myFile.println(date);
+    jsonStructure["date"] = date;
+    /* if( myFile ) { */
+    /*   myFile.println(date); */
+    /* } else { */
+    /*   Serial.println("cannot write to file"); */
+    /* } */
   } else {
     Serial.println("Date data is not vaild from the gps.");
   }
@@ -117,12 +131,24 @@ void displayInfo() {
     time = time + String(gps.time.minute()) + ":";
     time = time + String(gps.time.second());
     Serial.println(time);
-    myFile.println(time);
+    jsonStructure["time"] = time;
   }
   else {
     Serial.println("Time data is not vaild from the gps.");
   }
 
+  String payload;
+  serializeJson(jsonStructure, payload);
+  Serial.print("Payload: ");
+  Serial.println(payload);
+
+  if( myFile ) {
+    myFile.println(payload);
+  } else {
+    Serial.println("cannot write to file");
+  }
+
+  myFile.close();
   Serial.println();
   delay(5000);
 }
