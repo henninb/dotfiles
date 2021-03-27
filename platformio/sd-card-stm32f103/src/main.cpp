@@ -20,23 +20,20 @@ MOSI    | PA7
 
 */
 
-/* Sd2Card card; */
-/* SdVolume volume; */
-/* SdFile root; */
-
 /* const int chipSelect = PA4; */
 const int pinCS = PA4;
 
 void setup() {
   Serial.begin(9600);
-  pinMode(pinCS, OUTPUT);
+  while (!Serial);
+  Serial.println("setup...");
 
-  // SD Card Initialization
-  if (SD.begin()) {
+  if (SD.begin(pinCS)) {
     Serial.println("SD card is ready to use.");
   } else {
     Serial.println("SD card initialization failed");
     Serial.println("please be sure you have put an SD card in the slot.");
+    Serial.println("please be sure to define the CS pin in the begin method.");
     return;
   }
 
@@ -61,7 +58,7 @@ void setup() {
     }
     myFile.close();
   } else {
-    Serial.println("error opening test.txt");
+    Serial.println("error opening file.");
   }
 }
 
