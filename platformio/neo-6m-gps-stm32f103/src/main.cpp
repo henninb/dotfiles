@@ -15,7 +15,7 @@ GND       | GND
 PC3 (RX2) | TX
 PC2 (TX2) | RX
 
- */
+*/
 
 void displayInfo();
 
@@ -23,12 +23,8 @@ void displayInfo();
 /* int RXPin = PC_3; */
 /* int TXPin = PC_2; */
 
-int GPSBaud = 9600;
-
-// Create a TinyGPS++ object
 TinyGPSPlus gps;
 
-// Create a software serial port called "gpsSerial"
 /* SoftwareSerial gpsSerial(RXPin, TXPin); */
 HardwareSerial gpsSerial(USART2);   // or HardWareSerial Serial2 (PA3, PA2);
 
@@ -36,15 +32,12 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
 
-  // Start the software serial port at the GPS's default baud
-  gpsSerial.begin(GPSBaud);
+  gpsSerial.begin(9600);
   while (!gpsSerial);
   Serial.println("setup complete.");
 }
 
 void loop() {
-  /* Serial.println("start of loop"); */
-  // This sketch displays information every time a new sentence is correctly encoded.
   while (gpsSerial.available() > 0)
     if (gps.encode(gpsSerial.read()))
       displayInfo();
