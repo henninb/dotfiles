@@ -10,30 +10,22 @@ TX   | RX1 (PC10)
 GND  | GND
 3.3V | 3.3V
 
-stm32f103 | NEO-6M
-GND       | GND
-3.3V      | 3.3V
-3.3V      | CH-PD
-PC3 (RX2) | TX
-PC2 (TX2) | RX
+sd card | stm32f103
+GND     | GND
+5V      | 5V
+CS      | PA4
+SCK     | PA5
+MISO    | PA6
+MOSI    | PA7
 
-SD CS = PA4
-SD SCK = PA5
-SD MISO = PA6
-SD MOSI = PA7
+*/
 
- */
+/* Sd2Card card; */
+/* SdVolume volume; */
+/* SdFile root; */
 
-Sd2Card card;
-SdVolume volume;
-SdFile root;
-
-// change this to match your SD shield or module;
-// Arduino Ethernet shield: pin 4
-// Adafruit SD shields and modules: pin 10
-// Sparkfun SD shield: pin 8
-const int chipSelect = PA4;
-const int pinCS = 1;
+/* const int chipSelect = PA4; */
+const int pinCS = PA4;
 
 void setup() {
   Serial.begin(9600);
@@ -44,6 +36,7 @@ void setup() {
     Serial.println("SD card is ready to use.");
   } else {
     Serial.println("SD card initialization failed");
+    Serial.println("please be sure you have put an SD card in the slot.");
     return;
   }
 
@@ -53,14 +46,12 @@ void setup() {
   // if the file opened okay, write to it:
   if (myFile) {
     Serial.println("Writing to file...");
-    // Write to file
     myFile.println("Testing text 1, 2 ,3...");
-    myFile.close(); // close the file
+    myFile.close();
     Serial.println("Done.");
   } else {
     Serial.println("error opening test.txt");
   }
-  // Reading the file
   myFile = SD.open("gps-data.txt");
   if (myFile) {
     Serial.println("Read:");
