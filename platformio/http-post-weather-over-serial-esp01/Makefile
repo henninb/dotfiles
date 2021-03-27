@@ -9,5 +9,6 @@ usb1:
 	@arduino-cli upload --port /dev/ttyUSB1 --fqbn esp8266:esp8266:generic .
 install:
 	@platformio run -t upload
+@platformio device monitor
 clean:
 	@platformio run -t clean
