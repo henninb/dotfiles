@@ -74,7 +74,10 @@ void loop() {
 }
 
 void displayInfo() {
-    StaticJsonDocument<100> jsonStructure;
+    StaticJsonDocument<200> jsonStructure;
+    /* String date = ""; */
+    String time = "";
+
     myFile = SD.open("gps-data.txt", FILE_WRITE);
     if (myFile) {
       Serial.println("file is open for writting...");
@@ -88,18 +91,9 @@ void displayInfo() {
     delay(1000);
     digitalWrite(ledPin, LOW);
     delay(1000);
-    /* String location = ""; */
     jsonStructure["latitude"] = String(gps.location.lat(), 6);
     jsonStructure["longitude"] = String(gps.location.lng(), 6);
-    /* location = location + "Latitude: " + String(gps.location.lat(), 6) + " \r\n"; */
-    /* location = location + "Longitude: " + String(gps.location.lng(), 6)"; */
-    /* location = location + "Altitude: " + String(gps.altitude.meters(), 6); */
     Serial.println("found long and lat.");
-    /* if( myFile ) { */
-    /*   /1* myFile.println(location); *1/ */
-    /* } else { */
-    /*   Serial.println("cannot write to file"); */
-    /* } */
   } else {
     Serial.println("Location data is not vaild from the gps.");
     digitalWrite(ledPin, HIGH);
@@ -113,30 +107,34 @@ void displayInfo() {
   }
 
   if (gps.date.isValid()) {
-    String date = "";
-    date = String(gps.date.year()) + "-";
-    date = date + String(gps.date.month()) + "-";
-    date = date + String(gps.date.day());
-    Serial.println(date);
-    jsonStructure["date"] = date;
-    /* if( myFile ) { */
-    /*   myFile.println(date); */
-    /* } else { */
-    /*   Serial.println("cannot write to file"); */
-    /* } */
+    int month = gps.date.month();
+    int day = gps.date.day();
+    int year = gps.date.year();
+    char now[20] = {0};
+
+    sprintf(now, "%04d-%02d-%02d", year, month, day);
+
+    /* date = String(gps.date.year()) + "-"; */
+    /* date = date + String(gps.date.month()) + "-"; */
+    /* date = date + String(gps.date.day()); */
+    jsonStructure["date"] = now;
   } else {
     Serial.println("Date data is not vaild from the gps.");
   }
 
   if (gps.time.isValid()) {
-    String time = "";
-    time = "" + String(gps.time.hour()) + ":";
-    time = time + String(gps.time.minute()) + ":";
-    time = time + String(gps.time.second());
-    Serial.println(time);
-    jsonStructure["time"] = time;
-  }
-  else {
+    int hour = gps.time.hour();
+    int min = gps.time.minute();
+    int sec = gps.time.second();
+
+    char now[20] = {0};
+
+    sprintf(now, "%02d:%02d:%02d", hour, min, sec);
+    /* time = "" + String(gps.time.hour()) + ":"; */
+    /* time = time + String(gps.time.minute()) + ":"; */
+    /* time = time + String(gps.time.second()); */
+    jsonStructure["time"] = now;
+  } else {
     Serial.println("Time data is not vaild from the gps.");
   }
 
