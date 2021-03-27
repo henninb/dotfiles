@@ -20,8 +20,8 @@ PC2 (TX2) | RX
 void displayInfo();
 
 // Choose two Arduino pins to use for software serial
-int RXPin = PC_3;
-int TXPin = PC_2;
+/* int RXPin = PC_3; */
+/* int TXPin = PC_2; */
 
 int GPSBaud = 9600;
 
@@ -43,7 +43,7 @@ void setup() {
 }
 
 void loop() {
-  Serial.println("start of loop");
+  /* Serial.println("start of loop"); */
   // This sketch displays information every time a new sentence is correctly encoded.
   while (gpsSerial.available() > 0)
     if (gps.encode(gpsSerial.read()))
