@@ -24,6 +24,9 @@ CS      | PA4
 SCK     | PA5
 MISO    | PA6
 MOSI    | PA7
+
+note: the NEO-6M Red LED will blink when it is connecting to a sattilite
+
 */
 
 const int csPin = PA4;
