@@ -5,21 +5,17 @@ SCL=PB6
 
   5V to stm32f103 5V pin
   GND to stm32f103 GND pin
+  if power is external -- need to ensure the ground pin is shared.
 */
-/* #include <LiquidCrystal_I2C.h> */
-/* #include <LiquidCrystalIO.h> */
-/* #include <LiquidCrystal_I2C.h> */
 #include <Arduino.h>
-/* #include <LCDi2c.h> */
-#include <Wire.h>
-#include <LiquidCrystal_I2C.h>
+#include "LiquidCrystal_I2C.h"
 
 #define ledPin PC13
 
 int isPrime( int );
 
-LiquidCrystal_I2C lcd(CF8574_ADDR_A21_A11_A01, 4, 5, 6, 16, 11, 12, 13, 14, POSITIVE); //0x27
-LiquidCrystal_I2C lcd(PCF8574A_ADDR_A21_A11_A01, 4, 5, 6, 16, 11, 12, 13, 14, POSITIVE); //0x3f
+/* LiquidCrystal_I2C lcd(0x27, 16, 2); */
+LiquidCrystal_I2C lcd(0x3f, 16, 2);
 
 int idx = 0;
 
@@ -28,8 +24,10 @@ void setup() {
   while (!Serial);
   Serial.println("setup started...");
   pinMode(ledPin,OUTPUT);
-  lcd.begin(16,2);
+  lcd.begin();
+  /* lcd.backlight(); */
   delay(500);
+  lcd.setBacklight(HIGH);
   /* lcd.noBacklight(); */
   lcd.setCursor(0, 0);
   lcd.clear();

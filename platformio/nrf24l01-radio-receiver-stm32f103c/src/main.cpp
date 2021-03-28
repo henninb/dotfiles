@@ -15,23 +15,19 @@
 #include <SPI.h>
 #include <RF24.h>
 #include <Wire.h>
-#include <LiquidCrystal_I2C.h>
 
 struct WeatherType {
   short temperature;           // 2 bytes
   short temperature_decimal;   // 2 bytes
-  short humidity;        // 2 bytes
-  short humidity_decimal;        // 2 bytes
-  byte id;                // 1 byte
+  short humidity;              // 2 bytes
+  short humidity_decimal;      // 2 bytes
+  byte id;                     // 1 byte
   // Total 9, you can have max 32 bytes here
 };
 
 char payload[10] = {0};
 
 RF24 radio(PB0, PA4); // using pin PA0 for the CE pin, and pin PA4 for the CSN pin
-
-/* LiquidCrystal_I2C lcd(0x27); */
-/* LiquidCrystal_I2C lcd(0x3f); */
 
 WeatherType rxData;
 int consecutiveLoopCount = 0;
@@ -44,18 +40,11 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
   Serial.println("RF24 receiver setup.");
-  /* lcd.begin(); */
-  /* lcd.backlight(); */
-  /* lcd.setCursor(0, 1); */
-  /* lcd.clear(); */
-  /* Wire.begin(); */
 
     // initialize the transceiver on the SPI bus
   if (!radio.begin()) {
     Serial.println("Receiving radio hardware is not responding.");
     while (1) {
-      /* lcd.clear(); */
-      /* lcd.print("hardware issue"); */
       Serial.println("hardware issues");
       delay(1000);
     }
