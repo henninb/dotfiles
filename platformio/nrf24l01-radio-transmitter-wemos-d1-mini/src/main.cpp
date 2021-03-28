@@ -5,12 +5,12 @@
 NRF24L01(YL-105) | wemos-d1-mini
   _____________________________
   VCC            | 5v
-  GND            |       GND
-  CSN            |   D4 (SS)
-  CE             |   D2
-  SCK            |   D5
-  MISO           |   D6
-  MOSI           |   D7
+  GND            | GND
+  CSN            | D8 (SS)
+  CE             | D0
+  SCK            | D5
+  MISO           | D6
+  MOSI           | D7
  */
 
 #include <SPI.h>
@@ -26,7 +26,7 @@ struct WeatherType {
 };
 
 // instantiate an object for the nRF24L01 transceiver
-RF24 radio(D2, D4); // using pin D2 for the CE pin, and pin D4 for the CSN pin
+RF24 radio(D0, D8); // using pin D0 for the CE pin, and pin D8 for the CSN pin
 
 WeatherType myDataTx;
 
