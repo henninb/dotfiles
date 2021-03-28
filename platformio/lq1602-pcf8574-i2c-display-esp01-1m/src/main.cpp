@@ -9,6 +9,7 @@
   SCL    | GPIO2
   5V     | 5V (external)
   GND    | GND
+  note: shard ground is required for external
  */
 
 int isPrime( int );
