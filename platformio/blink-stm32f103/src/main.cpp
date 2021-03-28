@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-#define ledPin PC13 //13
+#define ledPin PC13
 
 void setup() {
   Serial.begin(9600);
