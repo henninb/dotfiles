@@ -1,5 +1,5 @@
 #include <TinyGPS++.h>
-#include <SoftwareSerial.h>
+/* #include <SoftwareSerial.h> */
 
 /*
 FTDI | stm32f103
