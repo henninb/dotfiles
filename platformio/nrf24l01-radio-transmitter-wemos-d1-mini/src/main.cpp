@@ -2,25 +2,16 @@
    //not required however it works
    git@github.com:jaretburkett/RF24-STM.git
 
-NRF24L01(YL-105) wemos-d1-mini
+NRF24L01(YL-105) | wemos-d1-mini
   _____________________________
-  VCC        |       5v
-  GND        |       GND
-  CSN        |   D4 (SS)
-  CE         |   D2
-  SCK        |   D5
-  MISO       |   D6
-  MOSI       |   D7
+  VCC            | 5v
+  GND            |       GND
+  CSN            |   D4 (SS)
+  CE             |   D2
+  SCK            |   D5
+  MISO           |   D6
+  MOSI           |   D7
  */
-
-
-/*
-MISO connects to pin D6 of the NodeMCU
-MOSI connects to pin D7 of the NodeMCU
-SCK connects to pin D5 of the NodeMCU
-CE connects to pin D4 of the NodeMCU
-CSN connects to pin D2 of the NodeMCU
-*/
 
 #include <SPI.h>
 #include <RF24.h>
