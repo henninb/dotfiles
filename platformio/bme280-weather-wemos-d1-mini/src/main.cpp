@@ -7,8 +7,15 @@
 /* void setLocation(); */
 //for Wemos deepSleep -- connect D0 to the reset
 //Reprogram as the ESP is sleeping, disconnect D0 - RST and try again
-//D1 - 5 - SCL
-//D2 - 4 - SDA
+
+/*
+ bme280  | wemos-d1-mini
+ =======================
+  SDA    | D2
+  SCL    | D1
+  5V     | 5V
+  GND    | GND
+ */
 
 //#define WIFI_DELAY 15000 //for testing
 #define USE_SERIAL_PRINT_FLAG 1
@@ -55,7 +62,7 @@ void setup() {
 #endif
 
 #ifdef USE_SERIAL_PRINT_FLAG
-  Serial.println("\nESP8266 Connecting to " + String(ssid));
+  Serial.println("ESP8266 Connecting to " + String(ssid));
   Serial.print("Location: ");
   Serial.println(location);
   Serial.println("API Key: " + String(THINGSPEAK_API_KEY));
