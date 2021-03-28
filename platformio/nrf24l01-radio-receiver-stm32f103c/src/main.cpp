@@ -15,7 +15,7 @@
 #include <SPI.h>
 #include <RF24.h>
 #include <Wire.h>
-/* #include <LiquidCrystal_I2C.h> */
+#include <LiquidCrystal_I2C.h>
 
 struct WeatherType {
   short temperature;           // 2 bytes
@@ -30,8 +30,8 @@ char payload[10] = {0};
 
 RF24 radio(PB0, PA4); // using pin PA0 for the CE pin, and pin PA4 for the CSN pin
 
-//LiquidCrystal_I2C lcd(0x27, 16, 2);
-/* LiquidCrystal_I2C lcd(0x3f, 16, 2); */
+/* LiquidCrystal_I2C lcd(0x27); */
+/* LiquidCrystal_I2C lcd(0x3f); */
 
 WeatherType rxData;
 int consecutiveLoopCount = 0;

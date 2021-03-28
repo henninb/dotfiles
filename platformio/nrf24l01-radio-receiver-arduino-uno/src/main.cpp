@@ -28,8 +28,8 @@ char payload[10] = {0};
 
 RF24 radio(7, 8); // using pin 7 for the CE pin, and pin 8 for the CSN pin
 
-//LiquidCrystal_I2C lcd(0x27, 16, 2);
-LiquidCrystal_I2C lcd(0x3f, 16, 2);
+//LiquidCrystal_I2C lcd(0x27);
+LiquidCrystal_I2C lcd(0x3f2);
 
 /* char receivedPayload[100] = {}; */
 WeatherType rxData;

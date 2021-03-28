@@ -1,8 +1,18 @@
 /*
-  5V to Arduino 5V pin
-  GND to Arduino GND pin
-  CLK to Arduino Analog 5 SCL
-  DAT to Arduino Analog 4 SDA
+I2C1
+SDA – PB7 or PB9
+SCL – PB6 or PB8
+
+SDA=PB7
+SCL=PB6
+
+Maybe you need a PullUp resistor
+
+I2C2
+SDA – PB11
+SCL – PB10
+  5V to stm32f103 5V pin
+  GND to stm32f103 GND pin
 */
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
@@ -14,7 +24,6 @@ int isPrime( int );
   // Set the LCD address to 0x27 for a 16 chars and 2 line display
   //LiquidCrystal_I2C lcd(0x27, 16, 2);
 /* LiquidCrystal_I2C lcd(0x3f, 16, 2); */
-/* LiquidCrystal_I2C lcd(0x27); */
 LiquidCrystal_I2C lcd(0x3f);
 
 int idx = 0;

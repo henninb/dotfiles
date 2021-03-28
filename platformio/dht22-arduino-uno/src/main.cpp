@@ -1,5 +1,7 @@
 #include <Arduino.h>
 #include <DHT.h>
+#include <ArduinoJson.h>
+
 
 /*
   5V to 5V
@@ -28,11 +30,20 @@ void loop() {
     return;
   }
 
-  Serial.print("Humidity: ");
-  Serial.print(humidity);
-  Serial.print(" %\t");
-  Serial.print("Temperature: ");
-  Serial.print(temperature);
-  Serial.println(" *F ");
+  StaticJsonDocument<100> jsonStructure;
+  jsonStructure["humidity"] = humidity;
+  jsonStructure["temperature"] = temperature;
+  String payload;
+  serializeJson(jsonStructure, payload);
+  Serial.print("Payload: ");
+  Serial.println(payload);
+
+
+  /* Serial.print("Humidity: "); */
+  /* Serial.print(humidity); */
+  /* Serial.print(" %\t"); */
+  /* Serial.print("Temperature: "); */
+  /* Serial.print(temperature); */
+  /* Serial.println(" *F "); */
 
 }

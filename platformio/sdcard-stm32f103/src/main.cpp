@@ -1,7 +1,8 @@
-#include <Arduino.h>
+/* #include <Arduino.h> */
 #include <SD.h>
-#include <Wire.h>
-#include <SPI.h>
+#include <ArduinoJson.h>
+/* #include <Wire.h> */
+/* #include <SPI.h> */
 
 /*
 FTDI | stm32f103
@@ -43,11 +44,21 @@ void setup() {
   // if the file opened okay, write to it:
   if (myFile) {
     Serial.println("Writing to file...");
-    myFile.println("Testing text 1, 2 ,3...");
+
+    StaticJsonDocument<100> jsonStructure;
+    jsonStructure["humidity"] = 1.1;
+    jsonStructure["temperature"] = 2.2;
+    String payload;
+    serializeJson(jsonStructure, payload);
+    Serial.print("Payload: ");
+    Serial.println(payload);
+    myFile.println(payload);
+
+    /* myFile.println("Testing text 1, 2 ,3..."); */
     myFile.close();
     Serial.println("Done.");
   } else {
-    Serial.println("error opening test.txt");
+    Serial.println("error opening file");
   }
   myFile = SD.open("gps-data.txt");
   if (myFile) {

@@ -1,15 +1,14 @@
+#include <Arduino.h>
 #include <DHT.h>
 #include <ArduinoJson.h>
-
-#define USE_FAHRENHEIT true
 
 /*
   5V to 5V
   GND to GND
-  Data to Pin PA1
+  Data to Pin 2
 */
 
-DHT dht(PA1, DHT22);
+DHT dht(2, DHT22);
 
 void setup() {
   Serial.begin(9600);
@@ -23,7 +22,7 @@ void loop() {
 
   // Reading temperature or humidity takes about 250 milliseconds!
   float humidity = dht.readHumidity();
-  float temperature = dht.readTemperature(USE_FAHRENHEIT);
+  float temperature = dht.readTemperature(true);
 
   if (isnan(humidity) || isnan(temperature)) {
     Serial.println("Failed to read from DHT sensor!");
@@ -37,6 +36,7 @@ void loop() {
   serializeJson(jsonStructure, payload);
   Serial.print("Payload: ");
   Serial.println(payload);
+
 
   /* Serial.print("Humidity: "); */
   /* Serial.print(humidity); */

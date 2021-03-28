@@ -4,6 +4,14 @@
  - SCL
  - SDA
 
+I2C1
+SDA – PB7 or PB9
+SCL – PB6 or PB8
+
+I2C2
+SDA – PB11
+SCL – PB10
+
   5V to 5V ??
   GND to GND
 */
