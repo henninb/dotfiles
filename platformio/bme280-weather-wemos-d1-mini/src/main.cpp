@@ -1,7 +1,7 @@
 #include <ESP8266WiFi.h>
 #include <DHT.h>
 #include <SparkFunBME280.h>
-#include <Wire.h>
+/* #include <Wire.h> */
 #include "config.h"
 
 /* void setLocation(); */
