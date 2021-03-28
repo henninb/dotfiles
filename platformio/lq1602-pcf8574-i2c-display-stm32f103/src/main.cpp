@@ -1,71 +1,64 @@
 /*
 I2C1
-SDA – PB7 or PB9
-SCL – PB6 or PB8
-
 SDA=PB7
 SCL=PB6
 
-Maybe you need a PullUp resistor
-
-I2C2
-SDA – PB11
-SCL – PB10
   5V to stm32f103 5V pin
   GND to stm32f103 GND pin
 */
-#include <Wire.h>
+/* #include <LiquidCrystal_I2C.h> */
+/* #include <LiquidCrystalIO.h> */
 #include <LiquidCrystal_I2C.h>
-//#include <TinyWireM.h>
-//#include <USI_TWI_Master.h>
+
+#define ledPin PC13
 
 int isPrime( int );
 
-  // Set the LCD address to 0x27 for a 16 chars and 2 line display
-  //LiquidCrystal_I2C lcd(0x27, 16, 2);
-/* LiquidCrystal_I2C lcd(0x3f, 16, 2); */
+/* LiquidCrystal_I2C lcd(0x27); */
 LiquidCrystal_I2C lcd(0x3f);
+/* LiquidCrystal_I2C lcd(0x3f, 16, 2); */
 
 int idx = 0;
 
 void setup() {
   Serial.begin(9600);
   while (!Serial);
-
-  //Scanner does not seem to work to discover the device
-  //
-  //Serial.println("I2C Scanner");
-  //scanI2c();
-
+  Serial.println("setup started...");
+  pinMode(ledPin,OUTPUT);
   lcd.begin(16, 2);
-  lcd.backlight();
-  lcd.setCursor(0, 1);
+  /* lcd.backlight(); */
+  delay(500);
+  /* lcd.noBacklight(); */
+  lcd.setCursor(0, 0);
   lcd.clear();
-  Wire.begin();
+  lcd.print("Hello, world!");
   delay(2000);
+  Serial.println("setup completed...");
 }
 
 void loop() {
   idx++;
-  String counter = String(idx);
-  lcd.setCursor(0, 1);
+  /* lcd.backlight(); */
+  String message = String(idx);
+  lcd.setCursor(0, 0);
 
   if( isPrime(idx) == 1 ) {
-    counter.concat(" is prime");
+    message.concat(" is prime");
     lcd.clear();
-    lcd.print(counter);
-    //scrollInFromLeft(0, counter);
-    Serial.println(counter);
-
-    delay(5000);
+    /* lcd.backlight(); */
+    lcd.print(message);
+    Serial.println(message);
   } else {
-    counter.concat(" NOT prime");
+    message.concat(" NOT prime");
     lcd.clear();
-    lcd.print(counter);
-    //scrollInFromLeft(1, "is not prime");
-    Serial.println(counter);
-    delay(500);
+    lcd.print(message);
+    Serial.println(message);
   }
+  /* lcd.noBacklight(); */
+  digitalWrite(ledPin, HIGH);
+  delay(2000);
+  digitalWrite(ledPin, LOW);
+  delay(2000);
 }
 
 int isPrime(int number) {
@@ -76,79 +69,4 @@ int isPrime(int number) {
         }
     }
     return 1;
-}
-
-void scrollInFromRight (int line, char str1[]) {
-  /* int i = strlen(str1); */
-  int k = 0;
-  int j = 0;
-
-  for (j = 16; j >= 0; j--) {
-
-    lcd.setCursor(0, line);
-
-    for (k = 0; k <= 15; k++) {
-      lcd.print(" "); // Clear line
-    }
-
-    lcd.setCursor(j, line);
-    lcd.print(str1);
-    delay(350);
-  }
-}
-
-void scrollInFromLeft( int line, char str1[] ) {
-  int i = 40 - strlen(str1);
-  int k = 0;
-  int j = 0;
-
-  line = line - 1;
-
-  for( j = i; j <= i + 16; j++ ) {
-    for ( k = 0; k <= 15; k++ ) {
-      lcd.print(" ");
-    }
-    lcd.setCursor(j, line);
-    lcd.print(str1);
-    delay(350);
-  }
-}
-
-// is not working as of 3/23/2021
-void scanI2c() {
-  /* byte error; */
-  /* byte address = 0; */
-  int nDevices = 0;
-
-  Serial.println("Scanning...");
-  delay(5000);
-
-  for (byte address = 1; address < 127; ++address) {
-    Wire.beginTransmission(address);
-    byte error = Wire.endTransmission();
-
-    if (error == 0) {
-      Serial.print("I2C device found at address 0x");
-      if (address < 16) {
-        Serial.print("0");
-      }
-      Serial.print(address, HEX);
-      Serial.println("");
-
-      ++nDevices;
-    } else if (error == 4) {
-      Serial.print("Unknown error at address 0x");
-      if (address < 16) {
-        Serial.print("0");
-      }
-      Serial.println(address, HEX);
-    }
-  }
-  if (nDevices == 0) {
-    Serial.println("No I2C devices found");
-  } else {
-    Serial.println("I2C scan completed.");
-  }
-  Serial.println("");
-
 }
