@@ -8,14 +8,19 @@ SCL=PB6
 */
 /* #include <LiquidCrystal_I2C.h> */
 /* #include <LiquidCrystalIO.h> */
-#include <LiquidCrystal_I2C.h>
+/* #include <LiquidCrystal_I2C.h> */
+#include <Arduino.h>
+/* #include <LiquidCrystal.h> */
+#include "LiquidCrystal_I2C.h"
+/* #include <Wire.h> */
 
 #define ledPin PC13
 
 int isPrime( int );
 
 /* LiquidCrystal_I2C lcd(0x27); */
-LiquidCrystal_I2C lcd(0x3f);
+/* LiquidCrystal_I2C lcd(0x3f); */
+LiquidCrystal_I2C lcd(0x3f, 16, 2);
 /* LiquidCrystal_I2C lcd(0x3f, 16, 2); */
 
 int idx = 0;
@@ -25,13 +30,13 @@ void setup() {
   while (!Serial);
   Serial.println("setup started...");
   pinMode(ledPin,OUTPUT);
-  lcd.begin(16, 2);
+  lcd.begin();
   /* lcd.backlight(); */
   delay(500);
+  lcd.setBacklight(HIGH);
   /* lcd.noBacklight(); */
   lcd.setCursor(0, 0);
   lcd.clear();
-  lcd.print("Hello, world!");
   delay(2000);
   Serial.println("setup completed...");
 }
