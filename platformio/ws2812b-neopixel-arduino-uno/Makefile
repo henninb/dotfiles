@@ -1,5 +1,5 @@
-all: platformio
-platformio:
+all: build
+build:
 	@platformio run
 arduino-cli:
 	@arduino-cli compile --fqbn arduino:avr:uno .
