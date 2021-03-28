@@ -1,6 +1,11 @@
-#include <Arduino.h>
 #include <Wire.h>
 
+/*
+  SDA=PB7
+  SCL=PB6
+  5V = 5V
+  GND = GND
+ */
 void setup() {
   Wire.begin();
 
@@ -41,5 +46,5 @@ void loop() {
     Serial.println("I2C scan completed.");
   }
   Serial.println("");
-  delay(5000); // Wait 5 seconds for next scan
+  delay(5000);
 }
