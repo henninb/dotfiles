@@ -1,14 +1,14 @@
+#include <Arduino.h>
 #include <Wire.h>
 
 /*
- pcf8574 | stm32f103
- ====================
-  SDA    | PB7
-  SCL    | PB6
-  5V     |  5V
+ pcf8574 | wemos-d1-mini
+ =======================
+  SDA    | D2
+  SCL    | D1
+  5V     | 5V
   GND    | GND
  */
-
 void setup() {
   Wire.begin();
 

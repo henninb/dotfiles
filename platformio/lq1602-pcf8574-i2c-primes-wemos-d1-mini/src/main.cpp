@@ -2,19 +2,13 @@
 #include "LiquidCrystal_I2C.h"
 
 /*
- pcf8574 | stm32f103
+ pcf8574 | wemos-d1-mini
  =======================
-  SDA    | PB7
-  SCL    | PB6
+  SDA    | D2
+  SCL    | D1
   5V     | 5V
   GND    | GND
-  if power is external -- need to ensure the ground pin is shared.
-
-  5V to stm32f103 5V pin
-  GND to stm32f103 GND pin
  */
-
-#define ledPin PC13
 
 int isPrime( int );
 
@@ -27,7 +21,7 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
   Serial.println("setup started...");
-  pinMode(ledPin,OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
   lcd.begin();
   /* lcd.backlight(); */
   delay(500);
@@ -58,9 +52,9 @@ void loop() {
     Serial.println(message);
   }
   /* lcd.noBacklight(); */
-  digitalWrite(ledPin, HIGH);
+  digitalWrite(LED_BUILTIN, HIGH);
   delay(2000);
-  digitalWrite(ledPin, LOW);
+  digitalWrite(LED_BUILTIN, LOW);
   delay(2000);
 }
 

@@ -1,25 +1,20 @@
 #include <Arduino.h>
-#include "LiquidCrystal_I2C.h"
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
 
 /*
- pcf8574 | stm32f103
+ pcf8574 | wemos-d1-mini
  =======================
-  SDA    | PB7
-  SCL    | PB6
+  SDA    | D2
+  SCL    | D1
   5V     | 5V
   GND    | GND
-  if power is external -- need to ensure the ground pin is shared.
-
-  5V to stm32f103 5V pin
-  GND to stm32f103 GND pin
  */
-
-#define ledPin PC13
 
 int isPrime( int );
 
-/* LiquidCrystal_I2C lcd(0x27, 16, 2); */
-LiquidCrystal_I2C lcd(0x3f, 16, 2);
+/* LiquidCrystal_I2C lcd(CF8574_ADDR_A21_A11_A01, 4, 5, 6, 16, 11, 12, 13, 14, POSITIVE); //0x27 */
+LiquidCrystal_I2C lcd(PCF8574A_ADDR_A21_A11_A01, 4, 5, 6, 16, 11, 12, 13, 14, POSITIVE); //0x3f
 
 int idx = 0;
 
@@ -27,11 +22,9 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
   Serial.println("setup started...");
-  pinMode(ledPin,OUTPUT);
-  lcd.begin();
-  /* lcd.backlight(); */
+  pinMode(LED_BUILTIN,OUTPUT);
+  lcd.begin(16,2);
   delay(500);
-  lcd.setBacklight(HIGH);
   /* lcd.noBacklight(); */
   lcd.setCursor(0, 0);
   lcd.clear();
@@ -58,9 +51,9 @@ void loop() {
     Serial.println(message);
   }
   /* lcd.noBacklight(); */
-  digitalWrite(ledPin, HIGH);
+  digitalWrite(LED_BUILTIN, HIGH);
   delay(2000);
-  digitalWrite(ledPin, LOW);
+  digitalWrite(LED_BUILTIN, LOW);
   delay(2000);
 }
 
