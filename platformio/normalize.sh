@@ -14,6 +14,8 @@ for project in $projects; do
   git add -f "$project/test/.save"
   cp .gitignore "$project"
   git add -f "$project/.gitignore"
+  touch "$project/readme.md"
+  git add -f "$project/readme.md"
 done
 
 exit 0
