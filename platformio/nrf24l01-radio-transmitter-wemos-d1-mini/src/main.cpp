@@ -7,10 +7,10 @@ NRF24L01(YL-105) | wemos-d1-mini
   VCC            | 5v
   GND            | GND
   CSN            | D8 (SS)
-  CE             | D0
+  CE             | D2
   SCK            | D5
-  MISO           | D6
-  MOSI           | D7
+  MISO           | D7
+  MOSI           | D6
  */
 
 #include <SPI.h>
@@ -26,7 +26,11 @@ struct WeatherType {
 };
 
 // instantiate an object for the nRF24L01 transceiver
-RF24 radio(D0, D8); // using pin D0 for the CE pin, and pin D8 for the CSN pin
+/* #define CE_PIN   0 */
+/* #define CSN_PIN 16 */
+
+/* RF24 radio(CE_PIN, CSN_PIN); */
+RF24 radio(D2, D8); // D2 = CE, D8 = CSN
 
 WeatherType myDataTx;
 
@@ -41,6 +45,8 @@ void setup() {
     // some boards need to wait to ensure access to serial over USB
   }
   Serial.println("RF24 transmitter setup.");
+  Serial.println(D0);
+  Serial.println(D8);
 
   // initialize the transceiver on the SPI bus
   if (!radio.begin()) {
