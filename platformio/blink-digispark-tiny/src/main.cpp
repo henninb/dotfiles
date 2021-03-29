@@ -1,5 +1,10 @@
 #include <Arduino.h>
-/* #include <SoftwareSerial.h> */
+/* #include <TinyDebugSerial.h> */
+#include <SoftSerial.h>
+
+#ifdef __AVR__
+  #include <avr/power.h>
+#endif
 /* #include <TinyWireM.h> */
 /* #include <ATtinySerialOut.h> */
 // ***
