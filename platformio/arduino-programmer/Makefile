@@ -13,6 +13,6 @@ install-usbasp:
 	@arduino-cli upload -P usbasp --fqbn arduino:avr:uno .
 install:
 	@platformio run -t upload
-	@platformio device monitor
+# @platformio device monitor
 clean:
 	@platformio run -t clean

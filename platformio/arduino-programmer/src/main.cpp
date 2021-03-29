@@ -36,7 +36,7 @@
 // 7: Programming - In communication with the slave
 //
 
-#include "Arduino.h"
+#include <Arduino.h>
 #undef SERIAL
 
 
@@ -275,6 +275,8 @@ void reset_target(bool reset) {
   digitalWrite(RESET, ((reset && rst_active_high) || (!reset && !rst_active_high)) ? HIGH : LOW);
 }
 
+void avrisp();
+
 void loop(void) {
   // is pmode active?
   if (pmode) {
@@ -478,17 +480,6 @@ unsigned int current_page() {
 }
 
 
-void write_flash(int length) {
-  fill(length);
-  if (CRC_EOP == getch()) {
-    SERIAL.print((char) STK_INSYNC);
-    SERIAL.print((char) write_flash_pages(length));
-  } else {
-    error++;
-    SERIAL.print((char) STK_NOSYNC);
-  }
-}
-
 uint8_t write_flash_pages(int length) {
   int x = 0;
   unsigned int page = current_page();
@@ -507,6 +498,32 @@ uint8_t write_flash_pages(int length) {
   return STK_OK;
 }
 
+void write_flash(int length) {
+  fill(length);
+  if (CRC_EOP == getch()) {
+    SERIAL.print((char) STK_INSYNC);
+    SERIAL.print((char) write_flash_pages(length));
+  } else {
+    error++;
+    SERIAL.print((char) STK_NOSYNC);
+  }
+}
+
+
+// write (length) bytes, (start) is a byte address
+uint8_t write_eeprom_chunk(unsigned int start, unsigned int length) {
+  // this writes byte-by-byte, page writing may be faster (4 bytes at a time)
+  fill(length);
+  prog_lamp(LOW);
+  for (unsigned int x = 0; x < length; x++) {
+    unsigned int addr = start + x;
+    spi_transaction(0xC0, (addr >> 8) & 0xFF, addr & 0xFF, buff[x]);
+    delay(45);
+  }
+  prog_lamp(HIGH);
+  return STK_OK;
+}
+
 #define EECHUNK (32)
 uint8_t write_eeprom(unsigned int length) {
   // here is a word address, get the byte address
@@ -522,19 +539,6 @@ uint8_t write_eeprom(unsigned int length) {
     remaining -= EECHUNK;
   }
   write_eeprom_chunk(start, remaining);
-  return STK_OK;
-}
-// write (length) bytes, (start) is a byte address
-uint8_t write_eeprom_chunk(unsigned int start, unsigned int length) {
-  // this writes byte-by-byte, page writing may be faster (4 bytes at a time)
-  fill(length);
-  prog_lamp(LOW);
-  for (unsigned int x = 0; x < length; x++) {
-    unsigned int addr = start + x;
-    spi_transaction(0xC0, (addr >> 8) & 0xFF, addr & 0xFF, buff[x]);
-    delay(45);
-  }
-  prog_lamp(HIGH);
   return STK_OK;
 }
 
