@@ -1,4 +1,17 @@
 #include <Arduino.h>
+/* #include <SoftwareSerial.h> */
+#include <TinyWireM.h>
+#include <ATtinySerialOut.h>
+// ***
+// *** Define the RX and TX pins. Choose any two
+// *** pins that are unused. Try to avoid D0 (pin 5)
+// *** and D2 (pin 7) if you plan to use I2C.
+// ***
+#define RX    3   // *** D3, Pin 2
+#define TX    4   // *** D4, Pin 3
+
+
+/* SoftwareSerial Serial(RX, TX); */
 
 /*
  FTDI    | attiny85
