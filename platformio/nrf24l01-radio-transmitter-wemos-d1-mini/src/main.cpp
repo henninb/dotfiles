@@ -9,11 +9,13 @@ NRF24L01(YL-105) | wemos-d1-mini
   CSN            | D8 (SS)
   CE             | D2
   SCK            | D5
-  MISO           | D7
-  MOSI           | D6
+  MISO           | D7 (MOSI)
+  MOSI           | D6 (MIS0)
+
+  NOTE: MOSI is flipped with MISO
  */
 
-#include <SPI.h>
+/* #include <SPI.h> */
 #include <RF24.h>
 
 struct WeatherType {

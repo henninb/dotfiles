@@ -10,6 +10,8 @@
   SCK        |   Pin13         | Pin52         |     A5 SCK1   (PA5) 3.3v
   MISO       |   Pin11 (MOSI)  | Pin50         |     A7 MISI1  (PA7) 3.3v
   MOSI       |   Pin12 (MOS0)  | Pin51         |     A6 MOSO1  (PA6) 3.3v
+
+  NOTE: MOSI is flipped with MISO
  */
 
 #include <SPI.h>
