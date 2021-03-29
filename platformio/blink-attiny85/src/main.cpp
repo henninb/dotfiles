@@ -1,18 +1,23 @@
 #include <Arduino.h>
 #include <SoftwareSerial.h>
 
-const int Rx = 3; // this is physical pin 2
-
-const int Tx = 4; // this is physical pin 3
+const int Rx = 3;
+const int Tx = 4;
 
 SoftwareSerial mySerial(Rx, Tx);
 /*
- Arduino    | attiny85
- 5V      | 5V
- GND     | GND
- RX      | TX (PB3)
- TX      | RX (PB4)
- DTR     | Reset (PB5)
+ Arduino | attiny85
+ ==================
+ 5V            | 5V
+ GND           | GND
+ Pin 13 (SCK)  | Pin 2
+ Pin 12 (MISO) | Pin 1
+ Pin 11 (MOSI) | Pin 0
+ Pin 10 (SS)   | Reset
+
+ LED from ground to pin 0
+ load arduino programmer software on the arduino
+note: 10uF cap, negative to ground and positive to reset
  */
 
 #define DEBUG 1
