@@ -6,6 +6,8 @@ const int Tx = 4;
 
 SoftwareSerial mySerial(Rx, Tx);
 /*
+ Programming
+
  Arduino | attiny85
  ==================
  5V            | 5V
@@ -17,7 +19,7 @@ SoftwareSerial mySerial(Rx, Tx);
 
  LED from ground to pin 0
  load arduino programmer software on the arduino
-note: 10uF cap, negative to ground and positive to reset
+note: 10uF cap, negative to ground and positive to reset on the arduino
  */
 
 #define DEBUG 1
