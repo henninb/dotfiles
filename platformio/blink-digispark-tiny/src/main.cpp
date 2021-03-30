@@ -5,6 +5,11 @@
 #ifdef __AVR__
   #include <avr/power.h>
 #endif
+
+#define DEBUG_TX_RX_PIN 2
+
+SoftSerial mySerial(DEBUG_TX_RX_PIN, DEBUG_TX_RX_PIN, true);
+
 /* #include <TinyWireM.h> */
 /* #include <ATtinySerialOut.h> */
 // ***
@@ -20,21 +25,21 @@
 
 #define DEBUG 1
 void setup() {
-  Serial.begin(9600);
-  while( !Serial);
+  mySerial.begin(9600);
+  while( !mySerial);
 #ifdef DEBUG
-  Serial.println("setup started...");
+  mySerial.println("setup started...");
 #endif
 
   pinMode(1, OUTPUT);
   delay(1000);
   #ifdef DEBUG
-  Serial.println("setup completed...");
+  mySerial.println("setup completed...");
 #endif
 }
 
 void loop() {
-  Serial.println("Hello from attiny85");
+  mySerial.println("Hello from attiny85 digispark");
   digitalWrite(1, HIGH);
   delay(1000);
   digitalWrite(1, LOW);
