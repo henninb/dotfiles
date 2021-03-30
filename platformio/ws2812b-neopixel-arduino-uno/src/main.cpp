@@ -28,16 +28,16 @@ void loop() {
   for( unsigned int idx = 0; idx < pixelCount; idx++ ) {
     pixels.setPixelColor(idx, pixels.Color(200,0,0)); // red
     pixels.show();
-    delay(1000);
+    delay(250);
   }
 
   pixels.clear();
 
   pixels.show();
   for( unsigned int idx = 0; idx < pixelCount; idx++ ) {
-    pixels.setPixelColor(idx, pixels.Color(255,255,102)); // yellow
+    pixels.setPixelColor(idx, pixels.Color(255,255,0)); // yellow
     pixels.show();
-    delay(1000);
+    delay(250);
   }
 
   pixels.clear();
@@ -46,7 +46,7 @@ void loop() {
   for( unsigned int idx = 0; idx < pixelCount; idx++ ) {
     pixels.setPixelColor(idx, pixels.Color(0,150,0)); // green
     pixels.show();
-    delay(1000);
+    delay(250);
   }
 
   pixels.clear();
