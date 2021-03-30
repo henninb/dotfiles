@@ -3,8 +3,6 @@
   #include <avr/power.h>
 #endif
 
-//ws2812b
-
 #define PIN 6
 
 #define pixelCount 16
@@ -13,7 +11,6 @@
 // Note that for older NeoPixel strips you might need to change the third parameter--see the strandtest
 // example for more information on possible values.
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(pixelCount, PIN, NEO_GRB + NEO_KHZ800);
-
 
 void setup() {
   Serial.begin(9600);
@@ -25,7 +22,7 @@ void setup() {
 
 void loop() {
   pixels.show();
-  for( unsigned int idx = 0; idx < pixelCount; idx++ ) {
+  for( unsigned int idx = 0; idx < pixels.numPixels(); idx++ ) {
     pixels.setPixelColor(idx, pixels.Color(200,0,0)); // red
     pixels.show();
     delay(250);
@@ -34,7 +31,7 @@ void loop() {
   pixels.clear();
 
   pixels.show();
-  for( unsigned int idx = 0; idx < pixelCount; idx++ ) {
+  for( unsigned int idx = 0; idx < pixels.numPixels(); idx++ ) {
     pixels.setPixelColor(idx, pixels.Color(255,255,0)); // yellow
     pixels.show();
     delay(250);
@@ -43,7 +40,7 @@ void loop() {
   pixels.clear();
 
   pixels.show();
-  for( unsigned int idx = 0; idx < pixelCount; idx++ ) {
+  for( unsigned int idx = 0; idx < pixels.numPixels(); idx++ ) {
     pixels.setPixelColor(idx, pixels.Color(0,150,0)); // green
     pixels.show();
     delay(250);

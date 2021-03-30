@@ -5,12 +5,12 @@
 
 #define PIN 0
 
-#define NUMPIXELS 16
+#define pixelCount 16
 
 // When we setup the NeoPixel library, we tell it how many pixels, and which pin to use to send signals.
 // Note that for older NeoPixel strips you might need to change the third parameter--see the strandtest
 // example for more information on possible values.
-Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(pixelCount, PIN, NEO_GRB + NEO_KHZ800);
 
 
 void setup() {
@@ -19,16 +19,34 @@ void setup() {
 /* #endif */
   // End of trinket special code
 
-  pixels.begin(); // This initializes the NeoPixel library.
+  pixels.begin();
 }
 
 void loop() {
-  for( unsigned int i = 0; i < NUMPIXELS; i++ ) {
-
-    // pixels.Color takes RGB values, from 0,0,0 up to 255,255,255
-    pixels.setPixelColor(i, pixels.Color(0,150,0)); // Moderately bright green color.
-
+  pixels.show();
+  for( unsigned int idx = 0; idx < pixels.numPixels(); idx++ ) {
+    pixels.setPixelColor(idx, pixels.Color(200,0,0)); // red
     pixels.show();
-    delay(1000);
+    delay(250);
   }
+
+  pixels.clear();
+
+  pixels.show();
+  for( unsigned int idx = 0; idx < pixels.numPixels(); idx++ ) {
+    pixels.setPixelColor(idx, pixels.Color(255,255,0)); // yellow
+    pixels.show();
+    delay(250);
+  }
+
+  pixels.clear();
+
+  pixels.show();
+  for( unsigned int idx = 0; idx < pixels.numPixels(); idx++ ) {
+    pixels.setPixelColor(idx, pixels.Color(0,150,0)); // green
+    pixels.show();
+    delay(250);
+  }
+
+  pixels.clear();
 }
