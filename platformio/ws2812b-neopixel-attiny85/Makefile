@@ -16,3 +16,5 @@ install:
 	@platformio device monitor
 clean:
 	@platformio run -t clean
+bootloader:
+	@platformio run -t uploadboot
