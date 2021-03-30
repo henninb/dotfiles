@@ -1,10 +1,13 @@
 /*
-I2C1
-SDA=PB7
-SCL=PB6
+I2C
 
-  5V to stm32f103 5V pin
-  GND to stm32f103 GND pin
+PCF8574 | attiny85
+==================
+SDA     | Pin PB0
+SCL     | Pin PB2
+5V      | 5V
+GND     | GND
+
 Note: no need for external power on the lcd display
 */
 #include <Arduino.h>
