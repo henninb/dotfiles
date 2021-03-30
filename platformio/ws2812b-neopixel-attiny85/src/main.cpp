@@ -3,7 +3,7 @@
   #include <avr/power.h>
 #endif
 
-#define PIN 3
+#define PIN PB1
 
 #define pixelCount 16
 

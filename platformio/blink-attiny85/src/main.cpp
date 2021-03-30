@@ -24,10 +24,13 @@ note: 10uF cap, negative to ground and positive to reset on the arduino
 
 #define DEBUG 1
 void setup() {
+  Serial.begin(9600);
+  while( !Serial);
   mySerial.begin(9600);
   while( !mySerial);
 #ifdef DEBUG
   mySerial.println("setup started...");
+  Serial.println("setup started...");
 #endif
 
   pinMode(0, OUTPUT);
@@ -39,6 +42,7 @@ void setup() {
 
 // the loop function runs over and over again forever
 void loop() {
+  Serial.println("Hello from attiny85");
   mySerial.println("Hello from attiny85");
   digitalWrite(0, HIGH);
   delay(250);

@@ -17,4 +17,7 @@ install:
 clean:
 	@platformio run -t clean
 bootloader:
-	@platformio run -t uploadboot
+	@echo avrdude -pattiny85 -cstk500v1 -P/dev/ttyUSB0 -b19200 -e -Uefuse:w:0xff:m -Uhfuse:w:0xdf:m -Ulfuse:w:0xf1:m
+	@platformio run -t fuses
+	# @avrdude -pattiny85 -cstk500v1 -P/dev/ttyUSB0 -b19200
+	# @avrdude -pattiny85 -cstk500v1 -P/dev/ttyUSB0 -b19200 -Uflash:w:./.pio/build/attiny85/firmware.hex:i
