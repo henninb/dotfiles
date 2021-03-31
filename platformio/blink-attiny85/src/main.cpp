@@ -20,6 +20,9 @@ SoftwareSerial mySerial(Rx, Tx);
  LED from ground to pin 0
  load arduino programmer software on the arduino
 note: 10uF cap, negative to ground and positive to reset on the arduino
+
+
+0.1uF ceramic cap between vcc and gnd of the tiny 85 It is required for proper operation.
  */
 
 #define DEBUG 1

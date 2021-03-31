@@ -16,10 +16,8 @@ Note: no need for external power on the lcd display
 
 int isPrime( int );
 
-/* LiquidCrystal_I2C lcd(CF8574_ADDR_A21_A11_A01, 4, 5, 6, 16, 11, 12, 13, 14, POSITIVE); //0x27 */
-/* LiquidCrystal_I2C lcd(PCF8574A_ADDR_A21_A11_A01, 4, 5, 6, 16, 11, 12, 13, 14, POSITIVE); //0x3f */
-
-LiquidCrystal_I2C lcd(0x3f,16,2);
+LiquidCrystal_I2C lcd(0x3f, 16, 2);
+/* LiquidCrystal_I2C lcd(0x27, 16, 2); */
 
 int idx = 0;
 
@@ -64,11 +62,11 @@ void loop() {
 }
 
 int isPrime(int number) {
-    int i;
-    for (i=2; i<number; i++) {
-        if (number % i == 0 && i != number) {
-          return 0;
-        }
+  int i;
+  for (i=2; i<number; i++) {
+    if (number % i == 0 && i != number) {
+      return 0;
     }
-    return 1;
+  }
+  return 1;
 }
