@@ -12,18 +12,23 @@ Note: no need for external power on the lcd display
 */
 #include <Arduino.h>
 #include <Wire.h>
-#include <LiquidCrystal_I2C.h>
+#include <TinyLiquidCrystal.h>
+/* #include <LiquidCrystal_I2C.h> */
+#include <TinyWireM.h>
 
 /* #define ledPin PC13 */
 
 int isPrime( int );
 
 /* LiquidCrystal_I2C lcd(CF8574_ADDR_A21_A11_A01, 4, 5, 6, 16, 11, 12, 13, 14, POSITIVE); //0x27 */
-LiquidCrystal_I2C lcd(PCF8574A_ADDR_A21_A11_A01, 4, 5, 6, 16, 11, 12, 13, 14, POSITIVE); //0x3f
+/* LiquidCrystal_I2C lcd(PCF8574A_ADDR_A21_A11_A01, 4, 5, 6, 16, 11, 12, 13, 14, POSITIVE); //0x3f */
+TinyLiquidCrystal lcd(0x3f);
+
 
 int idx = 0;
 
 void setup() {
+  TinyWireM.begin();
   /* Serial.begin(9600); */
   /* while (!Serial); */
   /* Serial.println("setup started..."); */
