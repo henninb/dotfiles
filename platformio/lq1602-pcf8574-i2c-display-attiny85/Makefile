@@ -20,7 +20,12 @@ bootloader-old:
 	@platformio run -t fuses
 	# @avrdude -pattiny85 -cstk500v1 -P/dev/ttyUSB0 -b19200
 	# @avrdude -pattiny85 -cstk500v1 -P/dev/ttyUSB0 -b19200 -Uflash:w:./.pio/build/attiny85/firmware.hex:i
-bootloader-default:
-	@avrdude -pattiny85 -cstk500v1 -P/dev/ttyUSB0 -b19200 -e -Uefuse:w:0xff:m -Uhfuse:w:0xdf:m -Ulfuse:w:0x62:m
 bootloader-test:
 	@avrdude -pattiny85 -cstk500v1 -P/dev/ttyUSB0 -b19200 -e -Uefuse:w:0xfe:m -Uhfuse:w:0xdd:m -Ulfuse:w:0xf1:m
+bootloader-1mhz:
+	@avrdude -pattiny85 -cstk500v1 -P/dev/ttyUSB0 -b19200 -e -Uefuse:w:0xff:m -Uhfuse:w:0xdf:m -Ulfuse:w:0x62:m
+bootloader-8mhz:
+	@avrdude -pattiny85 -cstk500v1 -P/dev/ttyUSB0 -b19200 -e -Uefuse:w:0xff:m -Uhfuse:w:0xdf:m -Ulfuse:w:0xe2:m
+bootloader-16mhz:
+	@avrdude -pattiny85 -cstk500v1 -P/dev/ttyUSB0 -b19200 -e -Uefuse:w:0xff:m -Uhfuse:w:0xdf:m -Ulfuse:w:0xf1:m
+

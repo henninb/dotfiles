@@ -9,6 +9,7 @@ SCL     | Pin PB2
 GND     | GND
 
 Note: no need for external power on the lcd display
+Note: only works at 1mhz and 8mhz clock
 */
 #include <Arduino.h>
 /* #include "LiquidCrystal_I2C.h" */
