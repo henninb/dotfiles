@@ -17,6 +17,7 @@ void setup() {
   while( !Serial);
   Serial.println("setup");
   pixels.begin();
+  pixels.setBrightness(25);
   Serial.println("setup completed...");
 }
 

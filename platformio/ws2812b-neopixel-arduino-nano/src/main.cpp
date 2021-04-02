@@ -3,8 +3,7 @@
   #include <avr/power.h>
 #endif
 
-#define PIN PA1
-
+#define PIN 6
 #define pixelCount 16
 
 // When we setup the NeoPixel library, we tell it how many pixels, and which pin to use to send signals.

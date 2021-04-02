@@ -26,6 +26,7 @@ void setup() {
   mySerial.begin(9600);
 
   pixels.begin();
+  pixels.setBrightness(25);
   pinMode(1, OUTPUT);
 }
 

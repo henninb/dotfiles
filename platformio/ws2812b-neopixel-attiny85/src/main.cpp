@@ -20,6 +20,7 @@ void setup() {
   // End of trinket special code
 
   pixels.begin();
+  pixels.setBrightness(25);
 }
 
 void loop() {
