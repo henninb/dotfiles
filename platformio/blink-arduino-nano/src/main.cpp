@@ -16,9 +16,9 @@ void setup() {
 }
 
 void loop() {
-  Serial.println("Hello from Arduino");
+  Serial.println("Hello from Arduino Nano");
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(5000);
+  delay(1000);
   digitalWrite(LED_BUILTIN, LOW);
-  delay(5000);
+  delay(1000);
 }
