@@ -32,6 +32,7 @@ void setup() {
   while (!Serial);
   pinMode(LED_BUILTIN, OUTPUT);
   WiFi.mode(WIFI_STA);
+  Serial.println("setup complete");
 }
 
 void loop() {
@@ -40,5 +41,4 @@ void loop() {
   delay(1000);
   digitalWrite(LED_BUILTIN, LOW);
   delay(1000);
-  Serial.println(millis() / 1000);
 }

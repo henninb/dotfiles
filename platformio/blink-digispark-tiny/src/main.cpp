@@ -10,6 +10,8 @@ GND  | GND
 RX   | PB2
  */
 
+/* #define ledPin 1 */
+
 #define DEBUG 1
 void setup() {
   Serial.begin(9600);
@@ -17,7 +19,7 @@ void setup() {
   Serial.println("setup started...");
 #endif
 
-  pinMode(1, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
   delay(1000);
   #ifdef DEBUG
   Serial.println("setup completed...");
@@ -26,8 +28,8 @@ void setup() {
 
 void loop() {
   Serial.println("Hello from attiny85 digispark");
-  digitalWrite(1, HIGH);
+  digitalWrite(LED_BUILTIN, HIGH);
   delay(1000);
-  digitalWrite(1, LOW);
+  digitalWrite(LED_BUILTIN, LOW);
   delay(1000);
 }
