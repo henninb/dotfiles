@@ -10,8 +10,8 @@ stm32f103 | ESP01
 GND       | GND
 3.3V      | 3.3V
 3.3V      | CH-PD
-PC3 (RX2) | TX
-PC2 (TX2) | RX
+PA3 (RX2) | TX
+PA2 (TX2) | RX
 
 1000uF capacitor between power and ground (to prevent power issues)
 
@@ -42,9 +42,9 @@ void setup() {
   while (!Serial);
 #ifdef DEBUG
   Serial.println("setup stm32f103...");
-  pinMode(PC13,OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
 #endif
-  Serial2.begin(9600);   //begins serial communication with esp8266 with baud rate 9600 (Change according to your esp8266 module)
+  Serial2.begin(9600);   //begins serial communication with esp8266 at baud rate 9600
   while (!Serial2);
   dht.begin();
   delay(3000);          // Wait 3 seconds for it to stabilize the dht22
@@ -74,9 +74,9 @@ void loop() {
   serializeJson(jsonStructure, payload);
   Serial.print("Payload: ");
   Serial.println(payload);
-  digitalWrite(PC13, HIGH);
+  digitalWrite(LED_BUILTIN, HIGH);
   delay(1000);
-  digitalWrite(PC13, LOW);
+  digitalWrite(LED_BUILTIN, LOW);
   delay(4000);
 
   if ( Serial2.available() ) {
