@@ -16,7 +16,7 @@ void setup() {
 }
 
 void loop() {
-  Serial.println("Hello from Arduino Nano 168");
+  Serial.println("Hello from wavgat Arduino");
   digitalWrite(LED_BUILTIN, HIGH);
   delay(1000);
   digitalWrite(LED_BUILTIN, LOW);
