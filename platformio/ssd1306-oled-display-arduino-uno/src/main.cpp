@@ -324,14 +324,16 @@ void testanimate(const uint8_t *bitmap, uint8_t w, uint8_t h) {
 }
 
 void setup() {
-  Serial.begin(115200);
-
+  Serial.begin(9600);
+  while( !Serial);
+  Serial.println("setup");
   // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
   if(!oled.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
     Serial.println(F("SSD1306 allocation failed"));
     while (true);
   }
 
+  Serial.println("setup started...");
   // Show initial display buffer contents on the screen --
   // the library initializes this with an Adafruit splash screen.
   oled.display();
