@@ -11,6 +11,8 @@ int addr_password = 20;    // password index
 void setup() {
   EEPROM.begin(512);
   Serial.begin(9600);
+  while(!Serial);
+  Serial.println("setup");
 
   int numberOfNetworks = WiFi.scanNetworks();
 
@@ -20,6 +22,7 @@ void setup() {
     }
     EEPROM.commit();
     delay(500);
+    Serial.println("setup complete");
   }
 
   for(int i =0; i<numberOfNetworks; i++){

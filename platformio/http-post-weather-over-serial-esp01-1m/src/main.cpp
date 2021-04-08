@@ -5,13 +5,15 @@
 
 #define DEBUG 1
 
+#define ledBuiltin 2
 /*
  * install ArduinoJson library
  char* serverName = "http://192.168.100.247:8080/weather";
  */
 
 /*
-  ESP12    |  FTDI
+  ESP01    | FTDI
+  ===============
   VCC      | 3.3V
   GND      | GND
   TX       | RX
@@ -20,14 +22,15 @@
   CHPD  - 3.3V
   GPIO15 - GND
   GPIO0  - GND
+  1000 uf capacitor required to smooth out the power
 
 */
 
-const char* ntpServer = "pool.ntp.org";
-const long  gmtOffset_sec = 3600;
-const int   daylightOffset_sec = 3600;
-const float CST = -6.00;
-const int EPOCH_1_1_2019 = 1546300800; //1546300800 =  01/01/2019 @ 12:00am (UTC)
+/* const char* ntpServer = "pool.ntp.org"; */
+/* const long  gmtOffset_sec = 3600; */
+/* const int   daylightOffset_sec = 3600; */
+/* const float CST = -6.00; */
+/* const int EPOCH_1_1_2019 = 1546300800; //1546300800 =  01/01/2019 @ 12:00am (UTC) */
 
 int count = 0;
 
@@ -53,6 +56,7 @@ int idx = 0;
 String readInput() {
   String inData = "";
   int charCount = 0;
+  Serial.println("");
   Serial.println("readInput called.");
   while (Serial.available() > 0) {
     charCount++;
@@ -81,7 +85,7 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
   Serial.println("ESP01 setup...");
-  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(ledBuiltin, OUTPUT);
 
   WiFi.begin(ssid, password);
   Serial.println("Connecting to WiFi.");
@@ -92,6 +96,10 @@ void setup() {
   Serial.println("");
   Serial.print("Connected to WiFi network with IP Address: ");
   Serial.println(WiFi.localIP());
+  digitalWrite(ledBuiltin, HIGH);
+  delay(1000);
+  digitalWrite(ledBuiltin, LOW);
+  delay(1000);
   Serial.println("ESP01 setup completed.");
 }
 
@@ -106,10 +114,13 @@ void loop() {
   } while ( payload.length() == 0 );
   Serial.println("");
 
+  Serial.println("preparing to send data.");
   if(WiFi.status() == WL_CONNECTED) {
     HTTPClient http;
+    WiFiClient client;
+    http.begin(client, serverName);
 
-    http.begin(serverName);
+    /* http.begin(serverName); */
     http.addHeader("Content-Type", "application/json");
     int httpResponseCode = http.POST(payload);
     http.end();
