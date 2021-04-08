@@ -6,6 +6,8 @@ board_build.ldscript = eagle.flash.4m.ld
 
 https://www.instructables.com/Using-ESP8266-SPIFFS/
 
+esptool.py -p /dev/ttyUSB0 flash_id
+
 python esptool.py -p /dev/ttyUSB0 flash_id
 /*
   Operational Mode (6 wires)
