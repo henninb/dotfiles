@@ -1,7 +1,12 @@
 ## flash size
 generic.menu.eesz.4M2M=4MB (FS:2MB OTA:~1019KB)
 
+[env:myenv]
+board_build.ldscript = eagle.flash.4m.ld
 
+https://www.instructables.com/Using-ESP8266-SPIFFS/
+
+python esptool.py -p /dev/ttyUSB0 flash_id
 /*
   Operational Mode (6 wires)
   ESP01    | FTDI
