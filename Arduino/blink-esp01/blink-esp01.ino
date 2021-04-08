@@ -20,5 +20,5 @@ void loop() {
   delay(1000);
   digitalWrite(BUILTIN_LED, LOW);
   delay(1000);
-  Serial.println(millis() / 1000);
+  Serial.println(BUILTIN_LED);
 }
