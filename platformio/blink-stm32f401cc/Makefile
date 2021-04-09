@@ -3,6 +3,5 @@ build:
 	@platformio run
 install:
 	@platformio run -t upload
-	@platformio device monitor
 clean:
 	@platformio run -t clean
