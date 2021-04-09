@@ -27,3 +27,9 @@ are all the same as yours. GPIO 0 to DTR.
 RST on ESP to RTS on the FTDI. EN may need a pullup. I forget if the chips have them built in.
 
 
+1) VDD = tied to 3.3V
+2) GND = all GND pins tied to GND
+3) EN = pulled up via 10k resistor to 3.3V
+
+4) IO0 = jumper to flip between being pulled up via 10k to 3.3v or pulled down via 10k to GND (for flashing)
+5) IO2 = IO0 = pulled to GND via 10k resistor
