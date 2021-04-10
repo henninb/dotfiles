@@ -165,3 +165,4 @@
 - yay -S archiver - the arc tool
 - git@github.com:sagb/alttab.git - alt tab for a minimal WM
 - sudo pacman -S usbview
+- neovide - gui vim
