@@ -41,6 +41,7 @@ const int daylightOffset = 3600;
 const int csPin = 5; //GPIO5
 
 File fileHandle;
+File fileReadHandle;
 
 void setup() {
   Serial.begin(115200);
@@ -97,6 +98,15 @@ void setup() {
   /* uint64_t cardSize = SPIFFS.cardSize() / (1024 * 1024); */
   /* Serial.printf("SPIFFS Card Size: %lluMB\n", cardSize); */
   /* Serial.println(""); */
+  fileReadHandle = SPIFFS.open("/wifi-data.json");
+  if(fileReadHandle) {
+    Serial.println("has wifi data.");
+    while(fileReadHandle.available()){
+      Serial.write(fileReadHandle.read());
+    }
+  }
+  fileReadHandle.close();
+  SPIFFS.remove("/wifi-data.json");
 
   Serial.println("setup completed.");
 }
