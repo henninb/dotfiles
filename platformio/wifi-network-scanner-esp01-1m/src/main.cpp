@@ -10,7 +10,7 @@ int addr_password = 20;    // password index
 
 void setup() {
   EEPROM.begin(512);
-  Serial.begin(9600);
+  Serial.begin(9600); //consider changeing to //115200
   while(!Serial);
   Serial.println("setup");
 
