@@ -43,6 +43,7 @@ const int csPin = 5; //GPIO5
 File fileHandle;
 File fileReadHandle;
 
+void listAllFiles();
 void setup() {
   Serial.begin(115200);
   while (!Serial);
@@ -73,6 +74,8 @@ void setup() {
   }
 
   fileReadHandle = SPIFFS.open("/wifi-data.json");
+  Serial.print("File size: ");
+  Serial.println(fileReadHandle.size());
   if(fileReadHandle) {
     Serial.println("has wifi data.");
     while(fileReadHandle.available()){
@@ -83,6 +86,10 @@ void setup() {
   SPIFFS.remove("/wifi-data.json");
   Serial.println("delete file");
 
+  int tBytes = SPIFFS.totalBytes();
+  int uBytes = SPIFFS.usedBytes();
+  Serial.println(tBytes);
+  Serial.println(uBytes);
   Serial.println("setup completed.");
 }
 
@@ -153,4 +160,15 @@ void loop() {
   delay(5000);
   delay(1000);
   delay(1000);
+}
+
+void listAllFiles(){
+  File root = SPIFFS.open("/");
+  File file = root.openNextFile();
+
+  while(file){
+    Serial.print("FILE: ");
+    Serial.println(file.name());
+    file = root.openNextFile();
+  }
 }
