@@ -37,7 +37,7 @@ const char ntpServer[] = "pool.ntp.org";
 const long gmtOffset = -21600; //Central time -6
 const int daylightOffset = 3600;
 
-const int csPin = D8; //D8 = GPIO5
+const int csPin = 5; //GPIO5
 
 File fileHandle;
 
@@ -65,16 +65,15 @@ void setup() {
   WiFi.disconnect(true);
   delay(100);
 
-  if (SD.begin(csPin)) {
-  /* if (SD.begin()) { */
-    Serial.println("SD card is ready to use.");
-  } else {
-    Serial.println(csPin);
-    Serial.println("SD card initialization failed");
-    Serial.println("please be sure you have put an SD card in the slot.");
-    Serial.println("please be sure to define the CS pin in the begin method.");
-    while(true);
-  }
+  /* if (SD.begin(csPin)) { */
+  /*   Serial.println("SD card is ready to use."); */
+  /* } else { */
+  /*   Serial.println(csPin); */
+  /*   Serial.println("SD card initialization failed"); */
+  /*   Serial.println("please be sure you have put an SD card in the slot."); */
+  /*   Serial.println("please be sure to define the CS pin in the begin method."); */
+  /*   while(true); */
+  /* } */
 
   Serial.println("setup completed.");
 }

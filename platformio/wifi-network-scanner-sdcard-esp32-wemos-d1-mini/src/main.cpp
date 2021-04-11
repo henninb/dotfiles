@@ -24,13 +24,20 @@ TXD -> TX (RX usually, but this board is wierd)
 RXD -> RX (TX usually, but this board is wierd)
 
 1000uf cap to smooth the power between 3.3V and ground on the FTDI
+
+GPIO18 = SCK
+GPIO19 = MISO
+GPIO23 = MOSI
+GPIO5 = CS
+VCC = 5V
+GND = GND
  */
 
 const char ntpServer[] = "pool.ntp.org";
 const long gmtOffset = -21600; //Central time -6
 const int daylightOffset = 3600;
 
-const int csPin = 1;
+const int csPin = D8; //D8 = GPIO5
 
 File fileHandle;
 
@@ -59,14 +66,16 @@ void setup() {
   WiFi.disconnect(true);
   delay(100);
 
-  /* if (SD.begin(csPin)) { */
-  /*   Serial.println("SD card is ready to use."); */
-  /* } else { */
-  /*   Serial.println("SD card initialization failed"); */
-  /*   Serial.println("please be sure you have put an SD card in the slot."); */
-  /*   Serial.println("please be sure to define the CS pin in the begin method."); */
-  /*   while(true); */
-  /* } */
+  if (SD.begin(csPin)) {
+  /* if (SD.begin()) { */
+    Serial.println("SD card is ready to use.");
+  } else {
+    Serial.println(csPin);
+    Serial.println("SD card initialization failed");
+    Serial.println("please be sure you have put an SD card in the slot.");
+    Serial.println("please be sure to define the CS pin in the begin method.");
+    while(true);
+  }
 
   Serial.println("setup completed.");
 }

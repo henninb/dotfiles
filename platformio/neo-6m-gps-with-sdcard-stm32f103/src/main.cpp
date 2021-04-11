@@ -1,5 +1,5 @@
 #include <TinyGPS++.h>
-#include <SoftwareSerial.h>
+/* #include <SoftwareSerial.h> */
 #include <SD.h>
 #include <ArduinoJson.h>
 
@@ -35,7 +35,7 @@ const int ledPin = PC13;
 void displayInfo();
 
 TinyGPSPlus gps;
-File myFile;
+File fileHandle;
 
 HardwareSerial gpsSerial(USART2);   // or HardWareSerial Serial2 (PA3, PA2);
 
@@ -78,8 +78,8 @@ void displayInfo() {
     /* String date = ""; */
     String time = "";
 
-    myFile = SD.open("gps-data.txt", FILE_WRITE);
-    if (myFile) {
+    fileHandle = SD.open("gps-data.txt", FILE_WRITE);
+    if (fileHandle) {
       Serial.println("file is open for writting...");
     } else {
       Serial.println("something went wrong with the file opening process.");
@@ -143,13 +143,13 @@ void displayInfo() {
   Serial.print("Payload: ");
   Serial.println(payload);
 
-  if( myFile ) {
-    myFile.println(payload);
+  if( fileHandle ) {
+    fileHandle.println(payload);
   } else {
     Serial.println("cannot write to file");
   }
 
-  myFile.close();
+  fileHandle.close();
   Serial.println();
   delay(5000);
 }
