@@ -125,7 +125,8 @@ void loop() {
   StaticJsonDocument<300> jsonStructure;
   char timestampString[25] = {0};
 
-  fileHandle = SD.open("/wifi-data.json", FILE_WRITE);
+  //fileHandle = SD.open("/wifi-data.json", FILE_WRITE);
+  fileHandle = SD.open("/wifi-data.json", FILE_APPEND);
   if (fileHandle) {
     Serial.println("file is open for writting...");
   } else {
