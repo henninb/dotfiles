@@ -65,15 +65,37 @@ void setup() {
   WiFi.disconnect(true);
   delay(100);
 
-  /* if (SD.begin(csPin)) { */
-  /*   Serial.println("SD card is ready to use."); */
-  /* } else { */
-  /*   Serial.println(csPin); */
-  /*   Serial.println("SD card initialization failed"); */
-  /*   Serial.println("please be sure you have put an SD card in the slot."); */
-  /*   Serial.println("please be sure to define the CS pin in the begin method."); */
-  /*   while(true); */
-  /* } */
+  if (SD.begin(csPin)) {
+    Serial.println("SD card is ready to use.");
+  } else {
+    Serial.println(csPin);
+    Serial.println("SD card initialization failed");
+    Serial.println("please be sure you have put an SD card in the slot.");
+    Serial.println("please be sure to define the CS pin in the begin method.");
+    while(true);
+  }
+
+  uint8_t cardType = SD.cardType();
+
+  if(cardType == CARD_NONE){
+    Serial.println("No SD card attached");
+    return;
+  }
+
+  Serial.print("SD Card Type: ");
+  if(cardType == CARD_MMC){
+    Serial.println("MMC");
+  } else if(cardType == CARD_SD){
+    Serial.println("SDSC");
+  } else if(cardType == CARD_SDHC){
+    Serial.println("SDHC");
+  } else {
+    Serial.println("UNKNOWN");
+  }
+
+  uint64_t cardSize = SD.cardSize() / (1024 * 1024);
+  Serial.printf("SD Card Size: %lluMB\n", cardSize);
+  Serial.println("");
 
   Serial.println("setup completed.");
 }
@@ -103,7 +125,7 @@ void loop() {
   StaticJsonDocument<300> jsonStructure;
   char timestampString[25] = {0};
 
-  fileHandle = SD.open("gps-data.txt", FILE_WRITE);
+  fileHandle = SD.open("/wifi-data.json", FILE_WRITE);
   if (fileHandle) {
     Serial.println("file is open for writting...");
   } else {
