@@ -67,37 +67,11 @@ void setup() {
   WiFi.disconnect(true);
   delay(100);
 
-  if (SPIFFS.begin()) {
-    Serial.println("SPIFFS card is ready to use.");
-  } else {
-    Serial.println(csPin);
-    Serial.println("SPIFFS card initialization failed");
-    Serial.println("please be sure you have put an SPIFFS card in the slot.");
-    Serial.println("please be sure to define the CS pin in the begin method.");
+  if (!SPIFFS.begin(true)) {
+    Serial.println("SPIFFS initialization failed");
     while(true);
   }
 
-  /* uint8_t cardType = SPIFFS.cardType(); */
-
-  /* if(cardType == CARD_NONE){ */
-  /*   Serial.println("No SPIFFS card attached"); */
-  /*   return; */
-  /* } */
-
-  /* Serial.print("SPIFFS Card Type: "); */
-  /* if(cardType == CARD_MMC){ */
-  /*   Serial.println("MMC"); */
-  /* } else if(cardType == CARD_SD){ */
-  /*   Serial.println("SDSC"); */
-  /* } else if(cardType == CARD_SDHC){ */
-  /*   Serial.println("SDHC"); */
-  /* } else { */
-  /*   Serial.println("UNKNOWN"); */
-  /* } */
-
-  /* uint64_t cardSize = SPIFFS.cardSize() / (1024 * 1024); */
-  /* Serial.printf("SPIFFS Card Size: %lluMB\n", cardSize); */
-  /* Serial.println(""); */
   fileReadHandle = SPIFFS.open("/wifi-data.json");
   if(fileReadHandle) {
     Serial.println("has wifi data.");
@@ -107,6 +81,7 @@ void setup() {
   }
   fileReadHandle.close();
   SPIFFS.remove("/wifi-data.json");
+  Serial.println("delete file");
 
   Serial.println("setup completed.");
 }
