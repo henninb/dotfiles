@@ -31,13 +31,18 @@ void setup() {
       delay(500);
       Serial.print(".");
   }
-  Serial.println(" CONNECTED");
+  Serial.println("");
+  Serial.println("WiFi connected.");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
 
   configTime(gmtOffset, daylightOffset, ntpServer);
   struct tm timeinfo = {0};
   getLocalTime(&timeinfo);
+
   WiFi.disconnect(true);
   WiFi.mode(WIFI_OFF);
+  Serial.println("setup completed.");
 }
 
 void loop() {
@@ -50,6 +55,9 @@ void loop() {
   Serial.print("Chip ID: ");
   Serial.println(chipId);
 
-  delay(3000);
+    digitalWrite(BUILTIN_LED, HIGH);
+  delay(1000);
+  digitalWrite(BUILTIN_LED, LOW);
+  delay(1000);
   printLocalTime();
 }

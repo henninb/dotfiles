@@ -31,8 +31,6 @@ const char ntpServer[] = "pool.ntp.org";
 const long gmtOffset = -21600; //Central time -6
 const int daylightOffset = 3600;
 
-void printLocalTime();
-
 void setup() {
   Serial.begin(115200);
   while (!Serial);
@@ -82,15 +80,21 @@ String translateEncryptionType(wifi_auth_mode_t encryptionType) {
 void loop() {
   Serial.println("scanning...");
   int networkCount = WiFi.scanNetworks();
-  StaticJsonDocument<200> jsonStructure;
+  StaticJsonDocument<300> jsonStructure;
+  char timestampString[25] = {0};
 
   if (networkCount == 0) {
     Serial.println("no networks found");
   } else {
-    /* Serial.println(timeClient.getFormattedDate()); */
-    printLocalTime();
+    struct tm timeinfo = {0};
+    if(! getLocalTime(&timeinfo) ){
+      Serial.println("ERROR: Failed to obtain timestamp.");
+    }
+    strftime(timestampString, sizeof(timestampString), "%Y-%m-%d %H:%M:%S", &timeinfo);
     for (int index = 0; index < networkCount; ++index) {
+      jsonStructure["timestamp"] = timestampString;
       jsonStructure["ssid"] = WiFi.SSID(index);
+      jsonStructure["bssid"] = WiFi.BSSIDstr(index);
       jsonStructure["rssi"] = WiFi.RSSI(index);
       jsonStructure["channel"] = WiFi.channel(index);
       jsonStructure["encryptionType"] = translateEncryptionType(WiFi.encryptionType(index));
@@ -109,13 +113,4 @@ void loop() {
   delay(1000);
   digitalWrite(BUILTIN_LED, LOW);
   delay(1000);
-}
-
-void printLocalTime() {
-  struct tm timeinfo = {0};
-  if(! getLocalTime(&timeinfo) ){
-    Serial.println("ERROR: Failed to obtain timestamp.");
-    return;
-  }
-  Serial.println(&timeinfo, "%Y-%m-%d %H:%M:%S");
 }
