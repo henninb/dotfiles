@@ -27,9 +27,9 @@ RXD -> RX (TX usually, but this board is wierd)
 1000uf cap to smooth the power between 3.3V and ground on the FTDI
  */
 
-const char* ntpServer = "pool.ntp.org";
-const long  gmtOffset = -21600; //Central time -6
-const int   daylightOffset = 3600;
+const char ntpServer[] = "pool.ntp.org";
+const long gmtOffset = -21600; //Central time -6
+const int daylightOffset = 3600;
 
 void printLocalTime();
 
@@ -49,14 +49,9 @@ void setup() {
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
 
-  /* timeClient.begin(); */
-  // Set offset time in seconds to adjust for your timezone, for example:
-  // GMT +1 = 3600
-  // GMT +8 = 28800
-  // GMT -1 = -3600
-  // GMT -5 = -18000
-  // GMT 0 = 0
   configTime(gmtOffset, daylightOffset, ntpServer);
+  struct tm timeinfo = {0};
+  getLocalTime(&timeinfo);
 
   /* WiFi.mode(WIFI_STA); */
   WiFi.mode(WIFI_OFF);
@@ -119,7 +114,7 @@ void loop() {
 void printLocalTime() {
   struct tm timeinfo = {0};
   if(! getLocalTime(&timeinfo) ){
-    Serial.println("Failed to obtain time");
+    Serial.println("ERROR: Failed to obtain timestamp.");
     return;
   }
   Serial.println(&timeinfo, "%Y-%m-%d %H:%M:%S");

@@ -34,20 +34,21 @@ void setup() {
   Serial.println(" CONNECTED");
 
   configTime(gmtOffset, daylightOffset, ntpServer);
-  printLocalTime();
-
+  struct tm timeinfo = {0};
+  getLocalTime(&timeinfo);
   WiFi.disconnect(true);
   WiFi.mode(WIFI_OFF);
 }
 
 void loop() {
-  for(int index=0; index<17; index=index+8) {
+  for(int index = 0; index < 17; index = index + 8) {
     chipId |= ((ESP.getEfuseMac() >> (40 - index)) & 0xff) << index;
   }
 
   Serial.printf("ESP32 Chip model = %s Rev %d\n", ESP.getChipModel(), ESP.getChipRevision());
   Serial.printf("This chip has %d cores\n", ESP.getChipCores());
-  Serial.print("Chip ID: "); Serial.println(chipId);
+  Serial.print("Chip ID: ");
+  Serial.println(chipId);
 
   delay(3000);
   printLocalTime();
