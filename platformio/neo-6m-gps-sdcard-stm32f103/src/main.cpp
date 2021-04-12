@@ -1,16 +1,17 @@
 #include <TinyGPS++.h>
-/* #include <SoftwareSerial.h> */
 #include <SD.h>
 #include <ArduinoJson.h>
 
 /*
 FTDI | stm32f103
+================
 RX   | TX1 (PC9)
 TX   | RX1 (PC10)
 GND  | GND
-3.3V | 3.3V
+3.3V | 3.3V or (5V to 5V)
 
 stm32f103 | NEO-6M
+==================
 GND       | GND
 3.3V      | 3.3V
 3.3V      | CH-PD
@@ -18,6 +19,7 @@ PC3 (RX2) | TX
 PC2 (TX2) | RX
 
 sd card | stm32f103
+===================
 GND     | GND
 5V      | 5V
 CS      | PA4
@@ -29,7 +31,7 @@ note: the NEO-6M Red LED will blink when it is connecting to a sattilite
 
 */
 
-const int csPin = PA4;
+const int cableSelectPin = PA4;
 const int ledPin = PC13;
 
 void displayInfo();
@@ -45,7 +47,7 @@ void setup() {
   Serial.println("setup...");
 
   pinMode(ledPin,OUTPUT);
-  if (SD.begin(csPin)) {
+  if (SD.begin(cableSelectPin)) {
     Serial.println("SD card is ready to use.");
   } else {
     Serial.println("SD card initialization failed");
@@ -74,11 +76,11 @@ void loop() {
 }
 
 void displayInfo() {
-    StaticJsonDocument<200> jsonStructure;
+    StaticJsonDocument<250> jsonStructure;
     /* String date = ""; */
     String time = "";
 
-    fileHandle = SD.open("gps-data.txt", FILE_WRITE);
+    fileHandle = SD.open("/gps-data.txt", FILE_WRITE);
     if (fileHandle) {
       Serial.println("file is open for writting...");
     } else {

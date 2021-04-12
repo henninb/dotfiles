@@ -67,7 +67,6 @@ void setup() {
   delay(100);
 
   if (SD.begin(csPin)) {
-  /* if (SD.begin()) { */
     Serial.println("SD card is ready to use.");
   } else {
     Serial.println(csPin);
@@ -105,7 +104,7 @@ void loop() {
   StaticJsonDocument<300> jsonStructure;
   char timestampString[25] = {0};
 
-  fileHandle = SD.open("gps-data.txt", FILE_WRITE);
+  fileHandle = SD.open("wifi-data.txt", FILE_WRITE);
   if (fileHandle) {
     Serial.println("file is open for writting...");
   } else {

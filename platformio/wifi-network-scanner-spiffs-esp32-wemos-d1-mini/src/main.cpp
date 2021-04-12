@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <time.h>
-/* #include <SD.h> */
 #include <SPIFFS.h>
 #include <ArduinoJson.h>
 #include "config.h"
@@ -38,12 +37,11 @@ const char ntpServer[] = "pool.ntp.org";
 const long gmtOffset = -21600; //Central time -6
 const int daylightOffset = 3600;
 
-const int csPin = 5; //GPIO5
-
 File fileHandle;
 File fileReadHandle;
 
 void listAllFiles();
+
 void setup() {
   Serial.begin(115200);
   while (!Serial);
@@ -53,7 +51,6 @@ void setup() {
     delay(500);
     Serial.print(".");
   }
-  // Print local IP address and start web server
   Serial.println("");
   Serial.println("WiFi connected.");
   Serial.println("IP address: ");
@@ -83,13 +80,17 @@ void setup() {
     }
   }
   fileReadHandle.close();
-  SPIFFS.remove("/wifi-data.json");
-  Serial.println("delete file");
 
   int tBytes = SPIFFS.totalBytes();
   int uBytes = SPIFFS.usedBytes();
+  Serial.print("Total bytes: ");
   Serial.println(tBytes);
+  Serial.print("Used bytes: ");
   Serial.println(uBytes);
+
+  SPIFFS.remove("/wifi-data.json");
+  Serial.println("delete file");
+
   Serial.println("setup completed.");
 }
 
@@ -158,15 +159,13 @@ void loop() {
   Serial.println("scan done");
   Serial.println("");
   delay(5000);
-  delay(1000);
-  delay(1000);
 }
 
-void listAllFiles(){
+void listAllFiles() {
   File root = SPIFFS.open("/");
   File file = root.openNextFile();
 
-  while(file){
+  while( file ){
     Serial.print("FILE: ");
     Serial.println(file.name());
     file = root.openNextFile();

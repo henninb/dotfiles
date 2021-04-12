@@ -31,7 +31,7 @@ void setup() {
     return;
   }
 
-  File myFile = SD.open("gps-data.txt", FILE_WRITE);
+  File myFile = SD.open("/gps-data.txt", FILE_WRITE);
 
   if (myFile) {
     Serial.println("Writing to file...");
