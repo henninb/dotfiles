@@ -8,7 +8,7 @@ SCL=PB6
 Note: no need for external power on the lcd display
 */
 #include <Arduino.h>
-#include <Wire.h>
+//#include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
 #define ledPin PC13
