@@ -92,11 +92,10 @@ void setup() {
   if(fileReadHandle) {
     Serial.println("has wifi data stored.");
     if (mqttClient.connected()) {
-      mqttClient.publish("wifi", "some-json-data");
       while(fileReadHandle.available()) {
         String line = fileReadHandle.readStringUntil('\n');
         Serial.println(line);
-        mqttClient.publish("wifi", line.c_str());
+        mqttClient.publish("wifi", line.c_str(), true);
       }
     }
   }
