@@ -3,6 +3,7 @@
 #include <time.h>
 #include <SPIFFS.h>
 #include <ArduinoJson.h>
+#include <PubSubClient.h>
 #include "config.h"
 
 /*
@@ -37,6 +38,12 @@ const char ntpServer[] = "pool.ntp.org";
 const long gmtOffset = -21600; //Central time -6
 const int daylightOffset = 3600;
 
+
+WiFiClient espClient;
+PubSubClient mqttClient(espClient);
+
+/* IPAddress server(192, 168, 100, 124); */
+
 File fileHandle;
 File fileReadHandle;
 
@@ -60,10 +67,18 @@ void setup() {
   struct tm timeinfo = {0};
   getLocalTime(&timeinfo);
 
-  /* WiFi.mode(WIFI_STA); */
-  WiFi.mode(WIFI_OFF);
-  WiFi.disconnect(true);
+  WiFi.mode(WIFI_STA);
+  /* WiFi.mode(WIFI_OFF); */
+  /* WiFi.disconnect(true); */
   delay(100);
+
+
+  mqttClient.setServer(mqttServer, 1883);
+  if (mqttClient.connect("espClient")) {
+    Serial.println("mqtt connected.");
+  } else {
+    Serial.println("mqtt connection failed.");
+  }
 
   if (!SPIFFS.begin(true)) {
     Serial.println("SPIFFS initialization failed");
@@ -74,9 +89,17 @@ void setup() {
   Serial.print("File size: ");
   Serial.println(fileReadHandle.size());
   if(fileReadHandle) {
-    Serial.println("has wifi data.");
-    while(fileReadHandle.available()){
-      Serial.write(fileReadHandle.read());
+    Serial.println("has wifi data stored.");
+    if (mqttClient.connected()) {
+      mqttClient.publish("wifi", "some-json-data");
+      while(fileReadHandle.available()) {
+        String line = fileReadHandle.readStringUntil('\n');
+        Serial.println(line);
+        /* String data = String(fileReadHandle.read()); */
+        mqttClient.publish("wifi", line.c_str());
+        /* Serial.write(data); */
+        /* Serial.write(fileReadHandle.read()); */
+      }
     }
   }
   fileReadHandle.close();
