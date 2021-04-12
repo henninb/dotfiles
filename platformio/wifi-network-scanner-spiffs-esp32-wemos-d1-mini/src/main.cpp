@@ -7,6 +7,7 @@
 #include "config.h"
 
 /*
+
 serial connection, programming mode
 ESP32 | FTDI
 ============
@@ -26,23 +27,23 @@ RXD -> RX (TX usually, but this board is wierd)
 
 1000uf cap to smooth the power between 3.3V and ground on the FTDI
 
+ESP32 | SDCard Reader
+=====================
 GPIO18 = SCK
 GPIO19 = MISO
 GPIO23 = MOSI
 GPIO5 = CS
 VCC = 5V
 GND = GND
- */
+
+*/
 
 const char ntpServer[] = "pool.ntp.org";
 const long gmtOffset = -21600; //Central time -6
 const int daylightOffset = 3600;
 
-
 WiFiClient espClient;
 PubSubClient mqttClient(espClient);
-
-/* IPAddress server(192, 168, 100, 124); */
 
 File fileHandle;
 File fileReadHandle;
@@ -95,10 +96,7 @@ void setup() {
       while(fileReadHandle.available()) {
         String line = fileReadHandle.readStringUntil('\n');
         Serial.println(line);
-        /* String data = String(fileReadHandle.read()); */
         mqttClient.publish("wifi", line.c_str());
-        /* Serial.write(data); */
-        /* Serial.write(fileReadHandle.read()); */
       }
     }
   }
@@ -147,7 +145,7 @@ void loop() {
     Serial.println("file is open for writting...");
   } else {
     Serial.println("something went wrong with the file opening process.");
-    /* while(true); */
+    while(true);
   }
 
   if (networkCount == 0) {
