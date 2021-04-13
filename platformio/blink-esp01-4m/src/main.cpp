@@ -13,7 +13,7 @@ void connectToWifi();
 void flashSize();
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   while (!Serial);
   Serial.println("setup");
   pinMode(ledBuiltin, OUTPUT);

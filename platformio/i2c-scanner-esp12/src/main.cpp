@@ -32,7 +32,7 @@
 void setup() {
   Wire.begin();
 
-  Serial.begin(9600);
+  Serial.begin(115200);
   while (!Serial);
   pinMode(LED_BUILTIN, OUTPUT);
   WiFi.mode(WIFI_STA);

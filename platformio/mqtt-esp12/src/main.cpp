@@ -1,4 +1,7 @@
 #include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+#include <ArduinoJson.h>
+#include "config.h"
 /*
   Operational Mode (6 wires)
   ESP12    | FTDI
@@ -27,10 +30,32 @@
   1000uF capacitor (between VCC and GND), shorter leg GND
 */
 
+WiFiClient espClient;
+PubSubClient mqttClient(espClient);
+
 void setup() {
   Serial.begin(115200);
   while (!Serial);
+
   pinMode(LED_BUILTIN, OUTPUT);
+
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("");
+  Serial.println("WiFi connected.");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+
+  mqttClient.setServer(mqttServer, 1883);
+  if (mqttClient.connect("espClient")) {
+    Serial.println("mqtt connected.");
+  } else {
+    Serial.println("mqtt connection failed.");
+  }
+
   WiFi.mode(WIFI_STA);
   Serial.println("setup complete");
 }
@@ -41,4 +66,11 @@ void loop() {
   delay(1000);
   digitalWrite(LED_BUILTIN, LOW);
   delay(1000);
+
+  if (mqttClient.connected()) {
+    mqttClient.publish("ynot", "message1", true);
+    delay(10);
+    mqttClient.publish("ynot", "message2", true);
+    delay(10);
+  }
 }

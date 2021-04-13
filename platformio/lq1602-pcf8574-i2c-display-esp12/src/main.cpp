@@ -1,5 +1,4 @@
-#include <Arduino.h>
-#include <Wire.h>
+#include <ESP8266WiFi.h>
 #include <LiquidCrystal_I2C.h>
 
 /*
@@ -20,7 +19,7 @@ LiquidCrystal_I2C lcd(PCF8574A_ADDR_A21_A11_A01, 4, 5, 6, 16, 11, 12, 13, 14, PO
 int idx = 0;
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   while (!Serial);
   Serial.println("setup started...");
   pinMode(LED_BUILTIN,OUTPUT);

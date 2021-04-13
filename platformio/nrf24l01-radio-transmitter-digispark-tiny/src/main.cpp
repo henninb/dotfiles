@@ -1,7 +1,4 @@
 /*
-   //not required however it works
-   git@github.com:jaretburkett/RF24-STM.git
-
 NRF24L01(YL-105)   Arduino_ Uno    Arduino_Mega    Blue_Pill(stm32f01C)
   __________________________________________________________________________
   VCC        |       5v        |     5v        |     5v
