@@ -25,10 +25,13 @@ void setup() {
   Serial.begin(115200);
   while (!Serial);
   pinMode(BUILTIN_LED, OUTPUT);
+  Serial.println("setup complete");
 }
 
 void loop() {
   Serial.println("Hello from ESP32");
+  Serial.print("BUILTIN_LED: ");
+  Serial.println(BUILTIN_LED);
   digitalWrite(BUILTIN_LED, HIGH);
   delay(1000);
   digitalWrite(BUILTIN_LED, LOW);
