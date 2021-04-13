@@ -56,8 +56,8 @@ void setup() {
  pinMode(D0, WAKEUP_PULLUP);
 
 #ifdef USE_SERIAL_PRINT_FLAG
-  //Serial.begin(115200);
-  Serial.begin(9600);
+  Serial.begin(115200);
+  /* Serial.begin(9600); */
   while(!Serial);
 #endif
 

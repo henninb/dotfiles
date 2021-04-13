@@ -15,14 +15,14 @@ sdcard reader| wemos-d1-mini
 
 */
 
-const int pinCS = D4;
+const int cableSelectPin = D4;
 
 void setup() {
   Serial.begin(9600);
   while (!Serial);
   Serial.println("setup...");
 
-  if (SD.begin(pinCS)) {
+  if( SD.begin(cableSelectPin) ) {
     Serial.println("SD card is ready to use.");
   } else {
     Serial.println("SD card initialization failed");

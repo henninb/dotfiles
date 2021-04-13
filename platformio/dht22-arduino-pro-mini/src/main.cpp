@@ -3,9 +3,11 @@
 #include <ArduinoJson.h>
 
 /*
-  5V to 5V
-  GND to GND
-  Data to Pin 2
+  dht | arduino pro mini
+  ======================
+  5V  | 5V
+  GND | GND
+  Data| Pin 2
 */
 
 DHT dht(2, DHT22);
@@ -36,13 +38,4 @@ void loop() {
   serializeJson(jsonStructure, payload);
   Serial.print("Payload: ");
   Serial.println(payload);
-
-
-  /* Serial.print("Humidity: "); */
-  /* Serial.print(humidity); */
-  /* Serial.print(" %\t"); */
-  /* Serial.print("Temperature: "); */
-  /* Serial.print(temperature); */
-  /* Serial.println(" *F "); */
-
 }

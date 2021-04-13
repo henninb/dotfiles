@@ -15,6 +15,7 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
   dht.begin();
+  Serial.println("setup completed.");
 }
 
 void loop() {
@@ -37,13 +38,4 @@ void loop() {
   serializeJson(jsonStructure, payload);
   Serial.print("Payload: ");
   Serial.println(payload);
-
-
-  /* Serial.print("Humidity: "); */
-  /* Serial.print(humidity); */
-  /* Serial.print(" %\t"); */
-  /* Serial.print("Temperature: "); */
-  /* Serial.print(temperature); */
-  /* Serial.println(" *F "); */
-
 }

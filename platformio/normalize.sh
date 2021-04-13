@@ -15,6 +15,13 @@ for project in $projects; do
   git add -f "$project/.gitignore"
   touch "$project/readme.md"
   git add -f "$project/readme.md"
+  cd "$project"
+  if make > /dev/null 2>&1; then
+    echo yes
+  else
+    echo no
+  fi
+  cd ..
 done
 
 exit 0
