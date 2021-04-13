@@ -26,12 +26,13 @@ uint32_t chipId = 0;
 void setup() {
   Serial.begin(115200);
   while (!Serial);
+  Serial.println("setup complete.");
 }
 
 void loop() {
-  Serial.println("Hello from ESP32dev");
-  for(int i=0; i<17; i=i+8) {
-    chipId |= ((ESP.getEfuseMac() >> (40 - i)) & 0xff) << i;
+  Serial.println("Hello from ESP32-generic");
+  for(int idx = 0; idx < 17; idx= idx + 8) {
+    chipId |= ((ESP.getEfuseMac() >> (40 - idx)) & 0xff) << idx;
   }
 
   Serial.printf("ESP32 Chip model = %s Rev %d\n", ESP.getChipModel(), ESP.getChipRevision());
