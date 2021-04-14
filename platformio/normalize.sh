@@ -15,7 +15,9 @@ for project in $projects; do
   git add -f "$project/.gitignore"
   touch "$project/readme.md"
   git add -f "$project/readme.md"
-  touch "$project/config.h"
+  git add -f "$project/src/main.cpp"
+  git add -f "$project/Makefile"
+  git add -f "$project/platformio.ini"
   if ! grep -q "#define uploadTimestamp" "$project/src/config.h"; then
     echo "#define uploadTimestamp \"\"" >> "$project/src/config.h"
   fi
