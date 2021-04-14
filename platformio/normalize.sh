@@ -16,9 +16,11 @@ for project in $projects; do
   touch "$project/readme.md"
   git add -f "$project/readme.md"
   git add -f "$project/src/main.cpp"
+  sed -i "s/main.cpp/config.h/g" "$project/Makefile"
   git add -f "$project/Makefile"
+
   git add -f "$project/platformio.ini"
-  if ! grep -q "#define uploadTimestamp" "$project/src/config.h"; then
+  if ! grep -q "#define uploadTimestamp" "$project/src/config.h" 2> /dev/null; then
     echo "#define uploadTimestamp \"\"" >> "$project/src/config.h"
   fi
   # echo "date=\$(shell date '+%Y-%m-%d %H:%M:%S')" |cat - "$project/Makefile" > /tmp/out && mv /tmp/out "$project/Makefile"

@@ -7,7 +7,7 @@ usb0:
 	@arduino-cli upload --port /dev/ttyUSB0 --fqbn esp8266:esp8266:generic .
 install:
 	@echo ${date}
-	@sed -i "s/#define uploadTimestamp.*/#define uploadTimestamp \"$(date)\"/g" src/main.cpp
+	@sed -i "s/#define uploadTimestamp.*/#define uploadTimestamp \"$(date)\"/g" src/config.h
 	@platformio run -t upload
 	@platformio device monitor
 clean:

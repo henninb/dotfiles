@@ -1,4 +1,5 @@
 #include <ESP8266WiFi.h>
+#include "config.h"
 /*
   Operational Mode (6 wires)
   ESP12    | FTDI
@@ -27,7 +28,6 @@
   1000uF capacitor (between VCC and GND), shorter leg GND
 */
 
-#define uploadTimestamp "2021-04-14 10:27:06"
 #define DEBUG 1
 
 void setup() {

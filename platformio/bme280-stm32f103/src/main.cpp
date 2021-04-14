@@ -1,5 +1,6 @@
 #include <SparkFunBME280.h>
 #include <ArduinoJson.h>
+#include "config.h"
 
 /*
    BME280 | STM32F103
@@ -9,8 +10,6 @@
     5V    | 5V
    GND    | GND
 */
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 
 /* need to set the below */
 const int sclPin = 1;

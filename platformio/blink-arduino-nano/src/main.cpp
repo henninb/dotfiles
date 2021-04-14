@@ -1,7 +1,6 @@
 #include <Arduino.h>
+#include "config.h"
 
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 #define DEBUG 1
 
 void setup() {
@@ -22,6 +21,8 @@ void setup() {
 
 void loop() {
   Serial.println("Hello from Arduino Nano");
+  Serial.print("LED_BUILTIN: ");
+  Serial.println(LED_BUILTIN);
   digitalWrite(LED_BUILTIN, HIGH);
   delay(1000);
   digitalWrite(LED_BUILTIN, LOW);
