@@ -12,6 +12,9 @@ void setup() {
   Serial.begin(9600);
   dht.begin();          // Initialize DHT22 to read Temperature and humidity values.
   delay(3000);          // Wait 3 seconds for it to stabilize
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  Serial.println("setup complete");
 }
 
 void loop() {

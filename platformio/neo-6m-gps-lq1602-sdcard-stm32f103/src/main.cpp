@@ -69,7 +69,10 @@ void setup() {
   lcd.setCursor(0, 0);
   lcd.clear();
   Serial.println("lcd is ready to use.");
+  delay(2000);
 
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   Serial.println("setup complete.");
 }
 

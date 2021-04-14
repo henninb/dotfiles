@@ -20,11 +20,13 @@ void setup() {
 
   pinMode(LED_BUILTIN, OUTPUT);
   delay(1000);
-  #ifdef DEBUG
-  Serial.println("setup completed...");
-#endif
   rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));//auto update from computer time
   //rtc.adjust(DateTime(2021, 4, 1, 5, 0, 0));// to set the time manualy
+  #ifdef DEBUG
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  Serial.println("setup completed...");
+#endif
 }
 
 void loop() {

@@ -37,6 +37,9 @@ void setup() {
   lcd.setCursor(0, 0);
   lcd.clear();
   delay(1000);
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  Serial.println("setup completed...");
 }
 
 void loop() {

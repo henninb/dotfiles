@@ -100,6 +100,8 @@ void setup() {
   delay(1000);
   digitalWrite(ledBuiltin, LOW);
   delay(1000);
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   Serial.println("ESP01 setup completed.");
 }
 

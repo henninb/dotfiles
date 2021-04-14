@@ -76,7 +76,10 @@ void setup() {
     delay(100);
     server.handleClient();
   }
-
+  delay(2000);
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  Serial.println("setup complete");
 }
 void loop() {
   if ((WiFi.status() == WL_CONNECTED)) {

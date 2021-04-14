@@ -16,6 +16,9 @@ int distanceCm;
 void setup() {
   Serial.begin(9600);
   while(!Serial);
+  delay(2000);
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   Serial.println("UltraSonic Distance Measurement - setup completed.");
 }
 

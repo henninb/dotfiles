@@ -15,9 +15,12 @@ SoftwareSerial gpsSerial(RXPin, TXPin);
 void setup() {
   // Start the Arduino hardware serial port at 9600 baud
   Serial.begin(9600);
-
-  // Start the software serial port at the GPS's default baud
-  gpsSerial.begin(GPSBaud);
+  while(!Serial);
+  gpsSerial.begin(9600);
+  delay(2000);
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  Serial.println("setup completed");
 }
 
 void loop() {

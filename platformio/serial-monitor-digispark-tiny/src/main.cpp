@@ -22,6 +22,8 @@ void setup() {
   pinMode(1, OUTPUT);
   delay(1000);
   #ifdef DEBUG
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   Serial.println("setup completed...");
 #endif
 }

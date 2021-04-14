@@ -28,6 +28,9 @@ uint32_t chipId = 0;
 void setup() {
   Serial.begin(115200);
   while (!Serial);
+  delay(2000);
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   Serial.println("setup complete.");
 }
 

@@ -75,7 +75,9 @@ void setup() {
   /* SPI.setClockDivider(SPI_CLOCK_DIV8) ; */
   radio.setAutoAck(true);
   radio.startListening(); // Listen to see if information received
-  Serial.println("RF24 receiver setup complete.");
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  Serial.println("RF24 receiver setup completed.");
 }
 
 void loop() {

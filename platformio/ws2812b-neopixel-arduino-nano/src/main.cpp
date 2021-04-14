@@ -18,6 +18,8 @@ void setup() {
   Serial.println("setup");
   pixels.begin();
   pixels.setBrightness(25);
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   Serial.println("setup completed...");
 }
 

@@ -64,8 +64,11 @@ unsigned long testFilledRects(uint16_t color1, uint16_t color2) {
 }
 
 void setup() {
- Serial.begin(9600);
- Serial.println(F("TFT LCD"));
+  Serial.begin(9600);
+  while (!Serial);
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  Serial.println(F("TFT LCD"));
 #ifdef USE_ADAFRUIT_SHIELD_PINOUT
  Serial.println(F("Using Adafruit 2.4\" TFT Arduino Shield Pinout"));
 #else

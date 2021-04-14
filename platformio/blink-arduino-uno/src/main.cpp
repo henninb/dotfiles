@@ -7,6 +7,8 @@ void setup() {
   Serial.begin(9600);
   while( !Serial);
 #ifdef DEBUG
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   Serial.println("setup started...");
 #endif
 

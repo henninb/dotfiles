@@ -227,6 +227,9 @@ void setup() {
   pinMode(LED_HB, OUTPUT);
   pulse(LED_HB, 2);
 
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+
 }
 
 int error = 0;

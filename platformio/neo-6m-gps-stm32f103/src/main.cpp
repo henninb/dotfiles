@@ -36,6 +36,9 @@ void setup() {
 
   gpsSerial.begin(9600);
   while (!gpsSerial);
+  delay(2000);
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   Serial.println("setup complete.");
 }
 

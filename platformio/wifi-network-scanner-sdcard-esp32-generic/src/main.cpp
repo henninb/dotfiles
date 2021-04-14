@@ -99,6 +99,8 @@ void setup() {
   Serial.printf("SD Card Size: %lluMB\n", cardSize);
   Serial.println("");
 
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   Serial.println("setup completed.");
 }
 

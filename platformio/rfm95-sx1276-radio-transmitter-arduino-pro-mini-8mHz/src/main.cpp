@@ -60,7 +60,9 @@ void setup() {
   // If you are using RFM95/96/97/98 modules which uses the PA_BOOST transmitter pin, then
   // you can set transmitter powers from 5 to 23 dBm:
   rf95.setTxPower(23, false);
-  Serial.println("setup complete.");
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  Serial.println("setup completed.");
 }
 
 int16_t packetnum = 0;  // packet counter, we increment per xmission

@@ -17,6 +17,8 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
   dht.begin();
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   Serial.println("setup completed.");
 }
 

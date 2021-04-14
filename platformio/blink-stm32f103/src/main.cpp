@@ -8,6 +8,9 @@ void setup() {
   while( !Serial);
   Serial.println("setup started...");
   pinMode(LED_BUILTIN, OUTPUT);
+  delay(2000);
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   Serial.println("setup completed...");
 }
 

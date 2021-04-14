@@ -397,6 +397,10 @@ void setup() {
   delay(1000);
 
   testanimate(logo_bmp, LOGO_WIDTH, LOGO_HEIGHT); // Animate bitmaps
+
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  Serial.println("setup completed");
 }
 
 void loop() {

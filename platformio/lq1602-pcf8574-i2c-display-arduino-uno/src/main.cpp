@@ -30,6 +30,8 @@ void setup() {
   lcd.clear();
   Wire.begin();
   delay(2000);
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
 }
 
 void loop() {

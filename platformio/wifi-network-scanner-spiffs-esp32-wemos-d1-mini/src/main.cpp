@@ -113,6 +113,8 @@ void setup() {
   SPIFFS.remove("/wifi-data.json");
   Serial.println("delete file");
 
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   Serial.println("setup completed.");
 }
 

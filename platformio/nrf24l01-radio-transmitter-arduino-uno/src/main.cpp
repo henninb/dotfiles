@@ -71,7 +71,10 @@ void setup() {
   radio.setPALevel(RF24_PA_LOW);     // RF24_PA_MAX is default.
   radio.openReadingPipe(1, readPipe);
   radio.openWritingPipe(writePipe); // Get NRF24L01 ready to transmit
-  Serial.println("RF24 transmitter setup complete.");
+
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  Serial.println("RF24 transmitter setup completed.");
 }
 
 void loop() {

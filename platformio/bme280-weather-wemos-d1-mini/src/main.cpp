@@ -98,6 +98,8 @@ void setup() {
   delay(10);  //Make sure sensor had enough time to turn on. BME280 requires 2ms to start up.
   bme280.begin();
   delay(10);
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   Serial.println("setup completed for the wemos d1 mini.");
 }
 

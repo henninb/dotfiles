@@ -51,6 +51,8 @@ void setup() {
   dht.begin();
   delay(3000);          // Wait 3 seconds for it to stabilize the dht22
 #ifdef DEBUG
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   Serial.println("setup stm32f103 completed...");
 #endif
 }

@@ -64,7 +64,9 @@ void setup() {
   radio.openReadingPipe(1, readPipe);
   radio.openWritingPipe(writePipe); // Get NRF24L01 ready to transmit
   radio.stopListening();
-  Serial.println("RF24 transmitter setup complete.");
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  Serial.println("RF24 transmitter setup completed.");
 }
 
 void loop() {

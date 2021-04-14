@@ -51,6 +51,9 @@ void setup() {
   /* addr++;                      //Increment address */
   /* EEPROM.write(addr, 'C'); */
 
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  Serial.println("setup completed");
 }
 
 void loop() {}

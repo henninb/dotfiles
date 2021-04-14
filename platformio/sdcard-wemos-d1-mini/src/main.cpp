@@ -62,6 +62,9 @@ void setup() {
   } else {
     Serial.println("error opening file.");
   }
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  Serial.println("setup completed.");
 }
 
 void loop() {

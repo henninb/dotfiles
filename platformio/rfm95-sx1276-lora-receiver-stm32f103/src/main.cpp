@@ -30,7 +30,9 @@ void setup() {
     Serial.println("setup LoRa failed!");
     while (1);
   }
-  Serial.println("LoRa Receiver setup complete.");
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  Serial.println("LoRa Receiver setup completed.");
 }
 
 void loop() {

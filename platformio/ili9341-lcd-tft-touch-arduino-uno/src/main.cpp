@@ -14,6 +14,10 @@ TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
 
 void setup() {
  Serial.begin(9600);
+ while(!Serial);
+ Serial.print("upload timestamp: ");
+ Serial.println(uploadTimestamp);
+
 }
 void loop() {
  TSPoint p = ts.getPoint();

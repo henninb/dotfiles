@@ -33,7 +33,9 @@ void setup() {
     Serial.println("Starting LoRa failed!");
     while (1);
   }
-  Serial.println("LoRa transmitter setup complete");
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  Serial.println("LoRa transmitter setup completed");
 }
 
 void loop() {

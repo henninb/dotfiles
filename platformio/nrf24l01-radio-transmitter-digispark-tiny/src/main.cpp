@@ -38,7 +38,9 @@ void setup() {
     Serial.println("init failed");
     while( true);
   }
-  Serial.println("radio transmitter setup complete");
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  Serial.println("radio transmitter setup completed");
 }
 
 void loop() {

@@ -83,7 +83,9 @@ void setup() {
   radio.setAutoAck(true);
   radio.startListening(); // Listen to see if information received
   /* radio.printDetails(); */
-  Serial.println("RF24 receiver setup complete.");
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  Serial.println("RF24 receiver setup completed.");
 }
 
 void loop() {

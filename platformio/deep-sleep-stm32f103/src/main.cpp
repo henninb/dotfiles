@@ -103,6 +103,9 @@ void setup() {
 
   // Configure first alarm in 2 second then it will be done in the rtc callback
   rtc.setAlarmEpoch( rtc.getEpoch() + 2);
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  Serial.println("setup complete...");
 }
 
 void loop() {

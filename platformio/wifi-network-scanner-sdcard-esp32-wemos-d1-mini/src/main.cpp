@@ -78,6 +78,8 @@ void setup() {
     while(true);
   }
 
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   Serial.println("setup completed.");
 }
 

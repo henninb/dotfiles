@@ -17,6 +17,9 @@ void setup() {
 
   Serial.begin(115200);
   while (!Serial);
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  delay(2000);
   Serial.println("I2C Scanner setup completed.");
 }
 

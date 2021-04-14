@@ -55,6 +55,8 @@ void setup() {
   WiFi.mode(WIFI_OFF);
   WiFi.disconnect(true);
   delay(100);
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   Serial.println("setup completed.");
 }
 

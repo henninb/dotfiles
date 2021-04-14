@@ -39,6 +39,9 @@ void setup() {
   while (!Serial);
   pinMode(LED_BUILTIN, OUTPUT);
   WiFi.mode(WIFI_STA);
+  delay(2000);
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   Serial.println("I2C Scanner setup completed.");
 }
 
