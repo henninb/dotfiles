@@ -16,8 +16,8 @@ for project in $projects; do
   touch "$project/readme.md"
   git add -f "$project/readme.md"
   touch "$project/config.h"
-  if ! grep "#define uploadTimestamp" "$project/config.h"; then
-    echo "#define uploadTimestamp " >> "$project/config.h"
+  if ! grep -q "#define uploadTimestamp" "$project/src/config.h"; then
+    echo "#define uploadTimestamp \"\"" >> "$project/src/config.h"
   fi
   # echo "date=\$(shell date '+%Y-%m-%d %H:%M:%S')" |cat - "$project/Makefile" > /tmp/out && mv /tmp/out "$project/Makefile"
   cd "$project"
