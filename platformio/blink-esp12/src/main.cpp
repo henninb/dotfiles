@@ -43,6 +43,10 @@ void setup() {
 
 void loop() {
   Serial.println("Hello from ESP12");
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+  Serial.print("LED_BUILTIN: ");
+  Serial.println(LED_BUILTIN);
   digitalWrite(LED_BUILTIN, HIGH);
   delay(1000);
   digitalWrite(LED_BUILTIN, LOW);
