@@ -34,6 +34,10 @@ const char ntpServer[] = "pool.ntp.org";
 const long gmtOffset = -21600; //Central time -6
 const int daylightOffset = 3600;
 
+time_t now;
+struct tm * timeinfo = NULL;
+char timestampString[25] = {0};
+
 void setup() {
   Serial.begin(115200);
   while (!Serial);
@@ -52,13 +56,6 @@ void setup() {
   /* struct tm timeinfo = {0}; */
   /* getLocalTime(&timeinfo); */
 
-  time_t now;
-  struct tm * timeinfo = NULL;
-  time(&now);
-  timeinfo = localtime(&now);
-  char timestampString[25] = {0};
-  strftime(timestampString, sizeof(timestampString), "%Y-%m-%d %H:%M:%S", timeinfo);
-  Serial.println(timestampString);
   WiFi.mode(WIFI_STA);
   /* WiFi.mode(WIFI_OFF); */
   /* WiFi.disconnect(true); */
@@ -69,5 +66,9 @@ void setup() {
 
 void loop() {
   Serial.println(WiFi.localIP());
+  time(&now);
+  timeinfo = localtime(&now);
+  strftime(timestampString, sizeof(timestampString), "%Y-%m-%d %H:%M:%S", timeinfo);
+  Serial.println(timestampString);
   delay(1000);
 }

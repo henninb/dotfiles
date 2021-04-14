@@ -1,5 +1,8 @@
 #include <ESP8266WiFi.h>
 #include "config.h"
+
+#define uploadTimestamp "2021-04-14 05:27:58"
+
 /*
   Hardware
   ========
@@ -20,6 +23,9 @@ void setup() {
 
   /* connectToWifi(); */
   WiFi.mode(WIFI_STA); //We don't want the ESP to act as an AP
+  delay(2000);
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   Serial.println("setup complete");
 }
 

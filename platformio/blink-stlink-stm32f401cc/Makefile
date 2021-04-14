@@ -2,6 +2,8 @@ all: build
 build:
 	@platformio run
 install:
+	@echo ${date}
+	@sed -i "s/#define uploadTimestamp.*/#define uploadTimestamp \"$(date)\"/g" src/main.cpp
 	@platformio run -t upload
 clean:
 	@platformio run -t clean
