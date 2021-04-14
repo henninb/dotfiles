@@ -27,7 +27,7 @@
   1000uF capacitor (between VCC and GND), shorter leg GND
 */
 
-#define uploadTimestamp "2021-04-14 05:27:58"
+#define uploadTimestamp "2021-04-14 10:27:06"
 #define DEBUG 1
 
 void setup() {
