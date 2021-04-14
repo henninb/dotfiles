@@ -1,5 +1,4 @@
-#include <Arduino.h>
-#include <WiFi.h>
+#include <ESP8266WiFi.h>
 #include <time.h>
 #include "config.h"
 
@@ -52,6 +51,7 @@ void setup() {
   configTime(gmtOffset, daylightOffset, ntpServer);
   /* struct tm timeinfo = {0}; */
   /* getLocalTime(&timeinfo); */
+
   time_t now;
   struct tm * timeinfo = NULL;
   time(&now);
@@ -59,7 +59,6 @@ void setup() {
   char timestampString[25] = {0};
   strftime(timestampString, sizeof(timestampString), "%Y-%m-%d %H:%M:%S", timeinfo);
   Serial.println(timestampString);
-
   WiFi.mode(WIFI_STA);
   /* WiFi.mode(WIFI_OFF); */
   /* WiFi.disconnect(true); */
