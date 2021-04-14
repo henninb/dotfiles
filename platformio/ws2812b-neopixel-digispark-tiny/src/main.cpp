@@ -4,8 +4,8 @@
   #include <avr/power.h>
 #endif
 
+#define uploadTimestamp "2021-04-14 05:27:58"
 #define PIN 0
-
 #define pixelCount 16
 
 // pixels.Color takes RGB values, from 0,0,0 up to 255,255,255

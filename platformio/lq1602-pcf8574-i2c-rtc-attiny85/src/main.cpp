@@ -1,3 +1,8 @@
+#include <Arduino.h>
+#include <LiquidCrystal_I2C.h>
+#include <TinyWireM.h>
+#include <RTClib.h>
+
 /*
 I2C
 
@@ -18,10 +23,8 @@ SCL     | Pin PB2
 5V      | 5V
 GND     | GND
 */
-#include <Arduino.h>
-#include <LiquidCrystal_I2C.h>
-#include <TinyWireM.h>
-#include <RTClib.h>
+
+#define uploadTimestamp "2021-04-14 05:27:58"
 
 RTC_DS1307 rtc;
 LiquidCrystal_I2C lcd(0x3f, 16, 2);

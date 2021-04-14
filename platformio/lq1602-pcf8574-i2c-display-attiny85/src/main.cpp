@@ -1,3 +1,7 @@
+#include <Arduino.h>
+#include "LiquidCrystal_attiny.h"
+#include <TinyWireM.h>
+
 /*
 I2C
 
@@ -11,10 +15,8 @@ GND     | GND
 Note: no need for external power on the lcd display
 Note: only works at 1mhz and 8mhz clock
 */
-#include <Arduino.h>
-/* #include "LiquidCrystal_I2C.h" */
-#include "LiquidCrystal_attiny.h"
-#include <TinyWireM.h>
+
+#define uploadTimestamp "2021-04-14 05:27:58"
 
 int isPrime( int );
 

@@ -8,9 +8,11 @@ TX (Pin 1)      ———->   RX
 GND             ———->   GND
  */
 
+#define uploadTimestamp "2021-04-14 05:27:58"
+#define DEBUG 1
+
 char incoming_value = 0;
 
-#define DEBUG 1
 void setup() {
   Serial.begin(9600);
   while( !Serial);

@@ -10,6 +10,8 @@
    GND    | GND
 */
 
+#define uploadTimestamp "2021-04-14 05:27:58"
+
 /* need to set the below */
 const int sclPin = 1;
 const int sdaPin = 2;

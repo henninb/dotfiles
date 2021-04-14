@@ -1,3 +1,6 @@
+#include <SPI.h>
+#include <RF24.h>
+
 /*
    //not required however it works
    git@github.com:jaretburkett/RF24-STM.git
@@ -15,8 +18,7 @@ NRF24L01(YL-105)   Arduino_ Uno    Arduino_Mega    Blue_Pill(stm32f01C)
  NOTE: MOSI is flipped with MISO
  */
 
-#include <SPI.h>
-#include <RF24.h>
+#define uploadTimestamp "2021-04-14 05:27:58"
 
 struct WeatherType {
     short temperature;           // 2 bytes

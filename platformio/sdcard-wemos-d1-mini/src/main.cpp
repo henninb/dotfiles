@@ -1,4 +1,3 @@
-/* #include <Arduino.h> */
 #include <SD.h>
 #include <ArduinoJson.h>
 
@@ -14,6 +13,8 @@ sdcard reader| wemos-d1-mini
   MOSI       |   D7
 
 */
+
+#define uploadTimestamp "2021-04-14 05:27:58"
 
 const int cableSelectPin = D4;
 

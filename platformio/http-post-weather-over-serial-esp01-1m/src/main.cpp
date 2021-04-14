@@ -3,8 +3,8 @@
 #include <ArduinoJson.h>
 #include "config.h"
 
+#define uploadTimestamp "2021-04-14 05:27:58"
 #define DEBUG 1
-
 #define ledBuiltin 2
 /*
  * install ArduinoJson library

@@ -1,3 +1,7 @@
+#include <SPI.h>
+#include <RF24.h>
+#include <Wire.h>
+
 /*
    git@github.com:jaretburkett/RF24-STM.git
 
@@ -14,9 +18,7 @@
   NOTE: MOSI is flipped with MISO
  */
 
-#include <SPI.h>
-#include <RF24.h>
-#include <Wire.h>
+#define uploadTimestamp "2021-04-14 05:27:58"
 
 struct WeatherType {
   short temperature;           // 2 bytes

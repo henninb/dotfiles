@@ -10,6 +10,8 @@
   GND    | GND
  */
 
+#define uploadTimestamp "2021-04-14 05:27:58"
+
 int isPrime( int );
 
 /* LiquidCrystal_I2C lcd(0x27, 16, 2); */

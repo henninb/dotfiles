@@ -15,11 +15,12 @@ for project in $projects; do
   git add -f "$project/.gitignore"
   touch "$project/readme.md"
   git add -f "$project/readme.md"
+  # echo "date=\$(shell date '+%Y-%m-%d %H:%M:%S')" |cat - "$project/Makefile" > /tmp/out && mv /tmp/out "$project/Makefile"
   cd "$project"
   if make > /dev/null 2>&1; then
-    echo yes
+    echo "$project - compile success"
   else
-    echo no
+    echo "$project - compile failed"
   fi
   cd ..
 done

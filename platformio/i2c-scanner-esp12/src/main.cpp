@@ -1,5 +1,8 @@
 #include <ESP8266WiFi.h>
 #include <Wire.h>
+
+#define uploadTimestamp "2021-04-14 05:27:58"
+
 /*
   Operational Mode (6 wires)
   ESP12    | FTDI

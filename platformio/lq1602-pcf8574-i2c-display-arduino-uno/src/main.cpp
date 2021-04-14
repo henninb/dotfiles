@@ -10,6 +10,8 @@
   DAT     | 4 SDA
 */
 
+#define uploadTimestamp "2021-04-14 05:27:58"
+
 int isPrime( int );
 
 /* LiquidCrystal_I2C lcd(0x3f, 16, 2); */

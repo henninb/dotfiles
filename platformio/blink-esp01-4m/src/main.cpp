@@ -11,7 +11,10 @@
   unplug after programming
 */
 
+#define uploadTimestamp "2021-04-14 05:27:58"
+
 const short int ledBuiltin = 2; //GPIO2, the LED_BUILTIN is incorrectly set to 1
+
 void connectToWifi();
 void flashSize();
 

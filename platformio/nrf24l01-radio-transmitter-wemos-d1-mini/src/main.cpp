@@ -1,7 +1,6 @@
-/*
-   //not required however it works
-   git@github.com:jaretburkett/RF24-STM.git
+#include <RF24.h>
 
+/*
 NRF24L01(YL-105) | wemos-d1-mini
   _____________________________
   VCC            | 5v
@@ -15,8 +14,7 @@ NRF24L01(YL-105) | wemos-d1-mini
   NOTE: MOSI is flipped with MISO
  */
 
-/* #include <SPI.h> */
-#include <RF24.h>
+#define uploadTimestamp "2021-04-14 05:27:58"
 
 struct WeatherType {
     short temperature;           // 2 bytes

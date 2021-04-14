@@ -21,6 +21,8 @@ RXD -> TX
 1000uf cap to smooth the power between 3.3V and ground on the FTDI
  */
 
+#define uploadTimestamp "2021-04-14 05:27:58"
+
 uint32_t chipId = 0;
 
 void setup() {

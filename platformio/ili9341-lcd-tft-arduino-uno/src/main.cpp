@@ -2,6 +2,8 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_TFTLCD.h>
 
+#define uploadTimestamp "2021-04-14 05:27:58"
+
 #define LCD_CS A3
 #define LCD_CD A2
 #define LCD_WR A1

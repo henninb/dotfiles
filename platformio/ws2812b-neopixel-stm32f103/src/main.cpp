@@ -3,8 +3,8 @@
   #include <avr/power.h>
 #endif
 
+#define uploadTimestamp "2021-04-14 05:27:58"
 #define PIN PA1
-
 #define pixelCount 16
 
 // When we setup the NeoPixel library, we tell it how many pixels, and which pin to use to send signals.

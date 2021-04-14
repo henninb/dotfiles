@@ -3,6 +3,8 @@
 #include <ESP8266WebServer.h>
 #include <EEPROM.h>
 
+#define uploadTimestamp "2021-04-14 05:27:58"
+
 void createWebServer();
 
 //Variables

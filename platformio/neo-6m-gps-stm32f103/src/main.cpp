@@ -17,6 +17,8 @@ PC2 (TX2) | RX
 
 */
 
+#define uploadTimestamp "2021-04-14 05:27:58"
+
 void displayInfo();
 
 // Choose two Arduino pins to use for software serial

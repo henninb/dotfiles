@@ -1,3 +1,4 @@
+date=$(shell date '+%Y-%m-%d %H:%M:%S')
 all: build
 build:
 	platformio run

@@ -1,5 +1,7 @@
 #include <NewPing.h>
 
+#define uploadTimestamp "2021-04-14 05:27:58"
+
 #define MAX_DISTANCE 400 // Maximum distance we want to ping for (in centimeters).
                          //Maximum sensor distance is rated at 400-500cm.
 

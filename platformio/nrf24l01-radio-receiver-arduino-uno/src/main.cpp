@@ -1,3 +1,8 @@
+#include <SPI.h>
+#include <RF24.h>
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+
 /*
   NRF24L01(YL-105) |   Arduino_ Uno |  Arduino_Mega  | Blue_Pill(stm32f01C)
   __________________________________________________________________________
@@ -12,10 +17,7 @@
 NOTE: MOSI is flipped with MISO
 */
 
-#include <SPI.h>
-#include <RF24.h>
-#include <Wire.h>
-#include <LiquidCrystal_I2C.h>
+#define uploadTimestamp "2021-04-14 05:27:58"
 
 struct WeatherType {
   short temperature;           // 2 bytes

@@ -1,9 +1,11 @@
 #include <Arduino.h>
 #include <RTClib.h>
 
+#define uploadTimestamp "2021-04-14 05:27:58"
+#define DEBUG 1
+
 RTC_DS1307 rtc;
 
-#define DEBUG 1
 void setup() {
   Serial.begin(9600);
   while( !Serial);

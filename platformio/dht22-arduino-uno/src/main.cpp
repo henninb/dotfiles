@@ -9,6 +9,8 @@
   Data to Pin 2
 */
 
+#define uploadTimestamp "2021-04-14 05:27:58"
+
 DHT dht(2, DHT22);
 
 void setup() {

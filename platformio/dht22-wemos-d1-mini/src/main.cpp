@@ -1,6 +1,8 @@
 #include <DHT.h>
 #include <ArduinoJson.h>
 
+#define uploadTimestamp "2021-04-14 05:27:58"
+
 #define DHTPIN 2
 
 DHT dht(2, DHT22);

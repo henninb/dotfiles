@@ -1,6 +1,7 @@
 #include <Arduino.h>
 
 /* #define ledPin PC13 */
+#define uploadTimestamp "2021-04-14 05:27:58"
 
 void setup() {
   Serial.begin(9600);

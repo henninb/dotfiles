@@ -11,6 +11,8 @@
 #include <STM32LowPower.h>
 #include <STM32RTC.h>
 
+#define uploadTimestamp "2021-04-14 05:27:58"
+
 /* Get the rtc object */
 STM32RTC& rtc = STM32RTC::getInstance();
 

@@ -27,6 +27,9 @@
   1000uF capacitor (between VCC and GND), shorter leg GND
 */
 
+#define uploadTimestamp "2021-04-14 05:27:58"
+#define DEBUG 1
+
 void setup() {
   Serial.begin(115200);
   while (!Serial);

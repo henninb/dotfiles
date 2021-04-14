@@ -16,6 +16,8 @@
 
 */
 
+#define uploadTimestamp "2021-04-14 05:27:58"
+
 int counter = 0;
 
 void setup() {

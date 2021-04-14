@@ -3,6 +3,7 @@
 #include "config.h"
 
 
+#define uploadTimestamp "2021-04-14 05:27:58"
 #define RESET_EEPROM false
 
 int addr_ssid = 0;         // ssid index

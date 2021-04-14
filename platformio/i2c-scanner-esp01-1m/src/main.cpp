@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include <Wire.h>
 
+#define uploadTimestamp "2021-04-14 05:27:58"
+
 /*
  pcf8574 | esp01-1m
  =======================
