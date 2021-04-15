@@ -106,9 +106,7 @@ bool connectToServer() {
 }
 
 class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
- /**
-   * Called for each advertising BLE server.
-   */
+/* Called for each advertising BLE server.  */
   void onResult(BLEAdvertisedDevice advertisedDevice) {
     Serial.print("BLE Advertised Device found: ");
     Serial.println(advertisedDevice.toString().c_str());
@@ -120,9 +118,8 @@ class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
       myDevice = new BLEAdvertisedDevice(advertisedDevice);
       doConnect = true;
       doScan = true;
-
-    } // Found our server
-  } // onResult
+    }
+  }
 };
 
 void setup() {
@@ -147,23 +144,26 @@ void setup() {
 void loop() {
     if (doConnect == true) {
     if (connectToServer()) {
-      Serial.println("We are now connected to the BLE Server.");
+      Serial.println("connected to the BLE Server.");
     } else {
-      Serial.println("We have failed to connect to the server; there is nothin more we will do.");
+      Serial.println("failed to connect to the BLE server");
     }
     doConnect = false;
   }
 
-  // If we are connected to a peer BLE Server, update the characteristic each time we are reached
-  // with the current time since boot.
   if (connected) {
-    String newValue = "Time since boot: " + String(millis()/1000);
-    Serial.println("Setting new characteristic value to \"" + newValue + "\"");
+    /* String newValue = "Time since boot: " + String(millis()/1000); */
+    /* Serial.println("Setting new characteristic value to \"" + newValue + "\""); */
 
     // Set the characteristic's value to be the array of bytes that is actually a string.
-    pRemoteCharacteristic->writeValue(newValue.c_str(), newValue.length());
-  }else if(doScan){
-    BLEDevice::getScan()->start(0);  // this is just example to start scan after disconnect, most likely there is better way to do it in arduino
+    /* pRemoteCharacteristic->writeValue(newValue.c_str(), newValue.length()); */
+    if(pRemoteCharacteristic->canRead()) {
+        std::string value = pRemoteCharacteristic->readValue();
+        Serial.print("The characteristic value was: ");
+        Serial.println(value.c_str());
+    }
+  } else if(doScan) {
+    BLEDevice::getScan()->start(0);
   }
 
   delay(1000);

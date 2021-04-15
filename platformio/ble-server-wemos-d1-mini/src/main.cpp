@@ -30,6 +30,19 @@ RXD -> RX (TX usually, but this board is wierd)
 1000uf cap to smooth the power between 3.3V and ground on the FTDI
  */
 
+bool deviceConnected = false;
+BLECharacteristic *pCharacteristic = NULL;
+
+class MyServerCallbacks: public BLEServerCallbacks {
+  void onConnect(BLEServer* pServer) {
+  deviceConnected = true;
+  }
+
+  void onDisconnect(BLEServer* pServer) {
+  deviceConnected = false;
+  }
+};
+
 void setup() {
   Serial.begin(115200);
   while (!Serial);
@@ -38,13 +51,10 @@ void setup() {
   BLEDevice::init("ynot");
   BLEServer *pServer = BLEDevice::createServer();
   BLEService *pService = pServer->createService(SERVICE_UUID);
-  BLECharacteristic *pCharacteristic = pService->createCharacteristic(
-                                         CHARACTERISTIC_UUID,
-                                         BLECharacteristic::PROPERTY_READ |
-                                         BLECharacteristic::PROPERTY_WRITE
-                                       );
+  pCharacteristic = pService->createCharacteristic( CHARACTERISTIC_UUID, BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE);
+  /* BLECharacteristic *pCharacteristic = pService->createCharacteristic( CHARACTERISTIC_UUID, BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE); */
 
-  pCharacteristic->setValue("Hello World says ynot");
+  /* pCharacteristic->setValue("Hello World says ynot"); */
   pService->start();
   // BLEAdvertising *pAdvertising = pServer->getAdvertising();  // this still is working for backward compatibility
   BLEAdvertising *pAdvertising = BLEDevice::getAdvertising();
@@ -63,6 +73,11 @@ void setup() {
 
 void loop() {
   Serial.println("Hello from ESP32");
+
+  String smillis = String(millis()/1000);
+  Serial.println(smillis);
+  pCharacteristic->setValue(smillis.c_str());
+  pCharacteristic->notify();
 
   digitalWrite(BUILTIN_LED, HIGH);
   delay(1000);
