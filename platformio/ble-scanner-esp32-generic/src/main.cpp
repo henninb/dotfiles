@@ -8,12 +8,6 @@
 int scanTime = 5; //In seconds
 BLEScan* pBLEScan;
 
-class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
-    void onResult(BLEAdvertisedDevice advertisedDevice) {
-      Serial.printf("Advertised Device: %s \n", advertisedDevice.toString().c_str());
-    }
-};
-
 /*
 serial connection, programming mode
 ESP32 | FTDI
@@ -35,10 +29,15 @@ RXD -> RX (TX usually, but this board is wierd)
 1000uf cap to smooth the power between 3.3V and ground on the FTDI
  */
 
+class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
+    void onResult(BLEAdvertisedDevice advertisedDevice) {
+      Serial.printf("Advertised Device: %s \n", advertisedDevice.toString().c_str());
+    }
+};
+
 void setup() {
   Serial.begin(115200);
   while (!Serial);
-  pinMode(BUILTIN_LED, OUTPUT);
 
   BLEDevice::init("");
   pBLEScan = BLEDevice::getScan(); //create new scan
@@ -62,8 +61,5 @@ void loop() {
   Serial.println("Scan done!");
   pBLEScan->clearResults();
 
-  digitalWrite(BUILTIN_LED, HIGH);
-  delay(1000);
-  digitalWrite(BUILTIN_LED, LOW);
-  delay(1000);
+  delay(2000);
 }
