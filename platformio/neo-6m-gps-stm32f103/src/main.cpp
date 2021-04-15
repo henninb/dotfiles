@@ -1,5 +1,5 @@
 #include <TinyGPS++.h>
-/* #include <SoftwareSerial.h> */
+#include "config.h"
 
 /*
 FTDI | stm32f103
@@ -16,8 +16,6 @@ PC3 (RX2) | TX
 PC2 (TX2) | RX
 
 */
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 
 void displayInfo();
 

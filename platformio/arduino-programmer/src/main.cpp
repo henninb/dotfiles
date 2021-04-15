@@ -37,9 +37,8 @@
 //
 
 #include <Arduino.h>
+#include "config.h"
 #undef SERIAL
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 
 #define PROG_FLICKER true
 

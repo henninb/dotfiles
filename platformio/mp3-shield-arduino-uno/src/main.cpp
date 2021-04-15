@@ -26,8 +26,7 @@
 
 //and the MP3 Shield Library
 #include <SFEMP3Shield.h>
-
-#define uploadTimestamp "2021-04-14 05:27:58"
+#include "config.h"
 
 // Below is not needed if interrupt driven. Safe to remove if not using.
 #if defined(USE_MP3_REFILL_MEANS) && USE_MP3_REFILL_MEANS == USE_MP3_Timer1

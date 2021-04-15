@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include <stdint.h>
 #include <TouchScreen.h>
+#include "config.h"
 
-#define uploadTimestamp "2021-04-14 05:27:58"
 #define YP A2
 #define XM A3
 #define YM 8

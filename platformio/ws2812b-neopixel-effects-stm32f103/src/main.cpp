@@ -1,6 +1,6 @@
 #include <Adafruit_NeoPixel.h>
+#include "config.h"
 
-#define uploadTimestamp "2021-04-14 05:27:58"
 #define NUM_LEDS 16
 
 uint8_t red( uint32_t );

@@ -1,8 +1,6 @@
 #include <ESP8266WiFi.h>
 #include "config.h"
 
-#define uploadTimestamp "2021-04-14 05:27:58"
-
 /*
   Hardware
   ========
@@ -10,8 +8,6 @@
   to program ensure the connection
   unplug after programming
 */
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 
 const short int ledBuiltin = 2; //GPIO2, the LED_BUILTIN is incorrectly set to 1
 
@@ -24,16 +20,16 @@ void setup() {
   Serial.println("setup");
   pinMode(ledBuiltin, OUTPUT);
 
-  /* connectToWifi(); */
   WiFi.mode(WIFI_STA); //We don't want the ESP to act as an AP
   delay(2000);
-  Serial.print("upload timestamp: ");
-  Serial.println(uploadTimestamp);
   Serial.println("setup complete");
 }
 
 void loop() {
   Serial.println("Hello from ESP01-4m");
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+
   flashSize();
   digitalWrite(ledBuiltin, HIGH);
   delay(1000);

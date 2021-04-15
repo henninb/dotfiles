@@ -1,5 +1,6 @@
 #include <SD.h>
 #include <ArduinoJson.h>
+#include "config.h"
 
 /*
 FTDI | stm32f103
@@ -18,7 +19,6 @@ MOSI    | PA7
 
 */
 
-#define uploadTimestamp "2021-04-14 05:27:58"
 /* const int chipSelect = PA4; */
 const int pinCS = PA4;
 

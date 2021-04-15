@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <LiquidCrystal_I2C.h>
+#include "config.h"
 
 /*
 I2C1
@@ -11,7 +12,6 @@ SCL=PB6
 Note: no need for external power on the lcd display
 */
 
-#define uploadTimestamp "2021-04-14 05:27:58"
 #define ledPin PC13
 
 int isPrime( int );

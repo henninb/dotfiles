@@ -1,9 +1,9 @@
 #include <SPI.h>
 #include <LoRa.h>
+#include "config.h"
 
 /*
- *
- *   RF95    | Arduino Uno | stm32f103
+  RF95    | Arduino Uno | stm32f103
   ---------------------------------
   GND     | ??          | ??
   3.3V    | VCC         | 3.3
@@ -13,8 +13,6 @@
   MISI    | 11 (MOSI)   | A7 MISI1  (PA7) 3.3v
   MISO    | 12 (MOS0)   | A6 MOSO1  (PA6) 3.3v
   */
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 
 void setup() {
   Serial.begin(9600);

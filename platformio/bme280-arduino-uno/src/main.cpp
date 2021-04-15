@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <SparkFunBME280.h>
 #include <ArduinoJson.h>
+#include "config.h"
 
 /*
    BME280 | arduino uno
@@ -11,7 +12,6 @@
    GND    | GND
 */
 
-#define uploadTimestamp "2021-04-14 05:27:58"
 /* need to set the below */
 const int sclPin = 1;
 const int sdaPin = 2;
@@ -38,13 +38,13 @@ void setup() {
     while (1);
   }
   delay(10);
-  Serial.print("upload timestamp: ");
-  Serial.println(uploadTimestamp);
   Serial.println("setup completed...");
 }
 
 void loop() {
   // Wait a few seconds between measurements.
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   delay(2000);
 
   float humidity = bme.readFloatHumidity();

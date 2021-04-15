@@ -2,8 +2,7 @@
 #include <ESP8266HTTPClient.h>
 #include <ESP8266WebServer.h>
 #include <EEPROM.h>
-
-#define uploadTimestamp "2021-04-14 05:27:58"
+#include "config.h"
 
 void createWebServer();
 
@@ -15,17 +14,14 @@ const char* passphrase = "text";
 String st;
 String content;
 
-
-//Function Decalration
 bool testWifi(void);
 void launchWeb(void);
 void setupAP(void);
 
-//Establishing Local server at port 80 whenever required
 ESP8266WebServer server(80);
 
 void setup() {
-  Serial.begin(115200); //Initialising if(DEBUG)Serial Monitor
+  Serial.begin(115200);
   Serial.println();
   Serial.println("Disconnecting previously connected WiFi");
   WiFi.disconnect();
@@ -36,7 +32,6 @@ void setup() {
   Serial.println();
   Serial.println("Startup");
 
-  //---------------------------------------- Read EEPROM for SSID and pass
   Serial.println("Reading EEPROM ssid");
 
   String esid;
@@ -50,8 +45,7 @@ void setup() {
   Serial.println("Reading EEPROM pass");
 
   String epass = "";
-  for (int i = 32; i < 96; ++i)
-  {
+  for (int i = 32; i < 96; ++i) {
     epass += char(EEPROM.read(i));
   }
   Serial.print("PASS: ");

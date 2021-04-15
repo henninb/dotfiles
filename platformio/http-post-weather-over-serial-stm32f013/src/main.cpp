@@ -1,5 +1,6 @@
 #include <DHT.h>
 #include <ArduinoJson.h>
+#include "config.h"
 //Interfacing ESP8266 Wi-Fi with STM32F103C8
 
 /*
@@ -22,8 +23,6 @@ Connect to DHT22 to 3.3V or 5V rail and Pin PA1 of the stm32f103
 
 */
 
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 #define DEBUG 1
 
 DHT dht(PA1, DHT22);

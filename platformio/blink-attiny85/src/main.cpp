@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "config.h"
 
 /*
  Programming
@@ -28,27 +29,27 @@ for serial monitor
  RX   | PB2
  */
 
-#define uploadTimestamp "2021-04-14 05:27:58"
 #define DEBUG 1
 
 void setup() {
   Serial.begin(9600);
   while( !Serial);
 #ifdef DEBUG
-  Serial.print("upload timestamp: ");
-  Serial.println(uploadTimestamp);
   Serial.println("setup started...");
 #endif
 
   pinMode(1, OUTPUT);
   delay(1000);
-  #ifdef DEBUG
+#ifdef DEBUG
   Serial.println("setup completed...");
 #endif
 }
 
 void loop() {
   Serial.println("Hello from attiny85");
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+
   digitalWrite(1, HIGH);
   delay(1000);
   digitalWrite(1, LOW);

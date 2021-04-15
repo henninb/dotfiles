@@ -1,4 +1,5 @@
 #include <RF24.h>
+#include "config.h"
 
 /*
 NRF24L01(YL-105) | wemos-d1-mini
@@ -13,8 +14,6 @@ NRF24L01(YL-105) | wemos-d1-mini
 
   NOTE: MOSI is flipped with MISO
  */
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 
 struct WeatherType {
     short temperature;           // 2 bytes

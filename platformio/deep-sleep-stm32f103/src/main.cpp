@@ -1,3 +1,6 @@
+#include <STM32LowPower.h>
+#include <STM32RTC.h>
+#include "config.h"
 /*
   AdvancedTimedWakeup
   This sketch demonstrates the usage of Internal Interrupts to wakeup a chip in deep sleep mode.
@@ -8,12 +11,6 @@
   This example code is in the public domain.
 */
 
-#include <STM32LowPower.h>
-#include <STM32RTC.h>
-
-#define uploadTimestamp "2021-04-14 05:27:58"
-
-/* Get the rtc object */
 STM32RTC& rtc = STM32RTC::getInstance();
 
 #if defined(STM32_RTC_VERSION) && (STM32_RTC_VERSION  >= 0x01010000)

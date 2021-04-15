@@ -1,5 +1,6 @@
 #include <SPI.h>
 #include <RH_RF95.h>
+#include "config.h"
 
 /*
   RF95    | Arduino Uno | stm32f103
@@ -11,9 +12,8 @@
   SCK     | 13 (SCK)    | A5 SCK1   (PA5) 3.3v
   MISI    | 11 (MOSI)   | A7 MISI1  (PA7) 3.3v
   MISO    | 12 (MOS0)   | A6 MOSO1  (PA6) 3.3v
-  */
+ */
 
-#define uploadTimestamp "2021-04-14 05:27:58"
 #define RFM95_CS 10
 #define RFM95_RST 9
 #define RFM95_INT 2

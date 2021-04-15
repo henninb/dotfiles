@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "config.h"
 #include "LiquidCrystal_I2C.h"
 
 /*
@@ -14,7 +15,6 @@
   GND to stm32f103 GND pin
  */
 
-#define uploadTimestamp "2021-04-14 05:27:58"
 #define ledPin PC13
 
 int isPrime( int );

@@ -1,7 +1,6 @@
 #include <DHT.h>
 #include <ArduinoJson.h>
-
-#define USE_FAHRENHEIT true
+#include "config.h"
 
 /*
   5V to 5V
@@ -9,7 +8,7 @@
   Data to Pin PA1
 */
 
-#define uploadTimestamp "2021-04-14 05:27:58"
+#define USE_FAHRENHEIT true
 
 DHT dht(PA1, DHT22);
 

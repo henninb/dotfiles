@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "config.h"
 
 /*
 Arduino Pins           Bluetooth Pins
@@ -8,7 +9,6 @@ TX (Pin 1)      ———->   RX
 GND             ———->   GND
  */
 
-#define uploadTimestamp "2021-04-14 05:27:58"
 #define DEBUG 1
 
 char incoming_value = 0;

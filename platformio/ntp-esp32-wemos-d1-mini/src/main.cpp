@@ -3,10 +3,6 @@
 #include <time.h>
 #include "config.h"
 
-//const char ssid[]      = "";
-//const char password[]   = "";
-#define uploadTimestamp "2021-04-14 05:27:58"
-
 uint32_t chipId = 0;
 
 const char* ntpServer = "pool.ntp.org";

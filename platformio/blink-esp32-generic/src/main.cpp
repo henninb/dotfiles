@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "config.h"
 
 /*
 serial connection, programming mode
@@ -21,21 +22,20 @@ RXD -> TX
 1000uf cap to smooth the power between 3.3V and ground on the FTDI
  */
 
-#define uploadTimestamp "2021-04-14 05:27:58"
-
 uint32_t chipId = 0;
 
 void setup() {
   Serial.begin(115200);
   while (!Serial);
   delay(2000);
-  Serial.print("upload timestamp: ");
-  Serial.println(uploadTimestamp);
   Serial.println("setup complete.");
 }
 
 void loop() {
   Serial.println("Hello from ESP32-generic");
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+
   for(int idx = 0; idx < 17; idx= idx + 8) {
     chipId |= ((ESP.getEfuseMac() >> (40 - idx)) & 0xff) << idx;
   }

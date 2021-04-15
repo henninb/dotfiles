@@ -1,5 +1,6 @@
 #include <SPI.h>
 #include <RH_RF95.h>
+#include "config.h"
 
 /*
 
@@ -15,7 +16,6 @@
 
  */
 
-#define uploadTimestamp "2021-04-14 05:27:58"
 #define RFM95_CS PA4
 #define RFM95_RST 9
 #define RFM95_INT PB0

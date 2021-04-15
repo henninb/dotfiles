@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <SoftwareSerial.h>
+#include "config.h"
 
-#define uploadTimestamp "2021-04-14 05:27:58"
 // Choose two Arduino pins to use for software serial
 int RXPin = 2;
 int TXPin = 3;

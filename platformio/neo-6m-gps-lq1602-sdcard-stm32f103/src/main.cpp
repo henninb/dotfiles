@@ -2,6 +2,7 @@
 #include <SD.h>
 #include <ArduinoJson.h>
 #include <LiquidCrystal_I2C.h>
+#include "config.h"
 
 /*
 FTDI | stm32f103
@@ -31,8 +32,6 @@ MOSI    | PA7
 note: the NEO-6M Red LED will blink when it is connecting to a sattilite
 
 */
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 
 const int cableSelectPin = PA4;
 const int ledPin = PC13;

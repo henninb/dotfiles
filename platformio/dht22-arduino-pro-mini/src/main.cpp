@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <DHT.h>
 #include <ArduinoJson.h>
+#include "config.h"
 
 /*
   dht | arduino pro mini
@@ -9,8 +10,6 @@
   GND | GND
   Data| Pin 2
 */
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 
 DHT dht(2, DHT22);
 

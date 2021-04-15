@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <LiquidCrystal_I2C.h>
 #include <TinyWireM.h>
+#include "config.h"
 
 /*
 I2C
@@ -15,8 +16,6 @@ GND     | GND
 Note: no need for external power on the lcd display
 Note: works at 16mHz
 */
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 
 int isPrime( int );
 

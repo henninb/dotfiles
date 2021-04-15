@@ -1,6 +1,5 @@
 #include <Wire.h>
-
-#define uploadTimestamp "2021-04-14 05:27:58"
+#include "config.h"
 
 /*
  pcf8574 | stm32f103

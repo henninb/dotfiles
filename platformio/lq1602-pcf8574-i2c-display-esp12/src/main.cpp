@@ -1,5 +1,6 @@
 #include <ESP8266WiFi.h>
 #include <LiquidCrystal_I2C.h>
+#include "config.h"
 
 /*
  pcf8574 | esp12
@@ -10,8 +11,6 @@
   GND    | GND
   note: shard ground is required for external
  */
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 
 int isPrime( int );
 

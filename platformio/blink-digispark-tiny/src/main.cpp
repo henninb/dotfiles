@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "config.h"
 
 /*
 for serial monitor an FTDI is required
@@ -10,9 +11,6 @@ GND  | GND
 RX   | PB2
  */
 
-/* #define ledPin 1 */
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 #define DEBUG 1
 
 void setup() {
@@ -23,15 +21,15 @@ void setup() {
 
   pinMode(LED_BUILTIN, OUTPUT);
   delay(1000);
-  #ifdef DEBUG
-  Serial.print("upload timestamp: ");
-  Serial.println(uploadTimestamp);
+#ifdef DEBUG
   Serial.println("setup completed...");
 #endif
 }
 
 void loop() {
   Serial.println("Hello from attiny85 digispark");
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
   digitalWrite(LED_BUILTIN, HIGH);
   delay(1000);
   digitalWrite(LED_BUILTIN, LOW);

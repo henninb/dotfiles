@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <RTClib.h>
+#include "config.h"
 
-#define uploadTimestamp "2021-04-14 05:27:58"
 #define DEBUG 1
 
 RTC_DS1307 rtc;

@@ -1,6 +1,7 @@
 #include <RHReliableDatagram.h>
 #include <RH_NRF24.h>
 #include <tinySPI.h>
+#include "config.h"
 
 /*
 NRF24L01(YL-105)   Arduino_ Uno    Arduino_Mega    Blue_Pill(stm32f01C)
@@ -17,8 +18,6 @@ NRF24L01(YL-105)   Arduino_ Uno    Arduino_Mega    Blue_Pill(stm32f01C)
  */
 
 /* #define __AVR_ATtiny85__ */
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 
 const uint64_t writePipe = 0xE6E6E6E6E6E6;
 const uint64_t readPipe = 0xB3B4B5B601;

@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "config.h"
 
 /*
 stm32f103 Pins           Bluetooth Pins
@@ -7,8 +8,6 @@ TX2 (Pin PA2 or PA9)       ———->   RX
 5V                ———-> VCC
 GND             ———->   GND
  */
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 
 HardwareSerial Serial2(USART2);   // or HardWareSerial Serial2 (PA3, PA2);
 

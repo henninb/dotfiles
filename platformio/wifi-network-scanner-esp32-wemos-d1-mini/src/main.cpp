@@ -25,8 +25,6 @@ RXD -> RX (TX usually, but this board is wierd)
 1000uf cap to smooth the power between 3.3V and ground on the FTDI
  */
 
-#define uploadTimestamp "2021-04-14 05:27:58"
-
 const char ntpServer[] = "pool.ntp.org";
 const long gmtOffset = -21600; //Central time -6
 const int daylightOffset = 3600;

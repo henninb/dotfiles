@@ -1,6 +1,6 @@
 #include <SPI.h>
 #include <LoRa.h>
-
+#include "config.h"
 
 /*
  *
@@ -14,8 +14,6 @@
   MISI    | 11 (MOSI)   | A7 MISI1  (PA7) 3.3v
   MISO    | 12 (MOS0)   | A6 MOSO1  (PA6) 3.3v
   */
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 
 int counter = 0;
 

@@ -1,9 +1,9 @@
 #include <Adafruit_NeoPixel.h>
+#include "config.h"
 #ifdef __AVR__
   #include <avr/power.h>
 #endif
 
-#define uploadTimestamp "2021-04-14 05:27:58"
 #define PIN PB1
 #define pixelCount 16
 

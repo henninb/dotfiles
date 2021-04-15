@@ -1,5 +1,6 @@
 #include <SPI.h>
 #include <RH_RF95.h>
+#include "config.h"
 
 /*
 
@@ -14,8 +15,6 @@
  MISO    | 12 (MOS0)   | A6 MOSO1  (PA6) 3.3v
 
  */
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 
 #define RFM95_CS 10
 #define RFM95_RST 9

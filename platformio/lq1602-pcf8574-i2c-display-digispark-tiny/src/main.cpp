@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <LiquidCrystal_I2C.h>
 #include <TinyWireM.h>
+#include "config.h"
 
 /*
 I2C

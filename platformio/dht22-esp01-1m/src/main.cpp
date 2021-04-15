@@ -1,5 +1,6 @@
 #include <DHT.h>
 #include <ArduinoJson.h>
+#include "config.h"
 
 /*
   dht | esp01-1m
@@ -9,8 +10,6 @@
   Data| Pin 2
   requires an shared ground pin to handle the 5V requirement
 */
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 
 #define dhtPin 2
 

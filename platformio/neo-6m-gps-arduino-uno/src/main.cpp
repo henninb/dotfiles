@@ -1,7 +1,6 @@
 #include <TinyGPS++.h>
 #include <SoftwareSerial.h>
-
-#define uploadTimestamp "2021-04-14 05:27:58"
+#include "config.h"
 
 void displayInfo();
 

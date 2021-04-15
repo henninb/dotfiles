@@ -30,8 +30,6 @@
   1000uF capacitor (between VCC and GND), shorter leg GND
 */
 
-#define uploadTimestamp "2021-04-14 05:27:58"
-
 WiFiClient espClient;
 PubSubClient mqttClient(espClient);
 

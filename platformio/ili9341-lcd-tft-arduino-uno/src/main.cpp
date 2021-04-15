@@ -1,8 +1,7 @@
 #include <Arduino.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_TFTLCD.h>
-
-#define uploadTimestamp "2021-04-14 05:27:58"
+#include "config.h"
 
 #define LCD_CS A3
 #define LCD_CD A2

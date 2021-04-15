@@ -1,7 +1,6 @@
 #include <ESP8266WiFi.h>
 #include <DHT.h>
 #include <SparkFunBME280.h>
-/* #include <Wire.h> */
 #include "config.h"
 
 /* void setLocation(); */
@@ -16,8 +15,6 @@
   5V     | 5V
   GND    | GND
  */
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 
 //#define WIFI_DELAY 15000 //for testing
 #define USE_SERIAL_PRINT_FLAG 1

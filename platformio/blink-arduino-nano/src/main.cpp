@@ -12,15 +12,16 @@ void setup() {
 
   pinMode(LED_BUILTIN, OUTPUT);
   delay(1000);
-  #ifdef DEBUG
-  Serial.print("upload timestamp: ");
-  Serial.println(uploadTimestamp);
+#ifdef DEBUG
   Serial.println("setup completed...");
 #endif
 }
 
 void loop() {
   Serial.println("Hello from Arduino Nano");
+  Serial.print("upload timestamp: ");
+  Serial.println(uploadTimestamp);
+
   Serial.print("LED_BUILTIN: ");
   Serial.println(LED_BUILTIN);
   digitalWrite(LED_BUILTIN, HIGH);

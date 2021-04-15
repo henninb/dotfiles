@@ -2,6 +2,7 @@
 #include <SPI.h>
 #include <RF24.h>
 #include <DHT.h>
+#include "config.h"
 
 /*
    NRF24L01(YL-105)   Arduino_ Uno    Arduino_Mega    Blue_Pill(stm32f01C)
@@ -20,8 +21,6 @@
  DHT22 VCC to 5V on Arduino
  DHT22 GND to GND on Arduino
  */
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 
 struct WeatherType {
     short temperature;           // 2 bytes

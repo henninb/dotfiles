@@ -2,6 +2,7 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+#include "config.h"
 
 /*
 oled | arduino uno
@@ -9,9 +10,7 @@ SDA  | SDA
 SDL  | SDL
 VCC  | 5V
 GND  | GND
- * */
-
-#define uploadTimestamp "2021-04-14 05:27:58"
+*/
 
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels

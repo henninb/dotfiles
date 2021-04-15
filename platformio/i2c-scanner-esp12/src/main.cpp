@@ -1,7 +1,6 @@
 #include <ESP8266WiFi.h>
 #include <Wire.h>
-
-#define uploadTimestamp "2021-04-14 05:27:58"
+#include "config.h"
 
 /*
   Operational Mode (6 wires)
