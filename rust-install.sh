@@ -19,6 +19,7 @@ echo cargo install broot
 #echo cargo install alacritty
 echo cargo install fd-find
 echo cargo install leftwm
+echo cargo install neovide
 
 echo rustup default nightly
 echo cargo install hunter
