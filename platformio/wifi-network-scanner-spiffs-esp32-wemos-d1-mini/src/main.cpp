@@ -55,7 +55,7 @@ void setup() {
   while (!Serial);
 
   WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
+  while( WiFi.status() != WL_CONNECTED ) {
     delay(500);
     Serial.print(".");
   }
@@ -73,7 +73,6 @@ void setup() {
   /* WiFi.disconnect(true); */
   delay(100);
 
-
   mqttClient.setServer(mqttServer, 1883);
   if (mqttClient.connect("espClient")) {
     Serial.println("mqtt connected.");
@@ -81,7 +80,7 @@ void setup() {
     Serial.println("mqtt connection failed.");
   }
 
-  if (!SPIFFS.begin(true)) {
+  if( !SPIFFS.begin(true) ) {
     Serial.println("SPIFFS initialization failed");
     while(true);
   }
