@@ -24,6 +24,7 @@ MOSI    | PA7
 
 const int pinChipSelect = PA4;
 String fileName = "file.json";
+File fileHandler;
 
 void setup() {
   Serial.begin(9600);
@@ -47,11 +48,11 @@ void setup() {
 
 void loop() {
   String milli = String(millis()/1000);
-  Serial.printlin(milli);
+  Serial.println(milli);
   delay(1000);
 
   //write file
-  File fileHandler = SD.open(fileName, FILE_WRITE);
+  fileHandler = SD.open(fileName, FILE_WRITE);
   if (fileHandler) {
     Serial.println("Writing to file...");
 

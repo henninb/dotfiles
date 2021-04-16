@@ -16,6 +16,8 @@ sdcard reader| wemos-d1-mini
 */
 
 const int cableSelectPin = D4;
+String fileName = "/filename.json";
+File fileHandler;
 
 void setup() {
   Serial.begin(9600);
@@ -31,41 +33,43 @@ void setup() {
     return;
   }
 
-  File myFile = SD.open("/gps-data.txt", FILE_WRITE);
-
-  if (myFile) {
-    Serial.println("Writing to file...");
-
-    StaticJsonDocument<100> jsonStructure;
-    jsonStructure["humidity"] = 1.1;
-    jsonStructure["temperature"] = 2.2;
-    String payload;
-    serializeJson(jsonStructure, payload);
-    Serial.print("Payload: ");
-    Serial.println(payload);
-    myFile.println(payload);
-
-    myFile.close();
-    Serial.println("Done.");
-  } else {
-    Serial.println("error opening file");
-  }
-  myFile = SD.open("gps-data.txt");
-  if (myFile) {
-    Serial.println("Read:");
-    // Reading the whole file
-    while (myFile.available()) {
-      Serial.write(myFile.read());
-    }
-    myFile.close();
-  } else {
-    Serial.println("error opening file.");
-  }
   Serial.print("upload timestamp: ");
   Serial.println(uploadTimestamp);
   Serial.println("setup completed.");
 }
 
 void loop() {
+  String milli = String(millis()/1000);
+
+  fileHandler = SD.open(fileName, FILE_WRITE);
+
+  if (fileHandler) {
+    Serial.println("Writing to file...");
+
+    StaticJsonDocument<100> jsonStructure;
+    jsonStructure["millis"] = milli;
+    String payload;
+    serializeJson(jsonStructure, payload);
+    Serial.print("Payload: ");
+    Serial.println(payload);
+    fileHandler.println(payload);
+
+    fileHandler.close();
+    Serial.println("Done.");
+  } else {
+    Serial.println("error opening file");
+  }
+
+  fileHandler = SD.open(fileName);
+  if (fileHandler) {
+    Serial.println("Read:");
+    // Reading the whole file
+    while (fileHandler.available()) {
+      Serial.write(fileHandler.read());
+    }
+    fileHandler.close();
+  } else {
+    Serial.println("error opening file.");
+  }
   return;
 }
