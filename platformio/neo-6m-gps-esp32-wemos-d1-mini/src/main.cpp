@@ -5,7 +5,7 @@
 #include "config.h"
 
 /*
-
+5V neo-6m
 
 */
 
@@ -30,7 +30,6 @@ void setup() {
   pinMode(ledPin,OUTPUT);
 
   Serial2.begin(9600, SERIAL_8N1, RXD2, TXD2);
-  /* Serial2.begin(9600); */
   while (!Serial2);
 
   WiFi.begin(ssid, password);
@@ -61,14 +60,19 @@ void setup() {
 void loop() {
   while (Serial2.available() > 0)
     if (gps.encode(Serial2.read())) {
+      Serial.write(Serial2.read());
       displayInfo();
+    } else {
+      Serial.println("no serial available");
+      delay(250);
     }
 
   // If 5000 milliseconds pass and there are no characters coming in
   // over the software serial port, show a "No GPS detected" error
   if (millis() > 5000 && gps.charsProcessed() < 10) {
     Serial.println("No GPS detected");
-    while(true);
+      delay(250);
+    /* while(true); */
   }
 }
 
@@ -76,7 +80,7 @@ void displayInfo() {
     StaticJsonDocument<300> jsonStructure;
     String time = "";
 
-  if (gps.location.isValid()) {
+  if( gps.location.isValid() ) {
     digitalWrite(ledPin, HIGH);
     delay(1000);
     digitalWrite(ledPin, LOW);
@@ -98,7 +102,7 @@ void displayInfo() {
     delay(250);
   }
 
-  if (gps.date.isValid()) {
+  if( gps.date.isValid() ) {
     int month = gps.date.month();
     int day = gps.date.day();
     int year = gps.date.year();
@@ -112,7 +116,7 @@ void displayInfo() {
     Serial.println("Date data is not vaild from the gps.");
   }
 
-  if (gps.time.isValid()) {
+  if( gps.time.isValid() ) {
     int hour = gps.time.hour();
     int min = gps.time.minute();
     int sec = gps.time.second();

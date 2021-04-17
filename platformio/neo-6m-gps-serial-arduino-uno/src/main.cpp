@@ -2,6 +2,10 @@
 #include <SoftwareSerial.h>
 #include "config.h"
 
+/*
+neo-6m can connect to 5V
+*/
+
 // Choose two Arduino pins to use for software serial
 int RXPin = 2;
 int TXPin = 3;
