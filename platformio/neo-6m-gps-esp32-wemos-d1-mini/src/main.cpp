@@ -1,6 +1,7 @@
 #include <WiFi.h>
 #include <TinyGPS++.h>
 #include <ArduinoJson.h>
+#include <SoftwareSerial.h>
 #include <PubSubClient.h>
 #include "config.h"
 
@@ -19,18 +20,20 @@ TinyGPSPlus gps;
 WiFiClient espClient;
 PubSubClient mqttClient(espClient);
 
-/* HardwareSerial Serial2(USART1);   // or HardWareSerial Serial2 (PA3, PA2); */
-/* HardWareSerial Serial2 (PA3, PA2); */
+/* HardwareSerial ss(USART1);   // or HardWareSerial ss (PA3, PA2); */
+/* HardWareSerial ss (PA3, PA2); */
+SoftwareSerial ss(RXD2, TXD2);
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
   while (!Serial);
   Serial.println("setup...");
 
   pinMode(ledPin,OUTPUT);
 
-  Serial2.begin(9600, SERIAL_8N1, RXD2, TXD2);
-  while (!Serial2);
+  ss.begin(9600);
+  /* Serial2.begin(9600, SERIAL_8N1, RXD2, TXD2); */
+  while (!ss);
 
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
@@ -58,22 +61,25 @@ void setup() {
 }
 
 void loop() {
-  while (Serial2.available() > 0)
-    if (gps.encode(Serial2.read())) {
-      Serial.write(Serial2.read());
+  while ( ss.available() > 0 ) {
+    if (gps.encode(ss.read())) {
       displayInfo();
     } else {
-      Serial.println("no serial available");
-      delay(250);
+      Serial.println("no serial data available");
+      delay(500);
+      /* Serial.print("data: "); */
+      /* Serial.write(ss.read()); */
+      /* Serial.println(""); */
     }
+  }
 
   // If 5000 milliseconds pass and there are no characters coming in
   // over the software serial port, show a "No GPS detected" error
-  if (millis() > 5000 && gps.charsProcessed() < 10) {
-    Serial.println("No GPS detected");
-      delay(250);
-    /* while(true); */
-  }
+  /* if (millis() > 5000 && gps.charsProcessed() < 10) { */
+  /*   Serial.println("No GPS detected"); */
+  /*     delay(250); */
+  /*   /1* while(true); *1/ */
+  /* } */
 }
 
 void displayInfo() {
