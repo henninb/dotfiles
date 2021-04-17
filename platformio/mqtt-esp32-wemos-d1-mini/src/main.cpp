@@ -67,10 +67,12 @@ void loop() {
   digitalWrite(BUILTIN_LED, LOW);
   delay(1000);
 
+  String milli = String(millis()/1000);
+
   if (mqttClient.connected()) {
-    mqttClient.publish("ynot", "message1", true);
-    delay(10);
-    mqttClient.publish("ynot", "message2", true);
+    mqttClient.publish("ynot", milli.c_str(), true);
+    Serial.print("sent message to ynot: ");
+    Serial.println(milli);
     delay(10);
   }
 }
