@@ -6,9 +6,6 @@
 int RXPin = 2;
 int TXPin = 3;
 
-//Default baud of NEO-6M is 9600
-int GPSBaud = 9600;
-
 // Create a software serial port called "gpsSerial"
 SoftwareSerial gpsSerial(RXPin, TXPin);
 
@@ -24,7 +21,7 @@ void setup() {
 }
 
 void loop() {
-  // Displays information when new sentence is available.
-  while (gpsSerial.available() > 0)
+  while (gpsSerial.available() > 0) {
     Serial.write(gpsSerial.read());
+  }
 }

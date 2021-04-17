@@ -3,15 +3,16 @@
 
 /*
 FTDI | stm32f103
+================
 RX   | TX1 (PC9)
 TX   | RX1 (PC10)
 GND  | GND
 3.3V | 3.3V
 
 stm32f103 | NEO-6M
+==================
 GND       | GND
 3.3V      | 3.3V
-3.3V      | CH-PD
 PC3 (RX2) | TX
 PC2 (TX2) | RX
 
