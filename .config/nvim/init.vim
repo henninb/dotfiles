@@ -534,3 +534,14 @@ noremap <leader>u :w<Home>silent <End> !urlview<cr>
 " highlight nonascii chars
 syntax match nonascii "[^\x00-\x7F]"
 highlight nonascii guibg=Red ctermbg=2
+
+
+" gui settings
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
+
+set guifont=monofur\ for\ Powerline:h18
+" set guifont=Symbola:h10
+" set guifont=FuraCode\ Nerd\ Font:h12

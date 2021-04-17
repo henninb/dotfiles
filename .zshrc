@@ -410,6 +410,7 @@ if [ "${MYSHELL}" = "zsh" ]; then
   zle -N zle-keymap-select
 fi
 
+# TODO: should I get ride of this config?
 [ -f "$HOME/.config/broot/launcher/bash/1" ] && source "$HOME/.config/broot/launcher/bash/1"
 
 if [ "$MYSHELL" = "zsh" ]; then
