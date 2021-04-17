@@ -35,6 +35,7 @@ note: the NEO-6M Red LED will blink when it is connecting to a sattilite
 
 const int cableSelectPin = PA4;
 const int ledPin = PC13;
+String outputFilename = "/gps-data.json";
 
 void displayInfo();
 
@@ -50,14 +51,14 @@ void setup() {
 
   pinMode(ledPin,OUTPUT);
 
-  /* if (SD.begin(cableSelectPin)) { */
-  /*   Serial.println("SD card is ready to use."); */
-  /* } else { */
-  /*   Serial.println("SD card initialization failed"); */
-  /*   Serial.println("please be sure you have put an SD card in the slot."); */
-  /*   Serial.println("please be sure to define the CS pin in the begin method."); */
-  /*   while(true); */
-  /* } */
+  if (SD.begin(cableSelectPin)) {
+    Serial.println("SD card is ready to use.");
+  } else {
+    Serial.println("SD card initialization failed");
+    Serial.println("please be sure you have put an SD card in the slot.");
+    Serial.println("please be sure to define the CS pin in the begin method.");
+    while(true);
+  }
 
   gpsSerial.begin(9600);
   while (!gpsSerial);
@@ -72,26 +73,38 @@ void setup() {
 
   Serial.print("upload timestamp: ");
   Serial.println(uploadTimestamp);
-  Serial.println("setup complete.");
+  Serial.println("setup completed.");
+  lcd.print("setup completed.");
+  delay(250);
 }
 
 void loop() {
-  while (gpsSerial.available() > 0)
+  while (gpsSerial.available() > 0) {
     if (gps.encode(gpsSerial.read())) {
       displayInfo();
+    } else {
+      lcd.setCursor(0, 0);
+      lcd.clear();
+      lcd.print("gp read failed.");
+      Serial.println("gps read failed.");
+      delay(250);
     }
+  }
 
   // If 5000 milliseconds pass and there are no characters coming in
   // over the software serial port, show a "No GPS detected" error
-  if (millis() > 5000 && gps.charsProcessed() < 10) {
+  if( millis() > 5000 && gps.charsProcessed() < 10 ) {
     Serial.println("No GPS detected");
-    while(true);
+    /* while(true); */
+    lcd.setCursor(0, 0);
+    lcd.clear();
+    lcd.print("no GPS detected");
+    delay(250);
   }
 }
 
 void displayInfo() {
-    StaticJsonDocument<300> jsonStructure;
-    /* String date = ""; */
+    StaticJsonDocument<400> jsonStructure;
     String time = "";
 
     fileHandle = SD.open("/gps-data.txt", FILE_WRITE);
@@ -99,58 +112,50 @@ void displayInfo() {
       Serial.println("file is open for writting...");
     } else {
       Serial.println("something went wrong with the file opening process.");
-      /* while(true); */
+      while(true);
     }
-  if (gps.location.isValid()) {
-  /* if (true) { */
-    digitalWrite(ledPin, HIGH);
-    delay(1000);
-    digitalWrite(ledPin, LOW);
-    delay(1000);
+  if( gps.location.isValid() ) {
     jsonStructure["latitude"] = String(gps.location.lat(), 6);
     jsonStructure["longitude"] = String(gps.location.lng(), 6);
-    Serial.println("found long and lat.");
+    Serial.println("found lon and lat.");
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("found lon and lat");
   } else {
+    jsonStructure["latitude"] = "";
+    jsonStructure["longitude"] = "";
     Serial.println("Location data is not vaild from the gps.");
     digitalWrite(ledPin, HIGH);
-    delay(250);
+    delay(200);
     digitalWrite(ledPin, LOW);
-    delay(250);
+    delay(200);
     digitalWrite(ledPin, HIGH);
-    delay(250);
+    delay(200);
     digitalWrite(ledPin, LOW);
-    delay(250);
+    delay(200);
   }
 
-  if (gps.date.isValid()) {
+  if( gps.date.isValid() ) {
     int month = gps.date.month();
     int day = gps.date.day();
     int year = gps.date.year();
     char now[20] = {0};
-
     sprintf(now, "%04d-%02d-%02d", year, month, day);
-
-    /* date = String(gps.date.year()) + "-"; */
-    /* date = date + String(gps.date.month()) + "-"; */
-    /* date = date + String(gps.date.day()); */
     jsonStructure["date"] = now;
   } else {
+    jsonStructure["date"] = "";
     Serial.println("Date data is not vaild from the gps.");
   }
 
-  if (gps.time.isValid()) {
+  if( gps.time.isValid() ) {
     int hour = gps.time.hour();
     int min = gps.time.minute();
     int sec = gps.time.second();
-
     char now[20] = {0};
-
     sprintf(now, "%02d:%02d:%02d", hour, min, sec);
-    /* time = "" + String(gps.time.hour()) + ":"; */
-    /* time = time + String(gps.time.minute()) + ":"; */
-    /* time = time + String(gps.time.second()); */
     jsonStructure["time"] = now;
   } else {
+    jsonStructure["time"] = "";
     Serial.println("Time data is not vaild from the gps.");
   }
 
@@ -160,7 +165,7 @@ void displayInfo() {
   Serial.println(payload);
   lcd.clear();
   lcd.setCursor(15, 0);
-  for ( int positionCounter1 = 0; positionCounter1 < payload.length(); positionCounter1++) {
+  for( int positionCounter1 = 0; positionCounter1 < payload.length(); positionCounter1++ ) {
     lcd.scrollDisplayLeft();  //Scrolls the contents of the display one space to the left.
     lcd.print(payload[positionCounter1]);  // Print 12 character array
     delay(250);
