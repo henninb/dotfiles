@@ -65,6 +65,13 @@ void loop() {
   while( gpsSerial.available() > 0 ) {
     if( gps.encode(gpsSerial.read()) ) {
       StaticJsonDocument<300> jsonStructure;
+      char timestampNow[25] = {0};
+      int month = 0;
+      int day = 0;
+      int year = 0;
+      int hour = 0;
+      int min = 0;
+      int sec = 0;
       if( gps.location.isValid() ) {
         jsonStructure["latitude"] = String(gps.location.lat(), 6);
         jsonStructure["longitude"] = String(gps.location.lng(), 6);
@@ -73,25 +80,20 @@ void loop() {
         jsonStructure["longitude"] = "";
       }
       if( gps.date.isValid() ) {
-        int month = gps.date.month();
-        int day = gps.date.day();
-        int year = gps.date.year();
-        char now[20] = {0};
-        sprintf(now, "%04d-%02d-%02d", year, month, day);
-        jsonStructure["date"] = now;
+        month = gps.date.month();
+        day = gps.date.day();
+        year = gps.date.year();
       } else {
-        jsonStructure["date"] = "";
       }
       if( gps.time.isValid() ) {
-        int hour = gps.time.hour();
-        int min = gps.time.minute();
-        int sec = gps.time.second();
-        char now[20] = {0};
-        sprintf(now, "%02d:%02d:%02d", hour, min, sec);
-        jsonStructure["time"] = now;
+        hour = gps.time.hour();
+        min = gps.time.minute();
+        sec = gps.time.second();
       } else {
-        jsonStructure["time"] = "";
       }
+
+      sprintf(timestampNow, "%04d-%02d-%02d %02d:%02d:%02d", year, month, day, hour, min, sec);
+      jsonStructure["timestamp"] = timestampNow;
       String payload;
       serializeJson(jsonStructure, payload);
       Serial.print("Payload: ");

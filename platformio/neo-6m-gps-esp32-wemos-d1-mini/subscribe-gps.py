@@ -19,12 +19,17 @@ def on_message(client, userdata, message):
     time.sleep(1)
     print("received message: ", str(message.payload.decode("utf-8")))
     try:
+      url = "http://localhost:8080/gps"
+      data = str(message.payload.decode("utf-8"))
+      headers = {'Content-type': 'application/json'}
+      response = requests.post(url, data=data, headers=headers)
       # code_that_raises()
-      response = requests.post('http://localhost:8080/post', data ={'key':'value'})
+      # response = requests.post('http://localhost:8080/gps', data ={'key':'value'})
+      # response = requests.post('http://localhost:8080/gps', data = str(message.payload.decode("utf-8")))
+      # print(response.json())
+      print(response)
     except Exception as e:
       print(type(e))
-    # print(response)
-    # print(response.json())
 
 
 # client = paho.Client("python")
