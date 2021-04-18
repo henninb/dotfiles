@@ -32,14 +32,15 @@ note: the NEO-6M Red LED will blink when it is connecting to a sattilite
 
 */
 
+/* testing needs to be done as of 4/17/2021 */
+
 const int cableSelectPin = PA4;
 const int ledPin = PC13;
 String outputFilename = "/gps-data.json";
 
-void displayInfo();
-
 TinyGPSPlus gps;
 File fileHandle;
+String fileName = "/gps-data.json";
 LiquidCrystal_I2C lcd(PCF8574A_ADDR_A21_A11_A01, 4, 5, 6, 16, 11, 12, 13, 14, POSITIVE); //0x3f
 HardwareSerial gpsSerial(USART2);   // or HardWareSerial Serial2 (PA3, PA2);
 
@@ -78,30 +79,67 @@ void setup() {
 }
 
 void loop() {
-  while (gpsSerial.available() > 0) {
+    while (gpsSerial.available() > 0) {
     if (gps.encode(gpsSerial.read())) {
-      displayInfo();
-    } else {
-      lcd.setCursor(0, 0);
-      lcd.clear();
-      lcd.print("gp read failed.");
-      Serial.println("gps read failed.");
-      delay(250);
-    }
-  }
+      StaticJsonDocument<300> jsonStructure;
+      fileHandle = SD.open(fileName, FILE_WRITE);
+      if (fileHandle) {
+        Serial.println("file is open for writting...");
+      } else {
+        Serial.println("something went wrong with the file opening process.");
+        while(true);
+      }
+      if( gps.location.isValid() ) {
+        jsonStructure["latitude"] = String(gps.location.lat(), 6);
+        jsonStructure["longitude"] = String(gps.location.lng(), 6);
+        lcd.clear();
+        lcd.setCursor(0, 0);
+        lcd.print("lon and lat updated.");
+      } else {
+        jsonStructure["latitude"] = "";
+        jsonStructure["longitude"] = "";
+        lcd.clear();
+        lcd.setCursor(0, 0);
+        lcd.print("lon and lat NOT updated.");
+      }
+      if( gps.date.isValid() ) {
+        int month = gps.date.month();
+        int day = gps.date.day();
+        int year = gps.date.year();
+        char now[20] = {0};
+        sprintf(now, "%04d-%02d-%02d", year, month, day);
+        jsonStructure["date"] = now;
+      } else {
+        jsonStructure["date"] = "";
+      }
+      if( gps.time.isValid() ) {
+        int hour = gps.time.hour();
+        int min = gps.time.minute();
+        int sec = gps.time.second();
+        char now[20] = {0};
+        sprintf(now, "%02d:%02d:%02d", hour, min, sec);
+        jsonStructure["time"] = now;
+      } else {
+        jsonStructure["time"] = "";
+      }
+      String payload;
+      serializeJson(jsonStructure, payload);
+      Serial.print("Payload: ");
+      Serial.println(payload);
 
-  // If 5000 milliseconds pass and there are no characters coming in
-  // over the software serial port, show a "No GPS detected" error
-  if( millis() > 5000 && gps.charsProcessed() < 10 ) {
-    Serial.println("No GPS detected");
-    /* while(true); */
-    lcd.setCursor(0, 0);
-    lcd.clear();
-    lcd.print("no GPS detected");
-    delay(250);
+      if( fileHandle ) {
+        fileHandle.println(payload);
+      } else {
+        Serial.println("cannot write to file");
+      }
+
+      fileHandle.close();
+      delay(500);
+    }
   }
 }
 
+// method seems to be broken and is not being called as of 4/17/2021
 void displayInfo() {
     StaticJsonDocument<400> jsonStructure;
     String time = "";

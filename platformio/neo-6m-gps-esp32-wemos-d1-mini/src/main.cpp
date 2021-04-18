@@ -22,7 +22,6 @@ TinyGPSPlus gps;
 WiFiClient espClient;
 PubSubClient mqttClient(espClient);
 
-/* HardwareSerial gpsSerial(USART1);   // or HardWareSerial gpsSerial (RXD2, TXD2); */
 /* SoftwareSerial gpsSerial(RXD2, TXD2); */
 HardwareSerial gpsSerial(2);
 
@@ -34,7 +33,7 @@ void setup() {
   pinMode(ledPin,OUTPUT);
 
   gpsSerial.begin(9600);
-  /* Serial2.begin(9600, SERIAL_8N1, RXD2, TXD2); */
+  /* gpsSerial.begin(9600, SERIAL_8N1, RXD2, TXD2); */
   while (!gpsSerial);
 
   WiFi.begin(ssid, password);
@@ -63,17 +62,17 @@ void setup() {
 }
 
 void loop() {
-  while (gpsSerial.available() > 0) { //while data is available
-    if (gps.encode(gpsSerial.read())) {
+  while( gpsSerial.available() > 0 ) {
+    if( gps.encode(gpsSerial.read()) ) {
       StaticJsonDocument<300> jsonStructure;
-      if (gps.location.isValid()) {
+      if( gps.location.isValid() ) {
         jsonStructure["latitude"] = String(gps.location.lat(), 6);
         jsonStructure["longitude"] = String(gps.location.lng(), 6);
       } else {
         jsonStructure["latitude"] = "";
         jsonStructure["longitude"] = "";
       }
-      if (gps.date.isValid()) {
+      if( gps.date.isValid() ) {
         int month = gps.date.month();
         int day = gps.date.day();
         int year = gps.date.year();
@@ -83,7 +82,7 @@ void loop() {
       } else {
         jsonStructure["date"] = "";
       }
-      if (gps.time.isValid()) {
+      if( gps.time.isValid() ) {
         int hour = gps.time.hour();
         int min = gps.time.minute();
         int sec = gps.time.second();
@@ -98,6 +97,11 @@ void loop() {
       Serial.print("Payload: ");
       Serial.println(payload);
 
+      if( mqttClient.connected() ) {
+        mqttClient.publish("gps", payload.c_str());
+        Serial.println("sent message to payload");
+        delay(10);
+      }
     }
   }
 }
