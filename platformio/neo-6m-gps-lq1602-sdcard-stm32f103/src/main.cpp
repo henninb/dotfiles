@@ -15,7 +15,7 @@ GND  | GND
 stm32f103 | NEO-6M
 ==================
 GND       | GND
-3.3V      | 3.3V
+5V        | 5V
 PC3 (RX2) | TX
 PC2 (TX2) | RX
 

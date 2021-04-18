@@ -1,24 +1,35 @@
 #include <SoftwareSerial.h>
+#include "config.h"
+
+/*
+neo-6m | esp32-wemos-d1-mini
+====================
+RX     | TX (pin17)
+TX     | RX (pin16)
+GND    | GND
+VCC    | 5V
+*/
+
 #define RXD2 16
 #define TXD2 17
 
-SoftwareSerial ESPserial(RXD2, TXD2); // RX | TX
+/* SoftwareSerial gpsSerial(RXD2, TXD2); */
+HardwareSerial gpsSerial(2);
 
 void setup() {
-    Serial.begin(9600);     // communication with the host computer
-    //while (!Serial)   { ; }
+    Serial.begin(9600);
+    while (!Serial);
 
-    // Start the software serial for communication with the ESP8266
-    ESPserial.begin(9600);
+    gpsSerial.begin(9600);
+    while(!gpsSerial);
 
     Serial.println("");
     Serial.println("Remember to to set Both NL & CR in the serial monitor.");
-    Serial.println("Ready");
-    Serial.println("");
+    Serial.println("setup completed...");
 }
 
 void loop() {
-    if ( ESPserial.available() )   {  Serial.write( ESPserial.read() );  }
+    if ( gpsSerial.available() )   {  Serial.write( gpsSerial.read() );  }
 
-    if ( Serial.available() )       {  ESPserial.write( Serial.read() );  }
+    if ( Serial.available() )       {  gpsSerial.write( Serial.read() );  }
 }

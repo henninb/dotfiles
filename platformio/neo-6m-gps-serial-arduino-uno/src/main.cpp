@@ -3,21 +3,24 @@
 #include "config.h"
 
 /*
-neo-6m can connect to 5V
+ neo-6m | arduino uno
+ ====================
+ RX     | TX (pin17)
+ TX     | RX (pin16)
+ GND    | GND
+ VCC    | 5V
 */
 
-// Choose two Arduino pins to use for software serial
 int RXPin = 2;
 int TXPin = 3;
 
-// Create a software serial port called "gpsSerial"
 SoftwareSerial gpsSerial(RXPin, TXPin);
 
 void setup() {
-  // Start the Arduino hardware serial port at 9600 baud
   Serial.begin(9600);
   while(!Serial);
   gpsSerial.begin(9600);
+  while(!gpsSerial);
   delay(2000);
   Serial.print("upload timestamp: ");
   Serial.println(uploadTimestamp);

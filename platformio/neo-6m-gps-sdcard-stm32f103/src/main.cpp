@@ -14,8 +14,7 @@ GND  | GND
 stm32f103 | NEO-6M
 ==================
 GND       | GND
-3.3V      | 3.3V
-3.3V      | CH-PD
+5V      | VCC
 PC3 (RX2) | TX
 PC2 (TX2) | RX
 
@@ -66,96 +65,42 @@ void setup() {
 }
 
 void loop() {
-  while (gpsSerial.available() > 0)
+  while (gpsSerial.available() > 0) { //while data is available
     if (gps.encode(gpsSerial.read())) {
-      displayInfo();
-    }
+      StaticJsonDocument<300> jsonStructure;
+      if (gps.location.isValid()) {
+        jsonStructure["latitude"] = String(gps.location.lat(), 6);
+        jsonStructure["longitude"] = String(gps.location.lng(), 6);
+      } else {
+        jsonStructure["latitude"] = "";
+        jsonStructure["longitude"] = "";
+      }
+      if (gps.date.isValid()) {
+        int month = gps.date.month();
+        int day = gps.date.day();
+        int year = gps.date.year();
+        char now[20] = {0};
+        sprintf(now, "%04d-%02d-%02d", year, month, day);
+        jsonStructure["date"] = now;
+      } else {
+        jsonStructure["date"] = "";
+      }
+      if (gps.time.isValid()) {
+        int hour = gps.time.hour();
+        int min = gps.time.minute();
+        int sec = gps.time.second();
+        char now[20] = {0};
+        sprintf(now, "%02d:%02d:%02d", hour, min, sec);
+        jsonStructure["time"] = now;
+      } else {
+        jsonStructure["time"] = "";
+      }
+      String payload;
+      serializeJson(jsonStructure, payload);
+      Serial.print("Payload: ");
+      Serial.println(payload);
 
-  // If 5000 milliseconds pass and there are no characters coming in
-  // over the software serial port, show a "No GPS detected" error
-  if (millis() > 5000 && gps.charsProcessed() < 10) {
-    Serial.println("No GPS detected");
-    while(true);
+    }
   }
 }
 
-void displayInfo() {
-    StaticJsonDocument<250> jsonStructure;
-    /* String date = ""; */
-    String time = "";
-
-    fileHandle = SD.open("/gps-data.txt", FILE_WRITE);
-    if (fileHandle) {
-      Serial.println("file is open for writting...");
-    } else {
-      Serial.println("something went wrong with the file opening process.");
-      while(true);
-    }
-  if (gps.location.isValid()) {
-  /* if (true) { */
-    digitalWrite(ledPin, HIGH);
-    delay(1000);
-    digitalWrite(ledPin, LOW);
-    delay(1000);
-    jsonStructure["latitude"] = String(gps.location.lat(), 6);
-    jsonStructure["longitude"] = String(gps.location.lng(), 6);
-    Serial.println("found long and lat.");
-  } else {
-    Serial.println("Location data is not vaild from the gps.");
-    digitalWrite(ledPin, HIGH);
-    delay(250);
-    digitalWrite(ledPin, LOW);
-    delay(250);
-    digitalWrite(ledPin, HIGH);
-    delay(250);
-    digitalWrite(ledPin, LOW);
-    delay(250);
-  }
-
-  if (gps.date.isValid()) {
-    int month = gps.date.month();
-    int day = gps.date.day();
-    int year = gps.date.year();
-    char now[20] = {0};
-
-    sprintf(now, "%04d-%02d-%02d", year, month, day);
-
-    /* date = String(gps.date.year()) + "-"; */
-    /* date = date + String(gps.date.month()) + "-"; */
-    /* date = date + String(gps.date.day()); */
-    jsonStructure["date"] = now;
-  } else {
-    Serial.println("Date data is not vaild from the gps.");
-  }
-
-  if (gps.time.isValid()) {
-    int hour = gps.time.hour();
-    int min = gps.time.minute();
-    int sec = gps.time.second();
-
-    char now[20] = {0};
-
-    sprintf(now, "%02d:%02d:%02d", hour, min, sec);
-    /* time = "" + String(gps.time.hour()) + ":"; */
-    /* time = time + String(gps.time.minute()) + ":"; */
-    /* time = time + String(gps.time.second()); */
-    jsonStructure["time"] = now;
-  } else {
-    Serial.println("Time data is not vaild from the gps.");
-  }
-
-  String payload;
-  serializeJson(jsonStructure, payload);
-  Serial.print("Payload: ");
-  Serial.println(payload);
-
-  if( fileHandle ) {
-    fileHandle.println(payload);
-  } else {
-    Serial.println("cannot write to file");
-  }
-
-  fileHandle.close();
-  Serial.println();
-  delay(5000);
-}

@@ -1,23 +1,22 @@
 #include <WiFi.h>
 #include <TinyGPS++.h>
 #include <ArduinoJson.h>
-/* #include <SoftwareSerial.h> */
 #include <HardwareSerial.h>
 #include <PubSubClient.h>
 #include "config.h"
 
-/* #include "HardwareSerial.h" */
-
 /*
-5V neo-6m
-
+ neo-6m | esp32-wemos-d1-mini
+ ====================
+ RX     | TX (pin17)
+ TX     | RX (pin16)
+ GND    | GND
+ VCC    | 5V
 */
 
 #define RXD2 16
 #define TXD2 17
 const int ledPin = 2;
-
-void displayInfo();
 
 TinyGPSPlus gps;
 WiFiClient espClient;
