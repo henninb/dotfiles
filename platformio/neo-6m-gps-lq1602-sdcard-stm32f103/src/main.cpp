@@ -43,7 +43,7 @@ GND       | GND
 
 const int cableSelectPin = PA4;
 const int ledPin = PC13;
-String fileName = "/file.dat";
+String fileName = "/file.dat"; // fileName must be 8.3?
 
 TinyGPSPlus gps;
 File fileHandle;

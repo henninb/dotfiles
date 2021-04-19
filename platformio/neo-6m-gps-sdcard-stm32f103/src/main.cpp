@@ -38,6 +38,7 @@ void displayInfo();
 
 TinyGPSPlus gps;
 File fileHandle;
+String fileName = "/file.dat"; // fileName must be 8.3?
 
 HardwareSerial gpsSerial(USART2);   // or HardWareSerial Serial2 (PA3, PA2);
 
@@ -65,9 +66,15 @@ void setup() {
 }
 
 void loop() {
-  while (gpsSerial.available() > 0) { //while data is available
+  String milli = String(millis()/1000);
+  while (gpsSerial.available() > 0) {
     if (gps.encode(gpsSerial.read())) {
       StaticJsonDocument<300> jsonStructure;
+      fileHandle = SD.open(fileName.c_str(), FILE_WRITE);
+      if( !fileHandle ) {
+        Serial.println("something went wrong with the file opening process.");
+        delay(250);
+      }
       if (gps.location.isValid()) {
         jsonStructure["latitude"] = String(gps.location.lat(), 6);
         jsonStructure["longitude"] = String(gps.location.lng(), 6);
@@ -99,7 +106,11 @@ void loop() {
       serializeJson(jsonStructure, payload);
       Serial.print("Payload: ");
       Serial.println(payload);
-
+      if( fileHandle ) {
+        fileHandle.println(payload);
+      } else {
+        Serial.println("cannot write file");
+      }
     }
   }
 }
