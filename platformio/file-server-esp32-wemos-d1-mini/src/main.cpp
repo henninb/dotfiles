@@ -45,10 +45,7 @@ String getContentType(String );
 void Directory();
 int GetFileSize(String );
 String EncryptionType(wifi_auth_mode_t );
-
-//################  VERSION  ###########################################
-String    Version = "1.0";   // Programme version, see change log at end
-//################ VARIABLES ###########################################
+String    Version = "1.0";
 
 typedef struct {
   String filename;
@@ -63,11 +60,11 @@ int      start, downloadtime = 1, uploadtime = 1, downloadsize, uploadsize, down
 float    Temperature = 21.34; // for example new page, amend in a snesor function if required
 String   Name = "Brian";
 
-//#############################################################################################
+
 void Dir(AsyncWebServerRequest * request) {
   String Fname1, Fname2;
   int index = 0;
-  Directory(); // Get a list of the current files on the FS
+  Directory();
   webpage  = HTML_Header();
   webpage += "<h3>Filing System Content</h3><br>";
   if (numfiles > 0) {
@@ -96,7 +93,7 @@ void Dir(AsyncWebServerRequest * request) {
   webpage += HTML_Footer();
   request->send(200, "text/html", webpage);
 }
-//#############################################################################################
+
 void Directory() {
   numfiles  = 0; // Reset number of FS files counter
   File root = FS.open("/");
@@ -113,7 +110,7 @@ void Directory() {
     root.close();
   }
 }
-//#############################################################################################
+
 void UploadFileSelect() {
   webpage  = HTML_Header();
   webpage += "<h3>Select a File to [UPLOAD] to this device</h3>";
@@ -123,7 +120,7 @@ void UploadFileSelect() {
   webpage += "</form>";
   webpage += HTML_Footer();
 }
-//#############################################################################################
+
 void Format() {
   webpage  = HTML_Header();
   webpage += "<h3>***  Format Filing System on this device ***</h3>";
@@ -134,7 +131,7 @@ void Format() {
   webpage += "</form>";
   webpage += HTML_Footer();
 }
-//#############################################################################################
+
 void handleFileUpload(AsyncWebServerRequest *request, const String& filename, size_t index, uint8_t *data, size_t len, bool final) {
   if (!index) {
     String file = filename;
@@ -156,15 +153,15 @@ void handleFileUpload(AsyncWebServerRequest *request, const String& filename, si
     }
   }
 }
-//#############################################################################################
+
 void File_Stream() {
   SelectInput("Select a File to Stream", "handlestream", "filename");
 }
-//#############################################################################################
+
 void File_Delete() {
   SelectInput("Select a File to Delete", "handledelete", "filename");
 }
-//#############################################################################################
+
 void Handle_File_Delete(String filename) { // Delete the file
   webpage = HTML_Header();
   if (!filename.startsWith("/")) filename = "/" + filename;
@@ -181,8 +178,8 @@ void Handle_File_Delete(String filename) { // Delete the file
   }
   webpage  += HTML_Footer();
 }
-//#############################################################################################
-void File_Rename() { // Rename the file
+
+void File_Rename() {
   Directory();
   webpage = HTML_Header();
   webpage += "<h3>Select a File to [RENAME] on this device</h3>";
@@ -200,7 +197,7 @@ void File_Rename() { // Rename the file
   webpage += "</form>";
   webpage += HTML_Footer();
 }
-//#############################################################################################
+
 void Handle_File_Rename(AsyncWebServerRequest *request, String filename, int Args) { // Rename the file
   String newfilename;
   //int Args = request->args();
@@ -235,7 +232,7 @@ String processor(const String& var) {
   if (var == "HELLO_FROM_TEMPLATE") return F("Hello world!");
   return String();
 }
-//#############################################################################################
+
 // Not found handler is also the handler for 'delete', 'download' and 'stream' functions
 void notFound(AsyncWebServerRequest *request) { // Process selected file types
   String filename;
@@ -257,7 +254,7 @@ void notFound(AsyncWebServerRequest *request) { // Process selected file types
         File filecopy = file;
         int bytes = filecopy.read(buffer, maxLen);
         if (bytes + total == filecopy.size()) filecopy.close();
-        return max(0, bytes); 
+        return max(0, bytes);
       });
       response->addHeader("Server", "ESP Async Web Server");
 
@@ -294,7 +291,7 @@ void notFound(AsyncWebServerRequest *request) { // Process selected file types
     request->send(200, "text/html", webpage);
   }
 }
-//#############################################################################################
+
 void Handle_File_Download() {
   String filename = "";
   int index = 0;
@@ -311,8 +308,8 @@ void Handle_File_Download() {
   webpage += "<p>" + MessageLine + "</p>";
   webpage += HTML_Footer();
 }
-//#############################################################################################
-String getContentType(String filenametype) { // Tell the browser what file type is being sent
+
+String getContentType(String filenametype) {
   if (filenametype == "download") {
     return "application/octet-stream";
   } else if (filenametype.endsWith(".txt"))  {
@@ -344,7 +341,7 @@ String getContentType(String filenametype) { // Tell the browser what file type 
   }
   return "text/plain";
 }
-//#############################################################################################
+
 void Select_File_For_Function(String title, String function) {
   String Fname1, Fname2;
   int index = 0;
@@ -370,7 +367,7 @@ void Select_File_For_Function(String title, String function) {
   webpage += "</table>";
   webpage += HTML_Footer();
 }
-//#############################################################################################
+
 void SelectInput(String Heading, String Command, String Arg_name) {
   webpage = HTML_Header();
   webpage += "<h3>" + Heading + "</h3>";
@@ -380,7 +377,7 @@ void SelectInput(String Heading, String Command, String Arg_name) {
   webpage += "</form>";
   webpage += HTML_Footer();
 }
-//#############################################################################################
+
 int GetFileSize(String filename) {
   int filesize;
   File CheckFile = FS.open(filename, "r");
@@ -388,7 +385,7 @@ int GetFileSize(String filename) {
   CheckFile.close();
   return filesize;
 }
-//#############################################################################################
+
 void Home() {
   webpage = HTML_Header();
   webpage += "<h1>Home Page</h1>";
@@ -397,7 +394,7 @@ void Home() {
   webpage += "<h3>File Management - Directory, Upload, Download, Stream and Delete File Examples</h3>";
   webpage += HTML_Footer();
 }
-//#############################################################################################
+
 void LogOut() {
   webpage = HTML_Header();
   webpage += "<h1>Log Out</h1>";
@@ -405,7 +402,7 @@ void LogOut() {
   webpage += "<h4>NOTE: On most browsers you must close all windows for this to take effect...</h4>";
   webpage += HTML_Footer();
 }
-//#############################################################################################
+
 void Display_New_Page() {
   webpage = HTML_Header();                                                                          // Add HTML headers, note '=' for new page assignment
   webpage += "<h1>My New Web Page</h1>";                                                            // Give it a heading
@@ -415,7 +412,7 @@ void Display_New_Page() {
   webpage += "<p>Or, like this, my name is: " + Name + "</p>";                                      // no need to convert string variables
   webpage += HTML_Footer();                                                                         // Add HTML footers, don't forget to add a menu name in header!
 }
-//#############################################################################################
+
 void Page_Not_Found() {
   webpage = HTML_Header();
   webpage += "<div class='notfound'>";
@@ -427,7 +424,7 @@ void Page_Not_Found() {
   webpage += "<p>Or click <b><a href='/'>[Here]</a></b> for the home page.</p></div>";
   webpage += HTML_Footer();
 }
-//#############################################################################################
+
 void Display_System_Info() {
   esp_chip_info_t chip_info;
   esp_chip_info(&chip_info);
@@ -470,7 +467,7 @@ void Display_System_Info() {
   webpage += "</table> ";
   webpage += HTML_Footer();
 }
-//#############################################################################################
+
 String ConvBinUnits(size_t bytes, byte resolution) {
   if      (bytes < 1024)                 {
     return String(bytes) + " B";
@@ -483,7 +480,7 @@ String ConvBinUnits(size_t bytes, byte resolution) {
   }
   else return "";
 }
-//#############################################################################################
+
 String EncryptionType(wifi_auth_mode_t encryptionType) {
   switch (encryptionType) {
     case (WIFI_AUTH_OPEN):
@@ -504,7 +501,7 @@ String EncryptionType(wifi_auth_mode_t encryptionType) {
       return "";
   }
 }
-//#############################################################################################
+
 bool StartMDNSservice(const char* Name) {
   esp_err_t err = mdns_init();             // Initialise mDNS service
   if (err) {
@@ -514,7 +511,7 @@ bool StartMDNSservice(const char* Name) {
   mdns_hostname_set(Name);                 // Set hostname
   return true;
 }
-//#############################################################################################
+
 String HTML_Header() {
   String page;
   page  = "<!DOCTYPE html>";
@@ -558,7 +555,7 @@ String HTML_Header() {
   page += "</div>";
   return page;
 }
-//#############################################################################################
+
 String HTML_Footer() {
   String page;
   page += "<br><br><footer>";
