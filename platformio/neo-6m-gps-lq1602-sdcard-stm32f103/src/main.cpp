@@ -7,8 +7,8 @@
 /*
 FTDI | stm32f103
 ================
-RX   | TX1 (PC9)
-TX   | RX1 (PC10)
+RX   | TX1 PA9
+TX   | RX1 PA10
 GND  | GND
 3.3V | 3.3V or (5V to 5V)
 
@@ -16,8 +16,8 @@ stm32f103 | NEO-6M
 ==================
 GND       | GND
 5V        | 5V
-PC3 (RX2) | TX
-PC2 (TX2) | RX
+PA3 (RX2) | TX
+PA2 (TX2) | RX
 
 sd card | stm32f103
 ===================
@@ -30,17 +30,23 @@ MOSI    | PA7
 
 note: the NEO-6M Red LED will blink when it is connecting to a sattilite
 
+stm32f103 | lcd
+===============
+SDA1 PB7  | SDA
+SCL1 PB6  | SCL
+GND       | GND
+5V        | VCC
+
 */
 
 /* testing needs to be done as of 4/17/2021 */
 
 const int cableSelectPin = PA4;
 const int ledPin = PC13;
-String outputFilename = "/gps-data.json";
+String fileName = "/file.dat";
 
 TinyGPSPlus gps;
 File fileHandle;
-String fileName = "/gps-data.json";
 LiquidCrystal_I2C lcd(PCF8574A_ADDR_A21_A11_A01, 4, 5, 6, 16, 11, 12, 13, 14, POSITIVE); //0x3f
 HardwareSerial gpsSerial(USART2);   // or HardWareSerial Serial2 (PA3, PA2);
 
@@ -79,28 +85,34 @@ void setup() {
 }
 
 void loop() {
+    String milli = String(millis()/1000);
     while (gpsSerial.available() > 0) {
     if (gps.encode(gpsSerial.read())) {
       StaticJsonDocument<300> jsonStructure;
-      fileHandle = SD.open(fileName, FILE_WRITE);
-      if (fileHandle) {
-        Serial.println("file is open for writting...");
-      } else {
+      fileHandle = SD.open(fileName.c_str(), FILE_WRITE);
+      if( !fileHandle ) {
         Serial.println("something went wrong with the file opening process.");
-        while(true);
+        lcd.clear();
+        lcd.setCursor(0, 0);
+        lcd.print("file open failed.");
+        delay(250);
       }
       if( gps.location.isValid() ) {
         jsonStructure["latitude"] = String(gps.location.lat(), 6);
         jsonStructure["longitude"] = String(gps.location.lng(), 6);
         lcd.clear();
         lcd.setCursor(0, 0);
-        lcd.print("lon and lat updated.");
+        lcd.print(String(gps.location.lat(), 6));
+        lcd.setCursor(1, 0);
+        lcd.print(String(gps.location.lng(), 6));
+        delay(250);
       } else {
         jsonStructure["latitude"] = "";
         jsonStructure["longitude"] = "";
         lcd.clear();
         lcd.setCursor(0, 0);
-        lcd.print("lon and lat NOT updated.");
+        lcd.print("no gps data: " + milli);
+        delay(250);
       }
       if( gps.date.isValid() ) {
         int month = gps.date.month();
@@ -130,11 +142,11 @@ void loop() {
       if( fileHandle ) {
         fileHandle.println(payload);
       } else {
-        Serial.println("cannot write to file");
+        Serial.println("cannot write file");
       }
 
       fileHandle.close();
-      delay(500);
+      delay(2000);
     }
   }
 }

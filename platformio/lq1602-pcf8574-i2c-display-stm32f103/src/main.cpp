@@ -3,13 +3,16 @@
 #include "config.h"
 
 /*
-I2C1
-SDA=PB7
-SCL=PB6
 
-  5V to stm32f103 5V pin
-  GND to stm32f103 GND pin
+stm32f103 | lcd
+===============
+SDA PB7   | SDA
+SCL PB6   | SCL
+GND       | GND
+5V        | VCC
+
 Note: no need for external power on the lcd display
+
 */
 
 #define ledPin PC13
