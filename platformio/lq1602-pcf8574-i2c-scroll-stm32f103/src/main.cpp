@@ -46,7 +46,7 @@ void loop() {
   String message = String(idx);
 
   if( isPrime(idx) == 1 ) {
-    message.concat(" is prime and this is long.");
+    message.concat(" is prime and this is a long message.");
 
     lcd.setCursor(0, 0);
     lcd.clear();
