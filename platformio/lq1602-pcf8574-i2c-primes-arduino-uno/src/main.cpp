@@ -42,7 +42,6 @@ void loop() {
     counter.concat(" is prime");
     lcd.clear();
     lcd.print(counter);
-    //scrollInFromLeft(0, counter);
     Serial.println(counter);
 
     delay(5000);
@@ -50,18 +49,17 @@ void loop() {
     counter.concat(" NOT prime");
     lcd.clear();
     lcd.print(counter);
-    //scrollInFromLeft(1, "is not prime");
     Serial.println(counter);
     delay(500);
   }
 }
 
 int isPrime(int number) {
-    int i;
-    for (i=2; i<number; i++) {
-        if (number % i == 0 && i != number) {
-          return 0;
-        }
+  int idx;
+  for (idx=2; idx<number; idx++) {
+    if (number % idx == 0 && idx != number) {
+      return 0;
     }
-    return 1;
+  }
+  return 1;
 }

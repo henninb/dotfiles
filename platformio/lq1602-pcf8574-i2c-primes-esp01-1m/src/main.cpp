@@ -64,11 +64,11 @@ void loop() {
 }
 
 int isPrime(int number) {
-    int i;
-    for (i=2; i<number; i++) {
-        if (number % i == 0 && i != number) {
-          return 0;
-        }
+  int idx;
+  for( idx = 2; idx < number; idx++) {
+    if (number % idx == 0 && idx != number) {
+      return 0;
     }
-    return 1;
+  }
+  return 1;
 }

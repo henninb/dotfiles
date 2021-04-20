@@ -4,8 +4,6 @@
 #include "config.h"
 
 /*
-I2C
-
 PCF8574 | attiny85
 ==================
 SDA     | Pin PB0
@@ -16,8 +14,6 @@ GND     | GND
 Note: no need for external power on the lcd display
 Note: only works at 1mhz and 8mhz clock
 */
-
-#define uploadTimestamp "2021-04-14 05:27:58"
 
 int isPrime( int );
 
@@ -68,9 +64,9 @@ void loop() {
 }
 
 int isPrime(int number) {
-  int i;
-  for (i=2; i<number; i++) {
-    if (number % i == 0 && i != number) {
+  int idx;
+  for (idx=2; idx<number; idx++) {
+    if (number % idx == 0 && idx != number) {
       return 0;
     }
   }

@@ -1,7 +1,6 @@
 #include <Arduino.h>
-#include <Wire.h>
-#include <LiquidCrystal_I2C.h>
 #include "config.h"
+#include "LiquidCrystal_I2C.h"
 
 /*
  pcf8574 | wemos-d1-mini
@@ -14,8 +13,8 @@
 
 int isPrime( int );
 
-/* LiquidCrystal_I2C lcd(CF8574_ADDR_A21_A11_A01, 4, 5, 6, 16, 11, 12, 13, 14, POSITIVE); //0x27 */
-LiquidCrystal_I2C lcd(PCF8574A_ADDR_A21_A11_A01, 4, 5, 6, 16, 11, 12, 13, 14, POSITIVE); //0x3f
+/* LiquidCrystal_I2C lcd(0x27, 16, 2); */
+LiquidCrystal_I2C lcd(0x3f, 16, 2);
 
 int idx = 0;
 
@@ -23,9 +22,11 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
   Serial.println("setup started...");
-  pinMode(LED_BUILTIN,OUTPUT);
-  lcd.begin(16,2);
+  pinMode(LED_BUILTIN, OUTPUT);
+  lcd.begin();
+  /* lcd.backlight(); */
   delay(500);
+  lcd.setBacklight(HIGH);
   /* lcd.noBacklight(); */
   lcd.setCursor(0, 0);
   lcd.clear();
@@ -44,7 +45,6 @@ void loop() {
   if( isPrime(idx) == 1 ) {
     message.concat(" is prime");
     lcd.clear();
-    /* lcd.backlight(); */
     lcd.print(message);
     Serial.println(message);
   } else {
@@ -53,7 +53,6 @@ void loop() {
     lcd.print(message);
     Serial.println(message);
   }
-  /* lcd.noBacklight(); */
   digitalWrite(LED_BUILTIN, HIGH);
   delay(2000);
   digitalWrite(LED_BUILTIN, LOW);
@@ -61,11 +60,11 @@ void loop() {
 }
 
 int isPrime(int number) {
-    int i;
-    for (i=2; i<number; i++) {
-        if (number % i == 0 && i != number) {
-          return 0;
-        }
+  int idx;
+  for (idx=2; idx<number; idx++) {
+    if (number % idx == 0 && idx != number) {
+      return 0;
     }
-    return 1;
+  }
+  return 1;
 }

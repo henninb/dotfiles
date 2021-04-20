@@ -6,7 +6,7 @@
 /*
 I2C
 
-PCF8574 | attiny85
+PCF8574 | digispark
 ==================
 SDA     | Pin PB0
 SCL     | Pin PB2
@@ -14,8 +14,9 @@ SCL     | Pin PB2
 GND     | GND
 
 Note: no need for external power on the lcd display
-Note: works at 16mHz
 */
+
+#define uploadTimestamp "2021-04-14 05:27:58"
 
 int isPrime( int );
 
@@ -35,7 +36,8 @@ void setup() {
   lcd.backlight();
   lcd.setCursor(0, 0);
   lcd.clear();
-  delay(1000);
+  delay(2000);
+  /* Serial.println("setup completed..."); */
 }
 
 void loop() {
@@ -58,14 +60,15 @@ void loop() {
   }
   /* lcd.noBacklight(); */
   /* digitalWrite(ledPin, HIGH); */
+  delay(2000);
   /* digitalWrite(ledPin, LOW); */
-  delay(1000);
+  delay(2000);
 }
 
 int isPrime(int number) {
-  int i;
-  for (i=2; i<number; i++) {
-    if (number % i == 0 && i != number) {
+  int idx;
+  for (idx=2; idx<number; idx++) {
+    if (number % idx == 0 && idx != number) {
       return 0;
     }
   }

@@ -3,6 +3,7 @@
 #include "config.h"
 
 /*
+
  pcf8574 | esp12
  ===============
   SDA    | D4
@@ -10,7 +11,8 @@
   5V     | 5V
   GND    | GND
   note: shard ground is required for external
- */
+
+*/
 
 int isPrime( int );
 
@@ -63,9 +65,9 @@ void loop() {
 }
 
 int isPrime(int number) {
-  int i;
-  for (i=2; i<number; i++) {
-    if (number % i == 0 && i != number) {
+  int idx;
+  for (idx=2; idx<number; idx++) {
+    if (number % idx == 0 && idx != number) {
       return 0;
     }
   }

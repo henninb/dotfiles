@@ -1,5 +1,3 @@
-git clone https://github.com/fdebrabander/Arduino-LiquidCrystal-I2C-library.git
-
 A2	A1	A0	地址
 0	0	0	0x20
 0	0	1	0x21
