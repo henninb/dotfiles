@@ -11,30 +11,30 @@
 serial connection, programming mode
 ESP32 | FTDI
 ============
-VCC -> 3.3V
-GND -> GND
-IO0 -> GND
-TXD -> TX (RX usually, but this board is wierd)
-RXD -> RX (TX usually, but this board is wierd)
+VCC   | 3.3V
+GND   | GND
+IO0   | GND
+TXD   | TX (RX usually, but this board is wierd)
+RXD   | RX (TX usually, but this board is wierd)
 
 serial connection, regular mode
 ESP32 | FTDI
 ============
-VCC -> 3.3V
-GND -> GND
-TXD -> TX (RX usually, but this board is wierd)
-RXD -> RX (TX usually, but this board is wierd)
+VCC   | 3.3V
+GND   | GND
+TXD   | TX (RX usually, but this board is wierd)
+RXD   | RX (TX usually, but this board is wierd)
 
 1000uf cap to smooth the power between 3.3V and ground on the FTDI
 
-ESP32 | SDCard Reader
-=====================
-GPIO18 = SCK
-GPIO19 = MISO
-GPIO23 = MOSI
-GPIO5 = CS
-VCC = 5V
-GND = GND
+ESP32   | SDCard Reader
+=======================
+GPIO18  | SCK
+GPIO19  | MISO
+GPIO23  | MOSI
+GPIO5   | CS
+VCC     | 5V
+GND     | GND
 
 */
 
@@ -94,7 +94,8 @@ void setup() {
       while(fileReadHandle.available()) {
         String line = fileReadHandle.readStringUntil('\n');
         Serial.println(line);
-        mqttClient.publish("wifi", line.c_str(), true);
+        /* mqttClient.publish("wifi", line.c_str(), true); */
+        mqttClient.publish("wifi", line.c_str());
       }
     }
   }
@@ -141,25 +142,41 @@ void loop() {
   char timestampString[25] = {0};
 
   fileHandle = SPIFFS.open("/wifi-data.json", FILE_APPEND);
-  if (fileHandle) {
+  if( fileHandle ) {
     Serial.println("file is open for writting...");
   } else {
     Serial.println("something went wrong with the file opening process.");
     while(true);
   }
 
-  if (networkCount == 0) {
+  if( networkCount == 0 ) {
     Serial.println("no networks found");
   } else {
     struct tm timeinfo = {0};
-    if(! getLocalTime(&timeinfo) ){
+    if( !getLocalTime(&timeinfo) ){
       Serial.println("ERROR: Failed to obtain timestamp.");
     }
     strftime(timestampString, sizeof(timestampString), "%Y-%m-%d %H:%M:%S", &timeinfo);
-    for (int index = 0; index < networkCount; ++index) {
+    for( int index = 0; index < networkCount; ++index ) {
+      String ssid = WiFi.SSID(index);
+      String bssid = WiFi.BSSIDstr(index);
+      String channel = "";
       jsonStructure["timestamp"] = timestampString;
-      jsonStructure["ssid"] = WiFi.SSID(index);
-      jsonStructure["bssid"] = WiFi.BSSIDstr(index);
+      if( ssid != NULL ) {
+        jsonStructure["ssid"] = ssid;
+      } else {
+        Serial.println("null ssid");
+        jsonStructure["ssid"] = "";
+      }
+      if( bssid != NULL ) {
+        Serial.println(bssid.length());
+        Serial.println(bssid[0]);
+        jsonStructure["bssid"] = bssid;
+      } else {
+        Serial.println("null bssid");
+        jsonStructure["bssid"] = "";
+      }
+
       jsonStructure["rssi"] = WiFi.RSSI(index);
       jsonStructure["channel"] = WiFi.channel(index);
       jsonStructure["encryptionType"] = translateEncryptionType(WiFi.encryptionType(index));
@@ -178,7 +195,6 @@ void loop() {
   }
   fileHandle.close();
   Serial.println("scan done");
-  Serial.println("");
   delay(5000);
 }
 
