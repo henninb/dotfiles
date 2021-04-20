@@ -84,6 +84,7 @@ void setup() {
   delay(250);
 }
 
+//TODO: combine date and time into timestamp
 void loop() {
     String milli = String(millis()/1000);
     while (gpsSerial.available() > 0) {
@@ -103,7 +104,7 @@ void loop() {
         lcd.clear();
         lcd.setCursor(0, 0);
         lcd.print(String(gps.location.lat(), 6));
-        lcd.setCursor(1, 0);
+        lcd.setCursor(0, 1);
         lcd.print(String(gps.location.lng(), 6));
         delay(250);
       } else {
@@ -111,8 +112,9 @@ void loop() {
         jsonStructure["longitude"] = "";
         lcd.clear();
         lcd.setCursor(0, 0);
+        milli = String(millis()/1000);
         lcd.print("no gps data: " + milli);
-        delay(250);
+        delay(500);
       }
       if( gps.date.isValid() ) {
         int month = gps.date.month();
@@ -149,87 +151,4 @@ void loop() {
       delay(2000);
     }
   }
-}
-
-// method seems to be broken and is not being called as of 4/17/2021
-void displayInfo() {
-    StaticJsonDocument<400> jsonStructure;
-    String time = "";
-
-    fileHandle = SD.open("/gps-data.txt", FILE_WRITE);
-    if (fileHandle) {
-      Serial.println("file is open for writting...");
-    } else {
-      Serial.println("something went wrong with the file opening process.");
-      while(true);
-    }
-  if( gps.location.isValid() ) {
-    jsonStructure["latitude"] = String(gps.location.lat(), 6);
-    jsonStructure["longitude"] = String(gps.location.lng(), 6);
-    Serial.println("found lon and lat.");
-    lcd.clear();
-    lcd.setCursor(0, 0);
-    lcd.print("found lon and lat");
-  } else {
-    jsonStructure["latitude"] = "";
-    jsonStructure["longitude"] = "";
-    Serial.println("Location data is not vaild from the gps.");
-    digitalWrite(ledPin, HIGH);
-    delay(200);
-    digitalWrite(ledPin, LOW);
-    delay(200);
-    digitalWrite(ledPin, HIGH);
-    delay(200);
-    digitalWrite(ledPin, LOW);
-    delay(200);
-  }
-
-  if( gps.date.isValid() ) {
-    int month = gps.date.month();
-    int day = gps.date.day();
-    int year = gps.date.year();
-    char now[20] = {0};
-    sprintf(now, "%04d-%02d-%02d", year, month, day);
-    jsonStructure["date"] = now;
-  } else {
-    jsonStructure["date"] = "";
-    Serial.println("Date data is not vaild from the gps.");
-  }
-
-  if( gps.time.isValid() ) {
-    int hour = gps.time.hour();
-    int min = gps.time.minute();
-    int sec = gps.time.second();
-    char now[20] = {0};
-    sprintf(now, "%02d:%02d:%02d", hour, min, sec);
-    jsonStructure["time"] = now;
-  } else {
-    jsonStructure["time"] = "";
-    Serial.println("Time data is not vaild from the gps.");
-  }
-
-  String payload;
-  serializeJson(jsonStructure, payload);
-  Serial.print("Payload: ");
-  Serial.println(payload);
-  lcd.clear();
-  lcd.setCursor(15, 0);
-  for( int positionCounter1 = 0; positionCounter1 < payload.length(); positionCounter1++ ) {
-    lcd.scrollDisplayLeft();  //Scrolls the contents of the display one space to the left.
-    lcd.print(payload[positionCounter1]);  // Print 12 character array
-    delay(250);
-  }
-  /* lcd.setCursor(0,0); */
-  /* lcd.scrollDisplayLeft();  //Scrolls the contents of the display one space to the left. */
-  /* lcd.print(payload); */
-
-  if( fileHandle ) {
-    fileHandle.println(payload);
-  } else {
-    Serial.println("cannot write to file");
-  }
-
-  fileHandle.close();
-  Serial.println();
-  delay(5000);
 }
