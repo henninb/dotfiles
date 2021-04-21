@@ -86,69 +86,72 @@ void setup() {
 
 //TODO: combine date and time into timestamp
 void loop() {
-    String milli = String(millis()/1000);
     while (gpsSerial.available() > 0) {
-    if (gps.encode(gpsSerial.read())) {
-      StaticJsonDocument<300> jsonStructure;
-      fileHandle = SD.open(fileName.c_str(), FILE_WRITE);
-      if( !fileHandle ) {
-        Serial.println("something went wrong with the file opening process.");
-        lcd.clear();
-        lcd.setCursor(0, 0);
-        lcd.print("file open failed.");
-        delay(250);
-      }
-      if( gps.location.isValid() ) {
-        jsonStructure["latitude"] = String(gps.location.lat(), 6);
-        jsonStructure["longitude"] = String(gps.location.lng(), 6);
-        lcd.clear();
-        lcd.setCursor(0, 0);
-        lcd.print(String(gps.location.lat(), 6));
-        lcd.setCursor(0, 1);
-        lcd.print(String(gps.location.lng(), 6));
-        delay(250);
-      } else {
-        jsonStructure["latitude"] = "";
-        jsonStructure["longitude"] = "";
-        lcd.clear();
-        lcd.setCursor(0, 0);
-        milli = String(millis()/1000);
-        lcd.print("no gps data: " + milli);
-        delay(500);
-      }
-      if( gps.date.isValid() ) {
-        int month = gps.date.month();
-        int day = gps.date.day();
-        int year = gps.date.year();
-        char now[20] = {0};
-        sprintf(now, "%04d-%02d-%02d", year, month, day);
-        jsonStructure["date"] = now;
-      } else {
-        jsonStructure["date"] = "";
-      }
-      if( gps.time.isValid() ) {
-        int hour = gps.time.hour();
-        int min = gps.time.minute();
-        int sec = gps.time.second();
-        char now[20] = {0};
-        sprintf(now, "%02d:%02d:%02d", hour, min, sec);
-        jsonStructure["time"] = now;
-      } else {
-        jsonStructure["time"] = "";
-      }
-      String payload;
-      serializeJson(jsonStructure, payload);
-      Serial.print("Payload: ");
-      Serial.println(payload);
+      String milli = String(millis()/1000);
+      if (gps.encode(gpsSerial.read())) {
+        StaticJsonDocument<300> jsonStructure;
+        char timestampNow[25] = {0};
+        int month = 0;
+        int day = 0;
+        int year = 0;
+        int hour = 0;
+        int min = 0;
+        int sec = 0;
+        fileHandle = SD.open(fileName.c_str(), FILE_WRITE);
+        if( !fileHandle ) {
+          Serial.println("something went wrong with the file opening process.");
+          lcd.clear();
+          lcd.setCursor(0, 0);
+          lcd.print("file open failed.");
+          delay(250);
+        }
+        if( gps.location.isValid() ) {
+          jsonStructure["latitude"] = String(gps.location.lat(), 6);
+          jsonStructure["longitude"] = String(gps.location.lng(), 6);
+          lcd.clear();
+          lcd.setCursor(0, 0);
+          lcd.print(String(gps.location.lat(), 6));
+          lcd.setCursor(0, 1);
+          lcd.print(String(gps.location.lng(), 6));
+          delay(250);
+        } else {
+          jsonStructure["latitude"] = "";
+          jsonStructure["longitude"] = "";
+          lcd.clear();
+          lcd.setCursor(0, 0);
+          lcd.print("no gps data: " + milli);
+          delay(500);
+          return;
+        }
+        if( gps.date.isValid() ) {
+          month = gps.date.month();
+          day = gps.date.day();
+          year = gps.date.year();
+        } else {
+          jsonStructure["date"] = "";
+        }
+        if( gps.time.isValid() ) {
+          hour = gps.time.hour();
+          min = gps.time.minute();
+          sec = gps.time.second();
+        } else {
+          jsonStructure["time"] = "";
+        }
+        sprintf(timestampNow, "%04d-%02d-%02dT%02d:%02d:%02d +0000", year, month, day, hour, min, sec);
+        jsonStructure["timestamp"] = timestampNow;
+        String payload;
+        serializeJson(jsonStructure, payload);
+        Serial.print("Payload: ");
+        Serial.println(payload);
 
-      if( fileHandle ) {
-        fileHandle.println(payload);
-      } else {
-        Serial.println("cannot write file");
-      }
+        if( fileHandle ) {
+          fileHandle.println(payload);
+        } else {
+          Serial.println("cannot write file");
+        }
 
-      fileHandle.close();
-      delay(2000);
-    }
+        fileHandle.close();
+        delay(2000);
+      }
   }
 }
