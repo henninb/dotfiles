@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo freebsd-update -r 12.1 upgrade
+sudo freebsd-update -r 13.0 upgrade
 sudo freebsd-update fetch
 sudo freebsd-update install
 
