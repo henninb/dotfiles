@@ -83,7 +83,8 @@ fi
 if [ ! -x "$(command -v go)" ]; then
   echo "golang needs to be installed"
 else
-  if grep -q "$golang_ver" <<< "$(go version)"; then
+  if echo "$(go version)" | grep -q "$golang_ver"; then
+  #if grep -q "$golang_ver" <<< "$(go version)"; then
     echo "golang is already up to date"
   else
     echo "updating golang"
