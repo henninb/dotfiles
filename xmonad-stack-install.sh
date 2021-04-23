@@ -46,6 +46,8 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y xdotool
   sudo apt install -y xscreensaver
   #sudo apt install -y icu-devtools libicu-dev
+  # sudo pkg install hs-cabal-install
+  sudo pkg install hs-xmonad
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper install -y dzen2
   sudo zypper install -y alsa-lib-devel
@@ -304,7 +306,7 @@ sudo cp -v "$HOME/.local/bin/xmonad-start" /usr/local/bin/xmonad-start
 
 if ! go get github.com/godbus/dbus; then
   echo "failed to install go dbus."
-  exit 1
+  # exit 1
 fi
 cd "$HOME/projects" || exit
 git clone git@github.com:xintron/xmonad-log.git

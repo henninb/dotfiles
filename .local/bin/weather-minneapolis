@@ -38,4 +38,8 @@ else
 fi
 }
 
+if [ "${OS}" = "FreeBSD" ]; then
+  exit 0
+fi
+
 echo "%{F#FFFFFF} $(WEATHER) $(TEMP) %{F-}"

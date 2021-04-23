@@ -37,6 +37,11 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y i3
   sudo apt install -y libcairo-dev
   sudo apt install -y python3-xcbgen
+elif [ "$OS" = "FreeBSD" ]; then
+  sudo pkg install -y cmake
+  # sudo pkg install -y nproc
+  sudo pkg install -y polybar
+  exit 0
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -c system.devel
   sudo eopkg install -y libcairo-devel
