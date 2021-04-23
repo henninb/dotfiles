@@ -13,6 +13,7 @@ golang_ver=$(curl -s 'https://golang.org/VERSION?m=text')
 #    exit 1
     if [ "${OS}" = "FreeBSD" ]; then
       echo FreeBSD
+      sudo pkg install -y wget
       if [ ! -f "${golang_ver}.freebsd-amd64.tar.gz" ]; then
         wget -q "https://dl.google.com/go/${golang_ver}.freebsd-amd64.tar.gz"
       fi
