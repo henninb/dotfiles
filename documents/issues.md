@@ -487,8 +487,9 @@ Unit dbus-org.freedesktop.home1.service not found
 sudo mv  /usr/lib/security/pam_systemd_home.so  /usr/lib/security/pam_systemd_home.so.bak
 
 
-## nvidia card not working freebsd
+## freeebsd nvidia display issue
 "echo ' nvidia_load="YES" >> /boot/loader.conf" "echo ' linux_enable="YES" >> /etc/rc.conf"
 sudo pkg install [nvidia driver 340 340 108_2](nvidia-driver-340-340.108_2)
-libdrm
-i915
+
+## freebsd alacritty after nvidia driver install
+Received multiple errors. Errors: `[OsError("Could not create EGL display object"), OsError("GL context creation failed")]`
