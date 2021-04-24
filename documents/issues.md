@@ -489,3 +489,4 @@ sudo mv  /usr/lib/security/pam_systemd_home.so  /usr/lib/security/pam_systemd_ho
 
 ## nvidia card not working freebsd
 "echo ' nvidia_load="YES" >> /boot/loader.conf" "echo ' linux_enable="YES" >> /etc/rc.conf"
+sudo pkg install nvidia-driver-340-340.108_2
