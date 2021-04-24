@@ -30,7 +30,7 @@ https://askubuntu.com/questions/136139/xrandr-configure-crtc-0-failed-when-tryin
 https://unix.stackexchange.com/questions/227876/how-to-set-custom-resolution-using-xrandr-when-the-resolution-is-not-available-i
 gtf 1920 1080 60
 
-gtf 2560 1440 60
+gtf 2560 1440 59.95
 xrandr --newmode "2560x1440_60.00"  311.83  2560 2744 3024 3488  1440 1441 1444 1490  -HSync +Vsync
 
 xrandr --addmode default "2560x1440_60.00"
@@ -39,3 +39,8 @@ xrandr --output default --mode "2560x1440_60.00"
 xrandr --output default --crtc CRT1 --brightness 0.7
 
 xrandr --verbose
+
+
+  2560x1440 (0x1c4) 241.500MHz +HSync -VSync *current +preferred
+        h: width  2560 start 2608 end 2640 total 2720 skew    0 clock  88.79KHz
+        v: height 1440 start 1443 end 1448 total 1481           clock  59.95Hz
