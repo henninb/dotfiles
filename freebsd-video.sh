@@ -10,6 +10,7 @@ kldload_nvidia="nvidia-modeset nvidia"
 
 
 sudo pkg install emulators/linux_base-c7
+sudo pkg install drm-kmod
 
 linux_enable="YES"
 nvidia_enable="YES"
