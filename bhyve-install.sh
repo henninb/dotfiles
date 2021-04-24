@@ -3,7 +3,7 @@
 if [ "$OS" = "FreeBSD" ]; then
   sudo mkdir -p /vm
   sudo mkdir -p /vm/iso
-  sudo pkg install -y vm-bhyve grub2-bhyve qemu-utils bhyve-rc bhyve-firmware uefi-edk2-bhyve chyves
+  sudo pkg install -y vm-bhyve grub2-bhyve qemu-utils bhyve-rc bhyve-firmware sysutils/uefi-edk2-bhyve
   sudo sysrc vm_enable="YES"
   sudo sysrc vm_dir="/vm"
   sudo sysrc cloned_interfaces="bridge0 tap0 bridge1 tap1 bridge2 tap2 lo1"
