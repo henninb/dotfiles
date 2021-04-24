@@ -73,6 +73,9 @@ xrandr --output HDMI-1 --mode 2560x1440 2> /dev/null
 xrandr --output HDMI-0 --mode 2560x1440 2> /dev/null
 xrandr --size 2560x1440 2> /dev/null
 
+#freebsd
+#xrandr --output default --mode 2560x1440
+
 # xrandr --output HDMI-1 --mode 1920x1080 2> /dev/null
 # xrandr --output HDMI-0 --mode 1920x1080 2> /dev/null
 # xrandr --size 1920x1080 2> /dev/null
