@@ -23,3 +23,4 @@ linsysfs /compat/alpine/sys linsysfs     rw 0 0
 tmpfs /compat/alpine/shm tmpfs rw,mode=1777 0 0
 
 echo "nameserver 1.1.1.1" > /etc/resolv.conf
+apk add python3
