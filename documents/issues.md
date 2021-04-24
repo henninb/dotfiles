@@ -490,6 +490,12 @@ sudo mv  /usr/lib/security/pam_systemd_home.so  /usr/lib/security/pam_systemd_ho
 ## freeebsd nvidia display issue
 "echo ' nvidia_load="YES" >> /boot/loader.conf" "echo ' linux_enable="YES" >> /etc/rc.conf"
 sudo pkg install [nvidia driver 340 340 108_2](nvidia-driver-340-340.108_2)
+❯ xrandr
+xrandr: Failed to get size of gamma for output default
+Screen 0: minimum 1024 x 768, current 1024 x 768, maximum 1024 x 768
+default connected 1024x768+0+0 0mm x 0mm
+   1024x768       0.00* 
+
 
 ## freebsd alacritty after nvidia driver install
 Received multiple errors. Errors: `[OsError("Could not create EGL display object"), OsError("GL context creation failed")]`
