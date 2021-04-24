@@ -485,3 +485,7 @@ gi.repository.GLib.Error: g-io-error-quark: Could not connect: Connection refuse
 
 Unit dbus-org.freedesktop.home1.service not found
 sudo mv  /usr/lib/security/pam_systemd_home.so  /usr/lib/security/pam_systemd_home.so.bak
+
+
+## nvidia card not working freebsd
+"echo ' nvidia_load="YES" >> /boot/loader.conf" "echo ' linux_enable="YES" >> /etc/rc.conf"
