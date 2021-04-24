@@ -32,9 +32,9 @@ gtf 1920 1080 60
 
 gtf 2560 1440 59.95
 xrandr --newmode "2560x1440_60.00"  311.83  2560 2744 3024 3488  1440 1441 1444 1490  -HSync +Vsync
-
-xrandr --addmode default "2560x1440_60.00"
-xrandr --output default --mode "2560x1440_60.00"
+xrandr --newmode "2560x1440_59.95"  311.57  2560 2744 3024 3488  1440 1441 1444 1490  -HSync +Vsync
+xrandr --addmode default "2560x1440_59.95"
+xrandr --output default --mode "2560x1440_59.95"
 
 xrandr --output default --crtc CRT1 --brightness 0.7
 
