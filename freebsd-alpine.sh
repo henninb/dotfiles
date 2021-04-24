@@ -14,6 +14,7 @@ sudo rm alpine-minirootfs-3.13.5-x86_64.tar.gz
 cd -
 
 echo sudo chroot /compat/alpine /bin/sh
+kldstat | grep linux
 
 exit 0
 
