@@ -15,11 +15,17 @@ while [ "${select}" != "Cancel" ] && [ "${select}" != "Logout" ] && [ "${select}
 done
 
 if [ "${OS}" = "FreeBSD" ]; then
-  echo
+  [ "${select}" = "Cancel" ] && exit 0
+  [ "${select}" = "Logout" ] && [ "${wm}" = "xmonad" ] && pkill -v xmonad
+  [ "${select}" = "Logout" ] && [ "${wm}" = "bspwm" ] && bspc quit
+  [ "${select}" = "Logout" ] && [ "${wm}" = "i3" ] && i3-msg exit
+  [ "${select}" = "Logout" ] && [ "${wm}" = "spectrwm" ] && pkill -v spectrwm
+  [ "${select}" = "Shutdown" ] && sudo shutdown -p now
+  [ "${select}" = "Reboot" ] && sudo shutdown -r now
+  exit 0
 fi
 
 [ "${select}" = "Cancel" ] && exit 0
-
 [ "${select}" = "Logout" ] && [ "${wm}" = "xmonad" ] && pkill -x xmonad
 [ "${select}" = "Logout" ] && [ "${wm}" = "bspwm" ] && bspc quit
 [ "${select}" = "Logout" ] && [ "${wm}" = "i3" ] && i3-msg exit

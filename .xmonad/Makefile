@@ -25,7 +25,7 @@ freebsd:
 	@stack ghc -- --make xmonad.hs
 	@rm -rf *.hi *.o
 	@sudo mv -v xmonad /usr/local/bin
-	@cp /usr/local/bin/xmonad /home/henninb/.xmonad/xmonad-x86_64-freebsd
+	@cp /usr/local/bin/xmonad ~/.xmonad/xmonad-x86_64-freebsd
 	@hlint xmonad-default.hs
 rice:
 	@echo build rice
