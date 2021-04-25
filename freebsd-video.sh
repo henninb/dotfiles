@@ -44,3 +44,5 @@ xrandr --verbose
   2560x1440 (0x1c4) 241.500MHz +HSync -VSync *current +preferred
         h: width  2560 start 2608 end 2640 total 2720 skew    0 clock  88.79KHz
         v: height 1440 start 1443 end 1448 total 1481           clock  59.95Hz
+
+nvidia-settings
