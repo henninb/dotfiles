@@ -506,7 +506,8 @@ Fatal server error:
 [    46.185] (EE) no screens found(EE)
 [    46.185] (EE)
 
-Bus ID "PCI:1:0:0"
+-- 10de is nvidia
+Bus ID "PCI:0:0:0"
 Screen 0 "Screen0" 0 0
 
 I would add a BusID in the Device section to identify which card to use.
