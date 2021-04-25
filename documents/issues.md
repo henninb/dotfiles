@@ -494,7 +494,17 @@ sudo pkg install [nvidia driver 340 340 108_2](nvidia-driver-340-340.108_2)
 xrandr: Failed to get size of gamma for output default
 Screen 0: minimum 1024 x 768, current 1024 x 768, maximum 1024 x 768
 default connected 1024x768+0+0 0mm x 0mm
-   1024x768       0.00* 
+   1024x768       0.00*
+
+    45.882] (!!) More than one possible primary device found
+[    45.882] (--) PCI: (0@0:2:0) 8086:0412:1458:d000 rev 6, Mem @ 0xf7400000/4194304, 0xd0000000/268435456, I/O @ 0x0000f000/64, BIOS @ 0x????????/65536
+[    45.882] (--) PCI: (1@0:0:0) 10de:1401:1043:8520 rev 161, Mem @ 0xf6000000/16777216, 0xe0000000/268435456, 0xf0000000/33554432, I/O @ 0x0000e000/128, BIOS @ 0x???????
+?/65536
+[    46.185] (EE) No devices detected.
+[    46.185] (EE)
+Fatal server error:
+[    46.185] (EE) no screens found(EE)
+[    46.185] (EE)
 
 
 ## freebsd alacritty after nvidia driver install
