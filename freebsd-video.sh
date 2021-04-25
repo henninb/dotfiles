@@ -45,4 +45,18 @@ xrandr --verbose
         h: width  2560 start 2608 end 2640 total 2720 skew    0 clock  88.79KHz
         v: height 1440 start 1443 end 1448 total 1481           clock  59.95Hz
 
+nvidia-smi -q |grep Bus
+        Bus                               : 0x01
+        Bus Id                            : 00000000:01:00.0
+
 nvidia-settings
+
+Section "Device"
+        Identifier     "NVIDIA Card"
+        VendorName     "NVIDIA Corporation"
+        BusID          "PCI:1:0:0"
+        Driver         "nvidia"
+        Option         "AccelMethod" "none"
+        Option         "TripleBuffer" "True"
+        Option         "MetaModes" "nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
+EndSection

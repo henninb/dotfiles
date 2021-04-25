@@ -511,6 +511,7 @@ Bus ID "PCI:0:0:0"
 Screen 0 "Screen0" 0 0
 
 I would add a BusID in the Device section to identify which card to use.
+/usr/local/etc/X11/xorg.conf.
 
 
 ## freebsd alacritty after nvidia driver install
