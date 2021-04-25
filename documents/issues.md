@@ -506,6 +506,11 @@ Fatal server error:
 [    46.185] (EE) no screens found(EE)
 [    46.185] (EE)
 
+Bus ID "PCI:1:0:0"
+Screen 0 "Screen0" 0 0
+
+I would add a BusID in the Device section to identify which card to use.
+
 
 ## freebsd alacritty after nvidia driver install
 Received multiple errors. Errors: `[OsError("Could not create EGL display object"), OsError("GL context creation failed")]`
