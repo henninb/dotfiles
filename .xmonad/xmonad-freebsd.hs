@@ -493,7 +493,8 @@ myStartupHook = do
     spawnOn "2" "alacritty"
     spawnOnce "blueman-applet" --dbus required
     spawnOnce "nm-applet"
-    spawnOnce "pamac-tray"
+    -- spawnOnce "pamac-tray"
+    spawnOnce "networkmgr"
     spawnOnce "numlockx on"
     spawnOnce "conky -c $HOME/.xmonad/system-overview"
     spawnOnce "mpDris2" -- required for mpd
