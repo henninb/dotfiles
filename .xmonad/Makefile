@@ -19,7 +19,7 @@ default:
 	@sudo mv -v xmonad /usr/local/bin
 	@hlint xmonad.hs
 freebsd:
-	@echo build default
+	@echo build freebsd
 	@rm -rf *.hi *.o xmonad
 	@ln -sfn xmonad-freebsd.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs
