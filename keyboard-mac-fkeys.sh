@@ -26,9 +26,10 @@ cat /etc/modprobe.d/hid_apple.conf
 
 cat > 00-keyboard.conf <<EOF
 Section "InputClass"
-        Identifier "system-keyboard"
-        MatchIsKeyboard "on"
-        Option "XkbOptions" "caps:escape"
+    Identifier "system-keyboard"
+    MatchIsKeyboard "on"
+    Option "XkbOptions" "caps:escape"
+    Option "XkbVariant" "mac"
 EndSection
 EOF
 
