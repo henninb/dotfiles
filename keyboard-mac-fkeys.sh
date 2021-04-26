@@ -33,6 +33,11 @@ Section "InputClass"
 EndSection
 EOF
 
+echo sysctl dev.akbd.0.fn_keys_function_as_primary=1
+echo sudo cp us.apple.kbd /usr/share/syscons/keymaps
+echo setxkbmap -option "altwin:swap_alt_win"
+echo setxkbmap -option
+
 if [ ! -f "/etc/X11/xorg.conf.d/00-keyboard.conf" ]; then
   sudo mv -v 00-keyboard.conf /etc/X11/xorg.conf.d/
 fi
