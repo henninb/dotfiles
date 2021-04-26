@@ -516,3 +516,7 @@ I would add a BusID in the Device section to identify which card to use.
 
 ## freebsd alacritty after nvidia driver install
 Received multiple errors. Errors: `[OsError("Could not create EGL display object"), OsError("GL context creation failed")]`
+
+## platformio freebsd
+
+https://community.platformio.org/t/platformio-on-freebsd/16472/4
