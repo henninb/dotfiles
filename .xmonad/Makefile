@@ -9,7 +9,7 @@ dbus:
 	@stack ghc -- --make xmonad.hs
 	@rm -rf *.hi *.o
 	@sudo mv -v xmonad /usr/local/bin
-	@hlint xmonad-dbus.hs
+	@hlint xmonad.hs
 default:
 	@echo build default
 	@rm -rf *.hi *.o xmonad
@@ -17,7 +17,7 @@ default:
 	@stack ghc -- --make xmonad.hs
 	@rm -rf *.hi *.o
 	@sudo mv -v xmonad /usr/local/bin
-	@hlint xmonad-default.hs
+	@hlint xmonad.hs
 freebsd:
 	@echo build default
 	@rm -rf *.hi *.o xmonad
@@ -26,7 +26,7 @@ freebsd:
 	@rm -rf *.hi *.o
 	@sudo mv -v xmonad /usr/local/bin
 	@cp /usr/local/bin/xmonad ~/.xmonad/xmonad-x86_64-freebsd
-	@hlint xmonad-default.hs
+	@hlint xmonad.hs
 rice:
 	@echo build rice
 	@stack path --local-bin
@@ -37,6 +37,6 @@ rice:
 	@rm -rf *.hi *.o lib/*.o lib/*.hi
 	@sudo mv -v xmonad /usr/local/bin
 # ifdef HLINT
-	@hlint xmonad-rice.hs
+	@hlint xmonad.hs
 	@hlint lib/*.hs
 # endif
