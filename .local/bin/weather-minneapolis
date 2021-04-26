@@ -38,4 +38,5 @@ else
 fi
 }
 
-echo "%{F#FFFFFF} $(WEATHER) $(TEMP) %{F-}"
+#echo "%{F#FFFFFF} $(WEATHER) $(TEMP) %{F-}"
+echo " $(WEATHER) $(TEMP) "
