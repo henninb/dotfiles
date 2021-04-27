@@ -136,6 +136,8 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y xorg
   sudo pkg install -y pkgconf
   sudo pkg install -y networkmgr
+  sudo pkg install -y sxhkd
+  sudo pkg install -y numlockx
   # sudo pkg install -y libXft
   # sudo pkg install -y xz
 elif [ "$OS" = "void" ]; then
