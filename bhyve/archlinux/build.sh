@@ -18,6 +18,7 @@ sudo cp $TEMPLATE.conf /vm/.templates
 echo create a switch
 sudo vm switch list
 echo sudo vm switch create public
+sudo vm switch add public re0
 
 echo add a network interface to the switch
 echo sudo vm switch add public alc0
