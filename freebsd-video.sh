@@ -12,6 +12,12 @@ Section "Device"
 EndSection
 EOF
 
+cat > fonts.conf <<EOF
+Section "Files"
+    FontPath "/usr/local/share/fonts/font-awesome/"
+EndSection
+EOF
+
 echo "installing packages for a gtx960"
 sudo pkg install -y nvidia-driver-460.67
 sudo pkg install -y emulators/linux_base-c7
