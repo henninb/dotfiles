@@ -10,6 +10,11 @@ if [ ! -f "FiraCode_2.zip" ]; then
   wget -q 'https://github.com/tonsky/FiraCode/releases/download/2/FiraCode_2.zip'
 fi
 
+
+#otf is a newer standard based on ttf, when given the option you should generally choose otf.
+      # mkdir -p ~/.local/share/fonts
+# cd ~/.local/share/fonts && curl -fLo "Fira Code Regular Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete.otf
+
 PROJECTS="monofur-fonts.zip jetbrains-fonts.zip symbola.zip FiraCode_2.zip font-awesome5-regular.zip"
 for i in $PROJECTS; do
   cd "$HOME/.fonts" || exit
