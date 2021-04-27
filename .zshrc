@@ -324,18 +324,15 @@ fi
 
 mkdir -p "$HOME/.config/compton"
 
-[ -f "$HOME/.config/nvim/init.vim" ] && ln -sfn "$HOME/.config/nvim/init.vim" "$HOME/.vimrc"
-[ -f "$HOME/.config/picom/picom.conf" ] && ln -sfn "$HOME/.config/picom/picom.conf" "$HOME/.config/compton/compton.conf"
+[ -f "$HOME/.config/nvim/init.vim" ] && ln -sfn "$HOME/.config/nvim/init.vim" "$HOME/.vimrc" 2> /dev/null
+[ -f "$HOME/.config/picom/picom.conf" ] && ln -sfn "$HOME/.config/picom/picom.conf" "$HOME/.config/compton/compton.conf" 2> /dev/null
 # TODO: ought not do this as it breaks lightdm
 #[ -f "$HOME/.xinitrc" ] && ln -sfn "$HOME/.xinitrc" "$HOME/.xsession"
-# [ -f "$HOME/.profile" ] && ln -sfn "$HOME/.profile" "$HOME/.xprofile"
-[ -f /opt/arduino/arduino ] && ln -sfn /opt/arduino/arduino "$HOME/.local/bin/arduino"
-[ -f /opt/intellij/bin/idea.sh ] && ln -sfn /opt/intellij/bin/idea.sh "$HOME/.local/bin/intellij"
-[ -f /opt/firefox/firefox ] && ln -sfn /opt/firefox/firefox "$HOME/.local/bin/firefox"
-# [ -f /bin/brave ] && ln -sfn /bin/brave "$HOME/.local/bin/brave-browser"
-[ -f /opt/vscode/bin/code ] && ln -sfn /opt/vscode/bin/code "$HOME/.local/bin/code"
-[ -f "$HOME/.tmux-rice.conf" ] && ln -sfn "$HOME/.tmux-rice.conf" "$HOME/.tmux.conf"
-#[ -f "$HOME/.config/polybar/config-master.ini" ] && ln -sfn "$HOME/.config/polybar/config-master.ini" "$HOME/.config/polybar/config"
+[ -f /opt/arduino/arduino ] && ln -sfn /opt/arduino/arduino "$HOME/.local/bin/arduino" 2> /dev/null
+[ -f /opt/intellij/bin/idea.sh ] && ln -sfn /opt/intellij/bin/idea.sh "$HOME/.local/bin/intellij" 2> /dev/null
+[ -f /opt/firefox/firefox ] && ln -sfn /opt/firefox/firefox "$HOME/.local/bin/firefox" > /dev/null
+[ -f /opt/vscode/bin/code ] && ln -sfn /opt/vscode/bin/code "$HOME/.local/bin/code" 2> /dev/null
+[ -f "$HOME/.tmux-rice.conf" ] && ln -sfn "$HOME/.tmux-rice.conf" "$HOME/.tmux.conf" 2> /dev/null
 [ -f "$HOME/.ssh/config" ] && chmod 600 "$HOME/.ssh/config"
 [ -f "$HOME/.ssh/authorized_keys" ] && chmod 600 "$HOME/.ssh/authorized_keys"
 [ -f "$HOME/.ssh/config" ] && chmod 600 "$HOME/.ssh/config"
