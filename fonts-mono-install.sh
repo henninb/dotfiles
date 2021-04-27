@@ -6,16 +6,16 @@ if [ ! -f "symbola.zip" ]; then
   wget -q 'https://fontlibrary.org/assets/downloads/symbola/cf81aeb303c13ce765877d31571dc5c7/symbola.zip'
 fi
 
-if [ ! -f "FiraCode_2.zip" ]; then
-  wget -q 'https://github.com/tonsky/FiraCode/releases/download/2/FiraCode_2.zip'
-fi
+# if [ ! -f "FiraCode_2.zip" ]; then
+#   wget -q 'https://github.com/tonsky/FiraCode/releases/download/2/FiraCode_2.zip'
+# fi
 
 
 #otf is a newer standard based on ttf, when given the option you should generally choose otf.
       # mkdir -p ~/.local/share/fonts
 # cd ~/.local/share/fonts && curl -fLo "Fira Code Regular Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete.otf
 
-PROJECTS="monofur-fonts.zip jetbrains-fonts.zip symbola.zip FiraCode_2.zip font-awesome5-regular.zip"
+PROJECTS="monofur-fonts.zip symbola.zip fira-code-font.zip font-awesome5-regular.zip"
 for i in $PROJECTS; do
   cd "$HOME/.fonts" || exit
   unzip -o "$HOME/$i"
@@ -24,10 +24,18 @@ for i in $PROJECTS; do
 done
 fc-cache -vf ~/.fonts/
 
-echo "fc-list | grep -i jet"
-echo "fc-list | grep -i monofur"
-fc-list | grep -i "symbo"
-fc-list : family | grep -i awesome
-echo https://www.fontsquirrel.com/
+fc-list | grep -i monofur
+echo
+fc-list | grep -i Symbola
+echo
+fc-list | grep -i firacode
+echo
+fc-list | grep -i awesome
+
+# echo "fc-list | grep -i jet"
+# echo "fc-list | grep -i monofur"
+# fc-list | grep -i "symbo"
+# fc-list : family | grep -i awesome
+# echo https://www.fontsquirrel.com/
 
 exit 0
