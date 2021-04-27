@@ -287,7 +287,7 @@ if [ ! "$OS" = "FreeBSD" ]; then
   fi
 fi
 
-if [ -z "$(find ~/.fonts -maxdepth 1 -type f  \( -name Monofur_Bold_for_Powerline.ttf -o -name Monofur_Italic_for_Powerline.ttf -o -name Monofur_for_Powerline.ttf \))" ]; then
+if [ -z "$(find ~/.fonts -maxdepth 1 -type f  \( -name Monofur_for_Powerline.ttf \))" ]; then
   mkdir -p ~/.fonts
   cd ~/.fonts || return
   unzip ../monofur-fonts.zip
