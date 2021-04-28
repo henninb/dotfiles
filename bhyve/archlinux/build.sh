@@ -11,18 +11,14 @@ ps -aux | grep grub-bhyve | grep -v grep | awk '{print $2}' | xargs sudo kill -9
 ps -aux | grep vm | grep -v "[vmdaemon]" | grep -v grep
 sudo rm -rf /vm/$VMNAME
 sudo mkdir -p /vm/.templates
-sudo cp -v archlinux.conf /vm/.templates/
+# sudo cp -v archlinux.conf /vm/.templates/
 sudo mkdir -p /vm/.iso
-sudo cp $TEMPLATE.conf /vm/.templates
+sudo cp -v $TEMPLATE.conf /vm/.templates
 
-echo create a switch
-sudo vm switch list
 echo sudo vm switch create public
-#sudo vm switch add public re0
+sudo vm switch list
+sudo vm switch add public re0
 sudo vm switch create public em0
-
-echo add a network interface to the switch
-echo sudo vm switch add public alc0
 
 # echo sudo vm destroy $VMNAME
 echo sudo vm iso 'https://mirrors.acm.wpi.edu/archlinux/iso/2021.04.01/archlinux-2021.04.01-x86_64.iso'
@@ -32,5 +28,6 @@ sudo vm install $VMNAME archlinux-2021.04.01-x86_64.iso
 sudo vm start $VMNAME
 sudo vm list
 echo sudo vm console $VMNAME
+echo sudo killall cu
 
 exit 0
