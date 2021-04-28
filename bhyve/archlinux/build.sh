@@ -24,8 +24,8 @@ sudo vm switch create public em0
 echo sudo vm iso 'https://mirrors.acm.wpi.edu/archlinux/iso/2021.04.01/archlinux-2021.04.01-x86_64.iso'
 sudo vm iso
 sudo vm create -t $TEMPLATE -s 50G $VMNAME
-sudo vm install $VMNAME archlinux-2021.04.01-x86_64.iso
-sudo vm start $VMNAME
+sudo vm install -f $VMNAME archlinux-2021.04.01-x86_64.iso
+echo sudo vm start $VMNAME
 sudo vm list
 echo sudo vm console $VMNAME
 echo sudo killall cu
