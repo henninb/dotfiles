@@ -1,10 +1,20 @@
 #!/bin/sh
 
-sudo apt install x11-server
-#sudo apt install lightdm
-xrandr -q
+#xrandr -q
 
-sudo pacman -S xorg openbox
+if [ "${OS}" = "FreeBSD" ]; then
+  echo install these packages on the guest
+  echo
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
+  echo install these packages on the guest
+  sudo apt install x11-server
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+  echo install these packages on the guest
+  sudo pacman --noconfirm --needed -S xorg-server
+  sudo pacman --noconfirm --needed -S xorg-xauth
+  # sudo pacman -S xorg openbox
+fi
+
 
 sudo touch /etc/ssh/sshd_config
 ssh -X henninb@168.62.111.163 env

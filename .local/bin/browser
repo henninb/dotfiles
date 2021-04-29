@@ -6,6 +6,13 @@ if grep -q "incognito" <<< "$options"; then
   firefox_options="-private-window"
 fi
 
+if [ "${OS}" = "FreeBSD" ]; then
+  if ping -c 1 archlinux.bhyve; then
+    exec ssh archlinux.bhyve brave "$options"
+    exit 0
+  fi
+fi
+
 if [ -x "$(command -v brave)" ]; then
   exec brave "$options"
 elif [ -x "$(command -v brave-browser)" ]; then
