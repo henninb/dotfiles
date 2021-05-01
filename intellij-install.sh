@@ -50,8 +50,12 @@ if [ ! -f "ideaIU-${VER}.tar.gz" ]; then
   fi
 fi
 
-sudo groupadd intellij
-sudo useradd -s /sbin/nologin -g intellij intellij
+if [ "${OS}" = "FreeBSD" ]; then
+  sudo pw group add intellij
+else
+  sudo groupadd intellij
+  sudo useradd -s /sbin/nologin -g intellij intellij
+fi
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S net-tools psmisc wget curl jq
@@ -86,6 +90,7 @@ elif [ "$OS" = "Solus" ]; then
   sudo chown -R intellij:intellij /opt/idea-IU-*/
   sudo chmod -R 775 /opt/idea-IU-*/
 elif [ "$OS" = "FreeBSD" ]; then
+  sudo mkdir -p /opt
   sudo rm -rf /opt/intellij
   sudo rm -rf /opt/intellij-*/
   sudo tar -xvf "ideaIU-${VER}.tar.gz" -C /opt
@@ -134,7 +139,12 @@ else
   exit 1
 fi
 
-sudo usermod -a -G intellij "$(whoami)"
+if [ "${OS}" = "FreeBSD" ]; then
+  echo "FreeBSD"
+  sudo pw usermod $(whoami) -G intellij
+else
+  sudo usermod -a -G intellij "$(whoami)"
+fi
 echo "$VER"
 
 exit 0

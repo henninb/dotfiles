@@ -136,7 +136,7 @@ elif [ "$OS" = "Darwin" ]; then
   JAVA_HOME="$(/usr/libexec/java_home)"
   export JAVA_HOME
 elif [ "$OS" = "FreeBSD" ]; then
-  JAVA_HOME=/usr/local/openjdk8
+  JAVA_HOME=/usr/local/openjdk11
   export JAVA_HOME
 else
   echo JAVA_HOME is not setup.
