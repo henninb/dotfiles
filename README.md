@@ -168,3 +168,4 @@
 - neovide - gui vim [cargo install neovide]
 - fd-find - find replacement [cargo install fd-find]
 - ripgrep - grep replacement [cargo install ripgrep]
+- stow for managing symlinks

@@ -13,7 +13,8 @@ window:
     general: Alacritty
 
 scrolling:
-  history: 8000
+  history: 10000
+  multiplier: 3
 
 font:
   normal:
