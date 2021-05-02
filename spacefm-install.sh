@@ -27,6 +27,9 @@ elif [ "$OS" = "Gentoo" ]; then
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y systemd-devel
   sudo dnf install -y ffmpegthumbnailer-devel
+elif [ "$OS" = "FreeBSD" ]; then
+  sudo pkg install ffmpegthumbnailer
+  sudo pkg install intltool
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y intltool
   sudo xbps-install -y glib-devel
@@ -34,6 +37,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y ffmpegthumbnailer-devel
 else
   echo "$OS is not implemented."
+  exit 1
 fi
 
 cd "$HOME/projects" || exit
