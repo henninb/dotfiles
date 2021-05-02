@@ -1,5 +1,12 @@
 #!/bin/sh
 
+cat > devfs.rules <<EOF
+ [localrules=10]
+        add path 'ugen*' mode 0660 group operator
+        add path 'usb/*'  mode 0660 group operator
+        add path 'usb' mode 0770 group operator
+EOF
+
 VER=$(curl -s -f https://www.arduino.cc/en/main/software | grep -o 'arduino-[0-9.]\+[0-9]-windows.exe' | sed 's/arduino-//' | sed 's/-windows.exe//')
 echo "VER=$VER"
 
@@ -16,7 +23,16 @@ sudo mkdir -p /opt/
 sudo rm -rf /opt/arduino
 sudo rm -rf "/opt/arduino-${VER}"
 sudo tar -xJvf "arduino-${VER}-linux64.tar.xz" -C /opt
-sudo ln -s "/opt/arduino-${VER}" /opt/arduino
+sudo ln -sfn "/opt/arduino-${VER}" /opt/arduino
+
+
+if [ "${OS}" = "FreeBSD" ]; then
+  sudo pw groupmod operator -m "$(whoami)"
+  echo rc.conf
+  echo devfs_system_ruleset="localrules"
+  sudo mv devfs.rules /etc/devfs.rules
+  sudo service devfs restart
+fi
 
 id -u arduino >/dev/null 2>&1 || sudo useradd -s /sbin/nologin arduino -m
 sudo chown -R arduino:arduino /opt/arduino/
