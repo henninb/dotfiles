@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+if alacritty; then
+  exit 0
+fi
+
+if st; then
+  exit 0
+fi
+
+if urxvt; then
+  exit 0
+fi
+
+if xterm; then
+  exit 0
+fi
+
+exit 0
