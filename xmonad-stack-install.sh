@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 
-if [ ! -x "$(command -v go)" ]; then
-  echo "golang needs to be installed"
-  exit 1
-fi
+# if [ ! -x "$(command -v go)" ]; then
+#   echo "golang needs to be installed"
+#   exit 1
+# fi
 
 if [ "${OS}" = "FreeBSD" ]; then
   sudo pkg install -y hs-stack
@@ -283,10 +283,10 @@ if ! stack install xmonad-extras; then
   failures="$failures xmonad-extras"
 fi
 
-if ! stack install dbus; then
-  echo failed dbus.
-  failures="$failures dbus"
-fi
+# if ! stack install dbus; then
+#   echo failed dbus.
+#   failures="$failures dbus"
+# fi
 
 # echo "seems to have the the flag with_xft. how to confirm?"
 # cd "$HOME/projects" || exit
@@ -308,23 +308,23 @@ fi
 
 sudo cp -v "$HOME/.local/bin/xmonad-start" /usr/local/bin/xmonad-start
 
-if ! go get github.com/godbus/dbus; then
-  echo "failed to install go dbus."
-  # exit 1
-fi
-cd "$HOME/projects" || exit
-git clone git@github.com:xintron/xmonad-log.git
-cd xmonad-log || exit
-go build
-mv xmonad-log "$HOME/.local/bin"
-cd - || exit
+# if ! go get github.com/godbus/dbus; then
+#   echo "failed to install go dbus."
+#   # exit 1
+# fi
+# cd "$HOME/projects" || exit
+# git clone git@github.com:xintron/xmonad-log.git
+# cd xmonad-log || exit
+# go build
+# mv xmonad-log "$HOME/.local/bin"
+# cd - || exit
 
-cd "$HOME/projects" || exit
-git clone git@github.com:troydm/xmonad-dbus.git
-cd xmonad-dbus || exit
-stack build
-stack install
-cd - || exit
+# cd "$HOME/projects" || exit
+# git clone git@github.com:troydm/xmonad-dbus.git
+# cd xmonad-dbus || exit
+# stack build
+# stack install
+# cd - || exit
 
 stack exec ghc-pkg list
 echo stack exec ghc-pkg unregister mypackage
