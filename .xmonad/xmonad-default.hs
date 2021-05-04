@@ -105,6 +105,14 @@ myFocusBorderColor = "#5b51c9"
 -- myNormalBorderColor = "#BFBFBF"
 -- myFocusedBorderColor = "#89DDFF"
 
+-- Colors ------ {{{
+gray      = "#888974"
+-- red       = "#fb4934"
+purple    = "#d3869b"
+aqua      = "#8ec07c"
+-- }}}
+
+
 myRemoveKeys = [
                  (superKeyMask .|. shiftMask, xK_space)
                , (superKeyMask, xK_q)
@@ -453,8 +461,8 @@ myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
   where
     sstr = shorten len str
 
-polybarOutput str =
-  io $ appendFile "/tmp/.xmonad-info" (str ++ "\n")
+polybarOutput barOutputString =
+  io $ appendFile "/tmp/.xmonad-info" (barOutputString ++ "\n")
 
 windowCount :: X (Maybe String)
 windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
@@ -467,12 +475,20 @@ polybarLogHook = def
     , ppVisible = wrap ("%{F" ++ "#FF1493" ++ "} ") " %{F-}"
     , ppHiddenNoWindows = wrap ("%{F" ++ "#928374" ++ "} ") " %{F-}" --lightgrey foreground
     , ppUrgent = wrap ("%{F" ++ "#FF0000" ++ "} ") " %{F-}"  --red foreground
-    , ppHidden = wrap " " " "
+    -- , ppHidden = wrap " " "
+    , ppHidden = withFG gray . withMargin . withFont 5 . (`wrapClickableWorkspace` "__hidden__")
+    -- , ppHiddenNoWindows  = withFG gray . withMargin . withFont 5 . (`wrapClickableWorkspace` "__empty__")"
     , ppWsSep = ""
     , ppSep = " %{F#928374}|%{F-} "
     , ppTitle = myAddSpaces 25
     , ppExtras  = [windowCount]                           -- # of windows current works
-    }
+    }    where
+      withMargin                 = wrap " " " "
+      withFont fNum              = wrap ("%{T" ++ show (fNum :: Int) ++ "}") "%{T}"
+      withBG color               = wrap ("%{B" ++ color ++ "}") "%{B-}"
+      withFG color               = wrap ("%{F" ++ color ++ "}") "%{F-}"
+      wrapOnClickCmd command     = wrap ("%{A1:" ++ command ++ ":}") "%{A}"
+      wrapClickableWorkspace wsp = wrapOnClickCmd ("xdotool key super+" ++ wsp)
 
 spawnToWorkspace :: String -> String -> X ()
 spawnToWorkspace program workspace = do
