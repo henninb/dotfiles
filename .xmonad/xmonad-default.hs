@@ -270,10 +270,11 @@ ws0 = "0"
 
 myWorkspaces :: [String]
 myWorkspaces = [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0]
-myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
-clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
-    where i = fromJust $ M.lookup ws myWorkspaceIndices
+-- myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
+
+-- clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
+--     where i = fromJust $ M.lookup ws myWorkspaceIndices
 
 -- runFlameshot :: String -> X ()
 -- runFlameshot mode = do
