@@ -16,8 +16,8 @@ default:
 	@ln -sfn xmonad-default.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs
 	@rm -rf *.hi *.o
-	@cp xmonad xmonad-x86_64-linux
-	@sudo mv -v xmonad /usr/local/bin
+	@sudo cp -v xmonad /usr/local/bin
+	@cp -v xmonad xmonad-x86_64-linux
 	@hlint xmonad.hs
 freebsd:
 	@echo build freebsd

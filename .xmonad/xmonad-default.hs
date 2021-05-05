@@ -50,6 +50,7 @@ import Prelude
 import Data.Maybe
 import XMonad.Actions.GroupNavigation
 import XMonad.Hooks.RefocusLast
+import Data.Char (isSpace, toUpper, isDigit)
 
 import System.Environment (setEnv, getEnv)
 
@@ -281,9 +282,6 @@ myWorkspaces = [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0]
 
 -- myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
--- clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
---     where i = fromJust $ M.lookup ws myWorkspaceIndices
-
 -- runFlameshot :: String -> X ()
 -- runFlameshot mode = do
 --   ssDir <- io getCaptureDir
@@ -464,8 +462,8 @@ myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
 polybarOutput barOutputString =
   io $ appendFile "/tmp/.xmonad-info" (barOutputString ++ "\n")
 
-windowCount :: X (Maybe String)
-windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
+currentWorkSpace :: X (Maybe String)
+currentWorkSpace = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 
 polybarLogHook = def
     { ppOutput = polybarOutput
@@ -473,22 +471,33 @@ polybarLogHook = def
     -- , ppCurrent = wrap ("%{B" ++ "#008000" ++ "}" ++ "%{F" ++ "#FF69B4" ++ "}") " %{B- F-}" . wrap "[" "]" -- hotpink foreground, could try ff1d8e --background green
     -- , ppCurrent = wrap ("%{B" ++ "#343434" ++ "}" ++ "%{F" ++ "#FF69B4" ++ "}") " %{B- F-}" . wrap "[" "]" -- hotpink foreground, could try ff1d8e
     , ppVisible = wrap ("%{F" ++ "#FF1493" ++ "} ") " %{F-}"
-    , ppHiddenNoWindows = wrap ("%{F" ++ "#928374" ++ "} ") " %{F-}" --lightgrey foreground
-    , ppUrgent = wrap ("%{F" ++ "#FF0000" ++ "} ") " %{F-}"  --red foreground
+    -- , ppHiddenNoWindows = wrap ("%{F" ++ "#928374" ++ "} ") " %{F-}" --lightgrey foreground
+    -- , ppHiddenNoWindows = id
+    -- , ppUrgent = wrap ("%{F" ++ "#FF0000" ++ "} ") " %{F-}"  --red foreground
+    , ppUrgent = withFG red
     -- , ppHidden = wrap " " "
-    , ppHidden = withFG gray . withMargin . withFont 5 . (`wrapClickableWorkspace` "__hidden__")
+    -- , ppHidden = withFG gray . withMargin . withFont 5 . (`wrapClickableWorkspace` "__hidden__")
+    -- , ppHidden = withFG gray . withMargin . withFont 5 . (`wrapClickableWorkspace` showNamedWorkspaces id)
+    , ppHidden = wrap "<" ">" . unwords . map wrapOpenWorkspaceCmd . words
+    , ppHiddenNoWindows = wrap "{" "}" . unwords . map wrapOpenWorkspaceCmd . words
     -- , ppHiddenNoWindows  = withFG gray . withMargin . withFont 5 . (`wrapClickableWorkspace` "__empty__")"
-    , ppWsSep = ""
-    , ppSep = " %{F#928374}|%{F-} "
+    , ppOrder = \(ws:l:t:ex) -> [ws,l]++ex++[t]
+    , ppWsSep = (withFG gray . withMargin) ":"
+    , ppSep = (withFG gray . withMargin) "|"
     , ppTitle = myAddSpaces 25
-    , ppExtras  = [windowCount]                           -- # of windows current works
+    , ppExtras = [currentWorkSpace]
     }    where
       withMargin                 = wrap " " " "
       withFont fNum              = wrap ("%{T" ++ show (fNum :: Int) ++ "}") "%{T}"
       withBG color               = wrap ("%{B" ++ color ++ "}") "%{B-}"
       withFG color               = wrap ("%{F" ++ color ++ "}") "%{F-}"
-      wrapOnClickCmd command     = wrap ("%{A1:" ++ command ++ ":}") "%{A}"
-      wrapClickableWorkspace wsp = wrapOnClickCmd ("xdotool key super+" ++ wsp)
+      --wrapOnClickCmd command     = wrap ("%{A1:" ++ command ++ ":}") "%{A}"
+      -- wrapClickableWorkspace wsp = wrapOnClickCmd ("xdotool key super+" ++ wsp)
+      wrapOpenWorkspaceCmd wsp
+        | all isDigit wsp = wrapOnClickCmd ("xdotool key super+" ++ wsp) wsp
+        | otherwise = wsp
+      wrapOnClickCmd cmd = wrap ("%{A1:" ++ cmd ++ ":}") "%{A}"
+      showNamedWorkspaces1 wsId = pad wsId
 
 spawnToWorkspace :: String -> String -> X ()
 spawnToWorkspace program workspace = do

@@ -50,6 +50,7 @@ import Prelude
 import Data.Maybe
 import XMonad.Actions.GroupNavigation
 import XMonad.Hooks.RefocusLast
+import Data.Char (isSpace, toUpper, isDigit)
 
 import System.Environment (setEnv, getEnv)
 
@@ -452,8 +453,8 @@ myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
   where
     sstr = shorten len str
 
-polybarOutput str =
-  io $ appendFile "/tmp/.xmonad-info" (str ++ "\n")
+polybarOutput barOutputString =
+  io $ appendFile "/tmp/.xmonad-info" (barOutputString ++ "\n")
 
 windowCount :: X (Maybe String)
 windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
@@ -471,7 +472,15 @@ polybarLogHook = def
     , ppSep = " %{F#928374}|%{F-} "
     , ppTitle = myAddSpaces 25
     , ppExtras  = [windowCount]                           -- # of windows current works
-    }
+    } where
+        withMargin                 = wrap " " " "
+        withFont fNum              = wrap ("%{T" ++ show (fNum :: Int) ++ "}") "%{T}"
+        withBG color               = wrap ("%{B" ++ color ++ "}") "%{B-}"
+        withFG color               = wrap ("%{F" ++ color ++ "}") "%{F-}"
+        wrapOpenWorkspaceCmd wsp
+         | all isDigit wsp = wrapOnClickCmd ("xdotool key super+" ++ wsp) wsp
+         | otherwise = wsp
+        wrapOnClickCmd cmd = wrap ("%{A1:" ++ cmd ++ ":}") "%{A}"
 
 spawnToWorkspace :: String -> String -> X ()
 spawnToWorkspace program workspace = do
