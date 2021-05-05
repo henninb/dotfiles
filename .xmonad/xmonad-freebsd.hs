@@ -540,3 +540,7 @@ myConfig = def
    `additionalKeys`
    [
    ]
+
+-- > :m + System.Info
+-- > [os, arch]
+-- ["darwin","i386"]
