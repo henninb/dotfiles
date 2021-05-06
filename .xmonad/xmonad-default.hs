@@ -53,6 +53,9 @@ import XMonad.Hooks.RefocusLast
 import Data.Char (isSpace, toUpper, isDigit)
 
 import System.Environment (setEnv, getEnv)
+-- import System.Info
+-- import qualified System.Info (os, arch)
+import System.Info ( os )
 
 main :: IO ()
 main = do
@@ -65,6 +68,15 @@ main = do
     `removeKeys` myRemoveKeys
     `additionalKeysP` myKeys
     `additionalKeys` []
+
+-- myTerminalFreeBSD = do
+  -- myOs <- os
+  -- return myOs
+
+-- myTerminalFreeBSD = do
+--   if os == "freebsd"
+--      then 1
+--      else 0
 
 myTerminal :: String
 myTerminal = "alacritty"
@@ -102,16 +114,9 @@ red = "#fb4934"
 myFocusBorderColor :: String
 myFocusBorderColor = "#5b51c9"
 
--- dracula
--- myNormalBorderColor = "#BFBFBF"
--- myFocusedBorderColor = "#89DDFF"
-
--- Colors ------ {{{
-gray      = "#888974"
--- red       = "#fb4934"
-purple    = "#d3869b"
-aqua      = "#8ec07c"
--- }}}
+gray = "#888974"
+purple = "#d3869b"
+aqua = "#8ec07c"
 
 
 myRemoveKeys = [
@@ -454,6 +459,25 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
     manageDiscord = customFloating $ W.RationalRect l t w h
     -- manageDiscord = customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
 
+-- data OS = Linux | Windows | OSX
+--         | FreeBSD | OpenBSD | NetBSD
+--         | Solaris | AIX | HPUX | IRIX
+--         | OtherOS String
+--   deriving (Eq, Ord, Show, Read)
+
+-- knownOSs :: [OS]
+-- knownOSs = [Linux, Windows, OSX
+--            ,FreeBSD, OpenBSD, NetBSD
+--            ,Solaris, AIX, HPUX, IRIX]
+
+-- os1 :: Either [Char] OS
+-- os1 = case System.Info.os of
+--     "darwin"  -> Right OSX
+--     "linux"   -> Right Linux
+--     "freebsd" -> Right FreeBSD
+--     str       -> Left str
+
+
 myAddSpaces :: Int -> String -> String
 myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
   where
@@ -487,10 +511,10 @@ polybarLogHook = def
     , ppTitle = myAddSpaces 25
     , ppExtras = [currentWorkSpace]
     }    where
-      withMargin                 = wrap " " " "
-      withFont fNum              = wrap ("%{T" ++ show (fNum :: Int) ++ "}") "%{T}"
-      withBG color               = wrap ("%{B" ++ color ++ "}") "%{B-}"
-      withFG color               = wrap ("%{F" ++ color ++ "}") "%{F-}"
+      withMargin = wrap " " " "
+      withFont fNum = wrap ("%{T" ++ show (fNum :: Int) ++ "}") "%{T}"
+      withBG color = wrap ("%{B" ++ color ++ "}") "%{B-}"
+      withFG color = wrap ("%{F" ++ color ++ "}") "%{F-}"
       --wrapOnClickCmd command     = wrap ("%{A1:" ++ command ++ ":}") "%{A}"
       -- wrapClickableWorkspace wsp = wrapOnClickCmd ("xdotool key super+" ++ wsp)
       wrapOpenWorkspaceCmd wsp
@@ -508,6 +532,10 @@ myStartupHook :: X ()
 myStartupHook = do
     setWMName "LG3D"
     liftIO (setEnv "DESKTOP_SESSION" "xmonad")
+    case os of
+      "freebsd" -> spawnOnce "networkmgr"
+      "linux"   -> spawnOnce "nm-applet"
+      _    -> return ()
     spawnOnce "$HOME/.config/polybar/launch.sh xmonad"
     spawnOnce "flameshot" --dbus required
     spawnOnce "dunst"
@@ -517,9 +545,14 @@ myStartupHook = do
     spawnOnce "copyq"
     spawnOn "1" "alacritty"
     spawnOn "2" "alacritty"
-    spawnOnce "blueman-applet" --dbus required
-    spawnOnce "nm-applet"
-    spawnOnce "pamac-tray"
+    case os of
+      "freebsd" -> return ()
+      "linux"   -> spawnOnce "blueman-applet" --dbus required
+      _    -> return ()
+    case os of
+      "freebsd" -> return ()
+      "linux"   -> spawnOnce "pamac-tray"
+      _    -> return ()
     spawnOnce "numlockx on"
     spawnOnce "conky -c $HOME/.xmonad/system-overview"
     spawnOnce "mpDris2" -- required for mpd
