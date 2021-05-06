@@ -71,9 +71,9 @@ main = do
     -- $ myConfig { logHook = dynamicLogWithPP polybarLogHook }
     $ myConfig { logHook =
       case os of
-        "freebsd" -> eventLogHookForPolybar
+        "freebsd" -> dynamicLogWithPP polybarLogHook
         "linux"   -> dynamicLogWithPP polybarLogHook
-        _    -> dynamicLogWithPP polybarLogHook
+        _    -> eventLogHookForPolybar
     }
     `removeKeys` myRemoveKeys
     `additionalKeysP` myKeys
