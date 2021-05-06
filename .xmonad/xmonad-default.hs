@@ -56,27 +56,28 @@ import System.Environment (setEnv, getEnv)
 -- import System.Info
 -- import qualified System.Info (os, arch)
 import System.Info ( os )
+import XMonad.Util.NamedWindows (getName)
+import Data.Function (on)
+import Data.List (sortBy)
 
 main :: IO ()
 main = do
   safeSpawn "mkfifo" ["/tmp/.xmonad-info"]
+  forM_ [".xmonad-info"] $ \file -> safeSpawn "mkfifo" ["/tmp/" ++ file]
+
   xmonad
     $ withUrgencyHook NoUrgencyHook
     $ ewmh
-    -- $ myConfig { logHook = fadeInactiveLogHook 0.9 <+> dynamicLogWithPP polybarLogHook }
-    $ myConfig { logHook = dynamicLogWithPP polybarLogHook }
+    -- $ myConfig { logHook = dynamicLogWithPP polybarLogHook }
+    $ myConfig { logHook =
+      case os of
+        "freebsd" -> eventLogHookForPolybar
+        "linux"   -> dynamicLogWithPP polybarLogHook
+        _    -> dynamicLogWithPP polybarLogHook
+    }
     `removeKeys` myRemoveKeys
     `additionalKeysP` myKeys
     `additionalKeys` []
-
--- myTerminalFreeBSD = do
-  -- myOs <- os
-  -- return myOs
-
--- myTerminalFreeBSD = do
---   if os == "freebsd"
---      then 1
---      else 0
 
 myTerminal :: String
 myTerminal = "alacritty"
@@ -117,7 +118,6 @@ myFocusBorderColor = "#5b51c9"
 gray = "#888974"
 purple = "#d3869b"
 aqua = "#8ec07c"
-
 
 myRemoveKeys = [
                  (superKeyMask .|. shiftMask, xK_space)
@@ -396,11 +396,11 @@ myKeys = [
     ++ [("M-s " ++ k, S.promptSearch myXPConfig' f) | (k,f) <- searchList ]
     ++ [("M-S-s " ++ k, S.selectSearch f) | (k,f) <- searchList ]
     -- change active workspace
-    ++ [("M-" ++ ws, windows $ W.greedyView ws) | ws <- myWorkspaces ]
+    ++ [("M-" ++ workSpace, windows $ W.greedyView workSpace) | workSpace <- myWorkspaces ]
     -- move window and change active workspace
-    ++ [("M-S-" ++ ws, windows $ W.greedyView ws . W.shift ws) | ws <- myWorkspaces ]
+    ++ [("M-S-" ++ workSpace, windows $ W.greedyView workSpace . W.shift workSpace) | workSpace <- myWorkspaces ]
     -- move window
-    ++ [("M1-S-" ++ ws, windows $ W.shift ws) | ws <- myWorkspaces ]
+    ++ [("M1-S-" ++ workSpace, windows $ W.shift workSpace) | workSpace <- myWorkspaces ]
     -- ++ [("M1-S-1",     windows $ W.shift ws1)
     --   , ("M1-S-2",     windows $ W.shift ws2) ]
 
@@ -486,6 +486,25 @@ myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
 polybarOutput barOutputString =
   io $ appendFile "/tmp/.xmonad-info" (barOutputString ++ "\n")
 
+eventLogHookForPolybar = do
+    winset <- gets windowset
+    title <- maybe (return "") (fmap show . getName) . W.peek $ winset
+    let currWs = W.currentTag winset
+    let wss = map W.tag $ W.workspaces winset
+
+    io $ appendFile "/tmp/.xmonad-title-log" (title ++ "\n")
+    io $ appendFile "/tmp/.xmonad-info" (wsStr currWs wss ++ "\n")
+
+    where
+      fmt currWs workSpace
+            | currWs == workSpace = "[" ++ workSpace ++ "]"
+            | otherwise    = " " ++ workSpace ++ " "
+      wsStr currWs wss = join $ map (fmt currWs) $ sortBy (compare `on` (!! 0)) wss
+      wrapOpenWorkspaceCmd wsp
+          | all isDigit wsp = wrapOnClickCmd ("xdotool key super+" ++ wsp) wsp
+          | otherwise = wsp
+      wrapOnClickCmd cmd = wrap ("%{A1:" ++ cmd ++ ":}") "%{A}"
+
 currentWorkSpace :: X (Maybe String)
 currentWorkSpace = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 
@@ -505,7 +524,7 @@ polybarLogHook = def
     , ppHidden = wrap "<" ">" . unwords . map wrapOpenWorkspaceCmd . words
     , ppHiddenNoWindows = wrap "{" "}" . unwords . map wrapOpenWorkspaceCmd . words
     -- , ppHiddenNoWindows  = withFG gray . withMargin . withFont 5 . (`wrapClickableWorkspace` "__empty__")"
-    , ppOrder = \(ws:l:t:ex) -> [ws,l]++ex++[t]
+    , ppOrder = \(workSpace:l:t:ex) -> [workSpace,l]++ex++[t]
     , ppWsSep = (withFG gray . withMargin) ":"
     , ppSep = (withFG gray . withMargin) "|"
     , ppTitle = myAddSpaces 25
@@ -574,6 +593,7 @@ myConfig = def
   , handleEventHook = docksEventHook
       <+> minimizeEventHook
       <+> fullscreenEventHook -- may have negative impact to flameshot
+  -- , logHook = eventLogHookForPolybar
   , startupHook = myStartupHook
   , focusFollowsMouse = False
   , clickJustFocuses = False
