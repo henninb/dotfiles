@@ -15,9 +15,10 @@ case $desktop in
       ;;
     xmonad|/usr/share/xsessions/xmonad)
       if [ "${OS}" = "FreeBSD" ]; then
-        echo
+        polybar -c "$HOME/.config/polybar/config.ini" xmonad-freebsd | tee -a "$HOME/polybar.log" &
+      else
+        polybar -c "$HOME/.config/polybar/config.ini" xmonad | tee -a "$HOME/polybar.log" &
       fi
-      polybar -c "$HOME/.config/polybar/config.ini" xmonad | tee -a "$HOME/polybar.log" &
       ;;
     i3|/usr/share/xsessions/i3)
       polybar -c "$HOME/.config/polybar/config.ini" i3 | tee -a "$HOME/polybar.log" &

@@ -1,3 +1,16 @@
+freebsd .config/polybar/scripts  main ❯ sysctl hw.realmem
+hw.realmem: 17179869184
+freebsd .config/polybar/scripts  main ❯ sysctl hw.realmem
+freebsd .config/polybar/scripts  main ❯ sysctl hw.pagesize
+hw.pagesize: 4096
+freebsd .config/polybar/scripts  main ❯ sysctl vm.stats.vm.v_inactive_count
+vm.stats.vm.v_inactive_count: 4425
+freebsd .config/polybar/scripts  main ❯ sysctl vm.stats.vm.v_free_count
+vm.stats.vm.v_free_count: 3749472
+freebsd .config/polybar/scripts  main ❯ sysctl vm.stats.vm.v_cache_count
+vm.stats.vm.v_cache_count: 0
+freebsd .config/polybar/scripts  main ❯
+
 class Memory(AbstractMemory):
     """ FreeBSD implementation of AbstractMemory class """
 
