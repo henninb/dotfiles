@@ -94,7 +94,7 @@ superKeyMask :: KeyMask
 superKeyMask = mod4Mask
 
 myFont :: String
-myFont = "xft:Mononoki Nerd Font:bold:size=9:antialias=true:hinting=true"
+myFont = "xft:monofur for Powerline:bold:size=9:antialias=true:hinting=true"
 
 myBorderWidth :: Dimension
 myBorderWidth = 1
@@ -459,25 +459,6 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
     manageDiscord = customFloating $ W.RationalRect l t w h
     -- manageDiscord = customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
 
--- data OS = Linux | Windows | OSX
---         | FreeBSD | OpenBSD | NetBSD
---         | Solaris | AIX | HPUX | IRIX
---         | OtherOS String
---   deriving (Eq, Ord, Show, Read)
-
--- knownOSs :: [OS]
--- knownOSs = [Linux, Windows, OSX
---            ,FreeBSD, OpenBSD, NetBSD
---            ,Solaris, AIX, HPUX, IRIX]
-
--- os1 :: Either [Char] OS
--- os1 = case System.Info.os of
---     "darwin"  -> Right OSX
---     "linux"   -> Right Linux
---     "freebsd" -> Right FreeBSD
---     str       -> Left str
-
-
 myAddSpaces :: Int -> String -> String
 myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
   where
@@ -522,7 +503,7 @@ polybarLogHook = def
     -- , ppHidden = withFG gray . withMargin . withFont 5 . (`wrapClickableWorkspace` "__hidden__")
     -- , ppHidden = withFG gray . withMargin . withFont 5 . (`wrapClickableWorkspace` showNamedWorkspaces id)
     , ppHidden = wrap "<" ">" . unwords . map wrapOpenWorkspaceCmd . words
-    , ppHiddenNoWindows = wrap "{" "}" . unwords . map wrapOpenWorkspaceCmd . words
+    , ppHiddenNoWindows = withFG gray . wrap "{" "}" . unwords . map wrapOpenWorkspaceCmd . words
     -- , ppHiddenNoWindows  = withFG gray . withMargin . withFont 5 . (`wrapClickableWorkspace` "__empty__")"
     , ppOrder = \(workSpace:l:t:ex) -> [workSpace,l]++ex++[t]
     , ppWsSep = (withFG gray . withMargin) ":"
