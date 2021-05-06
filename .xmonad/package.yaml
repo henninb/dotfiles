@@ -1,0 +1,30 @@
+
+name:                xmonad-config
+version:             0.1.0.0
+license:             BSD3
+author:              "Brian Henning"
+maintainer:          "Brian Henning"
+copyright:           "2021 Brian Henning"
+
+dependencies:
+- base >= 4.7 && < 5
+- xmonad >= 0.15
+- xmonad-contrib >= 0.15
+- containers
+- utf8-string
+- X11
+- bytestring
+
+library:
+  source-dirs: lib
+
+executables:
+  xmonad-config:
+    main: xmonad.hs
+    source-dirs:         .
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - xmonad-config

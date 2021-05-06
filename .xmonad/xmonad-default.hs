@@ -350,7 +350,7 @@ myKeys = [
   -- , ("M1-<Tab>"          , spawn "xeyes")
   , ("M-S-<Backspace>"   , spawn "xdo close")
   , ("M-S-<Escape>"      , spawn "wm-exit xmonad")
-  , ("M-<Escape>"        , spawn "xmonad --restart")
+  , ("M-<Escape>"        , spawn "xmonad --recompile && xmonad --restart")
   , ("M-S-p"             , spawn "dmenu_run -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
   -- , ((modMask x , xK_p), spawn "passmenu --type")
   -- , ((modMask x .|. shiftMask, xK_p), spawn "lastpass-dmenu --typeit-login")

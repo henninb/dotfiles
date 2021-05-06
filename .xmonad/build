@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+#stack ghc -- --make xmonad.hs -i -fforce-recomp -with-rtsopts=-N4 -o "$1"
+stack ghc -- --make xmonad.hs
+
+stack build :xmonad-config
+stack install :xmonad-config --local-bin-path ~/.local/bin/
+
+
+#exec install xmonad-x86_64-linux ~/.local/bin/xmonad
+
+exit 0

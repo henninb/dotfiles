@@ -18,15 +18,8 @@ default:
 	@rm -rf *.hi *.o
 	@sudo cp -v xmonad /usr/local/bin
 	@cp -v xmonad xmonad-x86_64-linux
+	@cp -v xmonad xmonad-x86_64-freebsd
 	@hlint xmonad.hs
-freebsd:
-	@echo build freebsd
-	@rm -rf *.hi *.o xmonad
-	@ln -sfn xmonad-freebsd.hs xmonad.hs
-	@stack ghc -- --make xmonad.hs
-	@rm -rf *.hi *.o
-	@cp xmonad xmonad-x86_64-freebsd
-	@sudo mv -v xmonad /usr/local/bin
 #@cp /usr/local/bin/xmonad ~/.xmonad/xmonad-x86_64-freebsd
 	@hlint xmonad.hs
 rice:

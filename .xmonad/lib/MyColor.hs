@@ -6,9 +6,6 @@ import Data.Map as M
 
 -- Dzen2 Bar
 
--- Reading:
--- http://learnyouahaskell.com/modules
-
 colorSchemes =
     [("Orange",       "#FD971F")
     ,("DarkGray",     "#1B1D1E")
