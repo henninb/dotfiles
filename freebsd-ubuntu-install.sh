@@ -52,4 +52,6 @@ apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
 libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
 xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
 
+echo https://forums.freebsd.org/threads/can-usb-devices-be-directly-assigned-to-a-jail.77317/
+
 exit 0
