@@ -4,7 +4,9 @@ cat > .gitignore <<EOF
 .pio
 EOF
 
-projects=$(find . -mindepth 1 -maxdepth 1 -type d)
+log="$(pwd)/compile.$$.log"
+
+projects=$(find . -mindepth 1 -maxdepth 1 -type d | sort)
 
 for project in $projects; do
   echo "$project"
@@ -24,11 +26,11 @@ for project in $projects; do
     echo "#define uploadTimestamp \"\"" >> "$project/src/config.h"
   fi
   # echo "date=\$(shell date '+%Y-%m-%d %H:%M:%S')" |cat - "$project/Makefile" > /tmp/out && mv /tmp/out "$project/Makefile"
-  cd "$project"
+  cd "$project" || exit
   if make > /dev/null 2>&1; then
-    echo "$project - compile success"
+    echo "$project - compile success" | tee -a "${log}"
   else
-    echo "$project - compile failed"
+    echo "$project - compile failed" | tee -a "${log}"
   fi
   cd ..
 done
