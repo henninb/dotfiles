@@ -138,18 +138,18 @@ elif [ "$OS" = "Ubuntu" ]; then
   sudo netstat -lntp | grep postgres
 elif [ "$OS" = "FreeBSD" ]; then
   sudo service postgresql stop
-  sudo rm -rf /var/db/postgres/data11
-  sudo pkg install -y postgresql11-server
+  sudo rm -rf /var/db/postgres/data13
+  sudo pkg install -y postgresql13-server
   sudo sysrc postgresql_enable=YES
   sudo service postgresql initdb
   sudo service postgresql start
   mv -v install_psql_settings.sql /tmp
   sudo -u postgres sh -c 'cd /tmp && psql postgres -U postgres < /tmp/install_psql_settings.sql'
   #sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/db/postgres/data11/postgresql.conf
-  if ! sudo grep "^listen_addresses = '*'" /var/db/postgres/data11/postgresql.conf; then
-    echo "listen_addresses = '*'" | sudo tee -a /var/db/postgres/data11/postgresql.conf
+  if ! sudo grep "^listen_addresses = '*'" /var/db/postgres/data13/postgresql.conf; then
+    echo "listen_addresses = '*'" | sudo tee -a /var/db/postgres/data13/postgresql.conf
   fi
-  sudo mv -v pg_hba.conf /var/db/postgres/data11/pg_hba.conf
+  sudo mv -v pg_hba.conf /var/db/postgres/data13/pg_hba.conf
   sudo service postgresql restart
   # netstat -na | grep 5432 | grep LIST
   ss -tulpn4 | grep 5432
