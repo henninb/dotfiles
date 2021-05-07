@@ -139,6 +139,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y sxhkd
   sudo pkg install -y xclip
   sudo pkg install -y numlockx
+  sudo pkg install -y lxappearance
   # sudo pkg install -y libXft
   # sudo pkg install -y xz
 elif [ "$OS" = "void" ]; then
