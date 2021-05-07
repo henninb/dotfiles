@@ -1,5 +1,5 @@
 [package]
-name = "oracle_tables"
+name = "oracle-database-tables"
 version = "0.1.0"
 authors = ["Brian Henning <henninb@msn.com>"]
 edition = "2018"

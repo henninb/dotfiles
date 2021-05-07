@@ -1,7 +1,7 @@
 [package]
-name = "example_rest_json"
+name = "rest-with-json"
 version = "0.1.0"
-authors = ["Brian"]
+authors = ["Brian Henning"]
 edition = "2018"
 
 [dependencies]
