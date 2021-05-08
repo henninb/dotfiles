@@ -72,3 +72,6 @@ export CM_MAX_CLIPS=25
 xrandr --output HDMI-1 --mode 2560x1440 2> /dev/null
 xrandr --output HDMI-0 --mode 2560x1440 2> /dev/null
 xrandr --size 2560x1440 2> /dev/null
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
