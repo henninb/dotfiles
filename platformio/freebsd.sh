@@ -11,6 +11,7 @@ EOF
 echo 'devfs_system_ruleset="localrules"' | sudo tee -a /etc/rc.conf
 cat devfs.rules
 
+sudo pkg install xtensa-esp32-elf
 sudo pkg install -y avr-binutils
 sudo pkg install -y avr-gcc
 sudo pkg install -y avr-libc
