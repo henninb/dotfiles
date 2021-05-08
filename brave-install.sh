@@ -27,4 +27,8 @@ else
   echo "$OS is not yet implemented."
 fi
 
+echo sudo mkdir -p /var/run/dbus
+echo sudo dbus-daemon --system
+echo brave-browser --no-sandbox --use-gl=egl
+
 exit 0
