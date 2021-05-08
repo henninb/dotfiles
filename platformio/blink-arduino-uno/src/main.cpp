@@ -25,7 +25,7 @@ void loop() {
   Serial.println(uploadTimestamp);
 
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(5000);
+  delay(1000);
   digitalWrite(LED_BUILTIN, LOW);
-  delay(5000);
+  delay(1000);
 }

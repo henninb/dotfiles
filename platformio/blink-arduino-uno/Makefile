@@ -15,6 +15,7 @@ install-usbasp:
 install:
 	@echo ${date}
 	@sed -i "s/#define uploadTimestamp.*/#define uploadTimestamp \"$(date)\"/g" src/config.h
+	@echo platformio run -t upload --upload-port /dev/cuaU0
 	@platformio run -t upload
 	@platformio device monitor
 clean:
