@@ -36,3 +36,7 @@ echo "$(date) start xsesson" | tee -a "$HOME/xsession.log"
 if [ "${OS}" = "FreeBSD" ]; then
   setxkbmap -option
 fi
+
+if [ "$DISPLAY" != ":0" ]; then
+    xclipsync &
+fi
