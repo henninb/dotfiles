@@ -6,6 +6,7 @@ cat > devfs.rules <<EOF
         add path 'usb/*'  mode 0660 group operator
         add path 'usb' mode 0770 group operator
         add path 'cuaU*' mode 0770 group operator
+        add path 'uslcom*' mode 0770 group operator
 EOF
 
 echo 'devfs_system_ruleset="localrules"' | sudo tee -a /etc/rc.conf
@@ -24,7 +25,7 @@ echo "set platform = atmelavr@<1.12.0 in the project platformio.ini"
 cd "$HOME/projects" || exit
 
 echo run platformio from /compat/ubuntu/
-echo access to cuaU* is required
+echo access to cuaU* is required to the operator group on freebsd host
 echo inside: sudo ln -sfn /dev/cuaU0 /dev/ttyUSB0
 echo groupadd -g 68 arduino
 echo usermod -a -G arduino henninb
