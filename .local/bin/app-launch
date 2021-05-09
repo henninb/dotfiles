@@ -10,3 +10,5 @@ fi
 dmenu_run -nb orange -nf '#444' -sb yellow -sf black -fn 'monofur for Powerline'
 
 exit 0
+
+# vim: set ft=sh:

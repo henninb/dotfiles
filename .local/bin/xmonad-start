@@ -2,7 +2,9 @@
 
 export DESKTOP_SESSION=xmonad
 
-echo XDG_SESSION_TYPE >> /tmp/xmonad.log
-echo "$(date) '$XDG_SESSION_TYPE'" >> /tmp/xmonad.log
+echo "XDG_SESSION_TYPE" | tee -a /tmp/xmonad.log
+echo "$(date) '$XDG_SESSION_TYPE'" |tee -a /tmp/xmonad.log
 #exec dbus-launch --exit-with-session xmonad >> /tmp/xmonad.log
-exec xmonad >> /tmp/xmonad.log
+exec xmonad | tee -a /tmp/xmonad.log
+
+# vim: set ft=sh:

@@ -35,3 +35,6 @@ while :; do
 	sleep $SLEEP_SEC
 done
 
+exit 0
+
+# vim: set ft=sh:

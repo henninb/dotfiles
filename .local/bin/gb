@@ -2,9 +2,9 @@
 #
 # Opens the github page for a repo/branch in your browser.
 #
-# gh [remote] [branch]
+# Usage: gh [remote] [branch]
 
-git rev-parse 2>/dev/null
+git rev-parse 2> /dev/null
 if [ $? -ne 0 ]; then
     echo "Not a git repository."
     exit 1
@@ -46,3 +46,5 @@ echo "Opening GitURL $giturl"
 nohup xdg-open "$giturl" 2> /dev/null &
 
 exit 0
+
+# vim: set ft=sh:

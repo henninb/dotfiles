@@ -5,3 +5,5 @@ git fetch --all
 git branch -u origin/main
 
 exit 0
+
+# vim: set ft=sh:

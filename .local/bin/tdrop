@@ -924,5 +924,4 @@ else
 	wid_toggle
 fi
 
-# vim is dumb
-# vim: set ft=sh noet:
+# vim: set ft=sh:

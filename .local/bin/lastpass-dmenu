@@ -59,3 +59,5 @@ else
   lpass show --clip --password "${selid}"
   # lpass show --password "${selid}"| xclip -sel clip
 fi
+
+# vim: set ft=bash:

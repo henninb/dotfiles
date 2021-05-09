@@ -34,3 +34,5 @@ fi
 [ "${select}" = "Reboot" ] && sudo shutdown -r now
 
 exit 0
+
+# vim: set ft=sh:

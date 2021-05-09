@@ -40,3 +40,5 @@ fi
 
 #echo "%{F#FFFFFF} $(WEATHER) $(TEMP) %{F-}"
 echo " $(WEATHER) $(TEMP) "
+
+# vim: set ft=sh:

@@ -31,3 +31,5 @@ convert "$pape" -write-mask "arch_temp_logo.png" -gravity center -blur 0x30 -att
 rm -rf arch_temp_logo.png vikings_temp_logo.png
 
 exit 0
+
+# vim: set ft=sh:

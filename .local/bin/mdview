@@ -6,3 +6,5 @@ set -euo pipefail
     exit 1
 }
 pandoc -f markdown -t html $1 | w3m -T text/html
+
+# vim: set ft=sh:
