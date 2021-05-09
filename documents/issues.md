@@ -520,3 +520,6 @@ Received multiple errors. Errors: `[OsError("Could not create EGL display object
 ## platformio freebsd
 
 https://community.platformio.org/t/platformio-on-freebsd/16472/4
+
+## xmonad settings
+https://github.com/randomthought/xmonad-config/blob/master/xmonad.hs
