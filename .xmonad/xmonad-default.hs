@@ -243,11 +243,11 @@ myXPConfig' = myXPConfig
       }
 
 -- TODO: not sure what this code does right now
-keyBindings conf = let m = modMask conf in
-     M.fromList
-    [((m .|. superKeyMask, k), windows $ f i) |
-     (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9],
-     (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+-- keyBindings conf = let m = modMask conf in
+--      M.fromList
+--     [((m .|. superKeyMask, k), windows $ f i) |
+--      (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9],
+--      (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
 myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ perWS
 
@@ -283,11 +283,11 @@ commonLayout = renamed [Replace "Com"]
 myTiled = renamed [Replace "test1" ]
     $ Tall 1 (1/2)
 
-xmobarEscape :: String -> String
-xmobarEscape = concatMap doubleLts
-    where
-        doubleLts '<' = "<<"
-        doubleLts x   = [x]
+-- xmobarEscape :: String -> String
+-- xmobarEscape = concatMap doubleLts
+--     where
+--         doubleLts '<' = "<<"
+--         doubleLts x   = [x]
 
 
 -- myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
@@ -318,8 +318,8 @@ xmobarEscape = concatMap doubleLts
 --         then sendKey noModMask xF86XK_Paste
 --         else sendKey controlMask xK_v
 
-isTerminal :: Window -> X Bool
-isTerminal = fmap (== "Alacritty") . runQuery className
+-- isTerminal :: Window -> X Bool
+-- isTerminal = fmap (== "Alacritty") . runQuery className
 
 myMouseBindings XConfig {XMonad.modMask = modm} = M.fromList
     [
