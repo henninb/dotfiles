@@ -61,6 +61,9 @@ import Local.Workspaces
 --         musicKeys
 --       ]
 
+superKeyMask :: KeyMask
+superKeyMask = mod4Mask
+
 keyMaps :: [(String, X ())]
 keyMaps =
         baseKeys ++
@@ -69,6 +72,19 @@ keyMaps =
         screenKeys ++
         applicationKeybindings ++
         musicKeys
+
+myRemoveKeys :: [(KeyMask, KeySym)]
+myRemoveKeys = [
+                   (superKeyMask .|. shiftMask, xK_space)
+                 , (superKeyMask, xK_q)
+                 , (superKeyMask, xK_e)
+                 , (superKeyMask, xK_p)
+                 , (superKeyMask, xK_x)
+                 , (controlMask, xK_p)
+                 , (superKeyMask .|. shiftMask, xK_q)
+                 , (superKeyMask .|. shiftMask, xK_c)
+                 -- , (superKeyMask, xK_space)
+                 ]
 
 baseKeys :: [(String, X ())]
 baseKeys =
@@ -263,8 +279,8 @@ applicationKeybindings =
   -- TODO: need to fix the includes
   , ("M-v"               , sendKey noModMask xF86XK_Paste)
 
-  -- , ("M-<F12>"      , namedScratchpadAction myScratchPads "terminal")
-  -- , ("M-<F11>"      , namedScratchpadAction myScratchPads "discord")
+  , ("M-<F12>"           , namedScratchpadAction scratchPads "terminal")
+  , ("M-<F11>"           , namedScratchpadAction scratchPads "discord")
   ]
 
 -- | Keys for controlling music and volume.

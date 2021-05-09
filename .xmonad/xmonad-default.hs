@@ -31,7 +31,7 @@ import XMonad.Prompt
 import XMonad.Prompt.FuzzyMatch
 import Control.Arrow (first)
 
-import XMonad.Util.NamedScratchpad
+import XMonad.Util.NamedScratchpad (namedScratchpadManageHook)
 
 import Graphics.X11.ExtraTypes
 import XMonad.Util.Paste (sendKey)
@@ -61,7 +61,20 @@ import Data.Function (on)
 import Data.List (sortBy)
 
 import qualified Local.KeyBindings as Local
--- import Local.KeyBindings
+-- import qualified Local.Workspaces as Local
+import Local.Workspaces
+
+
+ws1 = "1"
+ws2 = "2"
+ws3 = "3"
+ws4 = "4"
+ws5 = "5"
+ws6 = "6"
+ws7 = "7"
+ws8 = "8"
+ws9 = "9"
+ws0 = "0"
 
 main :: IO ()
 main = do
@@ -123,6 +136,7 @@ gray = "#888974"
 purple = "#d3869b"
 aqua = "#8ec07c"
 
+myRemoveKeys :: [(KeyMask, KeySym)]
 myRemoveKeys = [
                  (superKeyMask .|. shiftMask, xK_space)
                , (superKeyMask, xK_q)
@@ -275,19 +289,6 @@ xmobarEscape = concatMap doubleLts
         doubleLts '<' = "<<"
         doubleLts x   = [x]
 
-ws1 = "1"
-ws2 = "2"
-ws3 = "3"
-ws4 = "4"
-ws5 = "5"
-ws6 = "6"
-ws7 = "7"
-ws8 = "8"
-ws9 = "9"
-ws0 = "0"
-
-myWorkspaces :: [String]
-myWorkspaces = [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0]
 
 -- myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
@@ -332,82 +333,6 @@ myMouseBindings XConfig {XMonad.modMask = modm} = M.fromList
    \ w -> focus w >> mouseResizeWindow w >> windows W.shiftMaster)
     ]
 
--- myKeys :: [(String, X ())]
--- myKeys = [
---     ("M-S-e"             , spawn "emacs")
---   , ("M-e"               , spawn "urxvt -e nvim")
---   , ("M-f"               , spawn "urxvt -e lf")
---   , ("M-S-f"             , spawn "spacefm")
---   , ("M-i"               , spawn "browser")
---   , ("M-S-i"             , spawn ("browser" ++ " --incognito"))
---   , ("M-y"               , spawn "passmenu -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
---   , ("M-<Print>"         , spawn "flameshot gui -p $HOME/screenshots")
---   , ("M-<F4>"         , spawn "exec flameshot gui -p $HOME/screenshots")
---   -- , ("M-S-<Return>"      , spawn "tdrop -am -w 1355 -y 25 urxvt -name 'urxvt-float'")
---   , ("M-<F12>"      , namedScratchpadAction myScratchPads "terminal")
---   , ("M-<F11>"      , namedScratchpadAction myScratchPads "discord")
---   -- , ("M-<F12>"      , spawn "tdrop -am -w 1355 -y 25 st -T 'st-float'")
---   , ("M-S-<Return>"      , spawn "urxvt")
---   , ("M-<Return>"        , spawn myTerminal)
---   , ("M1-<Tab>"          , nextMatch Backward (return True))
---        -- ,("M-<F5>"      ,toggleFocus)
---   -- , ("M1-<Tab>"          , spawn "xeyes")
---   , ("M-S-<Backspace>"   , spawn "xdo close")
---   , ("M-S-<Escape>"      , spawn "wm-exit xmonad")
---   , ("M-<Escape>"        , spawn "xmonad --recompile && xmonad --restart")
---   , ("M-S-p"             , spawn "dmenu_run -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
---   -- , ((modMask x , xK_p), spawn "passmenu --type")
---   -- , ((modMask x .|. shiftMask, xK_p), spawn "lastpass-dmenu --typeit-login")
---   -- , ("M-p"               , spawn "clipmenu -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
---   , ("M-v"               , sendKey noModMask xF86XK_Paste)
---   -- , ("M-S-v"               , sendKey noModMask xF86XK_Select)
---   , ("M-b"               , spawn "redshift -O 3500")
---   , ("M-S-b"             , spawn "redshift -x")
---   , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
---   , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
---   , ("<XF86AudioMute>", spawn "amixer set Master toggle")
---   , ("<XF86AudioPlay>", spawn "mpc toggle")
---   , ("<XF86AudioPrev>", spawn "mpc prev")
---   , ("<XF86AudioNext>", spawn "mpc next")
---   -- , ("M-<F1>", spawnToWorkspace "discord-flatpak" ws9)
---   , ("M-<F2>", spawnToWorkspace "spacefm" ( myWorkspaces !! 7 ))
---   , ("M-<F3>", spawn "intellij")
---   , ("M-C-t", spawn ("st" ++ " -e htop"))
---   , ("M-C-n", spawn ("st" ++ " -e newsboat"))
---   , ("M-C-f", spawn ("st" ++ " -e lf"))
---   , ("M-C-e", spawn ("st" ++ " -e nvim"))
---   , ("M-C-m", spawn ("st" ++ " -e ncpamixer"))
---   , ("M-m", windows W.focusMaster)
---   , ("M-j", windows W.focusDown)
---   , ("M-k", windows W.focusUp)
---   , ("M-S-m", windows W.swapMaster)
---   , ("M-S-j", windows W.swapDown)
---   , ("M-S-k", windows W.swapUp)
---   , ("M-<Up>", sendMessage (MoveUp 10))
---   , ("M-<Down>", sendMessage (MoveDown 10))
---   , ("M-<Right>", sendMessage (MoveRight 10))
---   , ("M-<Left>", sendMessage (MoveLeft 10))
---   , ("M-S-<Up>", sendMessage (IncreaseUp 10))
---   , ("M-S-<Down>", sendMessage (IncreaseDown 10))
---   , ("M-S-<Right>", sendMessage (IncreaseRight 10))
---   , ("M-S-<Left>", sendMessage (IncreaseLeft 10))
---   , ("M-C-<Up>", sendMessage (DecreaseUp 10))
---   , ("M-C-<Down>", sendMessage (DecreaseDown 10))
---   , ("M-C-<Right>", sendMessage (DecreaseRight 10))
---   , ("M-C-<Left>", sendMessage (DecreaseLeft 10))
---   ]
---     -- Appending search engine prompts to keybindings list.
---     ++ [("M-s " ++ k, S.promptSearch myXPConfig' f) | (k,f) <- searchList ]
---     ++ [("M-S-s " ++ k, S.selectSearch f) | (k,f) <- searchList ]
---     -- change active workspace
---     ++ [("M-" ++ workSpace, windows $ W.greedyView workSpace) | workSpace <- myWorkspaces ]
---     -- move window and change active workspace
---     ++ [("M-S-" ++ workSpace, windows $ W.greedyView workSpace . W.shift workSpace) | workSpace <- myWorkspaces ]
---     -- move window
---     ++ [("M1-S-" ++ workSpace, windows $ W.shift workSpace) | workSpace <- myWorkspaces ]
---     -- ++ [("M1-S-1",     windows $ W.shift ws1)
---     --   , ("M1-S-2",     windows $ W.shift ws2) ]
-
 -- haskell is 0-indexed
 myManageHook = composeAll
     [ className =? "MPlayer"          --> doFloat
@@ -436,32 +361,13 @@ myManageHook = composeAll
     , (className =? "Notepadqq" <&&> title =? "Advanced Search") --> doFloat
     , className =? "Xmessage" --> doFloat
     , role =? "browser" --> viewShift ( myWorkspaces !! 3 )
-    ]  <+> namedScratchpadManageHook myScratchPads
+    ]  <+> namedScratchpadManageHook scratchPads
   where
     role = stringProperty "WM_WINDOW_ROLE"
     viewShift = doF . liftM2 (.) W.greedyView W.shift
     -- myShift = doF . liftM2 (.) W.greedyView
 
 myManageHook' = composeOne [ isFullscreen -?> doFullFloat ]
-
-myScratchPads :: [NamedScratchpad]
-myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
-                 , NS "discord" spawnDiscord findDiscord manageDiscord ]
-    where
-    full = customFloating $ W.RationalRect 0.05 0.05 0.9 0.9
-    top = customFloating $ W.RationalRect 0.0 0.0 1.0 0.5
-    h = 0.9
-    w = 0.9
-    t = 0.95 -h
-    l = 0.95 -w
-    spawnTerm  = "st" ++  " -n scratchpad"
-    findTerm   = resource =? "scratchpad"
-    manageTerm = customFloating $ W.RationalRect l t w h
-    -- manageTerm = customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
-    spawnDiscord  = "discord-flatpak"
-    findDiscord   = resource =? "discord"
-    manageDiscord = customFloating $ W.RationalRect l t w h
-    -- manageDiscord = customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
 
 myAddSpaces :: Int -> String -> String
 myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
