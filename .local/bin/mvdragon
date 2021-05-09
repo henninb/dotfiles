@@ -8,3 +8,7 @@ do
   name=$(basename "$path")
   mv "$path" "$(pwd)/$name"
 done
+
+exit 0
+
+# vim: set ft=sh:
