@@ -26,7 +26,7 @@ if [ "${OS}" = "FreeBSD" ]; then
 fi
 
 [ "${select}" = "Cancel" ] && exit 0
-[ "${select}" = "Logout" ] && [ "${wm}" = "xmonad" ] && pkill -f xmonad-x86_64-linux || pkill xmonad
+[ "${select}" = "Logout" ] && [ "${wm}" = "xmonad" ] && (pkill -f xmonad-start || pkill xmonad)
 [ "${select}" = "Logout" ] && [ "${wm}" = "bspwm" ] && bspc quit
 [ "${select}" = "Logout" ] && [ "${wm}" = "i3" ] && i3-msg exit
 [ "${select}" = "Logout" ] && [ "${wm}" = "spectrwm" ] && pkill -x spectrwm

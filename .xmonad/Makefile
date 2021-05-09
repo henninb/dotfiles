@@ -26,12 +26,12 @@ rice:
 	@echo build rice
 	@stack path --local-bin
 	@echo stack init .
-	@rm -rf *.hi *.o lib/*.o lib/*.hi xmonad
+	@rm -rf *.hi *.o lib-rice/*.o lib-rice/*.hi xmonad
 	@ln -sfn xmonad-rice.hs xmonad.hs
-	@stack ghc -- --make xmonad.hs -i -ilib -fforce-recomp
-	@rm -rf *.hi *.o lib/*.o lib/*.hi
+	@stack ghc -- --make xmonad.hs -i -ilib-rice -fforce-recomp
+	@rm -rf *.hi *.o lib-rice/*.o lib-rice/*.hi
 	@sudo mv -v xmonad /usr/local/bin
 # ifdef HLINT
 	@hlint xmonad.hs
-	@hlint lib/*.hs
+	@hlint lib-rice/*.hs
 # endif

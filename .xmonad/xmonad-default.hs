@@ -23,7 +23,7 @@ import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Renamed
 import XMonad.Layout.Spacing
 import XMonad.Layout.ThreeColumns
-import XMonad.Layout.WindowArranger
+import XMonad.Layout.WindowArranger --DecreaseRight, IncreaseUp
 import XMonad.Layout.Gaps
 import XMonad.Actions.Submap
 -- Prompt
@@ -60,6 +60,9 @@ import XMonad.Util.NamedWindows (getName)
 import Data.Function (on)
 import Data.List (sortBy)
 
+import qualified Local.KeyBindings as Local
+-- import Local.KeyBindings
+
 main :: IO ()
 main = do
   safeSpawn "mkfifo" ["/tmp/.xmonad-info"]
@@ -76,7 +79,8 @@ main = do
         _    -> eventLogHookForPolybar
     }
     `removeKeys` myRemoveKeys
-    `additionalKeysP` myKeys
+    -- `additionalKeysP` myKeys
+    `additionalKeysP` Local.keyMaps
     `additionalKeys` []
 
 myTerminal :: String
@@ -328,81 +332,81 @@ myMouseBindings XConfig {XMonad.modMask = modm} = M.fromList
    \ w -> focus w >> mouseResizeWindow w >> windows W.shiftMaster)
     ]
 
-myKeys :: [(String, X ())]
-myKeys = [
-    ("M-S-e"             , spawn "emacs")
-  , ("M-e"               , spawn "urxvt -e nvim")
-  , ("M-f"               , spawn "urxvt -e lf")
-  , ("M-S-f"             , spawn "spacefm")
-  , ("M-i"               , spawn "browser")
-  , ("M-S-i"             , spawn ("browser" ++ " --incognito"))
-  , ("M-y"               , spawn "passmenu -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
-  , ("M-<Print>"         , spawn "flameshot gui -p $HOME/screenshots")
-  , ("M-<F4>"         , spawn "exec flameshot gui -p $HOME/screenshots")
-  -- , ("M-S-<Return>"      , spawn "tdrop -am -w 1355 -y 25 urxvt -name 'urxvt-float'")
-  , ("M-<F12>"      , namedScratchpadAction myScratchPads "terminal")
-  , ("M-<F11>"      , namedScratchpadAction myScratchPads "discord")
-  -- , ("M-<F12>"      , spawn "tdrop -am -w 1355 -y 25 st -T 'st-float'")
-  , ("M-S-<Return>"      , spawn "urxvt")
-  , ("M-<Return>"        , spawn myTerminal)
-  , ("M1-<Tab>"          , nextMatch Backward (return True))
-       -- ,("M-<F5>"      ,toggleFocus)
-  -- , ("M1-<Tab>"          , spawn "xeyes")
-  , ("M-S-<Backspace>"   , spawn "xdo close")
-  , ("M-S-<Escape>"      , spawn "wm-exit xmonad")
-  , ("M-<Escape>"        , spawn "xmonad --recompile && xmonad --restart")
-  , ("M-S-p"             , spawn "dmenu_run -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
-  -- , ((modMask x , xK_p), spawn "passmenu --type")
-  -- , ((modMask x .|. shiftMask, xK_p), spawn "lastpass-dmenu --typeit-login")
-  -- , ("M-p"               , spawn "clipmenu -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
-  , ("M-v"               , sendKey noModMask xF86XK_Paste)
-  -- , ("M-S-v"               , sendKey noModMask xF86XK_Select)
-  , ("M-b"               , spawn "redshift -O 3500")
-  , ("M-S-b"             , spawn "redshift -x")
-  , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
-  , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
-  , ("<XF86AudioMute>", spawn "amixer set Master toggle")
-  , ("<XF86AudioPlay>", spawn "mpc toggle")
-  , ("<XF86AudioPrev>", spawn "mpc prev")
-  , ("<XF86AudioNext>", spawn "mpc next")
-  -- , ("M-<F1>", spawnToWorkspace "discord-flatpak" ws9)
-  , ("M-<F2>", spawnToWorkspace "spacefm" ( myWorkspaces !! 7 ))
-  , ("M-<F3>", spawn "intellij")
-  , ("M-C-t", spawn ("st" ++ " -e htop"))
-  , ("M-C-n", spawn ("st" ++ " -e newsboat"))
-  , ("M-C-f", spawn ("st" ++ " -e lf"))
-  , ("M-C-e", spawn ("st" ++ " -e nvim"))
-  , ("M-C-m", spawn ("st" ++ " -e ncpamixer"))
-  , ("M-m", windows W.focusMaster)
-  , ("M-j", windows W.focusDown)
-  , ("M-k", windows W.focusUp)
-  , ("M-S-m", windows W.swapMaster)
-  , ("M-S-j", windows W.swapDown)
-  , ("M-S-k", windows W.swapUp)
-  , ("M-<Up>", sendMessage (MoveUp 10))
-  , ("M-<Down>", sendMessage (MoveDown 10))
-  , ("M-<Right>", sendMessage (MoveRight 10))
-  , ("M-<Left>", sendMessage (MoveLeft 10))
-  , ("M-S-<Up>", sendMessage (IncreaseUp 10))
-  , ("M-S-<Down>", sendMessage (IncreaseDown 10))
-  , ("M-S-<Right>", sendMessage (IncreaseRight 10))
-  , ("M-S-<Left>", sendMessage (IncreaseLeft 10))
-  , ("M-C-<Up>", sendMessage (DecreaseUp 10))
-  , ("M-C-<Down>", sendMessage (DecreaseDown 10))
-  , ("M-C-<Right>", sendMessage (DecreaseRight 10))
-  , ("M-C-<Left>", sendMessage (DecreaseLeft 10))
-  ]
-    -- Appending search engine prompts to keybindings list.
-    ++ [("M-s " ++ k, S.promptSearch myXPConfig' f) | (k,f) <- searchList ]
-    ++ [("M-S-s " ++ k, S.selectSearch f) | (k,f) <- searchList ]
-    -- change active workspace
-    ++ [("M-" ++ workSpace, windows $ W.greedyView workSpace) | workSpace <- myWorkspaces ]
-    -- move window and change active workspace
-    ++ [("M-S-" ++ workSpace, windows $ W.greedyView workSpace . W.shift workSpace) | workSpace <- myWorkspaces ]
-    -- move window
-    ++ [("M1-S-" ++ workSpace, windows $ W.shift workSpace) | workSpace <- myWorkspaces ]
-    -- ++ [("M1-S-1",     windows $ W.shift ws1)
-    --   , ("M1-S-2",     windows $ W.shift ws2) ]
+-- myKeys :: [(String, X ())]
+-- myKeys = [
+--     ("M-S-e"             , spawn "emacs")
+--   , ("M-e"               , spawn "urxvt -e nvim")
+--   , ("M-f"               , spawn "urxvt -e lf")
+--   , ("M-S-f"             , spawn "spacefm")
+--   , ("M-i"               , spawn "browser")
+--   , ("M-S-i"             , spawn ("browser" ++ " --incognito"))
+--   , ("M-y"               , spawn "passmenu -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
+--   , ("M-<Print>"         , spawn "flameshot gui -p $HOME/screenshots")
+--   , ("M-<F4>"         , spawn "exec flameshot gui -p $HOME/screenshots")
+--   -- , ("M-S-<Return>"      , spawn "tdrop -am -w 1355 -y 25 urxvt -name 'urxvt-float'")
+--   , ("M-<F12>"      , namedScratchpadAction myScratchPads "terminal")
+--   , ("M-<F11>"      , namedScratchpadAction myScratchPads "discord")
+--   -- , ("M-<F12>"      , spawn "tdrop -am -w 1355 -y 25 st -T 'st-float'")
+--   , ("M-S-<Return>"      , spawn "urxvt")
+--   , ("M-<Return>"        , spawn myTerminal)
+--   , ("M1-<Tab>"          , nextMatch Backward (return True))
+--        -- ,("M-<F5>"      ,toggleFocus)
+--   -- , ("M1-<Tab>"          , spawn "xeyes")
+--   , ("M-S-<Backspace>"   , spawn "xdo close")
+--   , ("M-S-<Escape>"      , spawn "wm-exit xmonad")
+--   , ("M-<Escape>"        , spawn "xmonad --recompile && xmonad --restart")
+--   , ("M-S-p"             , spawn "dmenu_run -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
+--   -- , ((modMask x , xK_p), spawn "passmenu --type")
+--   -- , ((modMask x .|. shiftMask, xK_p), spawn "lastpass-dmenu --typeit-login")
+--   -- , ("M-p"               , spawn "clipmenu -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
+--   , ("M-v"               , sendKey noModMask xF86XK_Paste)
+--   -- , ("M-S-v"               , sendKey noModMask xF86XK_Select)
+--   , ("M-b"               , spawn "redshift -O 3500")
+--   , ("M-S-b"             , spawn "redshift -x")
+--   , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
+--   , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
+--   , ("<XF86AudioMute>", spawn "amixer set Master toggle")
+--   , ("<XF86AudioPlay>", spawn "mpc toggle")
+--   , ("<XF86AudioPrev>", spawn "mpc prev")
+--   , ("<XF86AudioNext>", spawn "mpc next")
+--   -- , ("M-<F1>", spawnToWorkspace "discord-flatpak" ws9)
+--   , ("M-<F2>", spawnToWorkspace "spacefm" ( myWorkspaces !! 7 ))
+--   , ("M-<F3>", spawn "intellij")
+--   , ("M-C-t", spawn ("st" ++ " -e htop"))
+--   , ("M-C-n", spawn ("st" ++ " -e newsboat"))
+--   , ("M-C-f", spawn ("st" ++ " -e lf"))
+--   , ("M-C-e", spawn ("st" ++ " -e nvim"))
+--   , ("M-C-m", spawn ("st" ++ " -e ncpamixer"))
+--   , ("M-m", windows W.focusMaster)
+--   , ("M-j", windows W.focusDown)
+--   , ("M-k", windows W.focusUp)
+--   , ("M-S-m", windows W.swapMaster)
+--   , ("M-S-j", windows W.swapDown)
+--   , ("M-S-k", windows W.swapUp)
+--   , ("M-<Up>", sendMessage (MoveUp 10))
+--   , ("M-<Down>", sendMessage (MoveDown 10))
+--   , ("M-<Right>", sendMessage (MoveRight 10))
+--   , ("M-<Left>", sendMessage (MoveLeft 10))
+--   , ("M-S-<Up>", sendMessage (IncreaseUp 10))
+--   , ("M-S-<Down>", sendMessage (IncreaseDown 10))
+--   , ("M-S-<Right>", sendMessage (IncreaseRight 10))
+--   , ("M-S-<Left>", sendMessage (IncreaseLeft 10))
+--   , ("M-C-<Up>", sendMessage (DecreaseUp 10))
+--   , ("M-C-<Down>", sendMessage (DecreaseDown 10))
+--   , ("M-C-<Right>", sendMessage (DecreaseRight 10))
+--   , ("M-C-<Left>", sendMessage (DecreaseLeft 10))
+--   ]
+--     -- Appending search engine prompts to keybindings list.
+--     ++ [("M-s " ++ k, S.promptSearch myXPConfig' f) | (k,f) <- searchList ]
+--     ++ [("M-S-s " ++ k, S.selectSearch f) | (k,f) <- searchList ]
+--     -- change active workspace
+--     ++ [("M-" ++ workSpace, windows $ W.greedyView workSpace) | workSpace <- myWorkspaces ]
+--     -- move window and change active workspace
+--     ++ [("M-S-" ++ workSpace, windows $ W.greedyView workSpace . W.shift workSpace) | workSpace <- myWorkspaces ]
+--     -- move window
+--     ++ [("M1-S-" ++ workSpace, windows $ W.shift workSpace) | workSpace <- myWorkspaces ]
+--     -- ++ [("M1-S-1",     windows $ W.shift ws1)
+--     --   , ("M1-S-2",     windows $ W.shift ws2) ]
 
 -- haskell is 0-indexed
 myManageHook = composeAll
@@ -540,7 +544,7 @@ myStartupHook = do
     spawnOnce "flameshot" --dbus required
     spawnOnce "dunst"
     -- spawnOnce "picom"
-    spawnOnce "sxhkd -c ~/.config/sxhkd/sxhkdrc-xmonad"
+    -- spawnOnce "sxhkd -c ~/.config/sxhkd/sxhkdrc-xmonad"
     -- spawn "clipmenud" --should I run copyq or clipmenu
     spawnOnce "copyq"
     spawnOn "1" "alacritty"
