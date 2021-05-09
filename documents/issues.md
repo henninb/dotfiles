@@ -523,3 +523,4 @@ https://community.platformio.org/t/platformio-on-freebsd/16472/4
 
 ## xmonad settings
 https://github.com/randomthought/xmonad-config/blob/master/xmonad.hs
+https://github.com/pjones/xmonadrc/blob/trunk/src/XMonad/Local/Keys.hs
