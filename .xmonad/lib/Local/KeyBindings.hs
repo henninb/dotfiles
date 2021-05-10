@@ -105,6 +105,10 @@ windowKeys =
   , ("M-S-m", windows W.swapMaster)
   , ("M-S-j", windows W.swapDown)
   , ("M-S-k", windows W.swapUp)
+  , ("M-j", windowGo D False)
+  , ("M-k", windowGo U False)
+  , ("M-l", windowGo R False)
+  , ("M-h", windowGo L False)
   , ("M-<Up>", sendMessage (MoveUp 10))
   , ("M-<Down>", sendMessage (MoveDown 10))
   , ("M-<Right>", sendMessage (MoveRight 10))
@@ -190,8 +194,9 @@ windowKeys =
 -- | Keys for manipulating workspaces.
 workspaceKeys :: [(String, X ())]
 workspaceKeys =
+      [("M-;", viewPrevWS)]
         -- change active workspace
-      [("M-" ++ workSpace, windows $ W.greedyView workSpace) | workSpace <- myWorkspaces ]
+      ++ [("M-" ++ workSpace, windows $ W.greedyView workSpace) | workSpace <- myWorkspaces ]
       -- move window and change active workspace
       ++ [("M-S-" ++ workSpace, windows $ W.greedyView workSpace . W.shift workSpace) | workSpace <- myWorkspaces ]
       -- move window
@@ -264,16 +269,12 @@ applicationKeybindings =
   , ("M-S-b"             , spawn "redshift -x")
   , ("M-<F3>"            , spawn "intellij")
   , ("M-C-n"             , spawn ("st" ++ " -e newsboat"))
-    -- ("M-<Return>", spawn (terminal c)),
-    -- ("M-C-<Return>", spawn ((terminal c) <> " -e zsh")),
-    -- ("M-e", emacs),
-    -- ("M-p", spawn "rofi-pass.sh"),
-    -- ("M-r", spawn "rofi -show drun"),
     -- ("M-C-u", Local.webAppPrompt Local.promptConfig),
     -- ("M-S-]", namedScratchpadAction scratchPads "emacs"),
     -- ("M-S-[", namedScratchpadAction scratchPads "browser")
   , ("M-S-<Escape>"      , spawn "wm-exit xmonad")
-  , ("M-S-<Backspace>"   , spawn "xdo close")
+  -- , ("M-S-<Backspace>"   , spawn "xdo close")
+  , ("M-S-<Backspace>"   , kill1) -- Kill the current window.
   , ("M-<Escape>"        , spawn "xmonad --recompile && xmonad --restart")
 
   -- TODO: need to fix the includes
@@ -294,15 +295,6 @@ musicKeys =
   , ("<XF86AudioPlay>", spawn "mpc toggle")
   , ("<XF86AudioPrev>", spawn "mpc prev")
   , ("<XF86AudioNext>", spawn "mpc next")
-
-    -- ("<XF86AudioPlay>", spawn "player-mpris-tail play-pause"),
-    -- ("<XF86AudioPrev>", spawn "player-mpris-tail previous"),
-    -- ("<XF86AudioNext>", spawn "player-mpris-tail next"),
-    -- ("<XF86Tools>", spawn "paswitch"),
-    -- ("<XF86AudioLowerVolume>", spawn "pamixer --decrease 5"),
-    -- ("<XF86AudioRaiseVolume>", spawn "pamixer --increase 5"),
-    -- ("<XF86AudioMute>", spawn "pamixer --toggle-mute"),
-    -- ("<XF86Launch7>", radioPrompt Local.promptConfig)
   ]
 
 -- | Start an Emacs server for the current workspace.

@@ -1,8 +1,10 @@
 module Local.Workspaces (myWorkspaces, scratchPads) where
 
 import XMonad
+import Control.Monad (unless)
 import XMonad.Util.NamedScratchpad
 import qualified XMonad.StackSet as W
+import qualified XMonad.StackSet as StackSet
 
 ws1 = "1"
 ws2 = "2"
@@ -34,3 +36,10 @@ scratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
     spawnDiscord  = "discord-flatpak"
     findDiscord   = resource =? "discord"
     manageDiscord = customFloating $ W.RationalRect l t w h
+
+viewPrevWS :: X ()
+viewPrevWS = do
+  ws <- gets windowset
+  let hs = filter (\w -> StackSet.tag w /= "NSP") $ StackSet.hidden ws
+  unless (null hs) (windows . StackSet.view . StackSet.tag $ head hs)
+
