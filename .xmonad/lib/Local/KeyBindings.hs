@@ -377,3 +377,8 @@ recordXMessage message = do
 -- | Execute the last recorded message.
 repeatLastXMessage :: X ()
 repeatLastXMessage = getLastMessage =<< XState.get
+
+spawnToWorkspace :: String -> String -> X ()
+spawnToWorkspace program workspace = do
+              spawn program
+              windows $ W.greedyView workspace . W.shift workspace
