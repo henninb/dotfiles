@@ -6,16 +6,35 @@ import XMonad.Util.NamedScratchpad
 import qualified XMonad.StackSet as W
 import qualified XMonad.StackSet as StackSet
 
-ws1 = "1"
-ws2 = "2"
-ws3 = "3"
-ws4 = "4"
-ws5 = "5"
-ws6 = "6"
-ws7 = "7"
-ws8 = "8"
-ws9 = "9"
-ws0 = "0"
+ws1 = "01"
+ws2 = "02"
+ws3 = "03"
+ws4 = "04"
+ws5 = "05"
+ws6 = "06"
+ws7 = "07"
+ws8 = "08"
+ws9 = "09"
+ws0 = "10"
+
+-- data MyWorkspace = WebWorkspace
+--                  | MailWorkspace
+--                  | CodeWorkspace
+--                  | ChatWorkspace
+--                  | WinWorkspace
+--                  | MusicWorkspace
+--                  deriving (Enum, Bounded)
+
+-- myWorkspaces :: [MyWorkspace]
+-- myWorkspaces = enumFrom minBound
+
+-- toWorkspaceId :: MyWorkspace -> WorkspaceId
+-- toWorkspaceId WebWorkspace = "web"
+-- toWorkspaceId MailWorkspace = "mail"
+-- toWorkspaceId CodeWorkspace = "code"
+-- toWorkspaceId ChatWorkspace = "chat"
+-- toWorkspaceId WinWorkspace = "win"
+-- toWorkspaceId MusicWorkspace = "music"
 
 myWorkspaces :: [String]
 myWorkspaces = [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0]

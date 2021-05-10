@@ -12,7 +12,11 @@ import XMonad.Layout.FixedColumn
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Magnifier
 import qualified XMonad.Layout.BoringWindows as B
+import XMonad.Layout.Circle (Circle (..))
 
+import Local.Workspaces (myWorkspaces)
+
+ws1 :: String
 ws1 = "1"
 ws2 = "2"
 ws3 = "3"
@@ -27,12 +31,21 @@ ws0 = "0"
 myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ perWS
 
   -- layout per workspace
-perWS = onWorkspace ws1 my3FT $
+perWS =
+        -- onWorkspace [myWorkspaces!!0] my3FT $
+        onWorkspace ws1 my3FT $
         onWorkspace ws2 myAll $
         onWorkspace ws3 myFTM $
         onWorkspace ws4 my3FT $
         onWorkspace ws5 myFTM $
+        -- onWorkspace ws0 (Mirror tiled ||| tiled ||| Circle) $
         onWorkspace ws6 myFT myAll -- all layouts for all other workspaces
+ where
+    tiled = Tall nmaster delta ratio
+    nmaster = 1
+    delta = 3/100
+    ratio = 1/2
+
 
 myFT  = myTileLayout ||| myFullLayout ||| commonLayout
 myFTM = myTileLayout ||| myFullLayout ||| myMagn
@@ -57,3 +70,5 @@ commonLayout = renamed [Replace "Com"]
       $ Tall 1 (5/100) (1/3)
 myTiled = renamed [Replace "test1" ]
       $ Tall 1 (1/2)
+-- circleLayout = renamed [Replace "cir" ]
+--       $ Mirror Tall 1 (3/100) (1/2) ||| tiled ||| Circle
