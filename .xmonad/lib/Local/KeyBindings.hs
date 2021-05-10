@@ -194,9 +194,9 @@ windowKeys =
 -- | Keys for manipulating workspaces.
 workspaceKeys :: [(String, X ())]
 workspaceKeys =
-      [("M-;", viewPrevWS)]
+      -- [("M-;", viewPrevWS)]
         -- change active workspace
-      ++ [("M-" ++ workSpace, windows $ W.greedyView workSpace) | workSpace <- myWorkspaces ]
+     [("M-" ++ workSpace, windows $ W.greedyView workSpace) | workSpace <- myWorkspaces ]
       -- move window and change active workspace
       ++ [("M-S-" ++ workSpace, windows $ W.greedyView workSpace . W.shift workSpace) | workSpace <- myWorkspaces ]
       -- move window
