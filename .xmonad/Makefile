@@ -14,7 +14,8 @@ default:
 	@echo build default
 	@rm -rf *.hi *.o xmonad
 	@ln -sfn xmonad-default.hs xmonad.hs
-	@stack ghc -- --make xmonad.hs
+	# @stack ghc -- --make xmonad.hs
+	@stack ghc -- --make xmonad.hs -i -ilib -fforce-recomp
 	@rm -rf *.hi *.o xmonad-x86_64-linux xmonad-x86_64-freebsd
 	@sudo cp -v xmonad /usr/local/bin
 	@cp -v xmonad xmonad-x86_64-linux
@@ -22,6 +23,7 @@ default:
 	@hlint xmonad.hs
 #@cp /usr/local/bin/xmonad ~/.xmonad/xmonad-x86_64-freebsd
 	@hlint xmonad.hs
+	@hlint lib/Local/*.hs
 rice:
 	@echo build rice
 	@stack path --local-bin
@@ -29,8 +31,10 @@ rice:
 	@rm -rf *.hi *.o lib-rice/*.o lib-rice/*.hi xmonad
 	@ln -sfn xmonad-rice.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs -i -ilib-rice -fforce-recomp
-	@rm -rf *.hi *.o lib-rice/*.o lib-rice/*.hi
-	@sudo mv -v xmonad /usr/local/bin
+	@rm -rf *.hi *.o xmonad-x86_64-linux xmonad-x86_64-freebsd
+	@sudo cp -v xmonad /usr/local/bin
+	@cp -v xmonad xmonad-x86_64-linux
+	@cp -v xmonad xmonad-x86_64-freebsd
 # ifdef HLINT
 	@hlint xmonad.hs
 	@hlint lib-rice/*.hs
