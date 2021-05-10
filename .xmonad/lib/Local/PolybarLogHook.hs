@@ -25,7 +25,7 @@ eventLogHookForPolybar = do
     let currWs = W.currentTag winset
     let wss = map W.tag $ W.workspaces winset
 
-    io $ appendFile "/tmp/.xmonad-title-log" (title ++ "\n")
+    -- io $ appendFile "/tmp/.xmonad-title-log" (title ++ "\n")
     io $ appendFile "/tmp/.xmonad-info" (wsStr currWs wss ++ "\n")
 
     where
@@ -43,32 +43,21 @@ currentWorkSpace = gets $ Just . show . length . W.integrate' . W.stack . W.work
 
 polybarLogHook = def
     { ppOutput = polybarOutput
-    , ppCurrent = wrap ("%{B" ++ "#400473" ++ "}" ++ "%{F" ++ "#FF69B4" ++ "}") " %{B- F-}" . wrap "[" "]" -- hotpink foreground, could try ff1d8e
-    -- , ppCurrent = wrap ("%{B" ++ "#008000" ++ "}" ++ "%{F" ++ "#FF69B4" ++ "}") " %{B- F-}" . wrap "[" "]" -- hotpink foreground, could try ff1d8e --background green
-    -- , ppCurrent = wrap ("%{B" ++ "#343434" ++ "}" ++ "%{F" ++ "#FF69B4" ++ "}") " %{B- F-}" . wrap "[" "]" -- hotpink foreground, could try ff1d8e
-    , ppVisible = wrap ("%{F" ++ "#FF1493" ++ "} ") " %{F-}"
-    -- , ppHiddenNoWindows = wrap ("%{F" ++ "#928374" ++ "} ") " %{F-}" --lightgrey foreground
-    -- , ppHiddenNoWindows = id
-    -- , ppUrgent = wrap ("%{F" ++ "#FF0000" ++ "} ") " %{F-}"  --red foreground
-    , ppUrgent = withFG red
-    -- , ppHidden = wrap " " "
-    -- , ppHidden = withFG gray . withMargin . withFont 5 . (`wrapClickableWorkspace` "__hidden__")
-    -- , ppHidden = withFG gray . withMargin . withFont 5 . (`wrapClickableWorkspace` showNamedWorkspaces id)
+    , ppCurrent = wrap ("%{B" ++ darkpurple ++ "}" ++ "%{F" ++ "#FF69B4" ++ "}") " %{B- F-}" . wrap "[" "]" -- lightpink foreground, background darkpurple
+    , ppVisible = wrap ("%{F" ++ hotpink ++ "} ") " %{F-}" --hotpink #FF1493
+    , ppUrgent = withForeground red
     , ppHidden = wrap "<" ">" . unwords . map wrapOpenWorkspaceCmd . words
-    , ppHiddenNoWindows = withFG gray . wrap "{" "}" . unwords . map wrapOpenWorkspaceCmd . words
-    -- , ppHiddenNoWindows  = withFG gray . withMargin . withFont 5 . (`wrapClickableWorkspace` "__empty__")"
+    , ppHiddenNoWindows = withForeground gray . wrap "{" "}" . unwords . map wrapOpenWorkspaceCmd . words
     , ppOrder = \(workSpace:l:t:ex) -> [workSpace,l]++ex++[t]
-    , ppWsSep = (withFG gray . withMargin) ":"
-    , ppSep = (withFG gray . withMargin) "|"
+    , ppWsSep = (withForeground gray . withMargin) ":"
+    , ppSep = (withForeground gray . withMargin) "|"
     , ppTitle = myAddSpaces 25
     , ppExtras = [currentWorkSpace]
     }    where
       withMargin = wrap " " " "
       withFont fNum = wrap ("%{T" ++ show (fNum :: Int) ++ "}") "%{T}"
-      withBG color = wrap ("%{B" ++ color ++ "}") "%{B-}"
-      withFG color = wrap ("%{F" ++ color ++ "}") "%{F-}"
-      --wrapOnClickCmd command     = wrap ("%{A1:" ++ command ++ ":}") "%{A}"
-      -- wrapClickableWorkspace wsp = wrapOnClickCmd ("xdotool key super+" ++ wsp)
+      withBackground color = wrap ("%{B" ++ color ++ "}") "%{B-}"
+      withForeground color = wrap ("%{F" ++ color ++ "}") "%{F-}"
       wrapOpenWorkspaceCmd wsp
         | all isDigit wsp = wrapOnClickCmd ("xdotool key super+" ++ wsp) wsp
         | otherwise = wsp

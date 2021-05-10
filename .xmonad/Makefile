@@ -16,7 +16,9 @@ default:
 	@ln -sfn xmonad-default.hs xmonad.hs
 	# @stack ghc -- --make xmonad.hs
 	@stack ghc -- --make xmonad.hs -i -ilib -fforce-recomp
-	@rm -rf *.hi *.o xmonad-x86_64-linux xmonad-x86_64-freebsd
+	@find . -name "*.hi" | xargs rm
+	@find . -name "*.o" | xargs rm
+	@rm -rf xmonad-x86_64-linux xmonad-x86_64-freebsd
 	@sudo cp -v xmonad /usr/local/bin
 	@cp -v xmonad xmonad-x86_64-linux
 	@cp -v xmonad xmonad-x86_64-freebsd
@@ -31,7 +33,9 @@ rice:
 	@rm -rf *.hi *.o lib-rice/*.o lib-rice/*.hi xmonad
 	@ln -sfn xmonad-rice.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs -i -ilib-rice -fforce-recomp
-	@rm -rf *.hi *.o xmonad-x86_64-linux xmonad-x86_64-freebsd
+	@find . -name "*.hi" | xargs rm
+	@find . -name "*.o" | xargs rm
+	@rm -rf xmonad-x86_64-linux xmonad-x86_64-freebsd
 	@sudo cp -v xmonad /usr/local/bin
 	@cp -v xmonad xmonad-x86_64-linux
 	@cp -v xmonad xmonad-x86_64-freebsd

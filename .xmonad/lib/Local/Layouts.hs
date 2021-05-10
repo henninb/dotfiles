@@ -7,40 +7,50 @@ import XMonad.Layout.PerWorkspace
 import XMonad.Layout.LimitWindows
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Gaps
+import XMonad.Layout.Grid
+import XMonad.Layout.ComboP
+import XMonad.Layout.Spacing
 import XMonad.Layout.Minimize
 import XMonad.Layout.FixedColumn
 import XMonad.Layout.ThreeColumns
+import XMonad.Layout.ResizableTile
+import XMonad.Layout.TwoPane
 import XMonad.Layout.Magnifier
+import XMonad.Layout.Tabbed
+import XMonad.Layout.WindowNavigation
+import XMonad.Config.Desktop
 import qualified XMonad.Layout.BoringWindows as B
+import XMonad.Layout.IM
 import XMonad.Layout.Circle (Circle (..))
 import XMonad.Layout.Reflect (reflectHoriz)
 
 import Local.Workspaces (myWorkspaces)
 
-ws1 :: String
-ws1 = "1"
-ws2 = "2"
-ws3 = "3"
-ws4 = "4"
-ws5 = "5"
-ws6 = "6"
-ws7 = "7"
-ws8 = "8"
-ws9 = "9"
-ws0 = "0"
+-- ws1 :: String
+-- ws1 = "1"
+-- ws2 = "2"
+-- ws3 = "3"
+-- ws4 = "4"
+-- ws5 = "5"
+-- ws6 = "6"
+-- ws7 = "7"
+-- ws8 = "8"
+-- ws9 = "9"
+-- ws0 = "0"
 
-myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ perWS
+myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ workspaceLayouts
 
   -- layout per workspace
-perWS =
+workspaceLayouts =
         -- onWorkspace [myWorkspaces!!0] my3FT $
-        onWorkspace ws1 my3FT $
-        onWorkspace ws2 myAll $
-        onWorkspace ws3 myFTM $
-        onWorkspace ws4 my3FT $
-        onWorkspace ws5 myFTM $
-        -- onWorkspace ws0 (Mirror tiled ||| tiled ||| Circle) $
-        onWorkspace ws6 myFT myAll -- all layouts for all other workspaces
+        onWorkspace "1" my3FT $
+        onWorkspace "2" myAll $
+        onWorkspace "3" myFTM $
+        onWorkspace "4" my3FT $
+        onWorkspace "5" myFTM $
+        onWorkspace "8" terminalLayout $
+        onWorkspace "0" mediaLayout $
+        onWorkspace "6" myFT myAll -- all layouts for all other workspaces
  where
     tiled = Tall nmaster delta ratio
     nmaster = 1
@@ -71,41 +81,33 @@ commonLayout = renamed [Replace "Com"]
       $ Tall 1 (5/100) (1/3)
 myTiled = renamed [Replace "test1" ]
       $ Tall 1 (1/2)
-terminalLayout = renamed [Replace "Terminals"] $
-  mySpacing $
-  simpleTall 50 |||
-  simpleThree 33 |||
-  (Mirror $ simpleTall 53)
-codingLayout = renamed [Replace "Coding"] $
-  twoPaneTabbed |||
-  twoPaneTall |||
-  simpleTall 50
-mediaLayout =
-  renamed [Replace "Media"] $
-  mySpacing $
-  simpleTwo 40 |||
-  Grid |||
-  simpleThree 33
-readingLayout =
-  renamed [Replace "Reading"] $
-  mySpacing $
-  simpleTwo 50 ||| simpleThree 50
-panelLayout =
-  renamed [Replace "Control"] $
-  mySpacing $
-  Grid ||| (Mirror $ simpleTall 50) ||| simpleThree 33
+terminalLayout = renamed [Replace "Terminals"]
+      $ gaps [(U,5), (D,5)]
+      $ simpleTall 50 ||| simpleThree 33 ||| Mirror (simpleTall 53)
+-- codingLayout = renamed [Replace "Coding"]
+--       $ twoPaneTabbed ||| twoPaneTall ||| simpleTall 50
+mediaLayout = renamed [Replace "Media"]
+      -- $ mySpacing
+      $ simpleTwo 40 ||| Grid ||| simpleThree 33
+readingLayout = renamed [Replace "Reading"]
+      -- $ mySpacing
+      $ simpleTwo 50 ||| simpleThree 50
+panelLayout = renamed [Replace "Control"]
+      -- $ mySpacing
+      $ Grid ||| Mirror (simpleTall 50) ||| simpleThree 33
 -- circleLayout = renamed [Replace "cir" ]
 --       $ Mirror Tall 1 (3/100) (1/2) ||| tiled ||| Circle
-twoPaneTabbed =
-  configurableNavigation noNavigateBorders $
-  combineTwoP (mySpacing $ TwoPane 0.03 0.50)
-	      (Full)
- 	      (tabbed shrinkText def)
-	      (ClassName "Firefox-esr" `Or` ClassName "qpdfview")
+
+-- twoPaneTabbed =
+--   configurableNavigation noNavigateBorders $
+--   combineTwoP (Spacing $ TwoPane 0.03 0.50)
+--       Full
+--       (tabbed shrinkText def)
+--       (ClassName "Firefox" `Or` ClassName "qpdfview")
 
 twoPaneTall =
   windowNavigation $
-  combineTwoP (TwoPane 0.03 0.50) (Full) (Mirror $ simpleThree 60) (ClassName "Firefox-esr" `Or` ClassName "qpdfview")
+  combineTwoP (TwoPane 0.03 0.50) Full (Mirror $ simpleThree 60) (ClassName "Firefox" `Or` ClassName "Brave")
 
 --simpleTall :: Rational -> ResizableTall a
 simpleTall n = ResizableTall 1 (3/100) (n/100) []
@@ -123,7 +125,7 @@ desktopLayouts =
     onWorkspace "7" threeCols $
     onWorkspace "8" gimpLayout $
     onWorkspace "9" fullLayout $
-    smartBorders (layoutHook defaultConfig)
+    smartBorders (layoutHook def)
     where
         defLayout = desktopLayoutModifiers $
             smartBorders $ Tall 1 (3/100) 0.5 ||| Full

@@ -6,17 +6,27 @@ import XMonad.Util.NamedScratchpad
 import qualified XMonad.StackSet as W
 import qualified XMonad.StackSet as StackSet
 
-ws1 = "01"
-ws2 = "02"
-ws3 = "03"
-ws4 = "04"
-ws5 = "05"
-ws6 = "06"
-ws7 = "07"
-ws8 = "08"
-ws9 = "09"
-ws0 = "10"
+-- ws1 = "01"
+-- ws2 = "02"
+-- ws3 = "03"
+-- ws4 = "04"
+-- ws5 = "05"
+-- ws6 = "06"
+-- ws7 = "07"
+-- ws8 = "08"
+-- ws9 = "09"
+-- ws0 = "00"
 
+ws1 = "1"
+ws2 = "2"
+ws3 = "3"
+ws4 = "4"
+ws5 = "5"
+ws6 = "6"
+ws7 = "7"
+ws8 = "8"
+ws9 = "9"
+ws0 = "0"
 -- data MyWorkspace = WebWorkspace
 --                  | MailWorkspace
 --                  | CodeWorkspace
@@ -62,13 +72,20 @@ viewPrevWS = do
   let hs = filter (\w -> StackSet.tag w /= "NSP") $ StackSet.hidden ws
   unless (null hs) (windows . StackSet.view . StackSet.tag $ head hs)
 
-myWorkspaces  = clickable  $
-  ["^i(" ++ myBarIconDir ++ "me.xbm) me"
-  ,"^i(" ++ myBarIconDir ++ "shell.xbm) code"
-  ,"^i(" ++ myBarIconDir ++ "web.xbm) web"
-  ,"^i(" ++ myBarIconDir ++ "docs.xbm) docs"
-  ,"^i(" ++ myBarIconDir ++ "tunes.xbm) tunes"
-  ,"^i(" ++ myBarIconDir ++ "mail.xbm) mail"]
-      where clickable l     = [ "^ca(1,xdotool key super+" ++ show (n) ++ ")" ++ ws ++ "^ca()" |
-                              (i,ws) <- zip [1..] l,
-                              let n = i ]
+-- clickableWorkspaces  = clickable
+--   ["^i(me.xbm) me"
+--   ,"^i(shell.xbm) code"
+--   ,"^i(web.xbm) web"
+--   ,"^i(docs.xbm) docs"
+--   ,"^i(tunes.xbm) tunes"
+--   ,"^i(mail.xbm) mail"]
+--       where clickable l     = [ "^ca(1,xdotool key super+" ++ show n ++ ")" ++ ws ++ "^ca()" |
+--                               (i,ws) <- zip [1..] l,
+--                               let n = i ]
+
+-- myWorkspaces1           = clickable . (map dzenEscape) $ ["1","2","3","4","5", "6", "7", "8", "9", "0"]
+clickableWorkspaces :: [String]
+clickableWorkspaces = clickable ["1","2","3","4","5", "6", "7", "8", "9", "0"]
+  where clickable l     = [ "^ca(1,xdotool key super+" ++ show n ++ ")" ++ ws ++ "^ca()" |
+                            (i,ws) <- zip [1..] l,
+                            let n = i ]
