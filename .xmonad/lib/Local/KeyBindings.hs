@@ -1,5 +1,5 @@
 -- module XMonad.Local.KeyBindings (keys, rawKeys) where
-module Local.KeyBindings (keyMaps) where
+module Local.KeyBindings (keyMaps, myRemoveKeys, superKeyMask) where
 
 import qualified Data.Map as M
 import Graphics.X11.Xlib
@@ -39,6 +39,7 @@ import XMonad.Util.EZConfig (mkKeymap)
 import qualified XMonad.Util.ExtensibleState as XState
 import XMonad.Util.NamedScratchpad (namedScratchpadAction)
 
+-- import Local.Workspaces (viewPrevWS)
 import Local.Workspaces
 
 -- | Join all the key maps into a single list and send it through @mkKeymap@.
@@ -63,6 +64,9 @@ import Local.Workspaces
 
 superKeyMask :: KeyMask
 superKeyMask = mod4Mask
+
+altKeyMask :: KeyMask
+altKeyMask = mod1Mask
 
 keyMaps :: [(String, X ())]
 keyMaps =
@@ -194,9 +198,9 @@ windowKeys =
 -- | Keys for manipulating workspaces.
 workspaceKeys :: [(String, X ())]
 workspaceKeys =
-      -- [("M-;", viewPrevWS)]
+      [("M-;", viewPrevWS)]
         -- change active workspace
-     [("M-" ++ workSpace, windows $ W.greedyView workSpace) | workSpace <- myWorkspaces ]
+      ++ [("M-" ++ workSpace, windows $ W.greedyView workSpace) | workSpace <- myWorkspaces ]
       -- move window and change active workspace
       ++ [("M-S-" ++ workSpace, windows $ W.greedyView workSpace . W.shift workSpace) | workSpace <- myWorkspaces ]
       -- move window

@@ -1,4 +1,4 @@
-module Local.MouseBinding(myMouseBindings) where
+module Local.MouseBinding (myMouseBindings) where
 
 import XMonad
 import qualified Data.Map as M

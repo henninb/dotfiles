@@ -1,4 +1,4 @@
-module Local.Layouts where
+module Local.Layouts (myLayouts) where
 
 import XMonad
 import XMonad.Layout.Renamed
@@ -13,8 +13,6 @@ import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Magnifier
 import qualified XMonad.Layout.BoringWindows as B
 
-myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ perWS
-
 ws1 = "1"
 ws2 = "2"
 ws3 = "3"
@@ -25,6 +23,8 @@ ws7 = "7"
 ws8 = "8"
 ws9 = "9"
 ws0 = "0"
+
+myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ perWS
 
   -- layout per workspace
 perWS = onWorkspace ws1 my3FT $

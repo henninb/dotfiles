@@ -1,4 +1,4 @@
-module Local.Workspaces (myWorkspaces, scratchPads) where
+module Local.Workspaces (myWorkspaces, scratchPads, viewPrevWS) where
 
 import XMonad
 import Control.Monad (unless)
