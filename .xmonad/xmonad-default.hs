@@ -63,6 +63,7 @@ import Data.List (sortBy)
 import qualified Local.KeyBindings as Local
 -- import qualified Local.Workspaces as Local
 import Local.Workspaces
+import Local.MouseBinding(myMouseBindings)
 
 
 ws1 = "1"
@@ -321,17 +322,17 @@ myTiled = renamed [Replace "test1" ]
 -- isTerminal :: Window -> X Bool
 -- isTerminal = fmap (== "Alacritty") . runQuery className
 
-myMouseBindings XConfig {XMonad.modMask = modm} = M.fromList
-    [
---     -- mod-button1, Set the window to floating mode and move by dragging
-     ((modm, button1),
-   \ w -> focus w >> mouseMoveWindow w >> windows W.shiftMaster),
---     -- mod-button2, Raise the window to the top of the stack
-     ((modm, button2), \ w -> focus w >> windows W.shiftMaster),
---     -- mod-button3, Set the window to floating mode and resize by dragging
-      ((modm, button3),
-   \ w -> focus w >> mouseResizeWindow w >> windows W.shiftMaster)
-    ]
+-- myMouseBindings XConfig {XMonad.modMask = modm} = M.fromList
+--     [
+-- --     -- mod-button1, Set the window to floating mode and move by dragging
+--      ((modm, button1),
+--    \ w -> focus w >> mouseMoveWindow w >> windows W.shiftMaster),
+-- --     -- mod-button2, Raise the window to the top of the stack
+--      ((modm, button2), \ w -> focus w >> windows W.shiftMaster),
+-- --     -- mod-button3, Set the window to floating mode and resize by dragging
+--       ((modm, button3),
+--    \ w -> focus w >> mouseResizeWindow w >> windows W.shiftMaster)
+--     ]
 
 -- haskell is 0-indexed
 myManageHook = composeAll
