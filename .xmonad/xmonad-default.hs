@@ -15,37 +15,37 @@ import XMonad.Util.NamedActions
 import XMonad.Util.SpawnOnce
 import XMonad.Layout.FixedColumn
 import XMonad.Actions.SpawnOn
-import XMonad.Layout.LimitWindows
-import XMonad.Layout.Magnifier
-import XMonad.Layout.Minimize
-import XMonad.Layout.NoBorders
-import XMonad.Layout.PerWorkspace
-import XMonad.Layout.Renamed
-import XMonad.Layout.Spacing
-import XMonad.Layout.ThreeColumns
+-- import XMonad.Layout.LimitWindows
+-- import XMonad.Layout.Magnifier
+-- import XMonad.Layout.Minimize
+-- import XMonad.Layout.NoBorders
+-- import XMonad.Layout.PerWorkspace
+-- import XMonad.Layout.Renamed
+-- import XMonad.Layout.Spacing
+-- import XMonad.Layout.ThreeColumns
 import XMonad.Layout.WindowArranger --DecreaseRight, IncreaseUp
-import XMonad.Layout.Gaps
+-- import XMonad.Layout.Gaps
 import XMonad.Actions.Submap
 -- Prompt
-import XMonad.Prompt
-import XMonad.Prompt.FuzzyMatch
-import Control.Arrow (first)
+-- import XMonad.Prompt
+-- import XMonad.Prompt.FuzzyMatch
+-- import Control.Arrow (first)
 
 import XMonad.Util.NamedScratchpad (namedScratchpadManageHook)
 
 import Graphics.X11.ExtraTypes
-import XMonad.Util.Paste (sendKey)
+-- import XMonad.Util.Paste (sendKey)
 
-import qualified XMonad.Actions.Search as S
+-- import qualified XMonad.Actions.Search as S
 
 import XMonad.Util.Run(spawnPipe, safeSpawn)
 
-import qualified XMonad.Layout.BoringWindows as B
-import Control.Monad (forM_, join, liftM2)
+-- import qualified XMonad.Layout.BoringWindows as B
+import Control.Monad (forM_, join)
 
 import qualified XMonad.StackSet as W
-import qualified Data.Map        as M
-import qualified Codec.Binary.UTF8.String as UTF8
+-- import qualified Data.Map        as M
+-- import qualified Codec.Binary.UTF8.String as UTF8
 import Prelude
 import Data.Maybe
 import XMonad.Actions.GroupNavigation
@@ -61,9 +61,10 @@ import Data.Function (on)
 import Data.List (sortBy)
 
 -- import qualified Local.KeyBindings as Local
+import Local.Colors
 import Local.KeyBindings
 import Local.Workspaces
-import Local.MouseBinding (myMouseBindings)
+import Local.MouseBinding
 import Local.ManagedHook
 import Local.Layouts
 
@@ -94,8 +95,8 @@ myTerminal = "alacritty"
 
 -- xmodmap - shows the key mapping
 -- TODO: need to fix as the Win [M1] key is now useless
-altKeyMask :: KeyMask
-altKeyMask = mod1Mask
+-- altKeyMask :: KeyMask
+-- altKeyMask = mod1Mask
 
 -- superKeyMask :: KeyMask
 -- superKeyMask = mod4Mask
@@ -111,20 +112,6 @@ myBrowser = "brave"
 
 mySpacing :: Int
 mySpacing = 5
-
--- Purple
-myBorderColor :: String
-myBorderColor = "#282828"
-
-red :: String
-red = "#fb4934"
-
-myFocusBorderColor :: String
-myFocusBorderColor = "#5b51c9"
-
-gray = "#888974"
-purple = "#d3869b"
-aqua = "#8ec07c"
 
 myAddSpaces :: Int -> String -> String
 myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
