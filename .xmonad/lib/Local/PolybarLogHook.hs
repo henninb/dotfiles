@@ -43,8 +43,8 @@ currentWorkSpace = gets $ Just . show . length . W.integrate' . W.stack . W.work
 
 polybarLogHook = def
     { ppOutput = polybarOutput
-    , ppCurrent = wrap ("%{B" ++ darkpurple ++ "}" ++ "%{F" ++ "#FF69B4" ++ "}") " %{B- F-}" . wrap "[" "]" -- lightpink foreground, background darkpurple
-    , ppVisible = wrap ("%{F" ++ hotpink ++ "} ") " %{F-}" --hotpink #FF1493
+    , ppCurrent = withForeground lightpink . withBackground darkpurple . wrap "[" "]"
+    , ppVisible = withForeground hotpink
     , ppUrgent = withForeground red
     , ppHidden = wrap "<" ">" . unwords . map wrapOpenWorkspaceCmd . words
     , ppHiddenNoWindows = withForeground gray . wrap "{" "}" . unwords . map wrapOpenWorkspaceCmd . words
@@ -55,7 +55,6 @@ polybarLogHook = def
     , ppExtras = [currentWorkSpace]
     }    where
       withMargin = wrap " " " "
-      withFont fNum = wrap ("%{T" ++ show (fNum :: Int) ++ "}") "%{T}"
       withBackground color = wrap ("%{B" ++ color ++ "}") "%{B-}"
       withForeground color = wrap ("%{F" ++ color ++ "}") "%{F-}"
       wrapOpenWorkspaceCmd wsp

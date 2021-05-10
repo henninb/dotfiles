@@ -44,24 +44,20 @@ myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows 
 workspaceLayouts =
         -- onWorkspace [myWorkspaces!!0] my3FT $
         onWorkspace "1" my3FT $
-        onWorkspace "2" myAll $
-        onWorkspace "3" myFTM $
+        onWorkspace "2" myAllLayoutGroup $
+        onWorkspace "3" myFtLayoutGroupM $
         onWorkspace "4" my3FT $
-        onWorkspace "5" myFTM $
-        onWorkspace "8" terminalLayout $
-        onWorkspace "0" mediaLayout $
-        onWorkspace "6" myFT myAll -- all layouts for all other workspaces
- where
-    tiled = Tall nmaster delta ratio
-    nmaster = 1
-    delta = 3/100
-    ratio = 1/2
+        onWorkspace "5" myFtLayoutGroupM $
+        onWorkspace "9" myMiscLayoutGroup $
+        onWorkspace "6" myFtLayoutGroup myAllLayoutGroup
+        -- onWorkspace "0" myMiscLayoutGroup
 
 
-myFT  = myTileLayout ||| myFullLayout ||| commonLayout
-myFTM = myTileLayout ||| myFullLayout ||| myMagn
+myFtLayoutGroup  = myTileLayout ||| myFullLayout ||| commonLayout
+myFtLayoutGroupM = myTileLayout ||| myFullLayout ||| myMagn
 my3FT = myTileLayout ||| myFullLayout ||| my3cmi
-myAll = myTileLayout ||| myFullLayout ||| my3cmi ||| myMagn
+myMiscLayoutGroup = mediaLayout ||| terminalLayout ||| terminalLayout ||| commonLayout ||| readingLayout ||| panelLayout
+myAllLayoutGroup = myTileLayout ||| myFullLayout ||| my3cmi ||| myMagn ||| terminalLayout
 
 myFullLayout = renamed [Replace "Full"]
       $ gaps [(U,5), (D,5)]
@@ -79,8 +75,6 @@ commonLayout = renamed [Replace "Com"]
       $ avoidStruts
       $ gaps [(U,5), (D,5)]
       $ Tall 1 (5/100) (1/3)
-myTiled = renamed [Replace "test1" ]
-      $ Tall 1 (1/2)
 terminalLayout = renamed [Replace "Terminals"]
       $ gaps [(U,5), (D,5)]
       $ simpleTall 50 ||| simpleThree 33 ||| Mirror (simpleTall 53)
@@ -97,6 +91,11 @@ panelLayout = renamed [Replace "Control"]
       $ Grid ||| Mirror (simpleTall 50) ||| simpleThree 33
 -- circleLayout = renamed [Replace "cir" ]
 --       $ Mirror Tall 1 (3/100) (1/2) ||| tiled ||| Circle
+   where
+      tiled = Tall nmaster delta ratio
+      nmaster = 1
+      delta = 3/100
+      ratio = 1/2
 
 -- twoPaneTabbed =
 --   configurableNavigation noNavigateBorders $
