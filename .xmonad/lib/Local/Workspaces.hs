@@ -62,3 +62,13 @@ viewPrevWS = do
   let hs = filter (\w -> StackSet.tag w /= "NSP") $ StackSet.hidden ws
   unless (null hs) (windows . StackSet.view . StackSet.tag $ head hs)
 
+myWorkspaces  = clickable  $
+  ["^i(" ++ myBarIconDir ++ "me.xbm) me"
+  ,"^i(" ++ myBarIconDir ++ "shell.xbm) code"
+  ,"^i(" ++ myBarIconDir ++ "web.xbm) web"
+  ,"^i(" ++ myBarIconDir ++ "docs.xbm) docs"
+  ,"^i(" ++ myBarIconDir ++ "tunes.xbm) tunes"
+  ,"^i(" ++ myBarIconDir ++ "mail.xbm) mail"]
+      where clickable l     = [ "^ca(1,xdotool key super+" ++ show (n) ++ ")" ++ ws ++ "^ca()" |
+                              (i,ws) <- zip [1..] l,
+                              let n = i ]

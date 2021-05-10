@@ -13,6 +13,7 @@ import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Magnifier
 import qualified XMonad.Layout.BoringWindows as B
 import XMonad.Layout.Circle (Circle (..))
+import XMonad.Layout.Reflect (reflectHoriz)
 
 import Local.Workspaces (myWorkspaces)
 
@@ -70,5 +71,69 @@ commonLayout = renamed [Replace "Com"]
       $ Tall 1 (5/100) (1/3)
 myTiled = renamed [Replace "test1" ]
       $ Tall 1 (1/2)
+terminalLayout = renamed [Replace "Terminals"] $
+  mySpacing $
+  simpleTall 50 |||
+  simpleThree 33 |||
+  (Mirror $ simpleTall 53)
+codingLayout = renamed [Replace "Coding"] $
+  twoPaneTabbed |||
+  twoPaneTall |||
+  simpleTall 50
+mediaLayout =
+  renamed [Replace "Media"] $
+  mySpacing $
+  simpleTwo 40 |||
+  Grid |||
+  simpleThree 33
+readingLayout =
+  renamed [Replace "Reading"] $
+  mySpacing $
+  simpleTwo 50 ||| simpleThree 50
+panelLayout =
+  renamed [Replace "Control"] $
+  mySpacing $
+  Grid ||| (Mirror $ simpleTall 50) ||| simpleThree 33
 -- circleLayout = renamed [Replace "cir" ]
 --       $ Mirror Tall 1 (3/100) (1/2) ||| tiled ||| Circle
+twoPaneTabbed =
+  configurableNavigation noNavigateBorders $
+  combineTwoP (mySpacing $ TwoPane 0.03 0.50)
+	      (Full)
+ 	      (tabbed shrinkText def)
+	      (ClassName "Firefox-esr" `Or` ClassName "qpdfview")
+
+twoPaneTall =
+  windowNavigation $
+  combineTwoP (TwoPane 0.03 0.50) (Full) (Mirror $ simpleThree 60) (ClassName "Firefox-esr" `Or` ClassName "qpdfview")
+
+--simpleTall :: Rational -> ResizableTall a
+simpleTall n = ResizableTall 1 (3/100) (n/100) []
+
+simpleThree :: Rational -> ThreeCol a
+simpleThree n = ThreeCol 1 (3/100) (n/100)
+
+simpleTwo :: Rational -> TwoPane a
+simpleTwo n = TwoPane (3/100) (n/100)
+
+desktopLayouts =
+    onWorkspace "1"  mailLayout $
+    onWorkspace "2"  webLayout $
+    onWorkspaces (map show [3..6]) defLayout $
+    onWorkspace "7" threeCols $
+    onWorkspace "8" gimpLayout $
+    onWorkspace "9" fullLayout $
+    smartBorders (layoutHook defaultConfig)
+    where
+        defLayout = desktopLayoutModifiers $
+            smartBorders $ Tall 1 (3/100) 0.5 ||| Full
+        mailLayout = desktopLayoutModifiers $
+            smartBorders $ Tall 1 (3/100) 0.65 ||| Full
+        webLayout  = desktopLayoutModifiers $
+            smartBorders $ Full ||| Tall 1 (3/100) 0.65
+        threeCols = desktopLayoutModifiers $ smartBorders $
+                ThreeCol 1 (3/100) (1/3) ||| Full ||| Tall 1 (2/100) 0.7
+        fullLayout = desktopLayoutModifiers $
+            noBorders $ Full ||| Mirror (Tall 1 (3/100) 0.8)
+        gimpLayout  = avoidStruts $ withIM 0.11 (Role "gimp-toolbox") $
+            reflectHoriz $ withIM 0.15 (Role "gimp-dock") Full
