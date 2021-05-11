@@ -26,17 +26,11 @@ import XMonad.Layout.Reflect (reflectHoriz)
 
 import Local.Workspaces (myWorkspaces)
 
--- ws1 :: String
--- ws1 = "1"
--- ws2 = "2"
--- ws3 = "3"
--- ws4 = "4"
--- ws5 = "5"
--- ws6 = "6"
--- ws7 = "7"
--- ws8 = "8"
--- ws9 = "9"
--- ws0 = "0"
+-- dzen spacing
+-- mySpacing = spacingRaw False (Border 10 3 3 3) True (Border 10 3 3 3) True
+
+-- polybar spacing
+mySpacing = spacingRaw False (Border 1 1 1 1) True (Border 1 1 1 1) True
 
 myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ workspaceLayouts
 
@@ -60,34 +54,41 @@ myMiscLayoutGroup = mediaLayout ||| terminalLayout ||| terminalLayout ||| common
 myAllLayoutGroup = myTileLayout ||| myFullLayout ||| my3cmi ||| myMagn ||| terminalLayout
 
 myFullLayout = renamed [Replace "Full"]
-      $ gaps [(U,5), (D,5)]
+      $ mySpacing
+      $ limitWindows 10
+      -- $ gaps [(U,5), (D,5)]
       $ noBorders Full
 myTileLayout = renamed [Replace "Main"]
+      $ mySpacing
       $ Tall 1 (3/100) (1/2)
 my3cmi = renamed [Replace "3Col"]
+      $ mySpacing
       $ ThreeColMid 1 (3/100) (1/2)
 myMagn = renamed [Replace "Mag"]
+      $ mySpacing
       $ noBorders
       $ limitWindows 3
       $ magnifiercz' 1.4
       $ FixedColumn 1 20 80 10
 commonLayout = renamed [Replace "Com"]
+      $ mySpacing
       $ avoidStruts
-      $ gaps [(U,5), (D,5)]
+      -- $ gaps [(U,5), (D,5)]
       $ Tall 1 (5/100) (1/3)
 terminalLayout = renamed [Replace "Terminals"]
-      $ gaps [(U,5), (D,5)]
+      $ mySpacing
+      -- $ gaps [(U,5), (D,5)]
       $ simpleTall 50 ||| simpleThree 33 ||| Mirror (simpleTall 53)
 -- codingLayout = renamed [Replace "Coding"]
 --       $ twoPaneTabbed ||| twoPaneTall ||| simpleTall 50
 mediaLayout = renamed [Replace "Media"]
-      -- $ mySpacing
+      $ mySpacing
       $ simpleTwo 40 ||| Grid ||| simpleThree 33
 readingLayout = renamed [Replace "Reading"]
-      -- $ mySpacing
+      $ mySpacing
       $ simpleTwo 50 ||| simpleThree 50
 panelLayout = renamed [Replace "Control"]
-      -- $ mySpacing
+      $ mySpacing
       $ Grid ||| Mirror (simpleTall 50) ||| simpleThree 33
 -- circleLayout = renamed [Replace "cir" ]
 --       $ Mirror Tall 1 (3/100) (1/2) ||| tiled ||| Circle

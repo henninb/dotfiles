@@ -27,12 +27,21 @@ import Local.Layouts
 import Local.PolybarLogHook
 import Local.DzenLogHook
 
+myFont = "-*-nu-*-*-*-*-*-*-*-*-*-*-*-*"
+background = "#181512"
+foreground = "#D6C3B6"
+
+topLeftBar = "dzen2 -x '0' -y '0' -h '14' -w '500' -ta 'l' -fg '"++foreground++"' -bg '"++background++"' -fn "++myFont
+
 main :: IO ()
 main = do
   safeSpawn "mkfifo" ["/tmp/.xmonad-info"]
   forM_ [".xmonad-info"] $ \file -> safeSpawn "mkfifo" ["/tmp/" ++ file]
 
-  myStatusBarTopL <- spawnPipe "test"
+  dzenLeftBar <- spawnPipe topLeftBar
+  -- dzenRightBar	<- spawnPipe myStatusBar
+  -- myXmonadBar = "dzen2 -x '0' -y '0' -h '14' -w '500' -ta 'l' -fg '"++foreground++"' -bg '"++background++"' -fn "++myFont
+  -- myStatusBar = "/home/sunn/.xmonad/status_bar '"++foreground++"' '"++background++"' "++myFont
 
   xmonad
     $ withUrgencyHook NoUrgencyHook
@@ -41,7 +50,7 @@ main = do
     $ myConfig { logHook =
       case os of
         "freebsd" -> dynamicLogWithPP polybarLogHook
-        "stuff"   -> dynamicLogWithPP $ dzenLogHook myStatusBarTopL
+        "dzen"   -> dynamicLogWithPP $ dzenLogHook dzenLeftBar
         "linux"   -> dynamicLogWithPP polybarLogHook
         _    -> eventLogHookForPolybar
     }
