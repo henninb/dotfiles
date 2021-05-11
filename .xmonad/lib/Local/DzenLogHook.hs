@@ -90,10 +90,10 @@ stripDzen s = aux s [] -- strip dzen formatting to undo ppHidden
 -- myLogHook h = dynamicLogWithPP ( defaultPP
 dzenLogHook h = def
   {
-      ppCurrent    = dzenColor color15 background .  pad
-    , ppVisible    = dzenColor color14 background .   pad
-    , ppHidden    = dzenColor color14 background .   pad
-    , ppHiddenNoWindows  = dzenColor background background .  pad
+      ppCurrent    = dzenColor color15 background . pad
+    , ppVisible    = dzenColor color14 background . pad
+    , ppHidden    = dzenColor color14 background . pad
+    , ppHiddenNoWindows  = dzenColor background background . pad
     , ppWsSep    = ""
     , ppSep      = "    "
     , ppLayout    = wrap "^ca(1,xdotool key super+space)" "^ca()" . dzenColor color2 background
@@ -106,7 +106,7 @@ dzenLogHook h = def
         --   _        ->  "^i(/home/sunn/.xmonad/dzen2/grid.xbm)"
         -- )
 --    , ppTitle  =  wrap "^ca(1,xdotool key alt+shift+x)^fg(#D23D3D)^fn(fkp)x ^fn()" "^ca()" . dzenColor foreground background . shorten 40 . pad
-    , ppTitle  =  wrap "^ca(1,xdotool key alt+shift+x)" "^ca()" . dzenColor color15 background . shorten 40 . pad
+    , ppTitle  =  wrap "^ca(1,xdotool key super+shift+x)" "^ca()" . dzenColor color15 background . shorten 40 . pad
     , ppOrder  =  \(ws:l:t:_) -> [ws,l, t]
     , ppOutput  =   hPutStrLn h
   } where
