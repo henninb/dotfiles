@@ -52,6 +52,7 @@ polybarLogHook = def
     , ppWsSep = (withForeground gray . withMargin) ":"
     , ppSep = (withForeground gray . withMargin) "|"
     , ppTitle = myAddSpaces 25
+    , ppLayout    = wrap "%{A1:xdotool key super+space:}" "%{A}"
     , ppExtras = [currentWorkSpace]
     }    where
       withMargin = wrap " " " "
