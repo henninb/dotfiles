@@ -25,11 +25,14 @@ import Local.MouseBinding
 import Local.ManagedHook
 import Local.Layouts
 import Local.PolybarLogHook
+import Local.DzenLogHook
 
 main :: IO ()
 main = do
   safeSpawn "mkfifo" ["/tmp/.xmonad-info"]
   forM_ [".xmonad-info"] $ \file -> safeSpawn "mkfifo" ["/tmp/" ++ file]
+
+  myStatusBarTopL <- spawnPipe "test"
 
   xmonad
     $ withUrgencyHook NoUrgencyHook
@@ -38,6 +41,7 @@ main = do
     $ myConfig { logHook =
       case os of
         "freebsd" -> dynamicLogWithPP polybarLogHook
+        "stuff"   -> dynamicLogWithPP $ dzenLogHook myStatusBarTopL
         "linux"   -> dynamicLogWithPP polybarLogHook
         _    -> eventLogHookForPolybar
     }
