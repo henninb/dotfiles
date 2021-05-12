@@ -105,6 +105,7 @@ home="${color_sec1}${fs_icon} /home ${color_sec2}$(wrapper $homesize)G"
 CPU=$(cat /proc/stat | grep '^cpu ')
 unset CPU[0]                          # Discard the "cpu" prefix.
 IDLE=${CPU[4]}                        # Get the idle CPU time.
+# top -b -n 1
 
 # Calculate the total CPU time.
 TOTAL=0
