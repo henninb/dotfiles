@@ -33,6 +33,8 @@ fi
 WEATHER() {
 if [ "$weather" = "Clear" ]; then
   echo -e "$nocloud $weather"
+elif [ "$weather" = "Sunny" ]; then
+  echo -e "$nocloud $weather"
 else
   echo -e "$cloud $weather"
 fi
