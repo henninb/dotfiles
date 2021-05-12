@@ -1,0 +1,4 @@
+#define stormydaniels_width 8
+#define stormydaniels_height 8
+static unsigned char stormydaniels_bits[] = {
+   0x18, 0x7c, 0xfe, 0xff, 0x7f, 0x66, 0x22, 0x11 };

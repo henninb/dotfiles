@@ -1,0 +1,4 @@
+#define natbride_width 8
+#define natbride_height 8
+static unsigned char natbride_bits[] = {
+   0x04, 0x06, 0x3f, 0x00, 0x00, 0xfc, 0x60, 0x20 };

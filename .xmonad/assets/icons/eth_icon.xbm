@@ -1,0 +1,4 @@
+#define eth_icon_width 8
+#define eth_icon_height 8
+static unsigned char eth_icon_bits[] = {
+   0x00, 0x1c, 0x1c, 0x7f, 0x7f, 0x7f, 0x55, 0x7f };

@@ -31,7 +31,10 @@ myFont = "-*-nu-*-*-*-*-*-*-*-*-*-*-*-*"
 background = "#181512"
 foreground = "#D6C3B6"
 
+topLeft = "~/.xmonad/assets/bin/main.sh | dzen2 -dock -x '1920' -y '0' -h '14' -w '40' -ta 'c' -fg '#999999' -bg '#000000' -fn '-xos4-terminus-*-*-*-*-14-*-*-*-*-*-iso10646-*' -e 'button2=;'"
+topMiddle = "~/.xmonad/assets/bin/main.sh | dzen2 -dock -x '1960' -y '0' -h '14' -w '1101' -ta 'l' -fg '#999999' -bg '#000000' -fn '-xos4-terminus-*-*-*-*-14-*-*-*-*-*-iso10646-*' -e 'button2=;'"
 topLeftBar = "dzen2 -x '0' -y '0' -h '14' -w '500' -ta 'l' -fg '"++foreground++"' -bg '"++background++"' -fn "++myFont
+-- bottomBar = "~/.xmonad/assets/bin/main.sh | dzen2 -dock -x '0' -y '1080' -h '20' -w '1920' -ta 'c' -fg '#999999' -bg '#000000' -fn '-xos4-terminus-*-*-*-*-12-*-*-*-*-*-iso10646-*' -e 'button2=;'"
 
 main :: IO ()
 main = do
@@ -39,6 +42,8 @@ main = do
   forM_ [".xmonad-info"] $ \file -> safeSpawn "mkfifo" ["/tmp/" ++ file]
 
   dzenLeftBar <- spawnPipe topLeftBar
+  dzenBottomBar <- spawnPipe topMiddle
+
   -- dzenRightBar	<- spawnPipe myStatusBar
   -- myXmonadBar = "dzen2 -x '0' -y '0' -h '14' -w '500' -ta 'l' -fg '"++foreground++"' -bg '"++background++"' -fn "++myFont
   -- myStatusBar = "/home/sunn/.xmonad/status_bar '"++foreground++"' '"++background++"' "++myFont

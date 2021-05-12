@@ -1,0 +1,4 @@
+#define networkstorage_width 8
+#define networkstorage_height 8
+static unsigned char networkstorage_bits[] = {
+   0xff, 0x81, 0x81, 0x99, 0x99, 0x81, 0x81, 0xdf };

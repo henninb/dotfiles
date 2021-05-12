@@ -28,10 +28,11 @@ import XMonad.Layout.Reflect (reflectHoriz)
 import Local.Workspaces (myWorkspaces)
 
 -- dzen spacing
-mySpacing = spacingRaw False (Border 10 3 3 3) True (Border 10 3 3 3) True
+-- mySpacing = spacingRaw False (Border 10 3 3 3) True (Border 10 3 3 3) True
+-- mySpacing = spacingRaw False (Border 3 3 3 3) True (Border 10 3 3 3) True
 
 -- polybar spacing
--- mySpacing = spacingRaw False (Border 1 1 1 1) True (Border 1 1 1 1) True
+mySpacing = spacingRaw False (Border 2 1 1 1) True (Border 2 1 1 1) True
 
 myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ workspaceLayouts
 

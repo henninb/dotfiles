@@ -1,0 +1,4 @@
+#define partially_width 8
+#define partially_height 8
+static unsigned char partially_bits[] = {
+   0x0e, 0x31, 0x79, 0xf9, 0xfe, 0xf0, 0x00, 0x00 };
