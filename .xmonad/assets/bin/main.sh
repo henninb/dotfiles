@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SLEEP=2
+SLEEP=1
 
 #cblue="^fg(#92bbd0)"
 cgray="^fg(#999999)"
@@ -14,6 +14,7 @@ cgreen="^fg(#00aa6c)"
 fs_icon="^i($HOME/.xmonad/assets/icons/diskette.xbm)"
 cpu_icon="^i($HOME/.xmonad/assets/icons/cpu.xbm)"
 mem_icon="^i($HOME/.xmonad/assets/icons/mem.xbm)"
+date_icon="^i($HOME/.xmonad/assets/icons/date.xbm)"
 
 sunny="^i($HOME/.xmonad/assets/icons/sunny.xbm)"
 rainny="^i($HOME/.xmonad/assets/icons/rainny.xbm)"
@@ -35,15 +36,15 @@ function wrapper {
 }
 
 function colorcho {
-  if [ "$1" -ge 0 ] && [ "$1" -lt 50 ]; then
+  # if [ "$1" -ge 0 ] && [ "$1" -lt 50 ]; then
     echo "${cgreen}"
-  elif [ "$1" -ge 50 ] && [ "$1" -lt 75 ]; then
-    echo "${cyellow}"
-  elif [ "$1" -ge 75 ] && [ "$1" -le 100 ]; then
-    echo "${cred}"
-  elif [ "$1" -eq 101 ]; then
-    echo "${cwhite}"
-  fi
+  # elif [ "$1" -ge 50 ] && [ "$1" -lt 75 ]; then
+    # echo "${cyellow}"
+  # elif [ "$1" -ge 75 ] && [ "$1" -le 100 ]; then
+    # echo "${cred}"
+  # elif [ "$1" -eq 101 ]; then
+    # echo "${cwhite}"
+  # fi
 }
 
 # cpu
@@ -64,22 +65,22 @@ case $(echo $forecast | awk '{print $1}') in
  weaicon="${cyellow}${sunny}${cgray}${cloudy}"
  ;;
  Niebla)
- weaicon="${cgray}${foggy}"
+ weaicon="${foggy}"
  ;;
  Neblina)
- weaicon="${cgray}${foggy}"
+ weaicon="${foggy}"
  ;;
  Despejado)
- weaicon="${cyellow}${sunny}"
+ weaicon="${sunny}"
  ;;
  Lluvia)
- weaicon="${cgray}${rainny}"
+ weaicon="${rainny}"
  ;;
  Tormenta)
- weaicon="${cwhite}${stormydaniels}"
+ weaicon="${stormydaniels}"
  ;;
  Nieve)
- weaicon="${cwhite}${snowy}"
+ weaicon="${snowy}"
  ;;
 esac
 
@@ -102,7 +103,7 @@ root="$(colorcho $root_used)${fs_icon} ${cgray}ROOT $(wrapper $root_used)%"
 home="${color_sec1}${fs_icon} /home ${color_sec2}$(wrapper $homesize)G"
 
 # cpu
-CPU=$(cat /proc/stat | grep '^cpu ')
+CPU=$(`cat /proc/stat | grep '^cpu '`)
 unset CPU[0]                          # Discard the "cpu" prefix.
 IDLE=${CPU[4]}                        # Get the idle CPU time.
 # top -b -n 1
@@ -127,9 +128,13 @@ cpu="$(colorcho $DIFF_USAGE)${cpu_icon}${cgray} $(wrapper ${DIFF_USAGE})%"
 memory_total=$(free -m | awk 'FNR == 2 {print $2}')
 memory_used=$(free -m | awk 'FNR == 2 {print $3}')
 memory_free_percent=$[$memory_used * 100 / $memory_total]
-mem="$(colorcho $memory_free_percent)${mem_icon}${cgray} $(wrapper ${memory_free_percent})%"
+mem="$(colorcho $memory_free_percent)${mem_icon}${cgray} $(wrapper "${memory_free_percent}%")"
 
-echo -e "${weaicon}${cnormal} ${temper}f${cnormal} | $cpu | $mem | ${cgray} | $root | $home"
+# thedate="$(colorcho $(~/.xmonad/assets/bin/date.sh)) ${date_icon}${cgray}"
+mydate="${cyellow}${date_icon} ${cnormal}$(~/.xmonad/assets/bin/date.sh)${cgray}"
+mymemory="${cyellow}${mem_icon} ${cnormal}$(~/.xmonad/assets/bin/memory.sh)${cgray}"
+myhdd="${cyellow}${fs_icon} ${cnormal}$(~/.xmonad/assets/bin/hdd.sh)${cgray}"
+
+echo -e "$mymemory | $myhdd | ${cgreen}${weaicon} ${cnormal}${temper}f"
 
 sleep $SLEEP; done
-n

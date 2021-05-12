@@ -93,7 +93,7 @@
 | video editor           | openshot, kdenlive                                                                   |
 | video transcoder       | handbrake, ffmpeg                                                                    |
 | video chat server      | jitsi                                                                                |
-| audio editor/recorder  | audacity                                                                             |
+| audio editor/recorder  | audacity, ardour                                                                     |
 | vector graphics        | inkscape                                                                             |
 | 3D creation            | blender                                                                              |
 | desktop manager        | lightdm, sddm                                                                        |
