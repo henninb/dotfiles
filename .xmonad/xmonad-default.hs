@@ -50,8 +50,8 @@ main = do
     $ myConfig { logHook =
       case os of
         "freebsd" -> dynamicLogWithPP polybarLogHook
-        "dzen"   -> dynamicLogWithPP $ dzenLogHook dzenLeftBar
-        "linux"   -> dynamicLogWithPP polybarLogHook
+        "linux"   -> dynamicLogWithPP $ dzenLogHook dzenLeftBar
+        -- "linux"   -> dynamicLogWithPP polybarLogHook
         _    -> eventLogHookForPolybar
     }
     `removeKeys` myRemoveKeys
@@ -84,7 +84,7 @@ myStartupHook = do
       "freebsd" -> spawnOnce "networkmgr"
       "linux"   -> spawnOnce "nm-applet"
       _    -> return ()
-    spawnOnce "$HOME/.config/polybar/launch.sh xmonad"
+    -- spawnOnce "$HOME/.config/polybar/launch.sh xmonad"
     spawnOnce "flameshot" --dbus required
     spawnOnce "dunst"
     -- spawnOnce "picom"

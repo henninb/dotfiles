@@ -88,11 +88,17 @@ stripDzen s = aux s [] -- strip dzen formatting to undo ppHidden
 --             | otherwise = x
 
 -- myLogHook h = dynamicLogWithPP ( defaultPP
+
+-- xmobarClickWrap :: String -> String
+-- xmobarClickWrap ws = wrap start end
+--   where start = "<action=xdotool key super+" ++ ws ++ ">"
+--         end   = "</action>"
+
 dzenLogHook h = def
   {
-      ppCurrent    = dzenColor color15 background . pad
-    , ppVisible    = dzenColor color14 background . pad
-    , ppHidden    = dzenColor color14 background . pad
+      ppCurrent    = dzenColor color15 background . pad . clickableWorkspace
+    , ppVisible    = dzenColor color14 background . pad . clickableWorkspace
+    , ppHidden    = dzenColor color14 background . pad . clickableWorkspace
     , ppHiddenNoWindows  = dzenColor background background . pad
     , ppWsSep    = ""
     , ppSep      = "    "
@@ -110,9 +116,29 @@ dzenLogHook h = def
     , ppOrder  =  \(ws:l:t:_) -> [ws,l, t]
     , ppOutput  =   hPutStrLn h
   } where
-  clickable l = [ "<action=xdotool key alt+" ++ show n ++ ">" ++ ws ++ "</action>" |
-                             (i,ws) <- zip [1..5] l,
-                            let n = i ]
+      -- clickable l = [ "<action=xdotool key super+" ++ show n ++ ">" ++ ws ++ "</action>" |
+      --                        (i,ws) <- zip [1..5] l,
+      --                       let n = i ]
+      clickableWorkspace ws = "^ca(1,xdotool key super+" ++ ws ++ ") " ++ ws ++ " ^ca()"
+      -- clickMe name = case name of
+      --       "1"  -> "^ca(1,xdotool key super+1) 1 ^ca()"
+      --       "2"  -> "^ca(1,xdotool key super+2) 2 ^ca()"
+      --       "3"  -> "^ca(1,xdotool key super+3) 3 ^ca()"
+      --       "4"  -> "^ca(1,xdotool key super+4) 4 ^ca()"
+      --       "5"  -> "^ca(1,xdotool key super+5) 5 ^ca()"
+      --       "6"  -> "^ca(1,xdotool key super+6) 6 ^ca()"
+      --       "7"  -> "^ca(1,xdotool key super+7) 7 ^ca()"
+      --       "8"  -> "^ca(1,xdotool key super+8) 8 ^ca()"
+      --       "9"  -> "^ca(1,xdotool key super+9) 9 ^ca()"
+      --       "0"  -> "^ca(1,xdotool key super+0) 0 ^ca()"
+      --       "NSP"     -> ""
+      --       _         -> name
+
+  --        where
+-- wsIdxToString Nothing = "1"
+-- wsIdxToString (Just n) = show $ mod (n+1) $ length myWorkspaces
+-- index = wsIdxToString (elemIndex ws myWorkspaces)
+-- xdo key = "/usr/bin/xdotool key super+" ++ key
 
     -- )
 

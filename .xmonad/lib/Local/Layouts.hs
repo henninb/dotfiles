@@ -20,6 +20,7 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.WindowNavigation
 import XMonad.Config.Desktop
 import qualified XMonad.Layout.BoringWindows as B
+import qualified XMonad.Layout.Spiral as Sp
 import XMonad.Layout.IM
 import XMonad.Layout.Circle (Circle (..))
 import XMonad.Layout.Reflect (reflectHoriz)
@@ -27,10 +28,10 @@ import XMonad.Layout.Reflect (reflectHoriz)
 import Local.Workspaces (myWorkspaces)
 
 -- dzen spacing
--- mySpacing = spacingRaw False (Border 10 3 3 3) True (Border 10 3 3 3) True
+mySpacing = spacingRaw False (Border 10 3 3 3) True (Border 10 3 3 3) True
 
 -- polybar spacing
-mySpacing = spacingRaw False (Border 1 1 1 1) True (Border 1 1 1 1) True
+-- mySpacing = spacingRaw False (Border 1 1 1 1) True (Border 1 1 1 1) True
 
 myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ workspaceLayouts
 
@@ -87,6 +88,13 @@ mediaLayout = renamed [Replace "Media"]
 readingLayout = renamed [Replace "Reading"]
       $ mySpacing
       $ simpleTwo 50 ||| simpleThree 50
+phiLayout = renamed [Replace "Phi"]
+      $ mySpacing (2 / (1 + toRational (sqrt 5 :: Double)))
+      -- $ mySpacing
+      -- $ (2/(1+(toRational(sqrt(5)::Double)))) -- Golden Ratio
+spiralLayout  = renamed [Replace "Spiral"]
+      $ mySpacing
+      $ Sp.spiralWithDir Sp.East Sp.CW (6/7)
 panelLayout = renamed [Replace "Control"]
       $ mySpacing
       $ Grid ||| Mirror (simpleTall 50) ||| simpleThree 33

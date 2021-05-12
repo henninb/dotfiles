@@ -14,6 +14,7 @@ myManageHook = composeAll
     , title     =? "st-float"         --> doFloat --custom window title
     , className =? "Gimp"             --> doFloat
     , className =? "Emacs"            --> viewShift ( myWorkspaces !! 6 )
+    , className =? "dzen2"            --> doIgnore
     -- , className =? "discord"          --> viewShift ( myWorkspaces !! 8 )
     , title     =? "Oracle VM VirtualBox Manager"  --> doFloat
     , title     =? "Welcome to IntelliJ IDEA"      --> doFloat
