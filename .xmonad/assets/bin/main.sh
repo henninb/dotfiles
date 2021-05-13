@@ -25,7 +25,7 @@ cloudy_icon="^i($HOME/.xmonad/assets/icons/cloudy.xbm)"
 foggy_icon="^i($HOME/.xmonad/assets/icons/fog.xbm)"
 
 
-weather="${cyellow}${sunny_icon} ${cnormal}$(~/.xmonad/assets/bin/weather.sh) F${cgray}"
+weather="${cyellow}${cloudy_icon} ${cnormal}$(~/.xmonad/assets/bin/weather.sh) F${cgray}"
 
 while :; do
 
