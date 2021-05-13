@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-SLEEP=1
-
 #cblue="^fg(#92bbd0)"
 cgray="^fg(#999999)"
 cwhite="^fg(#ffffff)"
@@ -27,13 +25,13 @@ foggy_icon="^i($HOME/.xmonad/assets/icons/fog.xbm)"
 
 weather="${cyellow}${cloudy_icon} ${cnormal}$(~/.xmonad/assets/bin/weather.sh) F${cgray}"
 
-while :; do
+while true ; do
+  memory="${cyellow}${mem_icon} ${cnormal}$(~/.xmonad/assets/bin/memory.sh)${cgray}"
+  hdd="${cyellow}${fs_icon} ${cnormal}$(~/.xmonad/assets/bin/hdd.sh)${cgray}"
 
-memory="${cyellow}${mem_icon} ${cnormal}$(~/.xmonad/assets/bin/memory.sh)${cgray}"
-hdd="${cyellow}${fs_icon} ${cnormal}$(~/.xmonad/assets/bin/hdd.sh)${cgray}"
+  echo -e " $memory | $hdd | $weather "
 
-echo -e "$memory | $hdd | $weather"
-
-sleep $SLEEP; done
+  sleep 1
+done
 
 exit 0

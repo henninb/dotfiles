@@ -36,6 +36,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y playerctl
   sudo apt install -y redshift
   sudo apt install -y sxhkd
+  sudo apt install -y trayer
   sudo apt install -y vifm
   sudo apt install -y vimb
   sudo apt install -y volumeicon-alsa
@@ -103,6 +104,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S pulseaudio
   sudo pacman --noconfirm --needed -S redshift
   sudo pacman --noconfirm --needed -S sxhkd
+  sudo pacman --noconfirm --needed -S trayer
   sudo pacman --noconfirm --needed -S vifm
   sudo pacman --noconfirm --needed -S vimb
   sudo pacman --noconfirm --needed -S volumeicon
@@ -138,6 +140,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y pkgconf
   sudo pkg install -y networkmgr
   sudo pkg install -y sxhkd
+  sudo pkg install -y trayer
   sudo pkg install -y xclip
   sudo pkg install -y numlockx
   sudo pkg install -y lxappearance

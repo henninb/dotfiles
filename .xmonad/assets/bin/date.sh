@@ -8,7 +8,7 @@ cnormal="^fg(#dddddd)"
 cyellow="^fg(#a88c29)"
 
 while true ; do
-  dt="${cyellow}${date_icon} ${cnormal}$(date "+%m-%d-%Y %I:%M:%S")"
+  dt=" ${cyellow}${date_icon} ${cnormal}$(date "+%m-%d-%Y %I:%M:%S")"
   # dt=`date +"%a %b %d %l:%M %p "`
   printf "%s\n" "$dt"
   sleep 1
