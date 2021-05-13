@@ -31,8 +31,9 @@ myFont = "-*-nu-*-*-*-*-*-*-*-*-*-*-*-*"
 background = "#181512"
 foreground = "#D6C3B6"
 
-topMiddle = "~/.xmonad/assets/bin/main.sh | dzen2 -dock -x '600' -y '0' -h '14' -w '1100' -ta 'l' -fg '"++foreground++"' -bg '"++background++"' -fn "++myFont
 topLeftBar = "dzen2 -x '0' -y '0' -h '14' -w '500' -ta 'l' -fg '"++foreground++"' -bg '"++background++"' -fn "++myFont
+topMiddleBar = "~/.xmonad/assets/bin/main.sh | dzen2 -dock -x '600' -y '0' -h '14' -w '500' -ta 'l' -fg '"++foreground++"' -bg '"++background++"' -fn "++myFont
+topRightBar = "~/.xmonad/assets/bin/date.sh | dzen2 -dock -x '1200' -y '0' -h '14' -w '500' -ta 'l' -fg '"++foreground++"' -bg '"++background++"' -fn "++myFont
 
 main :: IO ()
 main = do
@@ -40,7 +41,8 @@ main = do
   forM_ [".xmonad-info"] $ \file -> safeSpawn "mkfifo" ["/tmp/" ++ file]
 
   dzenLeftBar <- spawnPipe topLeftBar
-  dzenTopMiddle <- spawnPipe topMiddle
+  dzenTopMiddleBar <- spawnPipe topMiddleBar
+  dzenTopRightBar <- spawnPipe topRightBar
 
   xmonad
     $ withUrgencyHook NoUrgencyHook
