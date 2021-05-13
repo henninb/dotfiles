@@ -32,8 +32,8 @@ background = "#181512"
 foreground = "#D6C3B6"
 
 topLeftBar = "dzen2 -x '0' -y '0' -h '14' -w '500' -ta 'l' -fg '"++foreground++"' -bg '"++background++"' -fn "++myFont
-topMiddleBar = "~/.xmonad/assets/bin/main.sh | dzen2 -dock -x '600' -y '0' -h '14' -w '500' -ta 'l' -fg '"++foreground++"' -bg '"++background++"' -fn "++myFont
-topRightBar = "~/.xmonad/assets/bin/date.sh | dzen2 -dock -x '1200' -y '0' -h '14' -w '500' -ta 'l' -fg '"++foreground++"' -bg '"++background++"' -fn "++myFont
+topMiddleBar = "~/.xmonad/assets/bin/main.sh | dzen2 -dock -x '900' -y '0' -h '14' -w '500' -ta 'l' -fg '"++foreground++"' -bg '"++background++"' -fn "++myFont
+topRightBar = "~/.xmonad/assets/bin/date.sh | dzen2 -dock -x '2400' -y '0' -h '14' -w '500' -ta 'l' -fg '"++foreground++"' -bg '"++background++"' -fn "++myFont
 
 main :: IO ()
 main = do
