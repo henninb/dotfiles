@@ -9,10 +9,12 @@
 
 #mem=$(free | awk '/Mem/ {printf "%dM/%dM\n", $3 / 1024.0, $2 / 1024.0 }')
 #echo -e "MEM: $mem"
-mem_total="$(free | awk 'FNR == 2 {print $2}')"
-mem_used="$(free | awk 'FNR == 2 {print $3}')"
-mem_used_mul="$(expr $mem_used \* 100)"
+if [ -x "$(command -v free)" ]; then
+  mem_total="$(free | awk 'FNR == 2 {print $2}')"
+  mem_used="$(free | awk 'FNR == 2 {print $3}')"
+  mem_used_mul="$(expr $mem_used \* 100)"
 
-echo "$(expr "$mem_used_mul" / "$mem_total")%"
+  echo "$(expr "$mem_used_mul" / "$mem_total")%"
+fi
 
 exit 0
