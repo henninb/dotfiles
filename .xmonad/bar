@@ -13,7 +13,5 @@ conky.text = [[
 MEM ^fg(\#ebdbb2)${memperc}% ^fg()| \
 HDD ^fg(\#ebdbb2)${fs_used_perc /}% ^fg()| \
 NET ^fg(\#ebdbb2)${downspeedf enp3s0}K ^fg(\#ebdbb2)${upspeedf enp3s0}K ^fg()| \
-^fg(\#ebdbb2)${time %Y-%m-%d} ^fg() ^fg(\#D6C3B6)${time %I:%M:%S} | \
-${color green}${top name 1}${color white} ${top pid 1} ${top cpu 1} ${top mem 1}
-
+^fg(\#ebdbb2)${time %Y-%m-%d} ^fg() ^fg(\#D6C3B6)${time %H:%M:%S}
 ]]

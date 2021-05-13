@@ -123,6 +123,7 @@ myStartupHook = do
       "linux"   -> spawnOnce "pamac-tray"
       _    -> return ()
     spawnOnce "numlockx on"
+    spawnOnce "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 108 --transparent true --tint 0x000000 --height 18 --alpha 0"
     spawnOnce "conky -c $HOME/.xmonad/system-overview"
     spawnOnce "mpDris2" -- required for mpd
     spawnOnce "volumeicon"
