@@ -1,4 +1,4 @@
-{-# LANGUAGE RebindableSyntax #-}
+-- {-# LANGUAGE RebindableSyntax #-}
 import XMonad
 
 import XMonad.Hooks.DynamicLog
@@ -17,6 +17,7 @@ import Control.Monad (forM_)
 import Prelude
 import System.Environment (setEnv)
 import System.Info (os)
+import qualified XMonad.Layout.IndependentScreens as LIS
 
 import Local.Colors
 import Local.KeyBindings
@@ -31,18 +32,37 @@ myFont = "-*-nu-*-*-*-*-*-*-*-*-*-*-*-*"
 background = "#181512"
 foreground = "#D6C3B6"
 
-topLeftBar = "dzen2 -x '0' -y '0' -h '14' -w '500' -ta 'l' -fg '"++foreground++"' -bg '"++background++"' -fn "++myFont
+togglevga = do { screencount <- LIS.countScreens
+    ; if screencount > 1
+       then do
+      let screenWidth = "2560"
+      -- spawn "xrandr --output LVDS-0 --off --output HDMI-0 --auto"
+      return screenWidth
+       else do
+      let screenWidth = "683"
+      -- spawn "xrandr --output LVDS-0 --auto"
+      return screenWidth
+    ;}
+
+topLeftBar = "dzen2 -x '0' -y '0' -h '14' -w '500' -ta 'l' -fg '"++ foreground ++"' -bg '"++ background ++"' -fn "++myFont
 topMiddleBar = "~/.xmonad/assets/bin/main.sh | dzen2 -dock -x '600' -y '0' -h '14' -w '500' -ta 'l' -fg '"++foreground++"' -bg '"++background++"' -fn "++myFont
 topRightBar = "~/.xmonad/assets/bin/date.sh | dzen2 -dock -x '2300' -y '0' -h '14' -w '500' -ta 'l' -fg '"++foreground++"' -bg '"++background++"' -fn "++myFont
 
+myDzen = " dzen2 -xs 1 -dock -h 14 -ta 'l' -fn '" ++ myFont ++ "' -fg '" ++
+    foreground ++ "' -bg '" ++ background ++ "' "
+-- myStatusBar = myDzen ++ " -x '0' -y '0' -ta 'l' -w 800"
+myTopRight = "conky -c ~/.xmonad/bar | " ++ myDzen ++ " -x '800' -y '0' -ta 'r' -p"
+
 main :: IO ()
 main = do
+  screenWidth <- togglevga
   safeSpawn "mkfifo" ["/tmp/.xmonad-info"]
   forM_ [".xmonad-info"] $ \file -> safeSpawn "mkfifo" ["/tmp/" ++ file]
 
   dzenLeftBar <- spawnPipe topLeftBar
-  dzenTopMiddleBar <- spawnPipe topMiddleBar
-  dzenTopRightBar <- spawnPipe topRightBar
+  -- dzenTopMiddleBar <- spawnPipe topMiddleBar
+  -- dzenTopRightBar <- spawnPipe topRightBar
+  conkyTopRight <- spawnPipe myTopRight
 
   xmonad
     $ withUrgencyHook NoUrgencyHook
