@@ -1,17 +1,18 @@
 conky.config = {
-    pixelsize = 8,
-    background  = false,
-    out_to_console = true,
-    out_to_x = false,
-    update_interval  = 1.0,
-    total_run_times = 0,
-    use_spacer = 'none',
+  pixelsize = 8,
+  background  = false,
+  out_to_console = true,
+  out_to_x = false,
+  update_interval  = 1.0,
+  total_run_times = 0,
+  use_spacer = 'none',
 }
 
 conky.text = [[
-^fg()CPU ^fg(\#ebdbb2)${cpu cpu0}% ^fg() | \
-MEM ^fg(\#ebdbb2)${memperc}% ^fg()| \
-HDD ^fg(\#ebdbb2)${fs_used_perc /}% ^fg()| \
-NET ^fg(\#ebdbb2)${downspeedf enp3s0}K ^fg(\#ebdbb2)${upspeedf enp3s0}K ^fg()| \
-^fg(\#ebdbb2)${time %Y-%m-%d} ^fg() ^fg(\#D6C3B6)${time %H:%M:%S}
+^fg() ^fn(SimStone-10) \
+^i($HOME/.xmonad/assets/icons/cpu.xbm) ^fg(\#ebdbb2)${cpu cpu0}% ^fg() | \
+^i($HOME/.xmonad/assets/icons/mem.xbm) ^fg(\#ebdbb2)${memperc}% ^fg() | \
+^i($HOME/.xmonad/assets/icons/diskette.xbm) ^fg(\#ebdbb2)${fs_used_perc /}% ^fg() | \
+^i($HOME/.xmonad/assets/icons/net_wired.xbm) ^fg(\#ebdbb2)${downspeedf enp3s0}K ^fg(\#ebdbb2)${upspeedf enp3s0}K ^fg() | \
+^i($HOME/.xmonad/assets/icons/date.xbm) ^fg(\#ebdbb2)${time %Y-%m-%d} ^fg() ^fg(\#D6C3B6)${time %H:%M:%S}
 ]]
