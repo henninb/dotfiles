@@ -63,8 +63,9 @@ myTopRight = "conky -c ~/.xmonad/assets/bar | " ++ myDzen ++ " -x '800' -y '0' -
 main :: IO ()
 main = do
   screenWidth <- togglevga
+  -- TODO: for polybar
   safeSpawn "mkfifo" ["/tmp/.xmonad-info"]
-  forM_ [".xmonad-info"] $ \file -> safeSpawn "mkfifo" ["/tmp/" ++ file]
+  -- forM_ [".xmonad-info"] $ \file -> safeSpawn "mkfifo" ["/tmp/" ++ file]
 
   dzenLeftBar <- spawnPipe topLeftBar
   -- dzenTopMiddleBar <- spawnPipe topMiddleBar
@@ -77,7 +78,8 @@ main = do
     -- $ myConfig { logHook = dynamicLogWithPP polybarLogHook }
     $ myConfig { logHook =
       case os of
-        "freebsd" -> dynamicLogWithPP polybarLogHook
+        -- "freebsd" -> dynamicLogWithPP polybarLogHook
+        "freebsd"   -> dynamicLogWithPP $ dzenLogHook dzenLeftBar
         "linux"   -> dynamicLogWithPP $ dzenLogHook dzenLeftBar
         -- "linux"   -> dynamicLogWithPP polybarLogHook
         _    -> eventLogHookForPolybar
