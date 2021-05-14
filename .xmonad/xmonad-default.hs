@@ -37,7 +37,8 @@ myFont  = "terminus"
 -- myFont = "-*-monofur-*-*-*-*-*-*-*-*-*-*-*"
 -- myFont = "xft:monofur for Powerline"
 background = "#181512"
-foreground = "#D6C3B6"
+-- foreground = "#D6C3B6"
+foreground = "#DDEEFF"
 
 togglevga = do { screencount <- LIS.countScreens
     ; if screencount > 1
