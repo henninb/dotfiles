@@ -28,7 +28,14 @@ import Local.Layouts
 import Local.PolybarLogHook
 import Local.DzenLogHook
 
-myFont = "-*-nu-*-*-*-*-*-*-*-*-*-*-*-*"
+-- myFont = "-*-nu-*-*-*-*-*-*-*-*-*-*-*-*"
+-- myFont = "-*-fontawesome-*-*-*-*-*-*-*-*-*-*-*"
+-- myFont = "xft:SauceCodePro Nerd Font Mono:regular:size=12:antialias=true:hinting=true"
+-- myFont = "-*-tamsyn-medium-*-normal-*-11-*-*-*-*-*-*-*"
+-- myFont = "xft:monofur for Powerline:pixelsize=15:antialias=true:autohint=true"
+myFont  = "terminus"
+-- myFont = "-*-monofur-*-*-*-*-*-*-*-*-*-*-*"
+-- myFont = "xft:monofur for Powerline"
 background = "#181512"
 foreground = "#D6C3B6"
 
@@ -51,7 +58,7 @@ topRightBar = "~/.xmonad/assets/bin/date.sh | dzen2 -dock -x '2300' -y '0' -h '1
 myDzen = " dzen2 -xs 1 -dock -h 14 -ta 'l' -fn '" ++ myFont ++ "' -fg '" ++
     foreground ++ "' -bg '" ++ background ++ "' "
 -- myStatusBar = myDzen ++ " -x '0' -y '0' -ta 'l' -w 800"
-myTopRight = "conky -c ~/.xmonad/bar | " ++ myDzen ++ " -x '800' -y '0' -ta 'r' -p"
+myTopRight = "conky -c ~/.xmonad/assets/bar | " ++ myDzen ++ " -x '800' -y '0' -ta 'r' -p"
 
 main :: IO ()
 main = do
@@ -123,8 +130,9 @@ myStartupHook = do
       "linux"   -> spawnOnce "pamac-tray"
       _    -> return ()
     spawnOnce "numlockx on"
-    spawnOnce "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 108 --transparent true --tint 0x000000 --height 18 --alpha 0"
-    spawnOnce "conky -c $HOME/.xmonad/system-overview"
+    -- spawnOnce "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 108 --transparent true --tint 0x000000 --height 18 --alpha 0"
+    -- spawnOnce "conky -c $HOME/.xmonad/assets/system-overview"
+    spawnOnce "conky -c $HOME/.xmonad/assets/system-overview2"
     spawnOnce "mpDris2" -- required for mpd
     spawnOnce "volumeicon"
     spawnOnce "xscreensaver -no-splash"
