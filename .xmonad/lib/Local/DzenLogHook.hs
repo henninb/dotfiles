@@ -46,10 +46,14 @@ dzenOutput barOutputString =
 
 dzenLogHook h = def
   {
-      ppCurrent = dzenColor foreground background . pad . clickableWorkspace
-    , ppVisible = dzenColor foreground background . pad . clickableWorkspace
-    , ppHidden = dzenColor color14 background . pad . clickableWorkspace
-    , ppHiddenNoWindows  = dzenColor background background . pad
+      -- ppCurrent = dzenColor foreground background . pad . clickableWorkspace
+      ppCurrent = pad . clickableWorkspace
+    -- , ppVisible = dzenColor foreground background . pad . clickableWorkspace
+    , ppVisible = pad . clickableWorkspace
+    , ppHidden = pad . clickableWorkspace
+    -- , ppHidden = dzenColor color14 background . pad . clickableWorkspace
+    , ppHiddenNoWindows = pad
+    -- , ppHiddenNoWindows  = dzenColor background background . pad
     , ppWsSep = ""
     , ppSep = "    "
     , ppLayout = wrap "^ca(1,xdotool key super+space)" "^ca()" . dzenColor color2 background
