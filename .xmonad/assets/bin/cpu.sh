@@ -1,5 +1,8 @@
 #!/bin/sh
 
+
+#TODO: unlikely this works
+
 # cpu
 CPU=(`cat /proc/stat | grep '^cpu '`) # Get the total CPU statistics.
 unset CPU[0]                          # Discard the "cpu" prefix.
