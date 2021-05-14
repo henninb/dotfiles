@@ -141,6 +141,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y networkmgr
   sudo pkg install -y sxhkd
   sudo pkg install -y trayer
+  sudo pkg install -y terminus-font
   sudo pkg install -y xclip
   sudo pkg install -y numlockx
   sudo pkg install -y lxappearance

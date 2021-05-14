@@ -42,7 +42,8 @@ currentWorkSpace :: X (Maybe String)
 currentWorkSpace = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 
 polybarLogHook = def
-    { ppOutput = polybarOutput
+    {
+      ppOutput = polybarOutput
     , ppCurrent = withForeground lightpink . withBackground darkpurple . wrap "[" "]"
     , ppVisible = withForeground hotpink
     , ppUrgent = withForeground red
