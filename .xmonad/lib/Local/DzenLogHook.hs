@@ -39,7 +39,7 @@ dzenLogHook h = def
     , ppOrder  =  \(ws:l:t:_) -> [ws,l, t]
     , ppWsSep = ""
     , ppSep = "    "
-    , ppLayout = withForeground white . wrap "^ca(1,xdotool key super+space)" "^ca()"
+    , ppLayout = withForeground white .  wrap "^ca(1,xdotool key super+space)" "^ca()"
     --TODO: what would the clickable do?
     , ppTitle =  withForeground white . wrap "^ca(1,xdotool key super+shift+x)" "^ca()"  . shorten 40 . withMargin
     , ppExtras = [currentWindowCount]
@@ -49,4 +49,4 @@ dzenLogHook h = def
       withForeground color = wrap ("^fg(" ++ color ++ ")") "^fg()" . withFont
       withBackground color = wrap ("^bg(" ++ color ++ ")") "^bg()"
       withMargin = wrap " " " "
-
+      withIcon = wrap "^i(~/.xmonad/assets/icons/full.xbm)" ""
