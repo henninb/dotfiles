@@ -317,7 +317,7 @@ fi
 # neofetch will run on certain conditions
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   if [ -x "$(command -v neofetch)" ]; then
-    [ -n "$TMUX" ] || neofetch
+    [ -n "$TMUX" ] || (curl 'wttr.in/Minneapolis?0' --silent --max-time 3 && neofetch)
   fi
 #  export DISPLAY=localhost:10.0
 fi
