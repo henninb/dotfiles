@@ -24,6 +24,7 @@ import qualified XMonad.Layout.Spiral as Sp
 import XMonad.Layout.IM
 import XMonad.Layout.Circle (Circle (..))
 import XMonad.Layout.Reflect (reflectHoriz)
+import System.Info (os)
 
 import Local.Workspaces (myWorkspaces)
 
@@ -32,7 +33,8 @@ import Local.Workspaces (myWorkspaces)
 -- mySpacing = spacingRaw False (Border 3 3 3 3) True (Border 10 3 3 3) True
 
 -- polybar spacing
-mySpacing = spacingRaw False (Border 2 1 1 1) True (Border 2 1 1 1) True
+mySpacingOld = spacingRaw False (Border 2 1 1 1) True (Border 2 1 1 1) True
+mySpacing = if os == "freebsd" then spacingRaw False (Border 10 1 1 1) True (Border 10 1 1 1) True else spacingRaw False (Border 2 1 1 1) True (Border 2 1 1 1) True
 
 myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ workspaceLayouts
 

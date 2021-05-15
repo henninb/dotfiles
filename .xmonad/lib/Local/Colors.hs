@@ -1,4 +1,4 @@
-module Local.Colors (myBorderColor, red, myFocusBorderColor, gray, purple, aqua, lightpink, lightgray, hotpink, darkpurple) where
+module Local.Colors (myBorderColor, red, myFocusBorderColor, gray, purple, aqua, lightpink, lightgray, hotpink, darkpurple, white) where
 
 import XMonad
 import Data.Map as M
@@ -39,6 +39,9 @@ hotpink = "#FF1493"
 
 darkpurple :: String
 darkpurple = "#400473"
+
+white :: String
+white = "#FFFFFF"
 
 colorSchemes =
     [("Orange",       "#FD971F")
