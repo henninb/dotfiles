@@ -30,11 +30,14 @@ tmux split-window -t Main:4 -h
 tmux split-window -t Main:4 -v
 tmux split-window -t Main:4 -v
 tmux send-keys -t Main:4.1 "htop" Enter
+tmux send-keys -t Main:4.2 "ncdu" Enter
+tmux send-keys -t Main:4.3 "lf" Enter
 
 tmux split-window -t Main:5 -h -p 90
 tmux split-window -t Main:5 -v -p 90
 tmux send-keys -t Main:5.1 "cd ~/projects/raspi-finance-endpoint" Enter
 tmux send-keys -t Main:5.2 "cd ~/projects/raspi-finance-react" Enter
+tmux send-keys -t Main:5.3 "cd ~/projects/raspi-finance-database" Enter
 
 tmux select-pane -t Main:5.1
 

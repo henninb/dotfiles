@@ -32,25 +32,25 @@
 ## Software
 | Description            | App(s)                                                                               |
 | ------------           | -----                                                                                |
-| terminal               | alacritty, urxvt, termite, st                                                        |
-| editor                 | neovim, emacs, vscode, intellij, vscodium, neovim-gtk, notepadqq, kakoune            |
+| terminal               | alacritty, st, urxvt                                                                 |
+| editor                 | neovim, emacs, vscode, intellij, neovide, notepadqq                                  |
 | shell                  | zsh, fish, bash, dash, ksh                                                           |
 | shell prompt           | spaceship, agnoster, alien, dracula                                                  |
 | zsh plugins            | zsh-syntax-highlighting, zsh-autosuggestions, autojump, zsh-history-substring-search |
 | file manager           | lf, ranger, hunter, spacefm                                                          |
-| bar                    | polybar                                                                              |
+| bar                    | dzen2, conky, polybar                                                                |
 | launcher               | dmenu                                                                                |
-| window manager         | bspwm, xmonad, i3, spectrwm, qtile                                                   |
+| window manager         | xmonad, bspwm, spectrwm, qtile, i3                                                   |
 | lock screen            | i3block                                                                              |
 | terminal multiplexer   | tmux, screen, tmate                                                                  |
 | media player           | vlc, mpv, mpd                                                                        |
 | cloud media player     | olivia                                                                               |
 | software defined radio | gqrx                                                                                 |
 | spreadsheet            | sc-im                                                                                |
-| programming languages  | java, kotlin, rust, haskell, python, javascript, scala, groovy                       |
+| programming languages  | java, kotlin, haskell, rust, python, javascript, scala, groovy                       |
 | frameworks             | SpringBoot, Micronaut, react                                                         |
 | containerization       | docker, podman                                                                       |
-| hypervisor             | kvm, qemu                                                                            |
+| hypervisor             | kvm, qemu, bhyve                                                                     |
 | remote desktop server  | xrdp                                                                                 |
 | remote desktop client  | xfreerdp                                                                             |
 | irc client             | irssi, emacs (erc)                                                                   |
@@ -61,7 +61,7 @@
 | database server        | postgresql, influx, mongodb, elastic                                                 |
 | astronomy              | stellarium                                                                           |
 | notes                  | standard note, joplin                                                                |
-| font                   | monofur, jetbrains, symbola                                                          |
+| font                   | monofur, FiraCode, Symbola                                                           |
 | theme                  | dracula                                                                              |
 | audio player           | cmus, mpd, cantata, ncmpcpp, emacs (emms)                                            |
 | audio player daemon    | mpd                                                                                  |
