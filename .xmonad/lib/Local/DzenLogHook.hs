@@ -18,30 +18,35 @@ import Local.Colors
 --   where aux [] acc = acc
 --         aux x  acc = (\(good,bad) -> aux (dropDzen bad) (acc++good)) $ span (/= '^') x
 --             where dropDzen b = drop 1 $ dropWhile (/= ')') b
+myPurple :: String
+myPurple = "#663399"
 
 dzenOutput barOutputString =
     io $ appendFile "/tmp/.xmonad-info" (barOutputString ++ "\n")
 
+currentWindowCount :: X (Maybe String)
+currentWindowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
+
 dzenLogHook h = def
   {
-      -- ppCurrent = dzenColor foreground background . padding . clickableWorkspace
-      ppCurrent = withForeground purple . padding . clickableWorkspace
-    -- , ppVisible = dzenColor foreground background . padding . clickableWorkspace
-    , ppVisible = withForeground white . padding . clickableWorkspace
-    , ppHidden = withForeground gray . padding . clickableWorkspace
-    -- , ppHidden = dzenColor color14 background . padding . clickableWorkspace
-    , ppHiddenNoWindows = padding
-    -- , ppHiddenNoWindows  = dzenColor background background . padding
+      ppOutput  =   hPutStrLn h
+      -- ppOutput  = dzenOutput
+    , ppCurrent = withForeground myPurple . withBackground lightpink . withMargin . clickableWorkspace
+    , ppVisible = withForeground white . withMargin . clickableWorkspace
+    , ppUrgent = withForeground red . withMargin
+    , ppHidden = withForeground white . withMargin . clickableWorkspace
+    , ppHiddenNoWindows = withForeground gray . withMargin .clickableWorkspace
+    , ppOrder  =  \(ws:l:t:_) -> [ws,l, t]
     , ppWsSep = ""
     , ppSep = "    "
-    , ppLayout = wrap "^ca(1,xdotool key super+space)" "^ca()"
-    , ppTitle  =  wrap "^ca(1,xdotool key super+shift+x)" "^ca()"  . shorten 40 . padding
-    , ppOrder  =  \(ws:l:t:_) -> [ws,l, t]
-    , ppOutput  =   hPutStrLn h
-    -- , ppOutput  = dzenOutput
+    , ppLayout = withForeground white . wrap "^ca(1,xdotool key super+space)" "^ca()"
+    --TODO: what would the clickable do?
+    , ppTitle =  withForeground white . wrap "^ca(1,xdotool key super+shift+x)" "^ca()"  . shorten 40 . withMargin
+    , ppExtras = [currentWindowCount]
   } where
       clickableWorkspace ws = "^ca(1,xdotool key super+" ++ ws ++ ") " ++ ws ++ " ^ca()"
-      withForeground color = wrap ("^fg(" ++ color ++ ")") "^fg()"
       withFont = wrap "^fn(monofur for Powerline-12)" "^fn()"
-      padding = wrap " " " "
+      withForeground color = wrap ("^fg(" ++ color ++ ")") "^fg()" . withFont
+      withBackground color = wrap ("^bg(" ++ color ++ ")") "^bg()"
+      withMargin = wrap " " " "
 

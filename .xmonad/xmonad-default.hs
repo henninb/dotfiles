@@ -13,7 +13,7 @@ import XMonad.Util.SpawnOnce
 import XMonad.Actions.SpawnOn
 import XMonad.Layout.WindowArranger --DecreaseRight, IncreaseUp
 import XMonad.Util.Run(spawnPipe, safeSpawn)
-import Control.Monad (forM_)
+-- import Control.Monad (forM_)
 import Prelude
 import System.Environment (setEnv)
 import System.Info (os)
@@ -28,16 +28,8 @@ import Local.Layouts
 import Local.PolybarLogHook
 import Local.DzenLogHook
 
--- myFont = "-*-nu-*-*-*-*-*-*-*-*-*-*-*-*"
--- myFont = "-*-fontawesome-*-*-*-*-*-*-*-*-*-*-*"
--- myFont = "xft:SauceCodePro Nerd Font Mono:regular:size=12:antialias=true:hinting=true"
--- myFont = "-*-tamsyn-medium-*-normal-*-11-*-*-*-*-*-*-*"
--- myFont = "xft:monofur for Powerline:pixelsize=15:antialias=true:autohint=true"
 myFont  = "terminus"
--- myFont = "-*-monofur-*-*-*-*-*-*-*-*-*-*-*"
--- myFont = "xft:monofur for Powerline"
 background = "#181512"
--- foreground = "#D6C3B6"
 foreground = "#DDEEFF"
 
 togglevga = do { screencount <- LIS.countScreens
@@ -52,21 +44,18 @@ togglevga = do { screencount <- LIS.countScreens
       return screenWidth
     ;}
 
-topLeftBar = "dzen2 -x '0' -y '0' -h '14' -w '500' -ta 'l' -fg '" ++ foreground ++ "' -bg '"++ background ++"' -fn "++myFont
+topLeftBar = "dzen2 -x '0' -y '0' -h '14' -w '800' -ta 'l' -fg '" ++ foreground ++ "' -bg '"++ background ++"' -fn "++myFont
 topMiddleBar = "~/.xmonad/assets/bin/main.sh | dzen2 -dock -x '600' -y '0' -h '14' -w '500' -ta 'l' -fg '" ++ foreground ++ "' -bg '" ++ background ++ "' -fn " ++ myFont
 topRightBar = "~/.xmonad/assets/bin/date.sh | dzen2 -dock -x '2300' -y '0' -h '14' -w '500' -ta 'l' -fg '" ++ foreground ++ "' -bg '" ++ background ++ "' -fn " ++ myFont
 
-myDzen = " dzen2 -xs 1 -dock -h 14 -ta 'l' -fn '" ++ myFont ++ "' -fg '" ++
-    foreground ++ "' -bg '" ++ background ++ "' "
--- myStatusBar = myDzen ++ " -x '0' -y '0' -ta 'l' -w 800"
+myDzen = " dzen2 -xs 1 -dock -h 14 -ta 'l' -fn '" ++ myFont ++ "' -fg '" ++ foreground ++ "' -bg '" ++ background ++ "' "
 myTopRight = "conky -c ~/.xmonad/assets/bar | " ++ myDzen ++ " -x '800' -y '0' -ta 'r' -p"
 
 main :: IO ()
 main = do
   screenWidth <- togglevga
-  -- TODO: for polybar
+  -- for polybar
   safeSpawn "mkfifo" ["/tmp/.xmonad-info"]
-  -- forM_ [".xmonad-info"] $ \file -> safeSpawn "mkfifo" ["/tmp/" ++ file]
 
   dzenLeftBar <- spawnPipe topLeftBar
   -- dzenTopMiddleBar <- spawnPipe topMiddleBar
