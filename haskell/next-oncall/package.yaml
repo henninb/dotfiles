@@ -1,0 +1,50 @@
+name:                next-oncall
+version:             0.1.0.0
+github:              "bitexplorer/next-oncall"
+license:             BSD3
+author:              "Brian Henning"
+maintainer:          "henninb@msn.com"
+copyright:           "2021 Brian Henning"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/bitexplorer/next-oncall#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- time
+
+
+library:
+  source-dirs: src
+
+executables:
+  next-oncall-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - next-oncall
+
+tests:
+  next-oncall-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - next-oncall

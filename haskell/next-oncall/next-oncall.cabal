@@ -1,0 +1,65 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 8607e2e888bd16eb70ba45c266dc27cbac0dd00c82dc95846492e6604bafaf9f
+
+name:           next-oncall
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/bitexplorer/next-oncall#readme>
+homepage:       https://github.com/bitexplorer/next-oncall#readme
+bug-reports:    https://github.com/bitexplorer/next-oncall/issues
+author:         Brian Henning
+maintainer:     henninb@msn.com
+copyright:      2021 Brian Henning
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/bitexplorer/next-oncall
+
+library
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_next_oncall
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , time
+  default-language: Haskell2010
+
+executable next-oncall-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_next_oncall
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , next-oncall
+    , time
+  default-language: Haskell2010
+
+test-suite next-oncall-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_next_oncall
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , next-oncall
+    , time
+  default-language: Haskell2010
