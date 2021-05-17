@@ -225,6 +225,9 @@ map <leader>s :setlocal spell! spelllang=en_us<cr>
 " Show line numbers and relative numbers
 set number relativenumber
 
+" yank to the plus register
+set clipboard=unnamedplus " yank to '+' register
+
 " Show file statistics
 set ruler
 
