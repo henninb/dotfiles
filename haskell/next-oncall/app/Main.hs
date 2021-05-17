@@ -1,10 +1,9 @@
 module Main where
 
-import Lib
-
 import Data.Time
 import Prelude
 
+startDate :: Day
 startDate = fromGregorian 2021 4 24
 
 engineerNumber :: Integer
@@ -23,13 +22,7 @@ nextOncallDay prevDay numOfPeople = do
 currDay :: IO Day
 currDay = do localDay . zonedTimeToLocalTime <$> getZonedTime
 
-daysTo (year, month, day) = do
-    now <- getZonedTime
-    let (y, m, d) = toGregorian (localDay (zonedTimeToLocalTime now))
-        current = fromGregorian y m d
-        prior = fromGregorian year month day
-    return (diffDays prior current)
-
+main :: IO()
 main = do
   today <- currDay
   futureDate <- nextOncallDay startDate engineerNumber
