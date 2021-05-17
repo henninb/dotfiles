@@ -28,12 +28,7 @@ import System.Info (os)
 
 import Local.Workspaces (myWorkspaces)
 
--- dzen spacing
--- mySpacing = spacingRaw False (Border 10 3 3 3) True (Border 10 3 3 3) True
--- mySpacing = spacingRaw False (Border 3 3 3 3) True (Border 10 3 3 3) True
-
--- polybar spacing
-mySpacingOld = spacingRaw False (Border 2 1 1 1) True (Border 2 1 1 1) True
+-- mySpacingOld = spacingRaw False (Border 2 1 1 1) True (Border 2 1 1 1) True
 mySpacing = if os == "freebsd" then spacingRaw False (Border 10 1 1 1) True (Border 10 1 1 1) True else spacingRaw False (Border 2 1 1 1) True (Border 2 1 1 1) True
 
 myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ workspaceLayouts
@@ -51,21 +46,25 @@ workspaceLayouts =
         -- onWorkspace "0" myMiscLayoutGroup
 
 
-myFtLayoutGroup  = myTileLayout ||| myFullLayout ||| commonLayout
-myFtLayoutGroupM = myTileLayout ||| myFullLayout ||| myMagn
-my3FT = myTileLayout ||| myFullLayout ||| my3cmi
+myFtLayoutGroup  = myTileLayout ||| fullLayout ||| commonLayout
+myFtLayoutGroupM = myTileLayout ||| fullLayout ||| myMagn
+my3FT = myTileLayout ||| fullLayout ||| threeColumn
 myMiscLayoutGroup = mediaLayout ||| terminalLayout ||| terminalLayout ||| commonLayout ||| readingLayout ||| panelLayout
-myAllLayoutGroup = myTileLayout ||| myFullLayout ||| my3cmi ||| myMagn ||| terminalLayout
+myAllLayoutGroup = myTileLayout ||| fullLayout ||| threeColumn ||| myMagn ||| terminalLayout
 
-myFullLayout = renamed [Replace "Full"]
+fullLayout = renamed [Replace "Full"]
+      $ avoidStruts
       $ mySpacing
       $ limitWindows 10
       -- $ gaps [(U,5), (D,5)]
       $ noBorders Full
 myTileLayout = renamed [Replace "Main"]
+      $ avoidStruts
+      $ smartBorders
       $ mySpacing
       $ Tall 1 (3/100) (1/2)
-my3cmi = renamed [Replace "3Col"]
+threeColumn = renamed [Replace "3Col"]
+      $ avoidStruts
       $ mySpacing
       $ ThreeColMid 1 (3/100) (1/2)
 myMagn = renamed [Replace "Mag"]
@@ -101,6 +100,16 @@ spiralLayout  = renamed [Replace "Spiral"]
 panelLayout = renamed [Replace "Control"]
       $ mySpacing
       $ Grid ||| Mirror (simpleTall 50) ||| simpleThree 33
+-- myGimpLayout = renamed [Replace "Gimp"]
+--       -- $ avoidStruts
+--       $ withIM 0.11 (Role "gimp-toolbox")
+--       $ reflectHoriz
+--       $ withIM 0.15 (Role "gimp-dock") Full
+-- gimpLayout = renamed [Replace "Gimp"]
+--       $ withIM 0.15 (Role "gimp-toolbox")
+--       $ reflectHoriz
+--       $ withIM 0.2 (Role "gimp-dock") Full
+
 -- circleLayout = renamed [Replace "cir" ]
 --       $ Mirror Tall 1 (3/100) (1/2) ||| tiled ||| Circle
    where
