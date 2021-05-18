@@ -42,7 +42,7 @@ endif
    Plug 'git@github.com:tpope/vim-commentary.git'
    " Plug 'vimwiki/vimwiki'
    " Plug 'vim-pandoc/vim-pandoc' " Markdown Docs in Vim
-   Plug 'vim-pandoc/vim-pandoc-syntax' " Markdown Docs in Vim
+   " Plug 'vim-pandoc/vim-pandoc-syntax' " Markdown Docs in Vim
    Plug 'git@github.com:svermeulen/vim-subversive.git' " search and replace tool
    Plug 'git@github.com:bronson/vim-trailing-whitespace.git' " remove trailing whitespace
 
@@ -53,7 +53,7 @@ endif
    " Plug 'nvim-lua/completion-nvim'
    " Plug 'ycm-core/YouCompleteMe' "coc alternative for language server
    Plug 'git@github.com:vim-syntastic/syntastic.git' "syntax checker for languages
-   Plug 'git@github.com:dense-analysis/ale.git' " linter
+   Plug 'git@github.com:dense-analysis/ale.git' " code linter
 
    if has('nvim')
      Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -150,24 +150,24 @@ endif
 " autocmd VimLeavePre * :call coc#rpc#kill()
 " autocmd VimLeave * if get(g:, 'coc_process_pid', 0) | call system('kill -9 -'.g:coc_process_pid) | endif
 
-let g:lightline = {
-      \ 'colorscheme': 'darcula',
-      \ }
+" let g:lightline = {
+"       \ 'colorscheme': 'darcula',
+"       \ }
 
 
 " Neovim default
 "let g:Hexokinase_highlighters = [ 'virtual' ]
-let g:Hexokinase_highlighters = [ 'sign_column' ]
-" All possible values
-let g:Hexokinase_optInPatterns = [
-\     'full_hex',
-\     'triple_hex',
-\     'rgb',
-\     'rgba',
-\     'hsl',
-\     'hsla',
-\     'colour_names'
-\ ]
+" let g:Hexokinase_highlighters = [ 'sign_column' ]
+" " All possible values
+" let g:Hexokinase_optInPatterns = [
+" \     'full_hex',
+" \     'triple_hex',
+" \     'rgb',
+" \     'rgba',
+" \     'hsl',
+" \     'hsla',
+" \     'colour_names'
+" \ ]
 
 autocmd Filetype markdown,vim let b:autopairs_enabled = 0
 
@@ -181,16 +181,16 @@ autocmd FileType vim let b:coc_pairs_disabled = ['"']
 "
 " let g:MyAltKey = '<Esc>'
 " let g:AutoPairsShortcutToggle = 'M-p'
-let g:AutoPairsShortcutToggle = '<leader>"'
+" let g:AutoPairsShortcutToggle = '<leader>"'
 
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 " ctrlp
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 
-let g:ycm_server_keep_logfiles = 1
-let g:ycm_server_log_level = 'debug'
+" let g:ycm_server_keep_logfiles = 1
+" let g:ycm_server_log_level = 'debug'
 
 " open NERDTree automatically
 " autocmd VimEnter * NERDTree
@@ -338,11 +338,16 @@ nnoremap fts :set ft=sql<cr>
 nnoremap ftsh :set ft=sh<cr>
 nnoremap ftc :set ft=css<cr>
 nnoremap fth :set ft=html<cr>
-" "nmap ,md :set ft=markdown<cr>
+" nmap ,md :set ft=markdown<cr>
+
+" g:pantondoc_use_pandoc_markdown default value to 1
+" let g:pandoc#filetypes#pandoc_markdown = 0
+" autocmd BufNewFile,BufRead *.md set filetype=markdown
+" autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 " normal mode mapings
+" remove trailing spaces from file
 nmap <leader>z :g/^$/d<cr>
-" remove trailing spaces
 " nmap <leader>s :%s/\s\+$//g<cr>
 " toggle line numbers
 nmap <leader>l :set nu! rnu! list!<cr> :CocCommand git.toggleGutters<cr> :ALEToggle<cr> :GitGutterBufferToggle<cr>

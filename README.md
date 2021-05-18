@@ -31,29 +31,29 @@
 
 ## Vim Plugins
 | Name                    | Description                                          |
+| ----                    | -----------                                          |
 | vim-surround            | surroundings parentheses, brackets, quotes, etc      |
-| vim-commentary          | commenting plugin                                    |
+| vim-commentary          | code commenting                                      |
 | vim-trailing-whitespace | remove trailing whitespace                           |
 | vim-subversive          | search and replace tool                              |
-| syntastic               | syntax checker for languages                         |
-| ale                     | linter                                               |
-| coc.nvim                | nmd                                                  |
+| syntastic               | code syntax checker (linter)                         |
+| ale                     | code syntax checker (linter)                         |
+| coc                     | code nmd                                             |
 | nvim-treesitter         | nmd                                                  |
-| haskell-vim             | nmd                                                  |
-| neoformat               | for formatting code                                  |
+| haskell-vim             | code nmd                                             |
+| neoformat               | code formatting                                      |
 | vim-closetag            | closing tags for html                                |
 | quick-scope             | color movements                                      |
 | vim-zoom                | toggle zoom of current window                        |
 | vim-easymotion          | Improvements for motions                             |
-| vim-fugitive            | git integration for vim                              |
-| vim-gitgutter           | shows git status in the gutter of vim                |
+| vim-fugitive            | git integration                                      |
+| vim-gitgutter           | git status integration                               |
 | nvim-colorizer.lua      | tool to show colors in vim r,g,b  #FFFFFF            |
 | vim-abolish             | working with variants of a word                      |
 | vim-devicons            | Adds filetype glyphs (icons) to various plugins      |
 | vim-airline             | line manager                                         |
 | vim-airline-themes      | theme for the airline line manager                   |
-| vim-startify            | start screen for vim                                 |
-| vim-visual-multi        | block selection                                      |
+| vim-startify            | start screen                                         |
 | vim-sneak               | Jump to any location specified by two characters     |
 | vim-highlightedyank     | Highlights yanked text                               |
 | nerdtree                | file manager                                         |
