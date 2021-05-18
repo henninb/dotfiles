@@ -29,6 +29,35 @@
 - ddwrt
 - pfsense
 
+## Vim Plugins
+- vim-surround - surroundings parentheses, brackets, quotes, etc
+- vim-commentary - commenting plugin
+- vim-trailing-whitespace - remove trailing whitespace
+- vim-subversive - search and replace tool
+- syntastic - syntax checker for languages
+- ale - linter
+- coc.nvim
+- nvim-treesitter
+- haskell-vim
+- neoformat - for formatting code
+- vim-closetag - closing tags for html
+- quick-scope -  color movements
+- vim-zoom.git - A simple plugin to toggle zoom of current window
+- vim-easymotion - Improvements for motions
+- vim-fugitive - git integration for vim
+- vim-gitgutter - shows git status in the gutter of vim
+- nvim-colorizer.lua - tool to show colors in vim r,g,b
+- vim-abolish - working with variants of a word
+- vim-devicons - Adds filetype glyphs (icons) to various vim plugins.
+- vim-airline - line manager
+- vim-airline-themes - theme for the airline line manager
+- vim-startify - start screen for vim
+- vim-visual-multi - block selection
+- vim-which-key - displays available keybindings in popup.
+- vim-sneak - Jump to any location specified by two characters.
+
+
+
 ## Software
 | Description            | App(s)                                                                               |
 | ------------           | -----                                                                                |
