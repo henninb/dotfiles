@@ -40,8 +40,8 @@ endif
  call plug#begin(plugpath)
    Plug 'git@github.com:tpope/vim-surround.git'
    Plug 'git@github.com:tpope/vim-commentary.git'
-   Plug 'vimwiki/vimwiki'
-   Plug 'vim-pandoc/vim-pandoc' " Markdown Docs in Vim
+   " Plug 'vimwiki/vimwiki'
+   " Plug 'vim-pandoc/vim-pandoc' " Markdown Docs in Vim
    Plug 'vim-pandoc/vim-pandoc-syntax' " Markdown Docs in Vim
    Plug 'git@github.com:svermeulen/vim-subversive.git' " search and replace tool
    Plug 'git@github.com:bronson/vim-trailing-whitespace.git' " remove trailing whitespace
@@ -61,8 +61,8 @@ endif
      if has('nvim-0.5')
        Plug 'nvim-treesitter/nvim-treesitter'
      endif
-     Plug 'fwcd/kotlin-language-server', { 'do': './gradlew :server:installDist' } " kotlin language sesrver
-     Plug 'git@github.com:rust-lang/rust.vim.git'
+     " Plug 'fwcd/kotlin-language-server', { 'do': './gradlew :server:installDist' } " kotlin language sesrver
+     " Plug 'git@github.com:rust-lang/rust.vim.git'
      Plug 'git@github.com:neovimhaskell/haskell-vim.git' " what does this do?
      " Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
    endif
@@ -72,29 +72,30 @@ endif
    " Plug 'nvim-treesitter/completion-treesitter'
    " Plug 'nvim-treesitter/playground'
 
-   Plug 'git@github.com:c-brenn/repel.nvim.git'
+   " Plug 'git@github.com:c-brenn/repel.nvim.git'
    Plug 'git@github.com:scrooloose/nerdtree.git' " file manager for vim
-   Plug 'Xuyuanp/nerdtree-git-plugin' " git integration for nerd tree
+   " Plug 'Xuyuanp/nerdtree-git-plugin' " git integration for nerd tree
    Plug 'unblevable/quick-scope'                  "  color movements
-   Plug 'git@github.com:dhruvasagar/vim-zoom.git'
+   Plug 'git@github.com:dhruvasagar/vim-zoom.git' "zoom window
    Plug 'git@github.com:easymotion/vim-easymotion.git' " improvements for motions
    Plug 'git@github.com:tpope/vim-fugitive.git'  " git integration for vim
    Plug 'airblade/vim-gitgutter'  " shows git status in the gutter of vim
    Plug 'norcalli/nvim-colorizer.lua' " tool to show colors in vim r,g,b
    Plug 'tpope/vim-abolish'
-   Plug 'MikeCoder/quickrun.vim'
+   " Plug 'MikeCoder/quickrun.vim'
    " Plug 'dracula/vim', { 'name': 'dracula' }  " theme
-   Plug 'benmills/vimux' " tmux integration
-   Plug 'kovetskiy/sxhkd-vim'
+   " Plug 'benmills/vimux' " tmux integration
+   " Plug 'kovetskiy/sxhkd-vim'
    Plug 'git@github.com:ryanoasis/vim-devicons'
    Plug 'git@github.com:vim-airline/vim-airline.git' " line manager
    Plug 'git@github.com:vim-airline/vim-airline-themes' " theme for the airline line manager
    " Plug 'dracula/vim', { 'as': 'dracula' }
    " Plug 'git@github.com:itchyny/lightline.vim.git'    "line manager
    Plug 'mhinz/vim-startify' " start screen for vim
-   Plug 'voldikss/vim-floaterm' " embedded terminal
-   Plug 'terryma/vim-multiple-cursors'
-   Plug 'liuchengxu/vim-which-key'
+   " Plug 'voldikss/vim-floaterm' " embedded terminal
+   " Plug 'terryma/vim-multiple-cursors'
+   Plug 'mg979/vim-visual-multi', {'branch': 'master'} " block selectio
+   " Plug 'liuchengxu/vim-which-key'
    Plug 'justinmk/vim-sneak'
    " sneak
  call plug#end()
@@ -103,10 +104,10 @@ source $HOME/.config/nvim/plug-config/ale.vim
 source $HOME/.config/nvim/plug-config/coc/coc.vim
 source $HOME/.config/nvim/plug-config/coc/coc-extensions.vim
 source $HOME/.config/nvim/plug-config/git-gutter.vim
-source $HOME/.config/nvim/plug-config/easy-motion.vim
+source $HOME/.config/nvim/plug-config/easymotion.vim
 source $HOME/.config/nvim/plug-config/sneak.vim
-source $HOME/.config/nvim/plug-config/start-screen.vim
-source $HOME/.config/nvim/plug-config/vim-commentary.vim
+source $HOME/.config/nvim/plug-config/startify.vim
+source $HOME/.config/nvim/plug-config/commentary.vim
 source $HOME/.config/nvim/plug-config/airline.vim
 source $HOME/.config/nvim/plug-config/syntastic.vim
 
@@ -114,23 +115,6 @@ if has('nvim-0.5')
   luafile $HOME/.config/nvim/plug-config/treesitter.lua
 endif
 
-" coc config
-" CocCommand git.toggleGutters
-" :CocUninstall coc-pairs
-
-" let g:coc_global_extensions = [
-"   \ 'coc-snippets',
-"   \ 'coc-eslint',
-"   \ 'coc-prettier',
-"   \ 'coc-json',
-"   \ 'coc-java',
-"   \ 'coc-git',
-"   \ 'coc-css',
-"   \ 'coc-html',
-"   \ 'coc-rls',
-"   \ 'coc-python',
-"   \ 'coc-fsharp',
-"   \ ]
 
 " Neovim LSP setup
 " lua <<EOF
@@ -190,17 +174,9 @@ autocmd Filetype markdown,vim let b:autopairs_enabled = 0
 autocmd FileType markdown let b:coc_pairs_disabled = ['`']
 autocmd FileType vim let b:coc_pairs_disabled = ['"']
 
-let g:quickrun_known_file_types = {
-  \"cpp": ["!g++ %", "./a.out"],
-  \"c": ["!gcc %", "./a.out"],
-  \"vim": ["source %"],
-  \"py": ["!python %"],
-  \"go": ["!go %"],
-  \}
-
 " filetypes like xml, html, xhtml, ...
 " These are the file types where this plugin is enabled.
-let g:closetag_filetypes = 'html,js'
+" let g:closetag_filetypes = 'html,js'
 
 "
 " let g:MyAltKey = '<Esc>'
@@ -227,6 +203,8 @@ set number relativenumber
 
 " yank to the plus register
 set clipboard=unnamedplus " yank to '+' register
+" set clipboard+=unnamedplus
+
 
 " Show file statistics
 set ruler
@@ -303,13 +281,6 @@ set tags=tags
 " Use 256 colors
 set t_Co=256
 
-" Powerline
-" set rtp+=/usr/share/powerline/bindings/vim/
-" set rtp+=~/.local/lib/python2.7/site-packages/powerline/bindings/vim
-" set rtp+=~/.local/lib/python3.7/site-packages/powerline/bindings/vim
-" set rtp+=~/.local/lib/python3.6/site-packages/powerline/bindings/vim
-" set rtp+=~/.local/lib64/python3.6/site-packages/powerline/bindings/vim
-
 " Always show statusline
 set laststatus=2
 
@@ -374,7 +345,7 @@ nmap <leader>z :g/^$/d<cr>
 " remove trailing spaces
 " nmap <leader>s :%s/\s\+$//g<cr>
 " toggle line numbers
-nmap <leader>l :set nu! rnu! list!<cr> :CocCommand git.toggleGutters<cr> :ALEToggle<cr>
+nmap <leader>l :set nu! rnu! list!<cr> :CocCommand git.toggleGutters<cr> :ALEToggle<cr> :GitGutterBufferToggle<cr>
 " toggle nerd tree
 nmap <leader>n :NERDTreeToggle<cr>
 "space separated to column
@@ -503,8 +474,6 @@ if has('nvim')
   command! Term :call Term()
 endif
 
-set clipboard+=unnamedplus
-
 function! ClipboardYank()
   call system('xclip -i -selection clipboard', @@)
 endfunction
@@ -519,7 +488,7 @@ nmap <leader>hr :%!xxd<cr> :set filetype=xxd<cr>
 nmap <leader>hw :%!xxd -r<cr> :set binary<cr> :set filetype=<cr>
 
 
-let g:vimwiki_list = [{'path': '~/documents/', 'syntax': 'markdown', 'ext': '.md'}]
+" let g:vimwiki_list = [{'path': '~/documents/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " enable true colors only if available
 let colorterm=$COLORTERM
