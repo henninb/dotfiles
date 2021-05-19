@@ -1,15 +1,3 @@
---[[
-#=====================================================================================
-#                               ArcoLinuxD
-#
-# Author  : Erik Dubois at http://www.erikdubois.be
-# License : Distributed under the terms of GNU GPL version 2 or later
-# Documentation : http://erikdubois.be/category/linux/aureola/
-#======================================================================================
-
-
-]]
-
 conky.config = {
 
 	--Various settings
@@ -151,3 +139,5 @@ ${else}${cpu cpu0}${endif}${endif}%${alignr}${freq_g}${color}
 # ${color1}${hr}${color}
 # ${color1}${execi 6000 lsb_release -d | grep 'Descr'|awk {'print $2 " " $3" " $4" " $5'}}${alignr}${execi 6000 lsb_release -a | grep 'Release'|awk {'print $2""$3""$4""$5'}}${color}
 ]];
+
+-- vim: set ft=lua:
