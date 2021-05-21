@@ -22,6 +22,7 @@ import XMonad.Layout.LayoutBuilder (IncLayoutN (..))
 import XMonad.Layout.Maximize (maximizeRestore)
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.Spacing
+import XMonad.Actions.CycleWS (nextWS, prevWS, toggleWS)
 import XMonad.Layout.ZoomRow (zoomIn, zoomOut, zoomReset)
 import XMonad.Layout.WindowArranger -- for DecreaseRight, IncreaseUp
 import Graphics.X11.ExtraTypes -- for xF86XK_Paste
@@ -264,6 +265,12 @@ applicationKeybindings =
   , ("M-S-f"             , spawn "spacefm")
   -- , ("M-<F2>"            , spawnToWorkspace "spacefm" ( myWorkspaces !! 7 ))
   , ("M-f"               , spawn "st -e lf")
+
+  --   -- Switch to last workspace
+   -- , ((modm, xK_Tab)   , toggleWS)
+  , ("M-<Tab>"          , toggleWS)
+
+
   , ("M-i"               , spawn "browser")
   , ("M-S-i"             , spawn ("browser" ++ " --incognito"))
   , ("M-y"               , spawn "passmenu -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
