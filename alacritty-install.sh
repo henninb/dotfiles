@@ -19,4 +19,8 @@ cargo build --release
 #mv -v target/release/alacritty "$HOME/.local/bin"
 sudo mv -v target/release/alacritty /usr/local/bin
 
+cd "$HOME/projects" || exit
+git clone https://github.com/sei40kr/tmux-airline-dracula.git
+cd - || exit
+
 exit 0

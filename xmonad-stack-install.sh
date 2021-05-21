@@ -314,6 +314,10 @@ fi
 
 sudo cp -v "$HOME/.local/bin/xmonad-start" /usr/local/bin/xmonad-start
 
+cd "$HOME/projects" || exit
+git clone https://github.com/sei40kr/tmux-airline-dracula.git
+cd - || exit
+
 # if ! go get github.com/godbus/dbus; then
 #   echo "failed to install go dbus."
 #   # exit 1

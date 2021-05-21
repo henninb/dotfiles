@@ -15,7 +15,8 @@ conky.text = [[
 ^fg(\#663399)^i($HOME/.xmonad/assets/icons/diskette.xbm)^fg() ^fg(\#ebdbb2)${fs_used_perc /}% ^fg() | \
 ^fg(\#663399)^i($HOME/.xmonad/assets/icons/net_wired.xbm)^fg() ^fg(\#ebdbb2)${downspeedf enp3s0}K ^fg(\#ebdbb2)${upspeedf enp3s0}K ^fg() | \
 ^fg(\#663399)^i($HOME/.xmonad/assets/icons/date.xbm)^fg() ^fg(\#ebdbb2)${time %Y-%m-%d} ^fg() ^fg(\#ebdbb2)${time %H:%M:%S} ^fg() | \
-^fg(\#663399)^ca(1,~/.local/bin/shutdown-popup)^fg(\#ebdbb2)^i($HOME/.xmonad/assets/icons/ac.xbm)^ca()^fg() ^fg()^ca()^fn()
+^fg(\#663399)^ca(1,~/.local/bin/shutdown-popup)^i($HOME/.xmonad/assets/icons/ac.xbm)^ca() ^fg()^fn()
 ]]
 
 -- vim: set ft=lua:
+-- ^fg(\#663399)^ca(1,~/.local/bin/shutdown-popup)^fg(\#ebdbb2)^i($HOME/.xmonad/assets/icons/ac.xbm)^ca()^fg() ^fg()^ca()^fn()
