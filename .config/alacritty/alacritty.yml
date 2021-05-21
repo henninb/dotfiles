@@ -85,12 +85,16 @@ colors:
 background_opacity: 0.95
 
 key_bindings:
-  # (Windows, Linux, and BSD only)
-  - { key: P,        mods: Control,       action: Paste            }
-  - { key: Insert,   mods: Shift,         action: Paste            }
-  - { key: Y,        mods: Control,       action: Copy             }
+  - { key: V,        mods: Control|Shift, action: Paste }
+  - { key: C,        mods: Control|Shift, action: Copy }
   - { key: Equals,   mods: Control,       action: IncreaseFontSize }
   - { key: Add,      mods: Control,       action: IncreaseFontSize }
   - { key: Subtract, mods: Control,       action: DecreaseFontSize }
   - { key: Minus,    mods: Control,       action: DecreaseFontSize }
   - { key: Space,    mods: Control,       action: ToggleViMode }
+  - { key: N,        mods: Control,       action: SpawnNewInstance }
+  - { key: PageUp,   mods: Shift,         action: ScrollPageUp,   mode: ~Alt       }
+  - { key: PageDown, mods: Shift,         action: ScrollPageDown, mode: ~Alt       }
+  - { key: Home,     mods: Shift,         action: ScrollToTop,    mode: ~Alt       }
+  - { key: End,      mods: Shift,         action: ScrollToBottom, mode: ~Alt       }
+  - { key: F11,                           action: ToggleFullscreen }

@@ -45,6 +45,7 @@ endif
    " Plug 'vim-pandoc/vim-pandoc-syntax' " Markdown Docs in Vim
    Plug 'git@github.com:svermeulen/vim-subversive.git' " search and replace tool
    Plug 'git@github.com:bronson/vim-trailing-whitespace.git' " remove trailing whitespace
+   Plug 'bluz71/vim-nightfly-guicolors'
 
 " dev plugins
    " Plug 'neovim/nvim-lspconfig' " navtive nvim langauge server
@@ -256,7 +257,8 @@ noremap <leader>W :w !sudo tee % > /dev/null
 "source $HOME/.config/nvim/pack/plugins/start/dracula/autoload/dracula.vim
 "source $HOME/.config/nvim/autoload/dracula.vim
 try
-  colorscheme dracula
+  " colorscheme dracula
+  colorscheme nightfly
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme evening
 endtry

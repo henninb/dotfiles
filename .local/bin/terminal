@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+# if alacritty -e tmux new-session -A -s 'Default'; then
 if alacritty; then
   exit 0
 fi
@@ -12,7 +13,7 @@ if urxvt; then
   exit 0
 fi
 
-if xterm; then
+if xterm -fa 'monofur for Powerline' -fs 12; then
   exit 0
 fi
 

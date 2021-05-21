@@ -260,7 +260,7 @@ applicationKeybindings :: [(String, X ())]
 applicationKeybindings =
   [
     ("M-S-<Return>"      , spawn "st")
-  , ("M-<Return>"        , spawn "alacritty")
+  , ("M-<Return>"        , spawn "terminal")
   , ("M-S-p"             , spawn "dmenu_run -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
   , ("M-S-f"             , spawn "spacefm")
   -- , ("M-<F2>"            , spawnToWorkspace "spacefm" ( myWorkspaces !! 7 ))
