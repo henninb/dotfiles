@@ -257,8 +257,8 @@ noremap <leader>W :w !sudo tee % > /dev/null
 "source $HOME/.config/nvim/pack/plugins/start/dracula/autoload/dracula.vim
 "source $HOME/.config/nvim/autoload/dracula.vim
 try
-  " colorscheme dracula
-  colorscheme nightfly
+  colorscheme dracula
+  " colorscheme nightfly
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme evening
 endtry

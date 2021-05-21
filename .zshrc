@@ -332,7 +332,7 @@ mkdir -p "$HOME/.config/compton"
 [ -f /opt/intellij/bin/idea.sh ] && ln -sfn /opt/intellij/bin/idea.sh "$HOME/.local/bin/intellij" 2> /dev/null
 [ -f /opt/firefox/firefox ] && ln -sfn /opt/firefox/firefox "$HOME/.local/bin/firefox" > /dev/null
 [ -f /opt/vscode/bin/code ] && ln -sfn /opt/vscode/bin/code "$HOME/.local/bin/code" 2> /dev/null
-[ -f "$HOME/.tmux-rice.conf" ] && ln -sfn "$HOME/.tmux-rice.conf" "$HOME/.tmux.conf" 2> /dev/null
+[ -f "$HOME/.tmux-default.conf" ] && ln -sfn "$HOME/.tmux-default.conf" "$HOME/.tmux.conf" 2> /dev/null
 [ -f "$HOME/.ssh/config" ] && chmod 600 "$HOME/.ssh/config"
 [ -f "$HOME/.ssh/authorized_keys" ] && chmod 600 "$HOME/.ssh/authorized_keys"
 [ -f "$HOME/.ssh/config" ] && chmod 600 "$HOME/.ssh/config"
