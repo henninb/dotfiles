@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [ $(ps aux | grep shutdown-popup-name-for-killing | grep -v grep | wc -l) -gt 0 ] ; then
 	printf "%s\n" "The panel is already running." >&2
