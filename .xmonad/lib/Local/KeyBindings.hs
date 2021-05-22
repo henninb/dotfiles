@@ -126,6 +126,8 @@ windowKeys =
   , ("M-C-<Down>", sendMessage (DecreaseDown 10))
   , ("M-C-<Right>", sendMessage (DecreaseRight 10))
   , ("M-C-<Left>", sendMessage (DecreaseLeft 10))
+  , ("M-S-h", sendMessage Shrink)
+  , ("M-S-l", sendMessage Expand)
 
     -- ("M-'", nextMatch History (return True))
   -- , ("M-w k", windows W.focusUp)
@@ -199,7 +201,10 @@ windowKeys =
 -- | Keys for manipulating workspaces.
 workspaceKeys :: [(String, X ())]
 workspaceKeys =
-      [("M-;", viewPrevWS)]
+      [
+          ("M-;", viewPrevWS)
+        , ("M-<Tab>", toggleWS)
+      ]
         -- change active workspace
       ++ [("M-" ++ workSpace, windows $ W.greedyView workSpace) | workSpace <- myWorkspaces ]
       -- move window and change active workspace
@@ -265,13 +270,6 @@ applicationKeybindings =
   , ("M-S-f"             , spawn "spacefm")
   -- , ("M-<F2>"            , spawnToWorkspace "spacefm" ( myWorkspaces !! 7 ))
   , ("M-f"               , spawn "st -e lf")
-
-  --   -- Switch to last workspace
-   -- , ((modm, xK_Tab)   , toggleWS)
-  , ("M-<Tab>"          , toggleWS)
-  , ("M-m"              , withFocused (sendMessage . maximizeRestore))
-
-
   , ("M-i"               , spawn "browser")
   , ("M-S-i"             , spawn ("browser" ++ " --incognito"))
   , ("M-y"               , spawn "passmenu -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
