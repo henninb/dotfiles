@@ -269,6 +269,7 @@ applicationKeybindings =
   --   -- Switch to last workspace
    -- , ((modm, xK_Tab)   , toggleWS)
   , ("M-<Tab>"          , toggleWS)
+  , ("M-m"              , withFocused (sendMessage . maximizeRestore))
 
 
   , ("M-i"               , spawn "browser")

@@ -20,6 +20,7 @@ myManageHook = composeAll
     , title     =? "Welcome to IntelliJ IDEA"      --> doFloat
     , title     =? "Welcome to IntelliJ IDEA"      --> viewShift ( myWorkspaces !! 4 )
     , className =? "audacity"                      --> doFloat
+    , className =? "qemu-system-x86_64"            --> doFloat
     , className =? "audacity"                      --> viewShift ( myWorkspaces !! 5 )
     , className =? "Audacity"                      --> doFloat
     , className =? "Audacity"                      --> viewShift ( myWorkspaces !! 5 )
