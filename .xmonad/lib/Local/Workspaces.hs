@@ -6,17 +6,6 @@ import XMonad.Util.NamedScratchpad
 import qualified XMonad.StackSet as W
 import qualified XMonad.StackSet as StackSet
 
--- ws1 = "01"
--- ws2 = "02"
--- ws3 = "03"
--- ws4 = "04"
--- ws5 = "05"
--- ws6 = "06"
--- ws7 = "07"
--- ws8 = "08"
--- ws9 = "09"
--- ws0 = "00"
-
 ws1 = "1"
 ws2 = "2"
 ws3 = "3"
@@ -49,17 +38,17 @@ ws0 = "0"
 myWorkspaces :: [String]
 myWorkspaces = [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0]
 
-    -- tmux = NS name' cmd' query' floatingHook
+    -- tmux1 = NS name' cmd' query' floatingHook
     --     where
     --       name' = "tmux"
     --       cmd' = myTerm ++ " -t tmux_nsp -e tmux new-session -A -s scratch"
     --       query' = title =? "tmux_nsp"
-    -- telegram = NS name' cmd' query' floatingHook
 
 scratchPads :: [NamedScratchpad]
 scratchPads = [   NS "terminal" spawnTerm findTerm manageTerm
                 , NS "discord" spawnDiscord findDiscord manageDiscord
-                , NS "tmux" spawnTmux findTmux manageTmux
+                -- , NS "tmux" spawnTmux findTmux manageTmux
+                , tmux1
               ]
     where
     full = customFloating $ W.RationalRect 0.05 0.05 0.9 0.9
@@ -68,16 +57,20 @@ scratchPads = [   NS "terminal" spawnTerm findTerm manageTerm
     w = 0.9
     t = 0.95 -h
     l = 0.95 -w
-    spawnTerm  = "st" ++  " -n suckless-terminal"
-    findTerm   = resource =? "suckless-terminal"
+    spawnTerm = "st" ++  " -n suckless-terminal"
+    findTerm = resource =? "suckless-terminal"
     manageTerm = customFloating $ W.RationalRect l t w h
-    spawnTmux  = "st -e bash -c tmux" ++ " -t tmux-nsp"
-    -- findTmux   = resource =? "tmux"
-    findTmux   = title =? "tmux"
+    spawnTmux = "st -t tmux-nsp -e tmux new-session -A -s scratch"
+    findTmux = title =? "tmux"
     manageTmux = customFloating $ W.RationalRect l t w h
-    spawnDiscord  = "discord-flatpak"
-    findDiscord   = resource =? "discord"
+    spawnDiscord = "discord-flatpak"
+    findDiscord = resource =? "discord"
     manageDiscord = customFloating $ W.RationalRect l t w h
+    tmux1 = NS name' cmd' query' manageTmux
+        where
+          name' = "tmux"
+          cmd' = "st -t tmux_nsp -e tmux new-session -A -s scratch"
+          query' = title =? "tmux_nsp"
 
 viewPrevWS :: X ()
 viewPrevWS = do
