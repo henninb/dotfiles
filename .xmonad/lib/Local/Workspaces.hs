@@ -49,6 +49,13 @@ ws0 = "0"
 myWorkspaces :: [String]
 myWorkspaces = [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0]
 
+    -- tmux = NS name' cmd' query' floatingHook
+    --     where
+    --       name' = "tmux"
+    --       cmd' = myTerm ++ " -t tmux_nsp -e tmux new-session -A -s scratch"
+    --       query' = title =? "tmux_nsp"
+    -- telegram = NS name' cmd' query' floatingHook
+
 scratchPads :: [NamedScratchpad]
 scratchPads = [   NS "terminal" spawnTerm findTerm manageTerm
                 , NS "discord" spawnDiscord findDiscord manageDiscord
@@ -64,8 +71,9 @@ scratchPads = [   NS "terminal" spawnTerm findTerm manageTerm
     spawnTerm  = "st" ++  " -n suckless-terminal"
     findTerm   = resource =? "suckless-terminal"
     manageTerm = customFloating $ W.RationalRect l t w h
-    spawnTmux  = "st -e bash -c tmux" ++ " -n tmux"
-    findTmux   = resource =? "tmux"
+    spawnTmux  = "st -e bash -c tmux" ++ " -t tmux-nsp"
+    -- findTmux   = resource =? "tmux"
+    findTmux   = title =? "tmux"
     manageTmux = customFloating $ W.RationalRect l t w h
     spawnDiscord  = "discord-flatpak"
     findDiscord   = resource =? "discord"
