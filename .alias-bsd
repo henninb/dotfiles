@@ -9,6 +9,14 @@ export LS_COLORS='di=1:fi=96:*.m=31:*.py=32:*.txt=36:*.out=35'
 #alias ll='gls --color=always -l'
 unalias pbcopy
 unalias pbpaste
-unalias ls
-unalias ll
-unalias l.
+if [ ! -x "$(command -v gls)" ] || [ "$OS" != "Darwin" ]; then
+  unalias ls
+  unalias ll
+  unalias l.
+else
+  alias ls='gls --color=always'
+  alias l.='gls --color=always -d .*'
+  alias ll='gls --color=always -l'
+fi
+
+# export GUILE_TLS_CERTIFICATE_DIRECTORY=/usr/local/etc/gnutls/
