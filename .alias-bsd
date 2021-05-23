@@ -9,3 +9,6 @@ export LS_COLORS='di=1:fi=96:*.m=31:*.py=32:*.txt=36:*.out=35'
 #alias ll='gls --color=always -l'
 unalias pbcopy
 unalias pbpaste
+unalias ls
+unalias ll
+unalias l.
