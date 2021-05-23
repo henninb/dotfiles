@@ -6,7 +6,7 @@ import Graphics.X11.Xlib
 -- import System.Directory
 -- import System.FilePath ((</>))
 import XMonad hiding (keys)
-import XMonad.Actions.CopyWindow (kill1)
+import XMonad.Actions.CopyWindow (kill1, copy)
 import XMonad.Actions.DynamicProjects (switchProjectPrompt)
 import XMonad.Actions.GroupNavigation (Direction (..), nextMatch)
 import XMonad.Actions.Minimize
@@ -211,6 +211,8 @@ workspaceKeys =
       ++ [("M-S-" ++ workSpace, windows $ W.greedyView workSpace . W.shift workSpace) | workSpace <- myWorkspaces ]
       -- move window
       ++ [("M1-S-" ++ workSpace, windows $ W.shift workSpace) | workSpace <- myWorkspaces ]
+      --  copy window
+      ++ [("M-C-" ++ workSpace, windows $ copy workSpace) | workSpace <- myWorkspaces ]
 -- | Keys for manipulating workspaces.
 -- workspaceKeys :: XConfig Layout -> [(String, X ())]
 -- workspaceKeys conf =
@@ -292,6 +294,7 @@ applicationKeybindings =
 
   , ("M-<F12>"           , namedScratchpadAction scratchPads "terminal")
   , ("M-<F11>"           , namedScratchpadAction scratchPads "discord")
+  , ("M-<F10>"           , namedScratchpadAction scratchPads "tmux")
   ]
 
 -- | Keys for controlling music and volume.

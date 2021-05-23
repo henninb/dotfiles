@@ -50,8 +50,10 @@ myWorkspaces :: [String]
 myWorkspaces = [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0]
 
 scratchPads :: [NamedScratchpad]
-scratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
-                 , NS "discord" spawnDiscord findDiscord manageDiscord ]
+scratchPads = [   NS "terminal" spawnTerm findTerm manageTerm
+                , NS "discord" spawnDiscord findDiscord manageDiscord
+                , NS "tmux" spawnTmux findTmux manageTmux
+              ]
     where
     full = customFloating $ W.RationalRect 0.05 0.05 0.9 0.9
     top = customFloating $ W.RationalRect 0.0 0.0 1.0 0.5
@@ -59,9 +61,12 @@ scratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
     w = 0.9
     t = 0.95 -h
     l = 0.95 -w
-    spawnTerm  = "st" ++  " -n scratchpad"
-    findTerm   = resource =? "scratchpad"
+    spawnTerm  = "st" ++  " -n suckless-terminal"
+    findTerm   = resource =? "suckless-terminal"
     manageTerm = customFloating $ W.RationalRect l t w h
+    spawnTmux  = "st -e bash -c tmux" ++ " -n tmux"
+    findTmux   = resource =? "tmux"
+    manageTmux = customFloating $ W.RationalRect l t w h
     spawnDiscord  = "discord-flatpak"
     findDiscord   = resource =? "discord"
     manageDiscord = customFloating $ W.RationalRect l t w h
