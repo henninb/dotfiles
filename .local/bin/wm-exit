@@ -9,8 +9,8 @@ if [ $# -ne 1 ]; then
   exit 1
 fi
 
-while [ "${select}" != "Cancel" ] && [ "${select}" != "Logout" ] && [ "${select}" != "Shutdown" ] && [ "${select}" != "Reboot" ]; do
-    select=$(printf "Cancel\nLogout\nShutdown\nReboot" | dmenu -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf '#000000' -fn 'monofur for Powerline' -i -p "Action?")
+while [ "${select}" != "Cancel" ] && [ "${select}" != "Logout" ] && [ "${select}" != "Shutdown" ] && [ "${select}" != "Reboot" ] && [ "${select}" != "Lock" ]; do
+    select=$(printf "Cancel\nLogout\nShutdown\nReboot\nLock" | dmenu -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf '#000000' -fn 'monofur for Powerline' -i -p "Action?")
     [ -z "${select}" ] && exit 0
 done
 
@@ -22,6 +22,7 @@ if [ "${OS}" = "FreeBSD" ]; then
   [ "${select}" = "Logout" ] && [ "${wm}" = "spectrwm" ] && pkill -v spectrwm
   [ "${select}" = "Shutdown" ] && sudo shutdown -p now
   [ "${select}" = "Reboot" ] && sudo shutdown -r now
+  [ "${select}" = "Lock" ] && i3lock -d -c FFFFFF -C -i ~/backgrounds/mountain-road.jpg
   exit 0
 fi
 
@@ -32,6 +33,7 @@ fi
 [ "${select}" = "Logout" ] && [ "${wm}" = "spectrwm" ] && pkill -x spectrwm
 [ "${select}" = "Shutdown" ] && sudo shutdown -h now
 [ "${select}" = "Reboot" ] && sudo shutdown -r now
+[ "${select}" = "Lock" ] && i3lock -d -c FFFFFF -C -i ~/backgrounds/mountain-road.jpg
 
 exit 0
 

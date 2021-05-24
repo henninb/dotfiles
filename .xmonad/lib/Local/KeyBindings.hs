@@ -27,6 +27,9 @@ import XMonad.Layout.ZoomRow (zoomIn, zoomOut, zoomReset)
 import XMonad.Layout.WindowArranger -- for DecreaseRight, IncreaseUp
 import Graphics.X11.ExtraTypes -- for xF86XK_Paste
 import XMonad.Util.Paste (sendKey) -- for sendKey
+import XMonad.Util.Run
+import XMonad.Prompt.Input
+
 -- import XMonad.Local.Layout (selectLayoutByName, toggleLayout)
 -- import XMonad.Local.Layout.Columns (IncMasterCol (..))
 -- import XMonad.Local.Music (radioPrompt)
@@ -281,6 +284,8 @@ applicationKeybindings =
   , ("M-S-b"             , spawn "redshift -x")
   , ("M-<F3>"            , spawn "intellij")
   , ("M-C-n"             , spawn ("st" ++ " -e newsboat"))
+  , ("M-S-t"             , tmuxPrompt myXPConfig)
+  , ("M-M1-l"            , spawn "i3lock -d -c FFFFFF -t -i ~/backgrounds/mountain-road.jpg")
     -- ("M-C-u", Local.webAppPrompt Local.promptConfig),
     -- ("M-S-]", namedScratchpadAction scratchPads "emacs"),
     -- ("M-S-[", namedScratchpadAction scratchPads "browser")
@@ -391,3 +396,26 @@ spawnToWorkspace :: String -> String -> X ()
 spawnToWorkspace program workspace = do
               spawn program
               windows $ W.greedyView workspace . W.shift workspace
+
+tmuxRun :: IO [String]
+tmuxRun = lines <$> runProcessWithInput "tmux" ["list-sessions", "-F", "#{session_name}"] ""
+
+tmuxPrompt :: XPConfig -> X ()
+tmuxPrompt c = io tmuxRun >>= \as -> inputPromptWithCompl c "tmux" (mkComplFunFromList' as) ?+ tmuxStart as
+
+tmuxStart :: [String] -> String -> X ()
+tmuxStart ss s = asks (terminal . config) >>= \term -> attachOrCreate term s
+ where
+  attachOrCreate = \t s' -> spawn $ t ++ " -e tmux new -s " ++ s' ++ " -A"
+
+myXPConfig :: XPConfig
+myXPConfig = def
+  {
+    font = "xft:monofur for Powerline:bold:size=9:antialias=true:hinting=true"
+  , bgColor = "#000000"
+  , borderColor = "#000000"
+  , fgColor = "#E6E6FA"
+  , position = Bottom
+  , height = 28
+  , autoComplete = Nothing
+  }
