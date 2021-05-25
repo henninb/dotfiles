@@ -1,4 +1,4 @@
-module Local.SearchList where
+module Local.SearchList (searchList, tmuxPrompt, myXPConfig', myXPConfigBottom) where
 
 import XMonad
 import XMonad.Prompt
@@ -7,9 +7,14 @@ import Control.Arrow (first)
 import qualified Data.Map as M
 import qualified XMonad.StackSet as W
 import qualified XMonad.Actions.Search as S
+import XMonad.Util.Run
+import XMonad.Prompt.Input
 
-import Local.KeyBindings
+-- import Local.KeyBindings
 
+
+superKeyMask :: KeyMask
+superKeyMask = mod4Mask
 
 myFont :: String
 myFont = "xft:monofur for Powerline:bold:size=9:antialias=true:hinting=true"
@@ -106,3 +111,26 @@ myXPConfig' :: XPConfig
 myXPConfig' = myXPConfig
       { autoComplete        = Nothing
       }
+
+tmuxRun :: IO [String]
+tmuxRun = lines <$> runProcessWithInput "tmux" ["list-sessions", "-F", "#{session_name}"] ""
+
+tmuxPrompt :: XPConfig -> X ()
+tmuxPrompt c = io tmuxRun >>= \as -> inputPromptWithCompl c "tmux" (mkComplFunFromList' as) ?+ tmuxStart as
+
+tmuxStart :: [String] -> String -> X ()
+tmuxStart ss s = asks (terminal . config) >>= \term -> attachOrCreate term s
+ where
+  attachOrCreate = \t s' -> spawn $ t ++ " -e tmux new -s " ++ s' ++ " -A"
+
+myXPConfigBottom :: XPConfig
+myXPConfigBottom = def
+    {
+      font = myFont
+    , bgColor = "#000000"
+    , borderColor = "#000000"
+    , fgColor = "#E6E6FA"
+    , position = Bottom
+    , height = 28
+    , autoComplete = Nothing
+    }

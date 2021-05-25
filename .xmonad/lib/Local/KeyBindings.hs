@@ -42,8 +42,10 @@ import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (mkKeymap)
 import qualified XMonad.Util.ExtensibleState as XState
 import XMonad.Util.NamedScratchpad (namedScratchpadAction)
+import qualified XMonad.Actions.Search as S
 
 -- import Local.Workspaces (viewPrevWS)
+import Local.SearchList
 import Local.Workspaces
 
 -- | Join all the key maps into a single list and send it through @mkKeymap@.
@@ -262,7 +264,7 @@ screenKeys =
     -- ("M-S-0", onNextNeighbour def W.view),
     -- ("M-S-9", onPrevNeighbour def W.view),
     -- ("M-d", screenSwap L True),
-    ("C-M1-l", spawn "loginctl lock-session")
+    -- ("C-M1-l", spawn "loginctl lock-session")
   ]
 
 -- | Keys for launching applications.
@@ -284,7 +286,6 @@ applicationKeybindings =
   , ("M-S-b"             , spawn "redshift -x")
   , ("M-<F3>"            , spawn "intellij")
   , ("M-C-n"             , spawn ("st" ++ " -e newsboat"))
-  , ("M-S-t"             , tmuxPrompt myXPConfig)
   , ("M-M1-l"            , spawn "i3lock -d -c FFFFFF -t -i ~/backgrounds/mountain-road.jpg")
     -- ("M-C-u", Local.webAppPrompt Local.promptConfig),
     -- ("M-S-]", namedScratchpadAction scratchPads "emacs"),
@@ -294,13 +295,17 @@ applicationKeybindings =
   , ("M-S-<Backspace>"   , kill1) -- Kill the current window.
   , ("M-<Escape>"        , spawn "xmonad --recompile && xmonad --restart")
 
-  -- TODO: need to fix the includes
   , ("M-v"               , sendKey noModMask xF86XK_Paste)
 
   , ("M-<F12>"           , namedScratchpadAction scratchPads "terminal")
   , ("M-<F11>"           , namedScratchpadAction scratchPads "discord")
   , ("M-<F10>"           , namedScratchpadAction scratchPads "tmux")
+  , ("M-S-t"             , tmuxPrompt myXPConfigBottom)
   ]
+
+      -- Appending search engine prompts to keybindings list.
+    ++ [("M-s " ++ k, S.promptSearch myXPConfig' f) | (k,f) <- searchList ]
+    ++ [("M-S-s " ++ k, S.selectSearch f) | (k,f) <- searchList ]
 
 -- | Keys for controlling music and volume.
 -- musicKeys :: XConfig Layout -> [(String, X ())]
@@ -396,26 +401,3 @@ spawnToWorkspace :: String -> String -> X ()
 spawnToWorkspace program workspace = do
               spawn program
               windows $ W.greedyView workspace . W.shift workspace
-
-tmuxRun :: IO [String]
-tmuxRun = lines <$> runProcessWithInput "tmux" ["list-sessions", "-F", "#{session_name}"] ""
-
-tmuxPrompt :: XPConfig -> X ()
-tmuxPrompt c = io tmuxRun >>= \as -> inputPromptWithCompl c "tmux" (mkComplFunFromList' as) ?+ tmuxStart as
-
-tmuxStart :: [String] -> String -> X ()
-tmuxStart ss s = asks (terminal . config) >>= \term -> attachOrCreate term s
- where
-  attachOrCreate = \t s' -> spawn $ t ++ " -e tmux new -s " ++ s' ++ " -A"
-
-myXPConfig :: XPConfig
-myXPConfig = def
-  {
-    font = "xft:monofur for Powerline:bold:size=9:antialias=true:hinting=true"
-  , bgColor = "#000000"
-  , borderColor = "#000000"
-  , fgColor = "#E6E6FA"
-  , position = Bottom
-  , height = 28
-  , autoComplete = Nothing
-  }
