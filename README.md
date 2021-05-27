@@ -200,3 +200,4 @@
 - ripgrep - grep replacement [cargo install ripgrep]
 - stow for managing symlinks
 - pstree
+- hyperfine - performance tester
