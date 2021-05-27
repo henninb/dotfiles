@@ -49,14 +49,15 @@ scratchPads = [   NS "terminal" spawnTerm findTerm manageTerm
                 , NS "discord" spawnDiscord findDiscord manageDiscord
                 -- , NS "tmux" spawnTmux findTmux manageTmux
                 , tmux1
+                , NS "keepassxc" "keepassxc" (className =? "KeePassXC") (customFloating $ W.RationalRect 0.50 0.05 0.4 0.87)
               ]
     where
     full = customFloating $ W.RationalRect 0.05 0.05 0.9 0.9
     top = customFloating $ W.RationalRect 0.0 0.0 1.0 0.5
     h = 0.9
     w = 0.9
-    t = 0.95 -h
-    l = 0.95 -w
+    t = 0.95 - h
+    l = 0.95 - w
     spawnTerm = "st" ++  " -n suckless-terminal"
     findTerm = resource =? "suckless-terminal"
     manageTerm = customFloating $ W.RationalRect l t w h

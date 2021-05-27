@@ -300,6 +300,7 @@ applicationKeybindings =
   , ("M-<F12>"           , namedScratchpadAction scratchPads "terminal")
   , ("M-<F11>"           , namedScratchpadAction scratchPads "discord")
   , ("M-<F10>"           , namedScratchpadAction scratchPads "tmux")
+  , ("M-<F9>"           , namedScratchpadAction scratchPads "keepassxc")
   , ("M-S-t"             , tmuxPrompt myXPConfigBottom)
   ]
 
