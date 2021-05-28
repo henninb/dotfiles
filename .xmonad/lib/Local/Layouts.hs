@@ -48,9 +48,9 @@ workspaceLayouts =
 
 myFtLayoutGroup  = myTileLayout ||| fullLayout ||| commonLayout
 myFtLayoutGroupM = myTileLayout ||| fullLayout ||| myMagn
-my3FT = myTileLayout ||| fullLayout ||| threeColumn
+my3FT = myTileLayout ||| fullLayout ||| threeCol
 myMiscLayoutGroup = mediaLayout ||| terminalLayout ||| terminalLayout ||| commonLayout ||| readingLayout ||| panelLayout
-myAllLayoutGroup = myTileLayout ||| fullLayout ||| threeColumn ||| myMagn ||| terminalLayout
+myAllLayoutGroup = myTileLayout ||| fullLayout ||| threeCol ||| myMagn ||| terminalLayout
 
 fullLayout = renamed [Replace "Full"]
       $ avoidStruts
@@ -64,9 +64,13 @@ myTileLayout = renamed [Replace "Main"]
       $ mySpacing
       $ Tall 1 (3/100) (1/2)
 threeColumn = renamed [Replace "3Col"]
-      $ avoidStruts
+      -- $ avoidStruts
       $ mySpacing
       $ ThreeColMid 1 (3/100) (1/2)
+threeCol = renamed [Replace "Three"]
+      $ avoidStruts
+      $ mySpacing
+      $ ThreeColMid 1 (1/10) (1/2)
 myMagn = renamed [Replace "Mag"]
       $ mySpacing
       $ noBorders

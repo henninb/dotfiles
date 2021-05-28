@@ -22,6 +22,7 @@ myManageHook = composeAll
     , className =? "qemu-system-x86_64"            --> doFloat
     , className =? "Audacity"                      --> doFloat
     , className =? "KeePassXC"                     --> doFloat
+    , className =? "vlc"                     --> doFloat
     , className =? "Audacity"                      --> viewShift ( myWorkspaces !! 5 )
     , className =? "jetbrains-idea"   --> doFloat
     , className =? "jetbrains-idea"   --> viewShift ( myWorkspaces !! 4 )
