@@ -7,7 +7,7 @@ import Graphics.X11.Xlib
 -- import System.FilePath ((</>))
 import XMonad hiding (keys)
 import XMonad.Actions.CopyWindow (kill1, copy)
-import XMonad.Actions.DynamicProjects (switchProjectPrompt)
+import XMonad.Actions.DynamicProjects (switchProjectPrompt, switchProject)
 import XMonad.Actions.GroupNavigation (Direction (..), nextMatch)
 import XMonad.Actions.Minimize
 import XMonad.Actions.Navigation2D
@@ -296,6 +296,7 @@ applicationKeybindings =
   , ("M-<Escape>"        , spawn "xmonad --recompile && xmonad --restart")
 
   , ("M-v"               , sendKey noModMask xF86XK_Paste)
+  -- , ("M-z"               , switchProject terminalProject)
 
   , ("M-<F12>"           , namedScratchpadAction scratchPads "terminal")
   , ("M-<F11>"           , namedScratchpadAction scratchPads "discord")

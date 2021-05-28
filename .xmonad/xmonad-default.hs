@@ -26,6 +26,7 @@ import Prelude
 import System.Environment (setEnv)
 import System.Info (os)
 import qualified XMonad.Layout.IndependentScreens as LIS
+import XMonad.Actions.DynamicProjects
 
 import Local.Colors
 import Local.KeyBindings
@@ -72,6 +73,7 @@ main = do
 
   xmonad
     $ withUrgencyHook NoUrgencyHook
+    $ dynamicProjects projects
     $ ewmh
     -- $ myConfig { logHook = dynamicLogWithPP polybarLogHook }
     $ myConfig { logHook =

@@ -1,8 +1,9 @@
-module Local.Workspaces (myWorkspaces, scratchPads, viewPrevWS) where
+module Local.Workspaces (myWorkspaces, scratchPads, viewPrevWS, projects, terminalProject) where
 
 import XMonad
 import Control.Monad (unless)
 import XMonad.Util.NamedScratchpad
+import XMonad.Actions.DynamicProjects
 import qualified XMonad.StackSet as W
 import qualified XMonad.StackSet as StackSet
 
@@ -35,6 +36,23 @@ ws0 = "0"
 -- toWorkspaceId WinWorkspace = "win"
 -- toWorkspaceId MusicWorkspace = "music"
 
+terminalProject :: Project
+terminalProject =
+  Project {
+    projectName = "terminal"
+    , projectDirectory = "~/projects"
+    , projectStartHook = Just $ do spawn "alacritty"
+  }
+
+scratchProject :: Project
+scratchProject = Project { projectName = "scratch"
+            , projectDirectory = "~/"
+            , projectStartHook = Nothing
+            }
+
+projects :: [Project]
+projects = [ terminalProject ]
+
 myWorkspaces :: [String]
 myWorkspaces = [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0]
 
@@ -63,7 +81,7 @@ scratchPads = [   NS "terminal" spawnTerm findTerm manageTerm
     findTerm = resource =? "suckless-terminal"
     manageTerm = customFloating $ W.RationalRect l t w h
     spawnTmux = "st -t tmux-nsp -e tmux new-session -A -s scratch"
-    findTmux = title =? "tmux"
+    findTmux = title =? "tmux-nsp"
     manageTmux = customFloating $ W.RationalRect l t w h
     spawnDiscord = "discord-flatpak"
     findDiscord = resource =? "discord"
