@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 
+last_built=$(stat -c '%Y' "$EXE_LOCATION")
+xmonad_modified=$(stat -c '%Y' ./xmonad.hs)
+[ "$last_built" -lt "$xmonad_modified" ] && echo
+
 #stack ghc -- --make xmonad.hs -i -fforce-recomp -with-rtsopts=-N4 -o "$1"
 stack ghc -- --make xmonad.hs
 

@@ -14,6 +14,7 @@ dependencies:
 - utf8-string
 - X11
 - bytestring
+- text
 
 library:
   source-dirs: lib
