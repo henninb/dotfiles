@@ -75,3 +75,6 @@ xrandr --size 2560x1440 2> /dev/null
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 # eval "$(pyenv init --path)"
+
+#nix allow non-free packages
+export NIXPKGS_ALLOW_UNFREE=1
