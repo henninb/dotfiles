@@ -1,10 +1,19 @@
 servers = (
+#  {
+#    address = "chat.freenode.net";
+#    chatnet = "Freenode";
+#    port = "6697";
+#    use_tls = "yes";
+#    tls_cert = "~/.irssi/certs/freenode.pem";
+#    tls_verify = "yes";
+#    autoconnect = "yes";
+#  },
   {
-    address = "chat.freenode.net";
-    chatnet = "Freenode";
+    address = "irc.libera.chat";
+    chatnet = "libra-chat";
     port = "6697";
     use_tls = "yes";
-    tls_cert = "~/.irssi/certs/freenode.pem";
+    tls_cert = "~/.irssi/certs/libra-chat.pem";
     tls_verify = "yes";
     autoconnect = "yes";
   },
@@ -17,7 +26,7 @@ servers = (
 );
 
 chatnets = {
-  Freenode = {
+  chat = {
     type = "IRC";
     nick = "henninb";
     max_kicks = "1";
@@ -28,42 +37,44 @@ chatnets = {
     sasl_password = "********";
   };
   spotchat = { type = "IRC"; nick = "henninb"; };
+  Freenode = { type = "IRC"; };
+  "libra-chat" = { type = "IRC"; };
 };
 
 channels = (
-  { name = "#freebsd"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#freebsd-irc"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#freebsd-labs"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#archlinux"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#ubuntu"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#gentoo"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#fedora"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#voidlinux"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#manjaro"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#solus"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#pfsense"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#ipfire"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#dd-wrt"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#scala"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#kotlin"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#python"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#haskell"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#rust-beginners"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#ruby"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#neovim"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#vim"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#emacs"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#xmonad"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#i3"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#bspwm"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#distrotube"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#mutt"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#alacritty"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#kvm"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#vagrant"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#bhyve"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#irssi"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#lf"; chatnet = "Freenode"; autojoin = "Yes"; },
+  { name = "#freebsd"; chatnet = "libra-chat"; autojoin = "yes"; },
+  { name = "#freebsd-irc"; chatnet = "libra-chat"; autojoin = "yes"; },
+  { name = "#freebsd-labs"; chatnet = "libra-chat"; autojoin = "yes"; },
+  { name = "#ubuntu"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#gentoo"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#fedora"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#voidlinux"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#manjaro"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#solus"; chatnet = "libra-chat"; autojoin = "Yes"; },
+#  { name = "#archlinux"; chatnet = "Freenode"; autojoin = "Yes"; },
+#  { name = "#pfsense"; chatnet = "Freenode"; autojoin = "Yes"; },
+#  { name = "#kotlin"; chatnet = "Freenode"; autojoin = "Yes"; },
+#  { name = "#python"; chatnet = "Freenode"; autojoin = "Yes"; },
+  { name = "#ipfire"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#dd-wrt"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#scala"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#haskell"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#rust-beginners"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#ruby"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#neovim"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#vim"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#emacs"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#xmonad"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#i3"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#bspwm"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#distrotube"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#mutt"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#alacritty"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#kvm"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#vagrant"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#bhyve"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#irssi"; chatnet = "libra-chat"; autojoin = "Yes"; },
+  { name = "#lf"; chatnet = "libra-chat"; autojoin = "Yes"; },
   { name = "#linuxmint-help"; chatnet = "spotchat"; autojoin = "Yes"; },
   { name = "#linuxmint-chat"; chatnet = "spotchat"; autojoin = "Yes"; }
 );
@@ -340,5 +351,5 @@ hilights = ( { text = "nick"; nick = "yes"; word = "yes"; } );
 logs = { };
 keyboard = (
   { key = "^J"; id = "next_window"; data = ""; },
-  { key = "^K"; id = "previous_window"; data = ""; },
+  { key = "^K"; id = "previous_window"; data = ""; }
 );
