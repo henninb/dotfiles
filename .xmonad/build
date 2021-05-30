@@ -8,7 +8,9 @@ xmonad_modified=$(stat -c '%Y' ./xmonad.hs)
 stack ghc -- --make xmonad.hs
 
 stack build :xmonad-config
-stack install :xmonad-config --local-bin-path ~/.local/bin/
+#stack install :xmonad-config --local-bin-path ~/.local/bin/
+
+install "$(stack exec which xmonad-config)" "$1"
 
 #exec install xmonad-x86_64-linux ~/.local/bin/xmonad
 
