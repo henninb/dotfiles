@@ -47,7 +47,8 @@ alias youtube-dl="youtube-dl --no-check-certificate -f 'bestaudio[ext=m4a]'"
 alias local_ip="ip route get 8.8.8.8"
 alias local_ip1="hostname -I"
 
-alias ghci="stack ghci"
+alias ghci="stack exec -- ghci"
+alias handbrake-gui="ghb"
 alias lynx='lynx -cfg=~/.lynx.cfg'
 
 alias sudop='sudo -E su -p'
