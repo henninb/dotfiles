@@ -31,14 +31,14 @@ brew install unbound
 # brew install yarn
 brew install ansible
 brew install gettext
-brew install gradle
+# brew install gradle
 # brew install kubernetes-cli
 brew install libidn2
 brew install libunistring
 brew install luajit
 brew install ncurses
 brew install pcre
-brew install qemu
+# brew install qemu
 brew install unibilium
 # brew install zookeeper
 brew install bfg
@@ -89,7 +89,7 @@ brew install tmux
 brew install jenv
 #brew install wine
 brew install pwgen
-brew install fish
+# brew install fish
 brew install dos2unix
 brew install clang-format
 brew install astyle

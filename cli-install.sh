@@ -22,7 +22,7 @@ FREEBSD_PKGS="coreutils zip unzip python py36-pip py36-powerline-status-2.7 stun
 
 RASPI_PKGS="jq vim-nox vim wget zsh gpg git mutt htop figlet screen pass neovim stunnel postfix mpg321 ranger mutt irssi nmon nmap libnova clisp fakeroot fish zip unzip dos2unix ctags emacs rsync tmux mcrypt etherwake sshfs cmus ffmpeg mpg123 strace yarn toilet newsboat sxhkd neofetch sshpass calcurse shellcheck tig grip elinks elinks urlscan task-spooler"
 
-MACOS_PKGS="ffmpeg figlet cmus imagemagick neofetch htop screen wget zsh fish zip unzip tmux dos2unix lynx azure-cli astyle emacs qemu ansible go nmap python2 python3 ripgrep exa sshpass reattach-to-user-namespace most shellcheck tig rsync elinks urlscan task-spooler"
+MACOS_PKGS="ffmpeg figlet cmus imagemagick neofetch htop screen wget zsh fish zip unzip tmux dos2unix lynx azure-cli astyle emacs qemu ansible go nmap python3 ripgrep exa sshpass reattach-to-user-namespace most shellcheck tig rsync elinks urlscan task-spooler"
 
 VOID_PKGS="fontforge ffmpeg figlet cmus zip unzip ctags astyle toilet unix2dos fish jq neofetch tig most vimfm netcat htop ffmpeg emacs mcrypt tmux screen nmon mpd nnn nmap ntp ntfs-3g rsync elinks udisks2"
 
