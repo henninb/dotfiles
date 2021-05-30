@@ -1,13 +1,17 @@
 #!/usr/bin/env sh
 
-last_built=$(stat -c '%Y' "$EXE_LOCATION")
-xmonad_modified=$(stat -c '%Y' ./xmonad.hs)
-[ "$last_built" -lt "$xmonad_modified" ] && echo
+# last_built=$(stat -c '%Y' "$EXE_LOCATION")
+# xmonad_modified=$(stat -c '%Y' ./xmonad.hs)
+# [ "$last_built" -lt "$xmonad_modified" ] && echo
 
-#stack ghc -- --make xmonad.hs -i -fforce-recomp -with-rtsopts=-N4 -o "$1"
-stack ghc -- --make xmonad.hs
+##stack ghc -- --make xmonad.hs -i -fforce-recomp -with-rtsopts=-N4 -o "$1"
+#stack ghc -- --make xmonad.hs
 
-stack build :xmonad-config
+if stack build :xmonad-config; then
+  notify-send "xmonad build" "The xmonad build was successful"
+else
+  notify-send "xmonad build" "The xmonad build had failures"
+fi
 #stack install :xmonad-config --local-bin-path ~/.local/bin/
 
 install "$(stack exec which xmonad-config)" "$1"

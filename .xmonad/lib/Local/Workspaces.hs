@@ -65,8 +65,8 @@ myWorkspaces = [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0]
 scratchPads :: [NamedScratchpad]
 scratchPads = [   NS "terminal" spawnTerm findTerm manageTerm
                 , NS "discord" spawnDiscord findDiscord manageDiscord
-                -- , NS "tmux" spawnTmux findTmux manageTmux
-                , tmux1
+                , NS "tmux" spawnTmux findTmux manageTmux
+                , NS "calc" spawnCalc findCalc manageCalc
                 , NS "keepassxc" "keepassxc" (className =? "KeePassXC") (customFloating $ W.RationalRect 0.50 0.05 0.4 0.87)
                 , NS "vlc" "vlc" (className =? "vlc") (customFloating $ W.RationalRect 0.50 0.05 0.4 0.87)
               ]
@@ -86,11 +86,15 @@ scratchPads = [   NS "terminal" spawnTerm findTerm manageTerm
     spawnDiscord = "discord-flatpak"
     findDiscord = resource =? "discord"
     manageDiscord = customFloating $ W.RationalRect l t w h
-    tmux1 = NS name' cmd' query' manageTmux
-        where
-          name' = "tmux"
-          cmd' = "st -t tmux_nsp -e tmux new-session -A -s scratch"
-          query' = title =? "tmux_nsp"
+    spawnCalc  = "qalculate-gtk"
+    findCalc   = className =? "Qalculate-gtk"
+    manageCalc = customFloating $ W.RationalRect l t w h
+               where
+                 h = 0.5
+                 w = 0.4
+                 t = 0.75 -h
+                 l = 0.70 -w
+
 
 viewPrevWS :: X ()
 viewPrevWS = do

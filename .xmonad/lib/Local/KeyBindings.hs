@@ -303,6 +303,7 @@ applicationKeybindings =
   , ("M-<F10>"           , namedScratchpadAction scratchPads "tmux")
   , ("M-<F9>"           , namedScratchpadAction scratchPads "keepassxc")
   , ("M-<F8>"           , namedScratchpadAction scratchPads "vlc")
+  , ("M-<F7>"           , namedScratchpadAction scratchPads "calc")
   , ("M-S-t"             , tmuxPrompt myXPConfigBottom)
   ]
 

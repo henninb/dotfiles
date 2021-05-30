@@ -135,7 +135,7 @@
 | audio mixer            | amixer, ncpamixer                                                                    |
 | screen recorder        | simplescreenrecorder                                                                 |
 | disk space             | ncdu                                                                                 |
-
+| calculator             | qalculate-gtk                                                                        |
 
 ## Language Servers
 - c - ccls

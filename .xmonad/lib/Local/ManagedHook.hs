@@ -9,9 +9,19 @@ import XMonad.Util.NamedScratchpad (namedScratchpadManageHook)
 import Local.Workspaces
 
 myManageHook = composeAll
-    [ className =? "MPlayer"          --> doFloat
-    , title     =? "urxvt-float"      --> doFloat --custom window title
-    , title     =? "st-float"         --> doFloat --custom window title
+    [
+       className =? "confirm"         --> doFloat
+     , className =? "file_progress"   --> doFloat
+     , className =? "dialog"          --> doFloat
+     , className =? "download"        --> doFloat
+     , className =? "error"           --> doFloat
+     , className =? "notification"    --> doFloat
+     , className =? "splash"          --> doFloat
+     , className =? "toolbar"         --> doFloat
+     , className =? "Xmessage"        --> doFloat
+     , role      =? "pop-up"          --> doFloat
+     , resource  =? "desktop_window"   --> doIgnore -- TODO: not sure what this does
+
     , className =? "Gimp"             --> doFloat
     , className =? "Emacs"            --> viewShift ( myWorkspaces !! 6 )
     , className =? "dzen2"            --> doIgnore
@@ -26,16 +36,13 @@ myManageHook = composeAll
     , className =? "Audacity"                      --> viewShift ( myWorkspaces !! 5 )
     , className =? "jetbrains-idea"   --> doFloat
     , className =? "jetbrains-idea"   --> viewShift ( myWorkspaces !! 4 )
-    , resource  =? "desktop_window"   --> doIgnore -- TODO: not sure what this does
     -- Float flameshot's imgur window
     -- , className =? "flameshot" <&&> fmap (isInfixOf "Upload to Imgur") title --> doFloat
     , className =? "feh"              --> doFloat
-    , role      =? "pop-up"           --> doFloat
     , title     =? "Discord Updater" --> doFloat
     , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
     , (className =? "Notepadqq" <&&> title =? "Search") --> doFloat
     , (className =? "Notepadqq" <&&> title =? "Advanced Search") --> doFloat
-    , className =? "Xmessage" --> doFloat
     , role =? "browser" --> viewShift ( myWorkspaces !! 3 )
     ]  <+> namedScratchpadManageHook scratchPads
   where
