@@ -32,18 +32,16 @@ myManageHook = composeAll
     , className =? "qemu-system-x86_64"            --> doFloat
     , className =? "Audacity"                      --> doFloat
     , className =? "KeePassXC"                     --> doFloat
-    , className =? "vlc"                     --> doFloat
-    , className =? "Audacity"                      --> viewShift ( myWorkspaces !! 5 )
-    , className =? "jetbrains-idea"   --> doFloat
-    , className =? "jetbrains-idea"   --> viewShift ( myWorkspaces !! 4 )
-    -- Float flameshot's imgur window
-    -- , className =? "flameshot" <&&> fmap (isInfixOf "Upload to Imgur") title --> doFloat
-    , className =? "feh"              --> doFloat
-    , title     =? "Discord Updater" --> doFloat
+    , className =? "Sotify"                        --> doFloat
+    , className =? "vlc"                           --> doFloat
+    , className =? "jetbrains-idea"                --> doFloat
+    , className =? "jetbrains-idea"                --> viewShift ( myWorkspaces !! 4 )
+    , className =? "feh"                           --> doFloat
+    , title     =? "Discord Updater"               --> doFloat
     , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
     , (className =? "Notepadqq" <&&> title =? "Search") --> doFloat
     , (className =? "Notepadqq" <&&> title =? "Advanced Search") --> doFloat
-    , role =? "browser" --> viewShift ( myWorkspaces !! 3 )
+    , role =? "browser"                            --> viewShift ( myWorkspaces !! 3 )
     ]  <+> namedScratchpadManageHook scratchPads
   where
     role = stringProperty "WM_WINDOW_ROLE"

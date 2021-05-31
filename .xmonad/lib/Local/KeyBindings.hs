@@ -303,7 +303,8 @@ applicationKeybindings =
   , ("M-v"               , sendKey noModMask xF86XK_Paste)
   -- , ("M-z"               , switchProject terminalProject)
 
-  , ("M-<F12>"           , namedScratchpadAction scratchPads "terminal")
+  -- , ("M-<F12>"           , namedScratchpadAction scratchPads "terminal")
+  , ("M-<F12>"           , namedScratchpadAction scratchPads "spotify-nsp")
   , ("M-<F11>"           , namedScratchpadAction scratchPads "discord")
   , ("M-<F10>"           , namedScratchpadAction scratchPads "tmux")
   , ("M-<F9>"           , namedScratchpadAction scratchPads "keepassxc")

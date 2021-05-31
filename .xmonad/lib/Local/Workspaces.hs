@@ -69,6 +69,7 @@ scratchPads = [   NS "terminal" spawnTerm findTerm manageTerm
                 , NS "calc" spawnCalc findCalc manageCalc
                 , NS "keepassxc" "keepassxc" (className =? "KeePassXC") (customFloating $ W.RationalRect 0.50 0.05 0.4 0.87)
                 , NS "vlc" "vlc" (className =? "vlc") (customFloating $ W.RationalRect 0.50 0.05 0.4 0.87)
+                , NS "spotify-nsp" "spotify" (className =? "Spotify") (customFloating $ W.RationalRect 0.50 0.05 0.4 0.87)
               ]
     where
     full = customFloating $ W.RationalRect 0.05 0.05 0.9 0.9
