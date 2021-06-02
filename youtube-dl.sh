@@ -45,6 +45,10 @@ song='soul_asylum_runaway_train'
 url=$(python3 youtube-search.py "${song}" | jq  -r '.videos | .[] | .url_suffix')
 fun_download "http://youtube.com$url" "${song}.opus"
 
+# song='bridge_over_troubled_water'
+# url=$(python3 youtube-search.py "${song}" | jq  -r '.videos | .[] | .url_suffix')
+# fun_download "http://youtube.com$url" "${song}.opus"
+
 song='dave_matthews_band_crash_into_me'
 url=$(python3 youtube-search.py "${song}" | jq  -r '.videos | .[] | .url_suffix')
 fun_download "http://youtube.com$url" "${song}.opus"
@@ -65,11 +69,19 @@ song='u2_beautiful_day'
 url=$(python3 youtube-search.py "${song}" | jq  -r '.videos | .[] | .url_suffix')
 fun_download "http://youtube.com$url" "${song}.opus"
 
-song='simon_and_garfunkel_bridge_over_troubled_water'
+song='miley_cyrus_party_in_the_usa'
+url=$(python3 youtube-search.py "${song}" | jq  -r '.videos | .[] | .url_suffix')
+fun_download "http://youtube.com$url" "${song}.m4a"
+
+song='sister_hazel_all_for_you'
 url=$(python3 youtube-search.py "${song}" | jq  -r '.videos | .[] | .url_suffix')
 fun_download "http://youtube.com$url" "${song}.opus"
 
-song='miley_cyrus_party_in_the_usa'
+song='neil_young_ohio'
+url=$(python3 youtube-search.py "${song}" | jq  -r '.videos | .[] | .url_suffix')
+fun_download "http://youtube.com$url" "${song}.opus"
+
+song='neil_young_ohio'
 url=$(python3 youtube-search.py "${song}" | jq  -r '.videos | .[] | .url_suffix')
 fun_download "http://youtube.com$url" "${song}.m4a"
 
