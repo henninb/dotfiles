@@ -52,7 +52,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S mpd
   sudo pacman --noconfirm --needed -S mpc
   sudo pacman --noconfirm --needed -S ncmpcpp
-  yay -S ashuffle
+  yay -S ashuffle-git
 elif [ "$OS" = "FreeBSD" ]; then
   echo
 else
