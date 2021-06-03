@@ -88,6 +88,9 @@ echo "$nowplaying $playing $nowstatus"
 
 sudo ln -s "$HOME/media" /var/lib/mpd/music/media
 
-#cd ~/media && find . -name '.mp3' -o -name '.flac'|sed -e 's%^./%%g' &gt; all.m3u;mpd ~/.config/mpd/mpd.conf && mpc clear;mpc load all.m3u;mpc update
+find ~/media -type f -name "*.mp3" > all.m3u
+
+mpc update
+mpc load all.m3u
 
 exit 0
