@@ -52,6 +52,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S mpd
   sudo pacman --noconfirm --needed -S mpc
   sudo pacman --noconfirm --needed -S ncmpcpp
+  yay -S ashuffle
 elif [ "$OS" = "FreeBSD" ]; then
   echo
 else
@@ -79,6 +80,13 @@ sudo systemctl disable mpd.socket
 sudo systemctl stop mpd.socket
 sudo systemctl enable mpd.service
 sudo systemctl start mpd.service
+
+# cd ~/projects || exit
+# git clone git@github.com:joshkunz/ashuffle.git
+# git submodule update --init --recursive
+# meson -Dbuildtype=release build
+# ninja -C build install
+# cd - || exit
 
 echo cp /usr/share/gdm/default.pa ~/.config/pulse/
 nowplaying=$(mpc -f "%track%. %artist% - %title%" | sed -n '1p')
