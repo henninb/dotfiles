@@ -12,6 +12,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S gnupg
   sudo pacman --noconfirm --needed -S pass
+  yay -S kpcli
+  yay -S pass-import
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y gnupg pass pinentry
 elif [ "$OS" = "Fedora" ]; then
@@ -25,6 +27,10 @@ else
   echo "$OS not configured."
   exit 1
 fi
+
+# git clone https://github.com/davidnemec/bitwarden-to-keepass ~/projects/bitwarden-to-keepass
+git clone https://github.com/roddhjav/pass-import ~/projects/pass-import
+ls -l ~/.local/share/password-store
 
 # cat > gpg-agent.conf <<'EOF'
 # pinentry-program /usr/bin/pinentry-curses

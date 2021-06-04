@@ -201,3 +201,4 @@
 - stow for managing symlinks
 - pstree
 - hyperfine - performance tester
+- kmonad - keyboard customizer [yay -S kmonad]

@@ -1,3 +1,7 @@
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
+
 # TODO: needs to be tested
 #[ $- != *i* ] && return
 # [[ $- != *i* ]] && return
@@ -24,7 +28,8 @@ SPACESHIP_PROMPT_ADD_NEWLINE=false
 export SPACESHIP_PROMPT_ADD_NEWLINE
 SPACESHIP_PROMPT_SEPARATE_LINE=false
 export SPACESHIP_PROMPT_SEPARATE_LINE
-SPACESHIP_CHAR_SYMBOL=❯
+#SPACESHIP_CHAR_SYMBOL=❯
+SPACESHIP_CHAR_SYMBOL= 
 export SPACESHIP_CHAR_SYMBOL
 SPACESHIP_CHAR_SUFFIX=" "
 export SPACESHIP_CHAR_SUFFIX
@@ -417,6 +422,7 @@ if [ "$MYSHELL" = "zsh" ]; then
   source "$HOME/plugins/zed-zsh/zed.zsh"
   #eval "$(starship init zsh)"
   source "$HOME/themes/spaceship-prompt/spaceship.zsh"
+  # source ~/plugins/powerlevel10k/powerlevel10k.zsh-theme
   #source "$HOME/themes/agnoster-zsh-theme/agnoster.zsh-theme"
   #[ -f "$HOME/plugins/fzf.zsh" ] && source "$HOME/plugins/fzf.zsh"
 elif [ "$MYSHELL" = "bash" ]; then
@@ -488,3 +494,6 @@ export LIBGL_ALWAYS_SOFTWARE=1
 
 # fix for emacs tramp 10/25/2020
 [ "$TERM" = "dumb" ] && unsetopt zle && PS1='$ '
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# [ ! -f ~/.p10k.zsh ] || source ~/.p10k.zsh

@@ -66,6 +66,8 @@ echo curl -fsSL https://starship.rs/install.sh | bash
 
 git clone git://github.com/zsh-users/zsh-autosuggestions.git "${HOME}/plugins/zsh-autosuggestions"
 
+git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git "${HOME}/plugins/powerlevel10k"
+
 git clone git://github.com/zsh-users/zsh-syntax-highlighting.git "${HOME}/plugins/zsh-syntax-highlighting"
 
 git clone git://github.com/wting/autojump.git "$HOME/plugins/autojump"
