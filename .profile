@@ -78,3 +78,4 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 
 #nix allow non-free packages
 export NIXPKGS_ALLOW_UNFREE=1
+export PASSWORD_STORE_DIR=~/.local/share/password-store

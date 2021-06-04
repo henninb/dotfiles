@@ -272,20 +272,40 @@ screenKeys =
     -- ("C-M1-l", spawn "loginctl lock-session")
   ]
 
+dmenuArgs :: String -> [String]
+dmenuArgs title = [ "-i "
+                  , "-nb", quote "#9370DB"
+                  , "-nf", quote "#50fa7b"
+                  , "-sb", quote "#EE82EE"
+                  , "-sf", quote "black"
+                  , "-fn", quote "monofur for Powerline"
+                  , "-p",  quote title
+                  ]
+  where quote s = "'" ++ s ++ "'"
+
+passmenuRunCmd :: String
+-- passmenuRunCmd = scriptsPath ++ "passmenu " ++ (unwords $ dmenuArgs "Password:")
+passmenuRunCmd = "passmenu " ++ unwords (dmenuArgs "Password:")
+
+dmenuRunCmd :: String
+-- passmenuRunCmd = scriptsPath ++ "passmenu " ++ (unwords $ dmenuArgs "Password:")
+dmenuRunCmd = "dmenu " ++ unwords (dmenuArgs "Execute:")
+
 -- | Keys for launching applications.
 applicationKeybindings :: [(String, X ())]
 applicationKeybindings =
   [
     ("M-S-<Return>"      , spawn "st")
   , ("M-<Return>"        , spawn "terminal")
-  , ("M-S-p"             , spawn "dmenu_run -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
+  , ("M-S-p"             , spawn "dmenu_run -i -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
+  -- , ("M-S-p"             , spawn dmenuRunCmd)
   , ("M-S-f"             , spawn "spacefm")
   -- , ("M-<F2>"            , spawnToWorkspace "spacefm" ( myWorkspaces !! 7 ))
   , ("M-f"               , spawn "st -e lf")
   , ("M-i"               , spawn "browser")
   , ("M-S-i"             , spawn ("browser" ++ " --incognito"))
   -- , ("M-p"               , spawn "passmenu -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
-  , ("M-p"               , spawn "passmenu")
+  , ("M-p"               , spawn passmenuRunCmd)
   -- , ("M-<Print>"         , spawn "flameshot gui -p $HOME/screenshots")
   , ("M-<F4>"            , spawn "flameshot gui -p $HOME/screenshots")
   , ("M-b"               , spawn "redshift -O 3500")
