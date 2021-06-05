@@ -202,3 +202,4 @@
 - pstree
 - hyperfine - performance tester
 - kmonad - keyboard customizer [yay -S kmonad]
+- wallpaper changer [git clone https://github.com/thevinter/styli.sh]
