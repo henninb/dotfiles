@@ -1,6 +1,7 @@
 #!/bin/sh
 
 sudo pacman -S ninja meson uthash
+sudo pkg install ninja meson uthash
 cd "$HOME/projects" || exit
 git clone https://github.com/jonaburg/picom
 cd picom || exit
