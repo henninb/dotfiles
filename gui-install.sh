@@ -2,21 +2,21 @@
 
 # DEBIAN_FRONTEND=noninteractive
 
-ARCHLINUX_PKGS="xorg-server xlockmore vlc riot-desktop handbrake dbeaver terminator handbrake rofi feh dolphin-emu xorg xorg-server xorg-xeyes xorg-xinit seahorse gqrx gitk audacity zathura sxiv mpv gimp inkscape brave fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio celluloid libva-vdpau-driver libvdpau-va-gl vdpauinfo mesa-vdpau libva-utils openshot cantata notepadqq qalculate-gtk"
+ARCHLINUX_PKGS="meld xorg-server xlockmore vlc riot-desktop handbrake dbeaver terminator handbrake rofi feh dolphin-emu xorg xorg-server xorg-xeyes xorg-xinit seahorse gqrx gitk audacity zathura sxiv mpv gimp inkscape brave fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio celluloid libva-vdpau-driver libvdpau-va-gl vdpauinfo mesa-vdpau libva-utils openshot cantata notepadqq qalculate-gtk"
 
-MINT_PKGS="vlc riot-desktop handbrake dolphin-emu vim-gtk3 xterm rofi terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious gitk audacity gqrx-sdr gimp inkscape gnome-mpv openshot vulkan-utils basilisk"
+MINT_PKGS="meld vlc riot-desktop handbrake dolphin-emu vim-gtk3 xterm rofi terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious gitk audacity gqrx-sdr gimp inkscape gnome-mpv openshot vulkan-utils basilisk"
 
 CENTOS_PKGS="vlc firefox riot-desktop handbrake dolphin-emu gvim terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious rxvt gimp inkscape"
 
-UBUNTU_PKGS="gqrx vlc handbrake dolphin-emu vim-gtk3 terminator feh dolphin gnome-boxes cockpit seahorse mplayer audacious gitk audacity gimp inkscape cpu-x kdenlive obs-studio mpv gnome-mpv libva-utils openshot"
+UBUNTU_PKGS="meld gqrx vlc handbrake dolphin-emu vim-gtk3 terminator feh dolphin gnome-boxes cockpit seahorse mplayer audacious gitk audacity gimp inkscape cpu-x kdenlive obs-studio mpv gnome-mpv libva-utils openshot"
 
-FREEBSD_PKGS="vlc firefox riot-desktop handbrake dolphin-emu vim-gtk3 xterm rofi terminator audacity gimp inkscape mpv"
+FREEBSD_PKGS="meld vlc firefox riot-desktop handbrake dolphin-emu vim-gtk3 xterm rofi terminator audacity gimp inkscape mpv"
 
-GENTOO_PKGS="vlc handbrake terminator rofi games-emulation/dolphin seahorse xterm audacity gimp inkscape kdenlive mpv"
+GENTOO_PKGS="meld vlc handbrake terminator rofi games-emulation/dolphin seahorse xterm audacity gimp inkscape kdenlive mpv"
 
 VOID_PKGS="gimp incscape vlc handbrake terminator audacity dolphin-emu zathura dbeaver mpv"
 
-SOLUS_PKGS="gimp inkscape vlc handbrake terminator audacity dolphin-emu zathura dbeaver gnome-mpv terminator mpv openshot"
+SOLUS_PKGS="meld gimp inkscape vlc handbrake terminator audacity dolphin-emu zathura dbeaver gnome-mpv terminator mpv openshot"
 
 #FEDORA_PKGS="gvim gqrx keepassxc"
 

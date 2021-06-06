@@ -136,6 +136,7 @@
 | screen recorder        | simplescreenrecorder                                                                 |
 | disk space             | ncdu                                                                                 |
 | calculator             | qalculate-gtk                                                                        |
+| diff tool              | meld                                                                                 |
 
 ## Language Servers
 - c - ccls
