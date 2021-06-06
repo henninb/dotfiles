@@ -81,6 +81,7 @@ gpg-connect-agent reloadagent /bye
 
 exit 0
 
+scp -r * pi:/home/pi/.local/share/password-store
 # gpg -e -u "Sender User Name" -r "Receiver User Name" somefile
 # gpg --batch --yes --passphrase-fd 0 /tmp/test.gpg
 # stty -echo; gpg --passphrase-fd 0 --pinentry-mode loopback --decrypt /tmp/test.gpg; stty echo
