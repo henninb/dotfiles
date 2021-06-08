@@ -153,5 +153,6 @@ cd - || exit
 
 mpc update
 mpc load all.m3u
+mpc load all
 
 exit 0

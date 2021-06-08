@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+if spacefm; then
+  exit 0
+fi
+
+if st -e lf; then
+  exit 0
+fi
+
+exit 0
+
+# vim: set ft=sh:
