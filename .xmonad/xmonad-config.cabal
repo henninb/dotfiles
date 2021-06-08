@@ -21,7 +21,7 @@ library
       Local.ManagedHook
       Local.MouseBinding
       Local.PolybarLogHook
-      Local.SearchList
+      Local.Prompts
       Local.Workspaces
   other-modules:
       Paths_xmonad_config
