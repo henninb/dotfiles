@@ -121,6 +121,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   ln -sfn "$(find /usr/local/bin/ -type f -name "perl5*" | tail -1)" "$HOME/.local/bin/perl"
   sudo pkg install -y alsa-lib
   sudo pkg install -y audio/alsa-utils
+  sudo pkg install -y sysutils/uhidd
   sudo pkg install -y conky
   sudo pkg install -y copyq
   sudo pkg install -y dmenu
