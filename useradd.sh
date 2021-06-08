@@ -47,10 +47,11 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pw group add intellij
   sudo pw group add arduino
-  sudo pw groupmod dialer -m $USER
-  sudo pw usermod $(whoami) -G intellij
-  sudo pw usermod $(whoami) -G arduino
-  sudo pw usermod $(whoami) -G operator
+  sudo pw groupmod dialer -m "$USER"
+  sudo pw usermod "$(whoami)" -G intellij
+  sudo pw usermod "$(whoami)" -G mpd
+  sudo pw usermod "$(whoami)" -G arduino
+  sudo pw usermod "$(whoami)" -G operator
   sudo pw adduser intellij -g intellij -d /nonexistent -s /usr/sbin/nologin
   sudo pw adduser arduino -g arduino -d /nonexistent -s /usr/sbin/nologin
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
