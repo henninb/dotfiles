@@ -105,6 +105,7 @@ else
 fi
 sudo mkdir -p /var/log/mpd
 sudo mkdir -p /var/lib/mpd/playlists
+sudo chmod g+w /var/lib/mpd/playlists
 sudo mkdir -p /var/lib/mpd/music
 sudo chown -R mpd:audio /var/log/mpd /var/lib/mpd
 sudo chown -R mpd:mpd /var/log/mpd /var/lib/mpd
@@ -145,7 +146,10 @@ echo "$nowplaying $playing $nowstatus"
 
 # sudo ln -s "$HOME/media" /var/lib/mpd/music/media
 
-find ~/media -type f -name "*.mp3" > all.m3u
+cd ~/media || exit
+find . -type f -name "*.mp3" > all.m3u
+cp all.m3u /var/lib/mpd/playlists/
+cd - || exit
 
 mpc update
 mpc load all.m3u
