@@ -38,8 +38,6 @@ import Local.PolybarLogHook
 import Local.DzenLogHook
 
 myFont  = "terminus"
-background = "#181512"
-foreground = "#DDEEFF"
 
 togglevga = do { screencount <- LIS.countScreens
     ; if screencount > 1
@@ -53,11 +51,11 @@ togglevga = do { screencount <- LIS.countScreens
       return screenWidth
     ;}
 
-topLeftBar = "dzen2 -x '0' -y '0' -h '14' -w '800' -ta 'l' -fg '" ++ foreground ++ "' -bg '"++ background ++"' -fn "++myFont
-topMiddleBar = "~/.xmonad/assets/bin/main.sh | dzen2 -dock -x '600' -y '0' -h '14' -w '500' -ta 'l' -fg '" ++ foreground ++ "' -bg '" ++ background ++ "' -fn " ++ myFont
-topRightBar = "~/.xmonad/assets/bin/date.sh | dzen2 -dock -x '2300' -y '0' -h '14' -w '500' -ta 'l' -fg '" ++ foreground ++ "' -bg '" ++ background ++ "' -fn " ++ myFont
+topLeftBar = "dzen2 -x '0' -y '0' -h '14' -w '800' -ta 'l' -fg '" ++ myColor "foreground" ++ "' -bg '"++ myColor "background" ++"' -fn "++myFont
+topMiddleBar = "~/.xmonad/assets/bin/main.sh | dzen2 -dock -x '600' -y '0' -h '14' -w '500' -ta 'l' -fg '" ++ myColor "foreground" ++ "' -bg '" ++ myColor "background" ++ "' -fn " ++ myFont
+topRightBar = "~/.xmonad/assets/bin/date.sh | dzen2 -dock -x '2300' -y '0' -h '14' -w '500' -ta 'l' -fg '" ++ myColor "foreground" ++ "' -bg '" ++ myColor "background" ++ "' -fn " ++ myFont
 
-myDzen = " dzen2 -xs 1 -dock -h 14 -ta 'l' -fn '" ++ myFont ++ "' -fg '" ++ foreground ++ "' -bg '" ++ background ++ "' "
+myDzen = " dzen2 -xs 1 -dock -h 14 -ta 'l' -fn '" ++ myFont ++ "' -fg '" ++ myColor "foreground" ++ "' -bg '" ++ myColor "background" ++ "' "
 myTopRight = "conky -c ~/.xmonad/assets/bar | " ++ myDzen ++ " -x '800' -y '0' -ta 'r' -p"
 
 main :: IO ()
@@ -94,8 +92,8 @@ myTerminal = "alacritty"
 myBorderWidth :: Dimension
 myBorderWidth = 1
 
-myBrowser :: String
-myBrowser = "brave"
+-- myBrowser :: String
+-- myBrowser = "brave"
 
 mySpacing :: Int
 mySpacing = 5
@@ -123,7 +121,6 @@ myStartupHook = do
     -- spawn "clipmenud" --should I run copyq or clipmenu
     spawnOnce "copyq"
     spawnOn "1" "alacritty"
-    spawnOn "2" "alacritty"
     case os of
       "freebsd" -> return ()
       "linux"   -> spawnOnce "blueman-applet" --dbus required
@@ -141,7 +138,6 @@ myStartupHook = do
     spawnOnce "volumeicon"
     spawnOnce "xscreensaver -no-splash"
     spawnOnce "feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg"
-    -- spawnToWorkspace "discord-flatpak" "9"
 
 myConfig = def
   { terminal = myTerminal

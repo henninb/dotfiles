@@ -1,4 +1,4 @@
-module Local.Colors (myBorderColor, red, myFocusBorderColor, gray, purple, aqua, lightpink, lightgray, hotpink, darkpurple, white) where
+module Local.Colors (myColor, myBorderColor, red, myFocusBorderColor, gray, purple, aqua, lightpink, lightgray, hotpink, darkpurple, white) where
 
 import XMonad
 import Data.Map as M
@@ -67,6 +67,9 @@ colorSchemes =
     ,("RedHaruka",    "#c90c25")
     ,("BlueUnknown",  "#5c5dad")
     ,("Decoration",   "#2980b9")
+
+    ,("background",   "#181512")
+    ,("foreground",   "#DDEEFF")
     ]
 
 myColor key = M.findWithDefault "#ffffff" key (fromList colorSchemes)

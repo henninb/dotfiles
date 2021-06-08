@@ -45,7 +45,7 @@ import XMonad.Util.NamedScratchpad (namedScratchpadAction)
 import qualified XMonad.Actions.Search as S
 
 -- import Local.Workspaces (viewPrevWS)
-import Local.SearchList
+import Local.Prompts
 import Local.Workspaces
 
 -- | Join all the key maps into a single list and send it through @mkKeymap@.

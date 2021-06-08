@@ -1,4 +1,4 @@
-module Local.SearchList (searchList, tmuxPrompt, myXPConfig', myXPConfigBottom) where
+module Local.Prompts (searchList, tmuxPrompt, myXPConfig', myXPConfigBottom) where
 
 import XMonad
 import XMonad.Prompt
@@ -9,9 +9,6 @@ import qualified XMonad.StackSet as W
 import qualified XMonad.Actions.Search as S
 import XMonad.Util.Run
 import XMonad.Prompt.Input
-
--- import Local.KeyBindings
-
 
 superKeyMask :: KeyMask
 superKeyMask = mod4Mask
@@ -109,7 +106,7 @@ myXPConfig = def
 
 myXPConfig' :: XPConfig
 myXPConfig' = myXPConfig
-      { autoComplete        = Nothing
+      { autoComplete = Nothing
       }
 
 tmuxRun :: IO [String]
