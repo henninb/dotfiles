@@ -4,6 +4,10 @@ if spacefm; then
   exit 0
 fi
 
+if thunar; then
+  exit 0
+fi
+
 if st -e lf; then
   exit 0
 fi

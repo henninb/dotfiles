@@ -95,6 +95,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S font-awesome-4
   sudo pacman --noconfirm --needed -S gtk-update-icon-cache
   sudo pacman --noconfirm --needed -S jq
+  sudo pacman --noconfirm --needed -S i3lock
   sudo pacman --noconfirm --needed -S lxappearance
   sudo pacman --noconfirm --needed -S lxsession
   sudo pacman --noconfirm --needed -S mpc
@@ -105,6 +106,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S redshift
   sudo pacman --noconfirm --needed -S sxhkd
   sudo pacman --noconfirm --needed -S trayer
+  sudo pacman --noconfirm --needed -S thunar
   sudo pacman --noconfirm --needed -S vifm
   sudo pacman --noconfirm --needed -S vimb
   sudo pacman --noconfirm --needed -S volumeicon
@@ -121,6 +123,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   ln -sfn "$(find /usr/local/bin/ -type f -name "perl5*" | tail -1)" "$HOME/.local/bin/perl"
   sudo pkg install -y alsa-lib
   sudo pkg install -y audio/alsa-utils
+  sudo pkg install -y i3lock
   sudo pkg install -y sysutils/uhidd
   sudo pkg install -y conky
   sudo pkg install -y copyq
@@ -128,6 +131,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y dunst
   sudo pkg install -y feh
   sudo pkg install -y flameshot
+  sudo pkg install -y thunar
   sudo pkg install -y jq
   sudo pkg install -y neofetch
   sudo pkg install -y perl5

@@ -299,9 +299,8 @@ applicationKeybindings =
   , ("M-<Return>"        , spawn "terminal")
   , ("M-S-p"             , spawn "dmenu_run -i -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
   -- , ("M-S-p"             , spawn dmenuRunCmd)
-  , ("M-S-f"             , spawn "spacefm")
-  -- , ("M-<F2>"            , spawnToWorkspace "spacefm" ( myWorkspaces !! 7 ))
-  , ("M-f"               , spawn "st -e lf")
+  , ("M-<F2>"             , spawn "fm") --filemanager ~/.local/bin/fm
+  -- , ("M-f"               , spawn "st -e lf")
   , ("M-i"               , spawn "browser")
   , ("M-S-i"             , spawn ("browser" ++ " --incognito"))
   -- , ("M-p"               , spawn "passmenu -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
@@ -311,7 +310,7 @@ applicationKeybindings =
   , ("M-b"               , spawn "redshift -O 3500")
   , ("M-S-b"             , spawn "redshift -x")
   , ("M-<F3>"            , spawn "intellij")
-  , ("M-C-n"             , spawn ("st" ++ " -e newsboat"))
+  -- , ("M-C-n"             , spawn ("st" ++ " -e newsboat"))
   , ("M-M1-l"            , spawn "i3lock -d -c FFFFFF -t -i ~/backgrounds/mountain-road.jpg")
     -- ("M-C-u", Local.webAppPrompt Local.promptConfig),
     -- ("M-S-]", namedScratchpadAction scratchPads "emacs"),
@@ -326,11 +325,11 @@ applicationKeybindings =
 
   -- , ("M-<F12>"           , namedScratchpadAction scratchPads "terminal")
   , ("M-<F12>"           , namedScratchpadAction scratchPads "spotify-nsp")
-  , ("M-<F11>"           , namedScratchpadAction scratchPads "discord")
-  , ("M-<F10>"           , namedScratchpadAction scratchPads "tmux")
-  , ("M-<F9>"           , namedScratchpadAction scratchPads "keepassxc")
-  , ("M-<F8>"           , namedScratchpadAction scratchPads "vlc")
-  , ("M-<F7>"           , namedScratchpadAction scratchPads "calc")
+  , ("M-<F11>"           , namedScratchpadAction scratchPads "discord-nsp")
+  , ("M-<F10>"           , namedScratchpadAction scratchPads "tmux-nsp")
+  , ("M-<F9>"           , namedScratchpadAction scratchPads "keepass-nsp")
+  , ("M-<F8>"           , namedScratchpadAction scratchPads "vlc-nsp")
+  , ("M-<F7>"           , namedScratchpadAction scratchPads "calc-nsp")
   , ("M-S-t"             , tmuxPrompt myXPConfigBottom)
   ]
 

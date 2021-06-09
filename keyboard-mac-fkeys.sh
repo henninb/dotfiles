@@ -33,6 +33,8 @@ Section "InputClass"
 EndSection
 EOF
 
+echo xmodmap -pke
+
 echo sysctl dev.akbd.0.fn_keys_function_as_primary=1
 echo sudo cp us.apple.kbd /usr/share/syscons/keymaps
 echo setxkbmap -option "altwin:swap_alt_win"

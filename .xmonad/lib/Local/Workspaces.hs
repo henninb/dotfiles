@@ -56,19 +56,13 @@ projects = [ terminalProject ]
 myWorkspaces :: [String]
 myWorkspaces = [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0]
 
-    -- tmux1 = NS name' cmd' query' floatingHook
-    --     where
-    --       name' = "tmux"
-    --       cmd' = myTerm ++ " -t tmux_nsp -e tmux new-session -A -s scratch"
-    --       query' = title =? "tmux_nsp"
-
 scratchPads :: [NamedScratchpad]
-scratchPads = [   NS "terminal" spawnTerm findTerm manageTerm
-                , NS "discord" spawnDiscord findDiscord manageDiscord
-                , NS "tmux" spawnTmux findTmux manageTmux
-                , NS "calc" spawnCalc findCalc manageCalc
-                , NS "keepassxc" "keepassxc" (className =? "KeePassXC") (customFloating $ W.RationalRect 0.50 0.05 0.4 0.87)
-                , NS "vlc" "vlc" (className =? "vlc") (customFloating $ W.RationalRect 0.50 0.05 0.4 0.87)
+scratchPads = [   NS "terminal-nsp" spawnTerm findTerm manageTerm
+                , NS "discord-nsp" spawnDiscord findDiscord manageDiscord
+                , NS "tmux-nsp" spawnTmux findTmux manageTmux
+                , NS "calc-nsp" spawnCalc findCalc manageCalc
+                , NS "keepass-nsp" "keepassxc" (className =? "KeePassXC") (customFloating $ W.RationalRect 0.50 0.05 0.4 0.87)
+                , NS "vlc-nsp" "vlc" (className =? "vlc") (customFloating $ W.RationalRect 0.50 0.05 0.4 0.87)
                 , NS "spotify-nsp" "spotify" (className =? "Spotify") (customFloating $ W.RationalRect 0.50 0.05 0.4 0.87)
               ]
     where
