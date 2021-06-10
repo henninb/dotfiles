@@ -47,6 +47,9 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y xdo
   sudo apt install -y xdotool
   sudo apt install -y xscreensaver
+  sudo apt install -y thunar
+  sudo apt install -y sxiv
+  sudo apt install -y qalculate
   #sudo apt install -y icu-devtools libicu-dev
   # sudo pkg install hs-cabal-install
   sudo pkg install hs-xmonad
@@ -154,6 +157,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y xclip
   sudo pkg install -y numlockx
   sudo pkg install -y lxappearance
+  sudo pkg install -y qalculate
   # sudo pkg install -y libXft
   # sudo pkg install -y xz
 elif [ "$OS" = "void" ]; then
