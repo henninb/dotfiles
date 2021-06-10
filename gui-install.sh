@@ -8,9 +8,9 @@ MINT_PKGS="thunar meld vlc riot-desktop handbrake dolphin-emu vim-gtk3 xterm rof
 
 CENTOS_PKGS="vlc firefox riot-desktop handbrake dolphin-emu gvim terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious rxvt gimp inkscape"
 
-UBUNTU_PKGS="meld gqrx vlc handbrake dolphin-emu vim-gtk3 terminator feh dolphin gnome-boxes cockpit seahorse mplayer audacious gitk audacity gimp inkscape cpu-x kdenlive obs-studio mpv gnome-mpv libva-utils openshot"
+UBUNTU_PKGS="sxiv i3lock meld gqrx vlc handbrake dolphin-emu feh gnome-boxes cockpit seahorse mplayer audacious gitk audacity gimp inkscape cpu-x kdenlive obs-studio mpv gnome-mpv libva-utils openshot"
 
-FREEBSD_PKGS="i3lock qalculate keepassxc thunar meld vlc firefox handbrake dolphin-emu xterm rofi audacity gimp inkscape mpv"
+FREEBSD_PKGS="sxiv i3lock qalculate keepassxc thunar meld vlc firefox handbrake dolphin-emu xterm rofi audacity gimp inkscape mpv"
 
 GENTOO_PKGS="meld vlc handbrake terminator rofi games-emulation/dolphin seahorse xterm audacity gimp inkscape kdenlive mpv"
 

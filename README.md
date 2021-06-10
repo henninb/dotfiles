@@ -63,7 +63,7 @@
 | Description            | App(s)                                                                               |
 | ------------           | -----                                                                                |
 | terminal               | alacritty, st, urxvt                                                                 |
-| editor                 | neovim, emacs, vscode, intellij, neovide, notepadqq                                  |
+| editor                 | neovim, emacs, vscodium, intellij, neovide, notepadqq, vscode                        |
 | shell                  | zsh, fish, bash, dash, ksh                                                           |
 | shell prompt           | spaceship, agnoster, alien, dracula                                                  |
 | zsh plugins            | zsh-syntax-highlighting, zsh-autosuggestions, autojump, zsh-history-substring-search |
@@ -96,7 +96,7 @@
 | audio player           | cmus, mpd, cantata, ncmpcpp, emacs (emms)                                            |
 | audio player daemon    | mpd                                                                                  |
 | image converter        | imagemagik                                                                           |
-| image viewer           | sxiv, chafa                                                                          |
+| image viewer           | sxiv, feh, chafa                                                                          |
 | wallpaper manager      | feh, nitrogen                                                                        |
 | burning images         | cdrecord, wodim, k3b                                                                 |
 | podcast client         | newsboat, castget                                                                    |
@@ -204,3 +204,4 @@
 - hyperfine - performance tester
 - kmonad - keyboard customizer [yay -S kmonad]
 - wallpaper changer [git clone https://github.com/thevinter/styli.sh]
+- wallpaper downloader [git clone git@github.com:pystardust/waldl.git]

@@ -36,6 +36,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y playerctl
   sudo apt install -y redshift
   sudo apt install -y sxhkd
+  sudo apt install -y sxiv
   sudo apt install -y trayer
   sudo apt install -y vifm
   sudo apt install -y vimb
@@ -105,6 +106,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S pulseaudio
   sudo pacman --noconfirm --needed -S redshift
   sudo pacman --noconfirm --needed -S sxhkd
+  sudo pacman --noconfirm --needed -S sxiv
   sudo pacman --noconfirm --needed -S trayer
   sudo pacman --noconfirm --needed -S thunar
   sudo pacman --noconfirm --needed -S vifm
@@ -130,6 +132,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y dmenu
   sudo pkg install -y dunst
   sudo pkg install -y feh
+  sudo pkg install -y sxiv
   sudo pkg install -y flameshot
   sudo pkg install -y thunar
   sudo pkg install -y jq

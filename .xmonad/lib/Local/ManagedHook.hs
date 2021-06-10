@@ -37,6 +37,7 @@ myManageHook = composeAll
     , className =? "jetbrains-idea"                --> doFloat
     , className =? "jetbrains-idea"                --> viewShift ( myWorkspaces !! 4 )
     , className =? "feh"                           --> doFloat
+    , className =? "Sxiv"                          --> doFloat
     , title     =? "Discord Updater"               --> doFloat
     , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
     , (className =? "Notepadqq" <&&> title =? "Search") --> doFloat
