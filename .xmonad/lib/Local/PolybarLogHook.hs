@@ -68,4 +68,4 @@ polybarLogHook = def
           | all isDigit wsp = wrapOnClickCmd ("xdotool key super+" ++ wsp) wsp
           | otherwise = wsp
         wrapOnClickCmd cmd = wrap ("%{A1:" ++ cmd ++ ":}") "%{A}"
-        showNamedWorkspaces1 wsId = pad wsId
+        showNamedWorkspaces1 = pad

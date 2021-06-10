@@ -118,7 +118,7 @@ tmuxPrompt c = io tmuxRun >>= \as -> inputPromptWithCompl c "tmux" (mkComplFunFr
 tmuxStart :: [String] -> String -> X ()
 tmuxStart ss s = asks (terminal . config) >>= \term -> attachOrCreate term s
  where
-  attachOrCreate = \t s' -> spawn $ t ++ " -e tmux new -s " ++ s' ++ " -A"
+   attachOrCreate t s' = spawn $ t ++ " -e tmux new -s " ++ s' ++ " -A"
 
 myXPConfigBottom :: XPConfig
 myXPConfigBottom = def

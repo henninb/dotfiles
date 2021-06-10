@@ -41,7 +41,7 @@ terminalProject =
   Project {
     projectName = "terminal"
     , projectDirectory = "~/projects"
-    , projectStartHook = Just $ do spawn "alacritty"
+    , projectStartHook = Just $ spawn "alacritty"
   }
 
 scratchProject :: Project
