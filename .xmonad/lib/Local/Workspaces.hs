@@ -61,7 +61,7 @@ scratchPads = [   NS "terminal-nsp" spawnTerm findTerm manageTerm
                 , NS "discord-nsp" spawnDiscord findDiscord manageDiscord
                 , NS "tmux-nsp" spawnTmux findTmux manageTmux
                 , NS "calc-nsp" spawnCalc findCalc manageCalc
-                , NS "keepass-nsp" "keepassxc" (className =? "KeePassXC") (customFloating $ W.RationalRect 0.50 0.05 0.4 0.87)
+                , NS "keepass-nsp" "keepassxc" (className =? "KeePassXC" <||> className =? "keepassxc") (customFloating $ W.RationalRect 0.50 0.05 0.4 0.87)
                 , NS "vlc-nsp" "vlc" (className =? "vlc") (customFloating $ W.RationalRect 0.50 0.05 0.4 0.87)
                 , NS "spotify-nsp" "spotify" (className =? "Spotify") (customFloating $ W.RationalRect 0.50 0.05 0.4 0.87)
               ]

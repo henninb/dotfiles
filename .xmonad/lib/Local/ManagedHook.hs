@@ -32,6 +32,7 @@ myManageHook = composeAll
     , className =? "qemu-system-x86_64"            --> doFloat
     , className =? "Audacity"                      --> doFloat
     , className =? "KeePassXC"                     --> doFloat
+    , className =? "keepassxc"                     --> doFloat -- mint linux
     , className =? "Sotify"                        --> doFloat
     , className =? "vlc"                           --> doFloat
     , className =? "jetbrains-idea"                --> doFloat
