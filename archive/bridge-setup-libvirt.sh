@@ -6,7 +6,7 @@ sudo brctl delbr virbr1
 sudo ip link set virbr2 down
 sudo brctl delbr virbr2
 
-sudo sudo virsh net-edit vagrant-libvirt
+echo sudo sudo virsh net-edit vagrant-libvirt
 
 exit 0
 
