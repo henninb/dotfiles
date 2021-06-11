@@ -50,15 +50,19 @@ EOF
   sudo virsh pool-autostart default
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   #sudo pacman -Syu libvirt qemu virt-manager spice-client-gtk virt-viewer gir1.2-spiceclientgtk-3.0
-  sudo pacman --noconfirm --needed -Syu dmidecode
-  sudo pacman --noconfirm --needed -Syu libvirt
-  sudo pacman --noconfirm --needed -Syu qemu
-  sudo pacman --noconfirm --needed -Syu virt-manager
-  sudo pacman --noconfirm --needed -Syu dnsmasq
-  #sudo pacman --noconfirm --needed -Syu ebtables
-  #sudo pacman --noconfirm --needed -Syu firewalld
-  sudo pacman --noconfirm --needed -Syu cdrtools
-  sudo pacman --noconfirm --needed -Syu iptables
+  sudo pacman --noconfirm --needed -S dmidecode
+  sudo pacman --noconfirm --needed -S libvirt
+  sudo pacman --noconfirm --needed -S qemu
+  sudo pacman --noconfirm --needed -S virt-manager
+  sudo pacman --noconfirm --needed -S dnsmasq
+  sudo pacman --noconfirm --needed -S ebtables iptables dnsmasq
+  sudo pacman -S ebtables
+
+  #sudo pacman --noconfirm --needed -S firewalld
+  sudo pacman --noconfirm --needed -S cdrtools
+  sudo pacman --noconfirm --needed -S iptables
+
+  sudo pacman -Qi ebtables iptables dnsmasq
 
   sudo systemctl start libvirtd
   sudo systemctl enable libvirtd

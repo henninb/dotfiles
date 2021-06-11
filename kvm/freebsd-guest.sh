@@ -5,9 +5,9 @@ iso_file=FreeBSD-13.0-RELEASE-amd64-dvd1.iso
 sudo virsh shutdown guest-freebsd
 sudo virsh undefine guest-freebsd
 
-if [ ! -f "/var/lib/libvirt/boot/FreeBSD-13.0-RELEASE-amd64-dvd1.iso" ]; then
-  scp pi:/home/pi/downloads/FreeBSD-13.0-RELEASE-amd64-dvd1.iso .
-  sudo mv FreeBSD-13.0-RELEASE-amd64-dvd1.iso /var/lib/libvirt/boot/
+if [ ! -f "/var/lib/libvirt/boot/${iso_file}" ]; then
+  scp "pi:/home/pi/downloads/${iso_file}" .
+  sudo mv "${iso_file}" /var/lib/libvirt/boot/
 fi
 
 sudo pacman --noconfirm --needed -S virt-viewer
@@ -21,8 +21,8 @@ sudo virt-install \
 --os-variant=freebsd10.0 \
 --virt-type=kvm \
 --hvm \
---cdrom=/var/lib/libvirt/boot/FreeBSD-13.0-RELEASE-amd64-dvd1.iso \
---network=bridge=br0,model=virtio \
+--cdrom=/var/lib/libvirt/boot/${iso_file} \
+--network=bridge=br1,model=virtio \
 --graphics vnc \
 --disk path=/var/lib/libvirt/images/guest-freebsd.qcow2,size=40,bus=virtio,format=qcow2
 
