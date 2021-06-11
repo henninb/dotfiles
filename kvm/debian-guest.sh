@@ -1,12 +1,13 @@
 #!/bin/sh
 
-sudo virsh destroy guest-debian
+sudo pacman --noconfirm --needed -S virt-viewer
+sudo virsh shutdown guest-debian
 sudo virsh undefine guest-debian
 
 sudo fallocate -l 10G /var/kvm/images/guest-debian.img
 sudo chmod 777 /var/kvm/images/guest-debian.img
 
-sudo virt-install --name guest-debian --ram 2048 --disk path=/var/kvm/images/guest-debian.img,size=10 --vcpus 1 --os-type linux --os-variant debian9 --graphics none --location 'http://ftp.us.debian.org/debian/dists/stretch/main/installer-amd64/' --extra-args console=ttyS0 
+sudo virt-install --name guest-debian --ram 2048 --disk path=/var/kvm/images/guest-debian.img,size=10 --vcpus 1 --os-type linux --os-variant debian9 --graphics none --location 'http://ftp.us.debian.org/debian/dists/stretch/main/installer-amd64/' --extra-args console=ttyS0
 echo "add console=ttyS0 to the grub boot parms -- fixes console issues."
 echo "add this to leverage the host cpu --cpu host"
 

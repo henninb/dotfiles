@@ -12,3 +12,5 @@ exec qemu-system-x86_64 -enable-kvm \
         -monitor stdio \
         -name guest-gentoo \
         -boot d -cdrom install-amd64-minimal-20190630T214502Z.iso
+
+exit 0
