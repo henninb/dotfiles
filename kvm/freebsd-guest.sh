@@ -16,13 +16,13 @@ sudo pacman --noconfirm --needed -S virt-viewer
 sudo virt-install \
 --virt-type=kvm \
 --name guest-freebsd \
---memory=1024,maxmemory=2048 \
+--memory=2048,maxmemory=2048 \
 --vcpus=1,maxvcpus=2 \
 --os-variant=freebsd10.0 \
 --virt-type=kvm \
 --hvm \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
---network=bridge=br1,model=virtio \
+--network=bridge=virbr0,model=virtio \
 --graphics vnc \
 --disk path=/var/lib/libvirt/images/guest-freebsd.qcow2,size=40,bus=virtio,format=qcow2
 

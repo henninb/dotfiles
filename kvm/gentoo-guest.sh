@@ -17,8 +17,8 @@ fi
 #  #scp pi@192.168.100.25:/home/pi/Downloads/CentOS-7-x86_64-NetInstall-1810.iso /tmp/CentOS-7-x86_64-NetInstall-1810.iso
 #fi
 
-sudo fallocate -l 10G /var/kvm/images/guest-gentoo.img
-sudo chmod 777 /var/kvm/images/guest-gentoo.img
+# sudo fallocate -l 10G /var/kvm/images/guest-gentoo.img
+# sudo chmod 777 /var/kvm/images/guest-gentoo.img
 
 sudo virt-install \
 --virt-type=kvm \
@@ -29,7 +29,7 @@ sudo virt-install \
 --virt-type=kvm \
 --hvm \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
---network=bridge=br0,model=virtio \
+--network=bridge=virbr0,model=virtio \
 --graphics vnc \
 --disk path=/var/lib/libvirt/images/guest-gentoo.qcow2,size=40,bus=virtio,format=qcow2
 

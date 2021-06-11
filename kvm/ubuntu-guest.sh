@@ -12,19 +12,19 @@ if [ ! -f "/var/lib/libvirt/boot/${iso_file}" ]; then
   sudo mv "${iso_file}" /var/lib/libvirt/boot/
 fi
 
-sudo fallocate -l 10G /var/kvm/images/guest-ubuntu.img
-sudo chmod 777 /var/kvm/images/guest-ubuntu.img
+# sudo fallocate -l 10G /var/kvm/images/guest-ubuntu.img
+# sudo chmod 777 /var/kvm/images/guest-ubuntu.img
 
 sudo virt-install \
 --virt-type=kvm \
 --name guest-ubuntu \
---memory=1024,maxmemory=2048 \
+--memory=4096,maxmemory=4096 \
 --vcpus=1,maxvcpus=2 \
 --os-type=generic \
 --virt-type=kvm \
 --hvm \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
---network=bridge=br0,model=virtio \
+--network=bridge=virbr0,model=virtio \
 --graphics vnc \
 --disk path=/var/lib/libvirt/images/guest-ubuntu.qcow2,size=40,bus=virtio,format=qcow2
 
