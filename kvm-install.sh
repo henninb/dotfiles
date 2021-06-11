@@ -62,7 +62,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S cdrtools
   sudo pacman --noconfirm --needed -S iptables
 
-  sudo pacman -Qi ebtables iptables dnsmasq
+  # sudo pacman -Qi ebtables iptables dnsmasq
 
   sudo systemctl start libvirtd
   sudo systemctl enable libvirtd
@@ -78,6 +78,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo virsh net-autostart default
   sudo virsh net-list --all
   getent group kvm libvirt
+  echo "reboot system to fix virt network"
 elif [ "$OS" = "Solus" ]; then
   echo
   sudo eopkg install -y libvirt
