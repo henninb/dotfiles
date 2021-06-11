@@ -120,6 +120,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S xclip
   sudo pacman --noconfirm --needed -S xdo
   sudo pacman --noconfirm --needed -S xdotool
+  sudo pacman --noconfirm --needed -S qalculate-gtk
   sudo pacman --noconfirm --needed -S xscreensaver
   yay -S mpdris2
   sudo systemctl disable mpd.socket
