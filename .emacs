@@ -13,6 +13,9 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
+; valid backspace key
+(normal-erase-is-backspace-mode 1)
+
 ; required for bspwm 7/15/2020
 ;(setq frame-resize-pixelwise t)
 
@@ -493,6 +496,7 @@
  '(eshell-toggle-run-command nil t)
  '(eshell-toggle-size-fraction 3 t)
  '(eshell-toggle-use-projectile-root t t)
+ '(helm-minibuffer-history-key "M-p")
  '(lsp-ui-doc-position 'bottom t)
  '(package-selected-packages
    '(bongo helm-dired-history helm elpy eval-in-repl json-mode markdown-mode rust-mode haskell-mode emms magit flycheck-kotlin flycheck company which-key crux expand-region smartparens diminish eshell-syntax-highlighting fish-completion doom-modeline doom-themes evil use-package)))
