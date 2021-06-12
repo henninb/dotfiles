@@ -31,6 +31,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y lxpolkit
   sudo apt install -y mpc
   sudo apt install -y mpd
+  sudo apt install -y mpv
   sudo apt install -y mpdris2
   sudo apt install -y numlockx
   sudo apt install -y playerctl
@@ -103,6 +104,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S lxappearance
   sudo pacman --noconfirm --needed -S lxsession
   sudo pacman --noconfirm --needed -S mpc
+  sudo pacman --noconfirm --needed -S mpv
   sudo pacman --noconfirm --needed -S mpd
   sudo pacman --noconfirm --needed -S mpdris2
   sudo pacman --noconfirm --needed -S playerctl
@@ -151,6 +153,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y xscreensaver
   sudo pkg install -y xorg
   sudo pkg install -y pkgconf
+  sudo pkg install -y mpv
   sudo pkg install -y networkmgr
   sudo pkg install -y sxhkd
   sudo pkg install -y trayer
@@ -159,6 +162,8 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y numlockx
   sudo pkg install -y lxappearance
   sudo pkg install -y qalculate
+  sudo pkg install -y musicpd
+  sudo pkg install -y musicpc
   # sudo pkg install -y libXft
   # sudo pkg install -y xz
 elif [ "$OS" = "void" ]; then

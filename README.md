@@ -59,6 +59,16 @@
 | nerdtree                | file manager                                         |
 
 
+## Emacs Packages
+| Description             | Package          |
+| -----------             | -------          |
+| irc client              | erc              |
+| file manager            | dired            |
+| music player            | emms             |
+| git client              | magit            |
+
+
+
 ## Software
 | Description            | App(s)                                                                               |
 | ------------           | -----                                                                                |
