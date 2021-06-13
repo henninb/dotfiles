@@ -291,6 +291,8 @@ dmenuRunCmd :: String
 -- passmenuRunCmd = scriptsPath ++ "passmenu " ++ (unwords $ dmenuArgs "Password:")
 dmenuRunCmd = "dmenu " ++ unwords (dmenuArgs "Execute:")
 
+myEmacs = "emacsclient -c -a 'emacs' "
+
 -- | Keys for launching applications.
 applicationKeybindings :: [(String, X ())]
 applicationKeybindings =
@@ -331,6 +333,27 @@ applicationKeybindings =
   , ("M-<F8>"           , namedScratchpadAction scratchPads "vlc-nsp")
   , ("M-<F7>"           , namedScratchpadAction scratchPads "calc-nsp")
   , ("M-S-t"             , tmuxPrompt myXPConfigBottom)
+
+
+    -- Emacs (CTRL-e followed by a key)
+  -- , ("C-e e", spawn (myEmacs ++ ("--eval '(dashboard-refresh-buffer)'")))   -- emacs dashboard
+  -- , ("C-e b", spawn (myEmacs ++ ("--eval '(ibuffer)'")))   -- list buffers
+  -- , ("C-e d", spawn (myEmacs ++ ("--eval '(dired nil)'"))) -- dired
+  -- , ("C-e i", spawn (myEmacs ++ ("--eval '(erc)'")))       -- erc irc client
+  -- , ("C-e m", spawn (myEmacs ++ ("--eval '(mu4e)'")))      -- mu4e email
+  -- , ("C-e n", spawn (myEmacs ++ ("--eval '(elfeed)'")))    -- elfeed rss
+  -- , ("C-e s", spawn (myEmacs ++ ("--eval '(eshell)'")))    -- eshell
+  -- , ("C-e t", spawn (myEmacs ++ ("--eval '(mastodon)'")))  -- mastodon.el
+  -- -- , ("C-e v", spawn (myEmacs ++ ("--eval '(vterm nil)'"))) -- vterm if on GNU Emacs
+  -- , ("C-e v", spawn (myEmacs ++ ("--eval '(+vterm/here nil)'"))) -- vterm if on Doom Emacs
+  -- -- , ("C-e w", spawn (myEmacs ++ ("--eval '(eww \"distrotube.com\")'"))) -- eww browser if on GNU Emacs
+  -- , ("C-e w", spawn (myEmacs ++ ("--eval '(doom/window-maximize-buffer(eww \"distrotube.com\"))'"))) -- eww browser if on Doom Emacs
+  -- emms is an emacs audio player. I set it to auto start playing in a specific directory.
+  -- , ("C-e a", spawn (myEmacs ++ ("--eval '(emms)' --eval '(emms-play-directory-tree \"~/media\")'")))
+
+
+
+
   ]
 
       -- Appending search engine prompts to keybindings list.
