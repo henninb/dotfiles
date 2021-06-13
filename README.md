@@ -67,6 +67,7 @@
 | music player            | emms             |
 | git client              | magit            |
 | rss reader              | elfeed           |
+| web browser             | eww              |
 
 
 
@@ -75,7 +76,7 @@
 | ------------           | -----                                                                                |
 | terminal               | alacritty, st, urxvt                                                                 |
 | editor                 | neovim, emacs, vscodium, intellij, neovide, notepadqq, vscode                        |
-| shell                  | zsh, fish, bash, dash, ksh                                                           |
+| shell                  | zsh, bash, dash, fish, ksh, emacs (eshell)                                           |
 | shell prompt           | spaceship, agnoster, alien, dracula                                                  |
 | zsh plugins            | zsh-syntax-highlighting, zsh-autosuggestions, autojump, zsh-history-substring-search |
 | file manager           | lf, ranger, hunter, spacefm                                                          |
@@ -89,7 +90,7 @@
 | software defined radio | gqrx                                                                                 |
 | spreadsheet            | sc-im                                                                                |
 | programming languages  | java, kotlin, haskell, rust, python, javascript, scala, groovy                       |
-| frameworks             | SpringBoot, Micronaut, react                                                         |
+| frameworks             | SpringBoot, Micronaut, React                                                         |
 | containerization       | docker, podman                                                                       |
 | hypervisor             | kvm, qemu, bhyve                                                                     |
 | remote desktop server  | xrdp                                                                                 |
@@ -107,7 +108,7 @@
 | audio player           | cmus, mpd, cantata, ncmpcpp, emacs (emms)                                            |
 | audio player daemon    | mpd                                                                                  |
 | image converter        | imagemagik                                                                           |
-| image viewer           | sxiv, feh, chafa                                                                          |
+| image viewer           | sxiv, feh, chafa                                                                     |
 | wallpaper manager      | feh, nitrogen                                                                        |
 | burning images         | cdrecord, wodim, k3b                                                                 |
 | podcast client         | newsboat, castget                                                                    |

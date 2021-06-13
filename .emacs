@@ -294,6 +294,7 @@
     :ensure t
     :config
     (require 'emms-setup)
+    (require 'emms-player-mpd)
     (emms-all)
     (emms-default-players)
 ;    (setq emms-source-file-default-directory "~/media/")
@@ -302,6 +303,21 @@
   (require 'emms-playing-time)
   (emms-playing-time 1)
 )
+
+; (use-package emms
+;   :config
+;     (require 'emms-setup)
+;     (require 'emms-player-mpd)
+;     (emms-all) ; don't change this to values you see on stackoverflow questions if you expect emms to work
+;     (setq emms-player-list '(emms-player-mpd))
+;     (add-to-list 'emms-info-functions 'emms-info-mpd)
+;     (add-to-list 'emms-player-list 'emms-player-mpd)
+
+;     ;; Socket is not supported
+;     (setq emms-player-mpd-server-name "localhost")
+;     (setq emms-player-mpd-server-port "6600")
+;     (setq emms-player-mpd-music-directory "/data/music")
+;   )
 
 (use-package super-save
   :ensure t ; install package if not installed
@@ -358,9 +374,70 @@
 ; (global-set-key "\C-cef" (lambda () (interactive)
  ;    (erc :server "irc.freenode.net" :port "6667" :nick "henninb")))
 
+; (use package elfeed
+;      :ensure t ; install package if not installed
+; )
+
+(use-package elfeed
+  :ensure t
+  :config
+  (setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)
+        elfeed-show-entry-switch 'display-buffer)
+  ; :bind
+  ; ("C-x w" . elfeed )
+  )
+
+(use-package lsp-haskell
+ :ensure t
+ :config
+ (setq lsp-haskell-process-path-hie "haskell-language-server-wrapper")
+ ;; Comment/uncomment this line to see interactions between lsp client/server.
+ ;;(setq lsp-log-io t)
+)
+
+; (use-package lsp-haskell
+;   :ensure t
+; )
+
+; (add-hook 'haskell-mode-hook #'lsp)
+
 (use-package haskell-mode
   :ensure t
+
 )
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("e1ecb0536abec692b5a5e845067d75273fe36f24d01210bf0aa5842f2a7e029f" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" default))
+ '(erc-autojoin-channels-alist
+   '(("freenode.net" "#archlinux" "#freebsd" "#ubuntu" "#gentoo" "#fedora" "#voidlinux" "#manjaro" "#solus" "#neovim" "#vim" "#emacs" "#xmonad" "#i3" "#bspwm" "#scala" "#kotlin" "#python" "#ruby" "#haskell")))
+ '(erc-autojoin-timing 'ident)
+ '(erc-fill-function 'erc-fill-static)
+ '(erc-fill-static-center 22)
+ '(erc-hide-list '("JOIN" "PART" "QUIT"))
+ '(erc-lurker-hide-list '("JOIN" "PART" "QUIT"))
+ '(erc-lurker-threshold-time 43200)
+ '(erc-prompt-for-nickserv-password nil)
+ '(erc-server-reconnect-attempts 5)
+ '(erc-server-reconnect-timeout 3)
+ '(erc-track-exclude-types
+   '("JOIN" "MODE" "NICK" "PART" "QUIT" "324" "329" "332" "333" "353" "477"))
+ '(eshell-toggle-run-command nil t)
+ '(eshell-toggle-size-fraction 3 t)
+ '(eshell-toggle-use-projectile-root t t)
+ '(haskell-process-type 'stack-ghci)
+ '(helm-minibuffer-history-key "M-p")
+ '(lsp-ui-doc-position 'bottom t)
+ '(package-selected-packages
+   '(elfeed bongo helm-dired-history helm elpy eval-in-repl json-mode markdown-mode rust-mode haskell-mode emms magit flycheck-kotlin flycheck company which-key crux expand-region smartparens diminish eshell-syntax-highlighting fish-completion doom-modeline doom-themes evil use-package)))
+(add-hook 'haskell-mode-hook #'hindent-mode)
+  ; (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 
 (use-package rust-mode
   :ensure t
@@ -473,33 +550,7 @@
              (list (regexp-quote "/ssh:user@host:")
                    "remote-shell" "/bin/bash"))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("e1ecb0536abec692b5a5e845067d75273fe36f24d01210bf0aa5842f2a7e029f" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" default))
- '(erc-autojoin-channels-alist
-   '(("freenode.net" "#archlinux" "#freebsd" "#ubuntu" "#gentoo" "#fedora" "#voidlinux" "#manjaro" "#solus" "#neovim" "#vim" "#emacs" "#xmonad" "#i3" "#bspwm" "#scala" "#kotlin" "#python" "#ruby" "#haskell")))
- '(erc-autojoin-timing 'ident)
- '(erc-fill-function 'erc-fill-static)
- '(erc-fill-static-center 22)
- '(erc-hide-list '("JOIN" "PART" "QUIT"))
- '(erc-lurker-hide-list '("JOIN" "PART" "QUIT"))
- '(erc-lurker-threshold-time 43200)
- '(erc-prompt-for-nickserv-password nil)
- '(erc-server-reconnect-attempts 5)
- '(erc-server-reconnect-timeout 3)
- '(erc-track-exclude-types
-   '("JOIN" "MODE" "NICK" "PART" "QUIT" "324" "329" "332" "333" "353" "477"))
- '(eshell-toggle-run-command nil t)
- '(eshell-toggle-size-fraction 3 t)
- '(eshell-toggle-use-projectile-root t t)
- '(helm-minibuffer-history-key "M-p")
- '(lsp-ui-doc-position 'bottom t)
- '(package-selected-packages
-   '(elfeed bongo helm-dired-history helm elpy eval-in-repl json-mode markdown-mode rust-mode haskell-mode emms magit flycheck-kotlin flycheck company which-key crux expand-region smartparens diminish eshell-syntax-highlighting fish-completion doom-modeline doom-themes evil use-package)))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
