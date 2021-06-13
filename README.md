@@ -66,6 +66,7 @@
 | file manager            | dired            |
 | music player            | emms             |
 | git client              | magit            |
+| rss reader              | elfeed           |
 
 
 

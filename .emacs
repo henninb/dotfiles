@@ -499,7 +499,7 @@
  '(helm-minibuffer-history-key "M-p")
  '(lsp-ui-doc-position 'bottom t)
  '(package-selected-packages
-   '(bongo helm-dired-history helm elpy eval-in-repl json-mode markdown-mode rust-mode haskell-mode emms magit flycheck-kotlin flycheck company which-key crux expand-region smartparens diminish eshell-syntax-highlighting fish-completion doom-modeline doom-themes evil use-package)))
+   '(elfeed bongo helm-dired-history helm elpy eval-in-repl json-mode markdown-mode rust-mode haskell-mode emms magit flycheck-kotlin flycheck company which-key crux expand-region smartparens diminish eshell-syntax-highlighting fish-completion doom-modeline doom-themes evil use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
