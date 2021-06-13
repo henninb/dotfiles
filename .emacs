@@ -399,7 +399,7 @@
 ;   :ensure t
 ; )
 
-; (add-hook 'haskell-mode-hook #'lsp)
+(add-hook 'haskell-mode-hook #'lsp)
 
 (use-package haskell-mode
   :ensure t
@@ -434,10 +434,10 @@
  '(lsp-ui-doc-position 'bottom t)
  '(package-selected-packages
    '(elfeed bongo helm-dired-history helm elpy eval-in-repl json-mode markdown-mode rust-mode haskell-mode emms magit flycheck-kotlin flycheck company which-key crux expand-region smartparens diminish eshell-syntax-highlighting fish-completion doom-modeline doom-themes evil use-package)))
-(add-hook 'haskell-mode-hook #'hindent-mode)
+; (add-hook 'haskell-mode-hook #'hindent-mode)
   ; (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+; (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+; (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 
 (use-package rust-mode
   :ensure t
