@@ -19,7 +19,7 @@ ip addr show
 passwd root
 ```
 
-## start sshd server
+## start dhcp server
 ```
 rc-service dhcpcd start
 ```
@@ -57,7 +57,7 @@ wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/2021061
 
 ## download stage3 systemd - need to try this
 ```
-wgethttps://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20210611T113421Z/stage3-amd64-systemd-20210611T113421Z.tar.xz
+wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20210611T113421Z/stage3-amd64-systemd-20210611T113421Z.tar.xz
 ```
 
 ## extract stage3 and be sure to verify success
