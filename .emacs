@@ -16,6 +16,9 @@
 ; valid backspace key
 (normal-erase-is-backspace-mode 1)
 
+; buffer switching
+; (iswitchb-mode 1) ;depricated
+
 ; required for bspwm 7/15/2020
 ;(setq frame-resize-pixelwise t)
 

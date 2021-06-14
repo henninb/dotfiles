@@ -40,3 +40,7 @@ emacsclient -e "(print (+ 5 4))"
 
 ## evaluate an expression
 ``` M-: (= 0 1) RET ```
+
+## buffer movement
+```^x, ^>```
+```^x, ^<```
