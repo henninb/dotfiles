@@ -1,4 +1,4 @@
-# gentoo install
+# gentoo install - last executed on 6/14/2021
 download minimal
 
 https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation
@@ -52,7 +52,12 @@ cd /mnt/gentoo
 
 ## download stage3
 ```
-wget http://gentoo.ussg.indiana.edu/releases/amd64/autobuilds/current-stage3-amd64/stage3-amd64-20200819T214503Z.tar.xz
+wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20210611T113421Z/stage3-amd64-20210611T113421Z.tar.xz
+```
+
+## download stage3 systemd - need to try this
+```
+wgethttps://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20210611T113421Z/stage3-amd64-systemd-20210611T113421Z.tar.xz
 ```
 
 ## extract stage3 and be sure to verify success
@@ -169,11 +174,11 @@ grub-mkconfig -o /boot/grub/grub.cfg
 reboot
 
 
-## optional
+## optional for virtualbox
 #emerge --ask app-emulation/virtualbox-guest-additions
 #gpasswd -a henninb vboxguest
 
-# optional
+# optional for virtualbox
 #usermod -aG vboxsf henninb
 
 # update source tree
