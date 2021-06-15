@@ -135,6 +135,13 @@ emerge --ask sys-boot/grub:2
 
 ip addr show
 
+
+vi /etc/locale.gen
+en_US.UTF-8 UTF-8
+locale-gen
+eselect locale list
+eselect locale set 4
+
 vi /etc/conf.d/net
 # virtualbox guest
 config_eth0="dhcp"
