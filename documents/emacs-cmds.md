@@ -33,7 +33,7 @@ emacsclient -e "(print (+ 5 4))"
 ```M-x magit-version RET```
 
 ## tramp
-``` C-x,C-f /ssh:henninb@192.168.100.208:/home/henninb/.zshrc```
+``` C-x,C-f /ssh:pi@192.168.100.124:/home/pi/.zshrc```
 ```~/.authinfo.gpg```
 ```(setq password-cache-expiry nil)```
 ```which requires the package password-cache.el```
