@@ -398,8 +398,25 @@
   )
 )
 
-; (require 'erc-sasl)
-; (add-to-list 'erc-sasl-server-regexp-list "irc\\.freenode\\.net")
+(defun toggle-erc ()
+  "run erc with tls"
+  (interactive)
+  (erc-tls :server "irc.libera.chat"
+             :port 6697
+             :nick "henninb"
+             :password "7315")
+  ; (message "run erc with tls")
+)
+
+; frogfind.com for web browser
+; yeyeye, 'M-x customize-group RET shr' has some handy variables in it.
+(setq
+ browse-url-browser-function 'eww-browse-url ; Use eww as the default browser
+ shr-use-fonts  nil                          ; No special fonts
+ shr-use-colors nil                          ; No colours
+ shr-indentation 2                           ; Left-side margin
+ shr-width 70                                ; Fold text to 70 columns
+ eww-search-prefix "https://www.duckduckgo.com")    ; Use another engine for searching
 
 (use-package erc
   :custom
@@ -419,6 +436,7 @@
   ; (add-to-list 'erc-modules 'spelling)
   (erc-services-mode 1)
   (erc-update-modules))
+
 
  ; (setq erc-server-history-list '("irc.freenode.net"
  ;                                 "test.erc.org"
