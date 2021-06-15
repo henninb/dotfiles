@@ -172,7 +172,8 @@
   :ensure t ; install if not already installed
 )
 
-; machine 12.34.56.789 login lawlist password 12345678 port ssh
+; echo "machine irc.libera.chat login <nick> password <password>" >> ~/.authinfo
+; echo "machine freebsd.local login <username> password <password> port ssh" >> ~/.authinfo
 (setq auth-sources '("/home/henninb/.authinfo"))
 
 ; fix the yes no prompts
@@ -398,16 +399,6 @@
   )
 )
 
-(defun toggle-erc ()
-  "run erc with tls"
-  (interactive)
-  (erc-tls :server "irc.libera.chat"
-             :port 6697
-             :nick "henninb"
-             :password "7315")
-  ; (message "run erc with tls")
-)
-
 ; frogfind.com for web browser
 ; yeyeye, 'M-x customize-group RET shr' has some handy variables in it.
 (setq
@@ -418,37 +409,104 @@
  shr-width 70                                ; Fold text to 70 columns
  eww-search-prefix "https://www.duckduckgo.com")    ; Use another engine for searching
 
+
 (use-package erc
-  :custom
-  (erc-autojoin-channels-alist '(("irc.libera.chat" "#archlinux" "#freebsd" "#ubuntu" "#gentoo" "#fedora" "#voidlinux" "#manjaro" "#solus" "#neovim" "#vim" "#emacs" "#xmonad" "#i3" "#bspwm""#scala" "#kotlin" "#python" "#ruby" "#haskell")))
-  (erc-autojoin-timing 'ident)
-  (erc-fill-function 'erc-fill-static)
-  (erc-fill-static-center 22)
-  (erc-hide-list '("JOIN" "PART" "QUIT"))
-  (erc-lurker-hide-list '("JOIN" "PART" "QUIT"))
-  (erc-lurker-threshold-time 43200)
-  (erc-prompt-for-nickserv-password nil)
-  (erc-server-reconnect-attempts 5)
-  (erc-server-reconnect-timeout 3)
-  (erc-track-exclude-types '("JOIN" "MODE" "NICK" "PART" "QUIT" "324" "329" "332" "333" "353" "477"))
-  :config
-  (add-to-list 'erc-modules 'notifications)
-  ; (add-to-list 'erc-modules 'spelling)
-  (erc-services-mode 1)
-  (erc-update-modules))
+  :ensure t
+  )
+;; echo "machine irc.libera.chat login <nick> password <password>" >> ~/.authinfo
+(defun start-irc (nick)
+  (interactive "sTell me your nick please: ")
+  (setq erc-track-shorten-start 8
+        erc-kill-buffer-on-part t
+        erc-auto-query 'bury
+        erc-hide-list '("JOIN" "PART" "QUIT")
+        erc-network-hide-list '(("irc.libera.chat" "JOIN" "PART" "QUIT"))
+        erc-channel-hide-list '(("#emacs" "JOIN" "PART" "QUIT"))
+        erc-rename-buffers t
+        erc-autojoin-channels-alist '(("libera.chat" "#emacs" "#freebsd" "#gentoo" "#haskell" "#archlinux"))
+        erc-interpret-mirc-color t
+        erc-modules '(autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands notifications readonly ring stamp track truncate))
+  (erc-tls :server "irc.libera.chat"
+           :port 6697
+           :nick nick
+           :full-name "emacs-user"))
 
 
- ; (setq erc-server-history-list '("irc.freenode.net"
- ;                                 "test.erc.org"
- ;                                 "irc.lugs.ch"))
-; (load "~/.emacs.d/.erc-auth")
-; ;; C-c e f. connect to freenode
-; (global-set-key "\C-cef" (lambda () (interactive)
- ;    (erc :server "irc.freenode.net" :port "6667" :nick "henninb")))
+;; ;; IRC works ok
+; (use-package auth-source-pass
+;    :ensure t
+;    :config
+;    (auth-source-pass-enable))
+;  (use-package erc
+;    ; :straight nil
+;    :commands (erc)
+;    :init
+;    (require 'erc-join)
+;    (setq erc-autojoin-channels-alist '(("irc.libera.chat" "#haskell", "#emacs" ))
+;  	erc-hide-list '("JOIN" "PART" "QUIT")
+;     erc-autojoin-mode t
 
-; (use package elfeed
-;      :ensure t ; install package if not installed
-; )
+;  	)
+;    (defun irc-connect ()
+;      (interactive)
+;      (erc-tls
+;       :server "irc.libera.chat"
+;       :port 6697
+;       :nick "henninb"
+;       :password ""
+;       ; :nick (auth-source-pass-get "login" "irc/libera.chat")
+;       ; :password (auth-source-pass-get 'secret "irc/libera.chat")
+;       )))
+
+
+
+; (use-package erc
+;   :custom
+;   (erc-autojoin-channels-alist '(("irc.libera.chat" "#archlinux" "#freebsd" "#ubuntu" "#gentoo" "#fedora" "#voidlinux" "#manjaro" "#solus" "#neovim" "#vim" "#emacs" "#xmonad" "#i3" "#bspwm""#scala" "#kotlin" "#python" "#ruby" "#haskell")))
+;   (erc-autojoin-timing 'ident)
+;   (erc-fill-function 'erc-fill-static)
+;   (erc-fill-static-center 22)
+;   (erc-autojoin-mode t)
+;   (erc-hide-list '("JOIN" "PART" "QUIT"))
+;   (erc-lurker-hide-list '("JOIN" "PART" "QUIT"))
+;   (erc-lurker-threshold-time 43200)
+;   (erc-prompt-for-nickserv-password nil)
+;   (erc-server-reconnect-attempts 5)
+;   (erc-server-reconnect-timeout 3)
+;   (erc-track-exclude-types '("JOIN" "MODE" "NICK" "PART" "QUIT" "324" "329" "332" "333" "353" "477"))
+;   :config
+;   (add-to-list 'erc-modules 'notifications)
+;   ; (add-to-list 'erc-modules 'spelling)
+;   (erc-services-mode 1)
+;   (erc-update-modules))
+
+; might be useful
+; (use-package erc-sasl
+;   :after erc
+;   :ensure t
+;   :config
+;   (add-to-list 'erc-sasl-server-regexp-list my/znc-server-regex)
+;   (defun erc-login ()
+;     "Perform user authentication at the IRC server."
+;     (erc-log (format "login: nick: %s, user: %s %s %s :%s"
+;                (erc-current-nick)
+;                (user-login-name)
+;                (or erc-system-name (system-name))
+;                erc-session-server
+;                erc-session-user-full-name))
+;     (if erc-session-password
+;       (erc-server-send (format "PASS %s" erc-session-password))
+;       (message "Logging in without password"))
+;     (when (and (featurep 'erc-sasl) (erc-sasl-use-sasl-p))
+;       (erc-server-send "CAP REQ :sasl"))
+;     (erc-server-send (format "NICK %s" (erc-current-nick)))
+;     (erc-server-send
+;       (format "USER %s %s %s :%s"
+;         ;; hacked - S.B.
+;         (if erc-anonymous-login erc-email-userid (user-login-name))
+;         "0" "*"
+;         erc-session-user-full-name))
+;     (erc-update-mode-line)))
 
 (use-package elfeed
   :ensure t
