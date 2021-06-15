@@ -48,8 +48,24 @@
 ;(push "~/.emacs.d/elisp" load-path)
 (load-file "~/.emacs.d/elisp/tools.el")
 
+;; order matters in the initialization process.
+; (mapc 'load
+;       (list
+;        "init-settings"
+;        "init-completion"
+;        "init-csharp"
+;        ;; This should come after evil due to performance issues see:
+;        ;; https://github.com/noctuid/general.el/issues/180
+;        "init-keys"))
+
 (unless (package-installed-p 'evil)
    (package-install 'evil))
+
+(unless (package-installed-p 'erc)
+   (package-install 'erc))
+
+(unless (package-installed-p 'eww)
+   (package-install 'eww))
 
 (menu-bar-mode 1)
 (toggle-scroll-bar -1)
