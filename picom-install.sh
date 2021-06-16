@@ -8,6 +8,9 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y uthash-dev libxcb-sync-dev libxcb-present-dev
   sudo pip install ninja
   sudo pip install meson
+elif [ "$OS" = "Gentoo" ]; then
+  sudo emerge --update --newuse uthash
+  sudo emerge --update --newuse libconfig
 else
   echo "OS=$OS not setup yet."
 fi
