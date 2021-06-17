@@ -144,7 +144,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse lightdm
   sudo emerge --update --newuse lightdm-gtk-greeter
 
-  sudo USE="introspection ipv6 tcpd elogind" emerge --update --newuse gdm
+  # sudo USE="introspection ipv6 tcpd elogind" emerge --update --newuse gdm
 
   echo /etc/conf.d/xdm
   echo DISPLAYMANAGER = "lightdm"
