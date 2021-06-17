@@ -57,6 +57,7 @@ conky.config = {
   imlib_cache_size = 0,                       -- disable image cache to get a new spotify cover per song
 
 
+  -- use_xft = yes,
   --Placement
 
   alignment = 'top_right',            -- top_left,top_middle,top_right,bottom_left,bottom_middle,bottom_right,
