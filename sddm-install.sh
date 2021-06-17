@@ -26,6 +26,17 @@ DesktopNames=xmonad
 Keywords=tiling;wm;windowmanager;window;manager;
 EOF
 
+cat > Xsetup << EOF
+setxkbmap us
+EOF
+chmod 755 Xsetup
+
+cat > sddm.conf << EOF
+[X11]
+DisplayCommand=/etc/sddm/scripts/Xsetup
+EOF
+
+
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman -S sddm
   sudo systemctl enable sddm.service -f
@@ -42,6 +53,18 @@ elif [ "${OS}" = "FreeBSD" ]; then
   sudo sddm --example-config /usr/local/etc/sddm.conf
   sudo service sddm start
   echo https://community.kde.org/FreeBSD/Setup#SDDM
+elif [ "$OS" = "Gentoo" ]; then
+  sudo emerge --update --newuse sddm
+  sudo usermod -a -G video sddm
+  sudo mv -v sddm.conf /etc/sddm.conf
+  sudo mkdir -p /etc/sddm/scripts
+  sudo sudo mv -v Xsetup /etc/sddm/scripts/Xsetup
+  sudo chmod 755 /etc/sddm/scripts/Xsetup
+  sudo emerge --update --newuse gui-libs/display-manager-init
+  echo sudo vi /etc/conf.d/display-manager
+  cat /etc/conf.d/display-manager
+  sudo rc-update add display-manager default
+  sudo rc-service display-manager start
 else
   echo "${OS} is not setup"
   exit 1
