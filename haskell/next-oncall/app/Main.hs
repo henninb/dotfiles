@@ -30,4 +30,3 @@ main = do
   today <- currDay
   futureDate <- nextOncallDay startDate engineerNumber
   print (diffDays futureDate today)
-  print "test"
