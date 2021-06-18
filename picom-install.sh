@@ -9,6 +9,8 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo pip install ninja
   sudo pip install meson
 elif [ "$OS" = "Gentoo" ]; then
+  sudo pip install ninja
+  sudo pip install meson
   sudo emerge --update --newuse uthash
   sudo emerge --update --newuse libconfig
 else
