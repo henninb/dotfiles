@@ -538,3 +538,7 @@ WM_WINDOW_ROLE:  not found.
 ```
 solution: dzen2 if it is not compiled correctly will not get the struts and ultimately will not work correctly with xmonad in adding th space for the bar
 use the dzen2 for the OS if possible.
+
+works with these features
+dzen-0.9.5-svn, (C)opyright 2007-2009 Robert Manea
+Enabled optional features:  XPM  XFT XINERAMA
