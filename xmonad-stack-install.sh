@@ -299,7 +299,7 @@ if ! stack install hlint; then
 fi
 
 cd "$HOME/projects" || exit
-git clone git clone git@github.com:xmonad/xmonad.git
+git clone git@github.com:xmonad/xmonad.git
 cd xmonad || exit
 stack build
 stack install
