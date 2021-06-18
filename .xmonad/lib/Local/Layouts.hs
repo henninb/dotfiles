@@ -29,7 +29,8 @@ import System.Info (os)
 import Local.Workspaces (myWorkspaces)
 
 -- mySpacing = if os == "freebsd" then spacingRaw False (Border 14 1 1 1) True (Border 1 1 1 1) True else spacingRaw False (Border 2 1 1 1) True (Border 1 1 1 1) True
-mySpacing = spacingRaw False (Border 14 1 1 1) True (Border 1 1 1 1) True
+-- mySpacing = spacingRaw False (Border 14 1 1 1) True (Border 1 1 1 1) True
+mySpacing = spacingRaw False (Border 1 1 1 1) True (Border 1 1 1 1) True
 
 -- layouts need to be changed to add the avoidStruts modifier which will cause the layouts to make space for statusbars like dzen2.
 -- myLayouts = renamed [CutWordsLeft 1] . autoStrutsOn [U] . minimize . B.boringWindows $ workspaceLayouts
@@ -62,13 +63,16 @@ fullLayout = renamed [Replace "Full"]
       $ limitWindows 10
       $ noBorders Full
 myTileLayout = renamed [Replace "Main"]
+      $ avoidStruts
       $ smartBorders
       $ mySpacing
       $ Tall 1 (3/100) (1/2)
 threeColumn = renamed [Replace "3Col"]
       $ mySpacing
+      $ avoidStruts
       $ ThreeColMid 1 (3/100) (1/2)
 threeCol = renamed [Replace "Three"]
+      $ avoidStruts
       $ mySpacing
       $ ThreeColMid 1 (1/10) (1/2)
 myMagn = renamed [Replace "Mag"]
@@ -79,9 +83,11 @@ myMagn = renamed [Replace "Mag"]
       $ FixedColumn 1 20 80 10
 commonLayout = renamed [Replace "Com"]
       $ mySpacing
+      $ avoidStruts
       $ Tall 1 (5/100) (1/3)
 terminalLayout = renamed [Replace "Terminals"]
       $ mySpacing
+      $ avoidStruts
       $ simpleTall 50 ||| simpleThree 33 ||| Mirror (simpleTall 53)
 -- codingLayout = renamed [Replace "Coding"]
 --       $ twoPaneTabbed ||| twoPaneTall ||| simpleTall 50
@@ -97,6 +103,7 @@ phiLayout = renamed [Replace "Phi"]
       -- $ (2/(1+(toRational(sqrt(5)::Double)))) -- Golden Ratio
 spiralLayout  = renamed [Replace "Spiral"]
       $ mySpacing
+      $ avoidStruts
       $ Sp.spiralWithDir Sp.East Sp.CW (6/7)
 panelLayout = renamed [Replace "Control"]
       $ mySpacing

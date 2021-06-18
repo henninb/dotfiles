@@ -332,8 +332,8 @@ applicationKeybindings =
   , ("M-<F9>"           , namedScratchpadAction scratchPads "keepass-nsp")
   , ("M-<F8>"           , namedScratchpadAction scratchPads "vlc-nsp")
   , ("M-<F7>"           , namedScratchpadAction scratchPads "calc-nsp")
-  , ("M-S-t"             , tmuxPrompt myXPConfigBottom)
-       , ("M-S-s", sendMessage ToggleStruts)
+  -- , ("M-S-t"            , tmuxPrompt myXPConfigBottom)
+  , ("M-S-t"            , sendMessage ToggleStruts)
 
 
     -- Emacs (CTRL-e followed by a key)

@@ -72,6 +72,7 @@ main = do
   xmonad
     $ withUrgencyHook NoUrgencyHook
     $ dynamicProjects projects
+    $ docks
     $ ewmh
     -- $ myConfig { logHook = dynamicLogWithPP polybarLogHook }
     $ myConfig { logHook =
@@ -154,7 +155,6 @@ myConfig = def
       <+> fullscreenEventHook -- may have negative impact to flameshot
   -- , logHook = eventLogHookForPolybar
   , startupHook = docksStartupHook <+> myStartupHook
-  -- , startupHook = docks <+> myStartupHook
   , focusFollowsMouse = False
   , clickJustFocuses = False
   , borderWidth = myBorderWidth
