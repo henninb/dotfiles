@@ -92,6 +92,7 @@ myRemoveKeys = [
                  , (superKeyMask, xK_x)
                  , (controlMask, xK_p)
                  , (controlMask, xK_n)
+                 -- , (superKeyMask .|. shiftMask, xK_s)
                  , (superKeyMask .|. shiftMask, xK_q)
                  , (superKeyMask .|. shiftMask, xK_c)
                  -- , (superKeyMask, xK_space)
@@ -332,9 +333,8 @@ applicationKeybindings =
   , ("M-<F9>"           , namedScratchpadAction scratchPads "keepass-nsp")
   , ("M-<F8>"           , namedScratchpadAction scratchPads "vlc-nsp")
   , ("M-<F7>"           , namedScratchpadAction scratchPads "calc-nsp")
-  -- , ("M-S-t"            , tmuxPrompt myXPConfigBottom)
-  , ("M-S-t"            , sendMessage ToggleStruts)
-
+  , ("M-S-t"            , tmuxPrompt myXPConfigBottom)
+  , ("M-S-r"            , sendMessage ToggleStruts)
 
     -- Emacs (CTRL-e followed by a key)
   -- , ("C-e e", spawn (myEmacs ++ ("--eval '(dashboard-refresh-buffer)'")))   -- emacs dashboard

@@ -205,7 +205,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG tty "$(id -un)"
   sudo usermod -aG video "$(id -un)"
   # sudo emerge --unmerge dzen
-  GENTOO_PKGS="i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot xappearance volumeicon neofetch blueman copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky"
+  GENTOO_PKGS="dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot xappearance volumeicon neofetch blueman copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky"
   FAILURE=""
   for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then
@@ -333,14 +333,6 @@ fi
 # stack build --flag xmobar:-with_xft --flag xmobar:-with_utf8 --flag xmobar:-with_threaded --flag xmobar:-with_dbus --flag xmobar:-with_mpd --flag xmobar:-with_mpris --flag xmobar:-with_inotify --flag xmobar:-with_alsa --flag xmobar:-with_datezone --flag xmobar:-with_xpm --flag xmobar:-with_uvmeter --flag xmobar:-with_weather
 # stack install
 #"$HOME/.local/bin/xmonad" --version
-
-if [ "$OS" = "Gentoo" ]; then
-  cd "$HOME/projects" || exit
-  git clone https://github.com/minos-org/dzen2.git
-  cd dzen2 || exit
-  sudo make clean install
-  cd - || exit
-fi
 
 sudo cp -v "$HOME/.local/bin/xmonad-start" /usr/local/bin/xmonad-start
 
