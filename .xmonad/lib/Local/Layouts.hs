@@ -31,18 +31,22 @@ import Local.Workspaces (myWorkspaces)
 -- mySpacing = if os == "freebsd" then spacingRaw False (Border 14 1 1 1) True (Border 1 1 1 1) True else spacingRaw False (Border 2 1 1 1) True (Border 1 1 1 1) True
 mySpacing = spacingRaw False (Border 14 1 1 1) True (Border 1 1 1 1) True
 
+-- layouts need to be changed to add the avoidStruts modifier which will cause the layouts to make space for statusbars like dzen2.
 myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ workspaceLayouts
+-- myLayouts = renamed [CutWordsLeft 1] . minimize . B.boringWindows $ workspaceLayouts
 
   -- layout per workspace
 workspaceLayouts =
-        -- onWorkspace [myWorkspaces!!0] my3FT $
         onWorkspace "1" my3FT $
         onWorkspace "2" myAllLayoutGroup $
         onWorkspace "3" myFtLayoutGroupM $
         onWorkspace "4" my3FT $
         onWorkspace "5" myFtLayoutGroupM $
-        onWorkspace "9" myMiscLayoutGroup $
-        onWorkspace "6" myFtLayoutGroup myAllLayoutGroup
+        onWorkspace "6" myMiscLayoutGroup $
+        onWorkspace "7" my3FT $
+        onWorkspace "8" my3FT $
+        onWorkspace "9" my3FT $
+        onWorkspace "0" myFtLayoutGroup myAllLayoutGroup
         -- onWorkspace "0" myMiscLayoutGroup
 
 
@@ -53,22 +57,17 @@ myMiscLayoutGroup = mediaLayout ||| terminalLayout ||| terminalLayout ||| common
 myAllLayoutGroup = myTileLayout ||| fullLayout ||| threeCol ||| myMagn ||| terminalLayout
 
 fullLayout = renamed [Replace "Full"]
-      $ avoidStruts
       $ mySpacing
       $ limitWindows 10
-      -- $ gaps [(U,5), (D,5)]
       $ noBorders Full
 myTileLayout = renamed [Replace "Main"]
-      $ avoidStruts
       $ smartBorders
       $ mySpacing
       $ Tall 1 (3/100) (1/2)
 threeColumn = renamed [Replace "3Col"]
-      -- $ avoidStruts
       $ mySpacing
       $ ThreeColMid 1 (3/100) (1/2)
 threeCol = renamed [Replace "Three"]
-      $ avoidStruts
       $ mySpacing
       $ ThreeColMid 1 (1/10) (1/2)
 myMagn = renamed [Replace "Mag"]
@@ -79,12 +78,9 @@ myMagn = renamed [Replace "Mag"]
       $ FixedColumn 1 20 80 10
 commonLayout = renamed [Replace "Com"]
       $ mySpacing
-      $ avoidStruts
-      -- $ gaps [(U,5), (D,5)]
       $ Tall 1 (5/100) (1/3)
 terminalLayout = renamed [Replace "Terminals"]
       $ mySpacing
-      -- $ gaps [(U,5), (D,5)]
       $ simpleTall 50 ||| simpleThree 33 ||| Mirror (simpleTall 53)
 -- codingLayout = renamed [Replace "Coding"]
 --       $ twoPaneTabbed ||| twoPaneTall ||| simpleTall 50
@@ -105,7 +101,6 @@ panelLayout = renamed [Replace "Control"]
       $ mySpacing
       $ Grid ||| Mirror (simpleTall 50) ||| simpleThree 33
 -- myGimpLayout = renamed [Replace "Gimp"]
---       -- $ avoidStruts
 --       $ withIM 0.11 (Role "gimp-toolbox")
 --       $ reflectHoriz
 --       $ withIM 0.15 (Role "gimp-dock") Full

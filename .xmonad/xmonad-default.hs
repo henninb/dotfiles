@@ -153,7 +153,7 @@ myConfig = def
       <+> minimizeEventHook
       <+> fullscreenEventHook -- may have negative impact to flameshot
   -- , logHook = eventLogHookForPolybar
-  , startupHook = myStartupHook
+  , startupHook = docksStartupHook <+> myStartupHook
   , focusFollowsMouse = False
   , clickJustFocuses = False
   , borderWidth = myBorderWidth

@@ -2,27 +2,17 @@ HLINT := $(shell command -v hlint 2> /dev/null)
 
 all:
 	@make default
-dbus:
-	@echo build dbus
-	@rm -rf *.hi *.o xmonad
-	@ln -sfn xmonad-dbus.hs xmonad.hs
-	@stack ghc -- --make xmonad.hs
-	@rm -rf *.hi *.o
-	@sudo mv -v xmonad /usr/local/bin
-	@hlint xmonad.hs
 default:
 	@echo build default
 	@rm -rf *.hi *.o xmonad
 	@ln -sfn xmonad-default.hs xmonad.hs
-	# @stack ghc -- --make xmonad.hs
 	@stack ghc -- --make xmonad.hs -i -ilib -fforce-recomp
 	@find . -name "*.hi" | xargs rm
 	@find . -name "*.o" | xargs rm
 	@rm -rf xmonad-x86_64-linux xmonad-x86_64-freebsd
 	@cp -v xmonad xmonad-x86_64-linux
 	@cp -v xmonad xmonad-x86_64-freebsd
-	@hlint xmonad.hs
-#@cp /usr/local/bin/xmonad ~/.xmonad/xmonad-x86_64-freebsd
+	@rm -v xmonad
 	@hlint xmonad.hs
 	@hlint lib/Local/*.hs
 rice:
