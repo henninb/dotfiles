@@ -32,8 +32,8 @@ import Local.Workspaces (myWorkspaces)
 mySpacing = spacingRaw False (Border 14 1 1 1) True (Border 1 1 1 1) True
 
 -- layouts need to be changed to add the avoidStruts modifier which will cause the layouts to make space for statusbars like dzen2.
-myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ workspaceLayouts
--- myLayouts = renamed [CutWordsLeft 1] . minimize . B.boringWindows $ workspaceLayouts
+-- myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ workspaceLayouts
+myLayouts = renamed [CutWordsLeft 1] . minimize . B.boringWindows $ workspaceLayouts
 
   -- layout per workspace
 workspaceLayouts =
