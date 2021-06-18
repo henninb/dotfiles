@@ -298,20 +298,30 @@ if ! stack install hlint; then
   failures="$failures hlint"
 fi
 
-if ! stack install xmonad-contrib; then
-  echo failed xmonad-contrib.
-  failures="$failures xmonad-contrib"
-fi
+cd "$HOME/projects" || exit
+git clone git clone git@github.com:xmonad/xmonad.git
+cd xmonad || exit
+stack build
+stack install
+sudo mv .local/bin/xmonad /usr/local/bin/
+cd - || exit
+
+cd "$HOME/projects" || exit
+git clone git@github.com:xmonad/xmonad-contrib.git
+cd xmonad-contrib || exit
+stack build
+stack install
+cd - || exit
+
+# if ! stack install xmonad-contrib; then
+#   echo failed xmonad-contrib.
+#   failures="$failures xmonad-contrib"
+# fi
 
 if ! stack install xmonad-extras; then
   echo failed xmonad-extras.
   failures="$failures xmonad-extras"
 fi
-
-# if ! stack install dbus; then
-#   echo failed dbus.
-#   failures="$failures dbus"
-# fi
 
 # echo "seems to have the the flag with_xft. how to confirm?"
 # cd "$HOME/projects" || exit
@@ -336,24 +346,6 @@ sudo cp -v "$HOME/.local/bin/xmonad-start" /usr/local/bin/xmonad-start
 cd "$HOME/projects" || exit
 git clone https://github.com/sei40kr/tmux-airline-dracula.git
 cd - || exit
-
-# if ! go get github.com/godbus/dbus; then
-#   echo "failed to install go dbus."
-#   # exit 1
-# fi
-# cd "$HOME/projects" || exit
-# git clone git@github.com:xintron/xmonad-log.git
-# cd xmonad-log || exit
-# go build
-# mv xmonad-log "$HOME/.local/bin"
-# cd - || exit
-
-# cd "$HOME/projects" || exit
-# git clone git@github.com:troydm/xmonad-dbus.git
-# cd xmonad-dbus || exit
-# stack build
-# stack install
-# cd - || exit
 
 stack exec ghc-pkg list
 echo stack exec ghc-pkg unregister mypackage
