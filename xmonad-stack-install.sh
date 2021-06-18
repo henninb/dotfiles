@@ -107,7 +107,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S mpv
   sudo pacman --noconfirm --needed -S mpd
   sudo pacman --noconfirm --needed -S mpdris2
-  sudo pacman --noconfirm --needed -S playerctl
+  sudo pacman --noconfirm --needed -S playderctl
   sudo pacman --noconfirm --needed -S pulseaudio
   sudo pacman --noconfirm --needed -S redshift
   sudo pacman --noconfirm --needed -S sxhkd
@@ -137,6 +137,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y copyq
   sudo pkg install -y dmenu
   sudo pkg install -y dunst
+  sudo pkg install -y dzen2
   sudo pkg install -y feh
   sudo pkg install -y sxiv
   sudo pkg install -y flameshot
@@ -333,7 +334,7 @@ fi
 # stack install
 #"$HOME/.local/bin/xmonad" --version
 
-if [ "$OS" = "Gentoo" ] || [ "$OS" = "FreeBSD" ]; then
+if [ "$OS" = "Gentoo" ]; then
   cd "$HOME/projects" || exit
   git clone https://github.com/minos-org/dzen2.git
   cd dzen2 || exit

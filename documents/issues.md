@@ -524,3 +524,17 @@ https://community.platformio.org/t/platformio-on-freebsd/16472/4
 ## xmonad settings
 https://github.com/randomthought/xmonad-config/blob/master/xmonad.hs
 https://github.com/pjones/xmonadrc/blob/trunk/src/XMonad/Local/Keys.hs
+
+## conky dzen2 struts issue
+uses checkDock to see if a window has the DOCK property set and then makes a strut for it, so I think your issue could be caused by the Conky window not properly advertising that property
+
+```
+WM_NAME:
+  title =? "conky (freebsd)"
+WM_CLASS:
+  appName =? "conky"
+  className =? "conky"
+WM_WINDOW_ROLE:  not found.
+```
+solution: dzen2 if it is not compiled correctly will not get the struts and ultimately will not work correctly with xmonad in adding th space for the bar
+use the dzen2 for the OS if possible.
