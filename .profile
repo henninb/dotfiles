@@ -79,3 +79,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 #nix allow non-free packages
 export NIXPKGS_ALLOW_UNFREE=1
 export PASSWORD_STORE_DIR=~/.local/share/password-store
+
+if ! cat /sys/module/hid_apple/parameters/fnmode | grep -q 2; then
+  echo 'echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode'
+fi
