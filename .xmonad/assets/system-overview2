@@ -57,7 +57,7 @@ conky.config = {
   imlib_cache_size = 0,                       -- disable image cache to get a new spotify cover per song
 
 
-  -- use_xft = yes,
+  use_xft = yes,
   --Placement
 
   alignment = 'top_right',            -- top_left,top_middle,top_right,bottom_left,bottom_middle,bottom_right,
@@ -146,18 +146,19 @@ conky.config = {
 };
 
 conky.text = [[
-${voffset -20}${font Roboto:Light:size=48}$alignr${time %H}${color0}:${time %M}${font}${color}
-${voffset -50}${font Roboto:Light:size=24}${voffset 12}$alignr${color0}${execi 300 LANG=${template9} LC_TIME=${template9} date +"%A"}${color},\
+${voffset -20}${font monofur for Powerline:Light:size=48}$alignr${time %H}${color0}:${time %M}${font}${color}
+${voffset -50}${font monofur for Powerline:Light:size=24}${voffset 12}$alignr${color0}${execi 300 LANG=${template9} LC_TIME=${template9} date +"%A"}${color},\
  ${execi 300 LANG=${template9} LC_TIME=${template9} date +"%d"}\
 ${color0} ${execi 300 LANG=${template9} LC_TIME=${template9} date +"%B"}${font}${voffset 2}
 ${voffset -70}${hr}${color}${voffset 4}
-${voffset -70}${font Roboto:pixelsize=13}${alignr} USER: ${color0}${execi 5000 whoami}${color} ${color1}I${color} MACHINE: ${color0}$nodename${color} ${color1}I${color} UPTIME: ${color0}$uptime${color}
-${font Roboto:pixelsize=13}${alignr} DISTRIBUTION: ${color0}${execi 6000 awk -F'=' '/DESCRIPTION/ {print $2}' /etc/lsb-release |sed 's/"//g'}${color} ${color1}I${color} VERSION: ${color0}${execi 6000 awk -F'=' '/DISTRIB_RELEASE=/ {printf $2" "} /CODENAME/ {print $2}' /etc/lsb-release}${color}
-${font Roboto:pixelsize=13}${alignr} ARCHITECTURE: ${color0}${machine}${color} ${color1}I${color} KERNEL: ${color0}${kernel}${color}
-${font Roboto:pixelsize=13}${alignr} ROOT: ${color0}${fs_used /}${color} / ${color0}${fs_size /}${color} ${color1}I${color} HOME: ${color0}${fs_used /home}${color} / ${color0}${fs_size /home}${color}
-${font Roboto:pixelsize=13}${alignr} CPU: ${color0}${cpu cpu0}%${color} ${color1}I${color} RAM: ${color0}$mem / $memmax${color} HD: ${color0}${fs_used_perc}%${color}
-${font Roboto:pixelsize=13}${alignr} SWAP: ${color0}${swap} / ${swapmax}${color} ${color1}I${color} SYS TEMP: ${color0}${execi 10 sensors | grep 'Core 0' | awk {'print $3'}}${color}
-${font Roboto:pixelsize=13}${alignr} YOU CAN INSTALL ${color0}${execpi 12000 checkupdates | wc -l} UPDATE(S)${color}${voffset -60}
+# separator
+${voffset -70}${font monofur for Powerline:pixelsize=13}${alignr} USER: ${color0}${execi 5000 whoami}${color} ${color1}I${color} MACHINE: ${color0}$nodename${color} ${color1}I${color} UPTIME: ${color0}$uptime${color}
+${font monofur for Powerline:pixelsize=13}${alignr} DISTRIBUTION: ${color0}${execi 6000 awk -F'=' '/DESCRIPTION/ {print $2}' /etc/lsb-release |sed 's/"//g'}${color} ${color1}I${color} VERSION: ${color0}${execi 6000 awk -F'=' '/DISTRIB_RELEASE=/ {printf $2" "} /CODENAME/ {print $2}' /etc/lsb-release}${color}
+${font monofur for Powerline:pixelsize=13}${alignr} ARCHITECTURE: ${color0}${machine}${color} ${color1}I${color} KERNEL: ${color0}${kernel}${color}
+${font monofur for Powerline:pixelsize=13}${alignr} ROOT: ${color0}${fs_used /}${color} / ${color0}${fs_size /}${color} ${color1}I${color} HOME: ${color0}${fs_used /home}${color} / ${color0}${fs_size /home}${color}
+${font monofur for Powerline:pixelsize=13}${alignr} CPU: ${color0}${cpu cpu0}%${color} ${color1}I${color} RAM: ${color0}$mem / $memmax${color} HD: ${color0}${fs_used_perc}%${color}
+${font monofur for Powerline:pixelsize=13}${alignr} SWAP: ${color0}${swap} / ${swapmax}${color} ${color1}I${color} SYS TEMP: ${color0}${execi 10 sensors | grep 'Core 0' | awk {'print $3'}}${color}
+${font monofur for Powerline:pixelsize=13}${alignr} YOU CAN INSTALL ${color0}${execpi 12000 checkupdates | wc -l} UPDATE(S)${color}${voffset -60}
 ]]
 
 -- vim: set ft=lua:
