@@ -52,6 +52,6 @@ app-crypt/pinentry gnome-keyring
 >=dev-util/ostree-2020.7 curl
 dev-java/openjdk-bin gentoo-vm -alsa -cups -webstart
 dev-db/postgresql uuid
-app-admin/conky X apcupsd hddtemp ical bundled-toluapp
+app-admin/conky X apcupsd hddtemp ical bundled-toluapp truetype
 >=sys-apps/util-linux-2.36.2 tty-helpers
 x11-misc/dzen xpm xinerama
