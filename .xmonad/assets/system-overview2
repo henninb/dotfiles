@@ -152,12 +152,12 @@ ${voffset -50}${font monofur for Powerline:Light:size=24}${voffset 12}$alignr${c
 ${color0} ${execi 300 LANG=${template9} LC_TIME=${template9} date +"%B"}${font}${voffset 2}
 ${voffset -70}${hr}${color}${voffset 4}
 # separator
-${voffset -60}${font monofur for Powerline:pixelsize=13}${alignr} USER: ${color0}${execi 5000 whoami}${color} ${color1}I${color} MACHINE: ${color0}$nodename${color} ${color1}I${color} UPTIME: ${color0}$uptime${color}
-${font monofur for Powerline:pixelsize=13}${alignr} DISTRIBUTION: ${color0}${execi 6000 awk -F'=' '/DESCRIPTION/ {print $2}' /etc/lsb-release |sed 's/"//g'}${color} ${color1}I${color} VERSION: ${color0}${execi 6000 awk -F'=' '/DISTRIB_RELEASE=/ {printf $2" "} /CODENAME/ {print $2}' /etc/lsb-release}${color}
-${font monofur for Powerline:pixelsize=13}${alignr} ARCHITECTURE: ${color0}${machine}${color} ${color1}I${color} KERNEL: ${color0}${kernel}${color}
-${font monofur for Powerline:pixelsize=13}${alignr} ROOT: ${color0}${fs_used /}${color} / ${color0}${fs_size /}${color} ${color1}I${color} HOME: ${color0}${fs_used /home}${color} / ${color0}${fs_size /home}${color}
-${font monofur for Powerline:pixelsize=13}${alignr} CPU: ${color0}${cpu cpu0}%${color} ${color1}I${color} RAM: ${color0}$mem / $memmax${color} HD: ${color0}${fs_used_perc}%${color}
-${font monofur for Powerline:pixelsize=13}${alignr} SWAP: ${color0}${swap} / ${swapmax}${color} ${color1}I${color} SYS TEMP: ${color0}${execi 10 sensors | grep 'Core 0' | awk {'print $3'}}${color}
+${voffset -60}${font monofur for Powerline:pixelsize=13}${alignr} USER: ${color0}${execi 5000 whoami}${color} MACHINE: ${color0}$nodename${color} UPTIME: ${color0}$uptime${color}
+${font monofur for Powerline:pixelsize=13}${alignr} DISTRIBUTION: ${color0}${execi 6000 awk -F'=' '/DESCRIPTION/ {print $2}' /etc/lsb-release |sed 's/"//g'}${color} VERSION: ${color0}${execi 6000 awk -F'=' '/DISTRIB_RELEASE=/ {printf $2" "} /CODENAME/ {print $2}' /etc/lsb-release}${color}
+${font monofur for Powerline:pixelsize=13}${alignr} ARCHITECTURE: ${color0}${machine}${color} KERNEL: ${color0}${kernel}${color}
+${font monofur for Powerline:pixelsize=13}${alignr} ROOT: ${color0}${fs_used /}${color} / ${color0}${fs_size /}${color} HOME: ${color0}${fs_used /home}${color} / ${color0}${fs_size /home}${color}
+${font monofur for Powerline:pixelsize=13}${alignr} CPU: ${color0}${cpu cpu0}%${color} RAM: ${color0}$mem / $memmax${color} HD: ${color0}${fs_used_perc}%${color}
+${font monofur for Powerline:pixelsize=13}${alignr} SWAP: ${color0}${swap} / ${swapmax}${color} SYS TEMP: ${color0}${execi 10 sensors | grep 'Core 0' | awk {'print $3'}}${color}
 ${font monofur for Powerline:pixelsize=13}${alignr} YOU CAN INSTALL ${color0}${execpi 12000 checkupdates | wc -l} UPDATE(S)${color}${voffset -60}
 ]]
 
