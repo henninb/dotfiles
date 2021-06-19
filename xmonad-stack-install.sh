@@ -97,17 +97,18 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S dzen2
   sudo pacman --noconfirm --needed -S feh
   sudo pacman --noconfirm --needed -S flameshot
-  sudo pacman --noconfirm --needed -S font-awesome-4
+  # sudo pacman --noconfirm --needed -S font-awesome-4
+  sudo pacman --noconfirm --needed -S ttf-font-awesome
   sudo pacman --noconfirm --needed -S gtk-update-icon-cache
   sudo pacman --noconfirm --needed -S jq
-  sudo pacman --noconfirm --needed -S i3lock
+  sudo pacman --noconfirm --needed -S i3lock-color
   sudo pacman --noconfirm --needed -S lxappearance
   sudo pacman --noconfirm --needed -S lxsession
   sudo pacman --noconfirm --needed -S mpc
   sudo pacman --noconfirm --needed -S mpv
   sudo pacman --noconfirm --needed -S mpd
-  sudo pacman --noconfirm --needed -S mpdris2
-  sudo pacman --noconfirm --needed -S playderctl
+  # sudo pacman --noconfirm --needed -S mpdris2
+  # sudo pacman --noconfirm --needed -S playderctl
   sudo pacman --noconfirm --needed -S pulseaudio
   sudo pacman --noconfirm --needed -S redshift
   sudo pacman --noconfirm --needed -S sxhkd

@@ -439,7 +439,7 @@
         erc-network-hide-list '(("irc.libera.chat" "JOIN" "PART" "QUIT"))
         erc-channel-hide-list '(("#emacs" "JOIN" "PART" "QUIT"))
         erc-rename-buffers t
-        erc-autojoin-channels-alist '(("libera.chat" "#emacs" "#freebsd" "#gentoo" "#haskell" "#archlinux"))
+        erc-autojoin-channels-alist '(("libera.chat" "#emacs" "#freebsd" "#gentoo" "#archlinux" "#haskell" "#xmonad"))
         erc-interpret-mirc-color t
         erc-modules '(autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands notifications readonly ring stamp track truncate))
   (erc-tls :server "irc.libera.chat"
