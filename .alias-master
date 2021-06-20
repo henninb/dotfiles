@@ -47,6 +47,7 @@ alias youtube-dl="youtube-dl --no-check-certificate -f 'bestaudio[ext=m4a]'"
 alias local_ip="ip route get 8.8.8.8"
 alias local_ip1="hostname -I"
 
+alias kotlinsh="kotlinc-jvm"
 alias rubysh="irb"
 alias ghci="stack exec -- ghci"
 alias handbrake-gui="ghb"
