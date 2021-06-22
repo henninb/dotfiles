@@ -135,8 +135,9 @@ myStartupHook = do
     -- spawnOnce "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 108 --transparent true --tint 0x000000 --height 18 --alpha 0"
     -- spawnOnce "conky -c $HOME/.xmonad/assets/system-overview"
     spawnOnce "conky -c $HOME/.xmonad/assets/system-overview2"
-    spawnOnce "mpDris2" -- required for mpd
+    -- spawnOnce "mpDris2" -- required for mpd
     spawnOnce "volumeicon"
+    spawnOnce "kill -9 $(ps aux | grep -e \"volumeicon\" | awk ' { print $2 } ')"
     spawnOnce "xscreensaver -no-splash"
     spawnOnce "feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg"
 

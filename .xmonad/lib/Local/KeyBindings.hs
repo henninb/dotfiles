@@ -30,6 +30,9 @@ import XMonad.Util.Paste (sendKey) -- for sendKey
 import XMonad.Util.Run
 import XMonad.Prompt.Input
 import XMonad.Actions.Submap
+import XMonad.Actions.UpdateFocus
+import XMonad.Layout.Minimize
+-- (Minimize, minimize, minimizeWindow, MinimizeMsg(RestoreNextMinimizedWin))
 
 -- import XMonad.Local.Layout (selectLayoutByName, toggleLayout)
 -- import XMonad.Local.Layout.Columns (IncMasterCol (..))
@@ -168,6 +171,10 @@ windowKeys =
   -- , ("M-S-y", withFocused minimizeWindow >> windows W.focusDown)
   -- , ("M-S-p", withLastMinimized maximizeWindowAndFocus)
   ]
+    -- ++ [
+  -- ("M-/", withFocused (\f -> sendMessage (MinimizeWin f))),
+    -- ("M-S-/", sendMessage RestoreNextMinimizedWin)
+    -- ]
 
 -- | Navigate windows by using tags.
 -- windowTagKeys :: XConfig Layout -> [(String, X ())]
@@ -337,8 +344,14 @@ applicationKeybindings =
   , ("M-S-t"            , tmuxPrompt myXPConfigBottom)
   , ("M-S-r"            , sendMessage ToggleStruts)
 
+  , ("M-\\"              ,  withFocused minimizeWindow)
+  -- , ("M-g"              ,  sendMessage RestoreNextMinimizedWin)
+  -- , ("M-\\", withFocused (sendMessage . maximizeRestore))
+  -- , ("M-S-\\", sendMessage RestoreNextMinimizedWin)
+
 -- scratchpads
-  , ("M-S-g",  submap . M.fromList $
+  -- , ("C-M1-g",  submap . M.fromList $
+  , ("M-g",  submap . M.fromList $
             [ ((0, xK_s),    namedScratchpadAction scratchPads "spotify-nsp")
             , ((0, xK_d),    namedScratchpadAction scratchPads "discord-nsp")
             , ((0, xK_t),    namedScratchpadAction scratchPads "tmux-nsp")
