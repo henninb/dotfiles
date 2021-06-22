@@ -19,7 +19,10 @@ class SongEntry {
   String album
 
   Integer year
+
+  // String genre
 }
+
 
 void process() {
   File jsonListFile = new File("list.json")
@@ -39,3 +42,18 @@ void process() {
   print list
 }
 process()
+
+void readthem() {
+  File files = new File("songs.txt")
+  // files.withReader {reader ->
+  //  println reader.readLine()
+  // }
+  files.eachLine {line ->
+    // println line
+    def list = line.split(' - ')
+    println list[0]
+    println list[1].replace('.mp3', '')
+  }
+}
+
+readthem()
