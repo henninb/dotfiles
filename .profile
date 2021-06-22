@@ -82,6 +82,8 @@ export PASSWORD_STORE_DIR=~/.local/share/password-store
 
 export GROOVYSH_PROMPT='groovy'
 
-if ! cat /sys/module/hid_apple/parameters/fnmode | grep -q 2; then
-  echo 'echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode'
+if [ "$OSTYPE" == "linux-gnu"* ]; then
+  if ! cat /sys/module/hid_apple/parameters/fnmode | grep -q 2; then
+    echo 'echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode'
+  fi
 fi
