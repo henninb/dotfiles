@@ -29,6 +29,7 @@ import Graphics.X11.ExtraTypes -- for xF86XK_Paste
 import XMonad.Util.Paste (sendKey) -- for sendKey
 import XMonad.Util.Run
 import XMonad.Prompt.Input
+import XMonad.Actions.Submap
 
 -- import XMonad.Local.Layout (selectLayoutByName, toggleLayout)
 -- import XMonad.Local.Layout.Columns (IncMasterCol (..))
@@ -308,11 +309,11 @@ applicationKeybindings =
   , ("M-S-i"             , spawn ("browser" ++ " --incognito"))
   -- , ("M-p"               , spawn "passmenu -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
   , ("M-p"               , spawn passmenuRunCmd)
-  -- , ("M-<Print>"         , spawn "flameshot gui -p $HOME/screenshots")
+  , ("M-<Print>"         , spawn "flameshot gui -p $HOME/screenshots")
   , ("M-<F4>"            , spawn "flameshot gui -p $HOME/screenshots")
   , ("M-b"               , spawn "redshift -O 3500")
   , ("M-S-b"             , spawn "redshift -x")
-  , ("M-<F3>"            , spawn "intellij")
+  -- , ("M-<F3>"            , spawn "intellij")
   -- , ("M-C-n"             , spawn ("st" ++ " -e newsboat"))
   , ("M-M1-l"            , spawn "i3lock -d -c FFFFFF -t -i ~/backgrounds/mountain-road.jpg")
     -- ("M-C-u", Local.webAppPrompt Local.promptConfig),
@@ -327,14 +328,25 @@ applicationKeybindings =
   -- , ("M-z"               , switchProject terminalProject)
 
   -- , ("M-<F12>"           , namedScratchpadAction scratchPads "terminal")
-  , ("M-<F12>"           , namedScratchpadAction scratchPads "spotify-nsp")
-  , ("M-<F11>"           , namedScratchpadAction scratchPads "discord-nsp")
-  , ("M-<F10>"           , namedScratchpadAction scratchPads "tmux-nsp")
-  , ("M-<F9>"           , namedScratchpadAction scratchPads "keepass-nsp")
-  , ("M-<F8>"           , namedScratchpadAction scratchPads "vlc-nsp")
-  , ("M-<F7>"           , namedScratchpadAction scratchPads "calc-nsp")
+  -- , ("M-<F12>"           , namedScratchpadAction scratchPads "spotify-nsp")
+  -- , ("M-<F11>"           , namedScratchpadAction scratchPads "discord-nsp")
+  -- , ("M-<F10>"           , namedScratchpadAction scratchPads "tmux-nsp")
+  -- , ("M-<F9>"           , namedScratchpadAction scratchPads "keepass-nsp")
+  -- , ("M-<F8>"           , namedScratchpadAction scratchPads "vlc-nsp")
+  -- , ("M-<F7>"           , namedScratchpadAction scratchPads "calc-nsp")
   , ("M-S-t"            , tmuxPrompt myXPConfigBottom)
   , ("M-S-r"            , sendMessage ToggleStruts)
+
+-- scratchpads
+  , ("M-S-g",  submap . M.fromList $
+            [ ((0, xK_s),    namedScratchpadAction scratchPads "spotify-nsp")
+            , ((0, xK_d),    namedScratchpadAction scratchPads "discord-nsp")
+            , ((0, xK_t),    namedScratchpadAction scratchPads "tmux-nsp")
+            , ((0, xK_k),    namedScratchpadAction scratchPads "keepas-nsp")
+            , ((0, xK_v),    namedScratchpadAction scratchPads "vlc-nsp")
+            , ((0, xK_c),    namedScratchpadAction scratchPads "calc-nsp")
+            , ((0, xK_i),    spawn "intellij")
+            ])
 
     -- Emacs (CTRL-e followed by a key)
   -- , ("C-e e", spawn (myEmacs ++ ("--eval '(dashboard-refresh-buffer)'")))   -- emacs dashboard
