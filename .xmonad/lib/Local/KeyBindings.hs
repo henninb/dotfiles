@@ -302,6 +302,9 @@ dmenuRunCmd = "dmenu " ++ unwords (dmenuArgs "Execute:")
 
 myEmacs = "emacsclient -c -a 'emacs' "
 
+lockScreen :: X ()
+lockScreen = spawn "xscreensaver-command -lock"
+
 -- | Keys for launching applications.
 applicationKeybindings :: [(String, X ())]
 applicationKeybindings =
@@ -322,7 +325,8 @@ applicationKeybindings =
   , ("M-S-b"             , spawn "redshift -x")
   -- , ("M-<F3>"            , spawn "intellij")
   -- , ("M-C-n"             , spawn ("st" ++ " -e newsboat"))
-  , ("M-M1-l"            , spawn "i3lock -d -c FFFFFF -t -i ~/backgrounds/mountain-road.jpg")
+  -- , ("M-M1-l"            , spawn "i3lock -d -c FFFFFF -t -i ~/backgrounds/mountain-road.jpg")
+  , ("M-M1-l"            , lockScreen)
     -- ("M-C-u", Local.webAppPrompt Local.promptConfig),
     -- ("M-S-]", namedScratchpadAction scratchPads "emacs"),
     -- ("M-S-[", namedScratchpadAction scratchPads "browser")
