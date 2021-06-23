@@ -345,7 +345,7 @@ applicationKeybindings =
   -- , ("M-<F9>"           , namedScratchpadAction scratchPads "keepass-nsp")
   -- , ("M-<F8>"           , namedScratchpadAction scratchPads "vlc-nsp")
   -- , ("M-<F7>"           , namedScratchpadAction scratchPads "calc-nsp")
-  , ("M-S-t"            , tmuxPrompt myXPConfigBottom)
+  -- , ("M-S-t"            , tmuxPrompt myXPConfigBottom)
   , ("M-S-r"            , sendMessage ToggleStruts)
 
   , ("M-\\"              , withFocused minimizeWindow)
@@ -353,7 +353,7 @@ applicationKeybindings =
 
 -- scratchpads
   -- , ("C-M1-g",  submap . M.fromList $
-  , ("M-g",  submap . M.fromList $
+  , ("M-S-o",  submap . M.fromList $
             [ ((0, xK_s),    namedScratchpadAction scratchPads "spotify-nsp")
             , ((0, xK_d),    namedScratchpadAction scratchPads "discord-nsp")
             , ((0, xK_t),    namedScratchpadAction scratchPads "tmux-nsp")
