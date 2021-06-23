@@ -361,6 +361,10 @@ applicationKeybindings =
             , ((0, xK_v),    namedScratchpadAction scratchPads "vlc-nsp")
             , ((0, xK_c),    namedScratchpadAction scratchPads "calc-nsp")
             , ((0, xK_i),    spawn "intellij")
+            , ((0, xK_d),    spawn "dbeaver-flatpak")
+            , ((0, xK_g),    spawn "steam")
+            , ((0, xK_e),    spawn "vscodium-flatpak")
+            , ((0, xK_h),    spawn "handbrake")
             ])
 
     -- Emacs (CTRL-e followed by a key)
