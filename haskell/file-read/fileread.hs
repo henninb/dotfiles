@@ -3,10 +3,6 @@ import Control.Monad
 import Data.List.Split (splitOn)
 import Data.Char (isSpace)
 import Data.List (isPrefixOf)
--- import Data.Text
-
--- mySplit :: [Char] -> [[Char]]
-
 
 -- readLinesFromFile filename = do
 --   handle <- openFile filename ReadMode
@@ -14,6 +10,9 @@ import Data.List (isPrefixOf)
 --   return $ readLines contents
 trim :: String -> String
 trim = reverse . dropWhile isSpace . reverse . dropWhile isSpace
+
+showDetails :: (String, String) -> String
+showDetails (artist, track) = "{\"artist\":\"" ++ artist ++ "\", \"track\":\"" ++ track ++ "\"},"
 
 remove :: String -> String -> String
 remove w "" = ""
@@ -28,11 +27,15 @@ main = do
 
   let toTup [artist, track] = (trim artist, remove ".mp3" (trim track))
   let mySongs = toTup . splitOn "-" <$> lines contents
-  -- let songs = splitOn "\n" contents
   -- mapM_ putStr songs
   -- let x = (map read . splitOn "-") $ lines contents
   -- let y = (map (map read . splitOn ",") $ lines contents :: String)
   -- mapM_ print songs
   mapM_ print mySongs
+  putStrLn . unlines . map show $ mySongs
+  putStrLn . unlines . map showDetails $ mySongs
   print (length mySongs)
   hClose handle
+  writeFile "songs.json" "["
+  appendFile "songs.json" (unlines . map showDetails $ mySongs)
+  appendFile "songs.json" "]"
