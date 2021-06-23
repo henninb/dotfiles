@@ -85,6 +85,7 @@ colors:
 background_opacity: 0.95
 
 key_bindings:
+  - { key: V,        mods: Control,       action: Paste }
   - { key: V,        mods: Control|Shift, action: Paste }
   - { key: C,        mods: Control|Shift, action: Copy }
   - { key: Equals,   mods: Control,       action: IncreaseFontSize }
