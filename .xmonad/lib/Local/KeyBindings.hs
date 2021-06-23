@@ -348,10 +348,8 @@ applicationKeybindings =
   , ("M-S-t"            , tmuxPrompt myXPConfigBottom)
   , ("M-S-r"            , sendMessage ToggleStruts)
 
-  , ("M-\\"              ,  withFocused minimizeWindow)
-  -- , ("M-g"              ,  sendMessage RestoreNextMinimizedWin)
-  -- , ("M-\\", withFocused (sendMessage . maximizeRestore))
-  -- , ("M-S-\\", sendMessage RestoreNextMinimizedWin)
+  , ("M-\\"              , withFocused minimizeWindow)
+  , ("M-S-\\"            , withLastMinimized maximizeWindow)
 
 -- scratchpads
   -- , ("C-M1-g",  submap . M.fromList $
