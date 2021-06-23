@@ -324,6 +324,12 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   if [ -x "$(command -v neofetch)" ]; then
     [ -n "$TMUX" ] || (curl 'wttr.in/Minneapolis?0' --silent --max-time 3 && neofetch)
   fi
+else
+  if [ "$OSTYPE" = "linux-gnu" ]; then
+    if ! cat /sys/module/hid_apple/parameters/fnmode | grep -q 2; then
+      echo 'echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode'
+    fi
+  fi
 #  export DISPLAY=localhost:10.0
 fi
 
