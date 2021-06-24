@@ -1,0 +1,1 @@
+luarocks --local install fennel
