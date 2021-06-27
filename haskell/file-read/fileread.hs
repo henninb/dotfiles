@@ -1,8 +1,16 @@
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE DeriveAnyClass #-}
+
+import GHC.Generics
 import System.IO
 import Control.Monad
 import Data.List.Split (splitOn)
 import Data.Char (isSpace)
 import Data.List (isPrefixOf)
+import Data.Aeson
+
+data Song = Song { artist :: String, track :: String }
+  deriving (Eq, Ord, Show, Read, Generic, ToJSON, FromJSON)
 
 -- readLinesFromFile filename = do
 --   handle <- openFile filename ReadMode
