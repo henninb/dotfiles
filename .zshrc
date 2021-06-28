@@ -120,13 +120,17 @@ export HISTORY_IGNORE
 
 if [ "${OSTYPE}" = "linux-gnu" ] || [ "${OSTYPE}" = "linux" ]; then
   if [ "${OS}" = "Gentoo" ]; then
-    if [ -x "$(command -v java-config)" ]; then
-      JAVA_HOME=$(java-config -o) 2> /dev/null
+    if [ -d "/opt/openjdk-bin" ]; then
+      JAVA_HOME=/opt/openjdk-bin
       export JAVA_HOME
     else
-      echo "install java-config on gentoo"
+      if [ -x "$(command -v java-config)" ]; then
+        JAVA_HOME=$(java-config -o) 2> /dev/null
+        export JAVA_HOME
+      else
+        echo "install java-config on gentoo"
+      fi
     fi
-    # JAVA_HOME=$(readlink -f $(readlink -f ${JDK_HOME}))
   elif [ -x "$(command -v javac)" ]; then
     JAVA_HOME=$(dirname "$(dirname "$(readlink -f "$(readlink -f "$(which javac)")" || readlink -f "$(which javac)")")")
     export JAVA_HOME
@@ -134,6 +138,7 @@ if [ "${OSTYPE}" = "linux-gnu" ] || [ "${OSTYPE}" = "linux" ]; then
     echo JAVA_HOME is not setup.
   fi
 elif [ "${OSTYPE}" = "linux-gnueabihf" ]; then
+  echo "WARN: stop using java8"
   JAVA_HOME=/usr/lib/jvm/java-8-openjdk-armhf
   export JAVA_HOME
 elif [ "$OS" = "Darwin" ]; then
@@ -160,6 +165,7 @@ export PATH="/opt/oracle-instantclient:$PATH"
 export PATH="$HOME/.dynamic-colors/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
+export PATH="$JAVA_HOME/bin:$PATH"
 # export PATH="/opt/STM32CubeProgrammer/bin:$PATH"
 export PATH="$HOME/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin:$PATH"
 export CDPATH=~/projects:~
