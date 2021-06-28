@@ -2,10 +2,10 @@
 
 if [ "$OS" = "Gentoo" ]; then
   # sudo emerge --update --newuse dev-java/gradle-bin
-  sudo emerge --update --newuse dev-java/openjdk-bin
-  sudo java-config --set-system-vm openjdk-bin-8
+  # sudo emerge --update --newuse dev-java/openjdk-bin
+  emerge --update --newuse dev-java/openjdk-bin:11
+  echo sudo java-config --set-system-vm openjdk-bin-8
   echo emerge -v openjdk:11
-  echo emerge dev-java/openjdk-bin:11
   echo eselect java-vm list
   echo eselect java-vm set user openjdk-bin-8
 elif [ "$OS" = "Solus" ]; then
