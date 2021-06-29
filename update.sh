@@ -98,6 +98,7 @@ if [ ! -x "$(command -v stack)" ]; then
   stack --version
 else
   stack update
+  stack upgrade
   echo "stack version"
   stack --version
 fi
