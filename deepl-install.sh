@@ -11,3 +11,8 @@ $ deepl detect 'Wie geht es Ihnen?'
 
 $ wget git.io/trans
 $ chmod +x ./trans
+
+echo "fork." | trans -p
+
+
+git@github.com:cyberc00z/trans.git
