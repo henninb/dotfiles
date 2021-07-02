@@ -3,7 +3,7 @@
 mkdir -p "$HOME/.docker"
 touch "$HOME/.docker/config.json"
 
-if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S ethtool socat
   echo "https://computingforgeeks.com/how-to-run-minikube-on-kvm/"
   echo "minikube logs"
