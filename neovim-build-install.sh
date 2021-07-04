@@ -125,7 +125,7 @@ fi
 
 cd projects || exit
 
-git clone git@github.com:neovim/neovim.git
+git clone --recursive git@github.com:neovim/neovim.git
 cd neovim || exit
 git checkout master
 git fetch
@@ -136,7 +136,8 @@ fi
 sudo make distclean
 sed -i 's/CONFIGURE_COMMAND ""//g' third-party/cmake/BuildLibvterm.cmake
 # if ! make CMAKE_BUILD_TYPE=RelWithDebInfo; then
-if ! make CMAKE_BUILD_TYPE=RelWithDebInfo USE_BUNDLED=OFF; then
+if ! make CMAKE_BUILD_TYPE=RelWithDebInfo; then
+# if ! make CMAKE_BUILD_TYPE=RelWithDebInfo USE_BUNDLED=OFF; then
   echo make failed.
   exit 1
 fi
