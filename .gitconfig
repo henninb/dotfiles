@@ -5,6 +5,7 @@
   co = checkout
   ci = commit
   st = status -sb
+  s = status
   br = branch
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   type = cat-file -t
@@ -25,7 +26,7 @@
   log-graph-all = log --graph --all --decorate --abbrev-commit --date=relative --format=format:'%h - (%ar) [%an] %s %d'
   log-simple = log --oneline --abbrev-commit --date=relative --format=format:'%h - (%ar) [%an] %s %d'
   last = log -1 HEAD
-  wip = !sh -c 'git add . && git commit -am "wip"'
+  wip = !sh -c 'git pull && git add . && git commit -am "wip"'
   ls = log --oneline --decorate
   new = !git init && git symbolic-ref HEAD refs/heads/main
 [push]
