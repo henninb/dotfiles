@@ -116,8 +116,10 @@ windowKeys =
   -- Focusing Windows:
   [
     ("M-m", windows W.focusMaster)
-  , ("M-j", windows W.focusDown)
-  , ("M-k", windows W.focusUp)
+  -- Move focus to the next window
+  -- , ("M-j", windows W.focusDown)
+  -- Move focus to the previous window
+  -- , ("M-k", windows W.focusUp)
   , ("M-S-m", windows W.swapMaster)
   , ("M-S-j", windows W.swapDown)
   , ("M-S-k", windows W.swapUp)

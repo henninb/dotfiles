@@ -1,7 +1,3 @@
-: 1587897330:: :;ubuntu 20.04
-: 1587897478:: :;marcthe12, thanks for the tip. 
-: 1587898873:: :;hello, i have removed the default display manager for solus, and now when I boot I am not getting the console login prompt. i can ssh to the machine just fine. is there another config change I need to make?
-: 1587899296:: :;bungie i believe, i uninstalled it about a week ago.
 : 1587899388:: :;sorry, yes. 
 : 1587899420:: :;i believe I uninstalled the lightdm package.
 : 1587899549:: :;i will try that, if I want to use xinit instead of lightdm is there a configuration change I can make?
@@ -98,3 +94,7 @@
 : 1622399253:: :;/msg NickServ REGISTER 7315 henninb@gmail.com
 : 1622399331:: :;/msg NickServ VERIFY REGISTER henninb xU6N3CvuVkBjVluD
 : 1622399395:: :;/quit
+: 1625569123:: :;if I have multiple floating windows (intellij project windows in my case) how can I toggle between them?
+: 1625569266:: :;thanks electr0n, I think I changed the mod keys however I might want them changed back :)
+: 1625571740:: :;I have defined "M-j" focusDown and "M-k" for focusUp and it is not working, do I need to be in a certain layout or other setting?
+: 1625576943:: :;/quit

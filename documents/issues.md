@@ -542,3 +542,9 @@ use the dzen2 for the OS if possible.
 works with these features
 dzen-0.9.5-svn, (C)opyright 2007-2009 Robert Manea
 Enabled optional features:  XPM  XFT XINERAMA
+
+
+## if I have multiple floating windows (intellij project windows in my case) how can I toggle between them?
+05:59 < electr0n> mod+{j+k} usually. depends if you changed your keybindings or not.
+05:59 ::: Irssi: Join to #xmonad was synced in 185 secs
+06:01 < henninb> thanks electr0n, I think I changed the mod keys however I might want them changed back :)
