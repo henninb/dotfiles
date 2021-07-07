@@ -20,3 +20,4 @@ else
 fi
 
 # export GUILE_TLS_CERTIFICATE_DIRECTORY=/usr/local/etc/gnutls/
+# vim: set ft=sh:

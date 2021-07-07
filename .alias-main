@@ -4,16 +4,17 @@ alias wolves='curl getnews.tech/minnesota+timberwolves'
 alias veewee='bundle exec veewee'
 
 # get aliases
-alias gs='git status'
-alias ga='git add '
-alias gc='git commit'
+alias g='git'
+# alias gs='git status'
+# alias ga='git add '
+#alias gc='git commit'
 alias gd='git diff'
 alias glist='git ls-tree --full-tree -r --name-only HEAD'
-alias glsi='git status --ignored'
-alias gundo='git reset --soft HEAD~1'
+#alias glsi='git status --ignored'
+#alias gundo='git reset --soft HEAD~1'
 alias gp=gitpush
 #alias gb='git branch '
-alias gituntracked='git ls-files . --ignored --exclude-standard --others'
+#alias gituntracked='git ls-files . --ignored --exclude-standard --others'
 #alias hg='history | grep'
 alias hg='cat $HOME/.zsh_history | grep'
 
@@ -123,3 +124,5 @@ alias lg='lazygit'
 # alias mutt='neomutt'
 
 # alias mpc='mpc --port 6601'
+
+# vim: set ft=sh:

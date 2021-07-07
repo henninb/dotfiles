@@ -286,7 +286,7 @@ ex=🎯:\
 # for rust
 [ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
-[ -s "$HOME/.alias-master" ] && source "$HOME/.alias-master"
+[ -s "$HOME/.alias-main" ] && source "$HOME/.alias-main"
 
 if [ -x "$(command -v nvim)" ]; then
   [ -s "$HOME/.alias-neovim" ] && source "$HOME/.alias-neovim"
