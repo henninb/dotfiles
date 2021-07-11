@@ -6,7 +6,7 @@
   ci = commit
   st = status -sb
   s = status
-  p = push
+  p = !sh -c 'git pull && git add . && git commit -am $1' --
   br = branch
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   type = cat-file -t
@@ -18,8 +18,8 @@
   f = "!git ls-files | grep -i"
   untracked = ls-files . --ignored --exclude-standard --others
   lsi = status --ignored
-  aa = add -A .
-  reauthor = !bash -c 'git rebase --onto $1 --exec \"git commit --amend --author=$2\" $1' --
+  a = add -A .
+  reauthor = !sh -c 'git rebase --onto $1 --exec \"git commit --amend --author=$2\" $1' --
   unstage = reset HEAD --
   undo = reset --soft HEAD~1
   check-file = "!f() { if [ $# -eq 0 ]; then echo 'Filename missing!'; else tracked=$(git ls-files ${1}); if [[ -z ${tracked} ]]; then echo 'File not tracked'; else echo 'File tracked'; fi; fi;  };  f"
