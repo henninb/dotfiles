@@ -6,9 +6,9 @@
     "coc-emmet": ">=1.1.6",
     "coc-emoji": ">=1.3.0",
     "coc-eslint": ">=1.4.5",
-    "coc-explorer": ">=0.18.5",
+    "coc-explorer": ">=0.18.8",
     "coc-fsharp": ">=0.2.7",
-    "coc-git": ">=2.3.5",
+    "coc-git": ">=2.4.0",
     "coc-html": ">=1.4.1",
     "coc-java": ">=1.5.3",
     "coc-json": ">=1.3.6",
@@ -24,7 +24,7 @@
     "coc-tsserver": ">=1.8.1",
     "coc-vimlsp": ">=0.12.2",
     "coc-xml": ">=1.14.1",
-    "coc-yaml": ">=1.4.1",
+    "coc-yaml": ">=1.4.2",
     "coc-yank": ">=1.2.0"
   }
 }

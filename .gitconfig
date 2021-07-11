@@ -6,6 +6,7 @@
   ci = commit
   st = status -sb
   s = status
+  p = push
   br = branch
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   type = cat-file -t
