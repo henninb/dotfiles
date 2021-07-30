@@ -5,3 +5,4 @@
 --exclude=*/build/*
 # jooq generated models
 --exclude=*/src/main/generated/*
+--exclude=*/node_modules/*
