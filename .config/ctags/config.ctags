@@ -1,0 +1,7 @@
+--verbose
+--recurse
+--exclude=.git
+# gradle build directories
+--exclude=*/build/*
+# jooq generated models
+--exclude=*/src/main/generated/*
