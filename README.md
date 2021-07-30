@@ -149,6 +149,7 @@
 | disk space             | ncdu                                                                                 |
 | calculator             | qalculate-gtk                                                                        |
 | diff tool              | meld                                                                                 |
+| ctags                  | ctags-universal                                                                      |
 
 ## Language Servers
 - c - ccls
