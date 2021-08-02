@@ -208,5 +208,17 @@ gadd() {
     fi
 }
 
+cdf() {
+    local name="${1:-}"
+    [ -z $name ] && return
+    local path=$(find . -not -path "*/build/*" -iname "*${name}*" | fzf -1 -0)
+    [ -z $path ] && return
+    if [ -d "$path" ]; then
+        pushd "$path" > /dev/null
+    else
+        pushd $(dirname "$path") > /dev/null
+    fi
+}
+
 # fix for emacs tramp 10/25/2020
 [ "$TERM" = "dumb" ] && unsetopt zle && PS1='$ '
