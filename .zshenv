@@ -220,5 +220,54 @@ cdf() {
     fi
 }
 
+p() {
+    local SRC=${SRC:-$HOME/projects}
+    local q="${1:-}"
+    touch ~/.jump_history
+    if [ "$1" == '-h' ]; then
+        echo "usage: p [?] [.|.n] [..] [-] [STR]"
+        echo "jump to a specific project under src=${SRC}"
+        echo
+        echo "?   print jump history"
+        echo "..  pop last and jump"
+        echo ".n  jump to [n] or last"
+        echo "-   clear jump history"
+        echo "STR fuzzy filter project list by STR"
+        return
+    fi
+    if [ "$q" == '?' ]; then
+        cat -n ~/.jump_history
+        return
+    elif [ "$q" == '..' ]; then
+        sed -i '' '$d' ~/.jump_history
+        cd $(tail -n 1 ~/.jump_history)
+        return
+    elif [ "${q::1}" == '.' ]; then
+        local arg="${q:1}"
+        if ! [ -z $arg ]; then
+            cd $(sed -n "${arg}p" ~/.jump_history)
+        else
+            cd $(tail -n 1 ~/.jump_history)
+        fi
+        return
+    elif [ "$q" == '-' ]; then
+        rm ~/.jump_history
+        return
+    elif ! [ -z "$q" ]; then
+        q="-q $q"
+    fi
+    # strip $SRC from paths and feed to fzf
+    # on exactly 0 / 1 match return immediately
+    local dir=$(ls -1dt $SRC/*/*/* \
+        | sed -e 's|^'"$SRC"'/||' \
+        | fzf -1 -0 $q)
+    # trim old history
+    tail -n 100 ~/.jump_history | sponge ~/.jump_history
+    if ! [ -z "$dir" ]; then
+        echo "$SRC/$dir" >> ~/.jump_history
+        cd "$SRC/$dir"
+    fi
+}
+
 # fix for emacs tramp 10/25/2020
 [ "$TERM" = "dumb" ] && unsetopt zle && PS1='$ '
