@@ -176,7 +176,7 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="$JAVA_HOME/bin:$PATH"
 # export PATH="/opt/STM32CubeProgrammer/bin:$PATH"
 export PATH="$HOME/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin:$PATH"
-export CDPATH=~/projects:~
+export CDPATH=~/projects/github.com/:~
 
 [ -d /usr/local/go ] && export GOROOT=/usr/local/go
 export GOPATH=$HOME/.local

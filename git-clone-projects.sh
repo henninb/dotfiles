@@ -1,8 +1,10 @@
 #!/bin/sh
 
+mkdir -p "$HOME/projects/github.com/BitExplorer"
+
 PROJECTS="ratpack-gorm example-ratpack raspi-finance-endpoint raspi-finance-database src-common example-java example-scala example-kotlin raspi-finance-react raspi-finance-endpoint-micronaut raspi-finance-ncurses raspi-finance-reports st cribbage cribbage-fsharp"
 for i in $PROJECTS; do
-  cd "$HOME/projects" || exit
+  cd "$HOME/projects/github.com/BitExplorer" || exit
   git clone "git@github.com:BitExplorer/$i.git" 2> /dev/null
   cd "$i" || exit
   #master-to-main 2> /dev/null

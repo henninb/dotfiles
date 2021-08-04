@@ -15,7 +15,8 @@ else
   echo "$OS is not implemented."
 fi
 
-cd "$HOME/projects" || exit
+mkdir "$HOME/projects/github.com/mwh"
+cd "$HOME/projects/github.com/mwh" || exit
 git clone git@github.com:mwh/dragon.git
 cd dragon || exit
 git pull origin master

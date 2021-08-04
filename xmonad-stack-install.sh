@@ -185,7 +185,9 @@ elif [ "$OS" = "Solus" ]; then
     exit 1
   fi
   sudo eopkg install -y gettext-devel
-  cd "$HOME/projects" || exit
+
+  mkdir -p d "$HOME/projects/github.com/Maato"
+  cd "$HOME/projects/github.com/Maato" || exit
   git clone git@github.com:Maato/volumeicon.git
   cd volumeicon || exit
   ./autogen.sh
@@ -215,7 +217,8 @@ elif [ "$OS" = "Gentoo" ]; then
   done
   sudo rc-update add dbus default
   sudo rc-update add elogind default
-  cd "$HOME/projects" || exit
+  mkdir -p "$HOME/projects/github.com/baskerville"
+  cd "$HOME/projects/github.com/baskerville" || exit
   git clone git@github.com:baskerville/xdo.git
   cd xdo || exit
   make
@@ -247,7 +250,8 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y wmname
   sudo dnf install -y xscreensaver
   echo iwlib missing
-  cd "$HOME/projects" || exit
+  mkdir -p "$HOME/projects/github.com/baskerville"
+  cd "$HOME/projects/github.com/baskerville" || exit
   git clone git@github.com:baskerville/xdo.git
   cd xdo || exit
   sudo make install
@@ -300,7 +304,8 @@ if ! stack install hlint; then
   failures="$failures hlint"
 fi
 
-cd "$HOME/projects" || exit
+mkdir -p "$HOME/projects/github.com/xmonad"
+cd "$HOME/projects/github.com/xmonad" || exit
 git clone git@github.com:xmonad/xmonad.git
 cd xmonad || exit
 stack build
@@ -308,7 +313,8 @@ stack install
 sudo mv .local/bin/xmonad /usr/local/bin/
 cd - || exit
 
-cd "$HOME/projects" || exit
+mkdir -p "$HOME/projects/github.com/xmonad"
+cd "$HOME/projects/github.com/xmonad" || exit
 git clone git@github.com:xmonad/xmonad-contrib.git
 cd xmonad-contrib || exit
 stack build
@@ -337,7 +343,8 @@ fi
 
 sudo cp -v "$HOME/.local/bin/xmonad-start" /usr/local/bin/xmonad-start
 
-cd "$HOME/projects" || exit
+mkdir -p "$HOME/projects/github.com/sei40kr"
+cd "$HOME/projects/github.com/sei40kr" || exit
 git clone https://github.com/sei40kr/tmux-airline-dracula.git
 cd - || exit
 

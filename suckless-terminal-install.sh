@@ -29,7 +29,8 @@ else
   exit 1
 fi
 
-cd "$HOME/projects" || exit
+mkdir "$HOME/projects/git.suckless.org"
+cd "$HOME/projects/git.suckless.org" || exit
 rm -rf st-original
 git clone https://git.suckless.org/st st-original
 cd st-original || exit
@@ -43,7 +44,9 @@ mv -v st "$HOME/.local/bin/st-original"
 # tic -sx st.info
 cd "$HOME" || exit
 
-cd "$HOME/projects" || exit
+
+mkdir "$HOME/projects/github.com/Tharre"
+cd "$HOME/projects/github.com/Tharre" || exit
 rm -rf st-transparency
 git clone git@github.com:Tharre/st-transparency.git
 cd st-transparency || exit
@@ -54,7 +57,8 @@ fi
 mv -v st "$HOME/.local/bin/st-transparency"
 cd "$HOME" || exit
 
-cd "$HOME/projects" || exit
+mkdir "$HOME/projects/github.com/LukeSmithxyz"
+cd "$HOME/projects/github.com/LukeSmithxyz" || exit
 rm -rf st-luke
 git clone git@github.com:LukeSmithxyz/st.git st-luke
 cd st-luke || exit
@@ -65,7 +69,8 @@ fi
 mv -v st "$HOME/.local/bin/st-luke"
 cd "$HOME" || exit
 
-cd "$HOME/projects" || exit
+mkdir "$HOME/projects/github.com/BrodieRobertson"
+cd "$HOME/projects/github.com/BrodieRobertson" || exit
 rm -rf st-brodie
 git clone git@github.com:BrodieRobertson/st.git st-brodie
 cd st-brodie || exit
@@ -76,7 +81,8 @@ fi
 mv -v st "$HOME/.local/bin/st-brodie"
 cd "$HOME" || exit
 
-cd "$HOME/projects" || exit
+mkdir "$HOME/projects/gitlab.com/dwt1"
+cd "$HOME/projects/gitlab.com/dwt1" || exit
 rm -rf st-distrotube
 git clone git@gitlab.com:dwt1/st-distrotube.git st-distrotube
 cd st-distrotube || exit
@@ -85,9 +91,10 @@ if ! make CC=gcc; then
   exit 1
 fi
 mv -v st "$HOME/.local/bin/st-distrotube"
-
 cd "$HOME" || exit
-cd "$HOME/projects" || exit
+
+mkdir "$HOME/projects/github.com/BitExplorer"
+cd "$HOME/projects/github.com/BitExplorer" || exit
 rm -rf st
 git clone git@github.com:BitExplorer/st.git
 cd st || exit
