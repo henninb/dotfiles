@@ -2,16 +2,17 @@
 
 mkdir -p "$HOME/projects/github.com/BitExplorer"
 
-PROJECTS="ratpack-gorm example-ratpack raspi-finance-endpoint raspi-finance-database src-common example-java example-scala example-kotlin raspi-finance-react raspi-finance-endpoint-micronaut raspi-finance-ncurses raspi-finance-reports st cribbage cribbage-fsharp"
+PROJECTS="example-ratpack raspi-finance-ratpack raspi-finance-endpoint raspi-finance-database src-common example-java example-scala example-kotlin raspi-finance-react raspi-finance-endpoint-micronaut raspi-finance-ncurses raspi-finance-reports st cribbage cribbage-fsharp"
 for i in $PROJECTS; do
   cd "$HOME/projects/github.com/BitExplorer" || exit
+  echo "$i"
   git clone "git@github.com:BitExplorer/$i.git" 2> /dev/null
   cd "$i" || exit
   #master-to-main 2> /dev/null
-  if ! git branch --set-upstream-to=origin/main main > /dev/null 2>&1; then
-    echo need to convert to main branch
-    continue
-  fi
+  # if ! git branch --set-upstream-to=origin/main main > /dev/null 2>&1; then
+  #   echo need to convert to main branch
+  #   continue
+  # fi
   git config --local user.email henninb@msn.com
   git pull origin main 2> /dev/null
 done
