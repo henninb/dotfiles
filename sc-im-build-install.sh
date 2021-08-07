@@ -4,7 +4,8 @@ wget https://gigenet.dl.sourceforge.net/project/libxls/libxls-old/libxls-0.2.0/l
 sudo dnf install byacc
 sudo apt install libncursesw5-dev
 
-cd "$HOME/projects" || exit
+mkdir -p "$HOME/projects/github.com/andmarti1424"
+cd "$HOME/projects/github.com/andmarti1424" || exit
 git clone git@github.com:andmarti1424/sc-im.git
 cd sc-im || exit
 make -C src

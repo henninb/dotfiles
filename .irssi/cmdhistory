@@ -1,8 +1,3 @@
-: 1587899388:: :;sorry, yes. 
-: 1587899420:: :;i believe I uninstalled the lightdm package.
-: 1587899549:: :;i will try that, if I want to use xinit instead of lightdm is there a configuration change I can make?
-: 1587900705:: :;thanks for your help Justin
-: 1587900846:: :;/quit
 : 1588026661:: :;please let me know if solus has a tinfo library.
 : 1588027737:: :;ok cool thanks DataDrake
 : 1589367176:: :;/quit
@@ -98,3 +93,8 @@
 : 1625569266:: :;thanks electr0n, I think I changed the mod keys however I might want them changed back :)
 : 1625571740:: :;I have defined "M-j" focusDown and "M-k" for focusUp and it is not working, do I need to be in a certain layout or other setting?
 : 1625576943:: :;/quit
+: 1628335048:: :;Greetings, if I would like to extract information about my custom key binding programatically, how could 
+: 1628335155:: :;Greetings, if I would like to extract information about my custom key binding programatically (for printing to the screen dynamically) what documentation can I look at? I couldn't find anything on google :( Thank you.
+: 1628335899:: :;liskin, thank you for the assistance. this is a cool feature.
+: 1628337628:: :;thank you again liskin, I was able to find some good examples on github.
+: 1628344351:: :;/quit
