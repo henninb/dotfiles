@@ -1,5 +1,5 @@
 -- module XMonad.Local.KeyBindings (keys, rawKeys) where
-module Local.KeyBindings (keyMaps, myRemoveKeys, superKeyMask) where
+module Local.KeyBindings (keyMaps, myRemoveKeys, superKeyMask, showKeyBindings) where
 
 import qualified Data.Map as M
 import Graphics.X11.Xlib
@@ -47,6 +47,9 @@ import XMonad.Util.EZConfig (mkKeymap)
 import qualified XMonad.Util.ExtensibleState as XState
 import XMonad.Util.NamedScratchpad (namedScratchpadAction)
 import qualified XMonad.Actions.Search as S
+import qualified XMonad.Util.NamedActions as NamedActions
+import qualified XMonad.Util.Run as Run
+import qualified System.IO as IO
 
 -- import Local.Workspaces (viewPrevWS)
 import Local.Prompts
@@ -488,6 +491,15 @@ spawnToWorkspace :: String -> String -> X ()
 spawnToWorkspace program workspace = do
               spawn program
               windows $ W.greedyView workspace . W.shift workspace
+
+showKeyBindings :: [((XMonad.KeyMask, XMonad.KeySym), NamedActions.NamedAction)] -> NamedActions.NamedAction
+showKeyBindings x =
+  NamedActions.addName "Show Keybindings" $
+  XMonad.io $ do
+    h <- Run.spawnPipe "yad --text-info"
+    Run.hPutStr h (unlines $ NamedActions.showKm x)
+    IO.hClose h
+    return ()
 
 help :: String
 help = unlines ["The default modifier key is 'super'. Default keybindings:",
