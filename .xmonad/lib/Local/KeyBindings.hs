@@ -1,5 +1,5 @@
 -- module XMonad.Local.KeyBindings (keys, rawKeys) where
-module Local.KeyBindings (keyMaps, myRemoveKeys, superKeyMask, showKeyBindings) where
+module Local.KeyBindings (keyMaps, myRemoveKeys, superKeyMask, showKeyBindings, keybinds) where
 
 import qualified Data.Map as M
 import Graphics.X11.Xlib
@@ -33,7 +33,7 @@ import XMonad.Layout.Minimize
 import XMonad.Prompt
 import XMonad.Prompt.Window (WindowPrompt (..), allWindows, windowMultiPrompt, wsWindows)
 import qualified XMonad.StackSet as W
-import XMonad.Util.EZConfig (mkKeymap)
+import XMonad.Util.EZConfig (mkKeymap, mkNamedKeymap)
 import qualified XMonad.Util.ExtensibleState as XState
 import XMonad.Util.NamedScratchpad (namedScratchpadAction)
 import qualified XMonad.Actions.Search as S
@@ -252,3 +252,14 @@ musicKeys =
   , ("<XF86AudioNext>", spawn "mpc next")
   ]
 
+keybinds :: XConfig Layout -> [((KeyMask, KeySym), NamedActions.NamedAction)]
+keybinds conf = let
+  subKeys str ks = NamedActions.subtitle str : mkNamedKeymap conf ks
+  in
+    subKeys "System"
+    [
+      -- (        "M-q"                  , addName "Restart XMonad"                            $ spawn "\"$HOME/.xmonad/rebuild.sh\" && xmonad --restart")
+    -- , (        "M-S-q"                , addName "Quit XMonad"                               $ confirmPrompt P.dangerPrompt "Quit XMonad?" $ io (exitWith ExitSuccess))
+    -- , (        "M-x"                  , addName "Lock screen"                               $ spawn C.lock)
+    -- , (        "M-S-x"                , addName "Switch autolock"                           $ spawn C.autolockToggle)
+    ]
