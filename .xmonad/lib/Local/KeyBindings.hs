@@ -31,6 +31,7 @@ import XMonad.Actions.Submap
 import XMonad.Actions.UpdateFocus
 import XMonad.Layout.Minimize
 import XMonad.Prompt
+import XMonad.Actions.DynamicWorkspaces
 import XMonad.Prompt.Window (WindowPrompt (..), allWindows, windowMultiPrompt, wsWindows)
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (mkKeymap, mkNamedKeymap)
@@ -94,6 +95,17 @@ spawnToWorkspace :: String -> String -> X ()
 spawnToWorkspace program workspace = do
               spawn program
               windows $ W.greedyView workspace . W.shift workspace
+
+dmenuArgs :: String -> [String]
+dmenuArgs title = [ "-i "
+                  , "-nb", quote "#9370DB"
+                  , "-nf", quote "#50fa7b"
+                  , "-sb", quote "#EE82EE"
+                  , "-sf", quote "black"
+                  , "-fn", quote "monofur for Powerline"
+                  , "-p",  quote title
+                  ]
+  where quote s = "'" ++ s ++ "'"
 
 showKeyBindings :: [((XMonad.KeyMask, XMonad.KeySym), NamedActions.NamedAction)] -> NamedActions.NamedAction
 showKeyBindings x =
@@ -185,17 +197,6 @@ screenKeys =
   [
   ]
 
-dmenuArgs :: String -> [String]
-dmenuArgs title = [ "-i "
-                  , "-nb", quote "#9370DB"
-                  , "-nf", quote "#50fa7b"
-                  , "-sb", quote "#EE82EE"
-                  , "-sf", quote "black"
-                  , "-fn", quote "monofur for Powerline"
-                  , "-p",  quote title
-                  ]
-  where quote s = "'" ++ s ++ "'"
-
 
 applicationKeybindings :: [(String, X ())]
 applicationKeybindings =
@@ -255,11 +256,39 @@ musicKeys =
 keybinds :: XConfig Layout -> [((KeyMask, KeySym), NamedActions.NamedAction)]
 keybinds conf = let
   subKeys str ks = NamedActions.subtitle str : mkNamedKeymap conf ks
+  wsKeys  = map show ([1..9] ++ [0] :: [Int])
+  zipM  m nm ks as f = zipWith (\k d -> (m ++ k, NamedActions.addName nm $ f d)) ks as
   in
     subKeys "System"
     [
-      -- (        "M-q"                  , addName "Restart XMonad"                            $ spawn "\"$HOME/.xmonad/rebuild.sh\" && xmonad --restart")
-    -- , (        "M-S-q"                , addName "Quit XMonad"                               $ confirmPrompt P.dangerPrompt "Quit XMonad?" $ io (exitWith ExitSuccess))
-    -- , (        "M-x"                  , addName "Lock screen"                               $ spawn C.lock)
-    -- , (        "M-S-x"                , addName "Switch autolock"                           $ spawn C.autolockToggle)
-    ]
+    ("M-M1-l", NamedActions.addName "Lock screen" lockScreen)
+  , ("M-S-<Escape>", NamedActions.addName "Quit Xmonad" $ spawn "wm-exit xmonad")
+  , ("M-S-<Backspace>", NamedActions.addName "Terminate Process" kill1)
+  , ("M-<Escape>", NamedActions.addName "Restart Xmonad" $ spawn "xmonad --recompile && xmonad --restart")
+  , ("M-v", NamedActions.addName "Paste" $ sendKey noModMask xF86XK_Paste)
+    ] ++
+    subKeys "Launchers"
+    [
+    ("M-S-<Return>", NamedActions.addName "Alternate Terminal"      $ spawn "st")
+  , ("M-<Return>", NamedActions.addName "Terminal"        $ spawn "terminal")
+  , ("M-S-p", NamedActions.addName "Application Launcher"             $ spawn "dmenu_run -i -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
+  , ("M-<F2>", NamedActions.addName "File Manager" $ spawn "fm")
+  , ("M-i", NamedActions.addName "Browser" $ spawn "browser")
+  , ("M-S-i", NamedActions.addName "Private Browser" $ spawn ("browser" ++ " --incognito"))
+  , ("M-p", NamedActions.addName "Passowrd Manager" $ spawn passmenuRunCmd)
+  -- , ("M-<Print>"         , spawn "flameshot gui -p $HOME/screenshots")
+  , ("M-<F4>", NamedActions.addName "Screenshot" $ spawn "flameshot gui -p $HOME/screenshots")
+  , ("M-b", NamedActions.addName "Red tint" $ spawn "redshift -O 3500")
+  , ("M-S-b", NamedActions.addName "Red tint undo" $ spawn "redshift -x")
+
+  , ("M-S-r", NamedActions.addName "Toggle struts" $ sendMessage ToggleStruts)
+  , ("M-\\", NamedActions.addName "Minnimize Window" $ withFocused minimizeWindow)
+  , ("M-S-\\", NamedActions.addName "Maximize Window" $ withLastMinimized maximizeWindow)
+    ] ++
+          subKeys "Workspaces"
+     [
+     ]
+
+      -- ++ zipM "M-"                            "View workspace"                              wsKeys [0..] (withNthWorkspace W.greedyView)
+      -- ++ zipM "M-S-"                          "Move window to workspace"                    wsKeys [0..] (withNthWorkspace W.shift)
+
