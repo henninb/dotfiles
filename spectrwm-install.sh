@@ -15,7 +15,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y copyq
   sudo apt install -y volumeicon-alsa
 elif [ "$OS" = "Gentoo" ]; then
-  echo
+  echo gentoo
 else
   echo "$OS is not yet implemented."
 fi
@@ -23,7 +23,8 @@ fi
 
 echo arandr
 
-cd "$HOME/projects" || exit
+mkdir -p "$HOME/projects/github.com/conformal"
+cd "$HOME/projects/github.com/conformal" || exit
 git clone git@github.com:conformal/spectrwm.git
 cd spectrwm || exit
 #patch spectrwm.c "$HOME/spectrwm-patch"
@@ -32,7 +33,8 @@ make
 sudo make install
 cd "$HOME" || exit
 
-cd "$HOME/projects" || exit
+mkdir -p "$HOME/projects/github.com/Maato"
+cd "$HOME/projects/github.com/Maato" || exit
 git clone git@github.com:Maato/volumeicon.git
 cd volumeicon || exit
 ./autogen.sh

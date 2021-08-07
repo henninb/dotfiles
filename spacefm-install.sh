@@ -40,7 +40,8 @@ else
   exit 1
 fi
 
-cd "$HOME/projects" || exit
+mkdir -p "$HOME/projects/github.com/IgnorantGuru"
+cd "$HOME/projects/github.com/IgnorantGuru" || exit
 git clone git@github.com:IgnorantGuru/spacefm.git
 cd spacefm || exit
 ./autogen.sh
