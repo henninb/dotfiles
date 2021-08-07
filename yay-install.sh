@@ -2,10 +2,10 @@
 
 sudo pacman --noconfirm --needed -S fakeroot
 sudo pacman --noconfirm --needed -S base-devel
-mkdir -p projects
-cd projects || exit
-git clone https://aur.archlinux.org/yay.git yay-aur
-cd yay-aur || exit
+mkdir -p "$HOME/projects/archlinux.org/aur/"
+cd "$HOME/projects/archlinux.org/aur/" || exit
+git clone https://aur.archlinux.org/yay.git
+cd yay || exit
 makepkg -si
 cd - || exit
 
