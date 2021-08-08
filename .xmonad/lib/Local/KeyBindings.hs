@@ -258,6 +258,7 @@ keybinds conf = let
   subKeys str ks = NamedActions.subtitle str : mkNamedKeymap conf ks
   wsKeys  = map show ([1..9] ++ [0] :: [Int])
   zipM  m nm ks as f = zipWith (\k d -> (m ++ k, NamedActions.addName nm $ f d)) ks as
+  zipM' m nm ks as f b = zipWith(\k d -> (m ++ k, NamedActions.addName nm $ f d b)) ks as
   in
     subKeys "System"
     [
@@ -285,10 +286,23 @@ keybinds conf = let
   , ("M-\\", NamedActions.addName "Minnimize Window" $ withFocused minimizeWindow)
   , ("M-S-\\", NamedActions.addName "Maximize Window" $ withLastMinimized maximizeWindow)
     ] ++
-          subKeys "Workspaces"
-     [
-     ]
+    subKeys "Workspaces"
+    ([
+          ("M-;", NamedActions.addName "View previous workspace"      viewPrevWS)
+        , ("M-<Tab>", NamedActions.addName "toggle betweeen workspaces"  toggleWS)
+    ]
+    ++ zipM "M-" "View workspace" wsKeys [0..] (withNthWorkspace W.greedyView)
+    ++ zipM "M-S-" "Move window to workspace" wsKeys [0..] (withNthWorkspace W.shift)
+    ++ zipM "M-S-C-" "Copy window to workkspace" wsKeys [0..] (withNthWorkspace copy)
+    )
 
-      -- ++ zipM "M-"                            "View workspace"                              wsKeys [0..] (withNthWorkspace W.greedyView)
-      -- ++ zipM "M-S-"                          "Move window to workspace"                    wsKeys [0..] (withNthWorkspace W.shift)
-
+    ++
+    subKeys "Audio"
+    [
+    ("<XF86AudioLowerVolume>", NamedActions.addName "Lower Volume" $ spawn "amixer set Master 5%- unmute")
+  , ("<XF86AudioRaiseVolume>", NamedActions.addName "Raise Volume" $ spawn "amixer set Master 5%+ unmute")
+  , ("<XF86AudioMute>", NamedActions.addName "Toggle Mute" $ spawn "amixer set Master toggle")
+  , ("<XF86AudioPlay>", NamedActions.addName "Toggle Play" $ spawn "mpc toggle")
+  , ("<XF86AudioPrev>", NamedActions.addName "Previous" $ spawn "mpc prev")
+  , ("<XF86AudioNext>", NamedActions.addName "Next" $ spawn "mpc next")
+    ]
