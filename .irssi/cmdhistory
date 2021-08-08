@@ -1,17 +1,3 @@
-: 1588026661:: :;please let me know if solus has a tinfo library.
-: 1588027737:: :;ok cool thanks DataDrake
-: 1589367176:: :;/quit
-: 1589367350:: :;i am new to mpv, trying celluloid out on arch on my ryzen process. works fine, but startup is slow. any reason for that?
-: 1589367501:: :;Namarrgon - only celluloid is slow. mpv is super fast startup.
-: 1589367683:: :;i installed celluloid from the standard repos. it takes ~7-10 seconds to start.
-: 1589367704:: :;i will try an strace and see if I can see where it gets stuck.
-: 1589367757:: :;Celluloid 0.18 
-: 1589367816:: :;yes that is the version I am running 0.18. if it is unmaintained that may be the problem.
-: 1589367925:: :;looks like the latest version of Celluloid is 0.19 on the git repo.
-: 1589368098:: :;poll([{fd=12, events=POLLIN}], 1, 25000, celluloid  hangs on this call and runs fine after that.
-: 1589370125:: :;/quit
-: 1589590744:: :;hi, i have 2 NICs on my LAN. I want to have 2 networks. I read that I must enable bridge mode, after that can I run a second dhcp server for the second network?
-: 1589591966:: :;/quit
 : 1589646039:: :;hi, i am setting up a router in ubuntu with 1 wan and two lans. can I setup the lans with 2 dhcp? I am able to get an address on lan1, but not on lan2. any advice?
 : 1589646041:: :;https://pastebin.com/dP8X0PCD
 : 1589647326:: :;/quit
@@ -98,3 +84,17 @@
 : 1628335899:: :;liskin, thank you for the assistance. this is a cool feature.
 : 1628337628:: :;thank you again liskin, I was able to find some good examples on github.
 : 1628344351:: :;/quit
+: 1628429459:: :;Hello, I have been struggling with some haskell code with regards to greedyView and shift. https://gist.github.com/BitExplorer/a4750dc859ec7ed96fc2d48bd911294e please let me know if you have any advice as I can't seem to find an example on github.
+: 1628430319:: :;Solid, I am giving that a try now. Looks very promising.
+: 1628430322:: :;thank you
+: 1628430850:: :;Solid, works perfectly now. I had to modify the code slightly `withNthWorkspace (\\i -> W.greedyView i . W.shift i)`
+: 1628430860:: :;I really appreciate your help.
+: 1628431113:: :;working in xmonad really helps learn haskell. That is why i enjoy using xmonad so much.
+: 1628431294:: :;Thanks for the suggestion @Lambdabot
+: 1628431494:: :;@Lambdabot that is a pretty elegant solution, thanks. I will add both solutions to my gist.
+: 1628431704:: :;very cool
+: 1628431909:: :;vojjvoda greedyView from my understanding is used for switching workspaces, there may be better definitions out there.
+: 1628431959:: :;Solid, that makes my head hurt to look at :)
+: 1628432038:: :;:)
+: 1628432153:: :;good bye for now. Thanks for all the help.
+: 1628432155:: :;/quit
