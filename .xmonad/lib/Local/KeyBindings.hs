@@ -66,10 +66,6 @@ myEmacs = "emacsclient -c -a 'emacs' "
 lockScreen :: X ()
 lockScreen = spawn "xscreensaver-command -lock"
 
--- viewShift :: WorkspaceId -> Query (Endo (StackSet WorkspaceId l Window ScreenId sd))
--- viewShift = doF . liftM2 (.) W.greedyView W.shift
-
--- viewShift = doF . liftM2 (.) W.greedyView W.shift
 viewShift :: WorkspaceId -> Query (Endo (W.StackSet WorkspaceId l Window ScreenId sd))
 viewShift = doF . liftM2 (.) W.greedyView W.shift
 
@@ -100,15 +96,6 @@ recordXMessage message = do
 repeatLastXMessage :: X ()
 repeatLastXMessage = getLastMessage =<< XState.get
 
-spawnToWorkspace :: String -> String -> X ()
-spawnToWorkspace program workspace = do
-              spawn program
-              windows $ W.greedyView workspace . W.shift workspace
-
--- submapName :: (HasName a) => [((KeyMask, KeySym), a)] -> NamedAction
--- submapName = NamedAction . (submap . M.map getAction . M.fromList &&& showKm)
---                 . map (second NamedAction)
-
 dmenuArgs :: String -> [String]
 dmenuArgs title = [ "-i "
                   , "-nb", quote "#9370DB"
@@ -128,10 +115,6 @@ showKeyBindings x =
     Run.hPutStr h (unlines $ NamedActions.showKm x)
     IO.hClose h
     return ()
-
--- keyMaps :: [(String, X ())]
--- keyMaps =
---         musicKeys
 
 myRemoveKeys :: [(KeyMask, KeySym)]
 myRemoveKeys = [
