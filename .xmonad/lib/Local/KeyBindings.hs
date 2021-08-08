@@ -41,6 +41,8 @@ import qualified XMonad.Actions.Search as S
 import qualified XMonad.Util.NamedActions as NamedActions
 import qualified XMonad.Util.Run as Run
 import qualified System.IO as IO
+import Control.Monad
+import Data.Monoid
 
 import Local.Prompts
 import Local.Workspaces
@@ -63,6 +65,13 @@ myEmacs = "emacsclient -c -a 'emacs' "
 
 lockScreen :: X ()
 lockScreen = spawn "xscreensaver-command -lock"
+
+-- viewShift :: WorkspaceId -> Query (Endo (StackSet WorkspaceId l Window ScreenId sd))
+-- viewShift = doF . liftM2 (.) W.greedyView W.shift
+
+-- viewShift = doF . liftM2 (.) W.greedyView W.shift
+viewShift :: WorkspaceId -> Query (Endo (W.StackSet WorkspaceId l Window ScreenId sd))
+viewShift = doF . liftM2 (.) W.greedyView W.shift
 
 emacs :: X ()
 emacs = do
@@ -265,6 +274,7 @@ keybinds conf = let
     ("M-M1-l", NamedActions.addName "Lock screen" lockScreen)
   , ("M-S-<Escape>", NamedActions.addName "Quit Xmonad" $ spawn "wm-exit xmonad")
   , ("M-S-<Backspace>", NamedActions.addName "Terminate Process" kill1)
+  -- , ("M-S-<Backspace>", addName "Kill all" $ confirmPrompt hotPromptTheme "kill all" killAll)
   , ("M-<Escape>", NamedActions.addName "Restart Xmonad" $ spawn "xmonad --recompile && xmonad --restart")
   , ("M-v", NamedActions.addName "Paste" $ sendKey noModMask xF86XK_Paste)
     ] ++
@@ -292,7 +302,8 @@ keybinds conf = let
         , ("M-<Tab>", NamedActions.addName "toggle betweeen workspaces"  toggleWS)
     ]
     ++ zipM "M-" "View workspace" wsKeys [0..] (withNthWorkspace W.greedyView)
-    ++ zipM "M-S-" "Move window to workspace" wsKeys [0..] (withNthWorkspace W.shift)
+    -- ++ zipM "M-S-" "Move window to workspace" wsKeys [0..]  (withNthWorkspace (\i -> W.greedyView i . W.shift i))
+    ++ zipM "M-S-" "Move window to workspace" wsKeys [0..]  (withNthWorkspace (liftM2 (.) W.greedyView W.shift))
     ++ zipM "M-S-C-" "Copy window to workkspace" wsKeys [0..] (withNthWorkspace copy)
     )
 

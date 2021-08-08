@@ -76,7 +76,7 @@ main = do
     $ docks
     $ ewmh
     -- once the code is done, turn on the following
-    -- $ addDescrKeys' ((superKeyMask, xK_F1), showKeyBindings) keybinds
+    $ addDescrKeys' ((superKeyMask, xK_F1), showKeyBindings) keybinds
     -- https://github.com/Xervon/dotfiles/blob/48e379b2d1c175ff8de5607415ebd5e1d45f75b4/xmonad/lib/Config/Keybinds.hs
     -- $ myConfig { logHook = dynamicLogWithPP polybarLogHook }
     $ myConfig { logHook =
