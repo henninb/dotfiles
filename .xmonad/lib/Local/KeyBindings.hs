@@ -185,18 +185,18 @@ windowKeys =
 workspaceKeys :: [(String, X ())]
 workspaceKeys =
       [
-          ("M-;"     , viewPrevWS)
-        , ("M-<Tab>" , toggleWS)
+          -- ("M-;"     , viewPrevWS)
+        -- , ("M-<Tab>" , toggleWS)
         -- , ("M-?"     , helpCommand)
       ]
-        -- change active workspace
-      ++ [("M-" ++ workSpace, windows $ W.greedyView workSpace) | workSpace <- myWorkspaces ]
-      -- move window and change active workspace
-      ++ [("M-S-" ++ workSpace, windows $ W.greedyView workSpace . W.shift workSpace) | workSpace <- myWorkspaces ]
-      -- move window
-      ++ [("M1-S-" ++ workSpace, windows $ W.shift workSpace) | workSpace <- myWorkspaces ]
-      --  copy window
-      ++ [("M-C-" ++ workSpace, windows $ copy workSpace) | workSpace <- myWorkspaces ]
+        -- -- change active workspace
+      -- ++ [("M-" ++ workSpace, windows $ W.greedyView workSpace) | workSpace <- myWorkspaces ]
+      -- -- move window and change active workspace
+      -- ++ [("M-S-" ++ workSpace, windows $ W.greedyView workSpace . W.shift workSpace) | workSpace <- myWorkspaces ]
+      -- -- move window
+      -- ++ [("M1-S-" ++ workSpace, windows $ W.shift workSpace) | workSpace <- myWorkspaces ]
+      -- --  copy window
+      -- ++ [("M-C-" ++ workSpace, windows $ copy workSpace) | workSpace <- myWorkspaces ]
          -- where
          --  helpCommand :: X ()
          --  helpCommand = spawn ("echo " ++ show help ++ " | xmessage -file -")
@@ -210,29 +210,29 @@ screenKeys =
 applicationKeybindings :: [(String, X ())]
 applicationKeybindings =
   [
-    ("M-S-<Return>"      , spawn "st")
-  , ("M-<Return>"        , spawn "terminal")
-  , ("M-S-p"             , spawn "dmenu_run -i -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
-  , ("M-<F2>"             , spawn "fm") --filemanager ~/.local/bin/fm
-  , ("M-i"               , spawn "browser")
-  , ("M-S-i"             , spawn ("browser" ++ " --incognito"))
-  , ("M-p"               , spawn passmenuRunCmd)
-  , ("M-<Print>"         , spawn "flameshot gui -p $HOME/screenshots")
-  , ("M-<F4>"            , spawn "flameshot gui -p $HOME/screenshots")
-  , ("M-b"               , spawn "redshift -O 3500")
-  , ("M-S-b"             , spawn "redshift -x")
-  , ("M-M1-l"            , lockScreen)
-  , ("M-S-<Escape>"      , spawn "wm-exit xmonad")
-  , ("M-S-<Backspace>"   , kill1) -- Kill the current window.
-  , ("M-<Escape>"        , spawn "xmonad --recompile && xmonad --restart")
+    -- ("M-S-<Return>"      , spawn "st")
+  -- , ("M-<Return>"        , spawn "terminal")
+  -- , ("M-S-p"             , spawn "dmenu_run -i -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
+  -- , ("M-<F2>"             , spawn "fm") --filemanager ~/.local/bin/fm
+  -- , ("M-i"               , spawn "browser")
+  -- , ("M-S-i"             , spawn ("browser" ++ " --incognito"))
+  -- , ("M-p"               , spawn passmenuRunCmd)
+  -- , ("M-<Print>"         , spawn "flameshot gui -p $HOME/screenshots")
+  -- , ("M-<F4>"            , spawn "flameshot gui -p $HOME/screenshots")
+  -- , ("M-b"               , spawn "redshift -O 3500")
+  -- , ("M-S-b"             , spawn "redshift -x")
+  -- , ("M-M1-l"            , lockScreen)
+  -- , ("M-S-<Escape>"      , spawn "wm-exit xmonad")
+  -- , ("M-S-<Backspace>"   , kill1) -- Kill the current window.
+  -- , ("M-<Escape>"        , spawn "xmonad --recompile && xmonad --restart")
 
-  , ("M-v"               , sendKey noModMask xF86XK_Paste)
-  , ("M-S-r"            , sendMessage ToggleStruts)
-  , ("M-\\"              , withFocused minimizeWindow)
-  , ("M-S-\\"            , withLastMinimized maximizeWindow)
+  -- , ("M-v"               , sendKey noModMask xF86XK_Paste)
+  -- , ("M-S-r"            , sendMessage ToggleStruts)
+  -- , ("M-\\"              , withFocused minimizeWindow)
+  -- , ("M-S-\\"            , withLastMinimized maximizeWindow)
 
 -- scratchpads
-  , ("M-S-o",  submap . M.fromList $
+   ("M-S-o",  submap . M.fromList $
             [ ((0, xK_s),    namedScratchpadAction scratchPads "spotify-nsp")
             , ((0, xK_d),    namedScratchpadAction scratchPads "discord-nsp")
             , ((0, xK_t),    namedScratchpadAction scratchPads "tmux-nsp")
@@ -301,10 +301,11 @@ keybinds conf = let
           ("M-;", NamedActions.addName "View previous workspace"      viewPrevWS)
         , ("M-<Tab>", NamedActions.addName "toggle betweeen workspaces"  toggleWS)
     ]
-    ++ zipM "M-" "View workspace" wsKeys [0..] (withNthWorkspace W.greedyView)
+    ++ zipM "M-" "Move to workspace" wsKeys [0..] (withNthWorkspace W.greedyView)
     -- ++ zipM "M-S-" "Move window to workspace" wsKeys [0..]  (withNthWorkspace (\i -> W.greedyView i . W.shift i))
-    ++ zipM "M-S-" "Move window to workspace" wsKeys [0..]  (withNthWorkspace (liftM2 (.) W.greedyView W.shift))
-    ++ zipM "M-S-C-" "Copy window to workkspace" wsKeys [0..] (withNthWorkspace copy)
+    ++ zipM "M-S-" "Move and shift window to workspace" wsKeys [0..]  (withNthWorkspace (liftM2 (.) W.greedyView W.shift))
+    ++ zipM "M-C-" "Copy window to workkspace" wsKeys [0..] (withNthWorkspace copy)
+    ++ zipM "M1-C-" "Shift window to workkspace" wsKeys [0..] (withNthWorkspace W.shift)
     )
 
     ++
