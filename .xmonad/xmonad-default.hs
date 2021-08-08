@@ -88,7 +88,7 @@ main = do
         _    -> eventLogHookForPolybar
     }
     `removeKeys` myRemoveKeys
-    `additionalKeysP` keyMaps
+    `additionalKeysP` searchPromptKeybindings
     `additionalKeys` []
 
 myTerminal :: String

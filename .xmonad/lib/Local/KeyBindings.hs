@@ -1,5 +1,5 @@
 -- module XMonad.Local.KeyBindings (keys, rawKeys) where
-module Local.KeyBindings (keyMaps, myRemoveKeys, superKeyMask, showKeyBindings, keybinds) where
+module Local.KeyBindings (myRemoveKeys, superKeyMask, showKeyBindings, keybinds, searchPromptKeybindings) where
 
 import qualified Data.Map as M
 import Graphics.X11.Xlib
@@ -105,6 +105,10 @@ spawnToWorkspace program workspace = do
               spawn program
               windows $ W.greedyView workspace . W.shift workspace
 
+-- submapName :: (HasName a) => [((KeyMask, KeySym), a)] -> NamedAction
+-- submapName = NamedAction . (submap . M.map getAction . M.fromList &&& showKm)
+--                 . map (second NamedAction)
+
 dmenuArgs :: String -> [String]
 dmenuArgs title = [ "-i "
                   , "-nb", quote "#9370DB"
@@ -125,14 +129,9 @@ showKeyBindings x =
     IO.hClose h
     return ()
 
-keyMaps :: [(String, X ())]
-keyMaps =
-        baseKeys ++
-        windowKeys ++
-        workspaceKeys ++
-        screenKeys ++
-        applicationKeybindings ++
-        musicKeys
+-- keyMaps :: [(String, X ())]
+-- keyMaps =
+--         musicKeys
 
 myRemoveKeys :: [(KeyMask, KeySym)]
 myRemoveKeys = [
@@ -149,118 +148,11 @@ myRemoveKeys = [
                  -- , (superKeyMask, xK_space)
                  ]
 
-baseKeys :: [(String, X ())]
-baseKeys =
-  [
-  ]
-
--- | Window focusing, swapping, and other actions.
-windowKeys :: [(String, X ())]
-windowKeys =
-  [
-    ("M-m", windows W.focusMaster)
-  , ("M-S-m", windows W.swapMaster)
-  , ("M-S-j", windows W.swapDown)
-  , ("M-S-k", windows W.swapUp)
-  , ("M-j", windowGo D False)
-  , ("M-k", windowGo U False)
-  , ("M-l", windowGo R False)
-  , ("M-h", windowGo L False)
-  , ("M-<Up>", sendMessage (MoveUp 10))
-  , ("M-<Down>", sendMessage (MoveDown 10))
-  , ("M-<Right>", sendMessage (MoveRight 10))
-  , ("M-<Left>", sendMessage (MoveLeft 10))
-  , ("M-S-<Up>", sendMessage (IncreaseUp 10))
-  , ("M-S-<Down>", sendMessage (IncreaseDown 10))
-  , ("M-S-<Right>", sendMessage (IncreaseRight 10))
-  , ("M-S-<Left>", sendMessage (IncreaseLeft 10))
-  , ("M-C-<Up>", sendMessage (DecreaseUp 10))
-  , ("M-C-<Down>", sendMessage (DecreaseDown 10))
-  , ("M-C-<Right>", sendMessage (DecreaseRight 10))
-  , ("M-C-<Left>", sendMessage (DecreaseLeft 10))
-  , ("M-S-h", sendMessage Shrink)
-  , ("M-S-l", sendMessage Expand)
-  ]
-
-workspaceKeys :: [(String, X ())]
-workspaceKeys =
-      [
-          -- ("M-;"     , viewPrevWS)
-        -- , ("M-<Tab>" , toggleWS)
-        -- , ("M-?"     , helpCommand)
-      ]
-        -- -- change active workspace
-      -- ++ [("M-" ++ workSpace, windows $ W.greedyView workSpace) | workSpace <- myWorkspaces ]
-      -- -- move window and change active workspace
-      -- ++ [("M-S-" ++ workSpace, windows $ W.greedyView workSpace . W.shift workSpace) | workSpace <- myWorkspaces ]
-      -- -- move window
-      -- ++ [("M1-S-" ++ workSpace, windows $ W.shift workSpace) | workSpace <- myWorkspaces ]
-      -- --  copy window
-      -- ++ [("M-C-" ++ workSpace, windows $ copy workSpace) | workSpace <- myWorkspaces ]
-         -- where
-         --  helpCommand :: X ()
-         --  helpCommand = spawn ("echo " ++ show help ++ " | xmessage -file -")
-
-screenKeys :: [(String, X ())]
-screenKeys =
-  [
-  ]
-
-
-applicationKeybindings :: [(String, X ())]
-applicationKeybindings =
-  [
-    -- ("M-S-<Return>"      , spawn "st")
-  -- , ("M-<Return>"        , spawn "terminal")
-  -- , ("M-S-p"             , spawn "dmenu_run -i -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
-  -- , ("M-<F2>"             , spawn "fm") --filemanager ~/.local/bin/fm
-  -- , ("M-i"               , spawn "browser")
-  -- , ("M-S-i"             , spawn ("browser" ++ " --incognito"))
-  -- , ("M-p"               , spawn passmenuRunCmd)
-  -- , ("M-<Print>"         , spawn "flameshot gui -p $HOME/screenshots")
-  -- , ("M-<F4>"            , spawn "flameshot gui -p $HOME/screenshots")
-  -- , ("M-b"               , spawn "redshift -O 3500")
-  -- , ("M-S-b"             , spawn "redshift -x")
-  -- , ("M-M1-l"            , lockScreen)
-  -- , ("M-S-<Escape>"      , spawn "wm-exit xmonad")
-  -- , ("M-S-<Backspace>"   , kill1) -- Kill the current window.
-  -- , ("M-<Escape>"        , spawn "xmonad --recompile && xmonad --restart")
-
-  -- , ("M-v"               , sendKey noModMask xF86XK_Paste)
-  -- , ("M-S-r"            , sendMessage ToggleStruts)
-  -- , ("M-\\"              , withFocused minimizeWindow)
-  -- , ("M-S-\\"            , withLastMinimized maximizeWindow)
-
--- scratchpads
-   ("M-S-o",  submap . M.fromList $
-            [ ((0, xK_s),    namedScratchpadAction scratchPads "spotify-nsp")
-            , ((0, xK_d),    namedScratchpadAction scratchPads "discord-nsp")
-            , ((0, xK_t),    namedScratchpadAction scratchPads "tmux-nsp")
-            , ((0, xK_k),    namedScratchpadAction scratchPads "keepas-nsp")
-            , ((0, xK_v),    namedScratchpadAction scratchPads "vlc-nsp")
-            , ((0, xK_c),    namedScratchpadAction scratchPads "calc-nsp")
-            , ((0, xK_i),    spawn "intellij")
-            , ((0, xK_d),    spawn "dbeaver-flatpak")
-            , ((0, xK_g),    spawn "steam")
-            , ((0, xK_e),    spawn "vscodium-flatpak")
-            , ((0, xK_h),    spawn "handbrake")
-            ])
-  ]
-
       -- Appending search engine prompts to keybindings list.
-    ++ [("M-s " ++ k, S.promptSearch myXPConfig' f) | (k,f) <- searchList ]
+searchPromptKeybindings :: [(String, X ())]
+searchPromptKeybindings =
+    [("M-s " ++ k, S.promptSearch myXPConfig' f) | (k,f) <- searchList ]
     ++ [("M-S-s " ++ k, S.selectSearch f) | (k,f) <- searchList ]
-
-musicKeys :: [(String, X ())]
-musicKeys =
-  [
-    ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
-  , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
-  , ("<XF86AudioMute>", spawn "amixer set Master toggle")
-  , ("<XF86AudioPlay>", spawn "mpc toggle")
-  , ("<XF86AudioPrev>", spawn "mpc prev")
-  , ("<XF86AudioNext>", spawn "mpc next")
-  ]
 
 keybinds :: XConfig Layout -> [((KeyMask, KeySym), NamedActions.NamedAction)]
 keybinds conf = let
@@ -318,3 +210,48 @@ keybinds conf = let
   , ("<XF86AudioPrev>", NamedActions.addName "Previous" $ spawn "mpc prev")
   , ("<XF86AudioNext>", NamedActions.addName "Next" $ spawn "mpc next")
     ]
+
+   ++
+   subKeys "Scratchpads"
+   [
+   ("M-S-o", NamedActions.addName "submap" $ submap . M.fromList $
+            [
+              ((0, xK_s),    namedScratchpadAction scratchPads "spotify-nsp")
+            , ((0, xK_d),    namedScratchpadAction scratchPads "discord-nsp")
+            , ((0, xK_t),    namedScratchpadAction scratchPads "tmux-nsp")
+            , ((0, xK_k),    namedScratchpadAction scratchPads "keepas-nsp")
+            , ((0, xK_v),    namedScratchpadAction scratchPads "vlc-nsp")
+            , ((0, xK_c),    namedScratchpadAction scratchPads "calc-nsp")
+            , ((0, xK_i),    spawn "intellij")
+            , ((0, xK_d),    spawn "dbeaver-flatpak")
+            , ((0, xK_g),    spawn "steam")
+            , ((0, xK_e),    spawn "vscodium-flatpak")
+            , ((0, xK_h),    spawn "handbrake")
+            ])
+   ]
+   ++
+   subKeys "Windows"
+   [
+    ("M-m", NamedActions.addName "Focus on master" $ windows W.focusMaster)
+  , ("M-S-m", NamedActions.addName "Swap master" $ windows W.swapMaster)
+  , ("M-S-j", NamedActions.addName "Swap down" $ windows W.swapDown)
+  , ("M-S-k", NamedActions.addName "Swap up" $ windows W.swapUp)
+  , ("M-j", NamedActions.addName "" $ windowGo D False)
+  , ("M-k", NamedActions.addName "" $ windowGo U False)
+  , ("M-l", NamedActions.addName "" $ windowGo R False)
+  , ("M-h", NamedActions.addName "" $ windowGo L False)
+  , ("M-<Up>", NamedActions.addName "" $ sendMessage (MoveUp 10))
+  , ("M-<Down>", NamedActions.addName "" $ sendMessage (MoveDown 10))
+  , ("M-<Right>", NamedActions.addName "" $ sendMessage (MoveRight 10))
+  , ("M-<Left>", NamedActions.addName "" $ sendMessage (MoveLeft 10))
+  , ("M-S-<Up>", NamedActions.addName "" $ sendMessage (IncreaseUp 10))
+  , ("M-S-<Down>", NamedActions.addName "" $ sendMessage (IncreaseDown 10))
+  , ("M-S-<Right>", NamedActions.addName "" $ sendMessage (IncreaseRight 10))
+  , ("M-S-<Left>", NamedActions.addName "" $ sendMessage (IncreaseLeft 10))
+  , ("M-C-<Up>", NamedActions.addName "" $ sendMessage (DecreaseUp 10))
+  , ("M-C-<Down>", NamedActions.addName "" $ sendMessage (DecreaseDown 10))
+  , ("M-C-<Right>", NamedActions.addName "" $ sendMessage (DecreaseRight 10))
+  , ("M-C-<Left>", NamedActions.addName "" $ sendMessage (DecreaseLeft 10))
+  , ("M-S-h", NamedActions.addName "" $ sendMessage Shrink)
+  , ("M-S-l", NamedActions.addName "" $ sendMessage Expand)
+   ]
