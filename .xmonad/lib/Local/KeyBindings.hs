@@ -195,9 +195,12 @@ keybinds conf = let
     ]
 
    ++
+     --submapName
+     --  , ("M-; s z",    namedScratchpadAction myScratchpads "zk" )
+  -- , ("M-; s k",    namedScratchpadAction myScratchpads "kafka" )
    subKeys "Scratchpads"
    [
-   ("M-S-o", NamedActions.addName "submap" $ submap . M.fromList $
+   ("M-S-o", NamedActions.addName "" $ submap . M.fromList $
             [
               ((0, xK_s),    namedScratchpadAction scratchPads "spotify-nsp")
             , ((0, xK_d),    namedScratchpadAction scratchPads "discord-nsp")
@@ -211,6 +214,7 @@ keybinds conf = let
             , ((0, xK_e),    spawn "vscodium-flatpak")
             , ((0, xK_h),    spawn "handbrake")
             ])
+   -- ("M-S-o i", NamedActions.addName "Intellij" $ spawn "intellij")
    ]
    ++
    subKeys "Windows"

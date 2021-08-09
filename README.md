@@ -150,6 +150,7 @@
 | calculator             | qalculate-gtk                                                                        |
 | diff tool              | meld                                                                                 |
 | ctags                  | ctags-universal                                                                      |
+| gui-cert management    | xca                                                                                  |
 
 ## Language Servers
 - c - ccls
