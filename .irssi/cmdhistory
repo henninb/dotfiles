@@ -1,6 +1,3 @@
-: 1589646039:: :;hi, i am setting up a router in ubuntu with 1 wan and two lans. can I setup the lans with 2 dhcp? I am able to get an address on lan1, but not on lan2. any advice?
-: 1589646041:: :;https://pastebin.com/dP8X0PCD
-: 1589647326:: :;/quit
 : 1592567157:: :;i have a bluetooth k480 keyboard that I cannot get working. do i need to do something special for HID devices?
 : 1592567203:: :;doesn't seem to pair.
 : 1592567211:: :;my mouse pairs, no problem
@@ -98,3 +95,6 @@
 : 1628432038:: :;:)
 : 1628432153:: :;good bye for now. Thanks for all the help.
 : 1628432155:: :;/quit
+: 1628508475:: :;hi I am trying to get submapped key bindings working with NamedActions, however I cannot seem to figure out how? I have a gist https://gist.github.com/BitExplorer/d32dfde84832c53102cf9de85197156f showing my work. Can someone point me to an example or a resource to point me in the right direction? Thank you.
+: 1628509884:: :;fizzie, thank you. I will play around with that and see what I can come up with.
+: 1628514330:: :;/quit
