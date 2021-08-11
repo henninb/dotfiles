@@ -20,9 +20,11 @@ cd - || exit
 cd hdhomerun_config_gui || exit
 ./configure
 make
+sudo make install
 mv -v src/hdhomerun_config_gui "$HOME/.local/bin/hdhomerun_config_gui"
 
 # sudo dnf install -y hdhomerun
 echo hdhomerun_config 101AE8FC save /tuner0 file.ts
+echo export LD_LIBRARY_PATH=/usr/local/lib
 
 exit 0
