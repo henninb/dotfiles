@@ -3,7 +3,7 @@
 mkdir -p "$HOME/projects/github.com/BitExplorer"
 mkdir -p "$HOME/projects/gitlab.com/BitExplorer"
 
-PROJECTS="example-ratpack raspi-finance-ratpack raspi-finance-endpoint raspi-finance-database src-common example-java example-scala example-kotlin raspi-finance-react raspi-finance-endpoint-micronaut raspi-finance-ncurses raspi-finance-reports st cribbage cribbage-fsharp"
+PROJECTS="example-ratpack raspi-finance-ratpack example-ktor raspi-finance-endpoint raspi-finance-database src-common example-java example-scala example-kotlin raspi-finance-react raspi-finance-endpoint-micronaut raspi-finance-ncurses raspi-finance-reports st cribbage cribbage-fsharp"
 for i in $PROJECTS; do
   cd "$HOME/projects/github.com/BitExplorer" || exit
   echo "$i"
