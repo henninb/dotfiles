@@ -1,6 +1,6 @@
 # Vocabulary
 
-## salient [adj]
+## salient [adjective]
 - most noticeable or important.
 ## presupposition [ noun ]
 - a thing tacitly assumed beforehand at the beginning of a line of argument or course of action
@@ -169,3 +169,5 @@ accolades [ noun ]
 ## obsequious   adjective   ??
 
 ## incommensurate - out of proposition with
+## despondent
+## imbued
