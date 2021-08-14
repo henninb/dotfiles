@@ -151,6 +151,7 @@
 | diff tool              | meld                                                                                 |
 | ctags                  | ctags-universal                                                                      |
 | gui-cert management    | xca                                                                                  |
+| security tool          | yubioath-desktop                                                                     |
 
 ## Language Servers
 - c - ccls
