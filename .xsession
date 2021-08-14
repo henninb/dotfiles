@@ -26,11 +26,11 @@ export CM_MAX_CLIPS=25
 
 # turn the capslock key to be an escape key
 # turn right alt key becomes the compose key
-setxkbmap -option "caps:escape,compose:ralt"
+# setxkbmap -option "caps:escape,compose:ralt"
 
-# swap the apt and windows keys on my K-63 keyboard
+# swap the alt and windows keys on my K-63 keyboard
 # turn the capslock key to be an escape key
-setxkbmap -device 9 -option "altwin:swap_alt_win,caps:escape"
+# setxkbmap -device 9 -option "altwin:swap_alt_win,caps:escape"
 
 echo "$(date) start xsesson" | tee -a "$HOME/xsession.log"
 if [ "${OS}" = "FreeBSD" ]; then
@@ -40,3 +40,5 @@ fi
 if [ "$DISPLAY" != ":0" ]; then
     xclipsync &
 fi
+
+# vim: set ft=conf:
