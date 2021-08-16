@@ -56,14 +56,15 @@ mkdir -p ~/.irssi/certs
 mv -v freenode.pem ~/.irssi/certs
 sudo mkdir -p /usr/local/lib/irssi/modules/
 
-cd "$HOME/projects" || exit
+mkdir "$HOME/projects/github.com/irssi"
+cd "$HOME/projects/github.com/irssi" || exit
 
 if [ ! -f "irssi-${VER}.tar.gz" ]; then
-#  curl https://github.com/irssi/irssi/releases/download/${VER}/irssi-${VER}.tar.gz --output irssi-${VER}.tar.gz
   rm -rf irssi-*.tar.gz
   wget "https://github.com/irssi/irssi/releases/download/${VER}/irssi-${VER}.tar.gz"
 fi
 tar xvzf "irssi-${VER}.tar.gz"
+
 
 git clone git@github.com:irssi/irssi
 cd "irssi-${VER}" || exit

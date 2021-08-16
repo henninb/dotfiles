@@ -1,10 +1,11 @@
+# Tech Bucket List
 ddwrt web frontend certificate setup
-virtualize pfsense on proxmox
-port rapi-finance-endpoint to ktor
+* virtualize pfsense on proxmox
+* port rapi-finance-endpoint to ktor
 port rapi-finance-endpoint to rust
 code submenu names in xmonad
 find a project to work on - fiverr.com
-use letsencrypt on pfsense
+- 8/15/2021 - use letsencrypt on pfsense
 setup webserver for brianhenning.xyz
 code aes encrypt a file using haskell
 fix shell script to use new git pattern
@@ -25,3 +26,4 @@ learn more about aws
 learn more about azure
 learn more about goodle cloud
 lora - setup a sender/receiver
+linux cross compiler for rasperrry pi arm
