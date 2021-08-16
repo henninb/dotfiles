@@ -27,3 +27,9 @@ learn more about azure
 learn more about goodle cloud
 lora - setup a sender/receiver
 linux cross compiler for rasperrry pi arm
+gpg key on yubikey
+ssh key on yubikey
+linux pam module for yubikey
+  https://gist.github.com/artizirk/d09ce3570021b0f65469cb450bee5e29
+  https://developers.yubico.com/yubico-pam/
+  https://github.com/dmitryd/kali-yubikey
