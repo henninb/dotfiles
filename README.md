@@ -115,7 +115,7 @@
 | process viewer         | htop, glances, bashtop, gotop                                                        |
 | email client           | neomutt, mutt                                                                        |
 | wii game emulator      | dolphin-emu                                                                          |
-| cloud storage          | nextcloud                                                                            |
+| cloud storage          | nextcloud, dropbox                                                                   |
 | games                  | xonotic, wesnoth, 0ad                                                                |
 | game platform          | minigalaxy, steam                                                                    |
 | pdf reader             | zathura                                                                              |
