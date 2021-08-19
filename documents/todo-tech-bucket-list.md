@@ -18,6 +18,7 @@ code and app to stream audio to a phone
 update main windows 10 machine to the latest version
 linux - swap init program with bash (testing)
 virtualize webserver on proxmox
+virtualize nextcloud on proxmox
 backup 2fa codes
 backup photos
 selfhost nextcloud (dropbox replacement)
