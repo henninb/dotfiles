@@ -1,5 +1,11 @@
 #!/bin/sh
 
+stty -echo
+printf "New Password for postgres: "
+read -r POSTGRESQL_PASSWORD
+stty echo
+printf "\n"
+
 cat > pg_hba.conf <<EOF
 # TYPE  DATABASE      USER   ADDRESS      METHOD
 local all             all                 ident
@@ -29,7 +35,8 @@ EOF
 
 sudo mkdir -p /opt/postgresql-data
 sudo mv -v pg_hba.conf /opt/postgresql-data/pg_hba.conf
-sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /opt/postgresql-data/postgresql.conf
+
+# sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /opt/postgresql-data/postgresql.conf
 docker-compose up -d
 
 exit 0
