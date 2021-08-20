@@ -1,9 +1,13 @@
 #!/usr/bin/env sh
 
 ACTIVEMQ_PASSWORD="********"
-echo "Enter PASSWD: "
+
+stty -echo
+printf "Please enter the activemq password: "
 read -r ACTIVEMQ_PASSWORD
-echo "$ACTIVEMQ_PASSWORD"
+export ACTIVEMQ_PASSWORD
+stty echo
+printf "\n"
 
 AMQ_VER=$(curl -fA 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:69.0) Gecko/20100101 Firefox/69.0' 'http://activemq.apache.org/components/classic/download/' | grep -o 'ActiveMQ [0-9.]\+[0-9]' | sed 's/ActiveMQ //')
 
