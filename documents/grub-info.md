@@ -14,3 +14,9 @@ GRUB_GFXPAYLOAD_LINUX=1920x1080
 
 ## grub visual tool
 sudo apt install grub-customizer
+
+## fix for proxmox
+vi /etc/default/gru
+ intel_iommu=on
+GRUB_CMDLINE_LINUX="intel_iommu=on"
+update-grub
