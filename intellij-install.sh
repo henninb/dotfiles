@@ -28,10 +28,11 @@ sudo apt install -y jq
 
 pkill -f "intellij.idea.Main"
 
-find ~/.config/JetBrains/IntelliJIdea2021.1 -type d -exec touch -t "$(date +'%Y%m%d%H%M')" {} \;
-rm -rf "$HOME/.config/JetBrains/IntelliJIdea2021.1/eval"
-rm -rf "$HOME/.config/JetBrains/IntelliJIdea2021.1/options/other.xml"
-rm -rf ~/.java/.userPrefs/jetbrains
+version="IntelliJIdea2021.2"
+find "$HOME/.config/JetBrains/${version}" -type d -exec touch -t "$(date +'%Y%m%d%H%M')" {} \;
+rm -rf "$HOME/.config/JetBrains/${version}/eval"
+rm -rf "$HOME/.config/JetBrains/${version}/options/other.xml"
+rm -rf "$HOME/.java/.userPrefs/jetbrains"
 
 VER=$(curl -s 'https://data.services.jetbrains.com/products/releases?code=IIU&latest=true&type=release&build=&_=1581558835218' | jq '.IIU[0] .version' | cut -d \" -f2)
 

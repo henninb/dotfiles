@@ -1,16 +1,15 @@
 #!/bin/sh
 
-mkdir -p "$HOME/.config/JetBrains/IntelliJIdea2021.1"
-find ~/.config/JetBrains/IntelliJIdea2020.3 -type d -exec touch -t "$(date +'%Y%m%d%H%M')" {} \;
-rm -rf "$HOME/.config/JetBrains/IntelliJIdea2020.3/eval"
-rm -rf "$HOME/.config/JetBrains/IntelliJIdea2020.3/options/other.xml"
-find ~/.config/JetBrains/IntelliJIdea2021.1 -type d -exec touch -t "$(date +'%Y%m%d%H%M')" {} \;
-rm -rf "$HOME/.config/JetBrains/IntelliJIdea2021.1/eval"
-rm -rf "$HOME/.config/JetBrains/IntelliJIdea2021.1/options/other.xml"
-rm -rf ~/.java/.userPrefs/jetbrains
+version="IntelliJIdea2021.2"
+mkdir -p "$HOME/.config/JetBrains/${version}"
+find "$HOME/.config/JetBrains/${version}" -type d -exec touch -t "$(date +'%Y%m%d%H%M')" {} \;
+rm -rf "$HOME/.config/JetBrains/${version}/eval"
+rm -rf "$HOME/.config/JetBrains/${version}/options/other.xml"
+rm -rf "$HOME/.java/.userPrefs/jetbrains"
 
-ls -l ~/.java/.userPrefs/
-ls -l ~/.config/JetBrains/IntelliJIdea2020.3/
-ls -l ~/.config/JetBrains/IntelliJIdea2021.1/
+# echo
+# ls -l "$HOME/.java/.userPrefs/"
+# echo
+# ls -l "$HOME/.config/JetBrains/${version}/"
 
 exit 0
