@@ -37,3 +37,20 @@ linux pam module for yubikey
   https://github.com/dmitryd/kali-yubikey
 spotify playlist extract
 traefik and portainer (reverse proxy)
+python spotify
+gimp basics - distrotube
+create profile avitar
+finance app to output a budget
+JOOQ update and delete
+mine crypto currency
+automate bridge setup
+blener - make something 3D
+make my own PCB
+install FreeNAS
+finance_db with redis backend
+finance_db with mongodb backend
+hardware hackintosh
+docker run void
+docker run gentoo
+install haikuOS
+raspberian cross compiler in c
