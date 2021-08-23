@@ -200,20 +200,33 @@ keybinds conf = let
   -- , ("M-; s k",    namedScratchpadAction myScratchpads "kafka" )
    subKeys "Scratchpads"
    [
-   ("M-S-o", NamedActions.addName "" $ submap . M.fromList $
-            [
-              ((0, xK_s),    namedScratchpadAction scratchPads "spotify-nsp")
-            , ((0, xK_d),    namedScratchpadAction scratchPads "discord-nsp")
-            , ((0, xK_t),    namedScratchpadAction scratchPads "tmux-nsp")
-            , ((0, xK_k),    namedScratchpadAction scratchPads "keepas-nsp")
-            , ((0, xK_v),    namedScratchpadAction scratchPads "vlc-nsp")
-            , ((0, xK_c),    namedScratchpadAction scratchPads "calc-nsp")
-            , ((0, xK_i),    spawn "intellij")
-            , ((0, xK_d),    spawn "dbeaver-flatpak")
-            , ((0, xK_g),    spawn "steam")
-            , ((0, xK_e),    spawn "vscodium-flatpak")
-            , ((0, xK_h),    spawn "handbrake")
-            ])
+   ("M-S-o", NamedActions.submapName $ mkNamedKeymap conf
+    [("s", NamedActions.addName "spotify" $ namedScratchpadAction scratchPads "spotify-nsp")
+    ,("d", NamedActions.addName "discord" $ namedScratchpadAction scratchPads "discord-nsp")
+    ,("t", NamedActions.addName "tmux" $ namedScratchpadAction scratchPads "tmux-nsp")
+    ,("k", NamedActions.addName "keepass" $ namedScratchpadAction scratchPads "keepass-nsp")
+    ,("v", NamedActions.addName "vlc" $ namedScratchpadAction scratchPads "vlc-nsp")
+    ,("c", NamedActions.addName "calc" $ namedScratchpadAction scratchPads "calc-nsp")
+    ,("i", NamedActions.addName "intellij" $ namedScratchpadAction scratchPads "intellij")
+    ,("d", NamedActions.addName "dbeaver" $ namedScratchpadAction scratchPads "dbeaver-flatpak")
+    ,("g", NamedActions.addName "steam" $ namedScratchpadAction scratchPads "steam")
+    ,("e", NamedActions.addName "vscodium" $ namedScratchpadAction scratchPads "vscodium-flatpak")
+    ,("h", NamedActions.addName "handbrake" $ namedScratchpadAction scratchPads "handbrake")
+    ])
+   -- ("M-S-o", NamedActions.addName "" $ submap . M.fromList $
+   --          [
+   --            ((0, xK_s),    namedScratchpadAction scratchPads "spotify-nsp")
+   --          , ((0, xK_d),    namedScratchpadAction scratchPads "discord-nsp")
+   --          , ((0, xK_t),    namedScratchpadAction scratchPads "tmux-nsp")
+   --          , ((0, xK_k),    namedScratchpadAction scratchPads "keepass-nsp")
+   --          , ((0, xK_v),    namedScratchpadAction scratchPads "vlc-nsp")
+   --          , ((0, xK_c),    namedScratchpadAction scratchPads "calc-nsp")
+   --          , ((0, xK_i),    spawn "intellij")
+   --          , ((0, xK_d),    spawn "dbeaver-flatpak")
+   --          , ((0, xK_g),    spawn "steam")
+   --          , ((0, xK_e),    spawn "vscodium-flatpak")
+   --          , ((0, xK_h),    spawn "handbrake")
+   --          ])
    -- ("M-S-o i", NamedActions.addName "Intellij" $ spawn "intellij")
    ]
    ++
