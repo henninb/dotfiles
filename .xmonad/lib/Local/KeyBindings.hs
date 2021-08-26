@@ -198,7 +198,7 @@ keybinds conf = let
      --submapName
      --  , ("M-; s z",    namedScratchpadAction myScratchpads "zk" )
   -- , ("M-; s k",    namedScratchpadAction myScratchpads "kafka" )
-   subKeys "Scratchpads"
+   subKeys "Scratchpads/misc"
    [
    ("M-S-o", NamedActions.submapName $ mkNamedKeymap conf
     [("s", NamedActions.addName "spotify" $ namedScratchpadAction scratchPads "spotify-nsp")
@@ -207,11 +207,11 @@ keybinds conf = let
     ,("k", NamedActions.addName "keepass" $ namedScratchpadAction scratchPads "keepass-nsp")
     ,("v", NamedActions.addName "vlc" $ namedScratchpadAction scratchPads "vlc-nsp")
     ,("c", NamedActions.addName "calc" $ namedScratchpadAction scratchPads "calc-nsp")
-    ,("i", NamedActions.addName "intellij" $ namedScratchpadAction scratchPads "intellij")
-    ,("d", NamedActions.addName "dbeaver" $ namedScratchpadAction scratchPads "dbeaver-flatpak")
-    ,("g", NamedActions.addName "steam" $ namedScratchpadAction scratchPads "steam")
-    ,("e", NamedActions.addName "vscodium" $ namedScratchpadAction scratchPads "vscodium-flatpak")
-    ,("h", NamedActions.addName "handbrake" $ namedScratchpadAction scratchPads "handbrake")
+    ,("i", NamedActions.addName "intellij" $ spawn "intellij")
+    ,("d", NamedActions.addName "dbeaver" $ spawn "dbeaver-flatpak")
+    ,("g", NamedActions.addName "steam" $ spawn "steam")
+    ,("e", NamedActions.addName "vscodium" $ spawn "vscodium-flatpak")
+    ,("h", NamedActions.addName "handbrake" $ spawn "handbrake")
     ])
    -- ("M-S-o", NamedActions.addName "" $ submap . M.fromList $
    --          [
