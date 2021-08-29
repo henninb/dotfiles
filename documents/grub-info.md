@@ -20,4 +20,5 @@ sudo apt install grub-customizer
 $ sudo vi /etc/default/grub
 GRUB_CMDLINE_LINUX="intel_iommu=on"
 $ sudo update-grub
+$ sudo reboot
 ```
