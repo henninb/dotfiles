@@ -129,8 +129,8 @@ elif [ "$OS" = "Ubuntu" ]; then
   sudo systemctl enable postgresql
   sudo systemctl start postgresql
   sudo systemctl status postgresql
-  sudo mv -v pg_hba.conf /etc/postgresql/10/main/pg_hba.conf
-  sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql/10/main/postgresql.conf
+  sudo mv -v pg_hba.conf /etc/postgresql/12/main/pg_hba.conf
+  sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql/12/main/postgresql.conf
   sudo systemctl restart postgresql
   mv -v install_psql_settings.sql /tmp
   sudo -u postgres sh -c 'cd /tmp && psql postgres -U postgres < /tmp/install_psql_settings.sql'
