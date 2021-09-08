@@ -1,7 +1,7 @@
 # Tech Bucket List
 ddwrt web frontend certificate setup
-* virtualize pfsense on proxmox
-* port rapi-finance-endpoint to ktor
+- virtualize pfsense on proxmox
+- port rapi-finance-endpoint to ktor
 port rapi-finance-endpoint to rust
 code submenu names in xmonad
 find a project to work on - https://www.fiverr.com - become a seller
@@ -9,15 +9,15 @@ find a project to work on - https://www.fiverr.com - become a seller
 setup webserver for brianhenning.xyz
 code aes encrypt a file using haskell
 fix shell script to use new git pattern
-virtualize pihole on proxmox
+- virtualize pihole on proxmox/ubuntu
 code an android app
 record live tv on linux with silicondust hdhomerun
 learn to use obs for content creation
 practice squashing with git
-code and app to stream audio to a phone
+- code and app to stream audio to a phone
 update main windows 10 machine to the latest version
 linux - swap init program with bash (testing)
-virtualize webserver on proxmox
+ - virtualize plexserver on proxmox
 virtualize nextcloud on proxmox
 backup 2fa codes
 backup photos
