@@ -32,7 +32,7 @@ else
   echo "$OS is not yet implemented."
   exit 1
 fi
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | zsh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | zsh
 
 export NVM_DIR="$HOME/.nvm"
 
@@ -42,7 +42,7 @@ if [ $? -ne 0 ]; then
   source "$HOME/.nvm/nvm.sh"
 fi
 
-nvm install 14.15.5
+nvm install 14.17.6
 
 [ ! -x "$(command -v npm)" ] && echo "npm is not installed." && exit 1
 if [ ! -x "$(command -v n)" ]; then
