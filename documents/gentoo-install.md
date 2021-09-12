@@ -26,7 +26,7 @@ rc-service dhcpcd start
 
 ## remote ssh login from remote
 ```
-ssh root@192.168.100.124
+ssh root@192.168.100.168
 ```
 
 ## partition the drive as show below (use dos)
@@ -52,14 +52,8 @@ cd /mnt/gentoo
 
 ## download stage3
 ```
-wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20210611T113421Z/stage3-amd64-20210611T113421Z.tar.xz
+wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20210905T170549Z/stage3-amd64-openrc-20210905T170549Z.tar.xz
 ```
-
-## download stage3 systemd - need to try this
-```
-wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20210611T113421Z/stage3-amd64-systemd-20210611T113421Z.tar.xz
-```
-
 ## extract stage3 and be sure to verify success
 ```
 tar xvJpf stage3-*.tar.xz --xattrs --numeric-owner
@@ -169,6 +163,7 @@ rc-update add sshd default
 usermod -aG wheel henninb
 
 # will take a long time (42 min)
+ln -sfn linux-5.10.61-gentoo linux
 genkernel all
 tail -f /var/log/genkernel.log
 
