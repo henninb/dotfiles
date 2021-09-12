@@ -33,6 +33,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y zsh
   sudo xbps-install -y curl
+  sudo xbps-install -y unzip
+  sudo xbps-install -y fontconfig
 elif [ "$OS" = "Darwin" ]; then
   brew install coreutils
   brew install fontconfig
