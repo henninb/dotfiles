@@ -22,6 +22,9 @@ elif [ "$OS" = "Solus" ]; then
 #  sudo eopkg remove -y lightdm
   sudo eopkg upgrade -y
 elif [ "$OS" = "void" ]; then
+  sudo xbps-remove -yO
+  sudo xbps-remove -yo
+  sudo vkpurge rm all
   sudo xbps-install -u xbps
   sudo xbps-install -Suy
 elif [ "$OS" = "Manjaro Linux" ]; then
