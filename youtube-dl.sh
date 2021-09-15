@@ -41,6 +41,8 @@ fun_download() {
   fi
 }
 
+fun_download 'https://www.youtube.com/watch?v=hIv13ou5mzw' sleep_delta-force-4hz.opus
+
 song='soul_asylum_runaway_train'
 url=$(python3 youtube-search.py "${song}" | jq  -r '.videos | .[] | .url_suffix')
 fun_download "http://youtube.com$url" "${song}.opus"
