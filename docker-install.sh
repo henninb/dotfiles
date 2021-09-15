@@ -24,6 +24,12 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo iptables -t nat -L
   #sudo firewall-cmd --permanent --zone=trusted --change-interface=docker0
   #sudo firewall-cmd --reload
+elif [ "$OS" = "void" ]; then
+  sudo xbps-install -y docker-compose
+  sudo usermod -aG docker "$USER"
+  sudo ln -s /etc/sv/docker /var/service/
+  sudo sv up docker
+  sudo sv status docker
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y docker
   sudo eopkg install -y docker-compose
