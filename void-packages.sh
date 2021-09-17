@@ -1,5 +1,6 @@
 #!/bin/sh
 
+echo xtools
 sudo mkdir -p /usr/ports
 sudo chown "$USER" /usr/ports
 cd /usr/ports || exit
