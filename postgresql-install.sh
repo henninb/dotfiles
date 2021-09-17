@@ -45,7 +45,6 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo netstat -lntp | grep postgres
   sudo fuser 5432/tcp
 elif [ "$OS" = "void" ]; then
-  echo
   sudo xbps-install -y postgresql
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg install postgresql
