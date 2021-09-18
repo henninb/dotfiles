@@ -23,7 +23,7 @@ Your WAN should look like:
 
 		<wan>
 			<if>pppoe0</if>
-			<descr><![CDATA[PPPoEWAN]]></descr>
+			<descr><![CDATA[WAN]]></descr>
 			<blockpriv></blockpriv>
 			<blockbogons></blockbogons>
 			<enable></enable>
@@ -31,18 +31,16 @@ Your WAN should look like:
 		</wan>
 And you'll need a PPP section like:
 
-	<ppps>
-		<ppp>
-			<ptpid>0</ptpid>
+<ppps>
+  <ppp>
+    <ptpid>0</ptpid>
 			<type>pppoe</type>
 			<if>pppoe0</if>
-			<ports>em0</ports>
-			<username>your_username</username>
-			<password>base64_encoded_password</password>
+			<ports>re0</ports>
+			<username><![CDATA[username@qwest.net]]></username>
+			<password>![CDATA[base64-password]]></password>
 			<descr><![CDATA[WAN]]></descr>
 			<provider>Your_ISP</provider>
 		</ppp>
 	</ppps>
-Or similar with your details in it.
 
-Steve
