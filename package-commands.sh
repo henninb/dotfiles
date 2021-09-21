@@ -13,7 +13,7 @@ echo pacman -Qkk
 
 echo sudo xbps-install -Suy
 echo sudo xbps-install -u xbps
-echo sudo xbps-install git
+echo sudo xbps-install git neovim zsh
 echo xbps-query -Rs xorg
 
 echo dnf repoquery -l xorg-x11-server-Xorg
