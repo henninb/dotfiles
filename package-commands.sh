@@ -9,8 +9,11 @@ fi
 
 echo sudo pacman -R xmonad
 echo sudo pacman -Rsnc picom
-pacman -Qkk
+echo pacman -Qkk
 
+echo sudo xbps-install -Suy
+echo sudo xbps-install -u xbps
+echo sudo xbps-install git
 echo xbps-query -Rs xorg
 
 echo dnf repoquery -l xorg-x11-server-Xorg
