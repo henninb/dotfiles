@@ -1,9 +1,13 @@
 # pfsense
 
-## edit config file
-vi /conf/config.xml
+## default password
+pfsense
 
-viconfig
+## edit config file
+```
+$ vi /conf/config.xml
+$ viconfig
+```
 
 
 /etc/rc.reload_all
