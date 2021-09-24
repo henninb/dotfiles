@@ -7,8 +7,8 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y libgtk2.0-dev
   sudo apt install -y libgtk-3-dev
 elif [ "$OS" = "void" ]; then
-  sudo xbps-install -Su
-  sudo xbps-install  gtk+3-devel
+  sudo xbps-install -Suy
+  sudo xbps-install -y gtk+3-devel
 elif [ "$OS" = "FreeBSD" ]; then
   echo
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
