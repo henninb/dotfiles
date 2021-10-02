@@ -21,10 +21,12 @@ cat > '_@user_Darcula.icls' <<EOF
 </scheme>
 EOF
 
-sudo dnf install -y jq
-sudo emerge --update --newuse jq
-sudo pacman --noconfirm --needed -S jq
-sudo apt install -y jq
+sudo dnf install -y jq wget curl
+sudo emerge --update --newuse jq wget curl
+sudo pacman --noconfirm --needed -S jq wget curl
+sudo apt install -y jq wget curl
+sudo xbps-install -y jq wget curl
+sudo zypper install jq wget curl
 
 pkill -f "intellij.idea.Main"
 
@@ -59,7 +61,7 @@ else
 fi
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S net-tools psmisc wget curl jq
+  sudo pacman --noconfirm --needed -S net-tools psmisc
   sudo rm -rf /opt/intellij
   sudo rm -rf /opt/idea-IU-*/
   sudo tar -xvf "ideaIU-${VER}.tar.gz" -C /opt
@@ -67,7 +69,6 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo chown -R intellij:intellij /opt/idea-IU-*/
   sudo chmod -R 775 /opt/idea-IU-*/
 elif [ "$OS" = "openSUSE Leap" ]; then
-  sudo zypper install curl wget
   sudo rm -rf /opt/intellij
   sudo rm -rf /opt/idea-IU-*/
   sudo tar -xvf "ideaIU-${VER}.tar.gz" -C /opt
@@ -113,7 +114,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo chown -R intellij:intellij /opt/idea-IU-*/
   sudo chmod -R 775 /opt/idea-IU-*/
 elif [ "$OS" = "Linux Mint" ] || [  "$OS" = "Ubuntu" ]; then
-  sudo apt install -y net-tools psmisc wget curl
+  sudo apt install -y net-tools psmisc
   sudo rm -rf /opt/intellij
   sudo rm -rf /opt/idea-IU-*/
   sudo tar -xvf "ideaIU-${VER}.tar.gz" -C /opt
@@ -128,9 +129,9 @@ elif [ "$OS" = "Fedora" ]; then
   sudo chown -R intellij:intellij /opt/idea-IU-*/
   sudo chmod -R 775 /opt/idea-IU-*/
 elif [ "$OS" = "CentOS Linux" ]; then
+  sudo yum install -y net-tools
   sudo rm -rf /opt/intellij
   sudo rm -rf /opt/idea-IU-*/
-  sudo yum install -y net-tools wget curl java-1.8.0-openjdk
   sudo tar -xvf "ideaIU-${VER}.tar.gz" -C /opt
   sudo ln -sfn /opt/idea-IU-* /opt/intellij
   sudo chown -R intellij:intellij /opt/idea-IU-*/
