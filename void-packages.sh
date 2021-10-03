@@ -1,6 +1,7 @@
 #!/bin/sh
 
 echo xtools
+sudo xbps-install -y xtools
 sudo mkdir -p /usr/ports
 sudo chown "$USER" /usr/ports
 cd /usr/ports || exit
