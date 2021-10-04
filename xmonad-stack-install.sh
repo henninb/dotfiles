@@ -173,7 +173,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y cabal-install
   sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
   sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so
-  VOID_PKGS="autoconf xorg-minimal xscreensaver feh xdotool w3m neofetch lxappearance volumeicon clipmenu xz make gcc gmp-devel dunst wmname libXScrnSaver-devel alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd jq redshift conky playerctl dunst libXrandr-devel"
+  VOID_PKGS="pkg-config autoconf xorg-minimal xscreensaver feh xdotool w3m neofetch lxappearance volumeicon clipmenu xz make gcc gmp-devel dunst wmname alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd jq redshift conky playerctl dunst libX11-devel libXinerama-devel libXrandr-devel libXft-devel libXScrnSaver-devel"
   FAILURE=""
   for i in $VOID_PKGS; do
     if ! sudo xbps-install -y "$i"; then
@@ -311,6 +311,7 @@ mkdir -p "$HOME/projects/github.com/xmonad"
 cd "$HOME/projects/github.com/xmonad" || exit
 git clone git@github.com:xmonad/xmonad.git
 cd xmonad || exit
+# git checkout v0.15
 stack build
 stack install
 sudo mv .local/bin/xmonad /usr/local/bin/
@@ -320,6 +321,7 @@ mkdir -p "$HOME/projects/github.com/xmonad"
 cd "$HOME/projects/github.com/xmonad" || exit
 git clone git@github.com:xmonad/xmonad-contrib.git
 cd xmonad-contrib || exit
+# git checkout v0.15
 stack build
 stack install
 cd - || exit
