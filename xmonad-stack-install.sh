@@ -197,7 +197,7 @@ elif [ "$OS" = "Solus" ]; then
   make
   sudo make install
   cd "$HOME" || exit
-  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel gettext-devel libffi zlib libgmp libtinfo dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance blueman copyq clipmenu mpd mpc-client neofetch jq redshift font-awesome-4 vifm conky playerctl"
+  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel gettext-devel libffi zlib libgmp dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance blueman copyq clipmenu mpd mpc-client neofetch jq redshift font-awesome-4 conky playerctl"
   FAILURE=""
   sudo eopkg install -c system.devel
   for i in $SOLUS_PKGS; do
