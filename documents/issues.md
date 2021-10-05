@@ -261,6 +261,11 @@ sudo systemctl list-unit-files
 sudo journalctl
 ```
 
+## change to tty2
+```
+sudo chvt 2
+```
+
 ## To boot to console solus
 ```
 sudo systemctl set-default multi-user
