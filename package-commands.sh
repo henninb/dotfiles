@@ -18,6 +18,10 @@ echo xbps-query -Rs xorg
 
 echo dnf repoquery -l xorg-x11-server-Xorg
 
+
+echo sudo eopkg upgrade -y
+echo sudo eopkg install -y openssh-server
+
 # delete a package
 echo emerge --deselect www-client/firefox
 echo emerge -C mypackage
