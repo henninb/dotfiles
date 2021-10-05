@@ -25,7 +25,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper install -y java-1_8_0-openjdk
   sudo zypper install -y java-1_8_0-openjdk-devel
 elif [ "$OS" = "void" ]; then
-  sudo xbps-install -S openjdk11
+  sudo xbps-install -y openjdk11
   # echo openjdk11-bin
 elif [ "$OS" = "Ubuntu" ]; then
   #sudo apt install -y openjdk-8-jdk
