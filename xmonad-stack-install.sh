@@ -182,6 +182,7 @@ elif [ "$OS" = "void" ]; then
   done
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Solus" ]; then
+  sudo ln -s /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so
   if ! sudo ln -s /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so.5.9; then
     echo "Solution: error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory"
   fi
@@ -207,7 +208,7 @@ elif [ "$OS" = "Solus" ]; then
     fi
   done
   echo "Failures: $FAILURE"
-  exit 1
+  echo "need dzen2"
 elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG tty "$(id -un)"
   sudo usermod -aG video "$(id -un)"
