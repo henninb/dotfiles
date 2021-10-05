@@ -9,7 +9,7 @@ if [ "$OS" = "Gentoo" ]; then
   echo eselect java-vm list
   echo eselect java-vm set user openjdk-bin-8
 elif [ "$OS" = "Solus" ]; then
-  sudo eopkg install -y openjdk-8
+  sudo eopkg install -y openjdk-11
   # openjdk-8-devel
 elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y openjdk-8-jdk
