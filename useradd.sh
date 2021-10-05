@@ -93,6 +93,8 @@ elif [ "$OS" = "Fedora" ]; then
   sudo usermod -a -G docker "$(id -un)"
 
   echo "audio?"
+elif [ "$OS" = "Solus" ]; then
+  echo
 elif [ "$OS" = "Gentoo" ]; then
   id -g wheel >/dev/null 2>&1 || sudo groupadd wheel
   id -u brian >/dev/null 2>&1 || sudo useradd -m -G wheel -s /bin/bash brian
