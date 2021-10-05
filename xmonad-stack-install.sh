@@ -183,11 +183,10 @@ elif [ "$OS" = "void" ]; then
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Solus" ]; then
   if ! sudo ln -s /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so.5.9; then
-    echo "failed to create the link, check the script"
-    echo "to address: error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory"
-    exit 1
+    echo "Solution: error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory"
   fi
-  sudo eopkg install -y gettext-devel gcc make libffi zlib libgmp libtinfo
+  sudo eopkg install -y gcc
+  sudo eopkg install -y gettext-devel
 
   mkdir -p d "$HOME/projects/github.com/Maato"
   cd "$HOME/projects/github.com/Maato" || exit
@@ -198,7 +197,7 @@ elif [ "$OS" = "Solus" ]; then
   make
   sudo make install
   cd "$HOME" || exit
-  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon blueman copyq clipmenu mpd mpc-client neofetch jq redshift font-awesome-4 vifm conky playerctl"
+  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel gettext-devel libffi zlib libgmp libtinfo dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance blueman copyq clipmenu mpd mpc-client neofetch jq redshift font-awesome-4 vifm conky playerctl"
   FAILURE=""
   sudo eopkg install -c system.devel
   for i in $SOLUS_PKGS; do
