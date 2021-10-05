@@ -187,7 +187,7 @@ elif [ "$OS" = "Solus" ]; then
     echo "to address: error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory"
     exit 1
   fi
-  sudo eopkg install -y gettext-devel
+  sudo eopkg install -y gettext-devel gcc make libffi zlib libgmp libtinfo
 
   mkdir -p d "$HOME/projects/github.com/Maato"
   cd "$HOME/projects/github.com/Maato" || exit
@@ -198,7 +198,7 @@ elif [ "$OS" = "Solus" ]; then
   make
   sudo make install
   cd "$HOME" || exit
-  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon blueman copyq clipmenu mpd sudo eopkg install mpc-client neofetch jq redshift font-awesome-4 vifm conky playerctl"
+  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance volumeicon blueman copyq clipmenu mpd mpc-client neofetch jq redshift font-awesome-4 vifm conky playerctl"
   FAILURE=""
   sudo eopkg install -c system.devel
   for i in $SOLUS_PKGS; do
