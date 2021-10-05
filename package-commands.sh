@@ -21,6 +21,7 @@ echo dnf repoquery -l xorg-x11-server-Xorg
 
 echo sudo eopkg upgrade -y
 echo sudo eopkg install -y openssh-server
+echo sudo eopkg remove -y lightdm
 
 # delete a package
 echo emerge --deselect www-client/firefox

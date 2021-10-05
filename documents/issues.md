@@ -253,8 +253,7 @@ cat /etc/pam.d/xrdp-sesman
 - workaround is to switch to tty2 CTL-Alt-F2
 - list of linux display manager gdm gdm3 lightdm kdm sdm
 eopkg history
-cd /etc/systemd/system
-rm display-manager.service
+cd /etc/systemd/system && rm sudo display-manager.service
 sudo systemctl list-unit-files
 
 ## view the logs for systemd
@@ -289,7 +288,9 @@ systemctl mask sleep suspend hibernate hybrid-sleep
 ```
 
 ## setup the shell to a POXIX shell in Archlinux
+```
 sudo ln -sfT /bin/dash /bin/sh
+```
 
 ## howto serve up markdown in a browser
 ```
@@ -338,7 +339,9 @@ sudo e2fsck -cfpv /dev/sda1
 ```
 
 ## network A start job is running for wait for network to be configured
+```
 systemctl disable systemd-networkd-wait-online.service
+```
 
 ## steam lib issue
 sudo apt update && sudo apt install libxtst6 libxrandr2 libglib2.0-0 libgtk2.0-0 libpulse0 libgdk-pixbuf2.0-0
