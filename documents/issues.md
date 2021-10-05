@@ -261,9 +261,18 @@ sudo systemctl list-unit-files
 sudo journalctl
 ```
 
-## To boot to console
+## To boot to console solus
 ```
 sudo systemctl set-default multi-user
+sudo systemctl isolate runlevel3.target
+
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+and modifying it into
+
+GRUB_CMDLINE_LINUX_DEFAULT="text"
+Now you need to update grub,
+
+update-grub
 ```
 
 ## adjust grub as needed (removing splash as needed) and update grub
