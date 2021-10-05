@@ -173,7 +173,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y cabal-install
   sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
   sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so
-  VOID_PKGS="pkg-config autoconf xorg-minimal xscreensaver feh xdotool w3m neofetch lxappearance volumeicon clipmenu xz make gcc gmp-devel dunst wmname alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd jq redshift conky playerctl dunst libX11-devel libXinerama-devel libXrandr-devel libuuid libXft-devel libXScrnSaver-devel"
+  VOID_PKGS="xmonad pkg-config autoconf xorg-minimal xscreensaver feh xdotool w3m neofetch lxappearance volumeicon clipmenu xz make gcc gmp-devel dunst wmname alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd jq redshift conky playerctl dunst libX11-devel libXinerama-devel libXrandr-devel libuuid libXft-devel libXScrnSaver-devel dzen2 picom"
   FAILURE=""
   for i in $VOID_PKGS; do
     if ! sudo xbps-install -y "$i"; then
@@ -187,6 +187,7 @@ elif [ "$OS" = "Solus" ]; then
   fi
   sudo eopkg install -y gcc
   sudo eopkg install -y gettext-devel
+  sudo eopkg install -y libgtk-3-devel
 
   mkdir -p d "$HOME/projects/github.com/Maato"
   cd "$HOME/projects/github.com/Maato" || exit
@@ -197,7 +198,7 @@ elif [ "$OS" = "Solus" ]; then
   make
   sudo make install
   cd "$HOME" || exit
-  SOLUS_PKGS="feh xdotool w3m xz make gcc gmp-devel gettext-devel libffi zlib libgmp dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance blueman copyq clipmenu mpd mpc-client neofetch jq redshift font-awesome-4 conky playerctl"
+  SOLUS_PKGS="xmonad feh xdotool w3m xz make gcc gmp-devel gettext-devel libffi zlib libgmp dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xscreensaver wmname xdo libxpm-devel flameshot xappearance blueman copyq clipmenu mpd mpc-client neofetch jq redshift font-awesome-4 conky playerctl dzen2 picom"
   FAILURE=""
   sudo eopkg install -c system.devel
   for i in $SOLUS_PKGS; do
@@ -206,6 +207,7 @@ elif [ "$OS" = "Solus" ]; then
     fi
   done
   echo "Failures: $FAILURE"
+  exit 1
 elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG tty "$(id -un)"
   sudo usermod -aG video "$(id -un)"
