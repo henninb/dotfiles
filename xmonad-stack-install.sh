@@ -190,6 +190,9 @@ elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y gettext-devel
   sudo eopkg install -y libgtk-3-devel
 
+  nix-env -i dzen2
+  nix-env -i volumeicon
+
   mkdir -p d "$HOME/projects/github.com/Maato"
   cd "$HOME/projects/github.com/Maato" || exit
   git clone git@github.com:Maato/volumeicon.git
