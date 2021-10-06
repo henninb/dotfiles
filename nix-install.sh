@@ -1,6 +1,7 @@
 #!/bin/sh
 
 sudo eopkg install -y rsync
+sudo rm -rf /etc/nix /nix /root/.nix-profile /root/.nix-defexpr /root/.nix-channels $HOME/.nix-profile $HOME/.nix-defexpr $HOME/.nix-channels
 
 sh <(curl -L https://nixos.org/nix/install) --daemon
 

@@ -13,6 +13,7 @@ templates:
 #    copyright:
     github-username: henninb
 # allow-newer: true
+# nix-env -qaP 'pkg-config'
 # nix:
 #   enable: true
 #   packages:
@@ -21,3 +22,10 @@ templates:
 #     - gcc
 #     - ncurses
 #     - zlib
+#     - xorg.libXrandr
+#     - xorg.libXScrnSaver
+#     - xorg.libXinerama
+#     - xorg.libXft
+#     - xorg.libXext
+#     - dzen2
+#     - volumeicon
