@@ -13,3 +13,11 @@ templates:
 #    copyright:
     github-username: henninb
 # allow-newer: true
+# nix:
+#   enable: true
+#   packages:
+#     - libcxx
+#     - icu
+#     - gcc
+#     - ncurses
+#     - zlib
