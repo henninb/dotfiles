@@ -21,3 +21,13 @@ $ sudo reboot
 ```
 vi /etc/apt/sources.list.d/pve-enterprise.list
 ```
+
+
+## commands
+```
+qm set 101 --onboot 1
+qm set 101 --onboot 0
+qm list
+qm start 101
+qm shutdown 101
+```
