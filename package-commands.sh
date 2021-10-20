@@ -11,6 +11,7 @@ echo sudo pacman -R xmonad
 echo sudo pacman -Rsnc picom
 echo pacman -Qkk
 
+echo export SSL_NO_VERIFY_PEER=1
 echo sudo xbps-install -Suy
 echo sudo xbps-install -u xbps
 echo sudo xbps-install git neovim zsh
