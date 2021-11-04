@@ -12,8 +12,9 @@ And boom, works like a charm
 
 Login to your Namecheap account.
 
-Go to the Profile > Tools menu.
+Go to the advanced dns menu
 
-Scroll down to the Business & Dev Tools section. Click on MANAGE next to Namecheap API Access.
+https://ap.www.namecheap.com/Domains/DomainControlPanel/brianhenning.me/advancedns
 
-Toggle ON/OFF, read our Terms of Service, enter your account password.
+Toggle ON/OFF, DYNAMIC DNS status
+copy the Dynamic DNS Password
