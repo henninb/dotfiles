@@ -79,6 +79,6 @@ Apply Settings and connect ethernet cable to main router via LAN-to-LAN uplink*
 
 ## clear nvram
 ```
-nvram erase
+erase nvram
 reboot
 ```
