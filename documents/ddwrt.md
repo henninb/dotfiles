@@ -76,3 +76,9 @@ Open the Administration -> Management tab
 (Optional) Routing : Disable
 Apply Settings and connect ethernet cable to main router via LAN-to-LAN uplink*
 ```
+
+## clear nvram
+```
+nvram erase
+reboot
+```
