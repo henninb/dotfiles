@@ -93,6 +93,7 @@ terminalLayout = renamed [Replace "Terminals"]
 --       $ twoPaneTabbed ||| twoPaneTall ||| simpleTall 50
 mediaLayout = renamed [Replace "Media"]
       $ mySpacing
+      $ avoidStruts
       $ simpleTwo 40 ||| Grid ||| simpleThree 33
 readingLayout = renamed [Replace "Reading"]
       $ mySpacing

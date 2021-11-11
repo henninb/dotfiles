@@ -314,9 +314,9 @@ fi
 
 mkdir -p "$HOME/projects/github.com/xmonad"
 cd "$HOME/projects/github.com/xmonad" || exit
-git clone git@github.com:xmonad/xmonad.git
+git clone --branch v0.17.0 git@github.com:xmonad/xmonad.git
 cd xmonad || exit
-# git checkout v0.15
+# git checkout v0.17.0
 stack build
 stack install
 sudo mv .local/bin/xmonad /usr/local/bin/
@@ -324,9 +324,9 @@ cd - || exit
 
 mkdir -p "$HOME/projects/github.com/xmonad"
 cd "$HOME/projects/github.com/xmonad" || exit
-git clone git@github.com:xmonad/xmonad-contrib.git
+git clone --branch v0.17.0 git@github.com:xmonad/xmonad-contrib.git
 cd xmonad-contrib || exit
-# git checkout v0.15
+# git checkout v0.17.0
 stack build
 stack install
 cd - || exit
