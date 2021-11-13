@@ -61,7 +61,7 @@ dmenuRunCmd :: String
 -- passmenuRunCmd = scriptsPath ++ "passmenu " ++ (unwords $ dmenuArgs "Password:")
 dmenuRunCmd = "dmenu " ++ unwords (dmenuArgs "Execute:")
 
-myEmacs = "emacsclient -c -a 'emacs' "
+myEmacs = "emacsclient -c -a 'emacs'"
 
 lockScreen :: X ()
 lockScreen = spawn "xscreensaver-command -lock"
@@ -160,6 +160,7 @@ keybinds conf = let
   , ("M-S-p", NamedActions.addName "Application Launcher"             $ spawn "dmenu_run -i -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
   , ("M-<F2>", NamedActions.addName "File Manager" $ spawn "fm")
   , ("M-i", NamedActions.addName "Browser" $ spawn "browser")
+  , ("M-e", NamedActions.addName "Emacs" $ spawn myEmacs)
   , ("M-S-i", NamedActions.addName "Private Browser" $ spawn ("browser" ++ " --incognito"))
   , ("M-p", NamedActions.addName "Passowrd Manager" $ spawn passmenuRunCmd)
   -- , ("M-<Print>"         , spawn "flameshot gui -p $HOME/screenshots")

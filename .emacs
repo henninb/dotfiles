@@ -120,7 +120,8 @@
   :init (doom-modeline-mode 1))
 
 
-(set-frame-font "monofur for Powerline 12" nil t)
+(add-to-list 'default-frame-alist '(font . "monofur for Powerline 12"))
+; (set-frame-font "monofur for Powerline 12" nil t)
 ;(set-face-attribute 'default nil :height 150)
 
 ; language support mode
