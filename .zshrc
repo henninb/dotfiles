@@ -502,7 +502,7 @@ autoload -Uz tetriscurses
 # if [ -e /home/henninb/.nix-profile/etc/profile.d/nix.sh ]; then . "${HOME}/.nix-profile/etc/profile.d/nix.sh"; fi
 
 if [ -x "$(command -v dig)" ]; then
-  myip="$(dig +short myip.opendns.com @resolver1.opendns.com)"
+  myip="$(dig  +time=3 +tries=1 +short myip.opendns.com @resolver1.opendns.com)"
   export myip
 fi
 
