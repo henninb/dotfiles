@@ -21,6 +21,11 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo nmcli connection up br0
   sudo dhclient br0
 
+  sudo virsh net-define bridged-network.xml
+  sudo virsh net-start br0-bridged-network
+  sudo virsh net-autostart br0-bridged-network
+  sudo virsh net-list
+
   ### dynamically creating a bridge
   # sudo ip link set "$device" up
   # sudo ip addr flush dev "$device"
