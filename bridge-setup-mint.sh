@@ -67,7 +67,7 @@ exit 0
 sudo ip link set eth0 master br0
 
 sudo dhclient br0
-sudo ip addr add dev br0 192.168.100.6/24
+sudo ip addr add dev br0 192.168.10.6/24
 
 # delete bridge
 sudo ip link delete br0 type bridge
@@ -91,11 +91,11 @@ sudo vi /etc/network/interfaces
 auto br0
  iface br0 inet static
     bridge_ports enp0s31f6
-    address 192.168.100.2
-    broadcast 192.168.100.255
+    address 192.168.10.20
+    broadcast 192.168.10.255
     netmask 255.255.255.0
-    gateway 192.168.100.254
-    dns-nameservers 192.168.100.254
+    gateway 192.168.10.1
+    dns-nameservers 192.168.10.1
 
 sudo vi /etc/netctl/bridge
 sudo netctl enable bridge

@@ -17,7 +17,9 @@ if [ "$IS_STATIC" = "y" ]; then
   echo sudo ip link set dev virbr0 up
   ping -c 4 192.168.10.1
 else
+  echo sudo ip link set dev "${DEVICE}" up
   sudo ip link set dev "${DEVICE}" up
+  echo sudo dhclient "${DEVICE}"
   sudo dhclient "${DEVICE}"
   ping -c 4 192.168.10.1
 fi
