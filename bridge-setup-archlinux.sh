@@ -2,54 +2,43 @@
 
 device=enp3s0
 
-cat > uplink.network <<'EOF'
-[Match]
-Name=$device
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <device>"
+    echo "Example: $0 enp3s0"
+    exit 1
+fi
 
-[Network]
-Bridge=br0
-EOF
-
-cat > br0.netdev <<'EOF'
-[NetDev]
-Name=br0
-Kind=bridge
-EOF
-
-cat > br0.network <<'EOF'
-[Match]
-Name=br0
-
-[Network]
-DHCP=yes
-EOF
+device=$1
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   # sudo ip addr del "your ip" dev dummy0
-  sudo ip link set "$device" up
+  echo "using network manager cli"
+  sudo nmcli -f bridge con delete br0
+  sudo nmcli connection add ifname br0 type bridge con-name br0
+  sudo nmcli con modify br0 bridge.stp no
   sudo ip addr flush dev "$device"
-  sudo brctl addbr br0
-  sudo brctl addif br0 "$device"
-
-  sudo ip link set dev br0 up
+  sudo nmcli connection add type ethernet con-name br0-slave-1 ifname "$device" master br0
+  sudo nmcli connection up br0
   sudo dhclient br0
-  # sudo mv br0.netdev /etc/systemd/network/br0.netdev
-  # sudo mv uplink.network /etc/systemd/network/uplink.network
-  # sudo mv br0.network /etc/systemd/network/br0.network
 
-  # sudo systemctl disable netctl
-  # sudo systemctl enable systemd-networkd
-  # sudo systemctl disable dhcpcd.service
+  ### dynamically creating a bridge
+  # sudo ip link set "$device" up
+  # sudo ip addr flush dev "$device"
+  # sudo brctl addbr br0
+  # sudo brctl addif br0 "$device"
+  # sudo ip link set dev br0 up
+  # sudo dhclient br0
+
+  echo status
+  nmcli connection show
+  bridge link show dev enp3s0
+  nmcli dev status
 else
   rm -rf br0.netdev uplink.network br0.network
   echo "$OS not implemented."
   exit 1
 fi
 
-# echo sudo route del -net 192.168.10.0 gw 0.0.0.0 netmask 255.255.255.0 dev $device
-# echo networkctl
-
-rm -rf br0.netdev uplink.network br0.network
 echo sudo ip link set dev br0 down
 echo sudo brctl delbr br0
 echo sudo ip link set "$device" up
