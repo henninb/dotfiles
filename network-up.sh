@@ -14,7 +14,7 @@ if [ "$IS_STATIC" = "y" ]; then
   sudo ip route add default via 192.168.10.1
   echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf
   sudo ip link set dev "${DEVICE}" up
-  echo sudo ip link set dev virbr0 up
+  # echo sudo ip link set dev virbr0 up
   ping -c 4 192.168.10.1
 else
   echo sudo ip link set dev "${DEVICE}" up
@@ -24,6 +24,6 @@ else
   ping -c 4 192.168.10.1
 fi
 
-echo sudo systemctl enable --now dhclient@enp0s5.service
+#echo sudo systemctl enable --now dhclient@enp0s5.service
 
 exit 0
