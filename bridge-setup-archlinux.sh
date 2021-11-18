@@ -10,7 +10,7 @@ fi
 
 device=$1
 
-if [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+# if [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   # sudo ip addr del "your ip" dev dummy0
   echo "using network manager cli"
   sudo nmcli -f bridge con delete br0
@@ -38,11 +38,11 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   nmcli connection show
   bridge link show dev enp3s0
   nmcli dev status
-else
-  rm -rf br0.netdev uplink.network br0.network
-  echo "$OS not implemented."
-  exit 1
-fi
+# else
+  # rm -rf br0.netdev uplink.network br0.network
+  # echo "$OS not implemented."
+  # exit 1
+# fi
 
 echo sudo ip link set dev br0 down
 echo sudo brctl delbr br0

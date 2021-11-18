@@ -6,6 +6,7 @@
 # in the cabal config. We recommend uncommenting them and filling them out if
 # you intend to use 'stack new'.
 # See https://docs.haskellstack.org/en/stable/yaml_configuration/#templates
+# allow-newer: true
 templates:
   params:
 #    author-name:

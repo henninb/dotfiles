@@ -313,6 +313,9 @@ if ! stack install hlint; then
 fi
 
 mkdir -p "$HOME/projects/github.com/xmonad"
+# stack init .
+stack setup --resolver 18.17
+stack ghc -- --version
 cd "$HOME/projects/github.com/xmonad" || exit
 git clone --branch v0.17.0 git@github.com:xmonad/xmonad.git
 cd xmonad || exit
