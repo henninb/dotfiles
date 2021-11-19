@@ -216,7 +216,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG tty "$(id -un)"
   sudo usermod -aG video "$(id -un)"
   # sudo emerge --unmerge dzen
-  GENTOO_PKGS="dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot xappearance volumeicon neofetch blueman copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx"
+  GENTOO_PKGS="dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot xappearance volumeicon neofetch blueman copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet"
   FAILURE=""
   for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then
@@ -225,6 +225,8 @@ elif [ "$OS" = "Gentoo" ]; then
   done
   sudo rc-update add dbus default
   sudo rc-update add elogind default
+  sudo rc-update add NetworkManager default
+  sudo rc-service NetworkManager start
   mkdir -p "$HOME/projects/github.com/baskerville"
   cd "$HOME/projects/github.com/baskerville" || exit
   git clone git@github.com:baskerville/xdo.git
