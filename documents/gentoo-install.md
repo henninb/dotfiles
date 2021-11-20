@@ -52,7 +52,7 @@ cd /mnt/gentoo
 
 ## download stage3
 ```
-wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20210905T170549Z/stage3-amd64-openrc-20210905T170549Z.tar.xz
+wget https://mirror.bytemark.co.uk/gentoo//releases/amd64/autobuilds/20211114T170549Z/stage3-amd64-openrc-20211114T170549Z.tar.xz
 ```
 ## extract stage3 and be sure to verify success
 ```
