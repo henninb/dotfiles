@@ -101,6 +101,7 @@ mount /dev/sda1 /boot
 emerge-webrsync
 eselect news read
 emerge --ask vim
+emerge --ask dev-vcs/git
 ```
 
 ## setup local time zone
