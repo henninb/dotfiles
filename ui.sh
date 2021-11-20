@@ -16,6 +16,7 @@ done
 exit 0
 nohup volumeicon &
 nohup trayer --edge bottom --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 108 --transparent true --tint 0x000000 --height 18 --alpha 0 &
+nohup picom --experimental-backends --backend glx --xrender-sync-fence &
 # echo which trayer
 # which trayer
 # echo which volumeicon
