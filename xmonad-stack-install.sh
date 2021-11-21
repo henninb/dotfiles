@@ -225,6 +225,7 @@ elif [ "$OS" = "Gentoo" ]; then
   done
   sudo rc-update add dbus default
   sudo rc-update add elogind default
+  sudo rc-update add bluetooth default
   sudo rc-update add NetworkManager default
   sudo rc-service NetworkManager start
   mkdir -p "$HOME/projects/github.com/baskerville"
