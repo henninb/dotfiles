@@ -223,6 +223,7 @@ elif [ "$OS" = "Gentoo" ]; then
       FAILURE="$i $FAILURE"
     fi
   done
+  sudo usermod -a -G audio "$(id -un)"
   sudo rc-update add dbus default
   sudo rc-update add elogind default
   sudo rc-update add bluetooth default

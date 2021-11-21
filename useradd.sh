@@ -114,6 +114,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -a -G kafka "$(id -un)"
   sudo usermod -a -G audio "$(id -un)"
   sudo usermod -a -G docker "$(id -un)"
+  sudo usermod -a -G audio "$(id -un)"
 else
   echo "$OS is not yet implemented."
 fi
