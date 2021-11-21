@@ -15,8 +15,8 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo layman -a brave-overlay
   sudo mkdir -p /etc/portage/repos.conf
   sudo eselect repository enable brave-overlay
-  sudo emerge --sync
-  echo "www-client/brave-bin **" | sudo tee -a /etc/portage/package.accept_keywords
+  # sudo emerge --sync
+  # echo "www-client/brave-bin **" | sudo tee -a /etc/portage/package.accept_keywords
   sudo emerge --update --newuse www-client/brave-bin
   # sudo ln -s /usr/bin/brave-bin /usr/bin/brave
   sudo ln -s /usr/bin/brave-bin /usr/bin/brave-browser
