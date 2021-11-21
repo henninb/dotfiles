@@ -11,6 +11,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   echo sudo ln -sfn /bin/brave /usr/local/bin/brave-browser
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse app-eselect/eselect-repository
+  sudo emerge --update --newuse layman
+  sudo layman -a brave-overlay
   sudo mkdir -p /etc/portage/repos.conf
   sudo eselect repository enable brave-overlay
   sudo emerge --sync
