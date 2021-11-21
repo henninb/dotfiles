@@ -369,11 +369,11 @@ chmod 700 "$HOME"
 [ -f "$HOME/.zsh_history" ] && sort -t ";" -k 2 -u "$HOME/.zsh_history" | sort -o "$HOME/.zsh_history"
 
 
-if [ "$OS" = "Gentoo" ]; then
-  if ! grep "$(hostname)" /etc/hosts > /dev/null; then
-    echo "Action required: add a hostname entry to /etc/hosts to prevent issues with xauth."
-  fi
-fi
+#if [ "$OS" = "Gentoo" ]; then
+#  if ! grep "$(hostname)" /etc/hosts > /dev/null; then
+#    echo "Action required: add a hostname entry to /etc/hosts to prevent issues with xauth."
+#  fi
+#fi
 
 mkdir -p "$HOME/.xmonad"
 touch "$HOME/.xmonad/.active"

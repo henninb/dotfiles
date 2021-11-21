@@ -34,7 +34,7 @@
 >=sys-libs/zlib-1.2.11-r2 minizip
 >=virtual/libusb-1-r2 udev
 >=www-client/w3m-0.5.3_p20180125 imlib
->=x11-libs/cairo-1.16.0-r5 X xcb
+>=x11-libs/cairo-1.16.0-r5 X xcb opengl
 >=x11-libs/gdk-pixbuf-2.40.0 X
 >=x11-libs/libva-2.5.0-r1 X
 >=x11-libs/libxcb-1.13.1 xkb

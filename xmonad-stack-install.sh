@@ -216,7 +216,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG tty "$(id -un)"
   sudo usermod -aG video "$(id -un)"
   # sudo emerge --unmerge dzen
-  GENTOO_PKGS="dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot xappearance volumeicon neofetch blueman copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet"
+  GENTOO_PKGS="setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot xappearance volumeicon neofetch blueman copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet"
   FAILURE=""
   for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then
@@ -316,7 +316,7 @@ fi
 
 mkdir -p "$HOME/projects/github.com/xmonad"
 # stack init .
-stack setup --resolver 18.17
+#stack setup --resolver 18.17
 stack ghc -- --version
 cd "$HOME/projects/github.com/xmonad" || exit
 git clone --branch v0.17.0 git@github.com:xmonad/xmonad.git
