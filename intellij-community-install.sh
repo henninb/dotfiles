@@ -22,7 +22,7 @@ cat > '_@user_Darcula.icls' <<EOF
 EOF
 
 sudo dnf install -y jq wget curl
-sudo emerge --update --newuse jq wget curl
+sudo emerge --update --newuse app-misc/jq wget curl
 sudo pacman --noconfirm --needed -S jq wget curl
 sudo apt install -y jq wget curl
 sudo xbps-install -y jq wget curl

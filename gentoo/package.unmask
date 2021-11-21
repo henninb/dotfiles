@@ -1,4 +1,1 @@
-sys-apps/flatpak::flatpak-overlay
-#dev-java/openjdk-bin
-#dev-java/openjdk-bin-11.0.9_p11
-dev-java/openjdk-bin:11
+x11-misc/copyq-5.0.0

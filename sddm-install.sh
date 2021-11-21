@@ -36,6 +36,7 @@ cat > sddm.conf << EOF
 DisplayCommand=/etc/sddm/scripts/Xsetup
 EOF
 
+sudo cp -v xmonad.desktop /usr/share/xsessions/
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman -S sddm
@@ -61,8 +62,10 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo sudo mv -v Xsetup /etc/sddm/scripts/Xsetup
   sudo chmod 755 /etc/sddm/scripts/Xsetup
   sudo emerge --update --newuse gui-libs/display-manager-init
-  echo sudo vi /etc/conf.d/display-manager
-  cat /etc/conf.d/display-manager
+  # echo sudo vi /etc/conf.d/display-manager
+  # cat /etc/conf.d/display-manager
+  # echo DISPLAYMANAGER="xdm"
+  sudo sed -i "s/DISPLAYMANAGER=\"xdm\"/DISPLAYMANAGER=\"sddm\"/g" /etc/conf.d/display-manager
   sudo rc-update add display-manager default
   sudo rc-service display-manager start
 else
