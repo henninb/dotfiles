@@ -79,5 +79,5 @@ dev-java/openjdk-bin:11 ~amd64
 dev-lang/ghc ~amd64
 sys-apps/flatpak **
 www-client/brave-bin **
-x11-misc/copyq-5.0.0 ~amd64
+=x11-misc/copyq-5.0.0 ~amd64
 x11-misc/lightdm-slick-greeter **

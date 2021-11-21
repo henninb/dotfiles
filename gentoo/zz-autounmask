@@ -9,6 +9,8 @@
 >=dev-libs/libpcre2-10.32 pcre32
 >=dev-libs/libusb-1.0.21-r1 udev
 >=dev-libs/openssl-1.0.2n -bindist
+>=dev-qt/qtcore-5.15.2-r10 icu
+>=dev-qt/qtgui-5.15.2-r13 egl
 >=dev-qt/qtsingleapplication-2.6.1_p20171024 X
 >=dev-util/ostree-2020.7 curl
 >=gnome-base/gnome-control-center-3.36.4 networkmanager
