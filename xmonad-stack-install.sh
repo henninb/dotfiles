@@ -321,7 +321,7 @@ mkdir -p "$HOME/projects/github.com/xmonad"
 stack ghc -- --version
 cd "$HOME/projects/github.com/xmonad" || exit
 git clone --branch v0.17.0 git@github.com:xmonad/xmonad.git
-cd xmonad || exit
+cd ./xmonad || exit
 # git checkout v0.17.0
 stack build
 stack install
@@ -331,7 +331,7 @@ cd - || exit
 mkdir -p "$HOME/projects/github.com/xmonad"
 cd "$HOME/projects/github.com/xmonad" || exit
 git clone --branch v0.17.0 git@github.com:xmonad/xmonad-contrib.git
-cd xmonad-contrib || exit
+cd ./xmonad-contrib || exit
 # git checkout v0.17.0
 stack build
 stack install
