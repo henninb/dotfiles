@@ -82,3 +82,4 @@ www-client/brave-bin **
 =x11-misc/copyq-5.0.0 ~amd64
 x11-misc/lightdm-slick-greeter **
 =media-sound/pulseaudio-modules-bt-1.4 ~amd64
+=dev-lang/smlnj-110.82 ~amd64

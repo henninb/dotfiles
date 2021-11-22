@@ -21,7 +21,7 @@ sudo cp -v make.conf /etc/portage/make.conf
 sudo cp -v /etc/portage/package.unmask /etc/portage/package.unmask.bak.$$
 sudo cp -v package.unmask /etc/portage/package.unmask
 
-echo "ruby_targets_ruby25" | sudo tee -a /etc/portage/use.mask
+# echo "ruby_targets_ruby27" | sudo tee -a /etc/portage/use.mask
 
 #sudo mkdir -p /usr/portage/local/profiles
 #echo $(hostname) |sudo tee /usr/portage/local/profiles/repo_name
