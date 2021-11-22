@@ -34,6 +34,8 @@ chmod 755 Xsetup
 cat > sddm.conf << EOF
 [X11]
 DisplayCommand=/etc/sddm/scripts/Xsetup
+[Users]
+HideUsers=""
 EOF
 
 sudo cp -v xmonad.desktop /usr/share/xsessions/
