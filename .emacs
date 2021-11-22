@@ -460,10 +460,10 @@
 ;    :init
 ;    (require 'erc-join)
 ;    (setq erc-autojoin-channels-alist '(("irc.libera.chat" "#haskell", "#emacs" ))
-;  	erc-hide-list '("JOIN" "PART" "QUIT")
+;   erc-hide-list '("JOIN" "PART" "QUIT")
 ;     erc-autojoin-mode t
 
-;  	)
+;   )
 ;    (defun irc-connect ()
 ;      (interactive)
 ;      (erc-tls
@@ -580,7 +580,7 @@
  '(helm-minibuffer-history-key "M-p")
  '(lsp-ui-doc-position 'bottom t)
  '(package-selected-packages
-   '(elfeed bongo helm-dired-history helm elpy eval-in-repl json-mode markdown-mode rust-mode haskell-mode emms magit flycheck-kotlin flycheck company which-key crux expand-region smartparens diminish eshell-syntax-highlighting fish-completion doom-modeline doom-themes evil use-package)))
+   '(dired-single fsharp-mode elfeed bongo helm-dired-history helm elpy eval-in-repl json-mode markdown-mode rust-mode haskell-mode emms magit flycheck-kotlin flycheck company which-key crux expand-region smartparens diminish eshell-syntax-highlighting fish-completion doom-modeline doom-themes evil use-package)))
 ; (add-hook 'haskell-mode-hook #'hindent-mode)
   ; (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 ; (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)

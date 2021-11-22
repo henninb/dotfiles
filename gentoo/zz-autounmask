@@ -1,5 +1,5 @@
 >=app-crypt/gcr-3.28.1 gtk
->=app-editors/emacs-27.1-r1 dynamic-loading X
+>=app-editors/emacs-27.2-r5 dynamic-loading X gui
 >=app-text/ghostscript-gpl-9.54.0-r1 cups
 >=app-text/xmlto-0.0.28-r3 text
 >=dev-db/sqlite-3.29.0 secure-delete
@@ -49,8 +49,10 @@ app-editors/neovim -luajit
 app-editors/vim python
 dev-db/postgresql uuid
 dev-java/openjdk-bin gentoo-vm -alsa -cups -webstart
+dev-java/openjdk gentoo-vm -alsa -cups -webstart
 dev-lua/lpeg -luajit
 dev-lua/mpack -luajit
 sys-devel/clang xml
 x11-misc/dzen xpm xinerama
 #media-gfx/flameshot qt5 dbus
+>=app-emacs/emacs-common-1.8 gui
