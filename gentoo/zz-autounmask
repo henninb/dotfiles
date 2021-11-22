@@ -53,3 +53,4 @@ dev-lua/lpeg -luajit
 dev-lua/mpack -luajit
 sys-devel/clang xml
 x11-misc/dzen xpm xinerama
+#media-gfx/flameshot qt5 dbus
