@@ -18,9 +18,10 @@ else
   echo "OS=$OS not setup yet."
 fi
 
-cd "$HOME/projects" || exit
+mkdir -p "$HOME/projects/github.com/jonaburg"
+cd "$HOME/projects/github.com/jonaburg" || exit
 git clone https://github.com/jonaburg/picom
-cd picom || exit
+cd ./picom || exit
 meson --buildtype=release . build
 ninja -C build
 # To install the binaries in /usr/local/bin (optional)

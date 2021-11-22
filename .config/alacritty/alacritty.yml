@@ -82,15 +82,17 @@ colors:
 # The value `0.0` is completely transparent and `1.0` is opaque.
 # background_opacity: 1.0
 # TODO: does this work with picom
-background_opacity: 0.95
+# background_opacity: 0.95
+window:
+  opacity: 0.95
 
 key_bindings:
   - { key: V,        mods: Control,       action: Paste }
   - { key: V,        mods: Control|Shift, action: Paste }
   - { key: C,        mods: Control|Shift, action: Copy }
   - { key: Equals,   mods: Control,       action: IncreaseFontSize }
-  - { key: Add,      mods: Control,       action: IncreaseFontSize }
-  - { key: Subtract, mods: Control,       action: DecreaseFontSize }
+  # - { key: Add,      mods: Control,       action: IncreaseFontSize }
+  # - { key: Subtract, mods: Control,       action: DecreaseFontSize }
   - { key: Minus,    mods: Control,       action: DecreaseFontSize }
   - { key: Space,    mods: Control,       action: ToggleViMode }
   - { key: N,        mods: Control,       action: SpawnNewInstance }
