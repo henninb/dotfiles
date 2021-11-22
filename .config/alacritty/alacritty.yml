@@ -2,6 +2,7 @@ env:
   TERM: xterm-256color
 
 window:
+  opacity: 0.95
   padding:
     x: 6
     y: 6
@@ -83,8 +84,8 @@ colors:
 # background_opacity: 1.0
 # TODO: does this work with picom
 # background_opacity: 0.95
-window:
-  opacity: 0.95
+# window:
+#   opacity: 0.95
 
 key_bindings:
   - { key: V,        mods: Control,       action: Paste }

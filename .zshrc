@@ -128,8 +128,8 @@ export HISTORY_IGNORE
 
 if [ "${OSTYPE}" = "linux-gnu" ] || [ "${OSTYPE}" = "linux" ]; then
   if [ "${OS}" = "Gentoo" ]; then
-    if [ -d "/opt/openjdk-bin" ]; then
-      JAVA_HOME=/opt/openjdk-bin
+    if [ -d "/opt/openjdk-bin-11" ]; then
+      JAVA_HOME=/opt/openjdk-bin-11
       export JAVA_HOME
     else
       if [ -x "$(command -v java-config)" ]; then
