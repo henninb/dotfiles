@@ -7,7 +7,9 @@ for i in $pkgs; do
     FAILURE="$i $FAILURE"
   fi
   if ! pgrep $i; then
-    echo not running $i
+    if [ "$i" != "feh" ] && [ "$i" != "numlockx" ]; then
+      echo not running $i
+    fi
   fi
 done
 
