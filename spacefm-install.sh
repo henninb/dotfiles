@@ -68,6 +68,6 @@ if ! sudo make install; then
   exit 3
 fi
 
-echo "sh ./ant-dracula-theme-install.sh"
+echo "sh ./dracula-theme-install.sh"
 
 exit 0

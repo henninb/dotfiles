@@ -9,9 +9,9 @@ sync-uri = https://github.com/fosero/flatpak-overlay.git
 auto-sync = Yes
 EOF
 
-layman -o https://github.com/fosero/flatpak-overlay.git -f -a flatpak-overlay
-layman -o https://github.com/fosero/flatpak-overlay/blob/master/repositories.xml -f -a flatpak-overlay
-layman -o https://raw.githubusercontent.com/fosero/flatpak-overlay/master/repositories.xml -f -a flatpak-overlay
+# layman -o https://github.com/fosero/flatpak-overlay.git -f -a flatpak-overlay
+# layman -o https://github.com/fosero/flatpak-overlay/blob/master/repositories.xml -f -a flatpak-overlay
+# layman -o https://raw.githubusercontent.com/fosero/flatpak-overlay/master/repositories.xml -f -a flatpak-overlay
 
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
@@ -31,17 +31,18 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y flatpak
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse layman
-  sudo layman -o https://raw.githubusercontent.com/fosero/flatpak-overlay/master/repositories.xml -f -a flatpak-overlay
-  sudo mkdir -p /etc/portage/repos.conf
-  sudo mv flatpak-overlay.conf /etc/portage/repos.conf/flatpak-overlay.conf
-  sudo emaint -r flatpak-overlay sync
+  # sudo emerge --update --newuse layman
+  # sudo layman -o https://raw.githubusercontent.com/fosero/flatpak-overlay/master/repositories.xml -f -a flatpak-overlay
+  # sudo mkdir -p /etc/portage/repos.conf
+  # sudo mv flatpak-overlay.conf /etc/portage/repos.conf/flatpak-overlay.conf
+  # sudo emaint -r flatpak-overlay sync
   # sudo emerge --sync
   sudo emerge --update --newuse flatpak
   sudo usermod -a -G flatpak henninb
   # wget https://flathub.org/repo/appstream/com.valvesoftware.Steam.flatpakref
   # wget https://flathub.org/repo/appstream/com.visualstudio.code.flatpakref
-  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  # sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   # flatpak install --user com.valvesoftware.Steam.flatpakref
   # flatpak install --user com.visualstudio.code.flatpakref
 else
