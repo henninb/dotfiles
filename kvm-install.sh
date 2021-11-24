@@ -8,6 +8,14 @@ polkit.addRule(function(action, subject) {
 });
 EOF
 
+cat > libvirtd.conf <<EOF
+auth_unix_ro = "none"
+auth_unix_rw = "none"
+unix_sock_group = "wheel"
+unix_sock_ro_perms = "0777"
+unix_sock_rw_perms = "0770"
+EOF
+
 sudo mkdir -p /var/kvm/images
 if [ "$(grep -c wheel /etc/group)" -ne 1 ]; then
   sudo chown root:wheel /var/kvm/images
@@ -107,6 +115,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse app-emulation/virt-viewer
   sudo emerge --update --newuse net-misc/spice-gtk
   sudo emerge --update --newuse virt-manager
+  sudo cp -v libvirtd.conf /etc/libvirt/libvirtd.conf
   sudo rc-update add libvirtd default
   sudo rc-service libvirtd start
   sudo usermod -a -G libvirt "$(id -un)"
