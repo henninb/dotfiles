@@ -56,3 +56,4 @@ sys-devel/clang xml
 x11-misc/dzen xpm xinerama
 #media-gfx/flameshot qt5 dbus
 >=app-emacs/emacs-common-1.8 gui
+app-emulation/virt-manager usbredir spice
