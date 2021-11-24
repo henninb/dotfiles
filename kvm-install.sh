@@ -1,5 +1,13 @@
 #!/usr/bin/env sh
 
+cat > 80-libvirt.rules <<EOF
+polkit.addRule(function(action, subject) {
+ if (action.id == "org.libvirt.unix.manage" && subject.local && subject.active && subject.isInGroup("libvirt")) {
+ return polkit.Result.YES;
+ }
+});
+EOF
+
 sudo mkdir -p /var/kvm/images
 if [ "$(grep -c wheel /etc/group)" -ne 1 ]; then
   sudo chown root:wheel /var/kvm/images
@@ -145,5 +153,8 @@ else
   echo sysctl.conf is not found
 fi
 
-exit 0
+echo sudo cp -v 80-libvirt.rules /etc/polkit-1/rules.d/80-libvirt.rules
+echo virsh -c test:///default list --all
+echo virsh -c qemu:///system list --all
 
+exit 0
