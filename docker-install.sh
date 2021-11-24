@@ -53,6 +53,7 @@ elif [ "$OS" = "Debian GNU/Linux" ]; then
   sudo systemctl enable docker
   sudo systemctl start docker
   sudo systemctl status docker
+  sudo wget 'https://github.com/docker/compose/releases/download/v2.1.1/docker-compose-linux-x86_64' -O /usr/local/bin/docker-compose
 elif [ "$OS" = "Ubuntu" ]; then
   sudo snap install docker
   sudo apt install -y apt-transport-https ca-certificates curl gnupg lsb-release

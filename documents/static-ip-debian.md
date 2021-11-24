@@ -7,8 +7,8 @@ sudo vi /etc/network/interfaces
 
 ## the interface name will change
 ```
-auto enp0s3
-iface enp0s3 inet static
+auto ens18
+iface ens18 inet static
 address 192.168.10.30
 netmask 255.255.255.0
 gateway 192.168.10.1
