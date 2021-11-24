@@ -7,9 +7,10 @@
 #   git clone https://github.com/nvm-sh/nvm.git $HOME/.nvm
 # fi
 
-if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
+if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Linux" ]; then
   sudo apt install -y curl python-software-properties
-  curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
+  # curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
+  curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
   sudo apt install -y nodejs
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   echo sudo pacman --noconfirm --needed -S nodejs
