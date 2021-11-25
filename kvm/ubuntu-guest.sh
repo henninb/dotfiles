@@ -1,14 +1,14 @@
 #!/bin/sh
 
-sudo pacman --noconfirm --needed -S virt-viewer
+iso_file=ubuntu-20.04.3-live-server-amd64.iso
+virsh shutdown guest-ubuntu
+virsh undefine guest-ubuntu
 
-iso_file=ubuntu-20.04-desktop-amd64.iso
-sudo virsh shutdown guest-ubuntu
-sudo virsh undefine guest-ubuntu
-sudo mkdir -p /var/kvm/images
+sudo mkdir -p /var/lib/libvirt/images/
+sudo mkdir -p /var/lib/libvirt/boot/
 
 if [ ! -f "/var/lib/libvirt/boot/${iso_file}" ]; then
-  scp "pi:/home/pi/downloads/${iso_file}" .
+  scp "pi:/home/pi/shared/template/iso/${iso_file}" .
   sudo mv "${iso_file}" /var/lib/libvirt/boot/
 fi
 

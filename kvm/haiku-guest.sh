@@ -1,9 +1,8 @@
 #!/bin/sh
 
-sudo pacman --noconfirm --needed -S virt-viewer
-
 iso_file=haiku-release-anyboot.iso
-sudo virsh undefine guest-haiku
+virsh shutdown guest-haiku
+virsh undefine guest-haiku
 
 if [ ! -f "/var/lib/libvirt/boot/${iso_file}" ]; then
   scp "pi:/home/pi/downloads/${iso_file}" .

@@ -2,17 +2,16 @@
 
 iso_file=FreeBSD-13.0-RELEASE-amd64-dvd1.iso
 
-sudo virsh shutdown guest-freebsd
-sudo virsh undefine guest-freebsd
+virsh shutdown guest-freebsd
+virsh undefine guest-freebsd
+
+sudo rm -rf /var/lib/libvirt/images/guest-freebsd.qcow2
 
 if [ ! -f "/var/lib/libvirt/boot/${iso_file}" ]; then
   scp "pi:/home/pi/downloads/${iso_file}" .
   sudo mv "${iso_file}" /var/lib/libvirt/boot/
 fi
 
-sudo pacman --noconfirm --needed -S virt-viewer
-
-# execute with exec
 sudo virt-install \
 --virt-type=kvm \
 --name guest-freebsd \

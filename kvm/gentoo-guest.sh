@@ -1,18 +1,13 @@
 #!/bin/sh
 
-sudo pacman --noconfirm --needed -S virt-viewer
-
 iso_file=install-amd64-minimal-20210611T113421Z.iso
 # iso_file=gentoo-install-amd64-minimal-20210414T214503Z.iso
-sudo virsh shutdown guest-gentoo
-sudo virsh undefine guest-gentoo
-sudo virsh destroy guest-gentoo
-sudo mkdir -p /var/kvm/images
+virsh shutdown guest-gentoo
+virsh undefine guest-gentoo
+
 sudo rm /var/lib/libvirt/images/guest-gentoo.qcow2
 
 if [ ! -f "/var/lib/libvirt/boot/${iso_file}" ]; then
-  # wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20210611T113421Z/install-amd64-minimal-20210611T113421Z.iso
-  # scp "${iso_file}" pi:/home/pi/downloads/
   scp "pi:/home/pi/downloads/${iso_file}" .
   sudo mv "${iso_file}" /var/lib/libvirt/boot/
 fi
