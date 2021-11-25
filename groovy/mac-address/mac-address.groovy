@@ -27,4 +27,6 @@ files.eachLine { line ->
   // String jsonString = mapper.writeValueAsString(staticNode)
 }
 
-staticNodes
+mapper.writeValue(Paths.get("output.json").toFile(), staticNodes);
+
+println staticNodes
