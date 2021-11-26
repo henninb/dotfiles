@@ -2,6 +2,7 @@
 
 sudo apt install -y libxcb-shape0-dev
 sudo apt install -y libxcb-xfixes0-dev
+sudo apt install -y libxkbcommon-dev
 
 sudo swupd bundle-add devpkg-freetype
 sudo swupd bundle-add devpkg-libxml2
@@ -11,13 +12,10 @@ sudo swupd bundle-add devpkg-libxcb
 
 mkdir -p "$HOME/projects/github.com/alacritty"
 cd "$HOME/projects/github.com/alacritty" || exit
-# rm -rf alacritty
 git clone git@github.com:alacritty/alacritty.git
 cd ./alacritty || exit
 git pull origin master
-# git checkout v0.5.0
 cargo build --release
-#mv -v target/release/alacritty "$HOME/.local/bin"
 sudo mv -v target/release/alacritty /usr/local/bin
 
 # cd "$HOME/projects" || exit
