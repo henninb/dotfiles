@@ -48,6 +48,8 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo mkdir -p /etc/sddm.conf.d/
   sudo mv -v sddm-theme.conf /etc/sddm.conf.d/
   ls -l /usr/share/sddm/themes/
+elif [ "${OS}" = "Ubuntu" ]; then
+  sudo apt install -y sddm
 elif [ "${OS}" = "FreeBSD" ]; then
   sudo pkg install -y sddm
   sudo pkg install -y sysrc
