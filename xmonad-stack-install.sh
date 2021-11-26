@@ -51,6 +51,9 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y thunar
   sudo apt install -y sxiv
   sudo apt install -y qalculate
+  sudo apt install -y libxrandr-dev
+  sudo apt install -y libxft-dev
+  sudo apt install -y autoconf
   #sudo apt install -y icu-devtools libicu-dev
   # sudo pkg install hs-cabal-install
   sudo pkg install hs-xmonad
