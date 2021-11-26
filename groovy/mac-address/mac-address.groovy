@@ -1,32 +1,37 @@
 @Grab('com.fasterxml.jackson.core:jackson-core:2.12.3')
+// @Grab('StaticNode')
 
 import com.fasterxml.jackson.databind.ObjectMapper
-// import com.fasterxml.jackson.databind.DeserializationFeature
-import groovy.transform.ToString
-// import groovy.json.JsonOutput
-// import groovy.json.JsonSlurper
+// import groovy.transform.ToString
 
-@ToString
-class StaticNode
-  String mac
-  String ip
-  String hostname
-}
+
+// @ToString
+// class StaticNode
+//   String mac
+//   String ip
+//   String hostname
+// }
+// List<StaticNode> staticNodes = []
 
 ObjectMapper mapper = new ObjectMapper()
-List<StaticNode> staticNodes = []
 
-File files = new File("intput.txt")
-files.eachLine { line ->
-  StaticNode staticNode = new StaticNode()
-  List<String> list = line.split('\t')
-  staticNode.mac = list[0]
-  staticNode.ip = list[1]
-  staticNode.hostname = list[2]
-  staticNodes.add(staticNode)
-  // String jsonString = mapper.writeValueAsString(staticNode)
+new File("input.txt").eachLine { line ->
+    // println line
+  List<String> elements = line.split('\t')
+  elements.each { String element ->
+    println(element)
+  }
 }
 
-mapper.writeValue(Paths.get("output.json").toFile(), staticNodes);
+// File file = new File("intput.txt")
+// def x = file.eachLine { line ->
+//   // staticNode.mac = list[0]
+//   // staticNode.ip = list[1]
+//   // staticNode.hostname = list[2]
+//   // staticNodes.add(staticNode)
+//   // String jsonString = mapper.writeValueAsString(staticNode)
+// }
 
-println staticNodes
+// mapper.writeValue(Paths.get("output.json").toFile(), staticNodes);
+
+// println staticNodes
