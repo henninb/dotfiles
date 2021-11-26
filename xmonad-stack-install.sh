@@ -15,8 +15,6 @@ else
 fi
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo ln -s /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so
-  sudo apt install -y blueberry
   sudo apt install -y clipmenu
   sudo apt install -y cmake
   sudo apt install -y conky
