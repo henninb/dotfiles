@@ -22,8 +22,9 @@ else
 fi
 curl -s "https://get.sdkman.io" > sdkman.sh
 sh ./sdkman.sh
-#source "$HOME/.sdkman/bin/sdkman-init.sh"
-zsh -c 'source ./.sdkman/bin/sdkman-init.sh'
+#zsh -c 'source ./.sdkman/bin/sdkman-init.sh'
+. ./.sdkman/bin/sdkman-init.sh
+source ./.sdkman/bin/sdkman-init.sh
 
 echo sdk install groovy
 echo sdk install gradle
