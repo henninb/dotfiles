@@ -1,15 +1,15 @@
 #!/bin/sh
 
-golang_ver=$(curl -s 'https://golang.org/VERSION?m=text')
-
 if [ "$OS" = "Linux Mint" ]; then
   sudo apt update
   sudo apt upgrade -y
   sudo apt autoremove -y
+  sudo apt install -y curl
 elif [ "$OS" = "Ubuntu" ]; then
   sudo apt update
   sudo apt upgrade -y
   sudo apt autoremove -y
+  sudo apt install -y curl
 elif [ "$OS" = "Darwin" ]; then
   softwareupdate -l
 elif [ "$OS" = "Raspbian GNU/Linux" ]; then
@@ -19,7 +19,6 @@ elif [ "$OS" = "Raspbian GNU/Linux" ]; then
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg remove -y libreoffice-common
   sudo eopkg remove -y thunderbird
-#  sudo eopkg remove -y lightdm
   sudo eopkg upgrade -y
 elif [ "$OS" = "void" ]; then
   sudo xbps-remove -yO
@@ -82,6 +81,8 @@ else
   echo "$OS is not yet implemented."
   exit 1
 fi
+
+golang_ver=$(curl -s 'https://golang.org/VERSION?m=text')
 
 if [ ! -x "$(command -v go)" ]; then
   echo "golang needs to be installed"

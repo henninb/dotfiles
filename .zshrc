@@ -325,10 +325,9 @@ fi
 [ ! -d "$HOME/.pyenv" ] && git clone https://github.com/pyenv/pyenv.git "$HOME/.pyenv"
 
 # TODO: rewrite with the -z
-# if grep -q -A 3 '\[branch "master"\]' "$HOME/.git/config" | grep 'remote = origin'; then
-# if ! grep -A 3 '\[branch "master"\]' "$HOME/.git/config" | grep 'remote = origin' > /dev/null; then
-#   git branch --set-upstream-to=origin/master master
-# fi
+if ! grep -A 3 '\[branch "main"\]' "$HOME/.git/config" | grep 'remote = origin' > /dev/null; then
+  git branch --set-upstream-to=origin/main main
+fi
 
 # workaround for font colors
 # sed -i 's/blue $CURRENT_FG/39d $CURRENT_FG/' ~/.oh-my-zsh/themes/agnoster.zsh-theme
