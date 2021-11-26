@@ -6,8 +6,10 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y ninja meson uthash
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y uthash-dev libxcb-sync-dev libxcb-present-dev libxcb-damage0-dev libconfig-dev libdbus-1-dev
-  sudo pip install ninja
-  sudo pip install meson
+  #sudo pip install ninja
+  #sudo pip install meson
+  sudo apt install ninja-build
+  sudo apt install meson
 elif [ "$OS" = "Gentoo" ]; then
   # sudo pip install ninja
   # sudo pip install meson

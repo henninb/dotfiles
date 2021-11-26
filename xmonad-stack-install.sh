@@ -52,6 +52,9 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y autoconf
   sudo apt install -y libasound2-dev
   sudo apt install -y libncurses5-dev
+  sudo apt install -y trayer
+  sudo apt install -y dzen2
+  sudo apt install -y blueman
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper install -y dzen2
   sudo zypper install -y alsa-lib-devel
