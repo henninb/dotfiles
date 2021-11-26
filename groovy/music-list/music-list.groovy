@@ -17,17 +17,15 @@ void readthem() {
   List<SongEntry> songEntries = []
   ObjectMapper mapper = new ObjectMapper()
 
-  File files = new File("songs.txt")
-  files.eachLine {line ->
+  new File("input.txt").eachLine { line ->
     SongEntry songEntry = new SongEntry()
     List<String> list = line.split(' - ')
-    println list[0]
-    println list[1].replace('.mp3', '')
-    // songentries.add(songEntry)
+    songEntry.artist = list[0]
+    songEntry.track = list[1].replace('.mp3', '')
+    // println list[1].replace('.mp3', '')
+    songEntries.add(songEntry)
   }
-  // if( songentries ) {
-  //   mapper.writeValue(Paths.get("output.json").toFile(), songentries)
-  // }
+  mapper.writeValue(Paths.get("output.json").toFile(), songEntries)
 }
 
 readthem()
