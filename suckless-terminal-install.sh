@@ -13,6 +13,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   echo
 elif [ "$OS" = "Ubuntu" ]; then
   echo
+  sudo apt install -y libharfbuzz-dev
 elif [ "$OS" = "Fedora" ]; then
   echo
 elif [ "$OS" = "Linux Mint" ]; then

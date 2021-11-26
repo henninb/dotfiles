@@ -10,6 +10,7 @@ cat > statics <<EOF
 192.168.10.10 pihole
 192.168.10.11 ddwrt-bridge1
 192.168.10.25 raspi
+192.168.10.30 hornsup
 EOF
 
 exit 0
