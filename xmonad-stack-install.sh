@@ -15,6 +15,7 @@ else
 fi
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
+  sudo ln -s /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so
   sudo apt install -y blueberry
   sudo apt install -y clipmenu
   sudo apt install -y cmake
@@ -23,7 +24,6 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y dunst
   sudo apt install -y feh
   sudo apt install -y flameshot
-  sudo apt install -y font-awesome-4
   sudo apt install -y libbsd-dev
   sudo apt install -y libxpm-dev
   sudo apt install -y libxss-dev
@@ -39,8 +39,6 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y sxhkd
   sudo apt install -y sxiv
   sudo apt install -y trayer
-  sudo apt install -y vifm
-  sudo apt install -y vimb
   sudo apt install -y volumeicon-alsa
   sudo apt install -y w3m
   sudo apt install -y wmname
@@ -54,9 +52,8 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y libxrandr-dev
   sudo apt install -y libxft-dev
   sudo apt install -y autoconf
-  #sudo apt install -y icu-devtools libicu-dev
-  # sudo pkg install hs-cabal-install
-  sudo pkg install hs-xmonad
+  sudo apt install -y libasound2-dev
+  sudo apt install -y libncurses5-dev
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper install -y dzen2
   sudo zypper install -y alsa-lib-devel
