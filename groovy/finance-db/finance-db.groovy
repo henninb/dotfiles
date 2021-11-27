@@ -41,6 +41,12 @@ void process() {
         println row
     }
   })
+
+  sql.execute([accountNameOwner: 'tcf-checking_brian'], 'update t_account set active_status=false where account_name_owner = :accountNameOwner', { _, result ->
+    result.each { row ->
+        println row
+    }
+  })
  println('done')
 }
 
