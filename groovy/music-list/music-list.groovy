@@ -1,5 +1,5 @@
 @Grab('org.xerial:sqlite-jdbc:3.34.0')
-@Grab('com.fasterxml.jackson.core:jackson-core:2.12.3')
+@Grab('com.fasterxml.jackson.core:jackson-core:2.13.0')
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import groovy.transform.ToString
