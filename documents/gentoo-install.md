@@ -59,16 +59,10 @@ wget https://mirror.bytemark.co.uk/gentoo//releases/amd64/autobuilds/20211114T17
 tar xvJpf stage3-*.tar.xz --xattrs --numeric-owner
 ```
 
-# use flags
+## use flags
 vi /mnt/gentoo/etc/portage/make.conf
 MAKEOPTS="-j2"
 ACCEPT_LICENSE="*"
-
-# not required
-sudo emerge ufed
-
-# not required
-sudo emerge eix
 
 ## set the mirror list
 mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf
