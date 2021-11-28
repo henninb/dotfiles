@@ -83,11 +83,12 @@ export PS1="(chroot) $PS1"
 ## user maintenence
 ```
 useradd -m -G users henninb
+usermod -aG wheel henninb
 passwd henninb
 passwd root
-usermod -aG wheel henninb
 ```
 
+## mount boot
 mount /dev/sda1 /boot
 
 ## run the webrsync (clock needs to be accurate and DNS needs to be functional)
@@ -123,7 +124,6 @@ emerge --ask sudo
 emerge --ask sys-boot/grub:2
 
 ip addr show
-
 
 vi /etc/locale.gen
 en_US.UTF-8 UTF-8
