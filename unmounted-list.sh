@@ -10,6 +10,8 @@ else
   echo "$OS is not implemented."
 fi
 
+udisksctl status
+lsblk -o name,fstype
 sudo parted -l
 
 lsblk --noheadings --raw | awk '$1~/s.*[[:digit:]]/ && $7==""'
