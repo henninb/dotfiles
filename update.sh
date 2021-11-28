@@ -82,7 +82,8 @@ else
   exit 1
 fi
 
-golang_ver=$(curl -s 'https://golang.org/VERSION?m=text')
+#golang_ver=$(curl -s 'https://golang.org/VERSION?m=text')
+golang_ver=$(curl -s 'https://go.dev/VERSION?m=text')
 
 if [ ! -x "$(command -v go)" ]; then
   echo "golang needs to be installed"
