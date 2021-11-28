@@ -1,5 +1,30 @@
 #!/bin/sh
 
+cat > 10-udiskie.pkla <<EOF
+[udisks]
+Identity=unix-group:plugdev
+Action=org.freedesktop.udisks.*
+ResultAny=yes
+[udisks2]
+Identity=unix-group:plugdev
+Action=org.freedesktop.udisks2.*
+ResultAny=yes
+EOF
+
+#echo /etc/polkit-1/localauthority/50-local.d/10-udiskie.pkla
+
+cat > 10-udisks.rules <<EOF
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.freedesktop.udisks2.filesystem-mount" &&
+        subject.user == "henninb") {
+        return "yes";
+    }
+});
+EOF
+sudo mv -v 10-udisks.rules /etc/polkit-1/rules.d/10-udisks.rules
+pkaction --verbose --action-id org.freedesktop.udisks2.filesystem-mount
+echo "pkaction | grep mount"
+
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S ntfs-3g
 elif [ "$OS" = "Gentoo" ]; then
