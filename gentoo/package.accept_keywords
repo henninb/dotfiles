@@ -83,3 +83,4 @@ www-client/brave-bin **
 x11-misc/lightdm-slick-greeter **
 =media-sound/pulseaudio-modules-bt-1.4 ~amd64
 =dev-lang/smlnj-110.82 ~amd64
+=net-wireless/bluez-tools-0_p20161212 ~amd64
