@@ -1,17 +1,44 @@
 #!/bin/sh
 
-cat > 10-udiskie.pkla <<EOF
-[udisks]
-Identity=unix-group:plugdev
-Action=org.freedesktop.udisks.*
-ResultAny=yes
-[udisks2]
-Identity=unix-group:plugdev
-Action=org.freedesktop.udisks2.*
-ResultAny=yes
-EOF
+# cat > 10-udiskie.pkla <<EOF
+# [udisks]
+# Identity=unix-group:plugdev
+# Action=org.freedesktop.udisks.*
+# ResultAny=yes
+# [udisks2]
+# Identity=unix-group:plugdev
+# Action=org.freedesktop.udisks2.*
+# ResultAny=yes
+# EOF
 
 #echo /etc/polkit-1/localauthority/50-local.d/10-udiskie.pkla
+cat > 50-udisks.rules <<EOF
+polkit.addRule(function(action, subject) {
+  var YES = polkit.Result.YES;
+  var permission = {
+    // only required for udisks1:
+    "org.freedesktop.udisks.filesystem-mount": YES,
+    "org.freedesktop.udisks.filesystem-mount-system-internal": YES,
+    "org.freedesktop.udisks.luks-unlock": YES,
+    "org.freedesktop.udisks.drive-eject": YES,
+    "org.freedesktop.udisks.drive-detach": YES,
+    // only required for udisks2:
+    "org.freedesktop.udisks2.filesystem-mount": YES,
+    "org.freedesktop.udisks2.filesystem-mount-system": YES,
+    "org.freedesktop.udisks2.encrypted-unlock": YES,
+    "org.freedesktop.udisks2.eject-media": YES,
+    "org.freedesktop.udisks2.power-off-drive": YES,
+    // required for udisks2 if using udiskie from another seat (e.g. systemd):
+    "org.freedesktop.udisks2.filesystem-mount-other-seat": YES,
+    "org.freedesktop.udisks2.encrypted-unlock-other-seat": YES,
+    "org.freedesktop.udisks2.eject-media-other-seat": YES,
+    "org.freedesktop.udisks2.power-off-drive-other-seat": YES
+  };
+  if (subject.isInGroup("wheel")) {
+    return permission[action.id];
+  }
+});
+EOF
 
 cat > 10-udisks.rules <<EOF
 polkit.addRule(function(action, subject) {
@@ -21,7 +48,10 @@ polkit.addRule(function(action, subject) {
     }
 });
 EOF
-sudo mv -v 10-udisks.rules /etc/polkit-1/rules.d/10-udisks.rules
+
+# sudo mv -v 10-udisks.rules /etc/polkit-1/rules.d/
+sudo mv -v 50-udisks.rules /etc/polkit-1/rules.d/
+
 pkaction --verbose --action-id org.freedesktop.udisks2.filesystem-mount
 echo "pkaction | grep mount"
 
@@ -55,5 +85,6 @@ echo sudo mkfs.vfat -F 32 /dev/sdb1
 echo sudo gdisk -l /dev/sda
 echo sudo ntfslabel /dev/md126p1 Data
 echo sudo e2label /dev/sda1 Data
+echo sudo ntfsfix /dev/sdb2
 
 exit 0
