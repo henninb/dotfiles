@@ -29,18 +29,30 @@ if [ ! -d "$theme_path/AntDracula" ]; then
   sudo mv -v AntDracula "$theme_path"
 fi
 
-export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 if ! gsettings set org.gnome.desktop.interface gtk-theme "Dracula"; then
-  echo "cannot set the theme, check the dbus settings"
-  exit 1
+  export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+  if ! gsettings set org.gnome.desktop.interface gtk-theme "Dracula"; then
+    echo "cannot set the theme, check the dbus settings"
+    exit 1
+  fi
 fi
 
 if ! gsettings set org.gnome.desktop.wm.preferences theme "Dracula"; then
-  echo "cannot set the theme, check the dbus settings"
-  exit 1
+  export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+  if ! gsettings set org.gnome.desktop.wm.preferences theme "Dracula"; then
+    echo "cannot set the theme, check the dbus settings"
+    exit 1
+  fi
 fi
 
 gsettings get org.gnome.desktop.wm.preferences theme
 echo lxappearance
+echo Gtk-WARNING **: 06:03:30.531: Theme parsing error: gtk-dark.css:5809:26: '-shadow' is not a valid color name
+echo Gtk-WARNING **: 06:03:30.531: Theme parsing error: gtk-dark.css:5812:14: not a number
+echo Gtk-WARNING **: 06:03:30.531: Theme parsing error: gtk-dark.css:5813:13: not a number
+echo Gtk-WARNING **: 06:03:30.531: Theme parsing error: gtk-dark.css:5814:11: Expected a length
+echo edit the file below to fix gtk warnings
+echo vi /usr/share/themes/Dracula/gtk-3.20/gtk-dark.css
 
 exit 0
+
