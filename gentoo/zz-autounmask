@@ -58,4 +58,4 @@ x11-misc/dzen xpm xinerama
 >=app-emacs/emacs-common-1.8 gui
 app-emulation/virt-manager usbredir spice
 >=dev-cpp/gtkmm-3.24:3.0 X
->=media-sound/pulseaudio-15.0-r1 -bluetooth dbus
+>=media-sound/pulseaudio-15.0-r1 dbus

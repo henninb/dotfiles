@@ -16,8 +16,9 @@ import java.sql.PreparedStatement
 import java.security.MessageDigest
 import com.drew.metadata.Metadata
 import com.drew.imaging.jpeg.JpegMetadataReader
-import com.drew.imaging.jpeg.ImageMetadataReader
 import com.drew.metadata.Directory
+import com.drew.metadata.exif.ExifSubIFDDirectory
+import com.drew.imaging.ImageMetadataReader
 
 @ToString
 class JpegFile {
@@ -47,11 +48,20 @@ void process() {
     List<String> list = line.split('  ')
     println("${list[0]},${list[1]}")
     // Metadata metadata = JpegMetadataReader.readMetadata(new File(list[1]))
-    Metadata metadata = ImageMetadataReader.readMetadata(list[1])
+    Metadata metadata = ImageMetadataReader.readMetadata(new File(list[1]))
     // Directory exifDirectory = metadata.getDirectory(Class.forName("com.drew.metadata.exif.ExifDirectory"))
-    def exifDirectory = metadata.getDirectories()
+    // def exifDirectory = metadata.getDirectories()
     // Date value = exifDirectory.getDate(36867)
-    println(value)
+    // obtain the Exif directory
+    ExifSubIFDDirectory directory = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class)
+
+    // query the tag's value
+    if( directory) {
+    Date date = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL)
+    println(date)
+    } else {
+    println('no date')
+    }
   }
 
   // sql.execute([accountNameOwner: 'tcf-savings_brian'], 'select * from t_account where account_name_owner = :accountNameOwner', { _, result ->
