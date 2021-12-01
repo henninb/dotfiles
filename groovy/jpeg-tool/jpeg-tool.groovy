@@ -36,6 +36,7 @@ class JpegFile {
 // }
 
 void process() {
+  // def dateFormat = new SimpleDateFormat("yyyy-MM-dd")
   // def digest = java.security.MessageDigest.getInstance("MD5")
   println('start')
   println('not connected')
@@ -46,21 +47,24 @@ void process() {
 
   new File("input.txt").eachLine { line ->
     List<String> list = line.split('  ')
-    println("${list[0]},${list[1]}")
-    // Metadata metadata = JpegMetadataReader.readMetadata(new File(list[1]))
-    Metadata metadata = ImageMetadataReader.readMetadata(new File(list[1]))
-    // Directory exifDirectory = metadata.getDirectory(Class.forName("com.drew.metadata.exif.ExifDirectory"))
-    // def exifDirectory = metadata.getDirectories()
-    // Date value = exifDirectory.getDate(36867)
-    // obtain the Exif directory
+    // println("${list[0]},${list[1]}")
+    File currFile = new File(list[1])
+    Metadata metadata = ImageMetadataReader.readMetadata(currFile)
     ExifSubIFDDirectory directory = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class)
 
-    // query the tag's value
+    String fileWithoutExt = currFile.name.take(currFile.name.lastIndexOf('.'))
+    println(fileWithoutExt)
+
+
     if( directory) {
-    Date date = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL)
-    println(date)
+      Date date = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL)
+      if (date) {
+        String dateString = date.format('yyyy-MM-dd')
+        //currFile.renameTo 'newname.jpg'
+        println(dateString)
+      }
     } else {
-    println('no date')
+      println('no date')
     }
   }
 
