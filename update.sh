@@ -108,12 +108,6 @@ else
   stack --version
 fi
 
-if [ ! -x "$(command -v flatpak)" ]; then
-  echo "flatpak needs to be installed."
-else
-  flatpak update --user -y
-fi
-
 if [ ! -x "$(command -v nvm)" ]; then
   echo "nvm needs to be installed."
 else
@@ -130,6 +124,12 @@ else
   rustc --version
   rustup update
   rustc --version
+fi
+
+if [ ! -x "$(command -v flatpak)" ]; then
+  echo "flatpak needs to be installed."
+else
+  flatpak update --user -y
 fi
 
 exit 0
