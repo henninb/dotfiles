@@ -3,6 +3,7 @@
 iso_file=openbsd-7.0.iso
 
 virsh shutdown guest-openbsd
+virsh destroy guest-openbsd
 virsh undefine guest-openbsd
 
 sudo rm -rf /var/lib/libvirt/images/guest-openbsd.qcow2
@@ -13,6 +14,7 @@ if [ ! -f "/var/lib/libvirt/boot/${iso_file}" ]; then
 fi
 
 osinfo-query os | grep openbsd6.9
+sudo rm -rf /var/lib/libvirt/images/guest-openbsd.qcow2
 
 sudo virt-install \
 --virt-type=kvm \
