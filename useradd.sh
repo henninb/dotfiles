@@ -44,6 +44,9 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo usermod -a -G tty "$(id -un)"
   sudo usermod -a -G docker "$(id -un)"
   sudo usermod -a -G realtime "$(id -un)" # for jack
+elif [ "$OS" = "OpenBSD" ]; then
+  useradd -m henninb
+  user mod -G wheel henninb
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pw group add intellij
   sudo pw group add arduino
