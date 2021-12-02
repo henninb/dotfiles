@@ -49,12 +49,18 @@ void process() {
     List<String> list = line.split('  ')
     // println("${list[0]},${list[1]}")
     File currFile = new File(list[1])
+    String fileName = currFile.getName()
+    println fileName
+    String ext = fileName.substring(fileName.lastIndexOf('.'), fileName.length())
+    println ext
+    int lastIndex = fileName.lastIndexOf('.')
+    // println currFile.baseName
+    // String originalFileExt = list[1].substring(lastIndex, list[1].length())
     Metadata metadata = ImageMetadataReader.readMetadata(currFile)
     ExifSubIFDDirectory directory = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class)
 
     String fileWithoutExt = currFile.name.take(currFile.name.lastIndexOf('.'))
     println(fileWithoutExt)
-
 
     if( directory) {
       Date date = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL)
