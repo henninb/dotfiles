@@ -28,6 +28,7 @@ subnet 192.168.1.0 netmask 255.255.255.0 {
 echo 'net.inet.ip.forwarding=1' >> /etc/sysctl.conf
 
 ## pppoe setup on em0
+cat /etc/hostname.pppoe0
 ```
 inet 0.0.0.0 255.255.255.255 NONE mtu 1500 \ (1)
 	pppoedev em0 authproto chap \ (2)
