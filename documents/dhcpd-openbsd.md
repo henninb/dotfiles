@@ -15,7 +15,7 @@ option  domain-name-servers 192.168.1.1;
 
 subnet 192.168.1.0 netmask 255.255.255.0 {
 	option routers 192.168.1.1;
-	range 192.168.1.32 192.168.1.127;
+	range 192.168.1.32 192.168.1.200;
 }
 ```
 
