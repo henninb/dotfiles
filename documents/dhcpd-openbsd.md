@@ -9,6 +9,7 @@ rcctl enable dhcpd
 rcctl start dhcpd
 /var/db/dhcpd.leases
 
+/etc/dhcpd.conf
 ```
 option  domain-name "local";
 option  domain-name-servers 192.168.1.1;
