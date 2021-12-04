@@ -27,6 +27,9 @@ subnet 192.168.1.0 netmask 255.255.255.0 {
 ## turns the server into a router
 echo 'net.inet.ip.forwarding=1' >> /etc/sysctl.conf
 
+## routing info
+route -n show -inet
+
 ## pppoe setup on em0
 cat /etc/hostname.pppoe0
 ```
@@ -62,4 +65,10 @@ block all
 pass out quick inet
 pass in on { $wired $wifi } inet
 pass in on egress inet proto tcp from any to (egress) port { 80 443 } rdr-to 192.168.1.2
+```
+
+
+# install zsh .zshrc
+```
+S1='%n@%m %F{red}%/%f $ '
 ```

@@ -1,4 +1,4 @@
-[#](#) audio setup
+# audio setup
 
 alsamixer
 ```
@@ -8,6 +8,9 @@ arecord -l
 pacmd list-sinks
 pacmd list-sinks| grep alsa_output
 ```
+
+## gui mixer
+pavucontrol
 
 ## sound cards
 sudo pacman -S pulseaudio
