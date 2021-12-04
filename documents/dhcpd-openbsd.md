@@ -31,10 +31,9 @@ echo 'net.inet.ip.forwarding=1' >> /etc/sysctl.conf
 cat /etc/hostname.pppoe0
 ```
 inet 0.0.0.0 255.255.255.255 NONE \
-pppoedev vio0 authproto pap \
-authname 'myaccount@isp.net' authkey 'mypassword' up
+        pppoedev vio0 authproto chap \
+        authname 'myaddress@qwest.net' authkey 'mypassword' up
 dest 0.0.0.1
-!/sbin/route add default -ifp pppoe0 0.0.0.1
 ```
 
 /etc/hostname.em0
