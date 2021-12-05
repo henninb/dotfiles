@@ -162,3 +162,6 @@ $ pfctl -s info
 $ pfctl -s states
 $ pfctl -s all | more
 $ netstat -f inet -at
+
+rcctl disable smtpd
+rcctl disable sndiod
