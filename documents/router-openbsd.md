@@ -2,8 +2,8 @@ dhcpd vio1
 dhcpd -d -f
 rcctl dhcpd vio1
 cat /etc/hostname.vio1
-inet 192.168.1.1 255.255.255.0 NONE
-inet 192.168.1.1 255.255.255.0 192.168.1.255
+inet 192.168.10.1 255.255.255.0 NONE
+inet 192.168.10.1 255.255.255.0 192.168.10.255
 echo 'inet 10.0.0.1 255.255.255.0 10.0.0.255 description "secure network"' > /etc/hostname.vio1
 sh /etc/netstart vio1
 rcctl set dhcpd flags vio1
@@ -14,11 +14,11 @@ rcctl start dhcpd
 /etc/dhcpd.conf
 ```
 option  domain-name "local";
-option  domain-name-servers 192.168.1.1;
+option  domain-name-servers 192.168.10.1;
 
-subnet 192.168.1.0 netmask 255.255.255.0 {
-	option routers 192.168.1.1;
-	range 192.168.1.32 192.168.1.200;
+subnet 192.168.10.0 netmask 255.255.255.0 {
+	option routers 192.168.10.1;
+	range 192.168.10.32 192.168.10.200;
 }
 ```
 
@@ -32,50 +32,32 @@ echo 'net.inet.ip.forwarding=1' >> /etc/sysctl.conf
 ## routing info
 route -n show -inet
 
-## pppoe setup on em0
+## pppoe setup on re0 (WAN)
 cat /etc/hostname.pppoe0
 ```
 inet 0.0.0.0 255.255.255.255 NONE \
-        pppoedev vio0 authproto chap \
+        pppoedev re0 authproto chap \
         authname 'myaddress@qwest.net' authkey 'mypassword' up
 dest 0.0.0.1
 ```
 
+# configure em0 (LAN)
 /etc/hostname.em0
-up mtu 1508
-Start up the em0 and pppoe0 interfaces.
+```
+inet 192.168.10.1 255.255.255.0 NONE
+```
 
+# configure re0 (WAN)
+/etc/hostname.re0
+```
+up
+```
+
+# Start up the em0 and pppoe0 interfaces.
 sh /etc/netstart em0 pppoe0
 
+# firewall rules
 /etc/pf.conf
-```
-wired = "vio1"
-wifi  = "athn0"
-table <martians> { 0.0.0.0/8 10.0.0.0/8 127.0.0.0/8 169.254.0.0/16     \
-	 	   172.16.0.0/12 192.0.0.0/24 192.0.2.0/24 224.0.0.0/3 \
-	 	   192.168.0.0/16 198.18.0.0/15 198.51.100.0/24        \
-	 	   203.0.113.0/24 }
-set block-policy drop
-set loginterface egress
-set skip on lo0
-match in all scrub (no-df random-id max-mss 1440)
-match out on egress inet from !(egress:network) to any nat-to (egress:0)
-antispoof quick for { egress $wired $wifi }
-block in quick on egress from <martians> to any
-block return out quick on egress from any to <martians>
-block all
-pass out quick inet
-pass in on { $wired $wifi } inet
-pass in on egress inet proto tcp from any to (egress) port { 80 443 } rdr-to 192.168.1.2
-```
-
-
-# install zsh .zshrc
-```
-S1='%n@%m %F{red}%/%f $ '
-```
-
-
 
 ```
 ext_if="vio0" # External NIC connected to the ISP modem (Internet).
@@ -146,8 +128,8 @@ block drop in quick on $g_lan from <bruteforce> to any
 pass in on $g_lan proto tcp from $g_lan:network to $g_lan port 22 flags S/SA keep state (max-src-conn 100, max-src-conn-rate 15/5, overload <bruteforce> flush global)
 
 #pass in proto tcp to port ssh
-
 ```
+
 
 ## for testing
 pfctl -nf /etc/pf.conf
@@ -165,3 +147,33 @@ $ netstat -f inet -at
 
 rcctl disable smtpd
 rcctl disable sndiod
+
+## change hostname
+echo 'router' > /etc/myname
+
+## change zsh prompt
+PS1='%n@%m %F{red}%/%f $ '
+
+# install zsh .zshrc
+```
+PS1='%n@%m %F{red}%/%f $ '
+```
+
+## DNS
+/var/unbound/etc/unbound.conf
+```
+server:
+    interface: 192.168.10.1
+    interface: 127.0.0.1
+    access-control: 192.168.10.1/24 allow
+    do-not-query-localhost: no
+    hide-identity: yes
+    hide-version: yes
+
+forward-zone:
+        name: "."
+        forward-addr: 8.8.8.8  # IP of the upstream resolver
+```
+
+
+rcctl enable unbound
