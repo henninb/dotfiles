@@ -180,15 +180,30 @@ rcctl enable unbound
 
 simple
 ```
-ext="em0"
-int="em1"
+external="pppoe0"
+internal="em0"
+
+# This is a table of non-routable private addresses.
+table <martians> { 0.0.0.0/8 10.0.0.0/8 127.0.0.0/8 169.254.0.0/16     \
+                   172.16.0.0/12 192.0.0.0/24 192.0.2.0/24 224.0.0.0/3 \
+                   192.168.0.0/16 198.18.0.0/15 198.51.100.0/24        \
+                   203.0.113.0/24 }
+
+#SSH brute-force blacklist [Management network <> Edge firewall]
+table <bruteforce> persist
 
 set skip on lo0
+match in all scrub (no-df random-id max-mss 1440)
 set block-policy drop
 
 block drop all
 
-pass in on $int from $int:network to any keep state
-pass out on $ext from $int:network to any nat-to ($ext) keep state
-pass out on $ext from $ext:network to any keep state
+# Spoofing protection for all interfaces.
+antispoof quick for { $internal }
+block in from no-route
+block in quick from urpf-failed
+
+pass in on $internal from $internal:network to any keep state
+pass out on $external from $internal:network to any nat-to ($external) keep state
+pass out on $external from $external:network to any keep state
 ```
