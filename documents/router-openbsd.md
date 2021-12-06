@@ -177,3 +177,18 @@ forward-zone:
 
 
 rcctl enable unbound
+
+simple
+```
+ext="em0"
+int="em1"
+
+set skip on lo0
+set block-policy drop
+
+block drop all
+
+pass in on $int from $int:network to any keep state
+pass out on $ext from $int:network to any nat-to ($ext) keep state
+pass out on $ext from $ext:network to any keep state
+```
