@@ -14,7 +14,7 @@ rcctl start dhcpd
 /etc/dhcpd.conf
 ```
 option  domain-name "local";
-option  domain-name-servers 192.168.10.1;
+option  domain-name-servers 192.168.10.10;
 
 subnet 192.168.10.0 netmask 255.255.255.0 {
 	option routers 192.168.10.1;
@@ -159,24 +159,7 @@ PS1='%n@%m %F{red}%/%f $ '
 PS1='%n@%m %F{red}%/%f $ '
 ```
 
-## DNS
-/var/unbound/etc/unbound.conf
-```
-server:
-    interface: 192.168.10.1
-    interface: 127.0.0.1
-    access-control: 192.168.10.1/24 allow
-    do-not-query-localhost: no
-    hide-identity: yes
-    hide-version: yes
-
-forward-zone:
-        name: "."
-        forward-addr: 8.8.8.8  # IP of the upstream resolver
-```
-
-
-rcctl enable unbound
+rcctl disable unbound
 
 simple
 ```
@@ -189,7 +172,7 @@ table <martians> { 0.0.0.0/8 10.0.0.0/8 127.0.0.0/8 169.254.0.0/16     \
                    192.168.0.0/16 198.18.0.0/15 198.51.100.0/24        \
                    203.0.113.0/24 }
 
-#SSH brute-force blacklist [Management network <> Edge firewall]
+# brute-force blacklist
 table <bruteforce> persist
 
 set skip on lo0
@@ -197,13 +180,26 @@ match in all scrub (no-df random-id max-mss 1440)
 set block-policy drop
 
 block drop all
+# block drop in log on $ext_if
 
 # Spoofing protection for all interfaces.
 antispoof quick for { $internal }
 block in from no-route
 block in quick from urpf-failed
 
-pass in on $internal from $internal:network to any keep state
-pass out on $external from $internal:network to any nat-to ($external) keep state
-pass out on $external from $external:network to any keep state
+# Block non-routable private addresses.
+# We use the "quick" parameter here to make this rule the last.
+block in quick on $external from <martians> to any
+block return out quick on $external from any to <martians>
+
+# Always block DNS queries not addressed to our DNS server.
+# block return in quick on $internal proto { udp tcp } to ! $internal port { 53 853 }
+
+pass in on $internal inet from $internal:network to any keep state
+pass out on $external inet from $internal:network to any nat-to ($external) keep state
+pass out on $external inet from $external:network to any keep state
+
+#block drop in quick on $internal from <bruteforce> to any
+#pass in on $g_lan proto tcp from $internal:network to $internal port 22 flags S/SA keep state (max-src-conn 100, max-src-conn-rate 15/5, overload <bruteforce> flush global)
+
 ```
