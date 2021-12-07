@@ -14,11 +14,116 @@ rcctl start dhcpd
 /etc/dhcpd.conf
 ```
 option  domain-name "local";
-option  domain-name-servers 192.168.10.10;
+option  domain-name-servers 192.168.10.10, 8.8.8.8;
 
 subnet 192.168.10.0 netmask 255.255.255.0 {
 	option routers 192.168.10.1;
 	range 192.168.10.32 192.168.10.200;
+
+    host hd-homerun {
+      hardware ethernet 00:18:dd:01:ae:8f;
+      fixed-address 192.168.10.101;
+      }
+
+    host arcolinux {
+      hardware ethernet d2:a4:8f:4c:4a:cf;
+      fixed-address 192.168.10.102;
+    }
+
+    host gentoo {
+      hardware ethernet 74:27:ea:db:99:2f;
+      fixed-address 192.168.10.103;
+    }
+
+    host mac-work {
+      hardware ethernet 38:f9:d3:bd:44:f8;
+      fixed-address 192.168.10.104;
+    }
+
+    host pixel-brian-24 {
+      hardware ethernet 32:4e:20:1f:6c:27;
+      fixed-address 192.168.10.105;
+    }
+
+    host pixel-brian-5 {
+      hardware ethernet 58:cb:52:78:65:49;
+      fixed-address 192.168.10.106;
+    }
+
+    host mac-work-ethernet {
+      hardware ethernet 00:e0:4c:aa:76:fb;
+      fixed-address 192.168.10.107;
+    }
+
+    host matthew-laptop {
+      hardware ethernet 00:22:fb:2d:84:0e;
+      fixed-address 192.168.10.131;
+    }
+
+    host pixel-matthew {
+      hardware ethernet aa:dc:cb:c5:af:7b;
+      fixed-address 192.168.10.132;
+    }
+
+    host maggie-iphone {
+      hardware ethernet d0:25:98:94:de:94;
+      fixed-address 192.168.10.133;
+    }
+
+    host lillian-iphone {
+      hardware ethernet a2:46:50:a9:8a:84;
+      fixed-address 192.168.10.134;
+    }
+
+    host pixel-kari {
+      hardware ethernet 82:b0:c2:39:14:b5;
+      fixed-address 192.168.10.135;
+    }
+
+    host kathryn-ipad {
+      hardware ethernet 6c:70:9f:7f:83:50;
+      fixed-address 192.168.10.136;
+    }
+
+    host matthew-laptop-school {
+      hardware ethernet f8:5e:a0:dc:87:8c;
+      fixed-address 192.168.10.140;
+    }
+
+    host lillian-laptop-school {
+      hardware ethernet ac:d5:64:c7:65:4b;
+      fixed-address 192.168.10.141;
+    }
+
+    host maggie-laptop-school {
+      hardware ethernet ac:d5:64:27:65:e5;
+      fixed-address 192.168.10.142;
+    }
+
+    host amazon-echo {
+      hardware ethernet 74:a7:ea:20:cd:42;
+      fixed-address 192.168.10.144;
+    }
+
+    host amazon-show {
+      hardware ethernet 40:a9:cf:b6:59:00;
+      fixed-address 192.168.10.145;
+    }
+
+    host amazon-firetv {
+      hardware ethernet 68:db:f5:0b:1f:b2;
+      fixed-address 192.168.10.146;
+    }
+
+    host google-home-mini {
+      hardware ethernet 48:d6:d5:d0:29:e7;
+      fixed-address 192.168.10.147;
+    }
+
+    host google-home {
+      hardware ethernet 48:d6:d5:65:6a:39;
+      fixed-address 192.168.10.148;
+    }
 }
 ```
 
