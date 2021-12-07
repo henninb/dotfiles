@@ -290,12 +290,17 @@ block drop all
 # Spoofing protection for all interfaces.
 antispoof quick for { $internal }
 block in from no-route
+
+# activate spoofing protection for all interfaces
 block in quick from urpf-failed
 
 # Block non-routable private addresses.
 # We use the "quick" parameter here to make this rule the last.
 block in quick on $external from <martians> to any
 block return out quick on $external from any to <martians>
+
+# Allow trace route
+# pass out on $external inet proto udp from any to any port 33433 >< 33626 keep state
 
 # Always block DNS queries not addressed to our DNS server.
 # block return in quick on $internal proto { udp tcp } to ! $internal port { 53 853 }
