@@ -441,6 +441,7 @@ if [ "$MYSHELL" = "zsh" ]; then
   source "$HOME/plugins/zed-zsh/zed.zsh"
   #eval "$(starship init zsh)"
   source "$HOME/themes/spaceship-prompt/spaceship.zsh"
+  source "$HOME/plugins/ssh-agent/ssh-agent.plugin.zsh"
   # source ~/plugins/powerlevel10k/powerlevel10k.zsh-theme
   #source "$HOME/themes/agnoster-zsh-theme/agnoster.zsh-theme"
   #[ -f "$HOME/plugins/fzf.zsh" ] && source "$HOME/plugins/fzf.zsh"
@@ -516,4 +517,4 @@ export LIBGL_ALWAYS_SOFTWARE=1
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [ ! -f ~/.p10k.zsh ] || source ~/.p10k.zsh
-. "/home/henninb/.acme.sh/acme.sh.env"
+source "$HOME/.acme.sh/acme.sh.env"
