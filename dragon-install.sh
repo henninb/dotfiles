@@ -17,7 +17,7 @@ else
   echo "$OS is not implemented."
 fi
 
-mkdir "$HOME/projects/github.com/mwh"
+mkdir -p "$HOME/projects/github.com/mwh"
 cd "$HOME/projects/github.com/mwh" || exit
 git clone git@github.com:mwh/dragon.git
 cd dragon || exit

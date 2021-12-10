@@ -1,9 +1,8 @@
 #!/bin/sh
 
-wget http://download.eclipse.org/jdtls/snapshots/jdt-language-server-0.65.0-202011130851.tar.gz
-
-mkdir jdtls
-cd jdtls || exit
-tar xvf ../jdt-language-server-0.65.0-202011130851.tar.gz
+wget 'https://download.eclipse.org/jdtls/milestones/1.6.0/jdt-language-server-1.6.0-202111261512.tar.gz'
+mkdir -p "$HOME/projects/jdtls"
+cd "$HOME/projects/jdtls" || exit
+tar xvf "$HOME/jdt-language-server-*.tar.gz"
 
 exit 0

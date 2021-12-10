@@ -56,7 +56,7 @@ mkdir -p ~/.irssi/certs
 mv -v freenode.pem ~/.irssi/certs
 sudo mkdir -p /usr/local/lib/irssi/modules/
 
-mkdir "$HOME/projects/github.com/irssi"
+mkdir -p "$HOME/projects/github.com/irssi"
 cd "$HOME/projects/github.com/irssi" || exit
 
 if [ ! -f "irssi-${VER}.tar.gz" ]; then
