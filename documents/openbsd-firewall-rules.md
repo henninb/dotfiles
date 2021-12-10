@@ -1,3 +1,10 @@
+# if fxp0 was the WAN
+tcp_pass = "{ 22 25 80 110 123 631 }"
+udp_pass = "{ 110 631 }"
+block all
+pass out on fxp0 proto tcp to any port $tcp_pass keep state
+pass out on fxp0 proto udp to any port $udp_pass keep state
+
 ext_if="pppoe0" # External NIC connected to the ISP modem (Internet).
 g_lan="eno0"  # Grown-ups LAN.
 
