@@ -6,14 +6,15 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   echo list all packages
   echo pacman -Q
-  echo sudo pacman -R xmonad
-  echo sudo pacman -Rsnc picom
+  echo sudo pacman -R package_name
+  echo sudo pacman -Rsnc package_name
+  echo pacman -Ss package_name
 elif [ "$OS" = "void" ]; then
   echo export SSL_NO_VERIFY_PEER=1
   echo sudo xbps-install -Suy
   echo sudo xbps-install -u xbps
-  echo sudo xbps-install git neovim zsh
-  echo xbps-query -Rs xorg
+  echo sudo xbps-install package_name
+  echo xbps-query -Rs package_name
 elif [ "$OS" = "Fedora" ]; then
   echo dnf repoquery -l xorg-x11-server-Xorg
 elif [ "$OS" = "Solus" ]; then
