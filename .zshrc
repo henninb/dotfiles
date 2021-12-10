@@ -517,4 +517,4 @@ export LIBGL_ALWAYS_SOFTWARE=1
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [ ! -f ~/.p10k.zsh ] || source ~/.p10k.zsh
-source "$HOME/.acme.sh/acme.sh.env"
+[ -f "$HOME/.acme.sh/acme.sh.env" ] && source "$HOME/.acme.sh/acme.sh.env"
