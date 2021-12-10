@@ -9,7 +9,6 @@ sudo pacman --noconfirm --needed -S mesa-vdpau
 sudo pacman --noconfirm --needed -S libva-utils
 sudo pacman --noconfirm --needed -S libva-vdpau-driver libvdpau-va-gl
 
-
 sudo apt install -y vulkan-utils
 
 echo "i believe this is for AMD graphics cards"
