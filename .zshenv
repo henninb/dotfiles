@@ -53,6 +53,8 @@ export OS_VER
 [ -n "$STY" ] && export TERM="screen-256color"
 [ -n "$TMUX" ] && export TERM="xterm-256color"
 
+JAVA_TOOL_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
+
 if [[ $- == *i* ]]; then
   # Start blinking
   LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
@@ -74,11 +76,7 @@ if [[ $- == *i* ]]; then
   export LESS_TERMCAP_me
 fi
 
-zshaddhistory() {
-  whence ${${(z)1}[1]} >| /dev/null || return 1
-
-  case ${1%% *} in
-    (vlc|mpc|cd|pwd|exit) return 1;;
+zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 case ${1%% *} in (vlc|mpc|cd|pwd|exit) return 1;;
   esac
   return 0;
 }
