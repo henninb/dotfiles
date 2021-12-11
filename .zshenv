@@ -76,10 +76,10 @@ if [[ $- == *i* ]]; then
   export LESS_TERMCAP_me
 fi
 
-zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 case ${1%% *} in (vlc|mpc|cd|pwd|exit) return 1;;
-  esac
-  return 0;
-}
+# zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 case ${1%% *} in (vlc|mpc|cd|pwd|exit) return 1;;
+#   esac
+#   return 0;
+# }
 
 gemerge() {
   if [ "$#" -ne 1 ]; then
