@@ -36,4 +36,10 @@ fi
 pactl list short sinks
 echo pactl set-default-sink 'alsa_output.usb-Plantronics_Plantronics_BT600_2b33411b5e47614eae3d175f542553a4-00.analog-stereo'
 
+
+echo pulseaudio sink always suspended
+echo sudo vim /etc/pulse/default.pa
+echo disable module-suspend-on-idle
+echo #load-module module-suspend-on-idle
+
 exit 0
