@@ -9,6 +9,8 @@ sudo mkdir -p /opt/plexmedia/{movies,series,music}
 sudo chown -R plex: /opt/plexmedia
 
 echo http://YOUR_SERVER_IP:32400/web
-echo http://192.168.100.54:32400/web
+echo http://192.168.10.10:32400/web
+
+sudo usermod -a -G plex "$(id -un)"
 
 exit 0
