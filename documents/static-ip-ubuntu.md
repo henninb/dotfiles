@@ -9,7 +9,7 @@ network:
     ens18:
       dhcp4: no
       addresses:
-        - 192.168.100.10/24
-      gateway4: 192.168.100.1
+        - 192.168.10.10/24
+      gateway4: 192.168.10.1
       nameservers:
           addresses: [8.8.8.8, 1.1.1.1]
