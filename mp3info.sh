@@ -2,7 +2,9 @@
 
 for f in $(find . -type f -name "*.mp3" -print); do
   # mp3info -a artist -t song file.mp3
-  echo  $f
+   echo  $f
+  echo $f | awk '{split($0,a, "-"); print a[0];}'
+  echo $f | awk '{split($0,a, "-"); print a[1];}'
 done
 
 # find . -type f -name '*.mp3' -exec sh -c '
