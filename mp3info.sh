@@ -5,10 +5,14 @@
 #   echo  $f
 # done
 
-find . -type f -name '*.mp3' -exec sh -c '
-  for file do
-    echo "$file"
-  done
-' exec-sh {} +
+# find . -type f -name '*.mp3' -exec sh -c '
+#   for file do
+#     echo "$file"
+#   done
+# ' exec-sh {} +
+
+find . -name "*.mp3" -print0 | while IFS= read -r -d '' file; do
+    echo "file = $file"
+done
 
 exit 0
