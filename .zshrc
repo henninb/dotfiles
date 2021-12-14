@@ -174,6 +174,7 @@ export PATH="$HOME/.dynamic-colors/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$JAVA_HOME/bin:$PATH"
+export PATH="$HOME/.gem/ruby/3.0.0/bin:$PATH"
 # export PATH="/opt/STM32CubeProgrammer/bin:$PATH"
 export PATH="$HOME/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin:$PATH"
 export CDPATH=~/projects/github.com
@@ -518,3 +519,6 @@ export LIBGL_ALWAYS_SOFTWARE=1
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [ ! -f ~/.p10k.zsh ] || source ~/.p10k.zsh
 [ -f "$HOME/.acme.sh/acme.sh.env" ] && source "$HOME/.acme.sh/acme.sh.env"
+
+# added by travis gem
+[ ! -s /home/henninb/.travis/travis.sh ] || source /home/henninb/.travis/travis.sh
