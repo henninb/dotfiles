@@ -42,4 +42,6 @@ echo sudo vim /etc/pulse/default.pa
 echo disable module-suspend-on-idle
 echo #load-module module-suspend-on-idle
 
+echo pavucontrol
+
 exit 0
