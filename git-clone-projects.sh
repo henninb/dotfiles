@@ -15,19 +15,22 @@ for i in $PROJECTS; do
   #   continue
   # fi
   git config --local user.email henninb@msn.com
-  git pull origin main 2> /dev/null
+  #git pull origin main #2> /dev/null
+  git fetch --all
+  git rebase origin/main
+
 done
 
 PLUGINS="autojump zsh-autosuggestions zsh-syntax-highlighting"
 for i in $PLUGINS; do
   cd "$HOME/plugins/$i" || exit
-  git pull
+  git fetch
 done
 
 THEME="agnoster-zsh-theme alien dracula-zsh-theme spaceship-prompt"
 for i in $THEME; do
   cd "$HOME/themes/$i" || exit
-  git pull
+  git fetch
 done
 
 echo distrotube
