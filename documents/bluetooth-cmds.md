@@ -1,5 +1,7 @@
 # bluetooth commands
 
+## common
+```
 [bluetooth]#
 select <cmac>
 scan on
@@ -7,6 +9,7 @@ trust <mmac>
 pairable on
 pair <mmac>
 connect <mmac>
+```
 
 
 ## issue

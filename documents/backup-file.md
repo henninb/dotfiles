@@ -1,6 +1,8 @@
-#!/bin/sh
+# file backup
 
+## example
+```
 echo "hello" > $HOME/file.txt
 cp $HOME/file.txt{,.bak}
+```
 
-exit 0

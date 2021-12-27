@@ -24,7 +24,7 @@ find /sys/devices -name enp9s0|sed -e 's/\/net\/.*//'
 
 #!/bin/bash
 DEVICE=$(find /sys/devices -name enp9s0|sed -e 's/\/net\/.*//')
-[ -z "$DEVICE" ] && echo "There doesn't seem to be a device $1" && exit 2 
+[ -z "$DEVICE" ] && echo "There doesn't seem to be a device $1" && exit 2
 echo "Removing device at $DEVICE"
 echo 1 > $DEVICE/remove
 sleep 2
@@ -32,7 +32,6 @@ DEVICE_RESTART=$(dirname $DEVICE)
 echo "Rescanning $DEVICE_RESTART"
 echo 1 > $DEVICE_RESTART/rescan
 exit 0
-
 
 
 echo Try disabling wake on lan from the bios setup.

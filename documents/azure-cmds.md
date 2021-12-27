@@ -1,8 +1,16 @@
-# az commands
+# azure commands
 
+## login
+```
 az login
-az group show --name brian_web --output table
+```
 
+## show group
+```
+az group show --name brian_web --output table
+```
+
+## install az cli
 sudo apt-get update
 sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg
 

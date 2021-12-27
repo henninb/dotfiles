@@ -1,3 +1,7 @@
+# bhyve usb
+
+## steps
+
 Determine the bus/slot/function of the device that you want to pass through to the guest with pciconf -v -l
 
 For example, to pass through a Atheros Gigabit Ethernet adapter:
