@@ -6,7 +6,7 @@
   ci = commit
   st = status -sb
   s = status
-  p = !sh -c 'git pull && git add . && git commit -am $* && git push' --
+  p = !sh -c 'git fetch --all && git merge && git add . && git commit -am $* && git push' --
   br = branch
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   type = cat-file -t
