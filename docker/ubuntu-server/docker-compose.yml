@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  ubuntu-server:
+    image: ubuntu:20.04
+    # user: "${CURRENT_UID}:${CURRENT_GID}"
+    container_name: ubuntu-server
+    # ports:
+    #   - "8080:80"
+    # expose:
+    #   - "8080"
+    # volumes:
+    #   - ./default.vcl:/default.vcl
