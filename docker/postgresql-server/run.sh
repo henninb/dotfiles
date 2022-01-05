@@ -1,5 +1,10 @@
 #!/bin/sh
 
+docker stop postgresql-server
+docker rm postgresql-server -f
+
+mkdir -p postgresql-data
+
 stty -echo
 printf "New Password for postgres: "
 read -r POSTGRESQL_PASSWORD
@@ -37,13 +42,11 @@ sudo mkdir -p /opt/postgresql-data
 sudo mv -v pg_hba.conf /opt/postgresql-data/pg_hba.conf
 
 # sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /opt/postgresql-data/postgresql.conf
-docker-compose up -d
+if ! docker-compose up -d; then
+  echo "failed docker-compose"
+fi
+
+# docker run -dit --name postgresql-server -h postgresql-server postgresql-server
+docker exec -it postgresql-server /bin/bash
 
 exit 0
-
-# sudo docker image build -t postgresql-server .
-# docker stop postgresql-server
-# docker rm postgresql-server -f
-# sudo docker run --name=postgresql-server -h postgresql-server --restart unless-stopped -d postgresql-server
-# echo docker exec -it --user root postgresql-server /bin/bash
-# echo docker exec -it postgresql-server /bin/bash

@@ -1,20 +1,20 @@
 version: "3.7"
 services:
-  postgresql13-server:
-    image: postgres:13.4
-    container_name: postgresql13-server
+  postgresql-server:
+    image: postgres:14.1
+    container_name: postgresql-server
     ports:
-      - "5432:5432"
+      - "5433:5432"
     expose:
-      - "5432"
+      - "5433"
     environment:
       - POSTGRES_USER=henninb
       - POSTGRES_PASSWORD=monday1
       - POSTGRES_DB=finance_db
     hostname: postgresql-server
     volumes:
-      - /opt/postgresql-data:/var/lib/postgresql/data
-      #      postgresql13-volume:/var/lib/postgresql/data
-# volumes:
-#   - postgresql13-volume:
-#     driver: local
+      - postgresql-volume:/var/lib/postgresql/data
+      # - /opt/postgresql-data:/var/lib/postgresql/data
+volumes:
+  postgresql-volume:
+    driver: local
