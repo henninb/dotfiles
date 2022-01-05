@@ -1,7 +1,10 @@
 #!/bin/sh
 
+sudo mkdir -p /etc/portage/package.mask
 sudo mkdir -p /usr/portage/profiles
-echo "$(uname -n)" |sudo tee -a /usr/portage/profiles/repo_name
+echo "$(uname -n)" | sudo tee -a /usr/portage/profiles/repo_name
+
+echo '=dev-python/docutils-0.18' | tee /etc/portage/package.mask/docutils
 
 sudo cp -v /etc/portage/package.accept_keywords /etc/portage/package.accept_keyword.bak.$$
 sudo cp -v package.accept_keywords /etc/portage/package.accept_keywords
