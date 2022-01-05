@@ -32,13 +32,14 @@ RUN xbps-reconfigure -f glibc-locales
 WORKDIR /home/henninb
 USER henninb
 
-RUN cd /home/henninb
-RUN rm -rf /home/henninb/.bashrc
-RUN rm -rf /home/henninb/.profile
-RUN rm -rf /home/henninb/.bash_profile
-RUN git init .
-RUN git remote add origin git@github.com:BitExplorer/dotfiles.git
-RUN git pull origin master
-RUN git branch --set-upstream-to=origin/master master
+# RUN cd /home/henninb
+# RUN rm -rf /home/henninb/.bashrc
+# RUN rm -rf /home/henninb/.profile
+# RUN rm -rf /home/henninb/.bash_profile
+# RUN rm -rf /home/henninb/.screenrc
+# RUN git init .
+# RUN git remote add origin git@github.com:henninb/dotfiles.git
+# RUN git pull origin main
+# RUN git branch --set-upstream-to=origin/main main
 
 CMD ["/bin/bash"]
