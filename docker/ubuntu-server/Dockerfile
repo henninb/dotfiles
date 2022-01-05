@@ -18,8 +18,6 @@ RUN chown henninb:wheel /home/henninb/.ssh/id_rsa
 RUN chown henninb:wheel /home/henninb/.ssh/known_hosts
 RUN chown henninb:wheel /home/henninb/
 
-
-
 WORKDIR /home/henninb
 USER henninb
 

@@ -3,7 +3,7 @@
 cp $HOME/.ssh/id_rsa .
 cp $HOME/.ssh/known_hosts .
 
-if ! sudo docker build -t ubuntu-server .; then
+if ! docker build -t ubuntu-server .; then
   echo  failed docker build.
 fi
 
