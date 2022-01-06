@@ -41,7 +41,7 @@ EOF
 sudo cp -v xmonad.desktop /usr/share/xsessions/
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman -S sddm
+  sudo pacman --noconfirm --needed -S sddm
   sudo systemctl enable sddm.service -f
   sudo systemctl disable lightdm
 

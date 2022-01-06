@@ -102,8 +102,8 @@ Keywords=tiling;wm;windowmanager;window;manager;
 EOF
 
 slickgreeter_build() {
-  sudo pacman -S vala
-  sudo pacman -S gnome-common
+  sudo pacman --noconfirm --needed -S vala
+  sudo pacman --noconfirm --needed -S gnome-common
   sudo eopkg install -y gnome-common
   sudo eopkg install -y vala
   cd "$HOME/projects" || exit

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman -S ninja meson uthash
+  sudo pacman --noconfirm --needed -S ninja meson uthash
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y ninja meson uthash
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
