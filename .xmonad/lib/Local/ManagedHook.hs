@@ -37,6 +37,7 @@ myManageHook = composeAll
     , className =? "vlc"                           --> doFloat
     , className =? "jetbrains-idea"                --> doFloat
     , className =? "jetbrains-idea-ce"             --> doFloat
+    , className =? "slack"                         --> viewShift ( myWorkspaces !! 7 )
     , className =? "jetbrains-idea"                --> viewShift ( myWorkspaces !! 4 )
     , className =? "jetbrains-idea-ce"             --> viewShift ( myWorkspaces !! 4 )
     , className =? "feh"                           --> doFloat
