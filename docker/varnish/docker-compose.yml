@@ -10,11 +10,3 @@ services:
       - "8080"
     volumes:
       - ./default.vcl:/default.vcl
-    #   - ./grafana-data:/var/lib/grafana
-    #   - ./grafana-provisioning:/etc/grafana/provisioning
-    # environment:
-    #   - GF_SECURITY_ADMIN_USER=henninb
-    #   - GF_SECURITY_ADMIN_PASSWORD=monday1
-    #   - GF_HOST=localhost
-    #   - GF_USER=henninb
-    #   - GF_PASS=monday1
