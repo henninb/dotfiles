@@ -123,6 +123,7 @@ elif [ "$OS" = "Gentoo" ]; then
   echo /usr/share/docker/contrib/check-config.sh
   echo https://github.com/tianon/docker-overlay
   echo sudo cp -v daemon.json /etc/docker/daemon.json
+  echo "net.ipv4.ip_forward = 1" | tee -a  /etc/sysctl.conf
 else
   echo "$OS is not yet implemented."
   exit 1
