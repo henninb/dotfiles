@@ -23,7 +23,7 @@ pip_ins() {
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y python3.7 python3.7-venv python-pip python3-pip libssl-dev libffi-dev python-setuptools python3.7-dev
-elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   #sudo pacman --noconfirm --needed -S python python-pip python2-pip python2
   sudo pacman --noconfirm --needed -S python python3
 elif [ "$OS" = "CentOS Linux" ]; then
@@ -43,6 +43,8 @@ fi
 
 curl -O https://bootstrap.pypa.io/get-pip.py
 sudo python3 get-pip.py
+
+curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py
 sudo python2 get-pip.py
 
 exit 0
