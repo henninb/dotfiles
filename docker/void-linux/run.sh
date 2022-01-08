@@ -1,7 +1,7 @@
 #!/bin/sh
 
-cp $HOME/.ssh/id_rsa .
-cp $HOME/.ssh/known_hosts .
+cp "$HOME/.ssh/id_rsa" .
+cp "$HOME/.ssh/known_hosts" .
 
 docker stop voidbox
 docker rm voidbox -f
@@ -9,6 +9,10 @@ docker rm voidbox -f
 if ! docker build -t voidbox .; then
   echo  "failed docker build"
 fi
+
+podman stop voidbox
+podman rm voidbox -f
+podman build --tag voidbox -f ./Dockerfile
 
 rm -rf id_rsa
 #sudo sudo docker images
