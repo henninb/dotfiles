@@ -14,4 +14,10 @@ sysctl kernel.unprivileged_userns_clone
 
 usermod --add-subuids 100000-165535 --add-subgids 100000-165535 henninb
 
+echo sudo vim /etc/containers/registries.conf.
+
+echo [registries.search]
+echo registries = ['docker.io', 'quay.io', 'registry.access.redhat.com']
+echo registries = ['docker.io']
+
 exit 0
