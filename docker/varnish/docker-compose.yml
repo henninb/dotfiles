@@ -5,7 +5,7 @@ services:
     # user: "${CURRENT_UID}:${CURRENT_GID}"
     container_name: varnish-server
     ports:
-      - "9090:8080"
+      - "9090:80"
     expose:
       - "9090"
     volumes:
