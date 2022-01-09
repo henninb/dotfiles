@@ -5,8 +5,8 @@ services:
     # user: "${CURRENT_UID}:${CURRENT_GID}"
     container_name: varnish-server
     ports:
-      - "8080:80"
+      - "9090:8080"
     expose:
-      - "8080"
+      - "9090"
     volumes:
-      - ./default.vcl:/default.vcl
+      - ./default.vcl:/etc/varnish/default.vcl

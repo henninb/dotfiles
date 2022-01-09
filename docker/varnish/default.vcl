@@ -1,6 +1,6 @@
-vcl 4.0:
+vcl 4.1;
 
 backend default {
-  .host = "hornsup":
-  .port = 8443:
+  .host = "192.168.10.155";
+  .port = "8080";
 }
