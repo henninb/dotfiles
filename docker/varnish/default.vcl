@@ -2,7 +2,7 @@ vcl 4.1;
 
 backend default {
   .host = "192.168.10.155";
-  .port = "8080";
+  .port = "8443";
 }
 
 sub vcl_deliver {
@@ -14,3 +14,10 @@ sub vcl_deliver {
         set resp.http.X-Cache-Action = "MISS";
     }
 }
+
+#sub vcl_recv {
+#    if ( req.request == "POST") {
+#        ban("req.http.host == " + req.http.Host);
+#        return(pass);
+#    }
+#}
