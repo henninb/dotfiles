@@ -3,7 +3,7 @@
   tasks:
     - name: pull from git
       git:
-        repo: git@github.com:BitExplorer/dotfiles.git
+        repo: git@github.com:henninb/dotfiles.git
         dest: /home/henninb
-        version: master
+        version: main
         force: yes
