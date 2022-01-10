@@ -1,5 +1,11 @@
 vcl 4.1;
 
+import std;
+
+#acl purge {
+#    "127.0.0.1";
+#}
+
 backend default {
   .host = "192.168.10.155";
   .port = "8443";
