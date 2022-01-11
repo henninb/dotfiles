@@ -2,12 +2,12 @@
 
 cat > hosts <<'EOF'
 [debian]
-192.168.100.217
-192.168.100.190
+192.168.10.217
+192.168.10.190
 localhost
 
 [archlinux]
-102.168.100.208
+102.168.10.208
 EOF
 
 sudo mkdir -p /etc/ansible
