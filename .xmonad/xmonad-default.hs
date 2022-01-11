@@ -125,7 +125,7 @@ myStartupHook = do
     -- spawnOnce "sxhkd -c ~/.config/sxhkd/sxhkdrc-xmonad"
     -- spawn "clipmenud" --should I run copyq or clipmenu
     spawnOnce "copyq"
-    spawnOn "8" "slack-flatpak &"
+    spawnOn "8" "slack-flatpak"
     spawnOn "1" "alacritty"
     case os of
       "freebsd" -> return ()
@@ -147,6 +147,7 @@ myStartupHook = do
     -- spawnOnce "kill -9 $(ps aux | grep -e \"volumeicon\" | awk ' { print $2 } ')"
     spawnOnce "xscreensaver -no-splash"
     spawnOnce "feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg"
+    -- spawnOnce "killall redshift; sleep 4 ; redshift -l 48.024395:11.598893 &"
 
 myConfig = def
   { terminal = myTerminal
