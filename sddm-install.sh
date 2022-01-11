@@ -32,6 +32,14 @@ EOF
 chmod 755 Xsetup
 
 cat > sddm.conf << EOF
+[Users]
+DefaultPath=/usr/local/sbin:/usr/local/bin:/usr/bin
+HideShells=
+HideUsers=
+RememberLastSession=true
+RememberLastUser=true
+ReuseSession=true
+
 [X11]
 DisplayCommand=/etc/sddm/scripts/Xsetup
 [Users]
