@@ -6,7 +6,7 @@ default:
 	@echo build default
 	@rm -rf *.hi *.o xmonad
 	@ln -sfn xmonad-default.hs xmonad.hs
-	@stack ghc -- --make xmonad.hs -i -ilib -fforce-recomp
+	@stack ghc -- --make xmonad.hs -ilib -fforce-recomp
 	@find . -name "*.hi" | xargs rm
 	@find . -name "*.o" | xargs rm
 	@rm -rf xmonad-x86_64-linux xmonad-x86_64-freebsd
