@@ -79,7 +79,7 @@ cd "$HOME/themes/alien" || exit
 git submodule update --init --recursive
 cd - || exit
 
-git clone https://github.com:agnoster/agnoster-zsh-theme.git "$HOME/themes/agnoster-zsh-theme"
+# git clone https://github.com:agnoster/agnoster-zsh-theme.git "$HOME/themes/agnoster-zsh-theme"
 git clone https://github.com:dracula/zsh.git "$HOME/themes/dracula-zsh-theme"
 
 [ -s "/usr/bin/zsh" ] && sudo usermod -s /usr/bin/zsh "$(whoami)"
