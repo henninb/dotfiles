@@ -77,4 +77,6 @@ else
   exit 1
 fi
 
+homectl inspect henninb
+
 exit 0

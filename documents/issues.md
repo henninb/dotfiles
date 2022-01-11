@@ -565,3 +565,11 @@ Enabled optional features:  XPM  XFT XINERAMA
 05:59 < electr0n> mod+{j+k} usually. depends if you changed your keybindings or not.
 05:59 ::: Irssi: Join to #xmonad was synced in 185 secs
 06:01 < henninb> thanks electr0n, I think I changed the mod keys however I might want them changed back :)
+
+## slow sddm
+
+Jan 11 05:43:23 arcolinux pipewire[5176]: spa.v4l2: '/dev/video0' VIDIOC_QUERYCTRL: Connection timed out
+Jan 11 05:43:23 arcolinux pipewire-media-session[5177]: ms.core: error id:70 seq:286 res:-110 (Connection timed out): enum params id:1 (Spa>
+Jan 11 05:43:23 arcolinux kernel: usb 3-8.2: Failed to query (GET_DEF) UVC control 7 on unit 2: -110 (exp. 2).
+
+sudo journalctl -n 100
