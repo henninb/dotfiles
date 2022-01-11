@@ -37,6 +37,7 @@ import Local.Layouts
 import Local.PolybarLogHook
 import Local.DzenLogHook
 import XMonad.Util.NamedActions
+import qualified XMonad.StackSet as W
 
 myFont  = "terminus"
 
@@ -148,6 +149,7 @@ myStartupHook = do
     spawnOnce "xscreensaver -no-splash"
     spawnOnce "feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg"
     -- spawnOnce "killall redshift; sleep 4 ; redshift -l 48.024395:11.598893 &"
+    windows $ W.view "1"
 
 myConfig = def
   { terminal = myTerminal
