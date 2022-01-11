@@ -48,6 +48,13 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo mkdir -p /etc/sddm.conf.d/
   sudo mv -v sddm-theme.conf /etc/sddm.conf.d/
   ls -l /usr/share/sddm/themes/
+
+  systemctl --user stop xdg-desktop-portal{,gtk}
+  systemctl --user stop xdg-desktop-portal
+  systemctl --user disable xdg-desktop-portal{,gtk}
+  systemctl --user disable xdg-desktop-portal
+
+
 elif [ "${OS}" = "Ubuntu" ]; then
   sudo apt install -y sddm
 elif [ "${OS}" = "FreeBSD" ]; then

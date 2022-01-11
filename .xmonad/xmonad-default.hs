@@ -125,6 +125,7 @@ myStartupHook = do
     -- spawnOnce "sxhkd -c ~/.config/sxhkd/sxhkdrc-xmonad"
     -- spawn "clipmenud" --should I run copyq or clipmenu
     spawnOnce "copyq"
+    spawnOn "8" "slack-flatpak &"
     spawnOn "1" "alacritty"
     case os of
       "freebsd" -> return ()
@@ -143,7 +144,6 @@ myStartupHook = do
     spawnOnce "conky -c $HOME/.xmonad/assets/system-overview2"
     -- spawnOnce "mpDris2" -- required for mpd
     spawnOnce "volumeicon"
-    spawnOnce "slack-flatpak"
     -- spawnOnce "kill -9 $(ps aux | grep -e \"volumeicon\" | awk ' { print $2 } ')"
     spawnOnce "xscreensaver -no-splash"
     spawnOnce "feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg"
