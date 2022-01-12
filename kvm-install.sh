@@ -70,6 +70,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S libvirt
   sudo pacman --noconfirm --needed -S qemu
   sudo pacman --noconfirm --needed -S virt-manager
+  sudo pacman --noconfirm --needed -S virt-install
   sudo pacman --noconfirm --needed -S dnsmasq
   sudo pacman --noconfirm --needed -S ebtables iptables dnsmasq
   sudo pacman -S ebtables
