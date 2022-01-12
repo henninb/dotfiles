@@ -21,10 +21,10 @@ device=$1
   sudo nmcli connection up br0
   sudo dhclient br0
 
-  sudo virsh net-define bridged-network.xml
-  sudo virsh net-start br0-bridged-network
-  sudo virsh net-autostart br0-bridged-network
-  sudo virsh net-list
+  virsh net-define bridged-network.xml
+  virsh net-start br0-bridged-network
+  virsh net-autostart br0-bridged-network
+  virsh net-list
 
   ### dynamically creating a bridge
   # sudo ip link set "$device" up
