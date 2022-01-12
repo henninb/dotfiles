@@ -8,6 +8,10 @@ tar xvf fastly-v1.3.0.tar.gz
 cd cli-1.3.0 || exit
 make
 make install
+rm -rf "$HOME/projects/fastly-v1.3.0.tar.gz"
+
+#go get github.com/fastly/go-fastly
+# go get github.com/fastly/cli
 
 mkdir ~/projects/edge
 cd ~/projects/edge || exit
