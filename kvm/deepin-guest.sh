@@ -27,6 +27,6 @@ sudo virt-install \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
 --network=bridge=virbr0,model=virtio \
 --graphics vnc \
---disk path=/var/lib/libvirt/images/guest-deepin.qcow2,size=60,bus=virtio,format=qcow2
+--disk path=/var/lib/libvirt/images/guest-deepin.qcow2,size=64,bus=virtio,format=qcow2
 
 exit 0
