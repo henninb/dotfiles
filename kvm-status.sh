@@ -1,5 +1,7 @@
 #!/bin/sh
 
+virsh net-start default
+
 sudo echo
 echo virsh net-list --all
 virsh net-list --all
