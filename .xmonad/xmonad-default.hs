@@ -140,7 +140,7 @@ myStartupHook = do
     spawnOnce "emacs --daemon"
     spawnOnce "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
     -- spawnOnce "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 108 --transparent true --tint 0x000000 --height 18 --alpha 0"
-    spawnOnce "trayer --edge bottom --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 108 --transparent true --tint 0x000000 --height 18 --alpha 0"
+    spawnOnce "trayer --edge bottom --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 120 --transparent true --tint 0x000000 --height 18 --alpha 0"
     -- spawnOnce "conky -c $HOME/.xmonad/assets/system-overview"
     spawnOnce "conky -c $HOME/.xmonad/assets/system-overview2"
     -- spawnOnce "mpDris2" -- required for mpd
