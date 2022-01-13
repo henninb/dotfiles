@@ -14,6 +14,8 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y libxcb-xinerama0-dev
   sudo python3 -m pip install ninja
   sudo python3 -m pip install meson
+elif [ "$OS" = "void" ]; then
+  echo
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse ninja
   sudo emerge --update --newuse uthash
