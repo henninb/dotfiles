@@ -1,5 +1,6 @@
 #!/bin/sh
 
+sudo xbps-install -y mesa-dri
 sudo apt install -y libxcb-shape0-dev
 sudo apt install -y libxcb-xfixes0-dev
 sudo apt install -y libxkbcommon-dev
