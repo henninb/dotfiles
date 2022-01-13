@@ -26,8 +26,14 @@ elif [ "$OS" = "Gentoo" ]; then
   # sudo ln -s /usr/bin/brave-bin /usr/bin/brave
   sudo ln -s /usr/bin/brave-bin /usr/bin/brave-browser
 elif [ "$OS" = "void" ]; then
+  sudo xbps-install -y xtools
   git clone git@github.com:void-linux/void-packages.git
   git clone git@gitlab.com:ElPresidentePoole/brave-bin.git
+  cd void-packages || exit
+  ./xbps-src binary-bootstrap
+  mv -v "$HOME/brave-bin" srcpkgs
+  ./xbps-src pkg brave-bin
+xi brave-bin
 elif [ "$OS" = "fedora" ]; then
   sudo dnf install dnf-plugins-core
   sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
