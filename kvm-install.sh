@@ -33,7 +33,9 @@ if [ "$OS" = "Linux Mint" ] || [  "$OS" = "Ubuntu" ]; then
   sudo adduser "$(id -un)" libvirt
   sudo apt install -y virt-manager
   sudo apt install -y qemu-utils
-  sudo virsh -c qemu:///system list
+  virsh -c qemu:///system list
+elif [ "$OS" = "void" ]; then
+  echo
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y qemu-kvm
   sudo zypper install -y libvirt-daemon-system
@@ -51,9 +53,9 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo usermod -a -G kvm "$(id -un)"
   sudo systemctl start libvirtd
   sudo systemctl enable libvirtd
-  sudo virsh net-autostart default
+  virsh net-autostart default
 
-  sudo virsh pool-define /dev/stdin <<EOF
+  virsh pool-define /dev/stdin <<EOF
 <pool type='dir'>
   <name>default</name>
   <target>
@@ -62,8 +64,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
 </pool>
 EOF
 
-  sudo virsh pool-start default
-  sudo virsh pool-autostart default
+  virsh pool-start default
+  virsh pool-autostart default
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   #sudo pacman -Syu libvirt qemu virt-manager spice-client-gtk virt-viewer gir1.2-spiceclientgtk-3.0
   sudo pacman --noconfirm --needed -S dmidecode
@@ -91,9 +93,9 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo usermod -a -G libvirt "$(id -un)"
   sudo usermod -a -G kvm "$(id -un)"
 
-  sudo virsh list --all
-  sudo virsh net-autostart default
-  sudo virsh net-list --all
+  virsh list --all
+  virsh net-autostart default
+  virsh net-list --all
   getent group kvm libvirt
   echo "reboot system to fix virt network"
 elif [ "$OS" = "Solus" ]; then
@@ -104,9 +106,9 @@ elif [ "$OS" = "Solus" ]; then
   sudo usermod -a -G kvm "$(id -un)"
   sudo systemctl enable libvirtd
   sudo systemctl start libvirtd
-  sudo virsh list --all
-  sudo virsh net-autostart default
-  sudo virsh net-list --all
+  virsh list --all
+  virsh net-autostart default
+  virsh net-list --all
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse bridge-utils
   sudo emerge --update --newuse app-emulation/libvirt
@@ -134,9 +136,9 @@ elif [ "$OS" = "Fedora" ]; then
   sudo usermod -a -G kvm "$(id -un)"
   sudo systemctl start libvirtd
   sudo systemctl enable libvirtd
-  sudo virsh list --all
-  sudo virsh net-autostart default
-  sudo virsh net-list --all
+  virsh list --all
+  virsh net-autostart default
+  virsh net-list --all
 elif [ "$OS" = "CentOS Linux" ]; then
   #sudo yum remove -y seabios-bin
   sudo yum install -y seabios
@@ -149,9 +151,9 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo usermod -a -G kvm "$(id -un)"
   sudo systemctl start libvirtd
   sudo systemctl enable libvirtd
-  sudo virsh list --all
-  sudo virsh net-autostart default
-  sudo virsh net-list --all
+  virsh list --all
+  virsh net-autostart default
+  virsh net-list --all
 else
   echo "OS=$OS not setup yet."
   exit 1
