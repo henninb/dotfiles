@@ -16,6 +16,14 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo python3 -m pip install meson
 elif [ "$OS" = "void" ]; then
   echo
+  sudo xbps-install -y ninja
+  sudo xbps-install -y meson
+  sudo xbps-install -y libev-devel
+  sudo xbps-install -y uthash
+  sudo xbps-install -y libconfig-devel
+  sudo xbps-install -y xcb-util-renderutil-devel
+  sudo xbps-install -y xcb-util-image-devel
+  sudo xbps-install -y xcb-util-composite-devel
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse ninja
   sudo emerge --update --newuse uthash
