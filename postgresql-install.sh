@@ -46,6 +46,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo fuser 5432/tcp
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y postgresql
+  sudo sv status postgresql
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg install postgresql
   sudo -u postgres sh -c 'initdb -D /var/lib/postgres/data'

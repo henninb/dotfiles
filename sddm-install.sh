@@ -69,6 +69,8 @@ elif [ "${OS}" = "Ubuntu" ]; then
   sudo apt install -y sddm
   sudo mkdir -p /etc/sddm.conf.d/
   sudo mv -v sddm-theme.conf /etc/sddm.conf.d/
+  # sudo sv enable sddm
+  sudo ln -s /etc/sv/sddm /var/service/
 elif [ "${OS}" = "FreeBSD" ]; then
   sudo pkg install -y sddm
   sudo pkg install -y sysrc
