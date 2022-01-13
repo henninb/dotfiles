@@ -4,10 +4,9 @@
 
 sudo pacman --noconfirm --needed -S fakeroot
 sudo pacman --noconfirm --needed -S rpm
+sudo xbps-install -y rpm
 
 wget 'https://github.com/fastly/cli/releases/download/v1.4.0/fastly_1.4.0_linux_amd64.rpm' -O "$HOME/projects/fastly_1.4.0_linux_amd64.rpm"
-
-exit 1
 
 # wget 'https://github.com/fastly/cli/archive/refs/tags/v1.4.0.tar.gz' -O ~/projects/fastly-v1.4.0.tar.gz
 # cd ~/projects/ || exit
