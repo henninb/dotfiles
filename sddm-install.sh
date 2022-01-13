@@ -61,8 +61,8 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   systemctl --user stop xdg-desktop-portal
   systemctl --user disable xdg-desktop-portal{,gtk}
   systemctl --user disable xdg-desktop-portal
-
-
+elif [ "${OS}" = "void" ]; then
+  echo
 elif [ "${OS}" = "Ubuntu" ]; then
   sudo apt install -y sddm
 elif [ "${OS}" = "FreeBSD" ]; then
