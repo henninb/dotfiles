@@ -16,6 +16,7 @@ elif [ "$OS" = "Solus" ]; then
   echo
 elif [ "$OS" = "void" ]; then
   echo
+  sudo xbps-install -y wget
 elif [ "$OS" = "Fedora" ]; then
   echo
   #sudo dnf install rxvt-unicode

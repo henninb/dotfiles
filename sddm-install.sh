@@ -46,6 +46,7 @@ DisplayCommand=/etc/sddm/scripts/Xsetup
 HideUsers=""
 EOF
 
+sudo mkdir -p /usr/share/xsessions/
 sudo cp -v xmonad.desktop /usr/share/xsessions/
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
@@ -62,9 +63,12 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   systemctl --user disable xdg-desktop-portal{,gtk}
   systemctl --user disable xdg-desktop-portal
 elif [ "${OS}" = "void" ]; then
-  echo
+  sudo xbps-install -y sddm
+#  sudo sudo mv -v Xsetup /etc/sddm/scripts/Xsetup
 elif [ "${OS}" = "Ubuntu" ]; then
   sudo apt install -y sddm
+  sudo mkdir -p /etc/sddm.conf.d/
+  sudo mv -v sddm-theme.conf /etc/sddm.conf.d/
 elif [ "${OS}" = "FreeBSD" ]; then
   sudo pkg install -y sddm
   sudo pkg install -y sysrc
@@ -92,6 +96,6 @@ else
   exit 1
 fi
 
-homectl inspect henninb
+# homectl inspect henninb
 
 exit 0

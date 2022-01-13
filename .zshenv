@@ -55,6 +55,10 @@ export OS_VER
 
 JAVA_TOOL_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
 
+if ! tput bold; then
+  export TERM=xterm-256color
+fi
+
 if [[ $- == *i* ]]; then
   # Start blinking
   LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
