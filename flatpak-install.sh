@@ -28,6 +28,8 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   echo "flatpak run com.visualstudio.code"
   #flatpak install
   sudo apt install -y flatpak
+elif [ "$OS" = "void" ]; then
+  sudo xbps-install -y flatpak
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y flatpak
 elif [ "$OS" = "Gentoo" ]; then
