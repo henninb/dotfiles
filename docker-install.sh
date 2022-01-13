@@ -26,6 +26,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   #sudo firewall-cmd --reload
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y docker-compose
+  sudo xbps-install -y docker
   sudo usermod -aG docker "$USER"
   sudo ln -s /etc/sv/docker /var/service/
   sudo sv up docker
