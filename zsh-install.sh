@@ -67,7 +67,7 @@ git clone --recursive https://github.com/eendroroy/zed-zsh "$HOME/plugins/zed-zs
 
 git clone https://github.com/zsh-users/zsh-history-substring-search.git "$HOME/plugins/zsh-history-substring-search"
 
-git clone https://github.com:hkupty/ssh-agent.git "$HOME/plugins/ssh-agent"
+git clone https://github.com/hkupty/ssh-agent.git "$HOME/plugins/ssh-agent"
 
 git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
 $HOME/.fzf/install --key-bindings --completion --no-update-rc
@@ -80,7 +80,7 @@ git submodule update --init --recursive
 cd - || exit
 
 # git clone https://github.com:agnoster/agnoster-zsh-theme.git "$HOME/themes/agnoster-zsh-theme"
-git clone https://github.com:dracula/zsh.git "$HOME/themes/dracula-zsh-theme"
+git clone https://github.com/dracula/zsh.git "$HOME/themes/dracula-zsh-theme"
 
 [ -s "/usr/bin/zsh" ] && sudo usermod -s /usr/bin/zsh "$(whoami)"
 [ -s "/usr/bin/zsh" ] && sudo chsh -s /usr/bin/zsh "$(whoami)"
