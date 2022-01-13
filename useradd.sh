@@ -44,6 +44,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo usermod -a -G tty "$(id -un)"
   sudo usermod -a -G docker "$(id -un)"
   sudo usermod -a -G realtime "$(id -un)" # for jack
+elif [ "$OS" = "void" ]; then
+  sudo usermod -a -G libvirt "$(id -un)"
 elif [ "$OS" = "OpenBSD" ]; then
   useradd -m henninb
   user mod -G wheel henninb

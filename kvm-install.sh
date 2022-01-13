@@ -35,7 +35,14 @@ if [ "$OS" = "Linux Mint" ] || [  "$OS" = "Ubuntu" ]; then
   sudo apt install -y qemu-utils
   virsh -c qemu:///system list
 elif [ "$OS" = "void" ]; then
-  echo
+  sudo xbps-install -y libvirt
+  sudo xbps-install -y qemu
+  sudo xbps-install -y virt-manager
+  sudo xbps-install -y virt-install
+  sudo usermod -a -G libvirt "$(id -un)"
+  sudo ln -s /etc/sv/libvirtd /var/service/libvirtd
+  sudo sv start libvirtd
+  virsh -c qemu:///system list
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y qemu-kvm
   sudo zypper install -y libvirt-daemon-system
