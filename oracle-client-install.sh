@@ -6,6 +6,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S libnsl
 elif [ "$OS" = "Gentoo" ]; then
   echo noop
+elif [ "$OS" = "void" ]; then
+  sudo xbps-install -y rpm
 elif [ "$OS" = "Darwin" ]; then
   echo noop
 elif [ "$OS" = "Fedora" ]; then
