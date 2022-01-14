@@ -10,6 +10,8 @@ elif [ "$OS" = "void" ]; then
   # sudo xbps-install -y ConsoleKit2
   sudo xbps-install -y pulseaudio
   sudo xbps-install -y alsa-utils
+  sudo xbps-install -y mpg123
+  sudo xbps-install -y sox
 elif [ "$OS" = "Fedora" ]; then
   echo
 elif [ "$OS" = "Solus" ]; then
@@ -47,5 +49,7 @@ echo disable module-suspend-on-idle
 echo #load-module module-suspend-on-idle
 
 echo pavucontrol
+scp plex:/opt/plexmedia/music/Yes_-_Roundabout.mp3 .
+echo mpg123 Yes_-_Roundabout.mp3
 
 exit 0
