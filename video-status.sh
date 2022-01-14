@@ -16,6 +16,7 @@ sudo apt install -y vulkan-utils
 
 echo "i believe this is for AMD graphics cards"
 echo sudo pacman --noconfirm --needed -S vulkan-radeon
+echo sudo xbps-install -y xf86-video-amdgpu
 
 echo "session info"
 loginctl session-status

@@ -6,7 +6,10 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S alsa-utils
   sudo pacman --noconfirm --needed -S pulseaudio
 elif [ "$OS" = "void" ]; then
-  sudo xbps-install -S ConsoleKit2 pulseaudio alsa-utils
+  sudo xbps-install -y pavucontrol
+  sudo xbps-install -y ConsoleKit2
+  sudo xbps-install -y pulseaudio
+  sudo xbps-install -y alsa-utils
 elif [ "$OS" = "Fedora" ]; then
   echo
 elif [ "$OS" = "Solus" ]; then
@@ -35,6 +38,7 @@ fi
 
 pactl list short sinks
 echo pactl set-default-sink 'alsa_output.usb-Plantronics_Plantronics_BT600_2b33411b5e47614eae3d175f542553a4-00.analog-stereo'
+echo pactl set-default-sink 'alsa_output.usb-Blue_Microphones_Yeti_Stereo_Microphone_TS_2018_02_02_61506-00.analog-stereo'
 
 
 echo pulseaudio sink always suspended
