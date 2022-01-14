@@ -38,6 +38,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y libvirt
   sudo xbps-install -y qemu
   sudo xbps-install -y virt-manager
+  sudo xbps-install -y virt-viewer
   sudo xbps-install -y virt-install
   sudo usermod -a -G libvirt "$(id -un)"
   sudo ln -s /etc/sv/libvirtd /var/service/libvirtd
