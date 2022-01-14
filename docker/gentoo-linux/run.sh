@@ -1,10 +1,8 @@
 #!/bin/sh
 
 cp ~/.ssh/id_rsa .
-if ! sudo docker build -t gentoobox .; then
-  echo debugging
-  sudo docker build -t gentoobox -f Dockerfile.debug .
-fi
+docker build -t gentoobox -f Dockerfile .
+
 rm -rf id_rsa
 sudo docker stop gentoobox
 sudo docker rm gentoobox -f
