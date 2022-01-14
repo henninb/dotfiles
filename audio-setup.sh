@@ -7,7 +7,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S pulseaudio
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y pavucontrol
-  sudo xbps-install -y ConsoleKit2
+  # sudo xbps-install -y ConsoleKit2
   sudo xbps-install -y pulseaudio
   sudo xbps-install -y alsa-utils
 elif [ "$OS" = "Fedora" ]; then
