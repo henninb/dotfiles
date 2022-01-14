@@ -33,7 +33,9 @@ elif [ "$OS" = "void" ]; then
   ./xbps-src binary-bootstrap
   mv -v "$HOME/brave-bin" srcpkgs
   ./xbps-src pkg brave-bin
-xi brave-bin
+  xi brave-bin
+  echo if fails change the checksum to lower case
+  sudo ln -s /usr/sbin/brave-browser-stable /usr/sbin/brave-browser
 elif [ "$OS" = "fedora" ]; then
   sudo dnf install dnf-plugins-core
   sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/

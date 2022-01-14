@@ -44,6 +44,10 @@ ReuseSession=true
 DisplayCommand=/etc/sddm/scripts/Xsetup
 [Users]
 HideUsers=""
+
+[Autologin]
+User=henninb
+Session=xmonad
 EOF
 
 sudo mkdir -p /usr/share/xsessions/
@@ -64,13 +68,15 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   systemctl --user disable xdg-desktop-portal
 elif [ "${OS}" = "void" ]; then
   sudo xbps-install -y sddm
+  sudo mkdir -p /etc/sddm.conf.d/
+  sudo ln -s /etc/sv/sddm /var/service/sddm
+  sudo ln -s /etc/sv/dbus /var/service/dbus
+  sudo mv -v sddm.conf /etc/sddm.conf
 #  sudo sudo mv -v Xsetup /etc/sddm/scripts/Xsetup
 elif [ "${OS}" = "Ubuntu" ]; then
   sudo apt install -y sddm
   sudo mkdir -p /etc/sddm.conf.d/
   sudo mv -v sddm-theme.conf /etc/sddm.conf.d/
-  sudo ln -s /etc/sv/sddm /var/service/sddm
-  sudo ln -s /etc/sv/dbus /var/service/dbus
 elif [ "${OS}" = "FreeBSD" ]; then
   sudo pkg install -y sddm
   sudo pkg install -y sysrc
