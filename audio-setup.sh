@@ -18,6 +18,8 @@ elif [ "$OS" = "void" ]; then
   echo .ifexists module-console-kit.so
   echo load-module module-console-kit
   echo .endif
+  echo pulseaudio --daemonize=no --exit-idle-time=-1
+  sudo usermod -a -G audio "$(id -un)"
 elif [ "$OS" = "Fedora" ]; then
   echo
 elif [ "$OS" = "Solus" ]; then
@@ -44,16 +46,18 @@ if ! pgrep pulseaudio; then
   pulseaudio --start
 fi
 
+echo pactl list short sinks
 pactl list short sinks
-echo pactl set-default-sink 'alsa_output.usb-Plantronics_Plantronics_BT600_2b33411b5e47614eae3d175f542553a4-00.analog-stereo'
-echo pactl set-default-sink 'alsa_output.usb-Blue_Microphones_Yeti_Stereo_Microphone_TS_2018_02_02_61506-00.analog-stereo'
+#echo pactl set-default-sink 'alsa_output.usb-Plantronics_Plantronics_BT600_2b33411b5e47614eae3d175f542553a4-00.analog-stereo'
+#echo pactl set-default-sink 'alsa_output.usb-Blue_Microphones_Yeti_Stereo_Microphone_TS_2018_02_02_61506-00.analog-stereo'
 
 pacmd list-sink-inputs | awk '/index/ {print $2}'
+echo pacmd list-sink-inputs
 pacmd list-sink-inputs
 
 echo if message pulseaudio sink always suspended
 echo sudo vim /etc/pulse/default.pa
-echo disable module-suspend-on-idle
+echo need to disable module-suspend-on-idle
 echo #load-module module-suspend-on-idle
 
 echo pavucontrol, amixer, alsamixer
