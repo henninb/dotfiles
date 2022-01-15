@@ -12,4 +12,6 @@ lsmod | grep nvidia
 
 glxinfo | grep direct
 
+nvidia-settings
+
 exit 0
