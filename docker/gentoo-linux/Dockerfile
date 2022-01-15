@@ -10,7 +10,7 @@ FROM gentoo/stage3-amd64:latest
 COPY --from=portage /var/db/repos/gentoo /var/db/repos/gentoo
 
 # RUN emerge -qv dev-vcs/git
-# RUN emerge -qv sudo
+RUN emerge -qv sudo
 # RUN emerge -qv vim
 
 RUN useradd henninb -g wheel
@@ -26,9 +26,10 @@ USER henninb
 # RUN rm -rf /home/henninb/.profile
 # RUN rm -rf /home/henninb/.bash_profile
 # RUN git init .
-# RUN git remote add origin git@github.com:BitExplorer/dotfiles.git
-# RUN git pull origin master
-# RUN git branch --set-upstream-to=origin/master master
+# RUN git remote add origin git@github.com:henninb/dotfiles.git
+# RUN git fetch --all
+# RUN git merge origin/main
+# RUN git branch --set-upstream-to=origin/main main
 # RUN mkdir -p /home/henninb/.ssh
 
 CMD ["/bin/sh"]
