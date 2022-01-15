@@ -6,10 +6,13 @@ FROM gentoo/stage3-amd64:latest
 
 # copy the entire portage volume in
 #COPY --from=portage /usr/portage /usr/portage
+# COPY --from=portage /usr/portage /var/db/repos/gentoo
+COPY --from=portage /var/db/repos/gentoo /var/db/repos/gentoo
 
 # RUN emerge -qv dev-vcs/git
 # RUN emerge -qv sudo
 # RUN emerge -qv vim
+
 RUN useradd henninb -g wheel
 RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers
 
