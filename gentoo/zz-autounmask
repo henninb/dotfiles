@@ -4,7 +4,7 @@
 >=app-text/xmlto-0.0.28-r3 text
 >=dev-db/sqlite-3.29.0 secure-delete
 >=dev-lang/python-2.7.15:2.7 sqlite
->=dev-lang/python-3.6.5 sqlite
+>=dev-lang/python-3.10.0 sqlite
 >=dev-libs/libpcre2-10.32 pcre16
 >=dev-libs/libpcre2-10.32 pcre32
 >=dev-libs/libusb-1.0.21-r1 udev
@@ -59,3 +59,18 @@ app-emacs/emacs-common gui
 app-emulation/virt-manager usbredir spice
 >=dev-cpp/gtkmm-3.24:3.0 X
 >=media-sound/pulseaudio-15.0-r1 dbus
+#app-containers/docker-compose python_targets_python3_9
+#app-portage/layman python_targets_python3_9
+#dev-java/java-config python_targets_python3_9
+#dev-python/libvirt-python python_targets_python3_9
+#net-firewall/ufw python_targets_python3_9
+#sys-apps/portage python_targets_python3_9
+#sys-fs/zfs python_targets_python3_9
+#dev-libs/libxml2 python_targets_python3_9
+#dev-python/docutils python_targets_python3_9
+#dev-util/meson python_targets_python3_9
+#dev-util/meson-format-array python_targets_python3_9
+#x11-base/xcb-proto python_targets_python3_9
+#dev-libs/newt python_targets_python3_9
+#app-emulation/qemu python_targets_python3_9
+#dev-lang/python-exec  python_targets_python3_9
