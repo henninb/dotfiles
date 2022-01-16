@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo sudo emerge x11-drivers/nvidia-drivers
+echo sudo emerge --update --newuse x11-drivers/nvidia-drivers
 
 sudo pacman -S nvidia lib32-nvidia-utils
 sudo emerge --update --newuse media-libs/vulkan-loader
