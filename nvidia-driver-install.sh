@@ -1,5 +1,11 @@
 #!/bin/sh
 
+sudo xbps-install -y xtools
+git clone git@github.com:void-linux/void-packages.git
+cd void-packages || exit
+./xbps-src binary-bootstrap
+./xbps-src pkg nvidia
+xi nvidia
 echo sudo emerge --update --newuse x11-drivers/nvidia-drivers
 
 sudo pacman -S nvidia lib32-nvidia-utils
