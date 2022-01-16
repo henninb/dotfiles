@@ -1,8 +1,30 @@
-remote_id=$(
-    xinput list |
-    sed -n 's/.*SINO WEALTH Mechanical Keyboard.*id=\([0-9]*\).*keyboard.*/\1/p'
-)
-[ "$remote_id" ] || exit
+#!/bin/sh
+
+cat > 99-usb-kbd.rules <<EOF
+ACTION=="add", ATTRS{idVendor}=="258a", ATTRS{idProduct}=="0090", ENV{XKBLAYOUT}="us", ENV{XKBOPTIONS}="altwin:swap_alt_win"
+EOF
+
+sudo mkdir -p /etc/udev/rules.d/
+lsusb | grep 'Mechanical Keyboard'
+# echo Bus 002 Device 012: ID 258a:0090 SINO WEALTH Mechanical Keyboard
+
+sudo xbps-install setxkbmap
+sudo xbps-install xinput
+
+
+xinput | grep -i 'Mechanical Keyboard'
+sudo cp 99-usb-kbd.rules  /etc/udev/rules.d/
+
+# remote_id=$(
+#     xinput list |
+#     sed -n 's/.*SINO WEALTH Mechanical Keyboard.*id=\([0-9]*\).*keyboard.*/\1/p'
+# )
+# [ "$remote_id" ] || exit
+echo setxkbmap -device 9 -option altwin:swap_alt_win
+echo setxkbmap -device 15 -option altwin:swap_alt_win
+echo setxkbmap -device 16 -option altwin:swap_alt_win
+
+exit 0
 
 # remap the following keys, only for my custom vintage atari joystick connected
 # through an old USB keyboard:
