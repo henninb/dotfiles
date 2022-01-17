@@ -4,8 +4,17 @@ cat > 99-usb-kbd.rules <<EOF
 ACTION=="add", ATTRS{idVendor}=="258a", ATTRS{idProduct}=="0090", ENV{XKBLAYOUT}="us", ENV{XKBOPTIONS}="altwin:swap_alt_win"
 EOF
 
-cat > 98-usb-kbd.rules <<EOF
-ACTION=="add", ATTRS{idVendor}=="258a", ATTRS{idProduct}=="0090", RUN+="/home/henninb/keyboard-dierya.sh"
+cat > 98-dierya-kbd.rules <<EOF
+# ACTION=="add", ATTRS{idVendor}=="258a", ATTRS{idProduct}=="0090", RUN+="/home/henninb/keyboard-dierya.sh"
+ACTION=="add", ATTRS{idVendor}=="258a", ATTRS{idProduct}=="0090", RUN+="/usr/local/bin/dierya"
+EOF
+
+cat > dierya << 'EOF'
+export DISPLAY=:0
+ids=$(xinput -list | grep "SINO WEALTH Mechanical Keyboard" | grep -v pointer | awk -F'=' '{print $2}' | cut -c 1-2)
+for ID in $ids; do
+  setxkbmap -device "${ID}" -option altwin:swap_alt_win
+done
 EOF
 
 sudo mkdir -p /etc/udev/rules.d/
@@ -13,9 +22,11 @@ sudo mkdir -p /etc/udev/rules.d/
 sudo xbps-install setxkbmap
 sudo xbps-install xinput
 
+chmod 755 dierya
 # xinput | grep -i 'Mechanical Keyboard'
-sudo cp 99-usb-kbd.rules  /etc/udev/rules.d/
-sudo cp 98-usb-kbd.rules  /etc/udev/rules.d/
+sudo mv -v 99-usb-kbd.rules  /etc/udev/rules.d/
+sudo mv -v 98-dierya-kbd.rules  /etc/udev/rules.d/
+sudo mv -v dierya /usr/local/bin/
 
 sudo udevadm control --reload-rules
 # [ "$remote_id" ] || exit
@@ -23,17 +34,14 @@ sudo udevadm control --reload-rules
 # echo setxkbmap -device 15 -option altwin:swap_alt_win
 # echo setxkbmap -device 16 -option altwin:swap_alt_win
 
-
 export XAUTHORITY=/home/henninb/.Xauthority
 export DISPLAY=:0
 export HOME=/home/henninb
 
 echo "$(date) keyboard-setup-called" >> /tmp/keyboard.txt
 ids=$(xinput -list | grep "SINO WEALTH Mechanical Keyboard" | grep -v pointer | awk -F'=' '{print $2}' | cut -c 1-2)
-echo "ids '$ids'" >> /tmp/keyboard.txt
 for ID in $ids; do
   setxkbmap -device "${ID}" -option altwin:swap_alt_win
-  echo $ID >> /tmp/keyboard.txt
 done
 
 echo udevadm monitor --udev
