@@ -4,6 +4,10 @@ cat > 99-usb-kbd.rules <<EOF
 ACTION=="add", ATTRS{idVendor}=="258a", ATTRS{idProduct}=="0090", ENV{XKBLAYOUT}="us", ENV{XKBOPTIONS}="altwin:swap_alt_win"
 EOF
 
+cat > 98-usb-kbd.rules <<EOF
+ACTION=="add", ATTRS{idVendor}=="258a", ATTRS{idProduct}=="0090", RUN+="/home/henninb/keyboard-dierya.sh"
+EOF
+
 sudo mkdir -p /etc/udev/rules.d/
 lsusb | grep 'Mechanical Keyboard'
 # echo Bus 002 Device 012: ID 258a:0090 SINO WEALTH Mechanical Keyboard
@@ -12,8 +16,9 @@ sudo xbps-install setxkbmap
 sudo xbps-install xinput
 
 
-xinput | grep -i 'Mechanical Keyboard'
+# xinput | grep -i 'Mechanical Keyboard'
 sudo cp 99-usb-kbd.rules  /etc/udev/rules.d/
+sudo cp 98-usb-kbd.rules  /etc/udev/rules.d/
 
 sudo udevadm control --reload-rules
 # remote_id=$(
@@ -21,14 +26,16 @@ sudo udevadm control --reload-rules
 #     sed -n 's/.*SINO WEALTH Mechanical Keyboard.*id=\([0-9]*\).*keyboard.*/\1/p'
 # )
 # [ "$remote_id" ] || exit
-echo setxkbmap -device 9 -option altwin:swap_alt_win
-echo setxkbmap -device 15 -option altwin:swap_alt_win
-echo setxkbmap -device 16 -option altwin:swap_alt_win
+# echo setxkbmap -device 9 -option altwin:swap_alt_win
+# echo setxkbmap -device 15 -option altwin:swap_alt_win
+# echo setxkbmap -device 16 -option altwin:swap_alt_win
 
+echo "$(date) keyboard-setup-called" >> /tmp/keyboard.txt
 ids=$(xinput -list | grep "SINO WEALTH Mechanical Keyboard" | grep -v pointer | awk -F'=' '{print $2}' | cut -c 1-2)
+echo "ids '$ids'" >> /tmp/keyboard.txt
 for ID in $ids; do
   setxkbmap -device "${ID}" -option altwin:swap_alt_win
-  echo $ID
+  echo $ID >> /tmp/keyboard.txt
 done
 
 exit 0
