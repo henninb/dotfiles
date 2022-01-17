@@ -15,6 +15,7 @@ sudo xbps-install xinput
 xinput | grep -i 'Mechanical Keyboard'
 sudo cp 99-usb-kbd.rules  /etc/udev/rules.d/
 
+sudo udevadm control --reload-rules
 # remote_id=$(
 #     xinput list |
 #     sed -n 's/.*SINO WEALTH Mechanical Keyboard.*id=\([0-9]*\).*keyboard.*/\1/p'
@@ -23,6 +24,12 @@ sudo cp 99-usb-kbd.rules  /etc/udev/rules.d/
 echo setxkbmap -device 9 -option altwin:swap_alt_win
 echo setxkbmap -device 15 -option altwin:swap_alt_win
 echo setxkbmap -device 16 -option altwin:swap_alt_win
+
+ids=$(xinput -list | grep "SINO WEALTH Mechanical Keyboard" | grep -v pointer | awk -F'=' '{print $2}' | cut -c 1-2)
+for ID in $ids; do
+  setxkbmap -device "${ID}" -option altwin:swap_alt_win
+  echo $ID
+done
 
 exit 0
 
