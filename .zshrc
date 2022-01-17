@@ -340,8 +340,10 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   fi
 else
   if [ "$OSTYPE" = "linux-gnu" ]; then
-    if ! cat /sys/module/hid_apple/parameters/fnmode | grep -q 2; then
-      echo 'echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode'
+    if [ -f /sys/module/hid_apple/parameters/fnmode ]; then
+      if ! cat /sys/module/hid_apple/parameters/fnmode | grep -q 2; then
+        echo 'echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode'
+      fi
     fi
   fi
 #  export DISPLAY=localhost:10.0
