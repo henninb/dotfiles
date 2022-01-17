@@ -28,6 +28,11 @@ export CM_MAX_CLIPS=25
 # turn right alt key becomes the compose key
 # setxkbmap -option "caps:escape,compose:ralt"
 
+kbd_ids=$(xinput -list | grep "SINO WEALTH Mechanical Keyboard" | grep -v pointer | awk -F'=' '{print $2}' | cut -c 1-2)
+for kbd_id in $kbd_ids; do
+  setxkbmap -device "${kbd_id}" -option altwin:swap_alt_win
+done
+
 # swap the alt and windows keys on my K-63 keyboard
 # turn the capslock key to be an escape key
 # setxkbmap -device 9 -option "altwin:swap_alt_win,caps:escape"
