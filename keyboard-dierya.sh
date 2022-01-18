@@ -20,6 +20,7 @@ sudo mkdir -p /etc/udev/rules.d/
 
 sudo xbps-install setxkbmap
 sudo xbps-install xinput
+sudo xbps-install xmodmap
 
 chmod 755 dierya
 # xinput | grep -i 'Mechanical Keyboard'
