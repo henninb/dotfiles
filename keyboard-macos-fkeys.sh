@@ -44,7 +44,12 @@ if [ ! -f "/etc/X11/xorg.conf.d/00-keyboard.conf" ]; then
   sudo mv -v 00-keyboard.conf /etc/X11/xorg.conf.d/
 fi
 
+echo map f8 to Insert and f8
 echo xmodmap -e "keycode 74 = Insert F8"
+
 echo "Function Shift Return is the shift-insert feature on mocos keyboards"
+
+echo map f9 key to the insert key
+echo xmodmap -e "keycode 75 = Insert Insert"
 
 exit 0

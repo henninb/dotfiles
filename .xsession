@@ -24,6 +24,7 @@ export CM_DEBUG=0
 export CM_OUTPUT_CLIP=1
 export CM_MAX_CLIPS=25
 
+xmodmap -e "keycode 169 = Insert"
 # turn the capslock key to be an escape key
 # turn right alt key becomes the compose key
 # setxkbmap -option "caps:escape,compose:ralt"
