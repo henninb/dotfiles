@@ -45,5 +45,6 @@ if [ ! -f "/etc/X11/xorg.conf.d/00-keyboard.conf" ]; then
 fi
 
 echo xmodmap -e "keycode 74 = Insert F8"
+echo "Function Shift Return is the shift-insert feature on mocos keyboards"
 
 exit 0
