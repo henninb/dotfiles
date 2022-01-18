@@ -29,11 +29,11 @@ sudo udevadm control --reload-rules
 export XAUTHORITY=/home/henninb/.Xauthority
 export DISPLAY=:0
 
-echo "$(date) keyboard-setup-called" >> /tmp/keyboard.txt
-kbd_ids=$(xinput -list | grep "SINO WEALTH Mechanical Keyboard" | grep -v pointer | awk -F'=' '{print $2}' | cut -c 1-2)
-for kbd_id in $kbd_ids; do
-  setxkbmap -device "${kbd_id}" -option altwin:swap_alt_win
-done
+# echo "$(date) keyboard-setup-called" >> /tmp/keyboard.txt
+# kbd_ids=$(xinput -list | grep "SINO WEALTH Mechanical Keyboard" | grep -v pointer | awk -F'=' '{print $2}' | cut -c 1-2)
+# for kbd_id in $kbd_ids; do
+#   setxkbmap -device "${kbd_id}" -option altwin:swap_alt_win
+# done
 
 echo udevadm monitor --udev
 echo "lsusb | grep 'Mechanical Keyboard'"
