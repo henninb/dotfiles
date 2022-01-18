@@ -40,7 +40,13 @@ Each keysym column in the table corresponds to a particular combination of modif
 xmodmap -e "keycode 75 = Insert Insert Insert Insert Insert Insert"
 ```
 
-# eject key on the mac keyboard becomes insert
+# eject key maps to insert
 ```
 xmodmap -e "keycode 169 = Insert"
+```
+
+
+# capslock key maps to escape
+```
+xmodmap -e "keycode 66 = Escape"
 ```

@@ -1,5 +1,19 @@
+! get keycodes with xev
+! Each keysym column in the table corresponds to a particular combination of modifier keys:
+
+! 1. Key
+! 2. Shift+Key
+! 3. mode_switch+Key
+! 4. mode_switch+Shift+Key
+! 5. AltGr+Key
+! 6. AltGr+Shift+Key
+
 keycode 144 = XF86AudioMute
 keycode 174 = XF86AudioLowerVolume
 keycode 176 = XF86AudioRaiseVolume
 keycode 162 = XF86AudioPlay
-keycode 169 = Delete
+! eject key is mapped to the insert function
+keycode 169 = Insert
+! capslock key is mapped to the escape key
+clear Lock
+keycode 66 = Escape
