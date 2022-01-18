@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat > 99-usb-kbd.rules <<EOF
+cat > 99-dierya-kbd.rules <<EOF
 ACTION=="add", ATTRS{idVendor}=="258a", ATTRS{idProduct}=="0090", ENV{XKBLAYOUT}="us", ENV{XKBOPTIONS}="altwin:swap_alt_win"
 EOF
 
@@ -18,21 +18,13 @@ EOF
 
 sudo mkdir -p /etc/udev/rules.d/
 
-sudo xbps-install setxkbmap
-sudo xbps-install xinput
-sudo xbps-install xmodmap
-
 chmod 755 dierya
 # xinput | grep -i 'Mechanical Keyboard'
-sudo mv -v 99-usb-kbd.rules  /etc/udev/rules.d/
+sudo mv -v 99-dierya-kbd.rules  /etc/udev/rules.d/
 sudo mv -v 98-dierya-kbd.rules  /etc/udev/rules.d/
 sudo mv -v dierya /usr/local/bin/
 
 sudo udevadm control --reload-rules
-# [ "$remote_id" ] || exit
-# echo setxkbmap -device 9 -option altwin:swap_alt_win
-# echo setxkbmap -device 15 -option altwin:swap_alt_win
-# echo setxkbmap -device 16 -option altwin:swap_alt_win
 
 export XAUTHORITY=/home/henninb/.Xauthority
 export DISPLAY=:0
