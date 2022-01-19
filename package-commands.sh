@@ -6,6 +6,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   echo list all packages
   echo pacman -Q
+  echo sudo pacman -S nvidia-utils --overwrite '*'
   echo sudo pacman -R package_name
   echo sudo pacman -Rsnc package_name
   echo pacman -Ss package_name
