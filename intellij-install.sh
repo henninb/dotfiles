@@ -38,6 +38,7 @@ rm -rf "$HOME/.java/.userPrefs/jetbrains"
 
 VER=$(curl -s 'https://data.services.jetbrains.com/products/releases?code=IIU&latest=true&type=release&build=&_=1581558835218' | jq '.IIU[0] .version' | cut -d \" -f2)
 
+VER=2021.2.1
 # if  [ ! -z "$VER_OVERRIDE" ]; then
 #   VER=${VER_OVERRIDE}
 # fi
