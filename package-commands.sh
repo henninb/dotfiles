@@ -28,6 +28,7 @@ elif [ "$OS" = "Gentoo" ]; then
   echo sudo emerge --update --newuse package_name
   echo sudo emerge --deselect package_name
   echo sudo emerge -C package_name
+  echo sudo emerge -pv dev-lang/python-exec
 else
   echo "$OS is not yet implemented."
   exit 1
