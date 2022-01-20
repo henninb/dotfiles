@@ -17,7 +17,8 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo mkdir -p /etc/portage/repos.conf
   sudo emerge --update --newuse app-eselect/eselect-repository
   sudo emerge --update --newuse layman
-  sudo layman -L brave-overlay
+  #sudo layman -L brave-overlay
+  sudo layman -L | grep brave-overlay
   sudo layman -a brave-overlay
   sudo eselect repository enable brave-overlay
   # sudo emerge --sync
