@@ -39,6 +39,7 @@ elif [ "$OS" = "Gentoo" ]; then
   # sudo mv flatpak-overlay.conf /etc/portage/repos.conf/flatpak-overlay.conf
   # sudo emaint -r flatpak-overlay sync
   # sudo emerge --sync
+  sudo emerge --update --newuse json-glib
   sudo emerge --update --newuse flatpak
   sudo usermod -a -G flatpak henninb
   # wget https://flathub.org/repo/appstream/com.valvesoftware.Steam.flatpakref
