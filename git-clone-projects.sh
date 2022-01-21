@@ -27,7 +27,7 @@ for i in $PLUGINS; do
   git fetch
 done
 
-THEME="agnoster-zsh-theme alien dracula-zsh-theme spaceship-prompt"
+THEME="alien dracula-zsh-theme spaceship-prompt"
 for i in $THEME; do
   cd "$HOME/themes/$i" || exit
   git fetch
