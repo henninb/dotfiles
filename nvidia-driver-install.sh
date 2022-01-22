@@ -1,6 +1,7 @@
 #!/bin/sh
 
 if [ "$OS" = "Gentoo" ]; then
+  echo eselect kernel list
   echo sudo emerge --update --newuse x11-drivers/nvidia-drivers
   echo sudo emerge --update --newuse media-libs/vulkan-loader
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
