@@ -2,8 +2,10 @@
 
 if [ "$OS" = "Gentoo" ]; then
   echo eselect kernel list
+  echo sudo emerge --update --newuse linux-headers
   echo sudo emerge --update --newuse x11-drivers/nvidia-drivers
   echo sudo emerge --update --newuse media-libs/vulkan-loader
+  sudo cp -v nvidia-installer-disable-nouveau.conf /etc/modprobe.d/
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman -S nvidia lib32-nvidia-utils  --overwrite '*'
 elif [ "$OS" = "void" ]; then
