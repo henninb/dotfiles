@@ -255,4 +255,6 @@ keybinds conf = let
   , ("M-C-<Left>", NamedActions.addName "" $ sendMessage (DecreaseLeft 10))
   , ("M-S-h", NamedActions.addName "" $ sendMessage Shrink)
   , ("M-S-l", NamedActions.addName "" $ sendMessage Expand)
+  -- , ("M-t", withFocused $ windows . W.sink)
+  , ("M-t", NamedActions.addName "" $ withFocused $ windows . W.sink)
    ]
