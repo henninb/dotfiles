@@ -4,8 +4,9 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y alien fakeroot
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S libnsl
+  sudo pacman --noconfirm --needed -S rpm
 elif [ "$OS" = "Gentoo" ]; then
-  echo noop
+  sudo emerge --update --newuse rpm
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y rpm
 elif [ "$OS" = "Darwin" ]; then
