@@ -374,4 +374,7 @@ echo stack exec ghc-pkg check
 
 echo "install failures = $failures"
 
+cd .xmonad || exit
+./build
+
 exit 0
