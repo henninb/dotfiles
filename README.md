@@ -152,6 +152,7 @@
 | ctags                  | ctags-universal                                                                      |
 | gui-cert management    | xca                                                                                  |
 | security tool          | yubioath-desktop                                                                     |
+| phone file transfer    | kdeconnect                                                                           |
 
 ## Language Servers
 - c - ccls
