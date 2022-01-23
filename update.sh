@@ -55,10 +55,15 @@ elif [ "$OS" = "Gentoo" ]; then
   #sudo emerge --update --newuse --deep @world 2>&1 | tee -a update-$$.log
   sudo emerge -uDN --keep-going --with-bdeps=y @world 2>&1 | tee -a update-$$.log
   sudo emerge --depclean 2>&1 | tee -a update-$$.log
+  sudo revdep-rebuild
   echo sudo emerge @preserved-rebuild
   echo eselect editor list
+  echo eselect kernel list
+  echo eselect python list
+  echo eselect java list
   echo emerge --depclean -p
   echo sudo etc-update
+  echo revdep-rebuild
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
     sudo dnf update -y
