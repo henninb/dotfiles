@@ -25,6 +25,9 @@ sudo cp -v make.conf /etc/portage/make.conf
 sudo cp -v /etc/portage/package.unmask /etc/portage/package.unmask.bak.$$
 sudo cp -v package.unmask /etc/portage/package.unmask
 
+sudo cp -v /etc/portage/package.use/steam /tmp/steam.bak.$$
+sudo cp -v steam /etc/portage/package.use/steam
+
 # echo "ruby_targets_ruby27" | sudo tee -a /etc/portage/use.mask
 
 #sudo mkdir -p /usr/portage/local/profiles

@@ -85,3 +85,6 @@ x11-misc/lightdm-slick-greeter **
 =dev-lang/smlnj-110.82 ~amd64
 =net-wireless/bluez-tools-0_p20161212 ~amd64
 =lxde-base/lxappearance-0.6.3-r2 ~amd64
+#dev-python/setuptool ~amd64
+*/*::steam-overlay
+*/*::brave-overlay

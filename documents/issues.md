@@ -573,3 +573,17 @@ Jan 11 05:43:23 arcolinux pipewire-media-session[5177]: ms.core: error id:70 seq
 Jan 11 05:43:23 arcolinux kernel: usb 3-8.2: Failed to query (GET_DEF) UVC control 7 on unit 2: -110 (exp. 2).
 
 sudo journalctl -n 100
+
+## gentoo python and doc
+```
+dev-python/docutils:0
+
+  (dev-python/docutils-0.18.1:0/0::gentoo, ebuild scheduled for merge) USE="" ABI_X86="(64)" PYTHON_TARGETS="python3_9 (-pypy3) -python3_10 -python3_8" conflicts with
+    <dev-python/docutils-0.18[python_targets_python3_9(-)] required by (dev-python/sphinx-4.3.2:0/0::gentoo, installed) USE="-doc -latex -test" ABI_X86="(64)" PYTHON_TARGETS="python3_9 (-pypy3) -python3_10 -python3_8"
+    ^                    ^^^^
+    <dev-python/docutils-0.18[python_targets_python3_9(-)] required by (dev-python/sphinx_rtd_theme-1.0.0:0/0::gentoo, installed) USE="-test" ABI_X86="(64)" PYTHON_TARGETS="python3_9 (-pypy3) -python3_10 -python3_8"
+    ^                    ^^^^
+
+
+sudo emerge -avuND --with-bdeps=y --backtrack=75 world
+```
