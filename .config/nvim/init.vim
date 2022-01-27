@@ -38,13 +38,13 @@ endif
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 " curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
  call plug#begin(plugpath)
-   Plug 'git@github.com:tpope/vim-surround.git'
-   Plug 'git@github.com:tpope/vim-commentary.git'
+   Plug 'http://github.com/tpope/vim-surround.git'
+   Plug 'http://github.com/tpope/vim-commentary.git'
    " Plug 'vimwiki/vimwiki'
    " Plug 'vim-pandoc/vim-pandoc' " Markdown Docs in Vim
    " Plug 'vim-pandoc/vim-pandoc-syntax' " Markdown Docs in Vim
-   Plug 'git@github.com:svermeulen/vim-subversive.git' " search and replace tool
-   Plug 'git@github.com:bronson/vim-trailing-whitespace.git' " remove trailing whitespace
+   Plug 'http://github.com/svermeulen/vim-subversive.git' " search and replace tool
+   Plug 'http://github.com/bronson/vim-trailing-whitespace.git' " remove trailing whitespace
    Plug 'bluz71/vim-nightfly-guicolors'
 
 " dev plugins
@@ -53,8 +53,8 @@ endif
    " Plug 'nvim-lua/lsp-status.nvim'
    " Plug 'nvim-lua/completion-nvim'
    " Plug 'ycm-core/YouCompleteMe' "coc alternative for language server
-   Plug 'git@github.com:vim-syntastic/syntastic.git' "syntax checker for languages
-   Plug 'git@github.com:dense-analysis/ale.git' " code linter
+   Plug 'http://github.com/vim-syntastic/syntastic.git' "syntax checker for languages
+   Plug 'http://github.com/dense-analysis/ale.git' " code linter
 
    if has('nvim')
      Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -63,23 +63,23 @@ endif
        Plug 'nvim-treesitter/nvim-treesitter'
      endif
      " Plug 'fwcd/kotlin-language-server', { 'do': './gradlew :server:installDist' } " kotlin language sesrver
-     " Plug 'git@github.com:rust-lang/rust.vim.git'
-     Plug 'git@github.com:neovimhaskell/haskell-vim.git' " what does this do?
-     " Plug 'git@github.com:fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
+     " Plug 'http://github.com/rust-lang/rust.vim.git'
+     Plug 'http://github.com/neovimhaskell/haskell-vim.git' " what does this do?
+     " Plug 'http://github.com/fsharp/vim-fsharp.git', { 'for': 'fsharp', 'do':  'make fsautocomplete' }
    endif
    Plug 'sbdchd/neoformat' " for formatting code
-   Plug 'git@github.com:alvan/vim-closetag.git' "closing tags for html
-   " Plug 'git@github.com:prettier/vim-prettier.git', { 'do': 'yarn add prettier' }
+   Plug 'http://github.com/alvan/vim-closetag.git' "closing tags for html
+   " Plug 'http://github.com/prettier/vim-prettier.git', { 'do': 'yarn add prettier' }
    " Plug 'nvim-treesitter/completion-treesitter'
    " Plug 'nvim-treesitter/playground'
 
-   " Plug 'git@github.com:c-brenn/repel.nvim.git'
-   Plug 'git@github.com:scrooloose/nerdtree.git' " file manager for vim
+   " Plug 'http://github.com/c-brenn/repel.nvim.git'
+   Plug 'http://github.com/scrooloose/nerdtree.git' " file manager for vim
    " Plug 'Xuyuanp/nerdtree-git-plugin' " git integration for nerd tree
    Plug 'unblevable/quick-scope'                  "  color movements
-   Plug 'git@github.com:dhruvasagar/vim-zoom.git' "zoom window
-   Plug 'git@github.com:easymotion/vim-easymotion.git' " improvements for motions
-   Plug 'git@github.com:tpope/vim-fugitive.git'  " git integration for vim
+   Plug 'http://github.com/dhruvasagar/vim-zoom.git' "zoom window
+   Plug 'http://github.com/easymotion/vim-easymotion.git' " improvements for motions
+   Plug 'http://github.com/tpope/vim-fugitive.git'  " git integration for vim
    Plug 'airblade/vim-gitgutter'  " shows git status in the gutter of vim
    Plug 'norcalli/nvim-colorizer.lua' " tool to show colors in vim r,g,b
    Plug 'tpope/vim-abolish'
@@ -87,11 +87,11 @@ endif
    " Plug 'dracula/vim', { 'name': 'dracula' }  " theme
    " Plug 'benmills/vimux' " tmux integration
    " Plug 'kovetskiy/sxhkd-vim'
-   Plug 'git@github.com:ryanoasis/vim-devicons'
-   Plug 'git@github.com:vim-airline/vim-airline.git' " line manager
-   Plug 'git@github.com:vim-airline/vim-airline-themes' " theme for the airline line manager
+   Plug 'http://github.com/ryanoasis/vim-devicons'
+   Plug 'http://github.com/vim-airline/vim-airline.git' " line manager
+   Plug 'http://github.com/vim-airline/vim-airline-themes' " theme for the airline line manager
    " Plug 'dracula/vim', { 'as': 'dracula' }
-   " Plug 'git@github.com:itchyny/lightline.vim.git'    "line manager
+   " Plug 'http://github.com/itchyny/lightline.vim.git'    "line manager
    Plug 'mhinz/vim-startify' " start screen for vim
    " Plug 'voldikss/vim-floaterm' " embedded terminal
    " Plug 'terryma/vim-multiple-cursors'
