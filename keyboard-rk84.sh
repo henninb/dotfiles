@@ -12,7 +12,7 @@ EOF
 
 cat > rk84 << 'EOF'
 export DISPLAY=:0
-kbd_ids=$(xinput -list | grep "Compx 2.4G Wireless Receiver" | awk -F'=' '{print $2}' | cut -c 1-2)
+kbd_ids=$(xinput -list | grep "Compx 2.4G Wireless Receiver" | grep -v pointer | awk -F'=' '{print $2}' | cut -c 1-2)
 for kbd_id in $kbd_ids; do
   setxkbmap -device "${kbd_id}" -option altwin:swap_alt_win
 done
