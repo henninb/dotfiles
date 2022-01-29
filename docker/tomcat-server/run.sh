@@ -13,7 +13,7 @@ fi
 
 docker run -dit --name tomcat-server -p 8080:8080 -h tomcat-server tomcat-server
 #docker exec -it --user henninb tomcat-server /bin/bash
-docker exec -it tomcat-server /bin/bash
 echo 'http://localhost:8080/myapp/index.jsp'
+docker exec -it tomcat-server /bin/bash
 
 exit 0
