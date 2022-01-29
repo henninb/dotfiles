@@ -26,8 +26,8 @@ public class BatchExecuteService {
     public void execute() {
         System.out.println("test");
         Person person = new Person();
-        person.setFirstName("blah");
-        person.setPersonId( 54 );
+        //person.setFirstName("blah");
+        //person.setPersonId( 54 );
         personService.addPerson(person);
         System.out.println("test complete");
 //        System.exit(2);

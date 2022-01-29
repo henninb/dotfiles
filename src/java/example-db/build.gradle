@@ -99,12 +99,12 @@ sourceSets {
 
 compileKotlin {
     //kotlinOptions.jvmTarget = '11'
-    kotlinOptions.jvmTarget = '1.8'
+    kotlinOptions.jvmTarget = '11'
 }
 
 compileTestKotlin {
     //kotlinOptions.jvmTarget = '11'
-    kotlinOptions.jvmTarget = '1.8'
+    kotlinOptions.jvmTarget = '11'
 }
 
 compileJava {
