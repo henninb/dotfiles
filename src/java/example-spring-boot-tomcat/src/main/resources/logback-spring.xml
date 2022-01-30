@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
+    <springProperty scope="context" name="APPNAME" source="spring.application.name"/>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <file>${LOGS:-logs}/${APPNAME:-app-test}.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+          <fileNamePattern>${LOGS:-logs}/archive/${APPNAME:-app-test}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <!-- or whenever the file size reaches 10MB -->
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>14</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+
+        <!-- json logging -->
+        <!--  <encoder class="net.logstash.logback.encoder.LogstashEncoder"/> -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- json logging -->
+        <!--  <encoder class="net.logstash.logback.encoder.LogstashEncoder"/> -->
+        <encoder>
+          <pattern>%clr(%d{yyyy-MM-dd HH:mm:ss}){blue} %clr([%thread]){green} - %clr(%-5level){yellow} %clr(%-36.36logger{36}){cyan} - %clr(%msg){magenta}%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Async appender. This is orders of magnitude faster than sequential logging. -->
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>500</queueSize>
+        <discardingThreshold>0</discardingThreshold>
+        <includeCallerData>true</includeCallerData>
+        <!-- We're only async logging the FILE appender and not the ERROR since we shouldn't need
+             the extra speed for logging the actual errors.
+        -->
+        <appender-ref ref="FILE" />
+    </appender>
+
+    <!-- Send all our DEBUG and higher log statements to the ASYNC logger. -->
+    <logger name="example" level="INFO">
+        <appender-ref ref="ASYNC" />
+    </logger>
+
+    <logger name="org.hibernate.SQL" level="TRACE" additivity="false">
+        <appender-ref ref="ASYNC" />
+    </logger>
+
+    <!-- Log all WARN messages, regardless of source -->
+    <logger name="java" level="WARN">
+        <appender-ref ref="ASYNC" />
+    </logger>
+
+    <!-- Log all WARN messages, regardless of source -->
+    <logger name="org" level="WARN">
+        <appender-ref ref="ASYNC" />
+    </logger>
+
+    <!-- Setup the default to log INFO and above to the console -->
+    <root level="WARN">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
+
