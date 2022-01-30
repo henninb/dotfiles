@@ -13,6 +13,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Lin
   sudo apt install -y nodejs
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   echo sudo pacman --noconfirm --needed -S nodejs
+  echo sudo pacman --noconfirm --needed -S npm
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y nodejs
   echo
@@ -48,6 +49,7 @@ source ./.nvm/nvm.sh
 if ! nvm install 16.13.0; then
   sudo nvm install 16.13.0
 fi
+nvm use 16.13.0
 
 [ ! -x "$(command -v npm)" ] && echo "npm is not installed." && exit 1
 if [ ! -x "$(command -v n)" ]; then
