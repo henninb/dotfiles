@@ -7,6 +7,8 @@ if [ ! -f "apache-tomcat-${TOMCAT_VER}.tar.gz" ]; then
   curl -s "http://apache.cs.utah.edu/tomcat/tomcat-10/v${TOMCAT_VER}/bin/apache-tomcat-${TOMCAT_VER}.tar.gz" --output "apache-tomcat-${TOMCAT_VER}.tar.gz"
   sudo tar -zxvf apache-tomcat-${TOMCAT_VER}.tar.gz -C /opt
   sudo ln -sfn /opt/apache-tomcat-${TOMCAT_VER} /opt/tomcat
+  echo sudo chown -R tomcat:tomcat /opt/tomcat
+  sudo chmod a+rx -R /opt/tomcat/lib/
 fi
 
 docker stop tomcat-server
