@@ -45,6 +45,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   # sudo systemctl daemon-reload
   # sudo systemctl enable tomcat
   # sudo systemctl start tomcat
+  echo cp /opt/tomcat/lib/servlet-api.jar 'Java\jdk\jre\lib\ext'
 elif [ "$OS" = "openSUSE Leap" ]; then
   sudo zypper install curl wget
 elif [ "$OS" = "FreeBSD" ]; then
