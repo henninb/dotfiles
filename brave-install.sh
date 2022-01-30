@@ -24,8 +24,8 @@ elif [ "$OS" = "Gentoo" ]; then
   # sudo emerge --sync
   # echo "www-client/brave-bin **" | sudo tee -a /etc/portage/package.accept_keywords
   sudo emerge --update --newuse www-client/brave-bin
-  # sudo ln -s /usr/bin/brave-bin /usr/bin/brave
-  sudo ln -s /usr/bin/brave-bin /usr/bin/brave-browser
+  # sudo ln -sfn /usr/bin/brave-bin /usr/bin/brave
+  sudo ln -sfn /usr/bin/brave-bin /usr/bin/brave-browser
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y xtools
   git clone git@github.com:void-linux/void-packages.git
@@ -36,7 +36,7 @@ elif [ "$OS" = "void" ]; then
   ./xbps-src pkg brave-bin
   xi brave-bin
   echo if fails change the checksum to lower case
-  sudo ln -s /usr/sbin/brave-browser-stable /usr/sbin/brave-browser
+  sudo ln -sfn /usr/sbin/brave-browser-stable /usr/sbin/brave-browser
 elif [ "$OS" = "fedora" ]; then
   sudo dnf install dnf-plugins-core
   sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/

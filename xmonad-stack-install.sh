@@ -7,7 +7,7 @@
 
 if [ "${OS}" = "FreeBSD" ]; then
   sudo pkg install -y hs-stack
-  cd /lib && sudo ln -s libncurses.so.9 libncursesw.so.8 && sudo ldconfig -R
+  cd /lib && sudo ln -sfn libncurses.so.9 libncursesw.so.8 && sudo ldconfig -R
   sudo pkg install -y misc/compat12x
 else
   curl -sSL 'https://get.haskellstack.org' | sh
@@ -174,8 +174,8 @@ elif [ "$OS" = "FreeBSD" ]; then
   # sudo pkg install -y xz
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y cabal-install
-  sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
-  sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so
+  sudo ln -sfn /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
+  sudo ln -sfn /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so
   VOID_PKGS="xmonad pkg-config autoconf xorg-minimal xscreensaver feh xdotool w3m neofetch lxappearance volumeicon clipmenu xz make gcc gmp-devel dunst wmname alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd jq redshift conky playerctl dunst libX11-devel libXinerama-devel libXrandr-devel libuuid libXft-devel libXScrnSaver-devel dzen2 trayer-srg CopyQ NetworkManager network-manager-applet numlockx hardinfo setxkbmap xinput xmodmap"
   FAILURE=""
   for i in $VOID_PKGS; do
@@ -185,8 +185,8 @@ elif [ "$OS" = "void" ]; then
   done
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Solus" ]; then
-  sudo ln -s /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so
-  if ! sudo ln -s /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so.5.9; then
+  sudo ln -sfn /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so
+  if ! sudo ln -sfn /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so.5.9; then
     echo "Solution: error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory"
   fi
   sudo eopkg install -y gcc

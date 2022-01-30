@@ -33,10 +33,10 @@ fi
 
 cat /proc/asound/cards
 
-# sudo ln -s /etc/sv/alsa /var/service/
-# sudo ln -s /etc/sv/dbus /var/service/
-# sudo ln -s /etc/sv/cgmanager /var/service/
-# sudo ln -s /etc/sv/consolekit /var/service/
+# sudo ln -sfn /etc/sv/alsa /var/service/
+# sudo ln -sfn /etc/sv/dbus /var/service/
+# sudo ln -sfn /etc/sv/cgmanager /var/service/
+# sudo ln -sfn /etc/sv/consolekit /var/service/
 
 sudo usermod -a -G pulse-access "$(id -un)"
 sudo usermod -a -G audio "$(id -un)"

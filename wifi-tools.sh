@@ -24,8 +24,8 @@ if [ -x "$(command -v rc-service)" ]; then
   echo sudo rc-service NetworkManager start
 fi
 
-# sudo ln -s /etc/sv/NetworkManager /var/service
-# sudo ln -s /etc/sv/dbus /var/service
+# sudo ln -sfn /etc/sv/NetworkManager /var/service
+# sudo ln -sfn /etc/sv/dbus /var/service
 
 if [ -x "$(command -v nmcli)" ]; then
   nmcli device

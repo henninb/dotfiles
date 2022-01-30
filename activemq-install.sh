@@ -50,7 +50,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo pacman --noconfirm --needed -S net-tools psmisc wget curl jre8-openjdk
   sudo tar -zxvf "apache-activemq-$AMQ_VER-bin.tar.gz" -C /opt
   sudo chown -R activemq:activemq "/opt/apache-activemq-$AMQ_VER/"
-  sudo ln -s "/opt/apache-activemq-$AMQ_VER" /opt/activemq
+  sudo ln -sfn "/opt/apache-activemq-$AMQ_VER" /opt/activemq
   sudo sed -i "s/managementContext createConnector=\"false\"/managementContext createConnector=\"true\"/" /opt/activemq/conf/activemq.xml
   sudo mv -v activemq.service /usr/lib/systemd/system/activemq.service
   #sed -i "s/admin: admin, admin/admin: admin, ${ACTIVEMQ_PASSWORD}/g" /opt/activemq/conf/jetty-realm.properties
@@ -73,7 +73,7 @@ elif [ "$OS" = "openSUSE Leap" ]; then
   sudo zypper install curl wget
   sudo tar -zxvf "apache-activemq-$AMQ_VER-bin.tar.gz" -C /opt
   sudo chown -R activemq:activemq "/opt/apache-activemq-$AMQ_VER/"
-  sudo ln -s "/opt/apache-activemq-$AMQ_VER" /opt/activemq
+  sudo ln -sfn "/opt/apache-activemq-$AMQ_VER" /opt/activemq
   sudo sed -i "s/managementContext createConnector=\"false\"/managementContext createConnector=\"true\"/" /opt/activemq/conf/activemq.xml
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y activemq
@@ -101,7 +101,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo useradd -s /sbin/nologin -g activemq activemq
   sudo tar -zxvf "apache-activemq-$AMQ_VER-bin.tar.gz" -C /opt
   sudo chown -R activemq:activemq "/opt/apache-activemq-$AMQ_VER/"
-  sudo ln -s "/opt/apache-activemq-$AMQ_VER" /opt/activemq
+  sudo ln -sfn "/opt/apache-activemq-$AMQ_VER" /opt/activemq
   sudo mv -v activemq.start /etc/local.d/
   sudo mv -v activemq.stop /etc/local.d/
   sudo rc-update add activemq default
@@ -112,7 +112,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y net-tools psmisc wget curl openjdk-8-jdk
   sudo tar -zxvf "apache-activemq-$AMQ_VER-bin.tar.gz" -C /opt
   sudo chown -R activemq:activemq "/opt/apache-activemq-$AMQ_VER/"
-  sudo ln -s "/opt/apache-activemq-$AMQ_VER" /opt/activemq
+  sudo ln -sfn "/opt/apache-activemq-$AMQ_VER" /opt/activemq
   sudo sed -i "s/managementContext createConnector=\"false\"/managementContext createConnector=\"true\"/" /opt/activemq/conf/activemq.xml
   sudo mv -v activemq.service /lib/systemd/system
   #sed -i "s/admin: admin, admin/admin: admin, ${ACTIVEMQ_PASSWORD}/g" /opt/activemq/conf/jetty-realm.properties
@@ -129,7 +129,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y net-tools wget curl java-1.8.0-openjdk
   sudo tar -zxvf "apache-activemq-$AMQ_VER-bin.tar.gz" -C /opt
   sudo chown -R activemq:activemq "/opt/apache-activemq-$AMQ_VER/"
-  sudo ln -s "/opt/apache-activemq-$AMQ_VER /opt/activemq"
+  sudo ln -sfn "/opt/apache-activemq-$AMQ_VER /opt/activemq"
   sudo sed -i "s/managementContext createConnector=\"false\"/managementContext createConnector=\"true\"/" /opt/activemq/conf/activemq.xml
   sudo mv -v activemq.service /etc/systemd/system
   sudo systemctl daemon-reload
