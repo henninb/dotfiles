@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TOMCAT_VER=8.5.46
+TOMCAT_VER=10.0.16
 
 cat > tomcat.service <<'EOF'
 [Unit]
@@ -19,13 +19,13 @@ EOF
 if [ ! -f "apache-tomcat-${TOMCAT_VER}.tar.gz" ]; then
   rm -rf apache-tomcat-*.tar.gz
   #wget "http://apache.cs.utah.edu/tomcat/tomcat-8/v${TOMCAT_VER}/bin/apache-tomcat-${TOMCAT_VER}.tar.gz"
-  curl -s "http://apache.cs.utah.edu/tomcat/tomcat-8/v${TOMCAT_VER}/bin/apache-tomcat-${TOMCAT_VER}.tar.gz" --output "apache-tomcat-${TOMCAT_VER}.tar.gz"
+  curl -s "http://apache.cs.utah.edu/tomcat/tomcat-10/v${TOMCAT_VER}/bin/apache-tomcat-${TOMCAT_VER}.tar.gz" --output "apache-tomcat-${TOMCAT_VER}.tar.gz"
 else
   echo why
   exit 1
 fi
 
-if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo groupadd tomcat
   sudo useradd -s /sbin/nologin -g tomcat tomcat
   sudo pacman --noconfirm --needed -S net-tools psmisc wget curl
@@ -62,5 +62,7 @@ else
   echo "$OS is not yet implemented."
   exit 1
 fi
+
+sudo usermod -a -G tomcat "$(whoami)"
 
 exit 0
