@@ -1,9 +1,9 @@
 #!/bin/sh
 
 echo npm install @cloudflare/wrangler
-wrangler generate cf-example
+echo wrangler generate cf-example
 echo wrangler preview watch
-echo wrangler publish
 echo wrangler config
+echo wrangler publish
 
 exit 0
