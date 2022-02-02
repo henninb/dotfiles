@@ -8,17 +8,17 @@ function gcd( p, q ) {
       return gcd( q, p % q );
     }
   }
-  
+
 ;
   const formatDate = (date) => {
    // let month = "" + (date.getMonth() + 1);
    //let month = "1";
     let day = "" + date.getDate();
     let year = date.getFullYear();
-  
+
     month = ("0" + month).slice(-2);
     day = ("0" + day).slice(-2);
-  
+
     return [year, month, day].join("-");
   };
 
@@ -37,7 +37,7 @@ function gcd( p, q ) {
             document.write(formatDate(Date.now()));
           </script>
         </p>
-    
+
       </body>
 
 
