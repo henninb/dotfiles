@@ -203,9 +203,13 @@ map <leader>s :setlocal spell! spelllang=en_us<cr>
 set number relativenumber
 
 " yank to the plus register
-set clipboard=unnamedplus " yank to '+' register
+" set clipboard=unnamedplus " yank to '+' register
 " set clipboard+=unnamedplus
-
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
 
 " Show file statistics
 set ruler
