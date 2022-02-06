@@ -68,10 +68,13 @@ export CM_DEBUG=0
 export CM_OUTPUT_CLIP=1
 export CM_MAX_CLIPS=25
 
-# TODO: required for monitor to work at desired resolution
+# TODO: required for 1440p monitor to work at desired resolution
 xrandr --output HDMI-1 --mode 2560x1440 2> /dev/null
 xrandr --output HDMI-0 --mode 2560x1440 2> /dev/null
 xrandr --size 2560x1440 2> /dev/null
+
+echo xrandr --size 3840x2160
+
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 # eval "$(pyenv init --path)"
