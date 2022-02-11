@@ -73,6 +73,11 @@ xrandr --output HDMI-1 --mode 2560x1440 2> /dev/null
 xrandr --output HDMI-0 --mode 2560x1440 2> /dev/null
 xrandr --size 2560x1440 2> /dev/null
 
+# 4k monitor
+# xrandr --output HDMI-1 --mode 3840x2160 2> /dev/null
+# xrandr --output HDMI-0 --mode 3840x2160 2> /dev/null
+# xrandr --size 3840x2160 2> /dev/null
+
 echo xrandr --size 3840x2160
 
 export PYENV_ROOT="$HOME/.pyenv"
