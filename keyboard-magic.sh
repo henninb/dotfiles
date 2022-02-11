@@ -15,6 +15,7 @@ sleep 1
 # xhost +
 xmodmap -e "keycode 169 = Insert" 2>> /tmp/magic.txt
 xmodmap -e "keycode 66 = Escape" 2>> /tmp/magic.txt
+# vim: set ft=sh:
 EOF
 
 sudo mkdir -p /etc/udev/rules.d/

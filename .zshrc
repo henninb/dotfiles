@@ -524,3 +524,5 @@ export LIBGL_ALWAYS_SOFTWARE=1
 
 # added by travis gem
 [ ! -s /home/henninb/.travis/travis.sh ] || source /home/henninb/.travis/travis.sh
+
+# vim: set ft=sh:

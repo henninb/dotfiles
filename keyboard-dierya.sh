@@ -14,6 +14,8 @@ kbd_ids=$(xinput -list | grep "SINO WEALTH Mechanical Keyboard" | grep -v pointe
 for kbd_id in $kbd_ids; do
   setxkbmap -device "${kbd_id}" -option altwin:swap_alt_win
 done
+
+# vim: set ft=sh:
 EOF
 
 sudo mkdir -p /etc/udev/rules.d/
