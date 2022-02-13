@@ -160,6 +160,7 @@ else
   echo JAVA_HOME is not setup.
 fi
 
+# export PATH="$HOME/.npm-packages/bin:$PATH"
 export PATH=$PYENV_ROOT/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH="$HOME/node_modules/.bin:$PATH"
@@ -176,7 +177,7 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="$JAVA_HOME/bin:$PATH"
 export PATH="$HOME/.gem/ruby/3.0.0/bin:$PATH"
 # export PATH="/opt/STM32CubeProgrammer/bin:$PATH"
-export PATH="$HOME/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin:$PATH"
+# export PATH="$HOME/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin:$PATH"
 export CDPATH=~/projects/github.com
 
 [ -d /usr/local/go ] && export GOROOT=/usr/local/go
