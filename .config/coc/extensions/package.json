@@ -5,7 +5,7 @@
     "coc-cssmodules": ">=1.1.1",
     "coc-emmet": ">=1.1.6",
     "coc-emoji": ">=1.3.0",
-    "coc-eslint": ">=1.5.4",
+    "coc-eslint": ">=1.5.6",
     "coc-explorer": ">=0.22.4",
     "coc-fsharp": ">=0.2.7",
     "coc-git": ">=2.4.7",
