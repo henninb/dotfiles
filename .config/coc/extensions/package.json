@@ -17,14 +17,14 @@
     "coc-pyright": ">=1.1.220",
     "coc-python": ">=1.2.13",
     "coc-sh": ">=0.6.1",
-    "coc-snippets": ">=2.4.7",
+    "coc-snippets": ">=2.4.8",
     "coc-stylelintplus": ">=1.5.0",
     "coc-svg": ">=0.0.13",
     "coc-tasks": ">=0.3.0",
-    "coc-tsserver": ">=1.9.9",
+    "coc-tsserver": ">=1.9.12",
     "coc-vimlsp": ">=0.12.5",
     "coc-xml": ">=1.14.1",
-    "coc-yaml": ">=1.6.1",
+    "coc-yaml": ">=1.7.3",
     "coc-yank": ">=1.2.1"
   }
 }
