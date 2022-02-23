@@ -44,8 +44,10 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y xdo
   sudo apt install -y xdotool
   sudo apt install -y xscreensaver
-  sudo apt install -y thunar
+  sudo apt install -y pandoc
+  sudo apt install -y jq
   sudo apt install -y sxiv
+  sudo apt install -y thunar
   sudo apt install -y qalculate
   sudo apt install -y libxrandr-dev
   sudo apt install -y libxft-dev
@@ -77,6 +79,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y mpd
   sudo zypper install -y mpdris2
   sudo zypper install -y playerctl
+  sudo zypper install -y pandoc
+  sudo zypper install -y jq
   sudo zypper install -y redshift
   sudo zypper install -y sxhkd
   sudo zypper install -y vifm
@@ -129,6 +133,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S xscreensaver
   sudo pacman --noconfirm --needed -S yad
   sudo pacman --noconfirm --needed -S kdeconnect
+  sudo pacman --noconfirm --needed -S pandoc
   yay -S mpdris2
   sudo systemctl disable mpd.socket
   sudo systemctl stop mpd.socket
@@ -155,6 +160,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y w3m
   sudo pkg install -y wmname
   sudo pkg install -y xdo
+  sudo pkg install -y pandoc
   sudo pkg install -y xdotool
   sudo pkg install -y xscreensaver
   sudo pkg install -y xorg
@@ -176,7 +182,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y cabal-install
   sudo ln -sfn /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
   sudo ln -sfn /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so
-  VOID_PKGS="xmonad pkg-config autoconf xorg-minimal xscreensaver feh xdotool w3m neofetch lxappearance volumeicon clipmenu xz make gcc gmp-devel dunst wmname alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd jq redshift conky playerctl dunst libX11-devel libXinerama-devel libXrandr-devel libuuid libXft-devel libXScrnSaver-devel dzen2 trayer-srg CopyQ NetworkManager network-manager-applet numlockx hardinfo setxkbmap xinput xmodmap"
+  VOID_PKGS="xmonad pkg-config autoconf xorg-minimal xscreensaver feh xdotool w3m neofetch lxappearance volumeicon clipmenu xz make gcc gmp-devel dunst wmname alsa-lib-devel emacs-gtk2 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd jq redshift conky playerctl dunst libX11-devel libXinerama-devel libXrandr-devel libuuid libXft-devel libXScrnSaver-devel dzen2 trayer-srg CopyQ NetworkManager network-manager-applet numlockx hardinfo setxkbmap xinput xmodmap pandoc jq"
   FAILURE=""
   for i in $VOID_PKGS; do
     if ! sudo xbps-install -y "$i"; then
@@ -205,7 +211,7 @@ elif [ "$OS" = "Solus" ]; then
   make
   sudo make install
   cd "$HOME" || exit
-  SOLUS_PKGS="xmonad pkg-config feh xdotool w3m xz make gmp-devel libffi zlib dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xdo libxpm-devel flameshot blueman copyq mpd mpc-client neofetch jq redshift font-awesome-4 conky playerctl picom dzen2 xappearance xscreensaver wmname clipmenu"
+  SOLUS_PKGS="xmonad pkg-config feh xdotool w3m xz make gmp-devel libffi zlib dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xdo libxpm-devel flameshot blueman copyq mpd mpc-client neofetch jq redshift font-awesome-4 conky playerctl picom dzen2 xappearance xscreensaver wmname clipmenu pandoc jq"
   FAILURE=""
   sudo eopkg install -c system.devel
   for i in $SOLUS_PKGS; do
@@ -219,7 +225,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG tty "$(id -un)"
   sudo usermod -aG video "$(id -un)"
   # sudo emerge --unmerge dzen
-  GENTOO_PKGS="rust-bin setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot xappearance volumeicon neofetch blueman copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet trayer pulseaudio-modules-bt newsboat sxiv spacefm lxappearance xrandr hardinfo gentoolkit xmodmap"
+  GENTOO_PKGS="rust-bin setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot xappearance volumeicon neofetch blueman copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet trayer pulseaudio-modules-bt newsboat sxiv spacefm lxappearance xrandr hardinfo gentoolkit xmodmap pandoc jq"
   FAILURE=""
   for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then
