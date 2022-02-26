@@ -68,7 +68,7 @@ export CM_DEBUG=0
 export CM_OUTPUT_CLIP=1
 export CM_MAX_CLIPS=25
 
-if [ "$OS" = "ArcoLinux" ]; then
+if [ "$OS" = "ArcoLinux" ] || [ "$OS" = "Gentoo" ]; then
   echo "temporary"
   # 4k monitor
   xrandr --output HDMI-1 --mode 3840x2160 2> /dev/null
