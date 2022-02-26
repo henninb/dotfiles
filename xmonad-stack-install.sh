@@ -113,6 +113,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S mpc
   sudo pacman --noconfirm --needed -S mpv
   sudo pacman --noconfirm --needed -S mpd
+  sudo pacman --noconfirm --needed -S pavucontrol
   # sudo pacman --noconfirm --needed -S mpdris2
   # sudo pacman --noconfirm --needed -S playderctl
   sudo pacman --noconfirm --needed -S pulseaudio
@@ -211,7 +212,7 @@ elif [ "$OS" = "Solus" ]; then
   make
   sudo make install
   cd "$HOME" || exit
-  SOLUS_PKGS="xmonad pkg-config feh xdotool w3m xz make gmp-devel libffi zlib dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xdo libxpm-devel flameshot blueman copyq mpd mpc-client neofetch jq redshift font-awesome-4 conky playerctl picom dzen2 xappearance xscreensaver wmname clipmenu pandoc jq"
+  SOLUS_PKGS="xmonad pkg-config feh xdotool w3m xz make gmp-devel libffi zlib dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xdo libxpm-devel flameshot blueman copyq mpd mpc-client neofetch jq redshift font-awesome-4 conky playerctl picom dzen2 xappearance xscreensaver wmname clipmenu pandoc jq pavucontrol"
   FAILURE=""
   sudo eopkg install -c system.devel
   for i in $SOLUS_PKGS; do
@@ -225,7 +226,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG tty "$(id -un)"
   sudo usermod -aG video "$(id -un)"
   # sudo emerge --unmerge dzen
-  GENTOO_PKGS="rust-bin setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot xappearance volumeicon neofetch blueman copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet trayer pulseaudio-modules-bt newsboat sxiv spacefm lxappearance xrandr hardinfo gentoolkit xmodmap pandoc jq"
+  GENTOO_PKGS="rust-bin setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server dbus elogind flameshot xappearance volumeicon neofetch blueman copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet trayer pulseaudio-modules-bt newsboat sxiv spacefm lxappearance xrandr hardinfo gentoolkit xmodmap pandoc jq pavucontrol"
   FAILURE=""
   for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then

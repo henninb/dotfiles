@@ -26,6 +26,7 @@ elif [ "$OS" = "Solus" ]; then
   echo
 elif [ "$OS" = "Gentoo" ]; then
   echo
+  sudo emerge --update --newuse pavucontrol
 else
   echo "$OS is not yet implemented."
   exit 1
