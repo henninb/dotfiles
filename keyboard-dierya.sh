@@ -5,7 +5,7 @@ ACTION=="add", ATTRS{idVendor}=="258a", ATTRS{idProduct}=="0090", ENV{XKBLAYOUT}
 EOF
 
 cat > 98-dierya-kbd.rules <<EOF
-ACTION=="add", ATTRS{idVendor}=="258a", ATTRS{idProduct}=="0090", RUN+="/usr/local/bin/dierya"
+ACTION=="add", ATTRS{idVendor}=="258a", ATTRS{idProduct}=="0090", ENV{XAUTHORITY}="/home/henninb/.Xauthority", RUN+="/bin/sh /usr/local/bin/dierya"
 EOF
 
 cat > dierya << 'EOF'
@@ -27,15 +27,6 @@ sudo mv -v 98-dierya-kbd.rules  /etc/udev/rules.d/
 sudo mv -v dierya /usr/local/bin/
 
 sudo udevadm control --reload-rules
-
-export XAUTHORITY=/home/henninb/.Xauthority
-export DISPLAY=:0
-
-# echo "$(date) keyboard-setup-called" >> /tmp/keyboard.txt
-# kbd_ids=$(xinput -list | grep "SINO WEALTH Mechanical Keyboard" | grep -v pointer | awk -F'=' '{print $2}' | cut -c 1-2)
-# for kbd_id in $kbd_ids; do
-#   setxkbmap -device "${kbd_id}" -option altwin:swap_alt_win
-# done
 
 echo udevadm monitor --udev
 echo "lsusb | grep 'Mechanical Keyboard'"

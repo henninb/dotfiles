@@ -1,7 +1,7 @@
 #!/bin/sh
 
 cat > 99-magic-kbd.rules <<EOF
-ACTION=="add", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="0267", RUN+="/bin/sh /usr/local/bin/magic"
+ACTION=="add", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="0267", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/henninb/.Xauthority" RUN+="/bin/sh /usr/local/bin/magic"
 EOF
 #SUBSYSTEM=="usb"
 # sudo udevadm trigger --action=add --subsystem-match=usb
