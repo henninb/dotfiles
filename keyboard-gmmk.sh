@@ -1,13 +1,12 @@
 #!/bin/sh
 
-cat > 99-gmmk-kbd.rules <<EOF
-ACTION=="add", ATTRS{idVendor}=="0c45", ATTRS{idProduct}=="652f", ENV{XKBLAYOUT}="us", ENV{XKBOPTIONS}="altwin:swap_alt_win"
-#ACTION=="add", ATTRS{idVendor}=="0C45", ATTRS{idProduct}=="652F", ENV{XKBLAYOUT}="us", ENV{XKBOPTIONS}="altwin:swap_alt_win"
-EOF
+#cat > 99-gmmk-kbd.rules <<EOF
+#ACTION=="add", ATTRS{idVendor}=="0c45", ATTRS{idProduct}=="652f", ENV{XKBLAYOUT}="us", ENV{XKBOPTIONS}="altwin:swap_alt_win"
+##ACTION=="add", ATTRS{idVendor}=="0C45", ATTRS{idProduct}=="652F", ENV{XKBLAYOUT}="us", ENV{XKBOPTIONS}="altwin:swap_alt_win"
+#EOF
 
 cat > 98-gmmk-kbd.rules <<EOF
 ACTION=="add", ATTRS{idVendor}=="0c45", ATTRS{idProduct}=="652f", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/henninb/.Xauthority", RUN+="/bin/sh /usr/local/bin/gmmk"
-#ACTION=="add", ATTRS{idVendor}=="0C45", ATTRS{idProduct}=="652F", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/henninb/.Xauthority", RUN+="/bin/sh /usr/local/bin/gmmk"
 EOF
 
 cat > gmmk << 'EOF'
@@ -25,7 +24,7 @@ sudo mkdir -p /etc/udev/rules.d/
 
 chmod 755 gmmk
 # xinput | grep -i 'Mechanical Keyboard'
-sudo mv -v 99-gmmk-kbd.rules  /etc/udev/rules.d/
+# sudo mv -v 99-gmmk-kbd.rules  /etc/udev/rules.d/
 sudo mv -v 98-gmmk-kbd.rules  /etc/udev/rules.d/
 sudo mv -v gmmk /usr/local/bin/
 

@@ -1,8 +1,8 @@
 #!/bin/sh
 
-cat > 99-dierya-kbd.rules <<EOF
-ACTION=="add", ATTRS{idVendor}=="258a", ATTRS{idProduct}=="0090", ENV{XKBLAYOUT}="us", ENV{XKBOPTIONS}="altwin:swap_alt_win"
-EOF
+# cat > 99-dierya-kbd.rules <<EOF
+# ACTION=="add", ATTRS{idVendor}=="258a", ATTRS{idProduct}=="0090", ENV{XKBLAYOUT}="us", ENV{XKBOPTIONS}="altwin:swap_alt_win"
+# EOF
 
 cat > 98-dierya-kbd.rules <<EOF
 ACTION=="add", ATTRS{idVendor}=="258a", ATTRS{idProduct}=="0090", ENV{XAUTHORITY}="/home/henninb/.Xauthority", RUN+="/bin/sh /usr/local/bin/dierya"
@@ -22,7 +22,7 @@ sudo mkdir -p /etc/udev/rules.d/
 
 chmod 755 dierya
 # xinput | grep -i 'Mechanical Keyboard'
-sudo mv -v 99-dierya-kbd.rules  /etc/udev/rules.d/
+# sudo mv -v 99-dierya-kbd.rules  /etc/udev/rules.d/
 sudo mv -v 98-dierya-kbd.rules  /etc/udev/rules.d/
 sudo mv -v dierya /usr/local/bin/
 
