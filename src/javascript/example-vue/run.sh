@@ -1,7 +1,7 @@
 #!/bin/sh
 
-npm install @vue/cli
+#npm install @vue/cli
 vue create vue-example
-npm run serve
+#npm run serve
 
 exit 0
