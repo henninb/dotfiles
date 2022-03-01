@@ -1,64 +1,21 @@
 <html>
   <head>
     <title>login</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-
-* {
-  font-family: Eina, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Helvetica, Arial, serif;
-}
-
-.flex {
-  display: flex;
-  flex-direction: column;
-}
-
-.rootContainer {
-  margin: auto;
-}
-
-.container {
-  max-width: 14rem;
-}
-
-.rounded {
-  margin: 0.5em 0;
-  min-height: 3em;
-  border-radius: 9px;
-  padding: 0.25em 1em;
-  font-size: 1rem;
-  line-height: 1.5em;
-  font-weight: normal;
-  background: transparent;
-  border: 1px solid;
-}
-
-.resetBtn {
-  color: rgb(10, 173, 10);
-  font-weight: 600;
-}
-
-.loginBtn {
-  background-color: rgb(9, 155, 9);
-  color: white;
-  width: 100%;
-  font-weight: 600;
-}
-    </style>
+    <!-- use className in react and class in vanilla html -->
+    <link rel="stylesheet" type="text/css" href="style.css"/>
   </head>
 
   <body>
- <div className="container rootContainer">
+ <div class="container rootContainer">
     <h1>Log in</h1>
-    <div className="flex container">
-      <input className="rounded" placeholder="Email" />
-      <input className="rounded" placeholder="Password" />
+    <div class="flex container">
+      <input class="rounded" placeholder="Email" />
+      <input class="rounded" placeholder="Password" />
     </div>
     <p>
-      Forgot password? <a className="resetBtn">Reset it</a>
+      Forgot password? <a class="resetBtn">Reset it</a>
     </p>
-    <button className="rounded loginBtn">Log in</button>
+    <button class="rounded loginBtn">Log in</button>
   </div>
   </body>
 </html>
