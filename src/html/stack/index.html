@@ -1,0 +1,233 @@
+<html class="html__responsive html__unpinned-leftnav">
+
+<head>
+    <title>Log in</title>
+
+   <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Shared/stacks.css?v=da7954baff84">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.sstatic.net/Sites/stackoverflow/primary.css?v=60567185f3bd">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.sstatic.net/Sites/stackoverflow/secondary.css?v=4cbb26526eb0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Shared/Channels/channels.css?v=b1915d2e6090">
+
+</head>
+
+<body class="universal-auth-page unified-theme floating-content">
+
+    <div id="notify-container"></div>
+    <div id="custom-header"></div>
+
+    <header class="top-bar js-top-bar top-bar__network">
+        <div class="wmx12 mx-auto d-flex ai-center h100" role="menubar">
+            <div class="-main flex--item">
+                <a href="#" class="left-sidebar-toggle p0 ai-center jc-center js-left-sidebar-toggle" role="menuitem"
+                    aria-haspopup="true" aria-controls="left-sidebar" aria-expanded="false"><span
+                        class="ps-relative"></span></a>
+
+
+                <a href="/" class="-logo js-gps-track">
+                    <span class="-img _glyph">Stack Overflow</span>
+                </a>
+            </div>
+
+            <ol class="list-reset d-flex gs4" role="presentation">
+
+                <li class="flex--item md:d-none">
+                    <a href="/about" class="-marketing-link js-gps-track">About</a>
+                </li>
+
+                <li class="flex--item">
+                    <a href="/products" class="-marketing-link js-gps-track js-products-menu" aria-controls="products-popover"
+                        >
+                        Products
+                    </a>
+                </li>
+
+                <li class="flex--item md:d-none">
+                    <a href="/teams" class="-marketing-link js-gps-track">For
+                        Teams</a>
+                </li>
+            </ol>
+         
+            <form id="search" role="search" action="/search" class="flex--item fl-grow1 searchbar px12 js-searchbar "
+                autocomplete="off">
+                <div class="ps-relative">
+                    <input name="q" type="text" placeholder="Search…" value="" autocomplete="off" maxlength="240"
+                        class="s-input s-input__search js-search-field " aria-label="Search" aria-controls="top-search"
+                        data-controller="s-popover" data-action="focus->s-popover#show"
+                        data-s-popover-placement="bottom-start">
+                    <svg aria-hidden="true" class="s-input-icon s-input-icon__search svg-icon iconSearch" width="18"
+                        height="18" viewBox="0 0 18 18">
+                        <path
+                            d="m18 16.5-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5ZM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0Z">
+                        </path>
+                    </svg>
+                    <div class="s-popover p0 wmx100 wmn4 sm:wmn-initial js-top-search-popover" id="top-search"
+                        role="menu" style="">
+                        <div class="s-popover--arrow" style=""></div>
+                        <div class="js-spinner p24 d-flex ai-center jc-center d-none">
+                            <div class="s-spinner s-spinner__sm fc-orange-400">
+                                <div class="v-visible-sr">Loading…</div>
+                            </div>
+                        </div>
+
+                        <span class="v-visible-sr js-screen-reader-info"></span>
+                        <div class="js-ac-results overflow-y-auto hmx3 d-none"></div>
+
+                        <div class="js-search-hints" aria-describedby="Tips for searching"></div>
+                    </div>
+                </div>
+            </form>
+
+
+
+            <ol class="overflow-x-auto ml-auto -secondary d-flex ai-center list-reset h100 user-logged-out"
+                role="presentation">
+                <li class="-item searchbar-trigger"><a href="#" class="-link js-searchbar-trigger" role="button"
+                        aria-label="Search" aria-haspopup="true" aria-controls="search"
+                        title="Click to show search"><svg aria-hidden="true" class="svg-icon iconSearch" width="18"
+                            height="18" viewBox="0 0 18 18">
+                            <path
+                                d="m18 16.5-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5ZM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0Z">
+                            </path>
+                        </svg></a></li>
+
+                <li class="-ctas">
+                    <a href="https://stackoverflow.com/users/login?ssrc=head"
+                        class="login-link s-btn s-btn__filled py8 js-gps-track" rel="nofollow"
+                        data-gps-track="login.click"
+                        data-ga="[&quot;top navigation&quot;,&quot;login button click&quot;,null,null,null]">Log in</a>
+                    <a href="https://stackoverflow.com/users/signup?ssrc=head"
+                        class="login-link s-btn s-btn__primary py8" rel="nofollow"
+                        data-ga="[&quot;sign up&quot;,&quot;Sign Up Navigation&quot;,&quot;Header&quot;,null,null]">Sign
+                        up</a>
+
+                </li>
+
+                <li class="js-topbar-dialog-corral" role="presentation">
+
+
+                    <div class="topbar-dialog siteSwitcher-dialog dno" role="menu">
+                        <div class="modal-content" id="your-communities-section">
+
+                            <div class="call-to-login">
+                                <a href="https://stackoverflow.com/users/signup?ssrc=site_switcher"
+                                    class="login-link js-gps-track"
+                                    data-gps-track="site_switcher.click({ item_type:10 })">Sign up</a> or <a
+                                    href="https://stackoverflow.com/users/login?ssrc=site_switcher"
+                                    class="login-link js-gps-track"
+                                    data-gps-track="site_switcher.click({ item_type:11 })">log in</a> to customize your
+                                list.
+                            </div>
+                        </div>
+
+                        <div class="modal-content">
+                            <div class="child-content"></div>
+                        </div>
+                    </div>
+
+                </li>
+            </ol>
+
+        </div>
+    </header>
+
+
+    <div class="container">
+
+        <!-- <div data-is-here-when="" class="left-sidebar js-pinned-left-sidebar ps-relative" data-can-be="left-sidebar">
+        </div> -->
+
+        <div id="content" class="d-flex flex__center snippet-hidden">
+            <div class="flex--item">
+
+                <div class="ta-center fs-title mx-auto mb24">
+                    <a href="https://stackoverflow.com">
+                        <svg aria-hidden="true" class="native svg-icon iconLogoGlyphMd" width="32" height="37"
+                            viewBox="0 0 32 37">
+                            <path d="M26 33v-9h4v13H0V24h4v9h22Z" fill="#BCBBBB"></path>
+                            <path
+                                d="m21.5 0-2.7 2 9.9 13.3 2.7-2L21.5 0ZM26 18.4 13.3 7.8l2.1-2.5 12.7 10.6-2.1 2.5ZM9.1 15.2l15 7 1.4-3-15-7-1.4 3Zm14 10.79.68-2.95-16.1-3.35L7 23l16.1 2.99ZM23 30H7v-3h16v3Z"
+                                fill="#F48024"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <div id="openid-buttons" class="mx-auto d-flex flex__fl-grow1 fd-column gs8 gsy mb16 wmx3">
+
+                </div>
+
+                <div id="formContainer" class="mx-auto mb24 p24 wmx3 bg-white bar-lg auth-shadow mb24">
+                    <form id="login-form" class="d-flex fd-column gs12 gsy"
+                        action="/users/login?ssrc=head&amp;returnurl=https%3a%2f%2fstackoverflow.com%2f" method="POST"
+                        data-bitwarden-watching="1">
+                        <input type="hidden" name="fkey"
+                            value="600748cfb6cd7ccb96b114e771ef22ffcac9cd0fb62b48f543bb166646da917c">
+                        <input type="hidden" name="ssrc" value="head">
+                        <div class="d-flex fd-column gs4 gsy js-auth-item ">
+                            <label class="flex--item s-label" for="email">Email</label>
+                            <div class="d-flex ps-relative">
+                                <input class="s-input" id="email" type="email" size="30" maxlength="100" name="email">
+                                <svg aria-hidden="true"
+                                    class="s-input-icon js-alert-icon d-none svg-icon iconAlertCircle" width="18"
+                                    height="18" viewBox="0 0 18 18">
+                                    <path
+                                        d="M9 17c-4.36 0-8-3.64-8-8 0-4.36 3.64-8 8-8 4.36 0 8 3.64 8 8 0 4.36-3.64 8-8 8ZM8 4v6h2V4H8Zm0 8v2h2v-2H8Z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <p class="flex--item s-input-message js-error-message d-none">
+
+                            </p>
+
+                        </div>
+                        <div class="d-flex fd-column-reverse gs4 gsy js-auth-item ">
+                            <p class="flex--item s-input-message js-error-message d-none">
+
+                            </p>
+
+                            <div class="d-flex ps-relative js-password">
+                                <input class="flex--item s-input" type="password" autocomplete="off" name="password"
+                                    id="password">
+                                <svg aria-hidden="true"
+                                    class="s-input-icon js-alert-icon d-none svg-icon iconAlertCircle" width="18"
+                                    height="18" viewBox="0 0 18 18">
+                                    <path
+                                        d="M9 17c-4.36 0-8-3.64-8-8 0-4.36 3.64-8 8-8 4.36 0 8 3.64 8 8 0 4.36-3.64 8-8 8ZM8 4v6h2V4H8Zm0 8v2h2v-2H8Z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="d-flex ai-center ps-relative jc-space-between">
+                                <label class="flex--item s-label" for="password">Password</label>
+
+                                <a class="flex--item s-link fs-caption" href="/users/account-recovery">Forgot
+                                    password?</a>
+                            </div>
+                        </div>
+                        <div class="d-flex gs4 gsy fd-column js-auth-item ">
+                            <button class="flex--item s-btn s-btn__primary" id="submit-button" name="submit-button">Log
+                                in</button>
+                            <p class="flex--item s-input-message js-error-message d-none">
+
+                            </p>
+
+                        </div>
+
+                        <input type="hidden" id="oauth_version" name="oauth_version">
+                        <input type="hidden" id="oauth_server" name="oauth_server">
+
+
+                    </form>
+                </div>
+
+                <div class="mx-auto ta-center fs-body1 p16 pb0 mb24 w100 wmx3">
+                    Don’t have an account? <a
+                        href="/users/signup?ssrc=head&amp;returnurl=https%3a%2f%2fstackoverflow.com%2f">Sign up</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
