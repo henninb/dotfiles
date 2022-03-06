@@ -2,9 +2,8 @@
 
 <head>
     <title>Log in</title>
-   <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Shared/stacks.css?v=da7954baff84">
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.sstatic.net/Sites/stackoverflow/primary.css?v=60567185f3bd">
+   <link rel="stylesheet" type="text/css" href="stacks.css">
+   <link rel="stylesheet" type="text/css" href="primary.css">
 </head>
 
 <body class="universal-auth-page unified-theme floating-content">
@@ -16,13 +15,11 @@
         <div class="wmx12 mx-auto d-flex ai-center h100" role="menubar">
             <div class="-main flex--item">
                 <a href="#" class="left-sidebar-toggle p0 ai-center jc-center js-left-sidebar-toggle" role="menuitem"
-                    aria-haspopup="true" aria-controls="left-sidebar" aria-expanded="false"><span
-                        class="ps-relative"></span></a>
+                    aria-haspopup="true" aria-controls="left-sidebar" aria-expanded="false">
+                  <span class="ps-relative"></span></a>
 
-
-                <a href="/" class="-logo js-gps-track">
-                    <span class="-img _glyph">Stack Overflow</span>
-                </a>
+                <!-- <a href="/" class="-logo js-gps-track"> <span class="-img _glyph">Stack Overflow</span> </a> -->
+                <!-- <a href="/" class="flex--item md:d-none">Stack Overflow </a> -->
             </div>
 
             <ol class="list-reset d-flex gs4" role="presentation">
@@ -51,7 +48,7 @@
                             </div>
                         </div>
 
-                        <span class="v-visible-sr js-screen-reader-info"></span>
+                        <!-- <span class="v-visible-sr js-screen-reader-info"></span> -->
                         <div class="js-ac-results overflow-y-auto hmx3 d-none"></div>
                         <div class="js-search-hints" aria-describedby="Tips for searching"></div>
                     </div>
@@ -69,39 +66,8 @@
                         </svg></a></li>
 
                 <li class="-ctas">
-                    <a href="https://stackoverflow.com/users/login?ssrc=head" class="login-link s-btn s-btn__filled py8 js-gps-track" rel="nofollow"
-                        data-gps-track="login.click"
-                        data-ga="[&quot;top navigation&quot;,&quot;login button click&quot;,null,null,null]"
-                        >Log in</a>
-                    <a href="https://stackoverflow.com/users/signup?ssrc=head"
-                        class="login-link s-btn s-btn__primary py8" rel="nofollow"
-                        data-ga="[&quot;sign up&quot;,&quot;Sign Up Navigation&quot;,&quot;Header&quot;,null,null]"
-                        >Sign up</a>
-
-                </li>
-
-                <li class="js-topbar-dialog-corral" role="presentation">
-
-
-                    <div class="topbar-dialog siteSwitcher-dialog dno" role="menu">
-                        <div class="modal-content" id="your-communities-section">
-
-                            <div class="call-to-login">
-                                <a href="https://stackoverflow.com/users/signup?ssrc=site_switcher"
-                                    class="login-link js-gps-track"
-                                    data-gps-track="site_switcher.click({ item_type:10 })">Sign up</a> or <a
-                                    href="https://stackoverflow.com/users/login?ssrc=site_switcher"
-                                    class="login-link js-gps-track"
-                                    data-gps-track="site_switcher.click({ item_type:11 })">log in</a> to customize your
-                                list.
-                            </div>
-                        </div>
-
-                        <div class="modal-content">
-                            <div class="child-content"></div>
-                        </div>
-                    </div>
-
+                    <a href="login" class="login-link s-btn s-btn__filled py8 js-gps-track" rel="nofollow">Log in</a>
+                    <a href="signup" class="login-link s-btn s-btn__primary py8" rel="nofollow">Sign up</a>
                 </li>
             </ol>
 
@@ -109,15 +75,11 @@
     </header>
 
     <div class="container">
-
-        <!-- <div data-is-here-when="" class="left-sidebar js-pinned-left-sidebar ps-relative" data-can-be="left-sidebar">
-        </div> -->
-
         <div id="content" class="d-flex flex__center snippet-hidden">
             <div class="flex--item">
 
                 <div class="ta-center fs-title mx-auto mb24">
-                    <a href="https://stackoverflow.com">
+                    <a href="/">
                         <svg aria-hidden="true" class="native svg-icon iconLogoGlyphMd" width="32" height="37"
                             viewBox="0 0 32 37">
                             <path d="M26 33v-9h4v13H0V24h4v9h22Z" fill="#BCBBBB"></path>
@@ -151,22 +113,16 @@
                                     </path>
                                 </svg>
                             </div>
-                            <p class="flex--item s-input-message js-error-message d-none">
-
-                            </p>
+                            <p class="flex--item s-input-message js-error-message d-none"> </p>
 
                         </div>
                         <div class="d-flex fd-column-reverse gs4 gsy js-auth-item ">
                             <p class="flex--item s-input-message js-error-message d-none">
-
                             </p>
 
                             <div class="d-flex ps-relative js-password">
-                                <input class="flex--item s-input" type="password" autocomplete="off" name="password"
-                                    id="password">
-                                <svg aria-hidden="true"
-                                    class="s-input-icon js-alert-icon d-none svg-icon iconAlertCircle" width="18"
-                                    height="18" viewBox="0 0 18 18">
+                                <input class="flex--item s-input" type="password" autocomplete="off" name="password" id="password">
+                                <svg aria-hidden="true" class="s-input-icon js-alert-icon d-none svg-icon iconAlertCircle" width="18" height="18" viewBox="0 0 18 18">
                                     <path
                                         d="M9 17c-4.36 0-8-3.64-8-8 0-4.36 3.64-8 8-8 4.36 0 8 3.64 8 8 0 4.36-3.64 8-8 8ZM8 4v6h2V4H8Zm0 8v2h2v-2H8Z">
                                     </path>
@@ -175,32 +131,23 @@
                             <div class="d-flex ai-center ps-relative jc-space-between">
                                 <label class="flex--item s-label" for="password">Password</label>
 
-                                <a class="flex--item s-link fs-caption" href="/users/account-recovery">Forgot
-                                    password?</a>
+                                <a class="flex--item s-link fs-caption" href="/users/account-recovery">Forgot password?</a>
                             </div>
                         </div>
                         <div class="d-flex gs4 gsy fd-column js-auth-item ">
-                            <button class="flex--item s-btn s-btn__primary" id="submit-button" name="submit-button">Log
-                                in</button>
-                            <!-- <p class="flex--item s-input-message js-error-message d-none">
-
-                            </p> -->
-
+                            <button class="flex--item s-btn s-btn__primary" id="submit-button" name="submit-button">Log in</button>
                         </div>
 
-                        <input type="hidden" id="oauth_version" name="oauth_version">
-                        <input type="hidden" id="oauth_server" name="oauth_server">
+                        <!-- <input type="hidden" id="oauth_version" name="oauth_version"> -->
+                        <!-- <input type="hidden" id="oauth_server" name="oauth_server"> -->
                     </form>
                 </div>
 
-                <div class="mx-auto ta-center fs-body1 p16 pb0 mb24 w100 wmx3">
-                    Don’t have an account? <a
-                        href="/users/signup?ssrc=head&amp;returnurl=https%3a%2f%2fstackoverflow.com%2f">Sign up</a>
+                <div class="mx-auto ta-center fs-body1 p16 pb0 mb24 w100 wmx3"> Don’t have an account? <a href="signup">Sign up</a>
                 </div>
             </div>
 
         </div>
     </div>
-
 </body>
 </html>
