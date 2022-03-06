@@ -26,24 +26,11 @@
             </div>
 
             <ol class="list-reset d-flex gs4" role="presentation">
-
-                <li class="flex--item md:d-none">
-                    <a href="/about" class="-marketing-link js-gps-track">About</a>
-                </li>
-
-                <li class="flex--item">
-                    <a href="/products" class="-marketing-link js-gps-track js-products-menu" aria-controls="products-popover"
-                        >
-                        Products
-                    </a>
-                </li>
-
-                <li class="flex--item md:d-none">
-                    <a href="/teams" class="-marketing-link js-gps-track">For
-                        Teams</a>
-                </li>
+                <li class="flex--item md:d-none"> <a href="/about" class="-marketing-link js-gps-track">About</a> </li>
+                <li class="flex--item"> <a href="/products" class="-marketing-link js-gps-track js-products-menu" aria-controls="products-popover" > Products </a> </li>
+                <li class="flex--item md:d-none"> <a href="/teams" class="-marketing-link js-gps-track">For Teams</a> </li>
             </ol>
-         
+
             <form id="search" role="search" action="/search" class="flex--item fl-grow1 searchbar px12 js-searchbar "
                 autocomplete="off">
                 <div class="ps-relative">
@@ -51,15 +38,13 @@
                         class="s-input s-input__search js-search-field " aria-label="Search" aria-controls="top-search"
                         data-controller="s-popover" data-action="focus->s-popover#show"
                         data-s-popover-placement="bottom-start">
-                    <svg aria-hidden="true" class="s-input-icon s-input-icon__search svg-icon iconSearch" width="18"
-                        height="18" viewBox="0 0 18 18">
+                    <svg aria-hidden="true" class="s-input-icon s-input-icon__search svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18">
                         <path
                             d="m18 16.5-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5ZM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0Z">
                         </path>
                     </svg>
-                    <div class="s-popover p0 wmx100 wmn4 sm:wmn-initial js-top-search-popover" id="top-search"
-                        role="menu" style="">
-                        <div class="s-popover--arrow" style=""></div>
+                    <div class="s-popover p0 wmx100 wmn4 sm:wmn-initial js-top-search-popover" id="top-search" role="menu" style="">
+                        <!-- <div class="s-popover--arrow" style=""></div> -->
                         <div class="js-spinner p24 d-flex ai-center jc-center d-none">
                             <div class="s-spinner s-spinner__sm fc-orange-400">
                                 <div class="v-visible-sr">Loading…</div>
@@ -68,14 +53,12 @@
 
                         <span class="v-visible-sr js-screen-reader-info"></span>
                         <div class="js-ac-results overflow-y-auto hmx3 d-none"></div>
-
                         <div class="js-search-hints" aria-describedby="Tips for searching"></div>
                     </div>
                 </div>
             </form>
 
-            <ol class="overflow-x-auto ml-auto -secondary d-flex ai-center list-reset h100 user-logged-out"
-                role="presentation">
+            <ol class="overflow-x-auto ml-auto -secondary d-flex ai-center list-reset h100 user-logged-out" role="presentation">
                 <li class="-item searchbar-trigger"><a href="#" class="-link js-searchbar-trigger" role="button"
                         aria-label="Search" aria-haspopup="true" aria-controls="search"
                         title="Click to show search"><svg aria-hidden="true" class="svg-icon iconSearch" width="18"
@@ -86,14 +69,14 @@
                         </svg></a></li>
 
                 <li class="-ctas">
-                    <a href="https://stackoverflow.com/users/login?ssrc=head"
-                        class="login-link s-btn s-btn__filled py8 js-gps-track" rel="nofollow"
+                    <a href="https://stackoverflow.com/users/login?ssrc=head" class="login-link s-btn s-btn__filled py8 js-gps-track" rel="nofollow"
                         data-gps-track="login.click"
-                        data-ga="[&quot;top navigation&quot;,&quot;login button click&quot;,null,null,null]">Log in</a>
+                        data-ga="[&quot;top navigation&quot;,&quot;login button click&quot;,null,null,null]"
+                        >Log in</a>
                     <a href="https://stackoverflow.com/users/signup?ssrc=head"
                         class="login-link s-btn s-btn__primary py8" rel="nofollow"
-                        data-ga="[&quot;sign up&quot;,&quot;Sign Up Navigation&quot;,&quot;Header&quot;,null,null]">Sign
-                        up</a>
+                        data-ga="[&quot;sign up&quot;,&quot;Sign Up Navigation&quot;,&quot;Header&quot;,null,null]"
+                        >Sign up</a>
 
                 </li>
 
