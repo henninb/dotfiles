@@ -3,7 +3,7 @@
 cat > bottles-flatpak <<EOF
 #!/bin/sh
 
-flatpak run com.usbottles.bottles
+flatpak run com.usebottles.bottles
 
 exit 0
 EOF
