@@ -580,7 +580,7 @@
  '(helm-minibuffer-history-key "M-p")
  '(lsp-ui-doc-position 'bottom t)
  '(package-selected-packages
-   '(dired-single fsharp-mode elfeed bongo helm-dired-history helm elpy eval-in-repl json-mode markdown-mode rust-mode haskell-mode emms magit flycheck-kotlin flycheck company which-key crux expand-region smartparens diminish eshell-syntax-highlighting fish-completion doom-modeline doom-themes evil use-package)))
+   '(beacon dired-single fsharp-mode elfeed bongo helm-dired-history helm elpy eval-in-repl json-mode markdown-mode rust-mode haskell-mode emms magit flycheck-kotlin flycheck company which-key crux expand-region smartparens diminish eshell-syntax-highlighting fish-completion doom-modeline doom-themes evil use-package)))
 ; (add-hook 'haskell-mode-hook #'hindent-mode)
   ; (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 ; (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
@@ -627,6 +627,21 @@
 ;; use elpy mode for python
 (use-package elpy
   :ensure t
+)
+
+;; newly added on 3/8/2022
+(use-package beacon
+    :ensure t
+    :config
+    (setq beacon-mode 1)
+    (setq beacon-blink-delay 0.2)
+    (setq beacon-blink-duration 0.2)
+    (setq beacon-blink-when-point-moves 7)
+    (setq beacon-blink-when-window-changes nil)
+    (setq beacon-blink-when-window-scrolls nil)
+    (setq beacon-color "green")
+    (setq beacon-push-mark 5)
+    (setq beacon-size 25)
 )
 
 ; (use-package ccls
