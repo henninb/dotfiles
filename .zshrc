@@ -487,9 +487,13 @@ setopt share_history
 
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
+## bindkey section
 bindkey "^A" vi-beginning-of-line
 bindkey "^E" vi-end-of-line
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 
+# remove a key?
 bindkey -r "^B"
 
 touch "$HOME/env.secrets"
