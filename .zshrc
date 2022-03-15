@@ -471,7 +471,7 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 # zstyle ':completion:*' verbose yes
 
 # zstyle ':completion:*' completer _complete
-# zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 autoload -Uz compinit
 compinit
 
