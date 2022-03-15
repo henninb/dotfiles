@@ -35,3 +35,7 @@ listBySuit = [x `mod` 4 | x <- deck]
 listByRank = [x `div` 4 + 1 | x <- deck]
 --listGetSuit = [x * 4 | x <- [0..51]]
 
+
+main = do
+  let z = map (^2) [1,2,3]
+  return()
