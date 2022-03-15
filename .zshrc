@@ -30,7 +30,8 @@ SPACESHIP_PROMPT_SEPARATE_LINE=false
 export SPACESHIP_PROMPT_SEPARATE_LINE
 #SPACESHIP_CHAR_SYMBOL=❯
 # SPACESHIP_CHAR_SYMBOL= 
-SPACESHIP_CHAR_SYMBOL=💡
+#SPACESHIP_CHAR_SYMBOL=💡
+SPACESHIP_CHAR_SYMBOL=♜
 export SPACESHIP_CHAR_SYMBOL
 SPACESHIP_CHAR_SUFFIX=" "
 export SPACESHIP_CHAR_SUFFIX
@@ -456,8 +457,21 @@ else
 fi
 
 # zsh completion system.
-zstyle ':completion:*' completer _complete
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+zstyle ':completion:*' menu select
+
+zmodload zsh/complist
+
+# use the vi navigation keys in menu completion
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+
+# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# zstyle ':completion:*' verbose yes
+
+# zstyle ':completion:*' completer _complete
+# zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 autoload -Uz compinit
 compinit
 
