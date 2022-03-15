@@ -1,3 +1,5 @@
+module Main where
+
 import Data.List
 
 data Transaction = Transaction Integer String Integer String String Integer String String Double Int

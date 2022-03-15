@@ -6,7 +6,7 @@ elif [ "$OS" = "Fedora" ]; then
   PATH_FSI=/usr/share/dotnet/sdk/$(dotnet --version)/FSharp/fsi.exe
 elif [ "$OS" = "CentOS Linux" ]; then
   PATH_FSI=/usr/share/dotnet/sdk/$(dotnet --version)/FSharp/fsi.exe
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   PATH_FSI=/opt/dotnet/sdk/$(dotnet --version)/FSharp/fsi.exe
 elif [ "$OS" = "Gentoo" ]; then
   PATH_FSI=/opt/dotnet_core/sdk/$(dotnet --version)/FSharp/fsi.exe
