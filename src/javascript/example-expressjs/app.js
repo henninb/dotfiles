@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/test', (req, res) => {
-  res.send('test');
+  res.send('testing');
 });
 
 app.listen(port, () => {
