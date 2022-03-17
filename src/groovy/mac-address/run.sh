@@ -1,5 +1,6 @@
 #!/bin/sh
 
+touch input.txt
 if [ -x "$(command -v groovysh)" ]; then
   # groovysh -d mac-address.groovy
   groovysh mac-address.groovy
