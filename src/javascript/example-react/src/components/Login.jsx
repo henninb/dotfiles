@@ -14,14 +14,26 @@ const LoginPage = (props) => {
     //   console.log(data);
     //   alert('Recover password callback, see log on the console to see the data.');
     // };
+                    // <input type="text" name="email" id="email" placeholder="email" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+                    // <input type="password" name="password" id="password" placeholder="password" required="" />
 
     return (
-        <div class="login">
-            <div class="form">
-                <form name="login-form" class="login-form" action="/login" method="GET" data-bitwarden-watching="1">
+        <div className="login">
+            <div className="form">
+                <form name="login-form" className="login-form" action="/login" method="GET" data-bitwarden-watching="1">
                     <span class="material-icons">lock</span>
-                    <input type="text" name="email" id="email" placeholder="email" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
-                    <input type="password" name="password" id="password" placeholder="password" required="" />
+                    <div className="input-group mb-3">
+                <div className="input-group-prepend">
+                 <span className="input-group-text"><i className="fa fa-user"></i></span>
+                </div>
+                <input type="text" className="form-control" placeholder="Email" id="email" name="email" />
+             </div>
+             <div className="input-group mb-3">
+               <div className="input-group-prepend">
+                 <span className="input-group-text"><i className="fa fa-lock"></i></span>
+               </div>
+               <input type="password" className="form-control" placeholder="Password" id="password" name="password" />
+             </div>
                     <button type="submit">login</button>
                 </form>
             </div>
