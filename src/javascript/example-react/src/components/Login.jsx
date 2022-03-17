@@ -1,4 +1,5 @@
-import ReactSignupLoginComponent from 'react-signup-login-component';
+import react from 'react';
+import axios from 'axios';
 import './style.css';
 
 const LoginPage = (props) => {
@@ -24,13 +25,13 @@ const LoginPage = (props) => {
                     <span class="material-icons">lock</span>
                     <div className="input-group mb-3">
                 <div className="input-group-prepend">
-                 <span className="input-group-text"><i className="fa fa-user"></i></span>
+                 <span className="input-group-text"><i className="fa fa-user form-icon"></i></span>
                 </div>
                 <input type="text" className="form-control" placeholder="Email" id="email" name="email" />
              </div>
              <div className="input-group mb-3">
                <div className="input-group-prepend">
-                 <span className="input-group-text"><i className="fa fa-lock"></i></span>
+                 <span className="input-group-text"><i className="fa fa-lock form-icon"></i></span>
                </div>
                <input type="password" className="form-control" placeholder="Password" id="password" name="password" />
              </div>
