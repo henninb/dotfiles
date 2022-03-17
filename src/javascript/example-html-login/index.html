@@ -8,18 +8,14 @@
 </head>
 
 <body>
-    <div id="root">
-        <div>
-            <div class="login">
-                <div class="form">
-                    <form name="login-form" class="login-form" action="/login" method="GET" data-bitwarden-watching="1">
-                        <span class="material-icons">lock</span>
-                        <input type="text" name="email" id="email" placeholder="email" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
-                        <input type="password" name="password" id="password" placeholder="password" required="" />
-                        <button type="submit">login</button>
-                    </form>
-                </div>
-            </div>
+    <div class="login">
+        <div class="form">
+            <form name="login-form" class="login-form" action="/login" method="GET" data-bitwarden-watching="1">
+                <span class="material-icons">lock</span>
+                <input type="text" name="email" id="email" placeholder="email" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+                <input type="password" name="password" id="password" placeholder="password" required="" />
+                <button type="submit">login</button>
+            </form>
         </div>
     </div>
 </body>
