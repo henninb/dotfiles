@@ -1,6 +1,6 @@
 #!/bin/sh
 
-unzip -oq v2.zip
+unzip -oq v7.zip
 
 serve
 
