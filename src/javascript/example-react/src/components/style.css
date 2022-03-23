@@ -1,19 +1,75 @@
+@import url(https://fonts.googleapis.com/css2?family=Comfortaa&display=swap);
 body {
-    padding-top: 70px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    margin: 0;
+    background: linear-gradient(90deg, #4b6cb7, #182848);
 }
 
-.navbar-dark .nav-item .nav-link {
-    color: #fff;
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace
 }
 
-.navbar-dark .nav-item .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
-    border-radius: 0.25rem;
-    color: #fff;
+.form-icon {
+    font-size: 14px;
 }
 
-.fa-li {
+.login {
+    font-family: Comfortaa, cursive;
+    margin: auto;
+    padding: 8% 0 0;
+    width: 360px
+}
+
+.form {
+    background: #fff;
+    border-radius: 10px;
+    margin: 0 auto 100px;
+    max-width: 360px;
+    padding: 45px;
     position: relative;
-    left: 0;
+    text-align: center;
+    z-index: 1;
+}
+
+.form input {
+    background: #f2f2f2;
+    border: 0;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: Comfortaa, cursive;
+    font-size: 14px;
+    margin: 0 0 15px;
+    outline: 0;
+    padding: 15px;
+    width: 100%;
+}
+
+.form input:focus {
+    background: #dbdbdb
+}
+
+.form button {
+    background: #4b6cb7;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-family: Comfortaa, cursive;
+    font-size: 14px;
+    outline: 0;
+    padding: 15px;
+    text-transform: uppercase;
+    transition: all .3 ease;
+    width: 100%
+}
+
+.form button:active {
+    background: #395591
+}
+
+.form span {
+    color: #4b6cb7;
+    font-size: 75px;
 }

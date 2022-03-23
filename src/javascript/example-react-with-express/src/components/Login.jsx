@@ -14,7 +14,6 @@ import './style.css';
   }
 
 export default function Login(props) {
-// export const Login = (props) => {
 
     const signupWasClickedCallback = (data) => {
       console.log(data);
@@ -75,5 +74,3 @@ export default function Login(props) {
        </div>
     );
 };
-
-// export default LoginPage;
