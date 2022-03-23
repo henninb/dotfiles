@@ -8,24 +8,30 @@
 			"save-password": true,
 			"read-only": false,
 			"configuration": {
-				"host": "localhost",
+				"host": "192.168.10.25",
 				"port": "5432",
 				"database": "finance_db",
-				"url": "jdbc:postgresql://localhost:5432/finance_db",
+				"url": "jdbc:postgresql://192.168.10.25:5432/finance_db",
 				"type": "dev",
 				"provider-properties": {
 					"@dbeaver-show-non-default-db@": "false",
 					"@dbeaver-show-template-db@": "false",
 					"postgresql.dd.plain.string": "false",
-					"postgresql.dd.tag.string": "false"
-				}
+					"postgresql.dd.tag.string": "false",
+					"@dbeaver-show-unavailable-db@": "false",
+					"show-database-statistics": "false",
+					"@dbeaver-read-all-data-types-db@": "false",
+					"@dbeaver-use-prepared-statements-db@": "false"
+				},
+				"auth-model": "native",
+				"handlers": {}
 			},
 			"custom-properties": {
 				"database.meta.separate.connection": "false"
 			}
 		},
 		"dbeaver-sample-database-sqlite-1": {
-			"provider": "generic",
+			"provider": "sqlite",
 			"driver": "sqlite_jdbc",
 			"name": "DBeaver Sample Database (SQLite)",
 			"save-password": true,
@@ -45,7 +51,8 @@
 			"description": "Regular development database",
 			"auto-commit": true,
 			"confirm-execute": false,
-			"confirm-data-change": false
+			"confirm-data-change": false,
+			"auto-close-transactions": false
 		}
 	}
 }
