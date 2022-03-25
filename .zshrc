@@ -446,7 +446,7 @@ if [ "$MYSHELL" = "zsh" ]; then
   source "$HOME/plugins/zed-zsh/zed.zsh"
   #eval "$(starship init zsh)"
   source "$HOME/themes/spaceship-prompt/spaceship.zsh"
-  source "$HOME/plugins/ssh-agent/ssh-agent.plugin.zsh"
+  # source "$HOME/plugins/ssh-agent/ssh-agent.plugin.zsh"
   # source ~/plugins/powerlevel10k/powerlevel10k.zsh-theme
   #source "$HOME/themes/agnoster-zsh-theme/agnoster.zsh-theme"
   #[ -f "$HOME/plugins/fzf.zsh" ] && source "$HOME/plugins/fzf.zsh"
@@ -543,5 +543,15 @@ export LIBGL_ALWAYS_SOFTWARE=1
 
 # added by travis gem
 [ ! -s /home/henninb/.travis/travis.sh ] || source /home/henninb/.travis/travis.sh
+
+ssh-add -l &> /dev/null
+if [ $? -eq 2 ]; then
+  test -r ~/.ssh-agent && eval "$(<$HOME/.ssh-agent)" > /dev/null
+  ssh-add -l &> /dev/null
+  if [ $? -eq 2 ]; then
+    (umask 066 && ssh-agent > $HOME/.ssh-agent)
+    eval "$(<$HOME/.ssh-agent)" > /dev/null
+  fi
+fi
 
 # vim: set ft=sh:
