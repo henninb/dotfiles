@@ -20,7 +20,7 @@ sudo virt-install \
 --name guest-ubuntu \
 --memory=4096,maxmemory=4096 \
 --vcpus=1,maxvcpus=2 \
---os-type=generic \
+--os-variant=debian9 \
 --virt-type=kvm \
 --hvm \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
