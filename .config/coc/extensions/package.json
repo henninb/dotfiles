@@ -17,7 +17,7 @@
     "coc-pyright": ">=1.1.232",
     "coc-python": ">=1.2.13",
     "coc-sh": ">=0.6.1",
-    "coc-snippets": ">=3.0.7",
+    "coc-snippets": ">=3.0.8",
     "coc-stylelintplus": ">=1.5.0",
     "coc-svg": ">=0.0.13",
     "coc-tasks": ">=0.3.0",

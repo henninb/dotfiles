@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Comment=slack
+Name=slack
+Exec=flatpak run com.slack.Slack
+Terminal=false
+Icon=wine
