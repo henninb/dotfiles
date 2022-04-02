@@ -49,6 +49,7 @@ fi
 echo sudo mkdir -p /var/run/dbus
 echo sudo dbus-daemon --system
 echo brave-browser --no-sandbox --use-gl=egl
+echo sudo snap install brave
 
 echo https://github.com/brave/brave-browser
 
