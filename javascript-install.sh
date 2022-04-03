@@ -46,10 +46,11 @@ source ./.nvm/nvm.sh
 #  source "$HOME/.nvm/nvm.sh"
 #fi
 
-if ! nvm install 16.13.0; then
-  sudo nvm install 16.13.0
+# node version 16.14.0 as of 4/3/2022
+if ! nvm install 16.14.0; then
+  sudo nvm install 16.14.0
 fi
-nvm use 16.13.0
+nvm use 16.14.0
 
 [ ! -x "$(command -v npm)" ] && echo "npm is not installed." && exit 1
 if [ ! -x "$(command -v n)" ]; then
