@@ -546,7 +546,7 @@ export LIBGL_ALWAYS_SOFTWARE=1
 
 
 # needs to move to ~/.local/lib/
-source '/home/henninb/.local/lib/azure-cli/az.completion'
+# source '/home/henninb/.local/lib/azure-cli/az.completion'
 
 ssh-add -l &> /dev/null
 if [ $? -eq 2 ]; then
