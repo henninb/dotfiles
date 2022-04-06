@@ -542,7 +542,11 @@ export LIBGL_ALWAYS_SOFTWARE=1
 [ -f "$HOME/.acme.sh/acme.sh.env" ] && source "$HOME/.acme.sh/acme.sh.env"
 
 # added by travis gem
-[ ! -s /home/henninb/.travis/travis.sh ] || source /home/henninb/.travis/travis.sh
+#[ ! -s /home/henninb/.travis/travis.sh ] || source /home/henninb/.travis/travis.sh
+
+
+# needs to move to ~/.local/lib/
+source '/home/henninb/.local/lib/azure-cli/az.completion'
 
 ssh-add -l &> /dev/null
 if [ $? -eq 2 ]; then
