@@ -13,6 +13,6 @@
     "gulp": "^4.0.2",
     "gulp-jshint": "^2.1.0",
     "node-config-manager": "^2.1.2",
-    "restify": "^8.6.0"
+    "restify": "^8.6.1"
   }
 }
