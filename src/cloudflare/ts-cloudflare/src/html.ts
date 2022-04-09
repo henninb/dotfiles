@@ -1,37 +1,10 @@
-function toCelsius(x) {
-  return (5.0/9.0) * (x - 32.0);
-}
-
-function toFahrenheit(x) {
-  return  x * (9.0/5.0) + 32.0;
-}
-
-async function apiCall(url) {
-  const init = {
-    headers: {
-      'content-type': 'application/json;charset=UTF-8',
-    },
-  };
-  const response = await fetch(url, init);
-  const results = await gatherResponse(response);
-  return new Response(results, init);
-}
-
-const redirectMap = new Map([
-  ['/test1', 'https://mysite.com/newlocation1'],
-  ['/test2', 'https://mysite.com/newlocation2'],
-  ['/test3', 'https://mysite.com/newlocation3'],
-  ['/test4', 'https://mysite.com/newlocation4'],
-])
-
-addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
-});
-
-const html = `
-<html>
+export const html = `
+<html lang="en">
   <head>
-    <title>my title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <title>Home</title>
     <style>
     @import url(https://fonts.googleapis.com/css2?family=Comfortaa&display=swap);
 body {
@@ -112,6 +85,51 @@ code {
   </head>
   <body>
 
+      <div>
+      <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon" />
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">
+                Home<span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/payments">
+                Payments
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/payment/required">
+                Payment Required
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/freeform">
+                FreeForm
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">
+                Login
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
           <div class="login">
             <div class="form">
                 <form name="login-form" class="login-form" action="/login" method="GET" data-bitwarden-watching="1">
@@ -139,26 +157,3 @@ code {
   </body>
 </html>
 `
-
-async function handleRequest(request) {
-  //return new Response('10 degress Celsius to Fahrenheit is ' + toFahrenheit(10), {
-  return new Response(html, {
-    headers: { 'content-type': 'text/html' },
-  })
-};
-
-// addEventListener('fetch', async event => {
-//   event.respondWith(handleRequest(event.request))
-// })
-
-// async function handleRequest(request) {
-//   let requestURL = new URL(request.url)
-//   let path       = requestURL.pathname.split('/redirect')[1]
-//   let location   = redirectMap.get(path)
-
-//   if (location) {
-//     return Response.redirect(location, 301)
-//   }
-
-//   return fetch(request)
-// }

@@ -1,7 +1,7 @@
-name = "ts-cloudflare"
+name = "main-worker"
 type = "javascript"
 zone_id = ""
-account_id = ""
+account_id = "431d76b4c22a730e1ee0910fc52903ff"
 route = ""
 workers_dev = true
 compatibility_date = "2022-04-07"

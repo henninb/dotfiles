@@ -1,7 +1,7 @@
-name = "celsius"
+name = "main-worker"
 type = "javascript"
 
-account_id = ""
+account_id = "431d76b4c22a730e1ee0910fc52903ff"
 workers_dev = true
 route = ""
 zone_id = ""
