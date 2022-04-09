@@ -3,7 +3,7 @@ alias twins='curl getnews.tech/minnesota+twins'
 alias wolves='curl getnews.tech/minnesota+timberwolves'
 alias veewee='bundle exec veewee'
 
-# get aliases
+# git aliases
 alias g='git'
 # alias gs='git status'
 # alias ga='git add '
@@ -43,6 +43,8 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
 alias youtube-dl="youtube-dl --no-check-certificate -f 'bestaudio[ext=m4a]'"
+
+alias open="xdg-open"
 
 #alias local_ip="ipconfig getifaddr br0"
 alias local_ip="ip route get 8.8.8.8"
