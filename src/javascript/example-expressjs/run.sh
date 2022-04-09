@@ -8,7 +8,7 @@ echo npm install express --save
 echo 'http://localhost:3001'
 echo 'http://localhost:3001/test'
 # echo "curl -is http://localhost:8080/hello/mark -H 'accept: text/plain'"
-npm install
-npm start
+pnpm install
+pnpm start
 
 exit 0
