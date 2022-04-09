@@ -3,13 +3,10 @@ import axios from 'axios';
 import './style.css';
 
 // export default const LoginPage = (props) => {
-export default function LoginPage(props) {
+export default function Login(props) {
 
     return (
       <body>
-
-       <h1>header1</h1>
-
         <div className="login">
             <div className="form">
                 <form name="login-form" className="login-form" action="/login" method="GET" data-bitwarden-watching="1">
@@ -34,8 +31,6 @@ export default function LoginPage(props) {
                 </form>
             </div>
         </div>
-
-
        </body>
     );
 };

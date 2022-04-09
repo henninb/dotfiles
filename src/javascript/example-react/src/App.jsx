@@ -6,7 +6,7 @@ import AllRoutes from "./components/AllRoutes";
 
 export default class App extends Component {
   render() {
-    return <>
+    return <div>
       <nav class="navbar navbar-expand-lg navbar-dark primary-color">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -16,13 +16,13 @@ export default class App extends Component {
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="/nhl">NHL</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="/nba">NBA</a>
       </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
@@ -31,6 +31,6 @@ export default class App extends Component {
   </div>
 </nav>
       <AllRoutes />;
-      </>
+      </div>
   }
 }
