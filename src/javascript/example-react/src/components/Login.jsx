@@ -6,7 +6,6 @@ import './style.css';
 export default function Login(props) {
 
     return (
-      <body>
         <div className="login">
             <div className="form">
                 <form name="login-form" className="login-form" action="/login" method="GET" data-bitwarden-watching="1">
@@ -31,6 +30,5 @@ export default function Login(props) {
                 </form>
             </div>
         </div>
-       </body>
     );
 };
