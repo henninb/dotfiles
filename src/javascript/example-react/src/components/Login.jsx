@@ -1,8 +1,3 @@
-import react from 'react';
-import axios from 'axios';
-import './style.css';
-
-// export default const LoginPage = (props) => {
 export default function Login(props) {
 
     return (
