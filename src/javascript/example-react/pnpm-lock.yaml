@@ -4,6 +4,7 @@ specifiers:
   '@emotion/react': ^11.9.0
   '@emotion/styled': ^11.8.1
   '@mui/lab': ^5.0.0-alpha.76
+  '@mui/x-data-grid': ^5.8.0
   '@testing-library/jest-dom': ^5.16.4
   '@testing-library/react': ^13.0.0
   axios: ^0.26.1
@@ -21,6 +22,7 @@ dependencies:
   '@emotion/react': 11.9.0_react@18.0.0
   '@emotion/styled': 11.8.1_0381be9ef9d4f3389e973d8e2731d4a2
   '@mui/lab': 5.0.0-alpha.76_6c8dcdda718e1b53eddefc29a789ee34
+  '@mui/x-data-grid': 5.8.0_react@18.0.0
   '@testing-library/jest-dom': 5.16.4
   '@testing-library/react': 13.0.0_react-dom@18.0.0+react@18.0.0
   axios: 0.26.1
@@ -2073,6 +2075,21 @@ packages:
       prop-types: 15.8.1
       react: 18.0.0
       react-is: 17.0.2
+    dev: false
+
+  /@mui/x-data-grid/5.8.0_react@18.0.0:
+    resolution: {integrity: sha512-8U2Ltdi/Iy4zKfdBMwN62V20S2KSnRIuyyy7t8xK4QLSPsa9IIIM+6G6EnqL6z5ZWr4rnB/+EIjzjy+qcUlC4A==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      '@mui/material': ^5.2.8
+      '@mui/system': ^5.2.8
+      react: ^17.0.2
+    dependencies:
+      '@mui/utils': 5.6.0_react@18.0.0
+      clsx: 1.1.1
+      prop-types: 15.8.1
+      react: 18.0.0
+      reselect: 4.1.5
     dev: false
 
   /@mui/x-date-pickers/5.0.0-alpha.0_cf95b6a6f04eab8bf12948b5e77d3f8c:
@@ -8435,6 +8452,10 @@ packages:
 
   /requires-port/1.0.0:
     resolution: {integrity: sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=}
+    dev: false
+
+  /reselect/4.1.5:
+    resolution: {integrity: sha512-uVdlz8J7OO+ASpBYoz1Zypgx0KasCY20H+N8JD13oUMtPvSHQuscrHop4KbXrbsBcdB9Ds7lVK7eRkBIfO43vQ==}
     dev: false
 
   /resolve-cwd/3.0.0:
