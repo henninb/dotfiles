@@ -2,11 +2,11 @@ const express = require('express')
 const app = express()
 const port = 3001
 
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.send('Hello World!');
 });
 
-app.get('/test', (req, res) => {
+app.get('/test', (_req, res) => {
   res.send('testing');
 });
 
