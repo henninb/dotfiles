@@ -22,7 +22,7 @@
     "coc-svg": ">=0.0.13",
     "coc-tasks": ">=0.3.0",
     "coc-tsserver": ">=1.10.0",
-    "coc-vimlsp": ">=0.12.6",
+    "coc-vimlsp": ">=0.12.7",
     "coc-xml": ">=1.14.1",
     "coc-yaml": ">=1.7.5",
     "coc-yank": ">=1.2.1"
