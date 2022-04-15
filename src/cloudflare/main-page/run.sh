@@ -1,5 +1,6 @@
 #!/bin/sh
 
-miniflare
+echo miniflare
+wrangler publish
 
 exit 0
