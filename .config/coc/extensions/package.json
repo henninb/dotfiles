@@ -7,7 +7,7 @@
     "coc-emoji": ">=1.3.0",
     "coc-eslint": ">=1.5.8",
     "coc-explorer": ">=0.22.9",
-    "coc-fsharp": ">=0.3.2",
+    "coc-fsharp": ">=0.3.4",
     "coc-git": ">=2.4.9",
     "coc-html": ">=1.6.1",
     "coc-java": ">=1.5.5",
