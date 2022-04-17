@@ -14,6 +14,14 @@ function toFahrenheit(x: number) {
 async function handleRequest(request: Request) {
   const { headers } = request;
   const contentType = headers.get('content-type') || '';
+  let json = "{}";
+
+  if( request.method !== 'POST' ) {
+    return new Response(json, {
+      status: 400,
+      statusText: 'must be a POST',
+    })
+  }
 
   console.log(request.method);
   console.log(contentType);
@@ -21,7 +29,6 @@ async function handleRequest(request: Request) {
   const to_temperature: Temperature = await request.json();
   console.log(JSON.stringify(to_temperature));
   // const to_fahrenheit: Temperature = await request.json();
-  let json = "{}";
 
   if( request.url.includes('celsius') ) {
     to_temperature.celsius = toCelsius(to_temperature.fahrenheit);
@@ -34,17 +41,8 @@ async function handleRequest(request: Request) {
     return new Response(json, {
       status: 400,
       statusText: 'failure',
-      headers: { 'content-type': 'application/json' },
     })
   }
-
-
-  // let newResponse = new Response(json, {
-  //   status: 500,
-  //   statusText: 'some message',
-  //   headers: originalResponse.headers,
-  // });
-
 
   return new Response(json, {
     status: 200,
