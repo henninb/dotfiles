@@ -10,7 +10,7 @@ export default function Temperature() {
         celsius: celsius,
      };
        try {
-        const response = await axios.post("/fahrenheit", data,
+        const response = await axios.post("/api/fahrenheit", data,
         {
           headers: { 'Content-Type': 'application/json', }
         }
@@ -46,7 +46,7 @@ export default function Temperature() {
      // Now you can use formData.get('foo'), for example.
 
        try {
-        const response = await axios.post("/celsius", data,
+        const response = await axios.post("/api/celsius", data,
         {
           headers: { 'Content-Type': 'application/json', }
         }

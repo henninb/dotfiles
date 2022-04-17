@@ -1,4 +1,58 @@
-export default function Login(props) {
+import { useState } from "react";
+import axios from "axios";
+export default function Login() {
+
+ 
+    const [state, setState] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setState((previousState) => ({
+      ...previousState,
+      [id]: value,
+    }));
+  };
+
+  const userLogin = async (payload) => {
+    let endpoint =  '/api/login';
+
+    const response = await axios.post(endpoint, payload, {
+      timeout: 0,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  };
+
+  const handleClick = async (e) => {
+    console.log("login submit was clicked");
+    //document.getElementById("login-result").innerHTML = "comment";
+
+    e.preventDefault();
+
+    //const {name, value} = e.target;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let data = {
+      username: email,
+      password: password,
+    };
+    console.log(state);
+    console.log(data);
+
+    try {
+      let response = await userLogin(data);
+      console.log("response: " + JSON.stringify(response));
+    } catch (error) {
+      console.log(error.data);
+    }
+  };
+
 
     return (
         <div className="login">
@@ -21,7 +75,9 @@ export default function Login(props) {
                </div>
                <input type="password" className="form-control" placeholder="Password" id="password" name="password" />
              </div>
-                    <button type="submit">login</button>
+      <button type="submit" onClick={handleClick}>
+            login
+          </button>
                 </form>
             </div>
         </div>
