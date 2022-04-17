@@ -26,6 +26,15 @@ async function handleRequest(request: Request) {
   console.log(request.method);
   console.log(contentType);
   console.log(request.url);
+
+  if( contentType === 'application/x-www-form-urlencoded' ) {
+    const text = await request.text();
+    return new Response(text, {
+      status: 400,
+      statusText: 'fail',
+    })
+  }
+
   const to_temperature: Temperature = await request.json();
   console.log(JSON.stringify(to_temperature));
   // const to_fahrenheit: Temperature = await request.json();
