@@ -37,6 +37,7 @@
     "webpack-cli": "^4.9.2"
   },
   "dependencies": {
+    "@tsndr/cloudflare-worker-jwt": "^1.1.7",
     "axios": "^0.26.1"
   }
 }
