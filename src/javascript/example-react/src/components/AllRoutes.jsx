@@ -4,6 +4,7 @@ import Login from "./Login";
 import HockeyScores from "./HockeyScores";
 import Temperature from "./Temperature";
 import Home from "./Home";
+import ProtectedRoutes from "./ProtectedRoutes";
 
 export default function AllRoutes() {
   return (
@@ -12,10 +13,12 @@ export default function AllRoutes() {
           <div>
           </div>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/nhl" element={<HockeyScores />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/temperature" element={<Temperature />} />
+            <Route element={<ProtectedRoutes />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/nhl" element={<HockeyScores />} />
+              <Route path="/temperature" element={<Temperature />} />
+            </Route>
           </Routes>
       </BrowserRouter>
     </div>
