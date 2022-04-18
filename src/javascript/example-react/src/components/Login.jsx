@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 export default function Login() {
 
- 
+
     const [state, setState] = useState({
     email: "",
     password: "",
@@ -29,21 +29,18 @@ export default function Login() {
     return response.data;
   };
 
-  const handleClick = async (e) => {
+  const handleClick = async (event) => {
     console.log("login submit was clicked");
-    //document.getElementById("login-result").innerHTML = "comment";
+    event.preventDefault();
 
-    e.preventDefault();
-
-    //const {name, value} = e.target;
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
     let data = {
-      username: email,
+      email: email,
       password: password,
     };
-    console.log(state);
-    console.log(data);
+    // console.log(state);
+    console.log("send: " + data);
 
     try {
       let response = await userLogin(data);

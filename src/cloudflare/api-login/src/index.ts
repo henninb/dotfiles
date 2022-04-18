@@ -3,6 +3,12 @@ interface Login {
   password: string;
 }
 
+ // console.log(process.env.JWT_KEY);
+
+    // 4         const token = req.headers.authorization.split(" ")[1];¬
+    // 5         const decoded = jwt.verify(token, process.env.JWT_KEY);¬
+    // 6         req.userData = decoded;¬
+
 async function handleRequest(request: Request) {
   const { headers } = request;
   const contentType = headers.get('content-type') || '';
