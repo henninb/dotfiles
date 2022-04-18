@@ -14,6 +14,7 @@ function toFahrenheit(x: number) {
 async function handleRequest(request: Request) {
   const { headers } = request;
   const contentType = headers.get('content-type') || '';
+  const token = request.headers.get('authorization') || '';
   let json = "{}";
 
   if( request.method !== 'POST' ) {
