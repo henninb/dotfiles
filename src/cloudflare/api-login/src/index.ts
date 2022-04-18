@@ -23,9 +23,6 @@ const PASSWORD="monday1"
 
  // console.log(JWT_KEY);
 
-    //          const token = req.headers.authorization.split(" ")[1];
-    //          req.userData = decoded;
-
 async function handleRequest(request: Request) {
   const { headers } = request;
   const contentType = headers.get('content-type') || '';
@@ -58,7 +55,6 @@ async function handleRequest(request: Request) {
   }
 
   const login: Login = await request.json();
-  // console.log(JSON.stringify(login));
   if( login.email === EMAIL && login.password === PASSWORD ) {
     const token = await jwt.sign({
           email: login.email,
