@@ -1,4 +1,4 @@
-async function handleRequest(request: Request) {
+async function handleRequest(_request: Request) {
   console.log('calling method');
     const response = await fetch('https://fixturedownload.com/feed/json/nhl-2021/minnesota-wild', {
         method: 'GET',
