@@ -4,7 +4,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { v4 as uuidv4 } from 'uuid';
 
 export default function HockeyScores() {
-  const [logins, setlogins] = useState(null)
+  const [data, setData] = useState(null)
 
 
   const columns = [
@@ -50,21 +50,21 @@ export default function HockeyScores() {
   },
 ];
 
-  const rows = [
-      //{ id: 1, MatchNumber: 1307, RoundNumber: 28, DateUtc: "2022-04-30 00:00:00Z", Location: "Xcel Energy Center", HomeTeam: "Minnesota Wild", AwayTeam: "Colorado Avalanche", Group: null, HomeTeamScore: null, AwayTeamScore: null },
-      { MatchNumber: 1307, RoundNumber: 28, DateUtc: "2022-04-30 00:00:00Z", Location: "Xcel Energy Center", HomeTeam: "Minnesota Wild", AwayTeam: "Colorado Avalanche", Group: null, HomeTeamScore: null, AwayTeamScore: null },
-];
+  //const rows = [
+  //    //{ id: 1, MatchNumber: 1307, RoundNumber: 28, DateUtc: "2022-04-30 00:00:00Z", Location: "Xcel Energy Center", HomeTeam: "Minnesota Wild", AwayTeam: "Colorado Avalanche", Group: null, HomeTeamScore: null, AwayTeamScore: null },
+  //    { MatchNumber: 1307, RoundNumber: 28, DateUtc: "2022-04-30 00:00:00Z", Location: "Xcel Energy Center", HomeTeam: "Minnesota Wild", AwayTeam: "Colorado Avalanche", Group: null, HomeTeamScore: null, AwayTeamScore: null },
+//];
 
-  async function showSchedule(e) {
+  async function showSchedule(_event) {
     console.log('showSchedule was called #1.');
   }
 
-  const fetchMyAPI = useCallback(async () => {
+  const fetchHockeySchedule = useCallback(async () => {
        try {
         const response = await axios.get("/feed/json/nhl-2021/minnesota-wild")
         console.log('apiCall was made.');
          console.log(response.data);
-         setlogins(response.data);
+         setData(response.data);
        } catch(error) {
          if(error) {
            console.log(error.data);
@@ -75,8 +75,8 @@ export default function HockeyScores() {
       }, []);
 
   useEffect(() => {
-    fetchMyAPI();
-  }, [fetchMyAPI])
+    fetchHockeySchedule();
+  }, [fetchHockeySchedule])
 
     return (
       <div>
@@ -86,7 +86,7 @@ export default function HockeyScores() {
       <div style={{ height: 800, width: '100%' }}>
       <DataGrid
         getRowId={() => uuidv4()}
-        rows={logins ? logins :[]}
+        rows={data ? data :[]}
         columns={columns}
         pageSize={100}
         rowsPerPageOptions={[100]}

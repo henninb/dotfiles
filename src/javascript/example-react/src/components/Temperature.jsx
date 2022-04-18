@@ -17,7 +17,6 @@ export default function Temperature() {
         )
         console.log('apiCall was made.');
          console.log(response.data);
-         // setlogins(response.data);
        } catch(error) {
          if(error) {
            console.log(error.data);
@@ -53,7 +52,6 @@ export default function Temperature() {
         )
         console.log('apiCall was made.');
          console.log(response.data);
-         // setlogins(response.data);
        } catch(error) {
          if(error) {
            console.log(error.data);
@@ -77,5 +75,5 @@ export default function Temperature() {
            <button onClick={toFahrenheit}>toFahrenheit</button>
            </form>
         </div>
-    );
+    )
 };
