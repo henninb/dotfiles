@@ -55,9 +55,9 @@ export default function HockeyScores() {
   //    { MatchNumber: 1307, RoundNumber: 28, DateUtc: "2022-04-30 00:00:00Z", Location: "Xcel Energy Center", HomeTeam: "Minnesota Wild", AwayTeam: "Colorado Avalanche", Group: null, HomeTeamScore: null, AwayTeamScore: null },
 //];
 
-  async function showSchedule(_event) {
-    console.log('showSchedule was called #1.');
-  }
+  // async function showSchedule(_event) {
+  //   console.log('showSchedule was called #1.');
+  // }
 
   const fetchHockeySchedule = useCallback(async () => {
        try {
@@ -81,7 +81,6 @@ export default function HockeyScores() {
     return (
       <div>
        <h1>Wild Hockey Scores</h1>
-      <button onClick={showSchedule}>Show Schedule</button>
 
       <div style={{ height: 800, width: '100%' }}>
       <DataGrid
