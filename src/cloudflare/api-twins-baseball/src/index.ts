@@ -1,7 +1,7 @@
 import * as jwt from '@tsndr/cloudflare-worker-jwt'
 
 async function handleRequest(request: Request) {
-  console.log('calling method');
+  console.log('calling handleRequest()');
 
   const token = request.headers.get('authorization')?.split(" ")[1] || '';
   console.log(token);
@@ -17,7 +17,7 @@ async function handleRequest(request: Request) {
       hydrate:"decisions"
   };
 
-url.search = new URLSearchParams(params).toString();
+  url.search = new URLSearchParams(params).toString();
 
   const response = await fetch(url.toString(), {
         method: 'GET',
@@ -26,9 +26,9 @@ url.search = new URLSearchParams(params).toString();
           "Content-Type": "application/json",
         },
   });
-  console.log('apiCall was made.');
+  console.log('call to statsapi.mlb.com was made.');
   const json = await response.json();
-  console.log(json);
+  // console.log(json);
   return new Response(JSON.stringify(json), {
     headers: { 'content-type': 'application/json' },
   })
