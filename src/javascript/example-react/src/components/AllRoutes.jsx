@@ -16,10 +16,10 @@ export default function AllRoutes() {
           <Routes>
             <Route path="/login" element={<Login />} />
               <Route path="/mlb" element={<BaseballScores />} />
-            <Route element={<ProtectedRoutes />}>
-              <Route path="/" element={<Home />} />
               <Route path="/nhl" element={<HockeyScores />} />
               <Route path="/temperature" element={<Temperature />} />
+            <Route element={<ProtectedRoutes />}>
+              <Route path="/" element={<Home />} />
             </Route>
           </Routes>
       </BrowserRouter>

@@ -20,9 +20,6 @@ export default class App extends Component {
       <li className="nav-item">
         <a className="nav-link" href="/temperature">Temperature</a>
       </li>
-      <li className="nav-item">
-        <a className="nav-link" href="/login">Login</a>
-      </li>
     </ul>
   </div>
 </nav>
