@@ -5,7 +5,15 @@ async function handleRequest(request: Request) {
 
   const token = request.headers.get('authorization')?.split(" ")[1] || '';
   console.log(token);
-  const response = await fetch('https://fixturedownload.com/feed/json/nhl-2021/minnesota-wild', {
+
+
+  const url = new URL('https://fixturedownload.com/feed/json/nhl-2021/minnesota-wild')
+
+  const params: Record<string,string> = {
+  };
+
+  url.search = new URLSearchParams(params).toString();
+  const response = await fetch(url.toString(), {
         method: 'GET',
         redirect: 'follow',
         headers: {
