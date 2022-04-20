@@ -15,6 +15,9 @@ export default class App extends Component {
         <a className="nav-link" href="/nhl">NHL</a>
       </li>
       <li className="nav-item">
+        <a className="nav-link" href="/mlb">MLB</a>
+      </li>
+      <li className="nav-item">
         <a className="nav-link" href="/temperature">Temperature</a>
       </li>
       <li className="nav-item">
