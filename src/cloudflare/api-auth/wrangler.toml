@@ -10,3 +10,6 @@ compatibility_date = "2022-04-18"
 command = "npm install && npm run build"
 [build.upload]
 format = "service-worker"
+
+[vars]
+JWT_KEY = "mySecret"

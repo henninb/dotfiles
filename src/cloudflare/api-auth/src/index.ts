@@ -1,11 +1,4 @@
-// declare global {
-//   const JWT_KEY: string
-// }
-import jwt from '@tsndr/cloudflare-worker-jwt'
-
-
-const JWT_KEY="mySecret";
-// const test : any = self["JWT_KEY"];
+import * as jwt from '@tsndr/cloudflare-worker-jwt'
 
 async function handleRequest(request: Request) {
   const { headers } = request;
@@ -13,12 +6,11 @@ async function handleRequest(request: Request) {
   const token = request.headers.get('authorization')?.split(" ")[1] || '';
 
   if( request.method !== 'GET' ) {
-    return new Response("failure", {
+    return new Response("failure on method", {
       status: 400,
       statusText: 'must be a GET',
     })
   }
-  // console.log("token: " + token);
   console.log("method: " + request.method);
   console.log("contentType: " + contentType);
   console.log(request.url);
