@@ -1,15 +1,16 @@
 {
-  "name": "worker-typescript-template",
+  "name": "api-login",
   "version": "1.0.0",
   "description": "Cloudflare worker TypeScript template",
-  "main": "dist/worker.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "esbuild --bundle --sourcemap --outdir=dist ./src/index.ts",
     "format": "prettier --write  '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
     "lint": "eslint --max-warnings=0 src && prettier --check '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
+    "dev": "miniflare --watch --debug",
     "test": "jest --config jestconfig.json --verbose"
   },
-  "author": "author",
+  "author": "",
   "license": "MIT OR Apache-2.0",
   "eslintConfig": {
     "root": true,
@@ -20,7 +21,6 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^3.5.1",
-    "@tsndr/cloudflare-worker-jwt": "^1.1.7",
     "@types/jest": "^27.4.1",
     "@types/service-worker-mock": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "axios": "^0.26.1",
-    "jsonwebtoken": "^8.5.1"
+    "@tsndr/cloudflare-worker-jwt": "^1.1.7",
+    "esbuild": "^0.14.36"
   }
 }

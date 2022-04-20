@@ -12,7 +12,6 @@ command = "npm install && npm run build"
 format = "service-worker"
 
 [vars]
-JWT_KEY="secret1"
-
-[env.production]
-name = "API_KEY"
+JWT_KEY = "mySecret"
+EMAIL = "henninb@gmail.com"
+PASSWORD = "monday1"
