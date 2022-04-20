@@ -43,8 +43,8 @@ module.exports = function (app) {
     "/api/v1/schedule",
     createProxyMiddleware({
       target:
-        //"https://statsapi.mlb.com/api/v1/schedule?startDate=1/01/2022&endDate=12/31/2022&gameTypes=R&sportId=1&teamId=142&hydrate=decisions",
-        "https://statsapi.mlb.com",
+        "https://statsapi.mlb.com/api/v1/schedule?startDate=1/01/2022&endDate=12/31/2022&gameTypes=R&sportId=1&teamId=142&hydrate=decisions",
+        // "https://statsapi.mlb.com",
       // secure: true,
       // loglevel: 'debug',
       headers: {
