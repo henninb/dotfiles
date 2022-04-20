@@ -1,7 +1,7 @@
 {
-  "name": "worker-typescript-template",
+  "name": "api-wild-hockey",
   "version": "1.0.0",
-  "description": "Cloudflare worker TypeScript template",
+  "description": "",
   "main": "dist/worker.js",
   "scripts": {
     "build": "webpack",
