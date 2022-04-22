@@ -39,12 +39,10 @@ module.exports = function (app) {
   );
 
   app.use(
-    //"/api/v1/schedule?startDate=1/01/2022&endDate=12/31/2022&gameTypes=R&sportId=1&teamId=142&hydrate=decisions",
     "/api/v1/schedule",
     createProxyMiddleware({
       target:
         "https://statsapi.mlb.com/api/v1/schedule?startDate=1/01/2022&endDate=12/31/2022&gameTypes=R&sportId=1&teamId=142&hydrate=decisions",
-        // "https://statsapi.mlb.com",
       // secure: true,
       // loglevel: 'debug',
       headers: {
@@ -58,18 +56,24 @@ module.exports = function (app) {
     })
   );
 
-  // app.use(
-  //   "/api_coin",
-  //   createProxyMiddleware({
-  //     target:
-  //       "https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=100&page=1&sparkline=false",
-  //     headers: {
-  //       accept: "application/json",
-  //       method: "GET",
-  //     },
-  //     changeOrigin: true,
-  //   })
-  // );
+  app.use(
+    "/v2/pws/observations/current",
+    createProxyMiddleware({
+      target:
+        'https://api.weather.com',
+        // 'https://api.weather.com/v2/pws/observations/current?apiKey=e1f10a1e78da46f5b10a1e78da96f525&units=e&stationId=KMNCOONR65&format=json',
+      // secure: true,
+      // loglevel: 'debug',
+      headers: {
+        accept: "application/json",
+        method: "GET",
+      },
+      changeOrigin: true,
+      // router: {
+      //   "/api/admin": "https://culture.seocho.go.kr:3000",
+      // },
+    })
+  );
 
   //app.listen(3001);
 };

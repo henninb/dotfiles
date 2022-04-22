@@ -21,7 +21,7 @@
     "coc-stylelintplus": ">=1.5.0",
     "coc-svg": ">=0.0.13",
     "coc-tasks": ">=0.3.0",
-    "coc-tsserver": ">=1.10.0",
+    "coc-tsserver": ">=1.10.1",
     "coc-vimlsp": ">=0.12.8",
     "coc-xml": ">=1.14.1",
     "coc-yaml": ">=1.7.5",

@@ -1,4 +1,6 @@
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
+// import cheerio from 'cheerio';
 
 export default function Temperature() {
 
@@ -27,13 +29,7 @@ export default function Temperature() {
   }
 
   async function toCelsius(event) {
-     //console.log(event.formData);
      event.preventDefault()
-     // const form = document.getElementById("temperature-input")
-     // const formEntries = new FormData(form).entries();
-     // console.log(formEntries)
-     // console.log(event.formData);
-     // console.log(event.target);
 
      let fahrenheit = document.getElementById("fahrenheit").value;
      console.log(fahrenheit);
@@ -60,6 +56,49 @@ export default function Temperature() {
          }
        }
   }
+
+
+      const fetchWeather = useCallback(async () => {
+
+      const params = {
+        apiKey: "e1f10a1e78da46f5b10a1e78da96f525",
+        units: "e",
+        stationId:"KMNCOONR65",
+        format:"json"
+      };
+         try {
+          const response = await axios.get("/v2/pws/observations/current", {params})
+          //const response = await axios.get("/v2/pws/observations/current")
+          console.log('/v2/pws/observations/current call was made.');
+
+           // Object.entries(response.data.dates).forEach((entry) => {
+           //   const [, value] = entry;
+           //   // console.log(`${key}: ${JSON.stringify(value)}`);
+           //   // console.log(value.date);
+           //   // console.log(value.games);
+           //   games.push(value.games);
+           // });
+
+           // const games_flattened = games.flat();
+           // console.log(games_flattened);
+           // Object.entries(games_flattened).forEach((entry) => {
+           //   const [, value] = entry;
+           //   console.log(value.status);
+           // });
+           //  setData(games_flattened);
+           console.log(response.data);
+         } catch(error) {
+           if(error) {
+             console.log(error.data);
+           } else {
+             console.log("error calling apiCall()");
+           }
+         }
+        }, []);
+
+    useEffect(() => {
+      fetchWeather();
+    }, [fetchWeather])
 
     return (
         <div>
