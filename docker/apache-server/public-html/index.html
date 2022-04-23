@@ -1,6 +1,23 @@
-<html>
-  <header><title>kathryn</title></header>
-  <body>
-    my body
-  </body>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="login">
+        <div class="form">
+            <form name="login-form" class="login-form" action="/api/login" method="POST" data-bitwarden-watching="1">
+                <span class="material-icons">lock</span>
+                <input type="text" name="email" id="email" placeholder="email" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+                <input type="password" name="password" id="password" placeholder="password" required="" />
+                <button type="submit">login</button>
+            </form>
+        </div>
+    </div>
+</body>
+
 </html>
