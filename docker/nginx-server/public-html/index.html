@@ -1,43 +1,23 @@
-<html>
-    <head>
-    <script>
-function gcd( p, q ) {
-    if( q == 0 ) {
-      return p;
-    } else{
-      return gcd( q, p % q );
-    }
-  }
+<html lang="en">
 
-;
-  const formatDate = (date) => {
-   // let month = "" + (date.getMonth() + 1);
-   //let month = "1";
-    let day = "" + date.getDate();
-    let year = date.getFullYear();
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Login</title>
+</head>
 
-    month = ("0" + month).slice(-2);
-    day = ("0" + day).slice(-2);
+<body>
+    <div class="login">
+        <div class="form">
+            <form name="login-form" class="login-form" action="/api/login" method="POST" data-bitwarden-watching="1">
+                <span class="material-icons">lock</span>
+                <input type="text" name="email" id="email" placeholder="email" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+                <input type="password" name="password" id="password" placeholder="password" required="" />
+                <button type="submit">login</button>
+            </form>
+        </div>
+    </div>
+</body>
 
-    return [year, month, day].join("-");
-  };
-
-  </script>
-    </head>
-    <title>Example Page</title>
-    <body>
-      <h1>example</h1>
-      <p>
-        gcd(4,26)=
-        <script>document.write(gcd(4,26));</script>
-      </p>
-
-        <p>
-          <script>
-            document.write(Date.now());
-            document.write(formatDate(Date.now()));
-          </script>
-        </p>
-
-      </body>
 </html>
