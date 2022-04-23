@@ -30,6 +30,7 @@ docker run -dit --name tomcat-server -p 8080:8080 -h tomcat-server tomcat-server
 echo 'tomcat can run a jsp or a servlet'
 echo 'http://localhost:8080/myservlet/hello'
 echo 'http://localhost:8080/myapp/index.jsp'
-docker exec -it tomcat-server /bin/bash
+echo docker exec -it tomcat-server /bin/bash
+echo docker logs tomcat-server
 
 exit 0
