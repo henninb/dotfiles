@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  nginx-server:
+    image: nginx
+    # user: "${CURRENT_UID}:${CURRENT_GID}"
+    container_name: nginx-server
+    ports:
+      - "8080:80"
+    expose:
+      - "8080"
+    # volumes:
+    #   - ./default.vcl:/default.vcl
