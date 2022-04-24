@@ -3,7 +3,33 @@ import { DataGrid } from '@mui/x-data-grid';
 import { v4 as uuidv4 } from 'uuid';
 // import Hockey from '../api/nhl'
 
-export default function Hockey() {
+
+// export default async function HockeyScores(request, response) {
+export const getStaticProps = async() => {
+    const url = new URL('https://fixturedownload.com/feed/json/nhl-2021/minnesota-wild')
+
+    const params = {
+    };
+
+    url.search = new URLSearchParams(params).toString();
+    const apiResponse = await fetch(url.toString(), {
+          method: 'GET',
+          redirect: 'follow',
+          headers: {
+            "Content-Type": "application/json",
+          },
+    });
+    console.log('apiCall was made.');
+    const json = await apiResponse.json();
+    console.log(json);
+    console.log('apiCall was made.');
+    return {
+      props: {games: json}
+    }
+}
+
+//export default async function Hockey({games}) {
+export default async function Hockey() {
 
   // const [data, setData] = useState(null)
 
