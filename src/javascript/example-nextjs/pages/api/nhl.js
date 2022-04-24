@@ -1,6 +1,6 @@
 export default async function HockeyScores(request, response) {
-    const token = request.headers.get('authorization')?.split(" ")[1] || '';
-    console.log(token);
+    // const token = request.headers.get('authorization')?.split(" ")[1] || '';
+    // console.log(token);
 
 
     const url = new URL('https://fixturedownload.com/feed/json/nhl-2021/minnesota-wild')
