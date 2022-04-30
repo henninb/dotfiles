@@ -1,7 +1,7 @@
-wrangler rust
+wrangler/miniflare rust
 gcloud with yay
 shopify ruby
 fastly golang
 az python azure curl
-aws
+aws/sam aws
 heroku
