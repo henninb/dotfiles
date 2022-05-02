@@ -1,7 +1,7 @@
 {
-  "name": "api-login",
+  "name": "api-auth",
   "version": "1.0.0",
-  "description": "Cloudflare worker TypeScript template",
+  "description": "",
   "main": "dist/index.js",
   "scripts": {
     "build": "esbuild --bundle --sourcemap --outdir=dist ./src/index.ts",
