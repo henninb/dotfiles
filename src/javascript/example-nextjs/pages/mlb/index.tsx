@@ -3,30 +3,8 @@ import { useState, useEffect } from 'react'
 export default function Baseball() {
   const [data, setData] = useState(null);
 
-
-
-         // Object.entries(response.data.dates).forEach((entry) => {¬
-   // 28            const [, value] = entry;¬
-   // 29            // console.log(`${key}: ${JSON.stringify(value)}`);¬
-   // 30            // console.log(value.date);¬
-   // 31            // console.log(value.games);¬
-   // 32            games.push(value.games);¬
-   // 33          });¬
-   // 34 ¬
-   // 35          const games_flattened = games.flat();¬
-   // 36          console.log(games_flattened);¬
-   // 37          Object.entries(games_flattened).forEach((entry) => {¬
-   // 38            const [, value] = entry;¬
-   // 39            console.log(value.status);¬
-   // 40          });¬
-   // 41           setData(games_flattened);¬
-
-
-
-
-
    function generateTable(games) {
-     let table = '<table border="1">';
+     let table = '<table>';
      table += `<tr>
                <th>ID</th>
                <th>date</th>
@@ -92,7 +70,6 @@ export default function Baseball() {
 
         <div id="games-div" />
       </main>
-
     </div>
   )
 }

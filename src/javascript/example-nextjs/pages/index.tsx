@@ -6,11 +6,11 @@ export default function Home() {
       <Head>
         <title>Home</title>
         <meta name="description" content="" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
         <h1>Home</h1>
+          <a href="https://www.brianhenning.click">Finance App</a>
       </main>
 
     </div>

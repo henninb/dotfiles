@@ -5,7 +5,7 @@ export default function Hockey() {
   const [data, setData] = useState(null)
 
   function generateTable(games) {
-   let table = '<table border="1">';
+   let table = '<table>';
    table += `<tr><th>ID</th><th>HomeTeam</th><th>AwayTeam</th></tr>`;
 
    if( games ) {
