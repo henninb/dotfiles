@@ -42,10 +42,6 @@ export default function Hockey() {
     console.log(json);
     setData(json);
     generateTable(json);
-
-    // json.forEach(function(item, index){
-    //   console.log(index);
-    // });
   }
 
 
@@ -53,9 +49,6 @@ export default function Hockey() {
     if( !data) {
       loadSchedule();
     }
-    // if (data) {
-    //   generateTable();
-    // }
   }, [])
 
   return (

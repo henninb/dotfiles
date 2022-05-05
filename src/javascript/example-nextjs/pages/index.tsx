@@ -10,7 +10,9 @@ export default function Home() {
 
       <main>
         <h1>Home</h1>
-          <a href="https://www.brianhenning.click">Finance App</a>
+          <ul>
+              <li><a href="https://www.brianhenning.click">Finance App</a></li>
+          </ul>
       </main>
 
     </div>
