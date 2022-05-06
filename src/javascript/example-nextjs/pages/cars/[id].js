@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 import Head from 'next/head'
 
 // export default function Car( {car} ) {
@@ -39,10 +39,10 @@ import Head from 'next/head'
 //
 
 
-export default function Car({ car }) {
+export default function Car({car}) {
 
     const router = useRouter()
-    const { id } = router.query
+    const {id} = router.query
     return (
         <div>
             <Head>
@@ -59,11 +59,11 @@ export default function Car({ car }) {
 }
 
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({params}) {
     const req = await fetch(`http://localhost:3000/${params.id}.json`);
     const data = await req.json();
 
     return {
-        props: { car: data },
+        props: {car: data},
     }
 }

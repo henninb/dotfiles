@@ -4,16 +4,15 @@ export default async function HockeyScores(request, response) {
 
     const url = new URL('https://fixturedownload.com/feed/json/nhl-2021/minnesota-wild')
 
-    const params = {
-    };
+    const params = {};
 
     url.search = new URLSearchParams(params).toString();
     const apiResponse = await fetch(url.toString(), {
-          method: 'GET',
-          redirect: 'follow',
-          headers: {
+        method: 'GET',
+        redirect: 'follow',
+        headers: {
             "Content-Type": "application/json",
-          },
+        },
     });
     console.log('apiCall was made.');
     const json = await apiResponse.json();
