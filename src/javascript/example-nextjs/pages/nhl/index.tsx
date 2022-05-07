@@ -5,20 +5,28 @@ export default function Hockey() {
     const [data, setData] = useState(null)
 
     function generateTable(games) {
-        let table = '<table>';
-        table += `<tr><th>ID</th><th>HomeTeam</th><th>AwayTeam</th></tr>`;
+        const rows = games.map((game, index) => {
+            return (
+             <tr>
+                 <td>{index}</td>
+                 <td>{game.HomeTeam}</td>
+                 <td>{game.AwayTeam}</td>
+             </tr>
+            )
+        })
 
-        if (games) {
-            games.map((game, index) => {
-                table = table + `<tr>`;
-                table = table + `<td>${index}</td>`;
-                table = table + `<td>${game.HomeTeam}</td>`;
-                table = table + `<td>${game.AwayTeam}</td>`;
-                table += `</tr>`;
-            });
-        }
-        table += "</table>";
-        document.getElementById("games-div").innerHTML = table;
+        return (
+            <div>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>HomeTeam</th>
+                        <th>AwayTeam</th>
+                    </tr>
+                    {rows}
+                </table>
+            </div>
+        )
     }
 
     const loadSchedule = async () => {
@@ -41,7 +49,6 @@ export default function Hockey() {
         const json = await apiResponse.json();
         console.log(json);
         setData(json);
-        generateTable(json);
     }
 
 
@@ -60,11 +67,7 @@ export default function Hockey() {
 
             <main>
                 <h1>Hockey Schedule</h1>
-
-
-                <div id="games-div"/>
-
-
+                { data ? generateTable(data) : null}
             </main>
 
         </div>

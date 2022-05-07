@@ -5,28 +5,32 @@ export default function Baseball() {
     const [data, setData] = useState(null);
 
     function generateTable(games) {
-        let table = '<table>';
-        table += `<tr>
-               <th>ID</th>
-               <th>date</th>
-               <th>HomeTeam</th>
-               <th>AwayTeam</th>
-               <th>Status</th>
-               </tr>`;
+        const rows = games.map((game, index) => {
+            return (
+                <tr>
+                    <td>{index}</td>
+                    <td>{game.gameDate}</td>
+                    <td>{game.teams.away.team.name}</td>
+                    <td>{game.teams.home.team.name}</td>
+                    <td>{game.status.abstractGameState}</td>
+                </tr>
+            )
+        })
 
-        if (games) {
-            games.map((game, index) => {
-                table = table + `<tr>`;
-                table = table + `<td>${index}</td>`;
-                table = table + `<td>${game.gameDate}</td>`;
-                table = table + `<td>${game.teams.away.team.name}</td>`;
-                table = table + `<td>${game.teams.home.team.name}</td>`;
-                table = table + `<td>${game.status.abstractGameState}</td>`;
-                table += `</tr>`;
-            });
-        }
-        table += "</table>";
-        document.getElementById("games-div").innerHTML = table;
+        return (
+            <div>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>date</th>
+                        <th>HomeTeam</th>
+                        <th>AwayTeam</th>
+                        <th>Status</th>
+                    </tr>
+                    {rows}
+                </table>
+            </div>
+        )
     }
 
     const loadSchedule = async () => {
@@ -49,8 +53,6 @@ export default function Baseball() {
         });
         console.log(games.flat());
         setData(games.flat());
-        generateTable(games.flat())
-
     }
 
     useEffect(() => {
@@ -70,6 +72,7 @@ export default function Baseball() {
                 <h1>Baseball Schedule</h1>
 
                 <div id="games-div"/>
+                { data ? generateTable(data) : null}
             </main>
         </div>
     )
