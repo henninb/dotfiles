@@ -46,7 +46,6 @@ export default function Baseball() {
         console.log('apiCall was made.');
         const json = await apiResponse.json();
         let games = [];
-        //let games: any[] = [];
         Object.entries(json.dates).forEach((entry) => {
             const [, value] = entry;
             games.push(value["games"])
@@ -70,8 +69,6 @@ export default function Baseball() {
 
             <main>
                 <h1>Baseball Schedule</h1>
-
-                <div id="games-div"/>
                 { data ? generateTable(data) : null}
             </main>
         </div>

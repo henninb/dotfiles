@@ -12,3 +12,8 @@ $ docker push docker.server.com/app/transfer/transfer:1.1.1
 ```
 docker inspect --format='{{.Name}}' $(sudo docker ps -aq --no-trunc)
 ```
+
+## list docker logs
+```
+docker logs <container>
+```

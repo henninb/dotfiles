@@ -15,6 +15,12 @@ export default function Layout({children}) {
         <a className="nav-link" href="/mlb">MLB</a>
       </li>
       <li className="nav-item">
+          <a className="nav-link" href="/nfl">NFL</a>
+      </li>
+      <li className="nav-item">
+          <a className="nav-link" href="/howto">Howto</a>
+      </li>
+      <li className="nav-item">
         <a className="nav-link" href="/temperature">Temperature</a>
       </li>
     </ul>
