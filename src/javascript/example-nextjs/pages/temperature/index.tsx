@@ -72,16 +72,21 @@ export default function Temperature() {
         });
         const json = await apiResponse.json();
         //console.log("weather: " + JSON.stringify(json));
-        console.log("weather: " + JSON.stringify(json.observations));
-        console.log("weather: " + JSON.stringify(json.observations.flat()));
-        setData(json);
+        //console.log("weather: " + JSON.stringify(json.observations));
+        console.log("weather: " + JSON.stringify(json.observations[0]));
+        //console.log("weather: " + JSON.stringify(json.observations.flat()));
+        setData(json.observations[0]);
 
     }, []);
 
     function displayWeather(weather) {
         return (
             <div>
-                Weather observation time: {weather.obsesrvations}
+                Weather observation time: {weather.obsTimeLocal} <br />
+                Weather temperature: {weather.imperial.temp} <br />
+                Weather windchill: {weather.imperial.windChill} <br />
+                Weather pressure: {weather.imperial.pressure} <br />
+
             </div>
         )
     }
@@ -116,7 +121,7 @@ export default function Temperature() {
                 </div>
 
                 <h1>
-                    Weather
+                    Weather in Minneapolis
                 </h1>
                 { data ? displayWeather(data) : null}
 
