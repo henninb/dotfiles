@@ -19,8 +19,10 @@ COPY config.yaml /etc/beef-xss/
 # RUN chown henninb:wheel /home/henninb/.ssh/known_hosts
 # RUN chown henninb:wheel /home/henninb/
 
-# WORKDIR /home/henninb
+WORKDIR /usr/share/beef-xss
+
 # USER henninb
 
-CMD ["/bin/bash"]
+# CMD ["/bin/bash"]
 # CMD ["beef-xss"]
+CMD ["./beef"]
