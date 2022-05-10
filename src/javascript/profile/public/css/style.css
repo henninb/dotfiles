@@ -152,8 +152,8 @@ header {
     background: var(--clr-dark);
     color: var(--clr-light);
     top: 0;
-    bottom: 0;
-    left: 0;
+    bottom: 40%;
+    left: 60%;
     right: 0;
     z-index: 100;
 
@@ -297,7 +297,8 @@ header {
 
 .my-services {
     background-color: var(--clr-dark);
-    background-image: url(../img/services-bg.jpg);
+    /* background-image: url(../img/services-bg.webp); */
+    background-image: url(../img/services-bg-07.jpg);
     background-size: cover;
     /* background-blend-mode: multiply; */
     color: var(--clr-light);
