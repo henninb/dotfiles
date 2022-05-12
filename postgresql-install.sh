@@ -30,6 +30,7 @@ ALTER USER postgres WITH PASSWORD '${POSTGRESQL_PASSWORD}';
 EOF
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+  sudo rm -rf /var/lib/postgres/data
   sudo pacman -R postgresql
   sudo systemctl disable postgresql
   sudo pacman --noconfirm --needed -S postgresql
@@ -161,9 +162,9 @@ else
   exit 1
 fi
 
-echo /usr/lib/postgresql/13/bin/pg_ctl
-echo /usr/lib/postgresql/13/bin/pg_ctl  -D /var/lib/postgresql/13/main stop
-echo /usr/lib/postgresql/13/bin/pg_ctl  -D /var/lib/postgresql/13/main start
+echo /usr/lib/postgresql/14/bin/pg_ctl
+echo /usr/lib/postgresql/14/bin/pg_ctl  -D /var/lib/postgresql/14/main stop
+echo /usr/lib/postgresql/14/bin/pg_ctl  -D /var/lib/postgresql/14/main start
 echo rm -rf /var/lib/postgres/data
 
 exit 0
