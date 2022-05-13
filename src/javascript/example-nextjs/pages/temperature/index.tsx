@@ -106,6 +106,82 @@ export default function Temperature() {
             <main>
                 <h1>Temperature</h1>
 
+
+                <div className="container">
+                    <div className="row mb-3">
+                        <div className="col-md-6 mt-4">
+                            <div className="card">
+                                <h3 className="card-header text-center">
+                                    Fahrenheit to Celsius
+                                </h3>
+                                <div className="card-body">
+                                    <div className="row justify-content-center mt-3 mb-4">
+                                        <a className="btn btn-lg btn-generate-uuid" href="/version1">Convert fahrenheit to celsius</a>
+                                    </div>
+                                    <hr />
+                                        <div className="version-bulk-form indented">
+                                            <form action="/version1/bulk" accept-charset="UTF-8" data-remote="true"
+                                                  method="post">
+                                                <div className="form-inline">
+                                                    <div className="input-group col">
+                                                        <input type="number" name="amount" id="amount1" min="1"
+                                                               max="500" placeholder="Temperature in fahrenheit"
+                                                               className="form-control text-right" />
+                                                            <div className="input-group-append">
+                                                                <button className="btn btn-secondary" type="button"
+                                                                        id="amount1-btn">Calculate
+                                                                </button>
+                                                            </div>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+                                            <div id="version1-bulk-result">
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-6 mt-4">
+                            <div className="card">
+                                <h3 className="card-header text-center">
+                                    Celsius to Fahrenheit
+                                </h3>
+                                <div className="card-body">
+                                    <div className="row justify-content-center mt-3 mb-4">
+                                        <a className="btn btn-lg btn-generate-uuid" href="/version4">Convert celsius to fahrenheit</a><p/>
+                                    </div>
+                                    <hr />
+                                        <div className="version-bulk-form indented">
+                                            <form action="/version4/bulk" accept-charset="UTF-8" data-remote="true"   method="post">
+                                                <div className="form-inline">
+                                                    <div className="input-group col">
+                                                        <input type="number" name="amount" id="amount4" min="1"
+                                                               max="500" placeholder="Temperature in Celsius"
+                                                               className="form-control text-right" />
+                                                            <div className="input-group-append">
+                                                                <button className="btn btn-secondary" type="button"
+                                                                        id="amount4-btn">Calculate
+                                                                </button>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <div id="version4-bulk-result">
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
                 <div>
                     <form name="temperature-input">
                         <label>fahrenheit</label>

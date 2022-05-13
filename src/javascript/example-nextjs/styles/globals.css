@@ -4,7 +4,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     margin: 0;
-    background: linear-gradient(90deg, #4b6cb7, #182848);
+    //background: linear-gradient(90deg, #4b6cb7, #182848);
+    background: linear-gradient(90deg, #ffffff, #ADD8E6);
 }
 
 code {
@@ -73,3 +74,22 @@ code {
     color: #4b6cb7;
     font-size: 75px;
 }
+
+/*pre {*/
+/*    display: block;*/
+/*    font-family: monospace;*/
+/*    white-space: pre;*/
+/*    margin: 1em 0px;*/
+/*    line-height: 140%;*/
+/*}*/
+
+
+code {
+    background: hsl(220, 80%, 90%);
+}
+
+pre {
+    white-space: pre-wrap;
+    background: hsl(30,80%,90%);
+}
+
