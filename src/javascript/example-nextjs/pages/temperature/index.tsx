@@ -120,11 +120,11 @@ export default function Temperature() {
                                     </div>
                                     <hr />
                                         <div className="version-bulk-form indented">
-                                            <form action="/version1/bulk" accept-charset="UTF-8" data-remote="true"
+                                            <form action="/api/weather" accept-charset="UTF-8" data-remote="true"
                                                   method="post">
                                                 <div className="form-inline">
                                                     <div className="input-group col">
-                                                        <input type="number" name="amount" id="amount1" min="1"
+                                                        <input type="number" name="amount" id="amount1" min="-500"
                                                                max="500" placeholder="Temperature in fahrenheit"
                                                                className="form-control text-right" />
                                                             <div className="input-group-append">
@@ -148,19 +148,17 @@ export default function Temperature() {
                                     Celsius to Fahrenheit
                                 </h3>
                                 <div className="card-body">
-                                    <div className="row justify-content-center mt-3 mb-4">
-                                        <a className="btn btn-lg btn-generate-uuid" href="/version4">Convert celsius to fahrenheit</a><p/>
-                                    </div>
-                                    <hr />
                                         <div className="version-bulk-form indented">
-                                            <form action="/version4/bulk" accept-charset="UTF-8" data-remote="true"   method="post">
+                                            <form name="temperature-to-fahrenheit" action="/api/weather" data-remote="true" method="post">
                                                 <div className="form-inline">
                                                     <div className="input-group col">
-                                                        <input type="number" name="amount" id="amount4" min="1"
-                                                               max="500" placeholder="Temperature in Celsius"
-                                                               className="form-control text-right" />
+                                                        <input type="number" name="celsius" id="celsius" min="1"
+                                                               max="500" placeholder="degrees celsius"
+                                                               className="form-control text-right"
+                                                               onChange={handleCelsiusChange}
+                                                        />
                                                             <div className="input-group-append">
-                                                                <button className="btn btn-secondary" type="button"
+                                                                <button className="btn btn-secondary" type="button" onClick={toFahrenheit}
                                                                         id="amount4-btn">Calculate
                                                                 </button>
                                                             </div>
@@ -185,13 +183,13 @@ export default function Temperature() {
                 <div>
                     <form name="temperature-input">
                         <label>fahrenheit</label>
-                        <input type="text" name="fahrenheit" id="fahrenheit" onChange={handleFahrenheitChange}/>
+                        <input type="text" name="fahrenheit" id="fahrenheit" onChange={handleFahrenheitChange} />
                         <button onClick={toCelsius}>toCelsius</button>
                     </form>
 
                     <form name="temperature-input">
                         <label>celsius</label>
-                        <input type="text" name="celsius" id="celsius" onChange={handleCelsiusChange}/>
+                        <input type="text" name="celsius" id="celsius" onChange={handleCelsiusChange} />
                         <button onClick={toFahrenheit}>toFahrenheit</button>
                     </form>
                 </div>

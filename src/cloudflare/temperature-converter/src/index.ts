@@ -3,7 +3,7 @@ interface Temperature {
   fahrenheit: number;
 }
 
-function toCelsius(x: number) : number {
+function toCelsius(x: number) {
   return ((5.0/9.0) * (x - 32.0));
 }
 
@@ -32,7 +32,7 @@ async function handleRequest(request: Request) {
     const text = await request.text();
     return new Response(text, {
       status: 400,
-      statusText: 'fail',
+      statusText: 'fail to compute',
     })
   }
 
