@@ -18,9 +18,11 @@ menuToggle.onclick = function () {
   navigation.classList.toggle("active");
 };
 
-let navWrapper = document.querySelector('.nav-wrapper'),
-    navToogler =  document.querySelector('.nav-toogler')
+let navWrapper = document.querySelector('.nav-wrapper');
+let navToogler = document.querySelector('.nav-toogler')
 
-navToogler.addEventListener('click', function (event) {
-    navWrapper.classList.toggle('active')
-})
+if ( navToogler ) {
+  navToogler.addEventListener('click', function (event) {
+      navWrapper.classList.toggle('active')
+  })
+}
