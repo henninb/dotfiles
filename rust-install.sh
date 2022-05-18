@@ -13,13 +13,14 @@ rustup --version > /dev/null && rustup update
 rustup --version > /dev/null || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 #echo source $HOME/.cargo/env
 echo cargo install ripgrep
-echo cargo install dust
 echo cargo install exa
+echo cargo install wrangler
 echo cargo install broot
 #echo cargo install alacritty
 echo cargo install fd-find
 echo cargo install leftwm
 echo cargo install neovide
+echo cargo install ttyper
 
 echo rustup default nightly
 echo cargo install hunter

@@ -153,6 +153,7 @@
 | gui-cert management    | xca                                                                                  |
 | security tool          | yubioath-desktop                                                                     |
 | phone file transfer    | kdeconnect                                                                           |
+| typing                 | ttyper                                                                               |
 
 ## Language Servers
 - c - ccls

@@ -200,4 +200,6 @@ cd "$HOME" || exit
 curl -s "https://raw.githubusercontent.com/liamg/shox/master/scripts/install.sh" | sudo bash
 sudo rm -rf shox
 
+# cargo install ttyper
+
 exit 0
