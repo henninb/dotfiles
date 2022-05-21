@@ -126,7 +126,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo rc-update add postgresql-13 default
   sudo rc-service postgresql-13 start
   netstat -na | grep 5432 | grep LIST
-elif [ "$OS" = "Ubuntu" ]; then
+elif [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Linux" ]; then
   sudo apt install -y postgresql
   sudo rm -rf /var/lib/pgsql/data/
   sudo postgresql-setup initdb
