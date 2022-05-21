@@ -12,7 +12,7 @@
     "coc-html": ">=1.6.1",
     "coc-java": ">=1.5.5",
     "coc-json": ">=1.4.2",
-    "coc-lists": ">=1.4.2",
+    "coc-lists": ">=1.4.3",
     "coc-marketplace": ">=1.9.0",
     "coc-pyright": ">=1.1.243",
     "coc-python": ">=1.2.13",

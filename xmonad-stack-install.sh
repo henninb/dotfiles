@@ -101,6 +101,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S dmenu
   sudo pacman --noconfirm --needed -S dunst
   sudo pacman --noconfirm --needed -S dzen2
+  sudo pacman --noconfirm --needed -S slock
   sudo pacman --noconfirm --needed -S feh
   sudo pacman --noconfirm --needed -S flameshot
   # sudo pacman --noconfirm --needed -S font-awesome-4
@@ -135,6 +136,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S yad
   sudo pacman --noconfirm --needed -S kdeconnect
   sudo pacman --noconfirm --needed -S pandoc
+  yay -S oblogout
   yay -S mpdris2
   sudo systemctl disable mpd.socket
   sudo systemctl stop mpd.socket
