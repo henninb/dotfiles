@@ -28,7 +28,6 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y openjdk11
   # echo openjdk11-bin
 elif [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Linux" ]; then
-  #sudo apt install -y openjdk-8-jdk
   sudo apt install -y openjdk-11-jdk
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install java-1.8.0-openjdk-devel
