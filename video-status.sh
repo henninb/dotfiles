@@ -43,5 +43,8 @@ lspci -v | grep VGA
 # 01:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Cape Verde XT [Radeon HD 7770/8760 / R7 250X] (prog-if 00 [VGA controller])
 
 # echo VDPAU and VAAPI.
+if [ -x "$(command -v nvidia-settings)" ]; then
+  nvidia-settings &
+fi
 
 exit 0
