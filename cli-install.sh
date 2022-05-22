@@ -16,6 +16,8 @@ SUSE_PKGS="jq stunnel postfix mailutils mpg123 screen figlet vim rtorrent wget z
 
 UBUNTU_PKGS="jq stunnel postfix mailutils mpg123 screen figlet rtorrent wget ranger fx zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip ffmpeg alsa-utils cmus python-setuptools rsync tmux emacs mcrypt wine yarn ssh-askpass iptables-persistent libguestfs-tools fetchmail dos2unix pass fish clang-format clisp rpm nsnake bastet netcat strace astyle ctags-universal mpv sshfs lynx etherwake cdrecord toilet zsync newsboat sxhkd vifm w3m-img neofetch zip unzip lnav most ddgr tig nnn colordiff locate fd-find dash grip elinks urlscan task-spooler taskwarrior nudoku transmission"
 
+DEBIAN_PKGS="jq stunnel postfix mailutils mpg123 screen figlet rtorrent wget gpg fossil git mutt neomutt irssi htop nmon nmap fmpeg cmus rsync tmux emacs mcrypt ssh-askpass fetchmail dos2unix pass fish clisp nsnake bastet netcat strace astyle ctags-universal mpv sshfs lynx cdrecord toilet zsync newsboat sxhkd vifm w3m-img neofetch zip unzip lnav most ddgr tig nnn colordiff locate fd-find dash grip elinks urlscan task-spooler taskwarrior nudoku transmission"
+
 GENTOO_PKGS="dev-lang/rust-bin postfix stunnel mpg123 app-misc/screen figlet rtorrent wget ranger zsh gnupg fossil subversion git mutt neomutt irssi htop nmon nmap tmux rsync libnova ffmpeg alsa-utils cmus net-misc/netdate emacs mcrypt zip unzip dev-lang/smlnj dev-lisp/clisp layman dos2unix fish pass strace ctags-universal astyle ntp rpm eix lsof sys-fs/fuse pulseaudio vifm sxhkd neofetch sshpass lnav nnn trash-cli colordiff ncdu ripgrep fd app-shells/dash app-text/grip elinks urlscan task-spooler newsboat taskwarrior vterm xdg-utils amfora bind-tools"
 
 FREEBSD_PKGS="coreutils zip unzip python py36-pip py36-powerline-status-2.7 stunnel mpg123 screen figlet neovim vim rtorrent wget ranger fx zsh gpg fossil subversion git mutt neomutt irssi htop nmon nmap python-pip libnova ffmpeg yarn alsa-utils cmus rsync tmux emacs fish sysutils/password-store bind-tools sxhkd ctags-universal astyle toilet unix2dos fetchmail jq mcrypt mpv scrot vifm neofetch sshpass elinks urlscan task-spooler newsboat taskwarrior"
@@ -39,6 +41,7 @@ echo "$RASPI_PKGS" > .cli/raspi
 echo "$FEDORA_PKGS" > .cli/fedora
 echo "$MACOS_PKGS" > .cli/macos
 echo "$VOID_PKGS" > .cli/macos
+echo "$DEBIAN_PKGS" > .cli/debian
 
 if [ "$OS" = "Linux Mint" ]; then
   FAILURE=""
@@ -65,6 +68,13 @@ elif [ "$OS" = "Clear Linux OS" ]; then
     fi
   done
   echo Failures: "$FAILURE"
+elif [ "$OS" = "Debian GNU/Linux" ]; then
+  FAILURE=""
+  for i in $DEBIAN_PKGS; do
+    if ! sudo apt install -y "$i"; then
+      FAILURE="$i $FAILURE"
+    fi
+  done
 elif [ "$OS" = "Ubuntu" ]; then
   FAILURE=""
   for i in $UBUNTU_PKGS; do
