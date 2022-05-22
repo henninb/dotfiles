@@ -195,11 +195,13 @@ else
   exit 1
 fi
 
-wget https://raw.githubusercontent.com/mevdschee/2048.c/master/2048.c -O 2048.c
+curl https://raw.githubusercontent.com/mevdschee/2048.c/master/2048.c -o 2048.c
+# wget https://raw.githubusercontent.com/mevdschee/2048.c/master/2048.c -O 2048.c
 gcc -o 2048 2048.c
 mv 2048 "$HOME/.local/bin"
 
 ## install gw
+mkdir -p "$HOME/projects"
 cd "$HOME/projects" || exit
 git clone https://github.com/dantesun/gng.git
 cd gng || exit
