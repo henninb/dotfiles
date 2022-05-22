@@ -7,7 +7,8 @@ if [ "$OS" = "Gentoo" ]; then
   echo sudo emerge --update --newuse media-libs/vulkan-loader
   sudo cp -v nvidia-installer-disable-nouveau.conf /etc/modprobe.d/
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman -S nvidia lib32-nvidia-utils  --overwrite '*'
+  #sudo pacman -S nvidia lib32-nvidia-utils  --overwrite '*'
+  echo
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y xtools
   git clone git@github.com:void-linux/void-packages.git
@@ -25,8 +26,9 @@ fi
 
 vulkaninfo | less
 
-if [ ! -f NVIDIA-Linux-x86_64-470.94.run ]; then
-  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/470.94/NVIDIA-Linux-x86_64-470.94.run'
+if [ ! -f NVIDIA-Linux-x86_64-510.73.05.run ]; then
+  # wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/470.94/NVIDIA-Linux-x86_64-470.94.run'
+  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/510.73.05/NVIDIA-Linux-x86_64-510.73.05.run'
 fi
 
 echo sudo chvt 3
@@ -37,6 +39,8 @@ lsmod | grep nvidia
 
 glxinfo | grep direct
 
-echo nvidia-settings
+if [ -x "$(command -v nvidia-settings)" ]; then
+  nvidia-settings &
+fi
 
 exit 0

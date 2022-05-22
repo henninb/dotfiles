@@ -11,6 +11,9 @@ if [ 0 -eq 1 ]; then
   sudo pacman --noconfirm --needed -S mesa-vdpau
   sudo pacman --noconfirm --needed -S libva-utils
   sudo pacman --noconfirm --needed -S libva-vdpau-driver libvdpau-va-gl
+  pacman -Qi nvidia
+  pacman -Qi nvidia-utils
+  pacman -Qi nvidia-libgl
 
   sudo xbps-install -y mesa-vdpau
   sudo xbps-install -y mesa-vaapi
@@ -35,6 +38,11 @@ if [ -x "$(command -v vainfo)" ]; then
   vainfo
 fi
 
+if [ -x "$(command -v vulkaninfo)" ]; then
+  echo vulkaninfo
+  vulkaninfo
+fi
+
 # echo Vulkan API
 # echo mesa-vdpau and also libva-mesa-driver
 lspci | grep VGA
@@ -42,9 +50,22 @@ lspci | grep VGA
 lspci -v | grep VGA
 # 01:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Cape Verde XT [Radeon HD 7770/8760 / R7 250X] (prog-if 00 [VGA controller])
 
+lsmod | grep -i nvidia
+
+glxinfo | grep direct
+
+echo sudo chvt 3
+echo sudo chvt 2
+echo "Open tty with the shortcut - Ctl-Alt-(F1-F7)"
+
+if [ -x "$(command -v nvidia-smi)" ]; then
+  sudo nvidia-smi
+  sudo nvidia-smi -q -d TEMPERATURE
+fi
+
 # echo VDPAU and VAAPI.
 if [ -x "$(command -v nvidia-settings)" ]; then
-  nvidia-settings &
+  echo nvidia-settings
 fi
 
 exit 0
