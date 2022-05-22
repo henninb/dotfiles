@@ -44,5 +44,6 @@ if [ -x "$(command -v nvidia-settings)" ]; then
 fi
 
 xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
 
 exit 0
