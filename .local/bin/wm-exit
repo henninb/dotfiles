@@ -9,31 +9,35 @@ if [ $# -ne 1 ]; then
   exit 1
 fi
 
-while [ "${select}" != "Cancel" ] && [ "${select}" != "Logout" ] && [ "${select}" != "Shutdown" ] && [ "${select}" != "Reboot" ] && [ "${select}" != "Lock" ]; do
-    select=$(printf "Cancel\nLogout\nShutdown\nReboot\nLock" | dmenu -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf '#000000' -fn 'monofur for Powerline' -i -p "Action?")
-    [ -z "${select}" ] && exit 0
-done
+if [ -n "$(command -v logout-gtk)" ]; then
+  logout-gtk &
+else
+  while [ "${select}" != "Cancel" ] && [ "${select}" != "Logout" ] && [ "${select}" != "Shutdown" ] && [ "${select}" != "Reboot" ] && [ "${select}" != "Lock" ]; do
+      select=$(printf "Cancel\nLogout\nShutdown\nReboot\nLock" | dmenu -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf '#000000' -fn 'monofur for Powerline' -i -p "Action?")
+      [ -z "${select}" ] && exit 0
+  done
 
-if [ "${OS}" = "FreeBSD" ]; then
+  if [ "${OS}" = "FreeBSD" ]; then
+    [ "${select}" = "Cancel" ] && exit 0
+    [ "${select}" = "Logout" ] && [ "${wm}" = "xmonad" ] && pkill -v xmonad
+    [ "${select}" = "Logout" ] && [ "${wm}" = "bspwm" ] && bspc quit
+    [ "${select}" = "Logout" ] && [ "${wm}" = "i3" ] && i3-msg exit
+    [ "${select}" = "Logout" ] && [ "${wm}" = "spectrwm" ] && pkill -v spectrwm
+    [ "${select}" = "Shutdown" ] && sudo shutdown -p now
+    [ "${select}" = "Reboot" ] && sudo shutdown -r now
+    [ "${select}" = "Lock" ] && i3lock -d -c FFFFFF -C -i ~/backgrounds/mountain-road.jpg
+    exit 0
+  fi
+
   [ "${select}" = "Cancel" ] && exit 0
-  [ "${select}" = "Logout" ] && [ "${wm}" = "xmonad" ] && pkill -v xmonad
+  [ "${select}" = "Logout" ] && [ "${wm}" = "xmonad" ] && (pkill -f xmonad-start || pkill xmonad)
   [ "${select}" = "Logout" ] && [ "${wm}" = "bspwm" ] && bspc quit
   [ "${select}" = "Logout" ] && [ "${wm}" = "i3" ] && i3-msg exit
-  [ "${select}" = "Logout" ] && [ "${wm}" = "spectrwm" ] && pkill -v spectrwm
-  [ "${select}" = "Shutdown" ] && sudo shutdown -p now
+  [ "${select}" = "Logout" ] && [ "${wm}" = "spectrwm" ] && pkill -x spectrwm
+  [ "${select}" = "Shutdown" ] && sudo shutdown -h now
   [ "${select}" = "Reboot" ] && sudo shutdown -r now
   [ "${select}" = "Lock" ] && i3lock -d -c FFFFFF -C -i ~/backgrounds/mountain-road.jpg
-  exit 0
 fi
-
-[ "${select}" = "Cancel" ] && exit 0
-[ "${select}" = "Logout" ] && [ "${wm}" = "xmonad" ] && (pkill -f xmonad-start || pkill xmonad)
-[ "${select}" = "Logout" ] && [ "${wm}" = "bspwm" ] && bspc quit
-[ "${select}" = "Logout" ] && [ "${wm}" = "i3" ] && i3-msg exit
-[ "${select}" = "Logout" ] && [ "${wm}" = "spectrwm" ] && pkill -x spectrwm
-[ "${select}" = "Shutdown" ] && sudo shutdown -h now
-[ "${select}" = "Reboot" ] && sudo shutdown -r now
-[ "${select}" = "Lock" ] && i3lock -d -c FFFFFF -C -i ~/backgrounds/mountain-road.jpg
 
 exit 0
 
