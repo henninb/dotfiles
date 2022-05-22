@@ -2,7 +2,8 @@
 
 lspci -k | grep -A 2 -E "(VGA|3D)"
 
-if [ 0 -eq 1 ];then
+# dead code
+if [ 0 -eq 1 ]; then
   sudo emerge --update --newuse x11-misc/vdpauinfo
   sudo emerge --update --newuse hardinfo
 
