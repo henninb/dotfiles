@@ -25,7 +25,7 @@ else
     [ "${select}" = "Logout" ] && [ "${wm}" = "spectrwm" ] && pkill -v spectrwm
     [ "${select}" = "Shutdown" ] && sudo shutdown -p now
     [ "${select}" = "Reboot" ] && sudo shutdown -r now
-    [ "${select}" = "Lock" ] && i3lock -d -c FFFFFF -i ~/backgrounds/mountain-road.jpg
+    [ "${select}" = "Lock" ] && i3lock -d -c FFFFFF -i ~/backgrounds/mountain-road.png
     exit 0
   fi
 
@@ -36,7 +36,7 @@ else
   [ "${select}" = "Logout" ] && [ "${wm}" = "spectrwm" ] && pkill -x spectrwm
   [ "${select}" = "Shutdown" ] && sudo shutdown -h now
   [ "${select}" = "Reboot" ] && sudo shutdown -r now
-  [ "${select}" = "Lock" ] && i3lock -d -c FFFFFF -i ~/backgrounds/mountain-road.jpg
+  [ "${select}" = "Lock" ] && i3lock -d -c FFFFFF -i ~/backgrounds/mountain-road.png
   # [ "${select}" = "Lock" ] && i3lock -d -c FFFFFF -C -i ~/backgrounds/mountain-road.jpg
 fi
 
