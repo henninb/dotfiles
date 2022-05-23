@@ -11,7 +11,6 @@
   </head>
 
 <body>
-   <script type="text/javascript" src="https://www.herokucdn.com/glostick/2.5.0/glostick-heroku-dashboard.min.js" data-glostick-script=""></script>
     <script>
         (function() {
             var req = new XMLHttpRequest();
@@ -38,19 +37,15 @@
     <div class="ember-view" id="ember3">
         <div id="toggletip-root-boundary" class="fixed top--glostick fixed left-0"> </div>
 
-        <svg xmlns="http://www.w3.org/2000/svg" class="db" width="0" height="0">
-      <defs>
-        <pattern width="4" height="4" id="missing-data-zone-pattern" patternUnits="userSpaceOnUse" stroke="rgb(231, 231, 236)">
-          <path d="M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2"></path>
-        </pattern>
-      </defs>
-    </svg>
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" class="db" width="0" height="0"> -->
+      <!-- <defs> -->
+        <!-- <pattern width="4" height="4" id="missing-data-zone-pattern" patternUnits="userSpaceOnUse" stroke="rgb(231, 231, 236)"> -->
+        <!--   <path d="M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2"></path> -->
+        <!-- </pattern> -->
+      <!-- </defs> -->
+    <!-- </svg> -->
 
-        <main aria-label="Heroku Dashboard" id="ember4" class="app-wrapper protected-app-settings ember-view">
-            <div id="ember5" class="flash-messages ember-view">
-                <ul class="list-unstyled">
-                </ul>
-            </div>
+        <main>
 
             <div class="main-panel bg-lightest-silver relative">
 
@@ -64,16 +59,6 @@
                                     <div class="section-title f3 purple" role="heading" aria-level="3">
                                         App Information
                                     </div>
-
-
-                                </div>
-
-                                <div class="panel-content">
-
-                                    <div>
-
-                                    </div>
-
                                 </div>
                             </div>
                         </li>
@@ -81,11 +66,11 @@
                             <div class="panel-section ">
                                 <div class="section-description">
                                     <div class="section-title f3 purple" role="heading" aria-level="3">
-                                        Config Vars
+                                        Configuration Variables
                                     </div>
 
                                     <div class="mt2 f5 lh-copy dark-gray">
-                                        Config vars change the way your app behaves. In addition to creating your own, some add-ons come with their own.
+                                        Configure the finance-app
                                     </div>
 
                                 </div>
@@ -94,7 +79,7 @@
                                     <div id="ember701" class="config-vars ember-view">
                                         <div id="ember752" class="config-vars-list ember-view">
                                             <div class="group-header">
-                                                <h5>Config Vars</h5>
+                                                <h5>Configuration Variables</h5>
                                             </div>
 
                                             <form>
@@ -111,7 +96,7 @@
 
                                                             <td id="ember756" class="action-cell ember-view"> <button class="bg-transparent hk-focus-ring--blue:focus cursor-hand br1 ba0 b--none pa--1 pr3" title="Edit" type="button" data-ember-action="" data-ember-action-758="758">
                                   <span class="clip">Edit</span>
-                                  <svg style="height: 20px; width: 20px;" id="malibu-icon-svg-ember759" class="icon malibu-icon malibu-fill-gradient-purple" data-test-icon-name="edit-16" data-test-target="malibu-icon" aria-hidden="true" role="img">
+                                  <svg style="height: 20px; width: 20px;" id="malibu-icon-svg-ember759" class="icon malibu-icon malibu-fill-gradient-purple" data-test-icon-name="edit-16" data-test-target="malibu-icon" aria-hidden="false" role="img">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#edit-16"></use>
                                   </svg>
 
@@ -119,7 +104,7 @@
 
                                                                 <button class="bg-transparent hk-focus-ring--blue:focus cursor-hand br1 ba0 b--none pa--1 mr2" title="Delete" type="button" data-ember-action="" data-ember-action-761="761">
                                   <span class="clip">Delete</span>
-                                  <svg style="height: 16px; width: 16px;" id="malibu-icon-svg-ember762" class="icon malibu-icon fill-gray hover-fill-red" data-test-icon-name="delete-16" data-test-target="malibu-icon" aria-hidden="true" role="img">
+                                  <svg style="height: 16px; width: 16px;" id="malibu-icon-svg-ember762" class="icon malibu-icon fill-gray hover-fill-red" data-test-icon-name="delete-16" data-test-target="malibu-icon" aria-hidden="false" role="img">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#delete-16"></use>
                                   </svg>
 
@@ -204,10 +189,7 @@
                                                     </tbody>
                                                 </table>
                                             </form>
-
-
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -225,40 +207,8 @@
         <path fill-rule="evenodd" d="M6.663 8.01l-3.362 3.362a.955.955 0 00-.005 1.352.953.953 0 001.352-.005L8.01 9.357l3.362 3.362a.955.955 0 001.352.005.953.953 0 00-.005-1.352L9.357 8.01l3.362-3.362a.955.955 0 00.005-1.352.953.953 0 00-1.352.005L8.01 6.663 4.648 3.301a.955.955 0 00-1.352-.005.953.953 0 00.005 1.352L6.663 8.01z">
         </path>
       </symbol>
-      <symbol id="delete-28" viewBox="0 0 28 28">
-        <path fill-rule="evenodd" d="M11.32 14.01l-7.37 7.369a.994.994 0 00.004 1.41l1.276 1.277a1 1 0 001.411.003l7.369-7.368 7.369 7.368a.994.994 0 001.41-.003l1.277-1.276a1 1 0 00.003-1.411l-7.368-7.369 7.368-7.369a.994.994 0 00-.003-1.41L22.79 3.953a1 1 0 00-1.411-.003l-7.369 7.368L6.641 3.95a.994.994 0 00-1.41.003L3.953 5.23a1 1 0 00-.003 1.411l7.368 7.369z">
-        </path>
-      </symbol>
       <symbol id="edit-16" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M13.24 5.066l-2.187-2.188.733-.733c.39-.39 1.03-.385 1.412-.003l.779.779a1.001 1.001 0 01-.004 1.412l-.733.733zm-.618.618l-6.858 6.858c-.391.391-1.133.83-1.675.987L2 14.13l.594-2.097c.152-.537.595-1.292.982-1.68l6.858-6.857 2.188 2.187z">
-        </path>
-      </symbol>
-      <symbol id="edit-28" viewBox="0 0 28 28">
-        <path fill-rule="evenodd" d="M22 9l-3.13-3.13 1.41-1.411a.953.953 0 011.392.028l1.645 1.776a1.049 1.049 0 01-.026 1.446L22 9zm-1.06 1.06L8.208 22.792c-.392.392-1.137.816-1.677.951L3.5 24.5l.765-3.286c.124-.532.539-1.279.933-1.673l12.61-12.61 3.131 3.13z">
-        </path>
-      </symbol>
-      <symbol id="edit-accept-16" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M4.581 11.218L2.2 8.835a1.008 1.008 0 00-1.427-.002l-.611.612a1.01 1.01 0 00.002 1.426L3.87 14.58a1.008 1.008 0 001.427.002l.612-.612c.022-.022.043-.046.063-.07l9.866-9.866a1.005 1.005 0 000-1.425l-.611-.611a1.007 1.007 0 00-1.425 0l-9.22 9.22z">
-        </path>
-      </symbol>
-      <symbol id="edit-accept-28" viewBox="0 0 28 28">
-        <path fill-rule="evenodd" d="M8.662 19.137L4.074 14.55a1.004 1.004 0 00-1.416-.006L1.093 16.11a.994.994 0 00.005 1.416l6.75 6.75a1.004 1.004 0 001.416.005l.178-.179a.995.995 0 00.473-.266L26.622 7.13a.998.998 0 00.005-1.416l-1.565-1.565a1.004 1.004 0 00-1.416.005L8.662 19.137z">
-        </path>
-      </symbol>
-      <symbol id="edit-modify-16" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M13.846 4.646l-2.5-2.5.942-.941a1 1 0 011.414.005l1.081 1.08c.392.392.392 1.027.005 1.415l-.942.941zm-.707.708l-7.941 7.941c-.39.39-1.134.829-1.66.98L1 15.007l.721-2.549c.15-.529.59-1.275.977-1.663l7.941-7.941 2.5 2.5z">
-        </path>
-      </symbol>
-      <symbol id="edit-modify-28" viewBox="0 0 28 28">
-        <path fill-rule="evenodd" d="M22.742 8.411l-3.131-3.13 1.993-1.994a.95.95 0 011.39.032L24.631 5.1a1.052 1.052 0 01-.028 1.449L22.742 8.41zm-1.061 1.06L7.947 23.207c-.391.39-1.13.831-1.67.99L3 25.151l.973-3.534c.147-.533.58-1.28.974-1.674L18.55 6.34l3.131 3.13z">
-        </path>
-      </symbol>
-      <symbol id="edit-reject-16" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M7.992 6.224L3.077 1.31a1.001 1.001 0 00-1.418 0l-.35.35a1.007 1.007 0 000 1.418l4.915 4.915-4.915 4.915a1.007 1.007 0 000 1.418l.35.35a1.001 1.001 0 001.418 0L7.992 9.76l4.915 4.915a1.001 1.001 0 001.418 0l.35-.35a1.007 1.007 0 000-1.418L9.76 7.992l4.915-4.915a1.007 1.007 0 000-1.418l-.35-.35a1.001 1.001 0 00-1.418 0L7.992 6.224z">
-        </path>
-      </symbol>
-      <symbol id="edit-reject-28" viewBox="0 0 28 28">
-        <path fill-rule="evenodd" d="M14 11.01L5.193 2.203a1.004 1.004 0 00-1.417 0L2.204 3.777a.996.996 0 00-.001 1.417L11.01 14l-8.807 8.807a.996.996 0 000 1.417l1.573 1.572a1.004 1.004 0 001.417.001L14 16.99l8.807 8.807a1.005 1.005 0 001.417 0l1.572-1.573a.996.996 0 00.001-1.417L16.99 14l8.807-8.807a.996.996 0 000-1.417l-1.573-1.572a1.004 1.004 0 00-1.417-.001L14 11.01z">
         </path>
       </symbol>
     </defs>
