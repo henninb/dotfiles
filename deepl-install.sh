@@ -1,3 +1,5 @@
+#!/bin/sh
+
 yarn global add deepl-translator-cli
 
 # Translate text into German
@@ -16,3 +18,7 @@ echo "fork." | trans -p
 
 
 git@github.com:cyberc00z/trans.git
+
+exit 0
+
+# vim: set ft=sh:

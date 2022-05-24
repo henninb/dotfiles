@@ -35,3 +35,5 @@ golang_ver=$(curl -s 'https://go.dev/VERSION?m=text')
 go version
 
 exit 0
+
+# vim: set ft=sh:

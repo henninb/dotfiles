@@ -65,3 +65,5 @@ sudo apt update
 sudo apt install brave-browser
 
 exit 0
+
+# vim: set ft=sh:

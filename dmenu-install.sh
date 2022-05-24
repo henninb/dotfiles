@@ -8,3 +8,5 @@ sudo mv -v dmenu dmenu_run /usr/local/bin/
 cd "$HOME" || exit
 
 exit 0
+
+# vim: set ft=sh:

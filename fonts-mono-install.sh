@@ -44,3 +44,5 @@ echo -e "SKULL AND CROSSBONES (U+2620) \U02620"
 # echo https://www.fontsquirrel.com/
 
 exit 0
+
+# vim: set ft=sh:

@@ -8,3 +8,5 @@ echo install pip3
 echo ./fake.py --no-foreground --width 640 --height 480 --background-blur 0
 
 exit 0
+
+# vim: set ft=sh:

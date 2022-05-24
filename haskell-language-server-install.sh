@@ -6,3 +6,5 @@ cd haskell-language-server || exit
 stack ./install.hs hls
 
 exit 0
+
+# vim: set ft=sh

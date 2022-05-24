@@ -28,3 +28,5 @@ echo hdhomerun_config 101AE8FC save /tuner0 file.ts
 echo export LD_LIBRARY_PATH=/usr/local/lib
 
 exit 0
+
+# vim: set ft=sh

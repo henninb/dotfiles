@@ -12,3 +12,5 @@ fi
 go get github.com/cjbassi/gotop
 
 exit 0
+
+# vim: set ft=sh:

@@ -14,3 +14,5 @@ echo xss-lock
 echo slock
 
 exit 0
+
+# vim: set ft=sh

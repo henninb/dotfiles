@@ -89,3 +89,5 @@ fi
 echo "Installed version: $(/opt/firefox/firefox --version)"
 
 exit 0
+
+# vim: set ft=sh:

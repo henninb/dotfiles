@@ -13,3 +13,5 @@ export GO111MODULE=on
 go get -u github.com/Bios-Marcel/cordless
 
 exit 0
+
+# vim: set ft=sh:

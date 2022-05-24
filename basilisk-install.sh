@@ -5,3 +5,5 @@ git clone https://github.com/cebix/macemu.git
 cd macemu || exit
 
 exit 0
+
+# vim: set ft=sh:

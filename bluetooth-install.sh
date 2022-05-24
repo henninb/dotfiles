@@ -163,3 +163,5 @@ ACTION=="add", SUBSYSTEM=="bluetooth", ATTR{product}=="Microsoft Bluetooth Mouse
 # Set idle timeout (in minutes) before the connection will
 # be disconnect (defaults to 0 for no timeout)
 IdleTimeout=0
+
+# vim: set ft=sh:

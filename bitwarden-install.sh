@@ -6,3 +6,5 @@ echo bw list --help
 echo bw login
 
 exit 0
+
+# vim: set ft=sh:

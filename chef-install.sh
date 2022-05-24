@@ -56,3 +56,5 @@ echo sudo chef-server-ctl user-delete admin
 echo sudo chef-server-ctl org-delete home
 
 exit 0
+
+# vim: set ft=sh:

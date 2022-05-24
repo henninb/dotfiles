@@ -75,3 +75,5 @@ make install_local
 sudo make install
 
 exit 0
+
+# vim: set ft=sh

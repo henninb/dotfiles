@@ -16,3 +16,5 @@ cd ctags || exit
 make
 
 exit 0
+
+# vim: set ft=sh:

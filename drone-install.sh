@@ -12,3 +12,5 @@ curl -L https://github.com/drone/drone-cli/releases/latest/download/drone_linux_
 sudo install -t /usr/local/bin drone
 
 exit 0
+
+# vim: set ft=sh:

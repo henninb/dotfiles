@@ -7,3 +7,5 @@ sudo cp appimage-cli /usr/local/bin/
 # sudo chmod +x /usr/local/bin/appimage-cli-tool
 
 exit 0
+
+# vim: set ft=sh:

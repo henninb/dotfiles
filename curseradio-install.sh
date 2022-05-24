@@ -6,3 +6,5 @@ cd curseradio || exit
 sudo python setup.py install
 
 exit 0
+
+# vim: set ft=sh:

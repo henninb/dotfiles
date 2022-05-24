@@ -97,3 +97,5 @@ arduino-cli board list
 "$HOME/.arduino15/packages/esp32/hardware/esp32/1.0.4/tools/esptool.py" read_mac
 
 exit 0
+
+# vim: set ft=sh:

@@ -151,3 +151,5 @@ fi
 echo "$VER"
 
 exit 0
+
+# vim: set ft=sh

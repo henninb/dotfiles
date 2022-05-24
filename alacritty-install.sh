@@ -24,3 +24,5 @@ sudo mv -v target/release/alacritty /usr/local/bin
 # cd - || exit
 
 exit 0
+
+# vim: set ft=sh:

@@ -23,3 +23,5 @@ cd ~/projects/edge || exit
 fastly compute init
 
 exit 0
+
+# vim: set ft=sh:

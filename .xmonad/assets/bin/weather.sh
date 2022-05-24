@@ -1,17 +1,13 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
-temp=0
+curl 'https://api.weather.com/v2/pws/observations/current?apiKey=e1f10a1e78da46f5b10a1e78da96f525&units=e&stationId=KMNCOONR65&format=json' | jq '.observations | .[] | .imperial'
+# payload=$(curl 'https://api.weather.com/v2/pws/observations/current?apiKey=e1f10a1e78da46f5b10a1e78da96f525&units=e&stationId=KMNCOONR65&format=json')
+payload=$(curl 'https://api.weather.com/v2/pws/observations/current?apiKey=e1f10a1e78da46f5b10a1e78da96f525&units=e&stationId=KMNCOONR65&format=json' | jq '.observations | .[] | .imperial')
+temp=$(echo $payload | jq '.temp')
 
-if curl -s "wttr.in/Minneapolis?format=j1" > /tmp/.weather-minneapolis; then
-  if jq < /tmp/.weather-minneapolis >/dev/null 2>&1; then
-    temp=$(jq -r '.current_condition | .[] | .temp_F' < /tmp/.weather-minneapolis 2> /dev/null)
-  else
-    exit 1
-  fi
-else
-  exit 2
-fi
+# notify-send 'Minneapolis' "$payload"
+notify-send 'Minneapolis' "$temp F"
 
-echo "${temp}"
+exit 0
 
 # vim: set ft=sh:

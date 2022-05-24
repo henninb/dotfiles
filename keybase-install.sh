@@ -11,5 +11,6 @@ else
   exit 1
 fi
 
-
 exit 0
+
+# vim: set ft=sh

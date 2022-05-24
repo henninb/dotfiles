@@ -27,3 +27,5 @@ make install
 cd - || exit
 
 exit 0
+
+# vim: set ft=sh:

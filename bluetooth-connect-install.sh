@@ -16,3 +16,7 @@ sudo cp bluetooth-connect.service /etc/systemd/system
 sudo cp bluetooth-connect.sh /usr/local/bin
 sudo cp bluetooth.txt /opt
 sudo systemctl enable bluetooth-connect.service
+
+exit 0
+
+# vim: set ft=sh:

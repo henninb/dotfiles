@@ -56,3 +56,5 @@ fi
 flatpak update
 
 exit 0
+
+# vim: set ft=sh:

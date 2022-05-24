@@ -134,3 +134,5 @@ brew cask install java11
 # echo https://gist.github.com/ibraheem4/ce5ccd3e4d7a65589ce84f2a3b7c23a3
 
 exit 0
+
+# vim: set ft=sh:

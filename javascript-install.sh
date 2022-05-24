@@ -63,3 +63,5 @@ if [ ! -x "$(command -v n)" ]; then
 fi
 
 exit 0
+
+# vim: set ft=sh

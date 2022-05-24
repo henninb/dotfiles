@@ -167,6 +167,7 @@ keybinds conf = let
   , ("M-<F4>", NamedActions.addName "Screenshot" $ spawn "flameshot gui -p $HOME/screenshots")
   , ("M-b", NamedActions.addName "Red tint" $ spawn "redshift -O 3500")
   , ("M-S-b", NamedActions.addName "Red tint undo" $ spawn "redshift -x")
+  , ("M-S-w", NamedActions.addName "Weather Minneapolis" $ spawn "weather-minneapolis")
 
   , ("M-S-r", NamedActions.addName "Toggle struts" $ sendMessage ToggleStruts)
   , ("M-\\", NamedActions.addName "Minnimize Window" $ withFocused minimizeWindow)

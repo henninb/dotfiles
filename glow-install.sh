@@ -15,3 +15,5 @@ fi
 sudo pacman -S glow
 
 exit 0
+
+# vim: set ft=sh:

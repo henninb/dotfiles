@@ -212,3 +212,5 @@ openssl s_client -connect centos7:443 -CAfile $HOME/centos_apache.crt.pem
 #ls -l /etc/pki/tls/openssl.cnf
 
 exit 0
+
+# vim: set ft=sh:

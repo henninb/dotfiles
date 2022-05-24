@@ -215,3 +215,5 @@ sudo rm -rf shox
 # cargo install ttyper
 
 exit 0
+
+# vim: set ft=sh:

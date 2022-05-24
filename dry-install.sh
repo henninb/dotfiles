@@ -14,3 +14,5 @@ sudo chmod 755 /usr/local/bin/dry
 # go get github.com/moncho/dry
 
 exit 0
+
+# vim: set ft=sh:

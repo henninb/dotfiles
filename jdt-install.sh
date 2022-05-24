@@ -6,3 +6,5 @@ cd "$HOME/projects/jdtls" || exit
 tar xvf "$HOME/jdt-language-server-*.tar.gz"
 
 exit 0
+
+# vim: set ft=sh

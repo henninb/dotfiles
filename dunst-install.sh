@@ -11,3 +11,5 @@ sudo make install
 cd -
 
 exit 0
+
+# vim: set ft=sh:

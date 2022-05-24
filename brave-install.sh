@@ -59,3 +59,5 @@ echo sudo snap install brave
 echo https://github.com/brave/brave-browser
 
 exit 0
+
+# vim: set ft=sh:

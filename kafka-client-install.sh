@@ -14,3 +14,5 @@ echo kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 
 which kafka-topics.sh
 
 exit 0
+
+# vim: set ft=sh

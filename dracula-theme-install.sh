@@ -56,3 +56,4 @@ echo vi /usr/share/themes/Dracula/gtk-3.20/gtk-dark.css
 
 exit 0
 
+# vim: set ft=sh:

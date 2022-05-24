@@ -4,3 +4,5 @@ wget -O - https://raw.githubusercontent.com/laurent22/joplin/master/Joplin_insta
 NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin
 
 exit 0
+
+# vim: set ft=sh
