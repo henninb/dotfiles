@@ -11,29 +11,37 @@
   </head>
 
 <body>
-    <script>
-        (function() {
-            var req = new XMLHttpRequest();
-
-            req.addEventListener('load', function(event) {
-                var src = event.target.responseText;
-                var div = document.createElement('div');
-
-                div.innerHTML = src;
-
-                var svg = div.querySelector('svg');
-
-                document.body.appendChild(svg);
-            });
-
-            //req.open('GET', 'https://www.herokucdn.com/malibu/38/sprite.svg');
-            req.open('GET', 'sprite.svg');
-
-            req.send();
-        })();
-    </script>
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position:absolute;width:0;height:0;visibility:hidden">
     <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="gradient-purple">
+  <stop stop-color="#AC8ECE" offset="0%"/>
+  <stop stop-color="#79589F" offset="100%"/>
+</linearGradient>
+
+       <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="gradient-gray">
+  <stop stop-color="#CFD7E6" offset="0%"/>
+  <stop stop-color="#62738D" offset="100%"/>
+</linearGradient>
+<linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="gradient-dark-gray">
+  <stop stop-color="#919CAE" offset="0%"/>
+  <stop stop-color="#62738D" offset="100%"/>
+</linearGradient>
+<linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="gradient-blue">
+  <stop stop-color="#8EBDF1" offset="0%"/>
+  <stop stop-color="#006DEB" offset="100%"/>
+</linearGradient>
+<linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="gradient-green">
+  <stop stop-color="#86CF95" offset="0%"/>
+  <stop stop-color="#008700" offset="100%"/>
+</linearGradient>
+<linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="gradient-red">
+  <stop stop-color="#DE7575" offset="0%"/>
+  <stop stop-color="#DE0A0A" offset="100%"/>
+</linearGradient>
+<linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="gradient-orange">
+  <stop stop-color="#FA9F47" offset="0%"/>
+  <stop stop-color="#CE4C01" offset="100%"/>
+</linearGradient>
       <symbol id="delete-16" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M6.663 8.01l-3.362 3.362a.955.955 0 00-.005 1.352.953.953 0 001.352-.005L8.01 9.357l3.362 3.362a.955.955 0 001.352.005.953.953 0 00-.005-1.352L9.357 8.01l3.362-3.362a.955.955 0 00.005-1.352.953.953 0 00-1.352.005L8.01 6.663 4.648 3.301a.955.955 0 00-1.352-.005.953.953 0 00.005 1.352L6.663 8.01z">
         </path>
