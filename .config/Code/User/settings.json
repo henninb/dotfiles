@@ -9,7 +9,7 @@
   "editor.wordWrap": "wordWrapColumn",
   "editor.renderWhiteSpace": "all",
   "editor.insertSpaces": false,
-  "workbench.colorTheme": "Dracula",
+  "workbench.colorTheme": "Default Dark+",
   "C_Cpp.updateChannel": "Insiders",
   "platformio-ide.useBuiltinPIOCore": false,
   "platformio-ide.useBuiltinPython": false
