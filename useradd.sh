@@ -32,6 +32,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   id -u tomcat >/dev/null 2>&1 || sudo useradd tomcat -s /sbin/nologin
   id -u activemq >/dev/null 2>&1 || sudo useradd activemq -s /sbin/nologin
   id -u kafka >/dev/null 2>&1 || sudo useradd kafka -s /sbin/nologin
+  id -u wireshark >/dev/null 2>&1 || sudo useradd wireshark -s /sbin/nologin
   sudo usermod -a -G flatpak "$(id -un)"
   sudo usermod -a -G tomcat "$(id -un)"
   sudo usermod -a -G firefox "$(id -un)"
@@ -43,6 +44,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo usermod -a -G uucp "$(id -un)"
   sudo usermod -a -G tty "$(id -un)"
   sudo usermod -a -G docker "$(id -un)"
+  sudo usermod -a -G wireshark "$(id -un)"
   sudo usermod -a -G realtime "$(id -un)" # for jack
 elif [ "$OS" = "void" ]; then
   sudo usermod -a -G libvirt "$(id -un)"
