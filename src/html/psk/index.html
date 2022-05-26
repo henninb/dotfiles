@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://www.wireshark.org/tools/wpa-psk.html -->
+<html class="csstransforms csstransforms3d csstransitions skrollr skrollr-desktop"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+  <title>Wireshark · WPA PSK Generator</title>
+
+  <!-- <link rel="dns-prefetch" href="https://fonts.googleapis.com/"> -->
+  <!-- <link rel="dns-prefetch" href="https://ajax.googleapis.com/"> -->
+  <!-- <link rel="dns-prefetch" href="https://fonts.gstatic.com/"> -->
+  <!-- <link rel="dns-prefetch" href="https://ssl.google-analytics.com/"> -->
+  <!-- <link rel="dns-prefetch" href="https://jsi-cdn.steelcentral.net/"> -->
+
+  <link rel="shortcut icon" href="https://www.wireshark.org/assets/images/favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <link rel="stylesheet" href="./files/switcher.min.css" media="screen">
+  <link href="./files/css" rel="stylesheet" type="text/css">
+
+  <link href="./files/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="./files/bootstrap.min.css">
+  <link rel="stylesheet" href="./files/theme.min.css" media="screen">
+  <link rel="stylesheet" href="./files/color-defaults.min.css" media="screen">
+  <link rel="stylesheet" href="./files/swatch-white.min.css" media="screen">
+  <link rel="stylesheet" href="./files/custom.css" media="screen">
+  <link rel="stylesheet" href="./files/swatch-blue.min.css" media="screen">
+  <link rel="stylesheet" href="./files/swatch-gray.min.css" media="screen">
+  <link rel="stylesheet" href="./files/swatch-black.min.css" media="screen">
+  <link rel="stylesheet" href="./files/swatch-white-black.min.css" media="screen">
+  <link rel="stylesheet" href="./files/swatch-white-green.min.css" media="screen">
+  <link rel="stylesheet" href="./files/swatch-white-red.min.css" media="screen">
+  <link rel="stylesheet" href="./files/fonts.min.css" media="screen">
+
+  <div class="fit-vids-style" id="fit-vids-style" style="display: none;">­<style>.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style></div><script src="./files/jquery.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+  <script src="./files/tab-fixes.js"></script>
+
+
+</head>
+
+<body class="normal-header" style="">
+
+        <div class="sticky-wrapper" style="height: 93px;"><div id="masthead" class="navbar navbar-static-top swatch-white navbar-sticky navbar-stuck" role="banner">
+            <div class="container">
+                <div class="navbar-header" id="wsLogo">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".main-navbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="https://www.wireshark.org/" class="navbar-brand">
+                        <img src="./files/wireshark_logo.png" srcset="/assets/theme-2015/images/wireshark_logo@2x.png 2x" alt="">
+                    </a>
+                </div>
+                <nav class="collapse navbar-collapse main-navbar" role="navigation">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a style="text-transform: uppercase; font-weight: 700" href="https://www.wireshark.org/news/">News</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="https://www.wireshark.org/tools/wpa-psk.html#" class="dropdown-toggle" data-toggle="dropdown">Get Acquainted <span style="font-size: 10px;">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="https://www.wireshark.org/index.html#aboutWS">About</a></li>
+
+                                <li><a href="https://www.wireshark.org/index.html#download">Download</a></li>
+
+                                <li><a href="https://blog.wireshark.org/">Blog</a></li>
+                                <li><a href="https://www.wireshark.org/code-of-conduct.html">Code of Conduct</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="https://www.wireshark.org/tools/wpa-psk.html#" class="dropdown-toggle" data-toggle="dropdown">Get Help <span style="font-size: 10px;">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="https://ask.wireshark.org/">Ask a Question</a>
+                                </li>
+                                <li><a href="https://www.wireshark.org/faq.html">FAQs</a>
+                                </li>
+                                <li><a href="https://www.wireshark.org/docs/">Documentation</a>
+                                </li>
+                                <li><a href="https://www.wireshark.org/lists/">Mailing Lists</a>
+                                </li>
+                                <li><a href="https://www.wireshark.org/tools/">Online Tools</a>
+                                </li>
+                                <li><a href="https://gitlab.com/wireshark/wireshark/-/wikis">Wiki</a>
+                                </li>
+                                <li><a href="https://gitlab.com/wireshark/wireshark/-/issues">Issue Tracker</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="https://www.wireshark.org/tools/wpa-psk.html#" class="dropdown-toggle" data-toggle="dropdown">Develop <span style="font-size: 10px;"> ▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="https://www.wireshark.org/develop.html">Get Involved</a>
+                                </li>
+                                <li><a href="https://www.wireshark.org/docs/wsdg_html_chunked/">Developer's Guide</a>
+                                </li>
+                                <li><a href="https://gitlab.com/wireshark/wireshark/-/tree/master">Browse the Code</a>
+                                </li>
+                                <li><a href="https://www.wireshark.org/download/automated">Latest Builds</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- <li class="dropdown">
+                            <a style="color: #288FEC; font-weight: 700" href="/about-sharkfest.html">SharkFest</a>
+                        </li> -->
+                    </ul>
+                </nav>
+            </div>
+        </div></div>
+
+  <div id="content">
+
+
+<script type="text/javascript" src="./files/sha1.js"></script>
+<script type="text/javascript" src="./files/pbkdf2.js"></script>
+<script type="text/javascript">
+<!--
+
+var pct_sfx = Array("00", "10", "20", "30", "40", "50", "60", "70", "80", "90");
+var steps = 25;
+
+function print_psk(key) {
+    document.getElementById("psk").innerHTML = key;
+}
+
+function status_cb(done) {
+    var progress = '';
+
+    for (var i = 0; i < steps; i++) {
+        progress += '<span style="width: 5px; background: ';
+        if (done - 1.5 > (i * 100.0) / steps) {
+            progress += '#11b6f3;';
+        } else {
+            progress += '#d0fcca;';
+        }
+        progress += '">&nbsp</span>\n';
+    }
+
+    print_psk(progress);
+}
+
+function gen_psk() {
+	var passphrase = document.pskform.passphrase.value;
+	var ssid = document.pskform.ssid.value;
+
+	// Sanity checks
+	if (!passphrase || !ssid)
+		return print_psk('<i>Please fill in both values</i>');
+
+	var pskgen = new PBKDF2(passphrase, ssid, 4096, 256 / 8);
+	pskgen.deriveKey(status_cb, print_psk);
+}
+
+function init_psk() {
+    print_psk('<i>Unknown</i>');
+}
+
+//-->
+</script>
+
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+  init_psk();
+});
+</script>
+
+<section id="FAQbackground" class="section swatch-white">
+<div class="container">
+<div class="row">
+  <div class="col-md">
+    <div class="ws-well">
+      <h3>WPA PSK (Raw Key) Generator</h3>
+
+<p>
+The Wireshark WPA Pre-shared Key Generator provides an easy way to convert
+a WPA passphrase and SSID to the 256-bit pre-shared ("raw") key used for key
+derivation.
+</p>
+
+<p>
+<b>Directions</b>:<br>
+Type or paste in your WPA passphrase and SSID below. <strong>Wait a
+while</strong>. The PSK will be calculated by your browser. Javascript
+isn't known for its blistering crypto speed. <strong>None</strong> of this
+information will be sent over the network. Run a trace with Wireshark if
+you don't believe us.
+</p>
+
+<p>
+</p><form name="pskform">
+<table border="0">
+<tbody><tr>
+  <td>Passphrase</td>
+  <td><input type="text" id="passphrase" size="30" data-com.bitwarden.browser.user-edited="yes"></td>
+</tr>
+<tr>
+  <td>SSID</td>
+  <td><input type="text" id="ssid" size="30" data-com.bitwarden.browser.user-edited="yes"></td>
+</tr>
+<tr>
+  <td>PSK</td>
+  <td>
+     <div id="psk">980fb066ba892153e7bd3e93c227091d08b9747c451313a9d60ee6c9fe738a3c</div>
+   </td>
+</tr>
+</tbody></table>
+
+<input type="button" value="Generate PSK" onclick="gen_psk()">
+</form>
+<p></p>
+
+<p>
+This page uses <a href="http://anandam.name/pbkdf2/">pbkdf2.js</a> by Parvez Anandam and
+<a href="http://pajhome.org.uk/crypt/md5/">sha1.js</a> by Paul Johnston.
+</p>
+
+  </div>
+  </div>
+
+</div>
+</div>
+</section>
+
+  </div>
+
+<footer>
+  <span id="tm-notice">
+    Wireshark and the "fin" logo are registered trademarks.
+    ┃ <a href="https://twitter.com/wiresharknews">Twitter</a>
+    ┃ <a href="https://sysdig.com/privacy-policy/">Privacy policy</a>
+  </span>
+  <span class="pull-right">
+    <a onclick="scrollToTop();return false;" href="https://www.wireshark.org/tools/wpa-psk.html#"><i class="icon-arrow-up"></i></a>
+    <a href="https://www.wireshark.org/tools/wpa-psk.html#">Back to top</a>
+  </span>
+  <!-- powered by <a href="http://mynt.mirroredwhite.com/">mynt</a> and Bootstrap -->
+</footer>
+
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-605389-2']);
+_gaq.push(['_trackPageview']);
+
+$(window).on('load', function () {
+  var ga_src = 'https://ssl.google-analytics.com/ga.js';
+  $.ajax({ cache: true, dataType: "script", url: ga_src });
+});
+</script>
+<!-- / Google Analytics -->
+
+
+
+<script src="./files/packages.min.js"></script>
+<script src="./files/theme.min.js"></script>
+<script src="./files/switcher.min.js"></script>
+
+
+</body></html>
