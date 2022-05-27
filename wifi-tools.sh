@@ -3,6 +3,7 @@
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   # sudo pacman --noconfirm --needed -S networkmanager
   sudo pacman --noconfirm --needed -S dialog
+  sudo pacman --noconfirm --nedded -S aircrack-ng
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y network-manager
   sudo apt install -y wicd-curses
