@@ -18,10 +18,12 @@ echo New USB device found, idVendor=0bda, idProduct=c811, bcdDevice= 2.00
 echo yay -S rtl88xxau-aircrack-dkms-git
 
 echo sudo usb_modeswitch -KW -v 0bda -p 1a2b
+echo sudo usb_modeswitch -KW -v 0bda -p c811
 # rtl88xxau-aircrack-dkms-git and rtl8821au-dkms-git
 echo sudo dkms install rtl8821CU/5.4.1 -k $(uname -r)
 
 cd "$HOME/projects" || exit
+echo git clone -b v5.6.4.2 https://github.com/aircrack-ng/rtl8812au.git
 git clone https://github.com/brektrou/rtl8821CU.git
 # git clone https://github.com/lwfinger/rtl8723bu.git
 cd rtl8723bu || exit
