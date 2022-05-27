@@ -38,6 +38,7 @@ if [ -x "$(command -v nmcli)" ]; then
 fi
 
 ip addr show
+lsusb | grep '802.11ac'
 
 # sudo nmcli connection delete NSA_classified
 
