@@ -13,6 +13,7 @@ echo sudo airodump-ng -c 1 wlp0s20u7mon
 sudo ip link set wlp0s20u7 up
 
 echo sudo airodump-ng wlp0s20u7
+echo wlan.bssid eq B0:7F:B9:89:0A:82
 
 # besside-ng -R 'Target Network' wlan0mon
 
