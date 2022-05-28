@@ -12,5 +12,7 @@ scp -r docker-install.sh henninb@192.168.10.10:/home/henninb/
 scp -r git-clone-projects.sh henninb@192.168.10.10:/home/henninb/
 scp -r .gitignore henninb@192.168.10.10:/home/henninb/
 scp -r .gitconfig henninb@192.168.10.10:/home/henninb/
+# ssh 192.168.10.10 "mkdir -p /home/henninb/ssl"
+scp -r ssl/ henninb@192.168.10.10:/home/henninb/
 
 exit 0
