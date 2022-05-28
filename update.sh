@@ -5,6 +5,10 @@ if [ "$OS" = "Linux Mint" ]; then
   sudo apt upgrade -y
   sudo apt autoremove -y
   sudo apt install -y curl
+elif [ "$OS" = "Debian GNU/Linux" ]; then
+  sudo apt update
+  sudo apt upgrade -y
+  sudo apt autoremove -y
 elif [ "$OS" = "Ubuntu" ]; then
   sudo apt update
   sudo apt upgrade -y
