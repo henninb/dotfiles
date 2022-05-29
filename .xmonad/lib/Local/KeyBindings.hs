@@ -43,6 +43,7 @@ import qualified XMonad.Util.Run as Run
 import qualified System.IO as IO
 import Control.Monad
 import Data.Monoid
+import XMonad.Layout.LayoutCombinators
 
 import Local.Prompts
 import Local.Workspaces
@@ -168,6 +169,9 @@ keybinds conf = let
   , ("M-b", NamedActions.addName "Red tint" $ spawn "redshift -O 3500")
   , ("M-S-b", NamedActions.addName "Red tint undo" $ spawn "redshift -x")
   , ("M-S-w", NamedActions.addName "Weather Minneapolis" $ spawn "weather-minneapolis")
+  , ("M-<Space>", NamedActions.addName "Switch Layout" $ sendMessage $ JumpToLayout "Spiral")
+
+-- , ("M-f" , sendMessage $ JumpToLayout "full"
 
   , ("M-S-r", NamedActions.addName "Toggle struts" $ sendMessage ToggleStruts)
   , ("M-\\", NamedActions.addName "Minnimize Window" $ withFocused minimizeWindow)

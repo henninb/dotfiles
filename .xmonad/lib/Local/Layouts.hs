@@ -39,35 +39,36 @@ myLayouts = renamed [CutWordsLeft 1] . minimize . B.boringWindows $ workspaceLay
 
   -- layout per workspace
 workspaceLayouts =
-        onWorkspace "1" my3FT $
+        onWorkspace "1" myMainLayoutGroup $
         onWorkspace "2" myAllLayoutGroup $
         onWorkspace "3" myFtLayoutGroupM $
-        onWorkspace "4" my3FT $
+        onWorkspace "4" myMainLayoutGroup $
         onWorkspace "5" myFtLayoutGroupM $
         onWorkspace "6" myMiscLayoutGroup $
-        onWorkspace "7" my3FT $
-        onWorkspace "8" my3FT $
-        onWorkspace "9" my3FT $
+        onWorkspace "7" myMainLayoutGroup $
+        onWorkspace "8" myMainLayoutGroup $
+        onWorkspace "9" mySpiralLayoutGroup $
         onWorkspace "0" myFtLayoutGroup myAllLayoutGroup
         -- onWorkspace "0" myMiscLayoutGroup
 
-
-myFtLayoutGroup  = myTileLayout ||| fullLayout ||| commonLayout
-myFtLayoutGroupM = myTileLayout ||| fullLayout ||| myMagn
-my3FT = myTileLayout ||| fullLayout ||| threeCol
+myFtLayoutGroup  = mainLayout ||| fullLayout ||| commonLayout
+myFtLayoutGroupM = mainLayout ||| fullLayout ||| myMagn
+myMainLayoutGroup = mainLayout ||| fullLayout ||| threeCol ||| fullLayout
 myMiscLayoutGroup = mediaLayout ||| terminalLayout ||| terminalLayout ||| commonLayout ||| readingLayout ||| panelLayout
-myAllLayoutGroup = myTileLayout ||| fullLayout ||| threeCol ||| myMagn ||| terminalLayout
+myAllLayoutGroup = mainLayout ||| fullLayout ||| threeCol ||| myMagn ||| terminalLayout
+mySpiralLayoutGroup = spiralLayout ||| fullLayout
+myFullLayoutGroup = fullLayout ||| spiralLayout
 
 fullLayout = renamed [Replace "Full"]
       $ mySpacing
       $ limitWindows 10
       $ noBorders Full
-myTileLayout = renamed [Replace "Main"]
+mainLayout = renamed [Replace "Main"]
       $ avoidStruts
       $ smartBorders
       $ mySpacing
       $ Tall 1 (3/100) (1/2)
-threeColumn = renamed [Replace "3Col"]
+threeColumnLayout = renamed [Replace "3Col"]
       $ mySpacing
       $ avoidStruts
       $ ThreeColMid 1 (3/100) (1/2)
@@ -81,11 +82,11 @@ myMagn = renamed [Replace "Mag"]
       $ limitWindows 3
       $ magnifiercz' 1.4
       $ FixedColumn 1 20 80 10
-commonLayout = renamed [Replace "Com"]
+commonLayout = renamed [Replace "Common"]
       $ mySpacing
       $ avoidStruts
       $ Tall 1 (5/100) (1/3)
-terminalLayout = renamed [Replace "Terminals"]
+terminalLayout = renamed [Replace "Terminal"]
       $ mySpacing
       $ avoidStruts
       $ simpleTall 50 ||| simpleThree 33 ||| Mirror (simpleTall 53)
