@@ -38,6 +38,8 @@ import Local.PolybarLogHook
 import Local.DzenLogHook
 import XMonad.Util.NamedActions
 import qualified XMonad.StackSet as W
+import XMonad.Actions.UpdatePointer
+import XMonad.Util.NamedWindows
 
 myFont  = "terminus"
 
@@ -72,7 +74,8 @@ main = do
   conkyTopRight <- spawnPipe myTopRight
 
   xmonad
-    $ withUrgencyHook NoUrgencyHook
+    $ withUrgencyHook LibNotifyUrgencyHook
+    -- $ withUrgencyHook NoUrgencyHook
     $ dynamicProjects projects
     $ docks
     $ ewmh
@@ -100,6 +103,20 @@ myBorderWidth = 1
 
 -- myBrowser :: String
 -- myBrowser = "brave"
+
+------------------------------------------------------------------------
+-- desktop notifications -- dunst package required
+------------------------------------------------------------------------
+
+data LibNotifyUrgencyHook = LibNotifyUrgencyHook deriving (Read, Show)
+
+instance UrgencyHook LibNotifyUrgencyHook where
+    urgencyHook LibNotifyUrgencyHook w = do
+        name     <- getName w
+        -- Just idx <- fmap (W.findTag w) $ gets windowset
+        Just idx <- W.findTag w <$> gets windowset
+
+        safeSpawn "notify-send" [show name, "workspace " ++ idx]
 
 mySpacing :: Int
 mySpacing = 5
@@ -173,6 +190,7 @@ myConfig = def
   , focusedBorderColor = myFocusBorderColor
   , workspaces = myWorkspaces
   , modMask = superKeyMask
+  -- >> updatePointer (0.25, 0.25) (0.25, 0.25)
   }
    `additionalKeysP`
    [

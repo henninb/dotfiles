@@ -43,7 +43,7 @@ import qualified XMonad.Util.Run as Run
 import qualified System.IO as IO
 import Control.Monad
 import Data.Monoid
-import XMonad.Layout.LayoutCombinators ( JumpToLayout (JumpToLayout) )
+-- import XMonad.Layout.LayoutCombinators ( JumpToLayout (JumpToLayout) )
 import XMonad.Actions.CycleSelectedLayouts
 
 import Local.Prompts
@@ -170,7 +170,7 @@ keybinds conf = let
   , ("M-b", NamedActions.addName "Red tint" $ spawn "redshift -O 3500")
   , ("M-S-b", NamedActions.addName "Red tint undo" $ spawn "redshift -x")
   , ("M-S-w", NamedActions.addName "Weather Minneapolis" $ spawn "weather-minneapolis")
-  -- , ("M-S-w", NamedActions.addName "Switch Layout" $ sendMessage (JumpToLayout "Spiral"))
+  -- , ("M-S-w", NamedActions.addName "Weather Minneapolis" $ spawn "weather-minneapolis")
   -- , ("M-<Space>", NamedActions.addName "Switch Layout" $ sendMessage (JumpToLayout "Spiral"))
   , ("M-<Space>", NamedActions.addName "Switch Layout" $ cycleThroughLayouts ["Main", "Grid", "3Column", "3ColumnMid", "Mag", "Common", "Terminal", "Media", "Reading", "Spiral", "Panel"])
   , ("M-S-<Space>", NamedActions.addName "Switch Layout" $ cycleThroughLayouts ["Panel", "Spiral", "Reading", "Media", "Terminal", "Common", "Mag", "3ColumnMid", "3Column", "Grid","Main"])
@@ -178,7 +178,10 @@ keybinds conf = let
   , ("M-S-r", NamedActions.addName "Toggle struts" $ sendMessage ToggleStruts)
   , ("M-\\", NamedActions.addName "Minnimize Window" $ withFocused minimizeWindow)
   , ("M-S-\\", NamedActions.addName "Maximize Window" $ withLastMinimized maximizeWindow)
-    ] ++
+    ]
+
+    ++
+
     subKeys "Workspaces"
     ([
           ("M-;", NamedActions.addName "View previous workspace"      viewPrevWS)
@@ -192,6 +195,7 @@ keybinds conf = let
     )
 
     ++
+
     subKeys "Audio"
     [
     ("<XF86AudioLowerVolume>", NamedActions.addName "Lower Volume" $ spawn "amixer set Master 5%- unmute")
@@ -265,3 +269,10 @@ keybinds conf = let
   -- , ("M-t", withFocused $ windows . W.sink)
   , ("M-t", NamedActions.addName "" $ withFocused $ windows . W.sink)
    ]
+
+notifyWSHint :: String -> X()
+notifyWSHint index = spawn $ "notify-send -t 500 \"workspace: " ++ index ++ "\""
+
+workspaceHint f i = do
+  windows $ f i
+  notifyWSHint i
