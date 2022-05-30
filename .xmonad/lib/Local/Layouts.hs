@@ -75,8 +75,7 @@ mainLayout = renamed [Replace "Main"]
       $ mySpacing
       $ Tall 1 (3/100) (1/2)
 gridLayout = renamed [Replace "Grid"]
-      $ avoidStruts
-      $ Grid
+      $ avoidStruts Grid
 threeColumnLayout = renamed [Replace "3Column"]
       $ mySpacing
       $ avoidStruts
