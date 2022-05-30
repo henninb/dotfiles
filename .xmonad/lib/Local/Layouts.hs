@@ -43,25 +43,27 @@ myLayouts = renamed [CutWordsLeft 1] . minimize . B.boringWindows $ workspaceLay
 
   -- layout per workspace
 workspaceLayouts =
-        onWorkspace "1" myMainLayoutGroup $
-        onWorkspace "2" myAllLayoutGroup $
-        onWorkspace "3" myFtLayoutGroupM $
-        onWorkspace "4" myMainLayoutGroup $
-        onWorkspace "5" myFtLayoutGroupM $
-        onWorkspace "6" myMiscLayoutGroup $
-        onWorkspace "7" myMainLayoutGroup $
-        onWorkspace "8" myMainLayoutGroup $
-        onWorkspace "9" mySpiralLayoutGroup $
-        onWorkspace "0" myFtLayoutGroup myAllLayoutGroup
-        -- onWorkspace "0" myMiscLayoutGroup
+    onWorkspace "1" myAllLayoutGroup $
+    onWorkspace "2" myAllLayoutGroup $
+    onWorkspace "3" myAllLayoutGroup $
+    onWorkspace "4" myAllLayoutGroup $
+    onWorkspace "5" myAllLayoutGroup $
+    onWorkspace "6" myAllLayoutGroup $
+    onWorkspace "7" myAllLayoutGroup $
+    onWorkspace "8" myAllLayoutGroup $
+    onWorkspace "9" myAllLayoutGroup $
+    onWorkspace "0" myAllLayoutGroup myFullLayoutGroup
+    -- onWorkspace "0" myMiscLayoutGroup
+    -- onWorkspace "0" myAllLayoutGroup
 
-myFtLayoutGroup  = mainLayout ||| fullLayout ||| commonLayout
-myFtLayoutGroupM = mainLayout ||| fullLayout ||| myMagn
-myMainLayoutGroup = mainLayout ||| fullLayout ||| threeCol ||| fullLayout ||| gridLayout ||| spiralLayout
-myMiscLayoutGroup = mediaLayout ||| terminalLayout ||| terminalLayout ||| commonLayout ||| readingLayout ||| panelLayout
-myAllLayoutGroup = mainLayout ||| fullLayout ||| threeCol ||| myMagn ||| terminalLayout
-mySpiralLayoutGroup = spiralLayout ||| fullLayout
-myFullLayoutGroup = fullLayout ||| spiralLayout
+-- myFtLayoutGroup  = mainLayout ||| fullLayout ||| commonLayout
+-- myFtLayoutGroupM = mainLayout ||| fullLayout ||| magLayout
+-- myMainLayoutGroup = mainLayout ||| fullLayout ||| threeColumnMidLayout ||| fullLayout ||| gridLayout ||| spiralLayout
+-- myMiscLayoutGroup = mediaLayout ||| terminalLayout ||| terminalLayout ||| commonLayout ||| readingLayout ||| panelLayout
+-- myAllLayoutGroup = mainLayout ||| gridLayout ||| threeColumnLayout ||| threeColumnMidLayout |||  commonLayout ||| terminalLayout ||| mediaLayout ||| readingLayout ||| phiLayout ||| spiralLayout ||| panelLayout
+-- mySpiralLayoutGroup = spiralLayout ||| mainLayout ||| fullLayout
+myAllLayoutGroup = mainLayout ||| gridLayout ||| threeColumnLayout ||| threeColumnMidLayout ||| magLayout ||| commonLayout ||| terminalLayout ||| mediaLayout ||| readingLayout ||| spiralLayout ||| panelLayout
+myFullLayoutGroup = fullLayout
 
 fullLayout = renamed [Replace "Full"]
       $ mySpacing
@@ -72,17 +74,20 @@ mainLayout = renamed [Replace "Main"]
       $ smartBorders
       $ mySpacing
       $ Tall 1 (3/100) (1/2)
-gridLayout = renamed [Replace "Grid"] $ Grid
-threeColumnLayout = renamed [Replace "3Col"]
+gridLayout = renamed [Replace "Grid"]
+      $ avoidStruts
+      $ Grid
+threeColumnLayout = renamed [Replace "3Column"]
       $ mySpacing
       $ avoidStruts
       $ ThreeColMid 1 (3/100) (1/2)
-threeCol = renamed [Replace "Three"]
+threeColumnMidLayout = renamed [Replace "3ColumnMid"]
       $ avoidStruts
       $ mySpacing
       $ ThreeColMid 1 (1/10) (1/2)
-myMagn = renamed [Replace "Mag"]
-      $ mySpacing
+magLayout = renamed [Replace "Mag"]
+      $ avoidStruts
+      -- $ mySpacing
       $ noBorders
       $ limitWindows 3
       $ magnifiercz' 1.4
@@ -103,17 +108,19 @@ mediaLayout = renamed [Replace "Media"]
       $ simpleTwo 40 ||| Grid ||| simpleThree 33
 readingLayout = renamed [Replace "Reading"]
       $ mySpacing
+      $ avoidStruts
       $ simpleTwo 50 ||| simpleThree 50
-phiLayout = renamed [Replace "Phi"]
-      $ mySpacing (2 / (1 + toRational (sqrt 5 :: Double)))
+-- phiLayout = renamed [Replace "Phi"]
+--       $ mySpacing (2 / (1 + toRational (sqrt 5 :: Double)))
       -- $ mySpacing
       -- $ (2/(1+(toRational(sqrt(5)::Double)))) -- Golden Ratio
 spiralLayout  = renamed [Replace "Spiral"]
       $ mySpacing
       $ avoidStruts
       $ Sp.spiralWithDir Sp.East Sp.CW (6/7)
-panelLayout = renamed [Replace "Control"]
+panelLayout = renamed [Replace "Panel"]
       $ mySpacing
+      $ avoidStruts
       $ Grid ||| Mirror (simpleTall 50) ||| simpleThree 33
 -- myGimpLayout = renamed [Replace "Gimp"]
 --       $ withIM 0.11 (Role "gimp-toolbox")

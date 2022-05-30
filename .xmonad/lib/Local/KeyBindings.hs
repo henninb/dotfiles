@@ -172,8 +172,8 @@ keybinds conf = let
   , ("M-S-w", NamedActions.addName "Weather Minneapolis" $ spawn "weather-minneapolis")
   -- , ("M-S-w", NamedActions.addName "Switch Layout" $ sendMessage (JumpToLayout "Spiral"))
   -- , ("M-<Space>", NamedActions.addName "Switch Layout" $ sendMessage (JumpToLayout "Spiral"))
-  , ("M-<Space>", NamedActions.addName "Switch Layout" $ cycleThroughLayouts ["Main", "Full", "Sprial"])
-
+  , ("M-<Space>", NamedActions.addName "Switch Layout" $ cycleThroughLayouts ["Main", "Grid", "3Column", "3ColumnMid", "Mag", "Common", "Terminal", "Media", "Reading", "Spiral", "Panel"])
+  , ("M-S-<Space>", NamedActions.addName "Switch Layout" $ cycleThroughLayouts ["Panel", "Spiral", "Reading", "Media", "Terminal", "Common", "Mag", "3ColumnMid", "3Column", "Grid","Main"])
 
   , ("M-S-r", NamedActions.addName "Toggle struts" $ sendMessage ToggleStruts)
   , ("M-\\", NamedActions.addName "Minnimize Window" $ withFocused minimizeWindow)
