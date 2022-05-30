@@ -44,6 +44,7 @@ import qualified System.IO as IO
 import Control.Monad
 import Data.Monoid
 import XMonad.Layout.LayoutCombinators ( JumpToLayout (JumpToLayout) )
+import XMonad.Actions.CycleSelectedLayouts
 
 import Local.Prompts
 import Local.Workspaces
@@ -170,7 +171,9 @@ keybinds conf = let
   , ("M-S-b", NamedActions.addName "Red tint undo" $ spawn "redshift -x")
   , ("M-S-w", NamedActions.addName "Weather Minneapolis" $ spawn "weather-minneapolis")
   -- , ("M-S-w", NamedActions.addName "Switch Layout" $ sendMessage (JumpToLayout "Spiral"))
-  , ("M-<Space>", NamedActions.addName "Switch Layout" $ sendMessage (JumpToLayout "Spiral"))
+  -- , ("M-<Space>", NamedActions.addName "Switch Layout" $ sendMessage (JumpToLayout "Spiral"))
+  , ("M-<Space>", NamedActions.addName "Switch Layout" $ cycleThroughLayouts ["Main", "Full", "Sprial"])
+
 
   , ("M-S-r", NamedActions.addName "Toggle struts" $ sendMessage ToggleStruts)
   , ("M-\\", NamedActions.addName "Minnimize Window" $ withFocused minimizeWindow)
