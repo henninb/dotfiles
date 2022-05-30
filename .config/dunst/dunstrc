@@ -1,7 +1,7 @@
 [global]
-    ### Display ###
     monitor = 0
     follow = mouse
+    # geometry = "0x0-30+20"
     geometry = "300x5-10+30"
     indicate_hidden = yes
     shrink = no
@@ -10,19 +10,17 @@
     separator_height = 2
     padding = 8
     horizontal_padding = 8
-    frame_width = 2
-    frame_color = "#eee8d5"
-    separator_color = frame
+    frame_width = 3
+    frame_color = "#aaaaaa"
+    separator_color = auto
     sort = yes
     idle_threshold = 120
 
-    ### Text ###
-
-    font = Inconsolata 14
+    font = monofur for Powerline 24
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"
-    alignment = left
+    alignment = center
     show_age_threshold = 60
     word_wrap = yes
     ellipsize = middle
@@ -31,42 +29,82 @@
     hide_duplicate_count = false
     show_indicators = yes
 
-    ### Icons ###
 
-    # Align icons left/right/off
-    icon_position = off
+    icon_position = left
     max_icon_size = 32
     icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
-
-    ### History ###
-
     sticky_history = yes
     history_length = 20
 
-    ### Misc/Advanced ###
 
-    dmenu = /usr/local/bin/dmenu -p dunst:
-    browser = /usr/local/bin/firefox -new-tab
+    dmenu = /usr/bin/dmenu -p dunst:
+
+    # Browser for opening urls in context menu.
+    browser = firefox
+
+    # Always run rule-defined scripts, even if the notification is suppressed
     always_run_script = true
+
+    # Define the title of the windows spawned by dunst
     title = Dunst
+
+    # Define the class of the windows spawned by dunst
     class = Dunst
+
+    # Print a notification on startup.
+    # This is mainly for error detection, since dbus (re-)starts dunst
+    # automatically after a crash.
     startup_notification = false
 
-    # Manage dunsts desire for talking
+    # Manage dunst's desire for talking
+    # Can be one of the following values:
+    #  crit: Critical features. Dunst aborts
+    #  warn: Only non-fatal warnings
+    #  mesg: Important Messages
+    #  info: all unimportant stuff
+    # debug: all less than unimportant stuff
     verbosity = mesg
-    corner_radius = 0
+
+    # Define the corner radius of the notification window
+    # in pixel size. If the radius is 0, you have no rounded
+    # corners.
+    # The radius will be automatically lowered if it exceeds half of the
+    # notification height to avoid clipping text and/or icons.
+    corner_radius = 5
 
     ### Legacy
 
+    # Use the Xinerama extension instead of RandR for multi-monitor support.
+    # This setting is provided for compatibility with older nVidia drivers that
+    # do not support RandR and using it on systems that support RandR is highly
+    # discouraged.
+    #
+    # By enabling this setting dunst will not be able to detect when a monitor
+    # is connected or disconnected which might break follow mode if the screen
+    # layout changes.
     force_xinerama = false
 
-    # mouse
+    ### mouse
 
-    mouse_left_click = close_current
-    mouse_middle_click = do_action
-    mouse_right_click = close_all
+    # Defines action of mouse event
+    # Possible values are:
+    # * none: Don't do anything.
+    # * do_action: If the notification has exactly one action, or one is marked as default,
+    #              invoke it. If there are multiple and no default, open the context menu.
+    # * close_current: Close current notification.
+    # * close_all: Close all notifications.
+    mouse_left_click = do_action
+    mouse_middle_click = close_all
+    mouse_right_click = close_current
 
+# Experimental features that may or may not work correctly. Do not expect them
+# to have a consistent behaviour across releases.
 [experimental]
+    # Calculate the dpi to use on a per-monitor basis.
+    # If this setting is enabled the Xft.dpi value will be ignored and instead
+    # dunst will attempt to calculate an appropriate dpi value for each monitor
+    # using the resolution and physical size. This might be useful in setups
+    # where there are multiple screens with very different dpi values.
     per_monitor_dpi = false
 
 [shortcuts]
@@ -94,26 +132,26 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#b58900"
-    foreground = "#eee8d5"
-    timeout = 10
+    background = "#2b2b2b"
+    foreground = "#ffffff"
+    timeout = 6
     # Icon for notifications with low urgency, uncomment to enable
-    #icon = /path/to/icon
+    icon = /home/henninb/.config/dunst/normal.png
 
 [urgency_normal]
-    background = "#b58900"
-    foreground = "#eee8d5"
-    timeout = 10
+    background = "#2b2b2b"
+    foreground = "#ffffff"
+    timeout = 6
     # Icon for notifications with normal urgency, uncomment to enable
-    #icon = /path/to/icon
+    icon = /home/henninb/.config/dunst/normal.png
 
 [urgency_critical]
-    background = "#b58900"
-    foreground = "#eee8d5"
+    background = "#900000"
+    foreground = "#ffffff"
     frame_color = "#ff0000"
-    timeout = 0
+    timeout = 6
     # Icon for notifications with critical urgency, uncomment to enable
-    #icon = /path/to/icon
+    icon = /home/henninb/.config/dunst/critical.png
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
