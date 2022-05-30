@@ -159,10 +159,10 @@ keybinds conf = let
     ] ++
     subKeys "Launchers"
     [
-    ("M-S-<Return>", NamedActions.addName "Alternate Terminal"      $ spawn "st")
+    ("M-S-<Return>", NamedActions.addName "Alternate Terminal"      $ spawn "st" >> spawn "notify-send 'st terminal'")
   , ("M-<Return>", NamedActions.addName "Terminal"        $ spawn "terminal" >> spawn "notify-send 'terminal'")
   , ("M-S-p", NamedActions.addName "Application Launcher"             $ spawn "dmenu_run -i -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
-  , ("M-<F2>", NamedActions.addName "File Manager" $ spawn "fm")
+  , ("M-<F2>", NamedActions.addName "File Manager" $ spawn "fm" >> spawn "notify-send 'fm file manager'")
   , ("M-i", NamedActions.addName "Browser" $ spawn "browser")
   , ("M-e", NamedActions.addName "Emacs" $ spawn myEmacs)
   , ("M-S-i", NamedActions.addName "Private Browser" $ spawn ("browser" ++ " --incognito"))
@@ -172,13 +172,12 @@ keybinds conf = let
   , ("M-b", NamedActions.addName "Red tint" $ spawn "redshift -O 3500")
   , ("M-S-b", NamedActions.addName "Red tint undo" $ spawn "redshift -x")
   , ("M-S-w", NamedActions.addName "Weather Minneapolis" $ spawn "weather-minneapolis")
-  , ("M-a", NamedActions.addName "Notify w current X selection"    $ unsafeWithSelection "notify-send")
-  -- , ("M-S-w", NamedActions.addName "Weather Minneapolis" $ spawn "weather-minneapolis")
+  -- , ("M-a", NamedActions.addName "Notify w current X selection"    $ unsafeWithSelection "notify-send")
   -- , ("M-<Space>", NamedActions.addName "Switch Layout" $ sendMessage (JumpToLayout "Spiral"))
   , ("M-<Space>", NamedActions.addName "Switch Layout" $ cycleThroughLayouts ["Main", "Grid", "3Column", "3ColumnMid", "Mag", "Common", "Terminal", "Media", "Reading", "Spiral", "Panel"])
   , ("M-S-<Space>", NamedActions.addName "Switch Layout" $ cycleThroughLayouts ["Panel", "Spiral", "Reading", "Media", "Terminal", "Common", "Mag", "3ColumnMid", "3Column", "Grid","Main"])
 
-  , ("M-S-r", NamedActions.addName "Toggle struts" $ sendMessage ToggleStruts)
+  , ("M-S-r", NamedActions.addName "Toggle struts" $ sendMessage ToggleStruts >> spawn "notify-send 'ToggleStruts'")
   , ("M-\\", NamedActions.addName "Minnimize Window" $ withFocused minimizeWindow)
   , ("M-S-\\", NamedActions.addName "Maximize Window" $ withLastMinimized maximizeWindow)
     ]

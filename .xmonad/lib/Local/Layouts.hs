@@ -77,12 +77,12 @@ mainLayout = renamed [Replace "Main"]
 gridLayout = renamed [Replace "Grid"]
       $ avoidStruts Grid
 threeColumnLayout = renamed [Replace "3Column"]
-      $ mySpacing
+      -- $ mySpacing
       $ avoidStruts
       $ ThreeColMid 1 (3/100) (1/2)
 threeColumnMidLayout = renamed [Replace "3ColumnMid"]
       $ avoidStruts
-      $ mySpacing
+      -- $ mySpacing
       $ ThreeColMid 1 (1/10) (1/2)
 magLayout = renamed [Replace "Mag"]
       $ avoidStruts
@@ -92,21 +92,21 @@ magLayout = renamed [Replace "Mag"]
       $ magnifiercz' 1.4
       $ FixedColumn 1 20 80 10
 commonLayout = renamed [Replace "Common"]
-      $ mySpacing
+      -- $ mySpacing
       $ avoidStruts
       $ Tall 1 (5/100) (1/3)
 terminalLayout = renamed [Replace "Terminal"]
-      $ mySpacing
+      -- $ mySpacing
       $ avoidStruts
       $ simpleTall 50 ||| simpleThree 33 ||| Mirror (simpleTall 53)
 -- codingLayout = renamed [Replace "Coding"]
 --       $ twoPaneTabbed ||| twoPaneTall ||| simpleTall 50
 mediaLayout = renamed [Replace "Media"]
-      $ mySpacing
+      -- $ mySpacing
       $ avoidStruts
       $ simpleTwo 40 ||| Grid ||| simpleThree 33
 readingLayout = renamed [Replace "Reading"]
-      $ mySpacing
+      -- $ mySpacing
       $ avoidStruts
       $ simpleTwo 50 ||| simpleThree 50
 -- phiLayout = renamed [Replace "Phi"]
@@ -114,11 +114,11 @@ readingLayout = renamed [Replace "Reading"]
       -- $ mySpacing
       -- $ (2/(1+(toRational(sqrt(5)::Double)))) -- Golden Ratio
 spiralLayout  = renamed [Replace "Spiral"]
-      $ mySpacing
+      -- $ mySpacing
       $ avoidStruts
       $ Sp.spiralWithDir Sp.East Sp.CW (6/7)
 panelLayout = renamed [Replace "Panel"]
-      $ mySpacing
+      -- $ mySpacing
       $ avoidStruts
       $ Grid ||| Mirror (simpleTall 50) ||| simpleThree 33
 -- myGimpLayout = renamed [Replace "Gimp"]
