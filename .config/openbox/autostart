@@ -2,7 +2,7 @@ dunst &
 flameshot &
 blueman-applet &
 volumeicon &
-feh --bg-scale "$HOME/backgrounds/minnesota-vikings-dark.jpg" &
+feh --bg-scale "$HOME/.local/wallpaper/minnesota-vikings-dark.png" &
 xscreensaver -no-splash &
 tint2 &
 #wmname LG3D

@@ -409,7 +409,7 @@ myStartupHook = do
     spawnOnce "blueman-applet"
     spawnOnce "volumeicon"
     spawnOnce "xscreensaver -no-splash"
-    spawnOnce "feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg"
+    spawnOnce "feh --bg-scale $HOME/.local/wallpaper/minnesota-vikings-dark.png"
 
 -- myConfig :: XPConfig
 myConfig = def

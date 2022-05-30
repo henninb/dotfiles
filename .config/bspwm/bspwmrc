@@ -34,7 +34,7 @@ fi
 
 if [ -x "$(command -v feh)" ]; then
   #exec feh --bg-scale --randomize $HOME/backgrounds/* &
-  exec feh --bg-scale "$HOME/backgrounds/minnesota-vikings-dark.jpg" &
+  exec feh --bg-scale "$HOME/.local/wallpaper/minnesota-vikings-dark.png" &
 else
   echo feh is not installed >> "$HOME/bspwm.log"
 fi

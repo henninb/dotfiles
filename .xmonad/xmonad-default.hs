@@ -164,7 +164,7 @@ myStartupHook = do
     spawnOnce "volumeicon"
     -- spawnOnce "kill -9 $(ps aux | grep -e \"volumeicon\" | awk ' { print $2 } ')"
     spawnOnce "xscreensaver -no-splash"
-    spawnOnce "feh --bg-scale $HOME/backgrounds/minnesota-vikings-dark.jpg"
+    spawnOnce "feh --bg-scale $HOME/.local/wallpaper/minnesota-vikings-dark.png"
     -- spawnOnce "killall redshift; sleep 4 ; redshift -l 48.024395:11.598893 &"
     windows $ W.view "1"
 
