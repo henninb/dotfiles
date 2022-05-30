@@ -125,6 +125,7 @@ myRemoveKeys = [
                    (superKeyMask .|. shiftMask, xK_space)
                  , (superKeyMask, xK_q)
                  , (superKeyMask, xK_e)
+                 , (superKeyMask, xK_n)
                  , (superKeyMask, xK_p)
                  , (superKeyMask, xK_x)
                  , (controlMask, xK_p)

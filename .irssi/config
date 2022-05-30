@@ -335,7 +335,7 @@ statusbar = {
   };
 };
 settings = {
-  core = { 
+  core = {
     real_name = "henninb";
     user_name = "henninb";
     nick = "henninb";
