@@ -43,8 +43,8 @@ import qualified XMonad.Util.Run as Run
 import qualified System.IO as IO
 import Control.Monad
 import Data.Monoid
--- import XMonad.Layout.LayoutCombinators ( JumpToLayout (JumpToLayout) )
 import XMonad.Actions.CycleSelectedLayouts
+import XMonad.Util.XSelection
 
 import Local.Prompts
 import Local.Workspaces
@@ -97,6 +97,8 @@ recordXMessage message = do
 -- | Execute the last recorded message.
 repeatLastXMessage :: X ()
 repeatLastXMessage = getLastMessage =<< XState.get
+
+unsafeWithSelection app = join $ io $ fmap (unsafeSpawn . (\ x -> app ++ " " ++ x)) getSelection
 
 dmenuArgs :: String -> [String]
 dmenuArgs title = [ "-i "
@@ -158,7 +160,7 @@ keybinds conf = let
     subKeys "Launchers"
     [
     ("M-S-<Return>", NamedActions.addName "Alternate Terminal"      $ spawn "st")
-  , ("M-<Return>", NamedActions.addName "Terminal"        $ spawn "terminal")
+  , ("M-<Return>", NamedActions.addName "Terminal"        $ spawn "terminal" >> spawn "notify-send 'terminal'")
   , ("M-S-p", NamedActions.addName "Application Launcher"             $ spawn "dmenu_run -i -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
   , ("M-<F2>", NamedActions.addName "File Manager" $ spawn "fm")
   , ("M-i", NamedActions.addName "Browser" $ spawn "browser")
@@ -170,6 +172,7 @@ keybinds conf = let
   , ("M-b", NamedActions.addName "Red tint" $ spawn "redshift -O 3500")
   , ("M-S-b", NamedActions.addName "Red tint undo" $ spawn "redshift -x")
   , ("M-S-w", NamedActions.addName "Weather Minneapolis" $ spawn "weather-minneapolis")
+  , ("M-a", NamedActions.addName "Notify w current X selection"    $ unsafeWithSelection "notify-send")
   -- , ("M-S-w", NamedActions.addName "Weather Minneapolis" $ spawn "weather-minneapolis")
   -- , ("M-<Space>", NamedActions.addName "Switch Layout" $ sendMessage (JumpToLayout "Spiral"))
   , ("M-<Space>", NamedActions.addName "Switch Layout" $ cycleThroughLayouts ["Main", "Grid", "3Column", "3ColumnMid", "Mag", "Common", "Terminal", "Media", "Reading", "Spiral", "Panel"])
