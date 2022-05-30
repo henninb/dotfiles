@@ -1,6 +1,7 @@
 module Local.Layouts (myLayouts) where
 
-import XMonad
+-- import XMonad
+import XMonad hiding ( (|||) )
 import XMonad.Layout.Renamed
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.PerWorkspace
@@ -25,6 +26,9 @@ import XMonad.Layout.IM
 import XMonad.Layout.Circle (Circle (..))
 import XMonad.Layout.Reflect (reflectHoriz)
 import System.Info (os)
+-- import XMonad.Layout.LayoutCombinators hiding ( (|||) )
+-- import XMonad.Layout.LayoutCombinators
+import XMonad.Layout.LayoutCombinators ( (|||) )
 
 import Local.Workspaces (myWorkspaces)
 
@@ -53,7 +57,7 @@ workspaceLayouts =
 
 myFtLayoutGroup  = mainLayout ||| fullLayout ||| commonLayout
 myFtLayoutGroupM = mainLayout ||| fullLayout ||| myMagn
-myMainLayoutGroup = mainLayout ||| fullLayout ||| threeCol ||| fullLayout
+myMainLayoutGroup = mainLayout ||| fullLayout ||| threeCol ||| fullLayout ||| gridLayout ||| spiralLayout
 myMiscLayoutGroup = mediaLayout ||| terminalLayout ||| terminalLayout ||| commonLayout ||| readingLayout ||| panelLayout
 myAllLayoutGroup = mainLayout ||| fullLayout ||| threeCol ||| myMagn ||| terminalLayout
 mySpiralLayoutGroup = spiralLayout ||| fullLayout
@@ -68,6 +72,7 @@ mainLayout = renamed [Replace "Main"]
       $ smartBorders
       $ mySpacing
       $ Tall 1 (3/100) (1/2)
+gridLayout = renamed [Replace "Grid"] $ Grid
 threeColumnLayout = renamed [Replace "3Col"]
       $ mySpacing
       $ avoidStruts
