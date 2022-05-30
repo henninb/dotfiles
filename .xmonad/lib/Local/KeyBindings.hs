@@ -185,12 +185,16 @@ keybinds conf = let
 
     ++
 
+
+-- safeSpawn fix
+-- https://hackage.haskell.org/package/xmonad-contrib-0.17.0/docs/XMonad-Util-Run.html#v:safeSpawn
+
     subKeys "Workspaces"
     ([
           ("M-;", NamedActions.addName "View previous workspace"      viewPrevWS)
         , ("M-<Tab>", NamedActions.addName "toggle betweeen workspaces"  toggleWS)
     ]
-    ++ zipM "M-" "Move to workspace" wsKeys [0..] (withNthWorkspace (\i -> W.greedyView i >> print "weather-minneapolis"))
+    ++ zipM "M-" "Move to workspace" wsKeys [0..] ((withNthWorkspace (\i -> W.greedyView i)) >> spawn "notify-send 'test'"
     -- ++ zipM "M-S-" "Move window to workspace" wsKeys [0..]  (withNthWorkspace (\i -> W.greedyView i . W.shift i))
     ++ zipM "M-S-" "Move and shift window to workspace" wsKeys [0..]  (withNthWorkspace (liftM2 (.) W.greedyView W.shift))
     ++ zipM "M-C-" "Copy window to workkspace" wsKeys [0..] (withNthWorkspace copy)
