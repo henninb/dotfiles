@@ -118,8 +118,8 @@ instance UrgencyHook LibNotifyUrgencyHook where
 
         safeSpawn "notify-send" [show name, "workspace " ++ idx]
 
-mySpacing :: Int
-mySpacing = 5
+-- mySpacing :: Int
+-- mySpacing = 5
 
 myAddSpaces :: Int -> String -> String
 myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '

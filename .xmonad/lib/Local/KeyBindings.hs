@@ -179,8 +179,9 @@ keybinds conf = let
   , ("M-S-w", NamedActions.addName "Weather Minneapolis" $ safeSpawn "weather-minneapolis" [])
   -- , ("M-a", NamedActions.addName "Notify w current X selection"    $ unsafeWithSelection "notify-send")
   -- , ("M-<Space>", NamedActions.addName "Switch Layout" $ sendMessage (JumpToLayout "Spiral"))
-  , ("M-<Space>", NamedActions.addName "Switch Layout" $ cycleThroughLayouts ["Main", "Grid", "3Column", "3ColumnMid", "Mag", "Common", "Terminal", "Media", "Reading", "Spiral", "Panel"])
-  , ("M-S-<Space>", NamedActions.addName "Switch Layout" $ cycleThroughLayouts ["Panel", "Spiral", "Reading", "Media", "Terminal", "Common", "Mag", "3ColumnMid", "3Column", "Grid","Main"])
+  -- , ("M-<Space>", NamedActions.addName "Switch Layout" $ cycleThroughLayouts ["Main", "Grid", "3Column", "3ColumnMid", "Mag", "Common", "Terminal", "Media", "Reading", "Spiral", "Panel"])
+  , ("M-<Space>", NamedActions.addName "Switch Layout" $ sendMessage NextLayout)
+  , ("M-S-<Space>", NamedActions.addName "Switch Layout Reverse" $ cycleThroughLayouts ["Panel", "Spiral", "Reading", "Media", "Terminal", "Common", "Mag", "3ColumnMid", "3Column", "Grid","Main"])
 
   , ("M-S-r", NamedActions.addName "Toggle struts" $ sendMessage ToggleStruts >> safeSpawn "notify-send" ["toggle struts"])
   , ("M-\\", NamedActions.addName "Minnimize Window" $ withFocused minimizeWindow)
@@ -194,7 +195,7 @@ keybinds conf = let
           ("M-;", NamedActions.addName "View previous workspace" viewPrevWS)
         , ("M-<Tab>", NamedActions.addName "toggle betweeen workspaces" toggleWS)
     ]
-    ++ zipM "M-" "Move window to workspace" wsKeys [0..]  (\wn -> withNthWorkspace W.greedyView wn >> safeSpawn "notify-send" ["switch workspace"])
+    ++ zipM "M-" "Move window to workspace" wsKeys [0..]  (\wn -> withNthWorkspace W.greedyView wn >> safeSpawn "notify-send" ["switch workspace" ++ show(wn + 1)])
     ++ zipM "M-S-" "Move and shift window to workspace" wsKeys [0..]  (withNthWorkspace (liftM2 (.) W.greedyView W.shift))
     ++ zipM "M-C-" "Copy window to workkspace" wsKeys [0..] (withNthWorkspace copy)
     ++ zipM "M1-C-" "Shift window to workkspace" wsKeys [0..] (withNthWorkspace W.shift)
