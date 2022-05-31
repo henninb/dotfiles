@@ -173,7 +173,7 @@ keybinds conf = let
   -- , ("M-p", NamedActions.addName "Passowrd Manager" $ spawn passmenuRunCmd)
   , ("M-p", NamedActions.addName "Password Launcher" $ safeSpawn "passmenu" ["-i", "-nb", "#9370DB", "-nf", "#50fa7b", "-sb", "#EE82EE", "-sf", "black", "-fn", "monofur for Powerline", "-p", "Password:"])
   -- , ("M-<Print>"         , safeSpawn "flameshot gui -p $HOME/screenshots" [])
-  , ("M-<F4>", NamedActions.addName "Screenshot" $ safeSpawn "flameshot" ["gui", "-p", "~/.local/flameshot"])
+  , ("M-<F4>", NamedActions.addName "Screenshot" $ safeSpawn "flameshot" ["gui", "-p", "/home/henninb/.local/flameshot"] >> safeSpawn "notify-send" ["flameshot"])
   , ("M-b", NamedActions.addName "redshift on" $ safeSpawn "redshift" ["-O", "3500"] >> safeSpawn "notify-send" ["redshift on"])
   , ("M-S-b", NamedActions.addName "redshift off" $ safeSpawn "redshift" ["-x"] >> safeSpawn "notify-send" ["redshift off"])
   , ("M-S-w", NamedActions.addName "Weather Minneapolis" $ safeSpawn "weather-minneapolis" [])
