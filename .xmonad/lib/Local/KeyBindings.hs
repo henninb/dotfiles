@@ -45,6 +45,7 @@ import Control.Monad
 import Data.Monoid
 import XMonad.Actions.CycleSelectedLayouts
 import XMonad.Util.XSelection
+-- import XMonad.Util.Run
 
 import Local.Prompts
 import Local.Workspaces
@@ -66,7 +67,7 @@ dmenuRunCmd = "dmenu " ++ unwords (dmenuArgs "Execute:")
 myEmacs = "emacsclient -c -a 'emacs'"
 
 lockScreen :: X ()
-lockScreen = spawn "xscreensaver-command -lock"
+lockScreen = safeSpawn "xscreensaver-command -lock" []
 
 viewShift :: WorkspaceId -> Query (Endo (W.StackSet WorkspaceId l Window ScreenId sd))
 viewShift = doF . liftM2 (.) W.greedyView W.shift
@@ -74,7 +75,7 @@ viewShift = doF . liftM2 (.) W.greedyView W.shift
 emacs :: X ()
 emacs = do
   name <- gets (W.tag . W.workspace . W.current . windowset)
-  spawn ("e -cs " ++ name)
+  safeSpawn ("e -cs " ++ name) []
 
 data MessageMenu = MessageMenu
 
@@ -155,30 +156,31 @@ keybinds conf = let
   , ("M-S-<Escape>", NamedActions.addName "Quit Xmonad" $ spawn "wm-exit xmonad")
   , ("M-S-<Backspace>", NamedActions.addName "Terminate Process" kill1)
   -- , ("M-S-<Backspace>", addName "Kill all" $ confirmPrompt hotPromptTheme "kill all" killAll)
-  , ("M-<Escape>", NamedActions.addName "Restart Xmonad" $ spawn "xmonad --recompile && xmonad --restart")
+  -- , ("M-<Escape>", NamedActions.addName "Restart Xmonad" $ safeSpawn "xmonad --recompile && xmonad --restart" [] >> safeSpawn "notify-send 'recompile and restart xmonad'" [])
+  , ("M-<Escape>", NamedActions.addName "Restart Xmonad" $ spawn "xmonad --recompile && xmonad --restart" >> spawn "notify-send 'recompile and restart xmonad'")
   , ("M-v", NamedActions.addName "Paste" $ sendKey noModMask xF86XK_Paste)
     ] ++
     subKeys "Launchers"
     [
-    ("M-S-<Return>", NamedActions.addName "Alternate Terminal"      $ spawn "st" >> spawn "notify-send 'st terminal'")
-  , ("M-<Return>", NamedActions.addName "Terminal"        $ spawn "terminal" >> spawn "notify-send 'terminal'")
-  , ("M-S-p", NamedActions.addName "Application Launcher"             $ spawn "dmenu_run -i -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'")
-  , ("M-<F2>", NamedActions.addName "File Manager" $ spawn "fm" >> spawn "notify-send 'fm file manager'")
-  , ("M-i", NamedActions.addName "Browser" $ spawn "browser")
-  , ("M-e", NamedActions.addName "Emacs" $ spawn myEmacs)
-  , ("M-S-i", NamedActions.addName "Private Browser" $ spawn ("browser" ++ " --incognito"))
-  , ("M-p", NamedActions.addName "Passowrd Manager" $ spawn passmenuRunCmd)
-  -- , ("M-<Print>"         , spawn "flameshot gui -p $HOME/screenshots")
-  , ("M-<F4>", NamedActions.addName "Screenshot" $ spawn "flameshot gui -p $HOME/screenshots")
-  , ("M-b", NamedActions.addName "Red tint" $ spawn "redshift -O 3500")
-  , ("M-S-b", NamedActions.addName "Red tint undo" $ spawn "redshift -x")
-  , ("M-S-w", NamedActions.addName "Weather Minneapolis" $ spawn "weather-minneapolis")
+    ("M-S-<Return>", NamedActions.addName "Alternate Terminal"      $ safeSpawn "st" [] >> safeSpawn "notify-send 'st terminal'" [])
+  , ("M-<Return>", NamedActions.addName "Terminal"        $ safeSpawn "terminal" [] >> safeSpawn "notify-send 'terminal'" [])
+  , ("M-S-p", NamedActions.addName "Application Launcher"             $ safeSpawn "dmenu_run -i -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'" [])
+  , ("M-<F2>", NamedActions.addName "File Manager" $ safeSpawn "fm" [] >> safeSpawn "notify-send 'fm file manager'" [])
+  , ("M-i", NamedActions.addName "Browser" $ safeSpawn "browser" [])
+  , ("M-e", NamedActions.addName "Emacs" $ safeSpawn myEmacs [])
+  , ("M-S-i", NamedActions.addName "Private Browser" $ safeSpawn ("browser" ++ " --incognito") [])
+  , ("M-p", NamedActions.addName "Passowrd Manager" $ safeSpawn passmenuRunCmd [])
+  -- , ("M-<Print>"         , safeSpawn "flameshot gui -p $HOME/screenshots" [])
+  , ("M-<F4>", NamedActions.addName "Screenshot" $ safeSpawn "flameshot gui -p $HOME/screenshots" [])
+  , ("M-b", NamedActions.addName "Red tint" $ safeSpawn "redshift -O 3500" [])
+  , ("M-S-b", NamedActions.addName "Red tint undo" $ safeSpawn "redshift -x" [])
+  , ("M-S-w", NamedActions.addName "Weather Minneapolis" $ safeSpawn "weather-minneapolis" [])
   -- , ("M-a", NamedActions.addName "Notify w current X selection"    $ unsafeWithSelection "notify-send")
   -- , ("M-<Space>", NamedActions.addName "Switch Layout" $ sendMessage (JumpToLayout "Spiral"))
   , ("M-<Space>", NamedActions.addName "Switch Layout" $ cycleThroughLayouts ["Main", "Grid", "3Column", "3ColumnMid", "Mag", "Common", "Terminal", "Media", "Reading", "Spiral", "Panel"])
   , ("M-S-<Space>", NamedActions.addName "Switch Layout" $ cycleThroughLayouts ["Panel", "Spiral", "Reading", "Media", "Terminal", "Common", "Mag", "3ColumnMid", "3Column", "Grid","Main"])
 
-  , ("M-S-r", NamedActions.addName "Toggle struts" $ sendMessage ToggleStruts >> spawn "notify-send 'ToggleStruts'")
+  , ("M-S-r", NamedActions.addName "Toggle struts" $ sendMessage ToggleStruts >> safeSpawn "notify-send 'ToggleStruts'" [])
   , ("M-\\", NamedActions.addName "Minnimize Window" $ withFocused minimizeWindow)
   , ("M-S-\\", NamedActions.addName "Maximize Window" $ withLastMinimized maximizeWindow)
     ]
@@ -191,11 +193,10 @@ keybinds conf = let
 
     subKeys "Workspaces"
     ([
-          ("M-;", NamedActions.addName "View previous workspace"      viewPrevWS)
-        , ("M-<Tab>", NamedActions.addName "toggle betweeen workspaces"  toggleWS)
+          ("M-;", NamedActions.addName "View previous workspace" viewPrevWS)
+        , ("M-<Tab>", NamedActions.addName "toggle betweeen workspaces" toggleWS)
     ]
-    ++ zipM "M-" "Move to workspace" wsKeys [0..] (withNthWorkspace (\i -> W.greedyView i))
-    -- ++ zipM "M-S-" "Move window to workspace" wsKeys [0..]  (withNthWorkspace (\i -> W.greedyView i . W.shift i))
+    ++ zipM "M-" "Move window to workspace" wsKeys [0..]  (\wn -> withNthWorkspace W.greedyView wn >> spawn "notify-send 'switch workspace'")
     ++ zipM "M-S-" "Move and shift window to workspace" wsKeys [0..]  (withNthWorkspace (liftM2 (.) W.greedyView W.shift))
     ++ zipM "M-C-" "Copy window to workkspace" wsKeys [0..] (withNthWorkspace copy)
     ++ zipM "M1-C-" "Shift window to workkspace" wsKeys [0..] (withNthWorkspace W.shift)
@@ -205,12 +206,12 @@ keybinds conf = let
 
     subKeys "Audio"
     [
-    ("<XF86AudioLowerVolume>", NamedActions.addName "Lower Volume" $ spawn "amixer set Master 5%- unmute")
-  , ("<XF86AudioRaiseVolume>", NamedActions.addName "Raise Volume" $ spawn "amixer set Master 5%+ unmute")
-  , ("<XF86AudioMute>", NamedActions.addName "Toggle Mute" $ spawn "amixer set Master toggle")
-  , ("<XF86AudioPlay>", NamedActions.addName "Toggle Play" $ spawn "mpc toggle")
-  , ("<XF86AudioPrev>", NamedActions.addName "Previous" $ spawn "mpc prev")
-  , ("<XF86AudioNext>", NamedActions.addName "Next" $ spawn "mpc next")
+    ("<XF86AudioLowerVolume>", NamedActions.addName "Lower Volume" $ safeSpawn "amixer set Master 5%- unmute" [])
+  , ("<XF86AudioRaiseVolume>", NamedActions.addName "Raise Volume" $ safeSpawn "amixer set Master 5%+ unmute" [])
+  , ("<XF86AudioMute>", NamedActions.addName "Toggle Mute" $ safeSpawn "amixer set Master toggle" [])
+  , ("<XF86AudioPlay>", NamedActions.addName "Toggle Play" $ safeSpawn "mpc toggle" [])
+  , ("<XF86AudioPrev>", NamedActions.addName "Previous" $ safeSpawn "mpc prev" [])
+  , ("<XF86AudioNext>", NamedActions.addName "Next" $ safeSpawn "mpc next" [])
     ]
 
    ++
@@ -226,11 +227,11 @@ keybinds conf = let
     ,("k", NamedActions.addName "keepass" $ namedScratchpadAction scratchPads "keepass-nsp")
     ,("v", NamedActions.addName "vlc" $ namedScratchpadAction scratchPads "vlc-nsp")
     ,("c", NamedActions.addName "calc" $ namedScratchpadAction scratchPads "calc-nsp")
-    ,("i", NamedActions.addName "intellij" $ spawn "intellij")
-    ,("d", NamedActions.addName "dbeaver" $ spawn "dbeaver-flatpak")
-    ,("g", NamedActions.addName "steam" $ spawn "steam")
-    ,("e", NamedActions.addName "vscodium" $ spawn "vscodium-flatpak")
-    ,("h", NamedActions.addName "handbrake" $ spawn "handbrake")
+    ,("i", NamedActions.addName "intellij" $ safeSpawn "intellij" [])
+    ,("d", NamedActions.addName "dbeaver" $ safeSpawn "dbeaver-flatpak" [])
+    ,("g", NamedActions.addName "steam" $ safeSpawn "steam" [])
+    ,("e", NamedActions.addName "vscodium" $ safeSpawn "vscodium-flatpak" [])
+    ,("h", NamedActions.addName "handbrake" $ safeSpawn "handbrake" [])
     ])
    -- ("M-S-o", NamedActions.addName "" $ submap . M.fromList $
    --          [
@@ -240,13 +241,13 @@ keybinds conf = let
    --          , ((0, xK_k),    namedScratchpadAction scratchPads "keepass-nsp")
    --          , ((0, xK_v),    namedScratchpadAction scratchPads "vlc-nsp")
    --          , ((0, xK_c),    namedScratchpadAction scratchPads "calc-nsp")
-   --          , ((0, xK_i),    spawn "intellij")
-   --          , ((0, xK_d),    spawn "dbeaver-flatpak")
-   --          , ((0, xK_g),    spawn "steam")
-   --          , ((0, xK_e),    spawn "vscodium-flatpak")
-   --          , ((0, xK_h),    spawn "handbrake")
+   --          , ((0, xK_i),    safeSpawn "intellij")
+   --          , ((0, xK_d),    safeSpawn "dbeaver-flatpak")
+   --          , ((0, xK_g),    safeSpawn "steam")
+   --          , ((0, xK_e),    safeSpawn "vscodium-flatpak")
+   --          , ((0, xK_h),    safeSpawn "handbrake")
    --          ])
-   -- ("M-S-o i", NamedActions.addName "Intellij" $ spawn "intellij")
+   -- ("M-S-o i", NamedActions.addName "Intellij" $ safeSpawn "intellij")
    ]
    ++
    subKeys "Windows"
