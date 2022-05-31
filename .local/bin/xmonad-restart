@@ -1,0 +1,7 @@
+#!/bin/sh
+
+xmonad --recompile && xmonad --restart
+
+exit 0
+
+# vim: set ft=sh:

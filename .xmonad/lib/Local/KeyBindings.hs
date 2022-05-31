@@ -157,7 +157,7 @@ keybinds conf = let
   , ("M-S-<Backspace>", NamedActions.addName "Terminate Process" kill1)
   -- , ("M-S-<Backspace>", addName "Kill all" $ confirmPrompt hotPromptTheme "kill all" killAll)
   -- , ("M-<Escape>", NamedActions.addName "Restart Xmonad" $ safeSpawn "xmonad --recompile && xmonad --restart" [] >> safeSpawn "notify-send 'recompile and restart xmonad'" [])
-  , ("M-<Escape>", NamedActions.addName "Restart Xmonad" $ spawn "xmonad --recompile && xmonad --restart" >> safeSpawn "notify-send" ["recompile and restart xmonad"])
+  , ("M-<Escape>", NamedActions.addName "Restart Xmonad" $ safeSpawn "xmonad-restart" [] >> safeSpawn "notify-send" ["recompile and restart xmonad"])
   , ("M-v", NamedActions.addName "Paste" $ sendKey noModMask xF86XK_Paste)
     ] ++
 
