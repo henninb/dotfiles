@@ -153,50 +153,48 @@ keybinds conf = let
     subKeys "System"
     [
     ("M-M1-l", NamedActions.addName "Lock screen" lockScreen)
-  , ("M-S-<Escape>", NamedActions.addName "Quit Xmonad" $ spawn "wm-exit xmonad")
+  , ("M-S-<Escape>", NamedActions.addName "Quit Xmonad" $ safeSpawn "wm-exit" ["xmonad"])
   , ("M-S-<Backspace>", NamedActions.addName "Terminate Process" kill1)
   -- , ("M-S-<Backspace>", addName "Kill all" $ confirmPrompt hotPromptTheme "kill all" killAll)
   -- , ("M-<Escape>", NamedActions.addName "Restart Xmonad" $ safeSpawn "xmonad --recompile && xmonad --restart" [] >> safeSpawn "notify-send 'recompile and restart xmonad'" [])
-  , ("M-<Escape>", NamedActions.addName "Restart Xmonad" $ spawn "xmonad --recompile && xmonad --restart" >> spawn "notify-send 'recompile and restart xmonad'")
+  , ("M-<Escape>", NamedActions.addName "Restart Xmonad" $ spawn "xmonad --recompile && xmonad --restart" >> safeSpawn "notify-send" ["recompile and restart xmonad"])
   , ("M-v", NamedActions.addName "Paste" $ sendKey noModMask xF86XK_Paste)
     ] ++
+
     subKeys "Launchers"
     [
-    ("M-S-<Return>", NamedActions.addName "Alternate Terminal"      $ safeSpawn "st" [] >> safeSpawn "notify-send 'st terminal'" [])
-  , ("M-<Return>", NamedActions.addName "Terminal"        $ safeSpawn "terminal" [] >> safeSpawn "notify-send 'terminal'" [])
-  , ("M-S-p", NamedActions.addName "Application Launcher"             $ safeSpawn "dmenu_run -i -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf black -fn 'monofur for Powerline'" [])
+    ("M-S-<Return>", NamedActions.addName "Alternate Terminal"      $ safeSpawn "st" [] >> safeSpawn "notify-send" ["st terminal"])
+  , ("M-<Return>", NamedActions.addName "Terminal"        $ safeSpawn "terminal" [] >> safeSpawn "notify-send" ["terminal"])
+  , ("M-S-p", NamedActions.addName "Application Launcher" $ safeSpawn "dmenu_run" ["-i", "-nb", "#9370DB", "-nf", "#50fa7b", "-sb", "#EE82EE", "-sf", "black", "-fn", "monofur for Powerline", "-p", "Command:"])
   , ("M-<F2>", NamedActions.addName "File Manager" $ safeSpawn "fm" [] >> safeSpawn "notify-send 'fm file manager'" [])
   , ("M-i", NamedActions.addName "Browser" $ safeSpawn "browser" [])
   , ("M-e", NamedActions.addName "Emacs" $ safeSpawn myEmacs [])
-  , ("M-S-i", NamedActions.addName "Private Browser" $ safeSpawn ("browser" ++ " --incognito") [])
-  , ("M-p", NamedActions.addName "Passowrd Manager" $ safeSpawn passmenuRunCmd [])
+  , ("M-S-i", NamedActions.addName "Private Browser" $ safeSpawn "browser" ["--incognito"])
+  -- , ("M-p", NamedActions.addName "Passowrd Manager" $ spawn passmenuRunCmd)
+  , ("M-p", NamedActions.addName "Password Launcher" $ safeSpawn "passmenu" ["-i", "-nb", "#9370DB", "-nf", "#50fa7b", "-sb", "#EE82EE", "-sf", "black", "-fn", "monofur for Powerline", "-p", "Password:"])
   -- , ("M-<Print>"         , safeSpawn "flameshot gui -p $HOME/screenshots" [])
-  , ("M-<F4>", NamedActions.addName "Screenshot" $ safeSpawn "flameshot gui -p $HOME/screenshots" [])
-  , ("M-b", NamedActions.addName "Red tint" $ safeSpawn "redshift -O 3500" [])
-  , ("M-S-b", NamedActions.addName "Red tint undo" $ safeSpawn "redshift -x" [])
+  , ("M-<F4>", NamedActions.addName "Screenshot" $ safeSpawn "flameshot" ["gui", "-p", "~/.local/flameshot"])
+  , ("M-b", NamedActions.addName "redshift on" $ safeSpawn "redshift" ["-O", "3500"] >> safeSpawn "notify-send" ["redshift on"])
+  , ("M-S-b", NamedActions.addName "redshift off" $ safeSpawn "redshift" ["-x"] >> safeSpawn "notify-send" ["redshift off"])
   , ("M-S-w", NamedActions.addName "Weather Minneapolis" $ safeSpawn "weather-minneapolis" [])
   -- , ("M-a", NamedActions.addName "Notify w current X selection"    $ unsafeWithSelection "notify-send")
   -- , ("M-<Space>", NamedActions.addName "Switch Layout" $ sendMessage (JumpToLayout "Spiral"))
   , ("M-<Space>", NamedActions.addName "Switch Layout" $ cycleThroughLayouts ["Main", "Grid", "3Column", "3ColumnMid", "Mag", "Common", "Terminal", "Media", "Reading", "Spiral", "Panel"])
   , ("M-S-<Space>", NamedActions.addName "Switch Layout" $ cycleThroughLayouts ["Panel", "Spiral", "Reading", "Media", "Terminal", "Common", "Mag", "3ColumnMid", "3Column", "Grid","Main"])
 
-  , ("M-S-r", NamedActions.addName "Toggle struts" $ sendMessage ToggleStruts >> safeSpawn "notify-send 'ToggleStruts'" [])
+  , ("M-S-r", NamedActions.addName "Toggle struts" $ sendMessage ToggleStruts >> safeSpawn "notify-send" ["toggle struts"])
   , ("M-\\", NamedActions.addName "Minnimize Window" $ withFocused minimizeWindow)
   , ("M-S-\\", NamedActions.addName "Maximize Window" $ withLastMinimized maximizeWindow)
     ]
 
     ++
 
-
--- safeSpawn fix
--- https://hackage.haskell.org/package/xmonad-contrib-0.17.0/docs/XMonad-Util-Run.html#v:safeSpawn
-
     subKeys "Workspaces"
     ([
           ("M-;", NamedActions.addName "View previous workspace" viewPrevWS)
         , ("M-<Tab>", NamedActions.addName "toggle betweeen workspaces" toggleWS)
     ]
-    ++ zipM "M-" "Move window to workspace" wsKeys [0..]  (\wn -> withNthWorkspace W.greedyView wn >> spawn "notify-send 'switch workspace'")
+    ++ zipM "M-" "Move window to workspace" wsKeys [0..]  (\wn -> withNthWorkspace W.greedyView wn >> safeSpawn "notify-send" ["switch workspace"])
     ++ zipM "M-S-" "Move and shift window to workspace" wsKeys [0..]  (withNthWorkspace (liftM2 (.) W.greedyView W.shift))
     ++ zipM "M-C-" "Copy window to workkspace" wsKeys [0..] (withNthWorkspace copy)
     ++ zipM "M1-C-" "Shift window to workkspace" wsKeys [0..] (withNthWorkspace W.shift)
@@ -206,12 +204,12 @@ keybinds conf = let
 
     subKeys "Audio"
     [
-    ("<XF86AudioLowerVolume>", NamedActions.addName "Lower Volume" $ safeSpawn "amixer set Master 5%- unmute" [])
-  , ("<XF86AudioRaiseVolume>", NamedActions.addName "Raise Volume" $ safeSpawn "amixer set Master 5%+ unmute" [])
-  , ("<XF86AudioMute>", NamedActions.addName "Toggle Mute" $ safeSpawn "amixer set Master toggle" [])
-  , ("<XF86AudioPlay>", NamedActions.addName "Toggle Play" $ safeSpawn "mpc toggle" [])
-  , ("<XF86AudioPrev>", NamedActions.addName "Previous" $ safeSpawn "mpc prev" [])
-  , ("<XF86AudioNext>", NamedActions.addName "Next" $ safeSpawn "mpc next" [])
+    ("<XF86AudioLowerVolume>", NamedActions.addName "Lower Volume" $ safeSpawn "amixer" ["set", "Master", "5%-", "unmute"])
+  , ("<XF86AudioRaiseVolume>", NamedActions.addName "Raise Volume" $ safeSpawn "amixer" ["set", "Master", "5%+", "unmute"])
+  , ("<XF86AudioMute>", NamedActions.addName "Toggle Mute" $ safeSpawn "amixer" ["set", "Master", "toggle"])
+  , ("<XF86AudioPlay>", NamedActions.addName "Toggle Play" $ safeSpawn "mpc" ["toggle"])
+  , ("<XF86AudioPrev>", NamedActions.addName "Previous" $ safeSpawn "mpc" ["prev"])
+  , ("<XF86AudioNext>", NamedActions.addName "Next" $ safeSpawn "mpc" ["next"])
     ]
 
    ++
