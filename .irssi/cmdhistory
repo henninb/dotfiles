@@ -1,25 +1,3 @@
-: 1592567157:: :;i have a bluetooth k480 keyboard that I cannot get working. do i need to do something special for HID devices?
-: 1592567203:: :;doesn't seem to pair.
-: 1592567211:: :;my mouse pairs, no problem
-: 1592567245:: :;i think so, I was able to pair just fine on a debian based distro.
-: 1592567348:: :;i am running btmon and here is what it says Status: Authentication Failure (0x05)
-: 1592567388:: :;i am using the applet for pairing and it says "failed to add device" when I run setup.
-: 1592567422:: :;i am not sure about the pin code.
-: 1592567467:: :;ok, I don't get prompted at all for any pin codes.
-: 1592567491:: :;let me try again with bluetoothctl
-: 1592567621:: :;thanks for the tips NetSysFire
-: 1592567635:: :;thanks for the tips NetSysFire and MrElendig.
-: 1592567654:: :;no not yet
-: 1592567667:: :;trying now
-: 1592567687:: :;i got it.
-: 1592567693:: :;thanks
-: 1592567715:: :;it finally prompted me to confirm my passcode.
-: 1592567743:: :;i used 
-: 1592567761:: :;i used bluetoothctl instead of the applet.
-: 1592567857:: :;is that in the standard arch repositories?
-: 1592567918:: :;thanks again, I was definately spinning on this issue for a while.
-: 1592573750:: :;/quit
-: 1592652288:: :;i am able to pair my bluetooth keyboard no problem, how do I auto connect on reboot?
 : 1592653044:: :;mkoskar
 : 1592653063:: :;mkoskar - i believe so, how can I verify?
 : 1592653112:: :;i simply manually connect on reboot.
@@ -98,3 +76,25 @@
 : 1628508475:: :;hi I am trying to get submapped key bindings working with NamedActions, however I cannot seem to figure out how? I have a gist https://gist.github.com/BitExplorer/d32dfde84832c53102cf9de85197156f showing my work. Can someone point me to an example or a resource to point me in the right direction? Thank you.
 : 1628509884:: :;fizzie, thank you. I will play around with that and see what I can come up with.
 : 1628514330:: :;/quit
+: 1653945124:: :;greetings, I am looking at the function withNthWorkspace and am currently passing greedyView. If I want to make an additional call to spawn within the call how would I do that? 
+: 1653945497:: :;I want to do it within the anonymous function `+ zipM "M-" "Move to workspace" wsKeys [0..] (withNthWorkspace (\\i -> W.greedyView i))`
+: 1653945623:: :;thank you littlebobeep.
+: 1653945960:: :;Greetings, I want place a `spawn` call within the lambda function `+ zipM "M-" "Move to workspace" wsKeys [0..] (withNthWorkspace (\\i -> W.greedyView i))`  any thoughts on how I can do that?
+: 1653946902:: :;vrs, let me give that a try. thank you for the tip.
+: 1653947073:: :;vrs, that is really good advice. clearly I have a lot to learn :)
+: 1653947153:: :;I will add this to my notes to go back and fix this.
+: 1653947159:: :;thank you for that.
+: 1653947213:: :;vrs, if I have another zipM line after this one I assume I need to add parenthesis or something to prevent a compiler error?
+: 1653947481:: :;https://github.com/henninb/dotfiles/blob/main/.xmonad/lib/Local/KeyBindings.hs#L197
+: 1653947490:: :;no problem, thanks for your help vrs.
+: 1653948065:: :;ok, that help. I will try to expand the zipM.
+: 1653950995:: :;i will give that a try geekosaur, thank you for the tip
+: 1653951185:: :;geekosaur, doesn't seem to work. I wonder If I have a data type issue. not sure if what I am attempting is possible.
+: 1653953080:: :;geekosaur, agreed, I will keep working at it. Thanks for looking at it.
+: 1653953439:: :;trying that now.
+: 1653954096:: :;geekosaur, I just tried this and it is not working. `++ zipM "M-" "Move window to workspace" wsKeys [0..]  (\\wn -> withNthWorkspace W.greedyView $ wn >> spawn "foo")` It was compiling until I added `spawn "foo"`. 
+: 1653954164:: :;I will remove it.
+: 1653954199:: :;it compiles!!! yeah
+: 1653954259:: :;thank you geekosaur
+: 1653955200:: :;I really appreciate the folks on this channel there are not a lot of xmonad users out there so we need to stick together.
+: 1653955736:: :;/quit
