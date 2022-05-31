@@ -1,6 +1,7 @@
 #!/bin/sh
 
 scp -r .ssh/ henninb@192.168.10.10:/home/henninb/
+scp -r .irssi/ henninb@192.168.10.10:/home/henninb/
 scp -r .zsh* henninb@192.168.10.10:/home/henninb/
 scp -r .alias* henninb@192.168.10.10:/home/henninb/
 scp -r .profile henninb@192.168.10.10:/home/henninb/
