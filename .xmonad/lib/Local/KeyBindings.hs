@@ -160,7 +160,7 @@ keybinds conf = let
   , ("M-<Escape>", NamedActions.addName "Restart Xmonad" $ safeSpawn "xmonad-restart" [] >> safeSpawn "notify-send" ["recompile and restart xmonad"])
   , ("M-v", NamedActions.addName "Paste" $ sendKey noModMask xF86XK_Paste)
   , ("M-<Space>", NamedActions.addName "Switch Layout" $ sendMessage NextLayout)
-  , ("M-S-<Space>", NamedActions.addName "Switch Layout Reverse" $ cycleThroughLayouts ["Panel", "Spiral", "Reading", "Media", "Terminal", "Common", "Mag", "3ColumnMid", "3Column", "Grid","Main"])
+  , ("M-S-<Space>", NamedActions.addName "Switch Layout Reverse" $ cycleThroughLayouts ["Full", "Panel", "Spiral", "Reading", "Media", "Terminal", "Common", "Mag", "3ColumnMid", "3Column", "Grid","Main"])
   , ("M-S-r", NamedActions.addName "Toggle struts" $ sendMessage ToggleStruts >> safeSpawn "notify-send" ["toggle struts"])
   , ("M-\\", NamedActions.addName "Minnimize Window" $ withFocused minimizeWindow)
   , ("M-S-\\", NamedActions.addName "Maximize Window" $ withLastMinimized maximizeWindow)

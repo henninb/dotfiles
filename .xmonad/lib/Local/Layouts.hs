@@ -60,11 +60,12 @@ workspaceLayouts =
 -- myMiscLayoutGroup = mediaLayout ||| terminalLayout ||| terminalLayout ||| commonLayout ||| readingLayout ||| panelLayout
 -- myAllLayoutGroup = mainLayout ||| gridLayout ||| threeColumnLayout ||| threeColumnMidLayout |||  commonLayout ||| terminalLayout ||| mediaLayout ||| readingLayout ||| phiLayout ||| spiralLayout ||| panelLayout
 -- mySpiralLayoutGroup = spiralLayout ||| mainLayout ||| fullLayout
-myAllLayoutGroup = mainLayout ||| gridLayout ||| threeColumnLayout ||| threeColumnMidLayout ||| magLayout ||| commonLayout ||| terminalLayout ||| mediaLayout ||| readingLayout ||| spiralLayout ||| panelLayout
+myAllLayoutGroup = mainLayout ||| gridLayout ||| threeColumnLayout ||| threeColumnMidLayout ||| magLayout ||| commonLayout ||| terminalLayout ||| mediaLayout ||| readingLayout ||| spiralLayout ||| panelLayout ||| fullLayout
 myFullLayoutGroup = fullLayout
 
 fullLayout = renamed [Replace "Full"]
       -- $ mySpacing
+      $ avoidStruts
       $ limitWindows 10
       $ noBorders Full
 mainLayout = renamed [Replace "Main"]
