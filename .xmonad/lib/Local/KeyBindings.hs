@@ -67,7 +67,7 @@ dmenuRunCmd = "dmenu " ++ unwords (dmenuArgs "Execute:")
 myEmacs = "emacsclient -c -a 'emacs'"
 
 lockScreen :: X ()
-lockScreen = safeSpawn "xscreensaver-command -lock" []
+lockScreen = safeSpawn "xscreensaver-command" ["-lock"]
 
 viewShift :: WorkspaceId -> Query (Endo (W.StackSet WorkspaceId l Window ScreenId sd))
 viewShift = doF . liftM2 (.) W.greedyView W.shift
@@ -159,6 +159,11 @@ keybinds conf = let
   -- , ("M-<Escape>", NamedActions.addName "Restart Xmonad" $ safeSpawn "xmonad --recompile && xmonad --restart" [] >> safeSpawn "notify-send 'recompile and restart xmonad'" [])
   , ("M-<Escape>", NamedActions.addName "Restart Xmonad" $ safeSpawn "xmonad-restart" [] >> safeSpawn "notify-send" ["recompile and restart xmonad"])
   , ("M-v", NamedActions.addName "Paste" $ sendKey noModMask xF86XK_Paste)
+  , ("M-<Space>", NamedActions.addName "Switch Layout" $ sendMessage NextLayout)
+  , ("M-S-<Space>", NamedActions.addName "Switch Layout Reverse" $ cycleThroughLayouts ["Panel", "Spiral", "Reading", "Media", "Terminal", "Common", "Mag", "3ColumnMid", "3Column", "Grid","Main"])
+  , ("M-S-r", NamedActions.addName "Toggle struts" $ sendMessage ToggleStruts >> safeSpawn "notify-send" ["toggle struts"])
+  , ("M-\\", NamedActions.addName "Minnimize Window" $ withFocused minimizeWindow)
+  , ("M-S-\\", NamedActions.addName "Maximize Window" $ withLastMinimized maximizeWindow)
     ] ++
 
     subKeys "Launchers"
@@ -180,12 +185,6 @@ keybinds conf = let
   -- , ("M-a", NamedActions.addName "Notify w current X selection"    $ unsafeWithSelection "notify-send")
   -- , ("M-<Space>", NamedActions.addName "Switch Layout" $ sendMessage (JumpToLayout "Spiral"))
   -- , ("M-<Space>", NamedActions.addName "Switch Layout" $ cycleThroughLayouts ["Main", "Grid", "3Column", "3ColumnMid", "Mag", "Common", "Terminal", "Media", "Reading", "Spiral", "Panel"])
-  , ("M-<Space>", NamedActions.addName "Switch Layout" $ sendMessage NextLayout)
-  , ("M-S-<Space>", NamedActions.addName "Switch Layout Reverse" $ cycleThroughLayouts ["Panel", "Spiral", "Reading", "Media", "Terminal", "Common", "Mag", "3ColumnMid", "3Column", "Grid","Main"])
-
-  , ("M-S-r", NamedActions.addName "Toggle struts" $ sendMessage ToggleStruts >> safeSpawn "notify-send" ["toggle struts"])
-  , ("M-\\", NamedActions.addName "Minnimize Window" $ withFocused minimizeWindow)
-  , ("M-S-\\", NamedActions.addName "Maximize Window" $ withLastMinimized maximizeWindow)
     ]
 
     ++
