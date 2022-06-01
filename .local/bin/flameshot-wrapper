@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ ! -x "$(command -v flameshot)" ]; then
+  exit 1
+fi
+flameshot gui -p "$HOME/.local/flameshot"
+
+exit 0
+
+# vim: set ft=sh:
