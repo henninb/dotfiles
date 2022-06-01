@@ -26,8 +26,6 @@ import XMonad.Layout.IM
 import XMonad.Layout.Circle (Circle (..))
 import XMonad.Layout.Reflect (reflectHoriz)
 import System.Info (os)
--- import XMonad.Layout.LayoutCombinators hiding ( (|||) )
--- import XMonad.Layout.LayoutCombinators
 import XMonad.Layout.LayoutCombinators ( (|||) )
 
 import Local.Workspaces (myWorkspaces)
@@ -66,7 +64,7 @@ myAllLayoutGroup = mainLayout ||| gridLayout ||| threeColumnLayout ||| threeColu
 myFullLayoutGroup = fullLayout
 
 fullLayout = renamed [Replace "Full"]
-      $ mySpacing
+      -- $ mySpacing
       $ limitWindows 10
       $ noBorders Full
 mainLayout = renamed [Replace "Main"]
