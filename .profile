@@ -39,6 +39,11 @@ export OPENER=xdg-open
 export READER=zathura
 export TERMINAL=alacritty
 
+
+# XMONAD_CONFIG_DIR
+# XMONAD_DATA_DIR
+# XMONAD_CACHE_DIR
+
 if [ -x "$(command -v bat)" ]; then
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
