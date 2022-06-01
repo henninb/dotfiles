@@ -50,7 +50,7 @@ workspaceLayouts =
     onWorkspace "7" myAllLayoutGroup $
     onWorkspace "8" myAllLayoutGroup $
     onWorkspace "9" myAllLayoutGroup $
-    onWorkspace "0" myAllLayoutGroup myFullLayoutGroup
+    onWorkspace "0" myMainLayoutGroup myFullLayoutGroup
     -- onWorkspace "0" myMiscLayoutGroup
     -- onWorkspace "0" myAllLayoutGroup
 
@@ -62,63 +62,73 @@ workspaceLayouts =
 -- mySpiralLayoutGroup = spiralLayout ||| mainLayout ||| fullLayout
 myAllLayoutGroup = mainLayout ||| gridLayout ||| threeColumnLayout ||| threeColumnMidLayout ||| magLayout ||| commonLayout ||| terminalLayout ||| mediaLayout ||| readingLayout ||| spiralLayout ||| panelLayout ||| fullLayout
 myFullLayoutGroup = fullLayout
+myMainLayoutGroup = mainLayout ||| gridLayout ||| threeColumnLayout ||| spiralLayout ||| fullLayout
 
 fullLayout = renamed [Replace "Full"]
-      -- $ mySpacing
       $ avoidStruts
-      $ limitWindows 10
-      $ noBorders Full
+      $ limitWindows 100
+      $ noBorders
+      $ Full
 mainLayout = renamed [Replace "Main"]
       $ avoidStruts
       $ smartBorders
-      $ mySpacing
+      $ limitWindows 100
+      -- $ mySpacing
       $ Tall 1 (3/100) (1/2)
 gridLayout = renamed [Replace "Grid"]
-      $ avoidStruts Grid
-threeColumnLayout = renamed [Replace "3Column"]
-      -- $ mySpacing
       $ avoidStruts
+      $ smartBorders
+      $ limitWindows 100
+      $ Grid
+threeColumnLayout = renamed [Replace "3Column"]
+      $ avoidStruts
+      $ smartBorders
+      $ limitWindows 100
       $ ThreeColMid 1 (3/100) (1/2)
 threeColumnMidLayout = renamed [Replace "3ColumnMid"]
       $ avoidStruts
-      -- $ mySpacing
+      $ smartBorders
+      $ limitWindows 100
       $ ThreeColMid 1 (1/10) (1/2)
 magLayout = renamed [Replace "Mag"]
       $ avoidStruts
-      -- $ mySpacing
       $ noBorders
       $ limitWindows 3
       $ magnifiercz' 1.4
       $ FixedColumn 1 20 80 10
 commonLayout = renamed [Replace "Common"]
-      -- $ mySpacing
       $ avoidStruts
+      $ limitWindows 100
       $ Tall 1 (5/100) (1/3)
 terminalLayout = renamed [Replace "Terminal"]
       -- $ mySpacing
       $ avoidStruts
+      $ limitWindows 100
       $ simpleTall 50 ||| simpleThree 33 ||| Mirror (simpleTall 53)
 -- codingLayout = renamed [Replace "Coding"]
 --       $ twoPaneTabbed ||| twoPaneTall ||| simpleTall 50
 mediaLayout = renamed [Replace "Media"]
       -- $ mySpacing
       $ avoidStruts
+      $ limitWindows 100
       $ simpleTwo 40 ||| Grid ||| simpleThree 33
 readingLayout = renamed [Replace "Reading"]
       -- $ mySpacing
       $ avoidStruts
+      $ limitWindows 100
       $ simpleTwo 50 ||| simpleThree 50
 -- phiLayout = renamed [Replace "Phi"]
 --       $ mySpacing (2 / (1 + toRational (sqrt 5 :: Double)))
       -- $ mySpacing
       -- $ (2/(1+(toRational(sqrt(5)::Double)))) -- Golden Ratio
 spiralLayout  = renamed [Replace "Spiral"]
-      -- $ mySpacing
       $ avoidStruts
+      $ limitWindows 100
       $ Sp.spiralWithDir Sp.East Sp.CW (6/7)
 panelLayout = renamed [Replace "Panel"]
       -- $ mySpacing
       $ avoidStruts
+      $ limitWindows 100
       $ Grid ||| Mirror (simpleTall 50) ||| simpleThree 33
 -- myGimpLayout = renamed [Replace "Gimp"]
 --       $ withIM 0.11 (Role "gimp-toolbox")
@@ -132,10 +142,10 @@ panelLayout = renamed [Replace "Panel"]
 -- circleLayout = renamed [Replace "cir" ]
 --       $ Mirror Tall 1 (3/100) (1/2) ||| tiled ||| Circle
    where
-      tiled = Tall nmaster delta ratio
-      nmaster = 1
-      delta = 3/100
-      ratio = 1/2
+      tiled = Tall
+   --    nmaster = 1
+   --    delta = 3/100
+   --    ratio = 1/2
 
 -- twoPaneTabbed =
 --   configurableNavigation noNavigateBorders $
