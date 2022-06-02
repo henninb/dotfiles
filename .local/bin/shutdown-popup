@@ -5,20 +5,11 @@ if [ $(ps aux | grep shutdown-popup-name-for-killing | grep -v grep | wc -l) -gt
 	exit 1
 fi
 
-
 screen_width=$(xrandr| grep -oP ' connected \K([0-9]+)(?=x[0-9]+\+0\+0)')
 panel_height=18
 font='monofur for Powerline:size=12'
-color_se='#4A90D8'
-color_sf='#f9f9f9'
 
-# Light theme
-#color_fg='#555555'
-#color_bg='#EDEDED'
-
-# Dark theme
 color_fg='#eeeeee'
-#color_bg='#263238'
 color_bg='#2b2b2b'
 
 x=$((screen_width - 126))
