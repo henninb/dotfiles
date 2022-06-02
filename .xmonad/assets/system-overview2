@@ -1,41 +1,5 @@
 --[[
 #=====================================================================================
-#                               arcolinux
-# Date    : package-date
-# Source  : Addy http://addy-dclxvi.deviantart.com/ https://github.com/addy-dclxvi
-# Editor  : Erik Dubois
-# Version : package-version
-# License : Distributed under the terms of GNU GPL version 2 or later
-# Documentation : http://erikdubois.be/
-#======================================================================================
-# CONKY
-# For commands in conky.config section:
-# http://conky.sourceforge.net/config_settings.html
-#
-# For commands in conky.text section:
-# http://conky.sourceforge.net/variables.html
-#
-# A PDF with all variables is provided
-#=====================================================================================
-# FONTS
-# To avoid copyright infringements you will have to download
-# and install the fonts yourself sometimes.
-#=====================================================================================
-# GENERAL INFO ABOUT FONTS
-# Go and look for a nice font on sites like http://www.dafont.com/
-# Download and unzip - double click the font to install it (font-manager must be installed)
-# No font-manager then put fonts in ~/.fonts
-# Change the font name in the conky
-# The name can be known with a command in the terminal: fc-list | grep "part of name"
-# Change width and height of the conky according to font
-# Reboot your system or fc-cache -fv in terminal
-# Enjoy
-#=====================================================================================
-# FONTS FOR THIS CONKY
-# We are free to use the font.
-# Install Paskowy.ttf.
-# It is located in the ~/.config/conky/fonts folder
-# Reboot to load the new font and/or restart the conky.
 #=====================================================================================
 
 ]]

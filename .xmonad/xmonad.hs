@@ -60,7 +60,7 @@ topMiddleBar = "~/.xmonad/assets/bin/main.sh | dzen2 -dock -x '600' -y '0' -h '1
 topRightBar = "~/.xmonad/assets/bin/date.sh | dzen2 -dock -x '2300' -y '0' -h '14' -w '500' -ta 'l' -fg '" ++ myColor "foreground" ++ "' -bg '" ++ myColor "background" ++ "' -fn " ++ myFont
 
 myDzen = " dzen2 -xs 1 -dock -h 14 -ta 'l' -fn '" ++ myFont ++ "' -fg '" ++ myColor "foreground" ++ "' -bg '" ++ myColor "background" ++ "' "
-myTopRight = "conky -c ~/.xmonad/assets/bar | " ++ myDzen ++ " -x '800' -y '0' -ta 'r' -p"
+myTopRight = "conky -c ~/.config/conky/xmonad-bar-top-right | " ++ myDzen ++ " -x '800' -y '0' -ta 'r' -p"
 
 main :: IO ()
 main = do
