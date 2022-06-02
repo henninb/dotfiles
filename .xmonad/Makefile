@@ -5,7 +5,7 @@ all:
 default:
 	@echo build default
 	@rm -rf *.hi *.o xmonad
-	# @ln -sfn xmonad-default.hs xmonad.hs
+#	@ln -sfn xmonad-default.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs -ilib -fforce-recomp
 	@find . -name "*.hi" | xargs rm
 	@find . -name "*.o" | xargs rm
@@ -20,7 +20,7 @@ rice:
 	@stack path --local-bin
 	@echo stack init .
 	@rm -rf *.hi *.o lib-rice/*.o lib-rice/*.hi xmonad
-	# @ln -sfn xmonad-rice.hs xmonad.hs
+#	@ln -sfn xmonad-rice.hs xmonad.hs
 	@stack ghc -- --make xmonad.hs -i -ilib-rice -fforce-recomp
 	@find . -name "*.hi" | xargs rm
 	@find . -name "*.o" | xargs rm
