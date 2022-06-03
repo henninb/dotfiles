@@ -10,7 +10,10 @@ if [ $# -ne 1 ]; then
 fi
 
 if [ -n "$(command -v logout-gtk)" ]; then
-  logout-gtk &
+  pgrep logout-gtk
+  if ! pgrep "logout-gtk" ; then
+    logout-gtk &
+  fi
 else
   while [ "${select}" != "Cancel" ] && [ "${select}" != "Logout" ] && [ "${select}" != "Shutdown" ] && [ "${select}" != "Reboot" ] && [ "${select}" != "Lock" ]; do
       select=$(printf "Cancel\nLogout\nShutdown\nReboot\nLock" | dmenu -nb '#9370DB' -nf '#50fa7b' -sb '#EE82EE' -sf '#000000' -fn 'monofur for Powerline' -i -p "Action?")
