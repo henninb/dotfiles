@@ -1,4 +1,0 @@
-#define wifi_icon_width 8
-#define wifi_icon_height 8
-static unsigned char wifi_icon_bits[] = {
-   0xff, 0x80, 0xbe, 0xa0, 0xac, 0xa8, 0xa3, 0x83 };
