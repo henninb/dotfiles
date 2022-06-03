@@ -6,6 +6,7 @@ cat > keepass-flatpak <<EOF
 flatpak run org.keepassxc.KeePassXC
 
 exit 0
+# vim: set ft=sh:
 EOF
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -17,3 +18,5 @@ chmod 755 keepass-flatpak
 mv keepass-flatpak "$HOME/.local/bin/"
 
 exit 0
+
+# vim: set ft=sh:

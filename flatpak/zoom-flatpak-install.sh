@@ -6,6 +6,7 @@ cat > zoom-flatpak <<EOF
 flatpak run --filesystem=home us.zoom.Zoom
 
 exit 0
+# vim: set ft=sh:
 EOF
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -22,3 +23,4 @@ mv zoom-flatpak "$HOME/.local/bin/"
 # sudo flatpak run --filesystem=home us.zoom.Zoom
 
 exit 0
+# vim: set ft=sh:

@@ -6,6 +6,7 @@ cat > celluloid-flatpak <<EOF
 flatpak run io.github.celluloid_player.Celluloid
 
 exit 0
+# vim: set ft=sh:
 EOF
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -16,3 +17,5 @@ chmod 755 celluloid-flatpak
 mv -v celluloid-flatpak "$HOME/.local/bin/celluloid-flatpak"
 
 exit 0
+
+# vim: set ft=sh:

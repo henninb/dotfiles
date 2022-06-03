@@ -6,6 +6,8 @@ cat > opendrive-flatpak <<EOF
 flatpak run io.github.liberodark.OpenDrive
 
 exit 0
+
+# vim: set ft=sh:
 EOF
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -17,3 +19,5 @@ chmod 755 opendrive-flatpak
 mv opendrive-flatpak "$HOME/.local/bin/"
 
 exit 0
+
+# vim: set ft=sh:

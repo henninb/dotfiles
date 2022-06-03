@@ -6,6 +6,7 @@ cat > arduino-flatpak <<EOF
 flatpak run cc.arduino.arduinoide
 
 exit 0
+# vim: set ft=sh:
 EOF
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -19,3 +20,5 @@ chmod 755 arduino-flatpak
 mv arduino-flatpak "$HOME/.local/bin/"
 
 exit 0
+
+# vim: set ft=sh:

@@ -6,6 +6,7 @@ cat > stellarium-flatpak <<EOF
 flatpak run org.stellarium.Stellarium
 
 exit 0
+# vim: set ft=sh:
 EOF
 
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -17,3 +18,4 @@ chmod 755 stellarium-flatpak
 mv stellarium-flatpak "$HOME/.local/bin/"
 
 exit 0
+# vim: set ft=sh:

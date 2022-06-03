@@ -6,6 +6,7 @@ cat > dbeaver-flatpak <<EOF
 flatpak run io.dbeaver.DBeaverCommunity
 
 exit 0
+# vim: set ft=sh:
 EOF
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -17,3 +18,5 @@ chmod 755 dbeaver-flatpak
 mv -v dbeaver-flatpak "$HOME/.local/bin/"
 
 exit 0
+
+# vim: set ft=sh:

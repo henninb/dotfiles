@@ -6,6 +6,7 @@ cat > vscode-flatpak <<EOF
 flatpak run com.visualstudio.code
 
 exit 0
+# vim: set ft=sh:
 EOF
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -18,3 +19,4 @@ chmod 755 vscode-flatpak
 mv -v vscode-flatpak "$HOME/.local/bin"
 
 exit 0
+# vim: set ft=sh:

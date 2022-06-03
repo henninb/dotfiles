@@ -6,6 +6,7 @@ cat > handbrake-flatpak <<EOF
 flatpak run fr.handbrake.ghb
 
 exit 0
+# vim: set ft=sh:
 EOF
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -17,3 +18,5 @@ chmod 755 handbrake-flatpak
 mv handbrake-flatpak "$HOME/.local/bin/"
 
 exit 0
+
+# vim: set ft=sh:

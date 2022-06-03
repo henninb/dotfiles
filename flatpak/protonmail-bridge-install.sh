@@ -6,6 +6,7 @@ cat > protonmail-bridge-flatpak <<EOF
 flatpak run --filesystem=home ch.protonmail.protonmail-bridge
 
 exit 0
+# vim: set ft=sh:
 EOF
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -19,3 +20,5 @@ chmod 755 protonmail-bridge-flatpak
 mv protonmail-bridge-flatpak "$HOME/.local/bin/"
 
 exit 0
+
+# vim: set ft=sh:

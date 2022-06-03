@@ -6,6 +6,7 @@ cat > vscodium-flatpak <<EOF
 flatpak run com.vscodium.codium
 
 exit 0
+# vim: set ft=sh:
 EOF
 
 if ! flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo; then
@@ -20,3 +21,4 @@ chmod 755 vscodium-flatpak
 mv -v vscodium-flatpak "$HOME/.local/bin"
 
 exit 0
+# vim: set ft=sh:

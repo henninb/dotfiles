@@ -6,6 +6,8 @@ cat > postman-flatpak <<EOF
 flatpak run --filesystem=home com.getpostman.Postman
 
 exit 0
+
+# vim: set ft=sh:
 EOF
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -19,3 +21,5 @@ chmod 755 postman-flatpak
 mv postman-flatpak "$HOME/.local/bin/"
 
 exit 0
+
+# vim: set ft=sh:

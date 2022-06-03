@@ -6,6 +6,7 @@ cat > spotify-flatpak <<EOF
 flatpak run com.spotify.Client
 
 exit 0
+# vim: set ft=sh:
 EOF
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -17,3 +18,4 @@ chmod 755 spotify-flatpak
 mv spotify-flatpak "$HOME/.local/bin/"
 
 exit 0
+# vim: set ft=sh:

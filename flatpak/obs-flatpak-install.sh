@@ -6,6 +6,7 @@ cat > obs-flatpak <<EOF
 flatpak run com.obsproject.Studio
 
 exit 0
+# vim: set ft=sh:
 EOF
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -19,3 +20,5 @@ chmod 755 obs-flatpak
 mv obs-flatpak "$HOME/.local/bin/"
 
 exit 0
+
+# vim: set ft=sh:
