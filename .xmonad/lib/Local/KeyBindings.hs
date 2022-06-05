@@ -183,8 +183,6 @@ keybinds conf = let
   , ("M-S-b", NamedActions.addName "redshift off" $ safeSpawn "redshift" ["-x"] >> safeSpawn "notify-send" ["redshift off"])
   , ("M-S-w", NamedActions.addName "Weather Minneapolis" $ safeSpawn "weather-minneapolis" [])
   -- , ("M-a", NamedActions.addName "Notify w current X selection"    $ unsafeWithSelection "notify-send")
-  -- , ("M-<Space>", NamedActions.addName "Switch Layout" $ sendMessage (JumpToLayout "Spiral"))
-  -- , ("M-<Space>", NamedActions.addName "Switch Layout" $ cycleThroughLayouts ["Main", "Grid", "3Column", "3ColumnMid", "Mag", "Common", "Terminal", "Media", "Reading", "Spiral", "Panel"])
     ]
 
     ++
