@@ -43,6 +43,7 @@ import XMonad.Util.NamedWindows
 
 myFont  = "terminus"
 
+-- TODO fix the screen width
 togglevga = do { screencount <- LIS.countScreens
     ; if screencount > 1
        then do
