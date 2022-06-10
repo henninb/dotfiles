@@ -181,7 +181,7 @@ keybinds conf = let
   , ("M-<F4>", NamedActions.addName "Screenshot" $ safeSpawn "flameshot-wrapper" [] >> safeSpawn "notify-send" ["flameshot"])
   , ("M-b", NamedActions.addName "redshift on" $ safeSpawn "redshift" ["-O", "3500"] >> safeSpawn "notify-send" ["redshift on"])
   , ("M-S-b", NamedActions.addName "redshift off" $ safeSpawn "redshift" ["-x"] >> safeSpawn "notify-send" ["redshift off"])
-  , ("M-S-w", NamedActions.addName "Weather Minneapolis" $ safeSpawn "weather-minneapolis" [])
+  , ("M-S-w", NamedActions.addName "Weather Minneapolis" $ safeSpawn "weather-gtk" [])
   -- , ("M-a", NamedActions.addName "Notify w current X selection"    $ unsafeWithSelection "notify-send")
     ]
 
