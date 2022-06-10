@@ -1,6 +1,6 @@
 #!/bin/sh
 
-APP=example_rest_json
+APP=rest-with-json
 TIMEZONE='America/Chicago'
 USERNAME=henninb
 
