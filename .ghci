@@ -1,8 +1,8 @@
 :set prompt "\ESC[38;5;208m\STXλ>\ESC[m\STX "
 :set -XOverloadedStrings
 
-:def pretty \_ -> return (":set -interactive-print=Text.Pretty.Simple.pPrint")
-:def no-pretty \_ -> return (":set -interactive-print System.IO.print")
+-- :def pretty \_ -> return (":set -interactive-print=Text.Pretty.Simple.pPrint")
+-- :def no-pretty \_ -> return (":set -interactive-print System.IO.print")
 
 -- :set -package pretty-simple
 -- #import Text.Pretty.Simple (pPrint)
