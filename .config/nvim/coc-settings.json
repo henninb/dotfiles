@@ -1,6 +1,6 @@
 {
   "java.jdt.ls.home": "/home/henninb/jdtls",
-  "git.enableGutters": false,
+  "git.enableGutters": true,
   "coc.preferences.extensionUpdateCheck": "daily",
   "coc.source.file.ignoreHidden": false,
   "codeLens.enable": true,
