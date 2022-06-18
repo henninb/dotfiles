@@ -10,7 +10,7 @@ apikey="$(cat apikey)"
 # phillip="UC3xdLFFsqG701QAyGJIPT1g"
 
 # channel="UC3xdLFFsqG701QAyGJIPT1g"
-count=5
+count=7
 
 for channel in $(cat channels.txt); do
   upload=$(curl -s "https://www.googleapis.com/youtube/v3/channels?id=${channel}&key=${apikey}&part=contentDetails" | jq -r '.items[].contentDetails.relatedPlaylists.uploads')
