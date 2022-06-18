@@ -16,6 +16,7 @@ for channel in $(cat channels.txt); do
   upload=$(curl -s "https://www.googleapis.com/youtube/v3/channels?id=${channel}&key=${apikey}&part=contentDetails" | jq -r '.items[].contentDetails.relatedPlaylists.uploads')
 
   payload=$(curl -s "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${upload}&key=${apikey}&part=snippet&maxResults=${count}&order=date")
+  echo "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${upload}&key=${apikey}&part=snippet&maxResults=${count}&order=date"
 
   rm -rf "*.csv"
   echo "${payload}" | jq -r '.items[].snippet.title' | sed 's/[[:punct:]]//g' | tr " " "-" | tr '[:upper:]' '[:lower:]' > title.csv
