@@ -14,6 +14,7 @@ count=7
 
 for channel in $(cat channels.txt); do
   upload=$(curl -s "https://www.googleapis.com/youtube/v3/channels?id=${channel}&key=${apikey}&part=contentDetails" | jq -r '.items[].contentDetails.relatedPlaylists.uploads')
+  echo "https://www.googleapis.com/youtube/v3/channels?id=${channel}&key=${apikey}&part=contentDetails"
 
   payload=$(curl -s "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${upload}&key=${apikey}&part=snippet&maxResults=${count}&order=date")
   echo "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${upload}&key=${apikey}&part=snippet&maxResults=${count}&order=date"
