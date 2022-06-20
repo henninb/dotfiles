@@ -12,6 +12,12 @@ apikey="$(cat apikey)"
 # channel="UC3xdLFFsqG701QAyGJIPT1g"
 count=7
 
+ifname=audio/how-to-check-ssltls-configuration-ciphers-and-protocols.mp3
+dur=$(ffprobe -i $ifname -show_entries format=duration -v quiet -of csv="p=0")
+trim=$(perl -le "print($dur-27.0)")
+echo ffmpeg -ss 7 -t $trim -i $ifname output.mp3
+
+
 for channel in $(cat channels.txt); do
   upload=$(curl -s "https://www.googleapis.com/youtube/v3/channels?id=${channel}&key=${apikey}&part=contentDetails" | jq -r '.items[].contentDetails.relatedPlaylists.uploads')
   echo "https://www.googleapis.com/youtube/v3/channels?id=${channel}&key=${apikey}&part=contentDetails"
