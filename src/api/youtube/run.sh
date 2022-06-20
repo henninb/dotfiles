@@ -26,7 +26,7 @@ for channel in $(cat channels.txt); do
   echo "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${upload}&key=${apikey}&part=snippet&maxResults=${count}&order=date"
 
   rm -rf "*.csv"
-  echo "${payload}" | jq -r '.items[].snippet.title' | sed 's/[[:punct:]]//g' | tr " " "-" | tr '[:upper:]' '[:lower:]' > title.csv
+  echo "${payload}" | jq -r '.items[].snippet.title' | sed 's/[[:punct:]]//g' | tr 'ᴴᴰ' ' ' | tr " " "-" | tr '[:upper:]' '[:lower:]' > title.csv
   echo "${payload}" | jq -r '.items[].snippet.publishedAt' > published.csv
   echo "${payload}" | jq -r '.items[].snippet.resourceId.videoId' > videoid.csv
 
