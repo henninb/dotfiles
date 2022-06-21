@@ -12,6 +12,7 @@ generic()
 
   if [ ! -f "audio/$fname.mp3" ]; then
     youtube-dl -x --audio-format mp3 "https://www.youtube.com/watch?v=$videoid" --output "audio/$fname.mp3"
+    touch "audio/$fname.mp3"
   fi
 }
 
@@ -26,7 +27,11 @@ mrturvy()
     youtube-dl -x --audio-format mp3 "https://www.youtube.com/watch?v=$videoid" --output "audio/$fname.mp3"
     duration=$(ffprobe -i "audio/${fname}.mp3" -show_entries format=duration -v quiet -of csv="p=0")
     trim=$(perl -le "print($duration-28.0)")
-    ffmpeg -ss 8 -t "${trim}" -i "audio/$fname.mp3" "audio/new-${fname}.mp3"
+    if ffmpeg -ss 8 -t "${trim}" -i "audio/$fname.mp3" "audio/new-${fname}.mp3"; then
+      rm -rf "audio/$fname.mp3"
+      mv "audio/new-${fname}.mp3" "audio/$fname.mp3"
+      touch "audio/$fname.mp3"
+    fi
   fi
 }
 
