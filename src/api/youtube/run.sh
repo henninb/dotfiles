@@ -12,7 +12,6 @@ generic()
 
   if [ ! -f "audio/$fname.mp3" ]; then
     youtube-dl -f bestaudio --extract-audio "https://www.youtube.com/watch?v=$videoid" --output "$fname.opus"
-    duration=$(ffprobe -i "${fname}.opus" -show_entries format=duration -v quiet -of csv="p=0")
     if ffmpeg -i "$fname.opus" "audio/$fname.mp3"; then
       rm -rf "$fname.opus"
     else
@@ -33,13 +32,17 @@ techhut()
 
   if [ ! -f "audio/$fname.mp3" ]; then
     youtube-dl -f bestaudio --extract-audio "https://www.youtube.com/watch?v=$videoid" --output "$fname.opus"
-    duration=$(ffprobe -i "${fname}.opus" -show_entries format=duration -v quiet -of csv="p=0")
-    trim=$(perl -le "print($duration-27.0)")
-    if ffmpeg -ss 7 -t "${trim}" -i "$fname.opus" "audio/$fname.mp3"; then
+    if ffmpeg -ss 0 -i "$fname.opus" "audio/$fname.mp3"; then
       rm -rf "$fname.opus"
+      duration=$(ffprobe -i "audio/${fname}.mp3" -show_entries format=duration -v quiet -of csv="p=0")
+      trim=$(perl -le "print($duration-27.0)")
+      ffmpeg -ss 7 -t "${trim}" -i "audio/$fname.mp3" "audio/new-${fname}.mp3"
     else
       if ffmpeg -ss 7 -t "${trim}" -i "$fname.m4a" "audio/$fname.mp3"; then
         rm -rf "$fname.m4a"
+        duration=$(ffprobe -i "audio/${fname}.mp3" -show_entries format=duration -v quiet -of csv="p=0")
+        trim=$(perl -le "print($duration-27.0)")
+        ffmpeg -ss 7 -t "${trim}" -i "audio/$fname.mp3" "audio/new-${fname}.mp3"
       fi
     fi
   fi
