@@ -2,14 +2,6 @@
 
 touch apikey
 apikey="$(cat apikey)"
- # coffee="UCcUf33cEPky2GiWBgOP-jQA"
- #   jack="UCMIqrmh2lMdzhlCPK5ahsAg"
-# distrotube="UCVls1GmFKf6WlTraIb_IaJg"
-# venture="UCt3JiNkefsfbA2N4SgEkoiQ"
- #   stok="UCQN2DsjnYH60SFBIA6IkNwg"
-# phillip="UC3xdLFFsqG701QAyGJIPT1g"
-
-# channel="UC3xdLFFsqG701QAyGJIPT1g"
 count=7
 
 ifname=audio/how-to-check-ssltls-configuration-ciphers-and-protocols.mp3
@@ -19,8 +11,11 @@ echo ffmpeg -ss 7 -t $trim -i $ifname output.mp3
 
 
 for channel in $(cat channels.txt); do
-  upload=$(curl -s "https://www.googleapis.com/youtube/v3/channels?id=${channel}&key=${apikey}&part=contentDetails" | jq -r '.items[].contentDetails.relatedPlaylists.uploads')
-  echo "https://www.googleapis.com/youtube/v3/channels?id=${channel}&key=${apikey}&part=contentDetails"
+  channelId=$(echo "$channel" | awk -F, '{print $1}')
+  channelName=$(echo "$channel" | awk -F, '{print $2}')
+  echo "$channelName"
+  upload=$(curl -s "https://www.googleapis.com/youtube/v3/channels?id=${channelId}&key=${apikey}&part=contentDetails" | jq -r '.items[].contentDetails.relatedPlaylists.uploads')
+  echo "https://www.googleapis.com/youtube/v3/channels?id=${channelId}&key=${apikey}&part=contentDetails"
 
   payload=$(curl -s "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${upload}&key=${apikey}&part=snippet&maxResults=${count}&order=date")
   echo "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${upload}&key=${apikey}&part=snippet&maxResults=${count}&order=date"
