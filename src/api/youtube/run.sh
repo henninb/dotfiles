@@ -11,14 +11,15 @@ generic()
   shift; shift;
 
   if [ ! -f "audio/$fname.mp3" ]; then
-    youtube-dl -f bestaudio --extract-audio "https://www.youtube.com/watch?v=$videoid" --output "$fname.opus"
-    if ffmpeg -i "$fname.opus" "audio/$fname.mp3"; then
-      rm -rf "$fname.opus"
-    else
-      if ffmpeg -i "$fname.m4a" "audio/$fname.mp3"; then
-        rm -rf "$fname.m4a"
-      fi
-    fi
+    youtube-dl -x --audio-format mp3 "https://www.youtube.com/watch?v=$videoid" --output "audio/$fname.mp3"
+    # youtube-dl -f bestaudio --extract-audio "https://www.youtube.com/watch?v=$videoid" --output "$fname.opus"
+    # if ffmpeg -i "$fname.opus" "audio/$fname.mp3"; then
+    #   rm -rf "$fname.opus"
+    # else
+    #   if ffmpeg -i "$fname.m4a" "audio/$fname.mp3"; then
+    #     rm -rf "$fname.m4a"
+    #   fi
+    # fi
   fi
 }
 
@@ -30,25 +31,27 @@ techhut()
   shift; shift;
 
   if [ ! -f "audio/$fname.mp3" ]; then
-    youtube-dl -f bestaudio --extract-audio "https://www.youtube.com/watch?v=$videoid" --output "$fname.opus"
-    if ffmpeg -ss 0 -i "$fname.opus" "audio/$fname.mp3"; then
-      rm -rf "$fname.opus"
-      duration=$(ffprobe -i "audio/${fname}.mp3" -show_entries format=duration -v quiet -of csv="p=0")
-      trim=$(perl -le "print($duration-27.0)")
-      echo $duration
-      echo $trim
-      ffmpeg -ss 7 -t "${trim}" -i "audio/$fname.mp3" "audio/new-${fname}.mp3"
-    else
-      if ffmpeg -ss 7 -t "${trim}" -i "$fname.m4a" "audio/$fname.mp3"; then
-        rm -rf "$fname.m4a"
-        echo m4a
-        duration=$(ffprobe -i "audio/${fname}.mp3" -show_entries format=duration -v quiet -of csv="p=0")
-        trim=$(perl -le "print($duration-27.0)")
-        echo $duration
-        echo $trim
-        ffmpeg -ss 7 -t "${trim}" -i "audio/$fname.mp3" "audio/new-${fname}.mp3"
-      fi
-    fi
+    youtube-dl -x --audio-format mp3 "https://www.youtube.com/watch?v=$videoid" --output "audio/$fname.mp3"
+    # youtube-dl -f bestaudio --extract-audio "https://www.youtube.com/watch?v=$videoid" --output "$fname.opus"
+    # if ffmpeg -ss 0 -i "$fname.opus" "audio/$fname.mp3"; then
+      # rm -rf "$fname.opus"
+    duration=$(ffprobe -i "audio/${fname}.mp3" -show_entries format=duration -v quiet -of csv="p=0")
+    trim=$(perl -le "print($duration-27.0)")
+    echo "duration=$duration"
+    echo "trim=$trim"
+    ffmpeg -ss 7 -t "${trim}" -i "audio/$fname.mp3" "audio/new-${fname}.mp3"
+      # ffmpeg -ss 7 -t "${trim}" -i "audio/$fname.mp3" "audio/new-${fname}.mp3"
+    # else
+    #   if ffmpeg -ss 7 -t "${trim}" -i "$fname.m4a" "audio/$fname.mp3"; then
+    #     rm -rf "$fname.m4a"
+    #     echo m4a
+    #     duration=$(ffprobe -i "audio/${fname}.mp3" -show_entries format=duration -v quiet -of csv="p=0")
+    #     trim=$(perl -le "print($duration-27.0)")
+    #     echo "duration=$duration"
+    #     echo "trim=$trim"
+    #     ffmpeg -ss 7 -t "${trim}" -i "audio/$fname.mp3" "audio/new-${fname}.mp3"
+    #   fi
+    # fi
   fi
 }
 
