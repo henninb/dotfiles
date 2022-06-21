@@ -29,19 +29,23 @@ techhut()
   videoid=$2
   shift; shift;
 
-
   if [ ! -f "audio/$fname.mp3" ]; then
     youtube-dl -f bestaudio --extract-audio "https://www.youtube.com/watch?v=$videoid" --output "$fname.opus"
     if ffmpeg -ss 0 -i "$fname.opus" "audio/$fname.mp3"; then
       rm -rf "$fname.opus"
       duration=$(ffprobe -i "audio/${fname}.mp3" -show_entries format=duration -v quiet -of csv="p=0")
       trim=$(perl -le "print($duration-27.0)")
+      echo $duration
+      echo $trim
       ffmpeg -ss 7 -t "${trim}" -i "audio/$fname.mp3" "audio/new-${fname}.mp3"
     else
       if ffmpeg -ss 7 -t "${trim}" -i "$fname.m4a" "audio/$fname.mp3"; then
         rm -rf "$fname.m4a"
+        echo m4a
         duration=$(ffprobe -i "audio/${fname}.mp3" -show_entries format=duration -v quiet -of csv="p=0")
         trim=$(perl -le "print($duration-27.0)")
+        echo $duration
+        echo $trim
         ffmpeg -ss 7 -t "${trim}" -i "audio/$fname.mp3" "audio/new-${fname}.mp3"
       fi
     fi
@@ -57,7 +61,8 @@ for channel in $(cat channels.txt); do
   # echo "https://www.googleapis.com/youtube/v3/channels?id=${channelId}&key=${apikey}&part=contentDetails"
 
   if [ "${channelName}" = "techhut" ]; then
-    count=10
+    echo "count is higher"
+    count=11
     payload=$(curl -s "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${upload}&key=${apikey}&part=snippet&maxResults=${count}&order=date")
     echo "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${upload}&key=${apikey}&part=snippet&maxResults=${count}&order=date"
   else
