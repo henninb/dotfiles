@@ -4,11 +4,6 @@ touch apikey
 apikey="$(cat apikey)"
 count=7
 
-ifname=audio/how-to-check-ssltls-configuration-ciphers-and-protocols.mp3
-dur=$(ffprobe -i $ifname -show_entries format=duration -v quiet -of csv="p=0")
-trim=$(perl -le "print($dur-27.0)")
-echo ffmpeg -ss 7 -t $trim -i $ifname output.mp3
-
 generic()
 {
   fname=$1
@@ -36,7 +31,6 @@ techhut()
 
   duration=$(ffprobe -i "${fname}" -show_entries format=duration -v quiet -of csv="p=0")
   trim=$(perl -le "print($duration-27.0)")
-  echo ffmpeg -ss 7 -t "${trim}" -i $ifname output.mp3
 
   if [ ! -f "audio/$fname.mp3" ]; then
   youtube-dl -f bestaudio --extract-audio "https://www.youtube.com/watch?v=$videoid" --output "$fname.opus"
@@ -85,17 +79,6 @@ for channel in $(cat channels.txt); do
       generic "${fname}" "${videoid}"
     fi
 
-
-    # if [ ! -f "audio/$fname.mp3" ]; then
-    # youtube-dl -f bestaudio --extract-audio "https://www.youtube.com/watch?v=$videoid" --output "$fname.opus"
-    #   if ffmpeg -i "$fname.opus" "audio/$fname.mp3"; then
-    #     rm -rf "$fname.opus"
-    #   else
-    #     if ffmpeg -i "$fname.m4a" "audio/$fname.mp3"; then
-    #       rm -rf "$fname.m4a"
-    #     fi
-    #   fi
-    # fi
   done
 done
 
