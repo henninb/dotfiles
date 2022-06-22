@@ -1,7 +1,7 @@
 module Local.Colors (myColor, myBorderColor, red, myFocusBorderColor, gray, purple, aqua, lightpink, lightgray, hotpink, darkpurple, white) where
 
 import XMonad
-import Data.Map as M
+import Data.Map (findWithDefault, fromList)
 
 myBorderColor :: String
 myBorderColor = "#282828"
@@ -43,6 +43,7 @@ darkpurple = "#400473"
 white :: String
 white = "#FFFFFF"
 
+colorSchemes :: [([Char], [Char])]
 colorSchemes =
     [("Orange",       "#FD971F")
     ,("DarkGray",     "#1B1D1E")
@@ -72,4 +73,5 @@ colorSchemes =
     ,("foreground",   "#DDEEFF")
     ]
 
-myColor key = M.findWithDefault "#ffffff" key (fromList colorSchemes)
+myColor:: String -> String
+myColor key = findWithDefault "#ffffff" key (fromList colorSchemes)
