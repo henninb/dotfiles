@@ -44,19 +44,20 @@ for channel in $(cat channels.txt); do
   # echo "https://www.googleapis.com/youtube/v3/channels?id=${channelId}&key=${apikey}&part=contentDetails"
 
   if [ "${channelName}" = "techhut" ]; then
-    count=15
+    count=1
   elif [ "${channelName}" = "mrturvy" ]; then
-    count=15
+    count=1
   elif [ "${channelName}" = "coffeehouse" ]; then
-    count=15
+    count=1
   else
-    count=7
+    count=1
   fi
 
   payload=$(curl -s "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${upload}&key=${apikey}&part=snippet&maxResults=${count}&order=date")
   echo "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${upload}&key=${apikey}&part=snippet&maxResults=${count}&order=date"
   rm -rf "*.csv"
-  echo "${payload}" | jq -r '.items[].snippet.title' | sed 's/[[:punct:]]//g' | tr 'ᴴᴰ' ' ' | tr " " "-" | tr '[:upper:]' '[:lower:]' > title.csv
+  echo "${payload}" | jq -r '.items[].snippet.title' | tr " " "-" | sed 's/[^a-zA-Z0-9-]//g' | tr '[:upper:]' '[:lower:]' > title.csv
+  # echo "${payload}" | jq -r '.items[].snippet.title' | sed 's/[[:punct:]]//g' | tr 'ᴴᴰ' ' ' | tr " " "-" | tr '[:upper:]' '[:lower:]' > title.csv
   echo "${payload}" | jq -r '.items[].snippet.publishedAt' > published.csv
   echo "${payload}" | jq -r '.items[].snippet.resourceId.videoId' > videoid.csv
 
@@ -68,9 +69,9 @@ for channel in $(cat channels.txt); do
     videoid=$(echo "$row" | awk -F, '{print $3}')
 
     if [ "${channelName}" = "mrturvy" ]; then
-      mrturvy "${fname}" "${videoid}"
+      mrturvy "${channelName}-${fname}" "${videoid}"
     else
-      generic "${fname}" "${videoid}"
+      generic "${channelName}-${fname}" "${videoid}"
     fi
 
   done

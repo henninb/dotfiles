@@ -1,11 +1,11 @@
 UCcUf33cEPky2GiWBgOP-jQA,coffeehouse
-UCMIqrmh2lMdzhlCPK5ahsAg,jack-rhysider
+UCMIqrmh2lMdzhlCPK5ahsAg,rhysider
 UCVls1GmFKf6WlTraIb_IaJg,distrotube
-UCt3JiNkefsfbA2N4SgEkoiQ,visual-venture
-UC3xdLFFsqG701QAyGJIPT1g,philipp-hagenlocher
-UCc-0YpRpqgA5lPTpSQ5uo-Q,audit-the-audit
-UCZ4AMrDcNrfy3X6nsU8-rPg,economics-explained
+UCt3JiNkefsfbA2N4SgEkoiQ,visualventure
+UC3xdLFFsqG701QAyGJIPT1g,philipp
+UCc-0YpRpqgA5lPTpSQ5uo-Q,audittheaudit
+UCZ4AMrDcNrfy3X6nsU8-rPg,econexplained
 UCQV6O5wfETMrWqQ7Ro9r-0g,mrturvy
-UCld68syR8Wi-GY_n4CaoJGA,brodie-robertson
+UCld68syR8Wi-GY_n4CaoJGA,brodie
 UCFQMnBA3CS502aghlcr0_aw,coffeezilla
 UCjSEJkpGbcZhvo0lr-44X_w,techhut
