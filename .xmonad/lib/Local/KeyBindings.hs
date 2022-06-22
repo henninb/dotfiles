@@ -20,11 +20,11 @@ import XMonad.Layout.LayoutBuilder (IncLayoutN (..))
 import XMonad.Layout.Maximize (maximizeRestore)
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.Spacing
-import XMonad.Actions.CycleWS (nextWS, prevWS, toggleWS)
+import XMonad.Actions.CycleWS (nextWS, prevWS, toggleWS, moveTo, shiftTo )
 import XMonad.Layout.ZoomRow (zoomIn, zoomOut, zoomReset)
 import XMonad.Layout.WindowArranger -- for DecreaseRight, IncreaseUp
 import Graphics.X11.ExtraTypes -- for xF86XK_Paste
-import XMonad.Util.Paste (sendKey) -- for sendKey
+import XMonad.Util.Paste (sendKey)
 import XMonad.Util.Run
 import XMonad.Prompt.Input
 import XMonad.Actions.Submap
@@ -33,18 +33,21 @@ import XMonad.Layout.Minimize
 import XMonad.Prompt
 import XMonad.Actions.DynamicWorkspaces
 import XMonad.Prompt.Window (WindowPrompt (..), allWindows, windowMultiPrompt, wsWindows)
-import qualified XMonad.StackSet as W
+import XMonad.StackSet (greedyView, shift, tag, workspace, current, focusMaster, sink, swapUp, swapDown, swapMaster)
 import XMonad.Util.EZConfig (mkKeymap, mkNamedKeymap)
 import qualified XMonad.Util.ExtensibleState as XState
 import XMonad.Util.NamedScratchpad (namedScratchpadAction)
 import qualified XMonad.Actions.Search as S
 import qualified XMonad.Util.NamedActions as NamedActions
 import qualified XMonad.Util.Run as Run
-import qualified System.IO as IO
+import System.IO (hClose)
 import Control.Monad
 import Data.Monoid
 import XMonad.Actions.CycleSelectedLayouts
 import XMonad.Util.XSelection
+import XMonad.Layout.BoringWindows (focusDown, focusUp)
+-- import XMonad.Actions.CycleWS (moveTo, shiftTo )
+-- import XMonad.Layout.IM
 -- import XMonad.Util.Run
 
 import Local.Prompts
@@ -69,12 +72,12 @@ myEmacs = "emacsclient -c -a 'emacs'"
 lockScreen :: X ()
 lockScreen = safeSpawn "xscreensaver-command" ["-lock"]
 
-viewShift :: WorkspaceId -> Query (Endo (W.StackSet WorkspaceId l Window ScreenId sd))
-viewShift = doF . liftM2 (.) W.greedyView W.shift
+-- viewShift :: WorkspaceId -> Query (Endo (StackSet WorkspaceId l Window ScreenId sd))
+-- viewShift = doF . liftM2 (.) greedyView shift
 
 emacs :: X ()
 emacs = do
-  name <- gets (W.tag . W.workspace . W.current . windowset)
+  name <- gets (tag . workspace . current . windowset)
   safeSpawn ("e -cs " ++ name) []
 
 data MessageMenu = MessageMenu
@@ -118,7 +121,7 @@ showKeyBindings x =
   XMonad.io $ do
     h <- Run.spawnPipe "yad --text-info"
     Run.hPutStr h (unlines $ NamedActions.showKm x)
-    IO.hClose h
+    hClose h
     return ()
 
 myRemoveKeys :: [(KeyMask, KeySym)]
@@ -144,11 +147,12 @@ searchPromptKeybindings =
     ++ [("M-S-s " ++ k, S.selectSearch f) | (k,f) <- searchList ]
 
 keybinds :: XConfig Layout -> [((KeyMask, KeySym), NamedActions.NamedAction)]
-keybinds conf = let
-  subKeys str ks = NamedActions.subtitle str : mkNamedKeymap conf ks
-  wsKeys  = map show ([1..9] ++ [0] :: [Int])
-  zipM  m nm ks as f = zipWith (\k d -> (m ++ k, NamedActions.addName nm $ f d)) ks as
-  zipM' m nm ks as f b = zipWith(\k d -> (m ++ k, NamedActions.addName nm $ f d b)) ks as
+keybinds conf =
+  let
+    subKeys str ks = NamedActions.subtitle str : mkNamedKeymap conf ks
+    wsKeys  = map show ([1..9] ++ [0] :: [Int])
+    zipM  m nm ks as f = zipWith (\k d -> (m ++ k, NamedActions.addName nm $ f d)) ks as
+    zipM' m nm ks as f b = zipWith(\k d -> (m ++ k, NamedActions.addName nm $ f d b)) ks as
   in
     subKeys "System"
     [
@@ -192,10 +196,10 @@ keybinds conf = let
           ("M-;", NamedActions.addName "View previous workspace" viewPrevWS)
         , ("M-<Tab>", NamedActions.addName "toggle betweeen workspaces" toggleWS)
     ]
-    ++ zipM "M-" "Move window to workspace" wsKeys [0..]  (\wn -> withNthWorkspace W.greedyView wn >> safeSpawn "notify-send" ["workspace: " ++ show(wn + 1)])
-    ++ zipM "M-S-" "Move and shift window to workspace" wsKeys [0..]  (withNthWorkspace (liftM2 (.) W.greedyView W.shift))
+    ++ zipM "M-" "Move window to workspace" wsKeys [0..]  (\wn -> withNthWorkspace greedyView wn >> safeSpawn "notify-send" ["workspace: " ++ show(wn + 1)])
+    ++ zipM "M-S-" "Move and shift window to workspace" wsKeys [0..]  (withNthWorkspace (liftM2 (.) greedyView shift))
     ++ zipM "M-C-" "Copy window to workkspace" wsKeys [0..] (withNthWorkspace copy)
-    ++ zipM "M1-C-" "Shift window to workkspace" wsKeys [0..] (withNthWorkspace W.shift)
+    ++ zipM "M1-C-" "Shift window to workkspace" wsKeys [0..] (withNthWorkspace shift)
     )
 
     ++
@@ -211,9 +215,42 @@ keybinds conf = let
     ]
 
    ++
-     --submapName
-     --  , ("M-; s z",    namedScratchpadAction myScratchpads "zk" )
-  -- , ("M-; s k",    namedScratchpadAction myScratchpads "kafka" )
+
+   subKeys "Windows"
+   [
+   --focus
+    ("M-m", NamedActions.addName "Focus on master window" $ windows focusMaster)
+  , ("M-j",   NamedActions.addName "Focus next window" focusDown)
+  , ("M-k",   NamedActions.addName "Focus previous window" focusUp)
+  , ("M-S-m", NamedActions.addName "Swap master" $ windows swapMaster)
+  , ("M-S-j", NamedActions.addName "Swap focused with next" $ windows swapDown)
+  , ("M-S-k", NamedActions.addName "Swap focused with previous" $ windows swapUp)
+  , ("M-,",   NamedActions.addName "Increase master windows" $ sendMessage (IncMasterN 1))
+  , ("M-.",   NamedActions.addName "Decrease master windows" $ sendMessage (IncMasterN (-1)))
+  -- , ("M-j", NamedActions.addName "Window Down" $ windowGo D False)
+  -- , ("M-k", NamedActions.addName "Window Up" $ windowGo U False)
+  , ("M-l", NamedActions.addName "Window Right" $ windowGo R False)
+  , ("M-h", NamedActions.addName "Window Left" $ windowGo L False)
+  , ("M-<Up>", NamedActions.addName "" $ sendMessage (MoveUp 10))
+  , ("M-<Down>", NamedActions.addName "" $ sendMessage (MoveDown 10))
+  , ("M-<Right>", NamedActions.addName "" $ sendMessage (MoveRight 10))
+  , ("M-<Left>", NamedActions.addName "" $ sendMessage (MoveLeft 10))
+  , ("M-S-<Up>", NamedActions.addName "" $ sendMessage (IncreaseUp 10))
+  , ("M-S-<Down>", NamedActions.addName "" $ sendMessage (IncreaseDown 10))
+  , ("M-S-<Right>", NamedActions.addName "" $ sendMessage (IncreaseRight 10))
+  , ("M-S-<Left>", NamedActions.addName "" $ sendMessage (IncreaseLeft 10))
+  , ("M-C-<Up>", NamedActions.addName "" $ sendMessage (DecreaseUp 10))
+  , ("M-C-<Down>", NamedActions.addName "" $ sendMessage (DecreaseDown 10))
+  , ("M-C-<Right>", NamedActions.addName "" $ sendMessage (DecreaseRight 10))
+  , ("M-C-<Left>", NamedActions.addName "" $ sendMessage (DecreaseLeft 10))
+  , ("M-S-h", NamedActions.addName "resize left" $ sendMessage Shrink)
+  , ("M-S-l", NamedActions.addName "resize right" $ sendMessage Expand)
+  -- , ("M-t", withFocused $ windows . sink)
+  , ("M-t", NamedActions.addName "" $ withFocused $ windows . sink)
+    -- ,("M-c",   NamedActions.addName "Select first empty workspace" $ moveTo Next emptyWS)
+  -- ,("M-S-c", NamedActions.addName "Move window to next empty workspace" $ shiftTo Next emptyWS)
+   ]
+   ++
    subKeys "Scratchpads/misc"
    [
    ("M-S-o", NamedActions.submapName $ mkNamedKeymap conf
@@ -229,49 +266,11 @@ keybinds conf = let
     ,("e", NamedActions.addName "vscodium" $ safeSpawn "vscodium-flatpak" [])
     ,("h", NamedActions.addName "handbrake" $ safeSpawn "handbrake" [])
     ])
-   -- ("M-S-o", NamedActions.addName "" $ submap . M.fromList $
-   --          [
-   --            ((0, xK_s),    namedScratchpadAction scratchPads "spotify-nsp")
-   --          , ((0, xK_d),    namedScratchpadAction scratchPads "discord-nsp")
-   --          , ((0, xK_t),    namedScratchpadAction scratchPads "tmux-nsp")
-   --          , ((0, xK_k),    namedScratchpadAction scratchPads "keepass-nsp")
-   --          , ((0, xK_v),    namedScratchpadAction scratchPads "vlc-nsp")
-   --          , ((0, xK_c),    namedScratchpadAction scratchPads "calc-nsp")
-   --          , ((0, xK_i),    safeSpawn "intellij")
-   --          , ((0, xK_d),    safeSpawn "dbeaver-flatpak")
-   --          , ((0, xK_g),    safeSpawn "steam")
-   --          , ((0, xK_e),    safeSpawn "vscodium-flatpak")
-   --          , ((0, xK_h),    safeSpawn "handbrake")
-   --          ])
-   -- ("M-S-o i", NamedActions.addName "Intellij" $ safeSpawn "intellij")
-   ]
-   ++
-   subKeys "Windows"
-   [
-    ("M-m", NamedActions.addName "Focus on master" $ windows W.focusMaster)
-  , ("M-S-m", NamedActions.addName "Swap master" $ windows W.swapMaster)
-  , ("M-S-j", NamedActions.addName "Swap down" $ windows W.swapDown)
-  , ("M-S-k", NamedActions.addName "Swap up" $ windows W.swapUp)
-  , ("M-j", NamedActions.addName "" $ windowGo D False)
-  , ("M-k", NamedActions.addName "" $ windowGo U False)
-  , ("M-l", NamedActions.addName "" $ windowGo R False)
-  , ("M-h", NamedActions.addName "" $ windowGo L False)
-  , ("M-<Up>", NamedActions.addName "" $ sendMessage (MoveUp 10))
-  , ("M-<Down>", NamedActions.addName "" $ sendMessage (MoveDown 10))
-  , ("M-<Right>", NamedActions.addName "" $ sendMessage (MoveRight 10))
-  , ("M-<Left>", NamedActions.addName "" $ sendMessage (MoveLeft 10))
-  , ("M-S-<Up>", NamedActions.addName "" $ sendMessage (IncreaseUp 10))
-  , ("M-S-<Down>", NamedActions.addName "" $ sendMessage (IncreaseDown 10))
-  , ("M-S-<Right>", NamedActions.addName "" $ sendMessage (IncreaseRight 10))
-  , ("M-S-<Left>", NamedActions.addName "" $ sendMessage (IncreaseLeft 10))
-  , ("M-C-<Up>", NamedActions.addName "" $ sendMessage (DecreaseUp 10))
-  , ("M-C-<Down>", NamedActions.addName "" $ sendMessage (DecreaseDown 10))
-  , ("M-C-<Right>", NamedActions.addName "" $ sendMessage (DecreaseRight 10))
-  , ("M-C-<Left>", NamedActions.addName "" $ sendMessage (DecreaseLeft 10))
-  , ("M-S-h", NamedActions.addName "" $ sendMessage Shrink)
-  , ("M-S-l", NamedActions.addName "" $ sendMessage Expand)
-  -- , ("M-t", withFocused $ windows . W.sink)
-  , ("M-t", NamedActions.addName "" $ withFocused $ windows . W.sink)
+    -- ,("C-M1-l", NamedActions.submapName $ mkNamedKeymap conf
+    --  [("l", NamedActions.addName "Lock session" $ spawn "loginctl lock-session")
+    --  ,("h", NamedActions.addName "Hibernate" $ spawn "systemctl hibernate")
+    --  ,("s", NamedActions.addName "Suspend" $ spawn "systemctl suspend")
+    --  ])
    ]
 
 notifyWSHint :: String -> X()
