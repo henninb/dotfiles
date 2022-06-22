@@ -1,5 +1,6 @@
 #!/bin/sh
 
+ssh henninb@192.168.10.10 "mkdir -p /home/henninb/src/api/youtube"
 scp -r .ssh/ henninb@192.168.10.10:/home/henninb/
 scp -r .irssi/ henninb@192.168.10.10:/home/henninb/
 scp -r .zsh* henninb@192.168.10.10:/home/henninb/
@@ -19,6 +20,8 @@ scp -r .gitconfig henninb@192.168.10.10:/home/henninb/
 scp -r ssl/ henninb@192.168.10.10:/home/henninb/
 scp -r python-pip-install.sh henninb@192.168.10.10:/home/henninb/
 scp -r update.sh henninb@192.168.10.10:/home/henninb/
+scp -r src/api/youtube/run.sh henninb@192.168.10.10:/home/henninb/src/api/youtube/
+scp -r src/api/youtube/channels.txt henninb@192.168.10.10:/home/henninb/src/api/youtube/
 # scp -r .config/nvim/ henninb@192.168.10.10:/home/henninb/.config
 
 

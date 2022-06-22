@@ -35,6 +35,8 @@ mrturvy()
   fi
 }
 
+mkdir -p audio
+
 for channel in $(cat channels.txt); do
   channelId=$(echo "$channel" | awk -F, '{print $1}')
   channelName=$(echo "$channel" | awk -F, '{print $2}')
