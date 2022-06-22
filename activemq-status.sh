@@ -17,3 +17,5 @@ systemctl status activemq
 echo sudo netstat -ntlp
 
 exit 0
+
+# vim: set ft=sh

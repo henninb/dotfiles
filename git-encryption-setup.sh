@@ -89,3 +89,6 @@ fi
 # TODO: Make this idempotent
 echo "Setting up this repository for transparent encryption."
 repo_setup
+
+# vim: set ft=sh:
+

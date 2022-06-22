@@ -52,3 +52,6 @@ ip addr show dev br0
 ip addr show dev "$device"
 
 exit 0
+
+# vim: set ft=sh:
+

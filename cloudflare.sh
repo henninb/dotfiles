@@ -6,3 +6,5 @@ git clone git@github.com:tech-otaku/cloudflare-dns.git
 cd cloudflare-dns || exit
 
 exit 0
+
+# vim: set ft=sh:

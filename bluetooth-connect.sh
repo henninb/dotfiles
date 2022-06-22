@@ -18,3 +18,5 @@ for address in $(cat /opt/bluetooth.txt);do
 done
 
 exit 0
+
+# vim: set ft=sh

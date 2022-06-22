@@ -53,3 +53,6 @@ echo map f9 key to the insert key
 echo xmodmap -e "keycode 75 = Insert Insert"
 
 exit 0
+
+# vim: set ft=sh:
+

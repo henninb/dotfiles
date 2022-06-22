@@ -27,3 +27,6 @@ cd "$HOME/projects/" || exit
 curl -sSLO https://github.com/pinterest/ktlint/archive/0.39.0.tar.gz
 
 exit 0
+
+# vim: set ft=sh:
+

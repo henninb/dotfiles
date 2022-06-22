@@ -73,3 +73,5 @@ exit 0
 # pactl set-default-sink bluez_sink.$DEV
 # pactl set-card-profile bluez_card.$DEV a2dp
 # pactl set-sink-volume  bluez_sink.$DEV 130%
+
+# vim: set ft=sh

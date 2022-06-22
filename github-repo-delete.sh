@@ -12,3 +12,6 @@ curl -u henninb -X DELETE 'https://api.github.com/repos/henninb/mooncake'
 #   --data '{"scopes": ["public_repo"], "note": "test"}'
 
 exit 0
+
+# vim: set ft=sh:
+

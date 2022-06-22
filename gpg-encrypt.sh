@@ -9,3 +9,6 @@ FILE=$1
 gpg -r 'henninb@gmail.com' -e "$FILE"
 
 exit 0
+
+# vim: set ft=sh:
+

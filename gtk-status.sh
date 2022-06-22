@@ -26,3 +26,6 @@ pkg-config --exists gtk+-3.0 && echo "gtk+ 3.0 is installed" || echo "gtk+ 3.0 i
 pkg-config --exists gtk+-2.0 && echo "gtk+ 2.0 is installed" || echo "gtk+ 2.0 is not installed"
 
 exit 0
+
+# vim: set ft=sh:
+

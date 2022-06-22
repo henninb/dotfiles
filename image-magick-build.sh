@@ -18,3 +18,6 @@ sudo ldconfig /usr/local/lib
 cd "$HOME" || exit
 
 exit 0
+
+# vim: set ft=sh:
+

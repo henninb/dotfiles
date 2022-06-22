@@ -41,3 +41,6 @@ echo sudo rm -r "/boot/*${old_kernel}*" || { echo "Failed to remove boot files";
 echo sudo rm -r "/lib/modules/${old_kernel}*" || { echo "Failed to remove modules"; exit 1; }
 
 exit 0
+
+# vim: set ft=sh:
+

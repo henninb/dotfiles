@@ -39,3 +39,6 @@ echo udevadm monitor --udev
 echo "lsusb | grep 'Microdia Backlit Gaming Keyboard'"
 
 exit 0
+
+# vim: set ft=sh:
+

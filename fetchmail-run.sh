@@ -26,3 +26,6 @@ echo touch /var/spool/mail/henninb
 # virtual_mailbox_limit = 0
 
 exit 0
+
+# vim: set ft=sh:
+

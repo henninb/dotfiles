@@ -6,3 +6,6 @@ curl -s https://api.github.com/users/BitExplorer/repos?per_page=100 | jq -r '.[]
 #   <https://api.github.com/user/repos?page=50&per_page=100>; rel="last"
 
 exit 0
+
+# vim: set ft=sh:
+

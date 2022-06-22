@@ -13,3 +13,6 @@ rm -rf "$HOME/.java/.userPrefs/jetbrains"
 # ls -l "$HOME/.config/JetBrains/${version}/"
 
 exit 0
+
+# vim: set ft=sh:
+

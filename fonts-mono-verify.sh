@@ -23,3 +23,6 @@ echo git: 
 echo lightning: ⚡
 
 exit 0
+
+# vim: set ft=sh:
+

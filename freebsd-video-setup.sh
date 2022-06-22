@@ -45,3 +45,6 @@ xrandr --newmode "2560x1440_59.95"  311.57  2560 2744 3024 3488  1440 1441 1444 
 xrandr --addmode default "2560x1440_59.95"
 xrandr --output default --mode "2560x1440_59.95"
 xrandr --verbose
+
+# vim: set ft=sh:
+

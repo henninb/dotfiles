@@ -40,3 +40,6 @@ echo virsh -c qemu+ssh://vagrant@ho/system
 echo ls -l /var/lib/libvirt/dnsmasq
 
 exit 0
+
+# vim: set ft=sh:
+

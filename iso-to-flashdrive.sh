@@ -23,3 +23,6 @@ echo sudo dd "if=${FILE}" of=/dev/sdg bs=16k status=progress && sync
 #hdparm -i /dev/sdg
 
 exit 0
+
+# vim: set ft=sh:
+

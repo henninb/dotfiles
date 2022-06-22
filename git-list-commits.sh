@@ -10,3 +10,6 @@ FILE=$1
 git log --follow -- "$FILE"
 
 exit 0
+
+# vim: set ft=sh:
+

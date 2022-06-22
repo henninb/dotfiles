@@ -13,3 +13,6 @@ go env -w GO111MODULE=off
 go get github.com/gokcehan/lf
 
 exit 0
+
+# vim: set ft=sh:
+

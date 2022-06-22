@@ -54,3 +54,6 @@ echo GRUB_CMDLINE_LINUX="user_namespace.enable=1"
 echo sudo grub-mkconfig -o /boot/grub/grub.cfg¬
 
 exit 0
+
+# vim: set ft=sh:
+

@@ -55,3 +55,6 @@ echo "curl https://github.com/matheuss/parrotsay"
 curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash
 
 exit 0
+
+# vim: set ft=sh:
+

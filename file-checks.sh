@@ -21,3 +21,6 @@ elif [ ! \( -s "${FILE}" \) ]; then
 fi
 
 exit 0
+
+# vim: set ft=sh:
+

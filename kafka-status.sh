@@ -16,3 +16,6 @@ echo 'kafka-topics.sh --delete --zookeeper localhost:2181 --topic ynot'
 kafka-topics.sh --delete --zookeeper localhost:2181 --topic ynot
 
 exit 0
+
+# vim: set ft=sh:
+

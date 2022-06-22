@@ -5,3 +5,5 @@ unzip awscliv2.zip
 sudo ./aws/install
 
 exit 0
+
+# vim: set ft=sh

@@ -68,3 +68,5 @@ exit 0
     # -drive id=InstallMedia,format=raw,if=none,file=BaseSystem.img
     # -device ide-hd,bus=sata.3,drive=InstallMedia
 
+# vim: set ft=sh:
+

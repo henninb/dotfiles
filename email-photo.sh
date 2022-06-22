@@ -7,3 +7,6 @@
 /usr/bin/wget https://raw.githubusercontent.com/BitExplorer/howto/master/raspberry_pi/camera_usage.txt -O camera.txt
 
 exit 0
+
+# vim: set ft=sh:
+

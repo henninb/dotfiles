@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ssh henninb@192.168.10.10 "mkdir -p /home/henninb/src/api/youtube"
+# ssh henninb@192.168.10.10 "mkdir -p /home/henninb/src/api/youtube"
 scp -r .ssh/ henninb@192.168.10.10:/home/henninb/
 scp -r .irssi/ henninb@192.168.10.10:/home/henninb/
 scp -r .zsh* henninb@192.168.10.10:/home/henninb/
@@ -27,3 +27,5 @@ scp -r src/api/youtube/apikey henninb@192.168.10.10:/home/henninb/src/api/youtub
 
 
 exit 0
+
+# vim: set ft=sh

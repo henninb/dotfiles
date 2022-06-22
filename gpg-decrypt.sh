@@ -11,3 +11,6 @@ BASENAME=$(basename "${FILE}" .gpg)
 gpg -d "$FILE" | tee "${BASENAME}"
 
 exit 0
+
+# vim: set ft=sh:
+
