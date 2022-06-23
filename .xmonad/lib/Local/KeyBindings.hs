@@ -23,32 +23,29 @@ import XMonad.Layout.Spacing
 import XMonad.Actions.CycleWS (nextWS, prevWS, toggleWS, moveTo, shiftTo )
 import XMonad.Layout.ZoomRow (zoomIn, zoomOut, zoomReset)
 import XMonad.Layout.WindowArranger -- for DecreaseRight, IncreaseUp
-import Graphics.X11.ExtraTypes -- for xF86XK_Paste
+import Graphics.X11.ExtraTypes (xF86XK_Paste)
 import XMonad.Util.Paste (sendKey)
-import XMonad.Util.Run
-import XMonad.Prompt.Input
-import XMonad.Actions.Submap
-import XMonad.Actions.UpdateFocus
-import XMonad.Layout.Minimize
-import XMonad.Prompt
-import XMonad.Actions.DynamicWorkspaces
+-- import XMonad.Util.Run
+-- import XMonad.Prompt.Input
+-- import XMonad.Actions.Submap
+-- import XMonad.Actions.UpdateFocus
+-- import XMonad.Layout.Minimize
+import XMonad.Prompt (XPrompt (..))
+import XMonad.Actions.DynamicWorkspaces (withNthWorkspace)
 import XMonad.Prompt.Window (WindowPrompt (..), allWindows, windowMultiPrompt, wsWindows)
 import XMonad.StackSet (greedyView, shift, tag, workspace, current, focusMaster, sink, swapUp, swapDown, swapMaster)
 import XMonad.Util.EZConfig (mkKeymap, mkNamedKeymap)
-import qualified XMonad.Util.ExtensibleState as XState
+import qualified XMonad.Util.ExtensibleState as XState (put, get)
+-- import XMonad.Util.ExtensibleState (put, get)
 import XMonad.Util.NamedScratchpad (namedScratchpadAction)
 import qualified XMonad.Actions.Search as S
 import XMonad.Util.NamedActions (addName, subtitle, showKm, submapName)
-import qualified XMonad.Util.Run as Run
+import XMonad.Util.Run (hPutStr, spawnPipe, safeSpawn, unsafeSpawn)
 import System.IO (hClose)
-import Control.Monad
-import Data.Monoid
-import XMonad.Actions.CycleSelectedLayouts
-import XMonad.Util.XSelection
+import Control.Monad (liftM2, join)
+import XMonad.Actions.CycleSelectedLayouts (cycleThroughLayouts)
+import XMonad.Util.XSelection (getSelection)
 import XMonad.Layout.BoringWindows (focusDown, focusUp)
--- import XMonad.Actions.CycleWS (moveTo, shiftTo )
--- import XMonad.Layout.IM
--- import XMonad.Util.Run
 
 import Local.Prompts
 import Local.Workspaces
@@ -119,8 +116,8 @@ dmenuArgs title = [ "-i "
 showKeyBindings x =
   addName "Show Keybindings" $
   XMonad.io $ do
-    h <- Run.spawnPipe "yad --text-info"
-    Run.hPutStr h (unlines $ showKm x)
+    h <- spawnPipe "yad --text-info"
+    hPutStr h (unlines $ showKm x)
     hClose h
     return ()
 
@@ -247,8 +244,8 @@ keybinds conf =
   , ("M-S-l", addName "resize right" $ sendMessage Expand)
   -- , ("M-t", withFocused $ windows . sink)
   , ("M-t", addName "" $ withFocused $ windows . sink)
-    -- ,("M-c",   addName "Select first empty workspace" $ moveTo Next emptyWS)
-  -- ,("M-S-c", addName "Move window to next empty workspace" $ shiftTo Next emptyWS)
+  -- ,("M-c",   addName "Select first empty workspace" $ moveTo Next EmptyWS)
+  -- ,("M-S-c", addName "Move window to next empty workspace" $ shiftTo Next EmptyWS)
    ]
    ++
    subKeys "Scratchpads/misc"

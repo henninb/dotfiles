@@ -72,8 +72,10 @@ for channel in $(cat channels.txt); do
 
     if [ "${channelName}" = "mrturvy" ]; then
       mrturvy "${channelName}-${fname}" "${videoid}"
+      id3v2 -t "${fname}" -a "${channelName}" "${channelName}-${fname}.mp3"
     else
       generic "${channelName}-${fname}" "${videoid}"
+      id3v2 -t "${fname}" -a "${channelName}" "${channelName}-${fname}.mp3"
     fi
 
   done
