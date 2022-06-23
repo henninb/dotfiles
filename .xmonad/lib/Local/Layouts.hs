@@ -2,32 +2,31 @@ module Local.Layouts (myLayouts) where
 
 -- import XMonad
 import XMonad hiding ( (|||) )
-import XMonad.Layout.Renamed
-import XMonad.Hooks.ManageDocks
-import XMonad.Layout.PerWorkspace
-import XMonad.Layout.LimitWindows
-import XMonad.Layout.NoBorders
-import XMonad.Layout.Gaps
-import XMonad.Layout.Grid
-import XMonad.Layout.ComboP
-import XMonad.Layout.Spacing
-import XMonad.Layout.Minimize
-import XMonad.Layout.FixedColumn
-import XMonad.Layout.ThreeColumns
-import XMonad.Layout.ResizableTile
-import XMonad.Layout.TwoPane
-import XMonad.Layout.Magnifier
-import XMonad.Layout.Tabbed
-import XMonad.Layout.WindowNavigation
-import XMonad.Config.Desktop
-import qualified XMonad.Layout.BoringWindows as B
+import XMonad.Layout.Renamed -- (renamed)
+import XMonad.Hooks.ManageDocks (avoidStruts)
+import XMonad.Layout.PerWorkspace (onWorkspace, onWorkspaces)
+import XMonad.Layout.LimitWindows (limitWindows)
+import XMonad.Layout.NoBorders (smartBorders, noBorders)
+-- import XMonad.Layout.Gaps
+import XMonad.Layout.Grid (Grid(..))
+import XMonad.Layout.ComboP (combineTwoP)
+import XMonad.Layout.Spacing (Border(..), spacingRaw)
+import XMonad.Layout.Minimize (minimize)
+import XMonad.Layout.FixedColumn (FixedColumn(..))
+import XMonad.Layout.ThreeColumns (ThreeCol(..))
+import XMonad.Layout.ResizableTile (ResizableTall(..))
+import XMonad.Layout.TwoPane (TwoPane(..))
+import XMonad.Layout.Magnifier (magnifiercz')
+-- import XMonad.Layout.Tabbed
+import XMonad.Layout.WindowNavigation (windowNavigation)
+import XMonad.Config.Desktop (desktopLayoutModifiers)
+import XMonad.Layout.BoringWindows (boringWindows)
 import qualified XMonad.Layout.Spiral as Sp
 import XMonad.Layout.IM
 import XMonad.Layout.Circle (Circle (..))
 import XMonad.Layout.Reflect (reflectHoriz)
 import System.Info (os)
 import XMonad.Layout.LayoutCombinators ( (|||) )
-
 import Local.Workspaces (myWorkspaces)
 
 -- mySpacing = if os == "freebsd" then spacingRaw False (Border 14 1 1 1) True (Border 1 1 1 1) True else spacingRaw False (Border 2 1 1 1) True (Border 1 1 1 1) True
@@ -37,7 +36,7 @@ mySpacing = spacingRaw False (Border 1 1 1 1) True (Border 1 1 1 1) True
 -- layouts need to be changed to add the avoidStruts modifier which will cause the layouts to make space for statusbars like dzen2.
 -- myLayouts = renamed [CutWordsLeft 1] . autoStrutsOn [U] . minimize . B.boringWindows $ workspaceLayouts
 -- myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ workspaceLayouts
-myLayouts = renamed [CutWordsLeft 1] . minimize . B.boringWindows $ workspaceLayouts
+myLayouts = renamed [CutWordsLeft 1] . minimize . boringWindows $ workspaceLayouts
 
   -- layout per workspace
 workspaceLayouts =
