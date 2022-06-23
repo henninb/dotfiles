@@ -26,7 +26,7 @@ import XMonad.StackSet (greedyView, shift, tag, workspace, current, focusMaster,
 import XMonad.Util.EZConfig (mkKeymap, mkNamedKeymap)
 import XMonad.Util.NamedScratchpad (namedScratchpadAction)
 import XMonad.Actions.Search (promptSearch, selectSearch)
-import XMonad.Util.NamedActions (addName, subtitle, showKm, submapName)
+import XMonad.Util.NamedActions (NamedAction(..), addName, subtitle, showKm, submapName)
 import XMonad.Util.Run (hPutStr, spawnPipe, safeSpawn, unsafeSpawn)
 import System.IO (hClose)
 import Control.Monad (liftM2, join)
@@ -55,6 +55,7 @@ dmenuRunCmd :: String
 -- passmenuRunCmd = scriptsPath ++ "passmenu " ++ (unwords $ dmenuArgs "Password:")
 dmenuRunCmd = "dmenu " ++ unwords (dmenuArgs "Execute:")
 
+myEmacs :: FilePath
 myEmacs = "emacsclient -c -a 'emacs'"
 
 lockScreen :: X ()
@@ -90,6 +91,7 @@ recordXMessage message = do
 repeatLastXMessage :: X ()
 repeatLastXMessage = getLastMessage =<< XState.get
 
+unsafeWithSelection :: MonadIO m => [Char] -> m ()
 unsafeWithSelection app = join $ io $ fmap (unsafeSpawn . (\ x -> app ++ " " ++ x)) getSelection
 
 dmenuArgs :: String -> [String]
@@ -103,7 +105,7 @@ dmenuArgs title = [ "-i "
                   ]
   where quote s = "'" ++ s ++ "'"
 
--- showKeyBindings :: [((XMonad.KeyMask, XMonad.KeySym), NamedAction)] -> NamedAction
+showKeyBindings :: [((KeyMask, KeySym), NamedAction)] -> NamedAction
 showKeyBindings x =
   addName "Show Keybindings" $
   XMonad.io $ do
@@ -134,7 +136,7 @@ searchPromptKeybindings =
     [("M-s " ++ k, promptSearch myXPConfig' f) | (k,f) <- searchList ]
     ++ [("M-S-s " ++ k, selectSearch f) | (k,f) <- searchList ]
 
--- keybinds :: XConfig Layout -> [((KeyMask, KeySym), NamedAction)]
+keybinds :: XConfig Layout -> [((KeyMask, KeySym), NamedAction)]
 keybinds conf =
   let
     subKeys str ks = subtitle str : mkNamedKeymap conf ks
@@ -264,6 +266,7 @@ keybinds conf =
 notifyWSHint :: String -> X()
 notifyWSHint index = spawn $ "notify-send -t 500 \"workspace: " ++ index ++ "\""
 
+workspaceHint :: ([Char] -> WindowSet -> WindowSet) -> [Char] -> X ()
 workspaceHint f i = do
   windows $ f i
   notifyWSHint i
