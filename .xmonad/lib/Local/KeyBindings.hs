@@ -1,14 +1,11 @@
 -- module XMonad.Local.KeyBindings (keys, rawKeys) where
 module Local.KeyBindings (myRemoveKeys, superKeyMask, showKeyBindings, keybinds, searchPromptKeybindings) where
 
-import qualified Data.Map as M
-import Graphics.X11.Xlib
 import XMonad hiding (keys)
 import XMonad.Actions.CopyWindow (kill1, copy)
 import XMonad.Actions.DynamicProjects (switchProjectPrompt, switchProject)
 import XMonad.Actions.GroupNavigation (Direction (..), nextMatch)
-import XMonad.Actions.Minimize
-import XMonad.Actions.Navigation2D
+import XMonad.Actions.Minimize (withLastMinimized, minimizeWindow, maximizeWindow)
 import XMonad.Actions.PhysicalScreens (onNextNeighbour, onPrevNeighbour)
 import XMonad.Actions.Promote (promote)
 import XMonad.Actions.RotSlaves (rotSlavesDown, rotSlavesUp)
@@ -18,27 +15,17 @@ import XMonad.Hooks.ManageDocks (ToggleStruts (..))
 import XMonad.Hooks.UrgencyHook (focusUrgent)
 import XMonad.Layout.LayoutBuilder (IncLayoutN (..))
 import XMonad.Layout.Maximize (maximizeRestore)
-import XMonad.Layout.ResizableTile
-import XMonad.Layout.Spacing
 import XMonad.Actions.CycleWS (nextWS, prevWS, toggleWS, moveTo, shiftTo )
 import XMonad.Layout.ZoomRow (zoomIn, zoomOut, zoomReset)
-import XMonad.Layout.WindowArranger -- for DecreaseRight, IncreaseUp
 import Graphics.X11.ExtraTypes (xF86XK_Paste)
 import XMonad.Util.Paste (sendKey)
--- import XMonad.Util.Run
--- import XMonad.Prompt.Input
--- import XMonad.Actions.Submap
--- import XMonad.Actions.UpdateFocus
--- import XMonad.Layout.Minimize
 import XMonad.Prompt (XPrompt (..))
 import XMonad.Actions.DynamicWorkspaces (withNthWorkspace)
 import XMonad.Prompt.Window (WindowPrompt (..), allWindows, windowMultiPrompt, wsWindows)
 import XMonad.StackSet (greedyView, shift, tag, workspace, current, focusMaster, sink, swapUp, swapDown, swapMaster)
 import XMonad.Util.EZConfig (mkKeymap, mkNamedKeymap)
-import qualified XMonad.Util.ExtensibleState as XState (put, get)
--- import XMonad.Util.ExtensibleState (put, get)
 import XMonad.Util.NamedScratchpad (namedScratchpadAction)
-import qualified XMonad.Actions.Search as S
+import XMonad.Actions.Search (promptSearch, selectSearch)
 import XMonad.Util.NamedActions (addName, subtitle, showKm, submapName)
 import XMonad.Util.Run (hPutStr, spawnPipe, safeSpawn, unsafeSpawn)
 import System.IO (hClose)
@@ -46,6 +33,10 @@ import Control.Monad (liftM2, join)
 import XMonad.Actions.CycleSelectedLayouts (cycleThroughLayouts)
 import XMonad.Util.XSelection (getSelection)
 import XMonad.Layout.BoringWindows (focusDown, focusUp)
+import qualified XMonad.Util.ExtensibleState as XState (put, get)
+-- import XMonad.Util.ExtensibleState (put, get)
+import XMonad.Layout.WindowArranger -- (DecreaseDown(..), DecreaseUp(..))-- for DecreaseRight, IncreaseUp, DecreaseRight
+import XMonad.Actions.Navigation2D -- (windowGo)
 
 import Local.Prompts
 import Local.Workspaces
@@ -140,8 +131,8 @@ myRemoveKeys = [
       -- Appending search engine prompts to keybindings list.
 searchPromptKeybindings :: [(String, X ())]
 searchPromptKeybindings =
-    [("M-s " ++ k, S.promptSearch myXPConfig' f) | (k,f) <- searchList ]
-    ++ [("M-S-s " ++ k, S.selectSearch f) | (k,f) <- searchList ]
+    [("M-s " ++ k, promptSearch myXPConfig' f) | (k,f) <- searchList ]
+    ++ [("M-S-s " ++ k, selectSearch f) | (k,f) <- searchList ]
 
 -- keybinds :: XConfig Layout -> [((KeyMask, KeySym), NamedAction)]
 keybinds conf =
