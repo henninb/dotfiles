@@ -1,15 +1,15 @@
 module Local.DzenLogHook (dzenLogHook) where
 
 import XMonad
-import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.DynamicLog (ppLayout, ppTitle, ppSep, ppWsSep, ppHidden, ppHiddenNoWindows, ppExtras, ppOrder, ppUrgent, ppVisible, ppCurrent, ppOutput, wrap, shorten)
 import Data.Char (isDigit)
 import Control.Monad (join)
--- import Data.List (sortBy)
-import XMonad.Util.Run
+import XMonad.Util.Run (hPutStrLn)
 import Data.Function (on)
-import XMonad.Util.Dzen
-import XMonad.Util.NamedWindows
-import qualified XMonad.StackSet as W
+-- import XMonad.Util.Dzen
+-- import XMonad.Util.NamedWindows
+-- import qualified XMonad.StackSet as W
+import XMonad.StackSet (stack, workspace, current, integrate')
 import qualified Data.Text as T
 
 import Data.List
@@ -28,7 +28,7 @@ dzenOutput barOutputString =
 
 --TODO: wrap not working
 currentWindowCount :: [X (Maybe String)]
-currentWindowCount = [gets $ Just . wrap "" "" . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset]
+currentWindowCount = [gets $ Just . wrap "" "" . show . length . integrate' . stack . workspace . current . windowset]
 
 -- hiddenDetails :: [X (Maybe String)]
 -- hiddenDetails = [withWindowSet (fmap safeUnpack . extraFormatting)] -- init takes out the last space
