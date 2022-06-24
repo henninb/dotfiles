@@ -1,7 +1,7 @@
 module Local.PolybarLogHook (polybarLogHook, eventLogHookForPolybar) where
 
 import XMonad hiding (workspaces)
-import XMonad.Hooks.DynamicLog (ppLayout, ppTitle, ppSep, ppWsSep, ppHidden, ppHiddenNoWindows, ppExtras, ppOrder, ppUrgent, ppVisible, ppCurrent, ppOutput, wrap, shorten, pad)
+import XMonad.Hooks.DynamicLog (PP(..), ppLayout, ppTitle, ppSep, ppWsSep, ppHidden, ppHiddenNoWindows, ppExtras, ppOrder, ppUrgent, ppVisible, ppCurrent, ppOutput, wrap, shorten, pad)
 import Data.Char (isDigit)
 import Control.Monad (join)
 import Data.List (sortBy)
@@ -19,9 +19,11 @@ myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
   where
     sstr = shorten len str
 
+polybarOutput :: MonadIO m => [Char] -> m ()
 polybarOutput barOutputString =
   io $ appendFile "/tmp/.xmonad-info" (barOutputString ++ "\n")
 
+eventLogHookForPolybar :: X ()
 eventLogHookForPolybar = do
     winset <- gets windowset
     title <- maybe (return "") (fmap show . getName) . peek $ winset
@@ -46,6 +48,7 @@ currentWindowCount = gets $ Just . show . length . integrate' . stack . workspac
 
 -- words   :: String -> [String]
 -- unwords :: [String] -> String
+polybarLogHook :: PP
 polybarLogHook = def
     {
       ppOutput = polybarOutput

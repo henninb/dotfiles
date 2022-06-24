@@ -92,7 +92,7 @@ recordXMessage message = do
 repeatLastXMessage :: X ()
 repeatLastXMessage = getLastMessage =<< XState.get
 
-unsafeWithSelection :: MonadIO m => [Char] -> m ()
+unsafeWithSelection :: MonadIO m => String -> m ()
 unsafeWithSelection app = join $ io $ fmap (unsafeSpawn . (\ x -> app ++ " " ++ x)) getSelection
 
 dmenuArgs :: String -> [String]
@@ -267,7 +267,7 @@ keybinds conf =
 notifyWSHint :: String -> X()
 notifyWSHint index = spawn $ "notify-send -t 500 \"workspace: " ++ index ++ "\""
 
-workspaceHint :: ([Char] -> WindowSet -> WindowSet) -> [Char] -> X ()
+workspaceHint :: (String -> WindowSet -> WindowSet) -> String -> X ()
 workspaceHint f i = do
   windows $ f i
   notifyWSHint i

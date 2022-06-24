@@ -1,11 +1,12 @@
+{-# LANGUAGE PatternSynonyms #-}
+
 module Local.Prompts (searchList, tmuxPrompt, myXPConfig', myXPConfigBottom) where
 
 import XMonad
--- import XMonad.Prompt (XPConfig(..), XP(..), fgColor, position, height, autoComplete, maxComplRows, moveCursor, startOfLine, moveHistory, quit, endOfLine, deleteString, setSuccess, killWord, setDone, mkComplFunFromList', killBefore, killAfter, moveWord)
-import XMonad.Prompt
+import XMonad.Prompt (XPConfig(..), XP(..), fgColor, position, height, autoComplete, maxComplRows, moveCursor, startOfLine, moveHistory, quit, endOfLine, deleteString, setSuccess, killWord, setDone, mkComplFunFromList', killBefore, killAfter, moveWord, pasteString, pattern Next, pattern Prev, pattern Top, pattern Bottom)
+-- import XMonad.Prompt
 import XMonad.Prompt.FuzzyMatch (fuzzyMatch)
 import Control.Arrow (first)
--- import qualified Data.Map as M
 import Data.Map (Map(..), fromList)
 import XMonad.StackSet (focusUp', focusDown')
 import XMonad.Actions.Search (SearchEngine(..), stackage, duckduckgo, hoogle, vocabulary, amazon, youtube, wikipedia, wayback, searchEngine, thesaurus, images, google)

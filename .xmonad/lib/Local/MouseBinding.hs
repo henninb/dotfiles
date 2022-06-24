@@ -1,9 +1,7 @@
 module Local.MouseBinding (myMouseBindings) where
 
 import XMonad
--- import qualified Data.Map as M
 import Data.Map (Map(..), fromList)
--- import qualified XMonad.StackSet as W
 import XMonad.StackSet (shiftMaster)
 
 myMouseBindings :: XConfig l -> Map (KeyMask, Button) (Window -> X ())

@@ -1,18 +1,13 @@
 module Local.DzenLogHook (dzenLogHook) where
 
 import XMonad
-import XMonad.Hooks.DynamicLog (ppLayout, ppTitle, ppSep, ppWsSep, ppHidden, ppHiddenNoWindows, ppExtras, ppOrder, ppUrgent, ppVisible, ppCurrent, ppOutput, wrap, shorten)
+import XMonad.Hooks.DynamicLog (PP(..), ppLayout, ppTitle, ppSep, ppWsSep, ppHidden, ppHiddenNoWindows, ppExtras, ppOrder, ppUrgent, ppVisible, ppCurrent, ppOutput, wrap, shorten)
 import Data.Char (isDigit)
 import Control.Monad (join)
 import XMonad.Util.Run (hPutStrLn)
 import Data.Function (on)
--- import XMonad.Util.Dzen
--- import XMonad.Util.NamedWindows
--- import qualified XMonad.StackSet as W
 import XMonad.StackSet (stack, workspace, current, integrate')
-import qualified Data.Text as T
-
-import Data.List
+import GHC.IO.Handle.Types
 
 import Local.Colors
 
@@ -23,6 +18,7 @@ import Local.Colors
 myPurple :: String
 myPurple = "#663399"
 
+dzenOutput :: MonadIO m => String -> m ()
 dzenOutput barOutputString =
     io $ appendFile "/tmp/.xmonad-info" (barOutputString ++ "\n")
 
@@ -39,6 +35,7 @@ currentWindowCount = [gets $ Just . wrap "" "" . show . length . integrate' . st
 --         front = T.pack "<fc=lightgray>"
 --         back = T.pack "</fc>"
 
+dzenLogHook :: Handle -> PP
 dzenLogHook h = def
   {
       ppOutput  =   hPutStrLn h
