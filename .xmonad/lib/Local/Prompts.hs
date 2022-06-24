@@ -1,14 +1,16 @@
 module Local.Prompts (searchList, tmuxPrompt, myXPConfig', myXPConfigBottom) where
 
 import XMonad
+-- import XMonad.Prompt (XPConfig(..), XP(..), fgColor, position, height, autoComplete, maxComplRows, moveCursor, startOfLine, moveHistory, quit, endOfLine, deleteString, setSuccess, killWord, setDone, mkComplFunFromList', killBefore, killAfter, moveWord)
 import XMonad.Prompt
-import XMonad.Prompt.FuzzyMatch
+import XMonad.Prompt.FuzzyMatch (fuzzyMatch)
 import Control.Arrow (first)
-import qualified Data.Map as M
-import qualified XMonad.StackSet as W
-import qualified XMonad.Actions.Search as S
-import XMonad.Util.Run
-import XMonad.Prompt.Input
+-- import qualified Data.Map as M
+import Data.Map (Map(..), fromList)
+import XMonad.StackSet (focusUp', focusDown')
+import XMonad.Actions.Search (SearchEngine(..), stackage, duckduckgo, hoogle, vocabulary, amazon, youtube, wikipedia, wayback, searchEngine, thesaurus, images, google)
+import XMonad.Util.Run (runProcessWithInput)
+import XMonad.Prompt.Input (inputPromptWithCompl, (?+))
 
 superKeyMask :: KeyMask
 superKeyMask = mod4Mask
@@ -16,34 +18,34 @@ superKeyMask = mod4Mask
 myFont :: String
 myFont = "xft:monofur for Powerline:bold:size=9:antialias=true:hinting=true"
 
-archwiki, ebay, news, reddit, urban :: S.SearchEngine
-archwiki = S.searchEngine "archwiki" "https://wiki.archlinux.org/index.php?search="
-ebay     = S.searchEngine "ebay" "https://www.ebay.com/sch/i.html?_nkw="
-news     = S.searchEngine "news" "https://news.google.com/search?q="
-reddit   = S.searchEngine "reddit" "https://www.reddit.com/search/?q="
-urban    = S.searchEngine "urban" "https://www.urbandictionary.com/define.php?term="
+archwiki, ebay, news, reddit, urban :: SearchEngine
+archwiki = searchEngine "archwiki" "https://wiki.archlinux.org/index.php?search="
+ebay     = searchEngine "ebay" "https://www.ebay.com/sch/i.html?_nkw="
+news     = searchEngine "news" "https://news.google.com/search?q="
+reddit   = searchEngine "reddit" "https://www.reddit.com/search/?q="
+urban    = searchEngine "urban" "https://www.urbandictionary.com/define.php?term="
 
-searchList :: [(String, S.SearchEngine)]
+searchList :: [(String, SearchEngine)]
 searchList = [ ("a", archwiki)
-    , ("d", S.duckduckgo)
+    , ("d", duckduckgo)
     , ("e", ebay)
-    , ("g", S.google)
-    , ("h", S.hoogle)
-    , ("i", S.images)
+    , ("g", google)
+    , ("h", hoogle)
+    , ("i", images)
     , ("n", news)
     , ("r", reddit)
-    , ("s", S.stackage)
-    , ("t", S.thesaurus)
-    , ("v", S.vocabulary)
-    , ("b", S.wayback)
+    , ("s", stackage)
+    , ("t", thesaurus)
+    , ("v", vocabulary)
+    , ("b", wayback)
     , ("u", urban)
-    , ("w", S.wikipedia)
-    , ("y", S.youtube)
-    , ("z", S.amazon)
+    , ("w", wikipedia)
+    , ("y", youtube)
+    , ("z", amazon)
   ]
 
-myXPKeymap :: M.Map (KeyMask,KeySym) (XP ())
-myXPKeymap = M.fromList $
+myXPKeymap :: Map (KeyMask,KeySym) (XP ())
+myXPKeymap = fromList $
      map (first $ (,) controlMask)   -- control + <key>
      [ (xK_z, killBefore)            -- kill line backwards
      , (xK_k, killAfter)             -- kill line forwards
@@ -63,8 +65,8 @@ myXPKeymap = M.fromList $
      , (xK_f, moveWord Next)         -- move a word forward
      , (xK_b, moveWord Prev)         -- move a word backward
      , (xK_d, killWord Next)         -- kill the next word
-     , (xK_n, moveHistory W.focusUp')   -- move up thru history
-     , (xK_p, moveHistory W.focusDown') -- move down thru history
+     , (xK_n, moveHistory focusUp')   -- move up thru history
+     , (xK_p, moveHistory focusDown') -- move down thru history
      ]
      ++
      map (first $ (,) 0) -- <key>
@@ -76,8 +78,8 @@ myXPKeymap = M.fromList $
      , (xK_Right, moveCursor Next)
      , (xK_Home, startOfLine)
      , (xK_End, endOfLine)
-     , (xK_Down, moveHistory W.focusUp')
-     , (xK_Up, moveHistory W.focusDown')
+     , (xK_Down, moveHistory focusUp')
+     , (xK_Up, moveHistory focusDown')
      , (xK_Escape, quit)
      ]
 
