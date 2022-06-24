@@ -1,13 +1,13 @@
 module Local.PolybarLogHook (polybarLogHook, eventLogHookForPolybar) where
 
-import XMonad
-import XMonad.Hooks.DynamicLog
+import XMonad hiding (workspaces)
+import XMonad.Hooks.DynamicLog (ppLayout, ppTitle, ppSep, ppWsSep, ppHidden, ppHiddenNoWindows, ppExtras, ppOrder, ppUrgent, ppVisible, ppCurrent, ppOutput, wrap, shorten, pad)
 import Data.Char (isDigit)
 import Control.Monad (join)
 import Data.List (sortBy)
 import Data.Function (on)
 import XMonad.Util.NamedWindows (getName)
-import qualified XMonad.StackSet as W
+import XMonad.StackSet (workspaces, stack, integrate', current, currentTag, peek, workspace, tag)
 
 import Local.Colors
 
@@ -24,9 +24,9 @@ polybarOutput barOutputString =
 
 eventLogHookForPolybar = do
     winset <- gets windowset
-    title <- maybe (return "") (fmap show . getName) . W.peek $ winset
-    let currWs = W.currentTag winset
-    let wss = map W.tag $ W.workspaces winset
+    title <- maybe (return "") (fmap show . getName) . peek $ winset
+    let currWs = currentTag winset
+    let wss = map tag $ workspaces winset
 
     -- io $ appendFile "/tmp/.xmonad-title-log" (title ++ "\n")
     io $ appendFile "/tmp/.xmonad-info" (wsStr currWs wss ++ "\n")
@@ -42,7 +42,7 @@ eventLogHookForPolybar = do
       wrapOnClickCmd cmd = wrap ("%{A1:" ++ cmd ++ ":}") "%{A}"
 
 currentWindowCount :: X (Maybe String)
-currentWindowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
+currentWindowCount = gets $ Just . show . length . integrate' . stack . workspace . current . windowset
 
 -- words   :: String -> [String]
 -- unwords :: [String] -> String
