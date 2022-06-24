@@ -7,6 +7,8 @@
 --     _|      _|  _|      _|    _|_|    _|    _|    _|_|_|    _|_|_|    --
 --                                                                       --
 ---------------------------------------------------------------------------
+{-# LANGUAGE PatternSynonyms #-}
+
 import XMonad
 import XMonad.Hooks.DynamicLog (shorten, dynamicLogWithPP)
 import XMonad.Hooks.EwmhDesktops (ewmh, fullscreenEventHook)
@@ -14,13 +16,12 @@ import XMonad.Hooks.ManageDocks (docksEventHook, docksStartupHook, manageDocks, 
 import XMonad.Hooks.Minimize (minimizeEventHook)
 import XMonad.Hooks.Place (smart, placeHook)
 import XMonad.Hooks.SetWMName (setWMName)
-import XMonad.Hooks.UrgencyHook
+import XMonad.Hooks.UrgencyHook (UrgencyHook(..), withUrgencyHook)
 import XMonad.Util.EZConfig (additionalKeysP, additionalKeys, removeKeys)
 import XMonad.Util.SpawnOnce (spawnOnce)
 import XMonad.Actions.SpawnOn (spawnOn, manageSpawn)
-import XMonad.Layout.WindowArranger --DecreaseRight, IncreaseUp
+import XMonad.Layout.WindowArranger (pattern DecreaseRight, pattern IncreaseUp, windowArrange)
 import XMonad.Util.Run(spawnPipe, safeSpawn)
-import Prelude
 import System.Environment (setEnv)
 import System.Info (os)
 import XMonad.Layout.IndependentScreens (countScreens)
@@ -35,8 +36,8 @@ import Local.Workspaces
 import Local.MouseBinding
 import Local.ManagedHook
 import Local.Layouts
-import Local.PolybarLogHook
-import Local.DzenLogHook
+import Local.PolybarLogHook (eventLogHookForPolybar)
+import Local.DzenLogHook (dzenLogHook)
 
 myFont :: String
 myFont  = "terminus"
