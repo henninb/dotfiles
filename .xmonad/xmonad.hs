@@ -8,27 +8,28 @@
 --                                                                       --
 ---------------------------------------------------------------------------
 import XMonad
-
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.Minimize
-import XMonad.Hooks.Place
-import XMonad.Hooks.SetWMName
+import XMonad.Hooks.DynamicLog (shorten, dynamicLogWithPP)
+import XMonad.Hooks.EwmhDesktops (ewmh, fullscreenEventHook)
+import XMonad.Hooks.ManageDocks (docksEventHook, docksStartupHook, manageDocks, docks)
+import XMonad.Hooks.Minimize (minimizeEventHook)
+import XMonad.Hooks.Place (smart, placeHook)
+import XMonad.Hooks.SetWMName (setWMName)
 import XMonad.Hooks.UrgencyHook
-import XMonad.Util.EZConfig
-import XMonad.Util.SpawnOnce
-import XMonad.Actions.SpawnOn
+import XMonad.Util.EZConfig (additionalKeysP, additionalKeys, removeKeys)
+import XMonad.Util.SpawnOnce (spawnOnce)
+import XMonad.Actions.SpawnOn (spawnOn, manageSpawn)
 import XMonad.Layout.WindowArranger --DecreaseRight, IncreaseUp
 import XMonad.Util.Run(spawnPipe, safeSpawn)
--- import Control.Monad (forM_)
 import Prelude
 import System.Environment (setEnv)
 import System.Info (os)
-import qualified XMonad.Layout.IndependentScreens as LIS
-import XMonad.Actions.DynamicProjects
+import XMonad.Layout.IndependentScreens (countScreens)
+import XMonad.Actions.DynamicProjects (dynamicProjects)
+import XMonad.Util.NamedActions (addDescrKeys')
+import XMonad.StackSet (findTag, view)
+import XMonad.Util.NamedWindows (getName)
 
-import Local.Colors
+import Local.Colors (myFocusBorderColor, myColor, myBorderColor)
 import Local.KeyBindings
 import Local.Workspaces
 import Local.MouseBinding
@@ -36,15 +37,12 @@ import Local.ManagedHook
 import Local.Layouts
 import Local.PolybarLogHook
 import Local.DzenLogHook
-import XMonad.Util.NamedActions
-import qualified XMonad.StackSet as W
-import XMonad.Actions.UpdatePointer
-import XMonad.Util.NamedWindows
 
+myFont :: String
 myFont  = "terminus"
 
 -- TODO fix the screen width
-togglevga = do { screencount <- LIS.countScreens
+togglevga = do { screencount <- countScreens
     ; if screencount > 1
        then do
       let screenWidth = "2560"
@@ -114,8 +112,8 @@ data LibNotifyUrgencyHook = LibNotifyUrgencyHook deriving (Read, Show)
 instance UrgencyHook LibNotifyUrgencyHook where
     urgencyHook LibNotifyUrgencyHook w = do
         name     <- getName w
-        -- Just idx <- fmap (W.findTag w) $ gets windowset
-        Just idx <- W.findTag w <$> gets windowset
+        -- Just idx <- fmap (findTag w) $ gets windowset
+        Just idx <- findTag w <$> gets windowset
 
         safeSpawn "notify-send" [show name, "workspace " ++ idx]
 
@@ -168,7 +166,7 @@ myStartupHook = do
     spawnOnce "xscreensaver -no-splash"
     spawnOnce "feh --bg-scale $HOME/.local/wallpaper/minnesota-vikings-dark.png"
     -- spawnOnce "killall redshift; sleep 4 ; redshift -l 48.024395:11.598893 &"
-    windows $ W.view "1"
+    windows $ view "1"
 
 myConfig = def
   { terminal = myTerminal

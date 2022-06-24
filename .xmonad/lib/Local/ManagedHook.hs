@@ -1,12 +1,12 @@
 module Local.ManagedHook(myManageHook, myManageHook') where
 
 import XMonad
-import XMonad.Hooks.ManageHelpers
-import qualified XMonad.StackSet as W
+import XMonad.Hooks.ManageHelpers (composeOne, isFullscreen, doFullFloat, (-?>))
+import XMonad.StackSet (greedyView, shift)
 import Control.Monad (liftM2)
 import XMonad.Util.NamedScratchpad (namedScratchpadManageHook)
 
-import Local.Workspaces
+import Local.Workspaces (myWorkspaces, scratchPads)
 
 myManageHook = composeAll
     [
@@ -50,7 +50,7 @@ myManageHook = composeAll
     ]  <+> namedScratchpadManageHook scratchPads
   where
     role = stringProperty "WM_WINDOW_ROLE"
-    viewShift = doF . liftM2 (.) W.greedyView W.shift
+    viewShift = doF . liftM2 (.) greedyView shift
     -- myShift = doF . liftM2 (.) W.greedyView
 
 myManageHook' = composeOne [ isFullscreen -?> doFullFloat ]

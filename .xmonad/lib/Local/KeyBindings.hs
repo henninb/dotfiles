@@ -38,8 +38,8 @@ import qualified XMonad.Util.ExtensibleState as XState (put, get)
 import XMonad.Layout.WindowArranger -- (DecreaseDown(..), DecreaseUp(..))-- for DecreaseRight, IncreaseUp, DecreaseRight
 import XMonad.Actions.Navigation2D -- (windowGo)
 
-import Local.Prompts
-import Local.Workspaces
+import Local.Prompts (searchList, myXPConfig')
+import Local.Workspaces (scratchPads, viewPrevWS)
 
 superKeyMask :: KeyMask
 superKeyMask = mod4Mask
