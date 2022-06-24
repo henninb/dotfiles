@@ -1,8 +1,10 @@
+{-# LANGUAGE PatternSynonyms #-}
+
 module Local.Layouts (myLayouts) where
 
 -- import XMonad
 import XMonad hiding ( (|||) )
-import XMonad.Layout.Renamed -- (renamed)
+import XMonad.Layout.Renamed (renamed, pattern Replace, pattern CutWordsLeft)
 import XMonad.Hooks.ManageDocks (avoidStruts)
 import XMonad.Layout.PerWorkspace (onWorkspace, onWorkspaces)
 import XMonad.Layout.LimitWindows (limitWindows)
