@@ -1,3 +1,4 @@
+{-# LANGUAGE PatternSynonyms #-}
 -- module XMonad.Local.KeyBindings (keys, rawKeys) where
 module Local.KeyBindings (myRemoveKeys, superKeyMask, showKeyBindings, keybinds, searchPromptKeybindings) where
 
@@ -35,8 +36,8 @@ import XMonad.Util.XSelection (getSelection)
 import XMonad.Layout.BoringWindows (focusDown, focusUp)
 import qualified XMonad.Util.ExtensibleState as XState (put, get)
 -- import XMonad.Util.ExtensibleState (put, get)
-import XMonad.Layout.WindowArranger -- (DecreaseDown(..), DecreaseUp(..))-- for DecreaseRight, IncreaseUp, DecreaseRight
-import XMonad.Actions.Navigation2D -- (windowGo)
+import XMonad.Layout.WindowArranger (pattern DecreaseDown, pattern DecreaseUp, pattern MoveRight, pattern MoveLeft, pattern MoveUp, pattern MoveDown, pattern IncreaseRight, pattern IncreaseLeft, pattern IncreaseUp, pattern IncreaseDown, pattern DecreaseRight, pattern DecreaseLeft)
+import XMonad.Actions.Navigation2D (pattern R, pattern L, windowGo)
 
 import Local.Prompts (searchList, myXPConfig')
 import Local.Workspaces (scratchPads, viewPrevWS)
