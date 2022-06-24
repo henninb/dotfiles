@@ -2,10 +2,9 @@ module Local.Workspaces (myWorkspaces, scratchPads, viewPrevWS, projects, termin
 
 import XMonad
 import Control.Monad (unless)
-import XMonad.Util.NamedScratchpad
-import XMonad.Actions.DynamicProjects
-import qualified XMonad.StackSet as W
-import qualified XMonad.StackSet as StackSet
+import XMonad.Util.NamedScratchpad ( NamedScratchpad(..), customFloating)
+import XMonad.Actions.DynamicProjects ( Project(..), projectStartHook, projectName, projectDirectory)
+import XMonad.StackSet ( RationalRect(..), tag, view, hidden )
 
 ws1 = "1"
 ws2 = "2"
@@ -64,29 +63,29 @@ scratchPads = [   NS "terminal-nsp" spawnTerm findTerm manageTerm
                 , NS "discord-nsp" spawnDiscord findDiscord manageDiscord
                 , NS "tmux-nsp" spawnTmux findTmux manageTmux
                 , NS "calc-nsp" spawnCalc findCalc manageCalc
-                , NS "keepass-nsp" "keepassxc" (className =? "KeePassXC" <||> className =? "keepassxc") (customFloating $ W.RationalRect 0.50 0.05 0.4 0.87)
-                , NS "vlc-nsp" "vlc" (className =? "vlc") (customFloating $ W.RationalRect 0.50 0.05 0.4 0.87)
-                , NS "spotify-nsp" "spotify" (className =? "Spotify") (customFloating $ W.RationalRect 0.50 0.05 0.4 0.87)
+                , NS "keepass-nsp" "keepassxc" (className =? "KeePassXC" <||> className =? "keepassxc") (customFloating $ RationalRect 0.50 0.05 0.4 0.87)
+                , NS "vlc-nsp" "vlc" (className =? "vlc") (customFloating $ RationalRect 0.50 0.05 0.4 0.87)
+                , NS "spotify-nsp" "spotify" (className =? "Spotify") (customFloating $ RationalRect 0.50 0.05 0.4 0.87)
               ]
     where
-    full = customFloating $ W.RationalRect 0.05 0.05 0.9 0.9
-    top = customFloating $ W.RationalRect 0.0 0.0 1.0 0.5
+    full = customFloating $ RationalRect 0.05 0.05 0.9 0.9
+    top = customFloating $ RationalRect 0.0 0.0 1.0 0.5
     h = 0.9
     w = 0.9
     t = 0.95 - h
     l = 0.95 - w
     spawnTerm = "st" ++  " -n suckless-terminal"
     findTerm = resource =? "suckless-terminal"
-    manageTerm = customFloating $ W.RationalRect l t w h
+    manageTerm = customFloating $ RationalRect l t w h
     spawnTmux = "st -t tmux-nsp -e tmux new-session -A -s scratch"
     findTmux = title =? "tmux-nsp"
-    manageTmux = customFloating $ W.RationalRect l t w h
+    manageTmux = customFloating $ RationalRect l t w h
     spawnDiscord = "discord-flatpak"
     findDiscord = resource =? "discord"
-    manageDiscord = customFloating $ W.RationalRect l t w h
+    manageDiscord = customFloating $ RationalRect l t w h
     spawnCalc  = "qalculate-gtk"
     findCalc   = className =? "Qalculate-gtk"
-    manageCalc = customFloating $ W.RationalRect l t w h
+    manageCalc = customFloating $ RationalRect l t w h
                where
                  h = 0.5
                  w = 0.4
@@ -97,8 +96,8 @@ scratchPads = [   NS "terminal-nsp" spawnTerm findTerm manageTerm
 viewPrevWS :: X ()
 viewPrevWS = do
   ws <- gets windowset
-  let hs = filter (\w -> StackSet.tag w /= "NSP") $ StackSet.hidden ws
-  unless (null hs) (windows . StackSet.view . StackSet.tag $ head hs)
+  let hs = filter (\w -> tag w /= "NSP") $ hidden ws
+  unless (null hs) (windows . view . tag $ head hs)
 
 -- clickableWorkspaces  = clickable
 --   ["^i(me.xbm) me"
