@@ -34,7 +34,8 @@ mrturvy()
       rm -rf "audio/$fname.mp3"
       mv "audio/new-${fname}.mp3" "audio/$fname.mp3"
       touch "audio/$fname.mp3"
-      # id3v2 -1 -t "${fname}" -a "${channelName}" "audio/${fname}.mp3"
+      # need to fix
+      eyeD3 --preserve-file-times --title "${fname}" --artist "${channelName}" "audio/${fname}.mp3"
     fi
   fi
 }
