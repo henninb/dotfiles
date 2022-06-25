@@ -8,11 +8,13 @@ generic()
 {
   fname=$1
   videoid=$2
-  shift; shift;
+  channelName=$3
+  shift; shift; shift;
 
   if [ ! -f "audio/$fname.mp3" ]; then
     youtube-dl -x --audio-format mp3 "https://www.youtube.com/watch?v=$videoid" --output "audio/$fname.mp3"
     touch "audio/$fname.mp3"
+    # id3v2 -1 -t "${fname}" -a "${channelName}" "audio/${fname}.mp3"
   fi
 }
 
@@ -21,7 +23,8 @@ mrturvy()
 {
   fname=$1
   videoid=$2
-  shift; shift;
+  channelName=$3
+  shift; shift; shift;
 
   if [ ! -f "audio/$fname.mp3" ]; then
     youtube-dl -x --audio-format mp3 "https://www.youtube.com/watch?v=$videoid" --output "audio/$fname.mp3"
@@ -31,6 +34,7 @@ mrturvy()
       rm -rf "audio/$fname.mp3"
       mv "audio/new-${fname}.mp3" "audio/$fname.mp3"
       touch "audio/$fname.mp3"
+      # id3v2 -1 -t "${fname}" -a "${channelName}" "audio/${fname}.mp3"
     fi
   fi
 }
@@ -46,13 +50,13 @@ for channel in $(cat channels.txt); do
   # echo "https://www.googleapis.com/youtube/v3/channels?id=${channelId}&key=${apikey}&part=contentDetails"
 
   if [ "${channelName}" = "techhut" ]; then
-    count=10
+    count=20
   elif [ "${channelName}" = "mrturvy" ]; then
-    count=15
+    count=20
   elif [ "${channelName}" = "coffeehouse" ]; then
     count=15
   else
-    count=7
+    count=8
   fi
 
   payload=$(curl -s "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${upload}&key=${apikey}&part=snippet&maxResults=${count}&order=date")
@@ -71,11 +75,11 @@ for channel in $(cat channels.txt); do
     videoid=$(echo "$row" | awk -F, '{print $3}')
 
     if [ "${channelName}" = "mrturvy" ]; then
-      mrturvy "${channelName}-${fname}" "${videoid}"
-      id3v2 -t "${fname}" -a "${channelName}" "${channelName}-${fname}.mp3"
+      mrturvy "${channelName}-${fname}" "${videoid}" "${channelName}"
+      # id3v2 -t "${fname}" -a "${channelName}" "audio/${fname}.mp3"
     else
-      generic "${channelName}-${fname}" "${videoid}"
-      id3v2 -t "${fname}" -a "${channelName}" "${channelName}-${fname}.mp3"
+      generic "${channelName}-${fname}" "${videoid}" "${channelName}"
+      # id3v2 -t "${fname}" -a "${channelName}" "audio/${fname}.mp3"
     fi
 
   done
