@@ -54,7 +54,7 @@ for channel in $(cat channels.txt); do
   elif [ "${channelName}" = "mrturvy" ]; then
     count=20
   elif [ "${channelName}" = "rhysider" ]; then
-    count=20
+    count=15
   elif [ "${channelName}" = "coffeehouse" ]; then
     count=15
   else
@@ -78,13 +78,18 @@ for channel in $(cat channels.txt); do
 
     if [ "${channelName}" = "mrturvy" ]; then
       mrturvy "${channelName}-${fname}" "${videoid}" "${channelName}"
+      artist=$(mp3info -p "%a" "audio/${fname}.mp3")
+      #ffprobe rhysider-10-biggest-exit-scams-of-all-time.mp3 2>&1 | grep -A90 'Metadata:'
       # id3v2 -t "${fname}" -a "${channelName}" "audio/${fname}.mp3"
+      eyeD3 --preserve-file-times --title "${fname}" --artist "${channelName}" "audio/${fname}.mp3"
     else
       generic "${channelName}-${fname}" "${videoid}" "${channelName}"
       # id3v2 -t "${fname}" -a "${channelName}" "audio/${fname}.mp3"
+      eyeD3 --preserve-file-times --title "${fname}" --artist "${channelName}" "audio/${fname}.mp3"
     fi
 
   done
 done
+rm -rf "*.csv"
 
 exit 0
