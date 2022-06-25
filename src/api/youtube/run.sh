@@ -53,6 +53,8 @@ for channel in $(cat channels.txt); do
     count=20
   elif [ "${channelName}" = "mrturvy" ]; then
     count=20
+  elif [ "${channelName}" = "rhysider" ]; then
+    count=20
   elif [ "${channelName}" = "coffeehouse" ]; then
     count=15
   else
