@@ -12,13 +12,37 @@ generic()
   shift; shift; shift;
 
   if [ ! -f "audio/$fname.mp3" ]; then
-    youtube-dl -x --audio-format mp3 "https://www.youtube.com/watch?v=$videoid" --output "audio/$fname.mp3"
-    touch "audio/$fname.mp3"
-    # id3v2 -1 -t "${fname}" -a "${channelName}" "audio/${fname}.mp3"
-    ffprobe -i "audio/${fname}.mp3" 2> "audio/${fname}.txt"
+    echo youtube-dl -q -x --audio-format mp3 "https://www.youtube.com/watch?v=$videoid" --output "audio/$fname.mp3"
+    youtube-dl -q -x --audio-format mp3 "https://www.youtube.com/watch?v=$videoid" --output "audio/$fname.mp3"
+    if [ ! -s "audio/$fname.mp3" ]; then
+      rm -rf "audio/$fname.mp3"
+    else
+      if ! ffmpeg -hide_banner -i "audio/$fname.mp3" "audio/new-${fname}.mp3"; then
+        echo $?
+        echo ffmpeg failed.
+      fi
+      file "audio/$fname.mp3" > "audio/$fname-type.txt"
+      # touch "audio/$fname.mp3"
+      ffprobe -hide_banner -i "audio/${fname}.mp3" 2> "audio/${fname}.txt"
+      ffprobe -hide_banner -i "audio/${fname}" 2> >(grep  Stream 1>&2)
+      status=$(ffprobe -hide_banner -i "audio/${fname}" 2> >(grep  missing 1>&2))
+      # echo eyeD3 --preserve-file-times --title "${fname}" --artist "${channelName}" "audio/new-${fname}.mp3"
+      # if ! eyeD3 --preserve-file-times --title "${fname}" --artist "${channelName}" "audio/new-${fname}.mp3"; then
+      #   echo $?
+      #   echo eyeD3 failed.
+      # fi
+      mv -v "audio/new-${fname}.mp3" "audio/${fname}.mp3"
+      echo id3v2 -t "${fname}" -a "${channelName}" "audio/${fname}.mp3"
+      echo id3v2 --list "audio/${fname}.mp3"
+      if id3v2 -t "${fname}" -a "${channelName}" "audio/${fname}.mp3"; then
+        echo id3v2 failed.
+      fi
+
+    fi
   fi
 }
 
+# ffmpeg -hide_banner -loglevel error
 
 mrturvy()
 {
@@ -44,11 +68,12 @@ mrturvy()
 
 mkdir -p audio
 
-for song in $(ls -1 audio/*.mp3); do
-  echo "$song"
-  ffprobe -i "$song" 2> >(grep  missing 1>&2)
-done
-exit 0
+# for song in $(ls -1 audio/*.mp3); do
+#   echo "$song"
+#   ffprobe -i "$song" 2> >(grep  missing 1>&2)
+#   # ffprobe -i "${song}" 2> "audio/${song}.txt"
+# done
+# exit 0
 
 for channel in $(cat channels.txt); do
   channelId=$(echo "$channel" | awk -F, '{print $1}')
@@ -58,17 +83,17 @@ for channel in $(cat channels.txt); do
   upload=$(curl -s "https://www.googleapis.com/youtube/v3/channels?id=${channelId}&key=${apikey}&part=contentDetails" | jq -r '.items[].contentDetails.relatedPlaylists.uploads')
   # echo "https://www.googleapis.com/youtube/v3/channels?id=${channelId}&key=${apikey}&part=contentDetails"
 
-  if [ "${channelName}" = "techhut" ]; then
-    count=20
-  elif [ "${channelName}" = "mrturvy" ]; then
-    count=20
-  elif [ "${channelName}" = "rhysider" ]; then
-    count=15
-  elif [ "${channelName}" = "coffeehouse" ]; then
-    count=15
-  else
-    count=8
-  fi
+  # if [ "${channelName}" = "techhut" ]; then
+  #   count=20
+  # elif [ "${channelName}" = "mrturvy" ]; then
+  #   count=20
+  # elif [ "${channelName}" = "rhysider" ]; then
+  #   count=15
+  # elif [ "${channelName}" = "coffeehouse" ]; then
+  #   count=15
+  # else
+  #   count=8
+  # fi
 
   payload=$(curl -s "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${upload}&key=${apikey}&part=snippet&maxResults=${count}&order=date")
   echo "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${upload}&key=${apikey}&part=snippet&maxResults=${count}&order=date"
@@ -90,11 +115,11 @@ for channel in $(cat channels.txt); do
       artist=$(mp3info -p "%a" "audio/${fname}.mp3")
       #ffprobe rhysider-10-biggest-exit-scams-of-all-time.mp3 2>&1 | grep -A90 'Metadata:'
       # id3v2 -t "${fname}" -a "${channelName}" "audio/${fname}.mp3"
-      eyeD3 --preserve-file-times --title "${fname}" --artist "${channelName}" "audio/${fname}.mp3"
+      # eyeD3 --preserve-file-times --title "${fname}" --artist "${channelName}" "audio/${fname}.mp3"
     else
       generic "${channelName}-${fname}" "${videoid}" "${channelName}"
       # id3v2 -t "${fname}" -a "${channelName}" "audio/${fname}.mp3"
-      eyeD3 --preserve-file-times --title "${fname}" --artist "${channelName}" "audio/${fname}.mp3"
+      # eyeD3 --preserve-file-times --title "${fname}" --artist "${channelName}" "audio/${fname}.mp3"
     fi
 
   done
