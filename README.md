@@ -154,6 +154,8 @@
 | security tool          | yubioath-desktop                                                                     |
 | phone file transfer    | kdeconnect                                                                           |
 | typing                 | ttyper                                                                               |
+| blocking               | hblock                                                                               |
+| internet speed         | speedtest-cli                                                                        |
 
 ## Language Servers
 - c - ccls
