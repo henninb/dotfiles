@@ -118,9 +118,6 @@ instance UrgencyHook LibNotifyUrgencyHook where
 
         safeSpawn "notify-send" [show name, "workspace " ++ idx]
 
--- mySpacing :: Int
--- mySpacing = 5
-
 myAddSpaces :: Int -> String -> String
 myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
   where
@@ -143,7 +140,7 @@ myStartupHook = do
     -- spawnOnce "sxhkd -c ~/.config/sxhkd/sxhkdrc-xmonad"
     -- spawn "clipmenud" --should I run copyq or clipmenu
     spawnOnce "copyq"
-    spawnOn "8" "slack-flatpak"
+    spawnOn "8" "slack -u"
     spawnOn "1" "alacritty"
     case os of
       "freebsd" -> return ()
@@ -158,12 +155,9 @@ myStartupHook = do
     spawnOnce "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
     -- spawnOnce "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 108 --transparent true --tint 0x000000 --height 18 --alpha 0"
     spawnOnce "trayer --edge bottom --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 120 --transparent true --tint 0x000000 --height 18 --alpha 0"
-    -- spawnOnce "conky -c $HOME/.xmonad/assets/system-overview"
-    -- spawnOnce "conky -c $HOME/.xmonad/assets/system-overview2"
     spawnOnce "conky -c $HOME/.config/conky/xmonad-system-overview"
     -- spawnOnce "mpDris2" -- required for mpd
     spawnOnce "volumeicon"
-    -- spawnOnce "kill -9 $(ps aux | grep -e \"volumeicon\" | awk ' { print $2 } ')"
     spawnOnce "xscreensaver -no-splash"
     spawnOnce "feh --bg-scale $HOME/.local/wallpaper/minnesota-vikings-dark.png"
     -- spawnOnce "killall redshift; sleep 4 ; redshift -l 48.024395:11.598893 &"
