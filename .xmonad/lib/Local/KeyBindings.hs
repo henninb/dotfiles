@@ -16,7 +16,7 @@ import XMonad.Hooks.ManageDocks (ToggleStruts (..))
 import XMonad.Hooks.UrgencyHook (focusUrgent)
 import XMonad.Layout.LayoutBuilder (IncLayoutN (..))
 import XMonad.Layout.Maximize (maximizeRestore)
-import XMonad.Actions.CycleWS (nextWS, prevWS, toggleWS, moveTo, shiftTo, pattern Next, pattern EmptyWS, pattern NonEmptyWS)
+import XMonad.Actions.CycleWS (nextWS, prevWS, toggleWS, moveTo, shiftTo, pattern Next, pattern EmptyWS, pattern NonEmptyWS )
 import XMonad.Layout.ZoomRow (zoomIn, zoomOut, zoomReset)
 import Graphics.X11.ExtraTypes (xF86XK_Paste)
 import XMonad.Util.Paste (sendKey)
@@ -38,6 +38,7 @@ import qualified XMonad.Util.ExtensibleState as XState (put, get)
 -- import XMonad.Util.ExtensibleState (put, get)
 import XMonad.Layout.WindowArranger (pattern DecreaseDown, pattern DecreaseUp, pattern MoveRight, pattern MoveLeft, pattern MoveUp, pattern MoveDown, pattern IncreaseRight, pattern IncreaseLeft, pattern IncreaseUp, pattern IncreaseDown, pattern DecreaseRight, pattern DecreaseLeft)
 import XMonad.Actions.Navigation2D (pattern R, pattern L, windowGo)
+import XMonad.Layout.SubLayouts (GroupMsg(..))
 
 import Local.Prompts (searchList, myXPConfig')
 import Local.Workspaces (scratchPads, viewPrevWS)
@@ -242,6 +243,9 @@ keybinds conf =
   , ("M-S-c", addName "Move window to next empty workspace" $ shiftTo Next EmptyWS)
   -- , ("M-p",   addName "Move to next workspace" $ moveTo Prev NonEmptyWS)
   -- , ("M-n",   addName "Move to previous workspace" $ moveTo Next NonEmptyWS)
+    , ("M-C-m", addName "Tab group all" $ withFocused (sendMessage . MergeAll))
+  , ("M-C-u", addName "Tab ungroup window" $ withFocused (sendMessage . UnMerge))
+  -- , ("M-C-/", addName "Tab ungroup all" $ withFocused (sendMessage . UnMergeAll))
    ]
    ++
    subKeys "Scratchpads/misc"
