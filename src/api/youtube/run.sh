@@ -65,17 +65,17 @@ for channel in $(cat channels.txt); do
   upload=$(curl -s "https://www.googleapis.com/youtube/v3/channels?id=${channelId}&key=${apikey}&part=contentDetails" | jq -r '.items[].contentDetails.relatedPlaylists.uploads')
   # echo "https://www.googleapis.com/youtube/v3/channels?id=${channelId}&key=${apikey}&part=contentDetails"
 
-  # if [ "${channelName}" = "techhut" ]; then
-  #   count=20
-  # elif [ "${channelName}" = "mrturvy" ]; then
-  #   count=20
-  # elif [ "${channelName}" = "rhysider" ]; then
-  #   count=15
-  # elif [ "${channelName}" = "coffeehouse" ]; then
-  #   count=15
-  # else
-  #   count=8
-  # fi
+  if [ "${channelName}" = "techhut" ]; then
+    count=20
+  elif [ "${channelName}" = "mrturvy" ]; then
+    count=20
+  elif [ "${channelName}" = "rhysider" ]; then
+    count=20
+  elif [ "${channelName}" = "coffeehouse" ]; then
+    count=20
+  else
+    count=10
+  fi
 
   payload=$(curl -s "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${upload}&key=${apikey}&part=snippet&maxResults=${count}&order=date")
   echo "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${upload}&key=${apikey}&part=snippet&maxResults=${count}&order=date"
