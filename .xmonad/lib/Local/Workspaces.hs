@@ -16,24 +16,6 @@ ws7 = "7"
 ws8 = "8"
 ws9 = "9"
 ws0 = "0"
--- data MyWorkspace = WebWorkspace
---                  | MailWorkspace
---                  | CodeWorkspace
---                  | ChatWorkspace
---                  | WinWorkspace
---                  | MusicWorkspace
---                  deriving (Enum, Bounded)
-
--- myWorkspaces :: [MyWorkspace]
--- myWorkspaces = enumFrom minBound
-
--- toWorkspaceId :: MyWorkspace -> WorkspaceId
--- toWorkspaceId WebWorkspace = "web"
--- toWorkspaceId MailWorkspace = "mail"
--- toWorkspaceId CodeWorkspace = "code"
--- toWorkspaceId ChatWorkspace = "chat"
--- toWorkspaceId WinWorkspace = "win"
--- toWorkspaceId MusicWorkspace = "music"
 
 terminalProject :: Project
 terminalProject =
@@ -54,9 +36,6 @@ projects = [ terminalProject ]
 
 myWorkspaces :: [String]
 myWorkspaces = [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0]
-
--- myWorkspaces :: [String]
--- myWorkspaces = map show [1..9 :: Int]
 
 scratchPads :: [NamedScratchpad]
 scratchPads = [   NS "terminal-nsp" spawnTerm findTerm manageTerm
@@ -92,27 +71,15 @@ scratchPads = [   NS "terminal-nsp" spawnTerm findTerm manageTerm
                  t = 0.75 -h
                  l = 0.70 -w
 
-
 viewPrevWS :: X ()
 viewPrevWS = do
   ws <- gets windowset
   let hs = filter (\w -> tag w /= "NSP") $ hidden ws
   unless (null hs) (windows . view . tag $ head hs)
 
--- clickableWorkspaces  = clickable
---   ["^i(me.xbm) me"
---   ,"^i(shell.xbm) code"
---   ,"^i(web.xbm) web"
---   ,"^i(docs.xbm) docs"
---   ,"^i(tunes.xbm) tunes"
---   ,"^i(mail.xbm) mail"]
---       where clickable l     = [ "^ca(1,xdotool key super+" ++ show n ++ ")" ++ ws ++ "^ca()" |
---                               (i,ws) <- zip [1..] l,
---                               let n = i ]
-
--- myWorkspaces1           = clickable . (map dzenEscape) $ ["1","2","3","4","5", "6", "7", "8", "9", "0"]
 clickableWorkspaces :: [String]
-clickableWorkspaces = clickable ["1","2","3","4","5", "6", "7", "8", "9", "0"]
+clickableWorkspaces = clickable [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0]
   where clickable l     = [ "^ca(1,xdotool key super+" ++ show n ++ ")" ++ ws ++ "^ca()" |
-                            (i,ws) <- zip [1..] l,
+                            -- (i,ws) <- zip [1..] l,
+                            (i, ws) <- zip [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0] l,
                             let n = i ]
