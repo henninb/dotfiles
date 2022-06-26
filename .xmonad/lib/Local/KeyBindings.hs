@@ -16,7 +16,7 @@ import XMonad.Hooks.ManageDocks (ToggleStruts (..))
 import XMonad.Hooks.UrgencyHook (focusUrgent)
 import XMonad.Layout.LayoutBuilder (IncLayoutN (..))
 import XMonad.Layout.Maximize (maximizeRestore)
-import XMonad.Actions.CycleWS (nextWS, prevWS, toggleWS, moveTo, shiftTo, pattern Next, pattern EmptyWS )
+import XMonad.Actions.CycleWS (nextWS, prevWS, toggleWS, moveTo, shiftTo, pattern Next, pattern EmptyWS, pattern NonEmptyWS)
 import XMonad.Layout.ZoomRow (zoomIn, zoomOut, zoomReset)
 import Graphics.X11.ExtraTypes (xF86XK_Paste)
 import XMonad.Util.Paste (sendKey)
@@ -240,6 +240,8 @@ keybinds conf =
   , ("M-t", addName "" $ withFocused $ windows . sink)
   , ("M-c",   addName "Select first empty workspace" $ moveTo Next EmptyWS)
   , ("M-S-c", addName "Move window to next empty workspace" $ shiftTo Next EmptyWS)
+  -- , ("M-p",   addName "Move to next workspace" $ moveTo Prev NonEmptyWS)
+  -- , ("M-n",   addName "Move to previous workspace" $ moveTo Next NonEmptyWS)
    ]
    ++
    subKeys "Scratchpads/misc"
