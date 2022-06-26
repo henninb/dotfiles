@@ -31,11 +31,11 @@ import XMonad.StackSet (findTag, view)
 import XMonad.Util.NamedWindows (getName)
 
 import Local.Colors (myFocusBorderColor, myColor, myBorderColor)
-import Local.KeyBindings
-import Local.Workspaces
-import Local.MouseBinding
-import Local.ManagedHook
-import Local.Layouts
+import Local.KeyBindings (superKeyMask, keybinds, searchPromptKeybindings, myRemoveKeys, showKeyBindings)
+import Local.Workspaces (myWorkspaces, projects)
+import Local.MouseBinding (myMouseBindings)
+import Local.ManagedHook (myManageHook, myManageHook')
+import Local.Layouts (myLayouts)
 import Local.PolybarLogHook (eventLogHookForPolybar)
 import Local.DzenLogHook (dzenLogHook)
 
