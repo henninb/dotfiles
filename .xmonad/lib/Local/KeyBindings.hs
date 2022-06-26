@@ -16,7 +16,7 @@ import XMonad.Hooks.ManageDocks (ToggleStruts (..))
 import XMonad.Hooks.UrgencyHook (focusUrgent)
 import XMonad.Layout.LayoutBuilder (IncLayoutN (..))
 import XMonad.Layout.Maximize (maximizeRestore)
-import XMonad.Actions.CycleWS (nextWS, prevWS, toggleWS, moveTo, shiftTo )
+import XMonad.Actions.CycleWS (nextWS, prevWS, toggleWS, moveTo, shiftTo, pattern Next, pattern EmptyWS )
 import XMonad.Layout.ZoomRow (zoomIn, zoomOut, zoomReset)
 import Graphics.X11.ExtraTypes (xF86XK_Paste)
 import XMonad.Util.Paste (sendKey)
@@ -27,7 +27,7 @@ import XMonad.StackSet (greedyView, shift, tag, workspace, current, focusMaster,
 import XMonad.Util.EZConfig (mkKeymap, mkNamedKeymap)
 import XMonad.Util.NamedScratchpad (namedScratchpadAction)
 import XMonad.Actions.Search (promptSearch, selectSearch)
-import XMonad.Util.NamedActions (NamedAction(..), addName, subtitle, showKm, submapName)
+import XMonad.Util.NamedActions (NamedAction, addName, subtitle, showKm, submapName)
 import XMonad.Util.Run (hPutStr, spawnPipe, safeSpawn, unsafeSpawn)
 import System.IO (hClose)
 import Control.Monad (liftM2, join)
@@ -238,8 +238,8 @@ keybinds conf =
   , ("M-S-l", addName "resize right" $ sendMessage Expand)
   -- , ("M-t", withFocused $ windows . sink)
   , ("M-t", addName "" $ withFocused $ windows . sink)
-  -- ,("M-c",   addName "Select first empty workspace" $ moveTo Next EmptyWS)
-  -- ,("M-S-c", addName "Move window to next empty workspace" $ shiftTo Next EmptyWS)
+  , ("M-c",   addName "Select first empty workspace" $ moveTo Next EmptyWS)
+  , ("M-S-c", addName "Move window to next empty workspace" $ shiftTo Next EmptyWS)
    ]
    ++
    subKeys "Scratchpads/misc"
