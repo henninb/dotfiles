@@ -21,6 +21,7 @@ scp -r ssl/ henninb@192.168.10.10:/home/henninb/
 scp -r python-pip-install.sh henninb@192.168.10.10:/home/henninb/
 scp -r update.sh henninb@192.168.10.10:/home/henninb/
 scp -r src/api/youtube/run.sh henninb@192.168.10.10:/home/henninb/src/api/youtube/
+scp -r src/api/youtube/run-info.sh henninb@192.168.10.10:/home/henninb/src/api/youtube/
 scp -r src/api/youtube/channels.txt henninb@192.168.10.10:/home/henninb/src/api/youtube/
 scp -r src/api/youtube/apikey henninb@192.168.10.10:/home/henninb/src/api/youtube/
 # scp -r .config/nvim/ henninb@192.168.10.10:/home/henninb/.config
