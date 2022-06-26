@@ -15,6 +15,7 @@ generic()
     youtube-dl -x --audio-format mp3 "https://www.youtube.com/watch?v=$videoid" --output "audio/$fname.mp3"
     touch "audio/$fname.mp3"
     # id3v2 -1 -t "${fname}" -a "${channelName}" "audio/${fname}.mp3"
+    ffprobe -i "audio/${fname}.mp3" 2> "audio/${fname}.txt"
   fi
 }
 
@@ -35,12 +36,19 @@ mrturvy()
       mv "audio/new-${fname}.mp3" "audio/$fname.mp3"
       touch "audio/$fname.mp3"
       # need to fix
-      eyeD3 --preserve-file-times --title "${fname}" --artist "${channelName}" "audio/${fname}.mp3"
+      # eyeD3 --preserve-file-times --title "${fname}" --artist "${channelName}" "audio/${fname}.mp3"
+      ffprobe -i "audio/${fname}.mp3" 2> "audio/${fname}.txt"
     fi
   fi
 }
 
 mkdir -p audio
+
+for song in $(ls -1 audio/*.mp3); do
+  echo "$song"
+  ffprobe -i "$song" 2> >(grep  missing 1>&2)
+done
+exit 0
 
 for channel in $(cat channels.txt); do
   channelId=$(echo "$channel" | awk -F, '{print $1}')
