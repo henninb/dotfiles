@@ -9,7 +9,8 @@ generic()
   fname=$1
   videoid=$2
   channelName=$3
-  shift; shift; shift;
+  trackName=$4
+  shift; shift; shift; shift;
 
   if [ ! -f "audio/$fname.mp3" ]; then
     echo youtube-dl -q -x --audio-format mp3 "https://www.youtube.com/watch?v=$videoid" --output "audio/$fname.mp3"
@@ -21,23 +22,11 @@ generic()
         echo $?
         echo ffmpeg failed.
       fi
-      file "audio/$fname.mp3" > "audio/$fname-type.txt"
-      # touch "audio/$fname.mp3"
-      ffprobe -hide_banner -i "audio/${fname}.mp3" 2> "audio/${fname}.txt"
-      ffprobe -hide_banner -i "audio/${fname}" 2> >(grep  Stream 1>&2)
-      status=$(ffprobe -hide_banner -i "audio/${fname}" 2> >(grep  missing 1>&2))
-      # echo eyeD3 --preserve-file-times --title "${fname}" --artist "${channelName}" "audio/new-${fname}.mp3"
-      # if ! eyeD3 --preserve-file-times --title "${fname}" --artist "${channelName}" "audio/new-${fname}.mp3"; then
-      #   echo $?
-      #   echo eyeD3 failed.
-      # fi
       mv -v "audio/new-${fname}.mp3" "audio/${fname}.mp3"
-      echo id3v2 -t "${fname}" -a "${channelName}" "audio/${fname}.mp3"
-      echo id3v2 --list "audio/${fname}.mp3"
-      if id3v2 -t "${fname}" -a "${channelName}" "audio/${fname}.mp3"; then
+      echo id3v2 -t "${trackName}" -a "${channelName}" "audio/${fname}.mp3"
+      if id3v2 -t "${trackName}" -a "${channelName}" "audio/${fname}.mp3"; then
         echo id3v2 failed.
       fi
-
     fi
   fi
 }
@@ -49,31 +38,24 @@ mrturvy()
   fname=$1
   videoid=$2
   channelName=$3
-  shift; shift; shift;
+  trackName=$4
+  shift; shift; shift; shift;
 
   if [ ! -f "audio/$fname.mp3" ]; then
     youtube-dl -x --audio-format mp3 "https://www.youtube.com/watch?v=$videoid" --output "audio/$fname.mp3"
     duration=$(ffprobe -i "audio/${fname}.mp3" -show_entries format=duration -v quiet -of csv="p=0")
     trim=$(perl -le "print($duration-28.0)")
-    if ffmpeg -ss 8 -t "${trim}" -i "audio/$fname.mp3" "audio/new-${fname}.mp3"; then
-      rm -rf "audio/$fname.mp3"
-      mv "audio/new-${fname}.mp3" "audio/$fname.mp3"
-      touch "audio/$fname.mp3"
-      # need to fix
-      # eyeD3 --preserve-file-times --title "${fname}" --artist "${channelName}" "audio/${fname}.mp3"
-      ffprobe -i "audio/${fname}.mp3" 2> "audio/${fname}.txt"
+    if ffmpeg -hide_banner -ss 8 -t "${trim}" -i "audio/$fname.mp3" "audio/new-${fname}.mp3"; then
+      mv -v "audio/new-${fname}.mp3" "audio/${fname}.mp3"
+      echo id3v2 -t "${trackName}" -a "${channelName}" "audio/${fname}.mp3"
+      if id3v2 -t "${trackName}" -a "${channelName}" "audio/${fname}.mp3"; then
+        echo id3v2 failed.
+      fi
     fi
   fi
 }
 
 mkdir -p audio
-
-# for song in $(ls -1 audio/*.mp3); do
-#   echo "$song"
-#   ffprobe -i "$song" 2> >(grep  missing 1>&2)
-#   # ffprobe -i "${song}" 2> "audio/${song}.txt"
-# done
-# exit 0
 
 for channel in $(cat channels.txt); do
   channelId=$(echo "$channel" | awk -F, '{print $1}')
@@ -111,16 +93,12 @@ for channel in $(cat channels.txt); do
     videoid=$(echo "$row" | awk -F, '{print $3}')
 
     if [ "${channelName}" = "mrturvy" ]; then
-      mrturvy "${channelName}-${fname}" "${videoid}" "${channelName}"
-      artist=$(mp3info -p "%a" "audio/${fname}.mp3")
-      #ffprobe rhysider-10-biggest-exit-scams-of-all-time.mp3 2>&1 | grep -A90 'Metadata:'
-      # id3v2 -t "${fname}" -a "${channelName}" "audio/${fname}.mp3"
-      # eyeD3 --preserve-file-times --title "${fname}" --artist "${channelName}" "audio/${fname}.mp3"
+      mrturvy "${channelName}-${fname}" "${videoid}" "${channelName}" "${fname}"
+      # artist=$(mp3info -p "%a" "audio/${fname}.mp3")
     else
-      generic "${channelName}-${fname}" "${videoid}" "${channelName}"
-      # id3v2 -t "${fname}" -a "${channelName}" "audio/${fname}.mp3"
-      # eyeD3 --preserve-file-times --title "${fname}" --artist "${channelName}" "audio/${fname}.mp3"
+      generic "${channelName}-${fname}" "${videoid}" "${channelName}" "${fname}"
     fi
+    # eyeD3 --preserve-file-times --title "${fname}" --artist "${channelName}" "audio/${fname}.mp3"
 
   done
 done
