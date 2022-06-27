@@ -3,14 +3,14 @@
 module Local.Layouts (myLayouts) where
 
 import XMonad hiding ( (|||) )
-import XMonad.Layout.Renamed (renamed, pattern Replace, pattern CutWordsLeft)
-import XMonad.Hooks.ManageDocks (avoidStruts)
+import XMonad.Layout.Renamed (Rename, renamed, pattern Replace, pattern CutWordsLeft)
+import XMonad.Hooks.ManageDocks (AvoidStruts, avoidStruts)
 import XMonad.Layout.PerWorkspace (onWorkspace, onWorkspaces)
-import XMonad.Layout.LimitWindows (limitWindows)
-import XMonad.Layout.NoBorders (smartBorders, noBorders)
+import XMonad.Layout.LimitWindows (LimitWindows, limitWindows)
+import XMonad.Layout.NoBorders (SmartBorder, smartBorders, noBorders)
 -- import XMonad.Layout.Gaps
 import XMonad.Layout.Grid (Grid(..))
-import XMonad.Layout.ComboP (combineTwoP)
+import XMonad.Layout.ComboP (CombineTwoP, combineTwoP)
 import XMonad.Layout.Spacing (Border(..), spacingRaw)
 import XMonad.Layout.Minimize (minimize)
 import XMonad.Layout.FixedColumn (FixedColumn(..))
@@ -19,24 +19,22 @@ import XMonad.Layout.ResizableTile (ResizableTall(..))
 import XMonad.Layout.TwoPane (TwoPane(..))
 import XMonad.Layout.Magnifier (magnifiercz')
 -- import XMonad.Layout.Tabbed
-import XMonad.Layout.WindowNavigation (windowNavigation)
+import XMonad.Layout.WindowNavigation (WindowNavigation, windowNavigation)
 import XMonad.Config.Desktop (desktopLayoutModifiers)
 import XMonad.Layout.BoringWindows (boringWindows)
-import XMonad.Layout.Spiral (spiralWithDir, pattern East, pattern CW)
+import XMonad.Layout.Spiral (SpiralWithDir, spiralWithDir, pattern East, pattern CW)
 import XMonad.Layout.IM
 import XMonad.Layout.Circle (Circle (..))
 import XMonad.Layout.Reflect (reflectHoriz)
 import System.Info (os)
 import XMonad.Layout.LayoutCombinators ( (|||) )
 import Local.Workspaces (myWorkspaces)
+import XMonad.Layout.LayoutModifier (ModifiedLayout)
 
 -- mySpacing = if os == "freebsd" then spacingRaw False (Border 14 1 1 1) True (Border 1 1 1 1) True else spacingRaw False (Border 2 1 1 1) True (Border 1 1 1 1) True
 -- mySpacing = spacingRaw False (Border 14 1 1 1) True (Border 1 1 1 1) True
 mySpacing = spacingRaw False (Border 1 1 1 1) True (Border 1 1 1 1) True
 
--- layouts need to be changed to add the avoidStruts modifier which will cause the layouts to make space for statusbars like dzen2.
--- myLayouts = renamed [CutWordsLeft 1] . autoStrutsOn [U] . minimize . B.boringWindows $ workspaceLayouts
--- myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ workspaceLayouts
 myLayouts = renamed [CutWordsLeft 1] . minimize . boringWindows $ workspaceLayouts
 
 workspaceLayouts =
@@ -54,28 +52,33 @@ workspaceLayouts =
 
 defaultLayoutGroup = mainLayout ||| gridLayout ||| threeColumnLayout ||| spiralLayout ||| fullLayout
 
+fullLayout :: ModifiedLayout Rename (ModifiedLayout AvoidStruts (ModifiedLayout LimitWindows (ModifiedLayout SmartBorder Full))) Window
 fullLayout = renamed [Replace "Full"]
       $ avoidStruts
       $ limitWindows 100
       $ smartBorders Full
 
+mainLayout :: ModifiedLayout Rename (ModifiedLayout AvoidStruts (ModifiedLayout SmartBorder (ModifiedLayout LimitWindows Tall))) Window
 mainLayout = renamed [Replace "Main"]
       $ avoidStruts
       $ smartBorders
       $ limitWindows 100
       $ Tall 1 (3/100) (1/2)
 
+gridLayout :: ModifiedLayout Rename (ModifiedLayout AvoidStruts (ModifiedLayout SmartBorder (ModifiedLayout LimitWindows Grid))) Window
 gridLayout = renamed [Replace "Grid"]
       $ avoidStruts
       $ smartBorders
       $ limitWindows 100 Grid
 
+threeColumnLayout :: ModifiedLayout Rename (ModifiedLayout AvoidStruts (ModifiedLayout SmartBorder (ModifiedLayout LimitWindows ThreeCol))) Window
 threeColumnLayout = renamed [Replace "3Column"]
       $ avoidStruts
       $ smartBorders
       $ limitWindows 100
       $ ThreeColMid 1 (3/100) (1/2)
 
+spiralLayout :: ModifiedLayout Rename (ModifiedLayout SmartBorder (ModifiedLayout AvoidStruts (ModifiedLayout LimitWindows SpiralWithDir))) a
 spiralLayout  = renamed [Replace "Spiral"]
       $ smartBorders
       $ avoidStruts
@@ -83,11 +86,13 @@ spiralLayout  = renamed [Replace "Spiral"]
       $ spiralWithDir East CW (6/7)
 
 
+twoPaneTall :: ModifiedLayout WindowNavigation (CombineTwoP (TwoPane ()) Full (Mirror ThreeCol)) Window
 twoPaneTall =
   windowNavigation $
   combineTwoP (TwoPane 0.03 0.50) Full (Mirror $ simpleThree 60) (ClassName "Firefox" `Or` ClassName "Brave")
 
 --simpleTall :: Rational -> ResizableTall a
+simpleTall :: Rational -> ResizableTall a
 simpleTall n = ResizableTall 1 (3/100) (n/100) []
 
 simpleThree :: Rational -> ThreeCol a
