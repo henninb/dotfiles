@@ -2,7 +2,6 @@
 
 module Local.Layouts (myLayouts) where
 
--- import XMonad
 import XMonad hiding ( (|||) )
 import XMonad.Layout.Renamed (renamed, pattern Replace, pattern CutWordsLeft)
 import XMonad.Hooks.ManageDocks (avoidStruts)
@@ -23,7 +22,7 @@ import XMonad.Layout.Magnifier (magnifiercz')
 import XMonad.Layout.WindowNavigation (windowNavigation)
 import XMonad.Config.Desktop (desktopLayoutModifiers)
 import XMonad.Layout.BoringWindows (boringWindows)
-import qualified XMonad.Layout.Spiral as Sp
+import XMonad.Layout.Spiral (spiralWithDir, pattern East, pattern CW)
 import XMonad.Layout.IM
 import XMonad.Layout.Circle (Circle (..))
 import XMonad.Layout.Reflect (reflectHoriz)
@@ -40,98 +39,49 @@ mySpacing = spacingRaw False (Border 1 1 1 1) True (Border 1 1 1 1) True
 -- myLayouts = renamed [CutWordsLeft 1] . avoidStruts . minimize . B.boringWindows $ workspaceLayouts
 myLayouts = renamed [CutWordsLeft 1] . minimize . boringWindows $ workspaceLayouts
 
-  -- layout per workspace
 workspaceLayouts =
-    onWorkspace "1" myMainLayoutGroup $
-    onWorkspace "2" myMainLayoutGroup $
-    onWorkspace "3" myMainLayoutGroup $
-    onWorkspace "4" myMainLayoutGroup $
-    onWorkspace "5" myMainLayoutGroup $
-    onWorkspace "6" myMainLayoutGroup $
-    onWorkspace "7" myMainLayoutGroup $
-    onWorkspace "8" myMainLayoutGroup $
-    onWorkspace "9" myMainLayoutGroup $
-    onWorkspace "0" myMainLayoutGroup myFullLayoutGroup
-    -- onWorkspace "0" myMiscLayoutGroup
-    -- onWorkspace "0" myAllLayoutGroup
+    onWorkspace "1" defaultLayoutGroup $
+    onWorkspace "2" defaultLayoutGroup $
+    onWorkspace "3" defaultLayoutGroup $
+    onWorkspace "4" defaultLayoutGroup $
+    onWorkspace "5" defaultLayoutGroup $
+    onWorkspace "6" defaultLayoutGroup $
+    onWorkspace "7" defaultLayoutGroup $
+    onWorkspace "8" defaultLayoutGroup $
+    onWorkspace "9" defaultLayoutGroup $
+    onWorkspace "0" defaultLayoutGroup $
+    smartBorders (layoutHook def)
 
--- myFtLayoutGroup  = mainLayout ||| fullLayout ||| commonLayout
--- myFtLayoutGroupM = mainLayout ||| fullLayout ||| magLayout
--- myMainLayoutGroup = mainLayout ||| fullLayout ||| threeColumnMidLayout ||| fullLayout ||| gridLayout ||| spiralLayout
--- myMiscLayoutGroup = mediaLayout ||| terminalLayout ||| terminalLayout ||| commonLayout ||| readingLayout ||| panelLayout
--- myAllLayoutGroup = mainLayout ||| gridLayout ||| threeColumnLayout ||| threeColumnMidLayout |||  commonLayout ||| terminalLayout ||| mediaLayout ||| readingLayout ||| phiLayout ||| spiralLayout ||| panelLayout
--- mySpiralLayoutGroup = spiralLayout ||| mainLayout ||| fullLayout
-myAllLayoutGroup = mainLayout ||| gridLayout ||| threeColumnLayout ||| threeColumnMidLayout ||| magLayout ||| circleLayout ||| terminalLayout ||| mediaLayout ||| readingLayout ||| spiralLayout ||| panelLayout ||| fullLayout
-myFullLayoutGroup = fullLayout
-myMainLayoutGroup = mainLayout ||| gridLayout ||| threeColumnLayout ||| spiralLayout ||| fullLayout
+defaultLayoutGroup = mainLayout ||| gridLayout ||| threeColumnLayout ||| spiralLayout ||| fullLayout
 
 fullLayout = renamed [Replace "Full"]
       $ avoidStruts
       $ limitWindows 100
-      $ noBorders Full
+      $ smartBorders Full
+
 mainLayout = renamed [Replace "Main"]
       $ avoidStruts
       $ smartBorders
       $ limitWindows 100
       $ Tall 1 (3/100) (1/2)
+
 gridLayout = renamed [Replace "Grid"]
       $ avoidStruts
       $ smartBorders
       $ limitWindows 100 Grid
+
 threeColumnLayout = renamed [Replace "3Column"]
       $ avoidStruts
       $ smartBorders
       $ limitWindows 100
       $ ThreeColMid 1 (3/100) (1/2)
-threeColumnMidLayout = renamed [Replace "3ColumnMid"]
-      $ avoidStruts
-      $ smartBorders
-      $ limitWindows 100
-      $ ThreeColMid 1 (1/10) (1/2)
-magLayout = renamed [Replace "Mag"]
-      $ avoidStruts
-      $ noBorders
-      $ limitWindows 3
-      $ magnifiercz' 1.4
-      $ FixedColumn 1 20 80 10
-terminalLayout = renamed [Replace "Terminal"]
-      -- $ mySpacing
-      $ avoidStruts
-      $ limitWindows 100
-      $ simpleTall 50 ||| simpleThree 33 ||| Mirror (simpleTall 53)
--- codingLayout = renamed [Replace "Coding"]
---       $ twoPaneTabbed ||| twoPaneTall ||| simpleTall 50
-mediaLayout = renamed [Replace "Media"]
-      $ avoidStruts
-      $ limitWindows 100
-      $ simpleTwo 40 ||| Grid ||| simpleThree 33
-readingLayout = renamed [Replace "Reading"]
-      -- $ mySpacing
-      $ avoidStruts
-      $ limitWindows 100
-      $ simpleTwo 50 ||| simpleThree 50
--- phiLayout = renamed [Replace "Phi"]
---       $ mySpacing (2 / (1 + toRational (sqrt 5 :: Double)))
-      -- $ mySpacing
-      -- $ (2/(1+(toRational(sqrt(5)::Double)))) -- Golden Ratio
-spiralLayout  = renamed [Replace "Spiral"]
-      $ avoidStruts
-      $ limitWindows 100
-      $ Sp.spiralWithDir Sp.East Sp.CW (6/7)
-panelLayout = renamed [Replace "Panel"]
-      $ avoidStruts
-      $ limitWindows 100
-      $ Grid ||| Mirror (simpleTall 50) ||| simpleThree 33
-circleLayout = renamed [Replace "Circle" ]
-      $ avoidStruts
-      $ Mirror $ Tall 1 (3/100) (1/2) ||| Circle
 
--- twoPaneTabbed =
---   configurableNavigation noNavigateBorders $
---   combineTwoP (Spacing $ TwoPane 0.03 0.50)
---       Full
---       (tabbed shrinkText def)
---       (ClassName "Firefox" `Or` ClassName "qpdfview")
+spiralLayout  = renamed [Replace "Spiral"]
+      $ smartBorders
+      $ avoidStruts
+      $ limitWindows 100
+      $ spiralWithDir East CW (6/7)
+
 
 twoPaneTall =
   windowNavigation $

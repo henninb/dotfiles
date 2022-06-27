@@ -3,6 +3,7 @@
 module Local.KeyBindings (myRemoveKeys, superKeyMask, showKeyBindings, keybinds, searchPromptKeybindings) where
 
 import XMonad hiding (keys)
+-- import XMonad ( KeyMask , KeySym , X , XConfig , kill , sendMessage , spawn , terminal , windows, Default (def), io, ExtensionClass, initialValue, MonadIO, Layout, WindowSet(..), mod4Mask)
 import XMonad.Actions.CopyWindow (kill1, copy)
 import XMonad.Actions.DynamicProjects (switchProjectPrompt, switchProject)
 import XMonad.Actions.GroupNavigation (Direction (..), nextMatch)
