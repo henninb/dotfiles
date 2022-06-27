@@ -8,7 +8,6 @@ import XMonad.Hooks.ManageDocks (AvoidStruts, avoidStruts)
 import XMonad.Layout.PerWorkspace (onWorkspace, onWorkspaces)
 import XMonad.Layout.LimitWindows (LimitWindows, limitWindows)
 import XMonad.Layout.NoBorders (SmartBorder, smartBorders, noBorders)
--- import XMonad.Layout.Gaps
 import XMonad.Layout.Grid (Grid(..))
 import XMonad.Layout.ComboP (CombineTwoP, combineTwoP)
 import XMonad.Layout.Spacing (Border(..), spacingRaw)
@@ -28,8 +27,9 @@ import XMonad.Layout.Circle (Circle (..))
 import XMonad.Layout.Reflect (reflectHoriz)
 import System.Info (os)
 import XMonad.Layout.LayoutCombinators ( (|||) )
-import Local.Workspaces (myWorkspaces)
 import XMonad.Layout.LayoutModifier (ModifiedLayout)
+
+import Local.Workspaces (myWorkspaces)
 
 -- mySpacing = if os == "freebsd" then spacingRaw False (Border 14 1 1 1) True (Border 1 1 1 1) True else spacingRaw False (Border 2 1 1 1) True (Border 1 1 1 1) True
 -- mySpacing = spacingRaw False (Border 14 1 1 1) True (Border 1 1 1 1) True
@@ -38,16 +38,16 @@ mySpacing = spacingRaw False (Border 1 1 1 1) True (Border 1 1 1 1) True
 myLayouts = renamed [CutWordsLeft 1] . minimize . boringWindows $ workspaceLayouts
 
 workspaceLayouts =
-    onWorkspace "1" defaultLayoutGroup $
-    onWorkspace "2" defaultLayoutGroup $
-    onWorkspace "3" defaultLayoutGroup $
-    onWorkspace "4" defaultLayoutGroup $
-    onWorkspace "5" defaultLayoutGroup $
-    onWorkspace "6" defaultLayoutGroup $
-    onWorkspace "7" defaultLayoutGroup $
-    onWorkspace "8" defaultLayoutGroup $
-    onWorkspace "9" defaultLayoutGroup $
-    onWorkspace "0" defaultLayoutGroup $
+    onWorkspace (myWorkspaces !! 0) defaultLayoutGroup $
+    onWorkspace (myWorkspaces !! 1) defaultLayoutGroup $
+    onWorkspace (myWorkspaces !! 2) defaultLayoutGroup $
+    onWorkspace (myWorkspaces !! 3) defaultLayoutGroup $
+    onWorkspace (myWorkspaces !! 4) defaultLayoutGroup $
+    onWorkspace (myWorkspaces !! 5) defaultLayoutGroup $
+    onWorkspace (myWorkspaces !! 6) defaultLayoutGroup $
+    onWorkspace (myWorkspaces !! 7) defaultLayoutGroup $
+    onWorkspace (myWorkspaces !! 8) defaultLayoutGroup $
+    onWorkspace (myWorkspaces !! 9) defaultLayoutGroup $
     smartBorders (layoutHook def)
 
 defaultLayoutGroup = mainLayout ||| gridLayout ||| threeColumnLayout ||| spiralLayout ||| fullLayout

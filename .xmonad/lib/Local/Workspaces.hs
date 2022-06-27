@@ -11,7 +11,7 @@ ws2 = "2"
 ws3 = "3"
 ws4 = "4"
 ws5 = "5"
-ws6 = "six"
+ws6 = "6"
 ws7 = "7"
 ws8 = "8"
 ws9 = "9"
@@ -81,7 +81,7 @@ clickableWorkspaces :: [String]
 clickableWorkspaces = clickable [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0]
   where clickable l     = [ "^ca(1,xdotool key super+" ++ show n ++ ")" ++ ws ++ "^ca()" |
                             -- (i,ws) <- zip [1..] l,
-                            (i, ws) <- zip [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0] l,
+                            (i, ws) <- zip myWorkspaces l,
                             let n = i ]
 
 -- myClickableWorkspaces :: [String]

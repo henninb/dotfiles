@@ -43,6 +43,7 @@ myFont :: String
 myFont  = "terminus"
 
 -- TODO fix the screen width
+togglevga :: IO String
 togglevga = do { screencount <- countScreens
     ; if screencount > 1
        then do
@@ -55,11 +56,17 @@ togglevga = do { screencount <- countScreens
       return screenWidth
     ;}
 
+topLeftBar :: String
 topLeftBar = "dzen2 -x '0' -y '0' -h '14' -w '800' -ta 'l' -fg '" ++ myColor "foreground" ++ "' -bg '"++ myColor "background" ++"' -fn "++myFont
 -- topMiddleBar = "~/.xmonad/assets/bin/main.sh | dzen2 -dock -x '600' -y '0' -h '14' -w '500' -ta 'l' -fg '" ++ myColor "foreground" ++ "' -bg '" ++ myColor "background" ++ "' -fn " ++ myFont
+
+topRightBar :: String
 topRightBar = "xmonad-conky-date | dzen2 -dock -x '2300' -y '0' -h '14' -w '500' -ta 'l' -fg '" ++ myColor "foreground" ++ "' -bg '" ++ myColor "background" ++ "' -fn " ++ myFont
 
+myDzen :: String
 myDzen = " dzen2 -xs 1 -dock -h 14 -ta 'l' -fn '" ++ myFont ++ "' -fg '" ++ myColor "foreground" ++ "' -bg '" ++ myColor "background" ++ "' "
+
+myTopRight :: String
 myTopRight = "conky -c ~/.config/conky/xmonad-bar-top-right | " ++ myDzen ++ " -x '800' -y '0' -ta 'r' -p"
 
 main :: IO ()
@@ -69,8 +76,6 @@ main = do
   safeSpawn "mkfifo" ["/tmp/.xmonad-info"]
 
   dzenLeftBar <- spawnPipe topLeftBar
-  -- dzenTopMiddleBar <- spawnPipe topMiddleBar
-  -- dzenTopRightBar <- spawnPipe topRightBar
   conkyTopRight <- spawnPipe myTopRight
 
   xmonad
@@ -140,8 +145,8 @@ myStartupHook = do
     -- spawnOnce "sxhkd -c ~/.config/sxhkd/sxhkdrc-xmonad"
     -- spawn "clipmenud" --should I run copyq or clipmenu
     spawnOnce "copyq"
-    spawnOn "8" "slack -u"
-    spawnOn "1" "alacritty"
+    spawnOn (myWorkspaces !! 7) "slack -u"
+    spawnOn (myWorkspaces !! 0) "alacritty"
     case os of
       "freebsd" -> return ()
       "linux"   -> spawnOnce "blueman-applet" --dbus required
@@ -161,7 +166,7 @@ myStartupHook = do
     spawnOnce "xscreensaver -no-splash"
     spawnOnce "feh --bg-scale $HOME/.local/wallpaper/minnesota-vikings-dark.png"
     -- spawnOnce "killall redshift; sleep 4 ; redshift -l 48.024395:11.598893 &"
-    windows $ view "1"
+    windows $ view (myWorkspaces !! 0)
 
 myConfig = def
   { terminal = myTerminal
