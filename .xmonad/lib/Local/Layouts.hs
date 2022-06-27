@@ -86,39 +86,39 @@ spiralLayout  = renamed [Replace "Spiral"]
       $ spiralWithDir East CW (6/7)
 
 
-twoPaneTall :: ModifiedLayout WindowNavigation (CombineTwoP (TwoPane ()) Full (Mirror ThreeCol)) Window
-twoPaneTall =
-  windowNavigation $
-  combineTwoP (TwoPane 0.03 0.50) Full (Mirror $ simpleThree 60) (ClassName "Firefox" `Or` ClassName "Brave")
+--twoPaneTall :: ModifiedLayout WindowNavigation (CombineTwoP (TwoPane ()) Full (Mirror ThreeCol)) Window
+--twoPaneTall =
+--  windowNavigation $
+--  combineTwoP (TwoPane 0.03 0.50) Full (Mirror $ simpleThree 60) (ClassName "Firefox" `Or` ClassName "Brave")
 
+----simpleTall :: Rational -> ResizableTall a
 --simpleTall :: Rational -> ResizableTall a
-simpleTall :: Rational -> ResizableTall a
-simpleTall n = ResizableTall 1 (3/100) (n/100) []
+--simpleTall n = ResizableTall 1 (3/100) (n/100) []
 
-simpleThree :: Rational -> ThreeCol a
-simpleThree n = ThreeCol 1 (3/100) (n/100)
+--simpleThree :: Rational -> ThreeCol a
+--simpleThree n = ThreeCol 1 (3/100) (n/100)
 
-simpleTwo :: Rational -> TwoPane a
-simpleTwo n = TwoPane (3/100) (n/100)
+--simpleTwo :: Rational -> TwoPane a
+--simpleTwo n = TwoPane (3/100) (n/100)
 
-desktopLayouts =
-    onWorkspace "1"  mailLayout $
-    onWorkspace "2"  webLayout $
-    onWorkspaces (map show [3..6]) defLayout $
-    onWorkspace "7" threeCols $
-    onWorkspace "8" gimpLayout $
-    onWorkspace "9" fullLayout $
-    smartBorders (layoutHook def)
-    where
-        defLayout = desktopLayoutModifiers $
-            smartBorders $ Tall 1 (3/100) 0.5 ||| Full
-        mailLayout = desktopLayoutModifiers $
-            smartBorders $ Tall 1 (3/100) 0.65 ||| Full
-        webLayout  = desktopLayoutModifiers $
-            smartBorders $ Full ||| Tall 1 (3/100) 0.65
-        threeCols = desktopLayoutModifiers $ smartBorders $
-                ThreeCol 1 (3/100) (1/3) ||| Full ||| Tall 1 (2/100) 0.7
-        fullLayout = desktopLayoutModifiers $
-            noBorders $ Full ||| Mirror (Tall 1 (3/100) 0.8)
-        gimpLayout  = avoidStruts $ withIM 0.11 (Role "gimp-toolbox") $
-            reflectHoriz $ withIM 0.15 (Role "gimp-dock") Full
+--desktopLayouts =
+--    onWorkspace "1"  mailLayout $
+--    onWorkspace "2"  webLayout $
+--    onWorkspaces (map show [3..6]) defLayout $
+--    onWorkspace "7" threeCols $
+--    onWorkspace "8" gimpLayout $
+--    onWorkspace "9" fullLayout $
+--    smartBorders (layoutHook def)
+--    where
+--        defLayout = desktopLayoutModifiers $
+--            smartBorders $ Tall 1 (3/100) 0.5 ||| Full
+--        mailLayout = desktopLayoutModifiers $
+--            smartBorders $ Tall 1 (3/100) 0.65 ||| Full
+--        webLayout  = desktopLayoutModifiers $
+--            smartBorders $ Full ||| Tall 1 (3/100) 0.65
+--        threeCols = desktopLayoutModifiers $ smartBorders $
+--                ThreeCol 1 (3/100) (1/3) ||| Full ||| Tall 1 (2/100) 0.7
+--        fullLayout = desktopLayoutModifiers $
+--            noBorders $ Full ||| Mirror (Tall 1 (3/100) 0.8)
+--        gimpLayout  = avoidStruts $ withIM 0.11 (Role "gimp-toolbox") $
+--            reflectHoriz $ withIM 0.15 (Role "gimp-dock") Full
