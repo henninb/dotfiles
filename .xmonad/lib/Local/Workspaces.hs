@@ -11,7 +11,7 @@ ws2 = "2"
 ws3 = "3"
 ws4 = "4"
 ws5 = "5"
-ws6 = "6"
+ws6 = "six"
 ws7 = "7"
 ws8 = "8"
 ws9 = "9"
@@ -83,3 +83,12 @@ clickableWorkspaces = clickable [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws
                             -- (i,ws) <- zip [1..] l,
                             (i, ws) <- zip [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0] l,
                             let n = i ]
+
+-- myClickableWorkspaces :: [String]
+-- myClickableWorkspaces = clickable . (map xmobarEscape)
+--            -- $ [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
+--            $ [" dev ", " www ", " sys ", " doc ", " vbox ", " chat ", " mus ", " vid ", " gfx "]
+--     where
+--         clickable l = [ "<action=xdotool key super+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
+--                   (i,ws) <- zip [1..9] l,
+--                   let n = i ]
