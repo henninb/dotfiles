@@ -413,9 +413,6 @@ chmod 700 "$HOME"
 #  fi
 #fi
 
-# mkdir -p "$HOME/.xmonad"
-# touch "$HOME/.xmonad/.active"
-# touch "$HOME/.active-wm"
 touch "$HOME/.zshrc-work-custom"
 source "$HOME/.zshrc-work-custom"
 
