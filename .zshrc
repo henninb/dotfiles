@@ -242,6 +242,7 @@ export LEIN_HOME="$XDG_DATA_HOME"/lein
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
 export PYENV_ROOT="$XDG_DATA_HOME"/pyenv
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 
 # compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 # mkdir -p "$XDG_CACHE_HOME/xmonad"
