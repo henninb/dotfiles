@@ -136,8 +136,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S yad
   sudo pacman --noconfirm --needed -S kdeconnect
   sudo pacman --noconfirm --needed -S pandoc
-  yay -S oblogout
-  yay -S mpdris2
+  # yay -S oblogout
+  # yay -S mpdris2
   sudo systemctl disable mpd.socket
   sudo systemctl stop mpd.socket
 elif [ "$OS" = "FreeBSD" ]; then

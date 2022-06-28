@@ -233,6 +233,14 @@ export PSQLRC="$XDG_CONFIG_HOME/pg/psqlrc"
 export PSQL_HISTORY="$XDG_DATA_HOME/psql_history"
 export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export STACK_ROOT="$XDG_DATA_HOME"/stack
+export NVM_DIR="$XDG_DATA_HOME"/nvm
+export _Z_DATA="$XDG_DATA_HOME/z"
+
+compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+mkdir -p "$XDG_CACHE_HOME/xmonad"
+mkdir -p "$XDG_CONFIG_HOME/xmonad"
+mkdir -p "$XDG_DATA_HOME/xmonad"
 
 # cleanup
 #export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
@@ -511,7 +519,7 @@ bindkey "^[[B" history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-export HISTFILE="$HOME/.zsh_history"
+# export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=1000000000
 export SAVEHIST="$HISTSIZE"
 setopt EXTENDED_HISTORY

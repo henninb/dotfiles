@@ -30,6 +30,8 @@ alias h='history'
 alias j='jobs -l'
 alias ports='netstat -tulanp'
 
+alias wget=wget --hsts-file="$HOME/.config"/wget-hsts
+
 alias reboot='sudo /sbin/reboot'
 alias poweroff='sudo /sbin/poweroff'
 alias halt='sudo /sbin/halt'
