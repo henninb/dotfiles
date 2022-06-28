@@ -25,7 +25,7 @@ fn main() {
     try_division(1, 0);
 
     // Binding `None` to a variable needs to be type annotated
-    let none: Option<i32> = None;
+    let _none: Option<i32> = None;
     let _equivalent_none = None::<i32>;
 
     let optional_float = Some(0f32);
