@@ -236,8 +236,13 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export STACK_ROOT="$XDG_DATA_HOME"/stack
 export NVM_DIR="$XDG_DATA_HOME"/nvm
 export _Z_DATA="$XDG_DATA_HOME/z"
+export TERMINFO="$XDG_DATA_HOME"/terminfo
+export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
+export LEIN_HOME="$XDG_DATA_HOME"/lein
+export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
 
-compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+# compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 mkdir -p "$XDG_CACHE_HOME/xmonad"
 mkdir -p "$XDG_CONFIG_HOME/xmonad"
 mkdir -p "$XDG_DATA_HOME/xmonad"

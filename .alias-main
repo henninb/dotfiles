@@ -31,6 +31,8 @@ alias j='jobs -l'
 alias ports='netstat -tulanp'
 
 alias wget=wget --hsts-file="$HOME/.config"/wget-hsts
+alias mitmproxy="mitmproxy --set confdir=$HOME/.config/mitmproxy"
+alias mitmweb="mitmweb --set confdir=${HOME}/.config/mitmproxy"
 
 alias reboot='sudo /sbin/reboot'
 alias poweroff='sudo /sbin/poweroff'
