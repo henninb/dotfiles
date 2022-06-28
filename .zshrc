@@ -243,9 +243,10 @@ export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
 
 # compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
-mkdir -p "$XDG_CACHE_HOME/xmonad"
-mkdir -p "$XDG_CONFIG_HOME/xmonad"
-mkdir -p "$XDG_DATA_HOME/xmonad"
+# mkdir -p "$XDG_CACHE_HOME/xmonad"
+# mkdir -p "$XDG_CONFIG_HOME/xmonad"
+# mkdir -p "$XDG_DATA_HOME/xmonad"
+# touch $XDG_CACHE_HOME/xmonad/.save $XDG_CONFIG_HOME/xmonad/.save $XDG_DATA_HOME/xmonad/.save
 
 # cleanup
 #export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
