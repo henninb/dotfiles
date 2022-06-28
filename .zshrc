@@ -215,6 +215,25 @@ export POWERLINE_BASH_CONTINUATION=1
 export POWERLINE_BASH_SELECT=1
 export KEYTIMEOUT=1
 
+
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+export ANDROID_HOME="$XDG_DATA_HOME"/android
+export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
+export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
+export HISTFILE="${XDG_STATE_HOME}"/bash/history
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+# export SDKMAN_DIR="$XDG_DATA_HOME"/sdkman
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export AZURE_CONFIG_DIR="$XDG_DATA_HOME"/azure
+export PSQLRC="$XDG_CONFIG_HOME/pg/psqlrc"
+export PSQL_HISTORY="$XDG_DATA_HOME/psql_history"
+export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+
 # cleanup
 #export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
 export NOTMUCH_CONFIG="$HOME/.config/notmuch-config"
@@ -296,6 +315,7 @@ if [ -x "$(command -v nvim)" ]; then
 fi
 
 [ -s "$HOME/.sdkman/bin/sdkman-init.sh" ] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+# [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 if [ ! "$OS" = "FreeBSD" ]; then
   if [ -x "$(command -v chef)" ]; then
