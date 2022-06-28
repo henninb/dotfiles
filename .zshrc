@@ -208,7 +208,7 @@ export CHEF_USER="$(whoami)"
 export NVM_DIR="$HOME/.nvm"
 export TMOUT=0
 export GPG_TTY="$(tty)"
-export PYENV_ROOT="$HOME/.pyenv"
+# export PYENV_ROOT="$HOME/.pyenv"
 export VAGRANT_DEFAULT_PROVIDER=kvm
 # TODO is this required
 export POWERLINE_BASH_CONTINUATION=1
@@ -226,7 +226,7 @@ export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
 export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
-# export SDKMAN_DIR="$XDG_DATA_HOME"/sdkman
+export SDKMAN_DIR="$XDG_DATA_HOME"/sdkman
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export AZURE_CONFIG_DIR="$XDG_DATA_HOME"/azure
 export PSQLRC="$XDG_CONFIG_HOME/pg/psqlrc"
@@ -243,6 +243,10 @@ export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
 export PYENV_ROOT="$XDG_DATA_HOME"/pyenv
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+# export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+ export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+# export ELINKS_CONFDIR="$XDG_CONFIG_HOME"/elinks
+# export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 
 # compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 # mkdir -p "$XDG_CACHE_HOME/xmonad"
@@ -330,8 +334,8 @@ if [ -x "$(command -v nvim)" ]; then
   [ -s "$HOME/.alias-neovim" ] && source "$HOME/.alias-neovim"
 fi
 
-[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-# [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+# [ -s "$HOME/.sdkman/bin/sdkman-init.sh" ] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 if [ ! "$OS" = "FreeBSD" ]; then
   if [ -x "$(command -v chef)" ]; then
@@ -361,7 +365,7 @@ fi
 
 [ ! -f "$HOME/.ssh/id_rsa.pub" ] && ssh-keygen -y -f "$HOME/.ssh/id_rsa" > "$HOME/.ssh/id_rsa.pub"
 
-[ ! -d "$HOME/.pyenv" ] && git clone https://github.com/pyenv/pyenv.git "$HOME/.pyenv"
+[ ! -d "$XDG_DATA_HOME/pyenv" ] && git clone https://github.com/pyenv/pyenv.git "$XDG_DATA_HOME/pyenv"
 
 # TODO: rewrite with the -z
 if ! grep -A 3 '\[branch "main"\]' "$HOME/.git/config" | grep 'remote = origin' > /dev/null; then
