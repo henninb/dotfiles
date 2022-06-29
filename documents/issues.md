@@ -587,3 +587,12 @@ dev-python/docutils:0
 
 sudo emerge -avuND --with-bdeps=y --backtrack=75 world
 ```
+
+## gentoo dependency error
+```
+dev-libs/libffi
+qdepends -CQqqF '%{CAT}/%{PN}:%{SLOT}' '^dev-libs/libffi'
+
+sudo emerge --ignore-default-opts -va1 --keep-going $(qdepends -CQqqF '%{CAT}/%{PN}:%{SLOT}' '^dev-libs/libffi')
+
+```
