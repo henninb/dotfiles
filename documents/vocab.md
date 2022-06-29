@@ -267,3 +267,5 @@ accolades [ noun ]
 ## incommensurate - out of proposition with
 ## despondent
 ## imbued
+## vacuity [noun] something insanse, senseless, or stupid
+## insipid [adjective] without sufficient taste to be pleasing
