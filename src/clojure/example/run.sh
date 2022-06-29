@@ -1,6 +1,6 @@
 #!/bin/sh
 
-yarn install
-yarn start
+npx yarn install
+npx yarn start
 
 exit 0

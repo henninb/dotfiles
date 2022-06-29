@@ -19,3 +19,15 @@
  :dev-http {3000 "public"}
  :nrepl {:port 3333}
  :source-paths ["src"]}
+
+
+; {
+;  :source-paths ["src"]
+;  :dependencies [[reagent "0.8.1"]
+;                 ]
+;  :dev-http {3000 "public"}
+;  :nrepl {:port 3333}
+;  :builds {:app {:output-dir "public/js"
+;                 :asset-path "."
+;                 :target :browser
+;                 :modules {:main {:init-fn app.core/main!}}}}}
