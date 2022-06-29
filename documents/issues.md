@@ -588,11 +588,12 @@ dev-python/docutils:0
 sudo emerge -avuND --with-bdeps=y --backtrack=75 world
 ```
 
-## gentoo dependency error
+## gentoo Multiple package instances within a single package slot have been pulled into the dependency graph, resulting in a slot conflict
 ```
-dev-libs/libffi
 qdepends -CQqqF '%{CAT}/%{PN}:%{SLOT}' '^dev-libs/libffi'
-
 sudo emerge --ignore-default-opts -va1 --keep-going $(qdepends -CQqqF '%{CAT}/%{PN}:%{SLOT}' '^dev-libs/libffi')
+
+qdepends -CQqqF '%{CAT}/%{PN}:%{SLOT}' '^dev-python/docutils'
+sudo emerge --ignore-default-opts -va1 --keep-going $(qdepends -CQqqF '%{CAT}/%{PN}:%{SLOT}' 'dev-python/docutils')
 
 ```

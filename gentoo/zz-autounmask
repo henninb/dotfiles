@@ -59,7 +59,7 @@ x11-misc/dzen xpm xinerama
 app-emacs/emacs-common gui
 app-emulation/virt-manager usbredir spice
 >=dev-cpp/gtkmm-3.24:3.0 X
->=media-sound/pulseaudio-15.0-r1 dbus
+>=media-sound/pulseaudio-15.0-r1 dbus bleutooth
 #app-containers/docker-compose python_targets_python3_9
 #app-portage/layman python_targets_python3_9
 #dev-java/java-config python_targets_python3_9
@@ -93,3 +93,7 @@ app-emulation/virt-manager usbredir spice
 >=app-crypt/libmd-1.0.4 abi_x86_32
 >=dev-qt/qtprintsupport-5.15.2-r11 cups
 #>=dev-qt/qtgui-5.15.2-r16 X
+>=net-libs/gnutls-2.12.23-r6
+>=media-sound/pulseaudio-daemon-16.0 dbus bluetooth
+>=net-libs/gnutls-3.6.0
+>=media-libs/libpulse-16.0 X dbus
