@@ -26,8 +26,10 @@ elif [ "$OS" = "Gentoo" ]; then
   echo list all packages
   echo emerge world -ep
   echo sudo emerge --update --newuse package_name
+  echo "remove from world"
   echo sudo emerge --deselect package_name
   echo sudo emerge -C package_name
+  echo sudo emerge --pretend --depclean
   echo sudo emerge -pv dev-lang/python-exec
 else
   echo "$OS is not yet implemented."
