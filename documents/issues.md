@@ -590,6 +590,8 @@ sudo emerge -avuND --with-bdeps=y --backtrack=75 world
 
 ## gentoo Multiple package instances within a single package slot have been pulled into the dependency graph, resulting in a slot conflict
 ```
+media-libs/libjpeg-turbo
+
 qdepends -CQqqF '%{CAT}/%{PN}:%{SLOT}' '^dev-libs/libffi'
 sudo emerge --ignore-default-opts -va1 --keep-going $(qdepends -CQqqF '%{CAT}/%{PN}:%{SLOT}' '^dev-libs/libffi')
 
@@ -597,3 +599,17 @@ qdepends -CQqqF '%{CAT}/%{PN}:%{SLOT}' '^dev-python/docutils'
 sudo emerge --ignore-default-opts -va1 --keep-going $(qdepends -CQqqF '%{CAT}/%{PN}:%{SLOT}' 'dev-python/docutils')
 
 ```
+
+sudo emerge eix
+gentoo ~  main [!] ♜ sudo eix-update
+Reading Portage settings...
+Building database (/var/cache/eix/portage.eix)...
+[0] "gentoo" /usr/portage (cache: metadata-md5-or-flat)
+     Reading category 169|169 (100) Finished
+[1] "brave-overlay" /var/db/repos/brave-overlay (cache: parse|ebuild*3.0.24#metadata-md5#metadata-flat#assign)
+     Reading category 169|169 (100) Finished
+Applying masks...
+Calculating hash tables...
+Writing database file /var/cache/eix/portage.eix...
+Database contains 19736 packages in 169 categories
+gentoo ~  main [!] ♜ eix --installed --upgrade
