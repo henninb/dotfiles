@@ -229,7 +229,8 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG video "$(id -un)"
   # sudo emerge --unmerge dzen
   # echo qt5-wayland
-  GENTOO_PKGS="rust-bin setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server sys-apps/dbus elogind flameshot xappearance volumeicon neofetch blueman copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet trayer pulseaudio-modules-bt newsboat sxiv spacefm lxappearance xrandr hardinfo gentoolkit xmodmap pandoc jq pavucontrol xinput neovim lsof sddm"
+  echo dev-qt/qtwaylandscanner - required by copyq
+  GENTOO_PKGS="rust-bin setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server sys-apps/dbus elogind flameshot xappearance volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet trayer pulseaudio-modules-bt newsboat sxiv spacefm lxappearance xrandr hardinfo gentoolkit xmodmap pandoc jq pavucontrol xinput neovim lsof sddm"
   FAILURE=""
   for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then
