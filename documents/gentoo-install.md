@@ -26,7 +26,7 @@ rc-service dhcpcd start
 
 ## remote ssh login from remote
 ```
-ssh root@192.168.100.168
+ssh root@192.168.10.103
 ```
 
 ## partition the drive as show below (use dos)
@@ -34,21 +34,32 @@ ssh root@192.168.100.168
 cfdisk /dev/sda
 ```
 
-/dev/sda1	ext2	(bootloader)	512M
+## disk layout
+```
+/dev/sda1	ext2	(bootloader)	1GB
 /dev/sda2	ext4	Rest of the disk	Root partition
+```
 
-7) make the partitions
+## make the partitions
+```
 mkfs.ext2 -T small /dev/sda1
 mkfs.ext4 -j -T small /dev/sda2
 
-
 mkfs.ext2 -T small /dev/sdb1
 mkfs.ext4 -j -T small /dev/sdb2
+```
 
+## time sync
+```
 ntpd -q -g
+```
 
+## mounting
+```
 mount /dev/sda2 /mnt/gentoo
+mount /dev/sdb2 /mnt/gentoo
 cd /mnt/gentoo
+```
 
 ## download stage3
 ```
@@ -60,25 +71,38 @@ tar xvJpf stage3-*.tar.xz --xattrs --numeric-owner
 ```
 
 ## use flags
+```
 vi /mnt/gentoo/etc/portage/make.conf
 MAKEOPTS="-j2"
 ACCEPT_LICENSE="*"
+```
 
 ## set the mirror list
+```
 mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf
+```
 
 
+## copy the resolv config
+```
 cp -L /etc/resolv.conf /mnt/gentoo/etc/
+```
 
+## mount the devices
+```
 mount -t proc /proc /mnt/gentoo/proc
 mount --rbind /sys /mnt/gentoo/sys
 mount --make-rslave /mnt/gentoo/sys
 mount --rbind /dev /mnt/gentoo/dev
 mount --make-rslave /mnt/gentoo/dev
+```
 
+## configure the chroot
+```
 chroot /mnt/gentoo /bin/bash
 source /etc/profile
 export PS1="(chroot) $PS1"
+```
 
 ## user maintenence
 ```
@@ -89,14 +113,16 @@ passwd root
 ```
 
 ## mount boot
+```
 mount /dev/sda1 /boot
+mount /dev/sdb1 /boot
+```
 
 ## run the webrsync (clock needs to be accurate and DNS needs to be functional)
 ```
 emerge-webrsync
 eselect news read
-emerge --ask vim
-emerge --ask dev-vcs/git
+emerge vim dev-vcs/git
 ```
 
 ## setup local time zone
@@ -105,91 +131,72 @@ echo "US/Central" > /etc/timezone
 emerge --config sys-libs/timezone-data
 ```
 
+## edit fstab
+```
 vi /etc/fstab
+```
+
+## file content
+```
 /dev/sda1   /boot        ext2    defaults,noatime     0 2
 /dev/sda2   /            ext4    noatime              0 1
-
 /dev/cdrom  /mnt/cdrom   auto    noauto,user          0 0
+```
 
+## update the hostname
+```
 vi /etc/conf.d/hostname
+```
 
-emerge --ask sys-kernel/gentoo-sources
+## install packages
+```
+emerge sys-kernel/gentoo-sources sys-kernel/genkernel sys-process/cronie net-misc/netifrc app-admin/sysklogd net-misc/dhcpcd sudo sys-boot/grub:2
 etc-update
-emerge --ask sys-kernel/genkernel
-emerge --ask sys-process/cronie
-emerge --ask net-misc/netifrc
-emerge --ask app-admin/sysklogd
-emerge --ask net-misc/dhcpcd
-emerge --ask sudo
-emerge --ask sys-boot/grub:2
+```
 
-ip addr show
-
+## setup locale
+```
 vi /etc/locale.gen
 en_US.UTF-8 UTF-8
 locale-gen
 eselect locale list
 eselect locale set 4
+```
 
-vi /etc/conf.d/net
-# virtualbox guest
-config_eth0="dhcp"
 
-# physical hardware
-config_enp3s0="dhcp"
-
-cd /etc/init.d
-# virtualbox guest
-ln -s net.lo net.eth0
-rc-update add net.eth0 default
-
-# physical hardware
-ln -s net.lo net.enp3s0
-rc-update add net.enp3s0 default
-
-#edit sudoers
+## edit sudoers
+```
 vi /etc/sudoers
+```
 
+## update system settings
+```
 rc-update add sysklogd default
 rc-update add cronie default
 rc-update add dhcpcd default
 rc-update add sshd default
+```
 
-usermod -aG wheel henninb
 
 # will take a long time (42 min)
+```
+cd /usr/src
 ln -sfn linux-5.10.61-gentoo linux
 genkernel all
+```
+
+## check kernel logs
+```
 tail -f /var/log/genkernel.log
+```
 
 ## verify the kernel
 ls /boot/vmlinuz* /boot/initramfs*
 
 ## grub install
+```
 grub-install /dev/sda
+grub-install /dev/sdb
 grub-mkconfig -o /boot/grub/grub.cfg
 reboot
-
-
-## optional for virtualbox
-#emerge --ask app-emulation/virtualbox-guest-additions
-#gpasswd -a henninb vboxguest
-
-# optional for virtualbox
-#usermod -aG vboxsf henninb
-
-# update source tree
-emerge --sync
-
-Desktop Not Installed
-
-Username: osboxes
-Password: osboxes.org
-
-
-update all packages
-
-emerge -auvDN world
-emerge -a --depclean
-revdepend-rebuild -i
-
+```
