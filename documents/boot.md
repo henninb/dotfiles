@@ -1,5 +1,3 @@
-£ boot
-
 BIOS Keys by Manufacturer
 Here's a list of common BIOS keys by brand. Depending on the age of your model, the key may be different.
 
