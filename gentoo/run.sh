@@ -1,14 +1,17 @@
 #!/bin/sh
 
 sudo mkdir -p /etc/portage/package.mask
-sudo mkdir -p /usr/portage/profiles
-echo "$(uname -n)" | sudo tee -a /usr/portage/profiles/repo_name
+sudo mkdir -p /etc/portage/package.accept_keywords
+sudo mkdir -p /etc/portage/package.use
+#sudo mkdir -p /usr/portage/profiles
+#echo "$(uname -n)" | sudo tee -a /usr/portage/profiles/repo_name
 
-echo '=dev-python/docutils-0.18' | sudo tee -a /etc/portage/package.mask/docutils
+#echo '=dev-python/docutils-0.18' | sudo tee -a /etc/portage/package.mask/docutils
 # echo '=dev-python/docutils-0.17' | sudo tee -a /etc/portage/package.mask/docutils
 
-sudo cp -v /etc/portage/package.accept_keywords /etc/portage/package.accept_keyword.bak.$$
-sudo cp -v package.accept_keywords /etc/portage/package.accept_keywords
+
+sudo cp -v /etc/portage/package.accept_keywords/package.accept_keywords /etc/portage/package.accept_keywords/package.accept_keyword.bak.$$
+sudo cp -v package.accept_keywords /etc/portage/package.accept_keywords/
 
 sudo cp -v /etc/portage/package.license /etc/portage/package.license.bak.$$
 sudo cp -v package.license /etc/portage/package.license
