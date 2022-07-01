@@ -33,12 +33,10 @@ elif [ "$OS" = "void" ]; then
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y flatpak
 elif [ "$OS" = "Gentoo" ]; then
-  # sudo emerge --update --newuse layman
-  # sudo layman -o https://raw.githubusercontent.com/fosero/flatpak-overlay/master/repositories.xml -f -a flatpak-overlay
-  # sudo mkdir -p /etc/portage/repos.conf
-  # sudo mv flatpak-overlay.conf /etc/portage/repos.conf/flatpak-overlay.conf
-  # sudo emaint -r flatpak-overlay sync
-  # sudo emerge --sync
+  sudo emerge --update --newuse app-eselect/eselect-repository
+  #sudo eselect repository enable flatpak-overlay
+  #sudo emaint sync -r flatpak-overlay
+  #sudo emerge --update --newuse flatpak
   sudo emerge --update --newuse json-glib
   sudo emerge --update --newuse flatpak
   sudo usermod -a -G flatpak henninb

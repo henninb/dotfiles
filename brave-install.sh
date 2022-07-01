@@ -12,24 +12,10 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg it brave
 elif [ "$OS" = "Gentoo" ]; then
+  sudo emerge --update --newuse app-eselect/eselect-repository
   sudo eselect repository enable brave-overlay
   sudo emaint sync -r brave-overlay
-  eselect repository list | grep brave
-  sudo mkdir -p /var/db/repos/brave-overlay/profiles
-  echo brave-overlay | sudo tee /var/db/repos/brave-overlay/profiles/repo_nam
-  sudo emerge brave-bin
-
-  sudo mkdir -p /var/db/repos/brave-overlay/profiles
-  sudo touch /var/db/repos/brave-overlay/profiles/repo_name
-  sudo mkdir -p /etc/portage/repos.conf
-  sudo emerge --update --newuse app-eselect/eselect-repository
-  sudo emerge --update --newuse layman
-  sudo layman -L | grep brave-overlay
-  sudo layman -a brave-overlay
-  sudo eselect repository enable brave-overlay
-  # echo "www-client/brave-bin **" | sudo tee -a /etc/portage/package.accept_keywords
   sudo emerge --update --newuse www-client/brave-bin
-  # sudo ln -sfn /usr/bin/brave-bin /usr/bin/brave
   sudo ln -sfn /usr/bin/brave-bin /usr/bin/brave-browser
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y xtools
