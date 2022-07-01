@@ -97,3 +97,4 @@ sys-devel/clang xml
 >=x11-libs/pango-1.42.4-r2 X
 x11-libs/wxGTK opengl
 x11-misc/dzen xpm xinerama
+x11-misc/copyq -wayland
