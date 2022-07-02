@@ -15,7 +15,6 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo python3 -m pip install ninja
   sudo python3 -m pip install meson
 elif [ "$OS" = "void" ]; then
-  echo
   sudo xbps-install -y ninja
   sudo xbps-install -y meson
   sudo xbps-install -y libev-devel
@@ -30,6 +29,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse libconfig
 else
   echo "OS=$OS not setup yet."
+  exit 1
 fi
 
 mkdir -p "$HOME/projects/github.com/jonaburg"
