@@ -12,7 +12,7 @@ fi
 # cd glow
 # go build
 
-sudo pacman -S glow
+sudo pacman --noconfirm --needed -S glow
 
 exit 0
 

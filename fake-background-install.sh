@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo pacman -S v4l2loopback-dkms
+sudo pacman --noconfirm --needed -S v4l2loopback-dkms
 git clone https://github.com/fangfufu/Linux-Fake-Background-Webcam.git fake-background
 cd fake-background
 ./install.sh

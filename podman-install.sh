@@ -2,7 +2,7 @@
 
 sudo xbps-install -y podman
 
-sudo pacman -S --noconfirm podman
+sudo pacman --noconfirm --needed -S podman
 # sudo usermod --add-subuids 10000-75535 henninb
 # sudo usermod --add-subgids 10000-75535 henninb
 

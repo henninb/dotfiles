@@ -28,7 +28,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   sudo mv flatpak-overlay.conf /etc/portage/repos.conf/flatpak-overlay.conf
   sudo emerge --sync
-  sudo emerge flatpak
+  sudo emerge --update --newuse flatpak
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   flatpak install --user com.valvesoftware.Steam.flatpakref
 elif [ "$OS" = "Solus" ]; then

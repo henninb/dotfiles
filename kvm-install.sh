@@ -83,7 +83,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S virt-install
   sudo pacman --noconfirm --needed -S dnsmasq
   sudo pacman --noconfirm --needed -S ebtables iptables dnsmasq
-  sudo pacman -S ebtables
+  sudo pacman --noconfirm --needed -S ebtables
 
   #sudo pacman --noconfirm --needed -S firewalld
   sudo pacman --noconfirm --needed -S cdrtools

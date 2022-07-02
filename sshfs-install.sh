@@ -1,6 +1,12 @@
 #!/bin/sh
 
-sudo emerge --update --newuse sshfs
+if [ -x "$(command -v emerge)" ]; then
+  sudo emerge --update --newuse sshfs
+fi
+if [ -x "$(command -v pacman)" ]; then
+  sudo pacman --noconfirm --needed sshfs
+fi
+
 mkdir -p "$HOME/mnt/downloads"
 mkdir -p "$HOME/mnt/audio"
 echo sshfs pi@raspi:/home/pi/downloads ~/mnt/downloads -o reconnect

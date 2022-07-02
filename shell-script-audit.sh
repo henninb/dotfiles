@@ -3,7 +3,7 @@
 if [ ! -x "$(command -v shellcheck)" ]; then
   echo "Please install shellcheck."
   sudo apt install shellcheck
-  sudo pacman -S shellcheck
+  sudo pacman --noconfirm --needed -S shellcheck
 fi
 #find . -maxdepth 1 -type f -exec ls -ld "{}" \;
 files=$(find . -maxdepth 1 -type f -name "*.sh")

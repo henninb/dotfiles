@@ -12,7 +12,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   echo install these packages on the guest
   sudo pacman --noconfirm --needed -S xorg-server
   sudo pacman --noconfirm --needed -S xorg-xauth
-  # sudo pacman -S xorg openbox
+  # sudo pacman --noconfirm --needed -S xorg openbox
 fi
 
 
