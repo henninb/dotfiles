@@ -1,5 +1,24 @@
 #!/bin/sh
 
+if [ -x "$(command -v pacman)" ]; then
+  sudo pacman --noconfirm --needed -S zsh
+elif [ -x "$(command -v emerge)" ]; then
+  sudo emerge --update --newuse zsh
+elif [ -x "$(command -v apt)" ]; then
+  sudo apt install -y zsh
+elif [ -x "$(command -v xbps-install)" ]; then
+  sudo xbps-install -y zsh
+elif [ -x "$(command -v eopkg)" ]; then
+  sudo eopkg install -y zsh
+elif [ -x "$(command -v dnf)" ]; then
+  sudo dnf install -y zsh
+elif [ -x "$(command -v brew)" ]; then
+  brew install zsh
+else
+  echo "$OS is not yet implemented."
+  exit 1
+fi
+
 if [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
     sudo dnf install -y zsh
@@ -7,9 +26,9 @@ if [ "$OS" = "CentOS Linux" ]; then
     sudo yum install -y zsh
   fi
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman  --noconfirm --needed -S zsh
-  sudo pacman  --noconfirm --needed -S unzip
-  sudo pacman  --noconfirm --needed -S wget
+  sudo pacman --noconfirm --needed -S zsh
+  sudo pacman --noconfirm --needed -S unzip
+  sudo pacman --noconfirm --needed -S wget
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ] || [ "$OS" = "Debian GNU/Linux" ]; then
   sudo apt install -y zsh
   sudo apt install -y unzip

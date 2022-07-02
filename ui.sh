@@ -3,12 +3,12 @@
 pkgs="trayer volumeicon feh xscreensaver numlockx blueman-applet copyq picom dunst flameshot nm-applet conky"
 
 for i in $pkgs; do
-  if [ ! -x "$(command -v $i)" ]; then
+  if [ ! -x "$(command -v "$i")" ]; then
     FAILURE="$i $FAILURE"
   fi
-  if ! pgrep $i; then
+  if ! pgrep "$i"; then
     if [ "$i" != "feh" ] && [ "$i" != "numlockx" ]; then
-      echo not running $i
+      echo "not running $i"
     fi
   fi
 done

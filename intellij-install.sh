@@ -144,7 +144,7 @@ fi
 
 if [ "${OS}" = "FreeBSD" ]; then
   echo "FreeBSD"
-  sudo pw usermod $(whoami) -G intellij
+  sudo pw usermod "$(whoami)" -G intellij
 else
   sudo usermod -a -G intellij "$(whoami)"
 fi

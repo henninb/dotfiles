@@ -5,7 +5,7 @@ stack update
 
 cd "$HOME/projects/github.com" || exit
 mkdir -p koalaman
-cd koalaman
+cd koalaman || exit
 #git clone https://github.com/koalaman/shellcheck.git
 git clone git@github.com:koalaman/shellcheck.git
 cd shellcheck || exit
