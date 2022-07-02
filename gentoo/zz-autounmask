@@ -100,3 +100,4 @@ x11-misc/dzen xpm xinerama
 # required by media-sound/pulseaudio-modules-bt-1.4::gentoo
 # required by pulseaudio-modules-bt (argument)
 >=media-sound/pulseaudio-16.0 bluetooth dbus
+>=dev-libs/boost-1.79.0 icu

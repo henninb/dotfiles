@@ -86,6 +86,11 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S mpc
   sudo pacman --noconfirm --needed -S ncmpcpp
   yay -S ashuffle-git
+elif [ "$OS" = "Gentoo" ]; then
+  echo
+  sudo emerge --update --newuse media-sound/mpd
+  sudo emerge --update --newuse media-sound/mpc
+  sudo emerge --update --newuse ncmpcpp
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y musicpd
   sudo pkg install -y musicpc
@@ -93,6 +98,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   echo
 else
   echo "OS is not configured"
+  exit 1
 fi
 
 sudo useradd mpd -s /sbin/nologin
@@ -125,10 +131,14 @@ fi
 if [ "${OS}" = "FreeBSD" ]; then
   sudo service musicpd start
 else
-  sudo systemctl disable mpd.socket
-  sudo systemctl stop mpd.socket
-  sudo systemctl enable mpd.service
-  sudo systemctl start mpd.service
+  if [ -x "$(command -v systemctl)" ]; then
+    sudo systemctl disable mpd.socket
+    sudo systemctl stop mpd.socket
+    sudo systemctl enable mpd.service
+    sudo systemctl start mpd.service
+  else
+    echo "am i gentoo"
+  fi
 fi
 
 # cd ~/projects || exit
