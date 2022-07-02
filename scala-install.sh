@@ -1,14 +1,11 @@
 #!/bin/sh
 
-#KOTLIN_VER=$(curl -s https://blog.jetbrains.com/kotlin/category/releases/ | grep -io "Kotlin [0-9.]\+[0-9] released" | head -1 | grep -o '[0-9.]\+[0-9]')
-#KOTLIN_VER=1.3.61
-#echo "$KOTLIN_VER"
-
-if [ ! -f "sbt-1.3.8.zip" ]; then
-  wget "https://piccolo.link/sbt-1.3.8.zip"
+scala_ver=1.6.2
+https://github.com/sbt/sbt/releases/download/v1.6.2/sbt-1.6.2.zip
+if [ ! -f "sbt-${scala_ver}.zip" ]; then
+  wget "https://github.com/sbt/sbt/releases/download/v${scala_ver}/sbt-${scala_ver}.zip"
 fi
-
 cd /opt || exit
-sudo unzip -o "$HOME/sbt-1.3.8.zip"
+sudo unzip -o "$HOME/sbt-${scala_ver}.zip"
 
 exit 0
