@@ -107,6 +107,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   # sudo pacman --noconfirm --needed -S font-awesome-4
   sudo pacman --noconfirm --needed -S ttf-font-awesome
   sudo pacman --noconfirm --needed -S gtk-update-icon-cache
+  sudo pacman --noconfirm --needed -S htop
   sudo pacman --noconfirm --needed -S jq
   sudo pacman --noconfirm --needed -S i3lock-color
   sudo pacman --noconfirm --needed -S lxappearance
@@ -230,7 +231,7 @@ elif [ "$OS" = "Gentoo" ]; then
   # sudo emerge --unmerge dzen
   # echo qt5-wayland
   echo dev-qt/qtwaylandscanner - required by copyq
-  GENTOO_PKGS="rust-bin setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server sys-apps/dbus elogind flameshot xappearance volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet trayer pulseaudio-modules-bt newsboat sxiv spacefm lxappearance xrandr hardinfo gentoolkit xmodmap pandoc jq pavucontrol xinput neovim lsof sddm"
+  GENTOO_PKGS="rust-bin setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server sys-apps/dbus elogind flameshot xappearance volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet trayer pulseaudio-modules-bt newsboat sxiv spacefm lxappearance xrandr hardinfo gentoolkit xmodmap pandoc jq pavucontrol xinput neovim lsof sddm htop"
   FAILURE=""
   for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then
