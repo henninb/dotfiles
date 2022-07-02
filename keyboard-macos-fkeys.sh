@@ -23,7 +23,6 @@ cat /etc/default/keyboard
 echo hid_apple.conf
 cat /etc/modprobe.d/hid_apple.conf
 
-
 cat > 00-keyboard.conf <<EOF
 Section "InputClass"
     Identifier "system-keyboard"
@@ -55,4 +54,3 @@ echo xmodmap -e "keycode 75 = Insert Insert"
 exit 0
 
 # vim: set ft=sh:
-
