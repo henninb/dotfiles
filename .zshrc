@@ -484,10 +484,6 @@ if [ "$MYSHELL" = "zsh" ]; then
   source "$HOME/plugins/zed-zsh/zed.zsh"
   #eval "$(starship init zsh)"
   source "$HOME/themes/spaceship-prompt/spaceship.zsh"
-  # source "$HOME/plugins/ssh-agent/ssh-agent.plugin.zsh"
-  # source ~/plugins/powerlevel10k/powerlevel10k.zsh-theme
-  #source "$HOME/themes/agnoster-zsh-theme/agnoster.zsh-theme"
-  #[ -f "$HOME/plugins/fzf.zsh" ] && source "$HOME/plugins/fzf.zsh"
 elif [ "$MYSHELL" = "bash" ]; then
   eval "$(starship init bash)"
 else

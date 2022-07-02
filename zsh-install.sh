@@ -93,13 +93,8 @@ $HOME/.fzf/install --key-bindings --completion --no-update-rc
 
 git clone https://github.com/denysdovhan/spaceship-prompt.git "${HOME}/themes/spaceship-prompt"
 
-git clone https://github.com/eendroroy/alien.git "$HOME/themes/alien"
-cd "$HOME/themes/alien" || exit
-git submodule update --init --recursive
-cd - || exit
-
 # git clone https://github.com:agnoster/agnoster-zsh-theme.git "$HOME/themes/agnoster-zsh-theme"
-git clone https://github.com/dracula/zsh.git "$HOME/themes/dracula-zsh-theme"
+# git clone https://github.com/dracula/zsh.git "$HOME/themes/dracula-zsh-theme"
 
 [ -s "/usr/bin/zsh" ] && sudo usermod -s /usr/bin/zsh "$(whoami)"
 [ -s "/usr/bin/zsh" ] && sudo chsh -s /usr/bin/zsh "$(whoami)"
