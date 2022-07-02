@@ -164,8 +164,9 @@ fi
 export PATH="$HOME/.local/share/bin:$PATH"
 export PATH=$PYENV_ROOT/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
-export PATH="$HOME/node_modules/.bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
+# npm bin -g
+export PATH="$HOME/.local/share/npm/bin:$PATH"
+export PATH="$HOME/.local/share/cargo/bin:$PATH"
 export PATH="$HOME/.rvm/bin:$PATH"
 export PATH="/opt/kafka/bin:$PATH"
 export PATH="/opt/kafka-client/bin:$PATH"
