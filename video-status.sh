@@ -5,6 +5,7 @@ lspci -k | grep -A 2 -E "(VGA|3D)"
 if [ -x "$(command -v emerge)" ]; then
   sudo emerge --update --newuse hardinfo
   sudo emerge --update --newuse mesa-progs
+  sudo emerge --update --newuse linux-headers
 fi
 
 # dead code
