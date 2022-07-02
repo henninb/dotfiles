@@ -2,10 +2,14 @@
 
 lspci -k | grep -A 2 -E "(VGA|3D)"
 
+if [ -x "$(command -v emerge)" ]; then
+  sudo emerge --update --newuse hardinfo
+  sudo emerge --update --newuse mesa-progs
+fi
+
 # dead code
 if [ 0 -eq 1 ]; then
   sudo emerge --update --newuse x11-misc/vdpauinfo
-  sudo emerge --update --newuse hardinfo
 
   sudo pacman --noconfirm --needed -S vdpauinfo
   sudo pacman --noconfirm --needed -S mesa-vdpau
@@ -66,6 +70,13 @@ fi
 # echo VDPAU and VAAPI.
 if [ -x "$(command -v nvidia-settings)" ]; then
   echo nvidia-settings
+else
+  echo "nvidia driver is not installed"
+fi
+
+echo open https://www.nvidia.com/en-us/geforce/drivers/
+if [ ! -f NVIDIA-Linux-x86_64-515.57.run ]; then
+  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/515.57/NVIDIA-Linux-x86_64-515.57.run'
 fi
 
 exit 0
