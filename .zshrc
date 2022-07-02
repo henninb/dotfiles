@@ -184,7 +184,7 @@ export CDPATH=~/projects/github.com
 
 [ -d /usr/local/go ] && export GOROOT=/usr/local/go
 export GOPATH=$HOME/.local
-export SDKMAN_DIR="$HOME/.sdkman"
+# export SDKMAN_DIR="$HOME/.sdkman"
 
 # export SUDO_EDITOR=nvim
 # export VISUAL=nvim

@@ -3,7 +3,9 @@
 curl -sSL https://get.haskellstack.org/ | sh
 stack update
 
-cd "$HOME/projects" || exit
+cd "$HOME/projects/github.com" || exit
+mkdir -p koalaman
+cd koalaman
 #git clone https://github.com/koalaman/shellcheck.git
 git clone git@github.com:koalaman/shellcheck.git
 cd shellcheck || exit

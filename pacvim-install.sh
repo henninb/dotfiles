@@ -4,6 +4,9 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install libcurses5-dev
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S libcurses5
+elif [ "$OS" = "Gentoo" ]; then
+  echo
+  sudo emerge sys-libs/ncurses
 elif [ "$OS" = "Solus" ]; then
   echo
 else
