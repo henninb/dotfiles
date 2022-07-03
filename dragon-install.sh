@@ -15,6 +15,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse x11-libs/gtk+:3
 else
   echo "$OS is not implemented."
+  exit 1
 fi
 
 mkdir -p "$HOME/projects/github.com/mwh"
