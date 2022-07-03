@@ -597,7 +597,7 @@ sudo emerge --ignore-default-opts -va1 --keep-going $(qdepends -CQqqF '%{CAT}/%{
 
 qdepends -CQqqF '%{CAT}/%{PN}:%{SLOT}' '^dev-python/docutils'
 sudo emerge --ignore-default-opts -va1 --keep-going $(qdepends -CQqqF '%{CAT}/%{PN}:%{SLOT}' 'dev-python/docutils')
-
+ equery depends dev-python/setuptools | sed 's/-[0-9]\{1,\}.*$//'
 ```
 
 sudo emerge eix
