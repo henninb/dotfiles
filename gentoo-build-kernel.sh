@@ -20,7 +20,7 @@ if [ "$OS" = "Gentoo" ]; then
   echo TODO: add audio into the kernel
   # exit 1
   cd /usr/src/linux || exit
-  cp -v /usr/src/linux/.config "${HOME}/kernel-config-$(uname -r)"
+  cp -v /usr/src/linux/.config "${HOME}/gentoo/kernel-config-$(uname -r)"
 
   echo sudo make mrpropper
   sudo make menuconfig
@@ -48,4 +48,3 @@ echo sudo rm -r "/lib/modules/${old_kernel}*" || { echo "Failed to remove module
 exit 0
 
 # vim: set ft=sh:
-
