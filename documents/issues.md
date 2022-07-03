@@ -598,18 +598,19 @@ sudo emerge --ignore-default-opts -va1 --keep-going $(qdepends -CQqqF '%{CAT}/%{
 qdepends -CQqqF '%{CAT}/%{PN}:%{SLOT}' '^dev-python/docutils'
 sudo emerge --ignore-default-opts -va1 --keep-going $(qdepends -CQqqF '%{CAT}/%{PN}:%{SLOT}' 'dev-python/docutils')
  equery depends dev-python/setuptools | sed 's/-[0-9]\{1,\}.*$//'
+
+emerge -1av docutils
 ```
 
+## gentoo upgradable packages
+```
 sudo emerge eix
-gentoo ~  main [!] ♜ sudo eix-update
-Reading Portage settings...
-Building database (/var/cache/eix/portage.eix)...
-[0] "gentoo" /usr/portage (cache: metadata-md5-or-flat)
-     Reading category 169|169 (100) Finished
-[1] "brave-overlay" /var/db/repos/brave-overlay (cache: parse|ebuild*3.0.24#metadata-md5#metadata-flat#assign)
-     Reading category 169|169 (100) Finished
-Applying masks...
-Calculating hash tables...
-Writing database file /var/cache/eix/portage.eix...
-Database contains 19736 packages in 169 categories
-gentoo ~  main [!] ♜ eix --installed --upgrade
+sudo eix-update
+eix --installed --upgrade
+```
+
+## gentoo no action for now
+```
+  (dev-python/docutils-0.18.1-r1:0/0::gentoo, ebuild scheduled for merge) USE="" ABI_X86="(64)" PYTHON_TARGETS="python3_10 python3_9 (-pypy3) (-python3_11) -python3_8" conflicts with
+    <dev-python/docutils-0.18[python_targets_python3_9(-),python_targets_python3_10(-)] required by (dev-python/sphinx-4.5.0-r1:0/0::gentoo, installed) USE="-doc -latex -test" ABI_X86="(64)" PYTHON_TARGETS="python3_10 python3_9 (-pypy3) (-python3_11) -python3_8"
+```
