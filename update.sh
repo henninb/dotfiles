@@ -56,8 +56,9 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge -uN portage
   sudo emerge -uDUf --keep-going --with-bdeps=y @world 2>&1 | tee -a update-$$.log
   sudo emerge -uDU --keep-going --with-bdeps=y @world 2>&1 | tee -a update-$$.log
-  #sudo emerge --update --newuse --deep @world 2>&1 | tee -a update-$$.log
-  sudo emerge -uDN --keep-going --with-bdeps=y @world 2>&1 | tee -a update-$$.log
+  # sudo emerge -DuNpv world 2>&1 | tee -a update-$$.log
+  # sudo emerge --update --newuse --deep @world 2>&1 | tee -a update-$$.log
+  # sudo emerge -uDN --keep-going --with-bdeps=y @world 2>&1 | tee -a update-$$.log
   sudo emerge --depclean 2>&1 | tee -a update-$$.log
   sudo revdep-rebuild
   echo sudo emerge @preserved-rebuild
