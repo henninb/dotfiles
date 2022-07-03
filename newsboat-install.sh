@@ -12,6 +12,12 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y mpv
   sudo apt install -y elinks
   sudo apt install -y task-spooler
+elif [ "$OS" = "Gentoo" ]; then
+  sudo emerge --update --newuse newsboat
+  sudo emerge --update --newuse cmus
+  sudo emerge --update --newuse mpv
+  sudo emerge --update --newuse elinks
+  echo
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y sqlite3-devel
   sudo eopkg install -y stfl-devel

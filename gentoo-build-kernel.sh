@@ -1,11 +1,15 @@
 #!/bin/sh
 
+old=5.15.41
+new=5.18.9
+
 if [ "$OS" = "Gentoo" ]; then
   echo emerge -uDNa @world
   sudo emerge --update --newuse sys-kernel/gentoo-sources
-  sudo emerge --update --newuse zfs
+  # sudo emerge --update --newuse zfs
   # sudo emerge --update --newuse aufs-sources
-  sudo PYTHON_SINGLE_TARGET="python3_7 (-pypy3) -python3_6" emerge --update --newuse dracut
+  # sudo PYTHON_SINGLE_TARGET="python3_10 (-pypy3) -python3_9" emerge --update --newuse dracut
+  sudo emerge --update --newuse dracut
   sudo emerge --update --newuse fakeroot
   sudo emerge --update --newuse pciutils
   sudo eselect kernel list
@@ -24,16 +28,16 @@ if [ "$OS" = "Gentoo" ]; then
   sudo mount /dev/sda1 /boot
   sudo make modules_install
   sudo make install
-  cd /boot && sudo dracut --kver 5.4.60-gentoo
+  cd /boot && sudo dracut --kver "${new}-gentoo"
   echo sudo grub-install /dev/sda
   sudo grub-mkconfig -o /boot/grub/grub.cfg
   sudo grep gnulinux /boot/grub/grub.cfg
   echo sudo reboot
 fi
 
-echo qpkg  -v gentoo-sources
+echo qpkg -v gentoo-sources
 echo "Please type the old kernel version"
-old_kernel=4.9.1
+old_kernel="$old"
 read -r old_kernel
 # sudo emerge -C sys-kernel/gentoo-sources-4.19.97
 echo sudo rm -r "/usr/src/linux-${old_kernel}*" || { echo "Failed to remove old kernel sources"; exit 1; }
