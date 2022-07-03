@@ -4,10 +4,11 @@
       <map>
         <entry key="$USER_HOME$/projects/github.com/henninb/example-java">
           <value>
-            <RecentProjectMetaInfo opened="true" projectWorkspaceId="2BRbV3rCQ3AeqfEn9RKl1NapoQk">
+            <RecentProjectMetaInfo frameTitle="example" projectWorkspaceId="2BRbV3rCQ3AeqfEn9RKl1NapoQk">
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="IU-212.5080.55" />
               <option name="buildTimestamp" value="1629776244266" />
+              <frame x="0" y="14" width="3840" height="2128" />
               <option name="productionCode" value="IU" />
               <option name="projectOpenTimestamp" value="1656871866108" />
             </RecentProjectMetaInfo>
