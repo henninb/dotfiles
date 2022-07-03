@@ -205,6 +205,8 @@ keybinds conf =
   , ("<XF86AudioPlay>", addName "Toggle Play" $ safeSpawn "mpc" ["toggle"])
   , ("<XF86AudioPrev>", addName "Previous" $ safeSpawn "mpc" ["prev"])
   , ("<XF86AudioNext>", addName "Next" $ safeSpawn "mpc" ["next"])
+      -- , ((0, xF86XK_MonBrightnessUp), spawn "brightnessctl s +10%")
+    -- , ((0, xF86XK_MonBrightnessDown), spawn "brightnessctl s 10%-")
     ]
 
    ++
@@ -224,21 +226,20 @@ keybinds conf =
   -- , ("M-k", addName "Window Up" $ windowGo U False)
   , ("M-l", addName "Window Right" $ windowGo R False)
   , ("M-h", addName "Window Left" $ windowGo L False)
-  , ("M-<Up>", addName "" $ sendMessage (MoveUp 10))
-  , ("M-<Down>", addName "" $ sendMessage (MoveDown 10))
-  , ("M-<Right>", addName "" $ sendMessage (MoveRight 10))
-  , ("M-<Left>", addName "" $ sendMessage (MoveLeft 10))
-  , ("M-S-<Up>", addName "" $ sendMessage (IncreaseUp 10))
-  , ("M-S-<Down>", addName "" $ sendMessage (IncreaseDown 10))
-  , ("M-S-<Right>", addName "" $ sendMessage (IncreaseRight 10))
-  , ("M-S-<Left>", addName "" $ sendMessage (IncreaseLeft 10))
-  , ("M-C-<Up>", addName "" $ sendMessage (DecreaseUp 10))
-  , ("M-C-<Down>", addName "" $ sendMessage (DecreaseDown 10))
-  , ("M-C-<Right>", addName "" $ sendMessage (DecreaseRight 10))
-  , ("M-C-<Left>", addName "" $ sendMessage (DecreaseLeft 10))
+  -- , ("M-<Up>", addName "" $ sendMessage (MoveUp 10))
+  -- , ("M-<Down>", addName "" $ sendMessage (MoveDown 10))
+  -- , ("M-<Right>", addName "" $ sendMessage (MoveRight 10))
+  -- , ("M-<Left>", addName "" $ sendMessage (MoveLeft 10))
+  -- , ("M-S-<Up>", addName "" $ sendMessage (IncreaseUp 10))
+  -- , ("M-S-<Down>", addName "" $ sendMessage (IncreaseDown 10))
+  -- , ("M-S-<Right>", addName "" $ sendMessage (IncreaseRight 10))
+  -- , ("M-S-<Left>", addName "" $ sendMessage (IncreaseLeft 10))
+  -- , ("M-C-<Up>", addName "" $ sendMessage (DecreaseUp 10))
+  -- , ("M-C-<Down>", addName "" $ sendMessage (DecreaseDown 10))
+  -- , ("M-C-<Right>", addName "" $ sendMessage (DecreaseRight 10))
+  -- , ("M-C-<Left>", addName "" $ sendMessage (DecreaseLeft 10))
   , ("M-S-h", addName "resize left" $ sendMessage Shrink)
   , ("M-S-l", addName "resize right" $ sendMessage Expand)
-  -- , ("M-t", withFocused $ windows . sink)
   , ("M-t", addName "" $ withFocused $ windows . sink)
   , ("M-c",   addName "Select first empty workspace" $ moveTo Next EmptyWS)
   , ("M-S-c", addName "Move window to next empty workspace" $ shiftTo Next EmptyWS)
@@ -278,3 +279,7 @@ workspaceHint :: (String -> WindowSet -> WindowSet) -> String -> X ()
 workspaceHint f i = do
   windows $ f i
   notifyWSHint i
+
+   -- [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
+   --      | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
+   --      , (f, m) <- [(view, 0), (shift, shiftMask)]]

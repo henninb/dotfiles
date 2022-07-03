@@ -69,6 +69,14 @@ myDzen = " dzen2 -xs 1 -dock -h 14 -ta 'l' -fn '" ++ myFont ++ "' -fg '" ++ myCo
 myTopRight :: String
 myTopRight = "conky -c ~/.config/conky/xmonad-bar-top-right | " ++ myDzen ++ " -x '800' -y '0' -ta 'r' -p"
 
+-- Whether focus follows the mouse pointer.
+myFocusFollowsMouse :: Bool
+myFocusFollowsMouse = True
+
+-- Whether clicking on a window to focus also passes the click to the window
+myClickJustFocuses :: Bool
+myClickJustFocuses = False
+
 main :: IO ()
 main = do
   screenWidth <- togglevga
