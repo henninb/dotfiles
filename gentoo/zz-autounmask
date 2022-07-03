@@ -105,5 +105,5 @@ x11-misc/dzen xpm xinerama
 >=dev-qt/qtmultimedia-5.15.5 qml
 >=kde-frameworks/kwindowsystem-5.92.0 X
 >=kde-frameworks/sonnet-5.92.0 qml
->=dev-qt/qtgui-5.15.5 -X
+>=dev-qt/qtgui-5.15.5 X
 >=kde-frameworks/plasma-5.92.0-r2 X
