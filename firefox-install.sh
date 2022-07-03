@@ -2,13 +2,15 @@
 
 FOX_VER=$(curl -sfI 'https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US' | grep -o 'firefox-[0-9.]\+[0-9]' | sed 's/firefox-//')
 
-echo "$FOX_VER"
-echo "$ACTUAL_VER"
+echo "ver=$FOX_VER"
+echo "act=$ACTUAL_VER"
 
-ACTUAL_VER=$(/opt/firefox/firefox --version | grep -o '[0-9.]\+[0-9]')
+if [ -f "/opt/firefox/firefox" ]; then
+  ACTUAL_VER=$(/opt/firefox/firefox --version | grep -o '[0-9.]\+[0-9]')
 
-if [ "$ACTUAL_VER" = "$FOX_VER" ]; then
-  echo "already at the latest version $FOX_VER."
+  if [ "$ACTUAL_VER" = "$FOX_VER" ]; then
+    echo "already at the latest version $FOX_VER."
+  fi
 fi
 
 sudo groupadd firefox
