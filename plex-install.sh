@@ -21,6 +21,11 @@ else
   echo "$OS is not yet implemented."
   exit 1
 fi
+
+if [ ! -x "$(command -v systemctl)" ]; then
+  echo systemctl not installed.
+  exit 1
+fi
 sudo systemctl status plexmediaserver
 sudo mkdir -p /opt/plexmedia/music
 sudo mkdir -p /opt/plexmedia/series
