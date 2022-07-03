@@ -14,18 +14,18 @@ if [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse pciutils
   sudo eselect kernel list
   echo sudo eselect kernel set 1
-  sudo eselect kernel set 1
+  sudo eselect kernel set 2
 
   echo TODO: should I be exiting here?
   echo TODO: add audio into the kernel
-  exit 1
+  # exit 1
   cd /usr/src/linux || exit
   cp -v /usr/src/linux/.config "${HOME}/kernel-config-$(uname -r)"
 
   echo sudo make mrpropper
   sudo make menuconfig
   sudo make -j"$(nproc)"
-  sudo mount /dev/sda1 /boot
+  sudo mount /dev/sdb1 /boot
   sudo make modules_install
   sudo make install
   cd /boot && sudo dracut --kver "${new}-gentoo"
@@ -36,9 +36,10 @@ if [ "$OS" = "Gentoo" ]; then
 fi
 
 echo qpkg -v gentoo-sources
-echo "Please type the old kernel version"
+echo "press enter to continue"
+read -r response
+
 old_kernel="$old"
-read -r old_kernel
 # sudo emerge -C sys-kernel/gentoo-sources-4.19.97
 echo sudo rm -r "/usr/src/linux-${old_kernel}*" || { echo "Failed to remove old kernel sources"; exit 1; }
 echo sudo rm -r "/boot/*${old_kernel}*" || { echo "Failed to remove boot files"; exit 1; }
