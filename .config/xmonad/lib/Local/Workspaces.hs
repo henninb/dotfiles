@@ -37,6 +37,10 @@ projects = [ terminalProject ]
 myWorkspaces :: [String]
 myWorkspaces = [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0]
 
+
+-- myWorkspaces        = map show [1..9]
+
+
 scratchPads :: [NamedScratchpad]
 scratchPads = [   NS "terminal-nsp" spawnTerm findTerm manageTerm
                 , NS "discord-nsp" spawnDiscord findDiscord manageDiscord
