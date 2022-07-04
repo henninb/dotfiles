@@ -108,3 +108,5 @@ sudo mv -v st /usr/local/bin
 cd "$HOME" || exit
 
 exit 0
+
+# vim: set ft=sh

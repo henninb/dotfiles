@@ -14,3 +14,5 @@ qemu-system-arm \
    -no-reboot
 
 exit 0
+
+# vim: set ft=sh

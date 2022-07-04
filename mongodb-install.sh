@@ -11,3 +11,5 @@ sudo systemctl start mongodb
 echo mongo
 
 exit 0
+
+# vim: set ft=sh

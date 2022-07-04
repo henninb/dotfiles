@@ -24,3 +24,5 @@ echo /usr/lib/postgresql/12/bin/pg_ctl restart -m immediate
 echo /usr/lib/postgresql/12/bin/pg_resetwal -f /var/lib/postgresql/12/main/
 
 exit 0
+
+# vim: set ft=sh

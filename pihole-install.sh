@@ -6,3 +6,5 @@ echo set password
 pihole -a -p
 
 exit 0
+
+# vim: set ft=sh

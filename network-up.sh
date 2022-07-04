@@ -27,3 +27,5 @@ fi
 #echo sudo systemctl enable --now dhclient@enp0s5.service
 
 exit 0
+
+# vim: set ft=sh

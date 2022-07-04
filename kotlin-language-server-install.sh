@@ -9,4 +9,3 @@ cd kotlin-language-server || exit
 exit 0
 
 # vim: set ft=sh:
-

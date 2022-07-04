@@ -28,4 +28,3 @@ echo touch /var/spool/mail/henninb
 exit 0
 
 # vim: set ft=sh:
-

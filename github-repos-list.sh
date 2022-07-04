@@ -8,4 +8,3 @@ curl -s https://api.github.com/users/BitExplorer/repos?per_page=100 | jq -r '.[]
 exit 0
 
 # vim: set ft=sh:
-

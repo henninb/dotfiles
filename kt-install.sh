@@ -14,4 +14,3 @@ go get -u github.com/fgeller/kt
 exit 0
 
 # vim: set ft=sh:
-

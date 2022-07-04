@@ -35,4 +35,3 @@ echo "lsusb | grep 'Magic Keyboard'"
 exit 0
 
 # vim: set ft=sh:
-

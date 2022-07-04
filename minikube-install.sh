@@ -118,3 +118,5 @@ makepkg -si
 #sudo kubeadm init
 
 exit 0
+
+# vim: set ft=sh

@@ -107,3 +107,5 @@ fi
 # homectl inspect henninb
 
 exit 0
+
+# vim: set ft=sh

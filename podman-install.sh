@@ -23,3 +23,5 @@ echo registries = ['docker.io', 'quay.io', 'registry.access.redhat.com']
 echo registries = ['docker.io']
 
 exit 0
+
+# vim: set ft=sh

@@ -20,4 +20,3 @@ cd "$HOME" || exit
 exit 0
 
 # vim: set ft=sh:
-

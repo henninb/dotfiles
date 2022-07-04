@@ -71,3 +71,5 @@ fi
 echo "sh ./dracula-theme-install.sh"
 
 exit 0
+
+# vim: set ft=sh

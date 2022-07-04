@@ -180,4 +180,3 @@ echo virsh -c qemu:///system list --all
 exit 0
 
 # vim: set ft=sh:
-

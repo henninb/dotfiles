@@ -8,3 +8,5 @@ sudo systemctl disable activemq
 sudo systemctl disable zookeeper
 
 exit 0
+
+# vim: set ft=sh

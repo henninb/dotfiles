@@ -176,3 +176,5 @@ gem install --user neovim
 sudo npm install -g neovim
 
 exit 0
+
+# vim: set ft=sh

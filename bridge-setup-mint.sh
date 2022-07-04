@@ -152,3 +152,5 @@ sudo systemctl edit --full rc-local
 It appears you need to install the resolvconf package to use the dns-* values in /etc/network/interfaces
 sudo rm /etc/resolv.conf
 sudo dpkg-reconfigure resolvconf
+
+# vim: set ft=sh

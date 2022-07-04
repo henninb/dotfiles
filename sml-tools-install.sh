@@ -30,3 +30,5 @@ cd projects || exit
 git clone git@github.com:MLton/mlton.git
 
 exit 0
+
+# vim: set ft=sh

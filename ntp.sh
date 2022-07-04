@@ -23,3 +23,5 @@ echo example:
 echo sudo date -s "27 DEC 2021 12:24:00"
 
 exit 0
+
+# vim: set ft=sh

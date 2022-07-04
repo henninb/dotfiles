@@ -44,3 +44,5 @@ fi
 flatpak remotes
 
 exit 0
+
+# vim: set ft=sh

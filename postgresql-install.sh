@@ -168,3 +168,5 @@ echo /usr/lib/postgresql/14/bin/pg_ctl  -D /var/lib/postgresql/14/main start
 echo rm -rf /var/lib/postgres/data
 
 exit 0
+
+# vim: set ft=sh

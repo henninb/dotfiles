@@ -42,3 +42,5 @@ ninja -C build
 sudo ninja -C build install
 
 exit 0
+
+# vim: set ft=sh

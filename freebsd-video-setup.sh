@@ -47,4 +47,3 @@ xrandr --output default --mode "2560x1440_59.95"
 xrandr --verbose
 
 # vim: set ft=sh:
-

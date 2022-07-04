@@ -8,3 +8,5 @@ if [ "$OS" = "Arch Linux" ]; then
 fi
 
 exit 0
+
+# vim: set ft=sh:

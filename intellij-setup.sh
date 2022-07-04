@@ -15,4 +15,3 @@ rm -rf "$HOME/.java/.userPrefs/jetbrains"
 exit 0
 
 # vim: set ft=sh:
-

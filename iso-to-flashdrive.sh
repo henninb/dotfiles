@@ -25,4 +25,3 @@ echo sudo dd "if=${FILE}" of=/dev/sdg bs=16k status=progress && sync
 exit 0
 
 # vim: set ft=sh:
-

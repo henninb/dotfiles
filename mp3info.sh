@@ -12,3 +12,5 @@ for f in $(find . -type f -name "*.mp3" -print); do
 done
 
 exit 0
+
+# vim: set ft=sh

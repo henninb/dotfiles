@@ -12,4 +12,3 @@ git log --follow -- "$FILE"
 exit 0
 
 # vim: set ft=sh:
-

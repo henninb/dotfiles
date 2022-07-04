@@ -11,4 +11,3 @@ sudo dd if=/dev/sr0 of="$FILE"
 exit 0
 
 # vim: set ft=sh:
-

@@ -56,4 +56,3 @@ echo sudo grub-mkconfig -o /boot/grub/grub.cfg¬
 exit 0
 
 # vim: set ft=sh:
-

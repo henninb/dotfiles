@@ -51,3 +51,5 @@ curl -Os https://bootstrap.pypa.io/pip/2.7/get-pip.py
 python2 get-pip.py
 
 exit 0
+
+# vim: set ft=sh

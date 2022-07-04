@@ -37,4 +37,3 @@ echo "lsusb | grep -i 'aluminum Keyboard'"
 exit 0
 
 # vim: set ft=sh:
-

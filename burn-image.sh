@@ -39,4 +39,3 @@ echo sudo mkdir -p /media/cdrom
 exit 0
 
 # vim: set ft=sh:
-

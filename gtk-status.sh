@@ -28,4 +28,3 @@ pkg-config --exists gtk+-2.0 && echo "gtk+ 2.0 is installed" || echo "gtk+ 2.0 i
 exit 0
 
 # vim: set ft=sh:
-

@@ -12,3 +12,4 @@ rename 's/ /_/g' *.mp3
 exit 0
 
 # can be changed
+# vim: set ft=sh

@@ -42,4 +42,3 @@ git clone git@gitlab.com:BitExplorer/howto.git
 exit 0
 
 # vim: set ft=sh:
-

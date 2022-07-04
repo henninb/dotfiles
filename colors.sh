@@ -23,4 +23,3 @@ tput setab 160 && echo foo
 exit 0
 
 # vim: set ft=sh:
-

@@ -40,3 +40,5 @@ echo https://forums.linuxmint.com/viewtopic.php?t=131433
 # uname -a
 
 exit 0
+
+# vim: set ft=sh

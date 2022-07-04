@@ -39,3 +39,5 @@ echo sdk install java 11.0.2-open
 echo sdk install java 12.0.1-open
 
 exit 0
+
+# vim: set ft=sh

@@ -104,3 +104,5 @@ echo test | mail -s "Test subject $(uname -n)" henninb@gmail.com
 netstat -na | grep 25 | grep LISTEN | grep tcp
 
 exit 0
+
+# vim: set ft=sh

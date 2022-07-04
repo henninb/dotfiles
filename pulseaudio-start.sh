@@ -17,3 +17,5 @@ echo pacmd set-default-sink 1
 # pulseaudio -D
 
 exit 0
+
+# vim: set ft=sh

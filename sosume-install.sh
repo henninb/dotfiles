@@ -7,3 +7,5 @@ sudo usermod -aG kvm $USER
 sosumi
 
 exit 0
+
+# vim: set ft=sh

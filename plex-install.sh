@@ -38,3 +38,5 @@ echo http://192.168.10.10:32400/web
 sudo usermod -a -G plex "$(id -un)"
 
 exit 0
+
+# vim: set ft=sh

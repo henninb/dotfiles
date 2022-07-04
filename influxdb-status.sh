@@ -10,4 +10,3 @@ curl -i -XPOST http://localhost:8086/query -u "henninb:${INFLUXDB_PASSWORD}" --d
 exit 0
 
 # vim: set ft=sh:
-

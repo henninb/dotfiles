@@ -166,3 +166,5 @@ mpc load all.m3u
 mpc load all
 
 exit 0
+
+# vim: set ft=sh

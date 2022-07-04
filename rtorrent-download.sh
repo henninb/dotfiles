@@ -10,3 +10,5 @@ rtorrent http://sjc.edge.kernel.org/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-
 mv CentOS-7-x86_64-Minimal-1810 "$HOME/torrent"
 
 exit 0
+
+# vim: set ft=sh

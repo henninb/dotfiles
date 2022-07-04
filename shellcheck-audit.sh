@@ -20,3 +20,6 @@ for sfile in $files; do
   fi
 done
 
+exit 0
+
+# vim: set ft=sh

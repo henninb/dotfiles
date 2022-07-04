@@ -30,7 +30,7 @@ if [ "$(uname -n)" = "silverfox" ]; then
     -drive id=ESP,if=none,format=qcow2,file=/media/henninb/Data/ESP.qcow2 \
     -device ide-hd,bus=sata.2,drive=ESP \
     -drive id=SystemDisk,if=none,file=/media/henninb/Data/macos-qemu-disk.qcow2 \
-    -device ide-hd,bus=sata.4,drive=SystemDisk \
+    -device ide-hd,bus=sata.4,drive=SystemDisk
 #    -nogrphic -vnc :0 -k en-us \
 #elif [ "$(uname -n)" = "archlinux" ]; then
 elif [ "$(uname -n)" = "archlinux" ]; then
@@ -69,4 +69,3 @@ exit 0
     # -device ide-hd,bus=sata.3,drive=InstallMedia
 
 # vim: set ft=sh:
-

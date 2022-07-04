@@ -11,3 +11,5 @@ fi
 ss -tulpn4
 
 exit 0
+
+# vim: set ft=sh

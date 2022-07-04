@@ -54,4 +54,3 @@ ip addr show dev "$device"
 exit 0
 
 # vim: set ft=sh:
-

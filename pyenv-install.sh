@@ -13,3 +13,5 @@ pyenv global 3.9.4
 pyenv version
 
 exit 0
+
+# vim: set ft=sh

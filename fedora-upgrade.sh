@@ -9,4 +9,3 @@ sudo dnf system-upgrade reboot
 exit 0
 
 # vim: set ft=sh:
-

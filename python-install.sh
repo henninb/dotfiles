@@ -66,3 +66,5 @@ python --version
 echo https://pypi.org/project/blessed/
 
 exit 0
+
+# vim: set ft=sh

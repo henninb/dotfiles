@@ -12,3 +12,5 @@ make -C src
 sudo make -C src install
 
 exit 0
+
+# vim: set ft=sh

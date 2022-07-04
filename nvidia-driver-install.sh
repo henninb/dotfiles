@@ -47,3 +47,5 @@ xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
 
 exit 0
+
+# vim: set ft=sh

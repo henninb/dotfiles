@@ -7,3 +7,5 @@ chmod 755 standard-notes-${VER}.AppImage
 mv standard-notes-${VER}.AppImage "$HOME/.local/bin/standard-notes"
 
 exit 0
+
+# vim: set ft=sh

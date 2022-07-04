@@ -64,4 +64,3 @@ wget http://cribbageclassic.com/images/card_back_green.jpg
 exit 0
 
 # vim: set ft=sh:
-

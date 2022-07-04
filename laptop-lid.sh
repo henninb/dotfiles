@@ -8,4 +8,3 @@ sudo systemctl restart systemd-logind
 exit 0
 
 # vim: set ft=sh:
-

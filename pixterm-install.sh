@@ -8,3 +8,5 @@ fi
 go get -u github.com/eliukblau/pixterm/cmd/pixterm
 
 exit 0
+
+# vim: set ft=sh

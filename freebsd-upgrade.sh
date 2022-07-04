@@ -7,4 +7,3 @@ sudo freebsd-update install
 exit 0
 
 # vim: set ft=sh:
-

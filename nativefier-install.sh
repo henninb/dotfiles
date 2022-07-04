@@ -8,3 +8,5 @@ nativefier --name "reddit" "reddit.com"
 nativefier --name "github" "github.com"
 
 exit 0
+
+# vim: set ft=sh

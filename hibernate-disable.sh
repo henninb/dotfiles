@@ -5,4 +5,3 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 exit 0
 
 # vim: set ft=sh:
-

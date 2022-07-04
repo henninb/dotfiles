@@ -34,3 +34,5 @@ echo rustup default stable
 # sudo mv -v target/release/alacritty /usr/local/bin
 
 exit 0
+
+# vim: set ft=sh

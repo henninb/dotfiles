@@ -14,3 +14,5 @@ cat > statics <<EOF
 EOF
 
 exit 0
+
+# vim: set ft=sh

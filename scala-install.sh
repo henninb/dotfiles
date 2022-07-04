@@ -9,3 +9,5 @@ cd /opt || exit
 sudo unzip -o "$HOME/sbt-${scala_ver}.zip"
 
 exit 0
+
+# vim: set ft=sh

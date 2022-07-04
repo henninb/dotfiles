@@ -5,4 +5,3 @@ sudo dhclient -r -v enp3s0 && sudo rm /var/lib/dhcp/dhclient.* ; sudo dhclient -
 exit 0
 
 # vim: set ft=sh:
-

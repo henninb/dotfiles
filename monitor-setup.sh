@@ -15,3 +15,5 @@ xrandr --addmode HDMI-0 '3840x2160_60'
 # xrandr --addmode HDMI-0 '3360x1890_30'
 
 exit 0
+
+# vim: set ft=sh

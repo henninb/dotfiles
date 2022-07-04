@@ -16,3 +16,5 @@ echo sshfs henninb@hornsup:/home/henninb/src/api/youtube/audio ~/mnt/audio -o re
 sshfs henninb@hornsup:/home/henninb/src/api/youtube/audio ~/mnt/audio -o reconnect
 
 exit 0
+
+# vim: set ft=sh

@@ -39,4 +39,3 @@ go get github.com/gokcehan/lf
 exit 0
 
 # vim: set ft=sh:
-

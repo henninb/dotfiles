@@ -6,4 +6,3 @@ mkdir -p projects
 exit 0
 
 # vim: set ft=sh:
-
