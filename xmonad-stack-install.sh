@@ -391,3 +391,5 @@ cd .config/xmonad || exit
 ./build
 
 exit 0
+
+# vim: set ft=sh

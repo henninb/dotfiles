@@ -81,3 +81,5 @@ if [ ! -f NVIDIA-Linux-x86_64-515.57.run ]; then
 fi
 
 exit 0
+
+# vim: set ft=sh

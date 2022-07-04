@@ -48,3 +48,5 @@ lsusb | grep '802.11ac'
 # echo wicd-curses
 
 exit 0
+
+# vim: set ft=sh

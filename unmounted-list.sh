@@ -88,3 +88,5 @@ echo sudo e2label /dev/sda1 Data
 echo sudo ntfsfix /dev/sdb2
 
 exit 0
+
+# vim: set ft=sh

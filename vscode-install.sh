@@ -61,3 +61,5 @@ npm install
 npm run build
 
 exit 0
+
+# vim: set ft=sh

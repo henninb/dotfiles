@@ -154,3 +154,5 @@ echo find -name "*.opus" -exec ffmpeg -i {} {}.mp3 \;
 echo cvlc can play any media via the command line
 
 exit 0
+
+# vim: set ft=sh

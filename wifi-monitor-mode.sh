@@ -20,3 +20,5 @@ echo sudo airodump-ng wlp0s20u7 -c 6
 # besside-ng -R 'Target Network' wlan0mon
 
 exit 0
+
+# vim: set ft=sh

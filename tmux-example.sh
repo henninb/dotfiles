@@ -12,3 +12,5 @@ tmux send -t foo.4 "ssh pi" ENTER
 tmux set-window synchronize-pane on
 
 exit 0
+
+# vim: set ft=sh

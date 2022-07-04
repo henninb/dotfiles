@@ -28,3 +28,5 @@ echo "run on suse as void is dependant on suse's grub"
 echo sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 exit 0
+
+# vim: set ft=sh

@@ -29,3 +29,5 @@ echo "xfreerdp /u:henninb /p:'changeit' /cert-ignore /v:127.0.0.1"
 # setpriv --no-new-privs Xorg :10 -auth .Xauthority -config xrdp/xorg.conf -noreset -nolisten tcp -logfile .xorgxrdp.%s.log
 
 exit 0
+
+# vim: set ft=sh

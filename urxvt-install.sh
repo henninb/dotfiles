@@ -87,3 +87,5 @@ fc-match 'Courier New:slant=0:weight=100:pixelsize=24:antialias=False:autohint=T
 # echo update-locale LANG=en_US.UTF-8
 
 exit 0
+
+# vim: set ft=sh

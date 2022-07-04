@@ -31,3 +31,5 @@ function unichr {
 for (( i=0x2500; i<0x2600; i++ )); do
     unichr $i
 done
+
+# vim: set ft=sh

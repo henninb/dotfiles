@@ -12,3 +12,5 @@ if [ -x "$(command -v pacman)" ]; then
 fi
 
 exit 0
+
+# vim: set ft=sh

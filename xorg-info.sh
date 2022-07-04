@@ -5,3 +5,7 @@ exec xprop -notype \
   -f WM_WINDOW_ROLE 8s ':\n  stringProperty "WM_WINDOW_ROLE" =\? $0\n' \
   WM_NAME WM_CLASS WM_WINDOW_ROLE \
   ${1+"$@"}
+
+exit 0
+
+# vim: set ft=sh

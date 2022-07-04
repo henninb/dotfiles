@@ -46,3 +46,5 @@ convert "$Output" -fill "$TextColor" -strokewidth 4 -stroke Black\
 
 # If '0', then no errors occurred, so display image.
 [ $Err -eq 0 ] && feh "$Output"
+
+# vim: set ft=sh

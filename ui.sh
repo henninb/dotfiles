@@ -21,3 +21,5 @@ nohup trayer --edge bottom --align right --SetDockType true --SetPartialStrut tr
 nohup picom --experimental-backends --backend glx --xrender-sync-fence &
 
 exit 0
+
+# vim: set ft=sh

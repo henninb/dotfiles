@@ -15,3 +15,5 @@ sudo nohup xrdp-sesman > /dev/null 2>&1 &
 pgrep -x xrdp-sesman
 
 exit 0
+
+# vim: set ft=sh

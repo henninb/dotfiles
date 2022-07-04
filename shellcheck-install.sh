@@ -13,3 +13,5 @@ stack build
 stack install
 
 exit 0
+
+# vim: set ft=sh

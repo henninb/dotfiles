@@ -13,3 +13,5 @@ git pull
 
 #/usr/ports/void-packages
 exit 0
+
+# vim: set ft=sh

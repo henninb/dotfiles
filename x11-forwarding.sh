@@ -41,3 +41,5 @@ echo export DISPLAY=:0.0
 echo I know 6000 is default for X11, but I thought the app would come to the Windows system on port 22 since its using SSH.
 
 exit 0
+
+# vim: set ft=sh

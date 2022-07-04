@@ -338,3 +338,5 @@ sudo fuser 3350/tcp
 xrdp --version
 
 exit 0
+
+# vim: set ft=sh

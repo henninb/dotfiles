@@ -110,3 +110,5 @@ echo packer build -only qemu -var 'headless=true' centos-7.6-x86_64.json
 cd - || exit
 
 exit 0
+
+# vim: set ft=sh
