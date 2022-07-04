@@ -109,7 +109,7 @@ x11-misc/dzen xpm xinerama
 # required by kde-frameworks/kdeclarative-5.92.0::gentoo
 # required by kde-misc/kdeconnect-21.12.3::gentoo
 # required by kdeconnect (argument)
->=kde-frameworks/kwindowsystem-5.92.0 X
+>=kde-frameworks/kwindowsystem-5.92.0 -X
 # required by kde-frameworks/qqc2-desktop-style-5.92.0::gentoo
 # required by kde-misc/kdeconnect-21.12.3::gentoo
 # required by kdeconnect (argument)

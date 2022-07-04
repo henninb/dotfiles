@@ -606,7 +606,9 @@ emerge -1av docutils
 ```
 sudo emerge eix
 sudo eix-update
+eix --installed --upgrade --only-names
 eix --installed --upgrade
+eix -Iu --only-names
 ```
 
 ## gentoo no action for now
