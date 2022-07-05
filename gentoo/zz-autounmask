@@ -119,3 +119,4 @@ x11-misc/dzen xpm xinerama
 # required by kdeconnect (argument)
 >=dev-qt/qtgui-5.15.5 X
 >=kde-frameworks/plasma-5.92.0-r2 X
+x11-misc/xscreensaver opengl
