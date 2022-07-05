@@ -32,6 +32,7 @@ else
   exit 1
 fi
 
+lspci | grep -i audio
 cat /proc/asound/cards
 
 # sudo ln -sfn /etc/sv/alsa /var/service/

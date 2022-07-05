@@ -2652,7 +2652,7 @@ CONFIG_PTP_1588_CLOCK_KVM=y
 # CONFIG_PTP_1588_CLOCK_VMW is not set
 # end of PTP clock support
 
-# CONFIG_PINCTRL is not set
+CONFIG_PINCTRL=y
 # CONFIG_GPIOLIB is not set
 # CONFIG_W1 is not set
 # CONFIG_POWER_RESET is not set
