@@ -4,13 +4,13 @@
       <map>
         <entry key="$USER_HOME$/projects/github.com/henninb/example-java">
           <value>
-            <RecentProjectMetaInfo frameTitle="example – application-prod.yml [example.main]" projectWorkspaceId="26eMVohwFq4uYiB3g380U7c18JM">
+            <RecentProjectMetaInfo frameTitle="example – gradle.properties [example]" projectWorkspaceId="2BRbV3rCQ3AeqfEn9RKl1NapoQk">
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="IU-212.5080.55" />
-              <option name="buildTimestamp" value="1629776258898" />
+              <option name="buildTimestamp" value="1629776234791" />
               <frame x="0" y="14" width="3840" height="2128" />
               <option name="productionCode" value="IU" />
-              <option name="projectOpenTimestamp" value="1656879774457" />
+              <option name="projectOpenTimestamp" value="1657143627656" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
