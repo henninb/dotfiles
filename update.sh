@@ -53,12 +53,9 @@ elif [ "$OS" = "Gentoo" ]; then
   if ! sudo emerge --sync 2>&1 | tee -a update-$$.log; then
     sudo emerge-webrsync 2>&1 | tee -a update-$$.log
   fi
-  sudo emerge -uN portage
-  sudo emerge -uDUf --keep-going --with-bdeps=y @world 2>&1 | tee -a update-$$.log
-  sudo emerge -uDU --keep-going --with-bdeps=y @world 2>&1 | tee -a update-$$.log
-  # sudo emerge -DuNpv world 2>&1 | tee -a update-$$.log
-  # sudo emerge --update --newuse --deep @world 2>&1 | tee -a update-$$.log
-  # sudo emerge -uDN --keep-going --with-bdeps=y @world 2>&1 | tee -a update-$$.log
+  sudo emerge -uN portage 2>&1 | tee -a update-$$.log
+  sudo emerge -uDUNf --keep-going --with-bdeps=y @world 2>&1 | tee -a update-$$.log
+  sudo emerge -uDUN --keep-going --with-bdeps=y @world 2>&1 | tee -a update-$$.log
   sudo emerge --depclean 2>&1 | tee -a update-$$.log
   sudo revdep-rebuild
   echo sudo emerge @preserved-rebuild
@@ -69,6 +66,7 @@ elif [ "$OS" = "Gentoo" ]; then
   echo emerge --depclean -p
   echo sudo etc-update
   echo revdep-rebuild
+  echo sudo emerge --update --newuse --deep --changed-use --keep-going @world
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
     sudo dnf update -y
