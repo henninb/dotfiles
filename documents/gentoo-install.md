@@ -182,6 +182,8 @@ rc-update add sshd default
 ```
 cd /usr/src
 ln -sfn linux-5.10.61-gentoo linux
+sudo eselect kernel list
+echo sudo eselect kernel set 1
 genkernel all
 ```
 
