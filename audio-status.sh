@@ -64,10 +64,10 @@ echo #load-module module-suspend-on-idle
 
 echo pavucontrol, amixer, alsamixer
 if [ ! -f mp3/Yes_-_Roundabout.mp3 ]; then
-  scp plex:/opt/plexmedia/music/Yes_-_Roundabout.mp3 mp3/
+  scp pi@raspi:/home/pi/downloads/mp3/Yes_-_Roundabout.mp3 mp3/
 fi
 echo mpg123 mp3/Yes_-_Roundabout.mp3
-echo pacmd set-default-sink 4
+echo pacmd set-default-sink 1
 
 exit 0
 
