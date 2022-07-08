@@ -66,11 +66,14 @@ echo "Open tty with the shortcut - Ctl-Alt-(F1-F7)"
 if [ -x "$(command -v nvidia-smi)" ]; then
   sudo nvidia-smi
   sudo nvidia-smi -q -d TEMPERATURE
+  sudo nvidia-smi --query-gpu=driver_version --format=csv,noheader
+  # modinfo "/usr/lib/modules/$(uname -r)/kernel/drivers/video/nvidia.ko" | grep ^version
 fi
 
 # echo VDPAU and VAAPI.
 if [ -x "$(command -v nvidia-settings)" ]; then
   echo nvidia-settings
+  nvidia-settings -q NvidiaDriverVersion
 else
   echo "nvidia driver is not installed"
 fi
@@ -79,6 +82,10 @@ echo open https://www.nvidia.com/en-us/geforce/drivers/
 if [ ! -f NVIDIA-Linux-x86_64-515.57.run ]; then
   wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/515.57/NVIDIA-Linux-x86_64-515.57.run'
 fi
+
+grep "X Driver" /var/log/Xorg.0.log
+lspci -k | grep -A 2 -i "VGA"
+modinfo nvidia | grep version
 
 exit 0
 
