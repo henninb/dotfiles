@@ -11,8 +11,10 @@ az group show --name brian_web --output table
 ```
 
 ## install az cli
+```
 sudo apt-get update
 sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg
+```
 
 curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc.gpg > /dev/null
 
