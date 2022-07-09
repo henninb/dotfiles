@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ver=3.1.0
+ver=3.1.1
 # wget https://github.com/fastly/cli/releases/download/v1.3.0/fastly_1.3.0_linux_amd64.rpm
 
 if [ -x "$(command -v pacman)" ]; then
@@ -23,7 +23,11 @@ else
   exit 1
 fi
 
-wget "https://github.com/fastly/cli/releases/download/v${ver}/fastly_${ver}_linux_amd64.rpm" -O "$HOME/projects/fastly_${ver}_linux_amd64.rpm"
+echo https://github.com/fastly/cli/releases/tag/v3.1.1
+wget "https://github.com/fastly/cli/releases/download/v${ver}/fastly_v${ver}_linux-amd64.tar.gz"
+sudo mkdir -p /opt/fastly/bin
+sudo tar -xvf "fastly_v${ver}_linux-amd64.tar.gz" -C /opt/fastly/bin
+# wget "https://github.com/fastly/cli/releases/download/v${ver}/fastly_${ver}_linux_amd64.rpm" -O "$HOME/projects/fastly_${ver}_linux_amd64.rpm"
 
 # wget 'https://github.com/fastly/cli/archive/refs/tags/v1.4.0.tar.gz' -O ~/projects/fastly-v1.4.0.tar.gz
 # cd ~/projects/ || exit
@@ -33,7 +37,7 @@ wget "https://github.com/fastly/cli/releases/download/v${ver}/fastly_${ver}_linu
 # make install
 # rm -rf "$HOME/projects/fastly-v1.4.0.tar.gz"
 
-sudo rpm -i --nodeps "$HOME/projects/fastly_${ver}_linux_amd64.rpm"
+# sudo rpm -i --nodeps "$HOME/projects/fastly_${ver}_linux_amd64.rpm"
 
 # mkdir ~/projects/edge
 # cd ~/projects/edge || exit
