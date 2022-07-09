@@ -47,6 +47,7 @@ if ! docker-compose up -d; then
 fi
 
 # docker run -dit --name postgresql-server -h postgresql-server postgresql-server
-docker exec -it postgresql-server /bin/bash
+echo docker exec -it postgresql-server /bin/bash
+echo psql
 
 exit 0
