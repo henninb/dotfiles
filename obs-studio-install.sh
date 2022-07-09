@@ -5,8 +5,8 @@ if [ -x "$(command -v pacman)" ]; then
   yay -S v4l2loopback-dkms
   sudo modprobe v4l2loopback devices=1 video_nr=10 card_label="OBS Cam" exclusive_caps=1
 elif [ -x "$(command -v emerge)" ]; then
-  emerge --update --newuse media-video/v4l2loopback
-  emerge --update --newuse media-video/obs-studio
+  sudo emerge --update --newuse media-video/v4l2loopback
+  sudo emerge --update --newuse media-video/obs-studio
   echo
 elif [ -x "$(command -v apt)" ]; then
   echo
