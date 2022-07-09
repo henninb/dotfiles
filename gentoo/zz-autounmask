@@ -1,96 +1,65 @@
 app-admin/conky X apcupsd hddtemp ical bundled-toluapp truetype
->=app-arch/bzip2-1.0.8-r1 abi_x86_32
->=app-crypt/gcr-3.28.1 gtk
->=app-crypt/libmd-1.0.4 abi_x86_32
+app-arch/bzip2 abi_x86_32
+app-crypt/gcr gtk
+app-crypt/libmd abi_x86_32
 app-crypt/pinentry gnome-keyring
->=app-editors/emacs-27.2-r5 dynamic-loading X gui
+app-editors/emacs dynamic-loading X gui
 app-editors/neovim -luajit
 app-editors/vim python
 app-emacs/emacs-common gui
 app-emulation/virt-manager usbredir spice
->=app-text/ghostscript-gpl-9.54.0-r1 cups
->=app-text/xmlto-0.0.28-r3 text
->=dev-cpp/gtkmm-3.24:3.0 X
+app-text/ghostscript-gpl cups
+app-text/xmlto text
+dev-cpp/gtkmm X
 dev-db/postgresql uuid
->=dev-db/sqlite-3.29.0 secure-delete
-dev-java/openjdk-bin gentoo-vm -alsa -cups -webstart
+dev-db/sqlite secure-delete
 dev-java/openjdk gentoo-vm -alsa -cups -webstart
->=dev-lang/python-2.7.15:2.7 sqlite
->=dev-lang/python-3.10.0 sqlite
->=dev-libs/libbsd-0.11.3 abi_x86_32
->=dev-libs/libpcre2-10.32 pcre16
->=dev-libs/libpcre2-10.32 pcre32
->=dev-libs/libusb-1.0.21-r1 udev
->=dev-libs/openssl-1.0.2n -bindist
+dev-java/openjdk-bin gentoo-vm -alsa -cups -webstart
+dev-lang/python sqlite
+dev-libs/boost icu
+dev-libs/libbsd abi_x86_32
+dev-libs/libpcre2 pcre32
+dev-libs/libusb udev
+dev-libs/openssl -bindist
+dev-libs/xmlsec nss
 dev-lua/lpeg -luajit
 dev-lua/mpack -luajit
 dev-python/docutils doc
->=dev-qt/qtcore-5.15.2-r10 icu
->=dev-qt/qtgui-5.15.2-r13 egl
-#>=dev-qt/qtgui-5.15.2-r16 X
->=dev-qt/qtprintsupport-5.15.2-r11 cups
->=dev-qt/qtsingleapplication-2.6.1_p20171024 X
->=dev-util/ostree-2020.7 curl
->=gnome-base/gnome-control-center-3.36.4 networkmanager
-#media-gfx/flameshot qt5 dbus
->=media-libs/gd-2.2.5-r2 fontconfig
->=media-libs/harfbuzz-2.6.7 icu
->=media-libs/libglvnd-1.3.4 abi_x86_32
->=media-libs/libglvnd-1.3.4 X
+dev-qt/qtcore icu
+dev-qt/qtgui egl
+dev-qt/qtmultimedia qml
+dev-qt/qtprintsupport cups
+dev-util/ostree curl
+gnome-base/gnome-control-center networkmanager
+kde-frameworks/kconfig qml
+kde-frameworks/sonnet qml
+kde-misc/kdeconnect X bluetooth
+media-libs/gd fontconfig
+media-libs/harfbuzz icu
+media-libs/libglvnd abi_x86_32
 media-libs/libpng apng
->=media-libs/libpulse-16.0 X dbus
->=media-libs/libsdl2-2.0.9 haptic
-media-libs/libsdl X
->=media-libs/libvpx-1.7.0 postproc
->=media-plugins/alsa-plugins-1.1.8 pulseaudio
->=media-sound/pulseaudio-15.0-r1 dbus bleutooth
->=media-sound/pulseaudio-daemon-16.0 dbus bluetooth
->=media-video/ffmpeg-4.1.3 fdk
->=net-dns/dnsmasq-2.80 script
->=net-fs/samba-4.11.11 client
->=net-libs/gnutls-2.12.23-r6
->=net-libs/gnutls-3.6.0
->=net-misc/spice-gtk-0.35 usbredir
->=net-print/cups-2.3.3-r1 dbus
->=net-wireless/wpa_supplicant-2.6-r10 dbus
->=sys-apps/dbus-1.12.18 X
-sys-apps/flatpak X gtk introspection policykit seccomp
->=sys-apps/util-linux-2.33-r1 static-libs
->=sys-apps/util-linux-2.36.2 tty-helpers
->=sys-auth/pambase-20200304 elogind
->=sys-auth/polkit-0.110 elogind
+media-libs/libsdl2 haptic
+media-libs/libvpx postproc
+media-video/ffmpeg fdk
+net-dns/dnsmasq script
+net-fs/samba client
+net-misc/spice-gtk usbredir
+sys-apps/flatpak gtk introspection policykit seccomp
+sys-apps/util-linux static-libs tty-helpers
+sys-auth/pambase elogind
+sys-auth/polkit elogind
 sys-devel/clang xml
->=sys-libs/zlib-1.2.11-r2 minizip
->=sys-libs/zlib-1.2.11-r4 abi_x86_32
->=virtual/libusb-1-r2 udev
->=www-client/w3m-0.5.3_p20180125 imlib
->=x11-base/xcb-proto-1.14.1 abi_x86_32
->=x11-libs/cairo-1.16.0-r5 X xcb opengl
->=x11-libs/gdk-pixbuf-2.40.0 X
->=x11-libs/libva-2.5.0-r1 X
->=x11-libs/libX11-1.7.2 abi_x86_32
->=x11-libs/libXau-1.0.9-r1 abi_x86_32
->=x11-libs/libxcb-1.13.1 xkb
->=x11-libs/libxcb-1.14 abi_x86_32
->=x11-libs/libXdmcp-1.1.3 abi_x86_32
->=x11-libs/libXext-1.3.4 abi_x86_32
->=x11-libs/libxkbcommon-0.9.1 X
->=x11-libs/pango-1.42.4-r2 X
+sys-libs/zlib abi_x86_32 minizip
+virtual/libusb udev
+www-client/w3m imlib
+x11-base/xcb-proto abi_x86_32
+x11-libs/cairo X xcb opengl
+x11-libs/libX11 abi_x86_32
+x11-libs/libXau abi_x86_32
+x11-libs/libXdmcp abi_x86_32
+x11-libs/libXext abi_x86_32
+x11-libs/libxcb abi_x86_32
+x11-libs/libxcb xkb
 x11-libs/wxGTK opengl
 x11-misc/dzen xpm xinerama
->=media-sound/pulseaudio-16.0 bluetooth dbus
->=dev-libs/boost-1.79.0 icu
->=dev-qt/qtmultimedia-5.15.5 qml
->=kde-frameworks/kwindowsystem-5.92.0 -X
->=kde-frameworks/sonnet-5.92.0 qml
->=dev-qt/qtgui-5.15.5 X
->=kde-frameworks/plasma-5.92.0-r2 X
 x11-misc/xscreensaver opengl
->=dev-libs/xmlsec-1.2.34 nss
-#>=kde-frameworks/kwindowsystem-5.95.0 X
->=kde-frameworks/kconfig-5.95.0 qml
->=kde-frameworks/kwindowsystem-5.95.0 X
->=kde-frameworks/knotifications-5.95.0 X
-kde-frameworks/kio X
-kde-frameworks/kinit X
-kde-misc/kdeconnect X bluetooth
