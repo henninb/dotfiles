@@ -10,7 +10,6 @@ app-emacs/emacs-common gui
 app-emulation/virt-manager usbredir spice
 app-text/ghostscript-gpl cups
 app-text/xmlto text
-dev-cpp/gtkmm X
 dev-db/postgresql uuid
 dev-db/sqlite secure-delete
 dev-java/openjdk gentoo-vm -alsa -cups -webstart
