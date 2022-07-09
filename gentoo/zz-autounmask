@@ -87,3 +87,9 @@ x11-misc/dzen xpm xinerama
 >=kde-frameworks/plasma-5.92.0-r2 X
 x11-misc/xscreensaver opengl
 >=dev-libs/xmlsec-1.2.34 nss
+#>=kde-frameworks/kwindowsystem-5.95.0 X
+>=kde-frameworks/kconfig-5.95.0 qml
+>=kde-frameworks/kwindowsystem-5.95.0 X
+>=kde-frameworks/knotifications-5.95.0 X
+kde-frameworks/kio X
+kde-frameworks/kinit X

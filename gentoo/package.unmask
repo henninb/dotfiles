@@ -3,3 +3,5 @@
 #app-editors/notepadqq
 =dev-python/docutils-0.17.1-r1
 # net-im/slack-4.23.0 ~amd64
+# kde-frameworks/kwindowsystem
+# =kde-frameworks/kwindowsystem-5.95*
