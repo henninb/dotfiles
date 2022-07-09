@@ -93,3 +93,4 @@ x11-misc/xscreensaver opengl
 >=kde-frameworks/knotifications-5.95.0 X
 kde-frameworks/kio X
 kde-frameworks/kinit X
+kde-misc/kdeconnect X bluetooth
