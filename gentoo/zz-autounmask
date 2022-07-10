@@ -7,8 +7,9 @@ app-editors/emacs dynamic-loading X gui
 app-editors/neovim -luajit
 app-editors/vim python
 app-emacs/emacs-common gui
-app-emulation/virt-manager usbredir spice gtk
-app-emulation/virt-viewer spice
+# app-emulation/virt-manager usbredir spice gtk
+app-emulation/virt-manager usbredir gtk
+# app-emulation/virt-viewer spice
 app-text/ghostscript-gpl cups
 app-text/xmlto text
 dev-db/postgresql uuid
