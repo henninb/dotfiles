@@ -1,6 +1,6 @@
 #!/bin/sh
 
-iso_file=ubuntu-20.04.3-live-server-amd64.iso
+iso_file=ubuntu-22.04-live-server-amd64.iso
 virsh shutdown guest-ubuntu
 virsh undefine guest-ubuntu
 
