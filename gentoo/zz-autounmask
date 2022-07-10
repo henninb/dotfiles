@@ -66,3 +66,4 @@ x11-misc/dzen xpm xinerama
 x11-misc/xscreensaver opengl
 media-video/obs-studio speex ssl truetype v4l vlc
 # app-containers/snapd apparmor
+net-libs/gtk-vnc sasl
