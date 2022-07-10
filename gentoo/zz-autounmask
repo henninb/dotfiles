@@ -1,7 +1,6 @@
 app-admin/conky X apcupsd hddtemp ical bundled-toluapp truetype
 app-arch/bzip2 abi_x86_32
 app-crypt/gcr gtk
-app-crypt/libmd abi_x86_32
 app-crypt/pinentry gnome-keyring
 app-editors/emacs dynamic-loading X gui
 app-editors/neovim -luajit
@@ -18,7 +17,6 @@ dev-java/openjdk gentoo-vm -alsa -cups -webstart
 dev-java/openjdk-bin gentoo-vm -alsa -cups -webstart
 dev-lang/python sqlite
 dev-libs/boost icu
-dev-libs/libbsd abi_x86_32
 dev-libs/libpcre2 pcre32
 dev-libs/libusb udev
 dev-libs/openssl -bindist
@@ -37,7 +35,6 @@ kde-frameworks/sonnet qml
 kde-misc/kdeconnect X bluetooth
 media-libs/gd fontconfig
 media-libs/harfbuzz icu
-media-libs/libglvnd abi_x86_32
 media-libs/libpng apng
 media-libs/libsdl2 haptic
 media-libs/libvpx postproc
@@ -53,17 +50,6 @@ sys-devel/clang xml
 sys-libs/zlib abi_x86_32 minizip
 virtual/libusb udev
 www-client/w3m imlib
-x11-base/xcb-proto abi_x86_32
-x11-libs/cairo X xcb opengl
-x11-libs/libX11 abi_x86_32
-x11-libs/libXau abi_x86_32
-x11-libs/libXdmcp abi_x86_32
-x11-libs/libXext abi_x86_32
-x11-libs/libxcb abi_x86_32
-x11-libs/libxcb xkb
-x11-libs/wxGTK opengl
 x11-misc/dzen xpm xinerama
-x11-misc/xscreensaver opengl
 media-video/obs-studio speex ssl truetype v4l vlc
 # app-containers/snapd apparmor
-net-libs/gtk-vnc sasl
