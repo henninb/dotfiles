@@ -26,12 +26,12 @@ elif [ "$OS" = "Gentoo" ]; then
   echo list all packages
   echo emerge world -ep
   echo sudo emerge --update --newuse package_name
-  echo "remove from world"
-  echo sudo emerge --deselect package_name
-  echo sudo emerge -C package_name
+  echo sudo emerge --deselect package_name # remove from world
+  echo sudo emerge -C package_name # remove and disregard deped
   echo sudo emerge --pretend --depclean
-  echo sudo emerge -cav package_name
-  echo sudo emerge -pv dev-lang/python-exec
+  echo sudo emerge -cav package_name # verify depends
+  echo sudo emerge -pv dev-lang/python-exec # pretend
+  echo sudo emerge "=net-misc/spice-gtk-0.39-r2" # pin specific
 else
   echo "$OS is not yet implemented."
   exit 1
