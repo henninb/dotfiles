@@ -51,7 +51,7 @@ fi
 
 echo cat /etc/default/grub
 echo GRUB_CMDLINE_LINUX="user_namespace.enable=1"
-echo sudo grub-mkconfig -o /boot/grub/grub.cfg¬
+echo sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 exit 0
 

@@ -5,7 +5,7 @@ en_US.UTF-8 UTF-8
 EOF
 
 if [ "$OS" = "Gentoo" ]; then
-  sudo mv -v locale.gen /etc/locale.gen¬
+  sudo mv -v locale.gen /etc/locale.gen
   sudo locale-gen
   echo sudo eselect locale set 4
   sudo eselect locale list
