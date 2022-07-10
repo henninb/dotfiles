@@ -10,7 +10,13 @@ if [ -x "$(command -v pacman)" ]; then
 elif [ -x "$(command -v emerge)" ]; then
   sudo emerge --update --newuse app-admin/mongo-tools
   sudo emerge --update --newuse dev-db/mongodb
-  echo docker
+  # echo docker
+  wget https://fastdl.mongodb.org/mongocli/mongocli_1.25.0_linux_x86_64.tar.gz
+  sudo mkdir -p /opt
+  sudo rm -rf /opt/mongocli
+  sudo tar -xvf "mongocli_1.25.0_linux_x86_64.tar.gz" -C /opt
+  sudo ln -sfn /opt/mongocli* /opt/mongocli
+  rm -rf mongocli_1.25.0_linux_x86_64.tar.gz
 elif [ -x "$(command -v apt)" ]; then
   echo
 elif [ -x "$(command -v xbps-install)" ]; then
