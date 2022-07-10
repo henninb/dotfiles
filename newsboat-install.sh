@@ -28,7 +28,8 @@ else
   exit 1
 fi
 
-cd "$HOME/projects" || exit
+mkdir -p "$HOME/projects/github.com/xenogenesi"
+cd "$HOME/projects/github.com/xenogenesi" || exit
 git clone git@github.com:xenogenesi/task-spooler.git
 cd task-spooler || exit
 ./configure
@@ -37,17 +38,22 @@ if ! make; then
   echo "failed to build task-spooler"
   exit 1
 fi
-
-cd "$HOME/projects" || exit
-git clone git@github.com:newsboat/newsboat.git
-cd newsboat || exit
-make
-if ! make; then
-  echo "failed to build newsboat"
-  exit 1
-fi
 sudo make install
+sudo ln -sfn /usr/local/bin/ts /usr/local/bin/tsp
+
+if [ ! -x "$(command -v newsboat)" ]; then
+  mkdir -p "$HOME/projects/github.com/newsboat"
+  cd "$HOME/projects/github.com/newsboat" || exit
+  git clone git@github.com:newsboat/newsboat.git
+  cd newsboat || exit
+  make
+  if ! make; then
+    echo "failed to build newsboat"
+    exit 1
+  fi
+  sudo make install
+fi
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:
