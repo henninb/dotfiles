@@ -10,6 +10,7 @@ if [ -x "$(command -v pacman)" ]; then
 elif [ -x "$(command -v emerge)" ]; then
   sudo emerge --update --newuse app-admin/mongo-tools
   sudo emerge --update --newuse dev-db/mongodb
+  sudo emerge --update --newuse app-admin/mongosh-bin
   # echo docker
   wget https://fastdl.mongodb.org/mongocli/mongocli_1.25.0_linux_x86_64.tar.gz
   sudo mkdir -p /opt

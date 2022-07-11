@@ -52,3 +52,4 @@ www-client/w3m imlib
 x11-misc/dzen xpm xinerama
 media-video/obs-studio speex ssl truetype v4l vlc
 # app-containers/snapd apparmor
+dev-libs/cyrus-sasl kerberos
