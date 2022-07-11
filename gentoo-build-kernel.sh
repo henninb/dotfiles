@@ -1,7 +1,7 @@
 #!/bin/sh
 
-old=4.19.97
-new=5.18.9
+old=5.18.9
+new=5.18.10
 
 if [ "$OS" = "Gentoo" ]; then
   echo emerge -uDNa @world
