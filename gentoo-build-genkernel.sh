@@ -1,8 +1,8 @@
 #!/bin/sh
 
-sudo emerge sys-kernel/gentoo-sources:5.18.10
-# eselect kernel list
-# eselect kernel set 2
-# genkernel all
+echo sudo emerge sys-kernel/gentoo-sources:5.18.10
+eselect kernel list
+echo eselect kernel set 2
+echo genkernel all
 
 exit 0
