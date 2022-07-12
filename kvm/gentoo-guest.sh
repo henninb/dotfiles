@@ -1,7 +1,6 @@
 #!/bin/sh
 
-iso_file=install-amd64-minimal-20210611T113421Z.iso
-# iso_file=gentoo-install-amd64-minimal-20210414T214503Z.iso
+iso_file=install-amd64-minimal-20220710T170538Z.iso
 virsh shutdown guest-gentoo
 virsh undefine guest-gentoo
 
