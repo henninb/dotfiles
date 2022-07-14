@@ -11,6 +11,7 @@ boot > gentoo
 
 ## network configures automatically on gentoo for VirtualBox and most baremetal
 ```
+systemctl start sshd
 rc-service sshd start
 ip addr show
 ```
@@ -54,14 +55,9 @@ mkfs.ext2 -T small /dev/sdb1
 mkfs.ext4 -j -T small /dev/sdb2
 ```
 
-## time sync
-```
-ntpd -q -g
-```
-
 ## mounting
 ```
-mkdir -p /dev/gentoo
+mkdir -p /mnt/gentoo
 mount /dev/sda2 /mnt/gentoo
 mount /dev/vda2 /mnt/gentoo
 mount /dev/sdb2 /mnt/gentoo
@@ -70,10 +66,7 @@ cd /mnt/gentoo
 
 ## download stage3
 ```
-#wget https://mirror.bytemark.co.uk/gentoo//releases/amd64/autobuilds/20211114T170549Z/stage3-amd64-openrc-20211114T170549Z.tar.xz
-wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20220710T170538Z/stage3-amd64-openrc-20220710T170538Z.tar.xz
-curl https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20220710T170538Z/stage3-amd64-desktop-systemd-20220710T170538Z.tar.xz --output stage3-amd64-desktop-systemd-20220710T170538Z.tar.xz
-curl -Os 'https://mirror.bytemark.co.uk/gentoo//releases/amd64/autobuilds/20220710T170538Z/stage3-amd64-desktop-systemd-20220710T170538Z.tar.xz'
+curl -Os 'https://mirror.bytemark.co.uk/gentoo/releases/amd64/autobuilds/20220710T170538Z/stage3-amd64-desktop-systemd-20220710T170538Z.tar.xz'
 ```
 
 ## extract stage3 and be sure to verify success
@@ -83,16 +76,18 @@ tar xvJpf stage3-*.tar.xz --xattrs --numeric-owner
 
 ## erase root and login with systemd
 ```
+cat /mnt/gentoo/etc/shadow | grep root
 sed -i -e 's/^root:\*/root:/' /mnt/gentoo/etc/shadow
 systemd-nspawn -bD /mnt/gentoo
 ```
 
-## set locale (not working)
+## set locale
 ```
-cat << EOF >> /etc/locale.conf
+cat << EOF >> /etc/locale.gen
 en_US.UTF-8 UTF-8
 EOF
-localectl list-locales | grep us
+locale-gen
+localectl list-locales
 localectl set-locale LANG=en_US.utf8
 localectl set-keymap us
 ```
@@ -113,14 +108,6 @@ ACCEPT_LICENSE="*"
 EOF
 ```
 
-## set the mirror list
-```
-mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf
-#mkdir -p /mnt/etc/portage/repos.conf
-#cp -v /mnt/usr/share/portage/config/repos.conf /mnt/etc/portage/repos.conf/gentoo.conf
-```
-
-
 ## copy the resolv config
 ```
 cp -L /etc/resolv.conf /mnt/gentoo/etc/
@@ -130,8 +117,8 @@ cp -L /etc/resolv.conf /mnt/gentoo/etc/
 ```
 mount -t proc /proc /mnt/gentoo/proc
 mount --rbind /sys /mnt/gentoo/sys
-mount --make-rslave /mnt/gentoo/sys
 mount --rbind /dev /mnt/gentoo/dev
+mount --make-rslave /mnt/gentoo/sys
 mount --make-rslave /mnt/gentoo/dev
 ```
 
@@ -140,6 +127,13 @@ mount --make-rslave /mnt/gentoo/dev
 chroot /mnt/gentoo /bin/bash
 source /etc/profile
 export PS1="(chroot) $PS1"
+```
+
+## set the mirror list (need to fix?)
+```
+mirrorselect -i -o >> /etc/portage/make.conf
+#mkdir -p /mnt/etc/portage/repos.conf
+#cp -v /mnt/usr/share/portage/config/repos.conf /mnt/etc/portage/repos.conf/gentoo.conf
 ```
 
 ## user maintenence
@@ -153,6 +147,7 @@ passwd root
 ## mount boot
 ```
 mount /dev/sda1 /boot
+mount /dev/vda1 /boot
 mount /dev/sdb1 /boot
 ```
 
@@ -160,13 +155,7 @@ mount /dev/sdb1 /boot
 ```
 emerge-webrsync
 eselect news read
-emerge vim dev-vcs/git
-```
-
-## setup local time zone
-```
-echo "US/Central" > /etc/timezone
-emerge --config sys-libs/timezone-data
+emerge vim
 ```
 
 ## edit fstab
@@ -181,26 +170,12 @@ vi /etc/fstab
 /dev/cdrom  /mnt/cdrom   auto    noauto,user          0 0
 ```
 
-## update the hostname
-```
-vi /etc/conf.d/hostname
-```
-
 ## install packages
 ```
+emerge gentoo-sources linux-firmware genkernel-next cronie mlocate rsyslog sys-boot/grub:2
 emerge sys-kernel/gentoo-sources sys-kernel/genkernel sys-process/cronie net-misc/netifrc app-admin/sysklogd net-misc/dhcpcd sudo sys-boot/grub:2
 etc-update
 ```
-
-## setup locale
-```
-vi /etc/locale.gen
-en_US.UTF-8 UTF-8
-locale-gen
-eselect locale list
-eselect locale set 4
-```
-
 
 ## edit sudoers
 ```
@@ -209,19 +184,41 @@ vi /etc/sudoers
 
 ## update system settings
 ```
-rc-update add sysklogd default
-rc-update add cronie default
-rc-update add dhcpcd default
-rc-update add sshd default
+systemctl enable rsyslog
+systemctl enable cronie
+systemctl enable sshd
+#rc-update add sysklogd default
+#rc-update add cronie default
+#rc-update add dhcpcd default
+#rc-update add sshd default
 ```
 
+## network setup (enp1s0, eth0)
+```
+cat << EOF > /etc/systemd/network/50-dhcp_eth0.network
+[Match]
+Name=eth0
+
+[Network]
+DHCP=yes
+EOF
+```
+
+
+ln -snf /run/systemd/resolv.conf /etc/resolv.conf
+systemctl enable systemd-resolved.service
+
+
+vi /etc/genkernel.conf
+UDEV="yes"
+MAKEOPTS="-j4"
+
+genkernel --menuconfig all
 
 # will take a long time (42 min)
 ```
-cd /usr/src
-ln -sfn linux-5.10.61-gentoo linux
-sudo eselect kernel list
-echo sudo eselect kernel set 1
+eselect kernel list
+eselect kernel set 1
 genkernel all
 ```
 
@@ -235,7 +232,9 @@ ls /boot/vmlinuz* /boot/initramfs*
 
 ## grub install
 ```
+echo 'GRUB_CMDLINE_LINUX="init=/usr/lib/systemd/systemd"' >> /etc/default/grub
 grub-install /dev/sda
+grub-install /dev/vda
 grub-install /dev/sdb
 grub-mkconfig -o /boot/grub/grub.cfg
 reboot
