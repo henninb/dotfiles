@@ -31,8 +31,8 @@ if [ "$OS" = "Gentoo" ]; then
   sudo make install
   cd /boot && sudo dracut --kver "${new}-gentoo"
   echo sudo grub-install /dev/sda
-  sudo grub-mkconfig -o /boot/grub/grub.cfg
-  sudo grep gnulinux /boot/grub/grub.cfg
+  echo sudo grub-mkconfig -o /boot/grub/grub.cfg
+  grep gnulinux /boot/grub/grub.cfg
   echo sudo reboot
 fi
 
@@ -41,9 +41,9 @@ echo "press enter to continue and remove old kernels"
 read -r response
 
 old_kernel="$old"
-echo sudo rm -r "/usr/src/linux-${old_kernel}*" || echo "Failed to remove old kernel sources" || exit 1
-echo sudo rm -r "/boot/*${old_kernel}*" || echo "Failed to remove boot files" || exit 1
-echo sudo rm -r "/lib/modules/${old_kernel}*" || echo "Failed to remove modules" || exit 1
+echo sudo rm -r /usr/src/linux-${old_kernel}* || echo "Failed to remove old kernel sources" || exit 1
+echo sudo rm -r /boot/*${old_kernel}* || echo "Failed to remove boot files" || exit 1
+echo sudo rm -r /lib/modules/${old_kernel}* || echo "Failed to remove modules" || exit 1
 
 exit 0
 
