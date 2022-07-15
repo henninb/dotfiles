@@ -1,10 +1,5 @@
 #!/usr/bin/env sh
 
-# if [ ! -x "$(command -v go)" ]; then
-#   echo "golang needs to be installed"
-#   exit 1
-# fi
-
 if [ "${OS}" = "FreeBSD" ]; then
   sudo pkg install -y hs-stack
   cd /lib && sudo ln -sfn libncurses.so.9 libncursesw.so.8 && sudo ldconfig -R
@@ -209,7 +204,7 @@ elif [ "$OS" = "Solus" ]; then
   mkdir -p d "$HOME/projects/github.com/Maato"
   cd "$HOME/projects/github.com/Maato" || exit
   git clone git@github.com:Maato/volumeicon.git
-  cd volumeicon || exit
+  cd ./volumeicon || exit
   ./autogen.sh
   ./configure
   make
@@ -247,7 +242,7 @@ elif [ "$OS" = "Gentoo" ]; then
   mkdir -p "$HOME/projects/github.com/baskerville"
   cd "$HOME/projects/github.com/baskerville" || exit
   git clone git@github.com:baskerville/xdo.git
-  cd xdo || exit
+  cd ./xdo || exit
   make
   sudo make install
   echo "Failures: $FAILURE"
@@ -280,7 +275,7 @@ elif [ "$OS" = "Fedora" ]; then
   mkdir -p "$HOME/projects/github.com/baskerville"
   cd "$HOME/projects/github.com/baskerville" || exit
   git clone git@github.com:baskerville/xdo.git
-  cd xdo || exit
+  cd ./xdo || exit
   sudo make install
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
@@ -332,8 +327,6 @@ if ! stack install hlint; then
 fi
 
 mkdir -p "$HOME/projects/github.com/xmonad"
-# stack init .
-#stack setup --resolver 18.17
 stack ghc -- --version
 cd "$HOME/projects/github.com/xmonad" || exit
 git clone --branch v0.17.0 git@github.com:xmonad/xmonad.git
@@ -341,7 +334,7 @@ cd ./xmonad || exit
 # git checkout v0.17.0
 stack build
 stack install
-sudo mv .local/bin/xmonad /usr/local/bin/
+sudo mv -v "$HOME/.local/bin/xmonad" /usr/local/bin/
 cd - || exit
 
 mkdir -p "$HOME/projects/github.com/xmonad"
