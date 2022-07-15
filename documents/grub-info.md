@@ -36,3 +36,9 @@ grub> linux /vmlinuz root=/dev/sda2
 tell the kernel where it can find it's initialization RAM disk (initrd)
 grub> initrd /initrd.img
 grub> boot
+
+
+
+root=hd0,1
+linux /boot/kernel-3.2.12-gentoo root=/dev/sda3
+}

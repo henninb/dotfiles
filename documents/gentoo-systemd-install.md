@@ -129,7 +129,9 @@ mount --rbind /sys /mnt/gentoo/sys
 
 ## configure the chroot
 ```
-chroot /mnt/gentoo /bin/bash && source /etc/profile && export PS1="(chroot) $PS1"
+chroot /mnt/gentoo /bin/bash
+source /etc/profile
+export PS1="(chroot) $PS1"
 ```
 
 ## profile select
@@ -256,3 +258,7 @@ grub-install /dev/sdb
 grub-mkconfig -o /boot/grub/grub.cfg
 reboot
 ```
+
+This is no longer necessary with sys-apps/systemd when the sysv-utils USE is enabled. This defaults to on with at least version 239 in Gentoo
+FILE /etc/default/grubSystemd example
+GRUB_CMDLINE_LINUX="init=/usr/lib/systemd/systemd"
