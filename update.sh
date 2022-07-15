@@ -3,45 +3,45 @@
 mkdir -p "$HOME/tmp"
 
 if [ "$OS" = "Linux Mint" ]; then
-  sudo apt update | tee -a update-$$.log
-  sudo apt upgrade -y | tee -a update-$$.log
-  sudo apt autoremove -y | tee -a update-$$.log
+  sudo apt update | tee -a "$HOME/tmp/update-$$.log"
+  sudo apt upgrade -y | tee -a "$HOME/tmp/update-$$.log"
+  sudo apt autoremove -y | tee -a "$HOME/tmp/update-$$.log"
   sudo apt install -y curl
 elif [ "$OS" = "Debian GNU/Linux" ]; then
-  sudo apt update | tee -a update-$$.log
-  sudo apt upgrade -y | tee -a update-$$.log
-  sudo apt autoremove -y | tee -a update-$$.log
+  sudo apt update | tee -a "$HOME/tmp/update-$$.log"
+  sudo apt upgrade -y | tee -a "$HOME/tmp/update-$$.log"
+  sudo apt autoremove -y | tee -a "$HOME/tmp/update-$$.log"
 elif [ "$OS" = "Ubuntu" ]; then
-  sudo apt update | tee -a update-$$.log
-  sudo apt upgrade -y | tee -a update-$$.log
-  sudo apt autoremove -y | tee -a update-$$.log
+  sudo apt update | tee -a "$HOME/tmp/update-$$.log"
+  sudo apt upgrade -y | tee -a "$HOME/tmp/update-$$.log"
+  sudo apt autoremove -y | tee -a "$HOME/tmp/update-$$.log"
   sudo apt install -y curl
 elif [ "$OS" = "Darwin" ]; then
-  softwareupdate -l | tee -a update-$$.log
+  softwareupdate -l | tee -a "$HOME/tmp/update-$$.log"
 elif [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt update 2>&1 | tee -a update-$$.log
-  sudo apt upgrade -y 2>&1 | tee -a update-$$.log
-  sudo apt autoremove -y 2>&1 | tee -a update-$$.log
+  sudo apt update 2>&1 | tee -a "$HOME/tmp/update-$$.log"
+  sudo apt upgrade -y 2>&1 | tee -a "$HOME/tmp/update-$$.log"
+  sudo apt autoremove -y 2>&1 | tee -a "$HOME/tmp/update-$$.log"
 elif [ "$OS" = "Solus" ]; then
-  sudo eopkg upgrade -y | tee -a update-$$.log
+  sudo eopkg upgrade -y | tee -a "$HOME/tmp/update-$$.log"
 elif [ "$OS" = "void" ]; then
-  sudo xbps-remove -yO | tee -a update-$$.log
-  sudo xbps-remove -yo | tee -a update-$$.log
-  sudo vkpurge rm all | tee -a update-$$.log
-  sudo xbps-install -u xbps | tee -a update-$$.log
-  sudo xbps-install -Suy | tee -a update-$$.log
+  sudo xbps-remove -yO | tee -a "$HOME/tmp/update-$$.log"
+  sudo xbps-remove -yo | tee -a "$HOME/tmp/update-$$.log"
+  sudo vkpurge rm all | tee -a "$HOME/tmp/update-$$.log"
+  sudo xbps-install -u xbps | tee -a "$HOME/tmp/update-$$.log"
+  sudo xbps-install -Suy | tee -a "$HOME/tmp/update-$$.log"
 elif [ "$OS" = "Manjaro Linux" ]; then
-  sudo pacman --noconfirm --needed -Syu 2>&1 | tee -a update-$$.log
-  yay -Syu | tee -a update-$$.log
+  sudo pacman --noconfirm --needed -Syu 2>&1 | tee -a "$HOME/tmp/update-$$.log"
+  yay -Syu | tee -a "$HOME/tmp/update-$$.log"
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   du -sh /var/cache/pacman/pkg
   #sudo pacman -S archlinux-keyring #invalid or corrupted package (PGP signature)
-  sudo pacman --noconfirm --needed -Syu 2>&1 | tee -a update-$$.log
+  sudo pacman --noconfirm --needed -Syu 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   echo sudo pacman -Scc
-  sudo paccache -r 2>&1 | tee -a update-$$.log
-  sudo paccache -rk 1 2>&1 | tee -a update-$$.log
-  sudo paccache -ruk0 2>&1 | tee -a update-$$.log
-  yay -Syu 2>&1 | tee -a update-$$.log
+  sudo paccache -r 2>&1 | tee -a "$HOME/tmp/update-$$.log"
+  sudo paccache -rk 1 2>&1 | tee -a "$HOME/tmp/update-$$.log"
+  sudo paccache -ruk0 2>&1 | tee -a "$HOME/tmp/update-$$.log"
+  yay -Syu 2>&1 | tee -a "$HOME/tmp/update-$$.log"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper dist-upgrade
   # sudo zypper refersh
@@ -50,13 +50,13 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper update
 elif [ "$OS" = "Gentoo" ]; then
   sudo eselect news read
-  if ! sudo emerge --sync 2>&1 | tee -a update-$$.log; then
-    sudo emerge-webrsync 2>&1 | tee -a update-$$.log
+  if ! sudo emerge --sync 2>&1 | tee -a "$HOME/tmp/update-$$.log"; then
+    sudo emerge-webrsync 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   fi
-  sudo emerge -uN portage 2>&1 | tee -a update-$$.log
-  sudo emerge -uDUNf --keep-going --with-bdeps=y @world 2>&1 | tee -a update-$$.log
-  sudo emerge -uDUN --keep-going --with-bdeps=y @world 2>&1 | tee -a update-$$.log
-  sudo emerge --depclean 2>&1 | tee -a update-$$.log
+  sudo emerge -uN portage 2>&1 | tee -a "$HOME/tmp/update-$$.log"
+  sudo emerge -uDUNf --keep-going --with-bdeps=y @world 2>&1 | tee -a "$HOME/tmp/update-$$.log"
+  sudo emerge -uDUN --keep-going --with-bdeps=y @world 2>&1 | tee -a "$HOME/tmp/update-$$.log"
+  sudo emerge --depclean 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   sudo revdep-rebuild
   echo sudo emerge @preserved-rebuild
   echo eselect editor list
@@ -69,20 +69,20 @@ elif [ "$OS" = "Gentoo" ]; then
   echo sudo emerge --update --newuse --deep --changed-use --keep-going @world
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
-    sudo dnf update -y | tee -a update-$$.log
-    sudo dnf upgrade -y | tee -a update-$$.log
+    sudo dnf update -y | tee -a "$HOME/tmp/update-$$.log"
+    sudo dnf upgrade -y | tee -a "$HOME/tmp/update-$$.log"
   else
-    sudo yum update -y | tee -a update-$$.log
-    sudo yum upgrade -y | tee -a update-$$.log
+    sudo yum update -y | tee -a "$HOME/tmp/update-$$.log"
+    sudo yum upgrade -y | tee -a "$HOME/tmp/update-$$.log"
   fi
 elif [ "$OS" = "Fedora" ]; then
-    sudo dnf update -y | tee -a update-$$.log
-    sudo dnf upgrade -y | tee -a update-$$.log
+    sudo dnf update -y | tee -a "$HOME/tmp/update-$$.log"
+    sudo dnf upgrade -y | tee -a "$HOME/tmp/update-$$.log"
 elif [ "$OS" = "FreeBSD" ]; then
   #sudo freebsd-update fetch
   #sudo freebsd-update install
-  sudo freebsd-update fetch install 2>&1 | tee -a update-$$.log
-  sudo pkg upgrade 2>&1 | tee -a update-$$.log
+  sudo freebsd-update fetch install 2>&1 | tee -a "$HOME/tmp/update-$$.log"
+  sudo pkg upgrade 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   echo sudo pkg clean
   echo sudo pkg update -f
   echo sudo pkg bootstrap
@@ -143,4 +143,4 @@ fi
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:
