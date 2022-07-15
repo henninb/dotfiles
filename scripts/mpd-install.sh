@@ -148,7 +148,7 @@ fi
 # ninja -C build install
 # cd - || exit
 
-echo cp /usr/share/gdm/default.pa ~/.config/pulse/
+echo cp -v /usr/share/gdm/default.pa ~/.config/pulse/
 nowplaying=$(mpc -f "%track%. %artist% - %title%" | sed -n '1p')
 playing=$(mpc | grep playing)
 nowstatus=$(mpc | sed -n '2p' | cut -d ' ' -f1)
@@ -158,7 +158,7 @@ echo "$nowplaying $playing $nowstatus"
 
 cd ~/media || exit
 find . -type f -name "*.mp3" > all.m3u
-cp all.m3u /var/lib/mpd/playlists/
+cp -v all.m3u /var/lib/mpd/playlists/
 cd - || exit
 
 mpc update

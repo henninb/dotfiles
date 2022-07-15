@@ -43,7 +43,7 @@ xorgxrdp_build() {
 cat > xrdp.rc <<'EOF'
 #!/sbin/openrc-run
 
-#sudo cp xrdp.rc /etc/init.d/xrdp
+#sudo cp -v xrdp.rc /etc/init.d/xrdp
 
 start() {
   ebegin "Starting xrdp"

@@ -70,15 +70,15 @@ openssl genrsa -out "$HOME/ca.key.pem" 4096
 echo generate CSR - certificate signing request
 openssl req -new -key $HOME/ca.key.pem -out "$HOME/ca.csr" -subj "/C=US/ST=Texas/L=Denton/O=Brian LLC/OU=$SERVERNAME/CN=$SERVERNAME"
 
-openssl req -new -key $HOME/ca.key.pem -out $HOME/${SERVERNAME}_apache.csr.pem -subj "/C=US/ST=Texas/L=Denton/O=Brian LLC/OU=$SERVERNAME/CN=$SERVERNAME"
+openssl req -new -key "$HOME/ca.key.pem" -out "$HOME/${SERVERNAME}_apache.csr.pem" -subj "/C=US/ST=Texas/L=Denton/O=Brian LLC/OU=$SERVERNAME/CN=$SERVERNAME"
 
 # Generate Self Signed Key
-openssl x509 -req -days 3650 -in $HOME/ca.csr -signkey $HOME/ca.key.pem -out $HOME/ca.crt.pem
-openssl x509 -req -days 365 -in $HOME/${SERVERNAME}_apache.csr.pem -signkey $HOME/ca.key.pem -out $HOME/${SERVERNAME}_apache.crt.pem
+openssl x509 -req -days 3650 -in "$HOME/ca.csr" -signkey "$HOME/ca.key.pem" -out "$HOME/ca.crt.pem"
+openssl x509 -req -days 365 -in "$HOME/${SERVERNAME}_apache.csr.pem" -signkey "$HOME/ca.key.pem" -out "$HOME/${SERVERNAME}_apache.crt.pem"
 
-sudo cp -v $HOME/ca.crt.pem /etc/pki/tls/certs
-sudo cp -v $HOME/${SERVERNAME}_apache.crt.pem /etc/pki/tls/certs
-sudo cp -v $HOME/ca.key.pem /etc/pki/tls/private
+sudo cp -v "$HOME/ca.crt.pem" /etc/pki/tls/certs
+sudo cp -v "$HOME/${SERVERNAME}_apache.crt.pem" /etc/pki/tls/certs
+sudo cp -v "$HOME/ca.key.pem" /etc/pki/tls/private
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y apache2
@@ -88,10 +88,10 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo mv -v main.html /var/www/index.html
 
   #openssl x509 -in $HOME/${SERVERNAME}_apache.crt.pem -inform PEM -out $HOME/${SERVERNAME}_apache.crt
-  sudo chmod 644 $HOME/${SERVERNAME}_apache.crt.pem
-  sudo chmod 644 $HOME/ca.crt.pem
+  sudo chmod 644 "$HOME/${SERVERNAME}_apache.crt.pem"
+  sudo chmod 644 "$HOME/ca.crt.pem"
   sudo mkdir -p /usr/share/ca-certificates/extra
-  sudo cp -v $HOME/${SERVERNAME}_apache.crt.pem /usr/share/ca-certificates/${SERVERNAME}_apache.crt
+  sudo cp -v "$HOME/${SERVERNAME}_apache.crt.pem" /usr/share/ca-certificates/${SERVERNAME}_apache.crt
   sudo update-ca-certificates
   echo sudo update-ca-certificates --fresh
   echo sudo dpkg-reconfigure ca-certificates
@@ -126,7 +126,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
 
   #not sure if this is required
   sudo update-ca-trust force-enable
-  sudo cp $HOME/centos_apache.crt.pem /etc/pki/ca-trust/source/anchors/
+  sudo cp -v "$HOME/centos_apache.crt.pem" /etc/pki/ca-trust/source/anchors/
   sudo update-ca-trust extract
 
   sudo systemctl start httpd

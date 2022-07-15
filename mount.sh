@@ -12,7 +12,7 @@ echo "240GB"
 echo sudo mount -t ntfs /dev/sdc2 /mnt/ntfs
 #sudo mount -t ntfs-3g /dev/sdc2 /mnt/ntfs
 
-echo "sudo mkdir /storage_3TB"
+echo "sudo mkdir -p /storage_3TB"
 echo "3TB"
 echo sudo mount -t ntfs /dev/sdb2 /storage_3TB
 
