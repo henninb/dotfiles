@@ -35,6 +35,13 @@ ssh root@192.168.10.103
 ```
 cfdisk /dev/sda
 cfdisk /dev/vda
+
+parted /dev/vda  mklabel msdos
+parted /dev/vda mkpart primary 1 1024
+parted /dev/vda set 1 boot on
+parted /dev/vda mkpart primary 501 100%
+# parted /dev/vda set 2 lvm on
+
 ```
 
 ## disk layout
@@ -95,7 +102,7 @@ localectl set-keymap us
 hostnamectl set-hostname "gentood"
 echo "127.0.0.1 gentood.localdomain gentood" >> /etc/hosts
 
-timedatectl list-timezones | grep Chic
+timedatectl list-timezones
 timedatectl set-timezone America/Chicago
 timedatectl set-ntp yes
 poweroff
@@ -118,19 +125,17 @@ cp -L /etc/resolv.conf /mnt/gentoo/etc/
 mount -t proc none /mnt/gentoo/proc
 mount --rbind /dev /mnt/gentoo/dev
 mount --rbind /sys /mnt/gentoo/sys
-
-#mount -t proc /proc /mnt/gentoo/proc
-#mount --rbind /sys /mnt/gentoo/sys
-#mount --rbind /dev /mnt/gentoo/dev
-#mount --make-rslave /mnt/gentoo/sys
-#mount --make-rslave /mnt/gentoo/dev
 ```
 
 ## configure the chroot
 ```
-chroot /mnt/gentoo /bin/bash
-source /etc/profile
-export PS1="(chroot) $PS1"
+chroot /mnt/gentoo /bin/bash && source /etc/profile && export PS1="(chroot) $PS1"
+```
+
+## profile select
+```
+eselect profile list
+eselect profile set 10 (desktop systemd)
 ```
 
 ## set the mirror list (need to fix?)
@@ -179,6 +184,8 @@ vi /etc/fstab
 emerge gentoo-sources linux-firmware genkernel-next cronie mlocate rsyslog sys-boot/grub:2
 emerge sys-kernel/gentoo-sources sys-kernel/genkernel sys-process/cronie net-misc/netifrc app-admin/sysklogd net-misc/dhcpcd sudo sys-boot/grub:2
 etc-update
+
+emerge --ask --verbose sys-apps/systemd
 ```
 
 ## edit sudoers
@@ -208,8 +215,14 @@ DHCP=yes
 EOF
 ```
 
+ln -sf /proc/self/mounts /detc/mtab
 
+## might not be a good idea
+systemctl preset-all
+
+## might not be a good idea
 ln -snf /run/systemd/resolv.conf /etc/resolv.conf
+
 systemctl enable systemd-resolved.service
 
 
