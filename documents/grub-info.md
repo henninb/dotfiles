@@ -22,3 +22,17 @@ GRUB_CMDLINE_LINUX="intel_iommu=on"
 $ sudo update-grub
 $ sudo reboot
 ```
+
+## manual boot
+grub> ls
+
+(hd0) (hd0,msdos2) (hd0,msdos1)
+
+grub> root=(hd0,msdos1)
+
+Now we can tell it to load or kernel image. (Just note that you must put in the full filename of the image.
+grub> linux /vmlinuz root=/dev/sda2
+
+tell the kernel where it can find it's initialization RAM disk (initrd)
+grub> initrd /initrd.img
+grub> boot
