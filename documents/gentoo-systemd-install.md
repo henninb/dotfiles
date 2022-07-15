@@ -181,6 +181,11 @@ vi /etc/fstab
 /dev/cdrom  /mnt/cdrom   auto    noauto,user          0 0
 ```
 
+## verify disk
+```
+lsblk -f
+```
+
 ## install packages
 ```
 emerge gentoo-sources linux-firmware genkernel-next cronie mlocate rsyslog sys-boot/grub:2
