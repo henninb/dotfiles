@@ -1,38 +1,38 @@
 #!/bin/sh
 
+mkdir -p "$HOME/tmp"
+
 if [ "$OS" = "Linux Mint" ]; then
-  sudo apt update
-  sudo apt upgrade -y
-  sudo apt autoremove -y
+  sudo apt update | tee -a update-$$.log
+  sudo apt upgrade -y | tee -a update-$$.log
+  sudo apt autoremove -y | tee -a update-$$.log
   sudo apt install -y curl
 elif [ "$OS" = "Debian GNU/Linux" ]; then
-  sudo apt update
-  sudo apt upgrade -y
-  sudo apt autoremove -y
+  sudo apt update | tee -a update-$$.log
+  sudo apt upgrade -y | tee -a update-$$.log
+  sudo apt autoremove -y | tee -a update-$$.log
 elif [ "$OS" = "Ubuntu" ]; then
-  sudo apt update
-  sudo apt upgrade -y
-  sudo apt autoremove -y
+  sudo apt update | tee -a update-$$.log
+  sudo apt upgrade -y | tee -a update-$$.log
+  sudo apt autoremove -y | tee -a update-$$.log
   sudo apt install -y curl
 elif [ "$OS" = "Darwin" ]; then
-  softwareupdate -l
+  softwareupdate -l | tee -a update-$$.log
 elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt update 2>&1 | tee -a update-$$.log
   sudo apt upgrade -y 2>&1 | tee -a update-$$.log
   sudo apt autoremove -y 2>&1 | tee -a update-$$.log
 elif [ "$OS" = "Solus" ]; then
-  sudo eopkg remove -y libreoffice-common
-  sudo eopkg remove -y thunderbird
-  sudo eopkg upgrade -y
+  sudo eopkg upgrade -y | tee -a update-$$.log
 elif [ "$OS" = "void" ]; then
-  sudo xbps-remove -yO
-  sudo xbps-remove -yo
-  sudo vkpurge rm all
-  sudo xbps-install -u xbps
-  sudo xbps-install -Suy
+  sudo xbps-remove -yO | tee -a update-$$.log
+  sudo xbps-remove -yo | tee -a update-$$.log
+  sudo vkpurge rm all | tee -a update-$$.log
+  sudo xbps-install -u xbps | tee -a update-$$.log
+  sudo xbps-install -Suy | tee -a update-$$.log
 elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -Syu 2>&1 | tee -a update-$$.log
-  yay -Syu
+  yay -Syu | tee -a update-$$.log
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   du -sh /var/cache/pacman/pkg
   #sudo pacman -S archlinux-keyring #invalid or corrupted package (PGP signature)
@@ -69,15 +69,15 @@ elif [ "$OS" = "Gentoo" ]; then
   echo sudo emerge --update --newuse --deep --changed-use --keep-going @world
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
-    sudo dnf update -y
-    sudo dnf upgrade -y
+    sudo dnf update -y | tee -a update-$$.log
+    sudo dnf upgrade -y | tee -a update-$$.log
   else
-    sudo yum update -y
-    sudo yum upgrade -y
+    sudo yum update -y | tee -a update-$$.log
+    sudo yum upgrade -y | tee -a update-$$.log
   fi
 elif [ "$OS" = "Fedora" ]; then
-    sudo dnf update -y
-    sudo dnf upgrade -y
+    sudo dnf update -y | tee -a update-$$.log
+    sudo dnf upgrade -y | tee -a update-$$.log
 elif [ "$OS" = "FreeBSD" ]; then
   #sudo freebsd-update fetch
   #sudo freebsd-update install
