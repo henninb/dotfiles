@@ -11,6 +11,10 @@ if [ ! -f "$FILE" ]; then
   exit 1
 fi
 
+if [ -x "$(command -v emerge)" ]; then
+  sudo emerge --update --newuse usbutils
+fi
+
 lsusb | grep Toshiba
 sudo dmesg | grep -A 5 'Direct-Access' | grep sd | grep -i log
 #drive=$(dmesg | grep -A 5 'Direct-Access' | grep sd | grep -i log)
