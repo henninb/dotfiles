@@ -241,6 +241,7 @@ genkernel --menuconfig all
 
 # will take a long time (42 min)
 ```
+# CONFIG_VIRTIO_FS is not set
 eselect kernel list
 eselect kernel set 1
 genkernel all
