@@ -1,7 +1,7 @@
 #!/bin/sh
 
-export PATH=${HOME}/.local/bin:${PATH}
-export PATH=/usr/local/sbin:/usr/sbin:${PATH}
+export PATH="${HOME}/.local/bin:${PATH}"
+export PATH="/usr/local/sbin:/usr/sbin:${PATH}"
 
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
@@ -19,14 +19,18 @@ export LC_IDENTIFICATION=en_US.UTF-8
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+mkdir -p "$HOME/tmp"
+
 if [ -x "$(command -v xrdb)" ]; then
-  xrdb -load "$HOME/.Xresources" >> "$HOME/xinit.log"
+  xrdb -load "$HOME/.Xresources" >> "$HOME/tmp/xinit.log"
 else
   echo "xrdb not installed."
 fi
 
 setxkbmap -option "caps:escape"
 
-xrandr --listproviders >> "$HOME/xinit.log"
+xrandr --listproviders >> "$HOME/tmp/xinit.log"
 
-exec xmonad-start 2>> "$HOME/xinit.log"
+exec xmonad-start 2>> "$HOME/tmp/xinit.log"
+
+# vim: set ft=sh:

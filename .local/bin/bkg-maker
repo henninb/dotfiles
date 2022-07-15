@@ -19,16 +19,16 @@ width=$(magick convert "$pape" -format "%w" info:)
 logo_height=$(($height*11/16))
 
 # Generate Mask
-convert "$HOME/.local/bin/vikings.png" -gravity center -resize $logo_height -background white -extent "${width}x${height}" -flatten "vikings_temp_logo.png"
-convert "$HOME/.local/bin/arch.png" -gravity center -resize $logo_height -background white -extent "${width}x${height}" -flatten "arch_temp_logo.png"
+convert "$HOME/.local/img/vikings.png" -gravity center -resize $logo_height -background white -extent "${width}x${height}" -flatten "$HOME/tmp/vikings_temp_logo.png"
+convert "$HOME/.local/img/arch.png" -gravity center -resize $logo_height -background white -extent "${width}x${height}" -flatten "$HOME/tmp/arch_temp_logo.png"
 
 outfile_name=$(basename "$pape")
 
-convert "$pape" -write-mask "vikings_temp_logo.png" -gravity center -blur 0x30 -attenuate 0.3 +noise Laplacian -evaluate Multiply 1.3 "vikings_$outfile_name"
-convert "$pape" -write-mask "arch_temp_logo.png" -gravity center -blur 0x30 -attenuate 0.3 +noise Laplacian -evaluate Multiply 1.3 "arch_$outfile_name"
+convert "$pape" -write-mask "$HOME/tmp/vikings_temp_logo.png" -gravity center -blur 0x30 -attenuate 0.3 +noise Laplacian -evaluate Multiply 1.3 "$HOME/tmp/vikings_$outfile_name"
+convert "$pape" -write-mask "$HOME/tmp/arch_temp_logo.png" -gravity center -blur 0x30 -attenuate 0.3 +noise Laplacian -evaluate Multiply 1.3 "$HOME/tmp/arch_$outfile_name"
 
 # Delete temporary file
-rm -rf arch_temp_logo.png vikings_temp_logo.png
+rm -rf "$HOME/tmp/arch_temp_logo.png" "$HOME/tmp/vikings_temp_logo.png"
 
 exit 0
 
