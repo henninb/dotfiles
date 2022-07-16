@@ -44,7 +44,7 @@ finance app to output a budget
 JOOQ update and delete
 mine crypto currency
 automate bridge setup
-blener - make something 3D
+blender - make something 3D
 make my own PCB
 install FreeNAS
 finance_db with redis backend
@@ -54,3 +54,4 @@ docker run void
 docker run gentoo
 install haikuOS
 raspberian cross compiler in c
+gentoo with systemd
