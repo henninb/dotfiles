@@ -110,7 +110,7 @@ poweroff
 ## use flags
 ```
 cat << EOF >> /mnt/gentoo/etc/portage/make.conf
-MAKEOPTS="-j2"
+MAKEOPTS="-j4"
 ACCEPT_LICENSE="*"
 EOF
 ```
@@ -142,9 +142,9 @@ eselect profile set 10 (desktop systemd)
 
 ## set the mirror list (need to fix?)
 ```
-mirrorselect -i -o >> /etc/portage/make.conf
-#mkdir -p /mnt/etc/portage/repos.conf
-#cp -v /mnt/usr/share/portage/config/repos.conf /mnt/etc/portage/repos.conf/gentoo.conf
+# mirrorselect -i -o >> /etc/portage/make.conf
+mkdir -p /mnt/etc/portage/repos.conf
+cp -v /mnt/usr/share/portage/config/repos.conf /mnt/etc/portage/repos.conf/gentoo.conf
 ```
 
 ## user maintenence
@@ -183,16 +183,14 @@ vi /etc/fstab
 
 ## verify disk
 ```
-lsblk -f
+lsblk
 ```
 
 ## install packages
 ```
-emerge gentoo-sources linux-firmware genkernel-next cronie mlocate rsyslog sys-boot/grub:2
+emerge sys-kernel/gentoo-sources linux-firmware sys-kernel/genkernel cronie mlocate rsyslog sys-boot/grub:2 sudo
 emerge sys-kernel/gentoo-sources sys-kernel/genkernel sys-process/cronie net-misc/netifrc app-admin/sysklogd net-misc/dhcpcd sudo sys-boot/grub:2
 etc-update
-
-emerge --ask --verbose sys-apps/systemd
 ```
 
 ## edit sudoers
@@ -205,10 +203,6 @@ vi /etc/sudoers
 systemctl enable rsyslog
 systemctl enable cronie
 systemctl enable sshd
-#rc-update add sysklogd default
-#rc-update add cronie default
-#rc-update add dhcpcd default
-#rc-update add sshd default
 ```
 
 ## network setup (enp1s0, eth0)
@@ -222,29 +216,29 @@ DHCP=yes
 EOF
 ```
 
-ln -sf /proc/self/mounts /detc/mtab
+## update mtab
+```
+ln -sf /proc/self/mounts /etc/mtab
+```
 
-## might not be a good idea
+## default systemd settings
+```
 systemctl preset-all
+```
 
-## might not be a good idea
+## update dns resolver
+```
 ln -snf /run/systemd/resolv.conf /etc/resolv.conf
-
 systemctl enable systemd-resolved.service
+```
 
-
-vi /etc/genkernel.conf
-UDEV="yes"
-MAKEOPTS="-j4"
-
-genkernel --menuconfig all
-
-# will take a long time (42 min)
+# build and install the kernel (will take 42 min)
 ```
 # CONFIG_VIRTIO_FS is not set
 eselect kernel list
 eselect kernel set 1
 genkernel all
+genkernel --menuconfig all
 ```
 
 ## check kernel logs
@@ -253,7 +247,9 @@ tail -f /var/log/genkernel.log
 ```
 
 ## verify the kernel
+```
 ls /boot/vmlinuz* /boot/initramfs*
+```
 
 ## grub install
 ```
@@ -264,7 +260,3 @@ grub-install /dev/sdb
 grub-mkconfig -o /boot/grub/grub.cfg
 reboot
 ```
-
-This is no longer necessary with sys-apps/systemd when the sysv-utils USE is enabled. This defaults to on with at least version 239 in Gentoo
-FILE /etc/default/grubSystemd example
-GRUB_CMDLINE_LINUX="init=/usr/lib/systemd/systemd"
