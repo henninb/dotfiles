@@ -31,4 +31,4 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:
