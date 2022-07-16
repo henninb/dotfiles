@@ -19,6 +19,10 @@ else
   exit 1
 fi
 
+if [ -x "$(command -v zsh)" ]; then
+  echo zsh is not installed.
+fi
+
 if [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
     sudo dnf install -y zsh
@@ -111,4 +115,4 @@ echo sudo vipw #fixes passwd file for freebsd
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:
