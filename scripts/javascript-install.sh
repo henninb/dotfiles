@@ -1,5 +1,6 @@
 #!/bin/sh
 
+node_ver=16.15.1
 #sudo apt install -y yarn
 # unset NVM_DIR
 
@@ -17,7 +18,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo sudo zypper install -y nodejs
 elif [ "$OS" = "void" ]; then
-  echo
+  echo "void"
 elif [ "$OS" = "Gentoo" ]; then
   echo sudo emerge  --update --newuse nodejs
 elif [ "$OS" = "Solus" ]; then
@@ -32,18 +33,20 @@ else
   exit 1
 fi
 
-if [ -x "$(command -v nvm)" ]; then
+echo "doesn't seem to work"
+if ! command -v nvm; then
+  echo "nvm is not in the path"
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-  if ! nvm install 16.15.1; then
+  if ! nvm install "$node_ver"; then
     echo nvm failed.
     exit 1
   fi
 fi
 
-if [ -x "$(command -v node)" ]; then
-  if ! nvm install 16.15.1; then
+if ! command -v node; then
+  if ! nvm install "$node_ver"; then
     echo nvm failed.
     exit 1
   fi
