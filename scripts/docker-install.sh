@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat > daemon.json <<EOF
+cat > "$HOME/tmp/daemon.json" <<EOF
 { "dns" : [ "8.8.8.8", "8.8.4.4" ]}
 EOF
 
@@ -111,8 +111,8 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo service docker start
 elif [ "$OS" = "Gentoo" ]; then
   sudo eselect news read
-  sudo emerge --update --newuse sys-kernel/gentoo-sources
-  sudo emerge --update --newuse zfs
+  echo sudo emerge --update --newuse sys-kernel/gentoo-sources
+  echo sudo emerge --update --newuse zfs
   # sudo emerge --update --newuse aufs-sources
   sudo emerge --update --newuse fakeroot
   sudo emerge --update --newuse pciutils
@@ -120,12 +120,14 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse docker-compose
   sudo emerge --update --newuse app-containers/docker
   #sudo emerge --update --newuse app-emulation/docker
-  sudo rc-update add docker default
-  sudo rc-service docker start
+  sudo systemctl enable docker
+  sudo systemctl start docker
+  # sudo rc-update add docker default
+  # sudo rc-service docker start
   sudo usermod -a -G docker "$(id -un)"
-  /usr/share/docker/contrib/check-config.sh
+  echo /usr/share/docker/contrib/check-config.sh
   echo https://github.com/tianon/docker-overlay
-  echo sudo cp -v daemon.json /etc/docker/daemon.json
+  echo sudo mv -v "$HOME/tmp/daemon.json" /etc/docker/daemon.json
   echo "net.ipv4.ip_forward = 1" | tee -a  /etc/sysctl.conf
 else
   echo "$OS is not yet implemented."
