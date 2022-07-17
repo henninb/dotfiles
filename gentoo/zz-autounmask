@@ -53,3 +53,6 @@ x11-misc/dzen xpm xinerama
 media-video/obs-studio speex ssl truetype v4l vlc
 # app-containers/snapd apparmor
 dev-libs/cyrus-sasl kerberos
+sys-libs/ncurses -gpm
+sys-boot/plymouth -udev
+media-libs/libsndfile minimal
