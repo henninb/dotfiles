@@ -56,3 +56,4 @@ dev-libs/cyrus-sasl kerberos
 sys-libs/ncurses -gpm
 sys-boot/plymouth -udev
 media-libs/libsndfile minimal
+# media-sound/pulseaudio bluetooth

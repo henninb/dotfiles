@@ -3,7 +3,7 @@
 mkdir -p mp3
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  echo
+  echo mint
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S alsa-utils
   sudo pacman --noconfirm --needed -S pulseaudio
@@ -21,12 +21,14 @@ elif [ "$OS" = "void" ]; then
   echo pulseaudio --daemonize=no --exit-idle-time=-1
   sudo usermod -a -G audio "$(id -un)"
 elif [ "$OS" = "Fedora" ]; then
-  echo
+  echo fedora
 elif [ "$OS" = "Solus" ]; then
-  echo
+  echo solus
 elif [ "$OS" = "Gentoo" ]; then
-  echo
-  sudo emerge --update --newuse pavucontrol
+  if ! command -v pacmd; then
+    sudo emerge --update --newuse pavucontrol
+  fi
+
 else
   echo "$OS is not yet implemented."
   exit 1
