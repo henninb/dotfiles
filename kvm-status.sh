@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if ! command -v virsh; then
+  echo "install kvm"
+  exit 1
+fi
 virsh net-start default
 
 sudo echo
