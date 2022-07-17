@@ -28,7 +28,9 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y xcb-util-image-devel
   sudo xbps-install -y xcb-util-composite-devel
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse dev-util/ninja
+  if ! command -v ninja; then
+    sudo emerge --update --newuse dev-util/ninja
+  fi
   sudo emerge --update --newuse uthash
   sudo emerge --update --newuse libconfig
 else
