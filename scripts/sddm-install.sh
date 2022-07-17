@@ -99,7 +99,7 @@ elif [ "$OS" = "Gentoo" ]; then
 #  sudo rc-update add display-manager default
 #  sudo rc-service display-manager start
   sudo systemctl enable sddm
-  sudo systemtcl start sddm
+  sudo systemctl start sddm
 else
   echo "${OS} is not setup"
   exit 1
