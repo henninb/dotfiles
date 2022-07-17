@@ -97,8 +97,10 @@ elif [ "$OS" = "Gentoo" ]; then
   # cat /etc/conf.d/display-manager
   # echo DISPLAYMANAGER="xdm"
   sudo sed -i "s/DISPLAYMANAGER=\"xdm\"/DISPLAYMANAGER=\"sddm\"/g" /etc/conf.d/display-manager
-  sudo rc-update add display-manager default
-  sudo rc-service display-manager start
+#  sudo rc-update add display-manager default
+#  sudo rc-service display-manager start
+  sudo systemctl enable sddm
+  sudo systemtcl start sddm
 else
   echo "${OS} is not setup"
   exit 1
