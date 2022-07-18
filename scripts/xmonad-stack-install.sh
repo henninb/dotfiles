@@ -236,6 +236,13 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo rc-update add bluetooth default
   sudo rc-update add NetworkManager default
   sudo rc-service NetworkManager start
+
+  sudo systemctl enable NetworkManager.service
+  sudo systemctl start NetworkManager.service
+  sudo systemctl enable bluetooth.service
+  sudo systemctl start bluetooth.service
+  sudo systemctl enable cronie
+  sudo systemctl start cronie
   mkdir -p "$HOME/projects/github.com/baskerville"
   cd "$HOME/projects/github.com/baskerville" || exit
   git clone git@github.com:baskerville/xdo.git
