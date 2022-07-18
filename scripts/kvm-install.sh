@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-cat > 80-libvirt.rules <<EOF
+cat > "$HOME/tmp/80-libvirt.rules" <<EOF
 polkit.addRule(function(action, subject) {
  if (action.id == "org.libvirt.unix.manage" && subject.local && subject.active && subject.isInGroup("libvirt")) {
  return polkit.Result.YES;
@@ -8,7 +8,7 @@ polkit.addRule(function(action, subject) {
 });
 EOF
 
-cat > libvirtd.conf <<EOF
+cat > "$HOME/tmp/libvirtd.conf" <<EOF
 auth_unix_ro = "none"
 auth_unix_rw = "none"
 unix_sock_group = "wheel"
@@ -126,9 +126,11 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse app-emulation/virt-viewer
   sudo emerge --update --newuse net-misc/spice-gtk
   sudo emerge --update --newuse virt-manager
-  sudo cp -v libvirtd.conf /etc/libvirt/libvirtd.conf
-  sudo rc-update add libvirtd default
-  sudo rc-service libvirtd start
+  sudo mv -v "$HOME/tmp/libvirtd.conf" /etc/libvirt/libvirtd.conf
+  # sudo rc-update add libvirtd default
+  # sudo rc-service libvirtd start
+  sudo systemctl enable libvirtd
+  sudo systemctl start libvirtd
   sudo usermod -a -G libvirt "$(id -un)"
   sudo usermod -a -G kvm "$(id -un)"
   echo grep KVM /usr/src/linux/.config
@@ -173,7 +175,7 @@ else
   echo sysctl.conf is not found
 fi
 
-echo sudo cp -v 80-libvirt.rules /etc/polkit-1/rules.d/80-libvirt.rules
+echo sudo mv -v "$HOME/tmp/80-libvirt.rules" /etc/polkit-1/rules.d/80-libvirt.rules
 echo virsh -c test:///default list --all
 echo virsh -c qemu:///system list --all
 
