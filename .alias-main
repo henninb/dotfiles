@@ -41,6 +41,8 @@ alias shutdown='sudo /sbin/shutdown'
 alias rxrdp='sudo systemctl restart xrdp'
 alias rsxhkd='pkill -USR1 -x sxhkd'
 
+alias emerge='emerge --update --newuse'
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
