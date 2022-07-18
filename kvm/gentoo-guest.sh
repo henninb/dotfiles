@@ -1,6 +1,7 @@
 #!/bin/sh
 
-iso_file=install-amd64-minimal-20220710T170538Z.iso
+# iso_file=install-amd64-minimal-20220710T170538Z.iso
+iso_file=archlinux-x86_64.iso
 virsh shutdown guest-gentoo
 virsh undefine guest-gentoo
 
@@ -15,8 +16,8 @@ fi
 exec sudo virt-install \
 --virt-type=kvm \
 --name guest-gentoo \
---memory=4096,maxmemory=4096 \
---vcpus=1,maxvcpus=2 \
+--memory=8192,maxmemory=8192 \
+--vcpus=2,maxvcpus=2 \
 --virt-type=kvm \
 --hvm \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
