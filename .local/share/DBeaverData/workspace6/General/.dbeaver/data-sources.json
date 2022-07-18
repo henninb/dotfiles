@@ -21,7 +21,8 @@
 					"@dbeaver-show-unavailable-db@": "false",
 					"show-database-statistics": "false",
 					"@dbeaver-read-all-data-types-db@": "false",
-					"@dbeaver-use-prepared-statements-db@": "false"
+					"@dbeaver-use-prepared-statements-db@": "false",
+					"read-keys-with-columns": "false"
 				},
 				"auth-model": "native",
 				"handlers": {}
