@@ -5,14 +5,15 @@ pkg-config --exists gtk+-2.0 && echo "gtk+ 2.0 is installed" || echo "gtk+ 2.0 i
 
 theme_path=/usr/share/themes
 mkdir -p "$HOME/.local/share/themes"
-if [ ! -f "dracula-gtk-theme.zip" ]; then
-  wget https://github.com/dracula/gtk/archive/master.zip -O dracula-gtk-theme.zip
+if [ ! -f "$HOME/tmp/dracula-gtk-theme.zip" ]; then
+  wget https://github.com/dracula/gtk/archive/master.zip -O "$HOME/tmp/dracula-gtk-theme.zip"
 fi
 
-if [ ! -f "ant-dracula-gtk-theme.zip" ]; then
-  wget https://github.com/EliverLara/Ant-Dracula/archive/master.zip -O ant-dracula-gtk-theme.zip
+if [ ! -f "$HOME/tmp/ant-dracula-gtk-theme.zip" ]; then
+  wget https://github.com/EliverLara/Ant-Dracula/archive/master.zip -O "$HOME/tmp/ant-dracula-gtk-theme.zip"
 fi
 
+cd "$HOME/tmp" || exit
 rm -rf ant-dracula-theme AntDracula
 rm -rf gtk-master Dracula
 

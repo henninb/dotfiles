@@ -4,7 +4,8 @@ iso_file=install-amd64-minimal-20220710T170538Z.iso
 virsh shutdown guest-gentoo
 virsh undefine guest-gentoo
 
-sudo rm /var/lib/libvirt/images/guest-gentoo.qcow2
+sudo mkdir -p /var/lib/libvirt/boot
+sudo rm -rf /var/lib/libvirt/images/guest-gentoo.qcow2
 
 if [ ! -f "/var/lib/libvirt/boot/${iso_file}" ]; then
   scp "pi:/home/pi/shared/template/iso/${iso_file}" .
@@ -14,7 +15,7 @@ fi
 exec sudo virt-install \
 --virt-type=kvm \
 --name guest-gentoo \
---memory=1024,maxmemory=2048 \
+--memory=4096,maxmemory=4096 \
 --vcpus=1,maxvcpus=2 \
 --virt-type=kvm \
 --hvm \
