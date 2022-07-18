@@ -30,7 +30,7 @@ sudo touch /etc/subuid /etc/subgid
 sudo sysctl kernel.unprivileged_userns_clone=1
 sysctl kernel.unprivileged_userns_clone
 
-usermod --add-subuids 100000-165535 --add-subgids 100000-165535 henninb
+usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$(id -un)"
 
 echo sudo vim /etc/containers/registries.conf.
 
