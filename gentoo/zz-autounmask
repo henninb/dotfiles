@@ -57,4 +57,6 @@ sys-libs/ncurses -gpm
 sys-boot/plymouth -udev
 media-libs/libsndfile minimal
 # media-sound/pulseaudio bluetooth
-sys-fs/squashfs-tools lzma
+sys-fs/squashfs-tools lzma lzo
+sys-libs/libseccomp static-libs
+kde-misc/kdeconnect bluetooth
