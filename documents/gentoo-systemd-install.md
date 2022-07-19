@@ -261,6 +261,7 @@ ls /boot/vmlinuz* /boot/initramfs*
 ```
 systemd-firstboot --prompt --setup-machine-id
 systemctl preset-all
+systemd-machine-id-setup
 ```
 
 ## grub install
