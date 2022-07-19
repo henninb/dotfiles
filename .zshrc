@@ -354,7 +354,7 @@ fi
 if [ -z "$(find ~/.fonts -maxdepth 1 -type f  \( -name Monofur_for_Powerline.ttf \))" ]; then
   mkdir -p ~/.fonts
   cd ~/.fonts || return
-  unzip ../monofur-fonts.zip
+  unzip "$HOME/.local/fonts/monofur-fonts.zip"
   fc-cache -vf ~/.fonts/
   cd - || return
 fi
