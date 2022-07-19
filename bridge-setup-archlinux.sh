@@ -2,6 +2,14 @@
 
 device=enp3s0
 
+cat > "$HOME/tmp/bridged-network.xml" <<EOF
+<network>
+    <name>br0-bridged-network</name>
+    <forward mode="bridge" />
+    <bridge name="br0" />
+</network>
+EOF
+
 if [ $# -ne 1 ]; then
     echo "Usage: $0 <device>"
     echo "Example: $0 enp3s0"
@@ -21,7 +29,7 @@ device=$1
   sudo nmcli connection up br0
   sudo dhclient br0
 
-  virsh net-define bridged-network.xml
+  virsh net-define "$HOME/tmp/bridged-network.xml"
   virsh net-start br0-bridged-network
   virsh net-autostart br0-bridged-network
   virsh net-list
