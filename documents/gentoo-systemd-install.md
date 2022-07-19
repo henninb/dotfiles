@@ -1,29 +1,21 @@
 # gentoo install - last executed on 7/13/2022
-download minimal
-download arch
+download archlinux
 
 https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation
 
 ## boot
 ```
-boot > gentoo
+boot archlinux
 ```
 
 ## network configures automatically on gentoo for VirtualBox and most baremetal
 ```
-systemctl start sshd
-rc-service sshd start
 ip addr show
 ```
 
 ## set root password
 ```
 passwd root
-```
-
-## start dhcp server
-```
-rc-service dhcpcd start
 ```
 
 ## remote ssh login from remote
@@ -36,11 +28,10 @@ ssh root@192.168.10.103
 cfdisk /dev/sda
 cfdisk /dev/vda
 
-parted /dev/vda  mklabel msdos
-parted /dev/vda mkpart primary 1 1024
-parted /dev/vda set 1 boot on
-parted /dev/vda mkpart primary 501 100%
-# parted /dev/vda set 2 lvm on
+parted /dev/sda  mklabel msdos
+parted /dev/sda mkpart primary 1 1024
+parted /dev/sda set 1 boot on
+parted /dev/sda mkpart primary 1024 100%
 
 ```
 
@@ -127,14 +118,14 @@ mount --rbind /dev /mnt/gentoo/dev
 mount --rbind /sys /mnt/gentoo/sys
 ```
 
-## configure the chroot
+## configure the chroot (enter commands individually)
 ```
 chroot /mnt/gentoo /bin/bash
 source /etc/profile
 export PS1="(chroot) $PS1"
 ```
 
-## profile select
+## profile select (does not work)
 ```
 eselect profile list
 eselect profile set 10 (desktop systemd)
@@ -144,7 +135,7 @@ eselect profile set 10 (desktop systemd)
 ```
 # mirrorselect -i -o >> /etc/portage/make.conf
 mkdir -p /mnt/etc/portage/repos.conf
-cp -v /mnt/usr/share/portage/config/repos.conf /mnt/etc/portage/repos.conf/gentoo.conf
+cp -v /usr/share/portage/config/repos.conf /etc/portage/repos.conf/gentoo.conf
 ```
 
 ## user maintenence
@@ -171,14 +162,11 @@ emerge vim
 
 ## edit fstab
 ```
-vi /etc/fstab
-```
-
-## file content
-```
+cat << EOF >> /etc/fstab
 /dev/sda1   /boot        ext2    defaults,noatime     0 2
 /dev/sda2   /            ext4    noatime              0 1
 /dev/cdrom  /mnt/cdrom   auto    noauto,user          0 0
+EOF
 ```
 
 ## verify disk
@@ -189,13 +177,15 @@ lsblk
 ## install packages
 ```
 emerge sys-kernel/gentoo-sources linux-firmware sys-kernel/genkernel cronie mlocate rsyslog sys-boot/grub:2 sudo
-emerge sys-kernel/gentoo-sources sys-kernel/genkernel sys-process/cronie net-misc/netifrc app-admin/sysklogd net-misc/dhcpcd sudo sys-boot/grub:2
+# emerge sys-kernel/gentoo-sources sys-kernel/genkernel sys-process/cronie net-misc/netifrc app-admin/sysklogd net-misc/dhcpcd sudo sys-boot/grub:2
 etc-update
 ```
 
 ## edit sudoers
 ```
-vi /etc/sudoers
+cat << EOF >> /etc/sudoers
+%wheel ALL=(ALL:ALL) NOPASSWD: ALL
+EOF
 ```
 
 ## update system settings
@@ -207,6 +197,8 @@ systemctl enable sshd
 
 ## network setup (enp1s0, eth0)
 ```
+ip link
+
 cat << EOF > /etc/systemd/network/50-dhcp_eth0.network
 [Match]
 Name=eth0
@@ -214,6 +206,15 @@ Name=eth0
 [Network]
 DHCP=yes
 EOF
+
+cat << EOF > /etc/systemd/network/50-dhcp_enp1s0.network
+[Match]
+Name=enp1s0
+
+[Network]
+DHCP=yes
+EOF
+
 ```
 
 ## update mtab
@@ -221,7 +222,7 @@ EOF
 ln -sf /proc/self/mounts /etc/mtab
 ```
 
-## default systemd settings
+## default systemd settings (may not be needed)
 ```
 systemctl preset-all
 ```
@@ -234,7 +235,6 @@ systemctl enable systemd-resolved.service
 
 # build and install the kernel (will take 42 min)
 ```
-# CONFIG_VIRTIO_FS is not set
 eselect kernel list
 eselect kernel set 1
 genkernel all
