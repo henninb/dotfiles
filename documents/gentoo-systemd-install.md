@@ -222,6 +222,12 @@ EOF
 ln -sf /proc/self/mounts /etc/mtab
 ```
 
+```
+vi /etc/initramfs.mounts
+/usr
+```
+
+
 ## default systemd settings (may not be needed)
 ```
 systemctl preset-all
@@ -251,8 +257,17 @@ tail -f /var/log/genkernel.log
 ls /boot/vmlinuz* /boot/initramfs*
 ```
 
+## systemd stuff
+```
+systemd-firstboot --prompt --setup-machine-id
+systemctl preset-all
+```
+
 ## grub install
 ```
+/boot/grub/grub.conf
+linux /vmlinuz-5.10.12 root=UUID=blah init=/lib/systemd/systemd
+
 echo 'GRUB_CMDLINE_LINUX="init=/usr/lib/systemd/systemd"' >> /etc/default/grub
 grub-install /dev/sda
 grub-install /dev/vda
