@@ -30,18 +30,18 @@ VOID_PKGS="wget fontforge ffmpeg figlet cmus zip unzip ctags astyle toilet unix2
 
 SOLUS_PKGS="fontforge ffmpeg figlet cmus zip unzip ctags dos2unix fish jq neofetch tig most vimfm netcat htop ffmpeg emacs mcrypt tmux screen nmon mpd nnn nmap ntp ntfs-3g elinks grip rsync"
 
-mkdir -p .cli
-echo "$CENTOS_PKGS" > .cli/centos
-echo "$ARCHLINUX_PKGS" > .cli/archlinux
-echo "$MINT_PKGS" > .cli/mintlinux
-echo "$UBUNTU_PKGS" > .cli/ubuntu
-echo "$GENTOO_PKGS" > .cli/gentoo
-echo "$FREEBSD_PKGS" > .cli/freebsd
-echo "$RASPI_PKGS" > .cli/raspi
-echo "$FEDORA_PKGS" > .cli/fedora
-echo "$MACOS_PKGS" > .cli/macos
-echo "$VOID_PKGS" > .cli/macos
-echo "$DEBIAN_PKGS" > .cli/debian
+mkdir -p "$HOME/tmp/cli"
+echo "$CENTOS_PKGS" > "$HOME/tmp/cli/centos"
+echo "$ARCHLINUX_PKGS" > "$HOME/tmp/cli/archlinux"
+echo "$MINT_PKGS" > "$HOME/tmp/cli/mintlinux"
+echo "$UBUNTU_PKGS" > "$HOME/tmp/cli/ubuntu"
+echo "$GENTOO_PKGS" > "$HOME/tmp/cli/gentoo"
+echo "$FREEBSD_PKGS" > "$HOME/tmp/cli/freebsd"
+echo "$RASPI_PKGS" > "$HOME/tmp/cli/raspi"
+echo "$FEDORA_PKGS" > "$HOME/tmp/cli/fedora"
+echo "$MACOS_PKGS" > "$HOME/tmp/cli/macos"
+echo "$VOID_PKGS" > "$HOME/tmp/cli/void"
+echo "$DEBIAN_PKGS" > "$HOME/tmp/cli/debian"
 
 if [ "$OS" = "Linux Mint" ]; then
   FAILURE=""

@@ -42,3 +42,13 @@ grub> boot
 root=hd0,1
 linux /boot/kernel-3.2.12-gentoo root=/dev/sda3
 }
+
+lsblk -f
+├─sda1 ext2     1.0                          93854486-ecb9-4f51-82ea-16363d4c921e
+└─sda2 ext4     1.0                          947dd6e2-9d62-42c3-bc4c-57415b8c6403
+menuentry "Debian GNU/Linux, linux 2.6.26-2-xen-686" {
+    set root=(hd0,1)
+    search --fs-uuid --set 3765189f-fdaf-48d4-a04b-d696e6cffdbd
+    linux    /boot/vmlinuz-2.6.26-2-xen-686 root=UUID=3765189f-fdaf-48d4-a04b-d696e6cffdbd ro console=ttyS0,115200 console=tty1 vga=792
+    initrd    /boot/initrd.img-2.6.26-2-xen-686
+}
