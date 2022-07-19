@@ -38,6 +38,6 @@ export CM_MAX_CLIPS=25
 #   setxkbmap -device "${kbd_id}" -option altwin:swap_alt_win
 # done
 
-echo "$(date) start xsessonrc" | tee -a "$HOME/xsession.log"
+echo "$(date) start xsessonrc" | tee -a "$HOME/tmp/xsession.log"
 
 # vim: set ft=conf:
