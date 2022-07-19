@@ -126,9 +126,11 @@ else
 fi
 
 if [ ! -x "$(command -v rustup)" ]; then
-  curl --proto '=https' --tlsv1.2 -sSf 'https://sh.rustup.rs' > rustup-init
-  chmod 755 rustup-init
+  curl --proto '=https' --tlsv1.2 -sSf 'https://sh.rustup.rs' > "$HOME/tmp/rustup-init"
+  chmod 755 "$HOME/tmp/rustup-init"
+  cd "$HOME/tmp" || exit
   ./rustup-init -y --no-modify-path
+  cd - || exit
 else
   rustc --version
   rustup update
