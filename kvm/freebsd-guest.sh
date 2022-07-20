@@ -1,5 +1,11 @@
 #!/bin/sh
 
+if [ $# -gt 1 ]; then
+    echo "Usage: $0 [remove y/n]"
+    exit 1
+fi
+
+remove=$1
 iso_file="FreeBSD-13.0-RELEASE-amd64-dvd1.iso"
 guest_name="freebsd"
 
@@ -10,6 +16,11 @@ virsh undefine "guest-$guest_name"
 sudo mkdir -p /var/lib/libvirt/images/
 sudo mkdir -p /var/lib/libvirt/boot
 sudo rm "/var/lib/libvirt/images/guest-${guest_name}.qcow2"
+
+if [ "$remove" = "y" ]; then
+  echo "remove only"
+  exit 1
+fi
 
 if [ ! -f "/var/lib/libvirt/boot/${iso_file}" ]; then
   scp "pi:/home/pi/shared/template/iso/${iso_file}" .

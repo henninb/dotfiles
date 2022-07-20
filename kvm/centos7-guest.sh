@@ -1,6 +1,13 @@
 #!/bin/sh
 
+if [ $# -gt 1 ]; then
+    echo "Usage: $0 [remove y/n]"
+    exit 1
+fi
+
+remove=$1
 iso_file=CentOS-7-x86_64-Minimal-1810.iso
+
 
 virsh shtudwon guest-centos7
 virsh destroy guest-centos7
@@ -8,6 +15,11 @@ virsh undefine guest-centos7
 
 sudo mkdir -p /var/lib/libvirt/boot
 sudo rm /var/lib/libvirt/images/guest-centos7.qcow2
+
+if [ "$remove" = "y" ]; then
+  echo "remove only"
+  exit 1
+fi
 
 if [ ! -f "/var/lib/libvirt/boot/${iso_file}" ]; then
   scp "pi:/home/pi/shared/template/iso/${iso_file}" .

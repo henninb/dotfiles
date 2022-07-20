@@ -1,5 +1,11 @@
 #!/bin/sh
 
+if [ $# -gt 1 ]; then
+    echo "Usage: $0 [remove y/n]"
+    exit 1
+fi
+
+remove=$1
 iso=install-amd64-minimal-20190630T214502Z.iso¬
 sudo chmod 777 "$iso"
 sudo fallocate -l 10G /var/kvm/images/guest-gentoo.img
