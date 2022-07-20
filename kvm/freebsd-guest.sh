@@ -1,28 +1,37 @@
 #!/bin/sh
 
-iso_file=FreeBSD-13.0-RELEASE-amd64-dvd1.iso
+iso_file="FreeBSD-13.0-RELEASE-amd64-dvd1.iso"
+guest_name="freebsd"
 
-virsh shutdown guest-freebsd
-virsh undefine guest-freebsd
+virsh shutdown "guest-$guest_name"
+virsh destroy "guest-$guest_name"
+virsh undefine "guest-$guest_name"
 
-sudo rm -rf /var/lib/libvirt/images/guest-freebsd.qcow2
+sudo mkdir -p /var/lib/libvirt/images/
+sudo mkdir -p /var/lib/libvirt/boot
+sudo rm "/var/lib/libvirt/images/guest-${guest_name}.qcow2"
 
 if [ ! -f "/var/lib/libvirt/boot/${iso_file}" ]; then
+  #scp "pi:/home/pi/shared/template/iso/${iso_file}" .
   scp "pi:/home/pi/downloads/${iso_file}" .
   sudo mv "${iso_file}" /var/lib/libvirt/boot/
 fi
 
-sudo virt-install \
+echo "osinfo-query os"
+echo "disk bus can be virtio i.e. vda, or scsi i.e. sda"
+
+exec sudo virt-install \
 --virt-type=kvm \
---name guest-freebsd \
---memory=2048,maxmemory=2048 \
+--name "guest-$guest_name" \
+--memory=4096,maxmemory=4096 \
 --vcpus=1,maxvcpus=2 \
---os-variant=freebsd10.0 \
 --virt-type=kvm \
 --hvm \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
 --network=bridge=virbr0,model=virtio \
 --graphics vnc \
---disk path=/var/lib/libvirt/images/guest-freebsd.qcow2,size=40,bus=virtio,format=qcow2
+--disk path=/var/lib/libvirt/images/guest-$guest_name.qcow2,size=64,bus=scsi,format=qcow2
+
+iso_file=FreeBSD-13.0-RELEASE-amd64-dvd1.iso
 
 exit 0

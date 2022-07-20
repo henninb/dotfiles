@@ -6,6 +6,8 @@ virsh shutdown guest-openbsd
 virsh destroy guest-openbsd
 virsh undefine guest-openbsd
 
+sudo mkdir -p /var/lib/libvirt/boot
+
 sudo rm -rf /var/lib/libvirt/images/guest-openbsd.qcow2
 
 if [ ! -f "/var/lib/libvirt/boot/${iso_file}" ]; then
