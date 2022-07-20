@@ -24,7 +24,7 @@ exec sudo virt-install \
 --virt-type=kvm \
 --name "guest-$guest_name" \
 --memory=4096,maxmemory=4096 \
---vcpus=1,maxvcpus=2 \
+--vcpus=2,maxvcpus=2 \
 --virt-type=kvm \
 --hvm \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \

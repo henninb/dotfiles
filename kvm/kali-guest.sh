@@ -1,31 +1,36 @@
 #!/bin/sh
 
-iso_file=kali-linux-2022.1-installer-amd64.iso
-virsh shutdown guest-kali
-virsh undefine guest-kali
+iso_file="kali-linux-2022.2-installer-amd64.iso"
+guest_name="kali"
+
+virsh shutdown "guest-$guest_name"
+virsh destroy "guest-$guest_name"
+virsh undefine "guest-$guest_name"
 
 sudo mkdir -p /var/lib/libvirt/images/
-sudo mkdir -p /var/lib/libvirt/boot/
+sudo mkdir -p /var/lib/libvirt/boot
+sudo rm "/var/lib/libvirt/images/guest-${guest_name}.qcow2"
 
 if [ ! -f "/var/lib/libvirt/boot/${iso_file}" ]; then
   scp "pi:/home/pi/shared/template/iso/${iso_file}" .
+  # scp "pi:/home/pi/downloads/${iso_file}" .
   sudo mv "${iso_file}" /var/lib/libvirt/boot/
 fi
 
-# sudo fallocate -l 10G /var/kvm/images/guest-kali.img
-# sudo chmod 777 /var/kvm/images/guest-kali.img
+echo "osinfo-query os"
+echo "disk bus can be virtio i.e. vda, or scsi i.e. sda"
 
-sudo virt-install \
+exec sudo virt-install \
 --virt-type=kvm \
---name guest-kali \
+--name "guest-$guest_name" \
 --memory=4096,maxmemory=4096 \
 --vcpus=1,maxvcpus=2 \
---os-variant=debian9 \
+--osinfo detect=on,require=off \
 --virt-type=kvm \
 --hvm \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
 --network=bridge=virbr0,model=virtio \
 --graphics vnc \
---disk path=/var/lib/libvirt/images/guest-kali.qcow2,size=40,bus=virtio,format=qcow2
+--disk path=/var/lib/libvirt/images/guest-$guest_name.qcow2,size=40,bus=scsi,format=qcow2
 
 exit 0

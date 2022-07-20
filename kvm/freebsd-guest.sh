@@ -12,8 +12,8 @@ sudo mkdir -p /var/lib/libvirt/boot
 sudo rm "/var/lib/libvirt/images/guest-${guest_name}.qcow2"
 
 if [ ! -f "/var/lib/libvirt/boot/${iso_file}" ]; then
-  #scp "pi:/home/pi/shared/template/iso/${iso_file}" .
-  scp "pi:/home/pi/downloads/${iso_file}" .
+  scp "pi:/home/pi/shared/template/iso/${iso_file}" .
+  #scp "pi:/home/pi/downloads/${iso_file}" .
   sudo mv "${iso_file}" /var/lib/libvirt/boot/
 fi
 
@@ -25,13 +25,12 @@ exec sudo virt-install \
 --name "guest-$guest_name" \
 --memory=4096,maxmemory=4096 \
 --vcpus=1,maxvcpus=2 \
+--osinfo detect=on,require=off \
 --virt-type=kvm \
 --hvm \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
 --network=bridge=virbr0,model=virtio \
 --graphics vnc \
---disk path=/var/lib/libvirt/images/guest-$guest_name.qcow2,size=64,bus=scsi,format=qcow2
-
-iso_file=FreeBSD-13.0-RELEASE-amd64-dvd1.iso
+--disk path=/var/lib/libvirt/images/guest-$guest_name.qcow2,size=20,bus=scsi,format=qcow2
 
 exit 0

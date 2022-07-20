@@ -1,7 +1,7 @@
 #!/bin/sh
 
-iso_file="debian-11.1.0-amd64-netinst.iso"
-guest_name="debian"
+iso_file="archlinux-x86_64.iso"
+guest_name="archlinux"
 
 virsh shutdown "guest-$guest_name"
 virsh destroy "guest-$guest_name"

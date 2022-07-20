@@ -3,16 +3,18 @@
 - Configuration  and install files for the software and OSs below.
 
 ## Operating Systems
-- Arch Linux
+- Archlinux
+- Gentoo
 - Void Linux
 - Solus Linux
 - FreeBSD
-- Mint Linux
-- Gentoo
+- Debian
+- OpenBSD
 - Fedora
 - Raspian
 - MacOS
 - HaikuOS
+- Mint Linux
 
 ## Operating Systems - Yet to Explore
 - Bedrock Linux
@@ -77,16 +79,15 @@
 | terminal               | alacritty, st, urxvt                                                                 |
 | editor                 | neovim, emacs, vscodium, intellij, neovide, notepadqq, vscode                        |
 | shell                  | zsh, bash, dash, fish, ksh, emacs (eshell)                                           |
-| shell prompt           | spaceship, agnoster, alien, dracula                                                  |
+| shell prompt           | spaceship                                                                            |
 | zsh plugins            | zsh-syntax-highlighting, zsh-autosuggestions, autojump, zsh-history-substring-search |
-| file manager           | lf, ranger, hunter, spacefm                                                          |
+| file manager           | lf, pcmanfm, spacefm                                                                 |
 | bar                    | dzen2, conky, polybar                                                                |
 | launcher               | dmenu                                                                                |
-| window manager         | xmonad, bspwm, spectrwm, qtile, i3                                                   |
+| window manager         | xmonad                                                                               |
 | lock screen            | i3block                                                                              |
 | terminal multiplexer   | tmux, screen, tmate                                                                  |
 | media player           | vlc, mpv, mpd                                                                        |
-| cloud media player     | olivia                                                                               |
 | software defined radio | gqrx                                                                                 |
 | spreadsheet            | sc-im                                                                                |
 | programming languages  | java, kotlin, haskell, rust, python, javascript, scala, groovy                       |
@@ -98,7 +99,7 @@
 | irc client             | irssi, emacs (erc)                                                                   |
 | network packet tools   | tcpdump, wireshark                                                                   |
 | markdown viewer        | glow                                                                                 |
-| browser                | brave, firefox, ddgr, lynx, elinks                                                   |
+| browser                | brave, librewolf firefox, ddgr, lynx, elinks                                         |
 | database client        | dbeaver, sqlplus                                                                     |
 | database server        | postgresql, influx, mongodb, elastic                                                 |
 | astronomy              | stellarium                                                                           |
@@ -109,7 +110,7 @@
 | audio player daemon    | mpd                                                                                  |
 | image converter        | imagemagik                                                                           |
 | image viewer           | sxiv, feh, chafa                                                                     |
-| wallpaper manager      | feh, nitrogen                                                                        |
+| wallpaper manager      | feh                                                                                  |
 | burning images         | cdrecord, wodim, k3b                                                                 |
 | podcast client         | newsboat, castget                                                                    |
 | process viewer         | htop, glances, bashtop, gotop                                                        |

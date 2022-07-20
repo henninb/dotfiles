@@ -1,30 +1,35 @@
 #!/bin/sh
 
-iso_file=haiku-release-anyboot.iso
-virsh shutdown guest-haiku
-virsh undefine guest-haiku
+iso_file="haiku-release-anyboot.iso"
+guest_name="haiku"
+
+virsh shutdown "guest-$guest_name"
+virsh destroy "guest-$guest_name"
+virsh undefine "guest-$guest_name"
+
+sudo mkdir -p /var/lib/libvirt/images/
+sudo mkdir -p /var/lib/libvirt/boot
+sudo rm "/var/lib/libvirt/images/guest-${guest_name}.qcow2"
 
 if [ ! -f "/var/lib/libvirt/boot/${iso_file}" ]; then
+  #scp "pi:/home/pi/shared/template/iso/${iso_file}" .
   scp "pi:/home/pi/downloads/${iso_file}" .
   sudo mv "${iso_file}" /var/lib/libvirt/boot/
 fi
 
-sudo fallocate -l 4G /var/kvm/images/guest-haiku.img
-sudo chmod 777 /var/kvm/images/guest-haiku.img
+echo "osinfo-query os"
+echo "disk bus can be virtio i.e. vda, or scsi i.e. sda"
 
-# sudo virt-install --name=guest-haiku --ram=2048 --vcpus=2 --os-type=generic --disk path=/var/lib/libvirt/images/guest-haiku.img,size=4 --graphics none --location /var/lib/libvirt/images/haiku-release-anyboot.iso --extra-args console=ttyS0
-
-sudo virt-install \
+exec sudo virt-install \
 --virt-type=kvm \
---name guest-haiku \
---memory=1024,maxmemory=2048 \
+--name "guest-$guest_name" \
+--memory=4096,maxmemory=4096 \
 --vcpus=1,maxvcpus=2 \
---os-type=generic \
 --virt-type=kvm \
 --hvm \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
---network=bridge=br0,model=virtio \
+--network=bridge=virbr0,model=virtio \
 --graphics vnc \
---disk path=/var/lib/libvirt/images/guest-haiku.qcow2,size=40,bus=virtio,format=qcow2
+--disk path=/var/lib/libvirt/images/guest-$guest_name.qcow2,size=20,bus=scsi,format=qcow2
 
 exit 0

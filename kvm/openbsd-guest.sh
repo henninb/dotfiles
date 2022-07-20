@@ -1,34 +1,35 @@
 #!/bin/sh
 
-iso_file=openbsd-7.0.iso
+iso_file="openbsd-7.0.iso"
+guest_name="openbsd"
 
-virsh shutdown guest-openbsd
-virsh destroy guest-openbsd
-virsh undefine guest-openbsd
+virsh shutdown "guest-$guest_name"
+virsh destroy "guest-$guest_name"
+virsh undefine "guest-$guest_name"
 
+sudo mkdir -p /var/lib/libvirt/images/
 sudo mkdir -p /var/lib/libvirt/boot
-
-sudo rm -rf /var/lib/libvirt/images/guest-openbsd.qcow2
+sudo rm "/var/lib/libvirt/images/guest-${guest_name}.qcow2"
 
 if [ ! -f "/var/lib/libvirt/boot/${iso_file}" ]; then
   scp "pi:/home/pi/shared/template/iso/${iso_file}" .
+  # scp "pi:/home/pi/downloads/${iso_file}" .
   sudo mv "${iso_file}" /var/lib/libvirt/boot/
 fi
 
-osinfo-query os | grep openbsd6.9
-sudo rm -rf /var/lib/libvirt/images/guest-openbsd.qcow2
+echo "osinfo-query os"
+echo "disk bus can be virtio i.e. vda, or scsi i.e. sda"
 
-sudo virt-install \
+exec sudo virt-install \
 --virt-type=kvm \
---name guest-openbsd \
---memory=2048,maxmemory=2048 \
+--name "guest-$guest_name" \
+--memory=2048,maxmemory=4096 \
 --vcpus=1,maxvcpus=2 \
---os-variant=openbsd6.9 \
 --virt-type=kvm \
 --hvm \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
 --network=bridge=virbr0,model=virtio \
 --graphics vnc \
---disk path=/var/lib/libvirt/images/guest-openbsd.qcow2,size=10,bus=virtio,format=qcow2
+--disk path=/var/lib/libvirt/images/guest-$guest_name.qcow2,size=20,bus=scsi,format=qcow2
 
 exit 0
