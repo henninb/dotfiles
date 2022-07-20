@@ -37,7 +37,7 @@ media-libs/harfbuzz icu
 media-libs/libpng apng
 media-libs/libsdl2 haptic
 media-libs/libvpx postproc
-media-video/ffmpeg fdk x264 libv4l v4l blueray cdio gmp encode mp3 network openssl samba
+media-video/ffmpeg fdk x264 libv4l v4l blueray cdio gmp encode mp3 network openssl samba theora vpx opus
 net-dns/dnsmasq script
 net-fs/samba client
 net-misc/spice-gtk usbredir

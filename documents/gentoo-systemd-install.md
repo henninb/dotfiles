@@ -246,10 +246,11 @@ eselect kernel list
 eselect kernel set 1
 genkernel all
 genkernel --menuconfig all
-genkernel --menuconfig --kernel-config=/root/config.kernel --install all
+genkernel --menuconfig --kernel-config=/usr/src/linux/.config-main --install all
 genkernel --kernel-config=/usr/src/linux/.config-main --install all
 
 # grep CONFIG_SCSI_VIRTIO /usr/src/linux/.config
+# kernel change only needed if running on a virtual
 
 General Setup
 └─> Device Drivers
