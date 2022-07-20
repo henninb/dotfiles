@@ -258,13 +258,6 @@ General Setup
 CONFIG_SCSI=y
 
 General Setup
-└─> Device Drivers
-└─> SCSI device support
-└─> SCSI low-level drivers
-└─> virtio-scsi support
-CONFIG_SCSI_VIRTIO=m
-
-General Setup
 └─> File systems
 └─> Virtio Filesystem
 CONFIG_VIRTIO_FS=m
@@ -274,6 +267,13 @@ General Setup
 └─> Block devices
 └─> Virtio block driver
 CONFIG_VIRTIO_BLK=y
+
+General Setup
+└─> Device Drivers
+└─> SCSI device support
+└─> SCSI low-level drivers
+└─> virtio-scsi support
+CONFIG_SCSI_VIRTIO=m
 
 General Setup
 └─> Device Drivers
@@ -287,6 +287,7 @@ General Setup
 └─> Network device support
 └─> Virtio network driver
 CONFIG_VIRTIO_NET=y
+CONFIG_NET_FAILOVER=m
 ```
 
 ## check kernel logs
