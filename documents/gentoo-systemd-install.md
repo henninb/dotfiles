@@ -70,6 +70,7 @@ curl -Os 'https://mirror.bytemark.co.uk/gentoo/releases/amd64/autobuilds/2022071
 ## extract stage3 and be sure to verify success
 ```
 tar xvJpf stage3-*.tar.xz --xattrs --numeric-owner
+rm stage3-amd64-desktop-systemd-*.tar.xz
 ```
 
 ## erase root and login with systemd
@@ -222,11 +223,11 @@ EOF
 ln -sf /proc/self/mounts /etc/mtab
 ```
 
+## probably not needed
 ```
 vi /etc/initramfs.mounts
 /usr
 ```
-
 
 ## default systemd settings (may not be needed)
 ```
@@ -245,6 +246,47 @@ eselect kernel list
 eselect kernel set 1
 genkernel all
 genkernel --menuconfig all
+genkernel --menuconfig --kernel-config=/root/config.kernel --install all
+genkernel --kernel-config=/usr/src/linux/.config-main --install all
+
+# grep CONFIG_SCSI_VIRTIO /usr/src/linux/.config
+
+General Setup
+└─> Device Drivers
+└─> SCSI device support
+└─> SCSI device support
+CONFIG_SCSI=y
+
+General Setup
+└─> Device Drivers
+└─> SCSI device support
+└─> SCSI low-level drivers
+└─> virtio-scsi support
+CONFIG_SCSI_VIRTIO=m
+
+General Setup
+└─> File systems
+└─> Virtio Filesystem
+CONFIG_VIRTIO_FS=m
+
+General Setup
+└─> Device Drivers
+└─> Block devices
+└─> Virtio block driver
+CONFIG_VIRTIO_BLK=y
+
+General Setup
+└─> Device Drivers
+└─> Virtio drivers
+└─> PCI support
+└─> PCI driver for virtio devices
+CONFIG_VIRTIO_PCI=y
+
+General Setup
+└─> Device Drivers
+└─> Network device support
+└─> Virtio network driver
+CONFIG_VIRTIO_NET=y
 ```
 
 ## check kernel logs
@@ -257,7 +299,7 @@ tail -f /var/log/genkernel.log
 ls /boot/vmlinuz* /boot/initramfs*
 ```
 
-## systemd stuff
+## systemd stuff (not sure if needed)
 ```
 systemd-firstboot --prompt --setup-machine-id
 systemctl preset-all
@@ -266,9 +308,6 @@ systemd-machine-id-setup
 
 ## grub install
 ```
-/boot/grub/grub.conf
-linux /vmlinuz-5.10.12 root=UUID=blah init=/lib/systemd/systemd
-
 echo 'GRUB_CMDLINE_LINUX="init=/usr/lib/systemd/systemd"' >> /etc/default/grub
 grub-install /dev/sda
 grub-install /dev/vda

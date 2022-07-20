@@ -5,7 +5,7 @@ if [ $# -eq 1 ]; then
   echo "override=$VER_OVERRIDE"
 fi
 
-cat > '_@user_Darcula.icls' <<EOF
+cat > "$HOME/tmp/"'_@user_Darcula.icls' <<EOF
 <scheme name="_@user_Darcula" version="142" parent_scheme="Darcula">
   <option name="FONT_SCALE" value="1.0" />
   <metaInfo>
