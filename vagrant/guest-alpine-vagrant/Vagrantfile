@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", source: "setup.sh", destination: "~/setup.sh"
 
   config.vm.provider :libvirt do |libvirt|
-    libvirt.driver = "kvm"
+    libvirt.driver = "libvirt"
   end
 
   config.vm.provision "shell", inline: <<-SHELL
