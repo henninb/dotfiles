@@ -2,7 +2,8 @@
 
 POSTGRESQL_PASSWORD=monday1
 
-cat > pg_hba.conf <<EOF
+# cat > pg_hba.conf <<EOF
+cat <<  EOF > "$HOME/tmp/pg_hba.conf"
 # TYPE  DATABASE      USER   ADDRESS      METHOD
 local all             all                 ident
 host  all             all    0.0.0.0/0      md5
@@ -10,7 +11,8 @@ host  all             all    127.0.0.1/32   md5
 host  all             all    ::1/128        md5
 EOF
 
-cat > install_psql_settings.sql <<EOF
+# cat > install_psql_settings.sql <<EOF
+cat <<  EOF > "/tmp/install_psql_settings.sql"
 CREATE ROLE vagrant WITH LOGIN PASSWORD '${POSTGRESQL_PASSWORD}';
 CREATE ROLE henninb WITH LOGIN PASSWORD '${POSTGRESQL_PASSWORD}';
 ALTER USER vagrant CREATEDB;
@@ -37,10 +39,10 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo -u postgres sh -c 'initdb -D /var/lib/postgres/data'
   sudo systemctl enable postgresql
   sudo systemctl start postgresql
-  sudo mv -v pg_hba.conf /var/lib/postgres/data/pg_hba.conf
+  sudo mv -v "$HOME/tmp/pg_hba.conf" /var/lib/postgres/data/pg_hba.conf
   sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/postgres/data/postgresql.conf
   sudo systemctl restart postgresql
-  mv -v install_psql_settings.sql /tmp
+  # mv -v install_psql_settings.sql /tmp
   sudo -u postgres sh -c 'cd /tmp && psql postgres -U postgres < /tmp/install_psql_settings.sql'
   rm -v /tmp/install_psql_settings.sql
   sudo netstat -lntp | grep postgres
@@ -53,10 +55,10 @@ elif [ "$OS" = "Solus" ]; then
   sudo -u postgres sh -c 'initdb -D /var/lib/postgres/data'
   sudo systemctl enable postgresql
   sudo systemctl start postgresql
-  sudo mv -v pg_hba.conf /var/lib/postgres/data/pg_hba.conf
+  sudo mv -v "$HOME/tmp/pg_hba.conf" /var/lib/postgres/data/pg_hba.conf
   sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/postgres/data/postgresql.conf
   sudo systemctl restart postgresql
-  mv -v install_psql_settings.sql /tmp
+  # mv -v install_psql_settings.sql /tmp
   sudo -u postgres sh -c 'cd /tmp && psql postgres -U postgres < /tmp/install_psql_settings.sql'
   rm -v /tmp/install_psql_settings.sql
   sudo netstat -lntp | grep postgres
@@ -68,10 +70,10 @@ elif [ "$OS" = "Fedora" ]; then
   sudo postgresql-setup initdb
   sudo systemctl enable postgresql
   sudo systemctl start postgresql
-  sudo mv -v pg_hba.conf /var/lib/pgsql/data/pg_hba.conf
+  sudo mv -v "$HOME/tmp/pg_hba.conf" /var/lib/pgsql/data/pg_hba.conf
   sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/pgsql/data/postgresql.conf
   sudo systemctl restart postgresql
-  mv -v install_psql_settings.sql /tmp
+  # mv -v install_psql_settings.sql /tmp
   sudo -u postgres sh -c 'cd /tmp && psql postgres -U postgres < /tmp/install_psql_settings.sql'
   rm -v /tmp/install_psql_settings.sql
   sudo netstat -lntp | grep postgres
@@ -84,10 +86,10 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo systemctl enable postgresql
   sudo systemctl start postgresql
   sudo systemctl status postgresql
-  sudo mv -v pg_hba.conf /var/lib/pgsql/data/pg_hba.conf
+  sudo mv -v "$HOME/tmp/pg_hba.conf" /var/lib/pgsql/data/pg_hba.conf
   sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/pgsql/data/postgresql.conf
   sudo systemctl restart postgresql
-  mv -v install_psql_settings.sql /tmp
+  # mv -v "install_psql_settings.sql" /tmp
   sudo -u postgres sh -c 'cd /tmp && psql postgres -U postgres < /tmp/install_psql_settings.sql'
   rm -v /tmp/install_psql_settings.sql
   sudo netstat -lntp | grep postgres
@@ -104,27 +106,30 @@ elif [ "$OS" = "Linux Mint" ]; then
   sudo systemctl enable postgresql
   sudo systemctl start postgresql
   sudo systemctl status postgresql
-  sudo mv -v pg_hba.conf /var/lib/postgresql/12/main/pg_hba.conf
+  sudo mv -v "$HOME/tmp/pg_hba.conf" /var/lib/postgresql/12/main/pg_hba.conf
   sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/postgresql/12/main/postgresql.conf
   sudo systemctl restart postgresql
-  mv -v install_psql_settings.sql /tmp
+  # mv -v install_psql_settings.sql /tmp
   sudo -u postgres sh -c 'cd /tmp && psql postgres -U postgres < /tmp/install_psql_settings.sql'
   rm -v /tmp/install_psql_settings.sql
   sudo netstat -lntp | grep postgres
 elif [ "$OS" = "Gentoo" ]; then
-  sudo eselect news read
+  # sudo eselect news read
   sudo emerge --update --newuse dev-db/postgresql
   sudo emerge --config dev-db/postgresql:14
   sudo emerge --update --newuse ossp-uuid
   #sudo rc-update add postgresql default
   #sudo postgresql-setup initdb
-  sudo cp -v pg_hba.conf /etc/postgresql-14/
-  sudo mv -v pg_hba.conf  /var/lib/postgresql/14/data/pg_hba.conf
+  # sudo cp -v "$HOME/tmp/pg_hba.conf" /etc/postgresql-14/
+  sudo mv -v "$HOME/tmp/pg_hba.conf"  /var/lib/postgresql/14/data/pg_hba.conf
   sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/postgresql/14/data/postgresql.conf
   sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql-14/postgresql.conf
-  echo sudo /etc/init.d/postgresql-14 start
-  sudo rc-update add postgresql-14 default
-  sudo rc-service postgresql-14 start
+  # echo sudo /etc/init.d/postgresql-14 start
+  # sudo rc-update add postgresql-14 default
+  # sudo rc-service postgresql-14 start
+  sudo systemctl enable postgresql-14
+  sudo systemctl start postgresql-14
+  sudo -u postgres sh -c 'cd /tmp && psql postgres -U postgres < /tmp/install_psql_settings.sql'
   netstat -na | grep 5432 | grep LIST
 elif [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Linux" ]; then
   sudo apt install -y postgresql
@@ -133,10 +138,10 @@ elif [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Linux" ]; then
   sudo systemctl enable postgresql
   sudo systemctl start postgresql
   sudo systemctl status postgresql
-  sudo mv -v pg_hba.conf /etc/postgresql/13/main/pg_hba.conf
+  sudo mv -v "$HOME/tmp/pg_hba.conf" /etc/postgresql/13/main/pg_hba.conf
   sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql/13/main/postgresql.conf
   sudo systemctl restart postgresql
-  mv -v install_psql_settings.sql /tmp
+  # mv -v install_psql_settings.sql /tmp
   sudo -u postgres sh -c 'cd /tmp && psql postgres -U postgres < /tmp/install_psql_settings.sql'
   rm -v /tmp/install_psql_settings.sql
   sudo netstat -lntp | grep postgres
@@ -147,13 +152,13 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo sysrc postgresql_enable=YES
   sudo service postgresql initdb
   sudo service postgresql start
-  mv -v install_psql_settings.sql /tmp
+  # mv -v install_psql_settings.sql /tmp
   sudo -u postgres sh -c 'cd /tmp && psql postgres -U postgres < /tmp/install_psql_settings.sql'
   #sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/db/postgres/data11/postgresql.conf
   if ! sudo grep "^listen_addresses = '*'" /var/db/postgres/data13/postgresql.conf; then
     echo "listen_addresses = '*'" | sudo tee -a /var/db/postgres/data13/postgresql.conf
   fi
-  sudo mv -v pg_hba.conf /var/db/postgres/data13/pg_hba.conf
+  sudo mv -v "$HOME/tmp/pg_hba.conf" /var/db/postgres/data13/pg_hba.conf
   sudo service postgresql restart
   # netstat -na | grep 5432 | grep LIST
   ss -tulpn4 | grep 5432
@@ -169,4 +174,4 @@ echo rm -rf /var/lib/postgres/data
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:
