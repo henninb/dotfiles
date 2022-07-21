@@ -16,7 +16,7 @@ echo My external burner does not write dvdr+ disks.
 sudo eopkg install -y cdrtools
 sudo emerge --update --newuse cdrtools
 
-if [ -x "$(command -v wodim)" ]; then
+if command -v wodim; then
   wodim  dev=/dev/sr0 -checkdrive -prcap
   wodim dev=/dev/sr0 --scanbus
   #sudo wodim dev=/dev/sr0 -v -data "${FILE}"
@@ -25,12 +25,13 @@ if [ -x "$(command -v wodim)" ]; then
   sudo wodim speed=0 dev=/dev/sr0 -v -data "${FILE}"
   #driver=mmc_dvdplusr
   #driveropts=burnfree
-elif [ -x "$(command -v cdrecord)" ]; then
+elif command -v cdrecord; then
   sudo cdrecord -scanbus
   sudo cdrecord -v -eject speed=4 dev=ATAPI:0,0,0 "${FILE}"
   echo ls -l /dev/cdrom
 else
   echo "neither wodim nor cdrecord installed."
+  exit 1
 fi
 
 echo sudo mount -t iso9660 /dev/cdrom /media/cdrom

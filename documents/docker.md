@@ -17,3 +17,24 @@ docker inspect --format='{{.Name}}' $(sudo docker ps -aq --no-trunc)
 ```
 docker logs <container>
 ```
+
+## prune system
+```
+docker system prune
+```
+
+## remove image
+```
+docker rmi -f "$(docker images | grep "<none>" | awk "{print \$3}")"
+```
+
+## pruning individual
+```
+docker container prune
+docker image prune
+```
+
+## filter
+```
+docker container prune --force --filter "until=5m"
+```
