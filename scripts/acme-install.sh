@@ -6,4 +6,4 @@ git clone https://github.com/acmesh-official/acme.sh.git
 cd acme.sh || exit
 ./acme.sh --install --force
 
-# vim: set ft=sh
+# vim: set ft=sh:

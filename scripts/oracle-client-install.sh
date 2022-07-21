@@ -23,30 +23,30 @@ fi
 
 if [ ! "$OS" = "Darwin" ]; then
   if [ ! -f "oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm" ]; then
-    scp pi@pi:/home/pi/downloads/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm .
-    if ! scp "pi@pi:/home/pi/downloads/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm" .; then
-      wget https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm
-      scp oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm pi@pi:/home/pi/downloads/
+    scp pi@pi:/home/pi/downloads/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm "$HOME/tmp"
+    if ! scp "pi@pi:/home/pi/downloads/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm" "$HOME/tmp"; then
+      curl -s https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm --output "$HOME/tmp/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm"
+      # scp oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm pi@pi:/home/pi/downloads/
     fi
   fi
 
   if [ ! -f "oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm" ]; then
-    if ! scp pi@pi:/home/pi/downloads/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm .; then
-      wget https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
-      scp oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm pi@pi:/home/pi/downloads/
+    if ! scp pi@pi:/home/pi/downloads/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm "$HOME/tmp"; then
+      curl -s https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm --output "$HOME/tmp/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm"
+      # scp oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm pi@pi:/home/pi/downloads/
     fi
   fi
 
   if [ ! -f "oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm" ]; then
-    if ! scp pi@pi:/home/pi/downloads/oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm .; then
-      echo wget https://www.oracle.com/database/technologies/instant-client/precompiler-112010-downloads.html
+    if ! scp pi@pi:/home/pi/downloads/oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm "$HOME/tmp"; then
+      echo "curl -s 'https://www.oracle.com/database/technologies/instant-client/precompiler-112010-downloads.html'"
     fi
   fi
 
   if [ ! -f "oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm" ]; then
-    if ! scp pi@pi:/home/pi/downloads/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm .; then
-      wget https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm
-       scp oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm pi@pi:/home/pi/downloads/
+    if ! scp pi@pi:/home/pi/downloads/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm "$HOME/tmp"; then
+      curl -s https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm --output "$HOME/tmp/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm"
+       # scp oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm pi@pi:/home/pi/downloads/
     fi
   fi
 fi
@@ -87,10 +87,10 @@ elif [ "$OS" = "Fedora" ]; then
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S fakeroot
   sudo pacman --noconfirm --needed -S rpm
-  sudo rpm -i --nodeps oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm
-  sudo rpm -i --nodeps oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
-  sudo rpm -i --nodeps oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm
-  sudo rpm -i --nodeps oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm
+  sudo rpm -i --nodeps "$HOME/tmp/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm"
+  sudo rpm -i --nodeps "$HOME/tmp/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm"
+  sudo rpm -i --nodeps "$HOME/tmp/oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm"
+  sudo rpm -i --nodeps "$HOME/tmp/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm"
   # if [ ! -f "instantclient-sqlplus-linux.x64-19.3.0.0.0dbru.zip" ]; then
   #   scp pi@pi:/home/pi/instantclient-sqlplus-linux.x64-19.3.0.0.0dbru.zip .
   # fi
@@ -110,10 +110,10 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   # makepkg -si
   # cd $HOME
 elif [ "$OS" = "Gentoo" ]; then
-  sudo rpm -i --nodeps oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm
-  sudo rpm -i --nodeps oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
-  sudo rpm -i --nodeps oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm
-  sudo rpm -i --nodeps oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm
+  sudo rpm -i --nodeps "$HOME/tmp/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm"
+  sudo rpm -i --nodeps "$HOME/tmp/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm"
+  sudo rpm -i --nodeps "$HOME/tmp/oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm"
+  sudo rpm -i --nodeps "$HOME/tmp/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm"
 else
   echo "$OS is not yet implemented."
   exit 1
@@ -121,4 +121,4 @@ fi
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

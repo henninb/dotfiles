@@ -21,12 +21,25 @@ cat > "$HOME/tmp/"'_@user_Darcula.icls' <<EOF
 </scheme>
 EOF
 
-sudo dnf install -y jq wget curl
-sudo emerge --update --newuse app-misc/jq wget net-misc/curl
-sudo pacman --noconfirm --needed -S jq wget curl
-sudo apt install -y jq wget curl
-sudo xbps-install -y jq wget curl
-sudo zypper install jq wget curl
+if command -v pacman; then
+  sudo pacman --noconfirm --needed -S jq curl
+  sudo pacman --noconfirm --needed -S net-tools psmisc
+elif command -v emerge; then
+  sudo emerge --update --newuse app-misc/jq wget net-misc/curl
+elif command -v apt; then
+  sudo apt install -y jq curl
+elif command -v xbps-install; then
+  sudo xbps-install -y jq curl
+elif command -v zypper; then
+  sudo zypper install jq curl
+elif command -v dnf; then
+  sudo dnf install -y jq curl
+elif command -v brew; then
+  echo "macos"
+else
+  echo "$OS is not yet implemented."
+  exit 1
+fi
 
 pkill -f "intellij.idea.Main"
 
@@ -42,6 +55,20 @@ VER=$(curl -s 'https://data.services.jetbrains.com/products/releases?code=IIU&la
 #   VER=${VER_OVERRIDE}
 # fi
 
+if [ ! -f "$HOME/tmp/ideaIC-${VER}.tar.gz" ]; then
+  echo "attempting to copy from raspi."
+  if ! scp "pi@pi:/home/pi/downloads/ideaIC-${VER}.tar.gz" "$HOME/tmp/"; then
+    echo "attempting to copy from the net."
+    if ! curl -s --output "$HOME/tmp/ideaIC-${VER}.tar.gz" "https://download-cf.jetbrains.com/idea/ideaIC-${VER}.tar.gz"; then
+      echo download failed.
+      exit 1
+    fi
+    scp "$HOME/tmp/ideaIC-${VER}.tar.gz" "pi@pi:/home/pi/downloads"
+  else
+    echo "found this version on the pi - ideaIC-${VER}.tar.gz"
+  fi
+fi
+
 # https://download.jetbrains.com/idea/ideaIC-2021.2.3.tar.gz
 if [ ! -f "ideaIC-${VER}.tar.gz" ]; then
   rm -rf ideaIC-*.tar.gz
@@ -54,102 +81,24 @@ if [ ! -f "ideaIC-${VER}.tar.gz" ]; then
   fi
 fi
 
+sudo mkdir -p /opt
+sudo rm -rf /opt/intellij
+sudo rm -rf /opt/idea-IC-*/
+sudo tar -xvf "$HOME/tmp/ideaIC-${VER}.tar.gz" -C /opt
+sudo ln -sfn /opt/idea-IC-* /opt/intellij
+sudo chown -R intellij:intellij /opt/idea-IC-*/
+sudo chmod -R 775 /opt/idea-IC-*/
+
 if [ "${OS}" = "FreeBSD" ]; then
   sudo pw group add intellij
+  sudo pw usermod "$(whoami)" -G intellij
 else
   sudo groupadd intellij
   sudo useradd -s /sbin/nologin -g intellij intellij
-fi
-
-if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S net-tools psmisc
-  sudo rm -rf /opt/intellij
-  sudo rm -rf /opt/idea-IC-*/
-  sudo tar -xvf "ideaIC-${VER}.tar.gz" -C /opt
-  sudo ln -sfn /opt/idea-IC-* /opt/intellij
-  sudo chown -R intellij:intellij /opt/idea-IC-*/
-  sudo chmod -R 775 /opt/idea-IC-*/
-elif [ "$OS" = "openSUSE Leap" ]; then
-  sudo rm -rf /opt/intellij
-  sudo rm -rf /opt/idea-IC-*/
-  sudo tar -xvf "ideaIC-${VER}.tar.gz" -C /opt
-  sudo ln -sfn /opt/idea-IC-* /opt/intellij
-  sudo chown -R intellij:intellij /opt/idea-IC-*/
-  sudo chmod -R 775 /opt/idea-IC-*/
-elif [ "$OS" = "void" ]; then
-  sudo rm -rf /opt/intellij
-  sudo rm -rf /opt/idea-IC-*/
-  sudo tar -xvf "ideaIC-${VER}.tar.gz" -C /opt
-  sudo ln -sfn /opt/idea-IC-* /opt/intellij
-  sudo chown -R intellij:intellij /opt/idea-IC-*/
-  sudo chmod -R 775 /opt/idea-IC-*/
-elif [ "$OS" = "Solus" ]; then
-  sudo mkdir -p /opt
-  sudo chmod 755 /opt
-  sudo rm -rf /opt/intellij
-  sudo rm -rf /opt/idea-IC-*/
-  sudo tar -xvf "ideaIC-${VER}.tar.gz" -C /opt
-  sudo ln -sfn /opt/idea-IC-* /opt/intellij
-  sudo chown -R intellij:intellij /opt/idea-IC-*/
-  sudo chmod -R 775 /opt/idea-IC-*/
-elif [ "$OS" = "FreeBSD" ]; then
-  sudo mkdir -p /opt
-  sudo rm -rf /opt/intellij
-  sudo rm -rf /opt/intellij-*/
-  sudo tar -xvf "ideaIC-${VER}.tar.gz" -C /opt
-  sudo ln -sfn /opt/idea-IC-* /opt/intellij
-  sudo chown -R intellij:intellij /opt/idea-IC-*/
-  sudo chmod -R 775 /opt/idea-IC-*/
-elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo rm -rf /opt/intellij
-  sudo rm -rf /opt/idea-IC-*/
-  sudo tar -xvf "ideaIC-${VER}.tar.gz" -C /opt
-  sudo ln -sfn /opt/idea-IC-* /opt/intellij
-  sudo chown -R intellij:intellij /opt/idea-IC-*/
-  sudo chmod -R 775 /opt/idea-IC-*/
-elif [ "$OS" = "Gentoo" ]; then
-  sudo rm -rf /opt/intellij
-  sudo rm -rf /opt/idea-IC-*/
-  sudo tar -xvf "ideaIC-${VER}.tar.gz" -C /opt
-  sudo ln -sfn /opt/idea-IC-* /opt/intellij
-  sudo chown -R intellij:intellij /opt/idea-IC-*/
-  sudo chmod -R 775 /opt/idea-IC-*/
-elif [ "$OS" = "Linux Mint" ] || [  "$OS" = "Ubuntu" ]; then
-  sudo apt install -y net-tools psmisc
-  sudo rm -rf /opt/intellij
-  sudo rm -rf /opt/idea-IC-*/
-  sudo tar -xvf "ideaIC-${VER}.tar.gz" -C /opt
-  sudo ln -sfn /opt/idea-IC-* /opt/intellij
-  sudo chown -R intellij:intellij /opt/idea-IC-*/
-  sudo chmod -R 775 /opt/idea-IC-*/
-elif [ "$OS" = "Fedora" ]; then
-  sudo rm -rf /opt/intellij
-  sudo rm -rf /opt/idea-IC-*/
-  sudo tar -xvf "ideaIC-${VER}.tar.gz" -C /opt
-  sudo ln -sfn /opt/idea-IC-* /opt/intellij
-  sudo chown -R intellij:intellij /opt/idea-IC-*/
-  sudo chmod -R 775 /opt/idea-IC-*/
-elif [ "$OS" = "CentOS Linux" ]; then
-  sudo yum install -y net-tools
-  sudo rm -rf /opt/intellij
-  sudo rm -rf /opt/idea-IC-*/
-  sudo tar -xvf "ideaIC-${VER}.tar.gz" -C /opt
-  sudo ln -sfn /opt/idea-IC-* /opt/intellij
-  sudo chown -R intellij:intellij /opt/idea-IC-*/
-  sudo chmod 775 /opt/idea-IC-*/
-else
-  echo "$OS is not yet implemented."
-  exit 1
-fi
-
-if [ "${OS}" = "FreeBSD" ]; then
-  echo "FreeBSD"
-  sudo pw usermod $(whoami) -G intellij
-else
   sudo usermod -a -G intellij "$(whoami)"
 fi
 echo "$VER"
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

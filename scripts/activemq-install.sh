@@ -11,7 +11,10 @@ printf "\n"
 
 AMQ_VER=$(curl -fA 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:69.0) Gecko/20100101 Firefox/69.0' 'http://activemq.apache.org/components/classic/download/' | grep -o 'ActiveMQ [0-9.]\+[0-9]' | sed 's/ActiveMQ //')
 
-cat > activemq.service <<EOF
+AMQ_VER=5.16.0
+
+#cat > activemq.service <<EOF
+cat <<  EOF > "$HOME/tmp/activemq.service"
 [Unit]
 Description=activemq message queue
 After=network.target
@@ -25,34 +28,37 @@ Group=root
 WantedBy=multi-user.target
 EOF
 
-cat > activemq.start <<EOF
+#cat > activemq.start <<EOF
+cat <<  EOF > "$HOME/tmp/activemq.start"
 #!/bin/sh
 /opt/activemq/bin/activemq start
 EOF
 
-cat > activemq.stop <<EOF
+#cat > activemq.stop <<EOF
+cat <<  EOF > "$HOME/tmp/activemq.stop"
 #!/bin/sh
 /opt/activemq/bin/activemq stop
 EOF
 
-if [ ! -f "apache-activemq-$AMQ_VER-bin.tar.gz" ]; then
-  rm -rf apache-activemq-*bin.tar.gz
-  scp "pi@${RASPI_IP}:/home/pi/downloads/apache-activemq-$AMQ_VER-bin.tar.gz" .
-  #if [ $? -ne 0 ]; then
-  if ! curl "https://archive.apache.org/dist/activemq/$AMQ_VER/apache-activemq-$AMQ_VER-bin.tar.gz" --output "apache-activemq-$AMQ_VER-bin.tar.gz" ; then
-    scp "apache-activemq-$AMQ_VER-bin.tar.gz" "pi@${RASPI_IP}:/home/pi/downloads/"
+if [ ! -f "$HOME/tmp/apache-activemq-$AMQ_VER-bin.tar.gz" ]; then
+  # rm -rf "$HOME/tmp/apache-activemq-*bin.tar.gz"
+  # scp "pi@pi:/home/pi/downloads/apache-activemq-$AMQ_VER-bin.tar.gz" "$HOME/tmp/"
+  if ! curl -s "https://archive.apache.org/dist/activemq/$AMQ_VER/apache-activemq-$AMQ_VER-bin.tar.gz" --output "$HOME/tmp/apache-activemq-$AMQ_VER-bin.tar.gz" ; then
+    #scp "apache-activemq-$AMQ_VER-bin.tar.gz" "pi@pi:/home/pi/downloads/"
+    echo "could not download apache-activemq-$AMQ_VER-bin.tar.gz"
+    exit 1
   fi
 fi
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo groupadd activemq
   sudo useradd -s /sbin/nologin -g activemq activemq
-  sudo pacman --noconfirm --needed -S net-tools psmisc wget curl jre8-openjdk
-  sudo tar -zxvf "apache-activemq-$AMQ_VER-bin.tar.gz" -C /opt
+  sudo pacman --noconfirm --needed -S net-tools psmisc curl
+  sudo tar -zxvf "$HOME/tmp/apache-activemq-$AMQ_VER-bin.tar.gz" -C /opt
   sudo chown -R activemq:activemq "/opt/apache-activemq-$AMQ_VER/"
   sudo ln -sfn "/opt/apache-activemq-$AMQ_VER" /opt/activemq
   sudo sed -i "s/managementContext createConnector=\"false\"/managementContext createConnector=\"true\"/" /opt/activemq/conf/activemq.xml
-  sudo mv -v activemq.service /usr/lib/systemd/system/activemq.service
+  sudo mv -v "$HOME/tmp/activemq.service" /usr/lib/systemd/system/activemq.service
   #sed -i "s/admin: admin, admin/admin: admin, ${ACTIVEMQ_PASSWORD}/g" /opt/activemq/conf/jetty-realm.properties
   sudo systemctl daemon-reload
   sudo systemctl enable activemq
@@ -102,8 +108,8 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo tar -zxvf "apache-activemq-$AMQ_VER-bin.tar.gz" -C /opt
   sudo chown -R activemq:activemq "/opt/apache-activemq-$AMQ_VER/"
   sudo ln -sfn "/opt/apache-activemq-$AMQ_VER" /opt/activemq
-  sudo mv -v activemq.start /etc/local.d/
-  sudo mv -v activemq.stop /etc/local.d/
+  sudo mv -v "$HOME/tmp/activemq.start" /etc/local.d/
+  sudo mv -v "$HOME/tmp/activemq.stop" /etc/local.d/
   sudo rc-update add activemq default
   sudo rc-service activemq start
   sleep 3
@@ -114,7 +120,8 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo chown -R activemq:activemq "/opt/apache-activemq-$AMQ_VER/"
   sudo ln -sfn "/opt/apache-activemq-$AMQ_VER" /opt/activemq
   sudo sed -i "s/managementContext createConnector=\"false\"/managementContext createConnector=\"true\"/" /opt/activemq/conf/activemq.xml
-  sudo mv -v activemq.service /lib/systemd/system
+  sudo mv -v "$HOME/tmp/activemq.service" /lib/systemd/system
+  #sudo mv -v "$HOME/tmp/activemq.service" /usr/lib/systemd/system/activemq.service
   #sed -i "s/admin: admin, admin/admin: admin, ${ACTIVEMQ_PASSWORD}/g" /opt/activemq/conf/jetty-realm.properties
   sudo systemctl daemon-reload
   sudo systemctl enable activemq
