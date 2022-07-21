@@ -5,3 +5,4 @@
 # net-im/slack-4.23.0 ~amd64
 # kde-frameworks/kwindowsystem
 # =kde-frameworks/kwindowsystem-5.95*
+=dev-dotnet/dotnetcore-sdk-bin-6.0.102

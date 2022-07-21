@@ -17,17 +17,20 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum update
   sudo yum install dotnet-sdk-2.2
 elif [ "$OS" = "Gentoo" ]; then
-  sudo mkdir -p /etc/portage/repos.conf
+  #sudo mkdir -p /etc/portage/repos.conf
   sudo emerge --update --newuse app-eselect/eselect-repository
   sudo eselect repository enable dotnet
   sudo emaint -r dotnet sync
-  sudo emerge --update --newuse dev-dotnet/dotnetcore-sdk-bin
+  sudo emerge emerge --autounmask-write --update --newuse dev-dotnet/dotnetcore-sdk-bin
+  sudo emerge --autounmask-write '=dev-dotnet/dotnetcore-sdk-bin-6.0.102'
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S dotnet-sdk
 else
   echo "$OS is not yet implemented."
   exit 1
 fi
+
+which dotnet
 
 exit 0
 
