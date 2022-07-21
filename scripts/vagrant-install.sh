@@ -94,11 +94,11 @@ fi
 #   sudo virsh net-autostart default
 # fi
 
-echo vagrant plugin update
-vagrant global-status
-if [ ! -f vagrant-vmware-utility_1.0.7_x86_64.deb ]; then
-  wget https://releases.hashicorp.com/vagrant-vmware-utility/1.0.7/vagrant-vmware-utility_1.0.7_x86_64.deb
-fi
+# echo vagrant plugin update
+# vagrant global-status
+# if [ ! -f vagrant-vmware-utility_1.0.7_x86_64.deb ]; then
+#   wget https://releases.hashicorp.com/vagrant-vmware-utility/1.0.7/vagrant-vmware-utility_1.0.7_x86_64.deb
+# fi
 
 echo vagrant-qemu
 echo vagrant-mutate

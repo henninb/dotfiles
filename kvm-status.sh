@@ -37,6 +37,7 @@ virsh net-dhcp-leases default
 brctl show
 
 echo virsh pool-list --all
+echo virsh pool-destroy images
 virsh pool-list --all
 
 echo virsh -c qemu+ssh://vagrant@ho/system
