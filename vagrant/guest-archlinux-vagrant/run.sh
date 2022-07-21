@@ -3,8 +3,8 @@
 echo vagrant box add archlinux/archlinux --provider=libvirt
 
 #sudo iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT
-echo vagrant destroy
-echo rm -rf .vagrant
+vagrant destroy
+rm -rf .vagrant
 vagrant up --provider=libvirt
 echo vagrant global-status
 echo vagrant ssh

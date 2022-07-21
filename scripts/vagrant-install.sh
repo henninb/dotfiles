@@ -4,14 +4,14 @@ unset GEM_ROOT
 unset GEM_HOME
 unset GEM_PATH
 
-VAGRANT_VER=2.2.6
+VAGRANT_VER=2.2.19
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
   #sudo pacman -Rs vagrant
   sudo pacman --noconfirm --needed -S vagrant
-  gem install formatador
-  gem install bundler
+  # gem install formatador
+  # gem install bundler
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   if [ ! -f "vagrant_${VAGRANT_VER}.deb" ]; then
     wget -O "vagrant_${VAGRANT_VER}.deb" "https://releases.hashicorp.com/vagrant/${VAGRANT_VER}/vagrant_${VAGRANT_VER}_x86_64.deb"
@@ -40,21 +40,6 @@ else
   exit 1
 fi
 
-# vagrant plugin list | grep pkg-config
-# if [ $? -ne 0 ]; then
-#   echo vagrant plugin install pkg-config --debug
-#   vagrant plugin install pkg-config
-#   if [ $? -ne 0 ]; then
-#     echo failed to install pkg-config
-#     exit 1
-#   fi
-# fi
-
-# vagrant plugin list | grep vagrant-scp
-# if [ $? -ne 0 ]; then
-#   echo vagrant plugin install vagrant-scp
-# fi
-
 if ! vagrant plugin list | grep vagrant-libvirt; then
   if ! vagrant plugin install vagrant-libvirt; then
     echo failed to install vagrant-libvirt
@@ -62,53 +47,10 @@ if ! vagrant plugin list | grep vagrant-libvirt; then
   fi
 fi
 
-# vagrant plugin list | grep vagrant-vmware-desktop
-# if [ $? -ne 0 ]; then
-#   vagrant plugin install vagrant-vmware-desktop
-#   if [ $? -ne 0 ]; then
-#     echo failed to install vagrant-vmware-desktop
-#     exit 1
-#   fi
-# fi
-
-# vagrant plugin list | grep veewee
-# if [ $? -ne 0 ]; then
-#   vagrant plugin install veewee
-#   if [ $? -ne 0 ]; then
-#     echo failed to install veewee
-#     exit 1
-#   fi
-# fi
-
-# vagrant plugin list | grep fog-libvirt
-# if [ $? -ne 0 ]; then
-#   vagrant plugin install fog-libvirt
-#   if [ $? -ne 0 ]; then
-#     echo failed to install fog-libvirt
-#     exit 1
-#   fi
-# fi
-
-# if [ ! -z "$(which virsh)" ]; then
-#   sudo virsh net-autostart vagrant-libvirt
-#   sudo virsh net-autostart default
-# fi
-
-# echo vagrant plugin update
-# vagrant global-status
-# if [ ! -f vagrant-vmware-utility_1.0.7_x86_64.deb ]; then
-#   wget https://releases.hashicorp.com/vagrant-vmware-utility/1.0.7/vagrant-vmware-utility_1.0.7_x86_64.deb
-# fi
-
 echo vagrant-qemu
 echo vagrant-mutate
 echo vagrant mutate precise32.box libvirt
 
-cd "$HOME/projects" || exit
-git clone https://github.com/chef/bento
-echo packer build -only qemu -var 'headless=true' centos-7.6-x86_64.json
-cd - || exit
-
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

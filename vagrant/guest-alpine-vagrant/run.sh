@@ -4,7 +4,7 @@
 # unset GEM_HOME
 # unset GEM_PATH
 
-echo vagrant validate
+echo echo vagrant validate
 #sudo iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT
 echo vagrant destroy
 vagrant up --provider=libvirt

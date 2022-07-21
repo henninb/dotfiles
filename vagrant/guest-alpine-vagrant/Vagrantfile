@@ -4,7 +4,8 @@ VM_USER = 'henninb'
 Vagrant.configure("2") do |config|
   config.vm.box = "generic/alpine311"
 #  config.vm.hostname = VM_NAME
-  config.vm.network "public_network", type: "bridge", dev: "br0", mode: "bridge", network_name: "public-network"
+  #config.vm.network "public_network", type: "bridge", dev: "br0", mode: "bridge", network_name: "public-network"
+  #config.vm.network "public_network", type: "bridge", dev: "br0", mode: "bridge", network_name: "public-network"
   config.vm.provision "file", source: "setup.sh", destination: "~/setup.sh"
 
   config.vm.provider :libvirt do |libvirt|

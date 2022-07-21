@@ -32,8 +32,14 @@ virsh net-autostart default
 #sudo systemctl enable serial-getty@ttyS0.service
 #sudo systemctl start serial-getty@ttyS0.service
 
+echo list ip address
 echo virsh net-dhcp-leases default
 virsh net-dhcp-leases default
+
+echo list ip address
+echo virsh net-dhcp-leases vagrant-libvirt
+virsh net-dhcp-leases vagrant-libvirt
+
 brctl show
 
 echo virsh pool-list --all

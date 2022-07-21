@@ -11,15 +11,15 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", source: "setup.sh", destination: "~/setup.sh"
 
 #  config.vm.provider :libvirt do |libvirt|
-  #config.vm.provider :libvirt do |libvirt|
-#    libvirt.driver = "kvm"
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.driver = "kvm"
 #    libvirt.cpu_mode = 'host-passthrough'
 #    net.ifnames=0
 #    biosdevname=0
 #    libvirt.graphics_port = 5901
 #    libvirt.graphics_ip = '0.0.0.0'
 #    libvirt.video_type = 'qxl'
-#  end
+  end
 
   config.vm.provision "shell", inline: <<-SHELL
     su - vagrant -c "mkdir -p /home/vagrant/.ssh"
