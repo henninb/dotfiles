@@ -89,3 +89,6 @@ x11-misc/lightdm-slick-greeter **
 #dev-python/setuptool ~amd64
 # */*::steam-overlay
 # */*::brave-overlay
+sys-libs/libapparmor ~amd64
+sys-apps/apparmor ~amd64
+app-containers/snapd ~amd64

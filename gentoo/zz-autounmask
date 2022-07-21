@@ -60,4 +60,5 @@ media-libs/libsndfile minimal
 sys-fs/squashfs-tools lzma lzo
 sys-libs/libseccomp static-libs
 kde-misc/kdeconnect bluetooth
-# app-emulation/vagrant ruby_targets_ruby27
+sys-apps/systemd policykit apparmor
+sys-libs/libseccomp static-libs
