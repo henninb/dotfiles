@@ -4,7 +4,7 @@ VM_USER = 'henninb'
 Vagrant.configure("2") do |config|
   config.vm.box = "archlinux/archlinux"
   config.vm.hostname = VM_NAME
-  config.vm.box_version = "2019.09.10"
+  # config.vm.box_version = "2022.07.10"
 
   config.vm.synced_folder '.', '/home/'+VM_USER+'', disabled: true
 #  config.vm.network "public_network", type: "bridge", dev: "br0", mode: "bridge", network_name: "public-network"

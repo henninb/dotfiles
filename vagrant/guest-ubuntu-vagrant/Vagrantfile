@@ -1,7 +1,7 @@
 VM_NAME = 'ubuntubox'
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "generic/ubuntu1904"
+  config.vm.box = "generic/ubuntu2204"
   config.vm.hostname = VM_NAME
 
   config.ssh.forward_agent = true
