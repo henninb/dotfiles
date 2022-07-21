@@ -36,6 +36,7 @@ elif [ "$OS" = "Manjaro Linux" ]; then
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   du -sh /var/cache/pacman/pkg
   #sudo pacman -S archlinux-keyring #invalid or corrupted package (PGP signature)
+  sudo pacman --noconfirm --needed -S archlinux-keyring
   sudo pacman --noconfirm --needed -Syu 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   echo sudo pacman -Scc
   sudo paccache -r 2>&1 | tee -a "$HOME/tmp/update-$$.log"
