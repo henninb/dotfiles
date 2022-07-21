@@ -1,47 +1,39 @@
 #!/bin/sh
 
 ver=3.1.1
-# wget https://github.com/fastly/cli/releases/download/v1.3.0/fastly_1.3.0_linux_amd64.rpm
 
-if [ -x "$(command -v pacman)" ]; then
+if command -v pacman; then
+  echo "archlinux"
   sudo pacman --noconfirm --needed -S fakeroot
   sudo pacman --noconfirm --needed -S rpm
-elif [ -x "$(command -v emerge)" ]; then
-  echo
-elif [ -x "$(command -v apt)" ]; then
-  echo
-elif [ -x "$(command -v xbps-install)" ]; then
+elif command -v emerge; then
+  echo "gentoo"
+elif command -v apt; then
+  sudo apt install libdbus-1-dev libx11-dev libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libgtk-3-dev libxdg-basedir-dev libnotify-dev
+elif command -v xbps-install; then
+  echo "void"
   sudo xbps-install -y rpm
-elif [ -x "$(command -v eopkg)" ]; then
-  echo
-elif [ -x "$(command -v dnf)" ]; then
-  echo
-elif [ -x "$(command -v brew)" ]; then
-  echo
+elif command -v eopkg; then
+  echo "solus"
+elif command -v dnf; then
+  echo "fedora"
+elif command -v brew; then
+  echo "macos"
 else
   echo "$OS is not yet implemented."
   exit 1
 fi
 
-echo https://github.com/fastly/cli/releases/tag/v3.1.1
-wget "https://github.com/fastly/cli/releases/download/v${ver}/fastly_v${ver}_linux-amd64.tar.gz"
 sudo mkdir -p /opt/fastly/bin
-sudo tar -xvf "fastly_v${ver}_linux-amd64.tar.gz" -C /opt/fastly/bin
-# wget "https://github.com/fastly/cli/releases/download/v${ver}/fastly_${ver}_linux_amd64.rpm" -O "$HOME/projects/fastly_${ver}_linux_amd64.rpm"
+# echo https://github.com/fastly/cli/releases/tag/v3.1.1
+echo "curl https://github.com/fastly/cli/releases/download/v${ver}/fastly_v${ver}_linux-amd64.tar.gz"
+echo "https://github.com/fastly/cli/releases/download/v3.1.1/fastly_v3.1.1_darwin-amd64.tar.gz"
+rm -rf "$HOME/tmp/fastly_v${ver}_linux-amd64.tar.gz"
+echo curl -k "https://github.com/fastly/cli/releases/download/v${ver}/fastly_v${ver}_linux-amd64.tar.gz" --output "$HOME/tmp/fastly_v${ver}_linux-amd64.tar.gz"
+curl -k "https://github.com/fastly/cli/releases/download/v${ver}/fastly_v${ver}_linux-amd64.tar.gz" --output "$HOME/tmp/fastly_v${ver}_linux-amd64.tar.gz"
+# curl -kI "https://github.com/fastly/cli/releases/download/v${ver}/fastly_v${ver}_linux-amd64.tar.gz"
+sudo tar -xvf "$HOME/tmp/fastly_v${ver}_linux-amd64.tar.gz" -C /opt/fastly/bin
 
-# wget 'https://github.com/fastly/cli/archive/refs/tags/v1.4.0.tar.gz' -O ~/projects/fastly-v1.4.0.tar.gz
-# cd ~/projects/ || exit
-# tar xvf fastly-v1.4.0.tar.gz
-# cd cli-1.3.0 || exit
-# make
-# make install
-# rm -rf "$HOME/projects/fastly-v1.4.0.tar.gz"
-
-# sudo rpm -i --nodeps "$HOME/projects/fastly_${ver}_linux_amd64.rpm"
-
-# mkdir ~/projects/edge
-# cd ~/projects/edge || exit
-# fastly compute init
 
 exit 0
 

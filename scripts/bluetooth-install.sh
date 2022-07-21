@@ -3,7 +3,7 @@
 # https://askubuntu.com/questions/689281/pulseaudio-can-not-load-bluetooth-module-15-10-16-04-16-10
 # https://ubuntuforums.org/showthread.php?t=2308489
 
-cat > hcid.conf <<EOF
+cat <<  EOF > "$HOME/tmp/hcid.conf"
 options {
 
     # Security Manager mode
@@ -15,7 +15,7 @@ options {
 }
 EOF
 
-sudo mv -v hcid.conf /etc/bluetooth
+sudo mv -v "$HOME/tmp/hcid.conf" /etc/bluetooth
 
 if [ "$OS" = "Linux Mint" ] ||  [ "$OS" = "Ubuntu" ]; then
   sudo apt install -y bluez-tools pulseaudio-module-bluetooth expect

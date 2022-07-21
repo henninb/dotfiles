@@ -40,7 +40,7 @@ xorgxrdp_build() {
   sudo make install
 }
 
-cat > xrdp.rc <<'EOF'
+cat <<  EOF > "$HOME/tmp/xrdp.rc"
 #!/sbin/openrc-run
 
 #sudo cp -v xrdp.rc /etc/init.d/xrdp
@@ -71,7 +71,7 @@ depend() {
 }
 EOF
 
-cat > 45-allow.colord.pkla <<EOF
+cat <<  EOF > "$HOME/tmp/45-allow.colord.pkla"
 [Allow Colord all Users]
 Identity=unix-user:*
 Action=org.freedesktop.color-manager.create-device;org.freedesktop.color-manager.create-profile;org.freedesktop.color-manager.delete-device;org.freedesktop.color-manager.delete-profile;org.freedesktop.color-manager.modify-device;org.freedesktop.color-manager.modify-profile
@@ -80,18 +80,9 @@ ResultInactive=no
 ResultActive=yes
 EOF
 
-# cat > xrdp.ini <<'EOF'
-# [tightvnc]
-# name=RDP_To_TightVNC
-# lib=libvnc.so
-# username=ask
-# password=ask
-# ip=127.0.0.1
-# port=-1
-# EOF
+echo "$HOME/tmp/startwm.sh" for archlinux gentoo fedora
 
-echo startwm.sh for archlinux gentoo fedora
-cat > startwm.sh <<'EOF'
+cat <<  EOF > "$HOME/tmp/startwm.sh"
 #!/usr/bin/env sh
 
 export TERM="xterm-256color"
@@ -128,7 +119,7 @@ fi
 exit 0
 EOF
 
-cat > xrdp-sesman <<EOF
+cat <<  EOF > "$HOME/tmp/xrdp-sesman"
 /etc/pam.d/xrdp-sesman
 auth       required     pam_unix.so shadow
 auth       required     pam_env.so
@@ -138,15 +129,15 @@ account     required    pam_nologin.so
 session     required    pam_unix.so
 EOF
 
-cat > Xwrapper.config <<EOF
+cat <<  EOF > "$HOME/tmp/Xwrapper.config"
 allowed_users=anybody
 needs_root_rights=yes
 EOF
 
 sudo mkdir -p /etc/X11
 
-chmod 755 startwm.sh
-chmod 755 xrdp.rc
+chmod 755 "$HOME/tmp/startwm.sh"
+chmod 755 "$HOME/tmp/xrdp.rc"
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   mkdir -p "$HOME/projects"
@@ -158,8 +149,8 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   xorgxrdp_build
 
   cd "$HOME" || exit
-  sudo mv -v startwm.sh /etc/xrdp/startwm.sh
-  sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
+  sudo mv -v "$HOME/tmp/startwm.sh" /etc/xrdp/startwm.sh
+  sudo mv -v "$HOME/tmp/Xwrapper.config" /etc/X11/Xwrapper.config
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -c system.devel
   sudo eopkg install -y nasm
@@ -175,8 +166,8 @@ elif [ "$OS" = "Solus" ]; then
   xorgxrdp_build
 
   cd "$HOME" || exit
-  sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
-  sudo mv -v startwm.sh /etc/xrdp/startwm.sh
+  sudo mv -v "$HOME/tmp/Xwrapper.config" /etc/X11/Xwrapper.config
+  sudo mv -v "$HOME/tmp/startwm.sh" /etc/xrdp/startwm.sh
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y nasm
   sudo xbps-install -y pam-devel
@@ -195,8 +186,8 @@ elif [ "$OS" = "void" ]; then
   xrdp_build
   xorgxrdp_build
 
-  sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
-  sudo mv -v startwm.sh /etc/xrdp/startwm.sh
+  sudo mv -v "$HOME/tmp/Xwrapper.config" /etc/X11/Xwrapper.config
+  sudo mv -v "$HOME/tmp/startwm.sh" /etc/xrdp/startwm.sh
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge  --update --newuse x11-libs/libX11
   sudo emerge  --update --newuse nasm
@@ -213,9 +204,9 @@ elif [ "$OS" = "Gentoo" ]; then
 
   #USE="server" sudo emerge  --update --newuse net-misc/tigervnc
   cd "$HOME" || exit
-  sudo mv -v startwm.sh /etc/xrdp/startwm.sh
+  sudo mv -v "$HOME/tmp/startwm.sh" /etc/xrdp/startwm.sh
   sudo mv -v xrdp.rc /etc/init.d/xrdp
-  sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
+  sudo mv -v "$HOME/tmp/Xwrapper.config" /etc/X11/Xwrapper.config
 elif [ "$OS" = "Fedora" ]; then
     sudo dnf install -y libtool
     sudo dnf install -y openssl-devel
@@ -231,8 +222,8 @@ elif [ "$OS" = "Fedora" ]; then
     xorgxrdp_build
 
     cd "$HOME" || exit
-    sudo mv -v startwm.sh /etc/xrdp/startwm.sh
-    sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
+    sudo mv -v "$HOME/tmp/startwm.sh" /etc/xrdp/startwm.sh
+    sudo mv -v "$HOME/tmp/Xwrapper.config" /etc/X11/Xwrapper.config
     sudo mv -v 45-allow.colord.pkla /etc/polkit-1/localauthority/50-local.d/
     sudo systemctl disable firewalld
     sudo systemctl stop firewalld
@@ -257,8 +248,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
     xorgxrdp_build
 
     cd "$HOME" || exit
-    sudo mv -v startwm.sh /etc/xrdp/startwm.sh
-    sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
+    sudo mv -v "$HOME/tmp/startwm.sh" /etc/xrdp/startwm.sh
+    sudo mv -v "$HOME/tmp/Xwrapper.config" /etc/X11/Xwrapper.config
     sudo systemctl stop firewalld
     sudo systemctl disable firewalld
 elif [ "$OS" = "CentOS Linux" ]; then
@@ -282,7 +273,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
   xorgxrdp_build
 
   cd "$HOME" || exit
-  sudo mv -v startwm.sh /etc/xrdp/startwm.sh
+  sudo mv -v "$HOME/tmp/startwm.sh" /etc/xrdp/startwm.sh
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo usermod -a -G tty "$(id -un)"
   #echo sudo apt install -y xrdp xorgxrdp
@@ -302,8 +293,8 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   xorgxrdp_build
 
   cd "$HOME" || exit
-  sudo mv -v Xwrapper.config /etc/X11/Xwrapper.config
-  sudo mv -v startwm.sh /etc/xrdp/startwm.sh
+  sudo mv -v "$HOME/tmp/Xwrapper.config" /etc/X11/Xwrapper.config
+  sudo mv -v "$HOME/tmp/startwm.sh" /etc/xrdp/startwm.sh
 else
   echo "$OS is not yet implemented."
   exit 1
