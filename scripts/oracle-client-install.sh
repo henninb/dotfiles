@@ -22,7 +22,7 @@ fi
 #echo /usr/lib/oracle/19.3/client64/lib/libsqlplus.so
 
 if [ ! "$OS" = "Darwin" ]; then
-  if [ ! -f "oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm" ]; then
+  if [ ! -f "/$HOME/tmp/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm" ]; then
     scp pi@pi:/home/pi/downloads/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm "$HOME/tmp"
     if ! scp "pi@pi:/home/pi/downloads/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm" "$HOME/tmp"; then
       curl -s https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm --output "$HOME/tmp/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm"
@@ -30,20 +30,20 @@ if [ ! "$OS" = "Darwin" ]; then
     fi
   fi
 
-  if [ ! -f "oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm" ]; then
+  if [ ! -f "/$HOME/tmp/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm" ]; then
     if ! scp pi@pi:/home/pi/downloads/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm "$HOME/tmp"; then
       curl -s https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm --output "$HOME/tmp/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm"
       # scp oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm pi@pi:/home/pi/downloads/
     fi
   fi
 
-  if [ ! -f "oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm" ]; then
+  if [ ! -f "/$HOME/tmp/oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm" ]; then
     if ! scp pi@pi:/home/pi/downloads/oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm "$HOME/tmp"; then
       echo "curl -s 'https://www.oracle.com/database/technologies/instant-client/precompiler-112010-downloads.html'"
     fi
   fi
 
-  if [ ! -f "oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm" ]; then
+  if [ ! -f "/$HOME/tmp/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm" ]; then
     if ! scp pi@pi:/home/pi/downloads/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm "$HOME/tmp"; then
       curl -s https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm --output "$HOME/tmp/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm"
        # scp oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm pi@pi:/home/pi/downloads/
@@ -117,6 +117,10 @@ elif [ "$OS" = "Gentoo" ]; then
 else
   echo "$OS is not yet implemented."
   exit 1
+fi
+
+if ! command -v sqlplus; then
+  echo "sqlplus did not install."
 fi
 
 exit 0
