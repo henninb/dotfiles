@@ -45,12 +45,12 @@ cd "$HOME/projects/github.com/IgnorantGuru" || exit
 git clone git@github.com:IgnorantGuru/spacefm.git
 cd spacefm || exit
 ./autogen.sh
-if ! patch src/main.c < "$HOME/spacefm-main-patch"; then
+if ! patch src/main.c < "$HOME/patches/spacefm-main-patch"; then
   echo "main patch failed."
   exit 1
 fi
 
-if ! patch -p1 -i $HOME/spacefm-settings-patch; then
+if ! patch -p1 -i $HOME/patches/spacefm-settings-patch; then
   echo "settings patch failed."
   exit 1
 fi
@@ -72,4 +72,4 @@ echo "sh ./dracula-theme-install.sh"
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

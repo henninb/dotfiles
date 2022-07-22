@@ -24,7 +24,9 @@ fi
 
 sudo systemctl enable mosquitto
 sudo systemctl start mosquitto
+sudo systemctl status mosquitto
 
+echo port 1883
 echo mosquitto_sub -h localhost -t test
 echo mosquitto_pub -h localhost -t test -m "hello world"
 
