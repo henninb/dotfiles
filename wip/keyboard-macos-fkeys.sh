@@ -23,7 +23,7 @@ cat /etc/default/keyboard
 echo hid_apple.conf
 cat /etc/modprobe.d/hid_apple.conf
 
-cat > 00-keyboard.conf <<EOF
+cat << EOF > "$HOME/tmp/00-keyboard.conf"
 Section "InputClass"
     Identifier "system-keyboard"
     MatchIsKeyboard "on"
@@ -40,7 +40,7 @@ echo setxkbmap -option "altwin:swap_alt_win"
 echo setxkbmap -option
 
 if [ ! -f "/etc/X11/xorg.conf.d/00-keyboard.conf" ]; then
-  sudo mv -v 00-keyboard.conf /etc/X11/xorg.conf.d/
+  sudo mv -v "$HOME/tmp/00-keyboard.conf" /etc/X11/xorg.conf.d/
 fi
 
 echo map f8 to Insert and f8
