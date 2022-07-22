@@ -1,6 +1,7 @@
 #!/bin/sh
 
-cd "$HOME/projects" || exit
+mkdir -p "$HOME/projects/kevinburke"
+cd "$HOME/projects/kevinburke" || exit
 rm -rf automake-1.15.tar.gz
 wget https://ftp.gnu.org/gnu/automake/automake-1.15.tar.gz
 tar xvf automake-1.15.tar.gz
@@ -10,7 +11,8 @@ make
 sudo mkdir -p /opt
 sudo make install
 
-cd "$HOME/projects" || exit
+mkdir -p "$HOME/projects/kevinburke"
+cd "$HOME/projects/kevinburke" || exit
 git clone git://github.com/kevinburke/sshpass.git
 cd sshpass || exit
 export PATH=/opt/aclocal-1.15/bin:$PATH

@@ -1,9 +1,31 @@
 #!/bin/sh
 
-mkdir -p electron
-sudo npm install nativefier -g
+cat <<  EOF > "$HOME/.local/bin/reddit-electron"
+#!/bin/sh
 
-cd electron || exit
+PATH="$HOME/electron/reddit-linux-x64:$PATH"
+reddit
+
+exit 0
+EOF
+
+cat <<  EOF > "$HOME/.local/bin/github-electron"
+#!/bin/sh
+
+PATH="$HOME/electron/github-linux-x64:$PATH"
+github
+
+exit 0
+EOF
+
+chmod 755 "$HOME/.local/bin/reddit-electron"
+chmod 755 "$HOME/.local/bin/github-electron"
+
+mkdir -p "$HOME/electron"
+
+cd "$HOME/electron" || exit
+npm install nativefier -g
+
 nativefier --name "reddit" "reddit.com"
 nativefier --name "github" "github.com"
 
