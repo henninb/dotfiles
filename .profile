@@ -74,15 +74,15 @@ export CM_OUTPUT_CLIP=1
 export CM_MAX_CLIPS=25
 
 if [ "$OS" = "ArcoLinux" ] || [ "$OS" = "Arch Linux" ] || [ "$OS" = "Gentoo" ] || [ "$OS" = "void" ]; then
-  echo "Comes from .profile, this logic must be updated in the future."
+  echo "Comes from .profile, this logic must be updated in the future." | tee -a "$HOME/tmp/profile.log"
   # 4k monitor
-  devices=$(xrandr | grep " connected " | awk '{ print $1 }')
-  echo "$devices"
+  device=$(xrandr | grep " connected " | awk '{ print $1 }' | head -1)
+  echo "$device" | tee -a "$HOME/tmp/profile.log"
   xrandr --output HDMI-1 --mode 3840x2160 2> /dev/null
   xrandr --output HDMI-0 --mode 3840x2160 2> /dev/null
   xrandr --size 3840x2160 2> /dev/null
 else
-  echo "Undesired logic - Comes from .profile, this logic must be updated in the future."
+  echo "Undesired logic - Comes from .profile, this logic must be updated in the future." | tee -a "$HOME/tmp/profile.log"
   # TODO: required for 1440p monitor to work at desired resolution
   xrandr --output HDMI-1 --mode 2560x1440 2> /dev/null
   xrandr --output HDMI-0 --mode 2560x1440 2> /dev/null
