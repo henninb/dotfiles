@@ -78,14 +78,17 @@ if [ "$OS" = "ArcoLinux" ] || [ "$OS" = "Arch Linux" ] || [ "$OS" = "Gentoo" ] |
   # 4k monitor
   device=$(xrandr | grep " connected " | awk '{ print $1 }' | head -1)
   echo "$device" | tee -a "$HOME/tmp/profile.log"
-  xrandr --output HDMI-1 --mode 3840x2160 2> /dev/null
-  xrandr --output HDMI-0 --mode 3840x2160 2> /dev/null
+  if xrandr --output "$device" --mode 3840x2160 2> /dev/null; then
+    echo "xrandr --output $device --mode 3840x2160 failed." | tee -a "$HOME/tmp/profile.log"
+  fi
   xrandr --size 3840x2160 2> /dev/null
 else
   echo "Undesired logic - Comes from .profile, this logic must be updated in the future." | tee -a "$HOME/tmp/profile.log"
   # TODO: required for 1440p monitor to work at desired resolution
-  xrandr --output HDMI-1 --mode 2560x1440 2> /dev/null
-  xrandr --output HDMI-0 --mode 2560x1440 2> /dev/null
+  device=$(xrandr | grep " connected " | awk '{ print $1 }' | head -1)
+  echo "$device" | tee -a "$HOME/tmp/profile.log"
+  xrandr --output "$device" --mode 2560x1440 2> /dev/null
+  # xrandr --output HDMI-0 --mode 2560x1440 2> /dev/null
   xrandr --size 2560x1440 2> /dev/null
 fi
 
