@@ -161,6 +161,7 @@ else
   echo JAVA_HOME is not setup.
 fi
 
+export PATH="$HOME/scripts:$PATH"
 export PATH="$HOME/.local/share/bin:$PATH"
 export PATH=$PYENV_ROOT/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
