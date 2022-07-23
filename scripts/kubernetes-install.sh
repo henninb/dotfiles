@@ -6,6 +6,8 @@
 sudo emerge --update --newuse sys-cluster/kubectl
 sudo emerge --update --newuse sys-cluster/minikube
 
+minikube start --vm-driver kvm2
+
 echo "temp early exit"
 exit 1
 
