@@ -528,6 +528,10 @@ bindkey "^[[B" history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
+## HISTORY
+# export HISTTIMEFORMAT='%Y-%m-%d %T '
+export HISTTIMEFORMAT='%d-%m-%y %T '
+export HISTCONTROL=ignoreboth
 # export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=1000000000
 export SAVEHIST="$HISTSIZE"
