@@ -22,8 +22,8 @@ case $(tty) in
   ;;
 esac
 
-[[ ${TERM}=="" ]] && TPUTTERM='-T xterm-256color' \
-                  || TPUTTERM=''
+# [[ ${TERM}=="" ]] && TPUTTERM='-T xterm-256color' \
+#                   || TPUTTERM=''
 
 if [ -f /etc/os-release ]; then
   OS="$(grep '^NAME=' /etc/os-release | tr -d '"' | cut -d = -f2)"
@@ -58,29 +58,35 @@ export OS_VER
 
 JAVA_TOOL_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
 
-if ! tput bold; then
-  export TERM=xterm-256color
-fi
+# date >>  "$HOME/tmp/tty-status.log"
+# tty -s >> "$HOME/tmp/tty-status.log"
+# echo "$?" >> "$HOME/tmp/tty-status.log"
 
-if [[ $- == *i* ]]; then
-  # Start blinking
-  LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
-  export LESS_TERMCAP_mb
-  # Start bold
-  LESS_TERMCAP_md=$(tput bold; tput setaf 2) # green
-  export LESS_TERMCAP_md
-  # Start stand out
-  LESS_TERMCAP_so=$(tput bold; tput setaf 3) # yellow
-  export LESS_TERMCAP_so
-  # End standout
-  LESS_TERMCAP_se=$(tput rmso; tput sgr0)
-  export LESS_TERMCAP_se
-  # Start underline
-  LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 1) # red
-  export LESS_TERMCAP_us
-  # End bold, blinking, standout, underline
-  LESS_TERMCAP_me=$(tput sgr0)
-  export LESS_TERMCAP_me
+if tty -s; then
+  if ! tput bold; then
+    export TERM=xterm-256color
+  fi
+
+  if [[ $- == *i* ]]; then
+    # Start blinking
+    LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
+    export LESS_TERMCAP_mb
+    # Start bold
+    LESS_TERMCAP_md=$(tput bold; tput setaf 2) # green
+    export LESS_TERMCAP_md
+    # Start stand out
+    LESS_TERMCAP_so=$(tput bold; tput setaf 3) # yellow
+    export LESS_TERMCAP_so
+    # End standout
+    LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+    export LESS_TERMCAP_se
+    # Start underline
+    LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 1) # red
+    export LESS_TERMCAP_us
+    # End bold, blinking, standout, underline
+    LESS_TERMCAP_me=$(tput sgr0)
+    export LESS_TERMCAP_me
+  fi
 fi
 
 # zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 case ${1%% *} in (vlc|mpc|cd|pwd|exit) return 1;;
