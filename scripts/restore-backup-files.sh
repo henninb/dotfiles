@@ -24,17 +24,22 @@ else
 fi
 
 files=$(ssh  raspi "ls -d1 /home/pi/downloads/backup-*")
+# files=$(ssh  raspi "ls -d1 /home/pi/tmp/test/backup-*")
 
 # rsync -arv "raspi:/home/pi/test/" "$HOME/test/"
 # echo    "    --update, -u This  forces rsync to skip any files which exist on the destination and have a modified time that is newer than the source file."
 
 # exit 1
-
+include=""
 for file in $files; do
   base_file=$(basename $file)
-  echo $base_file
+  echo " --include=$base_file"
+  # include="$include --include=\"$base_file/*\""
   # scp -r "raspi:/home/pi/downloads/$base_file/" "$HOME/files/$base_file/"
-  rsync -arv "raspi:/home/pi/downloads/$base_file/" "$HOME/files/$base_file/"
+  rsync -arvz "raspi:/home/pi/downloads/$base_file/" "$HOME/files/$base_file/"
 done
+echo "$include"
+
+# rsync -arvz --include="backup-d1/*" --include="backup-d2/*" --include="backup-d3/*"  --dry-run --exclude='*' raspi:/home/pi/tmp/test/ "$HOME/tmp/"
 
 exit 0
