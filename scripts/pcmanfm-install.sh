@@ -4,7 +4,7 @@ if [ "$OS" = "Solus" ]; then
   sudo eopkg install -y pcmanfm
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y pcmanfm
-elif [ "$OS" = "ArcoLinux" ]; then
+elif [ "$OS" = "ArcoLinux" ] || [ "$OS" = "Arch Linux" ]; then
   sudo pacman --noconfirm --needed -S pcmanfm
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y pcmanfm
