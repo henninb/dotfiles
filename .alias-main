@@ -62,6 +62,8 @@ alias ghci="stack exec -- ghci"
 alias handbrake-gui="ghb"
 alias lynx='lynx -cfg=~/.lynx.cfg'
 
+alias history='history -i'
+
 alias sudop='sudo -E su -p'
 
 alias vi='vim'
