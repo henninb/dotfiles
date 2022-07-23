@@ -39,7 +39,10 @@ chatnets = {
   spotchat = { type = "IRC"; nick = "henninb"; };
   Freenode = { type = "IRC"; };
   "libra-chat" = { type = "IRC"; };
+  autolog_path = "~/tmp/logs/$tag/$0.%y-%m-%d.log";
 };
+
+autolog_path ~/tmp/irclogs/$tag/$0.log;
 
 channels = (
   { name = "#freebsd"; chatnet = "libra-chat"; autojoin = "yes"; },

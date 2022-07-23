@@ -1,7 +1,3 @@
-: 1592653044:: :;mkoskar
-: 1592653063:: :;mkoskar - i believe so, how can I verify?
-: 1592653112:: :;i simply manually connect on reboot.
-: 1592653136:: :;yes, via bluetoothctl
 : 1592653180:: :;i am considering creating a startup script, but i would prefer not to.
 : 1592653278:: :;yes, this device is trusted
 : 1592653529:: :;ok, i see an article that references /etc/btkbd.conf. I will look and see if that helps.
@@ -98,3 +94,7 @@
 : 1653954259:: :;thank you geekosaur
 : 1653955200:: :;I really appreciate the folks on this channel there are not a lot of xmonad users out there so we need to stick together.
 : 1653955736:: :;/quit
+: 1658535548:: :;/quit
+: 1658535549:: :;/quit
+: 1658535955:: :;/SET autolog_path ~/tmp/irclogs/$tag/$0.log
+: 1658536048:: :;/quit
