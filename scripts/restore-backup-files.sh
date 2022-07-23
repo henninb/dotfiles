@@ -36,7 +36,7 @@ for file in $files; do
   echo " --include=$base_file"
   # include="$include --include=\"$base_file/*\""
   # scp -r "raspi:/home/pi/downloads/$base_file/" "$HOME/files/$base_file/"
-  rsync -arvz "raspi:/home/pi/downloads/$base_file/" "$HOME/files/$base_file/"
+  rsync -arvz --quiet "raspi:/home/pi/downloads/$base_file/" "$HOME/files/$base_file/"
 done
 echo "$include"
 
