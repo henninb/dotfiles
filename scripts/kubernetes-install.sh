@@ -1,9 +1,13 @@
 #!/bin/sh
 
-mkdir -p "$HOME/.docker"
-touch "$HOME/.docker/config.json"
+#mkdir -p "$HOME/.docker"
+#touch "$HOME/.docker/config.json"
 
-sys-cluster/kubectl
+sudo emerge --update --newuse sys-cluster/kubectl
+sudo emerge --update --newuse sys-cluster/minikube
+
+echo "temp early exit"
+exit 1
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S ethtool socat
@@ -107,18 +111,4 @@ fi
 
 exit 0
 
-mkdir -p "$HOME/projects"
-cd "$HOME/projects" || exit
-rm -rf kubernetes-bin
-rm -rf kubernetes
-git clone https://aur.archlinux.org/kubernetes-bin.git
-git clone https://aur.archlinux.org/kubernetes.git
-git clone https://aur.archlinux.org/minikube.git
-cd minikube || exit
-#cd kubernetes-bin
-makepkg -si
-#sudo kubeadm init
-
-exit 0
-
-# vim: set ft=sh
+# vim: set ft=sh:

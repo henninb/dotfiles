@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo emerge dev-libs/hidapi
+sudo emerge --update --newuse dev-libs/hidapi
 
 cat << EOF > "$HOME/tmp/70-streamdeck.rules"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="0060", TAG+="uaccess"
