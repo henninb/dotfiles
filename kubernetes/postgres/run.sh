@@ -10,7 +10,7 @@ kubectl delete --all pods --namespace=default
 
 # delete all deployments
 kubectl delete --all deployments --namespace=default
- 
+
 # delete all services
 kubectl delete --all services --namespace=default
 
