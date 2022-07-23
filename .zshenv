@@ -22,6 +22,9 @@ case $(tty) in
   ;;
 esac
 
+[[ ${TERM}=="" ]] && TPUTTERM='-T xterm-256color' \
+                  || TPUTTERM=''
+
 if [ -f /etc/os-release ]; then
   OS="$(grep '^NAME=' /etc/os-release | tr -d '"' | cut -d = -f2)"
   OS_VER="$(grep '^VERSION_ID=' /etc/os-release | tr -d '"' | cut -d = -f2)"
