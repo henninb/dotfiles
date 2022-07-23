@@ -39,10 +39,8 @@ chatnets = {
   spotchat = { type = "IRC"; nick = "henninb"; };
   Freenode = { type = "IRC"; };
   "libra-chat" = { type = "IRC"; };
-  autolog_path = "~/tmp/logs/$tag/$0.%y-%m-%d.log";
 };
 
-autolog_path ~/tmp/irclogs/$tag/$0.log;
 
 channels = (
   { name = "#freebsd"; chatnet = "libra-chat"; autojoin = "yes"; },
@@ -348,7 +346,11 @@ settings = {
     term_force_colors = "yes";
     scrollback_time = "7day ";
   };
-  "fe-common/core" = { theme = "revolutionaryv3"; autolog = "yes"; };
+  "fe-common/core" = {
+    theme = "revolutionaryv3";
+    autolog = "yes";
+    autolog_path = "~/tmp/irssi-logs/$tag/$0.log";
+  };
 };
 hilights = ( { text = "nick"; nick = "yes"; word = "yes"; } );
 logs = { };
