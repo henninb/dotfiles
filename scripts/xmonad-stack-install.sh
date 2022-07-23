@@ -385,6 +385,9 @@ echo stack exec ghc-pkg check
 
 echo "install failures = $failures"
 
+# echo gsettings set org.freedesktop.Notifications allow-other-notification-handlers true
+# echo gsettings set haskell-notification-daemon allow-other-notification-handlers true
+
 cd "$HOME/.config/xmonad" || exit
 ./build
 

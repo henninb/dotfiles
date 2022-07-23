@@ -19,6 +19,8 @@ else
   exit 1
 fi
 
+gdbus call --session --dest org.freedesktop.DBus --object-path /org/freedesktop/Dbus --method org.freedesktop.DBus.ListNames
+
 mkdir -p "$HOME/projects/github.com/dunst-project"
 cd "$HOME/projects/github.com/dunst-project" || exit
 git clone --recursive git@github.com:dunst-project/dunst.git
