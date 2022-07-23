@@ -24,14 +24,13 @@ VER=$(curl -s https://www.python.org/downloads/ | grep -o 'Python-[0-9.]\+[0-9].
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ] || [ "$OS" = "Debian GNU/Linux" ]; then
   sudo apt install -y python3.7 python3.7-venv python-pip python3-pip libssl-dev libffi-dev python-setuptools python3.7-dev
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  #sudo pacman --noconfirm --needed -S python python-pip python2-pip python2
   sudo pacman --noconfirm --needed -S python python3
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y epel-release python python-devel
 elif [ "$OS" = "Solus" ]; then
-  echo
+  echo "solus"
 elif [ "$OS" = "void" ]; then
-  echo
+  echo "void"
 elif [ "$OS" = "Gentoo" ]; then
   echo sudo emerge --update --newuse python
 elif [ "$OS" = "FreeBSD" ]; then
@@ -44,11 +43,11 @@ fi
 echo $VER
 echo
 
-curl -Os https://bootstrap.pypa.io/get-pip.py
-python3 get-pip.py
+curl -s https://bootstrap.pypa.io/get-pip.py --output "$HOME/tmp/get-pip3.py"
+python3 "$HOME/tmp/get-pip3.py"
 
-curl -Os https://bootstrap.pypa.io/pip/2.7/get-pip.py
-python2 get-pip.py
+curl -s https://bootstrap.pypa.io/pip/2.7/get-pip.py --output "$HOME/tmp/get-pip2.py"
+python2 "$HOME/tmp/get-pip2.py"
 
 exit 0
 

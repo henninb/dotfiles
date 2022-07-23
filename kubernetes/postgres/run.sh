@@ -36,7 +36,7 @@ kubectl describe service postgres
 #kubectl apply -f postgres_example.yml
 #kubectl get nodes
 #echo minikube ssh
-minikube ip
+# minikube ip
 
 echo minikube service postgres-service
 

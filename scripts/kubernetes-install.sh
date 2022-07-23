@@ -3,6 +3,8 @@
 mkdir -p "$HOME/.docker"
 touch "$HOME/.docker/config.json"
 
+sys-cluster/kubectl
+
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S ethtool socat
   echo "https://computingforgeeks.com/how-to-run-minikube-on-kvm/"
