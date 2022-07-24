@@ -33,13 +33,15 @@ files=$(ssh  raspi "ls -d1 /home/pi/downloads/backup-*")
 include=""
 for file in $files; do
   base_file=$(basename $file)
-  echo " --include=$base_file"
+  # echo " --include=$base_file"
   # include="$include --include=\"$base_file/*\""
-  echo rsync -arvz --quiet "raspi:/home/pi/downloads/$base_file/" "$HOME/files/$base_file/"
-  rsync -arvz "raspi:/home/pi/downloads/$base_file/" "$HOME/files/$base_file/"
+  # echo rsync -arvz --quiet "raspi:/home/pi/downloads/$base_file/" "$HOME/files/$base_file/"
+  # rsync -arvz "raspi:/home/pi/downloads/$base_file/" "$HOME/files/$base_file/"
 done
 echo "$include"
 
+echo "rsync -arvz --dry-run raspi:/home/pi/downloads/backups/ $HOME/files/"
+rsync -arvz raspi:/home/pi/downloads/backups/ "$HOME/files/"
 # rsync -arvz --include="backup-d1/*" --include="backup-d2/*" --include="backup-d3/*"  --dry-run --exclude='*' raspi:/home/pi/tmp/test/ "$HOME/tmp/"
 
 exit 0
