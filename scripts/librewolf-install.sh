@@ -8,6 +8,7 @@ elif command -v emerge; then
   sudo emerge --update --newuse app-eselect/eselect-repository
   sudo eselect repository add librewolf git https://gitlab.com/librewolf-community/browser/gentoo.git
   sudo emaint -r librewolf sync
+  sudo emerge --update --newuse librewolf-bin
 elif command -v apt; then
   echo "debian"
 elif command -v xbps-install; then

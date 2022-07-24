@@ -65,3 +65,5 @@ sys-libs/libseccomp static-libs
 media-libs/mlt qt5 ffmpeg frei0r
 media-libs/opencv contribdnn contrib qt5
 dev-libs/libdbusmenu gtk3
+media-libs/mesa wayland
+x11-libs/gtk+ wayland
