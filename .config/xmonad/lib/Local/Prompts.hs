@@ -1,6 +1,6 @@
 {-# LANGUAGE PatternSynonyms #-}
 
-module Local.Prompts (searchList, tmuxPrompt, myXPConfig', myXPConfigBottom) where
+module Local.Prompts (searchList, myXPConfig', myXPConfigBottom) where
 
 import XMonad
 import XMonad.Prompt (XPConfig(..), XP(..), fgColor, position, height, autoComplete, maxComplRows, moveCursor, startOfLine, moveHistory, quit, endOfLine, deleteString, setSuccess, killWord, setDone, mkComplFunFromList', killBefore, killAfter, moveWord, pasteString, pattern Next, pattern Prev, pattern Top, pattern Bottom)
@@ -115,8 +115,8 @@ myXPConfig' = myXPConfig
 tmuxRun :: IO [String]
 tmuxRun = lines <$> runProcessWithInput "tmux" ["list-sessions", "-F", "#{session_name}"] ""
 
-tmuxPrompt :: XPConfig -> X ()
-tmuxPrompt c = io tmuxRun >>= \as -> inputPromptWithCompl c "tmux" (mkComplFunFromList' as) ?+ tmuxStart as
+-- tmuxPrompt :: XPConfig -> X ()
+-- tmuxPrompt c = io tmuxRun >>= \as -> inputPromptWithCompl c "tmux" (mkComplFunFromList' as) ?+ tmuxStart as
 
 tmuxStart :: [String] -> String -> X ()
 tmuxStart ss s = asks (terminal . config) >>= \term -> attachOrCreate term s

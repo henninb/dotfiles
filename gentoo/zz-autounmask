@@ -62,3 +62,6 @@ sys-libs/libseccomp static-libs
 kde-misc/kdeconnect bluetooth
 sys-apps/systemd policykit apparmor
 sys-libs/libseccomp static-libs
+media-libs/mlt qt5 ffmpeg frei0r
+media-libs/opencv contribdnn contrib qt5
+dev-libs/libdbusmenu gtk3

@@ -12,7 +12,7 @@ UBUNTU_PKGS="sxiv i3lock meld gqrx vlc handbrake dolphin-emu feh gnome-boxes coc
 
 FREEBSD_PKGS="sxiv i3lock qalculate keepassxc thunar meld vlc firefox handbrake dolphin-emu xterm rofi audacity gimp inkscape mpv"
 
-GENTOO_PKGS="meld vlc handbrake terminator rofi games-emulation/dolphin seahorse xterm audacity gimp inkscape kdenlive mpv"
+GENTOO_PKGS="meld handbrake vlc blender handbrake thunar games-emulation/dolphin seahorse xterm audacity gimp inkscape kdenlive mpv media-video/obs-studio"
 
 VOID_PKGS="gimp incscape vlc handbrake audacity dolphin-emu zathura dbeaver mpv"
 
