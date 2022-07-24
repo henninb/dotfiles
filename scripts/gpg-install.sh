@@ -1,7 +1,9 @@
 #!/bin/sh
 
 if [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse gnupg
+  if ! command -v gpg; then
+    sudo emerge --update --newuse gnupg
+  fi
   sudo emerge --update --newuse pass
 elif [ "$OS" = "Linux Mint" ]; then
   sudo apt install -y gnupg
@@ -45,15 +47,8 @@ ls -l ~/.local/share/password-store
 echo
 echo gpg --full-generate-key
 
-if [ ! -f "$HOME/private.key" ]; then
-  echo ~/private.key is not found.
-  if ! scp pi:/home/pi/private.key "$HOME/private.key"; then
-  exit 1
-  fi
-fi
-
-echo gpg --batch --import private.key
-gpg --batch --import private.key
+echo "gpg --batch --import $HOME/files/backup-pgp/private.key"
+gpg --batch --import "$HOME/files/backup-pgp/private.key"
 
 gpg --edit-key 'henninb@gmail.com' trust quit
 # enter 5<RETURN>
