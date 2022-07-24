@@ -11,7 +11,7 @@
 
 import XMonad
 import XMonad.Hooks.DynamicLog (shorten, dynamicLogWithPP)
-import XMonad.Hooks.EwmhDesktops (ewmh, fullscreenEventHook)
+import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen, fullscreenEventHook)
 import XMonad.Hooks.ManageDocks (docksEventHook, docksStartupHook, manageDocks, docks)
 import XMonad.Hooks.Minimize (minimizeEventHook)
 import XMonad.Hooks.Place (smart, placeHook)
@@ -90,18 +90,15 @@ main = do
     $ withUrgencyHook LibNotifyUrgencyHook
     -- $ withUrgencyHook NoUrgencyHook
     $ dynamicProjects projects
-    $ docks
-    $ ewmh
-    -- once the code is done, turn on the following
+    -- $ docks
+-- bh changed on 7/24/2022
+    $ ewmh . docks
+    -- bh keybinding (M-F1) for showing all KeyBindings
     $ addDescrKeys' ((superKeyMask, xK_F1), showKeyBindings) keybinds
-    -- https://github.com/Xervon/dotfiles/blob/48e379b2d1c175ff8de5607415ebd5e1d45f75b4/xmonad/lib/Config/Keybinds.hs
-    -- $ myConfig { logHook = dynamicLogWithPP polybarLogHook }
     $ myConfig { logHook =
       case os of
-        -- "freebsd" -> dynamicLogWithPP polybarLogHook
         "freebsd"   -> dynamicLogWithPP $ dzenLogHook dzenLeftBar
         "linux"   -> dynamicLogWithPP $ dzenLogHook dzenLeftBar
-        -- "linux"   -> dynamicLogWithPP polybarLogHook
         _    -> eventLogHookForPolybar
     }
     `removeKeys` myRemoveKeys
@@ -114,13 +111,9 @@ myTerminal = "alacritty"
 myBorderWidth :: Dimension
 myBorderWidth = 1
 
--- myBrowser :: String
--- myBrowser = "brave"
-
 ------------------------------------------------------------------------
 -- desktop notifications -- dunst package required
 ------------------------------------------------------------------------
-
 data LibNotifyUrgencyHook = LibNotifyUrgencyHook deriving (Read, Show)
 
 instance UrgencyHook LibNotifyUrgencyHook where
@@ -189,7 +182,8 @@ myConfig = def
       <+> manageHook def
   , handleEventHook = docksEventHook
       <+> minimizeEventHook
-      <+> fullscreenEventHook -- may have negative impact to flameshot
+      -- <+> fullscreenEventHook -- may have negative impact to flameshot
+      -- <+> ewmhFullscreen
   -- , logHook = eventLogHookForPolybar
   , startupHook = docksStartupHook <+> myStartupHook
   , focusFollowsMouse = False
@@ -201,9 +195,9 @@ myConfig = def
   , modMask = superKeyMask
   -- >> updatePointer (0.25, 0.25) (0.25, 0.25)
   }
-   `additionalKeysP`
-   [
-   ]
-   `additionalKeys`
-   [
-   ]
+   -- `additionalKeysP`
+   -- [
+   -- ]
+   -- `additionalKeys`
+   -- [
+   -- ]
