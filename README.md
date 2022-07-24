@@ -157,6 +157,7 @@
 | typing                 | ttyper                                                                               |
 | blocking               | hblock                                                                               |
 | internet speed         | speedtest-cli                                                                        |
+| compression tools      | PeaZip                                                                               |
 
 ## Language Servers
 - c - ccls
