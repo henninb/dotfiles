@@ -1,1 +1,5 @@
-exec ghb
+#!/bin/sh
+
+ghb
+
+exit 0
