@@ -1,7 +1,8 @@
 #!/bin/sh
 
 if command -v streamdeck; then
-  exec streamdeck &
+  echo 'exec streamdeck &'
+  nohup streamdeck &
 else
   notify-send "streamdeck is NOT installed"
 fi
