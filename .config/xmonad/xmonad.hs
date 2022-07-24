@@ -171,7 +171,7 @@ myStartupHook = do
     spawnOnce "conky -c $HOME/.config/conky/xmonad-system-overview"
     -- spawnOnce "mpDris2" -- required for mpd
     spawnOnce "volumeicon"
-    spawnOnce "streamdeck"
+    spawnOnce "streamdeck-start"
     spawnOnce "xscreensaver -no-splash"
     spawnOnce "feh --no-fehbg --bg-scale $HOME/.local/wallpaper/minnesota-vikings-dark.png"
     -- spawnOnce "killall redshift; sleep 4 ; redshift -l 48.024395:11.598893 &"
