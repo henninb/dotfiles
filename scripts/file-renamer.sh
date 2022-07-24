@@ -7,8 +7,12 @@ for file in *; do
     fdate=$(stat --printf=%y "$file" | awk '{print $1}')
     file_new="${file%%.*}"
     ext=${file##*.}
-    echo "mv -v $file $file_new-$hash-$fdate.$ext"
-    mv -v "$file" "$file_new-$hash-$fdate.$ext"
+    # echo "mv -v $file $file_new-$hash-$fdate.$ext"
+    if [ ! -z "${file##*$hash*}" ] ;then
+      mv -v "$file" "$file_new-$hash-$fdate.$ext"
+    fi
+  else
+    echo "file skipped = $file"
   fi
 done
 
