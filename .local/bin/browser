@@ -6,16 +6,21 @@ if grep -q "incognito" <<< "$options"; then
   firefox_options="-private-window"
 fi
 
-if [ -x "$(command -v brave)" ]; then
+if command -v brave; then
   exec brave "$options"
-elif [ -x "$(command -v brave-browser)" ]; then
+elif command -v brave-bin; then
+  exec brave-bin "$options"
+elif command -v brave-browser; then
   exec brave-browser "$options"
-elif [ -x "$(command -v linux-brave)" ]; then
+elif command -v linux-brave; then
   exec linux-brave "$options"
-elif [ -x "$(command -v firefox)" ]; then
+elif command -v librewolf-flatpak; then
+  exec librewolf-flatpak "$firefox_options"
+elif command -v firefox; then
   exec firefox "$firefox_options"
 else
   echo "no browser found"
+  exec notify-send "no browser installed"
 fi
 
 exit 0
