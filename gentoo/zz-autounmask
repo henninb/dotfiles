@@ -69,3 +69,4 @@ media-libs/mesa wayland
 x11-libs/gtk+ wayland
 dev-libs/libfmt recorder
 media-libs/opencolorio -opengl
+media-video/mpv libmpv
