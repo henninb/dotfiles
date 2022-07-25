@@ -67,3 +67,5 @@ media-libs/opencv contribdnn contrib qt5
 dev-libs/libdbusmenu gtk3
 media-libs/mesa wayland
 x11-libs/gtk+ wayland
+dev-libs/libfmt recorder
+media-libs/opencolorio -opengl

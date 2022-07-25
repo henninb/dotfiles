@@ -2,7 +2,7 @@
 
 # DEBIAN_FRONTEND=noninteractive
 
-ARCHLINUX_PKGS="i3lock thunar meld xorg-server xlockmore vlc riot-desktop handbrake dbeaver terminator handbrake rofi feh dolphin-emu xorg xorg-server xorg-xeyes xorg-xinit seahorse gqrx gitk audacity zathura sxiv mpv gimp inkscape brave fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio celluloid libva-vdpau-driver libvdpau-va-gl vdpauinfo mesa-vdpau libva-utils openshot cantata notepadqq qalculate-gtk"
+ARCHLINUX_PKGS="i3lock thunar meld xorg-server xlockmore vlc riot-desktop handbrake dbeaver handbrake rofi feh dolphin-emu xorg xorg-server xorg-xeyes xorg-xinit gqrx gitk audacity zathura sxiv mpv gimp inkscape brave fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio celluloid libva-vdpau-driver libvdpau-va-gl vdpauinfo mesa-vdpau libva-utils openshot cantata notepadqq qalculate-gtk"
 
 MINT_PKGS="qalculate thunar meld vlc riot-desktop handbrake dolphin-emu xterm rofi feh suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious gitk audacity gqrx-sdr gimp inkscape gnome-mpv openshot vulkan-utils basilisk"
 
@@ -12,7 +12,7 @@ UBUNTU_PKGS="sxiv i3lock meld gqrx vlc handbrake dolphin-emu feh gnome-boxes coc
 
 FREEBSD_PKGS="sxiv i3lock qalculate keepassxc thunar meld vlc firefox handbrake dolphin-emu xterm rofi audacity gimp inkscape mpv"
 
-GENTOO_PKGS="meld handbrake vlc blender handbrake thunar games-emulation/dolphin seahorse xterm audacity gimp inkscape kdenlive mpv media-video/obs-studio app-admin/keepassxc zathura"
+GENTOO_PKGS="meld vlc blender handbrake thunar pcmanfm games-emulation/dolphin xterm audacity gimp inkscape kdenlive mpv media-video/obs-studio app-admin/keepassxc zathura net-im/zoom librewolf-bin wireshark libreoffice slack vscodium sxiv qalculate hardinfo notepadqq"
 
 VOID_PKGS="gimp incscape vlc handbrake audacity dolphin-emu zathura dbeaver mpv"
 
