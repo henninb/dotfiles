@@ -177,7 +177,7 @@ keybinds conf =
   -- , ("M-<Print>"         , safeSpawn "flameshot gui -p $HOME/screenshots" [])
   , ("M-<F4>", addName "Screenshot" $ safeSpawn "flameshot-wrapper" [] >> safeSpawn "notify-send" ["flameshot"])
   , ("M-b", addName "redshift on" $ safeSpawn "redshift" ["-O", "3500"] >> safeSpawn "notify-send" ["redshift on"])
-  , ("M-z", addName "peazip on" $ safeSpawn "peazip" ["$HOME"])
+  -- , ("M-z", addName "peazip on" $ safeSpawn "peazip" ["$HOME"])
   , ("M-S-b", addName "redshift off" $ safeSpawn "redshift" ["-x"] >> safeSpawn "notify-send" ["redshift off"])
   , ("M-S-w", addName "Weather Minneapolis" $ safeSpawn "weather-gtk" [])
   -- , ("M-a", addName "Notify w current X selection"    $ unsafeWithSelection "notify-send")
