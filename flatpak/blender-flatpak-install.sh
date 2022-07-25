@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat > blender-flatpak <<EOF
+cat  << EOF > blender-flatpak
 #!/bin/sh
 
 flatpak run org.blender.Blender

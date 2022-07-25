@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat > arduino-flatpak <<EOF
+cat  << EOF > arduino-flatpak
 #!/bin/sh
 
 flatpak run cc.arduino.arduinoide

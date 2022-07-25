@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat > dbeaver-flatpak <<EOF
+cat << EOF > dbeaver-flatpak 
 #!/bin/sh
 
 flatpak run io.dbeaver.DBeaverCommunity
