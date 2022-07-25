@@ -1,3 +1,5 @@
 >dev-python/docutils-0.17.1
+# blender issue
+>dev-libs/libfmt-8.1.1
 # was fixed on 7/11/2022
 # >dev-util/meson-0.62.2
