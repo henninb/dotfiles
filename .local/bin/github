@@ -1,0 +1,5 @@
+#!/bin/sh
+
+xdg-open https://github.com/henninb?tab=repositories
+
+exit 0
