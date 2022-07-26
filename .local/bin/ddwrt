@@ -1,0 +1,5 @@
+#!/bin/sh
+
+xdg-open http://192.168.10.3/Status_Router.asp
+
+exit 0
