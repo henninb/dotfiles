@@ -113,6 +113,10 @@ elif [ "$OS" = "Gentoo" ]; then
   id -u activemq >/dev/null 2>&1 || sudo useradd activemq -s /sbin/nologin
   id -u kafka >/dev/null 2>&1 || sudo useradd kafka -s /sbin/nologin
 
+  sudo gpasswd -a $USER pcap
+  sudo gpasswd -a $USER audio
+  sudo gpasswd -a $USER docker
+
   sudo usermod -a -G flatpak "$(id -un)"
   sudo usermod -a -G tomcat "$(id -un)"
   sudo usermod -a -G firefox "$(id -un)"
