@@ -1,0 +1,5 @@
+#!/bin/sh
+
+xdg-open http://hornsup/admin/index.php?login
+
+exit 0
