@@ -25,7 +25,7 @@ dev-lua/mpack -luajit
 dev-python/docutils doc
 dev-qt/qtcore icu
 dev-qt/qtgui egl
-dev-qt/qtmultimedia qml
+dev-qt/qtmultimedia qml widgets
 dev-qt/qtprintsupport cups
 dev-util/ostree curl
 gnome-base/gnome-control-center networkmanager
@@ -71,3 +71,6 @@ dev-libs/libfmt recorder
 media-libs/opencolorio -opengl
 media-video/mpv libmpv
 net-analyzer/wireshark gtk qt5
+net-libs/zeromq drafts
+dev-python/PyQt5 webchannel
+dev-qt/qtwebengine widgets
