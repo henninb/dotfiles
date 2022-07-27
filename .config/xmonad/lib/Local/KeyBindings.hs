@@ -40,6 +40,8 @@ import qualified XMonad.Util.ExtensibleState as XState (put, get)
 import XMonad.Layout.WindowArranger (pattern DecreaseDown, pattern DecreaseUp, pattern MoveRight, pattern MoveLeft, pattern MoveUp, pattern MoveDown, pattern IncreaseRight, pattern IncreaseLeft, pattern IncreaseUp, pattern IncreaseDown, pattern DecreaseRight, pattern DecreaseLeft)
 import XMonad.Actions.Navigation2D (pattern R, pattern L, windowGo)
 import XMonad.Layout.SubLayouts (GroupMsg(..))
+-- import Xmonad.Actions.EasyMotion (selectWindow, killWindow)
+import XMonad.Actions.EasyMotion (selectWindow, EasyMotionConfig(..))
 
 import Local.Prompts (searchList, myXPConfig')
 import Local.Workspaces (scratchPads, viewPrevWS)
@@ -249,6 +251,8 @@ keybinds conf =
     , ("M-C-m", addName "Tab group all" $ withFocused (sendMessage . MergeAll))
   , ("M-C-u", addName "Tab ungroup window" $ withFocused (sendMessage . UnMerge))
   -- , ("M-C-/", addName "Tab ungroup all" $ withFocused (sendMessage . UnMergeAll))
+   -- , ("M-f", addName "easy motion select"  $ selectWindow def >>= (`whenJust` windows . focusWindow))
+   , ("M-f", addName "easy motion select"  $ selectWindow def{txtCol="Red", cancelKey=xK_Escape} >>= (`whenJust` killWindow))
    ]
    ++
    subKeys "Scratchpads/misc"
