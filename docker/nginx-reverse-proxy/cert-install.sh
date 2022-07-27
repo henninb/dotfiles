@@ -47,8 +47,8 @@ openssl x509 -req -in ${server_name}.csr -CA "$HOME/ssl/rootCA.pem" -CAkey "$HOM
 openssl pkcs12 -export -out ${server_name}.p12 -in ${server_name}.crt -inkey ${server_name}.key -name ${server_name} -password "pass:${password}"
 
 # prompts for a password
-rm -rf ${server_name}.jks
-keytool -importkeystore -srckeystore ${server_name}.p12 -srcstoretype PKCS12 -destkeystore ${server_name}.jks -deststoretype JKS -keypass "${password}" -storepass "${password}"
+# rm -rf ${server_name}.jks
+# keytool -importkeystore -srckeystore ${server_name}.p12 -srcstoretype PKCS12 -destkeystore ${server_name}.jks -deststoretype JKS -keypass "${password}" -storepass "${password}"
 
 # cp -v ${server_name}.p12 "${basedir}/raspi-finance-endpoint/src/main/resources/${server_name}-raspi-finance-keystore.p12"
 # cp -v ${server_name}.crt "${basedir}/raspi-finance-react/ssl/${server_name}-raspi-finance-cert.pem"
