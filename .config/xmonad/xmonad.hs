@@ -38,6 +38,7 @@ import Local.ManagedHook (myManageHook, myManageHook')
 import Local.Layouts (myLayouts)
 import Local.PolybarLogHook (eventLogHookForPolybar)
 import Local.DzenLogHook (dzenLogHook)
+import XMonad.Hooks.WindowSwallowing ( swallowEventHook )
 
 myFont :: String
 myFont  = "terminus"
@@ -76,6 +77,8 @@ myFocusFollowsMouse = True
 -- Whether clicking on a window to focus also passes the click to the window
 myClickJustFocuses :: Bool
 myClickJustFocuses = False
+
+myHandleEventHook = swallowEventHook (className =? "Alacritty" <||> className =? "st") (return True)
 
 main :: IO ()
 main = do
@@ -180,8 +183,7 @@ myConfig = def
       <+> myManageHook
       <+> myManageHook'
       <+> manageHook def
-  , handleEventHook = docksEventHook
-      <+> minimizeEventHook
+  , handleEventHook = docksEventHook <+> minimizeEventHook <+> myHandleEventHook
       -- <+> fullscreenEventHook -- may have negative impact to flameshot
       -- <+> ewmhFullscreen
   -- , logHook = eventLogHookForPolybar
