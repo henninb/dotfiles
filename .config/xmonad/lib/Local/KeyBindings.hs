@@ -24,7 +24,7 @@ import XMonad.Util.Paste (sendKey)
 import XMonad.Prompt (XPrompt (..))
 import XMonad.Actions.DynamicWorkspaces (withNthWorkspace)
 import XMonad.Prompt.Window (WindowPrompt (..), allWindows, windowMultiPrompt, wsWindows)
-import XMonad.StackSet (greedyView, shift, tag, workspace, current, focusMaster, sink, swapUp, swapDown, swapMaster)
+import XMonad.StackSet (greedyView, shift, tag, workspace, current, focusMaster, sink, swapUp, swapDown, swapMaster, focusWindow)
 import XMonad.Util.EZConfig (mkKeymap, mkNamedKeymap)
 import XMonad.Util.NamedScratchpad (namedScratchpadAction)
 import XMonad.Actions.Search (promptSearch, selectSearch)
@@ -251,8 +251,8 @@ keybinds conf =
     , ("M-C-m", addName "Tab group all" $ withFocused (sendMessage . MergeAll))
   , ("M-C-u", addName "Tab ungroup window" $ withFocused (sendMessage . UnMerge))
   -- , ("M-C-/", addName "Tab ungroup all" $ withFocused (sendMessage . UnMergeAll))
-   -- , ("M-f", addName "easy motion select"  $ selectWindow def >>= (`whenJust` windows . focusWindow))
-   , ("M-f", addName "easy motion select"  $ selectWindow def{txtCol="Red", cancelKey=xK_Escape} >>= (`whenJust` killWindow))
+   , ("M-f", addName "easy motion select"  $ selectWindow def{txtCol="Green", cancelKey=xK_Escape} >>= (`whenJust` windows . focusWindow))
+   , ("M-w", addName "easy motion select"  $ selectWindow def{txtCol="Red", cancelKey=xK_Escape} >>= (`whenJust` killWindow))
    ]
    ++
    subKeys "Scratchpads/misc"
