@@ -115,6 +115,7 @@ showKeyBindings x =
   addName "Show Keybindings" $
   XMonad.io $ do
     h <- spawnPipe "yad --text-info"
+    -- h <- spawnPipe "zenity --info"
     hPutStr h (unlines $ showKm x)
     hClose h
     return ()
