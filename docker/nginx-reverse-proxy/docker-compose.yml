@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  nginx-reverse-proxy:
+    build: .
+    container_name: nginx-reverse-proxy
+    ports:
+      - "3001:3001"
+      - "3002:3002"
+      - "3003:3003"
+      - "3004:3004"
+    expose:
+      - "3001"
+      - "3002"
+      - "3003"
+      - "3004"
