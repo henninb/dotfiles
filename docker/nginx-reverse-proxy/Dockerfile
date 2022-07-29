@@ -1,6 +1,6 @@
 FROM nginx
 
-COPY ./public-html/ /usr/share/nginx/html/
+# COPY ./public-html/ /usr/share/nginx/html/
 COPY ./nginx.conf /etc/nginx/nginx.conf
 COPY ./proxy.crt /etc/ssl/certs/
 COPY ./proxy.key /etc/ssl/private/
