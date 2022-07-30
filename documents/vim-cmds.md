@@ -134,12 +134,28 @@ vim -O vim_cmds.txt vim_cmds.txt.bak
 :map ,l :!clear && gcc % && ./a.out<cr>
 ```
 
+## todo
+```
 ^r <register> " in insert mode to paste
-vim scp://pi@192.168.100.125/home/pi/.bashrc
 :set rnu!
 :set nu!
+```
 
+## row number
+```
 :set nonu nornu
+```
+
+## record a macro into q
+```
+qq
+```
+
+## save a macro
+```
+q
+```
+
 
 ## edit the '@q' macro
 ```
