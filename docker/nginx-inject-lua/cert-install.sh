@@ -2,7 +2,7 @@
 
 basedir="$HOME/projects/github.com/henninb"
 
-server_name="proxy.brianstore.xyz"
+server_name="proxy"
 
 mkdir -p "$HOME/ssl"
 
