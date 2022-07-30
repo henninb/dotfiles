@@ -7,7 +7,7 @@ RUN mkdir /usr/share/nginx/html-site1/
 COPY ./public-html/ /usr/share/nginx/html/
 COPY ./public-html/ /usr/share/nginx/html-site1/
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-COPY ./website.crt /etc/ssl/certs/
-COPY ./website.key /etc/ssl/private/
+COPY ./nginx.crt /etc/ssl/certs/
+COPY ./nginx.key /etc/ssl/private/
 
 # ENTRYPOINT ["/bin/sh", "-c" , "echo 127.0.0.1 proxy.brianstore.xyz >> /etc/hosts && exec nginx -g 'daemon off;'" ]
