@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  traefik-reverse-proxy:
+    build: .
+    container_name: traefik-reverse-proxy
+    extra_hosts:
+      - "hornsup:192.168.10.10"
+    ports:
+      - "80:80"
+    expose:
+      - "80"
