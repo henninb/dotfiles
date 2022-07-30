@@ -12,7 +12,7 @@
     "coc-html": ">=1.6.1",
     "coc-java": ">=1.5.5",
     "coc-json": ">=1.4.2",
-    "coc-lists": ">=1.4.3",
+    "coc-lists": ">=1.4.4",
     "coc-marketplace": ">=1.9.0",
     "coc-pyright": ">=1.1.262",
     "coc-python": ">=1.2.13",
@@ -21,10 +21,10 @@
     "coc-stylelintplus": ">=1.5.0",
     "coc-svg": ">=0.0.13",
     "coc-tasks": ">=0.3.0",
-    "coc-tsserver": ">=1.10.5",
+    "coc-tsserver": ">=1.11.0",
     "coc-vimlsp": ">=0.12.8",
     "coc-xml": ">=1.14.1",
-    "coc-yaml": ">=1.7.5",
+    "coc-yaml": ">=1.8.0",
     "coc-yank": ">=1.2.1"
   }
 }

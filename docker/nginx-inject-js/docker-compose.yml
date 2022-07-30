@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  nginx-inject-js:
+    build: .
+    container_name: nginx-inject-js
+    ports:
+      - "443:443"
+    expose:
+      - "443"
