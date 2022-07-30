@@ -3,6 +3,8 @@ services:
   nginx-server-multi:
     build: .
     container_name: nginx-server-multi
+    extra_hosts:
+      - "hornsup:192.168.10.10"
     ports:
       - "443:443"
     expose:
