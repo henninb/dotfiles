@@ -1,3 +1,5 @@
+# archlinux network
+
 [  148.302025] r8169 0000:09:00.0 enp9s0: rtl_rxtx_empty_cond == 0 (loop: 42, delay: 100).
 
 [    0.144869] ACPI BIOS Error (bug): Failure creating named object [\_SB.SMIC], AE_ALREADY_EXISTS (20200717/dswload2-326)
