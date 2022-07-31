@@ -30,3 +30,15 @@ parted /dev/sda mkpart primary 1024 100%
 mkfs.ext2 -T small /dev/sda1
 mkfs.ext4 -j -T small /dev/sda2
 ```
+
+
+mount /dev/sda2 /mnt
+
+
+pacstrap /mnt base linux linux-firmware
+
+
+genfstab -U /mnt >> /mnt/etc/fstab
+
+
+arch-chroot /mnt
