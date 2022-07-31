@@ -8,13 +8,13 @@ $(cat nginx.conf)
 }
 EOF
 
-if command -v nginx; then
-  sudo cp -v nginx-full.conf /etc/nginx/nginx.conf
+if command -v nginxnative; then
+  sudo cp -v "$HOME/tmp/nginx-full.conf" /etc/nginx/nginx.conf
   sudo cp -v ./proxy.crt /etc/ssl/certs/
   sudo cp -v ./proxy.key /etc/ssl/private/
   sudo systemctl restart nginx
-  echo native
 else
+  sudo systemctl stop nginx
   docker stop nginx-reverse-proxy
   docker rm nginx-reverse-proxy -f
   docker rmi nginx-reverse-proxy
