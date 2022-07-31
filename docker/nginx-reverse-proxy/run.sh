@@ -13,6 +13,7 @@ if command -v nginx; then
   sudo cp -v ./proxy.crt /etc/ssl/certs/
   sudo cp -v ./proxy.key /etc/ssl/private/
   sudo systemctl restart nginx
+  sudo nginx -t
 else
   sudo systemctl stop nginx
   docker stop nginx-reverse-proxy
