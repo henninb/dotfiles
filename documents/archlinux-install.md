@@ -62,6 +62,11 @@ ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
 hwclock --systohc
 ```
 
+## setup network
+```
+TBD
+```
+
 ## set the locale
 ```
 cat << EOF >> /etc/locale.gen
