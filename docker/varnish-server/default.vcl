@@ -7,8 +7,8 @@ import std;
 #}
 
 backend default {
-  .host = "192.168.10.155";
-  .port = "8443";
+  .host = "172.21.0.2";
+  .port = "80";
 }
 
 sub vcl_deliver {

@@ -2,11 +2,17 @@ version: "3.7"
 services:
   varnish-server:
     image: varnish
-    # user: "${CURRENT_UID}:${CURRENT_GID}"
     container_name: varnish-server
     ports:
-      - "9090:80"
+      - "8484:80"
     expose:
-      - "9090"
+      - "8484"
     volumes:
       - ./default.vcl:/etc/varnish/default.vcl
+  nginx-server:
+    image: nginx
+    container_name: nginx-server
+    ports:
+      - "80:80"
+    expose:
+      - "80"
