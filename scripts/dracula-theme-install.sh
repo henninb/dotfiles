@@ -4,6 +4,8 @@ pkg-config --exists gtk+-3.0 && echo "gtk+ 3.0 is installed" || echo "gtk+ 3.0 i
 pkg-config --exists gtk+-2.0 && echo "gtk+ 2.0 is installed" || echo "gtk+ 2.0 is not installed"
 
 theme_path=/usr/share/themes
+local_theme_path="$HOME/.themes"
+
 mkdir -p "$HOME/.local/share/themes"
 if [ ! -f "$HOME/tmp/dracula-gtk-theme.zip" ]; then
   wget https://github.com/dracula/gtk/archive/master.zip -O "$HOME/tmp/dracula-gtk-theme.zip"
@@ -12,6 +14,7 @@ fi
 
 if [ ! -f "$HOME/tmp/ant-dracula-gtk-theme.zip" ]; then
   wget https://github.com/EliverLara/Ant-Dracula/archive/master.zip -O "$HOME/tmp/ant-dracula-gtk-theme.zip"
+  echo curl
 fi
 
 cd "$HOME/tmp" || exit
@@ -30,6 +33,9 @@ fi
 if [ ! -d "$theme_path/AntDracula" ]; then
   sudo mv -v AntDracula "$theme_path"
 fi
+
+sudo cp -rv "$theme_path/AntDracula" "$local_theme_path"
+sudo cp -rv "$theme_path/Dracula" "$local_theme_path"
 
 if ! gsettings set org.gnome.desktop.interface gtk-theme "Dracula"; then
   export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
