@@ -44,3 +44,15 @@ proxy: none
 http server - https://mirror.esc7.net
 
 ## set names - done
+
+## location of sets - done
+
+## timezone
+```
+America/Chicago
+```
+
+## reboot
+```
+reboot
+```
