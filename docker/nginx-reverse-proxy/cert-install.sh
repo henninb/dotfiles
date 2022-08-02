@@ -36,7 +36,7 @@ DNS.2 = localhost
 EOF
 
 SUBJECT="/C=US/ST=Texas/L=Denton/O=Brian LLC/OU=None/CN=${server_name}"
-openssl req -new -newkey rsa:2048 -sha256 -nodes -keyout ${server_name}.key -subj "$SUBJECT" -out ${server_name}.csr
+openssl req -new -newkey rsa:4096 -sha256 -nodes -keyout ${server_name}.key -subj "$SUBJECT" -out ${server_name}.csr
 openssl x509 -req -in ${server_name}.csr -CA "$HOME/ssl/rootCA.pem" -CAkey "$HOME/ssl/rootCA.key" -CAcreateserial -out ${server_name}.crt -days 365 -sha256 -extfile v3.ext
 
 rm -rf v3.ext *.csr

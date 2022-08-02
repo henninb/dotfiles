@@ -12,11 +12,11 @@ TRUSTSTORE_PASSWORD="${KEYSTORE_PASSWORD}"
 # fi
 
 mkdir -p "$HOME/ssl"
+rm -rf "$HOME/ssl/${SERVERNAME}-${APP}-keystore.jks"
 
 echo generate private key
 openssl genrsa -out "$HOME/ssl/ca.key.pem" 4096
 
-rm -rf "$HOME/ssl/${SERVERNAME}-${APP}-keystore.jks"
 #-storepass
 keytool -genkey -keyalg RSA -alias "${SERVERNAME}-${APP}" -keystore "$HOME/ssl/${SERVERNAME}-${APP}-keystore.jks" -storepass "${TRUSTSTORE_PASSWORD}" -keypass "${KEYSTORE_PASSWORD}" -validity 365 -keysize 4096 -dname "CN=$SERVERNAME, OU=$SERVERNAME, O=Brian LLC, L=Denton, ST=Texas, C=US"
 keytool -export -alias "${SERVERNAME}-${APP}" -file "$HOME/ssl/${SERVERNAME}-${APP}.der" -keystore "$HOME/ssl/${SERVERNAME}-${APP}-keystore.jks" -keypass "${KEYSTORE_PASSWORD}" -storepass "${TRUSTSTORE_PASSWORD}"

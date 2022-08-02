@@ -1,19 +1,30 @@
 #!/usr/bin/env sh
 
-server_name="proxmox"
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 <server_name>"
+  exit 1
+fi
+
+server_name="$1"
+server_subject="/C=US/ST=Texas/L=Denton/O=Brian LLC/OU=None/CN=${server_name}"
+rootca_subject="/C=US/ST=Texas/L=Denton/O=Brian LLC/OU=None/CN=Brian LLC rootCA"
 
 mkdir -p "$HOME/ssl"
+mkdir -p "$HOME/tmp"
 
-stty -echo
-printf "Cert Password: "
-read -r password
-stty echo
+# stty -echo
+# printf "Cert Password: "
+# read -r password
+# stty echo
 
 if [ ! -f "$HOME/ssl/rootCA.pem" ]; then
   echo "generate new rootCA"
   read -r pause
-  openssl genrsa -out "$HOME/ssl/rootCA.key" 2048
-  openssl req -x509 -new -nodes -key "$HOME/ssl/rootCA.key" -sha256 -days 1024 -out "$HOME/ssl/rootCA.pem" -subj "/C=US/ST=Texas/L=Denton/O=Brian LLC/OU=prod/CN=Brian LLC rootCA"
+  echo generate key
+  openssl genrsa -aes256 -out "$HOME/ssl/rootCA.key" 4096
+  echo generae a public CA certificate  file
+  openssl req -x509 -new -nodes -key "$HOME/ssl/rootCA.key" -sha256 -days 1024 -out "$HOME/ssl/rootCA.pem" -subj "$rootca_subject"
+  echo view cert data
   openssl x509 -in rootCA.pem -inform PEM -out rootCA.crt
 
   # archlinux
@@ -24,10 +35,12 @@ if [ ! -f "$HOME/ssl/rootCA.pem" ]; then
   # echo sudo update-ca-certificates
 fi
 
-cat > v3.ext << EOF
-authorityKeyIdentifier=keyid,issuer
-basicConstraints=CA:FALSE
-keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+echo generate an rsa key
+openssl genrsa -out "$HOME/ssl/proxmox.key" 4096
+
+# echo "subjectAltName=DNS:pfsense,IP:192.168.10.1" > v3.ext
+
+cat << EOF > "$HOME/tmp/$server_name.ext"
 subjectAltName = @alt_names
 
 [alt_names]
@@ -35,15 +48,30 @@ DNS.1 = ${server_name}
 DNS.2 = localhost
 EOF
 
-SUBJECT="/C=US/ST=Texas/L=Denton/O=Brian LLC/OU=None/CN=${server_name}"
-openssl req -new -newkey rsa:2048 -sha256 -nodes -keyout ${server_name}.key -subj "$SUBJECT" -out ${server_name}.csr
-openssl x509 -req -in ${server_name}.csr -CA "$HOME/ssl/rootCA.pem" -CAkey "$HOME/ssl/rootCA.key" -CAcreateserial -out ${server_name}.crt -days 365 -sha256 -extfile v3.ext
+echo generate a certificate signing request
+# openssl req -new -sha256 -nodes -keyout ${server_name}.key -subj "$server_subject" -out ${server_name}.csr
+openssl req -new -sha256 -key "$HOME/ssl/$server_name.key" -subj "$server_subject" -out ${server_name}.csr
+
+echo generate the certificate using the intermediate.key
+openssl x509 -req -sha256 -days 365 -in ${server_name}.csr -CA "$HOME/ssl/rootCA.pem" -CAkey "$HOME/ssl/rootCA.key" -CAcreateserial -out "$HOME/ssl/${server_name}.crt" -extfile "$HOME/tmp/$server_name.ext"
+
+# echo generate the certificate and generate the key on the fly
+# openssl x509 -req -sha256 -new-key rsa:4096 -days 365 -in ${server_name}.csr -CAkey "$HOME/ssl/rootCA.key" -CAcreateserial -out ${server_name}.crt -extfile v3.ext
+
+echo verify certificates
+openssl verify -CAfile "$HOME/ssl/rootCA.pem" -verbose "$HOME/ssl/${server_name}.crt"
 
 
-cp -v proxmox.crt /etc/pve/nodes/pve/pveproxy-ssl.pem
-cp -v proxmox.key /etc/pve/nodes/pve/pveproxy-ssl.key
+echo cert conversion
+#openssl x509 -outform der -in cert.pem -out cert.der` | PEM to DER
+#openssl x509 -inform der -in cert.der -out cert.pem` | DER to PEM
+#openssl pkcs12 -in cert.pfx -out cert.pem -nodes` | PFX to PEM
+
+cat "$HOME/ssl/proxmox.crt" "$HOME/ssl/rootCA.pem" > "$HOME/tmp/fullchain.pem"
+mv -v "$HOME/tmp/fullchain.pem" /etc/pve/nodes/pve/pveproxy-ssl.pem
+cp -v "$HOME/ssl/proxmox.key" /etc/pve/nodes/pve/pveproxy-ssl.key
 systemctl restart pveproxy
 
-rm -rf v3.ext *.csr
+rm -rf *.csr
 
 exit 0
