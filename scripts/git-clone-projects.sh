@@ -3,7 +3,7 @@
 mkdir -p "$HOME/projects/github.com/henninb"
 mkdir -p "$HOME/projects/gitlab.com/BitExplorer"
 
-PROJECTS="weather-gtk logout-gtk nextjs-website webpage example-ratpack raspi-finance-ratpack example-ktor raspi-finance-endpoint raspi-finance-database src-common example-java example-scala example-kotlin raspi-finance-react raspi-finance-endpoint-micronaut raspi-finance-ncurses raspi-finance-reports st cribbage cribbage-fsharp"
+PROJECTS="weather-gtk logout-gtk nextjs-website webpage example-ratpack raspi-finance-ratpack example-ktor raspi-finance-endpoint raspi-finance-database src-common example-java example-scala example-kotlin raspi-finance-react raspi-finance-endpoint-micronaut raspi-finance-ncurses raspi-finance-reports st cribbage cribbage-fsharp profile-website"
 for i in $PROJECTS; do
   cd "$HOME/projects/github.com/henninb" || exit
   echo "$i"
@@ -27,7 +27,7 @@ for i in $PLUGINS; do
   git fetch
 done
 
-THEME="dracula-zsh-theme spaceship-prompt"
+THEME="spaceship-prompt"
 for i in $THEME; do
   cd "$HOME/themes/$i" || exit
   git fetch
@@ -36,7 +36,7 @@ done
 echo distrotube
 echo git clone git@gitlab.com:dwt1/wallpapers.git
 
-cd "$HOME/projects/gitlab.com/BitExplorer" || exit
+cd "$HOME/projects/gitlab.com/henninb" || exit
 git clone git@gitlab.com:BitExplorer/howto.git
 
 exit 0
