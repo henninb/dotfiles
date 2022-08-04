@@ -11,8 +11,10 @@ export default function Home() {
             <main>
                 <h1>Home</h1>
                 <ul>
-                    <li><a href="https://www.brianhenning.click">Finance App</a></li>
-                    <li><a href="https://www.youtube.com/channel/UCQN2DsjnYH60SFBIA6IkNwg">STÖK</a></li>
+                    <li><a href="https://site1.brianhenning.me">Website 1</a></li>
+                    <li><a href="https://site2.brianhenning.me">Website 2</a></li>
+                    <li><a href="https://site3.brianhenning.me">Website 3</a></li>
+                    <li><a href="https://site4.brianhenning.me">Website 4</a></li>
                 </ul>
             </main>
 
