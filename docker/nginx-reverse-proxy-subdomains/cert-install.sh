@@ -70,11 +70,11 @@ subjectAltName = @alt_names
 [alt_names]
 DNS.1 = ${server_name}
 DNS.2 = localhost
-DNS.3 = pfsense.proxy.home.arpa
-DNS.4 = hornsup.proxy.home.arpa
-DNS.5 = proxmox.proxy.home.arpa
-DNS.6 = ddwrt.proxy.home.arpa
-DNS.7 = pihole.proxy.home.arpa
+DNS.3 = pfsense.proxy.lan
+DNS.4 = hornsup.proxy.lan
+DNS.5 = proxmox.proxy.lan
+DNS.6 = ddwrt.proxy.lan
+DNS.7 = pihole.proxy.lan
 EOF
 
 echo Generate an rsa key
