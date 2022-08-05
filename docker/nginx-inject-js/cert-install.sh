@@ -18,24 +18,51 @@ mkdir -p "$HOME/tmp"
 # stty echo
 
 if [ ! -f "$HOME/ssl/rootCA.pem" ]; then
-  echo "generate new rootCA"
-  read -r pause
-  echo generate key
-  openssl genrsa -aes256 -out "$HOME/ssl/rootCA.key" 4096
-  echo generae a public CA certificate  file
-  openssl req -x509 -new -nodes -key "$HOME/ssl/rootCA.key" -sha256 -days 1024 -out "$HOME/ssl/rootCA.pem" -subj "$rootca_subject"
-  echo view cert data
-  openssl x509 -in rootCA.pem -inform PEM -out rootCA.crt
+  # echo "generate rootCA key"
+  # openssl genrsa -aes256 -out "$HOME/ssl/rootCA.key" 4096
+  # echo "generae a public testRootCA certificate file"
+  # openssl req -x509 -new -nodes -key "$HOME/ssl/rootCA.key" -sha256 -days 1024 -out "$HOME/ssl/rootCA.pem" -subj "$rootca_subject"
+  # echo "confirm the rootCA cert"
+  # openssl x509 -in "$HOME/ssl/rootCA.pem" -inform PEM -out "$HOME/ssl/rootCA.crt"
 
-  # archlinux
-  # sudo trust anchor --store rootCA.pem
+  echo "generate testRootCA key (no password)"
+  echo "generae a public testRootCA certificate file"
+  openssl req \
+      -x509 \
+      -new \
+      -newkey rsa:4096 \
+      -nodes \
+      -days 1024 \
+      -sha256  \
+      -subj "$rootca_subject" \
+      -keyout "$HOME/ssl/testRootCA.key" \
+      -out "$HOME/ssl/testRootCA.pem"
+
+  if command -v pacman; then
+    sudo trust anchor --store rootCA.pem
+  fi
+
+  if command -v brew; then
+    echo "macos"
+  fi
 
   # gentoo
   # echo sudo cp -v rootCA.crt /usr/local/share/ca-certificates
   # echo sudo update-ca-certificates
 fi
 
-# echo "subjectAltName=DNS:pfsense,IP:192.168.10.1" > v3.ext
+echo "generate testRootCA key (no password)"
+echo "generae a public testRootCA certificate file"
+openssl req \
+    -x509 \
+    -new \
+    -newkey rsa:4096 \
+    -nodes \
+    -days 1024 \
+    -sha256  \
+    -subj "$rootca_subject" \
+    -keyout "$HOME/ssl/testRootCA.key" \
+    -out "$HOME/ssl/testRootCA.pem"
 
 cat << EOF > "$HOME/tmp/$servername.ext"
 subjectAltName = @alt_names
@@ -43,6 +70,11 @@ subjectAltName = @alt_names
 [alt_names]
 DNS.1 = ${server_name}
 DNS.2 = localhost
+DNS.3 = pfsense.proxy.home.arpa
+DNS.4 = hornsup.proxy.home.arpa
+DNS.5 = proxmox.proxy.home.arpa
+DNS.6 = ddwrt.proxy.home.arpa
+DNS.7 = pihole.proxy.home.arpa
 EOF
 
 echo Generate an rsa key
