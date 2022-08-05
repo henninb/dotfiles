@@ -12,6 +12,7 @@ if command -v nginx; then
   sudo cp -v "$HOME/tmp/nginx-full.conf" /etc/nginx/nginx.conf
   sudo cp -v ./proxy.crt /etc/ssl/certs/
   sudo cp -v ./proxy.key /etc/ssl/private/
+  sudo systemctl disable nginx
   sudo systemctl restart nginx
   sudo nginx -t
 else
