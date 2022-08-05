@@ -8,7 +8,7 @@ $(cat nginx.conf)
 }
 EOF
 
-if command -v nginx1; then
+if command -v nginx; then
   sudo cp -v "$HOME/tmp/nginx-full.conf" /etc/nginx/nginx.conf
   sudo cp -v ./proxy.crt /etc/ssl/certs/
   sudo cp -v ./proxy.key /etc/ssl/private/
@@ -26,7 +26,7 @@ else
 
   if command -v docker-compose; then
     docker-compose build
-    docker-compose up
+    docker-compose up -d
   else
     docker build -t nginx-reverse-proxy .
     docker run --name=nginx-reverse-proxy -h nginx-reverse-proxy -h nginx-reverse-proxy --restart unless-stopped -p 8401:8401 -p 8403:8403 -p 8405:8405 -p 8406:8406 -p 8410:8410 -d nginx-reverse-proxy
