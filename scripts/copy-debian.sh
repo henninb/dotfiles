@@ -10,7 +10,7 @@ rsync -arvz "$HOME/.gitignore" "hornsup:/home/henninb/"
 rsync -arvz "$HOME/.gitconfig" "hornsup:/home/henninb/"
 rsync -arvz "$HOME/ssl/" "hornsup:/home/henninb/ssl/"
 rsync -arvz "$HOME/.local/fonts/" "hornsup:/home/henninb/.local/fonts/"
-rsync -arvz --exclude='.git' --exclude='*.crt' --exclude='*.key' "$HOME/docker/nginx-reverse-proxy/" "hornsup:/home/henninb/docker/nginx-reverse-proxy/"
+rsync -arvz --exclude='.git' --exclude='*.crt' --exclude='*.key' "$HOME/docker/nginx-reverse-proxy-subdomains/" "hornsup:/home/henninb/docker/nginx-reverse-proxy-subdomains/"
 
 rsync -arvz "$HOME/.irssi/" "hornsup:/home/henninb/.irssi/"
 rsync -arvz --exclude='audio' --exclude='apikey' "$HOME/src/api/youtube/" "hornsup:/home/henninb/src/api/youtube/"
