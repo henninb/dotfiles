@@ -10,6 +10,6 @@ services:
       # - "ddwrt.proxy:127.0.0.1"
       # - "hornsup.proxy:127.0.0.1"
     ports:
-      - "8484:8484"
+      - "443:443"
     expose:
-      - "8484"
+      - "443"
