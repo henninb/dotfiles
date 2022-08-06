@@ -32,6 +32,7 @@ elif [ "$OS" = "Gentoo" ]; then
   echo sudo emerge -cav package_name # verify depends
   echo sudo emerge -pv dev-lang/python-exec # pretend
   echo sudo emerge "=net-misc/spice-gtk-0.39-r2" # pin specific
+  echo cat /var/lib/portage/world  # lsit installed packages
 else
   echo "$OS is not yet implemented."
   exit 1

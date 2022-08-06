@@ -8,8 +8,10 @@ EOF
 
 lspci -k | grep -A 2 -E "(VGA|3D)"
 
-if [ -x "$(command -v emerge)" ]; then
-  sudo emerge --update --newuse hardinfo
+if [ command -v emerge ]; then
+  if ! command -v hardinfo; then
+    sudo emerge --update --newuse hardinfo
+  fi
   sudo emerge --update --newuse mesa-progs
   sudo emerge --update --newuse linux-headers
 fi
@@ -85,8 +87,12 @@ else
 fi
 
 echo open https://www.nvidia.com/en-us/geforce/drivers/
-if [ ! -f NVIDIA-Linux-x86_64-515.57.run ]; then
-  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/515.57/NVIDIA-Linux-x86_64-515.57.run'
+if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-515.57.run" ]; then
+  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/515.57/NVIDIA-Linux-x86_64-515.57.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-515.57.run"
+fi
+
+if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-515.65.01.run" ]; then
+  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/515.65.01/NVIDIA-Linux-x86_64-515.65.01.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-515.65.01.run"
 fi
 
 grep "X Driver" /var/log/Xorg.0.log
