@@ -75,6 +75,7 @@ DNS.4 = finance.lan
 DNS.5 = proxmox.lan
 DNS.6 = ddwrt.lan
 DNS.7 = pihole.lan
+DNS.8 = freshbooks.lan
 EOF
 
 echo Generate an rsa key
