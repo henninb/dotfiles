@@ -69,13 +69,18 @@ subjectAltName = @alt_names
 
 [alt_names]
 DNS.1 = ${server_name}
-DNS.2 = localhost
-DNS.3 = pfsense.lan
-DNS.4 = finance.lan
-DNS.5 = proxmox.lan
-DNS.6 = ddwrt.lan
-DNS.7 = pihole.lan
-DNS.8 = freshbooks.lan
+DNS.2 = pfsense.lan
+DNS.3 = finance.lan
+DNS.4 = proxmox.lan
+DNS.5 = ddwrt.lan
+DNS.6 = pihole.lan
+DNS.7 = freshbooks.lan
+DNS.8 = pfsense
+DNS.9 = finance
+DNS.10 = proxmox
+DNS.11 = ddwrt
+DNS.12 = pihole
+DNS.13 = freshbooks
 EOF
 
 echo Generate an rsa key
