@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# curl -O https://bootstrap.pypa.io/get-pip.py
-# pip install Flask
-
 pip install -r requirements.txt
 
 export FLASK_ENV=development
