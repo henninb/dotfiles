@@ -23,7 +23,7 @@ else
   exit 1
 fi
 
-files=$(ssh  raspi "ls -d1 /home/pi/downloads/backup-*")
+files=$(ssh  raspi "ls -d1 /home/pi/downloads/backups/backup-*")
 # files=$(ssh  raspi "ls -d1 /home/pi/tmp/test/backup-*")
 
 # rsync -arv "raspi:/home/pi/test/" "$HOME/test/"
