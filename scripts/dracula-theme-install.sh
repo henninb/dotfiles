@@ -17,6 +17,9 @@ if [ ! -f "$HOME/tmp/ant-dracula-gtk-theme.zip" ]; then
   echo curl
 fi
 
+
+echo 'git clone https://github.com/theory-of-everything/everforest-gtk ~/.themes/everforest-gtk'
+
 cd "$HOME/tmp" || exit
 rm -rf ant-dracula-theme AntDracula
 rm -rf gtk-master Dracula
