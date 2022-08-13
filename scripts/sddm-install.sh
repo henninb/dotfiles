@@ -62,10 +62,12 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
   ls -l /usr/share/sddm/themes/
 
-  systemctl --user stop xdg-desktop-portal{,gtk}
-  systemctl --user stop xdg-desktop-portal
-  systemctl --user disable xdg-desktop-portal{,gtk}
-  systemctl --user disable xdg-desktop-portal
+  # systemctl --user stop xdg-desktop-portal{,gtk}
+  # systemctl --user stop xdg-desktop-portal
+  # systemctl --user disable xdg-desktop-portal{,gtk}
+  # systemctl --user disable xdg-desktop-portal
+  sudo systemctl enable sddm
+  sudo systemctl start sddm
 elif [ "${OS}" = "void" ]; then
   sudo xbps-install -y sddm
   sudo mkdir -p /etc/sddm.conf.d/
@@ -80,7 +82,7 @@ elif [ "${OS}" = "FreeBSD" ]; then
   sudo pkg install -y sddm
   sudo pkg install -y sysrc
   sysrc sddm_enable="YES"
-  sudo mv -v "$HOME/tmp/40-wheel-group.rules" /usr/local/etc/polkit-1/rules.d/40-wheel-group.rules
+  sudo mv -v "$HOME/tmp/40-wheel-group.rules" "/usr/local/etc/polkit-1/rules.d/40-wheel-group.rules"
   sudo sddm --example-config /usr/local/etc/sddm.conf
   sudo service sddm start
   echo "https://community.kde.org/FreeBSD/Setup#SDDM"
