@@ -29,7 +29,7 @@ EOF
 cat > "$HOME/tmp/Xsetup" << EOF
 setxkbmap us
 EOF
-chmod 755 Xsetup
+chmod 755 "$HOME/tmp/Xsetup"
 
 cat > "$HOME/tmp/sddm.conf" << EOF
 [Users]
