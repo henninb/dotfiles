@@ -616,3 +616,9 @@ eix -Iu --only-names
   (dev-python/docutils-0.18.1-r1:0/0::gentoo, ebuild scheduled for merge) USE="" ABI_X86="(64)" PYTHON_TARGETS="python3_10 python3_9 (-pypy3) (-python3_11) -python3_8" conflicts with
     <dev-python/docutils-0.18[python_targets_python3_9(-),python_targets_python3_10(-)] required by (dev-python/sphinx-4.5.0-r1:0/0::gentoo, installed) USE="-doc -latex -test" ABI_X86="(64)" PYTHON_TARGETS="python3_10 python3_9 (-pypy3) (-python3_11) -python3_8"
 ```
+
+
+## stack ghc version
+```
+stack ghc -- --version
+```
