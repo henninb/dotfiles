@@ -8,7 +8,7 @@
     "coc-eslint": ">=1.5.8",
     "coc-explorer": ">=0.24.4",
     "coc-fsharp": ">=0.3.5",
-    "coc-git": ">=2.4.10",
+    "coc-git": ">=2.5.1",
     "coc-html": ">=1.6.1",
     "coc-java": ">=1.5.5",
     "coc-json": ">=1.6.0",

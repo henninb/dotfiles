@@ -78,7 +78,8 @@ if [ "$OS" = "ArcoLinux" ] || [ "$OS" = "Arch Linux" ] || [ "$OS" = "Gentoo" ] |
   # 4k monitor
   device=$(xrandr | grep " connected " | awk '{ print $1 }' | head -1)
   # xrandr | tee -a "$HOME/tmp/xrandr.log"
-  xrandr > "$HOME/tmp/xrandr.log" 2>&1
+  date | tee -a "$HOME/tmp/xrandr.log"
+  xrandr >> "$HOME/tmp/xrandr.log" 2>&1
   date | tee -a "$HOME/tmp/profile.log"
   echo "$device" | tee -a "$HOME/tmp/profile.log"
   if xrandr --output "$device" --mode 3840x2160 2> /dev/null; then
@@ -86,6 +87,10 @@ if [ "$OS" = "ArcoLinux" ] || [ "$OS" = "Arch Linux" ] || [ "$OS" = "Gentoo" ] |
   fi
   xrandr --size 3840x2160 2> /dev/null
 else
+  date | tee -a "$HOME/tmp/xrandr.log"
+  xrandr >> "$HOME/tmp/xrandr.log" 2>&1
+  date | tee -a "$HOME/tmp/profile.log"
+  echo "$device" | tee -a "$HOME/tmp/profile.log"
   echo "Undesired logic - Comes from .profile, this logic must be updated in the future." | tee -a "$HOME/tmp/profile.log"
   # TODO: required for 1440p monitor to work at desired resolution
   device=$(xrandr | grep " connected " | awk '{ print $1 }' | head -1)
