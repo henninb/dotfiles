@@ -60,8 +60,8 @@ dmenuRunCmd :: String
 -- passmenuRunCmd = scriptsPath ++ "passmenu " ++ (unwords $ dmenuArgs "Password:")
 dmenuRunCmd = "dmenu " ++ unwords (dmenuArgs "Execute:")
 
-myEmacs :: FilePath
-myEmacs = "emacsclient -c -a 'emacs'"
+-- myEmacs :: FilePath
+-- myEmacs = "emacsclient -c -a 'emacs'"
 
 lockScreen :: X ()
 lockScreen = safeSpawn "xscreensaver-command" ["-lock"]
@@ -69,10 +69,10 @@ lockScreen = safeSpawn "xscreensaver-command" ["-lock"]
 -- viewShift :: WorkspaceId -> Query (Endo (StackSet WorkspaceId l Window ScreenId sd))
 -- viewShift = doF . liftM2 (.) greedyView shift
 
-emacs :: X ()
-emacs = do
-  name <- gets (tag . workspace . current . windowset)
-  safeSpawn ("e -cs " ++ name) []
+-- emacs :: X ()
+-- emacs = do
+--   name <- gets (tag . workspace . current . windowset)
+--   safeSpawn ("e -cs " ++ name) []
 
 data MessageMenu = MessageMenu
 
@@ -172,9 +172,9 @@ keybinds conf =
   , ("M-<Return>", addName "Terminal"        $ safeSpawn "terminal" [] >> safeSpawn "notify-send" ["terminal"])
   , ("M-S-p", addName "Application Launcher" $ safeSpawn "dmenu_run" ["-i", "-nb", "#9370DB", "-nf", "#50fa7b", "-sb", "#EE82EE", "-sf", "black", "-fn", "monofur for Powerline", "-p", "Command:"])
   , ("M-<F2>", addName "File Manager" $ safeSpawn "fm" [] >> safeSpawn "notify-send 'fm file manager'" [])
-  , ("M-i", addName "Browser" $ safeSpawn "browser" [])
-  , ("M-e", addName "Emacs" $ safeSpawn myEmacs [])
-  , ("M-S-i", addName "Private Browser" $ safeSpawn "browser" ["--incognito"])
+  , ("M-i", addName "Browser" $ safeSpawn "browser-start" [])
+  , ("M-e", addName "Emacs" $ safeSpawn "emacs-start" [])
+  , ("M-S-i", addName "Private Browser" $ safeSpawn "browser-start" ["--incognito"])
   -- , ("M-p", addName "Passowrd Manager" $ spawn passmenuRunCmd)
   , ("M-p", addName "Password Launcher" $ safeSpawn "passmenu" ["-i", "-nb", "#9370DB", "-nf", "#50fa7b", "-sb", "#EE82EE", "-sf", "black", "-fn", "monofur for Powerline", "-p", "Password:"])
   -- , ("M-<Print>"         , safeSpawn "flameshot gui -p $HOME/screenshots" [])

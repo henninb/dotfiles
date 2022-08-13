@@ -20,10 +20,10 @@ myManageHook = composeAll
      , className =? "toolbar"         --> doFloat
      , className =? "Xmessage"        --> doFloat
      , role      =? "pop-up"          --> doFloat
-     , resource  =? "desktop_window"   --> doIgnore -- TODO: not sure what this does
+     , resource  =? "desktop_window"  --> doIgnore -- TODO: not sure what this does
 
     , className =? "Gimp"             --> doFloat
-    , className =? "Emacs"            --> viewShift ( myWorkspaces !! 6 )
+    -- , className =? "Emacs"            --> viewShift ( myWorkspaces !! 6 )
     , className =? "dzen2"            --> doIgnore
     -- , className =? "discord"          --> viewShift ( myWorkspaces !! 8 )
     , title     =? "Oracle VM VirtualBox Manager"  --> doFloat

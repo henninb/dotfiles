@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+if emacsclient -c -a 'emacs'; then
+  exit 0
+fi
+
+if emacs; then
+  exit 0
+fi
+
+exec notify-send "emacs NOT installed"
+
+exit 0
+
+# vim: set ft=sh:
