@@ -13,7 +13,7 @@ if urxvt; then
   exit 0
 fi
 
-if xterm -fa 'monofur for Powerline' -fs 12; then
+if xterm -fa 'monofur for Powerline' -fs 16; then
   exit 0
 fi
 
