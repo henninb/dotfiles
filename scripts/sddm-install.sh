@@ -74,10 +74,12 @@ elif [ "${OS}" = "void" ]; then
   sudo ln -s /etc/sv/sddm /var/service/sddm
   sudo ln -s /etc/sv/dbus /var/service/dbus
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
-elif [ "${OS}" = "Ubuntu" ]; then
+elif [ "${OS}" = "Ubuntu" ] || [ "$OS" = "Linux Mint" ]; then
   sudo apt install -y sddm
   sudo mkdir -p /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
+  sudo systemctl disable lightdm
+  sudo systemctl enable sddm.service -f
 elif [ "${OS}" = "FreeBSD" ]; then
   sudo pkg install -y sddm
   sudo pkg install -y sysrc
@@ -94,14 +96,9 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo sudo mv -v "$HOME/tmp/Xsetup" /etc/sddm/scripts/Xsetup
   sudo chmod 755 /etc/sddm/scripts/Xsetup
   sudo emerge --update --newuse gui-libs/display-manager-init
-  # echo sudo vi /etc/conf.d/display-manager
-  # cat /etc/conf.d/display-manager
-  # echo DISPLAYMANAGER="xdm"
-  # sudo sed -i "s/DISPLAYMANAGER=\"xdm\"/DISPLAYMANAGER=\"sddm\"/g" /etc/conf.d/display-manager
-#  sudo rc-update add display-manager default
-#  sudo rc-service display-manager start
-  sudo systemctl enable sddm
-  sudo systemctl start sddm
+  # sudo systemctl enable sddm
+  # sudo systemctl start sddm
+  sudo systemctl enable sddm.service -f
 else
   echo "${OS} is not setup"
   exit 1
