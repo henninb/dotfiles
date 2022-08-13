@@ -77,7 +77,8 @@ if [ "$OS" = "ArcoLinux" ] || [ "$OS" = "Arch Linux" ] || [ "$OS" = "Gentoo" ] |
   echo "Comes from .profile, this logic must be updated in the future." | tee -a "$HOME/tmp/profile.log"
   # 4k monitor
   device=$(xrandr | grep " connected " | awk '{ print $1 }' | head -1)
-  xrandr | tee -a "$HOME/tmp/xrandr.log"
+  # xrandr | tee -a "$HOME/tmp/xrandr.log"
+  xrandr > "$HOME/tmp/xrandr.log" 2>&1
   date | tee -a "$HOME/tmp/profile.log"
   echo "$device" | tee -a "$HOME/tmp/profile.log"
   if xrandr --output "$device" --mode 3840x2160 2> /dev/null; then
