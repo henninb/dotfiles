@@ -73,7 +73,7 @@ export CM_DEBUG=0
 export CM_OUTPUT_CLIP=1
 export CM_MAX_CLIPS=25
 
-if [ "$OS" = "ArcoLinux" ] || [ "$OS" = "Gentoo" ] || [ "$OS" = "void" ]; then
+if [ "$OS" = "ArcoLinux" ] || [ "$OS" = "Arch Linux" ] || [ "$OS" = "Gentoo" ] || [ "$OS" = "void" ]; then
   echo "Comes from .profile, this logic must be updated in the future." | tee -a "$HOME/tmp/profile.log"
   # 4k monitor
   device=$(xrandr | grep " connected " | awk '{ print $1 }' | head -1)
