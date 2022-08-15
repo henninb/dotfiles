@@ -396,8 +396,8 @@ else
 fi
 
 [ -d "/var/lib/mpd/music/" ] && ln -sfn /var/lib/mpd/music/ "$HOME/media" 2> /dev/null
-[ -f "$HOME/.config/nvim/init.vim" ] && ln -sfn "$HOME/.config/nvim/init.vim" "$HOME/.vimrc" 2> /dev/null
-[ -f "$HOME/.config/picom/picom.conf" ] && ln -sfn "$HOME/.config/picom/picom.conf" "$HOME/.config/compton/compton.conf" 2> /dev/null
+# [ -f "$HOME/.config/nvim/init.vim" ] && ln -sfn "$HOME/.config/nvim/init.vim" "$HOME/.vimrc" 2> /dev/null
+# [ -f "$HOME/.config/picom/picom.conf" ] && ln -sfn "$HOME/.config/picom/picom.conf" "$HOME/.config/compton/compton.conf" 2> /dev/null
 # TODO: ought not do this as it breaks lightdm
 #[ -f "$HOME/.xinitrc" ] && ln -sfn "$HOME/.xinitrc" "$HOME/.xsession"
 [ -f /opt/arduino/arduino ] && ln -sfn /opt/arduino/arduino "$HOME/.local/bin/arduino" 2> /dev/null
