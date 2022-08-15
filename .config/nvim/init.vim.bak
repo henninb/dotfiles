@@ -39,7 +39,7 @@ endif
 " curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
  call plug#begin(plugpath)
    Plug 'http://github.com/tpope/vim-surround.git'
-   Plug 'http://github.com/tpope/vim-commentary.git'
+   Plug 'http://github.com/tpope/vim-commentary.git' " gcc to comment code
    " Plug 'vimwiki/vimwiki'
    " Plug 'vim-pandoc/vim-pandoc' " Markdown Docs in Vim
    " Plug 'vim-pandoc/vim-pandoc-syntax' " Markdown Docs in Vim
@@ -59,9 +59,9 @@ endif
    if has('nvim')
      Plug 'neoclide/coc.nvim', {'branch': 'release'}
      Plug 'udalov/kotlin-vim' " kotlin syntax highlighting
-     if has('nvim-0.5')
+   "  if has('nvim-0.5')
        Plug 'nvim-treesitter/nvim-treesitter'
-     endif
+   "  endif
      " Plug 'fwcd/kotlin-language-server', { 'do': './gradlew :server:installDist' } " kotlin language sesrver
      " Plug 'http://github.com/rust-lang/rust.vim.git'
      Plug 'http://github.com/neovimhaskell/haskell-vim.git' " what does this do?

@@ -91,12 +91,12 @@ require('lualine').setup()
 
 -- COLORSCHEMES
 -- Uncomment just ONE of the following colorschemes!
--- local ok, _ = pcall(vim.cmd, 'colorscheme base16-dracula')
+local ok, _ = pcall(vim.cmd, 'colorscheme base16-dracula')
 -- local ok, _ = pcall(vim.cmd, 'colorscheme base16-gruvbox-dark-medium')
 -- local ok, _ = pcall(vim.cmd, 'colorscheme base16-monokai')
 -- local ok, _ = pcall(vim.cmd, 'colorscheme base16-nord')
 -- local ok, _ = pcall(vim.cmd, 'colorscheme base16-oceanicnext')
-local ok, _ = pcall(vim.cmd, 'colorscheme base16-onedark')
+-- local ok, _ = pcall(vim.cmd, 'colorscheme base16-onedark')
 -- local ok, _ = pcall(vim.cmd, 'colorscheme palenight')
 -- local ok, _ = pcall(vim.cmd, 'colorscheme base16-solarized-dark')
 -- local ok, _ = pcall(vim.cmd, 'colorscheme base16-solarized-light')
@@ -146,10 +146,11 @@ return require('packer').startup(function()
 
   -- Tim Pope Plugins --
   use 'tpope/vim-surround'
+  use 'tpope/vim-comentary'
 
   -- Syntax Highlighting and Colors --
-  use 'PotatoesMaster/i3-vim-syntax'
-  use 'kovetskiy/sxhkd-vim'
+  -- use 'PotatoesMaster/i3-vim-syntax'
+  -- use 'kovetskiy/sxhkd-vim'
   use 'vim-python/python-syntax'
   use 'ap/vim-css-color'
 
