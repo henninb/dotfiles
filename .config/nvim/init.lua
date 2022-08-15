@@ -1,4 +1,4 @@
-require("plugins")
+-- require("plugins")
 -- Config was built using the following config:
 -- https://github.com/numToStr/dotfiles/tree/master/neovim/.config/nvim/
 
