@@ -1,3 +1,4 @@
+require("plugins")
 -- Config was built using the following config:
 -- https://github.com/numToStr/dotfiles/tree/master/neovim/.config/nvim/
 
@@ -88,6 +89,7 @@ g.mapleader = ' '
 g.maplocalleader = ' '
 
 require('lualine').setup()
+require('nvim_comment').setup()
 
 -- COLORSCHEMES
 -- Uncomment just ONE of the following colorschemes!
@@ -146,7 +148,9 @@ return require('packer').startup(function()
 
   -- Tim Pope Plugins --
   use 'tpope/vim-surround'
-  use 'tpope/vim-comentary'
+  -- use 'tpope/vim-comentary'
+  use 'terrortylor/nvim-comment'
+
 
   -- Syntax Highlighting and Colors --
   -- use 'PotatoesMaster/i3-vim-syntax'
