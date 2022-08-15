@@ -4,6 +4,8 @@
 # read -p "Brightness: " bright
 # read -p "State: " state
 
+curl --location --request GET 'http://192.168.10.110:9123/elgato/lights' --header 'Accept: application/json'
+
 generate_post_data() {
 
 cat <<EOF
@@ -24,6 +26,6 @@ EOF
 
 }
 
-curl --location --request PUT 'http://your-keylights-ip:9123/elgato/lights' \
+curl --location --request PUT 'http://192.168.10.110:9123/elgato/lights' \
 --header 'Content-Type: application/json' \
 --data "$(generate_post_data)"
