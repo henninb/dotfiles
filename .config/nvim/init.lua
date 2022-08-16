@@ -1,4 +1,6 @@
 require("plugins")
+require("keybindings")
+
 -- Config was built using the following config:
 -- https://github.com/numToStr/dotfiles/tree/master/neovim/.config/nvim/
 
@@ -120,14 +122,14 @@ o.splitbelow = true
 --
 -- opt.mouse = "a"
 -- vim.opt.mouse = 'a'
--- mouse copy without going into visual mode
+-- mouse copy without going into visual mode1
 vim.opt.mouse = 'r'
 
 -- Map <leader> to space
 g.mapleader = ' '
 g.maplocalleader = ' '
 
-vim.api.nvim_set_keymap('n', '<Leader>l', ':set nu! rnu! list!<cr>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('n', '<Leader>l', ':set nu! rnu! list!<cr>', {noremap = true, silent = true})
 -- :set nu! rnu! list!<cr>
 
 -- COLORSCHEMES
