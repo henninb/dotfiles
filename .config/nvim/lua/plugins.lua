@@ -36,6 +36,12 @@ return require('packer').startup(function()
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
+
+  use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+  }
+
   -- File management --
   use 'vifm/vifm.vim'
   use 'scrooloose/nerdtree'
