@@ -1,6 +1,9 @@
--- require("plugins")
+require("plugins")
 -- Config was built using the following config:
 -- https://github.com/numToStr/dotfiles/tree/master/neovim/.config/nvim/
+
+require('lualine').setup()
+require('nvim_comment').setup()
 
 local g   = vim.g
 local o   = vim.o
@@ -45,8 +48,10 @@ o.listchars = 'trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂'
 -- o.listchars = 'eol:¬,space:·,lead: ,trail:·,nbsp:◇,tab:→-,extends:▸,precedes:◂,multispace:···⬝,leadmultispace:│   ,'
 -- o.formatoptions = 'qrn1'
 
--- Makes neovim and host OS clipboard play nicely with each other
-o.clipboard = 'unnamedplus'
+-- sync host OS clipboard
+-- vim.fn.has('macunix')
+o.clipboard = 'unnamedplus' -- Linux
+-- o.clipboard = 'unnamed' --  OSX
 
 -- Case insensitive searching UNLESS /C or capital in search
 o.ignorecase = true
@@ -88,8 +93,8 @@ opt.mouse = "a"
 g.mapleader = ' '
 g.maplocalleader = ' '
 
-require('lualine').setup()
-require('nvim_comment').setup()
+vim.api.nvim_set_keymap('n', '<Leader>l', ':set nu! rnu! list!<cr>', {noremap = true, silent = true})
+-- :set nu! rnu! list!<cr>
 
 -- COLORSCHEMES
 -- Uncomment just ONE of the following colorschemes!
@@ -126,48 +131,48 @@ map('i', '<C-A>', '<ESC>I')
 -- PLUGINS
 -- Only required if you have packer configured as `opt`
 -- vim.cmd [[packadd packer.nvim]]
-return require('packer').startup(function()
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-
-  -- A better status line
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
-
-  -- File management --
-  use 'vifm/vifm.vim'
-  use 'scrooloose/nerdtree'
-  use 'tiagofumo/vim-nerdtree-syntax-highlight'
-  use 'ryanoasis/vim-devicons'
-
-  -- Productivity --
-  use 'vimwiki/vimwiki'
-  use 'jreybert/vimagit'
-
-  -- Tim Pope Plugins --
-  use 'tpope/vim-surround'
-  -- use 'tpope/vim-comentary'
-  use 'terrortylor/nvim-comment'
-
-
-  -- Syntax Highlighting and Colors --
-  -- use 'PotatoesMaster/i3-vim-syntax'
-  -- use 'kovetskiy/sxhkd-vim'
-  use 'vim-python/python-syntax'
-  use 'ap/vim-css-color'
-
-  -- Junegunn Choi Plugins --
-  use 'junegunn/goyo.vim'
-  use 'junegunn/limelight.vim'
-  use 'junegunn/vim-emoji'
-
-  -- Colorschemes
-  use 'RRethy/nvim-base16'
-  use 'kyazdani42/nvim-palenight.lua'
-
-  -- Other stuff
-  use 'frazrepo/vim-rainbow'
-end)
-
+-- return require('packer').startup(function()
+--   -- Packer can manage itself
+--   use 'wbthomason/packer.nvim'
+--
+--   -- A better status line
+--   use {
+--     'nvim-lualine/lualine.nvim',
+--     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+--   }
+--
+--   -- File management --
+--   use 'vifm/vifm.vim'
+--   use 'scrooloose/nerdtree'
+--   use 'tiagofumo/vim-nerdtree-syntax-highlight'
+--   use 'ryanoasis/vim-devicons'
+--
+--   -- Productivity --
+--   use 'vimwiki/vimwiki'
+--   use 'jreybert/vimagit'
+--
+--   -- Tim Pope Plugins --
+--   use 'tpope/vim-surround'
+--   -- use 'tpope/vim-comentary'
+--   use 'terrortylor/nvim-comment'
+--
+--
+--   -- Syntax Highlighting and Colors --
+--   -- use 'PotatoesMaster/i3-vim-syntax'
+--   -- use 'kovetskiy/sxhkd-vim'
+--   use 'vim-python/python-syntax'
+--   use 'ap/vim-css-color'
+--
+--   -- Junegunn Choi Plugins --
+--   use 'junegunn/goyo.vim'
+--   use 'junegunn/limelight.vim'
+--   use 'junegunn/vim-emoji'
+--
+--   -- Colorschemes
+--   use 'RRethy/nvim-base16'
+--   use 'kyazdani42/nvim-palenight.lua'
+--
+--   -- Other stuff
+--   use 'frazrepo/vim-rainbow'
+-- end)
+--

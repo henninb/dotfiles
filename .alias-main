@@ -66,9 +66,9 @@ alias history='history -i'
 
 alias sudop='sudo -E su -p'
 
-alias vi='vim'
-alias v='vim'
-
+# alias vi='vim'
+# alias v='vim'
+#
 #if [ -x "$(command -v dig)" ]; then
 #  alias external_ip="dig +short myip.opendns.com @resolver1.opendns.com"
 #fi
