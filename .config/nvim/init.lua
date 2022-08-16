@@ -118,7 +118,10 @@ o.splitbelow = true
 -- o.foldnestmax = 3
 -- o.foldminlines = 1
 --
-opt.mouse = "a"
+-- opt.mouse = "a"
+-- vim.opt.mouse = 'a'
+-- mouse copy without going into visual mode
+vim.opt.mouse = 'r'
 
 -- Map <leader> to space
 g.mapleader = ' '
@@ -129,7 +132,8 @@ vim.api.nvim_set_keymap('n', '<Leader>l', ':set nu! rnu! list!<cr>', {noremap = 
 
 -- COLORSCHEMES
 -- Uncomment just ONE of the following colorschemes!
-local ok, _ = pcall(vim.cmd, 'colorscheme base16-dracula')
+-- local ok, _ = pcall(vim.cmd, 'colorscheme base16-dracula')
+vim.cmd[[colorscheme dracula]]
 -- local ok, _ = pcall(vim.cmd, 'colorscheme base16-gruvbox-dark-medium')
 -- local ok, _ = pcall(vim.cmd, 'colorscheme base16-monokai')
 -- local ok, _ = pcall(vim.cmd, 'colorscheme base16-nord')
@@ -157,6 +161,8 @@ end
 -- Mimic shell movements
 map('i', '<C-E>', '<ESC>A')
 map('i', '<C-A>', '<ESC>I')
+
+vim.opt.guifont = { "Source Code Pro", "h12" }
 
 
 -- PLUGINS

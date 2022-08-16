@@ -4,7 +4,7 @@
 # read -p "Brightness: " bright
 # read -p "State: " state
 
-curl --location --request GET 'http://192.168.10.110:9123/elgato/lights' --header 'Accept: application/json'
+curl -s --location --request GET 'http://192.168.10.110:9123/elgato/lights' --header 'Accept: application/json' | jq
 
 generate_post_data() {
 
@@ -14,9 +14,9 @@ cat <<EOF
 
 "lights": [
 {
-"brightness": $bright,
-"temperature": $temp,
-"on": 1
+"brightness": 40,
+"temperature": 276,
+"on": 0
 }
 ],
 
@@ -26,6 +26,6 @@ EOF
 
 }
 
-curl --location --request PUT 'http://192.168.10.110:9123/elgato/lights' \
+curl -s --location --request PUT 'http://192.168.10.110:9123/elgato/lights' \
 --header 'Content-Type: application/json' \
 --data "$(generate_post_data)"
