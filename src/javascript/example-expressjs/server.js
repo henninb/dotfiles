@@ -2,14 +2,18 @@ const express = require('express')
 const app = express()
 const port = 3001
 
-app.get('/', (_req, res) => {
-  res.send('Hello World!');
+app.use((request, response, next) => {
+  console.log("set header");
+  response.header("x-powered-by", "ExpressServer");
+  next();
 });
 
-app.get('/test', (_req, res) => {
-  res.send('testing');
+app.get('/', (_req, response) => {
+  response.send('Hello World!');
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.get('/test', (_req, response) => {
+  response.send('testing');
 });
+
+app.listen(port, () => { console.log(`Example app listening on port ${port}`) });

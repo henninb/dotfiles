@@ -6,6 +6,12 @@ const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000
 const app = express()
 
+app.use((request, response, next) => {
+  console.log("set header");
+  response.header("x-powered-by", "ExpressServer");
+  next();
+});
+
 app.listen(port, () => { console.log(`listening on port ${port}`) });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));

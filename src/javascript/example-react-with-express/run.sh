@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo npx create-react-app react-app
-pnpm install
-pnpm start
+npm install
+npm start
 
 exit 0
