@@ -30,19 +30,21 @@ return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  use 'Mofiqul/dracula.nvim'
+
   -- A better status line
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
-
   use {
         'nvim-treesitter/nvim-treesitter',
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
 
+  -- use 'jose-elias-alvarez/null-ls.nvim'
+  -- use 'Mofiqul/dracula.nvim'
+  --
   -- File management --
   use 'vifm/vifm.vim'
   use 'scrooloose/nerdtree'
