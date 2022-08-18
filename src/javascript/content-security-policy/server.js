@@ -1,8 +1,17 @@
+'use strict'
 const express = require('express')
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const https = require('https')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const fs = require('fs')
+const path = require('path')
 const app = express()
 const port = process.env.PORT || 3000
+
+const httpOptions = {
+  cert: fs.readFileSync(path.join(__dirname, 'server.crt')),
+  key: fs.readFileSync(path.join(__dirname, 'server.key'))
+}
 
 app.use((request, response, next) => {
   console.log("set header");
@@ -22,4 +31,8 @@ app.get('/test', (_req, response) => {
   response.send('testing');
 });
 
-app.listen(port, () => { console.log(`Example app listening on port ${port}`) });
+// app.listen(port, () => { console.log(`listening on port ${port}`) });
+
+
+https.createServer(httpOptions, app)
+    .listen(port, () => { console.log(`listening on port ${port}`) });
