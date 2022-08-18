@@ -1,5 +1,9 @@
 #!/bin/sh
 
-wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Notepad++/notepad++.exe
+cd "$HOME/.wine/drive_c/Program Files/Notepad++/" || "$HOME/.wine/drive_c/Program Files (x86)/Notepad++/" || exit
+
+if wine ./notepad++.exe; then
+  exit 0
+fi
 
 exit 0

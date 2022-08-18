@@ -1,15 +1,17 @@
 require("plugins")
-require("keybindings")
 
 -- Config was built using the following config:
 -- https://github.com/numToStr/dotfiles/tree/master/neovim/.config/nvim/
 
 require('lualine').setup()
 require('nvim_comment').setup()
+require("nvim-lsp-installer").setup()
+
+require("lsp")
 
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "c", "lua", "rust", "haskell", "javascript", "json", "kotlin", "go", "make", "perl", "python", "sql", "ruby", "toml", "typescript", "yaml", "dockerfile", "css", "clojure", "bash", "html" },
+  ensure_installed = { "c", "rust", "haskell", "javascript", "json", "kotlin", "go", "make", "perl", "python", "sql", "ruby", "toml", "typescript", "yaml", "dockerfile", "css", "clojure", "bash", "html", "lua" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -172,54 +174,6 @@ end
 map('i', '<C-E>', '<ESC>A')
 map('i', '<C-A>', '<ESC>I')
 
-vim.opt.guifont = { "Source Code Pro", "h12" }
+vim.opt.guifont = { "monofur for Powerline", "h18" }
 
-
--- PLUGINS
--- Only required if you have packer configured as `opt`
--- vim.cmd [[packadd packer.nvim]]
--- return require('packer').startup(function()
---   -- Packer can manage itself
---   use 'wbthomason/packer.nvim'
---
---   -- A better status line
---   use {
---     'nvim-lualine/lualine.nvim',
---     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
---   }
---
---   -- File management --
---   use 'vifm/vifm.vim'
---   use 'scrooloose/nerdtree'
---   use 'tiagofumo/vim-nerdtree-syntax-highlight'
---   use 'ryanoasis/vim-devicons'
---
---   -- Productivity --
---   use 'vimwiki/vimwiki'
---   use 'jreybert/vimagit'
---
---   -- Tim Pope Plugins --
---   use 'tpope/vim-surround'
---   -- use 'tpope/vim-comentary'
---   use 'terrortylor/nvim-comment'
---
---
---   -- Syntax Highlighting and Colors --
---   -- use 'PotatoesMaster/i3-vim-syntax'
---   -- use 'kovetskiy/sxhkd-vim'
---   use 'vim-python/python-syntax'
---   use 'ap/vim-css-color'
---
---   -- Junegunn Choi Plugins --
---   use 'junegunn/goyo.vim'
---   use 'junegunn/limelight.vim'
---   use 'junegunn/vim-emoji'
---
---   -- Colorschemes
---   use 'RRethy/nvim-base16'
---   use 'kyazdani42/nvim-palenight.lua'
---
---   -- Other stuff
---   use 'frazrepo/vim-rainbow'
--- end)
---
+require("keybindings")

@@ -18,7 +18,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   # sudo pacman --noconfirm --needed -S wine
   yay -S multilib/wine
 elif [ "$OS" = "Gentoo" ]; then
-  emerge --update --newuse wine
+  sudo emerge --update --newuse wine
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y epel-release
   #sudo subscription-manager repos
