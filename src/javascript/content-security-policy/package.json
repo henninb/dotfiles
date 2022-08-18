@@ -1,0 +1,17 @@
+{
+  "name": "example-expressjs",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "gulp": "^4.0.2",
+    "gulp-jshint": "^2.1.0",
+        "body-parser": "^1.20.0",
+    "cors": "^2.8.5"
+  }
+}
