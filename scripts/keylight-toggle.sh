@@ -5,18 +5,30 @@
 # read -p "State: " state
 
 curl -s --location --request GET 'http://192.168.10.110:9123/elgato/lights' --header 'Accept: application/json' | jq
+status=$(curl -s --location --request GET 'http://192.168.10.110:9123/elgato/lights' --header 'Accept: application/json' | jq '.lights | .[].on')
+brightness=$(curl -s --location --request GET 'http://192.168.10.110:9123/elgato/lights' --header 'Accept: application/json' | jq '.lights | .[].brightness')
+temperature=$(curl -s --location --request GET 'http://192.168.10.110:9123/elgato/lights' --header 'Accept: application/json' | jq '.lights | .[].temperature')
+
+
+echo "brightness=$brightness"
+echo "temperature=$temperature"
+if [ "$status" = 0 ]; then
+    echo "currently off"
+    status=1
+else
+    echo "currently on"
+    status=0
+fi
 
 generate_post_data() {
 
 cat <<EOF
-
 {
-
 "lights": [
 {
-"brightness": 40,
-"temperature": 276,
-"on": 0
+"brightness": $brightness,
+"temperature": $temperature,
+"on": $status
 }
 ],
 
