@@ -54,3 +54,38 @@ docker run gentoo
 install haikuOS
 raspberian cross compiler in c
 gentoo with systemd
+
+heroku dns  with cloudflare
+gentoo primary system
+dictation linux
+dictation macos
+ddwrt reverse proxy issue
+docker dns server on debian
+setup bastion host
+learn kali linux
+subdomain for fastly app
+learn kuberneties
+gentoo setup and build custom kernel
+monthly backup ddwrt, pihole, pfsense
+migrate cert script to react and other apps
+setup fastly VCL
+learn replay attack for cookies
+nvim LSP setup
+nvim LSP script for download
+learn express http router
+install portainer front end for docker
+sqlite for contacts
+sqlite for tech bucket list
+learn BOLA and IDOR
+setup proxmox certificate
+fix pfsense certificate
+setup splunk in proxmox debian
+nix packages to replace flatpak
+setup openwrt test network
+setup console fonts
+setup origin upstream from fastly
+setup linux color scheme everforest
+lua nvim config conversion
+setup doas
+setup https on the pihole
+xmonad fix warnings
