@@ -65,6 +65,10 @@ hwclock --systohc
 ## setup network
 ```
 TBD
+pacman -S dhcpcd
+systemctl enable dhcpcd
+pacman -S openssh
+systemctl enable sshd
 ```
 
 ## set the locale
