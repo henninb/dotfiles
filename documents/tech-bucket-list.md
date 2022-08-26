@@ -1,12 +1,12 @@
 # Tech Bucket List
-ddwrt web frontend certificate setup
+setup ddwrt web frontend certificate
 - port rapi-finance-endpoint to ktor
 port rapi-finance-endpoint to rust
 code submenu names in xmonad
 find a project to work on - https://www.fiverr.com - become a seller
 - 8/15/2021 - use letsencrypt on pfsense
 setup webserver for brianhenning.xyz
-code aes encrypt a file using haskell
+build aes encrypt a file using haskell
 fix shell script to use new git pattern
 - virtualize pihole on proxmox/ubuntu
 code an android app
@@ -35,31 +35,29 @@ linux pam module for yubikey
   https://developers.yubico.com/yubico-pam/
   https://github.com/dmitryd/kali-yubikey
 spotify playlist extract
-traefik and portainer (reverse proxy)
+learn traefik (reverse proxy)
 python spotify
-gimp basics - distrotube
+lean gimp basics - distrotube
 create profile avitar
 finance app to output a budget
 JOOQ update and delete
 mine crypto currency
 automate bridge setup
-blender - make something 3D
+learn blender - make something 3D
 make my own PCB
 install FreeNAS
 finance_db with redis backend
 finance_db with mongodb backend
-hardware hackintosh
+build hardware hackintosh
 docker run void
-docker run gentoo
 install haikuOS
 raspberian cross compiler in c
-gentoo with systemd
 
-heroku dns  with cloudflare
+setup heroku dns with cloudflare
 gentoo primary system
 dictation linux
 dictation macos
-ddwrt reverse proxy issue
+fix ddwrt reverse proxy issue
 docker dns server on debian
 setup bastion host
 learn kali linux
@@ -70,12 +68,12 @@ monthly backup ddwrt, pihole, pfsense
 migrate cert script to react and other apps
 setup fastly VCL
 learn replay attack for cookies
-nvim LSP setup
-nvim LSP script for download
+setup nvim LSP
+build nvim LSP script for download
 learn express http router
 install portainer front end for docker
-sqlite for contacts
-sqlite for tech bucket list
+build sqlite for contacts
+build sqlite for tech bucket list
 learn BOLA and IDOR
 setup proxmox certificate
 fix pfsense certificate
@@ -85,7 +83,7 @@ setup openwrt test network
 setup console fonts
 setup origin upstream from fastly
 setup linux color scheme everforest
-lua nvim config conversion
+update lua nvim config
 setup doas
 setup https on the pihole
-xmonad fix warnings
+fix xmonad warnings
