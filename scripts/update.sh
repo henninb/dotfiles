@@ -95,7 +95,7 @@ fi
 #golang_ver=$(curl -s 'https://golang.org/VERSION?m=text')
 golang_ver=$(curl -s 'https://go.dev/VERSION?m=text')
 
-if [ ! -x "$(command -v go)" ]; then
+if ! command -v go; then
   echo "golang needs to be installed"
 else
   if echo "$(go version)" | grep -q "$golang_ver"; then
@@ -107,7 +107,7 @@ else
   go version
 fi
 
-if [ ! -x "$(command -v stack)" ]; then
+if ! command -v stack; then
   echo "stack is being installed"
   curl -sSL 'https://get.haskellstack.org' | sh
   stack --version
@@ -118,7 +118,7 @@ else
   stack --version
 fi
 
-if [ ! -x "$(command -v nvm)" ]; then
+if ! command -v nvm; then
   echo "nvm needs to be installed."
 else
   nvm install --lts
@@ -126,7 +126,7 @@ else
   npm --version
 fi
 
-if [ ! -x "$(command -v rustup)" ]; then
+if ! command -v rustup; then
   curl --proto '=https' --tlsv1.2 -sSf 'https://sh.rustup.rs' > "$HOME/tmp/rustup-init"
   chmod 755 "$HOME/tmp/rustup-init"
   cd "$HOME/tmp" || exit
@@ -138,10 +138,18 @@ else
   rustc --version
 fi
 
-if [ ! -x "$(command -v flatpak)" ]; then
+if ! command -v flatpak; then
   echo "flatpak needs to be installed."
 else
   flatpak update --user -y
+fi
+
+
+if ! command -v nix-env; then
+  echo "nix needs to be installed."
+else
+  # nix-env -u
+  nix-env -u '.*'
 fi
 
 exit 0

@@ -26,7 +26,9 @@ else
   exit 1
 fi
 
-flatpak update
+echo flatpak update
+echo flatpak list --app
+echo flatpak uninstall io.dbeaver.DBeaverCommunity
 
 exit 0
 
