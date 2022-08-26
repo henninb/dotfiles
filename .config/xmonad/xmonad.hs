@@ -145,7 +145,7 @@ myStartupHook = do
     spawnOnce "flameshot" --dbus required
     spawnOnce "dunst"
     -- spawnOnce "picom"
-    spawnOnce "picom --experimental-backends --backend glx --xrender-sync-fence"
+    spawnOnce "picom --experimental-backends --backend glx --config /dev/null --xrender-sync-fence"
     -- spawnOnce "sxhkd -c ~/.config/sxhkd/sxhkdrc-xmonad"
     -- spawn "clipmenud" --should I run copyq or clipmenu
     spawnOnce "copyq"
