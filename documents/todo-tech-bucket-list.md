@@ -1,6 +1,5 @@
 # Tech Bucket List
 ddwrt web frontend certificate setup
-- virtualize pfsense on proxmox
 - port rapi-finance-endpoint to ktor
 port rapi-finance-endpoint to rust
 code submenu names in xmonad
