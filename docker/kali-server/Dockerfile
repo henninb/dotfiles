@@ -1,6 +1,16 @@
 FROM kalilinux/kali-rolling
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV DESKTOP_PKG=kali-desktop-xfce
+ENV REMOTE_ACCESS=x2go
+ENV KALI_PKG=kali-linux-default
+
+RUN apt update -q --fix-missing
+RUN apt upgrade -y
+RUN apt -y install --no-install-recommends sudo wget curl dbus-x11 xinit ${DESKTOP_PKG}
+
 # ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update -y
+# RUN apt-get update -y
 
 # RUN apt install -y sudo
 # RUN apt install -y vim
