@@ -1,23 +1,22 @@
 # Tech Bucket List
 setup ddwrt web frontend certificate
-- port rapi-finance-endpoint to ktor
+port rapi-finance-endpoint to ktor
 port rapi-finance-endpoint to rust
 code submenu names in xmonad
-find a project to work on - https://www.fiverr.com - become a seller
-- 8/15/2021 - use letsencrypt on pfsense
+find a project to work on - fiverr.com - become a seller
 setup webserver for brianhenning.xyz
 build aes encrypt a file using haskell
 fix shell script to use new git pattern
-- virtualize pihole on proxmox/ubuntu
+virtualize pihole on docker proxmox
 code an android app
 record live tv on linux with silicondust hdhomerun
 learn to use obs for content creation
 practice squashing with git
-- code and app to stream audio to a phone
+build an app to stream audio to an android phone
 update main windows 10 machine to the latest version
 linux - swap init program with bash (testing)
- - virtualize plexserver on proxmox
-virtualize nextcloud on proxmox
+virtualize plexserver on docker in proxmox
+virtualize nextcloud on docker in proxmox
 backup 2fa codes
 backup photos
 selfhost nextcloud (dropbox replacement)
@@ -30,10 +29,7 @@ lora - setup a sender/receiver
 linux cross compiler for rasperrry pi arm
 gpg key on yubikey
 ssh key on yubikey
-linux pam module for yubikey
-  https://gist.github.com/artizirk/d09ce3570021b0f65469cb450bee5e29
-  https://developers.yubico.com/yubico-pam/
-  https://github.com/dmitryd/kali-yubikey
+setup linux pam module for yubikey
 spotify playlist extract
 learn traefik (reverse proxy)
 python spotify
@@ -51,8 +47,7 @@ finance_db with mongodb backend
 build hardware hackintosh
 docker run void
 install haikuOS
-raspberian cross compiler in c
-
+raspberian cross compiler in c on gentoo
 setup heroku dns with cloudflare
 gentoo primary system
 dictation linux
@@ -84,8 +79,8 @@ setup console fonts
 setup origin upstream from fastly
 setup linux color scheme everforest
 update lua nvim config
-%% setup doas
 setup https on the pihole
 fix xmonad warnings
 setup docker redis server
 setup macvlan docker
+replace sudo with doas

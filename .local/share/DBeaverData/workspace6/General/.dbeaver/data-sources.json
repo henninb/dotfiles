@@ -24,8 +24,7 @@
 					"@dbeaver-use-prepared-statements-db@": "false",
 					"read-keys-with-columns": "false"
 				},
-				"auth-model": "native",
-				"handlers": {}
+				"auth-model": "native"
 			},
 			"custom-properties": {
 				"database.meta.separate.connection": "false"
@@ -42,6 +41,20 @@
 				"database": "/home/henninb/.local/share/DBeaverData/workspace6/.metadata/sample-database-sqlite-1/Chinook.db",
 				"url": "jdbc:sqlite:/home/henninb/.local/share/DBeaverData/workspace6/.metadata/sample-database-sqlite-1/Chinook.db",
 				"type": "dev"
+			}
+		},
+		"sqlite_jdbc-182e01656ef-124f037199347996": {
+			"provider": "sqlite",
+			"driver": "sqlite_jdbc",
+			"name": "tech-bucket-list.db",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"database": "/home/henninb/data/tech-buckeet-list/tech-bucket-list.db",
+				"url": "jdbc:sqlite:/home/henninb/data/tech-buckeet-list/tech-bucket-list.db",
+				"type": "dev",
+				"auth-model": "native",
+				"handlers": {}
 			}
 		}
 	},
