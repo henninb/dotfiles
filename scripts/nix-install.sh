@@ -24,6 +24,9 @@ sudo rm -rf /etc/nix /nix /root/.nix-profile /root/.nix-defexpr /root/.nix-chann
 
 sh <(curl -s -L https://nixos.org/nix/install) --daemon
 
+nix-env -q --available mongodb
+echo 'nix-env -q --available mongodb'
+
 echo 'nix-env -i notepadqq'
 echo 'nix-env -i dbeaver'
 echo 'nix-env -i mongodb'
