@@ -97,3 +97,8 @@ insert into tech_bucket_list(description) VALUES('fix xmonad warnings');
 insert into tech_bucket_list(description) VALUES('setup docker redis server');
 insert into tech_bucket_list(description) VALUES('setup macvlan docker');
 insert into tech_bucket_list(description) VALUES('replace sudo with doas');
+
+insert into tech_bucket_list(description) VALUES('install bottles gentoo');
+insert into tech_bucket_list(description) VALUES('sunset lastpass');
+insert into tech_bucket_list(description) VALUES('convert bitwardent to keepass');
+insert into tech_bucket_list(description) VALUES('use syncthing with keepass');
