@@ -88,3 +88,4 @@ update lua nvim config
 setup https on the pihole
 fix xmonad warnings
 setup docker redis server
+setup macvlan docker

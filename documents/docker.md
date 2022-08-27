@@ -38,3 +38,10 @@ docker image prune
 ```
 docker container prune --force --filter "until=5m"
 ```
+
+## macvlan
+```
+docker network create -d macvlan --subnet=192.168.10.0/24 --gateway=192.168.10.1  -o parent=enp3s0 macvlan-net
+docker network ls
+docker network rm macvlan-net
+```
