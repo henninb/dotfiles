@@ -77,13 +77,14 @@ build sqlite for tech bucket list
 learn BOLA and IDOR
 setup proxmox certificate
 fix pfsense certificate
-setup splunk in proxmox debian
+setup splunk in proxmox debian docker
 nix packages to replace flatpak
 setup openwrt test network
 setup console fonts
 setup origin upstream from fastly
 setup linux color scheme everforest
 update lua nvim config
-setup doas
+%% setup doas
 setup https on the pihole
 fix xmonad warnings
+setup docker redis server
