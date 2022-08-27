@@ -1,7 +1,9 @@
 FROM ubuntu:22.04
 #FROM ubuntu:20.04.3
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && apt-get install -y ubuntu-server
+RUN apt-get -q update --fix-missing 
+RUN apt-get upgrade -y
+RUN apt-get install -y ubuntu-server
 
 RUN apt install -y sudo
 RUN apt install -y vim
