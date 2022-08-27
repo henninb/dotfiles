@@ -1,6 +1,7 @@
 #!/bin/sh
 
 ssh hornsup mkdir -p /home/henninb/docker/
+rsync -arvz "$HOME/docker/" "hornsup:/home/henninb/docker/"
 rsync -arvz "$HOME/.ssh/" "hornsup:/home/henninb/.ssh/"
 rsync -arvz "$HOME/scripts/" "hornsup:/home/henninb/scripts/"
 rsync -arvz "$HOME/.profile" "hornsup:/home/henninb/.portfolio"
