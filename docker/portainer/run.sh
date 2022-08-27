@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mkdir -p data
+#mkdir -p data
 docker volume create portainer-data
 
 docker stop portainer
