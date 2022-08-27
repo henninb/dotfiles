@@ -2,11 +2,9 @@ version: "3.7"
 services:
   mongodb-server:
     image: mongo
-    # user: "${CURRENT_UID}:${CURRENT_GID}"
     container_name: mongodb-server
-    # ports:
-    #   - "8080:80"
-    # expose:
-    #   - "8080"
-    # volumes:
-    #   - ./default.vcl:/default.vcl
+    hostname: mongodb-server
+    ports:
+      - "27017:27017"
+    expose:
+      - "27017"

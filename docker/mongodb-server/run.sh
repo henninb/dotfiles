@@ -2,23 +2,18 @@
 
 docker stop mongodb-server
 docker rm mongodb-server -f
+docker rmi mongodb-server
 
-# if ! docker build -t mongodb-server .; then
-#   echo  "failed docker build"
-# fi
+echo docker exec -it --user root mongodb-server /bin/bash
+echo docker exec -it --user root mongodb-server tail -f /var/log/nginx/ddwrt-access.log
+echo docker logs mongodb-server
 
-# if ! docker-compose up -d; then
-#   echo "failed docker-compose"
-# fi
-
-# docker run -dit --name mongodb-server -p 27017:27017 -h mongodb-server mongodb-server
-docker run -dit \
-    -p 27017:27017 \
-    --name mongodb-server \
-    -h mongodb-server \
-    mongo:latest
-echo docker exec -it mongodb-server /bin/bash
-echo docker logs mongodb-server --follow
+if command -v docker-compose; then
+  docker-compose build
+  docker-compose up -d
+else
+  docker build -t mongodb-server .
+  docker run --name=mongodb-server -h mongodb-server -h mongodb-server --restart always -p 27017:27017 -d mongodb-server
+fi
 
 exit 0
-# -v data-vol:/data/db \
