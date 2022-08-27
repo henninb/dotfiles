@@ -3,6 +3,8 @@ CREATE TABLE tech_bucket_list (
   description TEXT NOT NULL UNIQUE,
   difficulty INT NOT NULL,
   effort INT NOT NULL,
+  priority INT,
+  reoccurring INT,
   complete datetime,
   last_updated datetime default current_timestamp,
   date_created datetime default current_timestamp
