@@ -3,7 +3,7 @@
 #WINEARCH=win32 WINEPREFIX=~/.wine32 winecfg
 #WINEPREFIX=~/.wine32 wine /media/henninb/Office2007WAH/setup.exe
 
-cat > pacman.conf << 'EOF'
+cat > "$HOME/tmp/pacman.conf" << 'EOF'
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 EOF
