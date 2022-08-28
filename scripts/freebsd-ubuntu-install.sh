@@ -12,12 +12,11 @@ sudo mkdir -p /compat/ubuntu/dev/fd
 
 # /compat/ubuntu/etc/apt/apt.conf.d/00freebsd, containing a single line: APT::Cache-Start 251658240;.
 
-cat > 00freebsd <<EOF
+cat > "$HOME/tmp/00freebsd" <<EOF
 APT::Cache-Start 251658240;
 EOF
 
-
-cat > ubuntu-fstab <<EOF
+cat > "$HOME/tmp/ubuntu-fstab" <<EOF
  # Device        Mountpoint              FStype          Options                      Dump    Pass#
 devfs           /compat/ubuntu/dev      devfs           rw,late                      0       0
 tmpfs           /compat/ubuntu/dev/shm  tmpfs           rw,late,size=1g,mode=1777    0       0
@@ -28,21 +27,18 @@ linsysfs        /compat/ubuntu/sys      linsysfs        rw,late                 
 /home           /compat/ubuntu/home     nullfs          rw,late                      0       0
 EOF
 
-sudo mount -al
-
-
-cat > sources.list << EOF
+cat > "$HOME/tmp/sources.list" << EOF
 deb http://archive.ubuntu.com/ubuntu focal main universe restricted multiverse
 deb http://security.ubuntu.com/ubuntu/ focal-security universe multiverse restricted main
 deb http://archive.ubuntu.com/ubuntu focal-backports universe multiverse restricted main
 deb http://archive.ubuntu.com/ubuntu focal-updates universe multiverse restricted main
 EOF
 
-cat > locale.gen <<EOF
+cat > "$HOME/tmp/locale.gen" <<EOF
 en_US.UTF-8 UTF-8
 EOF
 
-cat > install-brave.sh <<'EOF'
+cat > "$HOME/tmp/install-brave.sh" <<'EOF'
 locale-gen
 apt install libffi-dev
 apt install zlib1g-dev
@@ -60,12 +56,13 @@ sudo apt update
 sudo apt install brave-browser
 EOF
 
-sudo cp -v ubuntu-fstab /compat/ubuntu/etc/fstab
-sudo cp -v 00freebsd /compat/ubuntu/etc/apt/apt.conf.d/00freebsd
-sudo cp -v sources.list /compat/ubuntu/etc/apt/sources.list
-sudo cp -v locale.gen /compat/ubuntu/etc/locale.gen
-chmod 755 install-brave.sh
-sudo cp -v install-brave.sh /compat/ubuntu/install-brave.sh
+sudo mount -al
+sudo mv -v "$HOME/tmp/ubuntu-fstab" /compat/ubuntu/etc/fstab
+sudo mv -v "$HOME/tmp/00freebsd" /compat/ubuntu/etc/apt/apt.conf.d/00freebsd
+sudo mv -v "$HOME/tmp/sources.list" /compat/ubuntu/etc/apt/sources.list
+sudo mv -v "$HOME/tmp/locale.gen" /compat/ubuntu/etc/locale.gen
+chmod 755 "$HOME/tmp/install-brave.sh"
+sudo mv -v "$HOME/tmp/install-brave.sh" /compat/ubuntu/install-brave.sh
 
 sudo chroot /compat/ubuntu /bin/bash # python-pip
 
