@@ -8,14 +8,13 @@ for i in $PROJECTS; do
   cd "$HOME/projects/github.com/henninb" || exit
   echo "$i"
   git clone "git@github.com:henninb/$i.git" 2> /dev/null
-  cd "$i" || exit
-  #master-to-main 2> /dev/null
+  # cd "$i" || exit
+  cd "$HOME/projects/github.com/henninb/$i" || exit
   # if ! git branch --set-upstream-to=origin/main main > /dev/null 2>&1; then
   #   echo need to convert to main branch
   #   continue
   # fi
   git config --local user.email henninb@msn.com
-  #git pull origin main #2> /dev/null
   git fetch --all
   git rebase origin/main
 
@@ -36,7 +35,7 @@ done
 echo distrotube
 echo git clone git@gitlab.com:dwt1/wallpapers.git
 
-cd "$HOME/projects/gitlab.com/henninb" || exit
+cd "$HOME/projects/gitlab.com/BitExplorer" || exit
 git clone git@gitlab.com:BitExplorer/howto.git
 
 exit 0
