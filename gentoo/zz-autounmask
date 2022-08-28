@@ -78,3 +78,4 @@ www-servers/nginx debug http-cache http http2 ssl rtmp
 sys-libs/libcap static-libs
 dev-libs/raft lz4
 dev-util/xdelta lzma
+dev-db/mongodb lto
