@@ -145,42 +145,50 @@ elif [ "$OS" = "FreeBSD" ]; then
   ln -sfn "$(find /usr/local/bin/ -type f -name "perl5*" | tail -1)" "$HOME/.local/bin/perl"
   sudo pkg install -y alsa-lib
   sudo pkg install -y audio/alsa-utils
-  sudo pkg install -y i3lock
-  sudo pkg install -y sysutils/uhidd
   sudo pkg install -y conky
   sudo pkg install -y copyq
   sudo pkg install -y dmenu
   sudo pkg install -y dunst
   sudo pkg install -y dzen2
   sudo pkg install -y feh
-  sudo pkg install -y sxiv
   sudo pkg install -y flameshot
-  sudo pkg install -y thunar
+  #sudo pkg install -y hardinfo
+  sudo pkg install -y htop
+  sudo pkg install -y i3lock
   sudo pkg install -y jq
+  sudo pkg install -y lxappearance
+  sudo pkg install -y mpv
+  sudo pkg install -y musicpc
+  sudo pkg install -y musicpd
   sudo pkg install -y neofetch
+  sudo pkg install -y neovim
+  sudo pkg install -y newsboat
+  sudo pkg install -y networkmgr
+  sudo pkg install -y numlockx
+  #sudo pkg install -y pandoc
+  sudo pkg install -y pcmanfm
   sudo pkg install -y perl5
+  sudo pkg install -y pkgconf
+  #sudo pkg install -y qalculate
   sudo pkg install -y redshift
+  #sudo pkg install -y rdfind
+  sudo pkg install -y screen
+  sudo pkg install -y sxhkd
+  #sudo pkg install -y sxiv
+  sudo pkg install -y sysutils/uhidd
+  sudo pkg install -y terminus-font
+  sudo pkg install -y thunar
+  sudo pkg install -y trayer
   sudo pkg install -y volumeicon
   sudo pkg install -y w3m
   sudo pkg install -y wmname
-  sudo pkg install -y xdo
-  sudo pkg install -y pandoc
-  sudo pkg install -y xdotool
-  sudo pkg install -y xscreensaver
-  sudo pkg install -y xorg
-  sudo pkg install -y pkgconf
-  sudo pkg install -y mpv
-  sudo pkg install -y networkmgr
-  sudo pkg install -y sxhkd
-  sudo pkg install -y trayer
-  sudo pkg install -y terminus-font
   sudo pkg install -y xclip
-  sudo pkg install -y numlockx
-  sudo pkg install -y lxappearance
-  sudo pkg install -y qalculate
-  sudo pkg install -y musicpd
-  sudo pkg install -y musicpc
-  sudo pkg install -y spacefm
+  sudo pkg install -y xdo
+  sudo pkg install -y xdotool
+  sudo pkg install -y xorg
+  sudo pkg install -y xscreensaver
+  sudo pkg install -y yad
+  sudo pkg install -y zenity
   # sudo pkg install -y libXft
   # sudo pkg install -y xz
 elif [ "$OS" = "void" ]; then
