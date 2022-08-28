@@ -20,6 +20,8 @@ else
 fi
 
 sudo usermod -aG lxd "$(id -un)"
+sudo systemctl enable lxd
+sudo systemctl start lxd
 sudo lxd init
 
 exit 0
