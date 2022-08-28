@@ -10,6 +10,8 @@ elif [ -x "$(command -v xbps-install)" ]; then
   sudo xbps-install -y zsh
 elif [ -x "$(command -v eopkg)" ]; then
   sudo eopkg install -y zsh
+elif [ -x "$(command -v pkg)" ]; then
+  sudo pkg install -y zsh
 elif [ -x "$(command -v dnf)" ]; then
   sudo dnf install -y zsh
 elif [ -x "$(command -v brew)" ]; then
