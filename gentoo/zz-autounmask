@@ -75,3 +75,6 @@ net-libs/zeromq drafts
 dev-python/PyQt5 webchannel
 dev-qt/qtwebengine widgets
 www-servers/nginx debug http-cache http http2 ssl rtmp
+sys-libs/libcap static-libs
+dev-libs/raft lz4
+dev-util/xdelta lzma

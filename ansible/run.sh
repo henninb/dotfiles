@@ -1,5 +1,6 @@
 #!/bin/sh
 
+ansible debian -m ping
 ansible-playbook -i raspi, -u pi -e "shell=uptime" run-shell.yml
 ansible-playbook -i proxmox, -u root -e "shell=uptime" run-shell.yml
 ansible-playbook -i hornsup, -u henninb -e "shell=uptime" run-shell.yml
