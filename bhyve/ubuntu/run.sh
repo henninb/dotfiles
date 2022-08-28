@@ -1,7 +1,7 @@
 #!/bin/sh
 
-VMNAME=myubuntu
-TEMPLATE=myubuntu
+VMNAME=ubuntu
+TEMPLATE=ubuntu
 
 sudo killall cu
 sudo vm stop $VMNAME
