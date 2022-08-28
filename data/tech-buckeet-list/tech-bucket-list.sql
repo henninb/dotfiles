@@ -102,3 +102,6 @@ insert into tech_bucket_list(description) VALUES('install bottles gentoo');
 insert into tech_bucket_list(description) VALUES('sunset lastpass');
 insert into tech_bucket_list(description) VALUES('convert bitwardent to keepass');
 insert into tech_bucket_list(description) VALUES('use syncthing with keepass');
+insert into tech_bucket_list(description) VALUES('fix mongodb  5 on gentoo');
+insert into tech_bucket_list(description) VALUES('run a kvm version of freebsd to test dotfiles');
+insert into tech_bucket_list(description) VALUES('lxc container running in proxmox');

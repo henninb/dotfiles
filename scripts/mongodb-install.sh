@@ -8,9 +8,10 @@ if [ -x "$(command -v pacman)" ]; then
   sudo systemctl enable mongodb
   sudo systemctl start mongodb
 elif [ -x "$(command -v emerge)" ]; then
-  sudo emerge --update --newuse app-admin/mongo-tools
-  sudo emerge --update --newuse dev-db/mongodb
-  sudo emerge --update --newuse app-admin/mongosh-bin
+  # sudo emerge --update --newuse app-admin/mongo-tools
+  # sudo emerge --update --newuse dev-db/mongodb
+  sudo emerge -update --newuse '=dev-db/mongodb-4.4.10::gentoo'
+  # sudo emerge --update --newuse app-admin/mongosh-bin
 elif [ -x "$(command -v apt)" ]; then
   echo
 elif [ -x "$(command -v xbps-install)" ]; then
