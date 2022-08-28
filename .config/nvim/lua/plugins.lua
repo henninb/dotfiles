@@ -30,7 +30,6 @@ return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-
   -- A better status line
   use {
     'nvim-lualine/lualine.nvim',
@@ -55,8 +54,8 @@ return require('packer').startup(function()
   use 'ryanoasis/vim-devicons'
 
   -- Productivity --
-  use 'vimwiki/vimwiki'
-  use 'jreybert/vimagit'
+  -- use 'vimwiki/vimwiki'
+  -- use 'jreybert/vimagit'
 
   -- Tim Pope Plugins --
   use 'tpope/vim-surround'
