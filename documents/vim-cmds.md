@@ -172,3 +172,10 @@ Note2: <1b> is Esc; you can insert this with Ctrl+v and then Esc. It may also sh
 ```
 set lazyredraw
 ```
+
+## comments
+```
+V (Visual Mode)
+Arrow down
+gc
+```
