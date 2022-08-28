@@ -12,6 +12,7 @@ sudo mkdir -p /compat/ubuntu/dev/fd
 
 # /compat/ubuntu/etc/apt/apt.conf.d/00freebsd, containing a single line: APT::Cache-Start 251658240;.
 
+
 cat > "$HOME/tmp/00freebsd" <<EOF
 APT::Cache-Start 251658240;
 EOF
@@ -40,8 +41,10 @@ EOF
 
 cat > "$HOME/tmp/install-brave.sh" <<'EOF'
 locale-gen
-apt install libffi-dev
-apt install zlib1g-dev
+apt update -y
+apt install -y curl
+apt install -y libffi-dev
+apt install -y zlib1g-dev
 
 pyenv install 3.7.4
 eval "$(pyenv init -)"
@@ -53,16 +56,18 @@ sudo apt install -y apt-transport-https curl
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 sudo apt update
-sudo apt install brave-browser
+sudo apt install -y brave-browser
 EOF
 
 sudo mount -al
+sudo mv -v /compat/ubuntu/etc/fstab /compat/ubuntu/etc/fstab.bak
 sudo mv -v "$HOME/tmp/ubuntu-fstab" /compat/ubuntu/etc/fstab
 sudo mv -v "$HOME/tmp/00freebsd" /compat/ubuntu/etc/apt/apt.conf.d/00freebsd
 sudo mv -v "$HOME/tmp/sources.list" /compat/ubuntu/etc/apt/sources.list
 sudo mv -v "$HOME/tmp/locale.gen" /compat/ubuntu/etc/locale.gen
 chmod 755 "$HOME/tmp/install-brave.sh"
 sudo mv -v "$HOME/tmp/install-brave.sh" /compat/ubuntu/install-brave.sh
+echo ubuntu | sudo tee /compat/ubuntu/etc/hostname
 
 sudo chroot /compat/ubuntu /bin/bash # python-pip
 
