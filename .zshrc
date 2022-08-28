@@ -552,11 +552,11 @@ bindkey "^[[1;5D" backward-word
 # remove a key?
 bindkey -r "^B"
 
-touch "$HOME/env.secrets"
+# touch "$HOME/env.secrets"
 
-set -a
-. "$HOME/env.secrets"
-set +a
+# set -a
+# . "$HOME/env.secrets"
+# set +a
 
 autoload -Uz tetriscurses
 # echo tetriscurses
