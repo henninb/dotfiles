@@ -180,6 +180,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y qalculate
   sudo pkg install -y musicpd
   sudo pkg install -y musicpc
+  sudo pkg install -y spacefm
   # sudo pkg install -y libXft
   # sudo pkg install -y xz
 elif [ "$OS" = "void" ]; then
