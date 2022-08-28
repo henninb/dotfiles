@@ -227,3 +227,4 @@
 - wallpaper changer [git clone https://github.com/thevinter/styli.sh]
 - wallpaper downloader [git clone git@github.com:pystardust/waldl.git]
 - raspberrypi.home.arpa
+- tree
