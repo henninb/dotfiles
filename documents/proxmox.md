@@ -31,3 +31,13 @@ qm list
 qm start 101
 qm shutdown 101
 ```
+
+## list templates on storage
+```
+pveam list local
+```
+
+## add template to storage
+```
+pveam download local-500 debian-10-turnkey-core_16.1-1_amd64.tar.gz
+```
