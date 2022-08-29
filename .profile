@@ -31,9 +31,15 @@ fi
 export OS
 export OS_VER
 
-export SUDO_EDITOR=nvim
-export VISUAL=nvim
-export EDITOR=nvim
+if command -v nvim; then
+  export SUDO_EDITOR=nvim
+  export VISUAL=nvim
+  export EDITOR=nvim
+else
+  export SUDO_EDITOR=vim
+  export VISUAL=vim
+  export EDITOR=vim
+fi
 export PAGER=less
 export OPENER=xdg-open
 export READER=zathura
