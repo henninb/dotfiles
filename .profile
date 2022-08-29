@@ -73,6 +73,7 @@ export CM_DEBUG=0
 export CM_OUTPUT_CLIP=1
 export CM_MAX_CLIPS=25
 
+if command -v xrandr; then
 if [ "$OS" = "ArcoLinux" ] || [ "$OS" = "Arch Linux" ] || [ "$OS" = "Gentoo" ] || [ "$OS" = "void" ]; then
   echo "Comes from .profile, this logic must be updated in the future." | tee -a "$HOME/tmp/profile.log"
   # 4k monitor
@@ -99,6 +100,7 @@ else
   xrandr --output "$device" --mode 2560x1440 2> /dev/null
   # xrandr --output HDMI-0 --mode 2560x1440 2> /dev/null
   xrandr --size 2560x1440 2> /dev/null
+fi
 fi
 
 export PYENV_ROOT="$HOME/.pyenv"
