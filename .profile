@@ -79,6 +79,10 @@ export CM_DEBUG=0
 export CM_OUTPUT_CLIP=1
 export CM_MAX_CLIPS=25
 
+if tty -s; then
+    echo "I am in a tty" | tee -a "$HOME/tmp/xrandr.log"
+fi
+
 if command -v xrandr; then
 if [ "$OS" = "ArcoLinux" ] || [ "$OS" = "Arch Linux" ] || [ "$OS" = "Gentoo" ] || [ "$OS" = "void" ]; then
   echo "Comes from .profile, this logic must be updated in the future." | tee -a "$HOME/tmp/profile.log"
