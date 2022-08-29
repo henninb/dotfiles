@@ -35,6 +35,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S zsh
   sudo pacman --noconfirm --needed -S unzip
   sudo pacman --noconfirm --needed -S wget
+  sudo pacman --noconfirm --needed -S fontconfig
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ] || [ "$OS" = "Debian GNU/Linux" ]; then
   sudo apt install -y zsh
   sudo apt install -y unzip
@@ -46,9 +47,7 @@ elif [ "$OS" = "Clear Linux OS" ]; then
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y coreutils
   sudo pkg install -y urwfonts
-  sudo pkg install -y zsh
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse zsh
   sudo emerge --update --newuse unzip
   sudo emerge --update --newuse fontconfig
   sudo emerge --update --newuse media-fonts/urw-fonts
@@ -58,19 +57,16 @@ elif [ "$OS" = "Solus" ]; then
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y zsh
 elif [ "$OS" = "void" ]; then
-  sudo xbps-install -y zsh
   sudo xbps-install -y curl
   sudo xbps-install -y unzip
   sudo xbps-install -y fontconfig
 elif [ "$OS" = "Darwin" ]; then
   brew install coreutils
   brew install fontconfig
-  brew install zsh
   for f in $(compaudit);do sudo chown "$(whoami):admin" "$f";done;
   for f in $(compaudit);do sudo chmod 755 "$f";done;
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y util-linux-user
-  sudo dnf install -y zsh
 else
   echo "$OS is not yet implemented."
   exit 1
