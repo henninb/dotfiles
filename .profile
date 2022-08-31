@@ -31,7 +31,7 @@ fi
 export OS
 export OS_VER
 
-if command -v nvim; then
+if command -v nvim >/dev/null; then
   export SUDO_EDITOR=nvim
   export VISUAL=nvim
   export EDITOR=nvim
@@ -79,39 +79,39 @@ export CM_DEBUG=0
 export CM_OUTPUT_CLIP=1
 export CM_MAX_CLIPS=25
 
-if tty -s; then
-    echo "I am in a tty" | tee -a "$HOME/tmp/xrandr.log"
-fi
+# if tty -s; then
+#     echo "I am in a tty" | tee -a "$HOME/tmp/xrandr.log"
+# fi
 
-if command -v xrandr; then
-if [ "$OS" = "ArcoLinux" ] || [ "$OS" = "Arch Linux" ] || [ "$OS" = "Gentoo" ] || [ "$OS" = "void" ]; then
-  echo "Comes from .profile, this logic must be updated in the future." | tee -a "$HOME/tmp/profile.log"
-  # 4k monitor
-  device=$(xrandr | grep " connected " | awk '{ print $1 }' | head -1)
-  # xrandr | tee -a "$HOME/tmp/xrandr.log"
-  date | tee -a "$HOME/tmp/xrandr.log"
-  xrandr >> "$HOME/tmp/xrandr.log" 2>&1
-  date | tee -a "$HOME/tmp/profile.log"
-  echo "$device" | tee -a "$HOME/tmp/profile.log"
-  if xrandr --output "$device" --mode 3840x2160 2> /dev/null; then
-    echo "xrandr --output $device --mode 3840x2160 failed." | tee -a "$HOME/tmp/profile.log"
-  fi
-  xrandr --size 3840x2160 2> /dev/null
-else
-  date | tee -a "$HOME/tmp/xrandr.log"
-  xrandr >> "$HOME/tmp/xrandr.log" 2>&1
-  date | tee -a "$HOME/tmp/profile.log"
-  echo "$device" | tee -a "$HOME/tmp/profile.log"
-  echo "Undesired logic - Comes from .profile, this logic must be updated in the future." | tee -a "$HOME/tmp/profile.log"
-  # TODO: required for 1440p monitor to work at desired resolution
-  device=$(xrandr | grep " connected " | awk '{ print $1 }' | head -1)
-  date | tee -a "$HOME/tmp/profile.log"
-  echo "$device" | tee -a "$HOME/tmp/profile.log"
-  xrandr --output "$device" --mode 2560x1440 2> /dev/null
-  # xrandr --output HDMI-0 --mode 2560x1440 2> /dev/null
-  xrandr --size 2560x1440 2> /dev/null
-fi
-fi
+# if command -v xrandr; then
+# if [ "$OS" = "ArcoLinux" ] || [ "$OS" = "Arch Linux" ] || [ "$OS" = "Gentoo" ] || [ "$OS" = "void" ]; then
+#   echo "Comes from .profile, this logic must be updated in the future." | tee -a "$HOME/tmp/profile.log"
+#   # 4k monitor
+#   device=$(xrandr | grep " connected " | awk '{ print $1 }' | head -1)
+#   # xrandr | tee -a "$HOME/tmp/xrandr.log"
+#   date | tee -a "$HOME/tmp/xrandr.log"
+#   xrandr >> "$HOME/tmp/xrandr.log" 2>&1
+#   date | tee -a "$HOME/tmp/profile.log"
+#   echo "$device" | tee -a "$HOME/tmp/profile.log"
+#   if xrandr --output "$device" --mode 3840x2160 2> /dev/null; then
+#     echo "xrandr --output $device --mode 3840x2160 failed." | tee -a "$HOME/tmp/profile.log"
+#   fi
+#   xrandr --size 3840x2160 2> /dev/null
+# else
+#   date | tee -a "$HOME/tmp/xrandr.log"
+#   xrandr >> "$HOME/tmp/xrandr.log" 2>&1
+#   date | tee -a "$HOME/tmp/profile.log"
+#   echo "$device" | tee -a "$HOME/tmp/profile.log"
+#   echo "Undesired logic - Comes from .profile, this logic must be updated in the future." | tee -a "$HOME/tmp/profile.log"
+#   # TODO: required for 1440p monitor to work at desired resolution
+#   device=$(xrandr | grep " connected " | awk '{ print $1 }' | head -1)
+#   date | tee -a "$HOME/tmp/profile.log"
+#   echo "$device" | tee -a "$HOME/tmp/profile.log"
+#   xrandr --output "$device" --mode 2560x1440 2> /dev/null
+#   # xrandr --output HDMI-0 --mode 2560x1440 2> /dev/null
+#   xrandr --size 2560x1440 2> /dev/null
+# fi
+# fi
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
