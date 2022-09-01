@@ -1,24 +1,22 @@
-build a FreeNAS server @build
+(J) build a FreeNAS server @build
 (A) learn more about dig @learn
-automate bridge setup
 (B) build a docker dns server @build
 (B) build a virtualized pihole on docker proxmox @build
 (B) build nvim LSP script for download @build
 (B) buld lua nvim config @build
 (B) fix sunset lastpass @fix
 (B) fix xmonad warnings @fix
-(B) lxc container running in proxmox
+(B) setup lxc container running in proxmox @setup
 (B) setup  https certificate on the pihole @setup
 (B) setup  splunk in proxmox debian docker @setup
 build a custom PCB
-build an android app
-build an app to stream audio to an android phone
+(Z) build an app to stream audio to an android phone @build
 build a spotify playlist extractor
 build - lora - setup a sender/receiver
 build the automation for a bridge setup
 (B) update  lua nvim config @update
-code an android app
-code submenu names in xmonad
+(Z) code an android app @build
+fix code submenu names in xmonad @fix
 (C) setup https certificate on the pihole @setup
 (C) setup https certificate proxmox webui @setup
 (C) sign up for digital ocean
@@ -33,63 +31,58 @@ code submenu names in xmonad
 (E) backup configs for ddwrt, pihole, pfsense rec:m @backup
 (E) backup photos rec:m @backup
 (E) convert bitwardent to keepass @fix
-(E) setup macvlan on docker
+(E) setup macvlan on docker @setup
 (E) setup ssh key on yubikey @setup
 (E) update main windows 10 machine to the latest version
 finance app to output a budget
 finance_db with redis backend
 find a project to work on - fiverr.com - become a seller
-fix mongodb  server install on gentoo @fix
-fix shell script to use new git pattern
+(G) fix mongodb  server install on gentoo @fix
+x 2022-09-01 fix shell script to use new git pattern
 (F) learn  about replay attack for cookies @learn
-(F) setup ddwrt web frontend certificate
+(F) setup ddwrt web frontend certificate @setup
 (G) build a profile avitar @build
 gentoo primary system
-gentoo setup and build custom kernel
 gpg key on yubikey
-(G) setup redis server on docker
+(G) setup redis server on docker @setup
 (H) build a gentoo primary system @build
 install FreeNAS
 install haikuOS
-install portainer front end for docker
-learn about blender - make something 3D
-learn about BOLA and IDOR @learn
-learn about session cookies
-learn about traefik (reverse proxy) @learn
-learn express http router
+x 2022-09-01 install portainer front end for docker
+(R) learn about blender - make something 3D @learn
+(M) learn about BOLA and IDOR @learn
+(C) learn about session cookies @learn
+(M) learn about traefik (reverse proxy) @learn
+(H) learn express http router @learn
 learn more about aws
 learn more about azure
 learn more about goodle cloud service
-learn more about upcloud
-learn squashing with git
-learn to use obs for content creation
+(S) learn squashing with git @learn
+(S) learn to use obs for content creation @learn
 linux cross compiler for rasperrry pi arm
-linux - swap init program with bash (testing)
+(S) linux - swap init program with bash (testing)
 lora - setup a sender/receiver
 make my own PCB
 mine crypto currency
-(N) practice squashing with git
-openwrt test network @setup
+(N) practice squashing with git @learn
+(F) setup openwrt test network @setup
 port rapi-finance-endpoint to ktor
-port rapi-finance-endpoint to rust
-proxmox install backup server
-python spotify
+(D) proxmox install backup server
 record live tv on linux with silicondust hdhomerun
 run a kvm version of freebsd to test dotfiles
 selfhost nextcloud (dropbox replacement)
-setup bastion host on proxmox
-setup docker redis server
+(R) setup bastion host on proxmox @setup
+(S) setup docker redis server @setup
 setup fastly VCL
-setup heroku dns with cloudflare
+(G) setup heroku dns with cloudflare
 setup linux color scheme everforest
 setup linux pam module for yubikey
 setup origin upstream from fastly
 setup - recording live tv on linux with silicondust hdhomerun
 setup subdomain for fastly app
 setup - virtualize nextcloud on docker in proxmox
-setup - virtualize pihole on docker proxmox
-setup - virtualize plexserver on docker in proxmox
-setup webserver for brianhenning.xyz
+(H) setup - virtualize pihole on docker proxmox
+(S) setup - virtualize plexserver on docker in proxmox @setup
 (S) learn about mongodb @learn
 spotify playlist extract
 subdomain for fastly app
@@ -107,7 +100,7 @@ x 2022-09-01 nix packages to replace flatpak
 x 2022-09-01 setup nvim LSP
 (Y) build aes encrypt a file using haskell @build
 (Y) JOOQ update and delete
-(Y) setup console fonts
+(Y) setup console fonts @setup
 (Z) build a hardware hackintosh @build
 (Z) build custom kernel for gentoo
 (Z) dictation linux
