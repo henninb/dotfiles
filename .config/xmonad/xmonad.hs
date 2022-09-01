@@ -183,7 +183,7 @@ myConfig = def
       <+> myManageHook
       <+> myManageHook'
       <+> manageHook def
-  , handleEventHook = docksEventHook <+> minimizeEventHook <+> myHandleEventHook
+  , handleEventHook = docksEventHook <+> minimizeEventHook <+> myHandleEventHook <+> fullscreenEventHook
       -- <+> fullscreenEventHook -- may have negative impact to flameshot
       -- <+> ewmhFullscreen
   -- , logHook = eventLogHookForPolybar
