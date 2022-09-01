@@ -1,2 +1,118 @@
-(D) create a hackintosh in proxmox due:2022-09-30
-(D) learn email sub-addressing due:2022-09-30
+(D) build a hackintosh in proxmox due:2022-09-30 @build
+(D) learn about email sub-addressing due:2022-09-30 @learn
+(Y) JOOQ update and delete
+automate bridge setup
+(E) backup 2fa codes rec:m @backup
+(E) backup configs for ddwrt, pihole, pfsense rec:m @backup
+(E) backup photos rec:m @backup
+build - lora - setup a sender/receiver
+a FreeNAS server @build
+build a custom PCB
+(B) build a docker dns server @build
+(Z) build a hardware hackintosh @build
+build a python spotify app
+build a spotify playlist extractor
+(Y) build aes encrypt a file using haskell @build
+build an android app
+build an app to stream audio to an android phone
+(Z) build custom kernel for gentoo
+(H) build a gentoo primary system @build
+(B) buld lua nvim config @build
+(B) build nvim LSP script for download @build
+x 2022-09-01 build portainer front end for docker pri:A
+x 2022-09-01 build sqlite for contacts
+x 2022-09-01 build sqlite for tech bucket list
+build the automation for a bridge setup
+code an android app
+code submenu names in xmonad
+(E) convert bitwardent to keepass @fix
+(G) build a profile avitar @build
+(Z) dictation linux
+(Z) dictation macos
+(D) build a docker dns server on debian @build
+x 2022-09-01 docker run void
+finance app to output a budget
+(S) learn about mongodb @learn
+finance_db with redis backend
+find a project to work on - fiverr.com - become a seller
+x 2022-09-01 fix brave privacy mode full screen video from youtube
+(D) fix ddwrt reverse proxy issue @fix
+fix mongodb  5 on gentoo
+(Z) fix pfsense certificate @fix
+fix shell script to use new git pattern
+(B) fix xmonad warnings @fix
+gentoo primary system
+gentoo setup and build custom kernel
+gpg key on yubikey
+install FreeNAS
+x 2022-09-01 install bottles gentoo
+install haikuOS
+x 2022-09-01 install nix packages to replace flatpak
+install portainer front end for docker
+learn about BOLA and IDOR @learn
+learn about session cookies
+learn about blender - make something 3D
+learn express http router
+(W) learn the gimp basics - distrotube @learn
+(W) learn about kali linux @learn
+(W) learn about kuberneties @learn
+learn more about aws
+learn more about azure
+(C) sign up for digital ocean
+learn more about goodle cloud service
+learn more about upcloud
+(F) learn  about replay attack for cookies @learn
+learn squashing with git
+learn to use obs for content creation
+learn about traefik (reverse proxy) @learn
+linux - swap init program with bash (testing)
+linux cross compiler for rasperrry pi arm
+lora - setup a sender/receiver
+(B) lxc container running in proxmox
+make my own PCB
+(D) migrate cert script to react and other apps
+mine crypto currency
+x 2022-09-01 nix packages to replace flatpak
+port rapi-finance-endpoint to ktor
+port rapi-finance-endpoint to rust
+(N) practice squashing with git
+proxmox install backup server
+python spotify
+record live tv on linux with silicondust hdhomerun
+(D) replace sudo with doas @fix
+run a kvm version of freebsd to test dotfiles
+selfhost nextcloud (dropbox replacement)
+setup - recording live tv on linux with silicondust hdhomerun
+setup - virtualize nextcloud on docker in proxmox
+setup - virtualize pihole on docker proxmox
+setup - virtualize plexserver on docker in proxmox
+setup bastion host on proxmox
+(Y) setup console fonts
+(F) setup ddwrt web frontend certificate
+setup docker redis server
+setup fastly VCL
+setup heroku dns with cloudflare
+(B) setup  https certificate on the pihole @setup
+(C) setup https certificate on the pihole @setup
+setup linux color scheme everforest
+setup linux pam module for yubikey
+(E) setup macvlan on docker
+x 2022-09-01 setup nvim LSP
+openwrt test network @setup
+setup origin upstream from fastly
+(C) setup https certificate proxmox webui @setup
+(G) setup redis server on docker
+(B) setup  splunk in proxmox debian docker @setup
+setup subdomain for fastly app
+setup webserver for brianhenning.xyz
+spotify playlist extract
+(E) setup ssh key on yubikey @setup
+subdomain for fastly app
+(B) fix sunset lastpass @fix
+(B) update  lua nvim config @update
+(E) update main windows 10 machine to the latest version
+(C) use syncthing with keepass
+virtualize nextcloud on docker in proxmox
+(B) build a virtualized pihole on docker proxmox @build
+virtualize plexserver on docker in proxmox
+(A) learn more about dig @learn
