@@ -10,8 +10,10 @@ elif [ -x "$(command -v apt)" ]; then
   sudo apt install -y libxkbcommon-dev
 elif [ -x "$(command -v xbps-install)" ]; then
   sudo xbps-install -y mesa-dri
+elif [ -x "$(command -v pkg)" ]; then
+  echo "freebsd"
 elif [ -x "$(command -v eopkg)" ]; then
-  echo
+  echo "solus"
 elif [ -x "$(command -v swupd)" ]; then
   sudo swupd bundle-add devpkg-freetype
   sudo swupd bundle-add devpkg-libxml2
