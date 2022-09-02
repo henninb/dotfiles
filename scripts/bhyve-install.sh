@@ -3,7 +3,6 @@
 if [ "$OS" = "FreeBSD" ]; then
   sudo mkdir -p /vm
   sudo mkdir -p /vm/iso
-  # sudo pkg install -y vm-bhyve grub2-bhyve qemu-utils bhyve-rc bhyve-firmware sysutils/uefi-edk2-bhyve sysrc
   sudo pkg install -y vm-bhyve 
   sudo pkg install -y grub2-bhyve
   sudo pkg install -y bhyve-rc 
@@ -20,6 +19,7 @@ if [ "$OS" = "FreeBSD" ]; then
   echo sudo vm switch create public1 em0
   echo sudo sysctl net.link.tap.up on open=1
   #echo 'net.link.tap.up on open=1' | sudo tee -a /etc/sysctl.conf
+  sudo kldload if_bridge if_tap nmdm vmm
 
   echo sudo sysctl net.inet.ip.forwarding=1
   echo 'net.inet.ip.forwarding=1' | sudo tee -a /etc/sysctl.conf
@@ -37,8 +37,13 @@ if [ "$OS" = "FreeBSD" ]; then
   echo sudo ifconfig bridge0 create
   echo sudo ifconfig tap1 create
   echo sudo ifconfig bridge1 create
+#  sudo zfs create -o mountpoint=/vm zroot/vm
   sudo vm init
-  #echo sudo cp '/usr/local/share/examples/vm-bhyve/* /vm/.templates/'
+  sudo cp -v /usr/local/share/examples/vm-bhyve/* /vm/.templates/
+  sudo vm switch create public
+#  sudo vm switch add public em0
+  sudo vm switch add public vtnet0
+  
 else
   echo "$OS is not yet implemented."
   exit 1

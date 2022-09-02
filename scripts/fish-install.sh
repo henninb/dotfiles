@@ -10,6 +10,8 @@ elif command -v apt; then
   echo "debian"
 elif command -v xbps-install; then
   echo "void"
+elif command -v pkg; then
+  sudo pkg install -y fish
 elif command -v eopkg; then
   echo "solus"
 elif command -v dnf; then

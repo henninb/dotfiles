@@ -21,10 +21,10 @@ sudo vm switch add public re0
 sudo vm switch create public em0
 
 # echo sudo vm destroy $VMNAME
-echo sudo vm iso 'https://mirrors.acm.wpi.edu/archlinux/iso/2022.08.01/archlinux-2022.08.01-x86_64.iso'
-sudo vm iso
+sudo vm iso 'https://mirror.arizona.edu/archlinux/iso/2022.08.05/archlinux-2022.08.05-x86_64.iso'
+#sudo vm iso
 sudo vm create -t $TEMPLATE -s 50G $VMNAME
-sudo vm install -f $VMNAME archlinux-2021.04.01-x86_64.iso
+sudo vm install -f $VMNAME archlinux-2022.08.05-x86_64.iso
 echo sudo vm start $VMNAME
 sudo vm list
 echo sudo vm console $VMNAME

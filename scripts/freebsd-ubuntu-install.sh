@@ -12,6 +12,15 @@ sudo mkdir -p /compat/ubuntu/dev/fd
 
 # /compat/ubuntu/etc/apt/apt.conf.d/00freebsd, containing a single line: APT::Cache-Start 251658240;.
 
+cat > "$HOME/tmp/loader.conf" << EOF
+# nano /boot/loader.conf
+linux_load="YES"
+linux64_load="YES"
+fdescfs_load="YES"
+linprocfs_load="YES"
+tmpfs_load="YES"
+linsysfs_load="YES"
+EOF
 
 cat > "$HOME/tmp/00freebsd" <<EOF
 APT::Cache-Start 251658240;
