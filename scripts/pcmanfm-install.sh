@@ -3,13 +3,19 @@
 if [ "$OS" = "Solus" ]; then
   sudo eopkg install -y pcmanfm
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y pcmanfm
+  if ! command -v pcmanfm; then
+    sudo apt install -y pcmanfm
+  fi
 elif [ "$OS" = "ArcoLinux" ] || [ "$OS" = "Arch Linux" ]; then
-  sudo pacman --noconfirm --needed -S pcmanfm
+  if ! command -v pcmanfm; then
+    sudo pacman --noconfirm --needed -S pcmanfm
+  fi
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y pcmanfm
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge  --update --newuse pcmanfm
+  if ! command -v pcmanfm; then
+    sudo emerge  --update --newuse pcmanfm
+  fi
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y pcmanfm
 elif [ "$OS" = "FreeBSD" ]; then
