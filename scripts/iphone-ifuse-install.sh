@@ -21,6 +21,7 @@ else
   exit 1
 fi
 
+echo enable allow_other in /etc/fuse.conf,
 sudo mkdir -p /media/iphone
 sudo idevicepair pair
 sudo ifuse /media/iphone
