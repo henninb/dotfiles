@@ -21,5 +21,7 @@ else
   exit 1
 fi
 
+fisher add matchai/spacefish
+
 exit 0
 
