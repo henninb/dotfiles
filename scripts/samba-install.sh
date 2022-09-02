@@ -1,6 +1,25 @@
 #!/bin/sh
 
-echo fix samba
+if command -v pacman; then
+  echo "archlinux"
+elif command -v emerge; then
+  echo "gentoo"
+elif command -v apt; then
+  echo "debian"
+elif command -v xbps-install; then
+  echo "void"
+elif command -v pkg; then
+  echo "freebsd"
+elif command -v eopkg; then
+  echo "solus"
+elif command -v dnf; then
+  echo "fedora"
+elif command -v brew; then
+  echo "macos"
+else
+  echo "$OS is not yet implemented."
+  exit 1
+fi
 
 exit 0
 
