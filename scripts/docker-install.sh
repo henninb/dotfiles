@@ -106,7 +106,8 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo netstat -lntp | grep dockerd
   sudo fuser 2375/tcp
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install docker ca_root_nss
+  sudo pkg install -y docker
+  sudo pkg install -y ca_root_nss
   sudo sysrc -f /etc/rc.conf docker_enable="YES"
   sudo service docker start
 elif [ "$OS" = "Gentoo" ]; then
