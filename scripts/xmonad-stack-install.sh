@@ -194,6 +194,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y zenity
   # sudo pkg install -y libXft
   # sudo pkg install -y xz
+  sudo sysrc dbus_enable="YES"
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y cabal-install
   sudo ln -sfn /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6

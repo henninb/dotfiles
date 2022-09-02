@@ -1,6 +1,10 @@
 #!/bin/sh
 
-pkgs="trayer volumeicon feh xscreensaver numlockx blueman-applet copyq picom dunst flameshot nm-applet conky"
+if [ "$OS" = "FreeBSD" ]; then
+  pkgs="trayer volumeicon feh xscreensaver numlockx blueman-applet copyq picom dunst flameshot nm conky"
+else
+  pkgs="trayer volumeicon feh xscreensaver numlockx blueman-applet copyq picom dunst flameshot nm-applet conky"
+fi
 
 for i in $pkgs; do
   if [ ! -x "$(command -v "$i")" ]; then
@@ -15,11 +19,11 @@ done
 
 echo "not installed: $FAILURE"
 
-exit 0
-nohup volumeicon &
-nohup trayer --edge bottom --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 108 --transparent true --tint 0x000000 --height 18 --alpha 0 &
-nohup picom --experimental-backends --backend glx --xrender-sync-fence &
+# nohup volumeicon &
+# nohup trayer --edge bottom --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 108 --transparent true --tint 0x000000 --height 18 --alpha 0 &
+# nohup picom --experimental-backends --backend glx --xrender-sync-fence &
 
 exit 0
+
 
 # vim: set ft=sh

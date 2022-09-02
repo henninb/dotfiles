@@ -10,6 +10,7 @@ elif command -v xbps-install; then
   echo "void"
 elif command -v pkg; then
   echo "freebsd"
+  sudo pkg install -y samba413
 elif command -v eopkg; then
   echo "solus"
 elif command -v dnf; then
