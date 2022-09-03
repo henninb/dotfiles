@@ -1,11 +1,11 @@
 (J) build a FreeNAS server @build
 (A) learn more about dig @learn
-(B) build a docker dns server @build
+(B) build a docker dns server with debian @build
 (B) build a virtualized pihole on docker proxmox @build
 (B) build nvim LSP script for download @build
 (B) buld lua nvim config @build
 (B) fix sunset lastpass @fix
-(B) fix xmonad warnings @fix
+x 2022-09-03 fix xmonad warnings pri:B @fix
 (B) setup lxc container running in proxmox @setup
 (B) setup  https certificate on the pihole @setup
 (B) setup  splunk in proxmox debian docker @setup
@@ -21,7 +21,6 @@ fix code submenu names in xmonad @fix
 (C) setup https certificate proxmox webui @setup
 (C) sign up for digital ocean
 (C) use syncthing with keepass
-(D) build a docker dns server on debian @build
 (D) build a hackintosh in proxmox due:2022-09-30 @build
 (D) fix ddwrt reverse proxy issue @fix
 (D) learn about email sub-addressing due:2022-09-30 @learn
@@ -108,3 +107,4 @@ x 2022-09-01 setup nvim LSP
 (Z) fix pfsense certificate @fix
 (B) install and use the fish shell @setup
 (A) Install freebsd on its own 500GB HD @buid
+(C) sunset heroku apps
