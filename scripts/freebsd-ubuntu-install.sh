@@ -78,6 +78,8 @@ chmod 755 "$HOME/tmp/install-brave.sh"
 sudo mv -v "$HOME/tmp/install-brave.sh" /compat/ubuntu/install-brave.sh
 echo ubuntu | sudo tee /compat/ubuntu/etc/hostname
 
+sudo sysrc ubuntu_enable=YES
+
 sudo chroot /compat/ubuntu /bin/bash
 
 exit 0
