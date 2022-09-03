@@ -38,7 +38,7 @@ mySpacing = spacingRaw False (Border 1 1 1 1) True (Border 1 1 1 1) True
 myLayouts = renamed [CutWordsLeft 1] . minimize . boringWindows $ workspaceLayouts
 
 workspaceLayouts =
-    onWorkspace (myWorkspaces !! 0) defaultLayoutGroup $
+    onWorkspace (head myWorkspaces) defaultLayoutGroup $
     onWorkspace (myWorkspaces !! 1) defaultLayoutGroup $
     onWorkspace (myWorkspaces !! 2) defaultLayoutGroup $
     onWorkspace (myWorkspaces !! 3) defaultLayoutGroup $

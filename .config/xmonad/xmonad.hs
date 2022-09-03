@@ -11,8 +11,8 @@
 
 import XMonad
 import XMonad.Hooks.DynamicLog (shorten, dynamicLogWithPP)
-import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen, fullscreenEventHook)
-import XMonad.Hooks.ManageDocks (docksEventHook, docksStartupHook, manageDocks, docks)
+import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen)
+import XMonad.Hooks.ManageDocks (manageDocks, docks)
 import XMonad.Hooks.Minimize (minimizeEventHook)
 import XMonad.Hooks.Place (smart, placeHook)
 import XMonad.Hooks.SetWMName (setWMName)
@@ -95,7 +95,10 @@ main = do
     $ dynamicProjects projects
     -- $ docks
 -- bh changed on 7/24/2022
-    $ ewmh . docks
+    -- $ ewmh . docks
+    $ ewmhFullscreen
+    $ ewmh
+    $ docks
     -- bh keybinding (M-F1) for showing all KeyBindings
     $ addDescrKeys' ((superKeyMask, xK_F1), showKeyBindings) keybinds
     $ myConfig { logHook =
@@ -150,7 +153,7 @@ myStartupHook = do
     -- spawn "clipmenud" --should I run copyq or clipmenu
     spawnOnce "copyq"
     spawnOn (myWorkspaces !! 7) "slack -u"
-    spawnOn (myWorkspaces !! 0) "alacritty"
+    spawnOn (head myWorkspaces) "alacritty"
     case os of
       "freebsd" -> return ()
       "linux"   -> spawnOnce "blueman-applet" --dbus required
@@ -171,7 +174,7 @@ myStartupHook = do
     spawnOnce "xscreensaver -no-splash"
     spawnOnce "feh --no-fehbg --bg-scale $HOME/.local/wallpaper/minnesota-vikings-dark.png"
     -- spawnOnce "killall redshift; sleep 4 ; redshift -l 48.024395:11.598893 &"
-    windows $ view (myWorkspaces !! 0)
+    windows $ view (head myWorkspaces)
 
 myConfig = def
   { terminal = myTerminal
@@ -183,11 +186,11 @@ myConfig = def
       <+> myManageHook
       <+> myManageHook'
       <+> manageHook def
-  , handleEventHook = docksEventHook <+> minimizeEventHook <+> myHandleEventHook <+> fullscreenEventHook
+  , handleEventHook = minimizeEventHook <+> myHandleEventHook
       -- <+> fullscreenEventHook -- may have negative impact to flameshot
       -- <+> ewmhFullscreen
   -- , logHook = eventLogHookForPolybar
-  , startupHook = docksStartupHook <+> myStartupHook
+  , startupHook = myStartupHook
   , focusFollowsMouse = False
   , clickJustFocuses = False
   , borderWidth = myBorderWidth
