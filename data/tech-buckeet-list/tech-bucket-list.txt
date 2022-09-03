@@ -108,3 +108,4 @@ x 2022-09-01 setup nvim LSP
 (B) install and use the fish shell @setup
 (A) Install freebsd on its own 500GB HD @buid
 (C) sunset heroku apps
+(C) use kitty as the default terminal
