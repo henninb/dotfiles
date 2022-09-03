@@ -78,6 +78,7 @@ sudo mv -v "$HOME/tmp/locale.gen" /compat/ubuntu/etc/locale.gen
 chmod 755 "$HOME/tmp/install-brave.sh"
 sudo mv -v "$HOME/tmp/install-brave.sh" /compat/ubuntu/install-brave.sh
 echo ubuntu | sudo tee /compat/ubuntu/etc/hostname
+sudo cp -v "$HOME/freebsd/brave-wrapper" /compat/ubuntu/opt/brave.com/brave/brave-wrapper
 
 sudo sysrc ubuntu_enable=YES
 sudo sysrc linux_enable=YES
