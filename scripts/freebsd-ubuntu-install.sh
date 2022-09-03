@@ -82,6 +82,8 @@ sudo mv -v "$HOME/tmp/install-brave.sh" /compat/ubuntu/install-brave.sh
 echo ubuntu | sudo tee /compat/ubuntu/etc/hostname
 sudo cp -v "$HOME/freebsd/brave-wrapper" /compat/ubuntu/opt/brave.com/brave/brave-wrapper
 
+cd /compat/ubuntu/lib64 && sudo rm ./ld-linux-x86-64.so.2 && sudo ln -s ../lib/x86_64-linux-gnu/ld-2.31.so ld-linux-x86-64.so.2
+
 sudo sysrc ubuntu_enable=YES
 sudo sysrc linux_enable=YES
 sudo sysrc dbus_enable=YES
