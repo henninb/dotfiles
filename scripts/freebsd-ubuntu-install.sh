@@ -69,8 +69,9 @@ sudo apt install -y brave-browser
 EOF
 
 sudo mount -al
-sudo mv -v /compat/ubuntu/etc/fstab /compat/ubuntu/etc/fstab.bak
-sudo mv -v "$HOME/tmp/ubuntu-fstab" /compat/ubuntu/etc/fstab
+# sudo mv -v /compat/ubuntu/etc/fstab /compat/ubuntu/etc/fstab.bak
+# sudo mv -v "$HOME/tmp/ubuntu-fstab" /compat/ubuntu/etc/fstab
+cat "$HOME/tmp/ubuntu-fstab" | sudo tee -a /etc/fstab
 sudo mv -v "$HOME/tmp/00freebsd" /compat/ubuntu/etc/apt/apt.conf.d/00freebsd
 sudo mv -v "$HOME/tmp/sources.list" /compat/ubuntu/etc/apt/sources.list
 sudo mv -v "$HOME/tmp/locale.gen" /compat/ubuntu/etc/locale.gen
@@ -79,6 +80,10 @@ sudo mv -v "$HOME/tmp/install-brave.sh" /compat/ubuntu/install-brave.sh
 echo ubuntu | sudo tee /compat/ubuntu/etc/hostname
 
 sudo sysrc ubuntu_enable=YES
+sudo sysrc linux_enable=YES
+sudo sysrc dbus_enable=YES
+sudo sysrc hald_enable=YES
+sudo sysrc kld_list="linux vmm"
 
 sudo chroot /compat/ubuntu /bin/bash
 
