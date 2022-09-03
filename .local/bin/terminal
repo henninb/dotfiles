@@ -5,6 +5,10 @@ if alacritty; then
   exit 0
 fi
 
+if kitty; then
+  exit 0
+fi
+
 if st; then
   exit 0
 fi
