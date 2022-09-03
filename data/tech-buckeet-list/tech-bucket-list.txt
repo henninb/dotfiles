@@ -107,3 +107,4 @@ x 2022-09-01 setup nvim LSP
 (Z) dictation macos
 (Z) fix pfsense certificate @fix
 (B) install and use the fish shell @setup
+(A) Install freebsd on its own 500GB HD @buid
