@@ -68,9 +68,9 @@ sudo apt update
 sudo apt install -y brave-browser
 EOF
 
+cp -v "$HOME/freeebsd/linux-brave" "$HOME/.local/bin"
+
 sudo mount -al
-# sudo mv -v /compat/ubuntu/etc/fstab /compat/ubuntu/etc/fstab.bak
-# sudo mv -v "$HOME/tmp/ubuntu-fstab" /compat/ubuntu/etc/fstab
 cat "$HOME/tmp/ubuntu-fstab" | sudo tee -a /etc/fstab
 sudo mv -v "$HOME/tmp/00freebsd" /compat/ubuntu/etc/apt/apt.conf.d/00freebsd
 sudo mv -v "$HOME/tmp/sources.list" /compat/ubuntu/etc/apt/sources.list
