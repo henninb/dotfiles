@@ -68,7 +68,7 @@ sudo apt update
 sudo apt install -y brave-browser
 EOF
 
-cp -v "$HOME/freeebsd/linux-brave" "$HOME/.local/bin"
+cp -v "$HOME/freebsd/linux-brave" "$HOME/.local/bin"
 
 sudo mount -al
 cat "$HOME/tmp/ubuntu-fstab" | sudo tee -a /etc/fstab
