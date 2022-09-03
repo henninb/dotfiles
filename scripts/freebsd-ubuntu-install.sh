@@ -71,7 +71,9 @@ EOF
 cp -v "$HOME/freebsd/linux-brave" "$HOME/.local/bin"
 
 sudo mount -al
-cat "$HOME/tmp/ubuntu-fstab" | sudo tee -a /etc/fstab
+if ! cat /etc/fstab | grep -q ubuntu; then
+  cat "$HOME/tmp/ubuntu-fstab" | sudo tee -a /etc/fstab
+fi
 sudo mv -v "$HOME/tmp/00freebsd" /compat/ubuntu/etc/apt/apt.conf.d/00freebsd
 sudo mv -v "$HOME/tmp/sources.list" /compat/ubuntu/etc/apt/sources.list
 sudo mv -v "$HOME/tmp/locale.gen" /compat/ubuntu/etc/locale.gen
