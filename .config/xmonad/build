@@ -7,6 +7,9 @@
 ##stack ghc -- --make xmonad.hs -i -fforce-recomp -with-rtsopts=-N4 -o "$1"
 #stack ghc -- --make xmonad.hs
 
+# If ld --version contains "GNU ld" at the beginning of the line, it must be GNU ld, so append -Wl,--hash-size=31 and -Wl,--reduce-memory-overheads to 
+# export LDFLAGS=-Wl,--reduce-memory-overheads,-Wl,--hash-size=31
+
 if stack build :xmonad-config; then
   notify-send "xmonad build" "The xmonad build was successful"
 else

@@ -1,6 +1,7 @@
 # resolver: lts-18.17
 # resolver: lts-18.24
 # resolver: lts-19.16
-resolver: lts-19.16
+# https://www.stackage.org/
+resolver: lts-19.21
 packages:
 - .

@@ -8,7 +8,7 @@
 x 2022-09-03 fix xmonad warnings pri:B @fix
 (B) setup lxc container running in proxmox @setup
 (B) setup  https certificate on the pihole @setup
-(B) setup  splunk in proxmox debian docker @setup
+x 2022-09-04 setup  splunk in proxmox debian docker pri:B @setup
 build a custom PCB
 (Z) build an app to stream audio to an android phone @build
 build a spotify playlist extractor
@@ -109,4 +109,8 @@ x 2022-09-01 setup nvim LSP
 (A) Install freebsd on its own 500GB HD @buid
 (C) sunset heroku apps
 (C) use kitty as the default terminal
-(B) ansible to update proxmox debian
+x 2022-09-04 ansible to update proxmox debian pri:B
+(C) write ansible script to get the docker status
+(C) Use proxmox to capture proxmox logs
+(C) fix xmonad ghc linker issue @fix
+(A) xmonad ghc: could not execute: ld.gold

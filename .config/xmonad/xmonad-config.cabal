@@ -1,9 +1,5 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.34.2.
---
--- see: https://github.com/sol/hpack
-
 name:           xmonad-config
 version:        0.1.0.0
 author:         Brian Henning
@@ -34,8 +30,8 @@ library
     , containers
     , text
     , utf8-string
-    , xmonad >=0.15
-    , xmonad-contrib >=0.15
+    , xmonad >=0.17
+    , xmonad-contrib >=0.17
   default-language: Haskell2010
 
 executable xmonad-config
@@ -51,7 +47,7 @@ executable xmonad-config
     , bytestring
     , containers
     , utf8-string
-    , xmonad >=0.15
+    , xmonad >=0.17
     , xmonad-config
-    , xmonad-contrib >=0.15
+    , xmonad-contrib >=0.17
   default-language: Haskell2010
