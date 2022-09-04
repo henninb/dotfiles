@@ -1,0 +1,20 @@
+---
+- hosts: all
+  gather_facts: yes
+  vars:
+    - image_v1: '--filter ancestor=nginx-reverse-proxy'
+    - image_v2: '--filter ancestor=portainer/portainer-ce'
+    - image_v3: '--filter ancestor=raspi-finance-react'
+    - image_v4: '--filter ancestor=raspi-finance-endpoint'
+  tasks:
+    - name: Get images name
+      command: docker container ls -a {{ image_v1 }} {{ image_v2 }} {{ image_v3 }} {{ image_v4 }} --format "{{ '{{' }}.Names {{ '}}' }} {{ '{{' }}.Image {{ '}}' }}"
+      register: docker_images
+
+    - name: Restart images
+      docker_container:
+        name: "{{ item.split(' ')[0]}}"
+        image: "{{ item.split(' ')[1]}}"
+        state: started
+        restart: yes
+      loop: "{{ docker_images.stdout_lines}}"
