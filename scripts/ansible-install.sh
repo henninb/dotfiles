@@ -1,6 +1,15 @@
 #!/bin/sh
 
 cat > "$HOME/tmp/hosts" <<'EOF'
+[pfsense]
+192.168.10.1
+
+[ddwrt]
+192.168.10.3
+
+[proxmox]
+192.168.10.4
+
 [debian]
 192.168.10.10
 

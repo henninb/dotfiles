@@ -109,3 +109,4 @@ x 2022-09-01 setup nvim LSP
 (A) Install freebsd on its own 500GB HD @buid
 (C) sunset heroku apps
 (C) use kitty as the default terminal
+(B) ansible to update proxmox debian
