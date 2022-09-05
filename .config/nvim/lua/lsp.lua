@@ -37,18 +37,46 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 require('lspconfig')['sumneko_lua'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
+  on_attach = on_attach,
+  flags = lsp_flags,
 }
--- require('lspconfig')['tsserver'].setup{
---     on_attach = on_attach,
---     flags = lsp_flags,
--- }
--- require('lspconfig')['rust_analyzer'].setup{
---     on_attach = on_attach,
---     flags = lsp_flags,
---     -- Server-specific settings...
---     settings = {
---       ["rust-analyzer"] = {}
---     }
--- }
+
+require('lspconfig')['tsserver'].setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
+
+require'lspconfig'.pyright.setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
+
+require'lspconfig'.ccls.setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
+
+require'lspconfig'.clojure_lsp.setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
+
+require'lspconfig'.jdtls.setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
+
+require'lspconfig'.kotlin_language_server.setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
+
+require'lspconfig'.yamlls.setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
+
+require'lspconfig'.hls.setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+}

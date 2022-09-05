@@ -29,7 +29,7 @@ fix code submenu names in xmonad @fix
 (E) backup 2fa codes rec:m @backup
 (E) backup configs for ddwrt, pihole, pfsense rec:m @backup
 (E) backup photos rec:m @backup
-(E) convert bitwardent to keepass @fix
+(E) convert bitwarden to keepass @fix
 (E) setup macvlan on docker @setup
 (E) setup ssh key on yubikey @setup
 (E) update main windows 10 machine to the latest version
@@ -113,4 +113,4 @@ x 2022-09-04 ansible to update proxmox debian pri:B
 (C) write ansible script to get the docker status
 (C) Use proxmox to capture proxmox logs
 (C) fix xmonad ghc linker issue @fix
-(A) xmonad ghc: could not execute: ld.gold
+x 2022-09-04 xmonad ghc: could not execute: ld.gold pri:A

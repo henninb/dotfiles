@@ -1,0 +1,10 @@
+#!/bin/sh
+
+mkdir -p "$HOME/projects/github.com/haskell"
+cd "$HOME/projects/github.com/haskell" || exit
+git clone git@github.com:haskell/ghcup-hs.git
+cd ghcup-hs || exit
+stack build
+stack install
+
+exit 0
