@@ -59,7 +59,7 @@ VER=2021.2.1
 
 if [ ! -f "$HOME/tmp/ideaIU-${VER}.tar.gz" ]; then
   echo "attempting to download from raspi."
-  if ! scp "pi@pi:/home/pi/downloads/ideaIU-${VER}.tar.gz" "$HOME/tmp/"; then
+  if ! scp "pi@pi:/home/pi/downloads/installers/ideaIU-${VER}.tar.gz" "$HOME/tmp/"; then
     echo "attempting to download from the net - will take a few min."
     if ! curl -s --output "$HOME/tmp/ideaIU-${VER}.tar.gz" "https://download-cf.jetbrains.com/idea/ideaIU-${VER}.tar.gz"; then
       echo download failed.
