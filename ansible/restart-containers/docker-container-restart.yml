@@ -18,3 +18,4 @@
         state: started
         restart: yes
       loop: "{{ docker_images.stdout_lines}}"
+      # become: true
