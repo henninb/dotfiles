@@ -1,89 +1,88 @@
-(J) build a FreeNAS server @build
+(A) Install freebsd on its own 500GB HD @buid
 (A) learn more about dig @learn
+(B) 2022-09-05 update  lua nvim config due:2022-10-05 rec:m @update
 (B) build a docker dns server with debian @build
 (B) build a virtualized pihole on docker proxmox @build
-x 2022-09-05 build nvim LSP script for download pri:B @build
 (B) buld lua nvim config @build
-x 2022-09-05 fix sunset lastpass pri:B @fix
-x 2022-09-03 fix xmonad warnings pri:B @fix
-(B) setup lxc container running in proxmox @setup
+(B) install and use the fish shell @setup
 (B) setup  https certificate on the pihole @setup
-x 2022-09-04 setup  splunk in proxmox debian docker pri:B @setup
+(B) setup lxc container running in proxmox @setup
 build a custom PCB
-(Z) build an app to stream audio to an android phone @build
-build a spotify playlist extractor
 build - lora - setup a sender/receiver
 build the automation for a bridge setup
-x 2022-09-05 (B) update  lua nvim config rec:m @update
-(Z) code an android app @build
-fix code submenu names in xmonad @fix
+(C) download latest version of nvidia driver for gtx960 rec:m
+(C) learn about session cookies @learn
 (C) setup https certificate on the pihole @setup
 (C) setup https certificate proxmox webui @setup
 (C) sign up for digital ocean
+(C) sunset heroku apps
+(C) use kitty as the default terminal
+(C) Use proxmox to capture proxmox logs
 (C) use syncthing with keepass
+(C) write ansible script to get the docker status
 (D) build a hackintosh in proxmox due:2022-09-30 @build
 (D) fix ddwrt reverse proxy issue @fix
 (D) learn about email sub-addressing due:2022-09-30 @learn
 (D) migrate cert script to react and other apps
+(D) proxmox install backup server
 (D) replace sudo with doas @fix
+(D) view images in kitty
 (E) backup 2fa codes rec:m @backup
 (E) backup configs for ddwrt, pihole, pfsense rec:m @backup
 (E) backup photos rec:m @backup
+(E) backup the streamdeck config on linux rec:m @backup
 (E) convert bitwarden to keepass @fix
 (E) setup macvlan on docker @setup
 (E) setup ssh key on yubikey @setup
 (E) update main windows 10 machine to the latest version
 finance app to output a budget
 finance_db with redis backend
-find a project to work on - fiverr.com - become a seller
-(G) fix mongodb  server install on gentoo @fix
-x 2022-09-01 fix shell script to use new git pattern
+fix code submenu names in xmonad @fix
 (F) learn  about replay attack for cookies @learn
 (F) setup ddwrt web frontend certificate @setup
+(F) setup openwrt test network @setup
 (G) build a profile avitar @build
 gentoo primary system
-gpg key on yubikey
+(G) fix mongodb  server install on gentoo @fix
+(G) setup heroku dns with cloudflare
 (G) setup redis server on docker @setup
 (H) build a gentoo primary system @build
+(H) learn express http router @learn
+(H) setup - virtualize pihole on docker proxmox
 install FreeNAS
 install haikuOS
-x 2022-09-01 install portainer front end for docker
-(R) learn about blender - make something 3D @learn
-(M) learn about BOLA and IDOR @learn
-(C) learn about session cookies @learn
-(M) learn about traefik (reverse proxy) @learn
-(H) learn express http router @learn
+(J) build a FreeNAS server @build
+(J) build a spotify playlist extractor @build
 learn more about aws
 learn more about azure
 learn more about goodle cloud service
-(S) learn squashing with git @learn
-(S) learn to use obs for content creation @learn
 linux cross compiler for rasperrry pi arm
-(S) linux - swap init program with bash (testing)
 lora - setup a sender/receiver
 make my own PCB
 mine crypto currency
+(M) learn about BOLA and IDOR @learn
+(M) learn about traefik (reverse proxy) @learn
 (N) practice squashing with git @learn
-(F) setup openwrt test network @setup
 port rapi-finance-endpoint to ktor
-(D) proxmox install backup server
 record live tv on linux with silicondust hdhomerun
+(R) learn about blender - make something 3D @learn
+(R) setup bastion host on proxmox @setup
 run a kvm version of freebsd to test dotfiles
 selfhost nextcloud (dropbox replacement)
-(R) setup bastion host on proxmox @setup
-(S) setup docker redis server @setup
 setup fastly VCL
-(G) setup heroku dns with cloudflare
 setup linux color scheme everforest
 setup linux pam module for yubikey
 setup origin upstream from fastly
 setup - recording live tv on linux with silicondust hdhomerun
 setup subdomain for fastly app
 setup - virtualize nextcloud on docker in proxmox
-(H) setup - virtualize pihole on docker proxmox
-(S) setup - virtualize plexserver on docker in proxmox @setup
 (S) learn about mongodb @learn
+(S) learn squashing with git @learn
+(S) learn to use obs for content creation @learn
+(S) linux - swap init program with bash (testing)
 spotify playlist extract
+(S) setup docker redis server @setup
+(S) setup - virtualize plexserver on docker in proxmox @setup
 subdomain for fastly app
 (W) learn about kali linux @learn
 (W) learn about kuberneties @learn
@@ -93,28 +92,29 @@ x 2022-09-01 build sqlite for contacts
 x 2022-09-01 build sqlite for tech bucket list
 x 2022-09-01 docker run void
 x 2022-09-01 fix brave privacy mode full screen video from youtube
+x 2022-09-01 fix shell script to use new git pattern
 x 2022-09-01 install bottles gentoo
 x 2022-09-01 install nix packages to replace flatpak
+x 2022-09-01 install portainer front end for docker
 x 2022-09-01 nix packages to replace flatpak
 x 2022-09-01 setup nvim LSP
+x 2022-09-03 fix xmonad warnings pri:B @fix
+x 2022-09-04 ansible to update proxmox debian pri:B
+x 2022-09-04 setup  splunk in proxmox debian docker pri:B @setup
+x 2022-09-04 xmonad ghc: could not execute: ld.gold pri:A
+x 2022-09-05 build nvim LSP script for download pri:B @build
+x 2022-09-05 (B) update  lua nvim config rec:m @update
+x 2022-09-05 fix pfsense certificate pri:Z @fix
+x 2022-09-05 fix sunset lastpass pri:B @fix
+x 2022-09-05 fix xmonad ghc linker issue pri:C @fix
 (Y) build aes encrypt a file using haskell @build
 (Y) JOOQ update and delete
 (Y) setup console fonts @setup
 (Z) build a hardware hackintosh @build
-(Z) build custom kernel for gentoo
+(Z) build an app to stream audio to an android phone @build
+(Z) build custom kernel for gentoo @build
+(Z) code an android app @build
 (Z) dictation linux
 (Z) dictation macos
-(Z) fix pfsense certificate @fix
-(B) install and use the fish shell @setup
-(A) Install freebsd on its own 500GB HD @buid
-(C) sunset heroku apps
-(C) use kitty as the default terminal
-x 2022-09-04 ansible to update proxmox debian pri:B
-(C) write ansible script to get the docker status
-(C) Use proxmox to capture proxmox logs
-x 2022-09-05 fix xmonad ghc linker issue pri:C @fix
-x 2022-09-04 xmonad ghc: could not execute: ld.gold pri:A
-(B) 2022-09-05 update  lua nvim config due:2022-10-05 rec:m @update
-(C) download latest version of nvidia driver for gtx960 rec:m
-(E) backup the streamdeck config on linux rec:m @backup
-(D) view images in kitty
+(Z) find a project to work on - fiverr.com - become a seller
+(Z) gpg key on yubikey @setup
