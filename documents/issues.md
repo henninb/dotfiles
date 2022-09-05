@@ -622,3 +622,9 @@ eix -Iu --only-names
 ```
 stack ghc -- --version
 ```
+
+SPACESHIP_PYENV_SHOW is deprecated. Use SPACESHIP_PYTHON_SHOW instead           
+
+SPACESHIP_KUBECONTEXT_SHOW is deprecated. Use SPACESHIP_KUBECTL_CONTEXT_SHOW ins
+
+tead                                                                           
