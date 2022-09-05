@@ -70,10 +70,6 @@ if not lspconfig_loaded then
   return notification.info("nvim-lspconfig is not installed", { title = "LSP" })
 end
 
-if not lsp_installer_loaded then
-  return notification.info("nvim-lsp-installer is not installed", { title = "LSP" })
-end
-
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,

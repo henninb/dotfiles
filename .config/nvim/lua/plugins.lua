@@ -26,7 +26,7 @@ function get_setup(name)
 end
 
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
