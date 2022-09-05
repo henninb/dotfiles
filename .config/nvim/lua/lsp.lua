@@ -64,26 +64,30 @@ local on_attach = function(client, bufnr)
 end
 
 local lspconfig_loaded, lspconfig = pcall(require, "lspconfig")
-local lsp_installer_loaded, lsp_installer = pcall(require, "nvim-lsp-installer")
 
 if not lspconfig_loaded then
   return notification.info("nvim-lspconfig is not installed", { title = "LSP" })
 end
 
 local lsp_flags = {
-  -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
+
+-- ./.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server
+-- "Lua.workspace.checkThirdParty": false
 require('lspconfig')['sumneko_lua'].setup{
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      },
+      workspace = {
+        checkThirdParty = false
+      },
+    }
+  },
   on_attach = on_attach,
   flags = lsp_flags,
-  settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
 }
 
 require('lspconfig')['tsserver'].setup{
