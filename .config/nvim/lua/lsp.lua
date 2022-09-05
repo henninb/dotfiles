@@ -73,9 +73,8 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
--- .local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server
--- "Lua.workspace.checkThirdParty": false
-require('lspconfig')['sumneko_lua'].setup{
+-- .local/share/nvim/lsp_servers/
+require'lspconfig'.sumneko_lua.setup{
   settings = {
     Lua = {
       diagnostics = {
@@ -87,7 +86,7 @@ require('lspconfig')['sumneko_lua'].setup{
   flags = lsp_flags,
 }
 
-require('lspconfig')['tsserver'].setup{
+require'lspconfig'.tsserver.setup{
   on_attach = on_attach,
   flags = lsp_flags,
 }
