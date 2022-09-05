@@ -2,7 +2,7 @@
 (A) learn more about dig @learn
 (B) build a docker dns server with debian @build
 (B) build a virtualized pihole on docker proxmox @build
-(B) build nvim LSP script for download @build
+x 2022-09-05 build nvim LSP script for download pri:B @build
 (B) buld lua nvim config @build
 (B) fix sunset lastpass @fix
 x 2022-09-03 fix xmonad warnings pri:B @fix
@@ -14,7 +14,7 @@ build a custom PCB
 build a spotify playlist extractor
 build - lora - setup a sender/receiver
 build the automation for a bridge setup
-(B) update  lua nvim config @update
+x 2022-09-05 (B) update  lua nvim config rec:m @update
 (Z) code an android app @build
 fix code submenu names in xmonad @fix
 (C) setup https certificate on the pihole @setup
@@ -112,5 +112,6 @@ x 2022-09-01 setup nvim LSP
 x 2022-09-04 ansible to update proxmox debian pri:B
 (C) write ansible script to get the docker status
 (C) Use proxmox to capture proxmox logs
-(C) fix xmonad ghc linker issue @fix
+x 2022-09-05 fix xmonad ghc linker issue pri:C @fix
 x 2022-09-04 xmonad ghc: could not execute: ld.gold pri:A
+(B) 2022-09-05 update  lua nvim config due:2022-10-05 rec:m @update
