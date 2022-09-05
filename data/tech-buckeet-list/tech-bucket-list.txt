@@ -116,3 +116,4 @@ x 2022-09-05 fix xmonad ghc linker issue pri:C @fix
 x 2022-09-04 xmonad ghc: could not execute: ld.gold pri:A
 (B) 2022-09-05 update  lua nvim config due:2022-10-05 rec:m @update
 (C) download latest version of nvidia driver for gtx960 rec:m
+(E) backup the streamdeck config on linux rec:m @backup
