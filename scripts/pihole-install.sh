@@ -1,9 +1,11 @@
 #!/bin/sh
 
-curl -sSL https://install.pi-hole.net | sudo bash
+if [ "$OS" = "Debian GNU/Linux" ]; then
+  curl -sSL https://install.pi-hole.net | sudo bash
 
-echo set password
-pihole -a -p
+  echo set password
+  pihole -a -p
+fi
 
 exit 0
 
