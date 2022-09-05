@@ -7,4 +7,6 @@ cd ghcup-hs || exit
 stack build
 stack install
 
+ghcup install hls
+
 exit 0
