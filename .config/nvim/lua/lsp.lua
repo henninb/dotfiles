@@ -73,7 +73,7 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
--- ./.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server
+-- .local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server
 -- "Lua.workspace.checkThirdParty": false
 require('lspconfig')['sumneko_lua'].setup{
   settings = {
