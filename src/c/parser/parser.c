@@ -9,7 +9,7 @@ typedef struct book_struct {
    int book_id;
 } Book;
 
-int fileRead( char *);
+void fileRead( char *);
 void trim( char * );
 void parse_book( char *, char *, Book *);
 void print_book(Book *);
@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
   return 0;
 }
 
-int fileRead( char *file_name ) {
+void fileRead( char *file_name ) {
    FILE *fp = NULL;
    char ch;
    char *line = NULL;
@@ -53,7 +53,7 @@ int fileRead( char *file_name ) {
    fclose(fp);
 }
 
-void trim( char * str ) {
+void trim( char *str ) {
     int index = -1;
     int i = 0;
 
