@@ -11,4 +11,3 @@
  :5 (fibonacci 5)
  :6 (fibonacci 6)
  :10 (fibonacci 10) }
-
