@@ -1,3 +1,34 @@
+local lspinstaller_ok, lspinstaller = pcall(require, 'nvim-lsp-installer')
+if not lspinstaller_ok then
+  return
+end
+
+-- Language servers list
+-- local servers = {
+--   'hls',
+--   -- 'rust_analyzer',
+--   'ccls',
+--   'kotlin_language_server',
+--   -- 'pylsp',
+--   'sumneko_lua',
+--   'tsserver',
+--   'bashls',
+--   'jdtls',
+--   'clojure_lsp',
+--   'gopls',
+-- }
+
+lspinstaller.setup({
+    automatic_installation = true,
+    ui = {
+      icons = {
+        server_installed = "✓",
+        server_pending = "➜",
+        server_uninstalled = "✗",
+      },
+    },
+})
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -32,6 +63,17 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
+local lspconfig_loaded, lspconfig = pcall(require, "lspconfig")
+local lsp_installer_loaded, lsp_installer = pcall(require, "nvim-lsp-installer")
+
+if not lspconfig_loaded then
+  return notification.info("nvim-lspconfig is not installed", { title = "LSP" })
+end
+
+if not lsp_installer_loaded then
+  return notification.info("nvim-lsp-installer is not installed", { title = "LSP" })
+end
+
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
@@ -39,6 +81,13 @@ local lsp_flags = {
 require('lspconfig')['sumneko_lua'].setup{
   on_attach = on_attach,
   flags = lsp_flags,
+  settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
+        }
+    }
 }
 
 require('lspconfig')['tsserver'].setup{

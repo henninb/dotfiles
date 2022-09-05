@@ -5,7 +5,16 @@ require("plugins")
 
 require('lualine').setup()
 require('nvim_comment').setup()
-require("nvim-lsp-installer").setup()
+require("nvim-lsp-installer").setup({
+  automatic_installation = true,
+  ui = {
+    icons = {
+      server_installed = "✓",
+      server_pending = "➜",
+      server_uninstalled = "✗",
+    },
+  },
+})
 
 require("lsp")
 
@@ -50,7 +59,7 @@ require'nvim-treesitter.configs'.setup {
 --
 local g   = vim.g
 local o   = vim.o
-local opt = vim.opt
+-- local opt = vim.opt
 local A   = vim.api
 
 -- cmd('syntax on')
@@ -159,7 +168,7 @@ vim.cmd[[colorscheme dracula]]
 
 -- Highlight the region on yank
 A.nvim_create_autocmd('TextYankPost', {
-    group = num_au,
+    -- group = num_au,
     callback = function()
         vim.highlight.on_yank({ higroup = 'Visual', timeout = 120 })
     end,
