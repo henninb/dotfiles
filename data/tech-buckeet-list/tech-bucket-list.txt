@@ -4,7 +4,7 @@
 (B) build a virtualized pihole on docker proxmox @build
 x 2022-09-05 build nvim LSP script for download pri:B @build
 (B) buld lua nvim config @build
-(B) fix sunset lastpass @fix
+x 2022-09-05 fix sunset lastpass pri:B @fix
 x 2022-09-03 fix xmonad warnings pri:B @fix
 (B) setup lxc container running in proxmox @setup
 (B) setup  https certificate on the pihole @setup
@@ -117,3 +117,4 @@ x 2022-09-04 xmonad ghc: could not execute: ld.gold pri:A
 (B) 2022-09-05 update  lua nvim config due:2022-10-05 rec:m @update
 (C) download latest version of nvidia driver for gtx960 rec:m
 (E) backup the streamdeck config on linux rec:m @backup
+(D) view images in kitty
