@@ -228,3 +228,4 @@
 - wallpaper downloader [git clone git@github.com:pystardust/waldl.git]
 - raspberrypi.home.arpa
 - tree
+- kitty +kitten icat ./keepassxc.png
