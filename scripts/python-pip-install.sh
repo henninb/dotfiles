@@ -34,7 +34,8 @@ elif [ "$OS" = "void" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   echo sudo emerge --update --newuse python
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install -y python36 py36-pip
+  sudo pkg install -y python39
+  sudo pkg install -y py39-pip
 else
   echo "$OS is not yet implemented."
   exit 1

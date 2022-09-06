@@ -88,7 +88,7 @@ sudo sysrc ubuntu_enable=YES
 sudo sysrc linux_enable=YES
 sudo sysrc dbus_enable=YES
 sudo sysrc hald_enable=YES
-sudo sysrc kld_list="linux vmm"
+sudo sysrc kld_list="linux nvidia nvidia-modeset"
 
 sudo chroot /compat/ubuntu /bin/bash
 
