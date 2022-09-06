@@ -12,11 +12,9 @@ if [ "$OS" = "FreeBSD" ]; then
   sudo sysrc vm_dir="/vm"
   # sudo sysrc cloned_interfaces="bridge0 tap0 bridge1 tap1 bridge2 tap2 lo1"
   # sudo sysrc ifconfig_bridge0="addm alc0 addm tap0 up"
-  sudo sysrc zfs_enable="YES"
+  # sudo sysrc zfs_enable="YES"
   sudo vm switch create public
   sudo vm switch info
-  echo sudo vm switch info public
-  echo sudo vm switch create public1 em0
   echo sudo sysctl net.link.tap.up on open=1
   #echo 'net.link.tap.up on open=1' | sudo tee -a /etc/sysctl.conf
   sudo kldload if_bridge if_tap nmdm vmm
@@ -43,6 +41,9 @@ if [ "$OS" = "FreeBSD" ]; then
   sudo vm switch create public
 #  sudo vm switch add public em0
   sudo vm switch add public vtnet0
+  sudo vm switch add public re0
+  sudo sysctl net.link.tap.up on open=1
+  sudo vm switch info public
   
 else
   echo "$OS is not yet implemented."
