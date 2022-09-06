@@ -19,7 +19,7 @@ EndSection
 EOF
 
 echo "installing packages for a gtx960"
-sudo pkg install -y nvidia-driver-460.67
+sudo pkg install -y nvidia-driver-470
 sudo pkg install -y emulators/linux_base-c7
 sudo pkg install -y drm-kmod
 
