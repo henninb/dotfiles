@@ -12,6 +12,9 @@ elif command -v apt; then
   echo "debian"
 elif command -v xbps-install; then
   echo "void"
+elif command -v pkg; then
+  echo "freebsd"
+  sudo pkg install -y rsync
 elif command -v eopkg; then
   echo "solus"
 elif command -v dnf; then

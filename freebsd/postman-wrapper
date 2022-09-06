@@ -1,6 +1,6 @@
 #!/compat/ubuntu/bin/bash
 #
-HERE="/opt/brave.com/brave"
+HERE="/opt/Postman"
 
 # We include some xdg utilities next to the binary, and we want to prefer them
 # over the system versions when we know the system versions are very old. We
@@ -27,15 +27,8 @@ else
 fi
 export LD_LIBRARY_PATH
 
-export CHROME_VERSION_EXTRA="stable"
-
-# We don't want bug-buddy intercepting our crashes. http://crbug.com/24120
-export GNOME_DISABLE_CRASH_DIALOG=SET_BY_GOOGLE_CHROME
-
-# Sanitize std{in,out,err} because they'll be shared with untrusted child
-# processes (http://crbug.com/376567).
 exec < /dev/null
 exec > >(exec cat)
 exec 2> >(exec cat >&2)
 
-"$HERE/brave" --no-sandbox --test-type --v=0 "$@" || true
+"$HERE/Postman" "$@" || true
