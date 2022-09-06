@@ -148,7 +148,7 @@ elif [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Linux" ]; then
 elif [ "$OS" = "FreeBSD" ]; then
   sudo service postgresql stop
   sudo rm -rf /var/db/postgres/data13
-  sudo pkg install -y postgresql13-server
+  sudo pkg install -y postgresql14-server
   sudo sysrc postgresql_enable=YES
   sudo service postgresql initdb
   sudo service postgresql start
@@ -160,8 +160,8 @@ elif [ "$OS" = "FreeBSD" ]; then
   fi
   sudo mv -v "$HOME/tmp/pg_hba.conf" /var/db/postgres/data13/pg_hba.conf
   sudo service postgresql restart
-  # netstat -na | grep 5432 | grep LIST
-  ss -tulpn4 | grep 5432
+  netstat -na | grep 5432 | grep LIST
+  # ss -tulpn4 | grep 5432
 else
   echo "$OS is not yet implemented."
   exit 1
