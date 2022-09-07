@@ -16,18 +16,11 @@ www {
 EOF
 
 sudo cp -v "$HOME/tmp/jail.conf" /etc/jail.conf
-sudo sysrc hald_enable=YES
+sudo sysrc jail_enable=YES
 echo 'ifconfig_re0_alias0="inet 192.168.10.27"'
 sudo service jail start www
 jls
 sudo jexec 1 csh
-sudo jexec 1 sh
-
-# if [ "$OS" = "FreeBSD" ]; then
-#   sudo pkg install -y ezjail
-#   sudo sysrc ezjail_enable="YES"
-#   sudo sysrc cloned_interfaces="bridge0 tap0 bridge1 tap1 bridge2 tap2 lo1"
-# fi
 
 exit 0
 
