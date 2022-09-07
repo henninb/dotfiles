@@ -31,6 +31,8 @@ elif command -v apt; then
   sudo apt install -y jq curl
 elif command -v xbps-install; then
   sudo xbps-install -y jq curl
+elif command -v pkg; then
+  sudo pkg install -y jq curl
 elif command -v zypper; then
   sudo zypper install jq curl
 elif command -v dnf; then
