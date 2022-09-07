@@ -20,7 +20,7 @@ sudo sysrc hald_enable=YES
 echo 'ifconfig_re0_alias0="inet 192.168.10.27"'
 sudo service jail start www
 jls
-sudo jexec 1 sh
+sudo jexec 1 csh
 sudo jexec 1 sh
 
 # if [ "$OS" = "FreeBSD" ]; then
