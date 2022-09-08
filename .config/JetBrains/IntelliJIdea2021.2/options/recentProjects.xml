@@ -50,18 +50,6 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
-        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-react">
-          <value>
-            <RecentProjectMetaInfo frameTitle="raspi-finance-react" projectWorkspaceId="2CV3JTsTCDEir5mhoxBfWN2SFfL">
-              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="build" value="IU-212.5080.55" />
-              <option name="buildTimestamp" value="1629776246716" />
-              <frame x="0" y="14" width="3840" height="2128" />
-              <option name="productionCode" value="IU" />
-              <option name="projectOpenTimestamp" value="1658873852793" />
-            </RecentProjectMetaInfo>
-          </value>
-        </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/logout-gtk">
           <value>
             <RecentProjectMetaInfo frameTitle="logout-gtk – README.md" projectWorkspaceId="2CV3OXlmJTHsM85lC5Thmi4C5Qb">
@@ -86,15 +74,27 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
-        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint">
+        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-react">
           <value>
-            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – gradle.properties [raspi-finance-endpoint]" opened="true" projectWorkspaceId="2CV3G6LHiIP65ZrjlT4uwkfSfCw">
+            <RecentProjectMetaInfo frameTitle="raspi-finance-react" projectWorkspaceId="2CV3JTsTCDEir5mhoxBfWN2SFfL">
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="IU-212.5080.55" />
               <option name="buildTimestamp" value="1629776252954" />
               <frame x="0" y="14" width="3840" height="2128" />
               <option name="productionCode" value="IU" />
-              <option name="projectOpenTimestamp" value="1662412066015" />
+              <option name="projectOpenTimestamp" value="1662412703713" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint">
+          <value>
+            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – build.gradle (raspi-finance-endpoint)" projectWorkspaceId="2CV3G6LHiIP65ZrjlT4uwkfSfCw">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IU-212.5080.55" />
+              <option name="buildTimestamp" value="1629776252954" />
+              <frame x="0" y="14" width="3840" height="2128" />
+              <option name="productionCode" value="IU" />
+              <option name="projectOpenTimestamp" value="1662414983531" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
