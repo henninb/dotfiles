@@ -11,7 +11,7 @@
 # export LDFLAGS=-Wl,--reduce-memory-overheads,-Wl,--hash-size=31
 
 if stack build :xmonad-config; then
-  notify-send "xmonad build" "The xmonad build was successful"
+  notify-send "xmonad build" "The xmonad build was successful - $1"
 else
   notify-send "xmonad build" "The xmonad build had failures"
 fi
