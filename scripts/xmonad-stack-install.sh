@@ -246,24 +246,30 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG video "$(id -un)"
   GENTOO_PKGS="rust-bin setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool w3m dunst wmname w3m x11-misc/xclip xinit xorg-server sys-apps/dbus elogind flameshot volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet trayer pulseaudio-modules-bt newsboat sxiv spacefm lxappearance xrandr hardinfo gentoolkit xmodmap app-misc/jq pavucontrol xinput neovim lsof sddm htop eix openoffice-bin firefox-bin app-misc/screen pcmanfm rdfind zenity net-dns/bind-tools tmux bat whois starship traceroute kitty imagemagick colordiff"
   FAILURE=""
+  ls -d /var/db/pkg/*/*| cut -f5- -d/
   for i in $GENTOO_PKGS; do
-    if ! sudo emerge --update --newuse "$i"; then
-      FAILURE="$i $FAILURE"
+    if ! command -v "$i"; then
+      if ! sudo emerge --update --newuse "$i"; then
+        FAILURE="$i $FAILURE"
+      fi
     fi
   done
   sudo usermod -a -G audio "$(id -un)"
-  sudo rc-update add dbus default
-  sudo rc-update add elogind default
-  sudo rc-update add bluetooth default
-  sudo rc-update add NetworkManager default
-  sudo rc-service NetworkManager start
+  if ! command -v systemctl; then
+    sudo rc-update add dbus default
+    sudo rc-update add elogind default
+    sudo rc-update add bluetooth default
+    sudo rc-update add NetworkManager default
+    sudo rc-service NetworkManager start
+  else
+    sudo systemctl enable NetworkManager.service
+    sudo systemctl start NetworkManager.service
+    sudo systemctl enable bluetooth.service
+    sudo systemctl start bluetooth.service
+    sudo systemctl enable cronie
+    sudo systemctl start cronie
+  fi
 
-  sudo systemctl enable NetworkManager.service
-  sudo systemctl start NetworkManager.service
-  sudo systemctl enable bluetooth.service
-  sudo systemctl start bluetooth.service
-  sudo systemctl enable cronie
-  sudo systemctl start cronie
   mkdir -p "$HOME/projects/github.com/baskerville"
   cd "$HOME/projects/github.com/baskerville" || exit
   git clone git@github.com:baskerville/xdo.git
