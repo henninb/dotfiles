@@ -12,7 +12,7 @@
 import XMonad
 import XMonad.Hooks.DynamicLog (shorten, dynamicLogWithPP)
 import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen)
-import XMonad.Hooks.ManageDocks (manageDocks, docks)
+import XMonad.Hooks.ManageDocks (docksEventHook, docksStartupHook, manageDocks, docks)
 import XMonad.Hooks.Minimize (minimizeEventHook)
 import XMonad.Hooks.Place (smart, placeHook)
 import XMonad.Hooks.SetWMName (setWMName)
@@ -62,7 +62,7 @@ topLeftBar = "dzen2 -x '0' -y '0' -h '14' -w '800' -ta 'l' -fg '" ++ myColor "fo
 -- topMiddleBar = "~/.xmonad/assets/bin/main.sh | dzen2 -dock -x '600' -y '0' -h '14' -w '500' -ta 'l' -fg '" ++ myColor "foreground" ++ "' -bg '" ++ myColor "background" ++ "' -fn " ++ myFont
 
 topRightBar :: String
-topRightBar = "xmonad-conky-date | dzen2 -dock -x '2300' -y '0' -h '14' -w '500' -ta 'l' -fg '" ++ myColor "foreground" ++ "' -bg '" ++ myColor "background" ++ "' -fn " ++ myFont
+topRightBar = "xmonad-conky-date | dzen2 -dock -x '2160' -y '0' -h '14' -w '500' -ta 'l' -fg '" ++ myColor "foreground" ++ "' -bg '" ++ myColor "background" ++ "' -fn " ++ myFont
 
 myDzen :: String
 myDzen = " dzen2 -xs 1 -dock -h 14 -ta 'l' -fn '" ++ myFont ++ "' -fg '" ++ myColor "foreground" ++ "' -bg '" ++ myColor "background" ++ "' "
@@ -78,7 +78,7 @@ myFocusFollowsMouse = True
 myClickJustFocuses :: Bool
 myClickJustFocuses = False
 
-myHandleEventHook = swallowEventHook (className =? "Alacritty" <||> className =? "st") (return True)
+myHandleEventHook = swallowEventHook (className =? "Alacritty" <||> className =? "st" <||> className =? "kitty") (return True)
 
 main :: IO ()
 main = do
@@ -186,11 +186,11 @@ myConfig = def
       <+> myManageHook
       <+> myManageHook'
       <+> manageHook def
-  , handleEventHook = minimizeEventHook <+> myHandleEventHook
+  , handleEventHook = docksEventHook <+> minimizeEventHook <+> myHandleEventHook
       -- <+> fullscreenEventHook -- may have negative impact to flameshot
       -- <+> ewmhFullscreen
   -- , logHook = eventLogHookForPolybar
-  , startupHook = myStartupHook
+  , startupHook = docksStartupHook <+> myStartupHook
   , focusFollowsMouse = False
   , clickJustFocuses = False
   , borderWidth = myBorderWidth

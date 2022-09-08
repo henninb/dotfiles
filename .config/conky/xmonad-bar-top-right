@@ -9,7 +9,7 @@ conky.config = {
 }
 
 conky.text = [[
-^fn(monofur for Powerline-12) \
+^fn(monofur for Powerline-14) \
 ^fg(\#663399)^i($HOME/.local/icons/cpu.xbm)^fg() ^fg(\#ebdbb2)${cpu cpu0}% ^fg() | \
 ^fg(\#663399)^i($HOME/.local/icons/mem.xbm)^fg() ^fg(\#ebdbb2)${memperc}% ^fg() | \
 ^fg(\#663399)^i($HOME/.local/icons/diskette.xbm)^fg() ^fg(\#ebdbb2)${fs_used_perc /}% ^fg() | \
