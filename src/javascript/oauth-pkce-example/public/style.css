@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 50px;
+    background: linear-gradient(90deg,#78E3FD,#ee6c80);
+    background-attachment: fixed; 
+    font-family: 'Cabin', san-serif;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    align-items: center;
+    /* justify-content: center; */
+    height: 100vh;
+}
+
+.btn {
+    border: none;
+    width: 45px;
+    background-color: #1487a3;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 2px 4px 4px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+#login {
+    color: #161925;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+#emoji {
+    color: yellow;
+}
+
+
+#loggedin {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+
+.wrapper {
+    padding: 30px;
+    border: 2px solid black;
+    border-radius: 30px;
+    margin-top: 40px;
+    width: 370px;
+    
+}
+
+#albumArt {
+    border-radius: 20px;
+}
+
+#login-button {
+    width: 70px;
+    height: 70px;
+    font-size: 2.5rem;
+    display: block;
+    position: relative;
+    left: 35%;
+}
+
+
+#logout-button {
+    position: absolute;
+    right: 20px;
+    top : 20px;
+}
+
+
+.btn:hover {
+    background-color: #664ae4;
+    
+    transform: scale(98%);
+}
+
+#getCurrent {
+    width: 400px;
+    border-radius: 40px;
+    height: 60px;
+    top: 30%;
+
+}
+
+#content {
+    margin: 10px;
+}
+
+
+.demo {
+    padding: 20px;
+    font-size: 25px;
+}
+
+
+
+@media(max-width: 600px) {
+    #getCurrent{
+        width: 70vw;
+    }
+
+
+}

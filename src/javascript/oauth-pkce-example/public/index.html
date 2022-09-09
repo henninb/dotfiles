@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Sheet Music Getter</title>
+</head>
+<body>
+    <header>
+        <div id="loggedin">
+            <button id="logout-button" class="btn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+            
+            <button class="btn" id="getCurrent">Get current song</button>
+        </div>
+
+    </header>
+
+    <div id="login">
+        <h1>
+          log in with Spotify to find your current song!
+        </h1>
+
+        <button id="login-button" class="btn">
+            <i class="fa-brands fa-spotify" id="spotify"></i>
+        </button>
+        <br><br>
+
+        <div class="demo" id="intro">
+            This is a demonstration of using OAuth to authenticate with Spotify.<br>
+            This login flow uses <b>PKCE (Proof Key for Code Exchange)</b>, <br>
+            so the website doesn't have to expose the client secret in the source code.
+        </div>
+
+        <div class="demo" id="step1">
+            <b>1.</b> First, the website generates a random alphanumeric string of <br>  
+            length 64, the Code Verifier.
+    
+            <pre id="code-verifier"></pre>
+            <!-- <div id="Loading">You will now be redirected to the Spotify login <br>
+                page within 2 seconds...
+            </div> -->
+        </div>
+
+        <div class="demo" id="step2">
+            <b>2.</b> You will then be redirected to the Spotify login page, <br>
+            where you will be asked to log in and confirm that you are okay with <br>
+            the permissions that the website is requesting. The URL that takes <br>
+            you to the Spotify login page will contain a HASH of the Code Verifier! <br>
+            This is the Code Challenge.
+            <br><br>
+            Only this website knows the actual Code Verifier. This will be useful later on.
+        </div>
+
+        <div class="demo" id="step3">
+            <b>3.</b> If you give the needed permission, you will be redirected <br>
+            back here again, with an auth code. <br>
+            The website can exchange this auth code for an access token! <br>
+            This access token will allow the website to access your data through <br>
+            Spotify's API. We provide the unhashed Code Verifier to the Spotify API <br>
+            in this step, so that the API can verify that we are the same website <br>
+            that got you to login in with your account.
+        </div>
+    </div>
+
+    <div id="content">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
