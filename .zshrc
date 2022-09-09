@@ -113,7 +113,7 @@ export SPACESHIP_KUBECTL_PREFIX
 SPACESHIP_KUBECTL_CONTEXT_PREFIX=""
 export SPACESHIP_KUBECTL_CONTEXT_PREFIX
 
-echo kubectl config unset current-context
+# echo kubectl config unset current-context
 
 # if [ "$OS" = "Darwin" ]; then
 #   ZSH_THEME="agnoster"
