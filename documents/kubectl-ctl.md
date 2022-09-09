@@ -12,3 +12,13 @@ kubectl config use-context minikube
 
 ## unset the current context
 kubectl config unset current-context
+
+## get contexts
+kubectl config get-contexts
+
+## current context
+kubectl config current-context
+
+
+## get nodes
+kubectl get nodes
