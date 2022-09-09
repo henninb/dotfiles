@@ -2,6 +2,7 @@
 #=app-editors/notepadqq-9999 ~amd64
 #app-editors/notepadqq
 =dev-python/docutils-0.17.1-r1
+=dev-libs/boost-1.79.0
 # net-im/slack-4.23.0 ~amd64
 # kde-frameworks/kwindowsystem
 # =kde-frameworks/kwindowsystem-5.95*
