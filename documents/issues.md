@@ -600,6 +600,10 @@ sudo emerge --ignore-default-opts -va1 --keep-going $(qdepends -CQqqF '%{CAT}/%{
 equery depends dev-python/setuptools | sed 's/-[0-9]\{1,\}.*$//'
 
 emerge -1av docutils
+
+
+qdepends -CQqqF '%{CAT}/%{PN}:%{SLOT}' '^dev-libs/boost'
+sudo emerge --ignore-default-opts -va1 --keep-going $(qdepends -CQqqF '%{CAT}/%{PN}:%{SLOT}' '^dev-libs/boost')
 ```
 
 ## gentoo upgradable packages
