@@ -1,6 +1,10 @@
 # nvidia install
 sudo telinit 3
 
+## change virtual terminal
+sudo chvt 3
+
+
 sudo bash NVIDIA-Linux-x86_64-440.44.run
 
 
