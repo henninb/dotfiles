@@ -118,3 +118,5 @@ x 2022-09-05 fix xmonad ghc linker issue pri:C @fix
 (Z) dictation macos
 (Z) find a project to work on - fiverr.com - become a seller
 (Z) gpg key on yubikey @setup
+(B) backup bitwarden rec:m @backup
+(C) Setup Web Infrastructure on netlify cloudflare github
