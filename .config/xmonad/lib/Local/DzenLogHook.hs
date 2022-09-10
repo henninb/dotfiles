@@ -8,6 +8,7 @@ import XMonad.Util.Run (hPutStrLn)
 import Data.Function (on)
 import XMonad.StackSet (stack, workspace, current, integrate')
 import GHC.IO.Handle.Types
+import System.IO (stderr)
 
 import Local.Colors
 
@@ -38,7 +39,9 @@ currentWindowCount = [gets $ Just . wrap "" "" . show . length . integrate' . st
 dzenLogHook :: Handle -> PP
 dzenLogHook h = def
   {
-      ppOutput  =   hPutStrLn h
+      -- for troubleshooting - logs are posted to ~/.local/share/sddm/xorg-session.log
+      ppOutput = \s -> hPutStrLn h s >> hPutStrLn stderr s
+      -- ppOutput  =   hPutStrLn h
       -- ppOutput  = dzenOutput
     , ppCurrent = withForeground myPurple . withBackground lightpink . withMargin . clickableWorkspace
     , ppVisible = withForeground white . withMargin . clickableWorkspace
