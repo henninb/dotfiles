@@ -53,12 +53,12 @@ dzenLogHook h = def
     , ppSep = "    "
     , ppLayout = withForeground white . wrap "^ca(1,xdotool key super+space)" "^ca()"
     --TODO: what would the clickable do?
-    , ppTitle =  withForeground white . wrap "^ca(1,xdotool key super+shift+x)" "^ca()"  . shorten 40 . withMargin
+    , ppTitle =  withForeground white . wrap "^ca(1,xdotool key super+shift+x)" "^ca()"  . shorten 60 . withMargin
     , ppExtras = currentWindowCount
   } where
       clickableWorkspace ws = "^ca(1,xdotool key super+" ++ ws ++ ") " ++ ws ++ " ^ca()"
-      withFont = wrap "^fn(monofur for Powerline-12)" "^fn()"
-      withForeground color = wrap ("^fg(" ++ color ++ ")") "^fg()" . withFont
+      -- withFont = wrap "^fn(monofur for Powerline-12)" "^fn()"
+      withForeground color = wrap ("^fg(" ++ color ++ ")") "^fg()"
       withBackground color = wrap ("^bg(" ++ color ++ ")") "^bg()"
       withMargin = wrap " " " "
 

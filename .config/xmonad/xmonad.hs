@@ -40,15 +40,20 @@ import Local.PolybarLogHook (eventLogHookForPolybar)
 import Local.DzenLogHook (dzenLogHook)
 import XMonad.Hooks.WindowSwallowing ( swallowEventHook )
 
+-- xset +fp /usr/share/fonts/terminus
+-- sudo emerge --update --newuse media-fonts/terminus-font
 myFont :: String
-myFont  = "terminus"
+-- myFont = "terminus"
+myFont = "-*-terminus-medium-r-*-*-18-*-*-*-*-*-*-*"
+-- myFont = "-*-terminus-*-*-*-*-14-*-*-*-*-*-*-*"
+-- myFont="-*-fixed-medium-*-*-*-12-*-*-*-*-*-*-*"
 
 -- TODO fix the screen width
 togglevga :: IO String
 togglevga = do { screencount <- countScreens
     ; if screencount > 1
        then do
-      let screenWidth = "2560"
+      let screenWidth = "2160"
       -- spawn "xrandr --output LVDS-0 --off --output HDMI-0 --auto"
       return screenWidth
        else do
@@ -58,16 +63,13 @@ togglevga = do { screencount <- countScreens
     ;}
 
 topLeftBar :: String
-topLeftBar = "dzen2 -x '0' -y '0' -h '14' -w '800' -ta 'l' -fg '" ++ myColor "foreground" ++ "' -bg '"++ myColor "background" ++"' -fn "++myFont
+topLeftBar = "dzen2 -title-name top-left -p -x 0 -y 0 -w 1500 -ta l" ++ " -fg '" ++ myColor "foreground" ++ "' -bg '" ++ myColor "background" ++ "' -fn " ++ myFont
 
-topRightBar :: String
-topRightBar = "xmonad-conky-date | dzen2 -dock -x '2160' -y '0' -h '14' -w '500' -ta 'l' -fg '" ++ myColor "foreground" ++ "' -bg '" ++ myColor "background" ++ "' -fn " ++ myFont
-
-myDzen :: String
-myDzen = " dzen2 -xs 1 -dock -h 14 -ta 'l' -fn '" ++ myFont ++ "' -fg '" ++ myColor "foreground" ++ "' -bg '" ++ myColor "background" ++ "' "
+topRightDzen :: String
+topRightDzen = "dzen2 -dock -title-name top-right -p -x 1500 -y 0 -ta r" ++ " -fg '" ++ myColor "foreground" ++ "' -bg '" ++ myColor "background" ++ "' -fn " ++ myFont
 
 myTopRight :: String
-myTopRight = "conky -c ~/.config/conky/xmonad-bar-top-right | " ++ myDzen ++ " -x '800' -y '0' -ta 'r' -p"
+myTopRight = "conky -c ~/.config/conky/xmonad-bar-top-right  | " ++ topRightDzen
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -83,7 +85,7 @@ main :: IO ()
 main = do
   screenWidth <- togglevga
   -- for polybar
-  safeSpawn "mkfifo" ["/tmp/.xmonad-info"]
+  -- safeSpawn "mkfifo" ["/tmp/.xmonad-info"]
 
   dzenLeftBar <- spawnPipe topLeftBar
   conkyTopRight <- spawnPipe myTopRight
@@ -185,11 +187,11 @@ myConfig = def
       <+> myManageHook
       <+> myManageHook'
       <+> manageHook def
-  , handleEventHook = docksEventHook <+> minimizeEventHook <+> myHandleEventHook
+  , handleEventHook = minimizeEventHook <+> myHandleEventHook
       -- <+> fullscreenEventHook -- may have negative impact to flameshot
       -- <+> ewmhFullscreen
   -- , logHook = eventLogHookForPolybar
-  , startupHook = docksStartupHook <+> myStartupHook
+  , startupHook = myStartupHook
   , focusFollowsMouse = False
   , clickJustFocuses = False
   , borderWidth = myBorderWidth
