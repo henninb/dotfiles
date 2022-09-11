@@ -16,3 +16,8 @@ The tty configuration file is now /lib/systemd/system/getty\@.service.
 This file seems to use agetty instead of mgetty to manage the tty. 
 agetty man page doesn't show the -p option, but you could reinstall mgetty and use it.
 Or you could use the -n (no prompt) option with the -l (specify a login program) option and write a wrapper to /bin/login with your own prompt.
+
+
+If you do wish to configure a specific number of gettys, you can, just modify logind.conf with the appropriate entry, in this example 3:
+
+NAutoVTs=3
