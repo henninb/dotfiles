@@ -44,7 +44,8 @@ import XMonad.Hooks.WindowSwallowing ( swallowEventHook )
 -- sudo emerge --update --newuse media-fonts/terminus-font
 myFont :: String
 -- myFont = "terminus"
-myFont = "-*-terminus-medium-r-*-*-18-*-*-*-*-*-*-*"
+-- myFont = "-*-terminus-medium-r-*-*-18-*-*-*-*-*-*-*"
+myFont = "-*-terminus-*-r-normal-*-18-*-*-*-*-*-*-*"
 -- myFont = "-*-terminus-medium-l-*-*-18-*-*-*-*-*-*-*"
 -- myFont = "-*-terminus-*-*-*-*-14-*-*-*-*-*-*-*"
 -- myFont="-*-fixed-medium-*-*-*-12-*-*-*-*-*-*-*"
