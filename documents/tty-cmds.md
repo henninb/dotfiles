@@ -21,3 +21,7 @@ Or you could use the -n (no prompt) option with the -l (specify a login program)
 If you do wish to configure a specific number of gettys, you can, just modify logind.conf with the appropriate entry, in this example 3:
 
 NAutoVTs=3
+
+
+
+sudo systemctl enable getty@tty{1,2,3,4,5,6}.service
