@@ -1,28 +1,3 @@
-: 1596886425:: :;karetsu, possible to do so but I think I would like to do it for all 9 desktops.
-: 1596886455:: :;I will look into it.
-: 1596886630:: :;good point, I would basically be overridding the default behavior of super+shift+N (where N is the destop number).
-: 1596886798:: :;thanks fizzie and karetsu
-: 1596886849:: :;thank you both, I will take a look.
-: 1596889362:: :;/quit
-: 1600606328:: :;Greetings, I am looking for a key similar to xF86XK_Paste for "selection paste", any advise?
-: 1600606597:: :;vrs, agree, do you know the key label for it? or where to find it?
-: 1600606863:: :;vrs, i will take a look in there and see what I can find. thanks for the tip.
-: 1600607348:: :;/quit
-: 1605988850:: :;hi, i am trying to install java11 in gentoo. I don't see a default ebuild for it. what is the best way to get it installed?
-: 1605988963:: :;tdr, thank you. i will look into permitting the testing version.
-: 1605988990:: :;i will be installing openjdk
-: 1605989136:: :;tdr to enable the test version is that a USE flag?
-: 1605989562:: :;tdr, thank you again. I was able to find it and I started the install.
-: 1605990014:: :;/quit
-: 1612821188:: :;on boot my wired nic is not  enabled and not getting getting an IP after upgrading to 20. systemd is reporting started and exit 0 for the networking.service.  I don't  see any info in journald. Any thoughts  as to what I can try to get networking up and running on boot?
-: 1612823649:: :;/quit
-: 1613167140:: :;hi -- is there a simple trayer application that show if there are new updates in archlinux?
-: 1613167181:: :;i am using xmonad with polybar jonathon.
-: 1613167355:: :;thanks jonathon, I will see what I can find.
-: 1613167569:: :;pamac-tray did the trick jonathon.
-: 1613167671:: :;for now it works :) thanks
-: 1613170249:: :;/quit
-: 1614207867:: :;hi I am having issues in lightdm and found the following error "xf86: remove device 0 /sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/drm/card1
 : 1614207867:: :;failed to find screen to remove
 : 1614207888:: :;has anyone seen that before?
 : 1614207957:: :;im using xmonad with archlinux
@@ -98,3 +73,28 @@
 : 1658537079:: :;/quit
 : 1658537202:: :;/qit
 : 1658537207:: :;/quit
+: 1662845072:: :;Hi, I am trying to fix a formatting issue with my bar dzen in xmonad. I posted the question on reddit which describes the problem 'https://www.reddit.com/r/xmonad/comments/x9so8z/dzen2_bar_spacing_issue/' please provide any suggestions on how I can troubleshoot this issue. 
+: 1662845603:: :;geekosaur, I don't think so either on the gentoo comment. I suppose I could try and downgrade.
+: 1662845673:: :;agreed, it is a very strange issue.
+: 1662845714:: :;i think the data coming out of xmonad is stored in a pipe, do I have that right?
+: 1662845830:: :;agreed
+: 1662845861:: :;I may end up switching to xmobar if I can't figure this out :)
+: 1662845885:: :;for what it is worth, this is my config. https://github.com/henninb/dotfiles/blob/main/.config/xmonad/xmonad.hs
+: 1662845992:: :;:)
+: 1662846027:: :;do you have a good example of using properties vs using pipes? I can also do some digging on my own.
+: 1662846695:: :;Thank you geekosaur, that makes sense. I just reading some points on that topic.
+: 1662846879:: :;I just appreciate you taking a look and providing your thoughts. Thank you.
+: 1662846947:: :;is there a way to "intercept" the content of the pipe before it is displayed?
+: 1662847046:: :;that is a great idea. then I could see what is going on.
+: 1662847173:: :;awesome, i will give it a try.
+: 1662847217:: :;I am using sddm
+: 1662847349:: :;ok
+: 1662847570:: :;found it.
+: 1662847648:: :;I am going to paste the content in my reddit post. give me a few seconds.
+: 1662847774:: :;posted.
+: 1662848458:: :;exactly
+: 1662848501:: :;good idea, I will try a different font.
+: 1662848544:: :;this seems like a dzen2 issue vs an xmonad issue.
+: 1662848696:: :;thank you again for taking a look geekosaur
+: 1662848713:: :;thank you for taking a look geekosaur.
+: 1662850982:: :;/quit

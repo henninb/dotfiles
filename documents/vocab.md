@@ -269,3 +269,9 @@ accolades [ noun ]
 ## imbued
 ## vacuity [noun] something insanse, senseless, or stupid
 ## insipid [adjective] without sufficient taste to be pleasing
+## edification [noun] the instruction or improvement of a person morally or intellectually.
+## ubiquity [noun] the fact of appearing everywhere or of being very common.
+## extemporaneous [adjective] spoken or done without preparation.
+## maturation [noun] the action or process of maturing.
+## rubric [noun] a statement of purpose or function
+## didactic [adjective] in the manner of a teacher, particularly so as to treat someone in a patronizing way
