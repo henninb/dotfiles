@@ -45,6 +45,7 @@ import XMonad.Hooks.WindowSwallowing ( swallowEventHook )
 myFont :: String
 -- myFont = "terminus"
 myFont = "-*-terminus-medium-r-*-*-18-*-*-*-*-*-*-*"
+-- myFont = "-*-terminus-medium-l-*-*-18-*-*-*-*-*-*-*"
 -- myFont = "-*-terminus-*-*-*-*-14-*-*-*-*-*-*-*"
 -- myFont="-*-fixed-medium-*-*-*-12-*-*-*-*-*-*-*"
 
@@ -62,11 +63,13 @@ togglevga = do { screencount <- countScreens
       return screenWidth
     ;}
 
+
+-- 1925 is split of my 4k monitor
 topLeftBar :: String
-topLeftBar = "dzen2 -title-name top-left -p -x 0 -y 0 -w 1500 -ta l" ++ " -fg '" ++ myColor "foreground" ++ "' -bg '" ++ myColor "background" ++ "' -fn " ++ myFont
+topLeftBar = "dzen2 -title-name top-left -p -w 1925 -ta l " ++ " -fg '" ++ myColor "foreground" ++ "' -bg '" ++ myColor "background" ++ "' -fn " ++ myFont
 
 topRightDzen :: String
-topRightDzen = "dzen2 -dock -title-name top-right -p -x 1500 -y 0 -ta r" ++ " -fg '" ++ myColor "foreground" ++ "' -bg '" ++ myColor "background" ++ "' -fn " ++ myFont
+topRightDzen = "dzen2 -dock -title-name top-right -p -x 1925 -ta r " ++ " -fg '" ++ myColor "foreground" ++ "' -bg '" ++ "#320C2D" ++ "' -fn " ++ myFont
 
 myTopRight :: String
 myTopRight = "conky -c ~/.config/conky/xmonad-bar-top-right  | " ++ topRightDzen

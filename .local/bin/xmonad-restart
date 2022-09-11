@@ -1,5 +1,6 @@
 #!/bin/sh
 
+killall dzen2
 xmonad --recompile && xmonad --restart
 
 exit 0
