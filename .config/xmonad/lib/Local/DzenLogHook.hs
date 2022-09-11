@@ -40,9 +40,8 @@ dzenLogHook :: Handle -> PP
 dzenLogHook h = def
   {
       -- for troubleshooting - logs are posted to ~/.local/share/sddm/xorg-session.log
-      ppOutput = \s -> hPutStrLn h s >> hPutStrLn stderr s
-      -- ppOutput  =   hPutStrLn h
-      -- ppOutput  = dzenOutput
+      -- ppOutput = \s -> hPutStrLn h s >> hPutStrLn stderr s
+      ppOutput  =   hPutStrLn h
     , ppCurrent = withForeground myPurple . withBackground lightpink . withMargin . clickableWorkspace
     , ppVisible = withForeground white . withMargin . clickableWorkspace
     , ppUrgent = withForeground red . withMargin

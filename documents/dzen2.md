@@ -28,3 +28,13 @@ echo "^fg(#663399)^fn(monofur for Powerline-12)^bg(#FFFFFF) ^ca(1,xdotool key su
 ```
 echo "^ca(1,xdotool key super+1) A ^ca()^ca(1,xdotool key super+1) B ^ca()"  | dzen2 -p -h '14' -w '800' -ta 'l' -fg '#DDEEFF' -bg '#181512'
 ```
+
+## test
+```
+echo "^fg(#663399)^fn(monofur for Powerline-12)^bg(#FFFFFF)^ca(1,xdotool key super+1) 1 ^ca()^bg()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+2) 2 ^ca()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12) ^ca(1,xdotool key super+3) 3 ^ca() ^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12) ^ca(1,xdotool key super+4) 4 ^ca() ^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12) ^ca(1,xdotool key super+5) 5 ^ca() ^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12) ^ca(1,xdotool key super+6) 6 ^ca() ^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+7) 7 ^ca()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+8) 8 ^ca()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+9) 9 ^ca()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+0) 0 ^ca()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+NSP) NSP ^ca()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+space)Main^ca()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+shift+x) Alacritty ^ca()^fn()^fg()" | dzen2 -p -w '1000' -ta l -fg '#000000' -bg '#FFFFFF'
+```
+
+## test
+```
+echo "^fg(#000000)^fn(monofur for Powerline-12)^bg(#FFFFFF)^ca(1,xdotool key super+1) 1 ^ca()^bg()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+2) 2 ^ca()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+3) 3 ^ca()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+4) 4 ^ca()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+5) 5 ^ca()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+6) 6 ^ca()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+7) 7 ^ca()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+8) 8 ^ca()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+9) 9 ^ca()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+0) 0 ^ca()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+NSP) NSP ^ca()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+space)Main^ca()^fn()^fg()^fg(#000000)^fn(monofur for Powerline-12)^ca(1,xdotool key super+shift+x) Alacritty ^ca()^fn()^fg()" | dzen2 -p -w '1500' -ta l -fg '#000000' -bg '#FFFFFF'
+```
