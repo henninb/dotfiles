@@ -25,9 +25,13 @@
       <screen x="0" y="0" width="3840" height="2160" />
     </state>
     <state x="2859" y="1925" width="300" height="185" key="ProcessPopupWindow/0.0.3840.2160" timestamp="1658877101822" />
-    <state x="1920" y="820" width="800" height="600" key="WELCOME_SCREEN" timestamp="1662942548011">
+    <state width="621" height="144" key="ShowUsagesActions.dimensionServiceKey" timestamp="1662986686118">
       <screen x="0" y="0" width="3840" height="2160" />
     </state>
-    <state x="1920" y="820" width="800" height="600" key="WELCOME_SCREEN/0.0.3840.2160" timestamp="1662942548011" />
+    <state width="621" height="144" key="ShowUsagesActions.dimensionServiceKey/0.0.3840.2160" timestamp="1662986686118" />
+    <state x="1920" y="820" width="800" height="600" key="WELCOME_SCREEN" timestamp="1662986819003">
+      <screen x="0" y="0" width="3840" height="2160" />
+    </state>
+    <state x="1920" y="820" width="800" height="600" key="WELCOME_SCREEN/0.0.3840.2160" timestamp="1662986819003" />
   </component>
 </application>
