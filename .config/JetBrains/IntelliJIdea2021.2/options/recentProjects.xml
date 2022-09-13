@@ -88,13 +88,13 @@
         </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-react">
           <value>
-            <RecentProjectMetaInfo frameTitle="raspi-finance-react – useFetchTransactionByAccount.tsx" projectWorkspaceId="2CV3JTsTCDEir5mhoxBfWN2SFfL">
+            <RecentProjectMetaInfo frameTitle="raspi-finance-react – useFetchTransactionByAccount.tsx" opened="true" projectWorkspaceId="2CV3JTsTCDEir5mhoxBfWN2SFfL">
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="IU-212.5080.55" />
-              <option name="buildTimestamp" value="1629776234250" />
+              <option name="buildTimestamp" value="1629776242078" />
               <frame x="0" y="14" width="3840" height="2128" />
               <option name="productionCode" value="IU" />
-              <option name="projectOpenTimestamp" value="1663026273270" />
+              <option name="projectOpenTimestamp" value="1663063897025" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
