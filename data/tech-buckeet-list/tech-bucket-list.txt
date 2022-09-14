@@ -23,7 +23,7 @@ build the automation for a bridge setup
 (D) build a hackintosh in proxmox due:2022-09-30 @build
 (D) fix ddwrt reverse proxy issue @fix
 (D) learn about email sub-addressing due:2022-09-30 @learn
-(D) migrate cert script to react and other apps
+x 2022-09-14 migrate cert script to react and other apps pri:D
 (D) proxmox install backup server
 (D) replace sudo with doas @fix
 (D) view images in kitty
@@ -44,7 +44,6 @@ fix code submenu names in xmonad @fix
 (G) build a profile avitar @build
 gentoo primary system
 (G) fix mongodb  server install on gentoo @fix
-(G) setup heroku dns with cloudflare
 (G) setup redis server on docker @setup
 (H) build a gentoo primary system @build
 (H) learn express http router @learn
@@ -52,7 +51,7 @@ gentoo primary system
 install FreeNAS
 install haikuOS
 (J) build a FreeNAS server @build
-(J) build a spotify playlist extractor @build
+x 2022-09-14 build a spotify playlist extractor pri:J @build
 learn more about aws
 learn more about azure
 learn more about goodle cloud service
@@ -63,14 +62,13 @@ mine crypto currency
 (M) learn about BOLA and IDOR @learn
 (M) learn about traefik (reverse proxy) @learn
 (N) practice squashing with git @learn
-port rapi-finance-endpoint to ktor
 record live tv on linux with silicondust hdhomerun
 (R) learn about blender - make something 3D @learn
 (R) setup bastion host on proxmox @setup
-run a kvm version of freebsd to test dotfiles
+x 2022-09-14 run a kvm version of freebsd to test dotfiles
 selfhost nextcloud (dropbox replacement)
 setup fastly VCL
-setup linux color scheme everforest
+(Z) setup linux color scheme everforest
 setup linux pam module for yubikey
 setup origin upstream from fastly
 setup - recording live tv on linux with silicondust hdhomerun
@@ -81,7 +79,6 @@ setup - virtualize nextcloud on docker in proxmox
 (S) learn to use obs for content creation @learn
 (S) linux - swap init program with bash (testing)
 spotify playlist extract
-(S) setup docker redis server @setup
 (S) setup - virtualize plexserver on docker in proxmox @setup
 subdomain for fastly app
 (W) learn about kali linux @learn
@@ -117,6 +114,8 @@ x 2022-09-05 fix xmonad ghc linker issue pri:C @fix
 (Z) dictation linux
 (Z) dictation macos
 (Z) find a project to work on - fiverr.com - become a seller
-(Z) gpg key on yubikey @setup
+(E) setup gpg key on yubikey @setup
 (B) backup bitwarden rec:m @backup
 (C) Setup Web Infrastructure on netlify cloudflare github
+(B) finanace app - install remote to hornsup
+(C) finance app mark all income transactions
