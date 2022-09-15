@@ -56,8 +56,8 @@ dzenLogHook h = def
     , ppExtras = currentWindowCount
   } where
       clickableWorkspace ws = "^ca(1,xdotool key super+" ++ ws ++ ") " ++ ws ++ " ^ca()"
-      -- withFont = wrap "^fn(monofur for Powerline-12)" "^fn()"
-      withForeground color = wrap ("^fg(" ++ color ++ ")") "^fg()"
+      withFont = wrap "^fn(monofur for Powerline-16)" "^fn()"
+      withForeground color = wrap ("^fg(" ++ color ++ ")") "^fg()" . withFont
       withBackground color = wrap ("^bg(" ++ color ++ ")") "^bg()"
       withMargin = wrap " " " "
 
