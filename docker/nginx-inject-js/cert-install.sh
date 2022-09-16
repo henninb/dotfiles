@@ -5,7 +5,7 @@
 #   exit 1
 # fi
 
-server_name="proxy"
+server_name="nginx"
 server_subject="/C=US/ST=Texas/L=Denton/O=Brian LLC/OU=None/CN=${server_name}"
 rootca_subject="/C=US/ST=Texas/L=Denton/O=Brian LLC/OU=None/CN=Brian LLC rootCA"
 
@@ -25,8 +25,8 @@ if [ ! -f "$HOME/ssl/rootCA.pem" ]; then
   # echo "confirm the rootCA cert"
   # openssl x509 -in "$HOME/ssl/rootCA.pem" -inform PEM -out "$HOME/ssl/rootCA.crt"
 
-  echo "generate testRootCA key (no password)"
-  echo "generae a public testRootCA certificate file"
+  echo "generate rootCA key (no password)"
+  echo "generae a public rootCA certificate file"
   openssl req \
       -x509 \
       -new \
@@ -35,34 +35,37 @@ if [ ! -f "$HOME/ssl/rootCA.pem" ]; then
       -days 1024 \
       -sha256  \
       -subj "$rootca_subject" \
-      -keyout "$HOME/ssl/testRootCA.key" \
-      -out "$HOME/ssl/testRootCA.pem"
+      -keyout "$HOME/ssl/rootCA.key" \
+      -out "$HOME/ssl/rootCA.pem"
 
   if command -v pacman; then
     sudo trust anchor --store rootCA.pem
+  fi
+
+  if command -v emerge; then
+    sudo mkdir -p /usr/local/share/ca-certificates/
+    sudo cp "$HOME/ssl/rootCA.pem" /usr/local/share/ca-certificates/
+    sudo update-ca-certificates
   fi
 
   if command -v brew; then
     echo "macos"
   fi
 
-  # gentoo
-  # echo sudo cp -v rootCA.crt /usr/local/share/ca-certificates
-  # echo sudo update-ca-certificates
 fi
 
-echo "generate testRootCA key (no password)"
-echo "generae a public testRootCA certificate file"
-openssl req \
-    -x509 \
-    -new \
-    -newkey rsa:4096 \
-    -nodes \
-    -days 1024 \
-    -sha256  \
-    -subj "$rootca_subject" \
-    -keyout "$HOME/ssl/testRootCA.key" \
-    -out "$HOME/ssl/testRootCA.pem"
+# echo "generate testRootCA key (no password)"
+# echo "generae a public testRootCA certificate file"
+# openssl req \
+#     -x509 \
+#     -new \
+#     -newkey rsa:4096 \
+#     -nodes \
+#     -days 1024 \
+#     -sha256  \
+#     -subj "$rootca_subject" \
+#     -keyout "$HOME/ssl/testRootCA.key" \
+#     -out "$HOME/ssl/testRootCA.pem"
 
 cat << EOF > "$HOME/tmp/$servername.ext"
 subjectAltName = @alt_names
@@ -70,11 +73,6 @@ subjectAltName = @alt_names
 [alt_names]
 DNS.1 = ${server_name}
 DNS.2 = localhost
-DNS.3 = pfsense.proxy.home.arpa
-DNS.4 = hornsup.proxy.home.arpa
-DNS.5 = proxmox.proxy.home.arpa
-DNS.6 = ddwrt.proxy.home.arpa
-DNS.7 = pihole.proxy.home.arpa
 EOF
 
 echo Generate an rsa key
@@ -88,6 +86,7 @@ openssl x509 -req -sha256 -days 365 -in ${server_name}.csr -CA "$HOME/ssl/rootCA
 
 echo Verify the certificate
 openssl verify -CAfile "$HOME/ssl/rootCA.pem" -verbose "./${server_name}.crt"
+cat "${server_name}.crt" | openssl x509 -noout -enddate
 
 rm -rf *.csr
 
