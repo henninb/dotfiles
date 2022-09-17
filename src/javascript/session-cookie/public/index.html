@@ -1,45 +1,16 @@
 <html>
   <head>
     <title>test session cookies</title>
-    <script>
-      function getCookie(cname) {
-        let name = cname + "=";
-        let decodedCookie = decodeURIComponent(document.cookie);
-        let ca = decodedCookie.split(';');
-        for(let i = 0; i <ca.length; i++) {
-          let c = ca[i];
-          while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-          }
-          if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-          }
-        }
-        return "";
-      }
-      function modCookieValue() {
-        console.log('attempt to modify session cookies');
-        document.cookie = 'sessionCookie=newValue'; // Without HTTP only this persists
-        document.cookie = 'mutableSessionCookie=newValue';
-      }
-      function showCookieValue() {
-        console.log('show cookie value');
-        sessionCookie = getCookie('sessionCookie')
-        mutableSessionCookie = getCookie('mutableSessionCookie')
-        console.log(document.cookie);
-        let output = '<h2 class="mb-4">session cookies</h2>';
-        output += ('nonMutable = ' + document.cookie)
-        output += '<br>'
-        output += ('mutable = ' + mutableSessionCookie)
-        output += ('nonMutable = ' + document.cookie)
-
-        document.getElementById('output').innerHTML = output;
-      }
-    </script>
+    <!-- <script language="JavaScript" type="text/javascript" src="script.js"> </script> -->
+    <!-- <script src="./script.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script> -->
+    <script src="./script.js"></script>
 
   </head>
   <body>
     <h1>test session cookies</h1>
+    <p>
+    The whole point of HttpOnly cookies is that they can't be accessed by JavaScript.
+    </p>
 
       <hr>
       <div id="output"></div>

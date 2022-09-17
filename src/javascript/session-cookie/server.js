@@ -2,6 +2,7 @@
 const express = require('express')
 const https = require('https')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser');
 const cors = require('cors')
 const fs = require('fs')
 const path = require('path')
@@ -9,7 +10,7 @@ const app = express()
 const port = process.env.PORT || 3000
 
 //app.use(express.cookieParser());
-//app.use(cookieParser());
+app.use(cookieParser());
 
 const httpOptions = {
   cert: fs.readFileSync(path.join(__dirname, 'server.crt')),
@@ -22,8 +23,10 @@ app.use((request, response, next) => {
   // response.setHeader("Content-Security-Policy", "script-src 'self' https://apis.google.com");
   
   // response.setHeader('Content-Type', 'text/plain; charset=utf-8');
-  response.setHeader('Set-Cookie', 'mutableSessionCookie=initialValue');
-  response.setHeader('Set-Cookie', 'sessionCookie=initialValue; HttpOnly');
+  response.cookie('mutableSessionCookie', 'initialValue', { httpOnly: false });
+  response.cookie('sessionCookie', 'initialValue', { httpOnly: true });
+  // response.setHeader('Set-Cookie', 'mutableSessionCookie=initialValue');
+  // response.setHeader('Set-Cookie', 'sessionCookie=initialValue; HttpOnly');
   // response.end('Setting a session cookie in the browser');
   //
   //response.cookie('cokkieName',randomNumber, { maxAge: 900000, httpOnly: true })
