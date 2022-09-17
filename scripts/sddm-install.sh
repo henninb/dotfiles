@@ -86,7 +86,9 @@ elif [ "${OS}" = "FreeBSD" ]; then
   sudo sysrc sddm_enable="YES"
   sudo mv -v "$HOME/tmp/40-wheel-group.rules" "/usr/local/etc/polkit-1/rules.d/40-wheel-group.rules"
   # sudo sddm --example-config /usr/local/etc/sddm.conf
-  sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
+  sudo mkdir -p /etc/sddm.conf.d/
+  sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/sddm.conf
+  # sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
   sudo service sddm enable
   echo "https://community.kde.org/FreeBSD/Setup#SDDM"
 elif [ "$OS" = "Gentoo" ]; then
