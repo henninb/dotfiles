@@ -1,6 +1,6 @@
 #!/bin/sh
 
-node_ver=16.15.1
+node_ver=16.16.0
 #sudo apt install -y yarn
 # unset NVM_DIR
 
@@ -28,6 +28,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
 elif [ "$OS" = "FreeBSD" ]; then
   echo sudo pkg install -y gcc python27 gmake
   echo sudo pkg install -y npm
+  sudo pkg install -y node16-16.16.0
 else
   echo "$OS is not yet implemented."
   exit 1

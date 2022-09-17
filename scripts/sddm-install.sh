@@ -85,8 +85,9 @@ elif [ "${OS}" = "FreeBSD" ]; then
   sudo pkg install -y sysrc
   sudo sysrc sddm_enable="YES"
   sudo mv -v "$HOME/tmp/40-wheel-group.rules" "/usr/local/etc/polkit-1/rules.d/40-wheel-group.rules"
-  sudo sddm --example-config /usr/local/etc/sddm.conf
-  sudo service sddm start
+  # sudo sddm --example-config /usr/local/etc/sddm.conf
+  sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
+  sudo service sddm enable
   echo "https://community.kde.org/FreeBSD/Setup#SDDM"
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse sddm
