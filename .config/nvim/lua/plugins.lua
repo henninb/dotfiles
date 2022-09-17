@@ -19,11 +19,14 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 vim.api.nvim_command("packadd packer.nvim")
 
+local execute = vim.api.nvim_command
+-- if not packer_exists then execute 'PackerSync' end
+
 -- returns the require for use in `config` parameter of packer's use
 -- expects the name of the config file
-function get_setup(name)
-  return string.format('require("setup/%s")', name)
-end
+-- function get_setup(name)
+--   return string.format('require("setup/%s")', name)
+-- end
 
 
 return require('packer').startup(function(use)
