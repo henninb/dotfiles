@@ -83,7 +83,7 @@ elif [ "${OS}" = "Ubuntu" ] || [ "$OS" = "Linux Mint" ]; then
 elif [ "${OS}" = "FreeBSD" ]; then
   sudo pkg install -y sddm
   sudo pkg install -y sysrc
-  sysrc sddm_enable="YES"
+  sudo sysrc sddm_enable="YES"
   sudo mv -v "$HOME/tmp/40-wheel-group.rules" "/usr/local/etc/polkit-1/rules.d/40-wheel-group.rules"
   sudo sddm --example-config /usr/local/etc/sddm.conf
   sudo service sddm start
