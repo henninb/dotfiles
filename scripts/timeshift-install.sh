@@ -20,6 +20,7 @@ else
   exit 1
 fi
 
+echo touch /etc/timeshift.json
 
 exit 0
 
