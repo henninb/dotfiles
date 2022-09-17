@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>test session cookies</title>
+    <script>
+      function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+      function modCookieValue() {
+        console.log('attempt to modify session cookies');
+        document.cookie = 'sessionCookie=newValue'; // Without HTTP only this persists
+        document.cookie = 'mutableSessionCookie=newValue';
+      }
+      function showCookieValue() {
+        console.log('show cookie value');
+        sessionCookie = getCookie('sessionCookie')
+        mutableSessionCookie = getCookie('mutableSessionCookie')
+        console.log(document.cookie);
+        let output = '<h2 class="mb-4">session cookies</h2>';
+        output += ('nonMutable = ' + document.cookie)
+        output += '<br>'
+        output += ('mutable = ' + mutableSessionCookie)
+        output += ('nonMutable = ' + document.cookie)
+
+        document.getElementById('output').innerHTML = output;
+      }
+    </script>
+
+  </head>
+  <body>
+    <h1>test session cookies</h1>
+
+      <hr>
+      <div id="output"></div>
+      <hr>
+      <button id="show-cookie-value">show-cookie</button>
+      <button id="mod-cookie-value">modify-cookie</button>
+
+    <script>
+       document.getElementById('mod-cookie-value').addEventListener('click', () => {modCookieValue()}, false);
+       document.getElementById('show-cookie-value').addEventListener('click', () => {showCookieValue()}, false);
+    </script>
+  </body>
+</html>
