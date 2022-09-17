@@ -12,7 +12,8 @@
 # EOF
 
 #echo /etc/polkit-1/localauthority/50-local.d/10-udiskie.pkla
-cat > 50-udisks.rules <<EOF
+# cat > 50-udisks.rules <<EOF
+cat << EOF > "$HOME/tmp/50-udisks.rules"
 polkit.addRule(function(action, subject) {
   var YES = polkit.Result.YES;
   var permission = {
@@ -40,7 +41,7 @@ polkit.addRule(function(action, subject) {
 });
 EOF
 
-cat > 10-udisks.rules <<EOF
+cat << EOF > "$HOME/tmp/10-udisks.rules"
 polkit.addRule(function(action, subject) {
     if (action.id == "org.freedesktop.udisks2.filesystem-mount" &&
         subject.user == "henninb") {
