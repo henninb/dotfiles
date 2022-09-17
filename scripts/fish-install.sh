@@ -25,5 +25,9 @@ fi
 
 fisher add matchai/spacefish
 
+# curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+# fisher add matchai/spacefish
+
 exit 0
 
+# vim: set ft=sh:
