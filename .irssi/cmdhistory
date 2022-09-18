@@ -1,11 +1,3 @@
-: 1614207867:: :;failed to find screen to remove
-: 1614207888:: :;has anyone seen that before?
-: 1614207957:: :;im using xmonad with archlinux
-: 1614208000:: :;it only happens intermitently so it is really hard to track down.
-: 1614208172:: :;no, single display
-: 1614208240:: :;the error is in /var/log/lightdm/x-0.log
-: 1614208404:: :;no problem, I can try and dig some more
-: 1614600635:: :;I am running xmonad and cannot get 'flameshot gui' to display. here is a pastebin of the strace https://pastebin.com/jhEWAZ8E , please share any thoughts. ty
 : 1614602263:: :;/quit
 : 1621083559:: :;/help
 : 1621084337:: :;/quit
@@ -98,3 +90,11 @@
 : 1662848696:: :;thank you again for taking a look geekosaur
 : 1662848713:: :;thank you for taking a look geekosaur.
 : 1662850982:: :;/quit
+: 1663285726:: :;hi, I have a client certificate (created from a self signed cert) when access my app with brave, it appear to cache an old certificate. please excuse my ignorence, but where does brave or gentoo store the client certs and how can I clear them.
+: 1663286388:: :;+ajak
+: 1663286439:: :;ajak, I agree with you. I image these chrome based browers store these client certs in the app configs.
+: 1663286453:: :;thanks for confirming.
+: 1663286484:: :;+username234
+: 1663286568:: :;username234, I did find the .config/BraveSoftware/Brave-Browser
+: 1663286588:: :;I think I will post on a brave channel.
+: 1663288787:: :;/quit

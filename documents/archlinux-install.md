@@ -122,3 +122,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 reboot
 ```
+efi
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --removable --boot-directory=/boot/efi/EFI --bootloader-id=grub /dev/sdX
+grub-install --target=x86_64-efi --efi-directory=esp --bootloader-id=grub
+pacman -S efibootmgr
