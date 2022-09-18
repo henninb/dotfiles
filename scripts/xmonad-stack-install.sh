@@ -104,6 +104,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   # sudo pacman --noconfirm --needed -S font-awesome-4
   sudo pacman --noconfirm --needed -S ttf-font-awesome
   sudo pacman --noconfirm --needed -S gtk-update-icon-cache
+  sudo pacman --noconfirm --needed -S gcc
   sudo pacman --noconfirm --needed -S htop
   sudo pacman --noconfirm --needed -S imagemagick
   sudo pacman --noconfirm --needed -S jq
@@ -142,6 +143,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S kdeconnect
   sudo pacman --noconfirm --needed -S pandoc
   sudo pacman --noconfirm --needed -S xorg-xinit
+  sudo pacman --noconfirm --needed -S xorg-server
   sudo pacman --noconfirm --needed -S zenity
   # yay -S oblogout
   # yay -S mpdris2
