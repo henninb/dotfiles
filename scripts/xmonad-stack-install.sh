@@ -120,6 +120,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S numlockx
   sudo pacman --noconfirm --needed -S network-manager-applet
   sudo pacman --noconfirm --needed -S pavucontrol
+  sudo pacman --noconfirm --needed -S pkg-config
   # sudo pacman --noconfirm --needed -S mpdris2
   # sudo pacman --noconfirm --needed -S playderctl
   sudo pacman --noconfirm --needed -S pulseaudio
