@@ -16,12 +16,18 @@ timedatectl set-ntp true
 
 ## partition the drive as show below (use dos)
 ```
-parted /dev/sda  mklabel msdos
+parted /dev/sda mklabel msdos
 parted /dev/sda mkpart primary 1 1024
 parted /dev/sda set 1 boot on
 parted /dev/sda mkpart primary 1024 100%
 ```
 
+## partition the drive as show below (use gpt)
+```
+parted /dev/sda mklabel gpt
+parted /dev/sda mkpart primary 1 3072
+parted print devices
+```
 
 ## make the partitions
 ```
