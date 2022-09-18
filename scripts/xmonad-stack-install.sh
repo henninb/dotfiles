@@ -88,6 +88,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y xdotool
   sudo zypper install -y xscreensaver
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+  sudo pacman --noconfirm --needed -S alacritty
   sudo pacman --noconfirm --needed -S alsa-utils
   sudo pacman --noconfirm --needed -S bat
   sudo pacman --noconfirm --needed -S blueman
