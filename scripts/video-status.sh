@@ -99,6 +99,9 @@ grep "X Driver" /var/log/Xorg.0.log
 lspci -k | grep -A 2 -i "VGA"
 modinfo nvidia | grep version
 
+
+echo "works for the gtx1060 and the gtx960."
+
 exit 0
 
 # vim: set ft=sh
