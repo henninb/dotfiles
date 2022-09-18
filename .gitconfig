@@ -14,7 +14,6 @@
   cob = checkout -b
   pom = push origin main
   cm = commit -m
-  plom = pull origin main
   f = "!git ls-files | grep -i"
   untracked = ls-files . --ignored --exclude-standard --others
   lsi = status --ignored
