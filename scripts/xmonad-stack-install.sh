@@ -111,6 +111,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S i3lock-color
   sudo pacman --noconfirm --needed -S lxappearance
   sudo pacman --noconfirm --needed -S lxsession
+  sudo pacman --noconfirm --needed -S make
   sudo pacman --noconfirm --needed -S mpc
   sudo pacman --noconfirm --needed -S mpv
   sudo pacman --noconfirm --needed -S mpd
@@ -140,6 +141,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S yad
   sudo pacman --noconfirm --needed -S kdeconnect
   sudo pacman --noconfirm --needed -S pandoc
+  sudo pacman --noconfirm --needed -S xorg-xinit
   sudo pacman --noconfirm --needed -S zenity
   # yay -S oblogout
   # yay -S mpdris2
