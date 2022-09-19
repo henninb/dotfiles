@@ -31,26 +31,26 @@ parted /dev/sda mkpart primary 1024 100%
 parted print devices
 ```
 
-## make the partitions (dos)
+## make the partitions (use dos)
 ```
 mkfs.ext2 -T small /dev/sda1
 mkfs.ext4 -j -T small /dev/sda2
 ```
 
-## make the partitions (gpt)
+## make the partitions (use gpt)
 ```
 mkfs.fat -F32 /dev/sda1
 mkfs.ext4 -j -T small /dev/sda2
 ```
 
-## mount the partitions (dos)
+## mount the partitions (use dos)
 ```
 mount /dev/sda2 /mnt
 mkdir -p /mnt/boot
 mount /dev/sda1 /mnt/boot
 ```
 
-## mount the partitions (gpt)
+## mount the partitions (use gpt)
 ```
 mount /dev/sda2 /mnt
 mkdir -p /mnt/boot/efi
@@ -133,7 +133,7 @@ grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 ````
 
-## load grub on the boot drive (dos)
+## load grub on the boot drive (gpt)
 ```
 grub-install --target=x86_64-efi --boot-directory=/boot/efi --bootloader-id=archlinux /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg

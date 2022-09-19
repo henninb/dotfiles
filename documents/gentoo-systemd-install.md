@@ -32,7 +32,15 @@ parted /dev/sda  mklabel msdos
 parted /dev/sda mkpart primary 1 1024
 parted /dev/sda set 1 boot on
 parted /dev/sda mkpart primary 1024 100%
+parted print devices
+```
 
+## partition the drive as show below (use gpt)
+```
+parted /dev/sda mklabel gpt
+parted /dev/sda mkpart primary 1 1024
+parted /dev/sda mkpart primary 1024 100%
+parted print devices
 ```
 
 ## disk layout
@@ -41,24 +49,32 @@ parted /dev/sda mkpart primary 1024 100%
 /dev/sda2	ext4	Rest of the disk	Root partition
 ```
 
-## make the partitions
+## make the partitions (use gpt)
+```
+mkfs.fat -F32 /dev/sda1
+mkfs.ext4 -j -T small /dev/sda2
+```
+
+## make the partitions (use dos)
 ```
 mkfs.ext2 -T small /dev/sda1
 mkfs.ext4 -j -T small /dev/sda2
-
-mkfs.ext2 -T small /dev/vda1
-mkfs.ext4 -j -T small /dev/vda2
-
-mkfs.ext2 -T small /dev/sdb1
-mkfs.ext4 -j -T small /dev/sdb2
 ```
 
-## mounting
+## mount the partitions (use gpt)
 ```
 mkdir -p /mnt/gentoo
 mount /dev/sda2 /mnt/gentoo
-mount /dev/vda2 /mnt/gentoo
-mount /dev/sdb2 /mnt/gentoo
+mkdir -p /mnt/gentoo/boot/efi
+mount /dev/sda1 /mnt/gentoo/boot/efi
+```
+
+## mount the partitions (use dos)
+```
+mkdir -p /mnt/gentoo
+mount /dev/sda2 /mnt/gentoo
+mkdir -p /mnt/gentoo/boot
+mount /dev/sda1 /mnt/gentoo/boot
 cd /mnt/gentoo
 ```
 
@@ -147,7 +163,7 @@ passwd henninb
 passwd root
 ```
 
-## mount boot
+## mount boot (not required)
 ```
 mount /dev/sda1 /boot
 mount /dev/vda1 /boot
@@ -159,9 +175,15 @@ mount /dev/sdb1 /boot
 emerge-webrsync
 eselect news read
 emerge vim
+emegge genfstab
 ```
 
-## edit fstab
+## generate fstab
+```
+genfstab -U /mnt >> /mnt/etc/fstab
+```
+
+## edit fstab (old way)
 ```
 cat << EOF >> /etc/fstab
 /dev/sda1   /boot        ext2    defaults,noatime     0 2
@@ -308,12 +330,21 @@ systemctl preset-all
 systemd-machine-id-setup
 ```
 
-## grub install
+## grub install (with dos)
 ```
 echo 'GRUB_CMDLINE_LINUX="init=/usr/lib/systemd/systemd"' >> /etc/default/grub
 grub-install /dev/sda
-grub-install /dev/vda
-grub-install /dev/sdb
 grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+## grub install (with gpt)
+```
+echo 'GRUB_CMDLINE_LINUX="init=/usr/lib/systemd/systemd"' >> /etc/default/grub
+grub-install --target=x86_64-efi --boot-directory=/boot/efi --bootloader-id=archlinux /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+````
+
+## reboot system
+```
 reboot
 ```
