@@ -8,6 +8,10 @@ EOF
 
 lspci -k | grep -A 2 -E "(VGA|3D)"
 
+if [ command -v pacman ]; then
+  sudo pacman --noconfirm --needed -S linux-headers
+fi
+
 if [ command -v emerge ]; then
   if ! command -v hardinfo; then
     sudo emerge --update --newuse hardinfo
