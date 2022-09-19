@@ -20,32 +20,47 @@ parted /dev/sda mklabel msdos
 parted /dev/sda mkpart primary 1 1024
 parted /dev/sda set 1 boot on
 parted /dev/sda mkpart primary 1024 100%
+parted print devices
 ```
 
 ## partition the drive as show below (use gpt)
 ```
 parted /dev/sda mklabel gpt
-parted /dev/sda mkpart primary 1 3072
+parted /dev/sda mkpart primary 1 1024
+parted /dev/sda mkpart primary 1024 100%
 parted print devices
 ```
 
-## make the partitions
+## make the partitions (dos)
 ```
 mkfs.ext2 -T small /dev/sda1
 mkfs.ext4 -j -T small /dev/sda2
 ```
 
-## mount the partitions
+## make the partitions (gpt)
 ```
-mkdir -p /mnt/boot
+mkfs.fat -F32 /dev/sda1
+mkfs.ext4 -j -T small /dev/sda2
+```
+
+## mount the partitions (dos)
+```
 mount /dev/sda2 /mnt
+mkdir -p /mnt/boot
 mount /dev/sda1 /mnt/boot
+```
+
+## mount the partitions (gpt)
+```
+mount /dev/sda2 /mnt
+mkdir -p /mnt/boot/efi
+mount /dev/sda1 /mnt/boot/efi
 ```
 
 ## install the arch base system
 ```
 pacman -Sy archlinux-keyring
-pacstrap /mnt base linux linux-firmware
+pacstrap /mnt base linux linux-firmware neovim
 ```
 
 ## update the fstab
@@ -70,10 +85,9 @@ hwclock --systohc
 
 ## setup network
 ```
-TBD
-pacman -S dhcpcd
+pacman --noconfirm --needed -S dhcpcd
 systemctl enable dhcpcd
-pacman -S openssh
+pacman --noconfirm --needed -S openssh
 systemctl enable sshd
 ```
 
@@ -109,12 +123,19 @@ passwd henninb
 
 ## install grub
 ```
-pacman -S grub
+pacman --noconfirm --needed -S grub
+pacman --noconfirm --needed -S efibootmgr
 ```
 
-## load grub on the boot drive
+## load grub on the boot drive (dos)
 ```
 grub-install /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+````
+
+## load grub on the boot drive (dos)
+```
+grub-install --target=x86_64-efi --boot-directory=/boot/efi --bootloader-id=archlinux /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 ````
 
@@ -122,7 +143,3 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 reboot
 ```
-efi
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --removable --boot-directory=/boot/efi/EFI --bootloader-id=grub /dev/sdX
-grub-install --target=x86_64-efi --efi-directory=esp --bootloader-id=grub
-pacman -S efibootmgr
