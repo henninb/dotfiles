@@ -148,6 +148,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S xorg-xinit
   sudo pacman --noconfirm --needed -S xorg-server
   sudo pacman --noconfirm --needed -S zenity
+  # yay -S hardinfo
   # yay -S oblogout
   # yay -S mpdris2
   sudo systemctl disable mpd.socket
