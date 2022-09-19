@@ -60,7 +60,8 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
 
   sudo mkdir -p /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
-  ls -l /usr/share/sddm/themes/
+  sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
+  # ls -l /usr/share/sddm/themes/
 
   # systemctl --user stop xdg-desktop-portal{,gtk}
   # systemctl --user stop xdg-desktop-portal
