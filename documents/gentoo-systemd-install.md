@@ -259,7 +259,7 @@ EOF
 ln -sf /proc/self/mounts /etc/mtab
 ```
 
-## probably not needed
+## probably not needed (not required)
 ```
 vi /etc/initramfs.mounts
 /usr
@@ -272,7 +272,7 @@ systemctl preset-all
 
 ## update dns resolver
 ```
-ln -snf /run/systemd/resolv.conf /etc/resolv.conf
+# ln -snf /run/systemd/resolv.conf /etc/resolv.conf
 systemctl enable systemd-resolved.service
 ```
 
