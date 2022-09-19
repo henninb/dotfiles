@@ -2,7 +2,7 @@
 
 # echo nvm use 16.13.0
 echo npm init
-echo 'http://localhost:3000'
+echo 'https://localhost:3000'
 
 npm install
 npm start
