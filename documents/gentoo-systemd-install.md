@@ -32,7 +32,6 @@ parted /dev/sda  mklabel msdos
 parted /dev/sda mkpart primary 1 1024
 parted /dev/sda set 1 boot on
 parted /dev/sda mkpart primary 1024 100%
-parted print devices
 ```
 
 ## partition the drive as show below (use gpt)
@@ -40,7 +39,6 @@ parted print devices
 parted /dev/sda mklabel gpt
 parted /dev/sda mkpart primary 1 1024
 parted /dev/sda mkpart primary 1024 100%
-parted print devices
 ```
 
 ## disk layout
@@ -67,6 +65,7 @@ mkdir -p /mnt/gentoo
 mount /dev/sda2 /mnt/gentoo
 mkdir -p /mnt/gentoo/boot/efi
 mount /dev/sda1 /mnt/gentoo/boot/efi
+cd /mnt/gentoo
 ```
 
 ## mount the partitions (use dos)
@@ -80,13 +79,19 @@ cd /mnt/gentoo
 
 ## download stage3
 ```
-curl -Os 'https://mirror.bytemark.co.uk/gentoo/releases/amd64/autobuilds/20220710T170538Z/stage3-amd64-desktop-systemd-20220710T170538Z.tar.xz'
+https://mirror.bytemark.co.uk/gentoo/releases/amd64/autobuilds/
+curl -Os 'https://mirror.bytemark.co.uk/gentoo/releases/amd64/autobuilds/20220918T170531Z/stage3-amd64-desktop-systemd-20220918T170531Z.tar.xz'
 ```
 
 ## extract stage3 and be sure to verify success
 ```
 tar xvJpf stage3-*.tar.xz --xattrs --numeric-owner
 rm stage3-amd64-desktop-systemd-*.tar.xz
+```
+
+## generate fstab
+```
+genfstab -U /mnt/gentoo >> /mnt/gentoo/etc/fstab
 ```
 
 ## erase root and login with systemd
@@ -96,24 +101,41 @@ sed -i -e 's/^root:\*/root:/' /mnt/gentoo/etc/shadow
 systemd-nspawn -bD /mnt/gentoo
 ```
 
-## set locale
+## login (no password)
 ```
-cat << EOF >> /etc/locale.gen
-en_US.UTF-8 UTF-8
-EOF
-locale-gen
+root
+```
+
+
+## systemd activities
+```
+hostnamectl set-hostname "gentoo"
+echo "127.0.0.1 gentood.localdomain gentoo" >> /etc/hosts
+
+timedatectl list-timezones
+timedatectl set-timezone America/Chicago
+timedatectl set-ntp yes
 localectl list-locales
 localectl set-locale LANG=en_US.utf8
 localectl set-keymap us
 ```
 
-hostnamectl set-hostname "gentood"
-echo "127.0.0.1 gentood.localdomain gentood" >> /etc/hosts
+## set locale systemd
+```
+cat << EOF >> /etc/locale.gen
+en_US.UTF-8 UTF-8
+EOF
+```
 
-timedatectl list-timezones
-timedatectl set-timezone America/Chicago
-timedatectl set-ntp yes
+## set locale
+```
+locale-gen
+```
+
+## logout of systemd
+```
 poweroff
+```
 
 ## use flags
 ```
@@ -142,13 +164,14 @@ source /etc/profile
 export PS1="(chroot) $PS1"
 ```
 
-## profile select (does not work)
+
+## profile select (broken)
 ```
 eselect profile list
 eselect profile set 10 (desktop systemd)
 ```
 
-## set the mirror list (need to fix?)
+## set the mirror list (broken)
 ```
 # mirrorselect -i -o >> /etc/portage/make.conf
 mkdir -p /mnt/etc/portage/repos.conf
@@ -174,22 +197,13 @@ mount /dev/sdb1 /boot
 ```
 emerge-webrsync
 eselect news read
-emerge vim
-emegge genfstab
+# emerge vim
+emerge genfstab
 ```
 
-## generate fstab
+## generate fstab (not required)
 ```
-genfstab -U /mnt >> /mnt/etc/fstab
-```
-
-## edit fstab (old way)
-```
-cat << EOF >> /etc/fstab
-/dev/sda1   /boot        ext2    defaults,noatime     0 2
-/dev/sda2   /            ext4    noatime              0 1
-/dev/cdrom  /mnt/cdrom   auto    noauto,user          0 0
-EOF
+genfstab -U / >> /etc/fstab
 ```
 
 ## verify disk
