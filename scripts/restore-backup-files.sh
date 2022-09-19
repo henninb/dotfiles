@@ -2,18 +2,17 @@
 
 
 if command -v pacman; then
-  echo "archlinux"
+  sudo pacman --noconfirm --needed -S rsync
 elif command -v emerge; then
   echo "gentoo"
   if ! command -v rsync; then
-    sudo emerge --update --newuse zsh
+    sudo emerge --update --newuse rsync
   fi
 elif command -v apt; then
   echo "debian"
 elif command -v xbps-install; then
   echo "void"
 elif command -v pkg; then
-  echo "freebsd"
   sudo pkg install -y rsync
 elif command -v eopkg; then
   echo "solus"
