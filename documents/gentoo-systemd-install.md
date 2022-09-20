@@ -155,6 +155,7 @@ cp -L /etc/resolv.conf /mnt/gentoo/etc/
 mount -t proc none /mnt/gentoo/proc
 mount --rbind /dev /mnt/gentoo/dev
 mount --rbind /sys /mnt/gentoo/sys
+modprobe efivarfs
 ```
 
 ## configure the chroot (enter commands individually)
@@ -354,7 +355,8 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ## grub install (with gpt)
 ```
 echo 'GRUB_CMDLINE_LINUX="init=/usr/lib/systemd/systemd"' >> /etc/default/grub
-grub-install --target=x86_64-efi --boot-directory=/boot/efi --bootloader-id=archlinux /dev/sda
+# grub-install --target=x86_64-efi --boot-directory=/boot/efi --bootloader-id=archlinux /dev/sda
+grub-install --target=x86_64-efi --bootloader-id=grub_uefi --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
 ````
 

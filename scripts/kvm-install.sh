@@ -126,6 +126,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse app-emulation/virt-viewer
   sudo emerge --update --newuse net-misc/spice-gtk
   sudo emerge --update --newuse virt-manager
+  sudo emerge --update --newuse sys-firmware/edk2-ovmf ## uefi support
   sudo mv -v "$HOME/tmp/libvirtd.conf" /etc/libvirt/libvirtd.conf
   # sudo rc-update add libvirtd default
   # sudo rc-service libvirtd start
