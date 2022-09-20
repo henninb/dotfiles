@@ -26,6 +26,7 @@ ssh root@192.168.10.103
 ## partition the drive as show below (use dos)
 ```
 cfdisk /dev/sda
+cfdisk /dev/vda
 
 parted /dev/sda  mklabel msdos
 parted /dev/sda mkpart primary 1 1024
@@ -38,6 +39,12 @@ parted /dev/sda mkpart primary 1024 100%
 parted /dev/sda mklabel gpt
 parted /dev/sda mkpart primary 1 1024
 parted /dev/sda mkpart primary 1024 100%
+```
+
+## disk layout
+```
+/dev/sda1	ext2	(bootloader)	1GB
+/dev/sda2	ext4	Rest of the disk	Root partition
 ```
 
 ## make the partitions (use gpt)
@@ -157,6 +164,20 @@ source /etc/profile
 export PS1="(chroot) $PS1"
 ```
 
+
+## profile select (broken)
+```
+eselect profile list
+eselect profile set 10 (desktop systemd)
+```
+
+## set the mirror list (broken)
+```
+# mirrorselect -i -o >> /etc/portage/make.conf
+mkdir -p /mnt/etc/portage/repos.conf
+cp -v /usr/share/portage/config/repos.conf /etc/portage/repos.conf/gentoo.conf
+```
+
 ## user maintenence
 ```
 useradd -m -G users henninb
@@ -218,10 +239,27 @@ EOF
 ln -sf /proc/self/mounts /etc/mtab
 ```
 
+## probably not needed (not required)
+```
+vi /etc/initramfs.mounts
+/usr
+```
+
+## default systemd settings (may not be needed)
+```
+systemctl preset-all
+```
+
+## update dns resolver
+```
+# ln -snf /run/systemd/resolv.conf /etc/resolv.conf
+systemctl enable systemd-resolved.service
+```
+
 # build and install the kernel (will take 42 min)
 ```
-eselect kernel set 1
 eselect kernel list
+eselect kernel set 1
 genkernel all
 genkernel --menuconfig all
 genkernel --menuconfig --kernel-config=/usr/src/linux/.config-main --install all
@@ -269,9 +307,21 @@ CONFIG_VIRTIO_NET=y
 CONFIG_NET_FAILOVER=m
 ```
 
+## check kernel logs
+```
+tail -f /var/log/genkernel.log
+```
+
 ## verify the kernel
 ```
 ls /boot/vmlinuz* /boot/initramfs*
+```
+
+## systemd stuff (not sure if needed)
+```
+systemd-firstboot --prompt --setup-machine-id
+systemctl preset-all
+systemd-machine-id-setup
 ```
 
 ## grub install (with dos)
@@ -291,6 +341,5 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 ## reboot system
 ```
-exit
 reboot
 ```
