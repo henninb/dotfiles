@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if command -v pacman; then
-  echo "archlinux"
+  sudo pacman --noconfirm --needed -S nginx
 elif command -v emerge; then
   echo "gentoo"
 elif command -v apt; then
