@@ -231,12 +231,6 @@ genkernel --kernel-config=/usr/src/linux/.config-main --install all
 # kernel change only needed if running on a virtual
 
 General Setup
-└─> Device Drivers
-└─> SCSI device support
-└─> SCSI device support
-CONFIG_SCSI=y
-
-General Setup
 └─> File systems
 └─> Virtio Filesystem
 CONFIG_VIRTIO_FS=m
@@ -251,7 +245,7 @@ General Setup
 └─> Device Drivers
 └─> SCSI device support
 └─> SCSI low-level drivers
-└─> virtio-scsi support
+└─> virtio-scsi support (towards the bottom)
 CONFIG_SCSI_VIRTIO=m
 
 General Setup
