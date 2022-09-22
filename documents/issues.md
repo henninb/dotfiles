@@ -629,6 +629,9 @@ stack ghc -- --version
 
 SPACESHIP_PYENV_SHOW is deprecated. Use SPACESHIP_PYTHON_SHOW instead           
 
-SPACESHIP_KUBECONTEXT_SHOW is deprecated. Use SPACESHIP_KUBECTL_CONTEXT_SHOW ins
+SPACESHIP_KUBECONTEXT_SHOW is deprecated. Use SPACESHIP_KUBECTL_CONTEXT_SHOW instead                                                                           
 
-tead                                                                           
+
+systemctl disable --now systemd-homed
+systemctl disable --now systemd-userdbd.service
+systemctl disable --now systemd-userdbd.socket

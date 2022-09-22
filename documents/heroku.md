@@ -21,3 +21,7 @@ heroku ps:scale web=1
 git push heroku main
 heroku open
 ```
+
+
+
+heroku addons:create fastly --app example-app

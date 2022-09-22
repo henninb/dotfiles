@@ -1,9 +1,10 @@
 #!/bin/sh
 
 if [ -x "$(command -v pacman)" ]; then
-  yay -S heroku-cli
+  # yay -S heroku-cli
+  npm install -g heroku
 elif [ -x "$(command -v emerge)" ]; then
-  echo
+  npm install -g heroku
 elif [ -x "$(command -v apt)" ]; then
   echo
 elif [ -x "$(command -v xbps-install)" ]; then

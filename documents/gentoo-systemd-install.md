@@ -173,7 +173,7 @@ eselect news read
 
 ## install packages
 ```
-emerge sys-kernel/gentoo-sources linux-firmware sys-kernel/genkernel cronie mlocate rsyslog sys-boot/grub:2 sudo
+emerge sys-kernel/gentoo-sources linux-firmware sys-kernel/genkernel cronie mlocate rsyslog sys-boot/grub:2 sudo dhcpcd dhcp gentoo-kernel-bin
 etc-update
 ```
 
