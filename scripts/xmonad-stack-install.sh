@@ -90,6 +90,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S alacritty
   sudo pacman --noconfirm --needed -S alsa-utils
+  sudo pacman --noconfirm --needed -S arch-install-scripts
   sudo pacman --noconfirm --needed -S bat
   sudo pacman --noconfirm --needed -S blueman
   sudo pacman --noconfirm --needed -S clipmenu
