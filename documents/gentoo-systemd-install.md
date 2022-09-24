@@ -114,7 +114,7 @@ locale-gen
 ## systemd activities
 ```
 hostnamectl set-hostname "gentoo"
-echo "127.0.0.1 gentood.localdomain gentoo" >> /etc/hosts
+echo "127.0.0.1 gentoo.lan gentoo" >> /etc/hosts
 
 timedatectl list-timezones
 timedatectl set-timezone America/Chicago
@@ -278,8 +278,8 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ## grub install (with gpt)
 ```
 echo 'GRUB_CMDLINE_LINUX="init=/usr/lib/systemd/systemd"' >> /etc/default/grub
-# grub-install --target=x86_64-efi --boot-directory=/boot/efi --bootloader-id=archlinux /dev/sda
-grub-install --target=x86_64-efi --bootloader-id=grub_uefi --efi-directory=/boot/efi
+# grub-install --target=x86_64-efi --boot-directory=/boot/efi --bootloader-id=gentoo-uefi /dev/sda
+grub-install --target=x86_64-efi --bootloader-id=gentoo-uefi --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
 ````
 
