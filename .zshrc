@@ -20,7 +20,7 @@ export MYSHELL
 
 export OS
 export OS_VER
-
+#
 #SPACESHIP_PROMPT_ORDER=(user host dir git)
 SPACESHIP_PROMPT_ORDER=(exit_code kubectl host dir git jobs char)
 export SPACESHIP_PROMPT_ORDER
@@ -402,7 +402,7 @@ else
   if [ "$OSTYPE" = "linux-gnu" ]; then
     if [ -f /sys/module/hid_apple/parameters/fnmode ]; then
       if ! cat /sys/module/hid_apple/parameters/fnmode | grep -q 2; then
-        echo 'echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode'
+        echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode
         echo "options hid_apple fnmode=2" | sudo tee -a /etc/modprobe.d/hid_apple.conf
         if command -v update-initramfs; then
           sudo update-initramfs -u -k all
