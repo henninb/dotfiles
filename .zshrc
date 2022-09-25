@@ -408,6 +408,8 @@ else
           sudo update-initramfs -u -k all
         elif command -v mkinitcpio; then
           sudo mkinitcpio -p linux
+        elif command -v genkernel; then
+          sudo genkernel initramfs
         fi
         echo "reboot"
       fi
