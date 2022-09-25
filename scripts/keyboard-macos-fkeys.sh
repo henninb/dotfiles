@@ -9,6 +9,7 @@ fi
 if ! grep -q "hid_apple" < /etc/modprobe.d/hid_apple.conf; then
   echo "options hid_apple fnmode=2" | sudo tee -a /etc/modprobe.d/hid_apple.conf
   sudo update-initramfs -u -k all
+  sudo mkinitcpio -p linux
 fi
 
 if [ ! -f "/etc/default/keyboard" ]; then
