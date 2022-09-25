@@ -399,7 +399,7 @@ if ! stack install xmonad-extras; then
 fi
 
 # echo "seems to have the the flag with_xft. how to confirm?"
-mkdir "$HOME/projects/github.com/jaor" || exit
+mkdir -p "$HOME/projects/github.com/jaor" || exit
 cd "$HOME/projects/github.com/jaor" || exit
 git clone git@github.com:jaor/xmobar.git
 cd xmobar || exit
