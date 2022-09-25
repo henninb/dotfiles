@@ -189,6 +189,7 @@ EOF
 systemctl enable rsyslog
 systemctl enable cronie
 systemctl enable sshd
+systemctl enable dhcpcd
 ```
 
 ## network setup (enp1s0, eth0)
