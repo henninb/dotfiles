@@ -91,9 +91,9 @@ else
 fi
 
 echo open https://www.nvidia.com/en-us/geforce/drivers/
-if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-515.57.run" ]; then
-  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/515.57/NVIDIA-Linux-x86_64-515.57.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-515.57.run"
-fi
+# if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-515.57.run" ]; then
+#   wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/515.57/NVIDIA-Linux-x86_64-515.57.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-515.57.run"
+# fi
 
 if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-515.65.01.run" ]; then
   wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/515.65.01/NVIDIA-Linux-x86_64-515.65.01.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-515.65.01.run"
