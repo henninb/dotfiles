@@ -1,0 +1,20 @@
+---
+version: "2.1"
+
+volumes:
+  firefox:
+
+services:
+  firefox:
+    image: ghcr.io/linuxserver/firefox
+    container_name: firefox
+    environment:
+      - PUID=1000 #change this to for your settings
+      - PGID=1000 #change this to for your settings
+      - TZ=America/Chicago  #change this to for your location
+    volumes:
+      - firefox:/config
+    ports:
+      - 3000:3000
+    shm_size: "1gb"
+    restart: unless-stopped
