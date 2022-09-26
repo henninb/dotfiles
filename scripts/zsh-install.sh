@@ -2,8 +2,10 @@
 
 if [ -x "$(command -v pacman)" ]; then
   sudo pacman --noconfirm --needed -S zsh
+  sudo pacman --noconfirm --needed -S starship
 elif [ -x "$(command -v emerge)" ]; then
   sudo emerge --update --newuse zsh
+  sudo emerge --update --newuse starship
 elif [ -x "$(command -v apt)" ]; then
   sudo apt install -y zsh
 elif [ -x "$(command -v xbps-install)" ]; then
@@ -23,6 +25,14 @@ fi
 
 if [ -x "$(command -v zsh)" ]; then
   echo zsh is not installed.
+fi
+
+if ! command -v starship; then
+  curl -fsSL https://starship.rs/install.sh
+  mv install.sh "$HOME/tmp"
+  chmod +x "$HOME/tmp/install.sh"
+  cd "$HOME/tmp"
+  ./install.sh
 fi
 
 if [ "$OS" = "CentOS Linux" ]; then
