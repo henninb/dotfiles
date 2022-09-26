@@ -17,7 +17,7 @@ add_newline = false
 
 [character]
 success_symbol = "[ ➜](bold green)" # normal prompt
-error_symbol = "[✗](bold red)" # used if previous command failed
+error_symbol = "[ ✗](bold red)" # used if previous command failed
 # Displays current 
 
 [git_branch]
