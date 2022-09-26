@@ -129,6 +129,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S rdfind
   sudo pacman --noconfirm --needed -S rsync
   sudo pacman --noconfirm --needed -S sxhkd
+  sudo pacman --noconfirm --needed -S starship
   sudo pacman --noconfirm --needed -S sxiv
   sudo pacman --noconfirm --needed -S trayer
   sudo pacman --noconfirm --needed -S thunar
