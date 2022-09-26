@@ -47,6 +47,6 @@ if [ "$DISPLAY" != ":0" ]; then
     xclipsync &
 fi
 
-echo "$(date) start xsesson" | tee -a "$HOME/tmp/xsession.log"
+echo "$(date) start xsesson" >> "$HOME/tmp/xsession.log"
 
 # vim: set ft=conf:

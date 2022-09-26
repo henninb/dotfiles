@@ -22,7 +22,7 @@ export OS
 export OS_VER
 #
 #SPACESHIP_PROMPT_ORDER=(user host dir git)
-SPACESHIP_PROMPT_ORDER=(exit_code kubectl host dir git jobs char)
+SPACESHIP_PROMPT_ORDER=(exit_code host dir git jobs char)
 export SPACESHIP_PROMPT_ORDER
 SPACESHIP_PROMPT_ASYNC=false
 export SPACESHIP_PROMPT_ASYNC
@@ -508,8 +508,8 @@ if [ "$MYSHELL" = "zsh" ]; then
   #source "$HOME/plugins/autojump/bin/autojump.zsh"
   source "$HOME/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
   source "$HOME/plugins/zed-zsh/zed.zsh"
-  #eval "$(starship init zsh)"
-  source "$HOME/themes/spaceship-prompt/spaceship.zsh"
+  eval "$(starship init zsh)"
+  # source "$HOME/themes/spaceship-prompt/spaceship.zsh"
 elif [ "$MYSHELL" = "bash" ]; then
   eval "$(starship init bash)"
 else

@@ -1,0 +1,51 @@
+# Use custom format
+format = """
+$hostname\
+$directory\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$git_branch\
+$character"""
+
+# Wait 10 milliseconds for starship to check files under the current directory.
+# scan_timeout = 10
+
+# Disable the blank line at the start of the prompt
+add_newline = false
+
+[character]
+success_symbol = "[ ➜](bold green)" # normal prompt
+error_symbol = "[✗](bold red)" # used if previous command failed
+# Displays current 
+
+[git_branch]
+format = " [$symbol](green)[$branch]($style)"
+style = "italic green"
+#symbol = ""
+
+# Displays status of Git repository when in a directory of a Git repository.
+[git_status]
+format = "[$all_status$ahead_behind]($style)"
+# ahead = "⇡ $count "
+# behind = "⇣ $count "
+# deleted = "🗑 $count "
+# diverged = " $count "
+# stashed = "📦 $count "
+# modified = "פֿ $count "
+# staged = '[ $count ](green)'
+# renamed = " $count "
+# untracked = "🤷 $count "
+# style = "bold red"
+
+[directory]
+# format = "[$path]($style)"
+# style = "yellow"
+truncate_to_repo = false
+truncation_length = 0 # parent directories to show; default is 3
+# truncation_symbol = "…/"
+
+[hostname]
+ssh_only = false
+format = "[$hostname](bold blue) "
