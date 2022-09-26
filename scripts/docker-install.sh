@@ -135,6 +135,11 @@ else
   exit 1
 fi
 
+
+if ! command -v docker-compose; then
+  pip install docker-compose
+fi
+
 exit 0
 
 # vim: set ft=sh:
