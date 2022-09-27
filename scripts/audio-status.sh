@@ -71,6 +71,12 @@ fi
 echo mpg123 mp3/Yes_-_Roundabout.mp3
 echo pacmd set-default-sink 1
 
+echo pavucontrol --tab 5
+
+# echo pulseaudio -k && sudo alsa force-reload && sleep 2 && pulseaudio -k && sudo alsa force-reload
+systemctl --user status pulseaudio.socket
+echo systemctl --user enable pulseaudio
+
 exit 0
 
 # pactl set-default-sink bluez_sink.$DEV
