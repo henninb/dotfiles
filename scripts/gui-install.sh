@@ -60,6 +60,8 @@ elif [ "$OS" = "Gentoo" ]; then
     fi
   done
   echo "Failures: $FAILURE"
+  blender=$(find /usr/bin -name "blender-*[0-9]")
+  if [ -z ${blender+x} ]; then echo "var is unset"; else sudo ln -sfn "${blender}" /usr/bin/blender; fi
 elif [ "$OS" = "Linux Mint" ]; then
   echo sudo apt-add-repository ppa:dolphin-emu/ppa
 #  wget -O - https://dbeaver.io/debs/dbeaver.gpg.key | sudo apt-key add -
