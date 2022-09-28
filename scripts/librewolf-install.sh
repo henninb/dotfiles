@@ -2,9 +2,8 @@
 
 
 if command -v pacman; then
-  echo "archlinux"
+  yay -S librewolf
 elif command -v emerge; then
-  echo "gentoo"
   sudo emerge --update --newuse app-eselect/eselect-repository
   sudo eselect repository add librewolf git https://gitlab.com/librewolf-community/browser/gentoo.git
   sudo emaint -r librewolf sync
