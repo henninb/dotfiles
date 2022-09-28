@@ -62,6 +62,8 @@ elif [ "$OS" = "Gentoo" ]; then
   echo "Failures: $FAILURE"
   blender=$(find /usr/bin -name "blender-*[0-9]")
   if [ -z ${blender+x} ]; then echo "var is unset"; else sudo ln -sfn "${blender}" /usr/bin/blender; fi
+  kdeconnect=$(find /usr/bin -name "kdeconnect-app")
+  if [ -z ${kdeconnect+x} ]; then echo "var is unset"; else sudo ln -sfn "${kdeconnect}" /usr/bin/kdeconnect; fi
 elif [ "$OS" = "Linux Mint" ]; then
   echo sudo apt-add-repository ppa:dolphin-emu/ppa
 #  wget -O - https://dbeaver.io/debs/dbeaver.gpg.key | sudo apt-key add -
