@@ -37,8 +37,6 @@ style = "bold #ff5555"
 # style = "bold red"
 
 [directory]
-# format = "[$path]($style)"
-# style = "yellow"
 truncate_to_repo = false
 truncation_length = 0 # parent directories to show; default is 3
 style = "bold #50fa7b"
