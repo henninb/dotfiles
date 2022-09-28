@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mkdir -p mp3
+mkdir -p "$HOME/mp3"
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo mint
@@ -65,10 +65,10 @@ echo need to disable module-suspend-on-idle
 echo #load-module module-suspend-on-idle
 
 echo pavucontrol, amixer, alsamixer
-if [ ! -f mp3/Yes_-_Roundabout.mp3 ]; then
-  scp pi@raspi:/home/pi/downloads/mp3/Yes_-_Roundabout.mp3 mp3/
+if [ ! -f "$HOME/mp3/Yes_-_Roundabout.mp3" ]; then
+  scp pi@raspi:/home/pi/downloads/mp3/Yes_-_Roundabout.mp3 "$HOME/mp3/"
 fi
-echo mpg123 mp3/Yes_-_Roundabout.mp3
+echo mpg123 "$HOME/mp3/Yes_-_Roundabout.mp3"
 echo pacmd set-default-sink 1
 
 echo pavucontrol --tab 5
