@@ -67,6 +67,7 @@ else
   export BROWSER=browser
 fi
 export GIT_EDITOR=nvim
+export SUDO_EDITOR=vim
 
 export PATH=$HOME/.local/bin:$PATH
 export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"
