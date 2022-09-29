@@ -46,12 +46,12 @@
                     "7": {
                         "icon": "/home/henninb/files/backup-streamdeck/zoom.png",
                         "text": "zoom",
-                        "command": "zoom"
+                        "command": "zoom-flatpak"
                     },
                     "8": {
                         "icon": "/home/henninb/files/backup-streamdeck/dbeaver.png",
                         "text": "dbeaver",
-                        "command": "dbeaver"
+                        "command": "dbeaver-flatpak"
                     },
                     "9": {
                         "icon": "/home/henninb/files/backup-streamdeck/slack.png",
@@ -267,9 +267,8 @@
                     "14": {}
                 }
             },
-            "page": 1,
-            "brightness": 15,
-            "brightness_dimmed": 0
+            "page": 0,
+            "brightness": 16
         }
     }
 }
