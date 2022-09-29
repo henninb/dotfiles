@@ -113,6 +113,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S kitty
   sudo pacman --noconfirm --needed -S i3lock-color
   sudo pacman --noconfirm --needed -S lxappearance
+  sudo pacman --noconfirm --needed -S lazygit
   sudo pacman --noconfirm --needed -S libreoffice
   sudo pacman --noconfirm --needed -S lxsession
   sudo pacman --noconfirm --needed -S make
