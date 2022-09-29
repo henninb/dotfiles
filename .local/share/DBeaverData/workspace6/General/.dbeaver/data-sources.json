@@ -12,6 +12,7 @@
 				"port": "5432",
 				"database": "finance_db",
 				"url": "jdbc:postgresql://192.168.10.25:5432/finance_db",
+				"configurationType": "MANUAL",
 				"type": "dev",
 				"provider-properties": {
 					"@dbeaver-show-non-default-db@": "false",
@@ -24,7 +25,8 @@
 					"@dbeaver-use-prepared-statements-db@": "false",
 					"read-keys-with-columns": "false"
 				},
-				"auth-model": "native"
+				"auth-model": "native",
+				"handlers": {}
 			},
 			"custom-properties": {
 				"database.meta.separate.connection": "false"
@@ -40,6 +42,7 @@
 			"configuration": {
 				"database": "/home/henninb/.local/share/DBeaverData/workspace6/.metadata/sample-database-sqlite-1/Chinook.db",
 				"url": "jdbc:sqlite:/home/henninb/.local/share/DBeaverData/workspace6/.metadata/sample-database-sqlite-1/Chinook.db",
+				"configurationType": "MANUAL",
 				"type": "dev"
 			}
 		},
@@ -52,9 +55,9 @@
 			"configuration": {
 				"database": "/home/henninb/data/tech-buckeet-list/tech-bucket-list.db",
 				"url": "jdbc:sqlite:/home/henninb/data/tech-buckeet-list/tech-bucket-list.db",
+				"configurationType": "MANUAL",
 				"type": "dev",
-				"auth-model": "native",
-				"handlers": {}
+				"auth-model": "native"
 			}
 		}
 	},

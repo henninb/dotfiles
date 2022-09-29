@@ -119,3 +119,9 @@ x 2022-09-05 fix xmonad ghc linker issue pri:C @fix
 (C) Setup Web Infrastructure on netlify cloudflare github
 (B) finanace app - install remote to hornsup
 (C) finance app mark all income transactions
+(B) load multiple ssh keys
+(B) secure ssh keys
+(R) learn about xcp ng (similar to proxmox)
+(A) create a router with arp spoofer on ipv4 traffic
+(C) create segmented home network
+(B) remote boot freebsd
