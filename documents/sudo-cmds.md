@@ -11,3 +11,6 @@ henninb ALL=(ALL) NOPASSWD: ALL
 ```
 $ sudo mv /etc/sudoers.d/0pwfeedback /etc/sudoers.d/0pwfeedback.disabled
 ```
+
+```
+Defaults env_editor,editor=/usr/bin/vi:/usr/bin/vim
