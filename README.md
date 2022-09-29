@@ -229,3 +229,4 @@
 - raspberrypi.home.arpa
 - tree
 - kitty +kitten icat ./keepassxc.png
+- Byobu - frontend for tmux
