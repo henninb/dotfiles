@@ -1,0 +1,275 @@
+{
+    "streamdeck_ui_version": 1,
+    "state": {
+        "DL05L1A36954": {
+            "buttons": {
+                "0": {
+                    "0": {
+                        "command": "libreoffice",
+                        "text": "libreoffice",
+                        "write": "xdotool search --desktop 0 --class libreoffice windowactivatexdotool search --desktop 0 --clas",
+                        "icon": "/home/henninb/files/backup-streamdeck/libreoffice.png"
+                    },
+                    "1": {
+                        "text": "OBS Studio",
+                        "command": "obs",
+                        "icon": "/home/henninb/files/backup-streamdeck/obs-studio.png"
+                    },
+                    "2": {
+                        "text": "Gimp",
+                        "command": "gimp",
+                        "icon": "/home/henninb/files/backup-streamdeck/gimp.png"
+                    },
+                    "3": {
+                        "icon": "/home/henninb/files/backup-streamdeck/handbrake.png",
+                        "text": "Handbrake",
+                        "command": "ghb"
+                    },
+                    "4": {
+                        "icon": "/home/henninb/files/backup-streamdeck/blender.png",
+                        "command": "blender",
+                        "keys": "",
+                        "text": "Blender",
+                        "write": "",
+                        "brightness_change": -20
+                    },
+                    "5": {
+                        "icon": "/home/henninb/files/backup-streamdeck/vlc.png",
+                        "text": "VLC",
+                        "command": "vlc"
+                    },
+                    "6": {
+                        "icon": "/home/henninb/files/backup-streamdeck/librewolf.png",
+                        "text": "Librewolf",
+                        "command": "librewolf-bin"
+                    },
+                    "7": {
+                        "icon": "/home/henninb/files/backup-streamdeck/zoom.png",
+                        "text": "zoom",
+                        "command": "zoom"
+                    },
+                    "8": {
+                        "icon": "/home/henninb/files/backup-streamdeck/dbeaver.png",
+                        "text": "dbeaver",
+                        "command": "dbeaver"
+                    },
+                    "9": {
+                        "icon": "/home/henninb/files/backup-streamdeck/slack.png",
+                        "text": "Slack",
+                        "command": "slack"
+                    },
+                    "10": {
+                        "icon": "/home/henninb/files/backup-streamdeck/vscode.png",
+                        "text": "vscode",
+                        "command": "vscode-flatpak"
+                    },
+                    "11": {
+                        "icon": "/home/henninb/files/backup-streamdeck/vscodium.png",
+                        "text": "vscodium",
+                        "command": "vscodium"
+                    },
+                    "12": {
+                        "write": "",
+                        "text": "Audacity",
+                        "command": "audacity",
+                        "icon": "/home/henninb/files/backup-streamdeck/audacity.png"
+                    },
+                    "13": {
+                        "command": "virt-manager",
+                        "text": "virt-manager",
+                        "icon": "/home/henninb/files/backup-streamdeck/virt-manager.png"
+                    },
+                    "14": {
+                        "switch_page": 2,
+                        "text": "next",
+                        "icon": "/home/henninb/files/backup-streamdeck/right-arrow.png"
+                    }
+                },
+                "1": {
+                    "0": {
+                        "switch_page": 1,
+                        "text": "prev",
+                        "icon": "/home/henninb/files/backup-streamdeck/left-arrow.png"
+                    },
+                    "1": {
+                        "text": "intellij",
+                        "command": "intellij",
+                        "icon": "/home/henninb/files/backup-streamdeck/intellij.png"
+                    },
+                    "2": {
+                        "command": "discord",
+                        "text": "discord",
+                        "icon": "/home/henninb/files/backup-streamdeck/discord.png"
+                    },
+                    "3": {
+                        "icon": "/home/henninb/files/backup-streamdeck/inkscape.png",
+                        "text": "inkscape",
+                        "command": "inkscape"
+                    },
+                    "4": {
+                        "icon": "/home/henninb/files/backup-streamdeck/wireshark.png",
+                        "text": "wireshark",
+                        "command": "wireshark"
+                    },
+                    "5": {
+                        "icon": "/home/henninb/files/backup-streamdeck/kdeconnect.png",
+                        "text": "kdeconnect",
+                        "command": "kdeconnect"
+                    },
+                    "6": {
+                        "icon": "/home/henninb/files/backup-streamdeck/peazip.png",
+                        "text": "peazip",
+                        "command": "peazip"
+                    },
+                    "7": {},
+                    "8": {},
+                    "9": {},
+                    "10": {},
+                    "11": {},
+                    "12": {},
+                    "13": {},
+                    "14": {}
+                },
+                "2": {
+                    "0": {},
+                    "1": {},
+                    "2": {},
+                    "3": {},
+                    "4": {},
+                    "5": {},
+                    "6": {},
+                    "7": {},
+                    "8": {},
+                    "9": {},
+                    "10": {},
+                    "11": {},
+                    "12": {},
+                    "13": {},
+                    "14": {}
+                },
+                "3": {
+                    "0": {},
+                    "1": {},
+                    "2": {},
+                    "3": {},
+                    "4": {},
+                    "5": {},
+                    "6": {},
+                    "7": {},
+                    "8": {},
+                    "9": {},
+                    "10": {},
+                    "11": {},
+                    "12": {},
+                    "13": {},
+                    "14": {}
+                },
+                "4": {
+                    "0": {},
+                    "1": {},
+                    "2": {},
+                    "3": {},
+                    "4": {},
+                    "5": {},
+                    "6": {},
+                    "7": {},
+                    "8": {},
+                    "9": {},
+                    "10": {},
+                    "11": {},
+                    "12": {},
+                    "13": {},
+                    "14": {}
+                },
+                "5": {
+                    "0": {},
+                    "1": {},
+                    "2": {},
+                    "3": {},
+                    "4": {},
+                    "5": {},
+                    "6": {},
+                    "7": {},
+                    "8": {},
+                    "9": {},
+                    "10": {},
+                    "11": {},
+                    "12": {},
+                    "13": {},
+                    "14": {}
+                },
+                "6": {
+                    "0": {},
+                    "1": {},
+                    "2": {},
+                    "3": {},
+                    "4": {},
+                    "5": {},
+                    "6": {},
+                    "7": {},
+                    "8": {},
+                    "9": {},
+                    "10": {},
+                    "11": {},
+                    "12": {},
+                    "13": {},
+                    "14": {}
+                },
+                "7": {
+                    "0": {},
+                    "1": {},
+                    "2": {},
+                    "3": {},
+                    "4": {},
+                    "5": {},
+                    "6": {},
+                    "7": {},
+                    "8": {},
+                    "9": {},
+                    "10": {},
+                    "11": {},
+                    "12": {},
+                    "13": {},
+                    "14": {}
+                },
+                "8": {
+                    "0": {},
+                    "1": {},
+                    "2": {},
+                    "3": {},
+                    "4": {},
+                    "5": {},
+                    "6": {},
+                    "7": {},
+                    "8": {},
+                    "9": {},
+                    "10": {},
+                    "11": {},
+                    "12": {},
+                    "13": {},
+                    "14": {}
+                },
+                "9": {
+                    "0": {},
+                    "1": {},
+                    "2": {},
+                    "3": {},
+                    "4": {},
+                    "5": {},
+                    "6": {},
+                    "7": {},
+                    "8": {},
+                    "9": {},
+                    "10": {},
+                    "11": {},
+                    "12": {},
+                    "13": {},
+                    "14": {}
+                }
+            },
+            "page": 1,
+            "brightness": 15,
+            "brightness_dimmed": 0
+        }
+    }
+}
