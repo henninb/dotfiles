@@ -500,7 +500,6 @@ fi
 
 # Added to address Alacritty issue
 export LIBGL_ALWAYS_SOFTWARE=1
-
 export EIX_LIMIT=0
 
 # export MPD_HOST=localhost
