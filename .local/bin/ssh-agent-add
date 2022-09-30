@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ -f "$HOME/.ssh/id_rsa" ]; then
+  ssh-add "$HOME/.ssh/id_rsa"
+fi
+
+if [ -f "$HOME/.ssh/id_ed25519" ];then
+  ssh-add "$HOME/.ssh/id_ed25519"
+fi
+
+exit 0
