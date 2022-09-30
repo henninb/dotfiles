@@ -86,11 +86,6 @@ require'lspconfig'.sumneko_lua.setup{
   flags = lsp_flags,
 }
 
-require'lspconfig'.tsserver.setup{
-  on_attach = on_attach,
-  flags = lsp_flags,
-}
-
 require'lspconfig'.pyright.setup{
   on_attach = on_attach,
   flags = lsp_flags,
@@ -121,7 +116,12 @@ require'lspconfig'.yamlls.setup{
   flags = lsp_flags,
 }
 
-require'lspconfig'.hls.setup{
+-- require'lspconfig'.hls.setup{
+--   on_attach = on_attach,
+--   flags = lsp_flags,
+-- }
+
+require'lspconfig'.tsserver.setup{
   on_attach = on_attach,
   flags = lsp_flags,
 }
