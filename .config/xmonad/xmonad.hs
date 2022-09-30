@@ -158,7 +158,7 @@ myStartupHook = do
     -- spawn "clipmenud" --should I run copyq or clipmenu
     spawnOnce "copyq"
     spawnOn (myWorkspaces !! 7) "slack -u"
-    spawnOn (head myWorkspaces) "alacritty"
+    spawnOn (head myWorkspaces) "terminal"
     case os of
       "freebsd" -> return ()
       "linux"   -> spawnOnce "blueman-applet" --dbus required
