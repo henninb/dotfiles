@@ -1,6 +1,7 @@
 #!/bin/sh
 
 sudo mkdir -p /usr/local/share/fonts/
+sudo cp -v "$HOME/.local/fonts/ter-powerline-v16b.psf" /usr/share/consolefonts/
 
 fonts="monofur-fonts.zip symbola-fonts.zip fira-code-nerd-fonts.zip font-awesome5-regular.zip"
 for font in $fonts; do

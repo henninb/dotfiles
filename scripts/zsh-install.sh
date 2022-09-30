@@ -103,8 +103,7 @@ git clone https://github.com/hkupty/ssh-agent.git "$HOME/plugins/ssh-agent"
 git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
 $HOME/.fzf/install --key-bindings --completion --no-update-rc
 
-git clone https://github.com/denysdovhan/spaceship-prompt.git "${HOME}/themes/spaceship-prompt"
-
+# git clone https://github.com/denysdovhan/spaceship-prompt.git "${HOME}/themes/spaceship-prompt"
 # git clone https://github.com:agnoster/agnoster-zsh-theme.git "$HOME/themes/agnoster-zsh-theme"
 # git clone https://github.com/dracula/zsh.git "$HOME/themes/dracula-zsh-theme"
 
