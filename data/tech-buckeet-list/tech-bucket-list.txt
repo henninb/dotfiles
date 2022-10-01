@@ -15,7 +15,7 @@ build the automation for a bridge setup
 (C) setup https certificate on the pihole @setup
 (C) setup https certificate proxmox webui @setup
 (C) sign up for digital ocean
-(C) sunset heroku apps
+x 2022-10-01 build heroku apps pri:C
 (C) use kitty as the default terminal
 (C) Use proxmox to capture proxmox logs
 (C) use syncthing with keepass
