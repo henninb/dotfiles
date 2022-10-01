@@ -39,6 +39,7 @@ exec sudo virt-install \
 --osinfo detect=on,require=off \
 --virt-type=kvm \
 --hvm \
+--boot uefi \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
 --network=bridge=virbr0,model=virtio \
 --graphics vnc \

@@ -1,7 +1,8 @@
 #!/bin/sh
 
 if command -v pacman; then
-  echo "archlinux"
+  sudo pacman --noconfirm --needed -S lxc
+  sudo pacman --noconfirm --needed -S lxd
 elif command -v emerge; then
   if ! command -v lxd; then
     sudo emerge --update --newuse lxd
