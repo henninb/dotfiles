@@ -6,7 +6,6 @@ if [ $# -gt 1 ]; then
 fi
 
 remove=$1
-
 iso_file="kali-linux-2022.2-installer-amd64.iso"
 guest_name="kali"
 

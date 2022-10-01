@@ -6,7 +6,6 @@ if [ $# -gt 1 ]; then
 fi
 
 remove=$1
-
 iso_file="Solus-4.3-Budgie.iso"
 guest_name="solus"
 
