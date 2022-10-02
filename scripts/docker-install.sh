@@ -35,14 +35,14 @@ elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y docker
   sudo eopkg install -y docker-compose
   sudo usermod -G docker -a "$USER"
-  sudo systemctl enable docker
-  sudo systemctl start docker
+  sudo systemctl enable docker --now
+  # sudo systemctl start docker
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y docker
   sudo zypper install -y docker-compose
   sudo usermod -G docker -a "$USER"
-  sudo systemctl enable docker
-  sudo systemctl start docker
+  sudo systemctl enable docker --now
+  # sudo systemctl start docker
   sudo systemctl status docker
 elif [ "$OS" = "Debian GNU/Linux" ]; then
   sudo apt install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common
@@ -52,8 +52,8 @@ elif [ "$OS" = "Debian GNU/Linux" ]; then
   sudo apt install -y docker-ce docker-ce-cli containerd.io
   sudo apt install -y docker-compose
   sudo usermod -G docker -a "$USER"
-  sudo systemctl enable docker
-  sudo systemctl start docker
+  sudo systemctl enable docker --now
+  # sudo systemctl start docker
   sudo systemctl status docker
   sudo wget 'https://github.com/docker/compose/releases/download/v2.1.1/docker-compose-linux-x86_64' -O /usr/local/bin/docker-compose
 elif [ "$OS" = "Ubuntu" ]; then
@@ -63,7 +63,7 @@ elif [ "$OS" = "Ubuntu" ]; then
   echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
   sudo apt update
   # sudo apt install -y docker
-  sudo systemctl enable docker
+  sudo systemctl enable docker --now
   sudo systemctl start docker
   sudo usermod -a -G docker "$(id -un)"
   sudo netstat -lntp | grep dockerd
@@ -76,7 +76,7 @@ elif [ "$OS" = "Linux Mint" ]; then
   sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$UBUNTU_CODENAME") stable"
   sudo apt update -y
   sudo apt install -y docker-ce docker-compose
-  sudo systemctl enable docker
+  sudo systemctl enable docker --now
   sudo systemctl start docker
   sudo usermod -a -G docker "$(id -un)"
   sudo netstat -lntp | grep dockerd
@@ -88,18 +88,18 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y psmisc
   sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
   sudo dnf install -y docker-ce docker-ce-cli containerd.io
-  sudo systemctl enable docker
+  sudo systemctl enable docker --now
   sudo systemctl start docker
   sudo usermod -aG docker "$(whoami)"
   sudo netstat -lntp | grep dockerd
   sudo fuser 2375/tcp
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-  sudo systemctl enable docker
+  sudo systemctl enable docker --now
   sudo systemctl start docker
   sudo yum update -y
   sudo yum install -y yum-utils device-mapper-persistent-data lvm2 docker-ce psmisc
-  sudo systemctl enable docker
+  sudo systemctl enable docker --now
   sudo systemctl start docker
   sudo chkconfig docker on
   sudo usermod -aG docker "$(whoami)"
@@ -112,29 +112,24 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo service docker start
 elif [ "$OS" = "Gentoo" ]; then
   sudo eselect news read
-  echo sudo emerge --update --newuse sys-kernel/gentoo-sources
-  echo sudo emerge --update --newuse zfs
+  # sudo emerge --update --newuse sys-kernel/gentoo-sources
   # sudo emerge --update --newuse aufs-sources
   sudo emerge --update --newuse fakeroot
   sudo emerge --update --newuse pciutils
   sudo emerge --update --newuse sys-fs/btrfs-progs
   sudo emerge --update --newuse docker-compose
   sudo emerge --update --newuse app-containers/docker
-  #sudo emerge --update --newuse app-emulation/docker
-  sudo systemctl enable docker
-  sudo systemctl start docker
+  sudo systemctl enable docker --now
   # sudo rc-update add docker default
   # sudo rc-service docker start
   sudo usermod -a -G docker "$(id -un)"
   echo /usr/share/docker/contrib/check-config.sh
-  echo https://github.com/tianon/docker-overlay
   echo sudo mv -v "$HOME/tmp/daemon.json" /etc/docker/daemon.json
   echo "net.ipv4.ip_forward = 1" | tee -a  /etc/sysctl.conf
 else
   echo "$OS is not yet implemented."
   exit 1
 fi
-
 
 if ! command -v docker-compose; then
   pip install docker-compose
