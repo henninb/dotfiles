@@ -518,5 +518,6 @@ export EIX_LIMIT=0
 
 # needs to move to ~/.local/lib/
 # source '/home/henninb/.local/lib/azure-cli/az.completion'
+true
 
 # vim: set ft=sh:

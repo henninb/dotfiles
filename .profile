@@ -146,4 +146,6 @@ if [ $? -eq 2 ]; then
   #echo pkill ssh-agent
 fi
 
+true
+
 # vim: set ft=sh:
