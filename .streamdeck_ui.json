@@ -7,7 +7,7 @@
                     "0": {
                         "command": "libreoffice",
                         "text": "libreoffice",
-                        "write": "xdotool search --desktop 0 --class libreoffice windowactivatexdotool search --desktop 0 --clas",
+                        "write": "",
                         "icon": "/home/henninb/files/backup-streamdeck/libreoffice.png"
                     },
                     "1": {
@@ -31,7 +31,7 @@
                         "keys": "",
                         "text": "Blender",
                         "write": "",
-                        "brightness_change": -20
+                        "brightness_change": 0
                     },
                     "5": {
                         "icon": "/home/henninb/files/backup-streamdeck/vlc.png",
@@ -267,9 +267,10 @@
                     "14": {}
                 }
             },
-            "page": 0,
-            "brightness": 15,
-            "brightness_dimmed": 0
+            "page": 1,
+            "brightness": 26,
+            "brightness_dimmed": 0,
+            "display_timeout": 900
         }
     }
 }
