@@ -95,8 +95,12 @@ echo open https://www.nvidia.com/en-us/geforce/drivers/
 #   wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/515.57/NVIDIA-Linux-x86_64-515.57.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-515.57.run"
 # fi
 
-if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-515.65.01.run" ]; then
-  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/515.65.01/NVIDIA-Linux-x86_64-515.65.01.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-515.65.01.run"
+# if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-515.65.01.run" ]; then
+#  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/515.65.01/NVIDIA-Linux-x86_64-515.65.01.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-515.65.01.run"
+# fi
+
+if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-515.76.run" ]; then
+  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/515.76/NVIDIA-Linux-x86_64-515.76.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-515.76.run"
 fi
 
 grep "X Driver" /var/log/Xorg.0.log
