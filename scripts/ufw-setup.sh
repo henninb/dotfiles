@@ -27,8 +27,11 @@ sudo ufw limit out to 192.168.10.10 port 22
 sudo ufw limit out to 140.82.112.4 port 22 #github
 sudo ufw limit out to 140.82.112.3 port 22 #github
 sudo ufw limit out to 140.82.113.3 port 22 #github
+sudo ufw limit out to 140.82.114.3 port 22 #github
 sudo ufw limit out to 140.82.114.4 port 22 #github
+sudo ufw limit out to 192.168.10.25 port 5432 #postgresql
 # sudo ufw limit out to any port 22
+# 140.82.114.3
 sudo ufw enable
 
 exit 1
