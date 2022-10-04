@@ -31,6 +31,7 @@ sudo ufw limit out to 140.82.114.3 port 22 #github
 sudo ufw limit out to 140.82.114.4 port 22 #github
 sudo ufw limit out to 192.168.10.25 port 5432 #postgresql
 # sudo ufw limit out to any port 22
+sudo sed -i '/ufw-before-input.*icmp/s/ACCEPT/DROP/g' /etc/ufw/before.rules
 # 140.82.114.3
 sudo ufw enable
 
