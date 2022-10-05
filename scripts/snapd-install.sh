@@ -3,6 +3,7 @@
 if command -v pacman; then
   # echo "archlinux"
   yay --noconfirm --needed -S snapd
+  sudo systemctl enable --now snapd
 elif command -v emerge; then
   sudo emerge --update --newus sys-apps/systemd
   sudo emerge --update --newus sys-apps/apparmor
