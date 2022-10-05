@@ -635,3 +635,8 @@ SPACESHIP_KUBECONTEXT_SHOW is deprecated. Use SPACESHIP_KUBECTL_CONTEXT_SHOW ins
 systemctl disable --now systemd-homed
 systemctl disable --now systemd-userdbd.service
 systemctl disable --now systemd-userdbd.socket
+
+## archlinux - failed to mount /boot
+```
+pacman -S linux
+```
