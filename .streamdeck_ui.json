@@ -31,7 +31,7 @@
                         "keys": "",
                         "text": "Blender",
                         "write": "",
-                        "brightness_change": 0
+                        "brightness_change": -20
                     },
                     "5": {
                         "icon": "/home/henninb/files/backup-streamdeck/vlc.png",
@@ -51,7 +51,7 @@
                     "8": {
                         "icon": "/home/henninb/files/backup-streamdeck/dbeaver.png",
                         "text": "dbeaver",
-                        "command": "dbeaver"
+                        "command": "dbeaver-flatpak"
                     },
                     "9": {
                         "icon": "/home/henninb/files/backup-streamdeck/slack.png",
@@ -114,19 +114,43 @@
                     "5": {
                         "icon": "/home/henninb/files/backup-streamdeck/kdeconnect.png",
                         "text": "kdeconnect",
-                        "command": "kdeconnect"
+                        "command": "kdeconnect-app"
                     },
                     "6": {
                         "icon": "/home/henninb/files/backup-streamdeck/peazip.png",
                         "text": "peazip",
-                        "command": "peazip"
+                        "command": "peazip-flatpak"
                     },
-                    "7": {},
-                    "8": {},
-                    "9": {},
-                    "10": {},
-                    "11": {},
-                    "12": {},
+                    "7": {
+                        "text": "celluloid",
+                        "command": "celluloid",
+                        "icon": "/home/henninb/files/backup-streamdeck/celluloid.png"
+                    },
+                    "8": {
+                        "icon": "/home/henninb/files/backup-streamdeck/pfsense-new.png",
+                        "command": "pfsense",
+                        "text": "pfsense"
+                    },
+                    "9": {
+                        "icon": "/home/henninb/files/backup-streamdeck/pihole.svg",
+                        "text": "pihole",
+                        "command": "pihole"
+                    },
+                    "10": {
+                        "text": "github",
+                        "command": "github",
+                        "icon": "/home/henninb/files/backup-streamdeck/github.png"
+                    },
+                    "11": {
+                        "text": "keylight",
+                        "command": "/home/henninb/scripts/keylight-toggle.sh",
+                        "icon": "/home/henninb/files/backup-streamdeck/keylight.png"
+                    },
+                    "12": {
+                        "text": "keepassxc",
+                        "command": "keepassxc",
+                        "icon": "/home/henninb/files/backup-streamdeck/keepassxc.png"
+                    },
                     "13": {},
                     "14": {}
                 },
@@ -267,10 +291,9 @@
                     "14": {}
                 }
             },
-            "page": 0,
-            "brightness": 26,
-            "brightness_dimmed": 0,
-            "display_timeout": 900
+            "page": 1,
+            "brightness": 29,
+            "brightness_dimmed": 0
         }
     }
 }
