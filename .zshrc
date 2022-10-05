@@ -493,10 +493,10 @@ autoload -Uz tetriscurses
 # TODO: is this required?
 # if [ -e /home/henninb/.nix-profile/etc/profile.d/nix.sh ]; then . "${HOME}/.nix-profile/etc/profile.d/nix.sh"; fi
 
-if [ -x "$(command -v dig)" ]; then
-  externalip="$(dig  +time=3 +tries=1 +short myip.opendns.com @resolver1.opendns.com)"
-  export externalip
-fi
+# if [ -x "$(command -v dig)" ]; then
+  # externalip="$(dig +time=3 +tries=1 +short myip.opendns.com @resolver1.opendns.com)"
+  # export externalip
+# fi
 
 # Added to address Alacritty issue
 export LIBGL_ALWAYS_SOFTWARE=1

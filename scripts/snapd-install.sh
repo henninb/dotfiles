@@ -3,13 +3,12 @@
 if command -v pacman; then
   echo "archlinux"
 elif command -v emerge; then
-  echo "gentoo"
   sudo emerge --update --newus sys-apps/systemd
   sudo emerge --update --newus sys-apps/apparmor
-  echo GRUB_CMDLINE_LINUX_DEFAULT="apparmor=1 security=apparmor"
-  echo grub-mkconfig -o /boot/grub/grub.cfg
+  echo GRUB_CMDLINE_LINUX_DEFAULT="apparmor=1 security=apparmor" >> /etc/default/grub
+  sudo grub-mkconfig -o /boot/grub/grub.cfg
   sudo emerge --update --newus app-containers/snapd
-  sudo gpasswd --add username adm
+  sudo gpasswd --add "$(id -un)" adm
   sudo systemctl enable --now snapd
   sudo systemctl enable --now snapd.socket
   sudo systemctl enable --now snapd.apparmor
