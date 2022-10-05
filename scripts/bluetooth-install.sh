@@ -31,8 +31,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   cd "$HOME/projects" || exit
   # git clone https://aur.archlinux.org/asoundconf.git
   # git clone https://aur.archlinux.org/bluez-utils-compat.git
-  yay -S asoundconf
-  yay -S bluez-utils-compat
+  yay --noconfirm --needed -S asoundconf
+  yay --noconfirm --needed -S bluez-utils-compat
   echo /etc/pulse/default.pa
   echo /etc/pulse/system.pa
   echo load-module module-bluetooth-policy
@@ -46,7 +46,7 @@ fi
 
 echo sudo hciconfig hci0 up
 echo hciconfig -a hci0
-yay -S bluez-utils-compat
+yay --noconfirm --needed -S bluez-utils-compat
 sudo btmgmt ssp off
 rfkill list
 bluedevil # kde

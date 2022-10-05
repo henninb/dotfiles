@@ -42,7 +42,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  yay -S visual-studio-code-bin
+  yay --noconfirm --needed -S visual-studio-code-bin
   # sudo rm -rf /opt/vscode
   # rm -rf code-stable-latest.tar.gz
   # wget https://go.microsoft.com/fwlink/?LinkID=620884 -O code-stable-latest.tar.gz

@@ -29,10 +29,11 @@ if [ "$OS" = "Arch Linux" ]; then
       FAILURE="$i $FAILURE"
     fi
   done
-  yay -S cpu-x
-  yay -S stacer
-  yay -S nutty
-  yay -S peazip-qt-bin
+  # yay --noconfirm --needed -S cpu-x
+  yay --noconfirm --needed -S stacer
+  yay --noconfirm --needed -S nutty
+  yay --noconfirm --needed -S peazip-qt-bin
+  yay --noconfirm --needed -S hardinfo
   echo failures "$FAILURE"
 elif [ "$OS" = "Darwin" ]; then
   brew cask install vlc

@@ -2,7 +2,7 @@
 
 if command -v pacman; then
   echo "archlinux"
-  yay -S peazip-qt-bin
+  yay --noconfirm --needed -S peazip-qt-bin
 elif command -v emerge; then
   # echo "gentoo"
   # sudo emerge --update --newuse app-eselect/eselect-repository
