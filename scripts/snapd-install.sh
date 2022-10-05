@@ -27,4 +27,6 @@ else
   exit 1
 fi
 
+sudo snap install sosumi
+
 exit 0
