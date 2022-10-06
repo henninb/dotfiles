@@ -43,7 +43,7 @@ sudo sed -i '/ufw-before-input.*icmp/s/ACCEPT/DROP/g' /etc/ufw/before.rules
 # 140.82.114.3
 sudo ufw enable
 
-exit 1
+exit 0
 
 sudo ufw enable
 sudo ufw status
