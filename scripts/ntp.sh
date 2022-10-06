@@ -18,6 +18,9 @@ else
   exit 1
 fi
 
+timedatectl set-ntp true
+timedatectl status
+timedatectl show-timesync --all
 
 echo example:
 echo "sudo date -s '27 DEC 2021 12:24:00'"

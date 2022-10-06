@@ -34,6 +34,10 @@ sudo ufw limit out to 192.168.10.25 port 5432 #postgresql
 sudo ufw allow out to 192.168.10.1 port 8006 # pfsense
 sudo ufw allow out to 192.168.10.10 port 3000 # hornsup
 sudo ufw allow out to 192.168.10.110 port 9123 # keylight
+sudo ufw allow out to 72.30.35.88 port 123 # ntp
+sudo ufw allow out to 168.235.89.132 port 123 # ntp
+sudo ufw allow out to 162.159.200.1 port 123 # ntp
+sudo ufw allow out to 34.223.228.170 port 123 # ntp
 # sudo ufw limit out to any port 22
 sudo sed -i '/ufw-before-input.*icmp/s/ACCEPT/DROP/g' /etc/ufw/before.rules
 # 140.82.114.3
