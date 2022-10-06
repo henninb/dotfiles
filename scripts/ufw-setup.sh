@@ -18,6 +18,7 @@ sudo ufw allow in https
 # sudo ufw allow from 192.168.10.1
 # sudo ufw allow from 192.168.10.10
 sudo ufw allow out to 192.168.10.10 port 53
+sudo ufw allow out to 192.168.10.1 port 53
 # sudo ufw allow out to 192.168.10.1 port 53
 sudo ufw allow out to 2a00:1828:a00d:ffff::6 port 873 #rsync gentoo
 sudo ufw allow out to 89.238.71.6 port 873 #rsync gentoo
