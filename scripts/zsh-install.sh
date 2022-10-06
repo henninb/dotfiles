@@ -14,6 +14,7 @@ elif [ -x "$(command -v eopkg)" ]; then
   sudo eopkg install -y zsh
 elif [ -x "$(command -v pkg)" ]; then
   sudo pkg install -y zsh
+  sudo pkg install -y starship
 elif [ -x "$(command -v dnf)" ]; then
   sudo dnf install -y zsh
 elif [ -x "$(command -v brew)" ]; then
