@@ -1,12 +1,12 @@
 #!/bin/sh
 
 if [ $# -lt 1 ]; then
-  echo "Usage: $0 <arguments>"
+  echo "Usage: $0 <message>"
   exit 1
 fi
 
-cd "$HOME" || exit
-# echo "$*"
+toplevel=$(git rev-parse --show-toplevel)
+cd "$toplevel" || exit
 git fetch --all && git merge && git add . && git commit -am "$*" && git push
 
 exit 0

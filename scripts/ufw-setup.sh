@@ -25,12 +25,12 @@ sudo ufw allow out to 89.238.71.6 port 873 #rsync gentoo
 sudo ufw allow out to 81.91.253.252 port 873 #rsync gentoo
 sudo ufw limit out to 192.168.10.25 port 22
 sudo ufw limit out to 192.168.10.10 port 22
-sudo ufw limit out to 140.82.112.3 port 22 #github
-sudo ufw limit out to 140.82.112.4 port 22 #github
-sudo ufw limit out to 140.82.113.3 port 22 #github
-sudo ufw limit out to 140.82.113.4 port 22 #github
-sudo ufw limit out to 140.82.114.3 port 22 #github
-sudo ufw limit out to 140.82.114.4 port 22 #github
+sudo ufw limit out to 140.82.112.3 port 22 proto tcp #github
+sudo ufw limit out to 140.82.112.4 port 22 proto tcp #github
+sudo ufw limit out to 140.82.113.3 port 22 proto tcp #github
+sudo ufw limit out to 140.82.113.4 port 22 proto tcp #github
+sudo ufw limit out to 140.82.114.3 port 22 proto tcp #github
+sudo ufw limit out to 140.82.114.4 port 22 proto tcp #github
 sudo ufw limit out to 192.168.10.25 port 5432 #postgresql
 sudo ufw allow out to 192.168.10.1 port 8006 # pfsense
 sudo ufw allow out to 192.168.10.10 port 3000 # hornsup
