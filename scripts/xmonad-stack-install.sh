@@ -405,13 +405,13 @@ if ! stack install xmonad-extras; then
 fi
 
 # echo "seems to have the the flag with_xft. how to confirm?"
-mkdir -p "$HOME/projects/github.com/jaor" || exit
-cd "$HOME/projects/github.com/jaor" || exit
-git clone git@github.com:jaor/xmobar.git
-cd xmobar || exit
-stack build
-stack install
-cd - || exit
+# mkdir -p "$HOME/projects/github.com/jaor" || exit
+# cd "$HOME/projects/github.com/jaor" || exit
+# git clone git@github.com:jaor/xmobar.git
+# cd xmobar || exit
+# stack build
+# stack install
+# cd - || exit
 # git pull origin master
 # echo stack build
 # stack build --flag xmobar:-with_xft --flag xmobar:-with_utf8 --flag xmobar:-with_threaded --flag xmobar:-with_dbus --flag xmobar:-with_mpd --flag xmobar:-with_mpris --flag xmobar:-with_inotify --flag xmobar:-with_alsa --flag xmobar:-with_datezone --flag xmobar:-with_xpm --flag xmobar:-with_uvmeter --flag xmobar:-with_weather
