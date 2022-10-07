@@ -27,7 +27,6 @@ APT::Cache-Start 251658240;
 EOF
 
 cat > "$HOME/tmp/ubuntu-fstab" <<EOF
- # Device        Mountpoint              FStype          Options                      Dump    Pass#
 devfs           /compat/ubuntu/dev      devfs           rw,late                      0       0
 tmpfs           /compat/ubuntu/dev/shm  tmpfs           rw,late,size=1g,mode=1777    0       0
 fdescfs         /compat/ubuntu/dev/fd   fdescfs         rw,late,linrdlnk             0       0
@@ -35,6 +34,8 @@ linprocfs       /compat/ubuntu/proc     linprocfs       rw,late                 
 linsysfs        /compat/ubuntu/sys      linsysfs        rw,late                      0       0
 /tmp            /compat/ubuntu/tmp      nullfs          rw,late                      0       0
 /home           /compat/ubuntu/home     nullfs          rw,late                      0       0
+fdesc   /dev/fd         fdescfs         rw      0       0
+proc    /proc           procfs          rw      0       0
 EOF
 
 cat > "$HOME/tmp/sources.list" << EOF
