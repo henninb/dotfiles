@@ -90,6 +90,7 @@ echo sudo e2label /dev/sda1 Data
 echo sudo ntfsfix /dev/sdb2
 echo sudo modprobe ufs
 echo sudo mount -t ufs -o ufstype=ufs2 /dev/sdb3 /mnt
+echo sudo mount -t ufs -o ufstype=44bsd /dev/sdb3 /mnt
 
 exit 0
 
