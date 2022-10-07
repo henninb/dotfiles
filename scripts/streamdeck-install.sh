@@ -12,10 +12,18 @@ SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="006d", TAG+="uacce
 EOF
 
 sudo mv -v "$HOME/tmp/70-streamdeck.rules" /etc/udev/rules.d/70-streamdeck.rules
-sudo udevadm control --reload-rules
+if command -v udevadm; then
+  sudo udevadm control --reload-rules
+fi
+
+if ! command -v pip3; then
+   pip install --user streamdeck_ui
+   echo "pip3 needs to be installed"
+   exit 1
+fi
 
 if ! pip3 install --user streamdeck_ui; then
- echo "pip needs to be installed"
+ echo "install failed"
 fi
 
 exit 0
