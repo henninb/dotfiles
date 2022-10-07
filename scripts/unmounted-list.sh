@@ -11,6 +11,7 @@
 # ResultAny=yes
 # EOF
 
+
 #echo /etc/polkit-1/localauthority/50-local.d/10-udiskie.pkla
 # cat > 50-udisks.rules <<EOF
 cat << EOF > "$HOME/tmp/50-udisks.rules"
@@ -87,6 +88,8 @@ echo sudo gdisk -l /dev/sda
 echo sudo ntfslabel /dev/md126p1 Data
 echo sudo e2label /dev/sda1 Data
 echo sudo ntfsfix /dev/sdb2
+echo sudo modprobe ufs
+echo sudo mount -t ufs -o ufstype=ufs2 /dev/sdb3 /mnt
 
 exit 0
 
