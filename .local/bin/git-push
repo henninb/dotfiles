@@ -1,6 +1,12 @@
 #!/bin/sh
 
-echo "$*"
+if [ $# -lt 1 ]; then
+  echo "Usage: $0 <arguments>"
+  exit 1
+fi
+
+cd "$HOME" || exit
+# echo "$*"
 git fetch --all && git merge && git add . && git commit -am "$*" && git push
 
 exit 0
