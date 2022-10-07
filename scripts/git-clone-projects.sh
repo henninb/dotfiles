@@ -17,18 +17,11 @@ for i in $PROJECTS; do
   git config --local user.email henninb@msn.com
   git fetch --all
   git rebase origin/main
-
 done
 
 PLUGINS="autojump zsh-autosuggestions zsh-syntax-highlighting"
 for i in $PLUGINS; do
   cd "$HOME/plugins/$i" || exit
-  git fetch
-done
-
-THEME="spaceship-prompt"
-for i in $THEME; do
-  cd "$HOME/themes/$i" || exit
   git fetch
 done
 
