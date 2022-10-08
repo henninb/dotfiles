@@ -83,3 +83,7 @@ dev-db/mongodb lto
 app-misc/tmux vim-syntax
 dev-libs/quazip qt5
 media-libs/freetype brotli
+dev-libs/boost python
+dev-python/pillow webp
+x11-libs/wxGTK gstreamer
+dev-python/numpy lapack
