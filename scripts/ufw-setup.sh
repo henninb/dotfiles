@@ -37,9 +37,9 @@ sudo ufw allow out to 192.168.10.10 port 3000 proto tcp comment 'hornsup'
 sudo ufw allow out to 192.168.10.10 port 8443 proto tcp comment 'hornsup'
 sudo ufw allow out to 192.168.10.110 port 9123 proto tcp comment 'keylight'
 sudo ufw allow out to 72.30.35.88 port 123 comment 'ntp'
-sudo ufw allow out to 168.235.89.132 port 123 comment 'ntp'
-sudo ufw allow out to 162.159.200.1 port 123 comment 'ntp'
-sudo ufw allow out to 34.223.228.170 port 123 comment 'ntp'
+sudo ufw allow out to 168.235.89.132 port 123 proto udp comment 'ntp'
+sudo ufw allow out to 162.159.200.1 port 123 proto udp comment 'ntp'
+sudo ufw allow out to 34.223.228.170 port 123 proto udp comment 'ntp'
 # sudo ufw limit out to any port 22
 sudo sed -i '/ufw-before-input.*icmp/s/ACCEPT/DROP/g' /etc/ufw/before.rules
 sudo ufw enable
