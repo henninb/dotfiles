@@ -40,6 +40,7 @@ sudo ufw allow out to 72.30.35.88 port 123 comment 'ntp'
 sudo ufw allow out to 168.235.89.132 port 123 proto udp comment 'ntp'
 sudo ufw allow out to 162.159.200.1 port 123 proto udp comment 'ntp'
 sudo ufw allow out to 34.223.228.170 port 123 proto udp comment 'ntp'
+sudo ufw allow out to 142.250.191.163 port 123 proto udp comment 'ntp'
 # sudo ufw limit out to any port 22
 sudo sed -i '/ufw-before-input.*icmp/s/ACCEPT/DROP/g' /etc/ufw/before.rules
 sudo ufw enable
