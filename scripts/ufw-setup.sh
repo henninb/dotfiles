@@ -43,30 +43,13 @@ sudo ufw allow out to 34.223.228.170 port 123 proto udp comment 'ntp'
 # sudo ufw limit out to any port 22
 sudo sed -i '/ufw-before-input.*icmp/s/ACCEPT/DROP/g' /etc/ufw/before.rules
 sudo ufw enable
-sudo ufw status
-
-exit 0
-
-sudo ufw enable
-sudo ufw status
-sudo ufw app list
-sudo ufw default allow outgoing
-sudo ufw default deny incoming
-sudo ufw limit SSH
-sudo ufw delete 1
-sudo ufw status
 sudo ufw status numbered
-sudo ufw allow dns
-sudo ufw allow 80/tcp comment 'accept http connections'
-sudo ufw allow 443/tcp comment 'accept https connections'
+sudo ufw app list
 
-sudo ufw disable
-
-sudo ufw reset
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-
-sudo ufw limit 22/tcp
-# sudo ufw allow 80/tcp
+echo sudo ufw limit SSH
+echo sudo ufw delete 1
+echo sudo ufw allow 80/tcp comment 'accept http connections'
+echo sudo ufw allow 443/tcp comment 'accept https connections'
+echo sudo ufw limit 22/tcp
 
 exit 0
