@@ -151,7 +151,10 @@
                         "command": "keepassxc",
                         "icon": "/home/henninb/files/backup-streamdeck/keepassxc.png"
                     },
-                    "13": {},
+                    "13": {
+                        "text": "gqrx",
+                        "command": "gqrx"
+                    },
                     "14": {}
                 },
                 "2": {
@@ -291,7 +294,7 @@
                     "14": {}
                 }
             },
-            "page": 1,
+            "page": 0,
             "brightness": 29,
             "brightness_dimmed": 0
         }
