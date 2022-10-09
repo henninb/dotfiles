@@ -15,9 +15,21 @@ menuentry "Arch Linux" {
   initrd /initramfs-linux.img
 }
 
+# menuentry "FreeBSD" {
+#   set root=(hd2,gpt2)
+#   chainloader +1
+# }
+
 menuentry "FreeBSD" {
-  set root=(hd2,gpt2)
-  chainloader +1
+set root='(hd2,2)
+chainloader (hd2,2)+1
+}
+
+menuentry "FreeBSD 13" {
+  insmod ufs2
+  insmod part_gpt
+  set root=(hd2,2)
+  kfreebsd /boot/loader
 }
 
 menuentry "System Reboot" {
