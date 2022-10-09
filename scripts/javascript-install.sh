@@ -26,7 +26,8 @@ elif [ "$OS" = "Solus" ]; then
 elif [ "$OS" = "CentOS Linux" ]; then
   echo centos
 elif [ "$OS" = "FreeBSD" ]; then
-  echo sudo pkg install -y gcc python27 gmake
+  sudo pkg install -y gcc
+  sudo pkg install -y gmake
   echo sudo pkg install -y npm
   sudo pkg install -y node16-16.16.0
 else
