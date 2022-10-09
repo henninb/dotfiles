@@ -8,6 +8,13 @@ fi
 
 os=$1
 
+if command -v camcontrol; then
+  sudo camcontrol devlist
+  gpart show ada0
+  sudo pkg install -y fusefs-lkl 
+  sudo lklfuse -o type=ext4 /dev/ada0p3 /mnt/archlinux
+fi
+
 if [ "$os" = "gentoo" ]; then
   sudo mkdir -p /mnt/gentoo
   sudo mount /dev/nvme0n1p2 /mnt/gentoo
@@ -41,3 +48,18 @@ else
 fi
 
 exit 0
+
+  sudo mkdir -p /mnt/archlinux
+  sudo mount /dev/ada0s3 /mnt/archlinux
+  sudo mkdir -p /mnt/archlinux/boot/efi
+  sudo mount /dev/ada0s1 /mnt/archlinux/boot/efi
+  cd /mnt/archlinux
+
+  sudo mount -t proc none /mnt/archlinux/proc
+  sudo mount --rbind /dev /mnt/archlinux/dev
+  sudo mount --rbind /sys /mnt/archlinux/sys
+
+  echo sudo chroot /mnt/archlinux /bin/bash
+  echo source /etc/profile
+  echo 'export PS1="(chroot) $PS1"'
+
