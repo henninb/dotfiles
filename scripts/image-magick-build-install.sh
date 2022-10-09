@@ -3,6 +3,7 @@
 sudo apt -y install imagemagick
 sudo apt -y install php-imagick
 sudo apt -y install  libjpeg-dev
+sudo emerge --update --newuse media-gfx/imagemagick
 
 
 cd "$HOME/projects" || exit
