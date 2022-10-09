@@ -16,7 +16,7 @@ menuentry "Arch Linux" {
 }
 
 menuentry "FreeBSD" {
-  set root=(hd1,gpt2)
+  set root=(hd2,gpt2)
   chainloader +1
 }
 
