@@ -153,7 +153,8 @@
                     },
                     "13": {
                         "text": "gqrx",
-                        "command": "gqrx"
+                        "command": "gqrx",
+                        "icon": "/home/henninb/files/backup-streamdeck/radio.jpg"
                     },
                     "14": {}
                 },
@@ -294,7 +295,7 @@
                     "14": {}
                 }
             },
-            "page": 0,
+            "page": 1,
             "brightness": 29,
             "brightness_dimmed": 0
         }

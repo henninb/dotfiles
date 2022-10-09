@@ -49,6 +49,7 @@ fi
 
 exit 0
 
+## for linux on freebsd
   sudo mkdir -p /mnt/archlinux
   sudo mount /dev/ada0s3 /mnt/archlinux
   sudo mkdir -p /mnt/archlinux/boot/efi
