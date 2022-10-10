@@ -46,9 +46,9 @@ sudo usermod -a -G pulse-access "$(id -un)"
 sudo usermod -a -G audio "$(id -un)"
 
 # manually start
-if ! pgrep pulseaudio; then
-  pulseaudio --start
-fi
+# if ! pgrep pulseaudio; then
+#   pulseaudio --start
+# fi
 
 echo pactl list short sinks
 pactl list short sinks
@@ -74,7 +74,7 @@ echo pacmd set-default-sink 1
 echo pavucontrol --tab 5
 
 # echo pulseaudio -k && sudo alsa force-reload && sleep 2 && pulseaudio -k && sudo alsa force-reload
-systemctl --user status pulseaudio.socket
+echo systemctl --user status pulseaudio.socket
 echo systemctl --user enable pulseaudio
 
 exit 0
