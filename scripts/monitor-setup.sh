@@ -27,7 +27,7 @@ Section "Monitor"
 EndSection
 EOF
 
-sudo mv -v "$HOME/tmp/50-monitor.conf" /etc/X11/xorg.conf.d/50-monitor.conf
+echo sudo mv -v "$HOME/tmp/50-monitor.conf" /etc/X11/xorg.conf.d/50-monitor.conf
 
 # echo 'Modeline "2560x1440_30.00"  146.25  2560 2680 2944 3328  1440 1443 1448 1468 -hsync +vsync'
 #echo cvt 3840 2160 30
@@ -44,10 +44,16 @@ echo xrandr --addmode HDMI-0 '3840x2160_60'
 # xrandr --addmode HDMI-0 '3360x1890_30'
 
 echo xrandr --output HDMI-1 --auto --right-of HDMI-0 --rotate left
-xrandr --output HDMI-1 --rotate left
-xrandr --output HDMI-1 --rotate right
-xrandr --output HDMI-1 --rotate normal
-xrandr --output HDMI-1 --rotate inverted
+echo xrandr --output HDMI-1 --auto --right-of HDMI-0
+echo xrandr --output HDMI-1 --rotate left
+echo xrandr --output HDMI-1 --rotate right
+echo xrandr --output HDMI-1 --rotate normal
+echo xrandr --output HDMI-1 --rotate inverted
+
+echo turn on second monitor
+echo xrandr --output HDMI-1 --auto --right-of HDMI-0
+echo turn off second monitor
+echo xrandr --output HDMI-1 --off
 
 exit 0
 
