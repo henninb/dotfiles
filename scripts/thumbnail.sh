@@ -7,8 +7,8 @@ Text=$1
 TextColor='#FFFFFF'
 #Resize='50%'
 #Original="$HOME/.local/share/myimages/thumbnail.jpg"
-Original="$HOME/.local/share/myimages/light-green-with-vim.jpg"
-Output="$HOME/Desktop/output-${date}.jpg"
+Original="$HOME/.local/wallpaper/mountain-road.jpg"
+Output="$HOME/mountain-road-${date}.jpg"
 
 Err(){
 	printf 'ERROR: %s\n' "$2" 1>&2
