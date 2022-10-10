@@ -2,32 +2,18 @@
 
 cat << EOF > "$HOME/tmp/50-monitor.conf"
 Section "Monitor"
-    Identifier "eDP1"
+  Identifier "HDMI-0"
+  Option  "Primary" "True"
 EndSection
 
 Section "Monitor"
-    Identifier  "DP1-1"
-    Option      "RightOf" "eDP1"
-    Option      "PreferredMode" "1920x1080"
-    Option      "Primary" "True"
-EndSection
-
-Section "Monitor"
-    Identifier  "HDMI-1"
-    Option      "RightOf" "HDMI-0"
-    Option      "Rotate"  "left"
-    Option      "PreferredMode" "2560x1440"
-EndSection
-
-Section "Monitor"
-    Identifier  "HDMI1"
-    Option      "RightOf" "eDP1"
-    Option      "PreferredMode" "1920x1080"
-    Option  "Primary" "True"
+    Identifier "HDMI-1"
+    Option  "RightOf" "HDMI-0"
+    Option  "Rotate" "left"
 EndSection
 EOF
 
-echo sudo mv -v "$HOME/tmp/50-monitor.conf" /etc/X11/xorg.conf.d/50-monitor.conf
+sudo mv -v "$HOME/tmp/50-monitor.conf" /etc/X11/xorg.conf.d/50-monitor.conf
 
 # echo 'Modeline "2560x1440_30.00"  146.25  2560 2680 2944 3328  1440 1443 1448 1468 -hsync +vsync'
 #echo cvt 3840 2160 30
