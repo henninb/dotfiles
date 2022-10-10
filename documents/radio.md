@@ -4,10 +4,10 @@
 git@github.com:rxseger/rx_tools.git
 
 ## get info Software Defined Radio (SDR)
-lsusb
-
-The last line was the Realtek dongle:
+lsusb | grep 2838
+```
 Bus 001 Device 008: ID 0bda:2838 Realtek Semiconductor Corp.
+```
 
 The important parts are "0bda" (the vendor id) and "2838" (the product id).
 
@@ -16,15 +16,21 @@ Create a new file as root named /etc/udev/rules.d/20.rtlsdr.rules that contains 
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", GROUP="adm", MODE="0666", SYMLINK+="rtl_sdr"
 
 ## FM stations - Minneapolis
-- 107900.000
-- 92500.000
-- 102100.000
+```
+107900.000
+92500.000
+102100.000
+```
 
-## Linux Front end SDR software
-- gqrx
+## Linux frontend SDR software
+```
+gqrx
+```
 
 # NOAA
-- NOAA Weather Radio Station KEC65 162.55 Mhz Minneapolis
+```
+NOAA Weather Radio Station KEC65 162.55 Mhz Minneapolis
+```
 
 ## Baofeng UV-5R
 - Station for family walkie talkie
@@ -126,8 +132,12 @@ Channel 39	27.395 MHz
 Channel 40	27.405 MHz
 
 ## FM frequencies
+```
 92.500 MHz
+```
 
 ## NOAA
+```
 167.75	168	NOAA Weather Radio (162)
 215.75	216	TV ch. 13
+```
