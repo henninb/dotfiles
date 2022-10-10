@@ -1,0 +1,6 @@
+[Unit]
+Description=start udev
+
+[Service]
+Type=oneshot
+ExecStart=sudo udevadm trigger
