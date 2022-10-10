@@ -16,15 +16,17 @@ fi
 
 echo net-wireless/cubicsdr
 
-cat << EOF > "$HOME/tmp/20.rtlsdr.rules"
+cat << EOF > "$HOME/tmp/80-rtlsdr.rules"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", GROUP="adm", MODE="0666", SYMLINK+="rtl_sdr"
 EOF
 
 # echo "blacklist rtl2832" | sudo tee -a /etc/modprobe.d/blacklist.conf
 
-sudo mv -v "$HOME/tmp/20.rtlsdr.rules" /etc/udev/rules.d/20.rtlsdr.rules
+sudo mv -v "$HOME/tmp/80-rtlsdr.rules" /etc/udev/rules.d/80-rtlsdr.rules
+sudo chown root:root /etc/udev/rules.d/80-rtlsdr.rules
 if command -v udevadm; then
   sudo udevadm control --reload-rules
+  # sudo udevadm control --reload
   sudo udevadm trigger
 fi
 
@@ -32,9 +34,6 @@ sudo groupadd sdr
 sudo usermod -aG sdr henninb
 rtl_test -t
 
-sudo systemctl status systemd-udevd
-
-# rtl_fm -M wbfm -f 92.5M | play -r 32k -t raw -e s -b 16 -c 1 -V1 -
-# rtl_fm -M wbfm -f 100.3M | play -r 32k -t raw -e s -b 16 -c 1 -V1 -
+echo sudo systemctl status systemd-udevd
 
 exit 0

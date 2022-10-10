@@ -15,6 +15,7 @@ sudo mv -v "$HOME/tmp/70-streamdeck.rules" /etc/udev/rules.d/70-streamdeck.rules
 if command -v udevadm; then
   sudo udevadm control --reload-rules
 fi
+sudo chown root:root /etc/udev/rules.d/70-streamdeck.rules
 
 if ! command -v pip3; then
    pip install --user streamdeck_ui
