@@ -179,7 +179,7 @@ myStartupHook = do
     spawnOnce "streamdeck-start"
     spawnOnce "xscreensaver -no-splash"
     -- spawnOnce "feh --no-fehbg --bg-scale $HOME/.local/wallpaper/minnesota-vikings-dark.png"
-    spawnOnce "feh --no-fehbg --bg-fill $HOME/.local/wallpaper/minnesota-vikings-virtical.png $HOME/.local/wallpaper/minnesota-vikings-dark.png"
+    spawnOnce "feh --no-fehbg --bg-fill $HOME/.local/wallpaper/minnesota-vikings-dark.png $HOME/.local/wallpaper/minnesota-vikings-virtical.png"
     -- spawnOnce "killall redshift; sleep 4 ; redshift -l 48.024395:11.598893 &"
     windows $ view (head myWorkspaces)
 
