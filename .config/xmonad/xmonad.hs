@@ -172,7 +172,8 @@ myStartupHook = do
     spawnOnce "/usr/libexec/polkit-gnome-authentication-agent-1"
     spawnOnce "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
     -- spawnOnce "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 108 --transparent true --tint 0x000000 --height 18 --alpha 0"
-    spawnOnce "trayer --edge bottom --align right --SetDockType true --SetPartialStrut true --expand true --monitor 1 --widthtype pixel --width 200 --transparent true --tint 0x000000 --height 18 --alpha 0"
+    -- spawnOnce "trayer --edge bottom --align right --SetDockType true --SetPartialStrut true --expand true --monitor 1 --widthtype pixel --width 200 --transparent true --tint 0x000000 --height 18 --alpha 0"
+    spawnOnce "trayer --edge bottom --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 200 --transparent true --tint 0x000000 --height 18 --alpha 0"
     spawnOnce "conky -c $HOME/.config/conky/xmonad-system-overview"
     -- spawnOnce "mpDris2" -- required for mpd
     spawnOnce "volumeicon"
