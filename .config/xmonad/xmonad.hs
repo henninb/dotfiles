@@ -27,7 +27,7 @@ import System.Info (os)
 import XMonad.Layout.IndependentScreens (countScreens)
 import XMonad.Actions.DynamicProjects (dynamicProjects)
 import XMonad.Util.NamedActions (addDescrKeys')
-import XMonad.StackSet (findTag, view)
+import XMonad.StackSet (findTag, view, screens)
 import XMonad.Util.NamedWindows (getName)
 
 import Local.Colors (myFocusBorderColor, myColor, myBorderColor)
@@ -39,6 +39,7 @@ import Local.Layouts (myLayouts)
 import Local.PolybarLogHook (eventLogHookForPolybar)
 import Local.DzenLogHook (dzenLogHook)
 import XMonad.Hooks.WindowSwallowing ( swallowEventHook )
+import XMonad.Actions.PhysicalScreens
 
 -- sudo emerge --update --newuse media-fonts/terminus-font
 -- xset +fp /usr/share/fonts/terminus
@@ -121,6 +122,16 @@ myTerminal = "alacritty"
 
 myBorderWidth :: Dimension
 myBorderWidth = 1
+
+physicalScreens :: X [Maybe ScreenId]
+physicalScreens = withWindowSet $ \windowSet -> do
+    let numScreens = length $ screens windowSet
+    -- mapM (\s -> getScreen def (P s)) [0..numScreens]
+    mapM (getScreen def . P) [0..numScreens]
+
+-- getPhysicalScreen :: ScreenId -> X (Maybe PhysicalScreen)
+-- getPhysicalScreen sid = do
+    -- pscreens <- physicalScreens
 
 ------------------------------------------------------------------------
 -- desktop notifications -- dunst package required

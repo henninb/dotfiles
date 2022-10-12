@@ -8,7 +8,7 @@ import XMonad.Actions.CopyWindow (kill1, copy)
 import XMonad.Actions.DynamicProjects (switchProjectPrompt, switchProject)
 import XMonad.Actions.GroupNavigation (Direction (..), nextMatch)
 import XMonad.Actions.Minimize (withLastMinimized, minimizeWindow, maximizeWindow)
-import XMonad.Actions.PhysicalScreens (onNextNeighbour, onPrevNeighbour)
+import XMonad.Actions.PhysicalScreens (onNextNeighbour, onPrevNeighbour, viewScreen,sendToScreen)
 import XMonad.Actions.Promote (promote)
 import XMonad.Actions.RotSlaves (rotSlavesDown, rotSlavesUp)
 import XMonad.Actions.SwapPromote (swapHybrid)
@@ -229,6 +229,14 @@ keybinds conf =
     -- Workspaces
   , ("M-x n", addName "switch focus to next monitor" nextScreen)
   , ("M-x p", addName "switch focus to previous monitor" prevScreen)
+
+  , ("M-x w", addName "view screen 0" $ viewScreen def 0)
+  , ("M-x e", addName "view screen 1" $ viewScreen def 1)
+  , ("M-x r", addName "view screen 3" $ viewScreen def 2)
+  , ("M-x 1", addName "send to screen 0" $ sendToScreen def 0)
+  , ("M-x 2", addName "send to screen 1" $ sendToScreen def 1)
+  , ("M-x 3", addName "send to screen 2" $ sendToScreen def 2)
+
   -- , ("M-j", addName "Window Down" $ windowGo D False)
   -- , ("M-k", addName "Window Up" $ windowGo U False)
   , ("M-l", addName "Window Right" $ windowGo R False)

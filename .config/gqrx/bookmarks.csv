@@ -1,18 +1,18 @@
 # Tag name          ;  color
+FRS                 ; #c0c0c0
 92.5                ; #c0c0c0
-94.5                ; #c0c0c0
-93.7                ; #c0c0c0
-100.3               ; #c0c0c0
-CB                  ; #c0c0c0
 97.1                ; #c0c0c0
 102.1               ; #c0c0c0
-102.9               ; #c0c0c0
-lowest              ; #c0c0c0
-96.3                ; #c0c0c0
-FRS                 ; #c0c0c0
-ham                 ; #c0c0c0
-107.9               ; #c0c0c0
 104.1               ; #c0c0c0
+100.3               ; #c0c0c0
+CB                  ; #c0c0c0
+ham                 ; #c0c0c0
+94.5                ; #c0c0c0
+102.9               ; #c0c0c0
+107.9               ; #c0c0c0
+96.3                ; #c0c0c0
+93.7                ; #c0c0c0
+lowest              ; #c0c0c0
 
 # Frequency ; Name                     ; Modulation          ;  Bandwidth; Tags
     23100000; lowest                   ; AM                  ;      10000; lowest
