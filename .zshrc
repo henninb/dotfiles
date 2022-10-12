@@ -101,6 +101,7 @@ export PATH="$JAVA_HOME/bin:$PATH"
 export PATH="/opt/fastly/bin:$PATH"
 export PATH="/var/lib/snapd/snap/bin:$PATH"
 export PATH="$HOME/.gem/ruby/3.0.0/bin:$PATH"
+export PATH="$PATH:/home/henninb/.local/share/JetBrains/Toolbox/scripts"
 # export PATH="/opt/STM32CubeProgrammer/bin:$PATH"
 # export PATH="$HOME/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin:$PATH"
 export CDPATH=~/projects/github.com
