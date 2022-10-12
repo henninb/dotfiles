@@ -89,4 +89,5 @@ x11-libs/wxGTK gstreamer
 dev-python/numpy lapack
 net-wireless/gnuradio network
 net-wireless/gr-osmosdr rtlsdr
- media-gfx/feh xinerama
+media-gfx/feh xinerama
+app-admin/keepassxc autotype browser yubikey
