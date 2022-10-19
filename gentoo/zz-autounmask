@@ -91,3 +91,4 @@ net-wireless/gnuradio network
 net-wireless/gr-osmosdr rtlsdr
 media-gfx/feh xinerama
 app-admin/keepassxc autotype browser yubikey
+sys-devel/llvm -doc

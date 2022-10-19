@@ -23,6 +23,9 @@ sudo cp -v make.conf /etc/portage/make.conf
 sudo cp -v /etc/portage/package.unmask /etc/portage/backup/package.unmask.bak.$$
 sudo cp -v package.unmask /etc/portage/package.unmask
 
+sudo cp -v /etc/portage/package.env /etc/portage/backup/package.env.bak.$$
+sudo cp -v package.env /etc/portage/package.env
+
 #sudo cp -v /etc/portage/package.use/steam /tmp/steam.bak.$$
 #sudo cp -v steam /etc/portage/package.use/steam
 
