@@ -59,6 +59,13 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge -uDUN --keep-going --with-bdeps=y @world 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   sudo emerge --depclean 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   sudo revdep-rebuild
+  sudo eselect kernel set 1
+  uname=$(uname -srm | cut -d' ' -f2 | cut -d- -f1)
+  eselect=$(eselect kernel list | tail -1 | cut -d- -f2)
+  if [ ! "${eselect}" = "${uname}" ]; then
+    echo "complie the kernel '$eselect' as it is newer than '$uname'"
+    sudo genkernel all
+  fi
   echo sudo emerge @preserved-rebuild
   echo eselect editor list
   echo eselect kernel list
