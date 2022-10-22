@@ -116,19 +116,19 @@ elif [ "$OS" = "Linux Mint" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   # sudo eselect news read
   sudo emerge --update --newuse dev-db/postgresql
-  sudo emerge --config dev-db/postgresql:14
+  sudo emerge --config dev-db/postgresql:15
   sudo emerge --update --newuse ossp-uuid
   #sudo rc-update add postgresql default
   #sudo postgresql-setup initdb
   # sudo cp -v "$HOME/tmp/pg_hba.conf" /etc/postgresql-14/
-  sudo mv -v "$HOME/tmp/pg_hba.conf"  /var/lib/postgresql/14/data/pg_hba.conf
-  sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/postgresql/14/data/postgresql.conf
-  sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql-14/postgresql.conf
+  sudo mv -v "$HOME/tmp/pg_hba.conf"  /var/lib/postgresql/15/data/pg_hba.conf
+  sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/postgresql/15/data/postgresql.conf
+  sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql-15/postgresql.conf
   # echo sudo /etc/init.d/postgresql-14 start
   # sudo rc-update add postgresql-14 default
   # sudo rc-service postgresql-14 start
-  sudo systemctl enable postgresql-14
-  sudo systemctl start postgresql-14
+  sudo systemctl enable postgresql-15
+  sudo systemctl start postgresql-15
   sudo -u postgres sh -c 'cd /tmp && psql postgres -U postgres < /tmp/install_psql_settings.sql'
   netstat -na | grep 5432 | grep LIST
 elif [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Linux" ]; then
