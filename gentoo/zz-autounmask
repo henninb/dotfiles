@@ -92,4 +92,5 @@ net-wireless/gr-osmosdr rtlsdr
 media-gfx/feh xinerama
 app-admin/keepassxc autotype browser yubikey
 sys-devel/llvm -doc
- media-video/pipewire X bluetooth dbus extra flatpak systemd
+media-video/pipewire X bluetooth dbus extra flatpak systemd
+net-dns/avahi mdnsresponder-compat
