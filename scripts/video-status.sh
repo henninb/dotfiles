@@ -89,16 +89,13 @@ if [ -x "$(command -v nvidia-settings)" ]; then
 else
   echo "nvidia driver is not installed"
 fi
-
+ 
 echo open https://www.nvidia.com/en-us/geforce/drivers/
-# if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-515.57.run" ]; then
-#   wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/515.57/NVIDIA-Linux-x86_64-515.57.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-515.57.run"
-# fi
+if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-520.56.06.run" ]; then
+  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/520.56.06/NVIDIA-Linux-x86_64-520.56.06.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-520.56.06.run"
+fi
 
-# if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-515.65.01.run" ]; then
-#  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/515.65.01/NVIDIA-Linux-x86_64-515.65.01.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-515.65.01.run"
-# fi
-
+# https://us.download.nvidia.com/XFree86/Linux-x86_64/520.56.06/NVIDIA-Linux-x86_64-520.56.06.run
 if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-515.76.run" ]; then
   wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/515.76/NVIDIA-Linux-x86_64-515.76.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-515.76.run"
 fi
