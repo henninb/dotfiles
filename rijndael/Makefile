@@ -8,8 +8,8 @@ endif
 all: unix
 
 unix:
-	@gcc rijndael-alg-fst.c rijndael-api-fst.c rijndael_encrypt.c -o rijndael_c_encrypt.exe $(INCLUDES) $(LIBS) -O2 -Wall
-	@gcc rijndael-alg-fst.c rijndael-api-fst.c rijndael_decrypt.c -o rijndael_c_decrypt.exe $(INCLUDES) $(LIBS) -O2 -Wall
+	@gcc rijndael-alg-fst.c rijndael-api-fst.c rijndael-encrypt.c -o rijndael-encrypt.exe $(INCLUDES) $(LIBS) -O2 -Wall
+	@gcc rijndael-alg-fst.c rijndael-api-fst.c rijndael-decrypt.c -o rijndael-decrypt.exe $(INCLUDES) $(LIBS) -O2 -Wall
 	@javac RijndaelEncrypt.java
 	@jar cmf RijndaelEncrypt.mf RijndaelEncrypt.jar RijndaelEncrypt.class
 	@rm -rf *.class

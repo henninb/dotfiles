@@ -5,4 +5,6 @@
 
 java -jar RijndaelDecrypt.jar output.txt.rij plain-java.txt input.key input.iv
 
+./rijndael-decrypt.py output.txt.rij plain-python.txt input.key input.iv
+
 exit 0
