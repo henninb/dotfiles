@@ -1,5 +1,6 @@
 javascript:
 function cleanupTable() {
+    document.title = 'updated-' + document.title;
     var table = document.getElementsByClassName('TransactionsTable__transaction-list___2u3Ds')[0];
     var rows = table.rows;  
     rows[0].remove()
