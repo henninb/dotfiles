@@ -156,7 +156,12 @@
                         "command": "gqrx",
                         "icon": "/home/henninb/files/backup-streamdeck/radio.jpg"
                     },
-                    "14": {}
+                    "14": {
+                        "icon": "/home/henninb/files/backup-streamdeck/steam.png",
+                        "command": "steam",
+                        "keys": "",
+                        "text": "steam"
+                    }
                 },
                 "2": {
                     "0": {},
