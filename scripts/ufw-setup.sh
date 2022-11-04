@@ -44,7 +44,21 @@ sudo ufw allow out to 162.159.200.1 port 123 proto udp comment 'ntp'
 sudo ufw allow out to 34.223.228.170 port 123 proto udp comment 'ntp'
 sudo ufw allow out to 142.250.191.163 port 123 proto udp comment 'ntp'
 sudo ufw allow out to 174.20.27.91 port 8006 proto tcp comment 'https for pfsense'
-# sudo ufw limit out to any port 22
+
+sudo ufw allow out to 198.23.112.180 comment 'path of exile'
+sudo ufw allow out to 169.54.48.218 comment 'path of exile'
+sudo ufw allow out to 50.23.64.58 comment 'path of exile'
+sudo ufw allow out to 159.8.252.180 comment 'path of exile'
+sudo ufw allow out to 5.10.97.132 comment 'path of exile'
+sudo ufw allow out to 159.122.69.4 comment 'path of exile'
+sudo ufw allow out to 119.81.28.170 comment 'path of exile'
+sudo ufw allow out to 130.198.64.50 comment 'path of exile'
+sudo ufw allow out to 169.57.128.148 comment 'path of exile'
+sudo ufw allow out to 159.8.64.212 comment 'path of exile'
+sudo ufw allow out to 172.65.239.88 comment 'path of exile'
+
+sudo ufw allow out to 209.192.205.156 port 6112 proto tcp comment 'path of exile'
+
 sudo sed -i '/ufw-before-input.*icmp/s/ACCEPT/DROP/g' /etc/ufw/before.rules
 sudo ufw enable
 sudo ufw status numbered
