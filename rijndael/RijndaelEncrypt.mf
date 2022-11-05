@@ -1,0 +1,2 @@
+Main-Class: RijndaelEncrypt
+Class-Path: RijndaelEncrypt.jar
