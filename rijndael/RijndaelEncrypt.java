@@ -141,7 +141,7 @@ public class RijndaelEncrypt {
     if( !f.exists() || f.isDirectory() ) { 
       System.exit(2);
     }	
-	test1();
+	// test1();
 	
     IV = fileRead(if_iv);
     IV = hexStringToByteArray(new String(IV));

@@ -1,13 +1,9 @@
 LIBS=-Llib
 INCLUDES=-Iinclude
 
-ifeq "$(OS)" "Windows_NT"
-PATH=C:\gnuwin32\bin;C:\MinGW\bin;C:\MinGW\libexec\gcc\mingw32\4.5.0;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727
-endif
+all: linux
 
-all: unix
-
-unix:
+linux:
 	@gcc rijndael-alg-fst.c rijndael-api-fst.c rijndael-encrypt.c -o rijndael-encrypt.exe $(INCLUDES) $(LIBS) -O2 -Wall
 	@gcc rijndael-alg-fst.c rijndael-api-fst.c rijndael-decrypt.c -o rijndael-decrypt.exe $(INCLUDES) $(LIBS) -O2 -Wall
 	@javac RijndaelEncrypt.java
