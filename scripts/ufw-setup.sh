@@ -58,6 +58,8 @@ sudo ufw allow out to 159.8.64.212 comment 'path of exile'
 sudo ufw allow out to 172.65.239.88 comment 'path of exile'
 
 sudo ufw allow out to 209.192.205.156 port 6112 proto tcp comment 'path of exile'
+sudo ufw allow out to 206.191.149.132 port 6112 proto tcp comment 'path of exile'
+sudo ufw allow out to 52.116.160.190 port 6112 proto tcp comment 'path of exile'
 
 sudo sed -i '/ufw-before-input.*icmp/s/ACCEPT/DROP/g' /etc/ufw/before.rules
 sudo ufw enable
