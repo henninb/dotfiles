@@ -66,7 +66,7 @@ elif [ "$OS" = "Gentoo" ]; then
     echo "complie the kernel '$eselect' as it is newer than '$uname'"
     sudo genkernel all
   fi
-  echo sudo emerge @preserved-rebuild
+  sudo emerge @preserved-rebuild
   echo eselect editor list
   echo eselect kernel list
   echo eselect python list
