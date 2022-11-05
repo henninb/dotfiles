@@ -139,6 +139,7 @@ public class RijndaelEncrypt {
 	
     File f = new File(ifname);
     if( !f.exists() || f.isDirectory() ) { 
+      System.out.println("cannot find file");
       System.exit(2);
     }	
 	// test1();
