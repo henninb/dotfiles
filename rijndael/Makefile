@@ -4,6 +4,7 @@ INCLUDES=-Iinclude
 all: linux
 
 linux:
+	@rm -rf *.exe
 	@mcs -t:exe -out:generate-key.exe generate-key.cs
 	@mcs -t:exe -out:rijndael-mono-decrypt.exe rijndael-decrypt.cs
 	@mcs -t:exe -out:rijndael-mono-encrypt.exe rijndael-encrypt.cs
