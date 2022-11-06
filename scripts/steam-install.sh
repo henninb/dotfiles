@@ -13,6 +13,9 @@
 # wget https://flathub.org/repo/appstream/com.valvesoftware.Steam.flatpakref
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+  echo enable multilib in /etc/pacman.conf
+  sudo pacman -Sy
+
   # sudo pacman --noconfirm --needed -S flatpak
   # flatpak install flathub com.valvesoftware.Steam
   sudo pacman --noconfirm --needed -S steam
