@@ -10,6 +10,7 @@ lspci -k | grep -A 2 -E "(VGA|3D)"
 
 if [ command -v pacman ]; then
   sudo pacman --noconfirm --needed -S linux-headers
+  sudo pacman --noconfirm --needed -S glxinfo
 fi
 
 if [ command -v emerge ]; then
