@@ -1,7 +1,9 @@
 #!/bin/sh
 
 if [ -f "$HOME/.ssh/id_rsa" ]; then
-  ssh-add "$HOME/.ssh/id_rsa"
+  if ! ssh-add "$HOME/.ssh/id_rsa"; then
+    eval `ssh-agent -s`
+  fi
 fi
 
 if [ -f "$HOME/.ssh/id_ed25519" ];then
