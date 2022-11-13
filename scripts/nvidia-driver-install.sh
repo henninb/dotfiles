@@ -29,6 +29,11 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo mv -v "$HOME/tmp/nvidia.hook" /etc/pacman.d/hooks/nvidia.hook
   sudo pacman -S nvidia nvidia-utils nvidia-settings  opencl-nvidia
   sudo pacman -S nvidia lib32-nvidia-utils
+  sudo pacman -S nvidia lib32-nvidia-libgl
+  sudo pacman -S vulkan-tools
+  sudo pacman -S ttf-liberation
+  sudo pacman -S vulkan-headers
+  sudo pacman -R amdvlk
   #sudo pacman -S nvidia lib32-nvidia-utils  --overwrite '*'
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y xtools
@@ -59,7 +64,7 @@ lsmod | grep nvidia
 
 glxinfo | grep direct
 
-if [ -x "$(command -v nvidia-settings)" ]; then
+if command -v nvidia-settings; then
   nvidia-settings &
 fi
 
