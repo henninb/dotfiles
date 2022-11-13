@@ -13,6 +13,8 @@
 # wget https://flathub.org/repo/appstream/com.valvesoftware.Steam.flatpakref
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+  # sudo pacman --noconfirm --needed -S lib32-nvidia-utils
+  sudo pacman --noconfirm --needed -S ttf-liberation
   echo enable multilib in /etc/pacman.conf
   sudo pacman -Sy
 
