@@ -136,6 +136,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S sxhkd
   sudo pacman --noconfirm --needed -S starship
   sudo pacman --noconfirm --needed -S sxiv
+  sudo pacman --noncofirm --needed -S pacman-contrib
   sudo pacman --noconfirm --needed -S pass
   sudo pacman --noconfirm --needed -S pwgen
   sudo pacman --noconfirm --needed -S tree
