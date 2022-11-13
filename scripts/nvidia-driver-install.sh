@@ -27,6 +27,8 @@ if [ "$OS" = "Gentoo" ]; then
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo mkdir -p /etc/pacman.d/hooks
   sudo mv -v "$HOME/tmp/nvidia.hook" /etc/pacman.d/hooks/nvidia.hook
+  sudo pacman -S nvidia nvidia-utils nvidia-settings  opencl-nvidia
+  sudo pacman -S nvidia lib32-nvidia-utils
   #sudo pacman -S nvidia lib32-nvidia-utils  --overwrite '*'
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y xtools

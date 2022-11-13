@@ -10,12 +10,12 @@ lspci -k | grep -A 2 -E "(VGA|3D)"
 echo 'uninstall'
 echo 'sudo sh ./NVIDIA-Linux-x86_64-304.60.run --uninstall'
 
-if [ command -v pacman ]; then
+if command -v pacman; then
   sudo pacman --noconfirm --needed -S linux-headers
   sudo pacman --noconfirm --needed -S glxinfo
 fi
 
-if [ command -v emerge ]; then
+if command -v emerge; then
   if ! command -v hardinfo; then
     sudo emerge --update --newuse hardinfo
   fi
@@ -96,11 +96,6 @@ fi
 echo open https://www.nvidia.com/en-us/geforce/drivers/
 if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-520.56.06.run" ]; then
   wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/520.56.06/NVIDIA-Linux-x86_64-520.56.06.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-520.56.06.run"
-fi
-
-# https://us.download.nvidia.com/XFree86/Linux-x86_64/520.56.06/NVIDIA-Linux-x86_64-520.56.06.run
-if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-515.76.run" ]; then
-  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/515.76/NVIDIA-Linux-x86_64-515.76.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-515.76.run"
 fi
 
 grep "X Driver" /var/log/Xorg.0.log
