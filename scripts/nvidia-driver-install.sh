@@ -1,5 +1,23 @@
 #!/bin/sh
 
+cat > "$HOME/tmp/nvidia.hook" <<EOF
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Operation=Remove
+Type=Package
+Target=nvidia
+Target=linux
+# Change the linux part above and in the Exec line if a different kernel is used
+
+[Action]
+Description=Update NVIDIA module in initcpio
+Depends=mkinitcpio
+When=PostTransaction
+NeedsTargets
+Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
+EOF
+
 if [ "$OS" = "Gentoo" ]; then
   echo eselect kernel list
   echo sudo emerge --update --newuse linux-headers
@@ -7,8 +25,9 @@ if [ "$OS" = "Gentoo" ]; then
   echo sudo emerge --update --newuse media-libs/vulkan-loader
   sudo cp -v nvidia-installer-disable-nouveau.conf /etc/modprobe.d/
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+  sudo mkdir -p /etc/pacman.d/hooks
+  sudo mv -v "$HOME/tmp/nvidia.hook" /etc/pacman.d/hooks/nvidia.hook
   #sudo pacman -S nvidia lib32-nvidia-utils  --overwrite '*'
-  echo
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y xtools
   git clone git@github.com:void-linux/void-packages.git
@@ -26,9 +45,8 @@ fi
 
 vulkaninfo | less
 
-if [ ! -f NVIDIA-Linux-x86_64-510.73.05.run ]; then
-  # wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/470.94/NVIDIA-Linux-x86_64-470.94.run'
-  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/510.73.05/NVIDIA-Linux-x86_64-510.73.05.run'
+if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-515.76.run" ]; then
+  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/515.76/NVIDIA-Linux-x86_64-515.76.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-515.76.run"
 fi
 
 echo sudo chvt 3
