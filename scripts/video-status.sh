@@ -7,6 +7,8 @@ options nouveau modeset=0
 EOF
 
 lspci -k | grep -A 2 -E "(VGA|3D)"
+echo 'uninstall'
+echo 'sudo sh ./NVIDIA-Linux-x86_64-304.60.run --uninstall'
 
 if [ command -v pacman ]; then
   sudo pacman --noconfirm --needed -S linux-headers
