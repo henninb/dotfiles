@@ -1,9 +1,5 @@
-#=x11-misc/copyq-5.0.0 ~amd64
-#=app-editors/notepadqq-9999 ~amd64
 #app-editors/notepadqq
 =dev-python/docutils-0.17.1-r1
 =dev-libs/boost-1.79.0
-# net-im/slack-4.23.0 ~amd64
-# kde-frameworks/kwindowsystem
-# =kde-frameworks/kwindowsystem-5.95*
+=dev-libs/boost-1.80.0
 =dev-dotnet/dotnetcore-sdk-bin-6.0.102

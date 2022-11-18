@@ -35,7 +35,7 @@ cat > "$HOME/tmp/sddm.conf" << EOF
 [Users]
 DefaultPath=/usr/local/sbin:/usr/local/bin:/usr/bin
 HideShells=
-HideUsers=
+HideUsers="intellij,firefox,tomcat,flatpak,kafka,activemq"
 RememberLastSession=true
 RememberLastUser=true
 ReuseSession=true
