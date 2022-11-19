@@ -10,7 +10,7 @@ CENTOS_PKGS="vlc firefox riot-desktop handbrake dolphin-emu gvim terminator feh 
 
 UBUNTU_PKGS="sxiv i3lock meld gqrx vlc handbrake dolphin-emu feh gnome-boxes cockpit seahorse mplayer audacious gitk audacity gimp inkscape cpu-x kdenlive obs-studio mpv gnome-mpv libva-utils openshot"
 
-FREEBSD_PKGS="sxiv i3lock qalculate keepassxc thunar meld vlc firefox handbrake dolphin-emu xterm rofi audacity gimp inkscape mpv blender vscode libreoffice"
+FREEBSD_PKGS="sxiv i3lock qalculate keepassxc thunar meld vlc firefox handbrake dolphin-emu xterm audacity gimp inkscape mpv blender vscode libreoffice"
 
 GENTOO_PKGS="meld vlc blender handbrake thunar pcmanfm games-emulation/dolphin xterm audacity gimp inkscape kdenlive mpv media-video/obs-studio app-admin/keepassxc zathura net-im/zoom librewolf-bin wireshark libreoffice-bin slack vscodium sxiv qalculate-gtk hardinfo net-im/discord-bin media-video/celluloid kdeconnect gqrx steam"
 
