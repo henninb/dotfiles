@@ -111,6 +111,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S htop
   sudo pacman --noconfirm --needed -S imagemagick
   sudo pacman --noconfirm --needed -S jq
+  sudo pacman --noconfirm --needed -S keychain
   sudo pacman --noconfirm --needed -S kitty
   sudo pacman --noconfirm --needed -S i3lock-color
   sudo pacman --noconfirm --needed -S lxappearance
