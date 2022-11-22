@@ -10,6 +10,8 @@ if [ -x "$(command -v socketstat)" ]; then
 fi
 ss -tulpn4
 
+sudo lsof -i TCP:22
+
 exit 0
 
 # vim: set ft=sh
