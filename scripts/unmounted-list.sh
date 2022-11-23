@@ -60,7 +60,10 @@ echo "pkaction | grep mount"
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S ntfs-3g
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge  --update --newuse udisks
+  if ! command -v udisksctl; then
+    sudo emerge  --update --newuse udisks
+    sudo emerge  --update --newuse ntfs3g
+  fi
 elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y parted
 else
