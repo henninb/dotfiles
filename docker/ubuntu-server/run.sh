@@ -1,7 +1,7 @@
 #!/bin/sh
 
-cp "$HOME/.ssh/id_rsa" .
-cp "$HOME/.ssh/known_hosts" .
+cp -v "$HOME/.ssh/id_rsa" .
+cp -v "$HOME/.ssh/known_hosts" .
 
 docker stop ubuntu-server
 docker rm ubuntu-server -f
