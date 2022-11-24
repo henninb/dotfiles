@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat > "$HOME/tmp/nvidia.hook" <<EOF
+cat > "$HOME/tmp/nvidia.hook" <<'EOF'
 [Trigger]
 Operation=Install
 Operation=Upgrade
