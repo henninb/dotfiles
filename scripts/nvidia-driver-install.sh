@@ -1,5 +1,72 @@
 #!/bin/sh
 
+cat > "$HOME/tmp/xorg.conf" <<EOF
+Section "ServerLayout"
+    Identifier     "Layout0"
+    Screen      0  "Screen0" 0 0
+    InputDevice    "Keyboard0" "CoreKeyboard"
+    InputDevice    "Mouse0" "CorePointer"
+    Option         "Xinerama" "0"
+EndSection
+
+Section "Files"
+EndSection
+
+Section "InputDevice"
+    # generated from default
+    Identifier     "Mouse0"
+    Driver         "mouse"
+    Option         "Protocol" "auto"
+    Option         "Device" "/dev/psaux"
+    Option         "Emulate3Buttons" "no"
+    Option         "ZAxisMapping" "4 5"
+EndSection
+
+Section "InputDevice"
+    # generated from default
+    Identifier     "Keyboard0"
+    Driver         "kbd"
+EndSection
+
+Section "Monitor"
+    # HorizSync source: edid, VertRefresh source: edid
+    Identifier     "Monitor0"
+    VendorName     "Unknown"
+    ModelName      "LG Electronics LG HDR 4K"
+    HorizSync       30.0 - 135.0
+    VertRefresh     56.0 - 61.0
+    Option         "DPMS"
+EndSection
+
+Section "Device"
+    Identifier     "Device0"
+    Driver         "nvidia"
+    VendorName     "NVIDIA Corporation"
+    BoardName      "NVIDIA GeForce GTX 1060 6GB"
+EndSection
+
+Section "Screen"
+    Identifier     "Screen0"
+    Device         "Device0"
+    Monitor        "Monitor0"
+    DefaultDepth    24
+    Option         "Stereo" "0"
+    Option         "nvidiaXineramaInfoOrder" "DFP-1"
+    Option         "metamodes" "HDMI-0: nvidia-auto-select +0+0, HDMI-1: nvidia-auto-select +3840+0 {rotation=left}"
+    Option         "SLI" "Off"
+    Option         "MultiGPU" "Off"
+    Option         "BaseMosaic" "off"
+    SubSection     "Display"
+        Depth       24
+    EndSubSection
+EndSection
+EOF
+
+cat > "$HOME/tmp/nvidia-installer-disable-nouveau.conf" <<EOF
+blacklist nouveau
+options nouveau modeset=0
+EOF
+
 cat > "$HOME/tmp/nvidia.hook" <<'EOF'
 [Trigger]
 Operation=Install
@@ -23,7 +90,8 @@ if [ "$OS" = "Gentoo" ]; then
   echo sudo emerge --update --newuse linux-headers
   echo sudo emerge --update --newuse x11-drivers/nvidia-drivers
   echo sudo emerge --update --newuse media-libs/vulkan-loader
-  sudo cp -v nvidia-installer-disable-nouveau.conf /etc/modprobe.d/
+  sudo cp -v "$HOME/tmp/nvidia-installer-disable-nouveau.conf" /etc/modeprobe.d/
+  sudo cp -v "$HOME/tmp/xorg.conf" /etc/X11/xorg.conf
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo mkdir -p /etc/pacman.d/hooks
   sudo mv -v "$HOME/tmp/nvidia.hook" /etc/pacman.d/hooks/nvidia.hook
@@ -37,6 +105,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S ttf-liberation
   sudo pacman --noconfirm --needed -S vulkan-headers
   sudo pacman -R amdvlk
+  sudo cp -v "$HOME/tmp/nvidia-installer-disable-nouveau.conf" /etc/modeprobe.d/
+  sudo cp -v "$HOME/tmp/xorg.conf" /etc/X11/xorg.conf
   #sudo pacman -S nvidia lib32-nvidia-utils  --overwrite '*'
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y xtools
