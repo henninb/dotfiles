@@ -14,9 +14,11 @@ fi
 #   echo "failed docker-compose"
 # fi
 
-podman stop ubuntu-server
-podman rm ubuntu-server -f
-podman build --tag ubuntu-server -f ./Dockerfile
+if ! command -v podman; then
+  podman stop ubuntu-server
+  podman rm ubuntu-server -f
+  podman build --tag ubuntu-server -f ./Dockerfile
+fi
 # podman run -dit --name ubuntu-server -h ubuntu-server ubuntu-server
 # podman exec -it --user henninb ubuntu-server /bin/bash
 

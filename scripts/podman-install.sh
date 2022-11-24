@@ -31,6 +31,8 @@ else
   exit 1
 fi
 
+sudo cp -v /etc/containers/policy.json.example /etc/containers/policy.json
+
 sudo touch /etc/subuid /etc/subgid
 # cat /etc/sysctl.d/userns.conf
 sudo sysctl kernel.unprivileged_userns_clone=1
