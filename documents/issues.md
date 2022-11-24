@@ -271,7 +271,9 @@ sudo chvt 2
 sudo systemctl set-default multi-user
 sudo systemctl isolate runlevel3.target
 
+sudo vim /etc/default/grub
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 and modifying it into
 
 GRUB_CMDLINE_LINUX_DEFAULT="text"
