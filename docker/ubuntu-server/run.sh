@@ -11,10 +11,6 @@ platform=$1
 cp -v "$HOME/.ssh/id_rsa" .
 cp -v "$HOME/.ssh/known_hosts" .
 
-
-# if ! docker-compose up -d; then
-#   echo "failed docker-compose"
-# fi
 if [ "$platform" = "podman" ]; then
   if command -v podman; then
     podman stop ubuntu-server
