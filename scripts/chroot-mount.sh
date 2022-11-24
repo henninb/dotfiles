@@ -31,9 +31,9 @@ if [ "$os" = "gentoo" ]; then
   echo 'export PS1="(chroot) $PS1"'
 elif [ "$os" = "archlinux" ]; then
   sudo mkdir -p /mnt/archlinux
-  sudo mount /dev/sda3 /mnt/archlinux
+  sudo mount /dev/sdc3 /mnt/archlinux
   sudo mkdir -p /mnt/archlinux/boot/efi
-  sudo mount /dev/sda1 /mnt/archlinux/boot/efi
+  sudo mount /dev/sdc1 /mnt/archlinux/boot/efi
   cd /mnt/archlinux
 
   sudo mount -t proc none /mnt/archlinux/proc
