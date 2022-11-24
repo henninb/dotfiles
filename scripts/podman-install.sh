@@ -8,12 +8,14 @@ EOF
 
 if command -v pacman; then
   sudo pacman --noconfirm --needed -S podman
+  sudo pacman --noconfirm --needed -S slirp4netns
   # sudo usermod --add-subuids 10000-75535 henninb
   # sudo usermod --add-subgids 10000-75535 henninb
   echo henninb:10000:65536 | sudo tee -a /etc/subuid
   echo henninb:10000:65536 | sudo tee -a /etc/subgid
 elif command -v emerge; then
   sudo emerge --update --newuse podman
+  sudo emerge --update --newuse slirp4netns
   sudo usermod --add-subuids 1065536-1131071 "$(whoami)"
   sudo usermod --add-subgids 1065536-1131071 "$(whoami)"
 elif [ -x "$(command -v apt)" ]; then
