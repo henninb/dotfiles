@@ -12,12 +12,17 @@
 # rm -rf com.valvesoftware.Steam.flatpakref*
 # wget https://flathub.org/repo/appstream/com.valvesoftware.Steam.flatpakref
 
+cat > "$HOME/tmp/pacman.conf" << 'EOF'
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+EOF
+
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   # sudo pacman --noconfirm --needed -S lib32-nvidia-utils
   sudo pacman --noconfirm --needed -S ttf-liberation
   echo enable multilib in /etc/pacman.conf
+  cat "$HOME/tmp/pacman.conf" | sudo tee -a /etc/pacman.conf
   sudo pacman -Sy
-
   # sudo pacman --noconfirm --needed -S flatpak
   # flatpak install flathub com.valvesoftware.Steam
   sudo pacman --noconfirm --needed -S steam
