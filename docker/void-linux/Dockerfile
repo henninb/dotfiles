@@ -4,7 +4,8 @@ ENV TERM xterm-256color
 ENV LC_ALL en_US.UTF-8
 
 RUN xbps-install -S
-RUN xbps-install -y screen
+RUN xbps-install -uy xbps
+# RUN xbps-install -y screen
 RUN xbps-install -y bash
 RUN xbps-install -y zsh
 RUN xbps-install -y git

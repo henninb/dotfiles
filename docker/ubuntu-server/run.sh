@@ -16,7 +16,7 @@ cp -v "$HOME/.ssh/known_hosts" .
 #   echo "failed docker-compose"
 # fi
 if [ "$platform" = "podman" ]; then
-  if ! command -v podman; then
+  if command -v podman; then
     podman stop ubuntu-server
     podman rm ubuntu-server -f
     podman build --tag ubuntu-server -f ./Dockerfile
@@ -35,7 +35,7 @@ elif [ "$platform" = "docker" ]; then
   docker exec -it --user henninb ubuntu-server /bin/bash
 fi
 
-
 rm -rf id_rsa
+rm -rf known_hosts
 
 exit 0
