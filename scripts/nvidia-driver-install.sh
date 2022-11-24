@@ -27,12 +27,15 @@ if [ "$OS" = "Gentoo" ]; then
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo mkdir -p /etc/pacman.d/hooks
   sudo mv -v "$HOME/tmp/nvidia.hook" /etc/pacman.d/hooks/nvidia.hook
-  sudo pacman -S nvidia nvidia-utils nvidia-settings  opencl-nvidia
-  sudo pacman -S nvidia lib32-nvidia-utils
-  sudo pacman -S nvidia lib32-nvidia-libgl
-  sudo pacman -S vulkan-tools
-  sudo pacman -S ttf-liberation
-  sudo pacman -S vulkan-headers
+  sudo pacman --noconfirm --needed -S nvidia
+  sudo pacman --noconfirm --needed -S nvidia-utils
+  sudo pacman --noconfirm --needed -S nvidia-settings
+  sudo pacman --noconfirm --needed -S opencl-nvidia
+  sudo pacman --noconfirm --needed -S nvidia lib32-nvidia-utils
+  sudo pacman --noconfirm --needed -S nvidia lib32-nvidia-libgl
+  sudo pacman --noconfirm --needed -S vulkan-tools
+  sudo pacman --noconfirm --needed -S ttf-liberation
+  sudo pacman --noconfirm --needed -S vulkan-headers
   sudo pacman -R amdvlk
   #sudo pacman -S nvidia lib32-nvidia-utils  --overwrite '*'
 elif [ "$OS" = "void" ]; then
