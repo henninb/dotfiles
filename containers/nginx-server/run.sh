@@ -13,6 +13,7 @@ if [ "$platform" = "podman" ]; then
   podman rm -f nginx-server
   echo "running server on port 443"
 
+  echo 0 | sudo tee /proc/sys/net/ipv4/ip_unprivileged_port_start
   podman-compose build
   podman-compose up
 elif [ "$platform" = "docker" ]; then
