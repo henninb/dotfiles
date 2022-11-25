@@ -10,5 +10,5 @@ services:
     expose:
       - "443"
     restart: always
-    network:
-      - "macvlan-net"
+    # network:
+    #   - "macvlan-net"

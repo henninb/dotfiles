@@ -1,22 +1,38 @@
 #!/bin/sh
 
-docker stop nginx-server-hosted
-docker rm -f nginx-server-hosted
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 <platform>"
+  echo "docker or podman"
+  exit 1
+fi
 
-echo running server on port 443
-echo docker exec -it --user root nginx-server-hosted /bin/bash
-echo docker exec -it --user root nginx-server-hosted ss --listen
-echo docker logs nginx-server-hosted
-echo docker network create --driver bridge isolated
+platform=$1
 
-docker network ls
+if [ "$platform" = "podman" ]; then
+  podman stop nginx-server-hosted
+  podman rm -f nginx-server-hosted
+  echo "running server on port 443"
 
-if command -v docker-compose; then
-  docker-compose build
-  docker-compose up
-else
-  docker build -t nginx-server-hosted .
-  docker run --network-mode host --name=nginx-server-hosted -h nginx-server-hosted -h nginx-server-hosted --restart always -d nginx-server-hosted
+  podman-compose build
+  podman-compose up
+  # podman build -t nginx-server-hosted .
+  # podman run --name=nginx-server-hosted -h nginx-server-hosted -h nginx-server-hosted --restart unless-stopped -p 443:443 -d nginx-server-hosted
+elif [ "$platform" = "docker" ]; then
+  docker stop nginx-server-hosted
+  docker rm -f nginx-server-hosted
+  echo "running server on port 443"
+
+  echo docker exec -it --user root nginx-server-hosted /bin/bash
+  echo docker exec -it --user root nginx-server-hosted ss --listen
+  echo docker logs nginx-server-hosted
+
+  if command -v docker-compose; then
+    docker-compose build
+    docker-compose up
+  else
+    docker build -t nginx-server-hosted .
+    docker run --name=nginx-server-hosted -h nginx-server-hosted -h nginx-server-hosted --restart unless-stopped -p 443:443 -d nginx-server-hosted
+  fi
 fi
 
 exit 0
