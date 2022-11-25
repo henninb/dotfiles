@@ -33,6 +33,8 @@ else
   exit 1
 fi
 
+pip install podman-compose
+
 sudo cp -v /etc/containers/policy.json.example /etc/containers/policy.json
 
 sudo touch /etc/subuid /etc/subgid
