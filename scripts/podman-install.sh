@@ -16,8 +16,8 @@ if command -v pacman; then
 elif command -v emerge; then
   sudo emerge --update --newuse podman
   sudo emerge --update --newuse slirp4netns
-  sudo usermod --add-subuids 1065536-1131071 "$(whoami)"
-  sudo usermod --add-subgids 1065536-1131071 "$(whoami)"
+  # sudo usermod --add-subuids 1065536-1131071 "$(whoami)"
+  # sudo usermod --add-subgids 1065536-1131071 "$(whoami)"
 elif [ -x "$(command -v apt)" ]; then
   echo "debian"
 elif [ -x "$(command -v xbps-install)" ]; then
@@ -40,7 +40,7 @@ sudo touch /etc/subuid /etc/subgid
 sudo sysctl kernel.unprivileged_userns_clone=1
 sysctl kernel.unprivileged_userns_clone
 
-usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$(id -un)"
+# sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$(id -un)"
 
 sudo mv -v "$HOME/tmp/registries.conf" /etc/containers/registries.conf
 
