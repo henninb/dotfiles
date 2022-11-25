@@ -61,6 +61,7 @@ sudo sysctl kernel.unprivileged_userns_clone=1
 sysctl kernel.unprivileged_userns_clone
 
 sudo mv -v "$HOME/tmp/registries.conf" /etc/containers/registries.conf
+sudo mv -v "$HOME/tmp/policy.json" /etc/containers/policy.json
 
 exit 0
 
