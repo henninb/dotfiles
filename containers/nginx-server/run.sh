@@ -11,14 +11,14 @@ platform=$1
 if [ "$platform" = "podman" ]; then
   podman stop nginx-server
   podman rm -f nginx-server
-  echo running server on port 443
+  echo "running server on port 443"
 
   podman-compose build
   podman-compose up
 elif [ "$platform" = "docker" ]; then
   docker stop nginx-server
   docker rm -f nginx-server
-  echo running server on port 443
+  echo "running server on port 443"
 
   echo docker exec -it --user root nginx-server /bin/bash
   echo docker exec -it --user root nginx-server ss --listen
@@ -34,6 +34,3 @@ elif [ "$platform" = "docker" ]; then
 fi
 
 exit 0
-
-
-
