@@ -7,7 +7,20 @@ registries = ['docker.io']
 EOF
 
 cat << EOF > "$HOME/tmp/policy.json"
-test
+{
+    "default": [
+        {
+            "type": "insecureAcceptAnything"
+        }
+    ],
+    "transports":
+        {
+            "docker-daemon":
+                {
+                    "": [{"type":"insecureAcceptAnything"}]
+                }
+        }
+}
 EOF
 
 if command -v pacman; then
@@ -36,7 +49,8 @@ fi
 sudo setcap cap_net_bind_service=+ep $(which slirp4netns)
 # sudo sh -c "echo 0 > /proc/sys/net/ipv4/ip_unprivileged_port_start"
 echo 0 | sudo tee /proc/sys/net/ipv4/ip_unprivileged_port_start
-echo net.ipv4.ip_unprivileged_port_start=0 | sudo tee -a /etc/sysctl.conf
+#echo net.ipv4.ip_unprivileged_port_start=0 | sudo tee -a /etc/sysctl.conf
+echo net.ipv4.ip_unprivileged_port_start=443 | sudo tee -a /etc/sysctl.conf
 pip install podman-compose
 
 sudo cp -v /etc/containers/policy.json.example /etc/containers/policy.json
