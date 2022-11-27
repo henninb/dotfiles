@@ -26,7 +26,9 @@ EOF
 if command -v pacman; then
   sudo pacman --noconfirm --needed -S podman
   sudo pacman --noconfirm --needed -S slirp4netns
-  sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$(id -un)"
+  sudo pacman --noconfirm --needed -S fuse-overlayfs
+  # sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$(id -un)"
+  echo +cpu +cpuset +io +memory +pids > sudo tee -a /sys/fs/cgroup/cgroup.subtree_control
 elif command -v emerge; then
   sudo emerge --update --newuse podman
   sudo emerge --update --newuse slirp4netns
