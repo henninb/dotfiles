@@ -302,7 +302,7 @@ elif [ "$OS" = "Gentoo" ]; then
   make
   sudo make install
   echo "Failures: $FAILURE"
-elif [ "$OS" = "Fedora" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
   # sudo dnf remove -y lightdm
   # sudo dnf remove -y gdm
   # sudo dnf remove -y lxdm
@@ -313,8 +313,8 @@ elif [ "$OS" = "Fedora" ]; then
   sudo dnf install -y copyq
   sudo dnf install -y dbus-x11
   sudo dnf install -y dunst
+  sudo dnf install -y dzen2
   sudo dnf install -y feh
-  sudo dnf install -y flameshot
   sudo dnf install -y flameshot
   sudo dnf install -y libXScrnSaver-devel
   sudo dnf install -y lxsession
