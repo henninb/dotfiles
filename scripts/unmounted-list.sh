@@ -64,7 +64,7 @@ elif [ "$OS" = "Gentoo" ]; then
     sudo emerge  --update --newuse udisks
     sudo emerge  --update --newuse ntfs3g
   fi
-elif [ "$OS" = "Fedora" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y parted
 else
   echo "$OS is not implemented."
