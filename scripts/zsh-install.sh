@@ -58,6 +58,9 @@ elif [ "$OS" = "Clear Linux OS" ]; then
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y coreutils
   sudo pkg install -y urwfonts
+elif [ "$OS" = "Fedora Linux" ]; then
+  test
+  sudo dnf install -y unzip
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse unzip
   sudo emerge --update --newuse fontconfig
