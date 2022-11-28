@@ -303,6 +303,9 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo make install
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Fedora Linux" ]; then
+ echo not sure if this works
+ echo sudo ln -sfn /usr/lib64/libncursesw.so.6 /usr/lib64/libtinfo.so.6
+
   # sudo dnf remove -y lightdm
   # sudo dnf remove -y gdm
   # sudo dnf remove -y lxdm
