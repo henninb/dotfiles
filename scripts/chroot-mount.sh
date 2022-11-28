@@ -2,7 +2,7 @@
 
 if [ $# -ne 1 ]; then
   echo "Usage: $0 <os>"
-  echo "gentoo or archlinux"
+  echo "gentoo or archlinux or fedora"
   exit 1
 fi
 
@@ -29,11 +29,25 @@ if [ "$os" = "gentoo" ]; then
   echo sudo chroot /mnt/gentoo /bin/bash
   echo source /etc/profile
   echo 'export PS1="(chroot) $PS1"'
+elif [ "$os" = "fedora" ]; then
+  sudo mkdir -p /mnt/fedora
+  sudo mount /dev/sdc3 /mnt/fedora
+  sudo mkdir -p /mnt/fedora/boot/efi
+  sudo mount /dev/sdc1 /mnt/fedora/boot/efi
+  cd /mnt/fedora
+
+  # sudo mount -t proc none /mnt/fedora/proc
+  # sudo mount --rbind /dev /mnt/fedora/dev
+  # sudo mount --rbind /sys /mnt/fedora/sys
+
+  echo sudo chroot /mnt/fedora /bin/bash
+  echo source /etc/profile
+  echo 'export PS1="(chroot) $PS1"'
 elif [ "$os" = "archlinux" ]; then
   sudo mkdir -p /mnt/archlinux
-  sudo mount /dev/sdc3 /mnt/archlinux
+  sudo mount /dev/sdb2 /mnt/archlinux
   sudo mkdir -p /mnt/archlinux/boot/efi
-  sudo mount /dev/sdc1 /mnt/archlinux/boot/efi
+  sudo mount /dev/sdb1 /mnt/archlinux/boot/efi
   cd /mnt/archlinux
 
   sudo mount -t proc none /mnt/archlinux/proc
