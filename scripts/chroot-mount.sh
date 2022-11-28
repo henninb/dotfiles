@@ -36,11 +36,13 @@ elif [ "$os" = "fedora" ]; then
   sudo mount /dev/sdc1 /mnt/fedora/boot/efi
   cd /mnt/fedora
 
-  # sudo mount -t proc none /mnt/fedora/proc
-  # sudo mount --rbind /dev /mnt/fedora/dev
-  # sudo mount --rbind /sys /mnt/fedora/sys
+  sudo mount --rbind home /mnt/fedora/root/home
 
-  echo sudo chroot /mnt/fedora /bin/bash
+  sudo mount -t proc none /mnt/fedora/root/proc
+  sudo mount --rbind /dev /mnt/fedora/root/dev
+  sudo mount --rbind /sys /mnt/fedora/root/sys
+
+  echo sudo chroot /mnt/fedora/root /bin/bash
   echo source /etc/profile
   echo 'export PS1="(chroot) $PS1"'
 elif [ "$os" = "archlinux" ]; then
