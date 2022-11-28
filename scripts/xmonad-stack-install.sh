@@ -316,8 +316,9 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y copyq
   sudo dnf install -y dbus-x11
   sudo dnf install -y dunst
-  sudo dnf install -y dzen2
+  # sudo dnf install -y dzen2
   sudo dnf install -y feh
+  sudo dnf install -y jq
   sudo dnf install -y flameshot
   sudo dnf install -y libXScrnSaver-devel
   sudo dnf install -y lxsession
@@ -328,6 +329,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y sxhkd
   sudo dnf install -y voluemeicon
   sudo dnf install -y w3m
+  sudo dnf install -y tree
   sudo dnf install -y wmname
   sudo dnf install -y xscreensaver
   echo iwlib missing
