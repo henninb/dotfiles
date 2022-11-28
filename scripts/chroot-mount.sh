@@ -41,6 +41,7 @@ elif [ "$os" = "fedora" ]; then
   sudo mount -t proc none /mnt/fedora/root/proc
   sudo mount --rbind /dev /mnt/fedora/root/dev
   sudo mount --rbind /sys /mnt/fedora/root/sys
+  sudo mount --rbind /run /mnt/fedora/root/run
 
   echo sudo chroot /mnt/fedora/root /bin/bash
   echo source /etc/profile
