@@ -17,6 +17,10 @@ elif [ -x "$(command -v pkg)" ]; then
   sudo pkg install -y starship
 elif [ -x "$(command -v dnf)" ]; then
   sudo dnf install -y zsh
+  curl -O https://starship.rs/install.sh
+  chmod +x install.sh
+  ./install.sh -b ~/.local/bin
+  rm install.sh
 elif [ -x "$(command -v brew)" ]; then
   brew install zsh
 else
