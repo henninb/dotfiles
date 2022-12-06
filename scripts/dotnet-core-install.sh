@@ -8,7 +8,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   sudo apt install -y apt-transport-https
   sudo apt update -y
   sudo apt install -y dotnet-sdk-2.2
-elif [ "$OS" = "Fedora" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
   sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
   sudo wget -q -O /etc/yum.repos.d/microsoft-prod.repo https://packages.microsoft.com/config/fedora/30/prod.repo
   sudo dnf install dotnet-sdk-2.2

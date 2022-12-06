@@ -81,7 +81,7 @@ elif [ "$OS" = "Linux Mint" ]; then
   sudo usermod -a -G docker "$(id -un)"
   sudo netstat -lntp | grep dockerd
   sudo fuser 2375/tcp
-elif [ "$OS" = "Fedora" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y device-mapper-persistent-data
   sudo dnf install -y lvm2
   sudo dnf install -y dnf-plugins-core

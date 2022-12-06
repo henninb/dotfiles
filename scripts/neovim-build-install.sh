@@ -83,7 +83,7 @@ elif [ "$OS" = "void" ]; then
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y py27-pip
   sudo pkg install -y py37-pip
-elif [ "$OS" = "Fedora" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y make
   sudo dnf install -y cmake
   sudo dnf install -y libtool

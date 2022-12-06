@@ -17,7 +17,7 @@ elif [ "$OS" = "Solus" ]; then
 elif [ "$OS" = "void" ]; then
   echo
   sudo xbps-install -y wget
-elif [ "$OS" = "Fedora" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
   echo
   #sudo dnf install rxvt-unicode
   sudo dnf install fontawesome-fonts
@@ -62,7 +62,7 @@ if ! ./configure --enable-everything --enable-perl --enable-smart-resize --enabl
   exit 1
 fi
 
-if [ "$OS" = "Fedora" ]; then
+if [ "$OS" = "Fedora Linux" ]; then
   cp "$HOME/urxvt-Makefile-fedora" "$HOME/projects/rxvt-unicode-9.22/src/Makefile"
 fi
 

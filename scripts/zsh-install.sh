@@ -63,8 +63,8 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y coreutils
   sudo pkg install -y urwfonts
 elif [ "$OS" = "Fedora Linux" ]; then
-  test
   sudo dnf install -y unzip
+  sudo dnf install -y util-linux-user
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse unzip
   sudo emerge --update --newuse fontconfig
@@ -83,8 +83,6 @@ elif [ "$OS" = "Darwin" ]; then
   brew install fontconfig
   for f in $(compaudit);do sudo chown "$(whoami):admin" "$f";done;
   for f in $(compaudit);do sudo chmod 755 "$f";done;
-elif [ "$OS" = "Fedora" ]; then
-  sudo dnf install -y util-linux-user
 else
   echo "$OS is not yet implemented."
   exit 1

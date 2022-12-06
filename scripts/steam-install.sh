@@ -45,7 +45,7 @@ elif [ "$OS" = "Gentoo" ]; then
   # flatpak install --user com.valvesoftware.Steam.flatpakref
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y steam
-elif [ "$OS" = "Fedora" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
   flatpak install --user com.valvesoftware.Steam.flatpakref
 else
   echo "$OS is not yet implemented"

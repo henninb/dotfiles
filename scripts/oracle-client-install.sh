@@ -11,7 +11,7 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y rpm
 elif [ "$OS" = "Darwin" ]; then
   echo noop
-elif [ "$OS" = "Fedora" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y libnsl
 else
   echo "$OS is not yet implemented."
@@ -79,7 +79,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum localinstall -y oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
   sudo yum localinstall -y oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm
   sudo yum localinstall -y oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm
-elif [ "$OS" = "Fedora" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
   sudo yum localinstall -y oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm
   sudo yum localinstall -y oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
   sudo yum localinstall -y oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm

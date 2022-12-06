@@ -18,7 +18,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   yay -S pass-import
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y gnupg pass pinentry
-elif [ "$OS" = "Fedora" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y gnupg pass
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux"  ]; then
   sudo apt install -y gnupg pass pinentry-tty

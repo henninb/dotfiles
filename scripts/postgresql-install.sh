@@ -63,7 +63,7 @@ elif [ "$OS" = "Solus" ]; then
   rm -v /tmp/install_psql_settings.sql
   sudo netstat -lntp | grep postgres
   sudo fuser 5432/tcp
-elif [ "$OS" = "Fedora" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y net-tools psmisc
   sudo dnf install -y net-tools postgresql-server postgresql-contrib
   sudo rm -rf /var/lib/pgsql/data/

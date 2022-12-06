@@ -24,7 +24,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse x11-libs/gtk+:2
   sudo emerge --update --newuse x11-libs/gtk+:3
   sudo emerge  --update --newuse ffmpegthumbnailer
-elif [ "$OS" = "Fedora" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y systemd-devel
   sudo dnf install -y ffmpegthumbnailer-devel
 elif [ "$OS" = "FreeBSD" ]; then

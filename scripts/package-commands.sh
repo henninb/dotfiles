@@ -16,7 +16,7 @@ elif [ "$OS" = "void" ]; then
   echo sudo xbps-install -u xbps
   echo sudo xbps-install package_name
   echo xbps-query -Rs package_name
-elif [ "$OS" = "Fedora" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
   echo dnf repoquery -l xorg-x11-server-Xorg
 elif [ "$OS" = "Solus" ]; then
   echo sudo eopkg upgrade -y

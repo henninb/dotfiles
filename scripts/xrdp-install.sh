@@ -207,7 +207,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo mv -v "$HOME/tmp/startwm.sh" /etc/xrdp/startwm.sh
   sudo mv -v xrdp.rc /etc/init.d/xrdp
   sudo mv -v "$HOME/tmp/Xwrapper.config" /etc/X11/Xwrapper.config
-elif [ "$OS" = "Fedora" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
     sudo dnf install -y libtool
     sudo dnf install -y openssl-devel
     sudo dnf install -y pam-devel
@@ -216,7 +216,6 @@ elif [ "$OS" = "Fedora" ]; then
     sudo dnf install -y libXfixes-devel
     sudo dnf install -y libXrandr-devel
     sudo dnf install -y xorg-x11-server-devel
-
 
     xrdp_build
     xorgxrdp_build

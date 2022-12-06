@@ -136,7 +136,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -a -G kvm "$(id -un)"
   echo grep KVM /usr/src/linux/.config
   lsmod | grep kvm
-elif [ "$OS" = "Fedora" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
   #sudo dnf remove -y seabios-bin
   sudo dnf install -y seabios-bin
   sudo dnf install -y virt-install

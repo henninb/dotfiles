@@ -21,8 +21,7 @@ if [ "$OS" = "Linux Mint" ] ||  [ "$OS" = "Ubuntu" ]; then
   sudo apt install -y bluez-tools pulseaudio-module-bluetooth expect
   sudo apt install -y blueberry
   sudo apt install -y blueman
-elif [ "$OS" = "Fedora" ]; then
-  echo
+elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y bluez-tools
   sudo dnf install -y pulseaudio-module-bluetooth
   sudo dnf install -y expect

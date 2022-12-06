@@ -85,7 +85,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
     sudo yum update -y | tee -a "$HOME/tmp/update-$$.log"
     sudo yum upgrade -y | tee -a "$HOME/tmp/update-$$.log"
   fi
-elif [ "$OS" = "Fedora" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
     sudo dnf update -y | tee -a "$HOME/tmp/update-$$.log"
     sudo dnf upgrade -y | tee -a "$HOME/tmp/update-$$.log"
 elif [ "$OS" = "FreeBSD" ]; then

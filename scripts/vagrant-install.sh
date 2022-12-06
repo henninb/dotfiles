@@ -27,7 +27,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
     sudo yum install -y https://releases.hashicorp.com/vagrant/${VAGRANT_VER}/vagrant_${VAGRANT_VER}_x86_64.rpm
   fi
   #sudo yum install -y vagrant
-elif [ "$OS" = "Fedora" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y libvirt-devel
   if [ ! -x "$(command -v vagrant)" ]; then
     sudo dnf install -y https://releases.hashicorp.com/vagrant/${VAGRANT_VER}/vagrant_${VAGRANT_VER}_x86_64.rpm

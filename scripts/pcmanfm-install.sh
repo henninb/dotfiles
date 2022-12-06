@@ -16,7 +16,7 @@ elif [ "$OS" = "Gentoo" ]; then
   if ! command -v pcmanfm; then
     sudo emerge  --update --newuse pcmanfm
   fi
-elif [ "$OS" = "Fedora" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y pcmanfm
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install pcmanfm

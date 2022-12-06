@@ -81,7 +81,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo usermod -a -G kafka "$(id -un)"
   sudo usermod -a -G docker "$(id -un)"
   echo "audio?"
-elif [ "$OS" = "Fedora" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
   id -g wheel >/dev/null 2>&1 || sudo groupadd wheel
   id -u brian >/dev/null 2>&1 || sudo useradd -m -G wheel -s /bin/bash brian
   id -u flatpak >/dev/null 2>&1 || sudo useradd flatpak -s /sbin/nologin

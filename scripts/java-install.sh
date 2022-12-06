@@ -30,8 +30,8 @@ elif [ "$OS" = "void" ]; then
   # echo openjdk11-bin
 elif [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Linux" ]; then
   sudo apt install -y openjdk-11-jdk
-elif [ "$OS" = "Fedora" ]; then
-  sudo dnf install java-1.8.0-openjdk-devel
+elif [ "$OS" = "Fedora Linux" ]; then
+  sudo dnf install -y java-11-openjdk-devel
 elif [ "$OS" = "Linux Mint" ]; then
   sudo apt update
   sudo apt upgrade -y
