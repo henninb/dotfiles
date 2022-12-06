@@ -29,6 +29,8 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y epel-release python python-devel
 elif [ "$OS" = "Solus" ]; then
   echo "solus"
+elif [ "$OS" = "Fedora Linux" ]; then
+  echo "fedora"
 elif [ "$OS" = "void" ]; then
   echo "void"
 elif [ "$OS" = "Gentoo" ]; then
