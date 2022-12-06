@@ -324,7 +324,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y feh
   sudo dnf install -y htop
   sudo dnf install -y i3lock
-  sudo dnf install -y imagemagick
+  sudo dnf install -y ImageMagick
   sudo dnf install -y jq
   sudo dnf install -y keychain
   sudo dnf install -y kitty
@@ -335,6 +335,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y libXpm-devel
   sudo dnf install -y libXinerama-devel
   sudo dnf install -y libX11-devel
+  sudo dnf install -y libXrandr-devel
   sudo dnf install -y libreoffice
   sudo dnf install -y mpc
   sudo dnf install -y mpd
