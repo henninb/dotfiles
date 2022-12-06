@@ -331,6 +331,10 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y kdeconnect
   sudo dnf install -y libXScrnSaver-devel
   sudo dnf install -y lxsession
+  sudo dnf install -y libXft-devel
+  sudo dnf install -y libXpm-devel
+  sudo dnf install -y libXinerama-devel
+  sudo dnf install -y libX11-devel
   sudo dnf install -y libreoffice
   sudo dnf install -y mpc
   sudo dnf install -y mpd
