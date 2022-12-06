@@ -303,35 +303,56 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo make install
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Fedora Linux" ]; then
- echo not sure if this works
- echo sudo ln -sfn /usr/lib64/libncursesw.so.6 /usr/lib64/libtinfo.so.6
+  echo not sure if this works
+  echo sudo ln -sfn /usr/lib64/libncursesw.so.6 /usr/lib64/libtinfo.so.6
 
   # sudo dnf remove -y lightdm
   # sudo dnf remove -y gdm
   # sudo dnf remove -y lxdm
   # sudo dnf install -y clipmenu
+  sudo dnf install -y alacritty
   sudo dnf install -y alsa-lib-devel
+  sudo dnf install -y bat
   sudo dnf install -y blueman
   sudo dnf install -y conky
   sudo dnf install -y copyq
+  sudo dnf install -y dmenu
   sudo dnf install -y dbus-x11
   sudo dnf install -y dunst
   # sudo dnf install -y dzen2
-  sudo dnf install -y feh
-  sudo dnf install -y jq
   sudo dnf install -y flameshot
+  sudo dnf install -y feh
+  sudo dnf install -y htop
+  sudo dnf install -y i3lock
+  sudo dnf install -y imagemagick
+  sudo dnf install -y jq
+  sudo dnf install -y keychain
+  sudo dnf install -y kitty
+  sudo dnf install -y kdeconnect
   sudo dnf install -y libXScrnSaver-devel
   sudo dnf install -y lxsession
+  sudo dnf install -y libreoffice
   sudo dnf install -y mpc
   sudo dnf install -y mpd
   sudo dnf install -y neofetch
-  sudo dnf install -y playerctl
+  sudo dnf install -y numlockx
+  sudo dnf install -y pavucontrol
+  sudo dnf install -y partimage
+  sudo dnf install -y pandoc
+  sudo dnf install -y rsync
   sudo dnf install -y sxhkd
+  sudo dnf install -y slock
+  sudo dnf install -y sox
+  sudo dnf install -y tree
+  sudo dnf install -y thunar
+  sudo dnf install -y trayer
   sudo dnf install -y voluemeicon
   sudo dnf install -y w3m
-  sudo dnf install -y tree
   sudo dnf install -y wmname
+  sudo dnf install -y xclip
+  sudo dnf install -y xdotool
   sudo dnf install -y xscreensaver
+  sudo dnf install -y yad
   echo iwlib missing
   mkdir -p "$HOME/projects/github.com/baskerville"
   cd "$HOME/projects/github.com/baskerville" || exit
