@@ -65,8 +65,10 @@ elif [ "$OS" = "Gentoo" ]; then
   uname=$(uname -srm | cut -d' ' -f2 | cut -d- -f1)
   eselect=$(eselect kernel list | tail -1 | cut -d- -f2)
   if [ ! "${eselect}" = "${uname}" ]; then
-    echo "complie the kernel '$eselect' as it is newer than '$uname'"
-    sudo genkernel all
+    if [ ! -f "/boot/vmlinuz-${eselect}-gentoo-x86_64" ]; then
+      echo "complie the kernel '$eselect' as it is newer than '$uname'"
+      sudo genkernel all
+    fi
   fi
   sudo emerge @preserved-rebuild
   echo eselect editor list
