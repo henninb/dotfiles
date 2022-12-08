@@ -92,6 +92,13 @@ elif [ "${OS}" = "FreeBSD" ]; then
   # sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
   sudo service sddm enable
   echo "https://community.kde.org/FreeBSD/Setup#SDDM"
+elif [ "$OS" = "Fedora Linux" ]; then
+  sudo dnf install -y sddm
+  sudo systemctl enable sddm
+  sudo systemctl start sddm
+  sudo mkdir -p /etc/sddm.conf.d/
+  sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
+  sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse sddm
   sudo usermod -a -G video sddm
