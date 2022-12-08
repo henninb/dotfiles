@@ -109,8 +109,16 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo cp -v "$HOME/tmp/xorg.conf" /etc/X11/xorg.conf
   #sudo pacman -S nvidia lib32-nvidia-utils  --overwrite '*'
 elif [ "$OS" = "Fedora Linux" ]; then
-  echo "Fedora"
-  exit 1
+  echo 'https://phoenixnap.com/kb/fedora-nvidia-drivers'
+  sudo dnf remove xorg-x11-drv-nouveau
+  echo /etc/default/grub
+  echo GRUB_CMDLINE_LINUX="text rd.driver.blacklist=nouveau"
+  echosudo cp -v "$HOME/tmp/nvidia-installer-disable-nouveau.conf" /etc/modeprobe.d/blacklist.conf
+  echo sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+  echo sudo dracut --force /boot/initramfs-$(uname -r).img $(uname -r)
+  echo sudo systemctl set-default multi-user.target
+  echo sudo systemctl set-default graphical.target
+  sudo dnf install akmod-nvidia
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y xtools
   git clone git@github.com:void-linux/void-packages.git
