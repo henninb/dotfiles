@@ -108,6 +108,9 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo cp -v "$HOME/tmp/nvidia-installer-disable-nouveau.conf" /etc/modeprobe.d/
   sudo cp -v "$HOME/tmp/xorg.conf" /etc/X11/xorg.conf
   #sudo pacman -S nvidia lib32-nvidia-utils  --overwrite '*'
+elif [ "$OS" = "Fedora Linux" ]; then
+  echo "Fedora"
+  exit 1
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y xtools
   git clone git@github.com:void-linux/void-packages.git
