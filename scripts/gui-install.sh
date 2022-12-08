@@ -2,7 +2,7 @@
 
 # DEBIAN_FRONTEND=noninteractive
 
-ARCHLINUX_PKGS="meld blender pcmanfm dbeaver vscode discord wireshark-qt i3lock thunar meld xorg-server xlockmore vlc riot-desktop handbrake dbeaver handbrake feh dolphin-emu gqrx gitk audacity zathura sxiv mpv gimp inkscape brave fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio celluloid libva-vdpau-driver libvdpau-va-gl vdpauinfo mesa-vdpau libva-utils openshot cantata notepadqq qalculate-gtk gparted steam"
+ARCHLINUX_PKGS="meld blender pcmanfm dbeaver vscode discord wireshark-qt i3lock thunar meld xorg-server xlockmore vlc riot-desktop dbeaver handbrake feh dolphin-emu gqrx gitk audacity zathura sxiv mpv gimp inkscape brave fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio celluloid libva-vdpau-driver libvdpau-va-gl vdpauinfo mesa-vdpau libva-utils openshot cantata notepadqq qalculate-gtk gparted steam"
 
 MINT_PKGS="qalculate thunar meld vlc riot-desktop handbrake dolphin-emu xterm rofi feh suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious gitk audacity gqrx-sdr gimp inkscape gnome-mpv openshot vulkan-utils basilisk"
 
@@ -18,7 +18,7 @@ VOID_PKGS="gimp incscape vlc handbrake audacity dolphin-emu zathura dbeaver mpv"
 
 SOLUS_PKGS="meld gimp inkscape vlc handbrake audacity dolphin-emu zathura dbeaver gnome-mpv terminator mpv openshot"
 
-#FEDORA_PKGS="gvim gqrx keepassxc"
+FEDORA_PKGS="meld blender pcmanfm dbeaver vscode discord wireshark-qt i3lock thunar meld vlc handbrake dbeaver feh dolphin-emu gqrx gitk audacity zathura sxiv mpv gimp inkscape fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio celluloid libva-utils openshot cantata notepadqq qalculate-gtk gparted steam"
 
 #MACOS_PKGS="alacritty iterm2"
 
@@ -39,8 +39,15 @@ elif [ "$OS" = "Darwin" ]; then
   brew cask install vlc
   brew cask install alacritty
   brew cask install iterm2
+elif [ "$OS" = "Fedora Linux" ]; then
+  FAILURE=""
+  for i in $FEDORA_PKGS; do
+    if ! sudo dnf install -y "$i"; then
+      FAILURE="$i $FAILURE"
+    fi
+  done
+  echo failures "$FAILURE"
 elif [ "$OS" = "Solus" ]; then
-  echo
   FAILURE=""
   for i in $SOLUS_PKGS; do
     if ! sudo eopkg install -y "$i"; then

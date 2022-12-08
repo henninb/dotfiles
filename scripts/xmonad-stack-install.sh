@@ -303,8 +303,8 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo make install
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Fedora Linux" ]; then
-  echo not sure if this works
-  echo sudo ln -sfn /usr/lib64/libncursesw.so.6 /usr/lib64/libtinfo.so.6
+  # echo not sure if this works
+  # echo sudo ln -sfn /usr/lib64/libncursesw.so.6 /usr/lib64/libtinfo.so.6
 
   # sudo dnf remove -y lightdm
   # sudo dnf remove -y gdm
@@ -339,6 +339,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y libreoffice
   sudo dnf install -y mpc
   sudo dnf install -y mpd
+  sudo dnf install -y neovim
   sudo dnf install -y neofetch
   sudo dnf install -y numlockx
   sudo dnf install -y pavucontrol
