@@ -1,16 +1,16 @@
 #!/bin/sh
 
+sudo pacman --noconfirm --needed -S go
+sudo dnf install -y go
+# sudo apt install -y golang
+brew install golang
+
 if [ ! -x "$(command -v go)" ]; then
   echo go not installed.
   exit 1
-else
-  sudo pacman --noconfirm --needed -S go
-  # sudo apt install -y golang
-  brew install golang
 fi
 
-# go install github.com/gopasspw/gopass@latest
-go get github.com/gopasspw/gopass
+go install github.com/gopasspw/gopass@latest
 
 exit 0
 
