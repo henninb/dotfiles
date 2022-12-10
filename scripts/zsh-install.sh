@@ -8,6 +8,10 @@ elif [ -x "$(command -v emerge)" ]; then
   sudo emerge --update --newuse starship
 elif [ -x "$(command -v apt)" ]; then
   sudo apt install -y zsh
+  curl -O https://starship.rs/install.sh
+  chmod +x install.sh
+  ./install.sh -b ~/.local/bin
+  rm install.sh
 elif [ -x "$(command -v xbps-install)" ]; then
   sudo xbps-install -y zsh
 elif [ -x "$(command -v eopkg)" ]; then
