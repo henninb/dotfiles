@@ -47,8 +47,8 @@ export HISTORY_IGNORE
 
 if [ "${OSTYPE}" = "linux-gnu" ] || [ "${OSTYPE}" = "linux" ]; then
   if [ "${OS}" = "Gentoo" ]; then
-    if [ -d "/opt/openjdk-bin-11" ]; then
-      JAVA_HOME=/opt/openjdk-bin-11
+    if [ -d "/opt/openjdk-bin-17" ]; then
+      JAVA_HOME=/opt/openjdk-bin-17
       export JAVA_HOME
     else
       if [ -x "$(command -v java-config)" ]; then
@@ -66,14 +66,14 @@ if [ "${OSTYPE}" = "linux-gnu" ] || [ "${OSTYPE}" = "linux" ]; then
   fi
 elif [ "${OSTYPE}" = "linux-gnueabihf" ]; then
   echo "WARN: stop using java8"
-  JAVA_HOME=/usr/lib/jvm/java-8-openjdk-armhf
+  JAVA_HOME=/usr/lib/jvm/java-17-openjdk-armhf
   export JAVA_HOME
 elif [ "$OS" = "Darwin" ]; then
   # JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
   JAVA_HOME="$(/usr/libexec/java_home)"
   export JAVA_HOME
 elif [ "$OS" = "FreeBSD" ]; then
-  JAVA_HOME=/usr/local/openjdk11
+  JAVA_HOME=/usr/local/openjdk17
   export JAVA_HOME
 else
   echo JAVA_HOME is not setup.

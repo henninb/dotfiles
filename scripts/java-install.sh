@@ -3,14 +3,15 @@
 if [ "$OS" = "Gentoo" ]; then
   # sudo emerge --update --newuse dev-java/gradle-bin
   # sudo emerge --update --newuse dev-java/openjdk-bin
-  sudo emerge --update --newuse dev-java/openjdk-bin:11
+  # sudo emerge --update --newuse dev-java/openjdk-bin:11
   sudo emerge --update --newuse dev-java/openjdk-bin:17
-  echo sudo java-config --set-system-vm openjdk-bin-8
+  eselect java-vm set user openjdk-bin-17
+  sudo eselect java-vm set system openjdk-bin-17
+  #echo sudo java-config --set-system-vm openjdk-bin-17
   echo emerge -v openjdk:11
   echo eselect java-vm list
-  echo eselect java-vm set user openjdk-bin-8
 elif [ "$OS" = "Solus" ]; then
-  sudo eopkg install -y openjdk-11
+  sudo eopkg install -y openjdk-17
   # openjdk-8-devel
 elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y openjdk-8-jdk
@@ -19,8 +20,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   # echo sudo pacman --noconfirm --needed -S jdk-openjdk
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y portmaster
-  sudo portmaster -o java/openjdk11 #linux-oracle-jdk18
-  sudo pkg install -y openjdk11
+  sudo portmaster -o java/openjdk17
+  sudo pkg install -y openjdk17
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper install -y java-11-openjdk
   # sudo zypper install -y java-1_8_0-openjdk
@@ -29,13 +30,13 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y openjdk11
   # echo openjdk11-bin
 elif [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Linux" ]; then
-  sudo apt install -y openjdk-11-jdk
+  sudo apt install -y openjdk-17-jdk
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install -y java-11-openjdk-devel
+  sudo dnf install -y java-17-openjdk-devel
 elif [ "$OS" = "Linux Mint" ]; then
   sudo apt update
   sudo apt upgrade -y
-  sudo apt install -y openjdk-11-jdk
+  sudo apt install -y openjdk-17-jdk
 else
   echo "$OS is not yet implemented."
   exit 1
