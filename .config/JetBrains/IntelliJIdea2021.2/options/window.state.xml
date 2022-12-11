@@ -1,9 +1,9 @@
 <application>
   <component name="DimensionService">
-    <size key="GridCell.Tab.0.left.0.0.3840.2160" width="3800" height="966" />
-    <size key="GridCell.Tab.0.center.0.0.3840.2160" width="3800" height="966" />
-    <size key="GridCell.Tab.0.right.0.0.3840.2160" width="3800" height="966" />
-    <size key="GridCell.Tab.0.bottom.0.0.3840.2160" width="3800" height="966" />
+    <size key="GridCell.Tab.0.left.0.0.3840.2160" width="3800" height="674" />
+    <size key="GridCell.Tab.0.center.0.0.3840.2160" width="3800" height="674" />
+    <size key="GridCell.Tab.0.right.0.0.3840.2160" width="3800" height="674" />
+    <size key="GridCell.Tab.0.bottom.0.0.3840.2160" width="3800" height="674" />
   </component>
   <component name="WindowManager">
     <frame x="0" y="14" width="3840" height="2128" />
@@ -21,10 +21,10 @@
       <screen x="0" y="0" width="3840" height="2160" />
     </state>
     <state width="621" height="100" key="ShowUsagesActions.dimensionServiceKey/0.0.3840.2160" timestamp="1663067735141" />
-    <state x="1920" y="820" width="800" height="600" key="WELCOME_SCREEN" timestamp="1669124891714">
+    <state x="1920" y="820" width="800" height="600" key="WELCOME_SCREEN" timestamp="1670773620649">
       <screen x="0" y="0" width="3840" height="2160" />
     </state>
     <state x="1920" y="820" width="800" height="600" key="WELCOME_SCREEN/0.0.3840.2160" timestamp="1665326275448" />
-    <state x="1920" y="820" width="800" height="600" key="WELCOME_SCREEN/0.0.3840.2160/3840.0.1440.2560" timestamp="1669124891714" />
+    <state x="1920" y="820" width="800" height="600" key="WELCOME_SCREEN/0.0.3840.2160/3840.0.1440.2560" timestamp="1670773620649" />
   </component>
 </application>
