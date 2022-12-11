@@ -96,3 +96,4 @@ media-video/pipewire X bluetooth dbus extra flatpak systemd
 net-dns/avahi mdnsresponder-compat
 dev-lang/mono minimal
 app-containers/podman rootless fuse
+app-text/poppler qt5
