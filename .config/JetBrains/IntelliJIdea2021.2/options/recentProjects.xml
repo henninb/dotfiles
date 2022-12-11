@@ -74,18 +74,6 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
-        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-react">
-          <value>
-            <RecentProjectMetaInfo frameTitle="raspi-finance-react" projectWorkspaceId="2CV3JTsTCDEir5mhoxBfWN2SFfL">
-              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="build" value="IU-212.5080.55" />
-              <option name="buildTimestamp" value="1629776242078" />
-              <frame x="0" y="14" width="3840" height="2128" />
-              <option name="productionCode" value="IU" />
-              <option name="projectOpenTimestamp" value="1663063897025" />
-            </RecentProjectMetaInfo>
-          </value>
-        </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint">
           <value>
             <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – V01__create-ddl-objects-prod.sql [raspi-finance-endpoint.main]" projectWorkspaceId="2IeLiEzB0LRUyYvWIDUnZ7Zc78l">
@@ -95,6 +83,18 @@
               <frame x="0" y="14" width="3840" height="2128" />
               <option name="productionCode" value="IU" />
               <option name="projectOpenTimestamp" value="1670674182522" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-react">
+          <value>
+            <RecentProjectMetaInfo frameTitle="raspi-finance-react – useDescriptionInsert.tsx" projectWorkspaceId="2Im4znbFme2B3jzAkIB58aIloox">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IU-212.5080.55" />
+              <option name="buildTimestamp" value="1629776220448" />
+              <frame x="0" y="14" width="3840" height="2128" />
+              <option name="productionCode" value="IU" />
+              <option name="projectOpenTimestamp" value="1670773690059" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
