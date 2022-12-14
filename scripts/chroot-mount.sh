@@ -40,6 +40,7 @@ elif [ "$os" = "fedora" ]; then
 
   sudo mount -t proc none /mnt/fedora/root/proc
   sudo mount --rbind /dev /mnt/fedora/root/dev
+  # echo mount --bind /dev/mnt/dev
   sudo mount --rbind /sys /mnt/fedora/root/sys
   sudo mount --rbind /run /mnt/fedora/root/run
 
@@ -48,9 +49,9 @@ elif [ "$os" = "fedora" ]; then
   echo 'export PS1="(chroot) $PS1"'
 elif [ "$os" = "archlinux" ]; then
   sudo mkdir -p /mnt/archlinux
-  sudo mount /dev/sda2 /mnt/archlinux
+  sudo mount /dev/sdb2 /mnt/archlinux
   sudo mkdir -p /mnt/archlinux/boot/efi
-  sudo mount /dev/sda1 /mnt/archlinux/boot/efi
+  sudo mount /dev/sdb1 /mnt/archlinux/boot/efi
   cd /mnt/archlinux
 
   sudo mount -t proc none /mnt/archlinux/proc
@@ -81,3 +82,7 @@ exit 0
   echo source /etc/profile
   echo 'export PS1="(chroot) $PS1"'
 
+chroot /fedora /bin/env -i \
+    HOME=/root TERM="$TERM" PS1='[\u@f24chroot \W]\$ ' \
+    PATH=/bin:/usr/bin:/sbin:/usr/sbin:/bin \
+    /bin/bash --login
