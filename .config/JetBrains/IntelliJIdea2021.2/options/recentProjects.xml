@@ -14,30 +14,6 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
-        <entry key="$USER_HOME$/projects/github.com/henninb/example-kotlin">
-          <value>
-            <RecentProjectMetaInfo frameTitle="example-kotlin – What's New in IntelliJ IDEA" projectWorkspaceId="2CV39AHmxhu2Q0bNp38lUhGeykX">
-              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="build" value="IU-212.5080.55" />
-              <option name="buildTimestamp" value="1629776246716" />
-              <frame x="0" y="14" width="3840" height="2128" />
-              <option name="productionCode" value="IU" />
-              <option name="projectOpenTimestamp" value="1658873772399" />
-            </RecentProjectMetaInfo>
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/projects/github.com/henninb/example-ratpack">
-          <value>
-            <RecentProjectMetaInfo frameTitle="example-ratpack – README.md" projectWorkspaceId="2CV3BYev46xuaU2rew1ESzGXfyG">
-              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="build" value="IU-212.5080.55" />
-              <option name="buildTimestamp" value="1629776246716" />
-              <frame x="0" y="14" width="3840" height="2128" />
-              <option name="productionCode" value="IU" />
-              <option name="projectOpenTimestamp" value="1658873790062" />
-            </RecentProjectMetaInfo>
-          </value>
-        </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/example-scala">
           <value>
             <RecentProjectMetaInfo frameTitle="example-scala" projectWorkspaceId="2CV3DGnVJ8uD7rBhwx825kIxnBZ">
@@ -88,13 +64,37 @@
         </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint">
           <value>
-            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – test.gradle [raspi-finance-endpoint]" opened="true" projectWorkspaceId="2IeLiEzB0LRUyYvWIDUnZ7Zc78l">
+            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – gradle.properties [raspi-finance-endpoint]" projectWorkspaceId="2IeLiEzB0LRUyYvWIDUnZ7Zc78l">
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="IU-212.5080.55" />
               <option name="buildTimestamp" value="1629776270029" />
               <frame x="0" y="14" width="3840" height="2128" />
               <option name="productionCode" value="IU" />
               <option name="projectOpenTimestamp" value="1671188896945" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/example-ratpack">
+          <value>
+            <RecentProjectMetaInfo frameTitle="example-ratpack – gradle.properties [example-ratpack]" projectWorkspaceId="2IzwdFDazqCjNFhKhPKOB1RYxoS">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IU-212.5080.55" />
+              <option name="buildTimestamp" value="1629776235208" />
+              <frame x="0" y="14" width="3840" height="2128" />
+              <option name="productionCode" value="IU" />
+              <option name="projectOpenTimestamp" value="1671197804945" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/example-kotlin">
+          <value>
+            <RecentProjectMetaInfo frameTitle="example – application-prod.yml [example.main]" projectWorkspaceId="2J15wvZbfI4pZx3FPOCUf2Tld1C">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IU-212.5080.55" />
+              <option name="buildTimestamp" value="1629776241605" />
+              <frame x="0" y="14" width="3840" height="2128" />
+              <option name="productionCode" value="IU" />
+              <option name="projectOpenTimestamp" value="1671232991120" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
