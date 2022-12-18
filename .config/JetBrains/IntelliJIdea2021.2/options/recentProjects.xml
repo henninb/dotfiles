@@ -2,30 +2,6 @@
   <component name="RecentProjectsManager">
     <option name="additionalInfo">
       <map>
-        <entry key="$USER_HOME$/projects/github.com/henninb/example-java">
-          <value>
-            <RecentProjectMetaInfo frameTitle="example – gradle.properties [example]" projectWorkspaceId="2BRbV3rCQ3AeqfEn9RKl1NapoQk">
-              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="build" value="IU-212.5080.55" />
-              <option name="buildTimestamp" value="1629776234791" />
-              <frame x="0" y="14" width="3840" height="2128" />
-              <option name="productionCode" value="IU" />
-              <option name="projectOpenTimestamp" value="1657143627656" />
-            </RecentProjectMetaInfo>
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/projects/github.com/henninb/example-scala">
-          <value>
-            <RecentProjectMetaInfo frameTitle="example-scala" projectWorkspaceId="2CV3DGnVJ8uD7rBhwx825kIxnBZ">
-              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="build" value="IU-212.5080.55" />
-              <option name="buildTimestamp" value="1629776246716" />
-              <frame x="0" y="14" width="3840" height="2128" />
-              <option name="productionCode" value="IU" />
-              <option name="projectOpenTimestamp" value="1658873803925" />
-            </RecentProjectMetaInfo>
-          </value>
-        </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/logout-gtk">
           <value>
             <RecentProjectMetaInfo frameTitle="logout-gtk – README.md" projectWorkspaceId="2CV3OXlmJTHsM85lC5Thmi4C5Qb">
@@ -74,18 +50,6 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
-        <entry key="$USER_HOME$/projects/github.com/henninb/example-kotlin">
-          <value>
-            <RecentProjectMetaInfo frameTitle="example – gradle.properties [example]" projectWorkspaceId="2J15wvZbfI4pZx3FPOCUf2Tld1C">
-              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="build" value="IU-212.5080.55" />
-              <option name="buildTimestamp" value="1629776245524" />
-              <frame x="0" y="14" width="3840" height="2128" />
-              <option name="productionCode" value="IU" />
-              <option name="projectOpenTimestamp" value="1671277122927" />
-            </RecentProjectMetaInfo>
-          </value>
-        </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint">
           <value>
             <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – BaseControllerSpec.groovy [raspi-finance-endpoint.functionalTest]" projectWorkspaceId="2IeLiEzB0LRUyYvWIDUnZ7Zc78l">
@@ -95,6 +59,42 @@
               <frame x="0" y="14" width="3840" height="2128" />
               <option name="productionCode" value="IU" />
               <option name="projectOpenTimestamp" value="1671280997399" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/example-java">
+          <value>
+            <RecentProjectMetaInfo frameTitle="example – application.yml [example.main]" projectWorkspaceId="2J5QdzKMabIPdYfXYQCXnW2jGBn">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IU-212.5080.55" />
+              <option name="buildTimestamp" value="1629776238490" />
+              <frame x="0" y="14" width="3840" height="2128" />
+              <option name="productionCode" value="IU" />
+              <option name="projectOpenTimestamp" value="1671372251003" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/example-kotlin">
+          <value>
+            <RecentProjectMetaInfo frameTitle="example – ScheduledJobService.kt [example.main]" projectWorkspaceId="2J15wvZbfI4pZx3FPOCUf2Tld1C">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IU-212.5080.55" />
+              <option name="buildTimestamp" value="1629776238490" />
+              <frame x="0" y="14" width="3840" height="2128" />
+              <option name="productionCode" value="IU" />
+              <option name="projectOpenTimestamp" value="1671373338667" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/example-scala">
+          <value>
+            <RecentProjectMetaInfo frameTitle="example – PersonController.scala [example.main]" projectWorkspaceId="2J5VTe52yqUPS2rpc2PsXtGSLBv">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IU-212.5080.55" />
+              <option name="buildTimestamp" value="1629776238490" />
+              <frame x="0" y="14" width="3840" height="2128" />
+              <option name="productionCode" value="IU" />
+              <option name="projectOpenTimestamp" value="1671374305830" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
