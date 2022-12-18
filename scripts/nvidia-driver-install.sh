@@ -118,7 +118,8 @@ elif [ "$OS" = "Fedora Linux" ]; then
   echo sudo dracut --force /boot/initramfs-$(uname -r).img $(uname -r)
   echo sudo systemctl set-default multi-user.target
   echo sudo systemctl set-default graphical.target
-  sudo dnf install akmod-nvidia
+  sudo dnf install -y akmod-nvidia
+  sudo dnf install -y xorg-x11-drv-nvidia-cuda
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y xtools
   git clone git@github.com:void-linux/void-packages.git
