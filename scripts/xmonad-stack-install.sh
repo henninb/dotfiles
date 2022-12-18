@@ -109,6 +109,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S gtk-update-icon-cache
   sudo pacman --noconfirm --needed -S gcc
   sudo pacman --noconfirm --needed -S htop
+  sudo pacman --noconfirm --needed -S inetutils
   sudo pacman --noconfirm --needed -S imagemagick
   sudo pacman --noconfirm --needed -S jq
   sudo pacman --noconfirm --needed -S keychain
