@@ -122,6 +122,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y xorg-x11-drv-nvidia-cuda
   sudo dnf install -y kernel-headers
   sudo dnf install -y kernel-devel
+  rpm -qa | grep -E "kernel-devel|kernel-headers"
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -y xtools
   git clone git@github.com:void-linux/void-packages.git
