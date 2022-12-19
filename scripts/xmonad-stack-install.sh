@@ -346,6 +346,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y pavucontrol
   sudo dnf install -y partimage
   sudo dnf install -y pandoc
+  sudo dnf install -y openssl
   sudo dnf install -y rsync
   sudo dnf install -y sxhkd
   sudo dnf install -y slock
