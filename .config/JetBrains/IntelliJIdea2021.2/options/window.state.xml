@@ -10,7 +10,7 @@
     <size key="GridCell.Tab.1.bottom.0.0.3840.2160" width="3798" height="827" />
   </component>
   <component name="WindowManager">
-    <frame x="0" y="14" width="3840" height="2128" />
+    <frame x="0" y="0" width="3838" height="2158" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="0" />
@@ -25,10 +25,10 @@
       <screen x="0" y="0" width="3840" height="2160" />
     </state>
     <state width="621" height="100" key="ShowUsagesActions.dimensionServiceKey/0.0.3840.2160" timestamp="1663067735141" />
-    <state x="1920" y="820" width="800" height="600" key="WELCOME_SCREEN" timestamp="1671374302472">
+    <state x="1920" y="820" width="800" height="600" key="WELCOME_SCREEN" timestamp="1671412179682">
       <screen x="0" y="0" width="3840" height="2160" />
     </state>
     <state x="1920" y="820" width="800" height="600" key="WELCOME_SCREEN/0.0.3840.2160" timestamp="1665326275448" />
-    <state x="1920" y="820" width="800" height="600" key="WELCOME_SCREEN/0.0.3840.2160/3840.0.1440.2560" timestamp="1671374302472" />
+    <state x="1920" y="820" width="800" height="600" key="WELCOME_SCREEN/0.0.3840.2160/3840.0.1440.2560" timestamp="1671412179682" />
   </component>
 </application>
