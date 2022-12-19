@@ -50,18 +50,6 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
-        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint">
-          <value>
-            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – BaseControllerSpec.groovy [raspi-finance-endpoint.functionalTest]" projectWorkspaceId="2IeLiEzB0LRUyYvWIDUnZ7Zc78l">
-              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="build" value="IU-212.5080.55" />
-              <option name="buildTimestamp" value="1629776245524" />
-              <frame x="0" y="14" width="3840" height="2128" />
-              <option name="productionCode" value="IU" />
-              <option name="projectOpenTimestamp" value="1671280997399" />
-            </RecentProjectMetaInfo>
-          </value>
-        </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/example-java">
           <value>
             <RecentProjectMetaInfo frameTitle="example – application.yml [example.main]" projectWorkspaceId="2J5QdzKMabIPdYfXYQCXnW2jGBn">
@@ -88,13 +76,37 @@
         </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/example-kotlin">
           <value>
-            <RecentProjectMetaInfo frameTitle="example – gradle.properties [example]" opened="true" projectWorkspaceId="2J6EWxmdn5hjBPk8gwWOK2NRnvb">
+            <RecentProjectMetaInfo frameTitle="example – ScheduledJobService.kt [example.main]" projectWorkspaceId="2J15wvZbfI4pZx3FPOCUf2Tld1C">
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="IU-212.5080.55" />
               <option name="buildTimestamp" value="1629776264190" />
-              <frame x="0" y="0" width="3838" height="2158" />
+              <frame x="0" y="0" width="3836" height="2156" />
               <option name="productionCode" value="IU" />
               <option name="projectOpenTimestamp" value="1671412621916" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint">
+          <value>
+            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – test.gradle [raspi-finance-endpoint]" projectWorkspaceId="2IeLiEzB0LRUyYvWIDUnZ7Zc78l">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IU-212.5080.55" />
+              <option name="buildTimestamp" value="1629776220184" />
+              <frame x="0" y="14" width="3840" height="2128" />
+              <option name="productionCode" value="IU" />
+              <option name="projectOpenTimestamp" value="1671449065883" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint-micronaut">
+          <value>
+            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint-micronaut – application.yml [raspi-finance-endpoint-micronaut.main]" projectWorkspaceId="2J8BkwXD9SWPG2K9ZEJvq5PaAdI">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IU-212.5080.55" />
+              <option name="buildTimestamp" value="1629776220184" />
+              <frame x="0" y="14" width="3840" height="2128" />
+              <option name="productionCode" value="IU" />
+              <option name="projectOpenTimestamp" value="1671449976132" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
