@@ -34,6 +34,17 @@ elif [ "$OS" = "void" ]; then
   sudo xbps-install -y xcb-util-renderutil-devel
   sudo xbps-install -y xcb-util-image-devel
   sudo xbps-install -y xcb-util-composite-devel
+elif [ "$OS" = "Fedora Linux" ]; then
+  test
+  sudo dnf install -y ninja
+  sudo dnf install -y meson
+  sudo dnf install -y libev-devel
+  sudo dnf install -y uthash
+  sudo dnf install -y libconfig-devel
+  sudo dnf install -y xcb-util-renderutil-devel
+  sudo dnf install -y xcb-util-image-devel
+  sudo dnf install -y xcb-util-composite-devel
+  sudo dnf install -y pcre-devel
 elif [ "$OS" = "Gentoo" ]; then
   if ! command -v ninja; then
     sudo emerge --update --newuse dev-util/ninja
