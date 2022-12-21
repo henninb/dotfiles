@@ -4,6 +4,12 @@ if command -v emerge; then
   sudo emerge --update --newuse dev-libs/hidapi
 fi
 
+
+if command -v dnf; then
+  sudo dnf install -y libusb1-devel
+  sudo dnf install -y libgudev-devel
+fi
+
 cat << EOF > "$HOME/tmp/70-streamdeck.rules"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="0060", TAG+="uaccess"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="0063", TAG+="uaccess"
