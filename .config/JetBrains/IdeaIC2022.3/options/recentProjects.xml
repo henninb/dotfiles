@@ -1,0 +1,105 @@
+<application>
+  <component name="RecentProjectsManager">
+    <option name="additionalInfo">
+      <map>
+        <entry key="$USER_HOME$/projects/github.com/henninb/logout-gtk">
+          <value>
+            <RecentProjectMetaInfo frameTitle="logout-gtk – README.md" projectWorkspaceId="2CV3OXlmJTHsM85lC5Thmi4C5Qb">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IU-212.5080.55" />
+              <option name="buildTimestamp" value="1629776246716" />
+              <frame x="0" y="14" width="3840" height="2128" />
+              <option name="productionCode" value="IU" />
+              <option name="projectOpenTimestamp" value="1658873892783" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/weather-gtk">
+          <value>
+            <RecentProjectMetaInfo frameTitle="weather-gtk" projectWorkspaceId="2CV3LQovE27IJZIXQbTZkWp6ZUT">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IU-212.5080.55" />
+              <option name="buildTimestamp" value="1629776246716" />
+              <frame x="0" y="14" width="3840" height="2128" />
+              <option name="productionCode" value="IU" />
+              <option name="projectOpenTimestamp" value="1658873906739" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-react">
+          <value>
+            <RecentProjectMetaInfo frameTitle="raspi-finance-react – useDescriptionInsert.tsx" projectWorkspaceId="2Im4znbFme2B3jzAkIB58aIloox">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IU-212.5080.55" />
+              <option name="buildTimestamp" value="1629776220448" />
+              <frame x="0" y="14" width="3840" height="2128" />
+              <option name="productionCode" value="IU" />
+              <option name="projectOpenTimestamp" value="1670773690059" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/example-ratpack">
+          <value>
+            <RecentProjectMetaInfo frameTitle="example-ratpack – gradle.properties [example-ratpack]" projectWorkspaceId="2IzwdFDazqCjNFhKhPKOB1RYxoS">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IU-212.5080.55" />
+              <option name="buildTimestamp" value="1629776235208" />
+              <frame x="0" y="14" width="3840" height="2128" />
+              <option name="productionCode" value="IU" />
+              <option name="projectOpenTimestamp" value="1671197804945" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint">
+          <value>
+            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – BaseControllerSpec.groovy [raspi-finance-endpoint.functionalTest]" projectWorkspaceId="2IeLiEzB0LRUyYvWIDUnZ7Zc78l">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IU-212.5080.55" />
+              <option name="buildTimestamp" value="1629776245524" />
+              <frame x="0" y="14" width="3840" height="2128" />
+              <option name="productionCode" value="IU" />
+              <option name="projectOpenTimestamp" value="1671280997399" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/example-java">
+          <value>
+            <RecentProjectMetaInfo frameTitle="example – application.yml [example.main]" projectWorkspaceId="2J5QdzKMabIPdYfXYQCXnW2jGBn">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IU-212.5080.55" />
+              <option name="buildTimestamp" value="1629776238490" />
+              <frame x="0" y="14" width="3840" height="2128" />
+              <option name="productionCode" value="IU" />
+              <option name="projectOpenTimestamp" value="1671372251003" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/example-kotlin">
+          <value>
+            <RecentProjectMetaInfo frameTitle="example – gradle.properties [example]" projectWorkspaceId="2J6EWxmdn5hjBPk8gwWOK2NRnvb">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IU-212.5080.55" />
+              <option name="buildTimestamp" value="1629776264190" />
+              <frame x="0" y="0" width="3836" height="2156" />
+              <option name="productionCode" value="IU" />
+              <option name="projectOpenTimestamp" value="1671412621916" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/example-scala">
+          <value>
+            <RecentProjectMetaInfo frameTitle="example-scala – env" projectWorkspaceId="2J6yA5ou3gRRqspVrpNxXCj2yf1">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IU-212.5080.55" />
+              <option name="buildTimestamp" value="1629776264190" />
+              <frame x="0" y="14" width="3840" height="2128" />
+              <option name="productionCode" value="IU" />
+              <option name="projectOpenTimestamp" value="1671412680646" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="lastProjectLocation" value="$USER_HOME$/projects/github.com/henninb" />
+  </component>
+</application>
