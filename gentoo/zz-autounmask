@@ -97,3 +97,4 @@ net-dns/avahi mdnsresponder-compat
 dev-lang/mono minimal
 app-containers/podman rootless fuse
 app-text/poppler qt5
+dev-qt/qtsql mysql
