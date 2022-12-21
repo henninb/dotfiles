@@ -301,8 +301,9 @@
                 }
             },
             "page": 0,
-            "brightness": 29,
-            "brightness_dimmed": 0
+            "brightness": 43,
+            "brightness_dimmed": 37,
+            "display_timeout": 3600
         }
     }
 }
