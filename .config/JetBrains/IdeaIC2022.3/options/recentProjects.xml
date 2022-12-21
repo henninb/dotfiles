@@ -98,8 +98,21 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint-micronaut">
+          <value>
+            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint-micronaut – application.yml [raspi-finance-endpoint-micronaut.main]" projectWorkspaceId="2J8BkwXD9SWPG2K9ZEJvq5PaAdI">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IC-223.7571.182" />
+              <option name="buildTimestamp" value="1669736196042" />
+              <frame x="0" y="0" width="3836" height="2156" />
+              <option name="productionCode" value="IC" />
+              <option name="projectOpenTimestamp" value="1671627532100" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
       </map>
     </option>
+    <option name="lastOpenedProject" value="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint-micronaut" />
     <option name="lastProjectLocation" value="$USER_HOME$/projects/github.com/henninb" />
   </component>
 </application>
