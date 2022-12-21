@@ -384,6 +384,8 @@ elif [ "$OS" = "CentOS Linux" ]; then
     sudo dnf install -y flameshot
     sudo dnf install -y xscreensaver
     # sudo dnf install -y dzen2
+    echo 'nix-env -i dzen2'
+    nix-env -i dzen2
   else
     echo centos7
     sudo yum install -y alsa-lib-devel
