@@ -1,6 +1,6 @@
 #!/bin/sh
 
-node_ver=16.16.0
+node_ver=18.12.1
 #sudo apt install -y yarn
 # unset NVM_DIR
 
@@ -17,6 +17,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   echo sudo pacman --noconfirm --needed -S npm
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo sudo zypper install -y nodejs
+elif [ "$OS" = "Fedora Linux" ]; then
+  test
 elif [ "$OS" = "void" ]; then
   echo "void"
 elif [ "$OS" = "Gentoo" ]; then
