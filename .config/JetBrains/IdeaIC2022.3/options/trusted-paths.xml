@@ -4,6 +4,7 @@
       <map>
         <entry key="$USER_HOME$/projects/github.com/henninb/example-kotlin" value="true" />
         <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint-micronaut" value="true" />
+        <entry key="$USER_HOME$/projects/todo-micronaut" value="true" />
       </map>
     </option>
   </component>
@@ -11,6 +12,7 @@
     <option name="TRUSTED_PATHS">
       <list>
         <option value="$USER_HOME$/projects/github.com/henninb" />
+        <option value="$USER_HOME$/projects" />
       </list>
     </option>
   </component>

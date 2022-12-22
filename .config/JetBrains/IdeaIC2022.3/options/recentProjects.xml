@@ -100,20 +100,33 @@
         </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint-micronaut">
           <value>
-            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint-micronaut – PersonService.kt [raspi-finance-endpoint-micronaut.main]" projectWorkspaceId="2J8BkwXD9SWPG2K9ZEJvq5PaAdI">
-              <option name="activationTimestamp" value="1671672346374" />
+            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint-micronaut – application.yml [raspi-finance-endpoint-micronaut.main]" projectWorkspaceId="2J8BkwXD9SWPG2K9ZEJvq5PaAdI">
+              <option name="activationTimestamp" value="1671712927220" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="IC-223.7571.182" />
-              <option name="buildTimestamp" value="1669736188870" />
-              <frame x="3840" y="20" width="1438" height="2538" />
+              <option name="buildTimestamp" value="1669736194487" />
+              <frame x="0" y="20" width="3838" height="2138" />
               <option name="productionCode" value="IC" />
-              <option name="projectOpenTimestamp" value="1671662684078" />
+              <option name="projectOpenTimestamp" value="1671712609252" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/todo-micronaut">
+          <value>
+            <RecentProjectMetaInfo frameTitle="todo_micronaut – application.yml [todo_micronaut.main]" opened="true" projectWorkspaceId="2JGkvS3nGKAepc8WIAwODVvzrq8">
+              <option name="activationTimestamp" value="1671713325724" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IC-223.7571.182" />
+              <option name="buildTimestamp" value="1669736194487" />
+              <frame x="0" y="20" width="3838" height="2138" />
+              <option name="productionCode" value="IC" />
+              <option name="projectOpenTimestamp" value="1671713027264" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
       </map>
     </option>
-    <option name="lastOpenedProject" value="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint-micronaut" />
-    <option name="lastProjectLocation" value="$USER_HOME$/projects/github.com/henninb" />
+    <option name="lastOpenedProject" value="$USER_HOME$/projects/todo-micronaut" />
+    <option name="lastProjectLocation" value="$USER_HOME$/projects" />
   </component>
 </application>
