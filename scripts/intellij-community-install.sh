@@ -25,7 +25,15 @@ if command -v pacman; then
   sudo pacman --noconfirm --needed -S jq curl
   sudo pacman --noconfirm --needed -S net-tools psmisc
 elif command -v emerge; then
-  sudo emerge --update --newuse app-misc/jq wget net-misc/curl
+  if ! command -v jq; then
+    sudo emerge --update --newuse app-misc/jq
+  fi
+  if ! command -v wget; then
+    sudo emerge --update --newuse wget 
+  fi
+  if ! command -v curl; then
+  sudo emerge --update --newuse net-misc/curl
+  fi
 elif command -v apt; then
   sudo apt install -y jq curl
 elif command -v xbps-install; then
@@ -69,10 +77,9 @@ if [ ! -f "$HOME/tmp/ideaIC-${VER}.tar.gz" ]; then
   fi
 fi
 
-# https://download.jetbrains.com/idea/ideaIC-2021.2.3.tar.gz
-if [ ! -f "ideaIC-${VER}.tar.gz" ]; then
-  rm -rf ideaIC-*.tar.gz
-  if ! scp "pi@pi:/home/pi/downloads/ideaIC-${VER}.tar.gz" .; then
+if [ ! -f "$HOME/tmp/ideaIC-${VER}.tar.gz" ]; then
+  rm -rf "$HOME/tmp/ideaIC-*.tar.gz"
+  if ! scp "pi@pi:/home/pi/downloads/ideaIC-${VER}.tar.gz" "$HOME/tmp/"; then
     if ! curl -s --output "$HOME/tmp/ideaIC-${VER}.tar.gz" "https://download-cf.jetbrains.com/idea/ideaIC-${VER}.tar.gz"; then
     # if ! wget "https://download.jetbrains.com/idea/ideaIC-${VER}.tar.gz"; then
       echo download failed.
