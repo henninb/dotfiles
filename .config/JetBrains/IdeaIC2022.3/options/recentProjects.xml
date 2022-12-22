@@ -100,33 +100,46 @@
         </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint-micronaut">
           <value>
-            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint-micronaut – application.yml [raspi-finance-endpoint-micronaut.main]" projectWorkspaceId="2J8BkwXD9SWPG2K9ZEJvq5PaAdI">
-              <option name="activationTimestamp" value="1671712927220" />
+            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint-micronaut – build.gradle (raspi-finance-endpoint-micronaut)" projectWorkspaceId="2J8BkwXD9SWPG2K9ZEJvq5PaAdI">
+              <option name="activationTimestamp" value="1671717069516" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="IC-223.7571.182" />
-              <option name="buildTimestamp" value="1669736194487" />
+              <option name="buildTimestamp" value="1669736194697" />
               <frame x="0" y="20" width="3838" height="2138" />
               <option name="productionCode" value="IC" />
-              <option name="projectOpenTimestamp" value="1671712609252" />
+              <option name="projectOpenTimestamp" value="1671717069830" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
-        <entry key="$USER_HOME$/projects/todo-micronaut">
+        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint-micronaut-new-new">
           <value>
-            <RecentProjectMetaInfo frameTitle="todo_micronaut – application.yml [todo_micronaut.main]" opened="true" projectWorkspaceId="2JGkvS3nGKAepc8WIAwODVvzrq8">
-              <option name="activationTimestamp" value="1671713325724" />
+            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint-micronaut – build.gradle (raspi-finance-endpoint-micronaut)" projectWorkspaceId="2J8BkwXD9SWPG2K9ZEJvq5PaAdI">
+              <option name="activationTimestamp" value="1671718899651" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="IC-223.7571.182" />
-              <option name="buildTimestamp" value="1669736194487" />
+              <option name="buildTimestamp" value="1669736194697" />
               <frame x="0" y="20" width="3838" height="2138" />
               <option name="productionCode" value="IC" />
-              <option name="projectOpenTimestamp" value="1671713027264" />
+              <option name="projectOpenTimestamp" value="1671717356121" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/example-micronaut">
+          <value>
+            <RecentProjectMetaInfo frameTitle="example – build.gradle.kts [example]" projectWorkspaceId="2JGr7zxExOROpxOsz9s76EvuuPv">
+              <option name="activationTimestamp" value="1671720661216" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IC-223.7571.182" />
+              <option name="buildTimestamp" value="1669736194697" />
+              <frame x="0" y="20" width="3838" height="2138" />
+              <option name="productionCode" value="IC" />
+              <option name="projectOpenTimestamp" value="1671718926419" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
       </map>
     </option>
-    <option name="lastOpenedProject" value="$USER_HOME$/projects/todo-micronaut" />
-    <option name="lastProjectLocation" value="$USER_HOME$/projects" />
+    <option name="lastOpenedProject" value="$USER_HOME$/projects/github.com/henninb/example-micronaut" />
+    <option name="lastProjectLocation" value="$USER_HOME$/projects/github.com/henninb" />
   </component>
 </application>

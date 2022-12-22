@@ -73,11 +73,12 @@ fi
 if [ ! -f "ideaIC-${VER}.tar.gz" ]; then
   rm -rf ideaIC-*.tar.gz
   if ! scp "pi@pi:/home/pi/downloads/ideaIC-${VER}.tar.gz" .; then
-    if ! wget "https://download.jetbrains.com/idea/ideaIC-${VER}.tar.gz"; then
+    if ! curl -s --output "$HOME/tmp/ideaIC-${VER}.tar.gz" "https://download-cf.jetbrains.com/idea/ideaIC-${VER}.tar.gz"; then
+    # if ! wget "https://download.jetbrains.com/idea/ideaIC-${VER}.tar.gz"; then
       echo download failed.
       exit 1
     fi
-    scp "ideaIC-${VER}.tar.gz" "pi@pi:/home/pi/downloads"
+    scp "$HOME/tmp/ideaIC-${VER}.tar.gz" "pi@pi:/home/pi/downloads"
   fi
 fi
 
