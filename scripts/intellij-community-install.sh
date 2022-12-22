@@ -77,17 +77,17 @@ if [ ! -f "$HOME/tmp/ideaIC-${VER}.tar.gz" ]; then
   fi
 fi
 
-if [ ! -f "$HOME/tmp/ideaIC-${VER}.tar.gz" ]; then
-  rm -rf "$HOME/tmp/ideaIC-*.tar.gz"
-  if ! scp "pi@pi:/home/pi/downloads/ideaIC-${VER}.tar.gz" "$HOME/tmp/"; then
-    if ! curl -s --output "$HOME/tmp/ideaIC-${VER}.tar.gz" "https://download-cf.jetbrains.com/idea/ideaIC-${VER}.tar.gz"; then
-    # if ! wget "https://download.jetbrains.com/idea/ideaIC-${VER}.tar.gz"; then
-      echo download failed.
-      exit 1
-    fi
-    scp "$HOME/tmp/ideaIC-${VER}.tar.gz" "pi@pi:/home/pi/downloads"
-  fi
-fi
+# if [ ! -f "$HOME/tmp/ideaIC-${VER}.tar.gz" ]; then
+#   rm -rf "$HOME/tmp/ideaIC-*.tar.gz"
+#   if ! scp "pi@pi:/home/pi/downloads/ideaIC-${VER}.tar.gz" "$HOME/tmp/"; then
+#     if ! curl -s --output "$HOME/tmp/ideaIC-${VER}.tar.gz" "https://download-cf.jetbrains.com/idea/ideaIC-${VER}.tar.gz"; then
+#     # if ! wget "https://download.jetbrains.com/idea/ideaIC-${VER}.tar.gz"; then
+#       echo download failed.
+#       exit 1
+#     fi
+#     scp "$HOME/tmp/ideaIC-${VER}.tar.gz" "pi@pi:/home/pi/downloads"
+#   fi
+# fi
 
 sudo mkdir -p /opt
 sudo rm -rf /opt/intellij
