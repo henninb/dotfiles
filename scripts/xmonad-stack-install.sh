@@ -304,6 +304,9 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo make install
   echo "Failures: $FAILURE"
 elif [ "$OS" = "Fedora Linux" ]; then
+  sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+  sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+  sudo dnf makecache
   # echo not sure if this works
   # echo sudo ln -sfn /usr/lib64/libncursesw.so.6 /usr/lib64/libtinfo.so.6
 
