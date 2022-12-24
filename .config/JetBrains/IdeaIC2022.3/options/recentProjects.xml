@@ -62,31 +62,6 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
-        <entry key="$USER_HOME$/projects/github.com/henninb/example-scala">
-          <value>
-            <RecentProjectMetaInfo frameTitle="example-scala – env" projectWorkspaceId="2J6yA5ou3gRRqspVrpNxXCj2yf1">
-              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="build" value="IU-212.5080.55" />
-              <option name="buildTimestamp" value="1629776264190" />
-              <frame x="0" y="14" width="3840" height="2128" />
-              <option name="productionCode" value="IU" />
-              <option name="projectOpenTimestamp" value="1671412680646" />
-            </RecentProjectMetaInfo>
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/projects/github.com/henninb/example-kotlin">
-          <value>
-            <RecentProjectMetaInfo frameTitle="example – ScheduledJobService.kt [example.main]" projectWorkspaceId="2J15wvZbfI4pZx3FPOCUf2Tld1C">
-              <option name="activationTimestamp" value="1671822580338" />
-              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="build" value="IC-223.8214.52" />
-              <option name="buildTimestamp" value="1671535459041" />
-              <frame x="0" y="0" width="3836" height="2156" />
-              <option name="productionCode" value="IC" />
-              <option name="projectOpenTimestamp" value="1671799773700" />
-            </RecentProjectMetaInfo>
-          </value>
-        </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint-micronaut-new-new">
           <value>
             <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint-micronaut – build.gradle [raspi-finance-endpoint-micronaut]" projectWorkspaceId="2J8BkwXD9SWPG2K9ZEJvq5PaAdI">
@@ -128,20 +103,46 @@
         </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/example-java">
           <value>
-            <RecentProjectMetaInfo frameTitle="example – Todo.java [example.main]" projectWorkspaceId="2J5QdzKMabIPdYfXYQCXnW2jGBn">
-              <option name="activationTimestamp" value="1671825523907" />
+            <RecentProjectMetaInfo frameTitle="example – PersonService.java [example.main]" projectWorkspaceId="2J5QdzKMabIPdYfXYQCXnW2jGBn">
+              <option name="activationTimestamp" value="1671839273174" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="IC-223.8214.52" />
-              <option name="buildTimestamp" value="1671535471388" />
+              <option name="buildTimestamp" value="1671535473569" />
               <frame x="0" y="14" width="3840" height="2128" />
               <option name="productionCode" value="IC" />
-              <option name="projectOpenTimestamp" value="1671824318234" />
+              <option name="projectOpenTimestamp" value="1671838121732" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/example-kotlin">
+          <value>
+            <RecentProjectMetaInfo frameTitle="example – logback.xml [example.main]" projectWorkspaceId="2J15wvZbfI4pZx3FPOCUf2Tld1C">
+              <option name="activationTimestamp" value="1671840494951" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IC-223.8214.52" />
+              <option name="buildTimestamp" value="1671535473569" />
+              <frame x="0" y="0" width="3836" height="2156" />
+              <option name="productionCode" value="IC" />
+              <option name="projectOpenTimestamp" value="1671839582291" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/example-scala">
+          <value>
+            <RecentProjectMetaInfo frameTitle="example – TodoController.scala [example.main]" projectWorkspaceId="2J5VTe52yqUPS2rpc2PsXtGSLBv">
+              <option name="activationTimestamp" value="1671846206314" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IC-223.8214.52" />
+              <option name="buildTimestamp" value="1671535460848" />
+              <frame x="0" y="20" width="3838" height="2138" />
+              <option name="productionCode" value="IC" />
+              <option name="projectOpenTimestamp" value="1671840625844" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
       </map>
     </option>
-    <option name="lastOpenedProject" value="$USER_HOME$/projects/github.com/henninb/example-java" />
+    <option name="lastOpenedProject" value="$USER_HOME$/projects/github.com/henninb/example-scala" />
     <option name="lastProjectLocation" value="$USER_HOME$/projects/github.com/henninb" />
   </component>
 </application>
