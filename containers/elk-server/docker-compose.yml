@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   elasticsearch-server:
-    image: elasticsearch:8.5.1
+    image: elasticsearch:8.5.3
     container_name: elasticsearch-server
     environment:
       - discovery.type=single-node
@@ -17,7 +17,7 @@ services:
     depends_on:
       - logstash-server
   kibana-server:
-    image: kibana:8.5.1
+    image: kibana:8.5.3
     container_name: kibana-server
     ports:
       - "5601:5601"
@@ -29,11 +29,16 @@ services:
       - "hornsup:${HOST_IP}"
       - "elasticsearch:${HOST_IP}"
   logstash-server:
-    image: logstash:8.5.1
+    image: logstash:8.5.3
     container_name: logstash-server
     environment:
+      # - ELASTIC_USERNAME=elastic
+      # - ELASTIC_PASSWORD=DkIedPPSCb
+      - ELASTIC_PASSWORD=monday1
       - monitoring.elasticsearch.hosts=http://hornsup:9200
       - XPACK_MONITORING_ENABLED=false
+      - xpack.security.enabled=false
+      - xpack.security.transport.ssl.enabled=true
     ports:
       - "9600:9600"
       - "4560:4560"
