@@ -70,6 +70,8 @@ elif [ "$OS" = "Gentoo" ]; then
       sudo genkernel all
     fi
   fi
+  blender=$(find /usr/bin -name "blender-*[0-9]")
+  if [ -z ${blender+x} ]; then echo "var is unset"; else sudo ln -sfn "${blender}" /usr/bin/blender; fi
   sudo emerge @preserved-rebuild
   echo eselect editor list
   echo eselect kernel list
