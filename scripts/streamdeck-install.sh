@@ -10,13 +10,23 @@ if command -v dnf; then
   sudo dnf install -y libgudev-devel
   sudo dnf install -y hidapi-devel
   sudo dnf install -y libudev-devel
+  sudo dnf install -y freetype-devel
+  sudo dnf install -y hidapi-devel
+  sudo dnf install -y libhid-devel
+  sudo dnf install -y libjpeg-devel
+  sudo dnf install -y libpng-devel
+  sudo dnf install -y libxc-devel
+  sudo dnf install -y systemd-devel
+  sudo dnf install -y zlib-devel
 fi
 
 cat << EOF > "$HOME/tmp/99-streamdeck.rules"
-SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="0060", TAG+="uaccess"
-SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="0063", TAG+="uaccess"
-SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="006c", TAG+="uaccess"
-SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="006d", TAG+="uaccess"
+# SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="0060", TAG+="uaccess"
+# SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="0063", TAG+="uaccess"
+# SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="006c", TAG+="uaccess"
+# SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="006d", TAG+="uaccess"
+
+SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", TAG+="uaccess"
 EOF
 
 sudo mv -v "$HOME/tmp/99-streamdeck.rules" /etc/udev/rules.d/99-streamdeck.rules
