@@ -141,22 +141,9 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
-        <entry key="$USER_HOME$/projects/github.com/henninb/example-ktor">
-          <value>
-            <RecentProjectMetaInfo frameTitle="example-ktor – build.gradle (example-ktor)" projectWorkspaceId="2JMbnLgk7W6tsu2yufKAQts5xS5">
-              <option name="activationTimestamp" value="1671892858154" />
-              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="build" value="IC-223.8214.52" />
-              <option name="buildTimestamp" value="1671535499830" />
-              <frame x="0" y="14" width="3840" height="2128" />
-              <option name="productionCode" value="IC" />
-              <option name="projectOpenTimestamp" value="1671891064926" />
-            </RecentProjectMetaInfo>
-          </value>
-        </entry>
       </map>
     </option>
-    <option name="lastOpenedProject" value="$USER_HOME$/projects/github.com/henninb/example-ktor" />
+    <option name="lastOpenedProject" value="$USER_HOME$/projects/github.com/henninb/ratpack-gorm" />
     <option name="lastProjectLocation" value="$USER_HOME$/projects/github.com/henninb" />
   </component>
 </application>
