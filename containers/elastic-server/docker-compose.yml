@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   elasticsearch-server:
-    image: elasticsearch:7.10.1
+    image: elasticsearch:7.17.8
     container_name: elasticsearch-server
     deploy:
       resources:
@@ -32,7 +32,7 @@ services:
     # depends_on:
     #   - logstash-server
   kibana-server:
-    image: kibana:7.10.1
+    image: kibana:7.17.8
     container_name: kibana-server
     # restart: always
     environment:
@@ -49,7 +49,7 @@ services:
     #   - "hornsup:${HOST_IP}"
     #   - "elasticsearch:${HOST_IP}"
   # logstash-server:
-  #   image: logstash:7.10.1
+  #   image: logstash:7.17.8
   #   container_name: logstash-server
   #   environment:
   #     - monitoring.elasticsearch.hosts=http://hornsup:9200
