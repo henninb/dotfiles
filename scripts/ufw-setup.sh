@@ -14,6 +14,7 @@ sudo ufw default deny incoming
 # sudo ufw status
 sudo ufw allow out to any port 443 proto tcp comment 'accept https connections'
 sudo ufw allow out to any port 80 proto tcp comment 'accept http connections'
+sudo ufw allow out to any port 9200 proto tcp comment 'accept elasticsearch connections'
 # sudo ufw allow in https
 # sudo ufw allow from 192.168.10.1
 # sudo ufw allow from 192.168.10.10

@@ -11,8 +11,8 @@ platform=$1
 export HOST_IP=192.168.10.192
 
 if [ "$platform" = "podman" ]; then
-  podman stop logstash-server
-  podman rm -f logstash-server
+  # podman stop logstash-server
+  # podman rm -f logstash-server
   podman stop elasticsearch-server
   podman rm -f elasticsearch-server
   podman stop kibana-server
@@ -23,8 +23,8 @@ if [ "$platform" = "podman" ]; then
   podman-compose build
   podman-compose up
 elif [ "$platform" = "docker" ]; then
-  docker stop logstash-server
-  docker rm -f logstash-server
+  # docker stop logstash-server
+  # docker rm -f logstash-server
   docker stop elasticsearch-server
   docker rm -f elasticsearch-server
   docker stop kibana-server
@@ -40,5 +40,7 @@ elif [ "$platform" = "docker" ]; then
     docker-compose up
   fi
 fi
+
+echo docker volume rm -f elastic-server_elasticsearch-volume
 
 exit 0
