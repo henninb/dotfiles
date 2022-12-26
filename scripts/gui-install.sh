@@ -18,7 +18,7 @@ VOID_PKGS="gimp incscape vlc handbrake audacity dolphin-emu zathura dbeaver mpv"
 
 SOLUS_PKGS="meld gimp inkscape vlc handbrake audacity dolphin-emu zathura dbeaver gnome-mpv terminator mpv openshot"
 
-FEDORA_PKGS="meld blender pcmanfm dbeaver vscode discord wireshark i3lock thunar meld vlc handbrake dbeaver feh dolphin-emu gqrx gitk audacity zathura sxiv mpv gimp inkscape fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio celluloid libva-utils openshot cantata notepadqq qalculate-gtk gparted steam"
+FEDORA_PKGS="meld blender pcmanfm vscode discord wireshark i3lock thunar meld vlc HandBrake-gui dbeaver feh dolphin-emu gqrx gitk audacity zathura sxiv mpv gimp inkscape fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio celluloid libva-utils openshot cantata notepadqq qalculate-gtk gparted steam"
 
 #MACOS_PKGS="alacritty iterm2"
 

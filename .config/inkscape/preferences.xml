@@ -916,7 +916,8 @@
        theme="colorful">
       <group
          id="shown"
-         ver1.2.1="1" />
+         ver1.2.1="1"
+         ver1.2.2="1" />
     </group>
     <group
        id="rendering" />
@@ -1054,7 +1055,7 @@
      id="theme"
      defaultPreferDarkTheme="1"
      defaultIconTheme="Adwaita"
-     defaultGtkTheme="Dracula"
+     defaultGtkTheme="AntDracula"
      narrowSpinButton="1"
      preferDarkTheme="1"
      darkTheme="1"
