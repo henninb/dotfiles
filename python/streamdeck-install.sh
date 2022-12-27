@@ -15,5 +15,6 @@ echo source streamdeck-env/bin/activate
 echo deactivate
 
 pip3 install streamdeck-ui
+mv "$HOME/python/streamdeck-env/bin/streamdeck" ~/.local/bin
 
 exit 0
