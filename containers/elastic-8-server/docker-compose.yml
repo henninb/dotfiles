@@ -1,6 +1,8 @@
-version: "3"
+version: "3.7"
 services:
   elasticsearch:
+    container_name: elasticsearch
+    hostname: elasticsearch
     image: docker.elastic.co/elasticsearch/elasticsearch:8.5.3
     environment:
       # - node.name=elasticsearch
@@ -37,8 +39,10 @@ services:
     #   timeout: 10s
     #   retries: 50
     networks:
-      - ELK-lesson-08
-  kibana:
+      - elasticsearch-network
+  kibana-server:
+    container_name: kibana-server
+    hostname: kibana-server
     image: docker.elastic.co/kibana/kibana:8.5.3
     environment:
       - SERVERNAME=kibana
@@ -47,7 +51,7 @@ services:
     ports:
       - 5601:5601
     networks:
-      - ELK-lesson-08
+      - elasticsearch-network
   # logstash:
   #   image: docker.elastic.co/logstash/logstash:8.4.3
   #   volumes:
@@ -61,9 +65,9 @@ services:
   #     - "50000:50000/udp"
   #     - "9600:9600"
     # networks:
-      # - ELK-lesson-08
+      # - elasticsearch-network
 # volumes:
 #   data-elasticsearch:
 #     driver: local
 networks:
-  ELK-lesson-08:
+  elasticsearch-network:
