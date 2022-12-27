@@ -46,7 +46,7 @@ services:
     networks:
       - elasticsearch-network
   # logstash:
-  #   image: docker.elastic.co/logstash/logstash:8.5.4
+  #   image: docker.elastic.co/logstash/logstash:8.5.3
   #   volumes:
   #     - ./logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
   #     - ./pipeline:/usr/share/logstash/pipeline:ro,Z
