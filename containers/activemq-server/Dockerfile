@@ -43,10 +43,10 @@ RUN sed -i "s/admin: admin, admin/admin: monday1, admin/g" $ACTIVEMQ_HOME/conf/j
 RUN sed -i "s/127.0.0.1/0.0.0.0/g" $ACTIVEMQ_HOME/conf/jetty.xml
 
 # Web Server
-EXPOSE 8161
+# EXPOSE 8161
 
 # Port for CORE,MQTT,AMQP,HORNETQ,STOMP,OPENWIRE
-EXPOSE 61616
+# EXPOSE 61616
 
 # Port for HORNETQ,STOMP
 # EXPOSE 5445
