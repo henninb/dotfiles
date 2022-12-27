@@ -9,6 +9,7 @@ if [ "$OS" = "Gentoo" ]; then
   sudo eselect java-vm set system openjdk-bin-17
   #echo sudo java-config --set-system-vm openjdk-bin-17
   echo emerge -v openjdk:11
+  echo /var/db/repos/gentoo/dev-java/openjdk
   echo eselect java-vm list
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y openjdk-17
