@@ -3,7 +3,7 @@ services:
   elasticsearch:
     container_name: elasticsearch
     hostname: elasticsearch
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.5.3
+    image: elasticsearch:8.5.3
     environment:
       # - node.name=elasticsearch
       - xpack.security.enabled=false
@@ -13,10 +13,8 @@ services:
       - cluster.name=elasticsearch
       - cluster.routing.allocation.disk.threshold_enabled=false
       # - xpack.security.http.ssl.enabled=false
-      # - MAX_MAP_COUNT=262144
       # - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
-    # mem_limit: 1073741824 # container memory limit 1G
     # ulimits:
     #   memlock:
     #     soft: -1
@@ -31,28 +29,24 @@ services:
     #   - 9300:9300
     # volumes:
     #   - data-elasticsearch:/usr/share/elasticsearch/data # mount data volume
-    # healthcheck:
-    #   test: "curl http://elasticsearch:9200"
-    #   # test: curl -u elastic:elastic -s -f elasticsearch:9200/_cat/health >/dev/null || exit 1
-    #   interval: 2s
-    #   timeout: 10s
-    #   retries: 50
     networks:
       - elasticsearch-network
   kibana-server:
     container_name: kibana-server
     hostname: kibana-server
-    image: docker.elastic.co/kibana/kibana:8.5.3
+    image: kibana:8.5.3
     environment:
-      - SERVERNAME=kibana
+      # - SERVERNAME=kibana
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
       - ELASTICSEARCH_URL=http://elasticsearch:9200
     ports:
       - 5601:5601
+    depends_on:
+      - elasticsearch
     networks:
       - elasticsearch-network
   # logstash:
-  #   image: docker.elastic.co/logstash/logstash:8.4.3
+  #   image: docker.elastic.co/logstash/logstash:8.5.4
   #   volumes:
   #     - ./logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
   #     - ./pipeline:/usr/share/logstash/pipeline:ro,Z
