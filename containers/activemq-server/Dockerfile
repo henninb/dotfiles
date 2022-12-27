@@ -17,7 +17,7 @@ ENV PATH $PATH:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openj
 #ADD ./activemq_data /opt/activemq/data
 
 RUN ping www.google.com -c 1
-RUN ip addr show
+# RUN ip addr show
 RUN echo http://dl-2.alpinelinux.org/alpine/v3.17/community > /etc/apk/repositories
 RUN echo http://dl-2.alpinelinux.org/alpine/v3.17/main >> /etc/apk/repositories
 #RUN echo http://dl-4.alpinelinux.org/alpine/v3.9/community >> /etc/apk/repositories
@@ -30,9 +30,9 @@ RUN apk add --no-cache tzdata
 RUN rm -rf /var/cache/apk/*
 RUN mkdir -p /opt
 RUN ping www.google.com -c 1
-RUN echo "curl -s -S https://archive.apache.org/dist/activemq/$ACTIVEMQ_VERSION/$ACTIVEMQ-bin.tar.gz | tar -xvz -C /opt"
+# RUN echo "curl -s -S https://archive.apache.org/dist/activemq/$ACTIVEMQ_VERSION/$ACTIVEMQ-bin.tar.gz | tar -xvz -C /opt"
 RUN curl -s -S https://archive.apache.org/dist/activemq/$ACTIVEMQ_VERSION/$ACTIVEMQ-bin.tar.gz | tar -xvz -C /opt
-RUN echo $?
+# RUN echo $?
 RUN ln -sf /opt/${ACTIVEMQ} /opt/activemq
 RUN rm -rf $ACTIVEMQ_HOME/activemq-all-${ACTIVEMQ_VERSION}.jar
 RUN addgroup -g 71 operator
@@ -40,6 +40,7 @@ RUN adduser -u 9998 -D -G operator activemq
 RUN chown -R activemq:operator /opt/activemq/
 RUN ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
 RUN sed -i "s/admin: admin, admin/admin: monday1, admin/g" $ACTIVEMQ_HOME/conf/jetty-realm.properties
+RUN sed -i "s/127.0.0.1/0.0.0.0/g" $ACTIVEMQ_HOME/conf/jetty.xml
 
 # Web Server
 EXPOSE 8161
@@ -48,24 +49,27 @@ EXPOSE 8161
 EXPOSE 61616
 
 # Port for HORNETQ,STOMP
-EXPOSE 5445
+# EXPOSE 5445
 
 # Port for AMQP
-EXPOSE 5672
+# EXPOSE 5672
 
 # Port for MQTT
-EXPOSE 1883
+# EXPOSE 1883
 
-#Port for STOMP
-EXPOSE 61613
+# Port for STOMP
+# EXPOSE 61613
 
 #Port for  WebSockets in HTML5
-EXPOSE 61614
+# EXPOSE 61614
 
 WORKDIR $ACTIVEMQ_HOME
 
 # having login issues to the admin console when using activemq user
-USER activemq
+#USER activemq
 
 # must start in container in daemon mode
-CMD ["/bin/sh", "-c", "bin/activemq console"]
+# CMD ["/bin/sh", "-c", "bin/activemq console"]
+ENTRYPOINT ["/bin/sh", "-c", "bin/activemq console"]
+
+# ENTRYPOINT ["tail", "-f", "/dev/null"]
