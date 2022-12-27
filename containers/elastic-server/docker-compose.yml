@@ -3,6 +3,7 @@ services:
   elasticsearch-server:
     image: elasticsearch:7.17.8
     container_name: elasticsearch-server
+    hostname: elasticsearch-server
     deploy:
       resources:
         limits:
@@ -34,6 +35,7 @@ services:
   kibana-server:
     image: kibana:7.17.8
     container_name: kibana-server
+    hostname: kibana-server
     # restart: always
     environment:
       # - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
@@ -51,6 +53,7 @@ services:
   # logstash-server:
   #   image: logstash:7.17.8
   #   container_name: logstash-server
+  #   hostname: logstash-server
   #   environment:
   #     - monitoring.elasticsearch.hosts=http://hornsup:9200
   #     - XPACK_MONITORING_ENABLED=false

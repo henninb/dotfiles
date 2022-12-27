@@ -4,6 +4,7 @@ services:
     container_name: elasticsearch-server
     hostname: elasticsearch-server
     image: elasticsearch:8.5.3
+    # restart: always
     environment:
       # - node.name=elasticsearch-server
       - xpack.security.enabled=false
@@ -28,13 +29,14 @@ services:
        - 9200:9200
     #   - 9300:9300
     # volumes:
-    #   - data-elasticsearch:/usr/share/elasticsearch/data # mount data volume
+    #   - elasticsearch-volume:/usr/share/elasticsearch/data # mount data volume
     networks:
       - elasticsearch-network
   kibana-server:
     container_name: kibana-server
     hostname: kibana-server
     image: kibana:8.5.3
+    # restart: always
     environment:
       # - SERVERNAME=kibana
       - ELASTICSEARCH_HOSTS=http://elasticsearch-server:9200
@@ -60,7 +62,8 @@ services:
     # networks:
       # - elasticsearch-network
 volumes:
-  data-elasticsearch:
+  elasticsearch-volume:
     driver: local
+    name: elasticsearch-volume
 networks:
   elasticsearch-network:
