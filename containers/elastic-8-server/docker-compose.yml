@@ -28,8 +28,8 @@ services:
     ports:
        - 9200:9200
     #   - 9300:9300
-    # volumes:
-    #   - elasticsearch-volume:/usr/share/elasticsearch/data # mount data volume
+    volumes:
+      - elasticsearch-volume:/usr/share/elasticsearch/data # mount data volume
     networks:
       - elasticsearch-network
   kibana-server:
