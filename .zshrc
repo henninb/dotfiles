@@ -82,7 +82,7 @@ fi
 export PATH="$HOME/.ghcup/bin:$PATH"
 export PATH="$HOME/.nix-profile/bin:$PATH"
 export PATH="$HOME/scripts:$PATH"
-export PATH="$HOME/python/streamdeck/bin:$PATH"
+export PATH="$HOME/python/streamdeck-env/bin:$PATH"
 export PATH="$HOME/.local/share/bin:$PATH"
 export PATH=$PYENV_ROOT/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
