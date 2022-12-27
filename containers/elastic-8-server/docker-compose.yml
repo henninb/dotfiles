@@ -38,7 +38,7 @@ services:
     environment:
       # - SERVERNAME=kibana
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      # - ELASTICSEARCH_URL=http://elasticsearch:9200
     ports:
       - 5601:5601
     depends_on:
