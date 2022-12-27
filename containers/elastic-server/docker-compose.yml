@@ -1,73 +1,69 @@
 version: "3.7"
 services:
   elasticsearch-server:
-    image: elasticsearch:7.17.8
     container_name: elasticsearch-server
     hostname: elasticsearch-server
-    deploy:
-      resources:
-        limits:
-          memory: 4G
-    environment:
-      - xpack.security.enabled=false
-      - discovery.type=single-node
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-      nofile:
-        soft: 65536 
-        hard: 65536 
-    cap_add:
-      - IPC_LOCK
-    volumes:
-      - elasticsearch-volume:/usr/share/elasticsearch/data:rw
-      # -   - ./esdata:/usr/share/elasticsearch/data
-    ports:
-      - "9200:9200"
-      # - "9300:9300"
-    expose:
-      - "9200"
-    # extra_hosts:
-    #   - "hornsup:${HOST_IP}"
-    # depends_on:
-    #   - logstash-server
-  kibana-server:
-    image: kibana:7.17.8
-    container_name: kibana-server
-    hostname: kibana-server
+    image: elasticsearch:7.17.8
     # restart: always
     environment:
-      # - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-      - ELASTICSEARCH_HOSTS=http://elasticsearch-server:9200
-      # - elasticsearch.hosts: ["http://localhost:9200"]
+      # - node.name=elasticsearch-server
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+      - ingest.geoip.downloader.enabled=false
+      - bootstrap.memory_lock=true
+      - cluster.name=elasticsearch-server
+      - cluster.routing.allocation.disk.threshold_enabled=false
+      # - xpack.security.http.ssl.enabled=false
+      # - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+    # ulimits:
+    #   memlock:
+    #     soft: -1
+    #     hard: -1
+    #   nofile:
+    #     soft: 65536
+    #     hard: 65536
+    # cap_add:
+    #   - IPC_LOCK
     ports:
-      - "5601:5601"
-    expose:
-      - "5601"
+       - 9200:9200
+    #   - 9300:9300
+    volumes:
+      - elasticsearch-volume:/usr/share/elasticsearch/data # mount data volume
+    networks:
+      - elasticsearch-network
+  kibana-server:
+    container_name: kibana-server
+    hostname: kibana-server
+    image: kibana:7.17.8
+    # restart: always
+    environment:
+      # - SERVERNAME=kibana
+      - ELASTICSEARCH_HOSTS=http://elasticsearch-server:9200
+      # - ELASTICSEARCH_URL=http://elasticsearch-server:9200
+    ports:
+      - 5601:5601
     depends_on:
       - elasticsearch-server
-    # extra_hosts:
-    #   - "hornsup:${HOST_IP}"
-    #   - "elasticsearch:${HOST_IP}"
-  # logstash-server:
-  #   image: logstash:7.17.8
-  #   container_name: logstash-server
-  #   hostname: logstash-server
-  #   environment:
-  #     - monitoring.elasticsearch.hosts=http://hornsup:9200
-  #     - XPACK_MONITORING_ENABLED=false
-  #   ports:
-  #     - "9600:9600"
-  #     - "4560:4560"
-  #   expose:
-  #     - "9600"
-  #     - "4560"
+    networks:
+      - elasticsearch-network
+  # logstash:
+  #   image: docker.elastic.co/logstash/logstash:7.17.8
   #   volumes:
-  #     - ./logstash-pipeline:/usr/share/logstash/pipeline
-  #   extra_hosts:
-  #     - "hornsup:${HOST_IP}"
-  #     - "elasticsearch:${HOST_IP}"
+  #     - ./logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
+  #     - ./pipeline:/usr/share/logstash/pipeline:ro,Z
+  #   environment:
+  #     LS_JAVA_OPTS: -Xms256m -Xmx256m
+  #   ports:
+  #     - "5044:5044"
+  #     - "50000:50000/tcp"
+  #     - "50000:50000/udp"
+  #     - "9600:9600"
+    # networks:
+      # - elasticsearch-network
 volumes:
   elasticsearch-volume:
     driver: local
+    name: elasticsearch-volume
+networks:
+  elasticsearch-network:
