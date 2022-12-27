@@ -13,6 +13,6 @@ export CURRENT_UID="$(id -u)"
 export CURRENT_GID="$(id -g)"
 
 
-docker run --name influxdb-server -d --restart unless-stopped -p 8086:8086 --env-file influxdb.env --user "$CURRENT_UID:$CURRENT_GID" -v "$HOME/influxdb-data:/var/lib/influxdb" influxdb:1.8.3
+docker run --name influxdb-server -d --restart unless-stopped --privileged -p 8086:8086 --env-file influxdb.env --user "$CURRENT_UID:$CURRENT_GID" -v "$HOME/influxdb-data:/var/lib/influxdb" influxdb:1.8.10
 
 exit 0
