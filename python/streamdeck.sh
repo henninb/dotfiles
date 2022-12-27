@@ -14,4 +14,6 @@ virtualenv -p $(which python3.9) streamdeck-env
 echo source streamdeck-env/bin/activate
 echo deactivate
 
+pip3 install streamdeck-ui
+
 exit 0
