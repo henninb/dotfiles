@@ -1,16 +1,16 @@
 version: "3.7"
 services:
-  elasticsearch:
-    container_name: elasticsearch
-    hostname: elasticsearch
+  elasticsearch-server:
+    container_name: elasticsearch-server
+    hostname: elasticsearch-server
     image: elasticsearch:8.5.3
     environment:
-      # - node.name=elasticsearch
+      # - node.name=elasticsearch-server
       - xpack.security.enabled=false
       - discovery.type=single-node
       - ingest.geoip.downloader.enabled=false
       - bootstrap.memory_lock=true
-      - cluster.name=elasticsearch
+      - cluster.name=elasticsearch-server
       - cluster.routing.allocation.disk.threshold_enabled=false
       # - xpack.security.http.ssl.enabled=false
       # - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
@@ -37,12 +37,12 @@ services:
     image: kibana:8.5.3
     environment:
       # - SERVERNAME=kibana
-      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-      # - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - ELASTICSEARCH_HOSTS=http://elasticsearch-server:9200
+      # - ELASTICSEARCH_URL=http://elasticsearch-server:9200
     ports:
       - 5601:5601
     depends_on:
-      - elasticsearch
+      - elasticsearch-server
     networks:
       - elasticsearch-network
   # logstash:
