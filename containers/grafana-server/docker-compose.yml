@@ -1,15 +1,14 @@
 version: "3.7"
 services:
   grafana-server:
-    image: grafana/grafana:7.4.0
+    image: grafana/grafana:9.3.2
     user: "${CURRENT_UID}:${CURRENT_GID}"
     container_name: grafana-server
+    hostname: grafana-server
     ports:
       - "3000:3000"
-    expose:
-      - "3000"
     volumes:
-      - ./grafana-data:/var/lib/grafana
+      - ~/grafana-data:/var/lib/grafana
       - ./grafana-provisioning:/etc/grafana/provisioning
     environment:
       - GF_SECURITY_ADMIN_USER=henninb
