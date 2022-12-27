@@ -1,0 +1,69 @@
+version: "3"
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.5.3
+    environment:
+      # - node.name=elasticsearch
+      - xpack.security.enabled=false  # security is disabled
+      - discovery.type=single-node # single node
+      - ingest.geoip.downloader.enabled=false
+      - bootstrap.memory_lock=true
+      # - xpack.security.http.ssl.enabled=false
+      - cluster.name=elasticsearch
+      - cluster.routing.allocation.disk.threshold_enabled=false
+      # - cluster.name=docker-cluster
+      # - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - MAX_MAP_COUNT=262144
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+    # mem_limit: 1073741824 # container memory limit 1G
+    # ulimits:
+    #   memlock:
+    #     soft: -1
+    #     hard: -1
+    #   nofile:
+    #     soft: 65536
+    #     hard: 65536
+    # cap_add:
+    #   - IPC_LOCK
+    ports:
+       - 9200:9200
+    #   - 9300:9300
+    # volumes:
+    #   - data-elasticsearch:/usr/share/elasticsearch/data # mount data volume
+    # healthcheck:
+    #   test: "curl http://elasticsearch:9200"
+    #   # test: curl -u elastic:elastic -s -f elasticsearch:9200/_cat/health >/dev/null || exit 1
+    #   interval: 2s
+    #   timeout: 10s
+    #   retries: 50
+    networks:
+      - ELK-lesson-08
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.5.3
+    environment:
+      - SERVERNAME=kibana
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    ports:
+      - 5601:5601
+    networks:
+      - ELK-lesson-08
+  # logstash:
+  #   image: docker.elastic.co/logstash/logstash:8.4.3
+  #   volumes:
+  #     - ./logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
+  #     - ./pipeline:/usr/share/logstash/pipeline:ro,Z
+  #   environment:
+  #     LS_JAVA_OPTS: -Xms256m -Xmx256m
+  #   ports:
+  #     - "5044:5044"
+  #     - "50000:50000/tcp"
+  #     - "50000:50000/udp"
+  #     - "9600:9600"
+    # networks:
+      # - ELK-lesson-08
+# volumes:
+#   data-elasticsearch:
+#     driver: local
+networks:
+  ELK-lesson-08:
