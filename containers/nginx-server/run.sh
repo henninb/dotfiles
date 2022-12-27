@@ -27,7 +27,7 @@ elif [ "$platform" = "docker" ]; then
 
   if command -v docker-compose; then
     docker-compose build
-    docker-compose up
+    docker-compose up -d
   else
     docker build -t nginx-server .
     docker run --name=nginx-server -h nginx-server -h nginx-server --restart unless-stopped -p 443:443 -d nginx-server

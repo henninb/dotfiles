@@ -3,15 +3,22 @@ services:
   elasticsearch-server:
     image: elasticsearch:8.5.3
     container_name: elasticsearch-server
+    hostname: elasticsearch-server
     environment:
+      - xpack.security.enabled=false
       - discovery.type=single-node
+      - ingest.geoip.downloader.enabled=false
+      - bootstrap.memory_lock=true
+      - cluster.name=elasticsearch-server
+      - cluster.routing.allocation.disk.threshold_enabled=false
+      # - xpack.security.http.ssl.enabled=false
+      # - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     volumes:
       - elasticsearch-volume:/usr/share/elasticsearch/data:rw
     ports:
       - "9200:9200"
       # - "9300:9300"
-    expose:
-      - "9200"
     extra_hosts:
       - "hornsup:${HOST_IP}"
     depends_on:
@@ -19,10 +26,9 @@ services:
   kibana-server:
     image: kibana:8.5.3
     container_name: kibana-server
+    hostname: kibana-server
     ports:
       - "5601:5601"
-    expose:
-      - "5601"
     depends_on:
       - elasticsearch-server
     extra_hosts:
@@ -31,6 +37,7 @@ services:
   logstash-server:
     image: logstash:8.5.3
     container_name: logstash-server
+    hostname: logstash-server
     environment:
       # - ELASTIC_USERNAME=elastic
       # - ELASTIC_PASSWORD=DkIedPPSCb
@@ -42,9 +49,6 @@ services:
     ports:
       - "9600:9600"
       - "4560:4560"
-    expose:
-      - "9600"
-      - "4560"
     volumes:
       - ./logstash-pipeline:/usr/share/logstash/pipeline
     extra_hosts:
@@ -52,4 +56,5 @@ services:
       - "elasticsearch:${HOST_IP}"
 volumes:
   elasticsearch-volume:
+    name: elasticsearch-volume
     driver: local
