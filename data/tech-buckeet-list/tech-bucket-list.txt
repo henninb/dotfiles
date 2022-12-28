@@ -1,4 +1,4 @@
-(A) Install freebsd on its own 500GB HD @buid
+x 2022-12-28 Install freebsd on its own 500GB HD pri:A @buid
 (A) learn more about dig @learn
 (B) 2022-09-05 update  lua nvim config due:2022-10-05 rec:m @update
 (B) build a docker dns server with debian @build
