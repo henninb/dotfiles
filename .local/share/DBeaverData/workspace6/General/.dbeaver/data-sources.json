@@ -6,7 +6,6 @@
 			"driver": "postgres-jdbc",
 			"name": "PostgreSQL - finance_db",
 			"save-password": true,
-			"read-only": false,
 			"configuration": {
 				"host": "192.168.10.25",
 				"port": "5432",
@@ -36,7 +35,6 @@
 			"driver": "sqlite_jdbc",
 			"name": "tech-bucket-list.db",
 			"save-password": true,
-			"read-only": false,
 			"configuration": {
 				"database": "/home/henninb/data/tech-buckeet-list/tech-bucket-list.db",
 				"url": "jdbc:sqlite:/home/henninb/data/tech-buckeet-list/tech-bucket-list.db",
