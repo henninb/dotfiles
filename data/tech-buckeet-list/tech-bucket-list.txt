@@ -125,3 +125,4 @@ x 2022-09-05 fix xmonad ghc linker issue pri:C @fix
 (A) create a router with arp spoofer on ipv4 traffic
 (C) create segmented home network
 (B) remote boot freebsd
+(B) learn podman with networking
