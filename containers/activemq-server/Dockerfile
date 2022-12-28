@@ -8,8 +8,8 @@ ENV ACTIVEMQ_HOME /opt/activemq
 #ENV JAVA_OPTS -Djava.io.tmpdir=/tmp
 #ENV ACTIVEMQ_ADMIN_LOGIN=admin
 #ENV ACTIVEMQ_ADMIN_PASSWORD=monday1
-ENV JAVA_HOME /usr/lib/jvm/java-17-openjdk/jre
-ENV PATH $PATH:/usr/lib/jvm/java-17-openjdk/jre/bin:/usr/lib/jvm/java-17-openjdk/bin
+# ENV JAVA_HOME /usr/lib/jvm/java-17-openjdk/jre
+# ENV PATH $PATH:/usr/lib/jvm/java-17-openjdk/jre/bin:/usr/lib/jvm/java-17-openjdk/bin
 
 #-e 'ACTIVEMQ_ADMIN_LOGIN=admin' -e 'ACTIVEMQ_ADMIN_PASSWORD=your_password'
 #-v /host/fs/path:/container/fs/path
@@ -41,7 +41,7 @@ RUN addgroup -g 71 operator
 RUN adduser -u 9998 -D -G operator activemq
 RUN chown -R activemq:operator /opt/activemq/
 RUN ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
-# RUN sed -i "s/admin: admin, admin/admin: monday1, admin/g" $ACTIVEMQ_HOME/conf/jetty-realm.properties
+RUN sed -i "s/admin: admin, admin/admin: monday1, admin/g" $ACTIVEMQ_HOME/conf/jetty-realm.properties
 RUN sed -i "s/127.0.0.1/0.0.0.0/g" $ACTIVEMQ_HOME/conf/jetty.xml
 RUN sed -i "s/100 gb/25 gb/g" $ACTIVEMQ_HOME/conf/activemq.xml
 RUN sed -i "s/50 gb/25 gb/g" $ACTIVEMQ_HOME/conf/activemq.xml
