@@ -1,4 +1,4 @@
-FROM docker.io/alpine:3.12
+FROM docker.io/alpine:3.17.0
 
 ENV KAFKA_VERSION 2.6.0
 ENV KAFKA kafka_2.13-$KAFKA_VERSION
