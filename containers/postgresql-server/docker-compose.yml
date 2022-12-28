@@ -17,4 +17,5 @@ services:
       # - /opt/postgresql-data:/var/lib/postgresql/data
 volumes:
   postgresql-volume:
+    name: postgresql-volume
     driver: local
