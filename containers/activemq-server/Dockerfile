@@ -1,14 +1,16 @@
 FROM docker.io/alpine:3.17.0
 
-ENV ACTIVEMQ_VERSION 5.16.0
+ENV ACTIVEMQ_VERSION 5.16.3
+# ENV ACTIVEMQ_VERSION 5.16.5
+# ENV ACTIVEMQ_VERSION 5.17.3
 ENV ACTIVEMQ apache-activemq-$ACTIVEMQ_VERSION
 ENV ACTIVEMQ_HOME /opt/activemq
 #ENV ACTIVEMQ_OPTS -Djava.io.tmpdir=/tmp
 #ENV JAVA_OPTS -Djava.io.tmpdir=/tmp
 #ENV ACTIVEMQ_ADMIN_LOGIN=admin
 #ENV ACTIVEMQ_ADMIN_PASSWORD=monday1
-ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk/jre
-ENV PATH $PATH:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin
+ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk/jre
+ENV PATH $PATH:/usr/lib/jvm/java-11-openjdk/jre/bin:/usr/lib/jvm/java-11-openjdk/bin
 
 #-e 'ACTIVEMQ_ADMIN_LOGIN=admin' -e 'ACTIVEMQ_ADMIN_PASSWORD=your_password'
 #-v /host/fs/path:/container/fs/path
@@ -24,7 +26,7 @@ RUN echo http://dl-2.alpinelinux.org/alpine/v3.17/main >> /etc/apk/repositories
 #RUN echo http://dl-4.alpinelinux.org/alpine/v3.9/main >> /etc/apk/repositories
 RUN apk update
 RUN apk add --update curl
-RUN apk add --no-cache openjdk8-jre
+RUN apk add --no-cache openjdk11-jre
 RUN apk add --no-cache tzdata
 #RUN apk add --no-cache openrc
 RUN rm -rf /var/cache/apk/*
@@ -39,8 +41,12 @@ RUN addgroup -g 71 operator
 RUN adduser -u 9998 -D -G operator activemq
 RUN chown -R activemq:operator /opt/activemq/
 RUN ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
-RUN sed -i "s/admin: admin, admin/admin: monday1, admin/g" $ACTIVEMQ_HOME/conf/jetty-realm.properties
+# RUN sed -i "s/admin: admin, admin/admin: monday1, admin/g" $ACTIVEMQ_HOME/conf/jetty-realm.properties
 RUN sed -i "s/127.0.0.1/0.0.0.0/g" $ACTIVEMQ_HOME/conf/jetty.xml
+RUN sed -i "s/100 gb/25 gb/g" $ACTIVEMQ_HOME/conf/activemq.xml
+RUN sed -i "s/50 gb/25 gb/g" $ACTIVEMQ_HOME/conf/activemq.xml
+
+# activemq.xml:                    <storeUsage limit="100 gb"/>
 
 # Web Server
 # EXPOSE 8161
@@ -71,5 +77,4 @@ WORKDIR $ACTIVEMQ_HOME
 # must start in container in daemon mode
 # CMD ["/bin/sh", "-c", "bin/activemq console"]
 ENTRYPOINT ["/bin/sh", "-c", "bin/activemq console"]
-
 # ENTRYPOINT ["tail", "-f", "/dev/null"]
