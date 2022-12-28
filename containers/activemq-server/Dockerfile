@@ -1,7 +1,8 @@
 FROM docker.io/alpine:3.17.0
 
 ENV ACTIVEMQ_VERSION 5.16.3
-# ENV ACTIVEMQ_VERSION 5.17.3, issue - activemq web console-embedded.xml file not found - no solution as of 12/28/2022
+#,5.16.4 - 5.17.3  issue - activemq web console-embedded.xml file not found - no solution as of 12/28/2022
+# ENV ACTIVEMQ_VERSION 5.17.3 
 ENV ACTIVEMQ apache-activemq-$ACTIVEMQ_VERSION
 ENV ACTIVEMQ_HOME /opt/activemq
 #ENV ACTIVEMQ_OPTS -Djava.io.tmpdir=/tmp

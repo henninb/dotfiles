@@ -1,28 +1,31 @@
 version: "3.7"
 services:
-  zookeeper:
-    image: confluentinc/cp-zookeeper:4.1.2
+  zookeeper-server:
+    image: confluentinc/cp-zookeeper:6.1.9
     container_name: zookeeper-server
     hostname: zookeeper-server
+    # privileged: true
+    # restart: always
     ports:
       - "2181:2181"
-    expose:
-      - "2181"
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
-  kafka:
-    image: confluentinc/cp-enterprise-kafka:4.1.2
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_INIT_LIMIT: 10
+      ZOOKEEPER_SYNC_LIMIT: 5
+  kafka-server:
+    image: confluentinc/cp-enterprise-kafka:6.1.9
     container_name: kafka-server
     hostname: kafka-server
+    # privileged: true
+    # restart: always
     ports:
       - "9092:9092"
-    expose:
-      - "9092"
     depends_on:
-      - zookeeper
+      - zookeeper-server
     environment:
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper-server:2181
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
