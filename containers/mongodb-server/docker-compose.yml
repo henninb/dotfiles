@@ -1,10 +1,8 @@
 version: "3.7"
 services:
   mongodb-server:
-    image: mongo
+    image: mongo:6.0.3
     container_name: mongodb-server
     hostname: mongodb-server
     ports:
       - "27017:27017"
-    expose:
-      - "27017"

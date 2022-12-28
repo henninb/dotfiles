@@ -4,8 +4,10 @@ services:
     image: mongo:3.6
     # user: "${CURRENT_UID}:${CURRENT_GID}"
     container_name: mongodb-server
-    # ports:
-    #   - "8080:80"
+    hostname: mongodb-server
+    # restart: true
+    ports:
+      - "27017:27017"
     # expose:
     #   - "8080"
     # volumes:
