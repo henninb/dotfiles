@@ -27,6 +27,7 @@ if command -v pacman; then
   sudo pacman --noconfirm --needed -S podman
   sudo pacman --noconfirm --needed -S slirp4netns
   sudo pacman --noconfirm --needed -S fuse-overlayfs
+  sudo pacman --noconfirm --needed -S podman-dnsname
   # sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$(id -un)"
   echo +cpu +cpuset +io +memory +pids > sudo tee -a /sys/fs/cgroup/cgroup.subtree_control
 elif command -v emerge; then
@@ -41,6 +42,7 @@ elif [ -x "$(command -v eopkg)" ]; then
   echo "solus"
 elif [ -x "$(command -v dnf)" ]; then
   echo "fedora"
+  sudo dnf install podman-plugins -y
 elif [ -x "$(command -v brew)" ]; then
   echo "macoos"
 else

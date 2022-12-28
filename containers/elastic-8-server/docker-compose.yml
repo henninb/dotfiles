@@ -67,3 +67,4 @@ volumes:
     name: elasticsearch-volume
 networks:
   elasticsearch-network:
+    name: elasticsearch-network
