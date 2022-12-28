@@ -1,15 +1,16 @@
 version: "3.7"
 services:
   influxdb-server:
-    image: influxdb:1.8.4
+    image: influxdb:2.6.0
     # user: "${CURRENT_UID}:${CURRENT_GID}"
     container_name: influxdb-server
+    hostname: influxdb-server
+    # restart: always
+    # privileged: true
     volumes:
       - /opt/influxdb-data:/var/lib/influxdb
     ports:
       - "8086:8086"
-    expose:
-      - "8086"
     environment:
       - INFLUXDB_ADMIN_PASSWORD=monday1
       - INFLUXDB_ADMIN_USER=henninb
