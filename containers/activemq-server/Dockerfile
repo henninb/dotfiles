@@ -1,5 +1,5 @@
 # FROM docker.io/alpine:3.17.0
-FROM openjdk:17-alpine
+FROM openjdk:19-alpine
 
 ENV ACTIVEMQ_VERSION 5.16.3
 #,5.16.4 - 5.17.3  issue - activemq web console-embedded.xml file not found - no solution as of 12/28/2022
