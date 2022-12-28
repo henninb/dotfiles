@@ -365,6 +365,9 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y xdotool
   sudo dnf install -y xscreensaver
   sudo dnf install -y yad
+  sudo dnf groupinstall "Development Tools" "Development Libraries"
+  sudo dnf install -y golang
+  sudo dnf install -y luarocks
   echo iwlib missing
   mkdir -p "$HOME/projects/github.com/baskerville"
   cd "$HOME/projects/github.com/baskerville" || exit
