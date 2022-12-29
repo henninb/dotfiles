@@ -17,7 +17,7 @@ build the automation for a bridge setup
 (C) sign up for digital ocean
 x 2022-10-01 build heroku apps pri:C
 (C) use kitty as the default terminal
-(C) Use proxmox to capture proxmox logs
+(C) Use elastic to capture proxmox logs
 (C) use syncthing with keepass
 (C) write ansible script to get the docker status
 (D) build a hackintosh in proxmox due:2022-09-30 @build
@@ -36,7 +36,6 @@ x 2022-09-14 migrate cert script to react and other apps pri:D
 (E) setup ssh key on yubikey @setup
 (E) update main windows 10 machine to the latest version
 finance app to output a budget
-finance_db with redis backend
 fix code submenu names in xmonad @fix
 (F) learn  about replay attack for cookies @learn
 (F) setup ddwrt web frontend certificate @setup
@@ -126,3 +125,7 @@ x 2022-09-05 fix xmonad ghc linker issue pri:C @fix
 (C) create segmented home network
 (B) remote boot freebsd
 (B) learn podman with networking
+(C) spring boot finance app enable basic auth
+(B) ccls compile on fedora
+(C) elastic kibana functional with podman network
+(C) upgrade activemq docker container to v5.17.3
