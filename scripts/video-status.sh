@@ -1,5 +1,72 @@
 #!/bin/sh
 
+cat > "$HOME/tmp/xorg.conf" <<EOF
+Section "ServerLayout"
+    Identifier     "Layout0"
+    Screen      0  "Screen0" 0 0
+    InputDevice    "Keyboard0" "CoreKeyboard"
+    InputDevice    "Mouse0" "CorePointer"
+    Option         "Xinerama" "0"
+EndSection
+
+Section "Files"
+EndSection
+
+Section "InputDevice"
+
+    # generated from data in "/etc/conf.d/gpm"
+    Identifier     "Mouse0"
+    Driver         "mouse"
+    Option         "Protocol"
+    Option         "Device" "/dev/input/mice"
+    Option         "Emulate3Buttons" "no"
+    Option         "ZAxisMapping" "4 5"
+EndSection
+
+Section "InputDevice"
+
+    # generated from default
+    Identifier     "Keyboard0"
+    Driver         "kbd"
+EndSection
+
+Section "Monitor"
+
+    # HorizSync source: edid, VertRefresh source: edid
+    Identifier     "Monitor0"
+    VendorName     "Unknown"
+    ModelName      "DELL P2720D"
+    HorizSync       29.0 - 113.0
+    VertRefresh     49.0 - 75.0
+    Option         "DPMS"
+EndSection
+
+Section "Device"
+    Identifier     "Device0"
+    Driver         "nvidia"
+    VendorName     "NVIDIA Corporation"
+    BoardName      "NVIDIA GeForce GTX 1060 6GB"
+EndSection
+
+Section "Screen"
+
+# Removed Option "metamodes" "HDMI-0: nvidia-auto-select +0+0, HDMI-1: nvidia-auto-select +3840+0 {rotation=left}"
+    Identifier     "Screen0"
+    Device         "Device0"
+    Monitor        "Monitor0"
+    DefaultDepth    24
+    Option         "Stereo" "0"
+    Option         "nvidiaXineramaInfoOrder" "DFP-1"
+    Option         "metamodes" "HDMI-0: nvidia-auto-select +3840+0 {rotation=left}, HDMI-1: nvidia-auto-select +0+0"
+    Option         "SLI" "Off"
+    Option         "MultiGPU" "Off"
+    Option         "BaseMosaic" "off"
+    SubSection     "Display"
+        Depth       24
+    EndSubSection
+EndSection
+EOF
+
 cat > "$HOME/tmp/nvidia-installer-disable-nouveau.conf" <<EOF
 blacklist nouveau
 options nouveau modeset=0
