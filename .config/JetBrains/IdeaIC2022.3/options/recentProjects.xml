@@ -26,18 +26,6 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
-        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-react">
-          <value>
-            <RecentProjectMetaInfo frameTitle="raspi-finance-react – useDescriptionInsert.tsx" projectWorkspaceId="2Im4znbFme2B3jzAkIB58aIloox">
-              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="build" value="IU-212.5080.55" />
-              <option name="buildTimestamp" value="1629776220448" />
-              <frame x="0" y="14" width="3840" height="2128" />
-              <option name="productionCode" value="IU" />
-              <option name="projectOpenTimestamp" value="1670773690059" />
-            </RecentProjectMetaInfo>
-          </value>
-        </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint-micronaut-new-new">
           <value>
             <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint-micronaut – build.gradle [raspi-finance-endpoint-micronaut]" projectWorkspaceId="2J8BkwXD9SWPG2K9ZEJvq5PaAdI">
@@ -131,20 +119,33 @@
         </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint">
           <value>
-            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – BaseControllerSpec.groovy [raspi-finance-endpoint.functionalTest]" opened="true" projectWorkspaceId="2IeLiEzB0LRUyYvWIDUnZ7Zc78l">
-              <option name="activationTimestamp" value="1672263154820" />
+            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – application-prod.yml [raspi-finance-endpoint.main]" projectWorkspaceId="2IeLiEzB0LRUyYvWIDUnZ7Zc78l">
+              <option name="activationTimestamp" value="1672275301482" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="IC-223.8214.52" />
-              <option name="buildTimestamp" value="1671535468741" />
+              <option name="buildTimestamp" value="1671535449766" />
+              <frame x="0" y="20" width="3838" height="2138" />
+              <option name="productionCode" value="IC" />
+              <option name="projectOpenTimestamp" value="1672273219246" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-react">
+          <value>
+            <RecentProjectMetaInfo frameTitle="raspi-finance-react – useValidationAmountInsert.tsx" projectWorkspaceId="2Im4znbFme2B3jzAkIB58aIloox">
+              <option name="activationTimestamp" value="1672276363046" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IC-223.8214.52" />
+              <option name="buildTimestamp" value="1671535449766" />
               <frame x="0" y="14" width="3840" height="2128" />
               <option name="productionCode" value="IC" />
-              <option name="projectOpenTimestamp" value="1672260097963" />
+              <option name="projectOpenTimestamp" value="1672275308053" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
       </map>
     </option>
-    <option name="lastOpenedProject" value="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint" />
+    <option name="lastOpenedProject" value="$USER_HOME$/projects/github.com/henninb/raspi-finance-react" />
     <option name="lastProjectLocation" value="$USER_HOME$/projects/github.com/henninb" />
   </component>
 </application>
