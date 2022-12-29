@@ -117,35 +117,35 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
-        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint">
-          <value>
-            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – application-prod.yml [raspi-finance-endpoint.main]" projectWorkspaceId="2IeLiEzB0LRUyYvWIDUnZ7Zc78l">
-              <option name="activationTimestamp" value="1672275301482" />
-              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="build" value="IC-223.8214.52" />
-              <option name="buildTimestamp" value="1671535449766" />
-              <frame x="0" y="20" width="3838" height="2138" />
-              <option name="productionCode" value="IC" />
-              <option name="projectOpenTimestamp" value="1672273219246" />
-            </RecentProjectMetaInfo>
-          </value>
-        </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-react">
           <value>
             <RecentProjectMetaInfo frameTitle="raspi-finance-react – useValidationAmountInsert.tsx" projectWorkspaceId="2Im4znbFme2B3jzAkIB58aIloox">
-              <option name="activationTimestamp" value="1672276363046" />
+              <option name="activationTimestamp" value="1672313204956" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="IC-223.8214.52" />
-              <option name="buildTimestamp" value="1671535449766" />
+              <option name="buildTimestamp" value="1671535478133" />
               <frame x="0" y="14" width="3840" height="2128" />
               <option name="productionCode" value="IC" />
-              <option name="projectOpenTimestamp" value="1672275308053" />
+              <option name="projectOpenTimestamp" value="1672313208079" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint">
+          <value>
+            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – WebSecurityConfig.kt [raspi-finance-endpoint.main]" projectWorkspaceId="2IeLiEzB0LRUyYvWIDUnZ7Zc78l">
+              <option name="activationTimestamp" value="1672324671069" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IC-223.8214.52" />
+              <option name="buildTimestamp" value="1671535478133" />
+              <frame x="0" y="20" width="3838" height="2138" />
+              <option name="productionCode" value="IC" />
+              <option name="projectOpenTimestamp" value="1672313221497" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
       </map>
     </option>
-    <option name="lastOpenedProject" value="$USER_HOME$/projects/github.com/henninb/raspi-finance-react" />
+    <option name="lastOpenedProject" value="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint" />
     <option name="lastProjectLocation" value="$USER_HOME$/projects/github.com/henninb" />
   </component>
 </application>
