@@ -21,6 +21,12 @@ elif [ "$platform" = "docker" ]; then
   docker rm -f nginx-server
   echo "running server on port 443"
 
+  blocking=$(docker ps -a --filter "expose=443"  --format '{{.ID}}')
+  if [ -n "${blocking}" ]; then
+    docker stop "${blocking}"
+    docker rm -f "${blocking}"
+  fi
+
   echo docker exec -it --user root nginx-server /bin/bash
   echo docker exec -it --user root nginx-server ss --listen
   echo docker logs nginx-server
