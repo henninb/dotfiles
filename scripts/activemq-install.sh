@@ -136,7 +136,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   netstat -na | grep tcp | grep LIST | grep 61616
   netstat -na | grep tcp | grep LIST | grep 61613
   pidof systemd
-elif [ "$OS" = "CentOS Linux" ]; then
+elif [ "$OS" = "Fedora Linux" ]; then
   sudo groupadd activemq
   sudo useradd -s /sbin/nologin -g activemq activemq
   sudo yum install -y net-tools wget curl
