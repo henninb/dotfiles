@@ -158,6 +158,7 @@
 | blocking               | hblock                                                                               |
 | internet speed         | speedtest-cli                                                                        |
 | compression tools      | PeaZip                                                                               |
+| disk writing tool      | dd, gnome-disk-utility                                                               |
 
 ## Language Servers
 - c - ccls
