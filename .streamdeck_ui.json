@@ -157,19 +157,30 @@
                         "icon": "/home/henninb/files/backup-streamdeck/radio.jpg"
                     },
                     "14": {
-                        "icon": "/home/henninb/files/backup-streamdeck/steam.png",
-                        "command": "steam",
+                        "icon": "/home/henninb/files/backup-streamdeck/right-arrow.png",
+                        "command": "",
                         "keys": "",
-                        "text": "steam"
+                        "text": "next",
+                        "switch_page": 3
                     }
                 },
                 "2": {
                     "0": {
+                        "text": "prev",
+                        "command": "",
+                        "switch_page": 2,
+                        "icon": "/home/henninb/files/backup-streamdeck/left-arrow.png"
+                    },
+                    "1": {
                         "text": "k3b",
+                        "switch_page": 2,
                         "command": "k3b"
                     },
-                    "1": {},
-                    "2": {},
+                    "2": {
+                        "text": "steam",
+                        "command": "steam",
+                        "icon": "/home/henninb/files/backup-streamdeck/steam.png"
+                    },
                     "3": {},
                     "4": {},
                     "5": {},
@@ -181,7 +192,11 @@
                     "11": {},
                     "12": {},
                     "13": {},
-                    "14": {}
+                    "14": {
+                        "text": "next",
+                        "switch_page": 4,
+                        "icon": "/home/henninb/files/backup-streamdeck/right-arrow.png"
+                    }
                 },
                 "3": {
                     "0": {},
@@ -303,7 +318,7 @@
                     "14": {}
                 }
             },
-            "page": 2,
+            "page": 0,
             "brightness": 43,
             "brightness_dimmed": 37,
             "display_timeout": 3600
