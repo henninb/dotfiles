@@ -28,7 +28,7 @@ if [ "$os" = "gentoo" ]; then
 
   echo sudo chroot /mnt/gentoo /bin/bash
   echo source /etc/profile
-  echo 'export PS1="(chroot) $PS1"'
+  echo 'export PS1="(gentoo-chroot) $PS1"'
 elif [ "$os" = "fedora" ]; then
   sudo mkdir -p /mnt/fedora
   sudo mount /dev/sdc3 /mnt/fedora
@@ -46,7 +46,7 @@ elif [ "$os" = "fedora" ]; then
 
   echo sudo chroot /mnt/fedora/root /bin/bash
   echo source /etc/profile
-  echo 'export PS1="(chroot) $PS1"'
+  echo 'export PS1="(fedora-chroot) $PS1"'
 elif [ "$os" = "archlinux" ]; then
   sudo mkdir -p /mnt/archlinux
   sudo mount /dev/sdb2 /mnt/archlinux
@@ -60,7 +60,7 @@ elif [ "$os" = "archlinux" ]; then
 
   echo sudo chroot /mnt/archlinux /bin/bash
   echo source /etc/profile
-  echo 'export PS1="(chroot) $PS1"'
+  echo 'export PS1="(archlinux-chroot) $PS1"'
 else
   echo "chose the correct os."
 fi
