@@ -158,6 +158,7 @@
 | internet speed         | speedtest-cli                                                                        |
 | compression tools      | PeaZip                                                                               |
 | disk writing tool      | dd, gnome-disk-utility                                                               |
+| multi iso to flashdrive| ventoy                                                                               |
 
 ## Language Servers
 - c - ccls
