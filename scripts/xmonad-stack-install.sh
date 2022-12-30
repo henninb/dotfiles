@@ -93,6 +93,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S arch-install-scripts
   sudo pacman --noconfirm --needed -S bat
   sudo pacman --noconfirm --needed -S blueman
+  sudo pacman --noconfirm --needed -S bluez-utils
   sudo pacman --noconfirm --needed -S byobu
   sudo pacman --noconfirm --needed -S clipmenu
   sudo pacman --noconfirm --needed -S cmake
@@ -320,6 +321,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y alsa-lib-devel
   sudo dnf install -y bat
   sudo dnf install -y blueman
+  sudo dnf install -y bluez
   sudo dnf install -y conky
   sudo dnf install -y copyq
   sudo dnf install -y dmenu
