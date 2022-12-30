@@ -8,7 +8,8 @@ npm install -g tree-sitter-cli
 
 echo :LspInstall ccls
 echo sudo pacman --noconfirm --needed -S llvm
-echo sudo dnf install llvm
+echo sudo dnf install -y llvm-devel
+echo sudo dnf install -y llvm-libs
 echo sudo dnf install cmake
 echo sudo dnf groupinstall "Development Tools" "Development Libraries"
 
