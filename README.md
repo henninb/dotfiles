@@ -91,7 +91,7 @@
 | software defined radio | gqrx                                                                                 |
 | spreadsheet            | sc-im                                                                                |
 | programming languages  | java, kotlin, haskell, rust, python, javascript, scala, groovy                       |
-| frameworks             | SpringBoot, Micronaut, React                                                         |
+| frameworks             | SpringBoot, Micronaut, React, Ratpack                                                |
 | containerization       | docker, podman                                                                       |
 | hypervisor             | kvm, qemu, bhyve                                                                     |
 | remote desktop server  | xrdp                                                                                 |
@@ -100,10 +100,10 @@
 | network packet tools   | tcpdump, wireshark                                                                   |
 | markdown viewer        | glow                                                                                 |
 | browser                | brave, librewolf firefox, ddgr, lynx, elinks                                         |
-| database client        | dbeaver, sqlplus                                                                     |
+| database client        | dbeaver, psql, sqlplus                                                               |
 | database server        | postgresql, influx, mongodb, elastic                                                 |
 | astronomy              | stellarium                                                                           |
-| notes                  | standard note, joplin                                                                |
+| notes                  | standard note                                                                        |
 | font                   | monofur, FiraCode, Symbola                                                           |
 | theme                  | dracula                                                                              |
 | audio player           | cmus, mpd, cantata, ncmpcpp, emacs (emms)                                            |
@@ -118,7 +118,7 @@
 | wii game emulator      | dolphin-emu                                                                          |
 | cloud storage          | nextcloud, dropbox                                                                   |
 | games                  | xonotic, wesnoth, 0ad                                                                |
-| game platform          | minigalaxy, steam                                                                    |
+| game platform          | minigalaxy, steam, lutris                                                            |
 | pdf reader             | zathura                                                                              |
 | calendar               | calcurse                                                                             |
 | log reader             | lnav                                                                                 |
@@ -139,8 +139,7 @@
 | audio editor/recorder  | audacity, ardour                                                                     |
 | vector graphics        | inkscape                                                                             |
 | 3D creation            | blender                                                                              |
-| desktop manager        | lightdm, sddm                                                                        |
-| desktop greeter        | slick-greeter                                                                        |
+| desktop manager        | sddm                                                                                 |
 | clipboard manager      | copyq, clipmenu                                                                      |
 | color temperature tool | redshift                                                                             |
 | password manager       | kepassxc, pass, passmenu, pass-otp, gopass                                           |
