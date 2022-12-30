@@ -37,16 +37,15 @@ elif [ "$os" = "fedora" ]; then
   cd /mnt/fedora
 
   sudo mount --rbind home /mnt/fedora/root/home
-
   sudo mount -t proc none /mnt/fedora/root/proc
   sudo mount --rbind /dev /mnt/fedora/root/dev
   # echo mount --bind /dev/mnt/dev
   sudo mount --rbind /sys /mnt/fedora/root/sys
   sudo mount --rbind /run /mnt/fedora/root/run
 
-  echo sudo chroot /mnt/fedora/root /bin/bash
-  echo source /etc/profile
   echo 'export PS1="(fedora-chroot) $PS1"'
+  sudo chroot /mnt/fedora/root /bin/bash
+  # echo source /etc/profile
 elif [ "$os" = "archlinux" ]; then
   sudo mkdir -p /mnt/archlinux
   sudo mount /dev/sdb2 /mnt/archlinux
@@ -58,9 +57,9 @@ elif [ "$os" = "archlinux" ]; then
   sudo mount --rbind /dev /mnt/archlinux/dev
   sudo mount --rbind /sys /mnt/archlinux/sys
 
-  echo sudo chroot /mnt/archlinux /bin/bash
-  echo source /etc/profile
   echo 'export PS1="(archlinux-chroot) $PS1"'
+  sudo chroot /mnt/archlinux /bin/bash
+  # echo source /etc/profile
 else
   echo "chose the correct os."
 fi
