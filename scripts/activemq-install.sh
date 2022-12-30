@@ -139,16 +139,16 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo groupadd activemq
   sudo useradd -s /sbin/nologin -g activemq activemq
-  sudo yum install -y net-tools wget curl
+  sudo dnf install -y net-tools wget curl
   sudo tar -zxvf "$HOME/tmp/apache-activemq-$amq_version-bin.tar.gz" -C /opt
   sudo chown -R activemq:activemq "/opt/apache-activemq-$amq_version/"
-  sudo ln -sfn "/opt/apache-activemq-$amq_version /opt/activemq"
+  sudo ln -sfn "/opt/apache-activemq-$amq_version" /opt/activemq
   sudo sed -i "s/managementContext createConnector=\"false\"/managementContext createConnector=\"true\"/" /opt/activemq/conf/activemq.xml
-  sudo mv -v activemq.service /etc/systemd/system
+  sudo mv -v "$HOME/tmp/activemq.service" /lib/systemd/system
   sudo systemctl daemon-reload
   sudo systemctl enable activemq
   sudo systemctl start activemq
-  echo fix the firewall
+  # echo fix the firewall
   netstat -na | grep tcp | grep LIST | grep 8161
   netstat -na | grep tcp | grep LIST | grep 61616
   netstat -na | grep tcp | grep LIST | grep 61613
