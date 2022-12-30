@@ -32,7 +32,7 @@ RUN ln -sf /opt/${ACTIVEMQ} /opt/activemq
 RUN rm -rf $ACTIVEMQ_HOME/activemq-all-${ACTIVEMQ_VERSION}.jar
 RUN addgroup -g 71 operator
 RUN adduser -u 9998 -D -G operator activemq
-# RUN chown -R activemq:operator /opt/activemq/
+RUN chown -R activemq:operator /opt/$ACTIVEMQ
 RUN ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
 RUN sed -i "s/admin: admin, admin/admin: monday1, admin/g" $ACTIVEMQ_HOME/conf/jetty-realm.properties
 RUN sed -i "s/127.0.0.1/0.0.0.0/g" $ACTIVEMQ_HOME/conf/jetty.xml
@@ -63,7 +63,7 @@ RUN sed -i "s/50 gb/25 gb/g" $ACTIVEMQ_HOME/conf/activemq.xml
 WORKDIR $ACTIVEMQ_HOME
 
 # having login issues to the admin console when using activemq user
-#USER activemq
+USER activemq
 
 # must start in container in daemon mode
 # CMD ["/bin/sh", "-c", "bin/activemq console"]
