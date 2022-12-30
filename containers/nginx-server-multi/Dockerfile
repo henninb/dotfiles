@@ -1,7 +1,8 @@
-FROM nginx
+# FROM nginx
+FROM nginx:1.23.3-alpine
 
-RUN apt-get update
-RUN apt-get -y install iproute2
+# RUN apt-get update
+# RUN apt-get -y install iproute2
 
 RUN mkdir /usr/share/nginx/html-site1/
 COPY ./public-html/ /usr/share/nginx/html/
