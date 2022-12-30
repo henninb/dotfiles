@@ -329,6 +329,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y flameshot
   sudo dnf install -y feh
   sudo dnf install -y g++
+  sudo dnf install -y gtk2-devel 
   sudo dnf install -y htop
   sudo dnf install -y i3lock
   sudo dnf install -y ImageMagick
@@ -377,6 +378,13 @@ elif [ "$OS" = "Fedora Linux" ]; then
   cd "$HOME/projects/github.com/baskerville" || exit
   git clone git@github.com:baskerville/xdo.git
   cd ./xdo || exit
+  sudo make install
+
+  mkidr -p "$HOME/projects/github.com/sargon"
+  cd "$HOME/projects/github.com/sargon" || exit
+  git clone git@github.com/sargon/trayer-srg.git
+  cd trayer-srg
+  ./configure
   sudo make install
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
