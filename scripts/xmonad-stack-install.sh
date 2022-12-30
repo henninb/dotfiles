@@ -371,6 +371,10 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y xscreensaver
   sudo dnf install -y yad
   sudo dnf groupinstall "Development Tools" "Development Libraries"
+  sudo dnf install -y clang-devel
+  # sudo dnf install -y cmake-fedora
+  sudo dnf install -y llvm-libs
+  sudo dnf install -y llvm-devel
   sudo dnf install -y golang
   sudo dnf install -y luarocks
   echo iwlib missing
