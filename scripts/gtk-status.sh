@@ -6,6 +6,9 @@ if [ "$OS" = "Solus" ]; then
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y libgtk2.0-dev
   sudo apt install -y libgtk-3-dev
+elif [ "$OS" = "Fedora Linux" ]; then
+  sudo dnf install gtk2-devel
+  sudo dnf install gtk3-devel
 elif [ "$OS" = "void" ]; then
   sudo xbps-install -Suy
   sudo xbps-install -y gtk+3-devel
