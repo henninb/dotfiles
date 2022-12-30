@@ -2,7 +2,7 @@
 
 # DEBIAN_FRONTEND=noninteractive
 
-ARCHLINUX_PKGS="meld blender pcmanfm dbeaver vscode discord wireshark-qt i3lock thunar meld xorg-server xlockmore vlc riot-desktop dbeaver handbrake feh dolphin-emu gqrx gitk audacity zathura sxiv mpv gimp inkscape brave fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio celluloid libva-vdpau-driver libvdpau-va-gl vdpauinfo mesa-vdpau libva-utils openshot cantata notepadqq qalculate-gtk gparted steam gnome-disk-utility"
+ARCHLINUX_PKGS="meld blender pcmanfm dbeaver vscode discord wireshark-qt i3lock thunar meld xorg-server xlockmore vlc riot-desktop dbeaver handbrake feh dolphin-emu gqrx gitk audacity zathura sxiv mpv gimp inkscape brave fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio celluloid libva-vdpau-driver libvdpau-va-gl vdpauinfo mesa-vdpau libva-utils openshot cantata notepadqq qalculate-gtk gparted steam gnome-disk-utility lutris"
 
 MINT_PKGS="qalculate thunar meld vlc riot-desktop handbrake dolphin-emu xterm rofi feh suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious gitk audacity gqrx-sdr gimp inkscape gnome-mpv openshot vulkan-utils basilisk"
 
@@ -12,13 +12,13 @@ UBUNTU_PKGS="sxiv i3lock meld gqrx vlc handbrake dolphin-emu feh gnome-boxes coc
 
 FREEBSD_PKGS="sxiv i3lock qalculate keepassxc thunar meld vlc firefox handbrake dolphin-emu xterm audacity gimp inkscape mpv blender vscode libreoffice"
 
-GENTOO_PKGS="meld vlc blender handbrake thunar pcmanfm games-emulation/dolphin xterm audacity gimp inkscape kdenlive mpv media-video/obs-studio app-admin/keepassxc zathura net-im/zoom librewolf-bin wireshark libreoffice-bin slack vscodium sxiv qalculate-gtk hardinfo net-im/discord-bin media-video/celluloid kdeconnect gqrx steam gparted mysql mythtv gnome-disk-utility"
+GENTOO_PKGS="meld vlc blender handbrake thunar pcmanfm games-emulation/dolphin xterm audacity gimp inkscape kdenlive mpv media-video/obs-studio app-admin/keepassxc zathura net-im/zoom librewolf-bin wireshark libreoffice-bin slack vscodium sxiv qalculate-gtk hardinfo net-im/discord-bin media-video/celluloid kdeconnect gqrx steam gparted mysql mythtv gnome-disk-utility lutris"
 
 VOID_PKGS="gimp incscape vlc handbrake audacity dolphin-emu zathura dbeaver mpv"
 
 SOLUS_PKGS="meld gimp inkscape vlc handbrake audacity dolphin-emu zathura dbeaver gnome-mpv terminator mpv openshot"
 
-FEDORA_PKGS="meld blender pcmanfm vscode discord wireshark i3lock thunar meld vlc HandBrake-gui dbeaver feh dolphin-emu gqrx gitk audacity zathura sxiv mpv gimp inkscape fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio celluloid libva-utils openshot cantata notepadqq qalculate-gtk gparted steam gnome-disk-utility"
+FEDORA_PKGS="meld blender pcmanfm vscode discord wireshark i3lock thunar meld vlc HandBrake-gui dbeaver feh dolphin-emu gqrx gitk audacity zathura sxiv mpv gimp inkscape fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio celluloid libva-utils openshot cantata notepadqq qalculate-gtk gparted steam gnome-disk-utility lutris"
 
 #MACOS_PKGS="alacritty iterm2"
 
