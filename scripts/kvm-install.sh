@@ -104,7 +104,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   virsh list --all
   virsh net-autostart default
   virsh net-list --all
-  getent group kvm libvirt
+  getent group kvm libvirt qemu
   echo "reboot system to fix virt network"
 elif [ "$OS" = "Solus" ]; then
   echo
@@ -112,6 +112,7 @@ elif [ "$OS" = "Solus" ]; then
   # sudo eopkg install -y virt-manager
   sudo usermod -a -G libvirt "$(id -un)"
   sudo usermod -a -G kvm "$(id -un)"
+  sudo usermod -a -G qemu "$(id -un)"
   sudo systemctl enable libvirtd
   sudo systemctl start libvirtd
   virsh list --all
@@ -134,6 +135,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo systemctl start libvirtd
   sudo usermod -a -G libvirt "$(id -un)"
   sudo usermod -a -G kvm "$(id -un)"
+  sudo usermod -a -G qemu "$(id -un)"
   echo grep KVM /usr/src/linux/.config
   lsmod | grep kvm
 elif [ "$OS" = "Fedora Linux" ]; then
@@ -147,6 +149,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y virt-manager
   sudo usermod -a -G libvirt "$(id -un)"
   sudo usermod -a -G kvm "$(id -un)"
+  sudo usermod -a -G qemu "$(id -un)"
   sudo systemctl start libvirtd
   sudo systemctl enable libvirtd
   virsh list --all
