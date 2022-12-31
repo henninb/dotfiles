@@ -40,6 +40,7 @@ exec sudo virt-install \
 --vcpus=1,maxvcpus=2 \
 --virt-type=kvm \
 --hvm \
+--osinfo linux2022 \
 --boot uefi \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
 --network=bridge=virbr0,model=virtio \
