@@ -322,6 +322,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y bat
   sudo dnf install -y blueman
   sudo dnf install -y bluez
+  sudo dnf install -y bridge-utils
   sudo dnf install -y conky
   sudo dnf install -y copyq
   sudo dnf install -y dmenu

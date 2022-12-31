@@ -31,12 +31,14 @@ echo "osinfo-query os"
 echo "disk bus can be virtio i.e. vda, or scsi i.e. sda"
 
 exec sudo virt-install \
+--connect qemu:///system \
 --virt-type=kvm \
 --name "guest-$guest_name" \
 --memory=4096,maxmemory=4096 \
 --vcpus=1,maxvcpus=2 \
 --virt-type=kvm \
 --hvm \
+--osinfo=unknown \
 --boot uefi \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
 --network=bridge=virbr0,model=virtio \

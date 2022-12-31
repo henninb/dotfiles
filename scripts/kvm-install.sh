@@ -140,6 +140,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   #sudo dnf remove -y seabios-bin
   sudo dnf install -y seabios-bin
   sudo dnf install -y virt-install
+  sudo dnf install -y virt-viewer
   sudo dnf install -y libvirt
   sudo dnf install -y qemu
   sudo dnf install -y virt-manager
