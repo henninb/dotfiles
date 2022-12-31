@@ -15,6 +15,8 @@ virsh undefine "guest-$guest_name"
 
 sudo mkdir -p /var/lib/libvirt/images/
 sudo mkdir -p /var/lib/libvirt/boot
+sudo chown -R qemu:qemu /var/lib/libvirt/boot
+sudo chown -R qemu:qemu /var/lib/libvirt/images
 sudo rm "/var/lib/libvirt/images/guest-${guest_name}.qcow2"
 
 if [ "$remove" = "y" ]; then
@@ -30,7 +32,8 @@ fi
 echo "osinfo-query os"
 echo "disk bus can be virtio i.e. vda, or scsi i.e. sda"
 
-exec sudo virt-install \
+exec virt-install \
+--connect qemu:///system \
 --virt-type=kvm \
 --name "guest-$guest_name" \
 --memory=8192,maxmemory=8192 \

@@ -14,6 +14,9 @@ virsh destroy guest-centos7
 virsh undefine guest-centos7
 
 sudo mkdir -p /var/lib/libvirt/boot
+sudo mkdir -p /var/lib/libvirt/images
+sudo chown -R qemu:qemu /var/lib/libvirt/boot
+sudo chown -R qemu:qemu /var/lib/libvirt/images
 sudo rm /var/lib/libvirt/images/guest-centos7.qcow2
 
 if [ "$remove" = "y" ]; then

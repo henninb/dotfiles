@@ -15,6 +15,8 @@ virsh undefine "guest-$guest_name"
 
 sudo mkdir -p /var/lib/libvirt/images/
 sudo mkdir -p /var/lib/libvirt/boot
+sudo chown -R qemu:qemu /var/lib/libvirt/boot
+sudo chown -R qemu:qemu /var/lib/libvirt/images
 sudo rm "/var/lib/libvirt/images/guest-${guest_name}.qcow2"
 
 if [ "$remove" = "y" ]; then
