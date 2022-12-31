@@ -43,3 +43,5 @@ exec sudo virt-install \
 --disk path=/var/lib/libvirt/images/guest-$guest_name.qcow2,size=40,bus=scsi,format=qcow2
 
 exit 0
+
+--connect qemu:///system \
