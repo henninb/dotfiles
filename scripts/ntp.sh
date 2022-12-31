@@ -5,10 +5,11 @@ if command -v pacman; then
   sudo hwclock
   sudo hwclock -w
 elif command -v zypper; then
-  sudo zypper install -y ntp
+  # sudo zypper install -y ntp
+  sudo ntpdate -s time.nist.gov
 elif command -v dnf; then
   date
-  sudo chrony -s time.nist.gov
+  sudo ntpdate -s time.nist.gov
 elif command -v emerge; then
   sudo ntpdate -s time.nist.gov
 elif command -v pkg; then
@@ -23,9 +24,9 @@ else
   exit 1
 fi
 
-timedatectl set-ntp true
-timedatectl status
-timedatectl show-timesync --all
+echo timedatectl set-ntp true
+echo timedatectl status
+echo timedatectl show-timesync --all
 
 echo example:
 echo "sudo date -s '27 DEC 2021 12:24:00'"
