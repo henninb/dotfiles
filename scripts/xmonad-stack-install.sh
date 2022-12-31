@@ -355,6 +355,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y neofetch
   sudo dnf install -y numlockx
   sudo dnf install -y ncdu
+  sudo dnf install -y ntpsec
   sudo dnf install -y pavucontrol
   sudo dnf install -y partimage
   sudo dnf install -y pandoc
