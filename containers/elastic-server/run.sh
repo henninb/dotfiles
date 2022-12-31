@@ -8,7 +8,15 @@ fi
 
 platform=$1
 
-export HOST_IP=192.168.10.192
+if [ "$OS" = "FreeBSD" ]; then
+  HOST_IP="192.168.10.114"
+elif [ "$OS" = "Darwin" ]; then
+  HOST_IP=$(ipconfig getifaddr en0)
+else
+  HOST_IP=$(ip route get 1 | awk '{print $7}' | head -1)
+fi
+
+export HOST_IP
 
 if [ "$platform" = "podman" ]; then
   # podman stop logstash-server
@@ -20,8 +28,18 @@ if [ "$platform" = "podman" ]; then
   podman volume rm elk-server_elasticsearch-volume
   echo "running server on port xx"
 
+  echo docker logs kibana-server
+  echo docker logs elasticsearch-server
+
+  export elastic_host='host.containers.internal'
   podman-compose build
-  podman-compose up
+  podman-compose up -d
+
+  echo "curl -s http://localhost:5601/api/status | jq '.status.overall'"
+  curl -s http://localhost:5601/api/status | jq '.status.overall'
+
+  echo 'curl -s -X GET "http://localhost:9200/_cluster/health" | jq'
+  curl -s -X GET "http://localhost:9200/_cluster/health" | jq
 elif [ "$platform" = "docker" ]; then
   # docker stop logstash-server
   # docker rm -f logstash-server
@@ -32,12 +50,19 @@ elif [ "$platform" = "docker" ]; then
   docker volume rm elk-server_elasticsearch-volume
   echo "running server on port xx"
 
+  export elastic_host='elasticsearch-server'
   echo docker logs kibana-server
   echo docker logs elasticsearch-server
 
   if command -v docker-compose; then
     docker-compose build
-    docker-compose up
+    docker-compose up -d
+
+    echo "curl -s http://localhost:5601/api/status | jq '.status.overall'"
+    curl -s http://localhost:5601/api/status | jq '.status.overall'
+
+    echo 'curl -s -X GET "http://localhost:9200/_cluster/health" | jq'
+    curl -s -X GET "http://localhost:9200/_cluster/health" | jq
   fi
 fi
 

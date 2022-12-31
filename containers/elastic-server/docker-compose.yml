@@ -3,7 +3,7 @@ services:
   elasticsearch-server:
     container_name: elasticsearch-server
     hostname: elasticsearch-server
-    image: elasticsearch:7.17.8
+    image: elasticsearch:8.5.3
     # restart: always
     environment:
       # - node.name=elasticsearch-server
@@ -35,20 +35,30 @@ services:
   kibana-server:
     container_name: kibana-server
     hostname: kibana-server
-    image: kibana:7.17.8
+    image: kibana:8.5.3
+    # image: kibana-server
+    # build:
+    #   context: ./
+    #   args:
+    #     elastic_host: ${elastic_host}
     # restart: always
     environment:
       # - SERVERNAME=kibana
+      # - ELASTICSEARCH_HOSTS=http://$elastic_host:9200
       - ELASTICSEARCH_HOSTS=http://elasticsearch-server:9200
+      # - ELASTICSEARCH_HOSTS=http://host.containers.internal:9200
+      # - ELASTICSEARCH_HOSTS=http://elasticsearch-server:9200
       # - ELASTICSEARCH_URL=http://elasticsearch-server:9200
     ports:
       - 5601:5601
+    extra_hosts:
+      - "elasticsearch-server:${HOST_IP}"
     depends_on:
       - elasticsearch-server
     networks:
       - elasticsearch-network
   # logstash:
-  #   image: docker.elastic.co/logstash/logstash:7.17.8
+  #   image:logstash:8.5.3
   #   volumes:
   #     - ./logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
   #     - ./pipeline:/usr/share/logstash/pipeline:ro,Z
@@ -67,3 +77,4 @@ volumes:
     name: elasticsearch-volume
 networks:
   elasticsearch-network:
+    name: elasticsearch-network

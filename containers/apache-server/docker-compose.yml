@@ -1,12 +1,15 @@
 version: "3.7"
 services:
   apache-server:
-    image: httpd:2.4.52
+    build: .
+    image: apache-server
+    # image: httpd:2.4.54
     # user: "${CURRENT_UID}:${CURRENT_GID}"
     container_name: apache-server
+    hostname: apache-server
+    # restart: always
     ports:
-      - "8080:80"
-    expose:
-      - "8080"
+      # - "8080:80"
+      - "443:443"
     # volumes:
     #   - ./default.vcl:/default.vcl

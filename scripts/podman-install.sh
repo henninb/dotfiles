@@ -28,12 +28,14 @@ if command -v pacman; then
   sudo pacman --noconfirm --needed -S slirp4netns
   sudo pacman --noconfirm --needed -S fuse-overlayfs
   sudo pacman --noconfirm --needed -S podman-dnsname
+  systemctl --user start podman.socket
   # sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$(id -un)"
   echo +cpu +cpuset +io +memory +pids > sudo tee -a /sys/fs/cgroup/cgroup.subtree_control
 elif command -v emerge; then
   sudo emerge --update --newuse podman
   sudo emerge --update --newuse slirp4netns
   sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$(id -un)"
+  systemctl --user start podman.socket
 elif [ -x "$(command -v apt)" ]; then
   echo "debian"
 elif [ -x "$(command -v xbps-install)" ]; then
