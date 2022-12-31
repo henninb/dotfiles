@@ -6,6 +6,9 @@ if command -v pacman; then
   sudo hwclock -w
 elif command -v zypper; then
   sudo zypper install -y ntp
+elif command -v dnf; then
+  date
+  sudo chrony -s time.nist.gov
 elif command -v pkg; then
   date
   sudo ntpdate -s time.nist.gov
