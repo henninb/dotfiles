@@ -142,6 +142,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y virt-install
   sudo dnf install -y virt-viewer
   sudo dnf install -y libvirt
+  sudo dnf install -y edk2-ovmf
   sudo dnf install -y qemu
   sudo dnf install -y virt-manager
   sudo usermod -a -G libvirt "$(id -un)"
