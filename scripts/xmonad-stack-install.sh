@@ -124,6 +124,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S mpc
   sudo pacman --noconfirm --needed -S mpv
   sudo pacman --noconfirm --needed -S mpd
+  sudo pacman --noconfirm --needed -S ntp
   sudo pacman --noconfirm --needed -S ncdu
   sudo pacman --noconfirm --needed -S numlockx
   sudo pacman --noconfirm --needed -S network-manager-applet
