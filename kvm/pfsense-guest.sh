@@ -32,7 +32,7 @@ fi
 echo "osinfo-query os"
 echo "disk bus can be virtio i.e. vda, or scsi i.e. sda"
 
-exec sudo virt-install \
+exec virt-install \
 --connect qemu:///system \
 --virt-type=kvm \
 --name "guest-$guest_name" \
@@ -40,6 +40,7 @@ exec sudo virt-install \
 --vcpus=1,maxvcpus=2 \
  --osinfo detect=on,require=off \
 --virt-type=kvm \
+--osinfo=freebsd12.2 \
 --hvm \
 --boot uefi \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
