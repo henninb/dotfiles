@@ -9,6 +9,8 @@ elif command -v zypper; then
 elif command -v dnf; then
   date
   sudo chrony -s time.nist.gov
+elif command -v emerge; then
+  sudo ntpdate -s time.nist.gov
 elif command -v pkg; then
   date
   sudo ntpdate -s time.nist.gov
