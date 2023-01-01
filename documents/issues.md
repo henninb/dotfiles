@@ -642,3 +642,9 @@ systemctl disable --now systemd-userdbd.socket
 ```
 pacman -S linux
 ```
+
+## dns issue
+```
+/etc/nsswitch.conf
+hosts:      files dns myhostname
+```
