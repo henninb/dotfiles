@@ -69,6 +69,7 @@ elif [ "$OS" = "Gentoo" ]; then
     if [ ! -f "/boot/vmlinuz-${eselect}-gentoo-x86_64" ]; then
       echo "complie the kernel '$eselect' as it is newer than '$uname'"
       sudo genkernel all
+      sudo grub-mkconfig -o /boot/grub/grub.cfg
     fi
   fi
   blender=$(find /usr/bin -name "blender-*[0-9]")
