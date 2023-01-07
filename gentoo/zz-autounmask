@@ -98,3 +98,4 @@ dev-lang/mono minimal
 app-containers/podman rootless fuse
 app-text/poppler qt5
 dev-qt/qtsql mysql
+sys-fs/lvm2 thin
