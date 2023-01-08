@@ -6,7 +6,7 @@ if [ $# -gt 1 ]; then
 fi
 
 remove=$1
-iso_file="debian-11.1.0-amd64-netinst.iso"
+iso_file="debian-11.6.0-amd64-netinst.iso"
 guest_name="debian"
 
 virsh shutdown "guest-$guest_name"
