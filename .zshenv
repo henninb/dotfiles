@@ -15,7 +15,7 @@ esac
 
 case $(tty) in
   /dev/tty[0-9]*)
-    setfont ter-powerline-v16b
+    setfont "$HOME/.local/fonts/ter-powerline-v16b.psf"
     export TERM=linux
     #echo in console
     # sed -i 's/39d $CURRENT_FG/blue $CURRENT_FG/' ~/.oh-my-zsh/themes/agnoster.zsh-theme
