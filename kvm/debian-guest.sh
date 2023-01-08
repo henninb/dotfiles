@@ -6,26 +6,44 @@ if [ $# -gt 1 ]; then
 fi
 
 remove=$1
-virsh shutdown guest-debian
-virsh undefine guest-debian
+iso_file="debian-11.6.0-amd64-netinst.iso"
+guest_name="debian"
+
+virsh shutdown "guest-$guest_name"
+virsh destroy "guest-$guest_name"
+virsh undefine "guest-$guest_name"
+
+sudo mkdir -p /var/lib/libvirt/boot
+sudo mkdir -p /var/lib/libvirt/images
+sudo chown -R qemu:qemu /var/lib/libvirt/boot
+sudo chown -R qemu:qemu /var/lib/libvirt/images
+sudo rm "/var/lib/libvirt/images/guest-${guest_name}.qcow2"
 
 if [ "$remove" = "y" ]; then
   echo "remove only"
   exit 1
 fi
 
-sudo virt-install --name guest-debian \
-  --ram 2048 \
-  --disk path=/var/kvm/images/guest-debian.img,size=10 \
-  --vcpus 1 --os-type linux --os-variant debian9 \
-  --graphics none --location 'http://ftp.us.debian.org/debian/dists/stretch/main/installer-amd64/' --extra-args console=ttyS0
-echo "add console=ttyS0 to the grub boot parms -- fixes console issues."
-echo "add this to leverage the host cpu --cpu host"
+if [ ! -f "/var/lib/libvirt/boot/${iso_file}" ]; then
+  scp -p "pi:/home/pi/shared/template/iso/${iso_file}" .
+  sudo mv "${iso_file}" /var/lib/libvirt/boot/
+fi
+
+echo "osinfo-query os"
+echo "disk bus can be virtio i.e. vda, or scsi i.e. sda"
+
+exec virt-install \
+--connect qemu:///system \
+--virt-type=kvm \
+--name "guest-$guest_name" \
+--memory=8192,maxmemory=8192 \
+--vcpus=1,maxvcpus=2 \
+--virt-type=kvm \
+--hvm \
+--boot uefi \
+--cdrom=/var/lib/libvirt/boot/${iso_file} \
+--network=bridge=virbr0,model=virtio \
+--graphics vnc \
+--disk path=/var/lib/libvirt/images/guest-$guest_name.qcow2,size=40,bus=scsi,format=qcow2
 
 exit 0
-
-added console=ttyS0 to the boot parms in grub fixes console issues.
- sudo systemctl enable getty@ttyS0
-[sudo] password for henninb:
-Created symlink /etc/systemd/system/getty.target.wants/getty@ttyS0.service → /lib/systemd/system/getty@.service.
-[henninb@mintbox ~]$ sudo systemctl start getty@ttyS0
