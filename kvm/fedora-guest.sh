@@ -6,7 +6,7 @@ if [ $# -gt 1 ]; then
 fi
 
 remove=$1
-iso_file="Fedora-Workstation-Live-x86_64-37_Beta-1.5.iso"
+iso_file="Fedora-Workstation-Live-x86_64-37-1.7.iso"
 guest_name="fedora"
 
 virsh shutdown "guest-$guest_name"
@@ -36,7 +36,7 @@ exec virt-install \
 --connect qemu:///system \
 --virt-type=kvm \
 --name "guest-$guest_name" \
---memory=4096,maxmemory=4096 \
+--memory=8192,maxmemory=8192 \
 --vcpus=1,maxvcpus=2 \
 --virt-type=kvm \
 --hvm \

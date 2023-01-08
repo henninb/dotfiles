@@ -36,7 +36,7 @@ exec virt-install \
 --connect qemu:///system \
 --virt-type=kvm \
 --name "guest-$guest_name" \
---memory=4096,maxmemory=4096 \
+--memory=8192,maxmemory=8192 \
 --vcpus=2,maxvcpus=2 \
 --virt-type=kvm \
 --hvm \
