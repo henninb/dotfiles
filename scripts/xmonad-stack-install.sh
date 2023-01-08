@@ -100,6 +100,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S conky
   sudo pacman --noconfirm --needed -S copyq
   sudo pacman --noconfirm --needed -S dmenu
+  sudo pacman --noconfirm --needed -S debootstrap
   sudo pacman --noconfirm --needed -S dunst
   sudo pacman --noconfirm --needed -S dzen2
   sudo pacman --noconfirm --needed -S slock
