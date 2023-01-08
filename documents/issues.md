@@ -20,6 +20,8 @@
 
 Its up to you where you place the files, I put mine in /usr/share/fonts/PSF. You can test the font using the setfont command and make it permanent by creating or editing /etc/vconsole.conf
 
+sudo mkdir -p /usr/share/fonts/PSF/
+sudo cp ./.local/fonts/ter-powerline-v16b.psf /usr/share/fonts/PSF/
 FONT=/usr/share/fonts/PSF/ter-powerline-v16b.psf
 
 setfont /path/to/yourfont.ext
