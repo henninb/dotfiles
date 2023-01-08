@@ -133,6 +133,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S partimage
   sudo pacman --noconfirm --needed -S pkg-config
   sudo pacman --noconfirm --needed -S polkit-gnome
+  sudo pacman --noconfirm --needed -S powerline
+  sudo pacman --noconfirm --needed -S powerline-fonts
   # sudo pacman --noconfirm --needed -S mpdris2
   # sudo pacman --noconfirm --needed -S playderctl
   sudo pacman --noconfirm --needed -S pulseaudio
