@@ -133,90 +133,55 @@ accolades [ noun ]
 - advocating war or a belligerently threatening diplomatic policy.
 ## hazing
 ## heresy  an opinion
-## impetus [noun]
-- the force or energy with which a body moves.
-## impudent [adjective]
-- not showing due respect for another person; impertinent.
-## incestuous [adjective]
-- (of human relations generally) excessively close and resistant to outside influence.
-## indignant [adjective]
-- feeling or showing anger or annoyance at what is perceived as unfair treatment.
-## inditement
-## inert [adjective]
-- lacking the ability or strength to move.
-## insidious [adjective]
-- proceeding in a gradual, subtle way, but with harmful effects.
-## irrefutable [adjective]
-- impossible to deny or disprove.
-## karmic  destiny or fate in general
-## laborious [adjective]
-- (especially of a task, process, or journey) requiring considerable effort and time.
-## latency
-## lethargic [adjective]
-- affected by lethargy; sluggish and apathetic.
-## levity [noun]
-- humor or frivolity, especially the treatment of a serious matter with humor or in a manner lacking due respect.
-## logistics [noun]
-- the detailed coordination of a complex operation involving many people, facilities, or supplies.
-## melancholy [noun]
-- a feeling of pensive sadness, typically with no obvious cause.
-## melodramatic [adjective]
-- characteristic of melodrama, especially in being exaggerated, sensationalized, or overemotional.
-## metrics [noun]
-- a method of measuring something, or the results obtained from this.
-## moniker [noun]
-- A familiar name for a person (often a shortened version of a person's given name)
-## morbid [adjective]
-- characterized by or appealing to an abnormal and unhealthy interest in disturbing and unpleasant subjects, especially death and disease.
-## nebulous [adjective]
-- (of a concept or idea) unclear, vague, or ill-defined.
-## obstinate [adjective]
-- stubbornly refusing to change one's opinion or chosen course of action, despite attempts to persuade one to do so.
+## impetus [noun] the force or energy with which a body moves.
+## impudent [adjective] not showing due respect for another person; impertinent.
+## incestuous [adjective] (of human relations generally) excessively close and resistant to outside influence.
+## indignant [adjective] feeling or showing anger or annoyance at what is perceived as unfair treatment.
+## inditement [noun]
+## inert [adjective] lacking the ability or strength to move.
+## insidious [adjective] proceeding in a gradual, subtle way, but with harmful effects.
+## irrefutable [adjective] impossible to deny or disprove.
+## karmic [adjective]  destiny or fate in general
+## laborious [adjective] (especially of a task, process, or journey) requiring considerable effort and time.
+## latency [noun]
+## lethargic [adjective] affected by lethargy; sluggish and apathetic.
+## levity [noun] humor or frivolity, especially the treatment of a serious matter with humor or in a manner lacking due respect.
+## logistics [noun] the detailed coordination of a complex operation involving many people, facilities, or supplies.
+## melancholy [noun] a feeling of pensive sadness, typically with no obvious cause.
+## melodramatic [adjective] characteristic of melodrama, especially in being exaggerated, sensationalized, or overemotional.
+## metrics [noun] a method of measuring something, or the results obtained from this.
+## moniker [noun] A familiar name for a person (often a shortened version of a person's given name)
+## morbid [adjective] characterized by or appealing to an abnormal and unhealthy interest in disturbing and unpleasant subjects, especially death and disease.
+## nebulous [adjective] (of a concept or idea) unclear, vague, or ill-defined.
+## obstinate [adjective] stubbornly refusing to change one's opinion or chosen course of action, despite attempts to persuade one to do so.
 ## omenes
-## opaque [adjective]
-- not able to be seen through; not transparent.
-## osmosis [noun]
-- the process of gradual or unconscious assimilation of ideas, knowledge, etc.
-## palpable [adjective]
-- able to be touched or felt, or clear to the mind or plain to see.
-## pandemic [adjective]
-- (of a disease) prevalent throughout an entire country, continent, or the whole world; epidemic over a large area.
-## pandering [verb]
-- gratify or indulge (an immoral or distasteful desire, need, or habit or a person with such a desire, etc.).
-## patronize [verb]
-- treat with an apparent kindness that betrays a feeling of superiority.
+## opaque [adjective] not able to be seen through; not transparent.
+## osmosis [noun] the process of gradual or unconscious assimilation of ideas, knowledge, etc.
+## palpable [adjective] able to be touched or felt, or clear to the mind or plain to see.
+## pandemic [adjective] (of a disease) prevalent throughout an entire country, continent, or the whole world; epidemic over a large area.
+## pandering [verb] gratify or indulge (an immoral or distasteful desire, need, or habit or a person with such a desire, etc.).
+## patronize [verb] treat with an apparent kindness that betrays a feeling of superiority.
 ## pension
-## pervasive [adjective]
-- (especially of an unwelcome influence or physical effect) spreading widely throughout an area or a group of people.
-## phenomenal [adjective]
-- very remarkable; extraordinary.
-## pilfer [verb]
-- steal (typically things of relatively little value).
-## plebiscite [noun]
-- the direct vote of all the members of an electorate on an important public question such as a change in the constitution.
-## predigest [verb]
-- to simplify (information) so as to make it easier to understand or appreciate.
-## predilection [noun]
-- a preference or special liking for something; a bias in favor of something.
-## preponderance [noun]
-- the quality or fact of being greater in number, quantity, or importance.
-## procured  Get by special effort
-## proficiency
+## pervasive [adjective] (especially of an unwelcome influence or physical effect) spreading widely throughout an area or a group of people.
+## phenomenal [adjective] very remarkable; extraordinary.
+## pilfer [verb] to steal (typically things of relatively little value).
+## plebiscite [noun] the direct vote of all the members of an electorate on an important public question such as a change in the constitution.
+## predigest [verb] to simplify (information) so as to make it easier to understand or appreciate.
+## predilection [noun] a preference or special liking for something; a bias in favor of something.
+## preponderance [noun] the quality or fact of being greater in number, quantity, or importance.
+## procure [verb] to get by special effort
+## proficiency [noun] the degree of advancement attained in any branch of knowledge
 ## prude
-## prudent [adjective]
-- acting with or showing care and thought for the future.
-## quagmire [noun]
-- a soft boggy area of land that gives way underfoot.
+## prudent [adjective] acting with or showing care and thought for the future.
+## quagmire [noun] A difficult or precarious situation; a predicament.
 ## rankles
 ## reckless
 ## refactor
-## rhetoric
-## rogue [noun]
-- a dishonest, knavish person; scoundrel.
-## ruse
-## salacious
-## serendipitous [adjective]
-- occurring or discovered by chance in a happy or beneficial way.
+## rhetoric [noun] The art or study of using language effectively and persuasively
+## rogue [noun] a dishonest, knavish person; scoundrel.
+## ruse [noun] The use of artifice or trickery
+## salacious [adjective] Characterized by or indicating sexual desire; lustful.
+## serendipitous [adjective] occurring or discovered by chance in a happy or beneficial way.
 ## serendipitously  The faculty of making fortunate discoveries by accident
 ## snood
 ## spar
@@ -227,46 +192,29 @@ accolades [ noun ]
 ## surreptitious
 ## synchronous
 ## thorough
-## tizzy  An excited state of agitation
-## transparent  able to be seen through with clarity
+## tizzy [noun] An excited state of agitation
+## transparent [adjective] able to be seen through with clarity
 ## triage
 ## undesirable
-## unscrupulous [adjective]
-- having or showing no moral principles; not honest or fair.
-## unsettle [verb]
-- cause to feel anxious or uneasy; disturb.
-## urbane [adjective]
-- (of a person, especially a man) suave, courteous, and refined in manner.
-## verbage [noun]
-- speech or writing that uses too many words or excessively technical expressions.
-## vigorous [adjective]
-- strong, healthy, and full of energy.
-## vixens [noun]
-- a spiteful or quarrelsome woman.
-## unbeknownst [adjective]
-- without the knowledge of (someone).
-## hubris [noun]
-- excessive pride or self-confidence.
-## credulity [noun]
-- a tendency to be too ready to believe that something is real or true.
-## sinister  of, on, or toward the left-hand side (in a coat of arms, from the bearer's point of view, i.e., the right as it is depicted).; giving the impression that something harmful or evil is happening or will happen.
-## myopic [adjective]
-- lacking tolerance or understanding; narrow-minded; unable or unwilling to act prudently; shortsighted.
-## despotism [noun]
-- the exercise of absolute power, especially in a cruel and oppressive way.
-## platitude [noun]
-- a remark or statement, especially one with a moral content, that has been used too often to be interesting or thoughtful.
-## proposition [noun]
-- a statement or assertion that expresses a judgment or opinion.
-## assertion [noun]
-- a confident and forceful statement of fact or belief.
-## null hypothesis [noun]
-- (in a statistical test) the hypothesis that there is no significant difference between specified populations, any observed difference being due to sampling or experimental error.
-## obsequious   [adjective]
--   ??
-## incommensurate - out of proposition with
-## despondent
-## imbued
+## unscrupulous [adjective] - having or showing no moral principles; not honest or fair.
+## unsettle [verb] cause to feel anxious or uneasy; disturb.
+## urbane [adjective] (of a person, especially a man) suave, courteous, and refined in manner.
+## verbage [noun] speech or writing that uses too many words or excessively technical expressions.
+## vigorous [adjective] strong, healthy, and full of energy.
+## vixen [noun] a spiteful or quarrelsome woman.
+## unbeknownst [adjective] without the knowledge of (someone).
+## hubris [noun] excessive pride or self-confidence.
+## credulity [noun] a tendency to be too ready to believe that something is real or true.
+## myopic [adjective] lacking tolerance or understanding; narrow-minded; unable or unwilling to act prudently; shortsighted.
+## despotism [noun] the exercise of absolute power, especially in a cruel and oppressive way.
+## platitude [noun] a remark or statement, especially one with a moral content, that has been used too often to be interesting or thoughtful.
+## proposition [noun] a statement or assertion that expresses a judgment or opinion.
+## assertion [noun] a confident and forceful statement of fact or belief.
+## null hypothesis [noun] (in a statistical test) the hypothesis that there is no significant difference between specified populations, any observed difference being due to sampling or experimental error.
+## obsequious [adjective] Servilely or meanly attentive; compliant to excess; cringing; fawning.
+## incommensurate [adjective] out of proposition with
+## despondent [adjective] In lowspirits from loss of hope or courage.
+## imbue [verb] to inspire or influence thoroughly; pervade.
 ## vacuity [noun] something insanse, senseless, or stupid
 ## insipid [adjective] without sufficient taste to be pleasing
 ## edification [noun] the instruction or improvement of a person morally or intellectually.
@@ -275,3 +223,7 @@ accolades [ noun ]
 ## maturation [noun] the action or process of maturing.
 ## rubric [noun] a statement of purpose or function
 ## didactic [adjective] in the manner of a teacher, particularly so as to treat someone in a patronizing way
+## insufferable [adjective] Difficult or impossible to endure; intolerable.
+## consummation [noun] An ultimate goal or end.
+
+## sinister  of, on, or toward the left-hand side (in a coat of arms, from the bearer's point of view, i.e., the right as it is depicted).; giving the impression that something harmful or evil is happening or will happen.
