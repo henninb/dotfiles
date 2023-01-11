@@ -1,12 +1,14 @@
 #!/bin/sh
 
-if [ $# -ne 1 ]; then
-  echo "Usage: $0 <os>"
+if [ $# -ne 1 ] && [ $# -ne 2 ]; then
+  echo "Usage: $0 <os> [disk]"
   echo "gentoo or archlinux or fedora"
+  echo "disk sdc sdb"
   exit 1
 fi
 
 os=$1
+disk=$2
 
 if command -v camcontrol; then
   sudo camcontrol devlist
@@ -30,10 +32,11 @@ if [ "$os" = "gentoo" ]; then
   echo source /etc/profile
   echo 'export PS1="(gentoo-chroot) $PS1"'
 elif [ "$os" = "fedora" ]; then
+  disk=sdb
   sudo mkdir -p /mnt/fedora
-  sudo mount /dev/sdc3 /mnt/fedora
+  sudo mount /dev/${disk}3 /mnt/fedora
   sudo mkdir -p /mnt/fedora/boot/efi
-  sudo mount /dev/sdc1 /mnt/fedora/boot/efi
+  sudo mount /dev/${disk}1 /mnt/fedora/boot/efi
   cd /mnt/fedora
 
   sudo mount --rbind home /mnt/fedora/root/home
@@ -47,10 +50,11 @@ elif [ "$os" = "fedora" ]; then
   sudo chroot /mnt/fedora/root /bin/bash
   # echo source /etc/profile
 elif [ "$os" = "archlinux" ]; then
+  disk=sdc
   sudo mkdir -p /mnt/archlinux
-  sudo mount /dev/sdb2 /mnt/archlinux
+  sudo mount /dev/${disk}2 /mnt/archlinux
   sudo mkdir -p /mnt/archlinux/boot/efi
-  sudo mount /dev/sdb1 /mnt/archlinux/boot/efi
+  sudo mount /dev/${disk}1 /mnt/archlinux/boot/efi
   cd /mnt/archlinux
 
   sudo mount -t proc none /mnt/archlinux/proc
