@@ -32,7 +32,7 @@ if [ "$os" = "gentoo" ]; then
   echo source /etc/profile
   echo 'export PS1="(gentoo-chroot) $PS1"'
 elif [ "$os" = "fedora" ]; then
-  disk=sdb
+  disk=sdc
   sudo mkdir -p /mnt/fedora
   sudo mount /dev/${disk}3 /mnt/fedora
   sudo mkdir -p /mnt/fedora/boot/efi
@@ -50,7 +50,7 @@ elif [ "$os" = "fedora" ]; then
   sudo chroot /mnt/fedora/root /bin/bash
   # echo source /etc/profile
 elif [ "$os" = "archlinux" ]; then
-  disk=sdc
+  disk=sdb
   sudo mkdir -p /mnt/archlinux
   sudo mount /dev/${disk}2 /mnt/archlinux
   sudo mkdir -p /mnt/archlinux/boot/efi
