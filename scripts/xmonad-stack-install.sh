@@ -92,6 +92,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S alsa-utils
   sudo pacman --noconfirm --needed -S arch-install-scripts
   sudo pacman --noconfirm --needed -S bat
+  sudo pacman --noconfirm --needed -S bind
   sudo pacman --noconfirm --needed -S blueman
   sudo pacman --noconfirm --needed -S bluez-utils
   sudo pacman --noconfirm --needed -S byobu
