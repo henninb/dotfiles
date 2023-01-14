@@ -31,7 +31,7 @@ elif [ "$OS" = "Solus" ]; then
   echo "solus"
 elif [ "$OS" = "Fedora Linux" ]; then
   echo "fedora"
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   echo "void"
 elif [ "$OS" = "Gentoo" ]; then
   echo sudo emerge --update --newuse python
