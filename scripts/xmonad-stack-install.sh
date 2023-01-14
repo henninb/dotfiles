@@ -95,6 +95,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S bind
   sudo pacman --noconfirm --needed -S blueman
   sudo pacman --noconfirm --needed -S bluez-utils
+  sudo pacman --noconfirm --needed -S btop
   sudo pacman --noconfirm --needed -S byobu
   sudo pacman --noconfirm --needed -S clipmenu
   sudo pacman --noconfirm --needed -S cmake
