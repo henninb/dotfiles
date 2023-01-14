@@ -10,12 +10,13 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   echo sudo pacman -R package_name
   echo sudo pacman -Rsnc package_name
   echo pacman -Ss package_name
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   echo export SSL_NO_VERIFY_PEER=1
   echo sudo xbps-install -Suy
   echo sudo xbps-install -u xbps
   echo sudo xbps-install package_name
   echo xbps-query -Rs package_name
+  echo sudo xbps-remove package_name
 elif [ "$OS" = "Fedora Linux" ]; then
   echo dnf repoquery -l xorg-x11-server-Xorg
 elif [ "$OS" = "Solus" ]; then

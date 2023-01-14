@@ -1,6 +1,6 @@
 #!/bin/sh
 
-node_ver=18.12.1
+node_ver=18.13.0
 #sudo apt install -y yarn
 # unset NVM_DIR
 
@@ -20,7 +20,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
 elif [ "$OS" = "Fedora Linux" ]; then
   test
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y nodejs
+  test
+  #sudo xbps-install -y nodejs
 elif [ "$OS" = "Gentoo" ]; then
   echo sudo emerge  --update --newuse nodejs
 elif [ "$OS" = "Solus" ]; then
