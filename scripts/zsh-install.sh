@@ -14,6 +14,7 @@ elif [ -x "$(command -v apt)" ]; then
   rm install.sh
 elif [ -x "$(command -v xbps-install)" ]; then
   sudo xbps-install -y zsh
+  sudo xbps-install -y curl
 elif [ -x "$(command -v eopkg)" ]; then
   sudo eopkg install -y zsh
 elif [ -x "$(command -v pkg)" ]; then
