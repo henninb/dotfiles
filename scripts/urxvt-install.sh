@@ -14,7 +14,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo
 elif [ "$OS" = "Solus" ]; then
   echo
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   echo
   sudo xbps-install -y wget
 elif [ "$OS" = "Fedora Linux" ]; then

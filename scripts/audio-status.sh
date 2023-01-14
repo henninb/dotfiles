@@ -7,7 +7,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S alsa-utils
   sudo pacman --noconfirm --needed -S pulseaudio
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y pavucontrol
   # sudo xbps-install -y ConsoleKit2
   sudo xbps-install -y pulseaudio

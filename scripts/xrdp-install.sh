@@ -168,7 +168,7 @@ elif [ "$OS" = "Solus" ]; then
   cd "$HOME" || exit
   sudo mv -v "$HOME/tmp/Xwrapper.config" /etc/X11/Xwrapper.config
   sudo mv -v "$HOME/tmp/startwm.sh" /etc/xrdp/startwm.sh
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y nasm
   sudo xbps-install -y pam-devel
   sudo xbps-install -y libXrandr-devel

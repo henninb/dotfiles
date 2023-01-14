@@ -34,7 +34,7 @@ if [ "$OS" = "Linux Mint" ] || [  "$OS" = "Ubuntu" ]; then
   sudo apt install -y virt-manager
   sudo apt install -y qemu-utils
   virsh -c qemu:///system list
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y libvirt
   sudo xbps-install -y qemu
   sudo xbps-install -y virt-manager

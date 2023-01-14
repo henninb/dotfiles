@@ -8,7 +8,7 @@ if [ "$OS" = "Darwin" ]; then
   unzip -o code-stable-latest.zip
   sudo mv -v Visual\ Studio\ Code.app /Applications
   #id -g vscode &>/dev/null || sudo groupadd vscode
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y nss
   code --version
   sudo rm -rf /opt/vscode

@@ -2,7 +2,7 @@
 
 if [ "$OS" = "Gentoo" ]; then
   rc-service postgresql status
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo sv status postgresql
 else
   sudo systemctl status postgresql

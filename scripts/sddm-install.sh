@@ -69,7 +69,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   # systemctl --user disable xdg-desktop-portal
   sudo systemctl enable sddm
   sudo systemctl start sddm
-elif [ "${OS}" = "void" ]; then
+elif [ "${OS}" = "Void" ]; then
   sudo xbps-install -y sddm
   sudo mkdir -p /etc/sddm.conf.d/
   sudo ln -s /etc/sv/sddm /var/service/sddm

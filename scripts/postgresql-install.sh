@@ -47,7 +47,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   rm -v /tmp/install_psql_settings.sql
   sudo netstat -lntp | grep postgres
   sudo fuser 5432/tcp
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y postgresql
   sudo sv status postgresql
 elif [ "$OS" = "Solus" ]; then

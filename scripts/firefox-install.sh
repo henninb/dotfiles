@@ -39,7 +39,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo rm -rf /opt/firefox
   sudo tar -xjvf "firefox-${FOX_VER}.tar.bz2" -C /opt
   sudo chown -R firefox:firefox /opt/firefox
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y wget
   sudo xbps-install -y gtk+3-devel
   sudo xbps-install -y dbus-glib

@@ -109,7 +109,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y cmake
   sudo zypper install -y gcc-c++
   sudo zypper install -y i3-devel
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y libcurl-devel
   sudo xbps-install -y libmpdclient-devel
   sudo xbps-install -y pulseaudio-devel

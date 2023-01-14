@@ -91,7 +91,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
     fi
   done
   echo Failures: "$FAILURE"
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   FAILURE=""
   for i in $VOID_PKGS; do
     if ! sudo xbps-install -y "$i"; then

@@ -9,7 +9,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install gtk2-devel
   sudo dnf install gtk3-devel
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install -Suy
   sudo xbps-install -y gtk+3-devel
 elif [ "$OS" = "FreeBSD" ]; then

@@ -7,7 +7,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S rpm
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse rpm
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y rpm
 elif [ "$OS" = "Darwin" ]; then
   echo noop

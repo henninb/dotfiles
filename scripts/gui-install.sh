@@ -105,7 +105,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
     fi
   done
   echo "failures $FAILURE"
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   FAILURE=""
   for i in $VOID_PKGS; do
     if ! sudo xbps-install -y "$i"; then

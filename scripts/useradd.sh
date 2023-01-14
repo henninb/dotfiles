@@ -46,7 +46,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo usermod -a -G docker "$(id -un)"
   sudo usermod -a -G wireshark "$(id -un)"
   sudo usermod -a -G realtime "$(id -un)" # for jack
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo usermod -a -G libvirt "$(id -un)"
   sudo usermod -a -G audio "$(id -un)"
 elif [ "$OS" = "OpenBSD" ]; then

@@ -17,7 +17,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emaint sync -r brave-overlay
   sudo emerge --update --newuse www-client/brave-bin
   sudo ln -sfn /usr/bin/brave-bin /usr/bin/brave-browser
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y xtools
   git clone git@github.com:void-linux/void-packages.git
   git clone git@gitlab.com:ElPresidentePoole/brave-bin.git

@@ -25,7 +25,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y libxcb-xinerama0-dev
   sudo python3 -m pip install ninja
   sudo python3 -m pip install meson
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y ninja
   sudo xbps-install -y meson
   sudo xbps-install -y libev-devel

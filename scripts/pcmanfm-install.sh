@@ -20,7 +20,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y pcmanfm
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install pcmanfm
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y pcmanfm
 else
   echo "$OS is not implemented."

@@ -30,7 +30,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install ffmpegthumbnailer
   sudo pkg install intltool
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y intltool
   sudo xbps-install -y glib-devel
   sudo xbps-install -S ffmpegthumbnailer

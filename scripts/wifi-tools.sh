@@ -9,7 +9,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y wicd-curses
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse networkmanager
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install NetworkManager
   sudo xbps-install dkms
 else

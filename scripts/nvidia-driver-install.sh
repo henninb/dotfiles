@@ -124,7 +124,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y kernel-devel
   rpm -qa | grep -E "kernel-devel|kernel-headers"
   sudo dnf install "kernel-devel-uname-r == $(uname -r)"
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y xtools
   git clone git@github.com:void-linux/void-packages.git
   cd void-packages || exit

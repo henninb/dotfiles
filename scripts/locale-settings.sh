@@ -9,7 +9,7 @@ if [ "$OS" = "Gentoo" ]; then
   sudo locale-gen
   echo sudo eselect locale set 4
   sudo eselect locale list
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo xbps-reconfigure -f glibc-locales
   sudo xbps-reconfigure -f glibc-locales
   locale -a

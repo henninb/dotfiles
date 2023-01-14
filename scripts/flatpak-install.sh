@@ -11,7 +11,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   flatpak install --user com.valvesoftware.Steam.flatpakref
   flatpak install --user com.visualstudio.code.flatpakref
   sudo apt install -y flatpak
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y flatpak
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y flatpak
