@@ -78,7 +78,7 @@ elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y zsh
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y zsh
-elif [ "$OS" = "void" ]; then
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y curl
   sudo xbps-install -y unzip
   sudo xbps-install -y fontconfig

@@ -19,8 +19,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo sudo zypper install -y nodejs
 elif [ "$OS" = "Fedora Linux" ]; then
   test
-elif [ "$OS" = "void" ]; then
-  echo "void"
+elif [ "$OS" = "Void" ]; then
+  sudo xbps-install -y nodejs
 elif [ "$OS" = "Gentoo" ]; then
   echo sudo emerge  --update --newuse nodejs
 elif [ "$OS" = "Solus" ]; then
