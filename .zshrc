@@ -47,16 +47,11 @@ export HISTORY_IGNORE
 
 if [ "${OSTYPE}" = "linux-gnu" ] || [ "${OSTYPE}" = "linux" ]; then
   if [ "${OS}" = "Gentoo" ]; then
-    if [ -d "/opt/openjdk-bin-17" ]; then
-      JAVA_HOME=/opt/openjdk-bin-17
+    if [ -x "$(command -v java-config)" ]; then
+      JAVA_HOME=$(java-config -o) 2> /dev/null
       export JAVA_HOME
     else
-      if [ -x "$(command -v java-config)" ]; then
-        JAVA_HOME=$(java-config -o) 2> /dev/null
-        export JAVA_HOME
-      else
-        echo "install java-config on gentoo"
-      fi
+      echo "install java-config on gentoo"
     fi
   elif [ -x "$(command -v javac)" ]; then
     JAVA_HOME=$(dirname "$(dirname "$(readlink -f "$(readlink -f "$(which javac)")" || readlink -f "$(which javac)")")")
