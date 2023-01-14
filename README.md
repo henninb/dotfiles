@@ -113,7 +113,7 @@
 | wallpaper manager      | feh                                                                                  |
 | burning images         | cdrecord, wodim, k3b                                                                 |
 | podcast client         | newsboat, castget                                                                    |
-| process viewer         | htop, glances, bashtop, gotop                                                        |
+| process viewer         | btop, htop, glances, gotop                                                           |
 | email client           | neomutt, mutt                                                                        |
 | wii game emulator      | dolphin-emu                                                                          |
 | cloud storage          | nextcloud, dropbox                                                                   |
