@@ -16,7 +16,9 @@ echo sudo dnf groupinstall "Development Tools" "Development Libraries"
 sudo xbps-install -y cmake
 sudo xbps-install -y llvm
 sudo xbps-install -y clang
+sudo xbps-install -y xtool
 sudo xbps-install -y libxml2-devel
+sudo xbps-install -y clang-tools-extra
 
 
 exit 0
