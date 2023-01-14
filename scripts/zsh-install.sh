@@ -15,6 +15,9 @@ elif [ -x "$(command -v apt)" ]; then
 elif [ -x "$(command -v xbps-install)" ]; then
   sudo xbps-install -y zsh
   sudo xbps-install -y curl
+  sudo xbps-install -y starship
+  sudo xbps-install -y unzip
+  sudo xbps-install -y fontconfig
 elif [ -x "$(command -v eopkg)" ]; then
   sudo eopkg install -y zsh
 elif [ -x "$(command -v pkg)" ]; then
