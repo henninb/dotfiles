@@ -6,6 +6,10 @@ if command -v pacman; then
   date
   # sudo hwclock
   # sudo hwclock -w
+elif command -v xbps-install; then
+  date
+  sudo ntpdate -u time.nist.gov
+  date
 elif command -v zypper; then
   date
   sudo ntpdate -u time.nist.gov
