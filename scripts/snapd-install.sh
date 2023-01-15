@@ -22,6 +22,8 @@ elif command -v eopkg; then
   echo "solus"
 elif command -v dnf; then
   echo "fedora"
+  sudo dnf install -y snapd
+  sudo systemctl enable --now snapd
 elif command -v brew; then
   echo "macos"
 else
