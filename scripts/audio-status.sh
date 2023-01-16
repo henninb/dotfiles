@@ -77,6 +77,12 @@ echo pavucontrol --tab 5
 echo systemctl --user status pulseaudio.socket
 echo systemctl --user enable pulseaudio
 
+echo pipewire
+echo wpctl set-default 55
+echo pwtop
+
+echo pactl set-default-sink 'alsa_output.usb-Plantronics_Plantronics_BT600_2b33411b5e47614eae3d175f542553a4-00.analog-stereo'
+
 exit 0
 
 # pactl set-default-sink bluez_sink.$DEV
