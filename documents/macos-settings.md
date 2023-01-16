@@ -27,3 +27,5 @@ cmd-option-f - password manager
 ## faster mouse
 ## hide dock
 
+## enable remote
+sudo systemsetup -setremotelogin on
