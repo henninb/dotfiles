@@ -19,6 +19,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo sudo zypper install -y nodejs
 elif [ "$OS" = "Fedora Linux" ]; then
   test
+elif [ "$OS" = "Darwin" ]; then
+  test
 elif [ "$OS" = "Void" ]; then
   test
   #sudo xbps-install -y nodejs

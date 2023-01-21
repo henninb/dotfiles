@@ -29,3 +29,7 @@ cmd-option-f - password manager
 
 ## enable remote
 sudo systemsetup -setremotelogin on
+
+
+## iterm2 fonts
+profiles -> text -> font
