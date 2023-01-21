@@ -396,6 +396,9 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y llvm-devel
   sudo dnf install -y golang
   sudo dnf install -y luarocks
+  sudo dnf install -y openssh-server
+  sudo systemctl start sshd.service
+  sudo systemctl enable sshd.service
   echo iwlib missing
   mkdir -p "$HOME/projects/github.com/baskerville"
   cd "$HOME/projects/github.com/baskerville" || exit
