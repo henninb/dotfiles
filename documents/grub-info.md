@@ -57,4 +57,5 @@ menuentry "Debian GNU/Linux, linux 2.6.26-2-xen-686" {
 ## grub updates on fedora
 ```
 sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
