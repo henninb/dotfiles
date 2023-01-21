@@ -52,3 +52,9 @@ menuentry "Debian GNU/Linux, linux 2.6.26-2-xen-686" {
     linux    /boot/vmlinuz-2.6.26-2-xen-686 root=UUID=3765189f-fdaf-48d4-a04b-d696e6cffdbd ro console=ttyS0,115200 console=tty1 vga=792
     initrd    /boot/initrd.img-2.6.26-2-xen-686
 }
+
+
+## grub updates on fedora
+```
+sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
+```
