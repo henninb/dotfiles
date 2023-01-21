@@ -20,5 +20,7 @@ sudo xbps-install -y xtool
 sudo xbps-install -y libxml2-devel
 sudo xbps-install -y clang-tools-extra
 
+brew install llvm
+brew install cmake
 
 exit 0
