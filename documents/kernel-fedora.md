@@ -10,3 +10,5 @@ dnf info kernel
 sudo dnf install kernel --best
 
 https://linuxhint.com/check-version-update-fedora-linux-kernel/
+
+sudo dnf install -y kernel-devel kernel-devel-$(uname -r)
