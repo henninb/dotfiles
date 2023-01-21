@@ -50,7 +50,10 @@ alias .....='cd ../../../..'
 
 # alias youtube-dl="youtube-dl --no-check-certificate -f 'bestaudio[ext=m4a]'"
 
-alias open="xdg-open"
+if [ ! "$OS" = "Darwin" ]; then
+  alias open="xdg-open"
+fi
+
 
 #alias local_ip="ipconfig getifaddr br0"
 alias local_ip="ip route get 8.8.8.8"
