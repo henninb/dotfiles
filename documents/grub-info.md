@@ -63,3 +63,14 @@ sudo grubby --info=ALL
 sudo grub2-set-default 1
 remove old boot entries /boot/loader/entries
 ```
+
+## grub show text on boot - fedora
+```
+cd /etc/default
+edit grub
+GRUB_CMDLINE_LINUX="text"
+GRUB_TERMINAL_OUTPUT="console"
+GRUB_GFXPAYLOAD_LINUX="text"
+
+grub2-mkconfig
+```
