@@ -82,6 +82,7 @@ echo wpctl set-default 55
 echo pwtop
 
 echo pactl set-default-sink 'alsa_output.usb-Plantronics_Plantronics_BT600_2b33411b5e47614eae3d175f542553a4-00.analog-stereo'
+pactl info
 
 exit 0
 

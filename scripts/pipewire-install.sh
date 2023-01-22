@@ -2,6 +2,9 @@
 
 if command -v pacman; then
   echo "archlinux"
+  sudo pacman --noconfirm --needed -S pipewire-pulse
+  sudo systemctl enable pipewire-pulse --now
+  exit 0
 elif command -v emerge; then
   echo "gentoo"
   sudo emerge --update --newuse pipewire
@@ -25,5 +28,7 @@ fi
 systemctl --user enable pipewire.socket pipewire-pulse.socket
 systemctl --user disable pipewire-media-session.service
 systemctl --user --force enable wireplumber.service
+
+pactl info
 
 exit 0
