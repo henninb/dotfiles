@@ -99,7 +99,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
     sudo dnf update -y | tee -a "$HOME/tmp/update-$$.log"
     sudo dnf upgrade -y | tee -a "$HOME/tmp/update-$$.log"
     sudo dnf distro-sync
-    sudo dnf remove $(dnf repoquery --installonly --latest-limit 2 -q)
+    echo sudo dnf remove $(dnf repoquery --installonly --latest-limit 2 -q)
     sudo dnf install kernel --best
 elif [ "$OS" = "FreeBSD" ]; then
   #sudo freebsd-update fetch
