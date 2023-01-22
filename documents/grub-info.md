@@ -67,6 +67,7 @@ remove old boot entries /boot/loader/entries
 ## grub show text on boot - fedora
 ```
 sudo grubby --remove-args='rhgb quiet' --update-kernel=ALL
+systemctl get-default
 sudo systemctl set-default multi-user.target
 cd /etc/default
 edit grub

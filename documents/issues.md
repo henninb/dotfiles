@@ -270,6 +270,7 @@ sudo chvt 2
 
 ## To boot to console solus
 ```
+systemctl get-default
 sudo systemctl set-default multi-user
 sudo systemctl isolate runlevel3.target
 
