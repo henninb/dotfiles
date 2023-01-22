@@ -82,6 +82,7 @@ export PATH="$HOME/.local/share/bin:$PATH"
 export PATH=$PYENV_ROOT/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 # npm bin -g
+export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
 export PATH="$HOME/.local/share/npm/bin:$PATH"
 export PATH="$HOME/.local/share/cargo/bin:$PATH"
 export PATH="$HOME/.rvm/bin:$PATH"
