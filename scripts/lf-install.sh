@@ -7,15 +7,15 @@ else
   if [ -x "$(command -v pacman)" ]; then
     sudo pacman --noconfirm --needed -S go
   elif [ -x "$(command -v emerge)" ]; then
-    echo
+    test
   elif [ -x "$(command -v apt)" ]; then
-    echo
+    test
   elif [ -x "$(command -v xbps-install)" ]; then
-    echo
+    test
   elif [ -x "$(command -v eopkg)" ]; then
-    echo
+    test
   elif [ -x "$(command -v dnf)" ]; then
-    echo
+    test
   elif [ -x "$(command -v brew)" ]; then
     brew install golang
   else
