@@ -1,5 +1,5 @@
 set hidden true
-set color256 true
+# set color256 true
 set drawbox true
 set icons true
 #set icons true
@@ -71,3 +71,5 @@ map x cut
 map y copy
 map <enter> open
 map r rename
+
+# vim: set ft=conf:

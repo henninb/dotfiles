@@ -18,7 +18,11 @@ elif [ "$OS" = "Ubuntu" ]; then
   sudo apt autoremove -y | tee -a "$HOME/tmp/update-$$.log"
   sudo apt install -y curl
 elif [ "$OS" = "Darwin" ]; then
+  #/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"
+  xcode-select --install
   softwareupdate -l | tee -a "$HOME/tmp/update-$$.log"
+  brew update
+  brew upgrade
 elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt update 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   sudo apt upgrade -y 2>&1 | tee -a "$HOME/tmp/update-$$.log"
