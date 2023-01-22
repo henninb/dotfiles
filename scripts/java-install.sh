@@ -11,6 +11,8 @@ if [ "$OS" = "Gentoo" ]; then
   echo emerge -v openjdk:11
   echo /var/db/repos/gentoo/dev-java/openjdk
   echo eselect java-vm list
+elif [ "$OS" = "Darwin" ]; then
+  brew install openjdk
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y openjdk-17
   # openjdk-8-devel
