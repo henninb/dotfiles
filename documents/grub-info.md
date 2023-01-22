@@ -68,6 +68,7 @@ remove old boot entries /boot/loader/entries
 ```
 sudo grubby --remove-args='rhgb quiet' --update-kernel=ALL
 systemctl get-default
+runlevel
 sudo systemctl set-default multi-user.target
 cd /etc/default
 edit grub
