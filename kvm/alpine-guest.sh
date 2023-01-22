@@ -6,8 +6,8 @@ if [ $# -gt 1 ]; then
 fi
 
 remove=$1
-iso_file="void-live-x86_64-20210218.iso"
-guest_name="voidlinux"
+iso_file="alpine-standard-3.17.1-x86_64.iso"
+guest_name="alpine"
 
 virsh shutdown "guest-$guest_name"
 virsh destroy "guest-$guest_name"
@@ -44,6 +44,6 @@ exec virt-install \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
 --network=bridge=virbr0,model=virtio \
 --graphics vnc \
---disk path=/var/lib/libvirt/images/guest-$guest_name.qcow2,size=40,bus=scsi,format=qcow2
+--disk path=/var/lib/libvirt/images/guest-$guest_name.qcow2,size=15,bus=scsi,format=qcow2
 
 exit 0

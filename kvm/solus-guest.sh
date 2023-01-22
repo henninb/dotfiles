@@ -32,7 +32,7 @@ fi
 echo "osinfo-query os"
 echo "disk bus can be virtio i.e. vda, or scsi i.e. sda"
 
-exec sudo virt-install \
+exec virt-install \
 --connect qemu:///system \
 --virt-type=kvm \
 --name "guest-$guest_name" \

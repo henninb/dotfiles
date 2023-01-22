@@ -36,7 +36,7 @@ exec virt-install \
 --connect qemu:///system \
 --virt-type=kvm \
 --name "guest-$guest_name" \
---memory=4096,maxmemory=4096 \
+--memory=8192,maxmemory=8192 \
 --vcpus=1,maxvcpus=2 \
 --virt-type=kvm \
 --hvm \
@@ -44,6 +44,6 @@ exec virt-install \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
 --network=bridge=virbr0,model=virtio \
 --graphics vnc \
---disk path=/var/lib/libvirt/images/guest-$guest_name.qcow2,size=40,bus=scsi,format=qcow2
+--disk path=/var/lib/libvirt/images/guest-$guest_name.qcow2,size=30,bus=scsi,format=qcow2
 
 exit 0
