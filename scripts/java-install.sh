@@ -13,6 +13,7 @@ if [ "$OS" = "Gentoo" ]; then
   echo eselect java-vm list
 elif [ "$OS" = "Darwin" ]; then
   brew install openjdk
+  brew install --cask adoptopenjdk
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y openjdk-17
   # openjdk-8-devel
