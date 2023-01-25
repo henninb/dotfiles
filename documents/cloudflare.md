@@ -3,6 +3,10 @@ calculate.henninb406.workers.dev
 
 ## change your nameserver (from namecheap to cloudflare)
 
+login to cloudflare and add a site
+navigate to the overview page
+the dns servers will be listed there
+
 login to namecheap account
 remove namecheaphosting.com
 
@@ -15,6 +19,8 @@ custom DNS
 dimitris.ns.cloudflare.com
 izabella.ns.cloudflare.com
 ```
+click save to complete
+this change may take up to 24 hours
 
 
 
@@ -22,8 +28,6 @@ izabella.ns.cloudflare.com
 Click into the Overview page
 on the bottom right there will be an advanced section
 click on remove site from cloudflare
-
-
 
 ## heroku DNS on cloudflare
 Move over to Heroku. 

@@ -651,3 +651,10 @@ pacman -S linux
 /etc/nsswitch.conf
 hosts:      files dns myhostname
 ```
+
+## set default web browser
+```
+sudo update-alternatives --config x-www-browser
+xdg-settings get default-web-browser
+xdg-settings set default-web-browser brave-bin.desktop
+```
