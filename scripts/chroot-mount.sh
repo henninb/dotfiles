@@ -35,8 +35,9 @@ elif [ "$os" = "fedora" ]; then
   disk=sdc
   sudo mkdir -p /mnt/fedora
   sudo mount /dev/${disk}3 /mnt/fedora
-  sudo mkdir -p /mnt/fedora/boot/efi
-  sudo mount /dev/${disk}1 /mnt/fedora/boot/efi
+  sudo mount /dev/${disk}2 /mnt/fedora/root/boot
+  # sudo mkdir -p /mnt/fedora/boot/efi
+  sudo mount /dev/${disk}1 /mnt/fedora/root/boot/efi
   cd /mnt/fedora
 
   sudo mount --rbind home /mnt/fedora/root/home
