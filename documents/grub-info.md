@@ -74,6 +74,7 @@ sudo systemctl set-default multi-user.target
 cd /etc/default
 edit grub
 GRUB_CMDLINE_LINUX="text"
+GRUB_CMDLINE_LINUX="text rd.plymouth=0 plymouth.enable=0"
 GRUB_TERMINAL_OUTPUT="console"
 GRUB_GFXPAYLOAD_LINUX="text"
 

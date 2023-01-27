@@ -82,3 +82,8 @@ Apply Settings and connect ethernet cable to main router via LAN-to-LAN uplink*
 erase nvram
 reboot
 ```
+
+## set date in busybox
+```
+date -s 2023.01.27-05:39:00
+```
