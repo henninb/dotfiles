@@ -73,7 +73,7 @@ cd /mnt/gentoo
 ## download stage3
 ```
 https://mirror.bytemark.co.uk/gentoo/releases/amd64/autobuilds/
-curl -Os 'https://mirror.bytemark.co.uk/gentoo/releases/amd64/autobuilds/20220918T170531Z/stage3-amd64-desktop-systemd-20220918T170531Z.tar.xz'
+curl -Os 'https://mirror.bytemark.co.uk/gentoo/releases/amd64/autobuilds/20230115T170214Z/stage3-amd64-desktop-systemd-20230115T170214Z.tar.xz'
 ```
 
 ## extract stage3 and be sure to verify success
