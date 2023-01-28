@@ -24,7 +24,7 @@ FREEBSD_PKGS="coreutils zip unzip python py36-pip py36-powerline-status-2.7 stun
 
 RASPI_PKGS="jq vim-nox vim wget zsh gpg git mutt htop figlet screen pass neovim stunnel postfix mpg321 ranger mutt irssi nmon nmap libnova clisp fakeroot fish zip unzip dos2unix ctags emacs rsync tmux mcrypt etherwake sshfs cmus ffmpeg mpg123 strace yarn toilet newsboat sxhkd neofetch sshpass calcurse shellcheck tig grip elinks elinks urlscan task-spooler"
 
-MACOS_PKGS="ffmpeg figlet cmus imagemagick neofetch htop screen wget zsh fish zip unzip tmux dos2unix lynx azure-cli astyle emacs qemu ansible go nmap python3 ripgrep exa sshpass reattach-to-user-namespace most shellcheck tig rsync elinks urlscan task-spooler"
+MACOS_PKGS="ffmpeg figlet cmus imagemagick neofetch htop btop screen wget zsh fish zip unzip tmux dos2unix lynx azure-cli astyle emacs qemu ansible go nmap python3 ripgrep sshpass reattach-to-user-namespace most shellcheck tig rsync elinks urlscan task-spooler gnupg speedtest-cli starship jq keychain pass pwgen tree bat rdfind flameshot ncdu fetchmail redshift mutt gopass"
 
 VOID_PKGS="wget fontforge ffmpeg figlet cmus zip unzip ctags astyle toilet unix2dos fish jq neofetch tig most vimfm netcat htop ffmpeg emacs mcrypt tmux screen nmon mpd nnn nmap ntp ntfs-3g rsync elinks udisks2"
 
@@ -162,7 +162,7 @@ elif [ "$OS" = "Darwin" ]; then
     fi
   done
   echo "Failures: $FAILURE"
-  brew cask install alacritty
+  brew --cask install alacritty
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
     echo "centos8"

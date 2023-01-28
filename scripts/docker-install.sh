@@ -24,6 +24,8 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo iptables -t nat -L
   #sudo firewall-cmd --permanent --zone=trusted --change-interface=docker0
   #sudo firewall-cmd --reload
+elif [ "$OS" = "Darwin" ]; then
+  brew install docker
 elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y docker-compose
   sudo xbps-install -y docker

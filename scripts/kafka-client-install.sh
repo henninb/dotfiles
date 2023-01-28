@@ -5,6 +5,10 @@ kafka_version=3.3.1
 
 export PATH=/opt/kafka-client/bin:$PATH
 
+if command -v brew; then
+  brew install wget
+fi
+
 if [ ! -f "$HOME/tmp/kafka_${scala_version}-${kafka_version}.tgz" ]; then
   wget https://archive.apache.org/dist/kafka/${kafka_version}/kafka_${scala_version}-${kafka_version}.tgz -O "$HOME/tmp/kafka_${scala_version}-${kafka_version}.tgz"
   cd /opt/kafka-client

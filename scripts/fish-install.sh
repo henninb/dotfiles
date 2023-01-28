@@ -6,8 +6,6 @@ elif command -v emerge; then
   if ! command -v fish; then
     sudo emerge --update --newuse fish
   fi
-elif command -v apt; then
-  echo "debian"
 elif command -v xbps-install; then
   echo "void"
 elif command -v pkg; then
@@ -17,13 +15,15 @@ elif command -v eopkg; then
 elif command -v dnf; then
   echo "fedora"
 elif command -v brew; then
-  echo "macos"
+  brew install fish
+elif command -v apt; then
+  echo "debian"
 else
   echo "$OS is not yet implemented."
   exit 1
 fi
 
-fisher add matchai/spacefish
+# fisher add matchai/spacefish
 
 # curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 # fisher add matchai/spacefish
