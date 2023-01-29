@@ -91,7 +91,7 @@ net-wireless/gnuradio network
 net-wireless/gr-osmosdr rtlsdr
 media-gfx/feh xinerama
 app-admin/keepassxc autotype browser yubikey
-sys-devel/llvm -doc
+sys-devel/llvm -doc zstd
 media-video/pipewire X bluetooth dbus extra flatpak systemd
 net-dns/avahi mdnsresponder-compat
 dev-lang/mono minimal

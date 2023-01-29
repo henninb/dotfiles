@@ -7,4 +7,5 @@
 =dev-libs/boost-1.81.0-r1
 =dev-dotnet/dotnetcore-sdk-bin-6.0.102
 net-firewall/nufw
+dev-libs/libfmt
 # =net-firewall/nufw-2.2.22-r4
