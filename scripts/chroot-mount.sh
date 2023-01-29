@@ -18,24 +18,25 @@ if command -v camcontrol; then
 fi
 
 if [ "$os" = "gentoo" ]; then
+  disk=nvme0n1
   sudo mkdir -p /mnt/gentoo
-  sudo mount /dev/nvme0n1p2 /mnt/gentoo
+  sudo mount /dev/${disk}p2 /mnt/gentoo
   sudo mkdir -p /mnt/gentoo/boot/efi
-  sudo mount /dev/nvme0n1p1 /mnt/gentoo/boot/efi
+  sudo mount /dev/${disk}p1 /mnt/gentoo/boot/efi
   cd /mnt/gentoo
 
   sudo mount -t proc none /mnt/gentoo/proc
   sudo mount --rbind /dev /mnt/gentoo/dev
   sudo mount --rbind /sys /mnt/gentoo/sys
 
-  echo sudo chroot /mnt/gentoo /bin/bash
-  echo source /etc/profile
   echo 'export PS1="(gentoo-chroot) $PS1"'
+  sudo chroot /mnt/gentoo /bin/bash
 elif [ "$os" = "gentoo-new" ]; then
+  disk=sdc
   sudo mkdir -p /mnt/gentoo-new
-  sudo mount /dev/sdd2 /mnt/gentoo-new
+  sudo mount /dev/${disk}2 /mnt/gentoo-new
   sudo mkdir -p /mnt/gentoo-new/boot/efi
-  sudo mount /dev/sdd1 /mnt/gentoo-new/boot/efi
+  sudo mount /dev/${disk}1 /mnt/gentoo-new/boot/efi
   cd /mnt/gentoo-new
 
   sudo mount -t proc none /mnt/gentoo-new/proc
