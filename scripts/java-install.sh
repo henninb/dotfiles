@@ -1,9 +1,6 @@
 #!/bin/sh
 
 if [ "$OS" = "Gentoo" ]; then
-  # sudo emerge --update --newuse dev-java/gradle-bin
-  # sudo emerge --update --newuse dev-java/openjdk-bin
-  # sudo emerge --update --newuse dev-java/openjdk-bin:11
   sudo emerge --update --newuse dev-java/openjdk-bin:17
   eselect java-vm set user openjdk-bin-17
   sudo eselect java-vm set system openjdk-bin-17
