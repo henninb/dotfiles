@@ -31,7 +31,9 @@ echo -e "SKULL AND CROSSBONES (U+2620) \U02620"
 # fc-list : family | grep -i awesome
 # echo https://www.fontsquirrel.com/
 
-open -b com.apple.FontBook ~/.fonts/*.ttf
+if [ "$OS" = "Darwin" ]; then
+  open -b com.apple.FontBook ~/.fonts/*.ttf
+fi
 
 exit 0
 
