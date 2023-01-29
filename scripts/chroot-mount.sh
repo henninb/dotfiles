@@ -31,6 +31,19 @@ if [ "$os" = "gentoo" ]; then
   echo sudo chroot /mnt/gentoo /bin/bash
   echo source /etc/profile
   echo 'export PS1="(gentoo-chroot) $PS1"'
+elif [ "$os" = "gentoo-new" ]; then
+  sudo mkdir -p /mnt/gentoo-new
+  sudo mount /dev/sdd2 /mnt/gentoo-new
+  sudo mkdir -p /mnt/gentoo-new/boot/efi
+  sudo mount /dev/sdd1 /mnt/gentoo-new/boot/efi
+  cd /mnt/gentoo-new
+
+  sudo mount -t proc none /mnt/gentoo-new/proc
+  sudo mount --rbind /dev /mnt/gentoo-new/dev
+  sudo mount --rbind /sys /mnt/gentoo-new/sys
+  echo 'export PS1="(gentoo-new-chroot) $PS1"'
+
+  sudo chroot /mnt/gentoo-new /bin/bash
 elif [ "$os" = "fedora" ]; then
   disk=sdc
   sudo mkdir -p /mnt/fedora
