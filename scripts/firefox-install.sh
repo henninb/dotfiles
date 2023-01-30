@@ -80,7 +80,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   sudo chown -R firefox:firefox /opt/firefox
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo rm -rf /opt/firefox
-  sudo yum install -y net-tools wget curl java-1.8.0-openjdk
+  sudo yum install -y net-tools wget curl
   sudo tar -xjvf "firefox-${FOX_VER}.tar.bz2" -C /opt
   sudo chown -R firefox:firefox /opt/firefox
 else
