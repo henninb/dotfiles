@@ -24,7 +24,7 @@ browser "elinks %u"
 # macros are active when prefixed with a comma (example: ,v)
 
 # works perfectly with youtube
-macro a set browser "tsp youtube-dl --add-metadata --extract-audio -xic -f bestaudio/best --output '$HOME/media/%(title)s.%(ext)s'; open-in-browser ; set browser "elinks %u"
+macro a set browser "tsp youtube-dl --add-metadata --extract-audio -xic -f bestaudio/best --output '$HOME/media/%(title)s.%(ext)s'"; open-in-browser ; set browser "elinks %u"
 
 # works perfectly with youtube
 macro p set browser "tsp mpv --no-video %u"; open-in-browser ; set browser "elinks %u"
