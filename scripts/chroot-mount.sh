@@ -32,7 +32,7 @@ if [ "$os" = "gentoo" ]; then
   echo 'export PS1="(gentoo-chroot) $PS1"'
   sudo chroot /mnt/gentoo /bin/bash
 elif [ "$os" = "gentoo-new" ]; then
-  disk=sdc
+  disk=sdd
   sudo mkdir -p /mnt/gentoo-new
   sudo mount /dev/${disk}2 /mnt/gentoo-new
   sudo mkdir -p /mnt/gentoo-new/boot/efi
