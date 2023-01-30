@@ -31,6 +31,7 @@ echo 'nix-env -i notepadqq'
 echo 'nix-env -i dbeaver'
 echo 'nix-env -i mongodb'
 echo 'nix-env -i starship'
+echo 'nix-env -i newsboat'
 
 exit 0
 
