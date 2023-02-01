@@ -7,7 +7,7 @@ elif command -v emerge; then
 elif command -v apt; then
   echo "debian"
 elif command -v xbps-install; then
-  echo "void"
+  sudo xbps-install -y nginx
 elif command -v pkg; then
   echo "freebsd"
   sudo pkg install -y nginx
