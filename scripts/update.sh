@@ -47,9 +47,10 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo paccache -r 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   sudo paccache -rk 1 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   sudo paccache -ruk0 2>&1 | tee -a "$HOME/tmp/update-$$.log"
+  yay --noconfirm --needed -Syu 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   echo sudo pacman --noconfirm -S linux
   sudo mkinitcpio -p linux
-  yay --noconfirm --needed -Syu 2>&1 | tee -a "$HOME/tmp/update-$$.log"
+  efibootmgr
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper dist-upgrade
   # sudo zypper refersh
@@ -88,6 +89,7 @@ elif [ "$OS" = "Gentoo" ]; then
   echo sudo etc-update
   echo revdep-rebuild
   echo sudo emerge --update --newuse --deep --changed-use --keep-going @world
+  efibootmgr
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
     sudo dnf update -y | tee -a "$HOME/tmp/update-$$.log"
@@ -102,6 +104,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
     sudo dnf distro-sync
     echo sudo dnf remove $(dnf repoquery --installonly --latest-limit 2 -q)
     sudo dnf install kernel --best
+    efibootmgr
 elif [ "$OS" = "FreeBSD" ]; then
   #sudo freebsd-update fetch
   #sudo freebsd-update install
