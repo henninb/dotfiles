@@ -30,6 +30,7 @@ elif [ "$OS" = "Raspbian GNU/Linux" ]; then
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg upgrade -y | tee -a "$HOME/tmp/update-$$.log"
 elif [ "$OS" = "Void" ]; then
+  sudo xbps-install -yu xbps
   sudo xbps-remove -yO | tee -a "$HOME/tmp/update-$$.log"
   sudo xbps-remove -yo | tee -a "$HOME/tmp/update-$$.log"
   sudo vkpurge rm all | tee -a "$HOME/tmp/update-$$.log"
