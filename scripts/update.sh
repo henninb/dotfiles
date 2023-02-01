@@ -49,7 +49,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo paccache -ruk0 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   yay --noconfirm --needed -Syu 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   echo sudo pacman --noconfirm -S linux
-  sudo mkinitcpio -p linux
+  echo sudo mkinitcpio -p linux
   efibootmgr
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper dist-upgrade
