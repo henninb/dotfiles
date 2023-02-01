@@ -85,7 +85,11 @@ sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 ## grub install uefi
 sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
 
-# multiple OS
+## multiple OS auto update
  /etc/default/grub
 GRUB_DISABLE_OS_PROBER=false
 pacman -S os-prober
+
+
+## validate efi
+efibootmgr -v
