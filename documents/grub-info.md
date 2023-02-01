@@ -80,3 +80,7 @@ GRUB_GFXPAYLOAD_LINUX="text"
 
 sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 ```
+
+
+## grub install uefi
+sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
