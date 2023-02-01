@@ -133,6 +133,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S ntp
   sudo pacman --noconfirm --needed -S ncdu
   sudo pacman --noconfirm --needed -S numlockx
+  sudo pacman --noconfirm --needed -S os-prober
   sudo pacman --noconfirm --needed -S network-manager-applet
   sudo pacman --noconfirm --needed -S pavucontrol
   sudo pacman --noconfirm --needed -S partimage
@@ -283,7 +284,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG tty "$(id -un)"
   sudo usermod -aG video "$(id -un)"
   # elogind
-  GENTOO_PKGS="rust-bin neovim setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool dunst wmname w3m x11-misc/xclip xinit xorg-server sys-apps/dbus flameshot volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet trayer-srg sxiv spacefm lxappearance xrandr hardinfo gentoolkit xmodmap app-misc/jq pavucontrol xinput neovim lsof sddm htop eix libreoffice-bin firefox-bin app-misc/screen pcmanfm rdfind zenity net-dns/bind-tools tmux bat whois starship traceroute kitty imagemagick colordiff media-fonts/terminus-font efibootmgr genfstab byobu dev-libs/tree-sitter luarocks alacritty ufw xdo pipewire pass pwgen tree keychain partimage ntfs3g dosfstools mtools ncdu speedtest-cli ntp nmap xhost btop dmg2img solaar elinks"
+  GENTOO_PKGS="rust-bin neovim setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool dunst wmname w3m x11-misc/xclip xinit xorg-server sys-apps/dbus flameshot volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet trayer-srg sxiv spacefm lxappearance xrandr hardinfo gentoolkit xmodmap app-misc/jq pavucontrol xinput neovim lsof sddm htop eix libreoffice-bin firefox-bin app-misc/screen pcmanfm rdfind zenity net-dns/bind-tools tmux bat whois starship traceroute kitty imagemagick colordiff media-fonts/terminus-font efibootmgr genfstab byobu dev-libs/tree-sitter luarocks alacritty ufw xdo pipewire pass pwgen tree keychain partimage ntfs3g dosfstools mtools ncdu speedtest-cli ntp nmap xhost btop dmg2img solaar elinks os-prober"
   FAILURE=""
   ls -d /var/db/pkg/*/*| cut -f5- -d/
   for i in $GENTOO_PKGS; do

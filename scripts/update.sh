@@ -74,6 +74,7 @@ elif [ "$OS" = "Gentoo" ]; then
       echo "complie the kernel '$eselect' as it is newer than '$uname'"
       sudo genkernel all
       sudo grub-mkconfig -o /boot/grub/grub.cfg
+      sudo grub-mkconfig -o /boot/efi/EFI/gentoo/grub.cfg
     fi
   fi
   blender=$(find /usr/bin -name "blender-*[0-9]")

@@ -99,3 +99,4 @@ app-containers/podman rootless fuse
 app-text/poppler qt5
 dev-qt/qtsql mysql
 sys-fs/lvm2 thin
+sys-boot/grub mount
