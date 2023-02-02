@@ -59,7 +59,7 @@ echo 0 | sudo tee /proc/sys/net/ipv4/ip_unprivileged_port_start
 echo net.ipv4.ip_unprivileged_port_start=443 | sudo tee -a /etc/sysctl.conf
 pip install podman-compose
 
-sudo cp -v /etc/containers/policy.json.example /etc/containers/policy.json
+# sudo cp -v /etc/containers/policy.json.example /etc/containers/policy.json
 
 # sudo touch /etc/subuid /etc/subgid
 # cat /etc/sysctl.d/userns.conf
