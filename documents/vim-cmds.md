@@ -179,3 +179,10 @@ V (Visual Mode)
 Arrow down
 gc
 ```
+
+## Remember cursor position
+" Remember cursor position
+augroup vimrc-remember-cursor-position
+    autocmd!
+    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup END
