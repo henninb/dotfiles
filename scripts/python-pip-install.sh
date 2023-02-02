@@ -49,8 +49,11 @@ echo
 curl -s https://bootstrap.pypa.io/get-pip.py --output "$HOME/tmp/get-pip3.py"
 python3 "$HOME/tmp/get-pip3.py"
 
-curl -s https://bootstrap.pypa.io/pip/2.7/get-pip.py --output "$HOME/tmp/get-pip2.py"
-python2 "$HOME/tmp/get-pip2.py"
+# curl -s https://bootstrap.pypa.io/pip/2.7/get-pip.py --output "$HOME/tmp/get-pip2.py"
+# python2 "$HOME/tmp/get-pip2.py"
+pip install youtube-dl
+pip install holehe
+echo pip install cheat
 
 exit 0
 
