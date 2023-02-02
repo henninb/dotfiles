@@ -55,9 +55,11 @@ pactl list short sinks
 #echo pactl set-default-sink 'alsa_output.usb-Plantronics_Plantronics_BT600_2b33411b5e47614eae3d175f542553a4-00.analog-stereo'
 #echo pactl set-default-sink 'alsa_output.usb-Blue_Microphones_Yeti_Stereo_Microphone_TS_2018_02_02_61506-00.analog-stereo'
 
-pacmd list-sink-inputs | awk '/index/ {print $2}'
-echo pacmd list-sink-inputs
-pacmd list-sink-inputs
+if command -v pacmd; then
+  pacmd list-sink-inputs | awk '/index/ {print $2}'
+  echo pacmd list-sink-inputs
+  pacmd list-sink-inputs
+fi
 
 echo if message pulseaudio sink always suspended
 echo sudo vim /etc/pulse/default.pa
