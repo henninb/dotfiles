@@ -7,7 +7,8 @@ elif command -v emerge; then
     sudo emerge --update --newuse fish
   fi
 elif command -v xbps-install; then
-  echo "void"
+  #sudo xbps-install -y fish
+  test
 elif command -v pkg; then
   sudo pkg install -y fish
 elif command -v eopkg; then
