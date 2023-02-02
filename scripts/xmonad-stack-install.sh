@@ -133,6 +133,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S nmap
   sudo pacman --noconfirm --needed -S ntp
   sudo pacman --noconfirm --needed -S ncdu
+  sudo pacman --noconfirm --needed -S newsboat
   sudo pacman --noconfirm --needed -S numlockx
   sudo pacman --noconfirm --needed -S os-prober
   sudo pacman --noconfirm --needed -S network-manager-applet
