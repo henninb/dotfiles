@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat <<  EOF > "$HOME/tmp/10-security-key.rules"
+cat <<  EOF > "$HOME/tmp/70-u2f.rules"
 # Copyright (c) 2020 Yubico AB. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -249,20 +249,20 @@ KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="534c", ATTRS{idProduct
 LABEL="fido_end"
 EOF
 
-sudo mv -v "$HOME/tmp/10-security-key.rules" /etc/udev/rules.d/10-security-key.rules
+sudo mv -v "$HOME/tmp/70-u2f.rules" /etc/udev/rules.d/70-u2f.rules
 if command -v udevadm; then
   sudo udevadm control --reload-rules
 fi
-sudo chown root:root /etc/udev/rules.d/10-security-key.rules
+sudo chown root:root /etc/udev/rules.d/70-u2f.rules
 
-exit 1
 sudo emerge --update --newuse libyubikey
 sudo emerge --update --newuse app-crypt/yubikey-manager
 sudo emerge --update --newuse yubikey-manager-qt
 sudo emerge --update --newuse app-crypt/libu2f-server
-sudo emerge app-crypt/libu2f-host
-sudo emerge sys-auth/pam_u2f
+sudo emerge --update --newuse app-crypt/libu2f-host
+sudo emerge --update --newuse sys-auth/pam_u2f
 sudo usermod -a -G plugdev "$(whoami)"
+
 echo ykman
 echo ykman-gui
 ykman list --serials
