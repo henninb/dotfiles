@@ -259,6 +259,9 @@ exit 1
 sudo emerge --update --newuse libyubikey
 sudo emerge --update --newuse app-crypt/yubikey-manager
 sudo emerge --update --newuse yubikey-manager-qt
+sudo emerge --update --newuse app-crypt/libu2f-server
+sudo emerge app-crypt/libu2f-host
+sudo emerge sys-auth/pam_u2f
 echo ykman
 echo ykman-gui
 ykman list --serials
