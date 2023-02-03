@@ -31,16 +31,16 @@ sudo usermod -a -G plugdev "$(whoami)"
 sudo emerge --update --newuse sys-fs/mtpfs
 
 sudo emerge --update --newuse sys-apps/pcsc-lite
-sudo systemctl status pcscd
 sudo systemctl enable pcscd
 sudo systemctl start pcscd
-# pamu2fcfg -uuser > ~/.config/Yubico/u2f_keys
+sudo systemctl status pcscd
 gpg --card-status
 
 echo ykman info
 echo ykman-gui
 ykman list --serials
 ykman --device 1234 info
+# pamu2fcfg -uuser > ~/.config/Yubico/u2f_keys
 
 exit 1
 
