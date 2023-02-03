@@ -28,6 +28,7 @@ sudo emerge --update --newuse app-crypt/libu2f-server
 sudo emerge --update --newuse app-crypt/libu2f-host
 sudo emerge --update --newuse sys-auth/pam_u2f
 sudo usermod -a -G plugdev "$(whoami)"
+sudo gpasswd -a "$(whoami)" usb
 sudo emerge --update --newuse sys-fs/mtpfs
 
 sudo emerge --update --newuse sys-apps/pcsc-lite
@@ -40,9 +41,11 @@ echo ykman info
 echo ykman-gui
 ykman list --serials
 ykman --device 1234 info
-# pamu2fcfg -uuser > ~/.config/Yubico/u2f_keys
+# pamu2fcfg -u "$(whoami)" > ~/.config/Yubico/u2f_keys
 
 exit 1
+
+echo sudo /usr/sbin/pcscd -f --info
 
 git clone https://github.com/Yubico/yubico-c-client.git
 cd yubico-c-client
