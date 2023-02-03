@@ -262,7 +262,9 @@ sudo emerge --update --newuse app-crypt/libu2f-server
 sudo emerge --update --newuse app-crypt/libu2f-host
 sudo emerge --update --newuse sys-auth/pam_u2f
 sudo usermod -a -G plugdev "$(whoami)"
+# pamu2fcfg -uuser > ~/.config/Yubico/u2f_keys
 
+systemctl status systemd-udevd
 echo ykman
 echo ykman-gui
 ykman list --serials
