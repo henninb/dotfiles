@@ -3,6 +3,8 @@
 sudo emerge libyubikey
 sudo emerge app-crypt/yubikey-manager
 echo ykman
+ykman list --serials
+ykman --device 1234 info
 
 git clone https://github.com/Yubico/yubico-c-client.git
 cd yubico-c-client
