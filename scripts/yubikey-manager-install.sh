@@ -262,6 +262,7 @@ sudo emerge --update --newuse yubikey-manager-qt
 sudo emerge --update --newuse app-crypt/libu2f-server
 sudo emerge app-crypt/libu2f-host
 sudo emerge sys-auth/pam_u2f
+sudo usermod -a -G plugdev "$(whoami)"
 echo ykman
 echo ykman-gui
 ykman list --serials
