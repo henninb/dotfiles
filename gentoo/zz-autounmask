@@ -103,3 +103,4 @@ sys-boot/grub mount
 dev-python/pyotherside qt5
 dev-qt/qtquickcontrols2 widgets
 # sys-apps/systemd-utils -udev
+sys-apps/pcsc-lite systemd
