@@ -120,6 +120,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S imagemagick
   sudo pacman --noconfirm --needed -S jq
   sudo pacman --noconfirm --needed -S keychain
+  sudo pacman --noconfirm --needed -S kpcli
   sudo pacman --noconfirm --needed -S kitty
   sudo pacman --noconfirm --needed -S i3lock-color
   sudo pacman --noconfirm --needed -S lxappearance
@@ -179,6 +180,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S xorg-server
   sudo pacman --noconfirm --needed -S xorg-xhost
   sudo pacman --noconfirm --needed -S ufw
+  sudo pacman --noconfirm --needed -S yubikey-manager-qt
   sudo pacman --noconfirm --needed -S zenity
   # yay --noconfirm --needed -S hardinfo
   # yay --noconfirm --needed -S oblogout
@@ -286,7 +288,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG tty "$(id -un)"
   sudo usermod -aG video "$(id -un)"
   # elogind
-  GENTOO_PKGS="rust-bin neovim setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool dunst wmname w3m x11-misc/xclip xinit xorg-server sys-apps/dbus flameshot volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet trayer-srg sxiv spacefm lxappearance xrandr hardinfo gentoolkit xmodmap app-misc/jq pavucontrol xinput neovim lsof sddm htop eix libreoffice-bin firefox-bin app-misc/screen pcmanfm rdfind zenity net-dns/bind-tools tmux bat whois starship traceroute kitty imagemagick colordiff media-fonts/terminus-font efibootmgr genfstab byobu dev-libs/tree-sitter luarocks alacritty ufw xdo pipewire pass pwgen tree keychain partimage ntfs3g dosfstools mtools ncdu speedtest-cli ntp nmap xhost btop dmg2img solaar elinks os-prober sys-fs/btrfs-progs sys-fs/udftools"
+  GENTOO_PKGS="rust-bin neovim setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool dunst wmname w3m x11-misc/xclip xinit xorg-server sys-apps/dbus flameshot volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet trayer-srg sxiv spacefm lxappearance xrandr hardinfo gentoolkit xmodmap app-misc/jq pavucontrol xinput neovim lsof sddm htop eix libreoffice-bin firefox-bin app-misc/screen pcmanfm rdfind zenity net-dns/bind-tools tmux bat whois starship traceroute kitty imagemagick colordiff media-fonts/terminus-font efibootmgr genfstab byobu dev-libs/tree-sitter luarocks alacritty ufw xdo pipewire pass pwgen tree keychain partimage ntfs3g dosfstools mtools ncdu speedtest-cli ntp nmap xhost btop dmg2img solaar elinks os-prober sys-fs/btrfs-progs sys-fs/udftools kpcli"
   FAILURE=""
   ls -d /var/db/pkg/*/*| cut -f5- -d/
   for i in $GENTOO_PKGS; do
@@ -356,6 +358,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y jq
   sudo dnf install -y keychain
   sudo dnf install -y kitty
+  sudo dnf install -y kpcli
   sudo dnf install -y kdeconnect
   sudo dnf install -y libXScrnSaver-devel
   sudo dnf install -y lxsession
@@ -394,6 +397,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y xdotool
   sudo dnf install -y xscreensaver
   sudo dnf install -y yad
+  sudo dnf install -y yubikey-manager-qt
   sudo dnf groupinstall "Development Tools" "Development Libraries"
   sudo dnf install -y clang-devel
   # sudo dnf install -y cmake-fedora

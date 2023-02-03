@@ -4,6 +4,7 @@ sudo emerge --update --newuse libyubikey
 sudo emerge --update --newuse app-crypt/yubikey-manager
 sudo emerge --update --newuse yubikey-manager-qt
 echo ykman
+echo ykman-gui
 ykman list --serials
 ykman --device 1234 info
 
