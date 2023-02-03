@@ -262,6 +262,7 @@ sudo emerge --update --newuse app-crypt/libu2f-server
 sudo emerge --update --newuse app-crypt/libu2f-host
 sudo emerge --update --newuse sys-auth/pam_u2f
 sudo usermod -a -G plugdev "$(whoami)"
+sudo emerge --update --newuse sys-fs/mtpfs
 # pamu2fcfg -uuser > ~/.config/Yubico/u2f_keys
 
 systemctl status systemd-udevd
