@@ -1,16 +1,18 @@
 #!/bin/sh
 
-sudo emerge libyubikey
-sudo emerge app-crypt/yubikey-manager
+sudo emerge --update --newuse libyubikey
+sudo emerge --update --newuse app-crypt/yubikey-manager
+sudo emerge --update --newuse yubikey-manager-qt
 echo ykman
 ykman list --serials
 ykman --device 1234 info
+
+exit 1
 
 git clone https://github.com/Yubico/yubico-c-client.git
 cd yubico-c-client
 autoreconf --install
 
-exit 1
 git clone https://github.com/Yubico/yubico-pam.git
 cd yubico-pam
 autoreconf --install
