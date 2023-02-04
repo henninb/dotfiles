@@ -75,6 +75,7 @@ else
 fi
 
 export PATH="$HOME/Applications:$PATH"
+export PATH="/opt/yubico-authenticator:$PATH"
 export PATH="$HOME/.ghcup/bin:$PATH"
 export PATH="$HOME/.nix-profile/bin:$PATH"
 export PATH="$HOME/scripts:$PATH"

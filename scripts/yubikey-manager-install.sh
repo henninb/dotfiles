@@ -23,43 +23,45 @@ wget 'https://developers.yubico.com/yubikey-manager-qt/Releases/yubikey-manager-
 chmod 755 "$HOME/tmp/yubikey-manager-qt-1.2.5-linux.AppImage"
 cp "$HOME/tmp/yubikey-manager-qt-1.2.5-linux.AppImage" "$HOME/Applications/yubikey-manager-qt.AppImage"
 
-exit 1
+wget 'https://developers.yubico.com/yubioath-flutter/Releases/yubico-authenticator-6.1.0-linux.tar.gz' -O "$HOME/tmp/yubico-authenticator-6.1.0-linux.tar.gz"
+sudo tar -zxvf "$HOME/tmp/yubico-authenticator-6.1.0-linux.tar.gz" -C /opt
+sudo ln -sfn "/opt/yubico-authenticator-6.1.0-linux" /opt/yubico-authenticator
 
-# sudo emerge --update --newuse libyubikey
-sudo emerge --update --newuse app-crypt/yubikey-manager
-sudo emerge --update --newuse yubikey-manager-qt
-# sudo emerge --update --newuse app-crypt/libu2f-server
-# sudo emerge --update --newuse app-crypt/libu2f-host
-# sudo emerge --update --newuse sys-auth/pam_u2f
+if [ -x "$(command -v emerge)" ]; then
+  sudo emerge --update --newuse app-crypt/yubikey-manager
+  sudo emerge --update --newuse yubikey-manager-qt
+  # sudo emerge --update --newuse libyubikey
+  # sudo emerge --update --newuse app-crypt/libu2f-server
+  # sudo emerge --update --newuse app-crypt/libu2f-host
+  # sudo emerge --update --newuse sys-auth/pam_u2f
+fi
+
 sudo usermod -a -G plugdev "$(whoami)"
 sudo gpasswd -a "$(whoami)" usb
 sudo emerge --update --newuse sys-fs/mtpfs
 
-sudo emerge --update --newuse sys-apps/pcsc-lite
-sudo systemctl enable pcscd
-sudo systemctl start pcscd
-sudo systemctl status pcscd
-gpg --card-status
-
-echo ykman info
-echo ykman-gui
-ykman list --serials
-ykman --device 1234 info
-# pamu2fcfg -u "$(whoami)" > ~/.config/Yubico/u2f_keys
-
-exit 1
+# sudo emerge --update --newuse sys-apps/pcsc-lite
+# sudo systemctl enable pcscd
+# sudo systemctl start pcscd
+# sudo systemctl status pcscd
+# gpg --card-status
 
 echo sudo /usr/sbin/pcscd -f --info
+echo ykman info
+which ykman-gui
+ykman list --serials
 
-git clone https://github.com/Yubico/yubico-c-client.git
-cd yubico-c-client
-autoreconf --install
+# pamu2fcfg -u "$(whoami)" > ~/.config/Yubico/u2f_keys
 
-git clone https://github.com/Yubico/yubico-pam.git
-cd yubico-pam
-autoreconf --install
-./configure
-
-make check install
+# git clone https://github.com/Yubico/yubico-c-client.git
+# cd yubico-c-client
+# autoreconf --install
+#
+# git clone https://github.com/Yubico/yubico-pam.git
+# cd yubico-pam
+# autoreconf --install
+# ./configure
+#
+# make check install
 
 exit 0
