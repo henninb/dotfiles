@@ -19,14 +19,18 @@ systemctl status systemd-udevd
 
 sudo chown root:root /etc/udev/rules.d/70-u2f.rules
 
+wget 'https://developers.yubico.com/yubikey-manager-qt/Releases/yubikey-manager-qt-1.2.5-linux.AppImage' -O "$HOME/tmp/yubikey-manager-qt-1.2.5-linux.AppImage"
+chmod 755 "$HOME/tmp/yubikey-manager-qt-1.2.5-linux.AppImage"
+cp "$HOME/tmp/yubikey-manager-qt-1.2.5-linux.AppImage" "$HOME/Applications/yubikey-manager-qt.AppImage"
+
 exit 1
 
-sudo emerge --update --newuse libyubikey
+# sudo emerge --update --newuse libyubikey
 sudo emerge --update --newuse app-crypt/yubikey-manager
 sudo emerge --update --newuse yubikey-manager-qt
-sudo emerge --update --newuse app-crypt/libu2f-server
-sudo emerge --update --newuse app-crypt/libu2f-host
-sudo emerge --update --newuse sys-auth/pam_u2f
+# sudo emerge --update --newuse app-crypt/libu2f-server
+# sudo emerge --update --newuse app-crypt/libu2f-host
+# sudo emerge --update --newuse sys-auth/pam_u2f
 sudo usermod -a -G plugdev "$(whoami)"
 sudo gpasswd -a "$(whoami)" usb
 sudo emerge --update --newuse sys-fs/mtpfs

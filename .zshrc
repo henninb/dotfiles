@@ -74,6 +74,7 @@ else
   echo JAVA_HOME is not setup.
 fi
 
+export PATH="$HOME/Applications:$PATH"
 export PATH="$HOME/.ghcup/bin:$PATH"
 export PATH="$HOME/.nix-profile/bin:$PATH"
 export PATH="$HOME/scripts:$PATH"
