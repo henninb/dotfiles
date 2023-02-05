@@ -9,6 +9,8 @@ else
   stack update
 fi
 
+sudo mkdir /mnt/external
+
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y clipmenu
   sudo apt install -y cmake
