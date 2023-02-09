@@ -24,7 +24,7 @@ if [ "$platform" = "podman" ]; then
 
   podman-compose build
   podman-compose up -d
-  curl -I https://localhost:443/
+  curl -I --cacert apache.crt  https://localhost/
 elif [ "$platform" = "docker" ]; then
   docker stop apache-server
   docker rm -f apache-server
@@ -41,7 +41,7 @@ elif [ "$platform" = "docker" ]; then
   if command -v docker-compose; then
     docker-compose build
     docker-compose up -d
-    curl -Ik https://localhost:443/
+    curl -I --cacert apache.crt  https://localhost/
   else
     docker build -t apache-server .
     echo 'docker run --name=apache-server -h apache-server -h apache-server --restart unless-stopped -p 443:443 -d apache-server'
