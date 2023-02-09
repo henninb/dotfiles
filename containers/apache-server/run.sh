@@ -41,7 +41,7 @@ elif [ "$platform" = "docker" ]; then
   if command -v docker-compose; then
     docker-compose build
     docker-compose up -d
-    curl -I https://localhost:443/
+    curl -Ik https://localhost:443/
   else
     docker build -t apache-server .
     echo 'docker run --name=apache-server -h apache-server -h apache-server --restart unless-stopped -p 443:443 -d apache-server'
