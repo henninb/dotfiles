@@ -251,28 +251,6 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
     sudo mv -v "$HOME/tmp/Xwrapper.config" /etc/X11/Xwrapper.config
     sudo systemctl stop firewalld
     sudo systemctl disable firewalld
-elif [ "$OS" = "CentOS Linux" ]; then
-  if [ "$OS_VER" = "8" ]; then
-    echo centos8
-    sudo dnf install -y libtool
-    sudo dnf install -y openssl-devel
-    sudo dnf install -y pam-devel
-#    sudo dnf install -y xorg-x11-server-devel
-    echo sudo dnf install -y nasm
-    sudo dnf install -y libX11-devel
-    sudo dnf install -y libXfixes-devel
-    sudo dnf install -y libXrandr-devel
-    sudo dnf install -y xrdp
-  else
-    echo centos7
-    sudo yum install -y libtool openssl-devel pam-devel xorg-x11-server-devel nasm
-  fi
-
-  xrdp_build
-  xorgxrdp_build
-
-  cd "$HOME" || exit
-  sudo mv -v "$HOME/tmp/startwm.sh" /etc/xrdp/startwm.sh
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo usermod -a -G tty "$(id -un)"
   #echo sudo apt install -y xrdp xorgxrdp
@@ -299,11 +277,7 @@ else
   exit 1
 fi
 
-if [ "$OS" = "Gentoo" ]; then
-  sudo rc-update add xrdp default
-  sudo rc-service xrdp start
-  sudo rc-service xrdp status
-else
+if command -v systemctl; then
   sudo systemctl enable xrdp
   sudo systemctl enable xrdp-sesman
   sudo systemctl start xrdp

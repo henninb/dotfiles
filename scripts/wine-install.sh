@@ -9,20 +9,21 @@ Include = /etc/pacman.d/mirrorlist
 EOF
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
-  # grep "^[multilib]" /etc/pacman.conf
-  # if [ $? -ne 0 ]; then
-  #   cat pacman.conf | sudo tee -a /etc/pacman.conf
-  #   rm -rf pacman.conf
-  # fi
+  grep "^[multilib]" /etc/pacman.conf
+  if [ $? -ne 0 ]; then
+    echo "not found"
+    #cat pacman.conf | sudo tee -a /etc/pacman.conf
+  fi
   # sudo pacman --noconfirm --needed -Syy
   # sudo pacman --noconfirm --needed -S wine
-  yay -S multilib/wine
+  # yay -S multilib/wine
+  sudo pacman --noconfirm --needed -S wine
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse wine
-elif [ "$OS" = "CentOS Linux" ]; then
-  sudo yum install -y epel-release
-  #sudo subscription-manager repos
-  sudo yum install wine
+elif [ "$OS" = "Void" ]; then
+  echo Void
+elif [ "$OS" = "Fedora Linux" ]; then
+  sudo dnf install -y wine
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   sudo apt install -y wine64
 else

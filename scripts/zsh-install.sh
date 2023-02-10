@@ -48,13 +48,7 @@ if ! command -v starship; then
   ./install.sh
 fi
 
-if [ "$OS" = "CentOS Linux" ]; then
-  if [ "$OS_VER" = "8" ]; then
-    sudo dnf install -y zsh
-  else
-    sudo yum install -y zsh
-  fi
-elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S zsh
   sudo pacman --noconfirm --needed -S unzip
   sudo pacman --noconfirm --needed -S wget

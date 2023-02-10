@@ -3,9 +3,6 @@
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   SERVERNAME=mint
   echo $SERVERNAME
-elif [ "$OS" = "CentOS Linux" ]; then
-  SERVERNAME=centos
-  echo $SERVERNAME
 elif [ "$OS" = "Gentoo" ]; then
   SERVERNAME=gentoo
   echo $SERVERNAME
@@ -109,41 +106,6 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   ls -l /etc/ssl/certs/ca-certificates.crt
   echo keytool -printcert -v -file /etc/ssl/certs/ca-certificates.crt
   echo curl-config --ca
-elif [ "$OS" = "CentOS Linux" ]; then
-  sudo yum install -y httpd mod_ssl openssl curl openssl-perl
-  sudo yum install -y net-tools psmisc wget
-
-  sudo systemctl start firewalld
-  sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
-  sudo firewall-cmd --permanent --add-port=443/tcp --permanent
-  sudo firewall-cmd --reload
-  sudo firewall-cmd --list-ports
-
-  sudo sed -i "s/SSLCertificateFile \/etc\/pki\/tls\/certs\/localhost.crt/SSLCertificateFile \/etc\/pki\/tls\/certs\/centos_apache.crt.pem/g" /etc/httpd/conf.d/ssl.conf
-  sudo sed -i "s/SSLCertificateKeyFile \/etc\/pki\/tls\/private\/localhost.key/SSLCertificateKeyFile \/etc\/pki\/tls\/private\/ca.key.pem/g" /etc/httpd/conf.d/ssl.conf
-  sudo sed -i "s/SSLCertificateFile \/etc\/pki\/tls\/certs\/ca.crt/SSLCertificateFile \/etc\/pki\/tls\/certs\/centos_apache.crt.pem/g" /etc/httpd/conf.d/ssl.conf
-  sudo sed -i "s/SSLCertificateKeyFile \/etc\/pki\/tls\/private\/ca.key\$/SSLCertificateKeyFile \/etc\/pki\/tls\/private\/ca.key.pem/g" /etc/httpd/conf.d/ssl.conf
-
-  #not sure if this is required
-  sudo update-ca-trust force-enable
-  sudo cp -v "$HOME/centos_apache.crt.pem" /etc/pki/ca-trust/source/anchors/
-  sudo update-ca-trust extract
-
-  sudo systemctl start httpd
-  sudo systemctl restart httpd
-  sudo systemctl enable httpd
-
-  grep "127.0.0.1 centos" /etc/hosts
-  if [ $? -ne 0 ]; then
-    echo "127.0.0.1 centos" | sudo tee -a /etc/hosts
-  fi
-  curl https://centos > index.html
-  netstat -na | grep LIST| grep tcp | grep 80
-  netstat -na | grep LIST| grep tcp | grep 443
-
-  sudo fuser 443/tcp
-  sudo fuser 80/tcp
-  #sudo cp -v index.html /var/www/html
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse apache
   sudo emerge --update --newuse net-tools
@@ -206,7 +168,7 @@ fi
 exit 0
 
 curl --cacert $HOME/centos_apache.crt.pem https://centos7
-openssl s_client -connect centos7:443 -CAfile $HOME/centos_apache.crt.pem
+openssl s_client -connect $SERVERNAME:443 -CAfile $HOME/centos_apache.crt.pem
 
 
 #ls -l /etc/pki/tls/openssl.cnf

@@ -423,34 +423,6 @@ elif [ "$OS" = "Fedora Linux" ]; then
   cd trayer-srg
   ./configure
   sudo make install
-elif [ "$OS" = "CentOS Linux" ]; then
-  if [ "$OS_VER" = "8" ]; then
-    echo centos8
-    # sudo dnf remove -y lightdm
-    # sudo dnf remove -y gdm
-    # sudo dnf remove -y lxdm
-    sudo dnf install -y alsa-lib-devel
-    sudo dnf install -y libXScrnSaver-devel
-    sudo dnf install -y feh
-    sudo dnf install -y ranger
-    sudo dnf install -y neofetch
-    sudo dnf install -y w3m
-    sudo dnf install -y dunst
-    sudo dnf install -y flameshot
-    sudo dnf install -y xscreensaver
-    # sudo dnf install -y dzen2
-    echo 'nix-env -i dzen2'
-    nix-env -i dzen2
-  else
-    echo centos7
-    sudo yum install -y alsa-lib-devel
-    sudo yum install -y libXScrnSaver-devel
-    sudo yum install -y feh
-    sudo yum install -y neofetch
-    sudo yum install -y w3m
-    sudo yum install -y xscreensaver
-    # sudo yum install -y dzen2
-  fi
 else
   echo "$OS is not yet implemented."
   exit 1

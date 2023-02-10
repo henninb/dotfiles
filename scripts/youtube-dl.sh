@@ -16,13 +16,6 @@ echo "Press enter to continue"
 read -r x
 echo "$x" > /dev/null
 
-if [ "$OS" = "CentOS Linux" ]; then
-  sudo yum install epel-release -y
-  sudo rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro
-  sudo rpm -Uvh http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm
-  sudo yum install -y ffmpeg #ffmpeg-devel
-fi
-
 mkdir -p media
 
 fun_download() {
