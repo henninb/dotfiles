@@ -4,6 +4,11 @@
 # read -p "Brightness: " bright
 # read -p "State: " state
 
+if ! command -v jq; then
+  echo "jq install required"
+  exit 1
+fi
+
 curl -s --location --request GET 'http://192.168.10.110:9123/elgato/lights' --header 'Accept: application/json' | jq
 status=$(curl -s --location --request GET 'http://192.168.10.110:9123/elgato/lights' --header 'Accept: application/json' | jq '.lights | .[].on')
 brightness=$(curl -s --location --request GET 'http://192.168.10.110:9123/elgato/lights' --header 'Accept: application/json' | jq '.lights | .[].brightness')
