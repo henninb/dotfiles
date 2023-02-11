@@ -17,20 +17,20 @@ if command -v camcontrol; then
   sudo lklfuse -o type=ext4 /dev/ada0p3 /mnt/archlinux
 fi
 
-if [ "$os" = "gentoo" ]; then
+if [ "$os" = "voidlinux" ]; then
   disk=nvme0n1
-  sudo mkdir -p /mnt/gentoo
-  sudo mount /dev/${disk}p2 /mnt/gentoo
-  sudo mkdir -p /mnt/gentoo/boot/efi
-  sudo mount /dev/${disk}p1 /mnt/gentoo/boot/efi
-  cd /mnt/gentoo
+  sudo mkdir -p /mnt/voidlinux
+  sudo mount /dev/${disk}p2 /mnt/voidlinux
+  sudo mkdir -p /mnt/voidlinux/boot/efi
+  sudo mount /dev/${disk}p1 /mnt/voidlinux/boot/efi
+  cd /mnt/voidlinux
 
-  sudo mount -t proc none /mnt/gentoo/proc
-  sudo mount --rbind /dev /mnt/gentoo/dev
-  sudo mount --rbind /sys /mnt/gentoo/sys
+  sudo mount -t proc none /mnt/voidlinux/proc
+  sudo mount --rbind /dev /mnt/voidlinux/dev
+  sudo mount --rbind /sys /mnt/voidlinux/sys
 
-  echo 'export PS1="(gentoo-chroot) $PS1"'
-  sudo chroot /mnt/gentoo /bin/bash
+  echo 'export PS1="(voidlinux-chroot) $PS1"'
+  sudo chroot /mnt/voidlinux /bin/bash
 elif [ "$os" = "gentoo-new" ]; then
   disk=sdd
   sudo mkdir -p /mnt/gentoo-new
