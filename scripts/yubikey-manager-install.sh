@@ -34,11 +34,11 @@ if [ -x "$(command -v emerge)" ]; then
   # sudo emerge --update --newuse app-crypt/libu2f-server
   # sudo emerge --update --newuse app-crypt/libu2f-host
   # sudo emerge --update --newuse sys-auth/pam_u2f
+  sudo emerge --update --newuse sys-fs/mtpfs
 fi
 
 sudo usermod -a -G plugdev "$(whoami)"
 sudo gpasswd -a "$(whoami)" usb
-sudo emerge --update --newuse sys-fs/mtpfs
 
 # sudo emerge --update --newuse sys-apps/pcsc-lite
 # sudo systemctl enable pcscd
