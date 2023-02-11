@@ -27,7 +27,7 @@
 ## churlish [adjective] rude in a mean-spirited and surly way.
 ## complacent [adjective] showing smug or uncritical satisfaction with oneself or one's achievements.
 ## complicit [adjective] involved with others in an illegal activity or wrongdoing.
-## condecend verb show feelings of superiority; be patronizing.
+## condecend [verb] show feelings of superiority; be patronizing.
 ## condescending [adjective] having or showing a feeling of patronizing superiority.
 ## conduit [noun] a tube or trough for protecting electric wiring.
 ## confide [verb] tell someone about a secret or private matter while trusting them not to repeat it to others.
@@ -139,8 +139,7 @@
 ## salacious [adjective] Characterized by or indicating sexual desire; lustful.
 ## salient [adjective] most noticeable or important.
 ## serendipitous [adjective] occurring or discovered by chance in a happy or beneficial way.
-## serendipitously  The faculty of making fortunate discoveries by accident
-## sinister  of, on, or toward the left-hand side (in a coat of arms, from the bearer's point of view, i.e., the right as it is depicted).; giving the impression that something harmful or evil is happening or will happen.
+## sinister [] of, on, or toward the left-hand side (in a coat of arms, from the bearer's point of view, i.e., the right as it is depicted).; giving the impression that something harmful or evil is happening or will happen.
 ## snood []
 ## spar []
 ## spurious []
