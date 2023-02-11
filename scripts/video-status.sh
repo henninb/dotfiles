@@ -79,6 +79,7 @@ if command -v emerge; then
   fi
   sudo emerge --update --newuse mesa-progs
   sudo emerge --update --newuse linux-headers
+  sudo emerge --update --newuse media-libs/vulkan-loader
 fi
 
 # dead code
