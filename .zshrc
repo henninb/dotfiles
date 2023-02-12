@@ -317,6 +317,8 @@ else
           sudo mkinitcpio -p linux
         elif command -v genkernel; then
           sudo genkernel initramfs
+        elif command -v xbps-reconfigure; then
+          sudo xbps-reconfigure -f linux6.1
         elif command -v dracut; then
           sudo dracut -f --regenerate-all
         else
