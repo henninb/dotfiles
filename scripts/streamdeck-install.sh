@@ -32,6 +32,7 @@ cat << EOF > "$HOME/tmp/99-streamdeck.rules"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", TAG+="uaccess"
 EOF
 
+sudo mkdir -p /etc/udev/rules.d/
 sudo mv -v "$HOME/tmp/99-streamdeck.rules" /etc/udev/rules.d/99-streamdeck.rules
 if command -v udevadm; then
   sudo udevadm control --reload-rules
