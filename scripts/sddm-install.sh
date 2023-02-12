@@ -55,7 +55,7 @@ sudo mv -v "$HOME/tmp/xmonad.desktop" /usr/share/xsessions/
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S sddm
-  sudo systemctl enable sddm.service -f
+  sudo systemctl enable sddm.service --now
   sudo systemctl disable lightdm
 
   sudo mkdir -p /etc/sddm.conf.d/
@@ -67,20 +67,21 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   # systemctl --user stop xdg-desktop-portal
   # systemctl --user disable xdg-desktop-portal{,gtk}
   # systemctl --user disable xdg-desktop-portal
-  sudo systemctl enable sddm
-  sudo systemctl start sddm
+  sudo systemctl enable sddm --now
+  # sudo systemctl start sddm
 elif [ "${OS}" = "Void" ]; then
   sudo xbps-install -y sddm
   sudo mkdir -p /etc/sddm.conf.d/
   sudo ln -s /etc/sv/sddm /var/service/sddm
   sudo ln -s /etc/sv/dbus /var/service/dbus
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
+  sudo sv status sddm
 elif [ "${OS}" = "Ubuntu" ] || [ "$OS" = "Linux Mint" ]; then
   sudo apt install -y sddm
   sudo mkdir -p /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
   sudo systemctl disable lightdm
-  sudo systemctl enable sddm.service -f
+  sudo systemctl enable sddm.service --now
 elif [ "${OS}" = "FreeBSD" ]; then
   sudo pkg install -y sddm
   sudo pkg install -y sysrc
@@ -94,8 +95,8 @@ elif [ "${OS}" = "FreeBSD" ]; then
   echo "https://community.kde.org/FreeBSD/Setup#SDDM"
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y sddm
-  sudo systemctl enable sddm
-  sudo systemctl start sddm
+  sudo systemctl enable sddm --now
+  # sudo systemctl start sddm
   sudo mkdir -p /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
@@ -111,7 +112,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse gui-libs/display-manager-init
   # sudo systemctl enable sddm
   # sudo systemctl start sddm
-  sudo systemctl enable sddm.service -f
+  sudo systemctl enable sddm.service --now
 else
   echo "${OS} is not setup"
   exit 1

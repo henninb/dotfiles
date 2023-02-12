@@ -59,8 +59,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y libguestfs-tools
   sudo usermod -a -G libvirt "$(id -un)"
   sudo usermod -a -G kvm "$(id -un)"
-  sudo systemctl start libvirtd
-  sudo systemctl enable libvirtd
+  # sudo systemctl start libvirtd
+  sudo systemctl enable libvirtd --now
   virsh net-autostart default
 
   virsh pool-define /dev/stdin <<EOF
@@ -93,9 +93,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   # sudo pacman -Qi ebtables iptables dnsmasq
 
   sudo systemctl start libvirtd
-  sudo systemctl enable libvirtd
-  sudo systemctl enable iptables
-  sudo systemctl start iptabls
+  sudo systemctl enable libvirtd --now
+  sudo systemctl enable iptables --now
   sudo systemctl status libvirtd
   sudo systemctl status iptables
 
@@ -114,8 +113,8 @@ elif [ "$OS" = "Solus" ]; then
   sudo usermod -a -G libvirt "$(id -un)"
   sudo usermod -a -G kvm "$(id -un)"
   sudo usermod -a -G qemu "$(id -un)"
-  sudo systemctl enable libvirtd
-  sudo systemctl start libvirtd
+  sudo systemctl enable libvirtd --now
+  # sudo systemctl start libvirtd
   virsh list --all
   virsh net-autostart default
   virsh net-list --all
@@ -132,8 +131,8 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo mv -v "$HOME/tmp/libvirtd.conf" /etc/libvirt/libvirtd.conf
   # sudo rc-update add libvirtd default
   # sudo rc-service libvirtd start
-  sudo systemctl enable libvirtd
-  sudo systemctl start libvirtd
+  sudo systemctl enable libvirtd --now
+  # sudo systemctl start libvirtd
   sudo usermod -a -G libvirt "$(id -un)"
   sudo usermod -a -G kvm "$(id -un)"
   sudo usermod -a -G qemu "$(id -un)"
@@ -151,8 +150,8 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo usermod -a -G libvirt "$(id -un)"
   sudo usermod -a -G kvm "$(id -un)"
   sudo usermod -a -G qemu "$(id -un)"
-  sudo systemctl start libvirtd
-  sudo systemctl enable libvirtd
+  # sudo systemctl start libvirtd
+  sudo systemctl enable libvirtd --now
   virsh list --all
   virsh net-autostart default
   virsh net-list --all
@@ -166,8 +165,8 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y virt-manager
   sudo usermod -a -G libvirt "$(id -un)"
   sudo usermod -a -G kvm "$(id -un)"
-  sudo systemctl start libvirtd
-  sudo systemctl enable libvirtd
+  # sudo systemctl start libvirtd
+  sudo systemctl enable libvirtd --now
   virsh list --all
   virsh net-autostart default
   virsh net-list --all
