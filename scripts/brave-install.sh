@@ -19,11 +19,13 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo ln -sfn /usr/bin/brave-bin /usr/bin/brave-browser
 elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y xtools
+  cd "$HOME/projects"
   git clone git@github.com:void-linux/void-packages.git
   git clone git@gitlab.com:ElPresidentePoole/brave-bin.git
   cd void-packages || exit
   ./xbps-src binary-bootstrap
-  mv -v "$HOME/brave-bin" srcpkgs
+  mv -v "$HOME/projects/brave-bin" srcpkgs
+  exit 1
   ./xbps-src pkg brave-bin
   xi brave-bin
   echo if fails change the checksum to lower case
