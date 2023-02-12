@@ -20,6 +20,8 @@ if command -v dnf; then
   sudo dnf install -y zlib-devel
 fi
 
+sudo xbps-install libgusb-devel
+
 cat << EOF > "$HOME/tmp/99-streamdeck.rules"
 # SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="0060", TAG+="uaccess"
 # SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="0063", TAG+="uaccess"
