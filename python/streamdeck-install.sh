@@ -8,6 +8,7 @@ sudo ./configure --enable-optimizations
 sudo make altinstall
 python3.9 -V
 echo pipenv install --python 3.9.16
+pip install virtualenv
 virtualenv -p $(which python3.9) streamdeck-env
 #python3 -m venv streamdeck
 
