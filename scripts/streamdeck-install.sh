@@ -21,6 +21,7 @@ if command -v dnf; then
 fi
 
 sudo xbps-install libgusb-devel
+sudo xbps-install python3-devel
 
 cat << EOF > "$HOME/tmp/99-streamdeck.rules"
 # SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="0060", TAG+="uaccess"
