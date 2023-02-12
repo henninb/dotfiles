@@ -30,6 +30,8 @@ elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y meson
   sudo xbps-install -y libev-devel
   sudo xbps-install -y uthash
+  sudo xbps-install -y cmake
+  sudo xbps-install -y pcre-devel
   sudo xbps-install -y libconfig-devel
   sudo xbps-install -y xcb-util-renderutil-devel
   sudo xbps-install -y xcb-util-image-devel
