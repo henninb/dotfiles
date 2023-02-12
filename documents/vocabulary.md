@@ -160,3 +160,5 @@ verbage: (noun) language or wording used in speech or writing; often used to des
 vigorous: (adjective) strong, active, and energetic.
 vixen: (noun) a female fox; can also refer to a woman with a reputation for being sexually alluring.
 wheedle: (verb) to use flattery or coaxing in order to persuade someone to do something, often something that they might not want to do.
+capacious
+unscruplious

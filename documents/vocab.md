@@ -164,3 +164,6 @@
 ## vigorous [adjective] strong, healthy, and full of energy.
 ## vixen [noun] a spiteful or quarrelsome woman.
 ## wheedle []
+## capaciou []
+## unscruplious []
+
