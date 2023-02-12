@@ -14,6 +14,8 @@ elif command -v brave-browser; then
   exec brave-browser "$options"
 elif command -v linux-brave; then
   exec linux-brave "$options"
+elif command -v brave-flatpak; then
+  exec brave-flatpak "$options"
 elif command -v librewolf-bin; then
   exec librewolf-bin "$firefox_options"
 elif command -v librewolf-flatpak; then
