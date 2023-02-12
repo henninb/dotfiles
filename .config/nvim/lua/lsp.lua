@@ -74,7 +74,7 @@ local lsp_flags = {
 }
 
 -- .local/share/nvim/lsp_servers/
-require'lspconfig'.sumneko_lua.setup{
+require'lspconfig'.lua_ls.setup{
   settings = {
     Lua = {
       diagnostics = {
