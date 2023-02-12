@@ -22,6 +22,8 @@ echo hitempicon: 
 echo git: 
 echo lightning: ⚡
 
+fc-list | grep -i "monof"|awk -F: '{print $2}' |sort|uniq
+
 exit 0
 
 # vim: set ft=sh:

@@ -1,7 +1,8 @@
 #!/bin/sh
 
 sudo mkdir -p /usr/local/share/fonts/
-sudo cp -v "$HOME/.local/fonts/ter-powerline-v16b.psf" /usr/share/consolefonts/
+sudo mkdir -p /usr/share/fonts/
+# sudo cp -v "$HOME/.local/fonts/ter-powerline-v16b.psf" /usr/share/consolefonts/
 
 fonts="monofur-fonts.zip symbola-fonts.zip fira-code-nerd-fonts.zip font-awesome5-regular.zip"
 for font in $fonts; do
@@ -9,8 +10,11 @@ for font in $fonts; do
   unzip -o "$HOME/.local/fonts/$font"
   cd /usr/local/share/fonts || exit
   sudo unzip -o "$HOME/.local/fonts/$font"
+  cd /usr/share/fonts || exit
+  sudo unzip -o "$HOME/.local/fonts/$font"
 done
-fc-cache -vf ~/.fonts/
+fc-cache -vf "$HOME/.fonts"
+fc-cache -vf /usr/share/fonts
 
 fc-list | grep -i 'monofur for Powerline'
 echo
