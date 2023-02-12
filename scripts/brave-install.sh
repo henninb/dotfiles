@@ -25,7 +25,6 @@ elif [ "$OS" = "Void" ]; then
   cd void-packages || exit
   ./xbps-src binary-bootstrap
   mv -v "$HOME/projects/brave-bin" srcpkgs
-  exit 1
   ./xbps-src pkg brave-bin
   xi brave-bin
   echo if fails change the checksum to lower case
