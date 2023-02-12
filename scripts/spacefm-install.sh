@@ -3,8 +3,6 @@
 if [ "$OS" = "Solus" ]; then
   sudo eopkg install -y libgtk-2-devel
   sudo eopkg install -y libgtk-3-devel
-  sudo eopkg install -y libgtk-2-devel
-  sudo eopkg install -y libgtk-3-devel
   sudo eopkg install -y ffmpegthumbnailer-devel
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y libgtk2.0-dev
@@ -31,9 +29,11 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install ffmpegthumbnailer
   sudo pkg install intltool
 elif [ "$OS" = "Void" ]; then
+  sudo xbps-install -y spacefm
+  sudo xbps-install -y patch
   sudo xbps-install -y intltool
   sudo xbps-install -y glib-devel
-  sudo xbps-install -S ffmpegthumbnailer
+  sudo xbps-install -Sy ffmpegthumbnailer
   sudo xbps-install -y ffmpegthumbnailer-devel
 else
   echo "$OS is not implemented."
