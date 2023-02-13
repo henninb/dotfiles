@@ -20,8 +20,11 @@ if command -v dnf; then
   sudo dnf install -y zlib-devel
 fi
 
-sudo xbps-install libgusb-devel
-sudo xbps-install python3-devel
+sudo xbps-install -y elogind
+
+sudo ln -s /etc/sv/elogind /etc/runit/runsvdir/current/
+sudo xbps-install -y libgusb-devel
+sudo xbps-install -y python3-devel
 
 cat << EOF > "$HOME/tmp/99-streamdeck.rules"
 # SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="0060", TAG+="uaccess"
