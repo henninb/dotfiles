@@ -77,6 +77,7 @@ elif [ "$OS" = "Gentoo" ]; then
       sudo genkernel all
       sudo grub-mkconfig -o /boot/grub/grub.cfg
       sudo grub-mkconfig -o /boot/efi/EFI/gentoo/grub.cfg
+      sudo grub-mkconfig -o /boot/efi/EFI/gentoo-new/grub.cfg
     fi
   fi
   blender=$(find /usr/bin -name "blender-*[0-9]")
