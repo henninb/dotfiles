@@ -99,5 +99,6 @@ efibootmgr -v
 grub-probe --target=fs --device /dev/nvme0n1p1
 
 
+## tune2fs does not work on fat partitions
 tune2fs -l /dev/nvme0n1p1 | grep metadata_csum_seed
 tune2fs: Bad magic number in super-block while trying to open /dev/nvme0n1p1
