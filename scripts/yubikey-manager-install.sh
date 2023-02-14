@@ -37,6 +37,11 @@ if [ -x "$(command -v emerge)" ]; then
   sudo emerge --update --newuse sys-fs/mtpfs
 fi
 
+sudo xbps-install pcsclite
+sudo xbps-install pcsc-ccid
+# ln -s /etc/sv/pcscd /var/service/
+sudo ln -s /etc/sv/pcscd /etc/runit/runsvdir/current/
+
 sudo usermod -a -G plugdev "$(whoami)"
 sudo gpasswd -a "$(whoami)" usb
 
