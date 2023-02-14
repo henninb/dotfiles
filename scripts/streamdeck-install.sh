@@ -20,7 +20,8 @@ if command -v dnf; then
   sudo dnf install -y zlib-devel
 fi
 
-sudo xbps-install -y elogind
+#sudo xbps-install -y elogind
+sudo xbps-install -y hidapi-devel
 
 sudo ln -s /etc/sv/elogind /etc/runit/runsvdir/current/
 sudo xbps-install -y libgusb-devel
