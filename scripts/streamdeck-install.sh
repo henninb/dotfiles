@@ -32,7 +32,7 @@ cat << EOF > "$HOME/tmp/99-streamdeck.rules"
 # SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="006c", TAG+="uaccess"
 # SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="006d", TAG+="uaccess"
 
-SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", TAG+="uaccess",MODE="0660",GROUP="plugdev"
 EOF
 
 sudo mkdir -p /etc/udev/rules.d/
