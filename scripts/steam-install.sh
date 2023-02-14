@@ -47,6 +47,12 @@ elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y steam
 elif [ "$OS" = "Void" ]; then
   echo Void
+  sudo xbps-install -y void-repo-nonfree
+  sudo xbps-install -y void-repo-multilib-nonfree
+  # sudo xbps-install -S libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit
+  sudo xbps-install -S libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit nvidia nvidia-libs-32bit
+  sudo xbps-install -S steam
+
 elif [ "$OS" = "Fedora Linux" ]; then
   #flatpak install --user com.valvesoftware.Steam.flatpakref
   echo Fedora
