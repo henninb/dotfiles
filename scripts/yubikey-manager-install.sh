@@ -37,10 +37,14 @@ if [ -x "$(command -v emerge)" ]; then
   sudo emerge --update --newuse sys-fs/mtpfs
 fi
 
-sudo xbps-install pcsclite
-sudo xbps-install pcsc-ccid
-# ln -s /etc/sv/pcscd /var/service/
-sudo ln -s /etc/sv/pcscd /etc/runit/runsvdir/current/
+
+if [ -x "$(command -v xbps-install)" ]; then
+  sudo xbps-install -y mdevd
+  sudo xbps-install -y pcsclite
+  sudo xbps-install -y pcsc-ccid
+  # ln -s /etc/sv/pcscd /var/service/
+  sudo ln -s /etc/sv/pcscd /etc/runit/runsvdir/current/
+fi
 
 sudo usermod -a -G plugdev "$(whoami)"
 sudo gpasswd -a "$(whoami)" usb
