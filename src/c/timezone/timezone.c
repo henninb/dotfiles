@@ -30,7 +30,7 @@ int get_timezone( Timezone *timezone ) {
 int main(int argc, char *argv[]) {
   Timezone *timezone;
 
-  timezone = malloc(sizeof(timezone));
+  timezone = malloc(sizeof(Timezone));
   if( get_timezone(timezone) == 0 ) {
     printf("TZ=<%s>\n", timezone->tz);
     printf("offset=<%s>\n", timezone->offset);
