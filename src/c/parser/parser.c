@@ -48,6 +48,7 @@ void fileRead( char *file_name ) {
      trim(line);
      parse_book( line, "|", book );
      print_book(book);
+     free(book);
    }
 
    fclose(fp);
