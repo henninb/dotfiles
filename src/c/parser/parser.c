@@ -44,7 +44,7 @@ void fileRead( char *file_name ) {
    }
 
    while ((ch = getline(&line, &len, fp)) != -1) {
-     book = malloc(sizeof(book));
+     book = malloc(sizeof(Book));
      trim(line);
      parse_book( line, "|", book );
      print_book(book);
