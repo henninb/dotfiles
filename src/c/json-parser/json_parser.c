@@ -7,8 +7,8 @@
 #include <ctype.h>
 
 int fileRead( char *);
-void trim( char * );
-void foo1();
+//void trim( char * );
+//void foo1();
 void print_json_indent(int );
 void print_json_aux(json_t *, int );
 int fsize( char * );
@@ -17,7 +17,7 @@ void print_json(json_t *);
 void print_json_array(json_t *, int );
 void print_json_object(json_t *, int );
 void print_json_string(json_t *, int );
-void somefun(char *);
+//void somefun(char *);
 void process_file(char *);
 
 #define TITLE 0
