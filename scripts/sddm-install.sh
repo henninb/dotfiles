@@ -105,6 +105,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   echo gkr-pam daemon control file not found
   echo vi /etc/pam.d/gdm-password
   echo auth        optional      pam_gnome_keyring.so only_if=gdm
+  sudo dnf remove   gnome-keyring-pam
   journalctl -b -u sddm
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse sddm
