@@ -20,6 +20,8 @@ elif [ "$OS" = "Void" ]; then
 elif [ "$OS" = "Fedora Linux" ]; then
   echo dnf repoquery -l xorg-x11-server-Xorg
   echo sudo dnf remove package
+  echo rpm -qa
+  echo sudo rpm -e --nodeps gdm-43.0-3.fc37.x86_64
 elif [ "$OS" = "Solus" ]; then
   echo sudo eopkg upgrade -y
   echo sudo eopkg install -y package_name
