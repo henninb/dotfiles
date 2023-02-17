@@ -74,7 +74,7 @@
 
 
 ## Software
-| Description            | App(s)                                                                               |
+| Description            | Applications                                                                         |
 | ------------           | -----                                                                                |
 | terminal               | alacritty, st, urxvt                                                                 |
 | editor                 | neovim, emacs, vscodium, intellij, neovide, notepadqq, vscode                        |
@@ -150,7 +150,7 @@
 | calculator             | qalculate-gtk                                                                        |
 | diff tool              | meld                                                                                 |
 | ctags                  | ctags-universal                                                                      |
-| gui-cert management    | xca                                                                                  |
+| certificate management | xca                                                                                  |
 | security tool          | yubioath-desktop                                                                     |
 | phone file transfer    | kdeconnect                                                                           |
 | typing                 | ttyper                                                                               |
@@ -159,6 +159,7 @@
 | compression tools      | PeaZip                                                                               |
 | disk writing tool      | dd, gnome-disk-utility                                                               |
 | multi iso to flashdrive| ventoy                                                                               |
+| tray                   | trayer, tint2                                                                        |
 
 ## Language Servers
 - c - ccls
@@ -191,6 +192,7 @@
 - translate-shell - trans -t de "hi"
 - http://dotshare.it/
 - pip install mlbv
+- pip install holehe
 - lazygit - go get github.com/jesseduffield/lazygit
 - lazydocker - go get github.com/jesseduffield/lazydocker
 - tdrop
