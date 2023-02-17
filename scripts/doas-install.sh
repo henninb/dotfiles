@@ -12,11 +12,11 @@ elif command -v emerge; then
 elif command -v apt; then
   echo "debian"
 elif command -v xbps-install; then
-  echo "void"
+  sudo xbps-install -y doas
 elif command -v eopkg; then
   echo "solus"
 elif command -v dnf; then
-  echo "fedora"
+  sudo dnf install -y doas
 elif command -v brew; then
   echo "macos"
 else

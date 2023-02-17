@@ -106,6 +106,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
     sudo dnf distro-sync
     echo sudo dnf remove $(dnf repoquery --installonly --latest-limit 2 -q)
     sudo dnf install kernel --best
+    sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
     efibootmgr
 elif [ "$OS" = "FreeBSD" ]; then
   #sudo freebsd-update fetch
