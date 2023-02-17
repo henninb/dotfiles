@@ -19,6 +19,7 @@ elif [ "$OS" = "Void" ]; then
   echo sudo xbps-remove package_name
 elif [ "$OS" = "Fedora Linux" ]; then
   echo dnf repoquery -l xorg-x11-server-Xorg
+  echo sudo dnf remove package
 elif [ "$OS" = "Solus" ]; then
   echo sudo eopkg upgrade -y
   echo sudo eopkg install -y package_name
