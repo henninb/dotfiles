@@ -108,6 +108,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   journalctl -b -u sddm
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse sddm
+  sudo emerge --update --newuse xsetroot
   sudo usermod -a -G video sddm
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
   sudo mkdir -p /etc/sddm/scripts
