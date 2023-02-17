@@ -95,6 +95,7 @@ elif [ "${OS}" = "FreeBSD" ]; then
   echo "https://community.kde.org/FreeBSD/Setup#SDDM"
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y sddm
+  sudo dnf install -y sddm-themes
   sudo systemctl enable sddm --now
   # sudo systemctl start sddm
   sudo mkdir -p /etc/sddm.conf.d/
