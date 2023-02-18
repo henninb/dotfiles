@@ -107,6 +107,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   echo auth        optional      pam_gnome_keyring.so only_if=gdm
   sudo dnf remove   gnome-keyring-pam
   journalctl -b -u sddm
+  echo sddm-greeter --test-mode --theme /usr/share/sddm/themes/elarun
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse sddm
   sudo emerge --update --newuse xsetroot
