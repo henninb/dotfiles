@@ -101,8 +101,8 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y sddm
   sudo dnf install -y sddm-themes
   sudo dnf install -y xsetroot
+  sudo dnf install -y gnome-keyring-pam
   sudo systemctl enable sddm --now
-  # sudo systemctl start sddm
   sudo mkdir -p /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
