@@ -55,6 +55,7 @@ sudo mv -v "$HOME/tmp/Xsetup" /etc/sddm/scripts/
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S sddm
+  sudo pacman --noconfirm --needed -S xorg-xsetroot
   sudo systemctl enable sddm.service --now
   sudo systemctl disable lightdm
 
