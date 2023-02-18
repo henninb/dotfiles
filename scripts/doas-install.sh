@@ -6,7 +6,7 @@ permit nopass henninb as root
 EOF
 
 if command -v pacman; then
-  echo "archlinux"
+  sudo pacman --noconfirm --needed -S doas
 elif command -v emerge; then
   sudo emerge --update --newuse doas
 elif command -v apt; then
