@@ -70,6 +70,7 @@ export GIT_EDITOR=nvim
 export SUDO_EDITOR=vim
 
 export PATH=$HOME/.local/bin:$PATH
+export PATH="${HOME}/Applications:${PATH}"
 export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"
 export XDG_DATA_DIRS="/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share:$XDG_DATA_DIRS"
 export FONTCONFIG_PATH=/etc/fonts
