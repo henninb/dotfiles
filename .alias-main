@@ -54,6 +54,10 @@ if [ ! "$OS" = "Darwin" ]; then
   alias open="xdg-open"
 fi
 
+if command -v doas > /dev/null; then
+  alias sudo=doas
+fi
+
 
 #alias local_ip="ipconfig getifaddr br0"
 alias local_ip="ip route get 8.8.8.8"
