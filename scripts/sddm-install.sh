@@ -16,14 +16,12 @@ EOF
 
 cat > "$HOME/tmp/xmonad.desktop" << EOF
 [Desktop Entry]
+Type=Application
 Name=xmonad
 Comment=xmonad dynamic tiling window manager
+#Path=
 Exec=xmonad-start
-TryExec=xmonad-start
-Type=Application
-#X-LightDM-DesktopName=xmonad
 DesktopNames=xmonad
-Keywords=tiling;wm;windowmanager;window;manager;
 EOF
 
 cat > "$HOME/tmp/Xsetup" << EOF
@@ -108,6 +106,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf remove   gnome-keyring-pam
   journalctl -b -u sddm
   echo sddm-greeter --test-mode --theme /usr/share/sddm/themes/elarun
+  desktop-file-validate /usr/share/xsessions/xmonad.desktop
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse sddm
   sudo emerge --update --newuse xsetroot
