@@ -61,6 +61,9 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo mkdir -p /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
+
+  systemctl --user mask gnome-keyring-daemon.service
+  systemctl --user mask gnome-keyring-daemon.socket
   # ls -l /usr/share/sddm/themes/
 
   # systemctl --user stop xdg-desktop-portal{,gtk}
