@@ -12,7 +12,7 @@ elif command -v emerge; then
 elif command -v apt; then
   echo "debian"
 elif command -v xbps-install; then
-  sudo xbps-install -y doas
+  sudo xbps-install -y opendoas
 elif command -v eopkg; then
   echo "solus"
 elif command -v dnf; then
