@@ -48,8 +48,10 @@ User=henninb
 Session=xmonad
 EOF
 
+sudo mkdir -p /etc/sddm/scripts/
 sudo mkdir -p /usr/share/xsessions/
 sudo mv -v "$HOME/tmp/xmonad.desktop" /usr/share/xsessions/
+sudo mv -v "$HOME/tmp/Xsetup" /etc/sddm/scripts/
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S sddm
