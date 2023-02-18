@@ -182,7 +182,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S tree
   sudo pacman --noconfirm --needed -S xorg-xinit
   sudo pacman --noconfirm --needed -S xorg-server
-  sudo pacman --noconfirm --needed -S xsetroot
+  sudo pacman --noconfirm --needed -S xorg-xsetroot
   sudo pacman --noconfirm --needed -S xorg-xhost
   sudo pacman --noconfirm --needed -S ufw
   sudo pacman --noconfirm --needed -S yubikey-manager-qt
