@@ -1,4 +1,5 @@
 export PATH=${HOME}/.local/bin:${PATH}
+export PATH="${HOME}/Applications:${PATH}"
 export PATH=/usr/local/sbin:/usr/sbin:${PATH}
 
 export LANG=en_US.UTF-8
