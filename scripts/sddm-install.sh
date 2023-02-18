@@ -21,7 +21,7 @@ Name=xmonad
 Comment=xmonad dynamic tiling window manager
 #Path=
 Exec=xmonad-start
-DesktopNames=xmonad
+#DesktopNames=xmonad
 EOF
 
 cat > "$HOME/tmp/Xsetup" << EOF

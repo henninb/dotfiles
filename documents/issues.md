@@ -658,3 +658,6 @@ sudo update-alternatives --config x-www-browser
 xdg-settings get default-web-browser
 xdg-settings set default-web-browser brave-bin.desktop
 ```
+
+## update desktop files
+update-desktop-database ~/.local/share/applications
