@@ -2,7 +2,7 @@
 alias v='nvim'
 alias vi='nvim'
 
-if [ "$OS" = "Ubuntu" ] && [ -x "$(command -v neovim-flatpak)" ]; then
+if [ "$OS" = "Ubuntu" ] && [ -x "$(command -v neovim-flatpak)" ] && [ -f "$HOME/.local/share/flatpak/exports/share/applications/io.neovim.nvim.desktop" ]; then
   alias vi='neovim-flatpak'
   alias v='neovim-flatpak'
 fi
