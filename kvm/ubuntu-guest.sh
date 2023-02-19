@@ -6,7 +6,7 @@ if [ $# -gt 1 ]; then
 fi
 
 remove=$1
-iso_file="ubuntu-22.04-live-server-amd64.iso"
+iso_file="ubuntu-22.04.1-live-server-amd64.iso"
 guest_name="ubuntu"
 
 virsh shutdown "guest-$guest_name"
