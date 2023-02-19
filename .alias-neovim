@@ -2,4 +2,9 @@
 alias v='nvim'
 alias vi='nvim'
 
+if [ "$OS" = "Ubuntu" ] && [ -x "$(command -v neovim-flatpak)" ]; then
+  alias vi='neovim-flatpak'
+  alias v='neovim-flatpak'
+fi
+
 # vim: set ft=sh:
