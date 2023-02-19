@@ -29,6 +29,9 @@ elif [ -x "$(command -v dnf)" ]; then
   chmod +x install.sh
   ./install.sh -b ~/.local/bin
   rm install.sh
+elif [ -x "$(command -v zypper)" ]; then
+  sudo zypper install -y zsh
+  sudo zypper install -y starship
 elif [ -x "$(command -v brew)" ]; then
   brew install zsh
 else
