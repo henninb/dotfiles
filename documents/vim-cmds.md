@@ -22,6 +22,11 @@ perl -pi -e 's/\x{c2}\x{a0}//g' file.txt
 :%!xxd
 ```
 
+## sort select lines
+```
+::15,74sort
+```
+
 ## inverse hex mode
 ```
 :%!xxd -r
