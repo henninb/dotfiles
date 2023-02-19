@@ -10,7 +10,7 @@ if command -v pacman; then
 elif command -v emerge; then
   sudo emerge --update --newuse doas
 elif command -v apt; then
-  echo "debian"
+  sudo apt install -y doas
 elif command -v xbps-install; then
   sudo xbps-install -y opendoas
 elif command -v eopkg; then

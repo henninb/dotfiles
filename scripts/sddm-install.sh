@@ -81,6 +81,7 @@ elif [ "${OS}" = "Void" ]; then
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
   sudo sv status sddm
 elif [ "${OS}" = "Ubuntu" ] || [ "$OS" = "Linux Mint" ]; then
+  export DEBIAN_FRONTEND=noninteractive
   sudo apt install -y sddm
   sudo apt install -y sddm-theme-elarun
   sudo mkdir -p /etc/sddm.conf.d/
