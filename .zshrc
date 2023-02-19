@@ -255,7 +255,7 @@ ex=🎯:\
 
 [ -s "$HOME/.alias-main" ] && source "$HOME/.alias-main"
 
-if [ -x "$(command -v nvim)" ]; then
+if [ -x "$(command -v nvim)" ] || [ -x "$(command -v neovim-flatpak)" ]; then
   [ -s "$HOME/.alias-neovim" ] && source "$HOME/.alias-neovim"
 fi
 
