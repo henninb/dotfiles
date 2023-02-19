@@ -35,6 +35,7 @@ echo "disk bus can be virtio i.e. vda, or scsi i.e. sda"
 exec sudo virt-install \
 --connect qemu:///system \
 --virt-type=kvm \
+--osinfo detect=on,name=opensusetumbleweed \
 --name "guest-$guest_name" \
 --memory=8192,maxmemory=8192 \
 --vcpus=1,maxvcpus=2 \
