@@ -14,6 +14,8 @@ elif command -v eopkg; then
   echo "solus"
 elif command -v dnf; then
   echo "fedora"
+elif command -v zypper; then
+  echo "tumbleweed"
 elif command -v brew; then
   echo "macos"
 else

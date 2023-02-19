@@ -17,6 +17,8 @@ elif command -v eopkg; then
   echo "solus"
 elif command -v dnf; then
   sudo dnf install -y doas
+elif command -v zypper; then
+  sudo zypper install -y doas
 elif command -v brew; then
   echo "macos"
 else
