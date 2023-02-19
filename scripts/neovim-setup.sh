@@ -18,6 +18,7 @@ if command -v zypper; then
   sudo zypper install -y cmake
   sudo zypper install -y llvm
   sudo zypper install -y clang
+  sudo zypper install -y gcc-c++
 fi
 
 if command -v xbps-install; then

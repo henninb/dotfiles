@@ -24,9 +24,9 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo portmaster -o java/openjdk17
   sudo pkg install -y openjdk17
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  # sudo zypper install -y java-11-openjdk
+  sudo zypper install -y java-11-openjdk
   # sudo zypper install -y java-1_8_0-openjdk
-  sudo zypper install -y java-1_8_0-openjdk-devel
+  # sudo zypper install -y java-1_8_0-openjdk-devel
 elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y openjdk17
   # echo openjdk11-bin

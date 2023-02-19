@@ -106,42 +106,90 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y yubikey-manager-qt
   sudo apt install -y zenity
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  # sudo zypper install -y dzen2
+  sudo zypper install -y cmake
+  sudo zypper install -y llvm
+  sudo zypper install -y clang
+  sudo zypper install -y gcc-c++
+  sudo zypper install -y alacritty
   sudo zypper install -y alsa-lib-devel
-  sudo zypper install -y blueberry
-  sudo zypper install -y clipmenu
+  sudo zypper install -y bat
+  sudo zypper install -y bind
+  sudo zypper install -y blueman
+  sudo zypper install -y bluez-utils
+  sudo zypper install -y btop
+  sudo zypper install -y byobu
   sudo zypper install -y cmake
   sudo zypper install -y conky
-  sudo zypper install -y copyq
+  # sudo zypper install -y copyq
+  sudo zypper install -y debootstrap
+  sudo zypper install -y desktop-file-utils
+  sudo zypper install -y dmenu
   sudo zypper install -y dunst
+  sudo zypper install -y dzen2
+  sudo zypper install -y efibootmgr
+  sudo zypper install -y elinks
+  sudo zypper install -y feh
   sudo zypper install -y feh
   sudo zypper install -y flameshot
+  sudo zypper install -y gcc
   sudo zypper install -y gmp-devel
+  sudo zypper install -y htop
+  sudo zypper install -y i3lock
   sudo zypper install -y jq
+  sudo zypper install -y kdeconnect-kde
+  sudo zypper install -y keychain
+  sudo zypper install -y kitty
+  # sudo zypper install -y kpcli
   sudo zypper install -y libXss-devel
-  sudo zypper install -y libxft-devel
-  sudo zypper install -y libxpm-devel
-  sudo zypper install -y libxrandr-devel
-  sudo zypper install -y libxss-devel
+  # sudo zypper install -y libxft-devel
+  # sudo zypper install -y libxpm-devel
+  # sudo zypper install -y libxrandr-devel
+  # sudo zypper install -y libxss-devel
   sudo zypper install -y lxappearance
-  sudo zypper install -y mpc
+  sudo zypper install -y lxsession
+  sudo zypper install -y make
   sudo zypper install -y mpd
-  sudo zypper install -y mpdris2
+  sudo zypper install -y mpv
+  sudo zypper install -y ncdu
+  sudo zypper install -y newsboat
+  sudo zypper install -y nmap
+  sudo zypper install -y ntp
+  sudo zypper install -y numlockx
+  sudo zypper install -y os-prober
   sudo zypper install -y pandoc
+  sudo zypper install -y pavucontrol
+  sudo zypper install -y pkg-config
   sudo zypper install -y playerctl
+  sudo zypper install -y polkit-gnome
+  sudo zypper install -y powerline
+  sudo zypper install -y powerline-fonts
+  sudo zypper install -y pulseaudio
+  sudo zypper install -y pwgen
+  sudo zypper install -y qalculate-gtk
   sudo zypper install -y redshift
+  sudo zypper install -y rsync
+  sudo zypper install -y sox
+  sudo zypper install -y speedtest-cli
+  sudo zypper install -y starship
   sudo zypper install -y sxhkd
+  sudo zypper install -y sxhkd
+  sudo zypper install -y sxiv
+  sudo zypper install -y thunar
+  sudo zypper install -y tmux
+  # sudo zypper install -y trayer
+  sudo zypper install -y tree
   sudo zypper install -y vifm
-  sudo zypper install -y volumeicon
+  sudo zypper install -y vimb
   sudo zypper install -y w3m
-  sudo zypper install -y wmname
+  # sudo zypper install -y wmname
   sudo zypper install -y xclip
   sudo zypper install -y xdo
   sudo zypper install -y xdotool
+  sudo zypper install -y xsetroot
   sudo zypper install -y xscreensaver
+  sudo zypper install -y yubikey-manager-qt
+  sudo zypper install -y zenity
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  # sudo pacman --noconfirm --needed -S font-awesome-4
-  # sudo pacman --noconfirm --needed -S mpdris2
   # sudo pacman --noconfirm --needed -S playderctl
   sudo pacman --noconfirm --needed -S alacritty
   sudo pacman --noconfirm --needed -S alsa-utils
