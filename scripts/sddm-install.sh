@@ -82,6 +82,7 @@ elif [ "${OS}" = "Void" ]; then
   sudo sv status sddm
 elif [ "${OS}" = "Ubuntu" ] || [ "$OS" = "Linux Mint" ]; then
   sudo apt install -y sddm
+  sudo apt install -y sddm-theme-elarun
   sudo mkdir -p /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
   sudo systemctl disable lightdm
