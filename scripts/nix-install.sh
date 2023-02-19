@@ -34,6 +34,16 @@ echo 'nix-env -i mongodb'
 echo 'nix-env -i starship'
 echo 'nix-env -i newsboat'
 
+if [ "$OS" = "Ubuntu" ]; then
+  nix-env -i lazygit
+  nix-env -i starship
+  nix-env -i librewolf
+  nix-env -i brave
+  nix-env -i alacritty
+  nix-env -i neovim
+  nix-env -i dunst
+fi
+
 exit 0
 
 # example

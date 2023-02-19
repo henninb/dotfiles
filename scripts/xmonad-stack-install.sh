@@ -15,13 +15,10 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   export DEBIAN_FRONTEND=noninteractive
   sudo apt install -y autoconf
   sudo apt install -y bat
-  sudo apt install -y bind
   sudo apt install -y blueman
-  sudo apt install -y bluez-utils
   sudo apt install -y btop
   sudo apt install -y btop
   sudo apt install -y byobu
-  sudo apt install -y clipmenu
   sudo apt install -y cmake
   sudo apt install -y conky
   sudo apt install -y copyq
@@ -32,7 +29,6 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y dmenu
   sudo apt install -y dmg2img
   sudo apt install -y doas
-  # sudo apt install -y dunst
   sudo apt install -y dzen2
   sudo apt install -y efibootmgr
   sudo apt install -y elinks
@@ -42,15 +38,13 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y gtk-update-icon-cache
   sudo apt install -y hardinfo
   sudo apt install -y htop
-  sudo apt install -y i3lock-color
+  sudo apt install -y i3lock
   sudo apt install -y imagemagick
-  sudo apt install -y inetutils
   sudo apt install -y jq
   sudo apt install -y kdeconnect
   sudo apt install -y keychain
   sudo apt install -y kitty
   sudo apt install -y kpcli
-  sudo apt install -y lazygit
   sudo apt install -y libasound2-dev
   sudo apt install -y libbsd-dev
   sudo apt install -y libncurses5-dev
@@ -69,25 +63,20 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y mpv
   sudo apt install -y ncdu
   sudo apt install -y neofetch
-  sudo apt install -y network-manager-applet
   sudo apt install -y newsboat
   sudo apt install -y nmap
   sudo apt install -y ntp
   sudo apt install -y numlockx
   sudo apt install -y os-prober
-  sudo apt install -y pacman-contrib
   sudo apt install -y pandoc
   sudo apt install -y partimage
   sudo apt install -y pass
   sudo apt install -y pavucontrol
   sudo apt install -y pkg-config
   sudo apt install -y playerctl
-  sudo apt install -y polkit-gnome
   sudo apt install -y powerline
-  sudo apt install -y powerline-fonts
   sudo apt install -y pulseaudio
   sudo apt install -y pwgen
-  sudo apt install -y qalculate
   sudo apt install -y qalculate-gtk
   sudo apt install -y rdfind
   sudo apt install -y redshift
@@ -95,17 +84,14 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y slock
   sudo apt install -y sox
   sudo apt install -y speedtest-cli
-  sudo apt install -y starship
   sudo apt install -y sxhkd
   sudo apt install -y sxiv
   sudo apt install -y thunar
   sudo apt install -y tmux
   sudo apt install -y trayer
   sudo apt install -y tree
-  sudo apt install -y ttf-font-awesome
   sudo apt install -y ufw
   sudo apt install -y vifm
-  sudo apt install -y vimb
   sudo apt install -y volumeicon-alsa
   sudo apt install -y w3m
   sudo apt install -y wget
@@ -113,15 +99,8 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y xclip
   sudo apt install -y xdo
   sudo apt install -y xdotool
-  sudo apt install -y xhost
-  sudo apt install -y xorg-server
-  sudo apt install -y xorg-xhost
-  sudo apt install -y xorg-xinit
-  sudo apt install -y xorg-xsetroot
   sudo apt install -y xorg
-  #sudo apt install -y xrandr
   sudo apt install -y xscreensaver
-  #sudo apt install -y xsetroot
   sudo apt install -y xterm
   sudo apt install -y yad
   sudo apt install -y yubikey-manager-qt
