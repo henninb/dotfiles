@@ -119,6 +119,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y xorg-xhost
   sudo apt install -y xorg-xinit
   sudo apt install -y xorg-xsetroot
+  sudo apt install -y xorg
   #sudo apt install -y xrandr
   sudo apt install -y xscreensaver
   #sudo apt install -y xsetroot
