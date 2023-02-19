@@ -27,7 +27,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y copyq
   sudo apt install -y copyq
   sudo apt install -y debootstrap
-  sudo apt-get -y install debconf-utils
+  sudo apt install -y debconf-utils
   sudo apt install -y desktop-file-utils
   sudo apt install -y dmenu
   sudo apt install -y dmg2img
@@ -69,7 +69,6 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y mpv
   sudo apt install -y ncdu
   sudo apt install -y neofetch
-  sudo apt install -y neovim
   sudo apt install -y network-manager-applet
   sudo apt install -y newsboat
   sudo apt install -y nmap
