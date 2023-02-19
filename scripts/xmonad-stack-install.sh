@@ -27,6 +27,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y copyq
   sudo apt install -y copyq
   sudo apt install -y debootstrap
+  sudo apt-get -y install debconf-utils
   sudo apt install -y desktop-file-utils
   sudo apt install -y dmenu
   sudo apt install -y dmg2img
