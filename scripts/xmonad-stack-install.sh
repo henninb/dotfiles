@@ -105,7 +105,6 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y ufw
   sudo apt install -y vifm
   sudo apt install -y vimb
-  sudo apt install -y volumeicon
   sudo apt install -y volumeicon-alsa
   sudo apt install -y w3m
   sudo apt install -y wget
@@ -250,9 +249,6 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S xdo
   sudo pacman --noconfirm --needed -S xdotool
   sudo pacman --noconfirm --needed -S xorg-server
-  sudo pacman --noconfirm --needed -S xorg-xhost
-  sudo pacman --noconfirm --needed -S xorg-xinit
-  sudo pacman --noconfirm --needed -S xorg-xsetroot
   sudo pacman --noconfirm --needed -S xscreensaver
   sudo pacman --noconfirm --needed -S yad
   sudo pacman --noconfirm --needed -S yubikey-manager-qt
