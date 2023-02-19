@@ -69,6 +69,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y mpv
   sudo apt install -y ncdu
   sudo apt install -y neofetch
+  sudo apt install -y neovim
   sudo apt install -y network-manager-applet
   sudo apt install -y newsboat
   sudo apt install -y nmap
