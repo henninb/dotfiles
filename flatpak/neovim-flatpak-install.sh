@@ -12,6 +12,8 @@ EOF
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
+sudo flatpak override --env=XDG_CONFIG_HOME=$HOME/.config io.neovim.nvim
+
 flatpak --user -y install flathub io.neovim.nvim
 
 chmod 755 neovim-flatpak
