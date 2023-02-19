@@ -4,6 +4,7 @@ if command -v emerge; then
   sudo emerge --update --newuse dev-libs/hidapi
 fi
 
+sudo apt install -y python-dev-is-python3
 
 if command -v dnf; then
   sudo dnf install -y libusb1-devel
