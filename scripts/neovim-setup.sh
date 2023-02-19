@@ -14,6 +14,12 @@ echo sudo dnf install cmake
 echo sudo dnf groupinstall "Development Tools" "Development Libraries"
 
 
+if command -v zypper; then
+  sudo zypper install -y cmake
+  sudo zypper install -y llvm
+  sudo zypper install -y clang
+fi
+
 if command -v xbps-install; then
   sudo xbps-install -y cmake
   sudo xbps-install -y llvm
@@ -24,7 +30,10 @@ if command -v xbps-install; then
 fi
 
 
-sudo apt install -y luarocks
+
+if command -v apt; then
+  sudo apt install -y luarocks
+fi
 
 if command -v emerge; then
   sudo emerge --update --newuse clang
