@@ -141,10 +141,9 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y kitty
   # sudo zypper install -y kpcli
   sudo zypper install -y libXss-devel
-  # sudo zypper install -y libxft-devel
-  # sudo zypper install -y libxpm-devel
-  # sudo zypper install -y libxrandr-devel
-  # sudo zypper install -y libxss-devel
+  sudo zypper install -y libXft-devel
+  sudo zypper install -y libXpm-devel
+  sudo zypper install -y libXrandr-devel
   sudo zypper install -y lxappearance
   sudo zypper install -y lxsession
   sudo zypper install -y make
