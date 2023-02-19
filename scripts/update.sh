@@ -13,6 +13,7 @@ elif [ "$OS" = "Debian GNU/Linux" ]; then
   sudo apt autoremove -y | tee -a "$HOME/tmp/update-$$.log"
   cat /etc/debian_version
 elif [ "$OS" = "Ubuntu" ]; then
+  export DEBIAN_FRONTEND=noninteractive
   sudo apt update | tee -a "$HOME/tmp/update-$$.log"
   sudo apt upgrade -y | tee -a "$HOME/tmp/update-$$.log"
   sudo apt autoremove -y | tee -a "$HOME/tmp/update-$$.log"
