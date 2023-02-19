@@ -24,6 +24,7 @@ if command -v xbps-install; then
 fi
 
 
+sudo apt install -y luarocks
 
 if command -v emerge; then
   sudo emerge --update --newuse clang
