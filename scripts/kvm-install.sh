@@ -40,6 +40,8 @@ elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y virt-manager
   sudo xbps-install -y virt-viewer
   sudo xbps-install -y virt-install
+  sudo xbps-install -y virtio-win
+
   sudo usermod -a -G libvirt "$(id -un)"
   sudo ln -s /etc/sv/libvirtd /var/service/libvirtd
   sudo sv start libvirtd
@@ -89,6 +91,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   #sudo pacman --noconfirm --needed -S firewalld
   sudo pacman --noconfirm --needed -S cdrtools
   sudo pacman --noconfirm --needed -S iptables
+  sudo pacman --noconfirm --needed -S virtio-win
 
   # sudo pacman -Qi ebtables iptables dnsmasq
 
@@ -122,6 +125,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse bridge-utils
   sudo emerge --update --newuse app-emulation/libvirt
   sudo emerge --update --newuse libvirt
+  sudo emerge --update --newuse virtio-win
   sudo emerge --update --newuse libvirt-glib
   sudo emerge --update --newuse libvirt-python
   sudo emerge --update --newuse app-emulation/virt-viewer
