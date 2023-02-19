@@ -32,7 +32,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y dmenu
   sudo apt install -y dmg2img
   sudo apt install -y doas
-  sudo apt install -y dunst
+  # sudo apt install -y dunst
   sudo apt install -y dzen2
   sudo apt install -y efibootmgr
   sudo apt install -y elinks
