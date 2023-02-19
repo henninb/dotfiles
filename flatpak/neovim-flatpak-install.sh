@@ -15,6 +15,7 @@ flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flath
 # neither of these two cammand are working
 #sudo flatpak override --env=XDG_CONFIG_HOME=$HOME/.config io.neovim.nvim
 flatpak --user override --env=XDG_CONFIG_HOME=$HOME/.config io.neovim.nvim
+ln -sfn $HOME/.config/nvim/ $HOME/.var/app/io.neovim.nvim/config/nvim
 
 flatpak --user -y install flathub io.neovim.nvim
 
