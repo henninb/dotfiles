@@ -12,49 +12,119 @@ fi
 sudo mkdir /mnt/external
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
+  export DEBIAN_FRONTEND=noninteractive
+  sudo apt install -y autoconf
+  sudo apt install -y bat
+  sudo apt install -y bind
+  sudo apt install -y blueman
+  sudo apt install -y bluez-utils
+  sudo apt install -y btop
+  sudo apt install -y btop
+  sudo apt install -y byobu
   sudo apt install -y clipmenu
   sudo apt install -y cmake
   sudo apt install -y conky
   sudo apt install -y copyq
+  sudo apt install -y copyq
+  sudo apt install -y debootstrap
+  sudo apt install -y desktop-file-utils
+  sudo apt install -y dmenu
+  sudo apt install -y dmg2img
+  sudo apt install -y doas
   sudo apt install -y dunst
+  sudo apt install -y dzen2
+  sudo apt install -y efibootmgr
+  sudo apt install -y elinks
   sudo apt install -y feh
   sudo apt install -y flameshot
+  sudo apt install -y gcc
+  sudo apt install -y gtk-update-icon-cache
+  sudo apt install -y hardinfo
+  sudo apt install -y htop
+  sudo apt install -y i3lock-color
+  sudo apt install -y imagemagick
+  sudo apt install -y inetutils
+  sudo apt install -y jq
+  sudo apt install -y kdeconnect
+  sudo apt install -y keychain
+  sudo apt install -y kitty
+  sudo apt install -y kpcli
+  sudo apt install -y lazygit
+  sudo apt install -y libasound2-dev
   sudo apt install -y libbsd-dev
+  sudo apt install -y libncurses5-dev
+  sudo apt install -y libreoffice
+  sudo apt install -y libxft-dev
   sudo apt install -y libxpm-dev
+  sudo apt install -y libxrandr-dev
   sudo apt install -y libxss-dev
   sudo apt install -y lxappearance
   sudo apt install -y lxpolkit
+  sudo apt install -y lxsession
+  sudo apt install -y make
   sudo apt install -y mpc
   sudo apt install -y mpd
-  sudo apt install -y mpv
   sudo apt install -y mpdris2
+  sudo apt install -y mpv
+  sudo apt install -y ncdu
+  sudo apt install -y neofetch
+  sudo apt install -y network-manager-applet
+  sudo apt install -y newsboat
+  sudo apt install -y nmap
+  sudo apt install -y ntp
   sudo apt install -y numlockx
+  sudo apt install -y os-prober
+  sudo apt install -y pacman-contrib
+  sudo apt install -y pandoc
+  sudo apt install -y partimage
+  sudo apt install -y pass
+  sudo apt install -y pavucontrol
+  sudo apt install -y pkg-config
   sudo apt install -y playerctl
-  sudo apt install -y redshift
+  sudo apt install -y polkit-gnome
+  sudo apt install -y powerline
+  sudo apt install -y powerline-fonts
+  sudo apt install -y pulseaudio
+  sudo apt install -y pwgen
+  sudo apt install -y qalculate
+  sudo apt install -y qalculate-gtk
   sudo apt install -y rdfind
+  sudo apt install -y redshift
+  sudo apt install -y rsync
+  sudo apt install -y slock
+  sudo apt install -y sox
+  sudo apt install -y speedtest-cli
+  sudo apt install -y starship
   sudo apt install -y sxhkd
   sudo apt install -y sxiv
+  sudo apt install -y thunar
+  sudo apt install -y tmux
   sudo apt install -y trayer
+  sudo apt install -y tree
+  sudo apt install -y ttf-font-awesome
+  sudo apt install -y ufw
+  sudo apt install -y vifm
+  sudo apt install -y vimb
+  sudo apt install -y volumeicon
   sudo apt install -y volumeicon-alsa
   sudo apt install -y w3m
+  sudo apt install -y wget
   sudo apt install -y wmname
   sudo apt install -y xclip
   sudo apt install -y xdo
   sudo apt install -y xdotool
+  sudo apt install -y xhost
+  sudo apt install -y xorg-server
+  sudo apt install -y xorg-xhost
+  sudo apt install -y xorg-xinit
+  sudo apt install -y xorg-xsetroot
+  #sudo apt install -y xrandr
   sudo apt install -y xscreensaver
-  sudo apt install -y pandoc
-  sudo apt install -y jq
-  sudo apt install -y sxiv
-  sudo apt install -y thunar
-  sudo apt install -y qalculate
-  sudo apt install -y libxrandr-dev
-  sudo apt install -y libxft-dev
-  sudo apt install -y autoconf
-  sudo apt install -y libasound2-dev
-  sudo apt install -y libncurses5-dev
-  sudo apt install -y trayer
-  sudo apt install -y dzen2
-  sudo apt install -y blueman
+  #sudo apt install -y xsetroot
+  sudo apt install -y xterm
+  sudo apt install -y yad
+  sudo apt install -y yubikey-manager-qt
+  sudo apt install -y zenity
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper install -y dzen2
   sudo zypper install -y alsa-lib-devel
@@ -67,6 +137,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y feh
   sudo zypper install -y flameshot
   sudo zypper install -y gmp-devel
+  sudo zypper install -y jq
   sudo zypper install -y libXss-devel
   sudo zypper install -y libxft-devel
   sudo zypper install -y libxpm-devel
@@ -76,9 +147,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y mpc
   sudo zypper install -y mpd
   sudo zypper install -y mpdris2
-  sudo zypper install -y playerctl
   sudo zypper install -y pandoc
-  sudo zypper install -y jq
+  sudo zypper install -y playerctl
   sudo zypper install -y redshift
   sudo zypper install -y sxhkd
   sudo zypper install -y vifm
@@ -90,6 +160,9 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y xdotool
   sudo zypper install -y xscreensaver
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+  # sudo pacman --noconfirm --needed -S font-awesome-4
+  # sudo pacman --noconfirm --needed -S mpdris2
+  # sudo pacman --noconfirm --needed -S playderctl
   sudo pacman --noconfirm --needed -S alacritty
   sudo pacman --noconfirm --needed -S alsa-utils
   sudo pacman --noconfirm --needed -S arch-install-scripts
@@ -103,69 +176,71 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S cmake
   sudo pacman --noconfirm --needed -S conky
   sudo pacman --noconfirm --needed -S copyq
-  sudo pacman --noconfirm --needed -S dmenu
-  sudo pacman --noconfirm --needed -S desktop-file-utils
   sudo pacman --noconfirm --needed -S debootstrap
+  sudo pacman --noconfirm --needed -S desktop-file-utils
+  sudo pacman --noconfirm --needed -S dmenu
   sudo pacman --noconfirm --needed -S dmg2img
-  sudo pacman --noconfirm --needed -S dunst
   sudo pacman --noconfirm --needed -S doas
+  sudo pacman --noconfirm --needed -S dunst
   sudo pacman --noconfirm --needed -S dzen2
   sudo pacman --noconfirm --needed -S efibootmgr
   sudo pacman --noconfirm --needed -S elinks
-  sudo pacman --noconfirm --needed -S slock
   sudo pacman --noconfirm --needed -S feh
   sudo pacman --noconfirm --needed -S flameshot
-  # sudo pacman --noconfirm --needed -S font-awesome-4
-  sudo pacman --noconfirm --needed -S ttf-font-awesome
-  sudo pacman --noconfirm --needed -S gtk-update-icon-cache
   sudo pacman --noconfirm --needed -S gcc
+  sudo pacman --noconfirm --needed -S gtk-update-icon-cache
   sudo pacman --noconfirm --needed -S htop
-  sudo pacman --noconfirm --needed -S inetutils
-  sudo pacman --noconfirm --needed -S imagemagick
-  sudo pacman --noconfirm --needed -S jq
-  sudo pacman --noconfirm --needed -S keychain
-  sudo pacman --noconfirm --needed -S kpcli
-  sudo pacman --noconfirm --needed -S kitty
   sudo pacman --noconfirm --needed -S i3lock-color
-  sudo pacman --noconfirm --needed -S lxappearance
+  sudo pacman --noconfirm --needed -S imagemagick
+  sudo pacman --noconfirm --needed -S inetutils
+  sudo pacman --noconfirm --needed -S jq
+  sudo pacman --noconfirm --needed -S kdeconnect
+  sudo pacman --noconfirm --needed -S keychain
+  sudo pacman --noconfirm --needed -S kitty
+  sudo pacman --noconfirm --needed -S kpcli
   sudo pacman --noconfirm --needed -S lazygit
   sudo pacman --noconfirm --needed -S libreoffice
+  sudo pacman --noconfirm --needed -S lxappearance
   sudo pacman --noconfirm --needed -S lxsession
   sudo pacman --noconfirm --needed -S make
   sudo pacman --noconfirm --needed -S mpc
-  sudo pacman --noconfirm --needed -S mpv
   sudo pacman --noconfirm --needed -S mpd
+  sudo pacman --noconfirm --needed -S mpv
+  sudo pacman --noconfirm --needed -S ncdu
+  sudo pacman --noconfirm --needed -S network-manager-applet
+  sudo pacman --noconfirm --needed -S newsboat
   sudo pacman --noconfirm --needed -S nmap
   sudo pacman --noconfirm --needed -S ntp
-  sudo pacman --noconfirm --needed -S ncdu
-  sudo pacman --noconfirm --needed -S newsboat
   sudo pacman --noconfirm --needed -S numlockx
   sudo pacman --noconfirm --needed -S os-prober
-  sudo pacman --noconfirm --needed -S network-manager-applet
-  sudo pacman --noconfirm --needed -S pavucontrol
+  sudo pacman --noconfirm --needed -S pacman-contrib
+  sudo pacman --noconfirm --needed -S pandoc
   sudo pacman --noconfirm --needed -S partimage
+  sudo pacman --noconfirm --needed -S pass
+  sudo pacman --noconfirm --needed -S pavucontrol
   sudo pacman --noconfirm --needed -S pkg-config
   sudo pacman --noconfirm --needed -S polkit-gnome
   sudo pacman --noconfirm --needed -S powerline
   sudo pacman --noconfirm --needed -S powerline-fonts
-  # sudo pacman --noconfirm --needed -S mpdris2
-  # sudo pacman --noconfirm --needed -S playderctl
   sudo pacman --noconfirm --needed -S pulseaudio
-  sudo pacman --noconfirm --needed -S redshift
-  sudo pacman --noconfirm --needed -S rdfind
-  sudo pacman --noconfirm --needed -S rsync
-  sudo pacman --noconfirm --needed -S sox
-  sudo pacman --noconfirm --needed -S sxhkd
-  sudo pacman --noconfirm --needed -S starship
-  sudo pacman --noconfirm --needed -S sxiv
-  sudo pacman --noconfirm --needed -S speedtest-cli
-  sudo pacman --noconfirm --needed -S pacman-contrib
-  sudo pacman --noconfirm --needed -S pass
   sudo pacman --noconfirm --needed -S pwgen
-  sudo pacman --noconfirm --needed -S tree
-  sudo pacman --noconfirm --needed -S trayer
+  sudo pacman --noconfirm --needed -S qalculate-gtk
+  sudo pacman --noconfirm --needed -S rdfind
+  sudo pacman --noconfirm --needed -S redshift
+  sudo pacman --noconfirm --needed -S rsync
+  sudo pacman --noconfirm --needed -S slock
+  sudo pacman --noconfirm --needed -S sox
+  sudo pacman --noconfirm --needed -S speedtest-cli
+  sudo pacman --noconfirm --needed -S starship
+  sudo pacman --noconfirm --needed -S sxhkd
+  sudo pacman --noconfirm --needed -S sxiv
   sudo pacman --noconfirm --needed -S thunar
   sudo pacman --noconfirm --needed -S tmux
+  sudo pacman --noconfirm --needed -S trayer
+  sudo pacman --noconfirm --needed -S tree
+  sudo pacman --noconfirm --needed -S tree
+  sudo pacman --noconfirm --needed -S ttf-font-awesome
+  sudo pacman --noconfirm --needed -S ufw
   sudo pacman --noconfirm --needed -S vifm
   sudo pacman --noconfirm --needed -S vimb
   sudo pacman --noconfirm --needed -S volumeicon
@@ -174,17 +249,12 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S xclip
   sudo pacman --noconfirm --needed -S xdo
   sudo pacman --noconfirm --needed -S xdotool
-  sudo pacman --noconfirm --needed -S qalculate-gtk
+  sudo pacman --noconfirm --needed -S xorg-server
+  sudo pacman --noconfirm --needed -S xorg-xhost
+  sudo pacman --noconfirm --needed -S xorg-xinit
+  sudo pacman --noconfirm --needed -S xorg-xsetroot
   sudo pacman --noconfirm --needed -S xscreensaver
   sudo pacman --noconfirm --needed -S yad
-  sudo pacman --noconfirm --needed -S kdeconnect
-  sudo pacman --noconfirm --needed -S pandoc
-  sudo pacman --noconfirm --needed -S tree
-  sudo pacman --noconfirm --needed -S xorg-xinit
-  sudo pacman --noconfirm --needed -S xorg-server
-  sudo pacman --noconfirm --needed -S xorg-xsetroot
-  sudo pacman --noconfirm --needed -S xorg-xhost
-  sudo pacman --noconfirm --needed -S ufw
   sudo pacman --noconfirm --needed -S yubikey-manager-qt
   sudo pacman --noconfirm --needed -S zenity
   # yay --noconfirm --needed -S hardinfo
