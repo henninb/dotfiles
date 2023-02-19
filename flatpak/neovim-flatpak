@@ -1,0 +1,6 @@
+#!/bin/sh
+
+flatpak run io.neovim.nvim
+
+exit 0
+# vim: set ft=sh:
