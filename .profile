@@ -31,6 +31,13 @@ fi
 export OS
 export OS_VER
 
+if [ "$OS" = "Ubuntu" ]; then
+  if command -v neovim-flatpak >/dev/null; then
+    export TEST_VISUAL=neovim-flatpak
+    export TEST_EDITOR=neovim-flatpak
+  fi
+fi
+
 if command -v nvim >/dev/null; then
   export SUDO_EDITOR=nvim
   export VISUAL=nvim
