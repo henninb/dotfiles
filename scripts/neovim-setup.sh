@@ -7,18 +7,24 @@ ghcup install hls
 npm install -g tree-sitter-cli
 
 echo :LspInstall ccls
-echo sudo pacman --noconfirm --needed -S llvm
-echo sudo dnf install -y llvm-devel
-echo sudo dnf install -y llvm-libs
-echo sudo dnf install cmake
-echo sudo dnf groupinstall "Development Tools" "Development Libraries"
 
+if command -v pacman; then
+  sudo pacman --noconfirm --needed -S llvm
+fi
+
+if command -v dnf; then
+  sudo dnf install -y llvm-devel
+  sudo dnf install -y llvm-libs
+  sudo dnf install cmake
+  sudo dnf groupinstall "Development Tools" "Development Libraries"
+fi
 
 if command -v zypper; then
   sudo zypper install -y cmake
   sudo zypper install -y llvm
   sudo zypper install -y clang
   sudo zypper install -y gcc-c++
+  sudo zypper install -y libxml2-devel
 fi
 
 if command -v xbps-install; then
