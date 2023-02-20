@@ -17,8 +17,11 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emaint sync -r brave-overlay
   sudo emerge --update --newuse www-client/brave-bin
   sudo ln -sfn /usr/bin/brave-bin /usr/bin/brave-browser
-elif [ "$OS" = "Void" ]; then
-  echo
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper install -y curl
+  sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+  sudo zypper addrepo https://brave-browser-rpm-release.s3.brave.com/x86_64/ brave-browser
+  sudo zypper install -y brave-browser
 elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y xtools
   cd "$HOME/projects"
