@@ -106,6 +106,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y yubikey-manager-qt
   sudo apt install -y zenity
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper install -y ncurses-devel
   sudo zypper install -y libnotify-tools
   sudo zypper install -y libncurses5
   sudo zypper install -y cmake
