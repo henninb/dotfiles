@@ -664,3 +664,6 @@ update-desktop-database ~/.local/share/applications
 
 ## xdg desktop
 /usr/libexec/xdg-desktop-portal  -v
+
+## screensaver
+xscreensaver-settings
