@@ -25,6 +25,8 @@ if command -v zypper; then
   sudo zypper install -y clang
   sudo zypper install -y gcc-c++
   sudo zypper install -y libxml2-devel
+  sudo zypper install -y llvm-devel
+  sudo zypper install -y clang-devel
 fi
 
 if command -v xbps-install; then
@@ -35,8 +37,6 @@ if command -v xbps-install; then
   sudo xbps-install -y libxml2-devel
   sudo xbps-install -y clang-tools-extra
 fi
-
-
 
 if command -v apt; then
   sudo apt install -y luarocks
