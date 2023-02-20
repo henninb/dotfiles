@@ -76,8 +76,8 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
 elif [ "${OS}" = "Void" ]; then
   sudo xbps-install -y sddm
   sudo mkdir -p /etc/sddm.conf.d/
-  sudo ln -s /etc/sv/sddm /var/service/sddm
-  sudo ln -s /etc/sv/dbus /var/service/dbus
+  sudo ln -sfn /etc/sv/sddm /var/service/sddm
+  sudo ln -sfn /etc/sv/dbus /var/service/dbus
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
   sudo sv status sddm
 elif [ "${OS}" = "Ubuntu" ] || [ "$OS" = "Linux Mint" ]; then

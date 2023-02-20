@@ -25,7 +25,7 @@ if command -v xbps-install; then
   # sudo xbps-install -y elogind
   sudo xbps-install -y hidapi-devel
 
-  # sudo ln -s /etc/sv/elogind /etc/runit/runsvdir/current/
+  # sudo ln -sfn /etc/sv/elogind /var/service/elogind
 
   sudo xbps-install -y libgusb-devel
   sudo xbps-install -y python3-devel

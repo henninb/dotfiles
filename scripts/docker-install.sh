@@ -30,7 +30,7 @@ elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y docker-compose
   sudo xbps-install -y docker
   sudo usermod -aG docker "$USER"
-  sudo ln -sfn /etc/sv/docker /var/service/
+  sudo ln -sfn /etc/sv/docker /var/service/docker
   sudo sv up docker
   sudo sv status docker
 elif [ "$OS" = "Solus" ]; then

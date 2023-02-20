@@ -37,10 +37,10 @@ fi
 lspci | grep -i audio
 cat /proc/asound/cards
 
-# sudo ln -sfn /etc/sv/alsa /var/service/
-# sudo ln -sfn /etc/sv/dbus /var/service/
-# sudo ln -sfn /etc/sv/cgmanager /var/service/
-# sudo ln -sfn /etc/sv/consolekit /var/service/
+# sudo ln -sfn /etc/sv/alsa /var/service/alsa
+# sudo ln -sfn /etc/sv/dbus /var/service/dbus
+# sudo ln -sfn /etc/sv/cgmanager /var/service/cgmanager
+# sudo ln -sfn /etc/sv/consolekit /var/service/consolekit
 
 sudo usermod -a -G pulse-access "$(id -un)"
 sudo usermod -a -G audio "$(id -un)"

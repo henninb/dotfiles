@@ -43,7 +43,8 @@ elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y virtio-win
 
   sudo usermod -a -G libvirt "$(id -un)"
-  sudo ln -s /etc/sv/libvirtd /var/service/libvirtd
+  sudo ln -sfn /etc/sv/libvirtd /var/service/libvirtd
+  # sudo ln -sfn /etc/sv/libvirtd /etc/runit/runsvdir/current/
   sudo sv start libvirtd
   virsh -c qemu:///system list
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then

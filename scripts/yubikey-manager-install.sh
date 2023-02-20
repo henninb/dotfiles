@@ -19,9 +19,9 @@ systemctl status systemd-udevd
 
 sudo chown root:root /etc/udev/rules.d/70-u2f.rules
 
-wget 'https://developers.yubico.com/yubikey-manager-qt/Releases/yubikey-manager-qt-1.2.5-linux.AppImage' -O "$HOME/tmp/yubikey-manager-qt-1.2.5-linux.AppImage"
-chmod 755 "$HOME/tmp/yubikey-manager-qt-1.2.5-linux.AppImage"
-cp "$HOME/tmp/yubikey-manager-qt-1.2.5-linux.AppImage" "$HOME/Applications/yubikey-manager-qt.AppImage"
+# wget 'https://developers.yubico.com/yubikey-manager-qt/Releases/yubikey-manager-qt-1.2.5-linux.AppImage' -O "$HOME/tmp/yubikey-manager-qt-1.2.5-linux.AppImage"
+# chmod 755 "$HOME/tmp/yubikey-manager-qt-1.2.5-linux.AppImage"
+# cp "$HOME/tmp/yubikey-manager-qt-1.2.5-linux.AppImage" "$HOME/Applications/yubikey-manager-qt.AppImage"
 
 wget 'https://developers.yubico.com/yubioath-flutter/Releases/yubico-authenticator-6.1.0-linux.tar.gz' -O "$HOME/tmp/yubico-authenticator-6.1.0-linux.tar.gz"
 sudo tar -zxvf "$HOME/tmp/yubico-authenticator-6.1.0-linux.tar.gz" -C /opt
@@ -42,8 +42,8 @@ if [ -x "$(command -v xbps-install)" ]; then
   sudo xbps-install -y mdevd
   sudo xbps-install -y pcsclite
   sudo xbps-install -y pcsc-ccid
-  # ln -s /etc/sv/pcscd /var/service/
-  sudo ln -s /etc/sv/pcscd /etc/runit/runsvdir/current/
+  sudo ln -sfn /etc/sv/pcscd /var/service/pcscd
+  # sudo ln -s /etc/sv/pcscd /etc/runit/runsvdir/current/
 fi
 
 sudo usermod -a -G plugdev "$(whoami)"
