@@ -108,6 +108,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y ncurses-devel
   sudo zypper install -y xorg-x11
+  sudo zypper install -y xorg-x11-server
   sudo zypper install -y libnotify-tools
   sudo zypper install -y libncurses5
   sudo zypper install -y cmake
