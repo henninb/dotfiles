@@ -106,6 +106,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y yubikey-manager-qt
   sudo apt install -y zenity
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper install -y NetworkManager-applet
   sudo zypper install -y ncurses-devel
   sudo zypper install -y xorg-x11
   sudo zypper install -y xorg-x11-server
@@ -126,6 +127,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y cmake
   sudo zypper install -y conky
   # sudo zypper install -y copyq
+  # sudo zypper install -y volumeicon
   sudo zypper install -y debootstrap
   sudo zypper install -y desktop-file-utils
   sudo zypper install -y dmenu
@@ -144,7 +146,6 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y kdeconnect-kde
   sudo zypper install -y keychain
   sudo zypper install -y kitty
-  # sudo zypper install -y kpcli
   sudo zypper install -y libXss-devel
   sudo zypper install -y libXft-devel
   sudo zypper install -y libXpm-devel
