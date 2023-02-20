@@ -1,6 +1,7 @@
 # raid setup
 sudo apt install -y mdadm
 sudo xbps-install -y mdadm
+sudo dnf install -y dmraid
 sudo mkdir -p /etc/mdadm/
 echo sudo mdadm --examine --scan
 sudo mdadm --examine --scan | sudo tee -a /etc/mdadm/mdadm.conf
