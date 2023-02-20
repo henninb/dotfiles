@@ -351,7 +351,7 @@ elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y cabal-install
   sudo ln -sfn /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
   sudo ln -sfn /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so
-  VOID_PKGS="xmonad pkg-config autoconf xorg-minimal xscreensaver feh xdotool w3m neofetch lxappearance volumeicon clipmenu xz make gcc gmp-devel dunst wmname alsa-lib-devel emacs-gtk3 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd jq redshift conky playerctl dunst libX11-devel libXinerama-devel libXrandr-devel libuuid libXft-devel libXScrnSaver-devel dzen2 trayer-srg CopyQ NetworkManager network-manager-applet numlockx hardinfo setxkbmap xinput xmodmap pandoc jq xrandr tmux yad bat htop i3lock keychain kdeconnect neovim ncdu rsync sox tree ntp xhost xdo starship btop wget go xclip dmg2img os-prober efibootmgr newsboat alacritty kitty xterm mesa-dri xtools glxinfo polkit hidapi-devel libgusb-devel xsetroot opendoas desktop-file-utils"
+  VOID_PKGS="xmonad pkg-config autoconf xorg-minimal xscreensaver feh xdotool w3m neofetch lxappearance clipmenu xz make gcc gmp-devel dunst wmname alsa-lib-devel emacs-gtk3 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd jq redshift conky playerctl dunst libX11-devel libXinerama-devel libXrandr-devel libuuid libXft-devel libXScrnSaver-devel dzen2 trayer-srg CopyQ NetworkManager network-manager-applet numlockx hardinfo setxkbmap xinput xmodmap pandoc jq xrandr tmux yad bat htop i3lock keychain kdeconnect neovim ncdu rsync sox tree ntp xhost xdo starship btop wget go xclip dmg2img os-prober efibootmgr newsboat alacritty kitty xterm mesa-dri xtools glxinfo polkit hidapi-devel libgusb-devel xsetroot opendoas desktop-file-utils"
   FAILURE=""
   for i in $VOID_PKGS; do
     if ! sudo xbps-install -y "$i"; then
@@ -483,6 +483,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y mpd
   sudo dnf install -y neovim
   sudo dnf install -y neofetch
+  sudo dnf install -y network-manager-applet
   sudo dnf install -y nmap
   sudo dnf install -y numlockx
   sudo dnf install -y ncdu
@@ -501,7 +502,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y tree
   sudo dnf install -y thunar
   sudo dnf install -y trayer
-  sudo dnf install -y voluemeicon
+  sudo dnf install -y volumeicon
   sudo dnf install -y w3m
   sudo dnf install -y wmname
   sudo dnf install -y xclip
