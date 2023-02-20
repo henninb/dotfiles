@@ -14,8 +14,12 @@ elif command -v xbps-install; then
   echo "void"
 elif command -v eopkg; then
   echo "solus"
+elif command -v zypper; then
+  echo "opensuse"
 elif command -v dnf; then
   echo "fedora"
+elif command -v zypper; then
+  echo "opensuse"
 elif command -v brew; then
   echo "macos"
 else
