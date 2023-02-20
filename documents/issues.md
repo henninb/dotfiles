@@ -661,3 +661,6 @@ xdg-settings set default-web-browser brave-bin.desktop
 
 ## update desktop files
 update-desktop-database ~/.local/share/applications
+
+## xdg desktop
+/usr/libexec/xdg-desktop-portal  -v
