@@ -18,6 +18,8 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse www-client/brave-bin
   sudo ln -sfn /usr/bin/brave-bin /usr/bin/brave-browser
 elif [ "$OS" = "Void" ]; then
+  echo
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y xtools
   cd "$HOME/projects"
   git clone git@github.com:void-linux/void-packages.git
