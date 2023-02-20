@@ -105,6 +105,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
   sudo systemctl enable sddm.service --now
+  sudo systemctl set-default graphical
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y sddm
   sudo dnf install -y sddm-themes
