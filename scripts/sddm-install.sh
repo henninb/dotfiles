@@ -99,6 +99,12 @@ elif [ "${OS}" = "FreeBSD" ]; then
   # sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
   sudo service sddm enable
   echo "https://community.kde.org/FreeBSD/Setup#SDDM"
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper install -y sddm
+  sudo zypper install -y sddm-themes
+  sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
+  sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
+  sudo systemctl enable sddm.service --now
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y sddm
   sudo dnf install -y sddm-themes
@@ -111,7 +117,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   echo gkr-pam daemon control file not found
   echo vi /etc/pam.d/gdm-password
   echo auth        optional      pam_gnome_keyring.so only_if=gdm
-  sudo dnf remove   gnome-keyring-pam
+  sudo dnf remove gnome-keyring-pam
   journalctl -b -u sddm
   echo sddm-greeter --test-mode --theme /usr/share/sddm/themes/elarun
   desktop-file-validate /usr/share/xsessions/xmonad.desktop
