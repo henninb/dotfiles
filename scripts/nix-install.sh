@@ -49,6 +49,12 @@ if [ "$OS" = "Ubuntu" ]; then
   nix-env -i keepassxc
 fi
 
+if [ "$OS" = "openSUSE Tumbleweed" ]; then
+  nix-env -i volumeicon
+  nix-env -i wmname
+  nix-shell -p copyq
+fi
+
 exit 0
 
 # example
