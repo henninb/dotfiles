@@ -29,6 +29,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y dmenu
   sudo apt install -y dmg2img
   sudo apt install -y doas
+  sudo apt install -y dmraid
   sudo apt install -y dzen2
   sudo apt install -y efibootmgr
   sudo apt install -y elinks
@@ -60,6 +61,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y mpc
   sudo apt install -y mpd
   sudo apt install -y mpdris2
+  sudo apt install -y mdadm
   sudo apt install -y mpv
   sudo apt install -y ncdu
   sudo apt install -y neofetch
@@ -197,6 +199,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y zenity
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   # sudo pacman --noconfirm --needed -S playderctl
+  sudo pacman --noconfirm --needed -S mdadm
+  sudo pacman --noconfirm --needed -S dmraid
   sudo pacman --noconfirm --needed -S alacritty
   sudo pacman --noconfirm --needed -S alsa-utils
   sudo pacman --noconfirm --needed -S arch-install-scripts
@@ -351,7 +355,7 @@ elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y cabal-install
   sudo ln -sfn /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
   sudo ln -sfn /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so
-  VOID_PKGS="xmonad pkg-config autoconf xorg-minimal xscreensaver feh xdotool w3m neofetch lxappearance clipmenu xz make gcc gmp-devel dunst wmname alsa-lib-devel emacs-gtk3 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd jq redshift conky playerctl dunst libX11-devel libXinerama-devel libXrandr-devel libuuid libXft-devel libXScrnSaver-devel dzen2 trayer-srg CopyQ NetworkManager network-manager-applet numlockx hardinfo setxkbmap xinput xmodmap pandoc jq xrandr tmux yad bat htop i3lock keychain kdeconnect neovim ncdu rsync sox tree ntp xhost xdo starship btop wget go xclip dmg2img os-prober efibootmgr newsboat alacritty kitty xterm mesa-dri xtools glxinfo polkit hidapi-devel libgusb-devel xsetroot opendoas desktop-file-utils"
+  VOID_PKGS="xmonad pkg-config autoconf xorg-minimal xscreensaver feh xdotool w3m neofetch lxappearance clipmenu xz make gcc gmp-devel dunst wmname alsa-lib-devel emacs-gtk3 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd jq redshift conky playerctl dunst libX11-devel libXinerama-devel libXrandr-devel libuuid libXft-devel libXScrnSaver-devel dzen2 trayer-srg CopyQ NetworkManager network-manager-applet numlockx hardinfo setxkbmap xinput xmodmap pandoc jq xrandr tmux yad bat htop i3lock keychain kdeconnect neovim ncdu rsync sox tree ntp xhost xdo starship btop wget go xclip dmg2img os-prober efibootmgr newsboat alacritty kitty xterm mesa-dri xtools glxinfo polkit hidapi-devel libgusb-devel xsetroot opendoas desktop-file-utils mdadm dmraid"
   FAILURE=""
   for i in $VOID_PKGS; do
     if ! sudo xbps-install -y "$i"; then
@@ -397,7 +401,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG tty "$(id -un)"
   sudo usermod -aG video "$(id -un)"
   # elogind
-  GENTOO_PKGS="rust-bin neovim setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool dunst wmname w3m x11-misc/xclip xinit xorg-server sys-apps/dbus flameshot volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet trayer-srg sxiv spacefm lxappearance xrandr hardinfo gentoolkit xmodmap app-misc/jq pavucontrol xinput neovim lsof sddm htop eix libreoffice-bin firefox-bin app-misc/screen pcmanfm rdfind zenity net-dns/bind-tools tmux bat whois starship traceroute kitty imagemagick colordiff media-fonts/terminus-font efibootmgr genfstab byobu dev-libs/tree-sitter luarocks alacritty ufw xdo pipewire pass pwgen tree keychain partimage ntfs3g dosfstools mtools ncdu speedtest-cli ntp nmap xhost btop dmg2img solaar elinks os-prober sys-fs/btrfs-progs sys-fs/udftools kpcli usbutils zbar xsetroot doas desktop-file-utils"
+  GENTOO_PKGS="rust-bin neovim setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool dunst wmname w3m x11-misc/xclip xinit xorg-server sys-apps/dbus flameshot volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet trayer-srg sxiv spacefm lxappearance xrandr hardinfo gentoolkit xmodmap app-misc/jq pavucontrol xinput neovim lsof sddm htop eix libreoffice-bin firefox-bin app-misc/screen pcmanfm rdfind zenity net-dns/bind-tools tmux bat whois starship traceroute kitty imagemagick colordiff media-fonts/terminus-font efibootmgr genfstab byobu dev-libs/tree-sitter luarocks alacritty ufw xdo pipewire pass pwgen tree keychain partimage ntfs3g dosfstools mtools ncdu speedtest-cli ntp nmap xhost btop dmg2img solaar elinks os-prober sys-fs/btrfs-progs sys-fs/udftools kpcli usbutils zbar xsetroot doas desktop-file-utils dmraid mdadm"
   FAILURE=""
   ls -d /var/db/pkg/*/*| cut -f5- -d/
   for i in $GENTOO_PKGS; do
@@ -442,6 +446,8 @@ elif [ "$OS" = "Fedora Linux" ]; then
   # sudo dnf remove -y gdm
   # sudo dnf remove -y lxdm
   # sudo dnf install -y clipmenu
+  sudo dnf install -y dmraid
+  sudo dnf install -y mdadm
   sudo dnf install -y alacritty
   sudo dnf install -y alsa-lib-devel
   sudo dnf install -y bat
