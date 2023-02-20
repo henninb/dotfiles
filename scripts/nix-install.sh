@@ -24,6 +24,7 @@ else
 fi
 sudo rm -rf /etc/nix /nix /root/.nix-profile /root/.nix-defexpr /root/.nix-channels $HOME/.nix-profile $HOME/.nix-defexpr $HOME/.nix-channels
 
+curl -v 'https://diagnostic.opendns.com'
 #sh <(curl -s -L https://nixos.org/nix/install) --daemon
 curl -L https://nixos.org/nix/install | sh
 
