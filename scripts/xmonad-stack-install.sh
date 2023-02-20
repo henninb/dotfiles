@@ -65,7 +65,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y neofetch
   sudo apt install -y newsboat
   sudo apt install -y nmap
-  sudo apt install -y nm-tray
+  sudo apt install -y network-manager-gnome
   sudo apt install -y ntp
   sudo apt install -y numlockx
   sudo apt install -y os-prober
