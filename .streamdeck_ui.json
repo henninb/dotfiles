@@ -41,7 +41,7 @@
                     "6": {
                         "icon": "/home/henninb/files/backup-streamdeck/librewolf.png",
                         "text": "Librewolf",
-                        "command": "librewolf-bin"
+                        "command": "librewolf"
                     },
                     "7": {
                         "icon": "/home/henninb/files/backup-streamdeck/zoom.png",
@@ -51,7 +51,7 @@
                     "8": {
                         "icon": "/home/henninb/files/backup-streamdeck/dbeaver.png",
                         "text": "dbeaver",
-                        "command": "dbeaver-flatpak"
+                        "command": "dbeaver"
                     },
                     "9": {
                         "icon": "/home/henninb/files/backup-streamdeck/slack.png",

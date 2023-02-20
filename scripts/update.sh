@@ -83,6 +83,8 @@ elif [ "$OS" = "Gentoo" ]; then
   fi
   blender=$(find /usr/bin -name "blender-*[0-9]")
   if [ -z ${blender+x} ]; then echo "var is unset"; else sudo ln -sfn "${blender}" /usr/bin/blender; fi
+  librewolf=$(find /usr/bin -name "librewolf-bin")
+  if [ -z ${librewolf+x} ]; then echo "var is unset"; else sudo ln -sfn "${librewolf}" /usr/bin/librewolf; fi
   sudo emerge @preserved-rebuild
   echo eselect editor list
   echo eselect kernel list
