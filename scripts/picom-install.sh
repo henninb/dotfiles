@@ -23,8 +23,10 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y libxcb-image0-dev
   sudo apt install -y libxcb-composite0-dev
   sudo apt install -y libxcb-xinerama0-dev
-  sudo python3 -m pip install ninja
-  sudo python3 -m pip install meson
+  sudo apt isntall -y menson
+  sudo apt isntall -y ninja
+  # sudo python3 -m pip install ninja
+  # sudo python3 -m pip install meson
 elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y ninja
   sudo xbps-install -y meson
@@ -40,6 +42,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   test
   sudo dnf install -y ninja
   sudo dnf install -y meson
+  sudo apt install libpixman-1-dev
   sudo dnf install -y libev-devel
   sudo dnf install -y uthash
   sudo dnf install -y libconfig-devel
