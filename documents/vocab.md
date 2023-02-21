@@ -166,4 +166,6 @@
 ## wheedle []
 ## capaciou []
 ## unscruplious []
+## copious
+## serendipitous
 

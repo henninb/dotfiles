@@ -162,3 +162,5 @@ vixen: (noun) a female fox; can also refer to a woman with a reputation for bein
 wheedle: (verb) to use flattery or coaxing in order to persuade someone to do something, often something that they might not want to do.
 capacious
 unscruplious
+serendipitous
+copious
