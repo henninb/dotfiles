@@ -34,13 +34,13 @@ parted print devices
 ## make the partitions (use dos)
 ```
 mkfs.ext2 -T small /dev/sda1
-mkfs.ext4 -j -T small /dev/sda2
+mkfs.ext4 -j -b 4096 /dev/sda2
 ```
 
 ## make the partitions (use gpt)
 ```
 mkfs.fat -F32 /dev/sda1
-mkfs.ext4 -j -T small /dev/sda2
+mkfs.ext4 -j -b 4096 /dev/sda2
 ```
 
 ## mount the partitions (use dos)

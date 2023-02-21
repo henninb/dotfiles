@@ -43,10 +43,10 @@ cfdisk /dev/sda
 ## make the partitions
 ```
 mkfs.ext2 -T small /dev/sda1
-mkfs.ext4 -j -T small /dev/sda2
+mkfs.ext4 -j -b 4096 /dev/sda2
 
 mkfs.ext2 -T small /dev/sdb1
-mkfs.ext4 -j -T small /dev/sdb2
+mkfs.ext4 -j -b 4096 /dev/sdb2
 ```
 
 ## time sync
