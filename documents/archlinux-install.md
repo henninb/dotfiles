@@ -60,7 +60,7 @@ mount /dev/sda1 /mnt/boot/efi
 ## install the arch base system
 ```
 pacman -Sy archlinux-keyring
-pacstrap /mnt base linux linux-firmware neovim
+pacstrap /mnt base linux linux-firmware neovim vim dhcpcd openssh
 ```
 
 ## update the fstab
