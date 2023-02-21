@@ -2,7 +2,7 @@
 
 if [ $# -ne 1 ] && [ $# -ne 2 ]; then
   echo "Usage: $0 <os> [disk]"
-  echo "gentoo or archlinux or fedora"
+  echo "gentoo or archlinux or fedora or voidlinux or ubuntu"
   echo "disk sdc sdb"
   exit 1
 fi
@@ -64,6 +64,21 @@ elif [ "$os" = "fedora" ]; then
   echo 'export PS1="(fedora-chroot) $PS1"'
   sudo chroot /mnt/fedora/root /bin/bash
   # echo source /etc/profile
+elif [ "$os" = "ubuntu" ]; then
+  echo
+  disk=sdb
+  sudo mkdir -p /mnt/ubuntu
+  sudo mount /dev/${disk}3 /mnt/ubuntu
+  sudo mkdir -p /mnt/ubuntu/boot/efi
+  sudo mount /dev/${disk}1 /mnt/ubuntu/boot/efi
+  cd /mnt/ubuntu
+
+  sudo mount -t proc none /mnt/ubuntu/root/proc
+  sudo mount --rbind /dev /mnt/ubuntu/root/dev
+  sudo mount --rbind /sys /mnt/ubuntu/root/sys
+
+  echo 'export PS1="(ubuntu-chroot) $PS1"'
+  sudo chroot /mnt/ubuntu/root /bin/bash
 elif [ "$os" = "archlinux" ]; then
   disk=sdb
   sudo mkdir -p /mnt/archlinux
@@ -78,7 +93,6 @@ elif [ "$os" = "archlinux" ]; then
 
   echo 'export PS1="(archlinux-chroot) $PS1"'
   sudo chroot /mnt/archlinux /bin/bash
-  # echo source /etc/profile
 else
   echo "chose the correct os."
 fi
