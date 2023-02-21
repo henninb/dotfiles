@@ -279,8 +279,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ## grub install (with gpt)
 ```
 echo 'GRUB_CMDLINE_LINUX="init=/usr/lib/systemd/systemd"' >> /etc/default/grub
-# grub-install --target=x86_64-efi --boot-directory=/boot/efi --bootloader-id=gentoo-uefi /dev/sda
-grub-install --target=x86_64-efi --bootloader-id=gentoo-uefi --efi-directory=/boot/efi
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=gentoo
 grub-mkconfig -o /boot/grub/grub.cfg
 ````
 

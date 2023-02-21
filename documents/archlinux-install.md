@@ -135,7 +135,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 ## load grub on the boot drive (gpt)
 ```
-grub-install --target=x86_64-efi --boot-directory=/boot/efi --bootloader-id=archlinux /dev/sda
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=archlinux
 grub-mkconfig -o /boot/grub/grub.cfg
 ````
 

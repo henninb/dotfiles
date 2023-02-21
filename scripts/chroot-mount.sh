@@ -31,20 +31,20 @@ if [ "$os" = "voidlinux" ]; then
 
   echo 'export PS1="(voidlinux-chroot) $PS1"'
   sudo chroot /mnt/voidlinux /bin/bash
-elif [ "$os" = "gentoo-new" ]; then
+elif [ "$os" = "gentoo" ]; then
   disk=sdd
-  sudo mkdir -p /mnt/gentoo-new
-  sudo mount /dev/${disk}2 /mnt/gentoo-new
-  sudo mkdir -p /mnt/gentoo-new/boot/efi
-  sudo mount /dev/${disk}1 /mnt/gentoo-new/boot/efi
-  cd /mnt/gentoo-new
+  sudo mkdir -p /mnt/gentoo
+  sudo mount /dev/${disk}2 /mnt/gentoo
+  sudo mkdir -p /mnt/gentoo/boot/efi
+  sudo mount /dev/${disk}1 /mnt/gentoo/boot/efi
+  cd /mnt/gentoo
 
-  sudo mount -t proc none /mnt/gentoo-new/proc
-  sudo mount --rbind /dev /mnt/gentoo-new/dev
-  sudo mount --rbind /sys /mnt/gentoo-new/sys
-  echo 'export PS1="(gentoo-new-chroot) $PS1"'
+  sudo mount -t proc none /mnt/gentoo/proc
+  sudo mount --rbind /dev /mnt/gentoo/dev
+  sudo mount --rbind /sys /mnt/gentoo/sys
+  echo 'export PS1="(gentoo-chroot) $PS1"'
 
-  sudo chroot /mnt/gentoo-new /bin/bash
+  sudo chroot /mnt/gentoo /bin/bash
 elif [ "$os" = "fedora" ]; then
   disk=sdc
   sudo mkdir -p /mnt/fedora

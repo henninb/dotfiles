@@ -41,6 +41,7 @@ xbps-install grub-x86_64-efi
 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=voidlinux
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=voidlinux --verbose
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=voidlinux
 
 # delete the efi with the label 0004
 efibootmgr -Bb 0004
