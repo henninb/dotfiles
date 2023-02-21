@@ -19,6 +19,8 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y uthash-dev libxcb-sync-dev libxcb-present-dev libxcb-damage0-dev libconfig-dev libdbus-1-dev
   sudo apt install -y libx11-xcb-dev
   sudo apt install -y libev-dev
+  sudo apt install -y libpcre2-dev
+  sudo apt install -y libpixman-1-dev
   sudo apt install -y libxcb-render-util0-dev
   sudo apt install -y libxcb-image0-dev
   sudo apt install -y libxcb-composite0-dev
@@ -42,7 +44,6 @@ elif [ "$OS" = "Fedora Linux" ]; then
   test
   sudo dnf install -y ninja
   sudo dnf install -y meson
-  sudo apt install libpixman-1-dev
   sudo dnf install -y libev-devel
   sudo dnf install -y uthash
   sudo dnf install -y libconfig-devel
