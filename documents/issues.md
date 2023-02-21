@@ -667,3 +667,6 @@ update-desktop-database ~/.local/share/applications
 
 ## screensaver
 xscreensaver-settings
+
+## block size is important
+sudo tune2fs -l /dev/sdb2 |grep "^Block size:"
