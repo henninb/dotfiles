@@ -73,12 +73,12 @@ elif [ "$os" = "ubuntu" ]; then
   sudo mount /dev/${disk}1 /mnt/ubuntu/boot/efi
   cd /mnt/ubuntu
 
-  sudo mount -t proc none /mnt/ubuntu/root/proc
-  sudo mount --rbind /dev /mnt/ubuntu/root/dev
-  sudo mount --rbind /sys /mnt/ubuntu/root/sys
+  sudo mount -t proc none /mnt/ubuntu/proc
+  sudo mount --rbind /dev /mnt/ubuntu/dev
+  sudo mount --rbind /sys /mnt/ubuntu/sys
 
   echo 'export PS1="(ubuntu-chroot) $PS1"'
-  sudo chroot /mnt/ubuntu/root /bin/bash
+  sudo chroot /mnt/ubuntu /bin/bash
 elif [ "$os" = "archlinux" ]; then
   disk=sdb
   sudo mkdir -p /mnt/archlinux
