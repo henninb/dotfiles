@@ -14,6 +14,10 @@ elif command -v zypper; then
   date
   sudo ntpdate -u time.nist.gov
   date
+elif command -v apt; then
+  date
+  sudo ntpdate -u time.nist.gov
+  date
 elif command -v dnf; then
   date
   sudo ntpdate -u time.nist.gov
