@@ -199,6 +199,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y zenity
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   # sudo pacman --noconfirm --needed -S playderctl
+  sudo pacman --noconfirm --needed -S dosfstools
+  sudo pacman --noconfirm --needed -S mtools
   sudo pacman --noconfirm --needed -S mdadm
   sudo pacman --noconfirm --needed -S dmraid
   sudo pacman --noconfirm --needed -S alacritty
