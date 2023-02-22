@@ -301,6 +301,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   # yay --noconfirm --needed -S mpdris2
   sudo systemctl disable mpd.socket
   sudo systemctl stop mpd.socket
+  sudo systemctl enable NetworkManager
 elif [ "$OS" = "FreeBSD" ]; then
   ln -sfn "$(find /usr/local/bin/ -type f -name "perl5*" | tail -1)" "$HOME/.local/bin/perl"
   sudo pkg install -y alsa-lib
