@@ -19,12 +19,15 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y uthash-dev libxcb-sync-dev libxcb-present-dev libxcb-damage0-dev libconfig-dev libdbus-1-dev
   sudo apt install -y libx11-xcb-dev
   sudo apt install -y libev-dev
-  sudo apt install -y libpcre2-dev
+  # sudo apt install -y libpcre2-dev
+  sudo apt install -y libpcre3-dev
+  # sudo apt install -y libpcre2
   sudo apt install -y libpixman-1-dev
   sudo apt install -y libxcb-render-util0-dev
   sudo apt install -y libxcb-image0-dev
   sudo apt install -y libxcb-composite0-dev
   sudo apt install -y libxcb-xinerama0-dev
+  sudo apt install -y libglew-dev
   sudo apt isntall -y menson
   sudo apt isntall -y ninja
   # sudo python3 -m pip install ninja
