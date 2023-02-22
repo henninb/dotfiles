@@ -9,6 +9,7 @@ npm install -g tree-sitter-cli
 echo :LspInstall ccls
 
 if command -v pacman; then
+  sudo pacman --noconfirm --needed -S clang
   sudo pacman --noconfirm --needed -S llvm
   sudo pacman --noconfirm --needed -S llvm-libs
 elif command -v dnf; then
