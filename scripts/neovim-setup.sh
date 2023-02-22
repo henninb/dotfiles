@@ -10,6 +10,7 @@ echo :LspInstall ccls
 
 if command -v pacman; then
   sudo pacman --noconfirm --needed -S llvm
+  sudo pacman --noconfirm --needed -S llvm-libs
 fi
 
 if command -v dnf; then
