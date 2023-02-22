@@ -42,10 +42,10 @@ if [ "$OS" = "Ubuntu" ]; then
   nix-env -i starship
   nix-env -i librewolf
   nix-env -i brave
-  nix-env -i alacritty
+  # nix-env -i alacritty
   nix-env -i neovim
   nix-env -i dunst
-  nix-env -i bottles
+  # nix-env -i bottles
   nix-env -i keepassxc
 fi
 
