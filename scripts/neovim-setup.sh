@@ -11,16 +11,12 @@ echo :LspInstall ccls
 if command -v pacman; then
   sudo pacman --noconfirm --needed -S llvm
   sudo pacman --noconfirm --needed -S llvm-libs
-fi
-
-if command -v dnf; then
+elif command -v dnf; then
   sudo dnf install -y llvm-devel
   sudo dnf install -y llvm-libs
   sudo dnf install cmake
   sudo dnf groupinstall "Development Tools" "Development Libraries"
-fi
-
-if command -v zypper; then
+elif command -v zypper; then
   sudo zypper install -y cmake
   sudo zypper install -y llvm
   sudo zypper install -y clang
@@ -28,28 +24,23 @@ if command -v zypper; then
   sudo zypper install -y libxml2-devel
   sudo zypper install -y llvm-devel
   sudo zypper install -y clang-devel
-fi
-
-if command -v xbps-install; then
+elif command -v xbps-install; then
   sudo xbps-install -y cmake
   sudo xbps-install -y llvm
   sudo xbps-install -y clang
   sudo xbps-install -y xtool
   sudo xbps-install -y libxml2-devel
   sudo xbps-install -y clang-tools-extra
-fi
-
-if command -v apt; then
+elif command -v apt; then
   sudo apt install -y luarocks
-fi
-
-if command -v emerge; then
+elif command -v emerge; then
   sudo emerge --update --newuse clang
-fi
-
-if command -v brew; then
+elif command -v brew; then
   brew install llvm
   brew install cmake
+else
+  echo "$OS is not yet implemented."
+  exit 1
 fi
 
 exit 0
