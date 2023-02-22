@@ -85,6 +85,8 @@ NeedsTargets
 Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 EOF
 
+sudo mkdir -p /etc/modeprobe.d/
+
 if [ "$OS" = "Gentoo" ]; then
   echo eselect kernel list
   echo sudo emerge --update --newuse linux-headers
