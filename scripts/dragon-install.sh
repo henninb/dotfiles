@@ -6,6 +6,8 @@ if [ "$OS" = "Solus" ]; then
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y libgtk2.0-dev
   sudo apt install -y libgtk-3-dev
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+  echo
 elif [ "$OS" = "Void" ]; then
   sudo xbps-install  gtk+3-devel
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
