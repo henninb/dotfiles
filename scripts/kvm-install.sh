@@ -25,14 +25,22 @@ fi
 
 if [ "$OS" = "Linux Mint" ] || [  "$OS" = "Ubuntu" ]; then
   sudo apt install -y cpu-checker
-  kvm-ok
-  sudo apt install -y ebtables dnsmasq spice-client-gtk virt-viewer gir1.2-spiceclientgtk-3.0 libguestfs-tools
-  # may need a reboot
-  sudo apt install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
-  sudo adduser "$(id -un)" kvm
-  sudo adduser "$(id -un)" libvirt
+  sudo apt install -y ebtables 
+  sudo apt install -y dnsmasq 
+  sudo apt install -y spice-client-gtk 
+  sudo apt install -y virt-viewer 
+  sudo apt install -y gir1.2-spiceclientgtk-3.0 
+  sudo apt install -y libguestfs-tools
+  sudo apt install -y qemu-kvm 
+  sudo apt install -y libvirt-daemon-system 
+  suod apt install -y libvirt-clients 
+  sudo apt install -y bridge-utils
   sudo apt install -y virt-manager
   sudo apt install -y qemu-utils
+  # sudo adduser "$(id -un)" kvm
+  # sudo adduser "$(id -un)" libvirt
+  sudo usermod -a -G libvirt "$(id -un)"
+  sudo usermod -a -G kvm "$(id -un)"
   virsh -c qemu:///system list
 elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y libvirt
@@ -185,6 +193,9 @@ if [ -f "/etc/sysctl.conf" ]; then
 else
   echo sysctl.conf is not found
 fi
+
+echo kvm-ok
+kvm-ok
 
 echo sudo mv -v "$HOME/tmp/80-libvirt.rules" /etc/polkit-1/rules.d/80-libvirt.rules
 echo virsh -c test:///default list --all
