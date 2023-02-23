@@ -4,11 +4,12 @@ if command -v emerge; then
   sudo emerge --update --newuse dev-libs/hidapi
 fi
 
-sudo apt install -y python-dev-is-python3
-
-sudo apt install -y libhidapi-libusb0 
-sudo apt install -y libxcb-xinerama0
-sudo apt install -y libhidapi-dev
+if command -v apt; then
+  sudo apt install -y python-dev-is-python3
+  sudo apt install -y libhidapi-libusb0 
+  sudo apt install -y libxcb-xinerama0
+  sudo apt install -y libhidapi-dev
+fi
 
 if command -v dnf; then
   sudo dnf install -y libusb1-devel
@@ -28,9 +29,7 @@ fi
 if command -v xbps-install; then
   # sudo xbps-install -y elogind
   sudo xbps-install -y hidapi-devel
-
   # sudo ln -sfn /etc/sv/elogind /var/service/elogind
-
   sudo xbps-install -y libgusb-devel
   sudo xbps-install -y python3-devel
 fi
@@ -62,3 +61,5 @@ if ! pip3 install --user streamdeck_ui; then
 fi
 
 exit 0
+
+# vim: set ft=sh:
