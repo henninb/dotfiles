@@ -51,6 +51,10 @@ if [ "$OS" = "Ubuntu" ]; then
   # nix-env -i alacritty
 fi
 
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+  nix-env -i librewolf
+fi
+
 if [ "$OS" = "openSUSE Tumbleweed" ]; then
   nix-env -i volumeicon
   nix-env -i wmname
