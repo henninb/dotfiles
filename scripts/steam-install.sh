@@ -28,11 +28,11 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo pacman --noconfirm --needed -S steam
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   sudo apt install -y steam-installer
-  sudo apt install -y flatpak
+  # sudo apt install -y flatpak
   #flatpak install --user flathub org.freedesktop.Platform.openh264
-  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-  flatpak install --user flathub org.freedesktop.Platform/x86_64/19.08
-  flatpak install --user com.valvesoftware.Steam.flatpakref
+  # flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  # flatpak install --user flathub org.freedesktop.Platform/x86_64/19.08
+  # flatpak install --user com.valvesoftware.Steam.flatpakref
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse app-eselect/eselect-repository
   sudo eselect repository enable steam-overlay
