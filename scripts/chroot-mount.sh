@@ -46,7 +46,7 @@ elif [ "$os" = "gentoo" ]; then
 
   sudo chroot /mnt/gentoo /bin/bash
 elif [ "$os" = "fedora" ]; then
-  disk=sdc
+  disk=sdb
   sudo mkdir -p /mnt/fedora
   sudo mount /dev/${disk}3 /mnt/fedora
   sudo mount /dev/${disk}2 /mnt/fedora/root/boot
@@ -66,7 +66,7 @@ elif [ "$os" = "fedora" ]; then
   # echo source /etc/profile
 elif [ "$os" = "ubuntu" ]; then
   echo
-  disk=sdb
+  disk=sdc
   sudo mkdir -p /mnt/ubuntu
   sudo mount /dev/${disk}3 /mnt/ubuntu
   sudo mkdir -p /mnt/ubuntu/boot/efi
