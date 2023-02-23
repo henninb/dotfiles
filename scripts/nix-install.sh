@@ -46,7 +46,6 @@ if [ "$OS" = "Ubuntu" ]; then
   nix-env -i neovim
   nix-env -i dunst
   nix-env -i keepassxc
-  nix-env -i zoom
   # nix-env -i bottles
   # nix-env -i alacritty
 fi

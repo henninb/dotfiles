@@ -15,6 +15,7 @@ if  [ -n "$VER_OVERRIDE" ]; then
   NVER=${VER_OVERRIDE}
 fi
 
+export NVER=v0.8.3
 echo "$NVER"
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
@@ -123,10 +124,10 @@ else
   exit 1
 fi
 
-cd projects || exit
-
+mkdir -p "$HOME/projects/github.com/neovim"
+cd "$HOME/projects/github.com/neovim" || exit
 git clone --recursive git@github.com:neovim/neovim.git
-cd neovim || exit
+cd "$HOME/projects/github.com/neovim/neovim" || exit
 git checkout master
 git fetch
 if ! git checkout "tags/$NVER"; then
@@ -155,7 +156,7 @@ cd "$HOME" || exit
 #echo "previous $ACTUAL_VER"
 curl -s -O https://bootstrap.pypa.io/get-pip.py
 sudo python3 get-pip.py
-sudo python2 get-pip.py
+# sudo python2 get-pip.py
 
 sudo mkdir -p /usr/local/share/nvim
 sudo chmod -R a+r /usr/local/share/nvim
@@ -165,7 +166,7 @@ python3 -m pip install --user --upgrade pynvim
 pip2 uninstall neovim
 pip3 uninstall neovim
 pip3 install neovim-remote
-sudo gem install neovim
+gem install neovim
 echo ":checkhealth"
 
 nvim +slient +VimEnter +PlugUpgrade +qall
@@ -173,7 +174,7 @@ nvim +slient +VimEnter +PlugUpdate +qall
 
 # gem install neovim
 gem install --user neovim
-sudo npm install -g neovim
+npm install -g neovim
 
 exit 0
 
