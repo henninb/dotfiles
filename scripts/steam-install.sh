@@ -27,6 +27,11 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   # flatpak install flathub com.valvesoftware.Steam
   sudo pacman --noconfirm --needed -S steam
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
+  #wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb
+  # sudo dpkg --add-architecture i386
+  sudo add-apt-repository -y multiverse
+  sudo dpkg --add-architecture i386
+  sudo apt-get update
   sudo apt install -y steam-installer
   # sudo apt install -y flatpak
   #flatpak install --user flathub org.freedesktop.Platform.openh264
