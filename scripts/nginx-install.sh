@@ -3,16 +3,17 @@
 if command -v pacman; then
   sudo pacman --noconfirm --needed -S nginx
 elif command -v emerge; then
-  echo "gentoo"
+  sudo emerge --update --newuse nginx
 elif command -v apt; then
-  echo "debian"
+  sudo apt install -y nginx
 elif command -v xbps-install; then
   sudo xbps-install -y nginx
 elif command -v pkg; then
-  echo "freebsd"
   sudo pkg install -y nginx
   sudo sysrc nginx_enable="YES"
   sudo service nginx start
+elif command -v zypper; then
+  sudo zypper install -y nginx
 elif command -v eopkg; then
   echo "solus"
 elif command -v dnf; then
