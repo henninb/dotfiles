@@ -1,6 +1,5 @@
 [Alsa]
 card=default
-logarithmic_scale=false
 
 [Notification]
 show_notification=true
@@ -11,7 +10,6 @@ stepsize=5
 onclick=xterm -e 'alsamixer'
 theme=Blue Bar
 use_panel_specific_icons=false
-reverse_scroll_direction=false
 lmb_slider=false
 mmb_mute=false
 use_horizontal_slider=false
