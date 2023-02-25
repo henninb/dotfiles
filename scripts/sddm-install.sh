@@ -88,6 +88,7 @@ elif [ "${OS}" = "Ubuntu" ] || [ "$OS" = "Linux Mint" ]; then
   sudo systemctl set-default graphical
   sudo mkdir -p /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
+  sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
   sudo systemctl disable lightdm
   sudo systemctl enable sddm.service --now
 elif [ "${OS}" = "FreeBSD" ]; then
