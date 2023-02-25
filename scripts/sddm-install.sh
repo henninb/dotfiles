@@ -84,6 +84,8 @@ elif [ "${OS}" = "Ubuntu" ] || [ "$OS" = "Linux Mint" ]; then
   export DEBIAN_FRONTEND=noninteractive
   sudo apt install -y sddm
   sudo apt install -y sddm-theme-elarun
+  # sudo apt remove -y libpam-gnome-keyring
+  sudo systemctl set-default graphical
   sudo mkdir -p /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
   sudo systemctl disable lightdm
