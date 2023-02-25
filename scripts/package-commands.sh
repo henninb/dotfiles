@@ -30,6 +30,7 @@ elif [ "$OS" = "Gentoo" ]; then
   echo list all packages
   echo emerge world -ep
   echo emerge system -ep
+  echo eix-installed -a #list packages
   echo equery files --tree yubikey-manager-qt
   echo sudo emerge --update --newuse package_name
   echo sudo emerge --deselect package_name # remove from world
