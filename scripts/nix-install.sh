@@ -47,12 +47,14 @@ if [ "$OS" = "Ubuntu" ]; then
   nix-env -i dunst
   nix-env -i keepassxc
   nix-env -i gqrx
+  nix-env -i ventoy-bin
   # nix-env -i bottles
   # nix-env -i alacritty
 fi
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   nix-env -i librewolf
+  nix-env -i ventoy-bin
 fi
 
 if [ "$OS" = "openSUSE Tumbleweed" ]; then
