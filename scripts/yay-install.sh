@@ -11,6 +11,8 @@ if [ -x "$(command -v pacman)" ]; then
   cd - || exit
 fi
 
-exit 0
+yay --noconfirm --needed -S downgrade
 
+exit 0
+ 
 # vim: set ft=sh
