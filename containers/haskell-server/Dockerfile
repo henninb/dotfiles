@@ -1,3 +1,3 @@
 FROM haskell
-
-RUN test
+# RUN test
+RUN stack update

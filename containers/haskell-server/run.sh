@@ -19,7 +19,6 @@ if [ "$platform" = "podman" ]; then
 elif [ "$platform" = "docker" ]; then
   docker stop haskell-server
   docker rm -f haskell-server
-  echo "running server on port 443"
 
   blocking=$(docker ps -a --filter "expose=443"  --format '{{.ID}}')
   if [ -n "${blocking}" ]; then
@@ -33,7 +32,7 @@ elif [ "$platform" = "docker" ]; then
 
   if command -v docker-compose; then
     docker-compose build
-    docker-compose up -d
+    docker-compose up
   else
     docker build -t haskell-server .
     docker run --name=haskell-server -h haskell-server -h haskell-server --restart unless-stopped -p 443:443 -d haskell-server
