@@ -72,8 +72,12 @@ elif [ "$os" = "fedora" ]; then
   sudo chroot /mnt/fedora/root /bin/su - "$(id -un)"
   # echo source /etc/profile
 elif [ "$os" = "ubuntu" ]; then
-  # disk=sdc
-  sudo mkdir -p /mnt/ubuntu
+  if lsblk -o UUID,MOUNTPOINT | grep -q "a7bb907f-6870-40a6-af47-ac881e72caf2"; then
+    echo mounted /mnt/ubuntu
+  else
+    echo umounted /mnt/ubuntu
+  fi
+  sudo mkdir -p /mnt/ubuntu 
   sudo mount UUID=a7bb907f-6870-40a6-af47-ac881e72caf2 /mnt/ubuntu
   # sudo mount /dev/${disk}3 /mnt/ubuntu
   sudo mkdir -p /mnt/ubuntu/boot/efi
@@ -88,21 +92,24 @@ elif [ "$os" = "ubuntu" ]; then
   echo 'export PS1="(ubuntu-chroot) $PS1"'
   sudo chroot /mnt/ubuntu /bin/su - "$(id -un)"
 elif [ "$os" = "archlinux" ]; then 
-  # disk=sdb
-  sudo mkdir -p /mnt/archlinux
-  sudo mount UUID=72ad4c57-06c1-41d6-a72f-34000c848126 /mnt/archlinux
-  # sudo mount /dev/${disk}2 /mnt/archlinux
-  sudo mkdir -p /mnt/archlinux/boot/efi
-  # sudo mount /dev/${disk}1 /mnt/archlinux/boot/efi
-  sudo mount UUID=F577-6798 /mnt/archlinux/boot/efi
-  cd /mnt/archlinux
+  if lsblk -o UUID,MOUNTPOINT | grep -q "72ad4c57-06c1-41d6-a72f-34000c848126"; then
+    echo mounted /mnt/archlinux
+  else
+    echo unmounted /mnt/archlinux
+  fi
+    sudo mkdir -p /mnt/archlinux
+    sudo mount UUID=72ad4c57-06c1-41d6-a72f-34000c848126 /mnt/archlinux
+    sudo mkdir -p /mnt/archlinux/boot/efi
+    sudo mount UUID=F577-6798 /mnt/archlinux/boot/efi
+    cd /mnt/archlinux
 
-  sudo mount -t proc none /mnt/archlinux/proc
-  sudo mount --rbind /dev /mnt/archlinux/dev
-  sudo mount --rbind /sys /mnt/archlinux/sys
+    sudo mount -t proc none /mnt/archlinux/proc
+    sudo mount --rbind /dev /mnt/archlinux/dev
+    sudo mount --rbind /sys /mnt/archlinux/sys
 
   echo 'export PS1="(archlinux-chroot) $PS1"'
   sudo chroot /mnt/archlinux /bin/su - "$(id -un)"
+  # sudo chroot /mnt/archlinux /bin/bash
 else
   echo "chose the correct os."
 fi
