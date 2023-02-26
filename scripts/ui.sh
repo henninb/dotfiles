@@ -1,9 +1,9 @@
 #!/bin/sh
 
 if [ "$OS" = "FreeBSD" ]; then
-  pkgs="trayer volumeicon feh xscreensaver numlockx blueman-applet copyq picom dunst flameshot nm conky"
+  pkgs="trayer volumeicon feh xscreensaver numlockx blueman-applet copyq picom dunst flameshot nm conky keepassxc"
 else
-  pkgs="trayer volumeicon feh xscreensaver numlockx blueman-applet copyq picom dunst flameshot nm-applet conky"
+  pkgs="trayer volumeicon feh xscreensaver numlockx blueman-applet copyq picom dunst flameshot nm-applet conky keepassxc"
 fi
 
 for i in $pkgs; do
@@ -24,6 +24,5 @@ echo "not installed: $FAILURE"
 # nohup picom --experimental-backends --backend glx --xrender-sync-fence &
 
 exit 0
-
 
 # vim: set ft=sh
