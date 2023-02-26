@@ -1,0 +1,3 @@
+FROM haskell
+
+RUN test
