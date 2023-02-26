@@ -32,7 +32,7 @@ if [ "$os" = "voidlinux" ]; then
   sudo mount --rbind /sys /mnt/voidlinux/sys
 
   echo 'export PS1="(voidlinux-chroot) $PS1"'
-  sudo chroot /mnt/voidlinux /bin/bash
+  sudo chroot /mnt/voidlinux /bin/su - "$(id -un)"
 elif [ "$os" = "gentoo" ]; then
   #disk=sdd
   sudo mkdir -p /mnt/gentoo
@@ -48,7 +48,7 @@ elif [ "$os" = "gentoo" ]; then
   sudo mount --rbind /sys /mnt/gentoo/sys
   echo 'export PS1="(gentoo-chroot) $PS1"'
 
-  sudo chroot /mnt/gentoo /bin/bash
+  sudo chroot /mnt/gentoo /bin/su - "$(id -un)"
 elif [ "$os" = "fedora" ]; then
   # disk=sdb
   sudo mkdir -p /mnt/fedora
@@ -69,7 +69,7 @@ elif [ "$os" = "fedora" ]; then
   sudo mount --rbind /run /mnt/fedora/root/run
 
   echo 'export PS1="(fedora-chroot) $PS1"'
-  sudo chroot /mnt/fedora/root /bin/bash
+  sudo chroot /mnt/fedora/root /bin/su - "$(id -un)"
   # echo source /etc/profile
 elif [ "$os" = "ubuntu" ]; then
   # disk=sdc
@@ -86,7 +86,7 @@ elif [ "$os" = "ubuntu" ]; then
   sudo mount --rbind /sys /mnt/ubuntu/sys
 
   echo 'export PS1="(ubuntu-chroot) $PS1"'
-  sudo chroot /mnt/ubuntu /bin/bash
+  sudo chroot /mnt/ubuntu /bin/su - "$(id -un)"
 elif [ "$os" = "archlinux" ]; then 
   # disk=sdb
   sudo mkdir -p /mnt/archlinux
@@ -102,7 +102,7 @@ elif [ "$os" = "archlinux" ]; then
   sudo mount --rbind /sys /mnt/archlinux/sys
 
   echo 'export PS1="(archlinux-chroot) $PS1"'
-  sudo chroot /mnt/archlinux /bin/bash
+  sudo chroot /mnt/archlinux /bin/su - "$(id -un)"
 else
   echo "chose the correct os."
 fi
