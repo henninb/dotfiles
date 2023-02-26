@@ -46,9 +46,9 @@ sudo usermod -a -G pulse-access "$(id -un)"
 sudo usermod -a -G audio "$(id -un)"
 
 # manually start
-# if ! pgrep pulseaudio; then
-#   pulseaudio --start
-# fi
+if ! pgrep pulseaudio; then
+  echo pulseaudio --start
+fi
 
 echo pactl list short sinks
 pactl list short sinks
