@@ -17,6 +17,8 @@ if command -v camcontrol; then
   sudo lklfuse -o type=ext4 /dev/ada0p3 /mnt/archlinux
 fi
 
+lsblk -o UUID,MOUNTPOINT > $HOME/tmp/lsblk.txt
+
 if [ "$os" = "voidlinux" ]; then
   # disk=nvme0n1
   sudo mkdir -p /mnt/voidlinux
@@ -72,31 +74,20 @@ elif [ "$os" = "fedora" ]; then
   sudo chroot /mnt/fedora/root /bin/su - "$(id -un)"
   # echo source /etc/profile
 elif [ "$os" = "ubuntu" ]; then
-  if lsblk -o UUID,MOUNTPOINT | grep -q "a7bb907f-6870-40a6-af47-ac881e72caf2"; then
-    echo mounted /mnt/ubuntu
-  else
-    echo umounted /mnt/ubuntu
+  if [ "$(grep -c 'a7bb907f-6870-40a6-af47-ac881e72caf2 /mnt/ubuntu' $HOME/tmp/lsblk.txt)" -ne 1 ]; then
+    sudo mkdir -p /mnt/ubuntu 
+    sudo mount UUID=a7bb907f-6870-40a6-af47-ac881e72caf2 /mnt/ubuntu
+    sudo mkdir -p /mnt/ubuntu/boot/efi
+    sudo mount UUID=F577-6798 /mnt/ubuntu/boot/efi
+    cd /mnt/ubuntu
+    sudo mount -t proc none /mnt/ubuntu/proc
+    sudo mount --rbind /dev /mnt/ubuntu/dev
+    sudo mount --rbind /sys /mnt/ubuntu/sys
   fi
-  sudo mkdir -p /mnt/ubuntu 
-  sudo mount UUID=a7bb907f-6870-40a6-af47-ac881e72caf2 /mnt/ubuntu
-  # sudo mount /dev/${disk}3 /mnt/ubuntu
-  sudo mkdir -p /mnt/ubuntu/boot/efi
-  # sudo mount /dev/${disk}1 /mnt/ubuntu/boot/efi
-  sudo mount UUID=F577-6798 /mnt/ubuntu/boot/efi
-  cd /mnt/ubuntu
-
-  sudo mount -t proc none /mnt/ubuntu/proc
-  sudo mount --rbind /dev /mnt/ubuntu/dev
-  sudo mount --rbind /sys /mnt/ubuntu/sys
-
   echo 'export PS1="(ubuntu-chroot) $PS1"'
   sudo chroot /mnt/ubuntu /bin/su - "$(id -un)"
 elif [ "$os" = "archlinux" ]; then 
-  if lsblk -o UUID,MOUNTPOINT | grep -q "72ad4c57-06c1-41d6-a72f-34000c848126"; then
-    echo mounted /mnt/archlinux
-  else
-    echo unmounted /mnt/archlinux
-  fi
+  if [ "$(grep -c "72ad4c57-06c1-41d6-a72f-34000c848126" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/archlinux
     sudo mount UUID=72ad4c57-06c1-41d6-a72f-34000c848126 /mnt/archlinux
     sudo mkdir -p /mnt/archlinux/boot/efi
@@ -106,7 +97,7 @@ elif [ "$os" = "archlinux" ]; then
     sudo mount -t proc none /mnt/archlinux/proc
     sudo mount --rbind /dev /mnt/archlinux/dev
     sudo mount --rbind /sys /mnt/archlinux/sys
-
+  fi
   echo 'export PS1="(archlinux-chroot) $PS1"'
   sudo chroot /mnt/archlinux /bin/su - "$(id -un)"
   # sudo chroot /mnt/archlinux /bin/bash
