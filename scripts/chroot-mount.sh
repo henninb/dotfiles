@@ -27,7 +27,7 @@ if [ "$os" = "voidlinux" ]; then
   sudo mkdir -p /mnt/voidlinux/boot/efi
   # sudo mount /dev/${disk}p1 /mnt/voidlinux/boot/efi
   sudo mount UUID=F9D5-CA2F /mnt/voidlinux/boot/efi
-  cd /mnt/voidlinux || exit
+  # cd /mnt/voidlinux || exit
   sudo mount -t proc none /mnt/voidlinux/proc
   sudo mount --rbind /dev /mnt/voidlinux/dev
   sudo mount --rbind /sys /mnt/voidlinux/sys
@@ -54,7 +54,7 @@ elif [ "$os" = "fedora" ]; then
     sudo mkdir -p /mnt/fedora
     sudo mount UUID=722c5ee8-b300-4b51-86de-9221ebabc617 /mnt/fedora
     sudo mount UUID=906ecda7-1224-4533-9c0b-a5c070d3e68b /mnt/fedora/root/boot
-    cd /mnt/fedora || exit
+    # cd /mnt/fedora || exit
     sudo mount --rbind home /mnt/fedora/root/home
     sudo mount -t proc none /mnt/fedora/root/proc
     sudo mount --rbind /dev /mnt/fedora/root/dev
