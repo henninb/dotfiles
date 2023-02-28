@@ -20,14 +20,17 @@ fi
 lsblk -o UUID,MOUNTPOINT > $HOME/tmp/lsblk.txt
 
 if [ "$os" = "voidlinux" ]; then
-  sudo mkdir -p /mnt/voidlinux
-  sudo mount UUID=b09663a8-7ff5-42f5-b2ad-8ea0df1f18ff /mnt/voidlinux
-  sudo mkdir -p /mnt/voidlinux/boot/efi
-  sudo mount UUID=F9D5-CA2F /mnt/voidlinux/boot/efi
-  sudo mount -t proc none /mnt/voidlinux/proc
-  sudo mount --rbind /dev /mnt/voidlinux/dev
-  sudo mount --rbind /sys /mnt/voidlinux/sys
-
+  if [ "$(grep -c "b09663a8-7ff5-42f5-b2ad-8ea0df1f18ff /mnt/voidlinux" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
+    sudo mkdir -p /mnt/voidlinux
+    sudo mount UUID=b09663a8-7ff5-42f5-b2ad-8ea0df1f18ff /mnt/voidlinux
+    sudo mkdir -p /mnt/voidlinux/boot/efi
+    sudo mount -t proc none /mnt/voidlinux/proc
+    sudo mount --rbind /dev /mnt/voidlinux/dev
+    sudo mount --rbind /sys /mnt/voidlinux/sys
+    sudo mount UUID=F9D5-CA2F /mnt/voidlinux/boot/efi
+  else
+    echo already mounted
+  fi
   echo 'export PS1="(voidlinux-chroot) $PS1"'
   sudo chroot /mnt/voidlinux /bin/su - "$(id -un)"
 elif [ "$os" = "gentoo" ]; then
@@ -50,8 +53,8 @@ elif [ "$os" = "fedora" ]; then
     sudo mkdir -p /mnt/fedora
     sudo mount UUID=722c5ee8-b300-4b51-86de-9221ebabc617 /mnt/fedora
     sudo mount UUID=906ecda7-1224-4533-9c0b-a5c070d3e68b /mnt/fedora/root/boot
-    cd /mnt/fedora || exit
-    sudo mount --rbind home /mnt/fedora/root/home
+    # cd /mnt/fedora || exit
+    sudo mount --rbind /mnt/fedora/home /mnt/fedora/root/home
     sudo mount -t proc none /mnt/fedora/root/proc
     sudo mount --rbind /dev /mnt/fedora/root/dev
     sudo mount --rbind /sys /mnt/fedora/root/sys
@@ -82,7 +85,6 @@ elif [ "$os" = "archlinux" ]; then
     sudo mkdir -p /mnt/archlinux
     sudo mount UUID=72ad4c57-06c1-41d6-a72f-34000c848126 /mnt/archlinux
     sudo mkdir -p /mnt/archlinux/boot/efi
-    # cd /mnt/archlinux || exit
     sudo mount -t proc none /mnt/archlinux/proc
     sudo mount --rbind /dev /mnt/archlinux/dev
     sudo mount --rbind /sys /mnt/archlinux/sys
