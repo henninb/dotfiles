@@ -3,11 +3,16 @@
 sudo zypper install -y flex
 sudo zypper install -y libelf-devel
 
-VER=5.6.4
+VER=6.1.2
 if [ ! -f "linux-$VER.tar.xz" ]; then
-  wget "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$VER.tar.xz"
+  wget "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$VER.tar.xz" -O "$HOME/tmp/linux-$VER.tar.xz"
 fi
-tar xf "linux-$VER.tar.xz"
+
+sudo tar -xvf "$HOME/tmp/linux-$VER.tar.xz" -C /usr/src
+rm "$HOME/tmp/linux-$VER.tar.xz"
+
+# cd "$HOME/tmp" || exit
+# tar xf "$HOME/tmp/linux-$VER.tar.xz"
 cd "linux-$VER" || exit
 
 if [ ! -f .config ]; then
@@ -15,6 +20,8 @@ if [ ! -f .config ]; then
 fi
 
 make -j"$(nproc)"
+exit 1
+
 sudo make modules_install
 
 sudo cp System.map "/boot/System.map-$VER"
