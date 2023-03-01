@@ -13,7 +13,7 @@ rm "$HOME/tmp/linux-$VER.tar.xz"
 
 # cd "$HOME/tmp" || exit
 # tar xf "$HOME/tmp/linux-$VER.tar.xz"
-cd "linux-$VER" || exit
+cd "/usr/src/linux-$VER" || exit
 
 if [ ! -f .config ]; then
   make menuconfig
