@@ -13,5 +13,6 @@ dunst --version
 kitty --version
 nix-env --version
 starship --version
+arduino-cli version
 
 exit 0
