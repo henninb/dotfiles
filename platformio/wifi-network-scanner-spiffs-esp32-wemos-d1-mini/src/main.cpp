@@ -158,12 +158,12 @@ void loop() {
     }
     strftime(timestampString, sizeof(timestampString), "%Y-%m-%d %H:%M:%S", &timeinfo);
     for( int index = 0; index < networkCount; ++index ) {
-      String ssid = WiFi.SSID(index);
+      String my_ssid = WiFi.SSID(index);
       String bssid = WiFi.BSSIDstr(index);
       String channel = "";
       jsonStructure["timestamp"] = timestampString;
       if( ssid != NULL ) {
-        jsonStructure["ssid"] = ssid;
+        jsonStructure["ssid"] = my_ssid;
       } else {
         Serial.println("null ssid");
         jsonStructure["ssid"] = "";

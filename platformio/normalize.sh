@@ -25,6 +25,15 @@ for project in $projects; do
   if ! grep -q "#define uploadTimestamp" "$project/src/config.h" 2> /dev/null; then
     echo "#define uploadTimestamp \"\"" >> "$project/src/config.h"
   fi
+  if ! grep -q "#define ssid" "$project/src/config.h" 2> /dev/null; then
+    echo "#define ssid \"\"" >> "$project/src/config.h"
+  fi
+  if ! grep -q "#define password" "$project/src/config.h" 2> /dev/null; then
+    echo "#define password \"\"" >> "$project/src/config.h"
+  fi
+  if ! grep -q "#define mqttServer" "$project/src/config.h" 2> /dev/null; then
+    echo "#define mqttServer \"\"" >> "$project/src/config.h"
+  fi
   # echo "date=\$(shell date '+%Y-%m-%d %H:%M:%S')" |cat - "$project/Makefile" > /tmp/out && mv /tmp/out "$project/Makefile"
   cd "$project" || exit
   if make > /dev/null 2>&1; then
