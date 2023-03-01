@@ -9,5 +9,7 @@ alacritty --version
 keepassxc --version
 dzen2 -v
 netlify --version
+dunst --version
+kitty --version
 
 exit 0
