@@ -22,11 +22,16 @@ rm "$HOME/tmp/linux-$VER.tar.xz"
 # tar xf "$HOME/tmp/linux-$VER.tar.xz"
 cd "/usr/src/linux-$VER" || exit
 
+# cp /boot/config-$(uname -r) ${HOME}/kernel-xe-max/.config
+# sed -i 's%CONFIG_SYSTEM_TRUSTED_KEYS=".*"%CONFIG_SYSTEM_TRUSTED_KEYS=""%' ${HOME}/kernel-xe-max/.config
+# make olddefconfig
+
 if [ ! -f .config ]; then
   sudo make menuconfig
 fi
 
-sudo make -j"$(nproc)"
+#sudo make -j"$(nproc)"
+sudo make
 exit 1
 
 sudo make modules_install
