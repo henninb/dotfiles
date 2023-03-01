@@ -12,5 +12,6 @@ netlify --version
 dunst --version
 kitty --version
 nix-env --version
+starship --version
 
 exit 0
