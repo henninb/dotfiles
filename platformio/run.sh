@@ -12,13 +12,14 @@ sudo dnf install -y avrdude
 
 pip install platformio
 pip install esptool.py
+
+cd "$HOME/.local"
+curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+
 arduino-cli core update-index
 arduino-cli core install arduino:avr
 arduino-cli core install stm32duino:STM32F1
 arduino-cli core install esp32:esp32
 arduino-cli core install esp8266:esp8266
-
-cd "$HOME/.local"
-curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
 
 exit 0
