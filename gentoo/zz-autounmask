@@ -1,5 +1,9 @@
+# app-containers/snapd apparmor
+# media-sound/pulseaudio bluetooth
 app-admin/conky X apcupsd hddtemp ical bundled-toluapp truetype
+app-admin/keepassxc autotype browser yubikey
 app-arch/bzip2 abi_x86_32
+app-containers/podman rootless fuse
 app-crypt/gcr gtk
 app-crypt/pinentry gnome-keyring
 app-editors/emacs dynamic-loading X gui
@@ -8,99 +12,95 @@ app-editors/vim python
 app-emacs/emacs-common gui
 app-emulation/virt-manager usbredir gtk
 app-emulation/virt-viewer gtk
+app-misc/tmux vim-syntax
 app-text/ghostscript-gpl cups
+app-text/poppler qt5
 app-text/xmlto text
+dev-db/mongodb lto
 dev-db/postgresql uuid
 dev-db/sqlite secure-delete
 dev-java/openjdk gentoo-vm -alsa -cups -webstart
 dev-java/openjdk-bin gentoo-vm -alsa -cups -webstart
+dev-lang/mono minimal
 dev-lang/python sqlite
 dev-libs/boost icu
+dev-libs/boost python
+dev-libs/cyrus-sasl kerberos
+dev-libs/libdbusmenu gtk3
+dev-libs/libfmt recorder
 dev-libs/libpcre2 pcre32
 dev-libs/libusb udev
 dev-libs/openssl -bindist
+dev-libs/quazip qt5
+dev-libs/raft lz4
 dev-libs/xmlsec nss
 dev-lua/lpeg -luajit
 dev-lua/mpack -luajit
+dev-python/PyQt5 webchannel
 dev-python/docutils doc
+dev-python/numpy lapack
+dev-python/pillow webp
+dev-python/pyotherside qt5
 dev-qt/qtcore icu
 dev-qt/qtgui egl
 dev-qt/qtmultimedia qml widgets
 dev-qt/qtprintsupport cups
+dev-qt/qtquickcontrols2 widgets
+dev-qt/qtsql mysql
+dev-qt/qtwebengine widgets
+dev-util/astyle java
 dev-util/ostree curl
+dev-util/xdelta lzma
 gnome-base/gnome-control-center networkmanager
 kde-frameworks/kconfig qml
 kde-frameworks/sonnet qml
 kde-misc/kdeconnect X bluetooth
+kde-misc/kdeconnect bluetooth
+media-gfx/feh xinerama
+media-libs/freetype brotli
 media-libs/gd fontconfig
 media-libs/harfbuzz icu
 media-libs/libpng apng
 media-libs/libsdl2 haptic
+media-libs/libsndfile minimal
 media-libs/libvpx postproc
+media-libs/mesa wayland
+media-libs/mlt qt5 ffmpeg frei0r
+media-libs/opencolorio -opengl
+media-libs/opencv contribdnn contrib qt5
+media-sound/pulseaudio-daemon bluetooth
 media-video/ffmpeg fdk x264 libv4l v4l blueray cdio gmp encode mp3 network openssl samba theora vpx opus libass
+media-video/mpv libmpv
+media-video/obs-studio speex ssl truetype v4l vlc
+media-video/pipewire X bluetooth dbus extra flatpak systemd
+net-analyzer/wireshark gtk qt5
+net-dns/avahi mdnsresponder-compat
 net-dns/dnsmasq script
 net-fs/samba client
+net-libs/zeromq drafts
 net-misc/spice-gtk usbredir
+net-wireless/gnuradio network
+net-wireless/gr-osmosdr rtlsdr
 sys-apps/flatpak gtk introspection policykit seccomp
+sys-apps/pcsc-lite systemd
+sys-apps/systemd policykit apparmor
 sys-apps/util-linux static-libs tty-helpers
 sys-auth/pambase elogind
 sys-auth/polkit elogind
+sys-boot/grub mount
+sys-boot/plymouth -udev
 sys-devel/clang xml
+sys-devel/llvm -doc zstd
+sys-fs/lvm2 thin
+sys-fs/squashfs-tools lzma lzo
+sys-libs/libcap static-libs
+sys-libs/libseccomp static-libs
+sys-libs/libseccomp static-libs
+sys-libs/ncurses -gpm
 sys-libs/zlib abi_x86_32 minizip
 virtual/libusb udev
 www-client/w3m imlib
-x11-misc/dzen xpm xinerama
-media-video/obs-studio speex ssl truetype v4l vlc
-# app-containers/snapd apparmor
-dev-libs/cyrus-sasl kerberos
-sys-libs/ncurses -gpm
-sys-boot/plymouth -udev
-media-libs/libsndfile minimal
-# media-sound/pulseaudio bluetooth
-media-sound/pulseaudio-daemon bluetooth
-sys-fs/squashfs-tools lzma lzo
-sys-libs/libseccomp static-libs
-kde-misc/kdeconnect bluetooth
-sys-apps/systemd policykit apparmor
-sys-libs/libseccomp static-libs
-media-libs/mlt qt5 ffmpeg frei0r
-media-libs/opencv contribdnn contrib qt5
-dev-libs/libdbusmenu gtk3
-media-libs/mesa wayland
-x11-libs/gtk+ wayland
-dev-libs/libfmt recorder
-media-libs/opencolorio -opengl
-media-video/mpv libmpv
-net-analyzer/wireshark gtk qt5
-net-libs/zeromq drafts
-dev-python/PyQt5 webchannel
-dev-qt/qtwebengine widgets
 www-servers/nginx debug http-cache http http2 ssl rtmp
-sys-libs/libcap static-libs
-dev-libs/raft lz4
-dev-util/xdelta lzma
-dev-db/mongodb lto
-app-misc/tmux vim-syntax
-dev-libs/quazip qt5
-media-libs/freetype brotli
-dev-libs/boost python
-dev-python/pillow webp
+x11-libs/gtk+ wayland
 x11-libs/wxGTK gstreamer
-dev-python/numpy lapack
-net-wireless/gnuradio network
-net-wireless/gr-osmosdr rtlsdr
-media-gfx/feh xinerama
-app-admin/keepassxc autotype browser yubikey
-sys-devel/llvm -doc zstd
-media-video/pipewire X bluetooth dbus extra flatpak systemd
-net-dns/avahi mdnsresponder-compat
-dev-lang/mono minimal
-app-containers/podman rootless fuse
-app-text/poppler qt5
-dev-qt/qtsql mysql
-sys-fs/lvm2 thin
-sys-boot/grub mount
-dev-python/pyotherside qt5
-dev-qt/qtquickcontrols2 widgets
-# sys-apps/systemd-utils -udev
-sys-apps/pcsc-lite systemd
+x11-misc/dzen xpm xinerama

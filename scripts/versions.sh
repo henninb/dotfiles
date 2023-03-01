@@ -11,5 +11,6 @@ dzen2 -v
 netlify --version
 dunst --version
 kitty --version
+nix-env --version
 
 exit 0
