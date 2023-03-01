@@ -10,11 +10,17 @@ sudo emerge --update --newuse sys-devel/crossdev
 
 sudo dnf install -y avrdude
 
-pip install platformio
-pip install esptool.py
+sudo xbps-install -y avr-gcc
+sudo xbps-install -y avrdude
+sudo xbps-install -y arduino-cli
 
-cd "$HOME/.local"
-curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+pip install platformio
+pip install esptool
+
+if ! command -v arduino-cli; then
+  cd "$HOME/.local"
+  curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+fi
 
 arduino-cli core update-index
 arduino-cli core install arduino:avr
