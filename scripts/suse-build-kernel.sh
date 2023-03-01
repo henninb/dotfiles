@@ -1,7 +1,14 @@
 #!/bin/sh
 
-sudo zypper install -y flex
-sudo zypper install -y libelf-devel
+if command -v zypper; then
+  sudo zypper install -y flex
+  sudo zypper install -y libelf-devel
+fi
+
+if command -v apt; then
+  sudo apt install -y libncurses-dev
+  sudo apt install -y libncurses-dev flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf
+fi
 
 VER=6.1.2
 if [ ! -f "linux-$VER.tar.xz" ]; then
@@ -16,10 +23,10 @@ rm "$HOME/tmp/linux-$VER.tar.xz"
 cd "/usr/src/linux-$VER" || exit
 
 if [ ! -f .config ]; then
-  make menuconfig
+  sudo make menuconfig
 fi
 
-make -j"$(nproc)"
+sudo make -j"$(nproc)"
 exit 1
 
 sudo make modules_install
