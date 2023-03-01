@@ -29,9 +29,11 @@ cd "/usr/src/linux-$VER" || exit
 if [ ! -f .config ]; then
   sudo make menuconfig
 fi
+sudo scripts/config --disable SYSTEM_TRUSTED_KEYS
+sudo scripts/config --disable SYSTEM_REVOCATION_KEYS
 
-#sudo make -j"$(nproc)"
-sudo make
+sudo make -j"$(nproc)"
+#sudo make
 exit 1
 
 sudo make modules_install
