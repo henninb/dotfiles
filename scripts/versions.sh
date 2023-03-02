@@ -15,5 +15,6 @@ nix-env --version
 starship --version
 arduino-cli version
 llvm-config --version
+pip --version
 
 exit 0
