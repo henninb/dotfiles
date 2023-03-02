@@ -14,5 +14,6 @@ kitty --version
 nix-env --version
 starship --version
 arduino-cli version
+clang --version
 
 exit 0
