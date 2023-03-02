@@ -6,7 +6,7 @@ EOF
 
 log="$(pwd)/compile.$$.log"
 
-projects=$(find . -mindepth 1 -maxdepth 1 -type d | sort)
+projects=$(find . -mindepth 1 -maxdepth 1 -type d | sort | grep -v wifi-repeater-esp32 | grep -v wifi-repeater-esp12 | grep -v micropython-esp32 | grep -v basic-attiny85)
 
 for project in $projects; do
   echo "$project"
