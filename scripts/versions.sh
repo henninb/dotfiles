@@ -16,5 +16,6 @@ starship --version
 arduino-cli version
 llvm-config --version
 pip --version
+stack exec -- ghc --version
 
 exit 0

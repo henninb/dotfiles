@@ -184,6 +184,12 @@ else
   nix-env -u '.*'
 fi
 
+cargo install starship
+cargo install alacritty
+cargo install du-dust
+cargo install bat
+cargo install ripgrep
+
 exit 0
 
 # vim: set ft=sh:
