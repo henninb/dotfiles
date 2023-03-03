@@ -32,6 +32,17 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt isntall -y ninja
   # sudo python3 -m pip install ninja
   # sudo python3 -m pip install meson
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper install -y cmake
+  sudo zypper install -y xcb-util-renderutil-devel
+  sudo zypper install -y xcb-util-image-devel
+  sudo zypper install -y meson
+  sudo zypper install -y ninja
+  sudo zypper install -y pcre-devel
+  sudo zypper install -y uthash-devel
+  sudo zypper install -y libev-devel
+  sudo zypper install -y libconfig-devel
+  sudo zypper install -y dbus-1-devel
 elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y ninja
   sudo xbps-install -y meson
@@ -44,7 +55,6 @@ elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y xcb-util-image-devel
   sudo xbps-install -y xcb-util-composite-devel
 elif [ "$OS" = "Fedora Linux" ]; then
-  test
   sudo dnf install -y ninja
   sudo dnf install -y meson
   sudo dnf install -y libev-devel
