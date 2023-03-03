@@ -2,16 +2,15 @@
 
 if command -v emerge; then
   sudo emerge --update --newuse dev-libs/hidapi
-fi
-
-if command -v apt; then
+elif command -v zypper; then
+  sudo zypper install -y libhidapi-devel
+  sudo zypper install -y python-devel
+elif command -v apt; then
   sudo apt install -y python-dev-is-python3
   sudo apt install -y libhidapi-libusb0 
   sudo apt install -y libxcb-xinerama0
   sudo apt install -y libhidapi-dev
-fi
-
-if command -v dnf; then
+elif command -v dnf; then
   sudo dnf install -y libusb1-devel
   sudo dnf install -y libgudev-devel
   sudo dnf install -y hidapi-devel
@@ -24,9 +23,7 @@ if command -v dnf; then
   sudo dnf install -y libxc-devel
   sudo dnf install -y systemd-devel
   sudo dnf install -y zlib-devel
-fi
-
-if command -v xbps-install; then
+elif command -v xbps-install; then
   # sudo xbps-install -y elogind
   sudo xbps-install -y hidapi-devel
   # sudo ln -sfn /etc/sv/elogind /var/service/elogind
