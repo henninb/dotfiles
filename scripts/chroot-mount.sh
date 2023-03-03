@@ -38,7 +38,7 @@ elif [ "$os" = "gentoo" ]; then
     sudo mkdir -p /mnt/gentoo
     sudo mount UUID=6d8ab46d-3e64-4ee5-b6e2-940433d01d56 /mnt/gentoo
     sudo mkdir -p /mnt/gentoo/boot/efi
-    cd /mnt/gentoo || exit
+    # cd /mnt/gentoo || exit
     sudo mount -t proc none /mnt/gentoo/proc
     sudo mount --rbind /dev /mnt/gentoo/dev
     sudo mount --rbind /sys /mnt/gentoo/sys
@@ -48,6 +48,20 @@ elif [ "$os" = "gentoo" ]; then
   fi
   echo 'export PS1="(gentoo-chroot) $PS1"'
   sudo chroot /mnt/gentoo /bin/su - "$(id -un)"
+elif [ "$os" = "suse" ]; then
+  if [ "$(grep -c "e32f1feb-04d6-4900-92dd-f54fb11218cc /mnt/suse" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
+    sudo mkdir -p /mnt/suse
+    sudo mount UUID=e32f1feb-04d6-4900-92dd-f54fb11218cc /mnt/suse
+    sudo mkdir -p /mnt/suse/boot/efi
+    sudo mount -t proc none /mnt/suse/proc
+    sudo mount --rbind /dev /mnt/suse/dev
+    sudo mount --rbind /sys /mnt/suse/sys
+    sudo mount UUID=CC04-C5EF /mnt/suse/boot/efi
+  else
+    echo already mounted
+  fi
+  echo 'export PS1="(suse-chroot) $PS1"'
+  sudo chroot /mnt/suse /bin/su - "$(id -un)"
 elif [ "$os" = "fedora" ]; then
   if [ "$(grep -c "722c5ee8-b300-4b51-86de-9221ebabc617 /mnt/fedora" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/fedora
