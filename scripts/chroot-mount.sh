@@ -56,6 +56,7 @@ elif [ "$os" = "suse" ]; then
     sudo mount -t proc none /mnt/suse/proc
     sudo mount --rbind /dev /mnt/suse/dev
     sudo mount --rbind /sys /mnt/suse/sys
+    #sudo mount UUID=c9541e18-d4ee-4cec-a247-d9870b2b93d0 /mnt/suse/home
     sudo mount UUID=CC04-C5EF /mnt/suse/boot/efi
   else
     echo already mounted
