@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat > "$HOME/tmp/config.mk" <<EOF
+cat > "$HOME/tmp/config.mk" <<'EOF'
 VERSION = 0.9.5-svn
 
 # DPKG build flags:
@@ -23,15 +23,6 @@ LIBS += -L/usr/lib -lc -L${X11LIB} -lX11 -lXinerama -lXpm `pkg-config --libs xft
 CFLAGS += -Wall -Os ${INCS} -DVERSION=\"${VERSION}\" -DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT `pkg-config --cflags xft`
 
 LDFLAGS += ${LIBS}
-
-# Solaris, uncomment for Solaris
-#CFLAGS = -fast ${INCS} -DVERSION=\"${VERSION}\"
-#LDFLAGS = ${LIBS}
-#CFLAGS += -xtarget=ultra
-
-# Debugging
-#CFLAGS = ${INCS} -DVERSION=\"${VERSION}\" -std=gnu89 -pedantic -Wall -W -Wundef -Wendif-labels -Wshadow -Wpointer-arith -Wbad-function-cast -Wcast-align -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -Winline -Wdisabled-optimization -O2 -pipe -DDZEN_XFT `pkg-config --cflags xft`
-#LDFLAGS = ${LIBS}
 
 CC = gcc
 LD = ${CC}
@@ -56,11 +47,13 @@ mkdir -p "$HOME/projects/github.com/minos-org"
 cd "$HOME/projects/github.com/minos-org" || exit
 git clone https://github.com/minos-org/dzen2.git
 cd "$HOME/projects/github.com/minos-org/dzen2" || exit
+cp "$HOME/tmp/config.mk" .
 make clean
 # make CFLAGS='-Wall -Os -DVERSION=\"${VERSION}\" -DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT -I/usr/include/freetype2'
 make
 ./dzen2 -v
 ls -l dzen2
+# sudo make install
 
 echo
 echo
@@ -69,12 +62,14 @@ echo
 mkdir -p "$HOME/projects/github.com/robm"
 cd "$HOME/projects/github.com/robm" || exit
 git clone https://github.com/robm/dzen.git
-cd dzen || exit
+cd "$HOME/projects/github.com/robm/dzen" || exit
+cp "$HOME/tmp/config.mk" .
 # sudo make -DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT clean install
 make clean
 # make CFLAGS='-DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT'
 make
 ./dzen2 -v
 ls -l dzen2
+# sudo make install
 
 exit 0
