@@ -17,5 +17,6 @@ arduino-cli version
 llvm-config --version
 pip --version
 stack exec -- ghc --version
+conky -version | head -1
 
 exit 0
