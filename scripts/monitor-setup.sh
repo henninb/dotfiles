@@ -13,7 +13,7 @@ Section "Monitor"
 EndSection
 EOF
 
-cat << EOF > "$HOME/tmp/10-monitor.conf"
+cat << EOF > "$HOME/tmp/20-monitor.conf"
 Section "Monitor"
   Identifier "Monitor0"
   Modeline "3840x2160_60.00"  712.34  3840 4152 4576 5312  2160 2161 2164 2235  -HSync +Vsync
@@ -27,6 +27,14 @@ Section "Screen"
     Depth 24
     Modes "3840x2160_60.00"
   EndSubSection
+EndSection
+EOF
+
+cat << EOF > "$HOME/tmp/10-monitor.conf"
+Section "Monitor"
+    Identifier "HDMI-0"
+    ModelName "LG"
+    Modeline "3840x2160_60.00"  712.34  3840 4152 4576 5312  2160 2161 2164 2235  -HSync +Vsync
 EndSection
 EOF
 
