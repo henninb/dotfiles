@@ -4,6 +4,8 @@
 
 ARCHLINUX_PKGS="meld blender pcmanfm dbeaver vscode discord wireshark-qt i3lock thunar meld xorg-server xlockmore vlc riot-desktop dbeaver handbrake feh dolphin-emu gqrx gitk audacity zathura sxiv mpv gimp inkscape brave fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio celluloid libva-vdpau-driver libvdpau-va-gl vdpauinfo mesa-vdpau libva-utils openshot cantata notepadqq qalculate-gtk gparted steam gnome-disk-utility lutris xca"
 
+SUSE_PKGS=""
+
 MINT_PKGS="qalculate thunar meld vlc riot-desktop handbrake dolphin-emu xterm rofi feh suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious gitk audacity gqrx-sdr gimp inkscape gnome-mpv openshot vulkan-utils basilisk"
 
 CENTOS_PKGS="vlc firefox riot-desktop handbrake dolphin-emu gvim terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious rxvt gimp inkscape"
