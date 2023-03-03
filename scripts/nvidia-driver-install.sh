@@ -110,6 +110,9 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo cp -v "$HOME/tmp/nvidia-installer-disable-nouveau.conf" /etc/modeprobe.d/
   sudo cp -v "$HOME/tmp/xorg.conf" /etc/X11/xorg.conf
   #sudo pacman -S nvidia lib32-nvidia-utils  --overwrite '*'
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper install -y kernel-source
+  echo sudo systemctl set-default graphical.target
 elif [ "$OS" = "Fedora Linux" ]; then
   echo 'https://phoenixnap.com/kb/fedora-nvidia-drivers'
   sudo dnf remove xorg-x11-drv-nouveau
