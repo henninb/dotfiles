@@ -1,6 +1,6 @@
 sudo parted /dev/nvme0n1 mklabel gpt
 sudo parted /dev/nvme0n1 mkpart primary 1 1024
-sudo parted /dev/nvme0n1 mkpart "EFI system partition" fat32 1MiB
+sudo parted /dev/nvme0n1 mkpart "EFI system" fat32 1MiB
 sudo parted /dev/nvme0n1 mkpart primary 1024 100%
 
 sudo parted /dev/nvme0n1 mkpart primary fat32 1 1024
