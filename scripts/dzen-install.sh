@@ -19,7 +19,7 @@ git clone https://github.com/minos-org/dzen2.git
 cd "$HOME/projects/github.com/minos-org/dzen2" || exit
 # sudo make clean install
 # sudo make -DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT clean install
-#make CFLAGS='-DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT'
+make CFLAGS='-DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT'
 #sudo make
 ./dzen2 -v
 ls -l dzen2
