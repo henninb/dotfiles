@@ -674,3 +674,6 @@ sudo tune2fs -l /dev/sdb2 |grep "^Block size:"
 
 ## locate files
 locate libstdc++.so
+
+## conky test
+conky -c ~/.config/conky/xmonad-bar-top-right  | dzen2 -dock -title-name top-right -p -x 1925 -ta r  -fg '#DDEEFF' -bg '#320C2D' -fn '-*-terminus-*-r-normal-*-18-*-*-*-*-*-*-*'
