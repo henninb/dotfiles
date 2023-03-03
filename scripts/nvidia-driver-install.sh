@@ -112,6 +112,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   #sudo pacman -S nvidia lib32-nvidia-utils  --overwrite '*'
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y kernel-source
+  sudo zypper install -y libva-utils
   echo sudo systemctl set-default graphical.target
 elif [ "$OS" = "Fedora Linux" ]; then
   echo 'https://phoenixnap.com/kb/fedora-nvidia-drivers'
