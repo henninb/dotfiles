@@ -19,7 +19,10 @@ git clone https://github.com/minos-org/dzen2.git
 cd "$HOME/projects/github.com/minos-org/dzen2" || exit
 # sudo make clean install
 # sudo make -DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT clean install
-make CFLAGS='-DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT'
+#make CFLAGS='-DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT'
+# make LDFLAGS='-lXinerama -lXpm'
+make clean
+make
 #sudo make
 ./dzen2 -v
 ls -l dzen2
@@ -30,8 +33,9 @@ git clone https://github.com/robm/dzen.git
 cd dzen || exit
 # sudo make clean install
 # sudo make -DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT clean install
-#make clean
-make CFLAGS='-DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT'
+make clean
+# make CFLAGS='-DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT'
+make CFLAGS='-Wall -Os -DVERSION=\"${VERSION}\" -DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT'
 ./dzen2 -v
 ls -l dzen2
 
