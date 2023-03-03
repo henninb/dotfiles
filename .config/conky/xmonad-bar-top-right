@@ -1,5 +1,5 @@
 conky.config = {
-  pixelsize = 8,
+--  pixelsize = 8,
   background  = false,
   out_to_console = true,
   out_to_x = false,

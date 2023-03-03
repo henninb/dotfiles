@@ -104,7 +104,7 @@ elif [ "${OS}" = "FreeBSD" ]; then
   echo "https://community.kde.org/FreeBSD/Setup#SDDM"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y sddm
-  sudo zypper install -y sddm-themes
+  # sudo zypper install -y sddm-themes
   sudo cp -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
   sudo cp -v "$HOME/tmp/sddm-theme.conf" /usr/lib/sddm/sddm.conf.d/sddm-theme.conf
   sudo cp -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
