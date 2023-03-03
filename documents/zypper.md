@@ -27,3 +27,9 @@ warning: error: unable to download 'https://cache.nixos.org/s469v52vf927f6y8dyim
 warning: error: unable to download 'https://cache.nixos.org/s469v52vf927f6y8dyim2m56fh328q1l.narinfo': SSL connect error (35); retrying in 1040 ms
 warning: error: unable to download 'https://cache.nixos.org/s469v52vf927f6y8dyim2m56fh328q1l.narinfo': SSL connect error (35); retrying in 2598 ms
 error: unable to download 'https://cache.nixos.org/s469v52vf927f6y8dyim2m56fh328q1l.narinfo': SSL connect error (35)
+
+Self resolved. It worked after running sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf.
+
+/etc/nix/nix.conf:
+
+sudo nix-channel --update
