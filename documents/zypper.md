@@ -18,3 +18,12 @@ Repository priorities are without effect. All enabled repositories share the sam
 5 | openSUSE-20200318-0              | openSUSE-20200318-0                             | No      | ----      | ----
 6 | repo-debug                       | openSUSE-Tumbleweed-Debug                       | Yes     | (r ) Yes  | Yes
 7 | repo-source                      | openSUSE-Tumbleweed-Source                      | Yes     | (r ) Yes  | Yes
+
+
+nix-env -i dzen2
+installing 'dzen2-0.9.5'
+warning: error: unable to download 'https://cache.nixos.org/s469v52vf927f6y8dyim2m56fh328q1l.narinfo': SSL connect error (35); retrying in 255 ms
+warning: error: unable to download 'https://cache.nixos.org/s469v52vf927f6y8dyim2m56fh328q1l.narinfo': SSL connect error (35); retrying in 685 ms
+warning: error: unable to download 'https://cache.nixos.org/s469v52vf927f6y8dyim2m56fh328q1l.narinfo': SSL connect error (35); retrying in 1040 ms
+warning: error: unable to download 'https://cache.nixos.org/s469v52vf927f6y8dyim2m56fh328q1l.narinfo': SSL connect error (35); retrying in 2598 ms
+error: unable to download 'https://cache.nixos.org/s469v52vf927f6y8dyim2m56fh328q1l.narinfo': SSL connect error (35)
