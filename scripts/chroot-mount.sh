@@ -49,14 +49,13 @@ elif [ "$os" = "gentoo" ]; then
   echo 'export PS1="(gentoo-chroot) $PS1"'
   sudo chroot /mnt/gentoo /bin/su - "$(id -un)"
 elif [ "$os" = "suse" ]; then
-  if [ "$(grep -c "e32f1feb-04d6-4900-92dd-f54fb11218cc /mnt/suse" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
+  if [ "$(grep -c "c9541e18-d4ee-4cec-a247-d9870b2b93d0 /mnt/suse" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/suse
-    sudo mount UUID=e32f1feb-04d6-4900-92dd-f54fb11218cc /mnt/suse
+    sudo mount UUID=c9541e18-d4ee-4cec-a247-d9870b2b93d0 /mnt/suse
     sudo mkdir -p /mnt/suse/boot/efi
     sudo mount -t proc none /mnt/suse/proc
     sudo mount --rbind /dev /mnt/suse/dev
     sudo mount --rbind /sys /mnt/suse/sys
-    #sudo mount UUID=c9541e18-d4ee-4cec-a247-d9870b2b93d0 /mnt/suse/home
     sudo mount UUID=CC04-C5EF /mnt/suse/boot/efi
   else
     echo already mounted

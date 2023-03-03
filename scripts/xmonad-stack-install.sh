@@ -110,6 +110,9 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y yubikey-manager-qt
   sudo apt install -y zenity
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper addrepo https://download.opensuse.org/repositories/devel:tools/openSUSE_Tumbleweed/devel:tools.repo
+  sudo zypper refresh
+  #sudo zypper install -y linux-tools
   sudo zypper install -y NetworkManager-applet
   sudo zypper install -y ncurses-devel
   sudo zypper install -y xorg-x11

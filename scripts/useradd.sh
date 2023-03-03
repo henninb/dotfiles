@@ -80,6 +80,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo usermod -a -G activemq "$(id -un)"
   sudo usermod -a -G kafka "$(id -un)"
   sudo usermod -a -G docker "$(id -un)"
+  sudo usermod -a -G systemd-journal "$(id -un)"
   echo "audio?"
 elif [ "$OS" = "Fedora Linux" ]; then
   id -g wheel >/dev/null 2>&1 || sudo groupadd wheel

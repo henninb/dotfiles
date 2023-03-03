@@ -106,7 +106,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y sddm
   sudo zypper install -y sddm-themes
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
-  sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
+  #sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
+  sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
   sudo systemctl enable sddm.service --now
   sudo systemctl set-default graphical
 elif [ "$OS" = "Fedora Linux" ]; then
