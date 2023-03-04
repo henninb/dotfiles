@@ -134,6 +134,13 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y kernel-devel
   rpm -qa | grep -E "kernel-devel|kernel-headers"
   sudo dnf install "kernel-devel-uname-r == $(uname -r)"
+elif [ "$OS" = "Ubuntu" ]; then
+  sudo add-apt-repository ppa:graphics-drivers/ppa
+  sudo apt install -y libvulkan-dev
+  sudo apt install -y libvulkan1 
+  sudo apt install -y mesa-vulkan-drivers
+  sudo apt install -y vulkan-utils
+  # sudo apt install nvidia-graphics-drivers-396 nvidia-settings vulkan vulkan-utils
 elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y xtools
   git clone git@github.com:void-linux/void-packages.git
