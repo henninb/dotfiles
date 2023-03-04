@@ -5,6 +5,7 @@ if [ -x "$(command -v pacman)" ]; then
 elif [ -x "$(command -v emerge)" ]; then
   echo
 elif [ -x "$(command -v apt)" ]; then
+  sudo apt install libfreetype-dev cmake libfontconfig-dev
   sudo apt install -y libxcb-shape0-dev
   sudo apt install -y libxcb-xfixes0-dev
   sudo apt install -y libxkbcommon-dev
