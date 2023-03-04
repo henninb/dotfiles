@@ -56,6 +56,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   nix-env -i volumeicon
   nix-env -i wmname
   nix-shell -p copyq
+  nix-shell -p browsh
 else
   echo 'OS not configured'
 fi
