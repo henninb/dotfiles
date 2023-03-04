@@ -58,6 +58,7 @@ menuentry "Debian GNU/Linux, linux 2.6.26-2-xen-686" {
 ```
 sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 sudo grubby --default-kernel
 sudo grubby --info=ALL
 sudo grub2-set-default 1
