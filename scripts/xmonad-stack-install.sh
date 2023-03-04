@@ -113,7 +113,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper addrepo --refresh https://download.nvidia.com/opensuse/tumbleweed NVIDIA
   sudo zypper addrepo https://download.opensuse.org/repositories/security/openSUSE_Tumbleweed/security.repo
   sudo zypper addrepo https://download.opensuse.org/repositories/home:X0F:HSF/openSUSE_Tumbleweed/home:X0F:HSF.repo
-  # sudo zypper addrepo https://download.opensuse.org/repositories/devel:tools/openSUSE_Tumbleweed/devel:tools.repo
+  sudo zypper addrepo https://download.opensuse.org/repositories/X11:Utilities/openSUSE_Tumbleweed/X11:Utilities.repo
   sudo zypper refresh
   #sudo zypper install -y linux-tools
   sudo zypper install -y NetworkManager-applet
@@ -191,7 +191,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y sxiv
   sudo zypper install -y thunar
   sudo zypper install -y tmux
-  # sudo zypper install -y trayer
+  sudo zypper install -y trayer-srg
   sudo zypper install -y tree
   sudo zypper install -y vifm
   sudo zypper install -y vimb

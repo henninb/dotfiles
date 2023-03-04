@@ -2,6 +2,6 @@
 # resolver: lts-18.24
 # resolver: lts-19.16
 # https://www.stackage.org/
-resolver: lts-19.21
+resolver: lts-20.12
 packages:
 - .
