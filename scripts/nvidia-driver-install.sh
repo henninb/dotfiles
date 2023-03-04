@@ -85,14 +85,14 @@ NeedsTargets
 Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 EOF
 
-sudo mkdir -p /etc/modeprobe.d/
+sudo mkdir -p /etc/modprobe.d/
 
 if [ "$OS" = "Gentoo" ]; then
   echo eselect kernel list
   echo sudo emerge --update --newuse linux-headers
   echo sudo emerge --update --newuse x11-drivers/nvidia-drivers
   echo sudo emerge --update --newuse media-libs/vulkan-loader
-  sudo cp -v "$HOME/tmp/nvidia-installer-disable-nouveau.conf" /etc/modeprobe.d/
+  sudo cp -v "$HOME/tmp/nvidia-installer-disable-nouveau.conf" /etc/modprobe.d/
   sudo cp -v "$HOME/tmp/xorg.conf" /etc/X11/xorg.conf
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo mkdir -p /etc/pacman.d/hooks
@@ -107,7 +107,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S ttf-liberation
   sudo pacman --noconfirm --needed -S vulkan-headers
   sudo pacman -R amdvlk
-  sudo cp -v "$HOME/tmp/nvidia-installer-disable-nouveau.conf" /etc/modeprobe.d/
+  sudo cp -v "$HOME/tmp/nvidia-installer-disable-nouveau.conf" /etc/modprobe.d/
   sudo cp -v "$HOME/tmp/xorg.conf" /etc/X11/xorg.conf
   #sudo pacman -S nvidia lib32-nvidia-utils  --overwrite '*'
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
@@ -123,7 +123,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf remove xorg-x11-drv-nouveau
   echo /etc/default/grub
   echo GRUB_CMDLINE_LINUX="text rd.driver.blacklist=nouveau"
-  echosudo cp -v "$HOME/tmp/nvidia-installer-disable-nouveau.conf" /etc/modeprobe.d/blacklist.conf
+  echosudo cp -v "$HOME/tmp/nvidia-installer-disable-nouveau.conf" /etc/modprobe.d/blacklist.conf
   echo sudo grub2-mkconfig -o /boot/grub2/grub.cfg
   echo sudo dracut --force /boot/initramfs-$(uname -r).img $(uname -r)
   echo sudo systemctl set-default multi-user.target
