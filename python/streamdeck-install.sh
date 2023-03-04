@@ -1,14 +1,17 @@
 #!/bin/sh
 
-wget https://www.python.org/ftp/python/3.9.16/Python-3.9.16.tgz
-tar xzf Python-3.9.16.tgz 
-rm Python-3.9.16.tgz
-cd Python-3.9.16 
-sudo ./configure --enable-optimizations 
-sudo make altinstall
-python3.9 -V
+if ! command -v python3.9; then
+  wget https://www.python.org/ftp/python/3.9.16/Python-3.9.16.tgz
+  tar xzf Python-3.9.16.tgz 
+  rm Python-3.9.16.tgz
+  cd Python-3.9.16 
+  sudo ./configure --enable-optimizations 
+  sudo make altinstall
+  python3.9 -V
 echo pipenv install --python 3.9.16
+fi
 pip install virtualenv
+mkdir -p streamdeck-env
 virtualenv -p $(which python3.9) streamdeck-env
 #python3 -m venv streamdeck
 
