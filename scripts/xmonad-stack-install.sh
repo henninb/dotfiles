@@ -110,7 +110,10 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y yubikey-manager-qt
   sudo apt install -y zenity
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo zypper addrepo https://download.opensuse.org/repositories/devel:tools/openSUSE_Tumbleweed/devel:tools.repo
+  sudo zypper addrepo --refresh https://download.nvidia.com/opensuse/tumbleweed NVIDIA
+  sudo zypper addrepo https://download.opensuse.org/repositories/security/openSUSE_Tumbleweed/security.repo
+  sudo zypper addrepo https://download.opensuse.org/repositories/home:X0F:HSF/openSUSE_Tumbleweed/home:X0F:HSF.repo
+  # sudo zypper addrepo https://download.opensuse.org/repositories/devel:tools/openSUSE_Tumbleweed/devel:tools.repo
   sudo zypper refresh
   #sudo zypper install -y linux-tools
   sudo zypper install -y NetworkManager-applet

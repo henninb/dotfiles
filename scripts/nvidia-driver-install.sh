@@ -113,6 +113,10 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y kernel-source
   sudo zypper install -y libva-utils
+  sudo zypper install -y kernel-devel kernel-source gcc make dkms acpid libglvnd libglvnd-devel
+  sudo zypper install -y libvdpau1 libva-vdpau-driver libva-utils
+  echo "blacklist nouveau" | sudo tee -a /etc/modprobe.d/blacklist.conf
+  # zypper se x11-video-nvidiaG0* nvidia-video-G03*
   echo sudo systemctl set-default graphical.target
 elif [ "$OS" = "Fedora Linux" ]; then
   echo 'https://phoenixnap.com/kb/fedora-nvidia-drivers'

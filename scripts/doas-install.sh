@@ -9,6 +9,10 @@ if command -v pacman; then
   sudo pacman --noconfirm --needed -S doas
 elif command -v emerge; then
   sudo emerge --update --newuse doas
+elif command -v zypper; then
+  sudo zypper addrepo https://download.opensuse.org/repositories/security/openSUSE_Tumbleweed/security.repo
+  sudo zypper refresh
+  sudo zypper install -y opendoas
 elif command -v apt; then
   sudo apt install -y doas
 elif command -v xbps-install; then
@@ -17,8 +21,6 @@ elif command -v eopkg; then
   echo "solus"
 elif command -v dnf; then
   sudo dnf install -y doas
-elif command -v zypper; then
-  sudo zypper install -y doas
 elif command -v brew; then
   echo "macos"
 else

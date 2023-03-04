@@ -4,7 +4,7 @@
 
 ARCHLINUX_PKGS="meld blender pcmanfm dbeaver vscode discord wireshark-qt i3lock thunar meld xorg-server xlockmore vlc riot-desktop dbeaver handbrake feh dolphin-emu gqrx gitk audacity zathura sxiv mpv gimp inkscape brave fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio celluloid libva-vdpau-driver libvdpau-va-gl vdpauinfo mesa-vdpau libva-utils openshot cantata notepadqq qalculate-gtk gparted steam gnome-disk-utility lutris xca"
 
-SUSE_PKGS=""
+SUSE_PKGS="blender wireshark audacity zathura inkscape hardinfo keepassxc gparted steam lutris xca kdeconnect-kde"
 
 MINT_PKGS="qalculate thunar meld vlc riot-desktop handbrake dolphin-emu xterm rofi feh suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious gitk audacity gqrx-sdr gimp inkscape gnome-mpv openshot vulkan-utils basilisk"
 
@@ -74,24 +74,6 @@ elif [ "$OS" = "Gentoo" ]; then
   if [ -z ${blender+x} ]; then echo "var is unset"; else sudo ln -sfn "${blender}" /usr/bin/blender; fi
   kdeconnect=$(find /usr/bin -name "kdeconnect-app")
   if [ -z ${kdeconnect+x} ]; then echo "var is unset"; else sudo ln -sfn "${kdeconnect}" /usr/bin/kdeconnect; fi
-elif [ "$OS" = "Linux Mint" ]; then
-  echo sudo apt-add-repository ppa:dolphin-emu/ppa
-#  wget -O - https://dbeaver.io/debs/dbeaver.gpg.key | sudo apt-key add -
-  # echo "deb https://dbeaver.io/debs/dbeaver-ce /" | sudo tee /etc/apt/sources.list.d/dbeaver.list
-  echo "deb https://deb.etcher.io stable etcher" | sudo tee /etc/apt/sources.list.d/balena-etcher.list
-  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
-  sudo add-apt-repository ppa:danielrichter2007/grub-customizer
-  sudo apt update
-  sudo apt install -y dbeaver-ce
-  sudo apt install -y balena-etcher-electron
-  sudo apt install -y grub-customizer
-  FAILURE=""
-  for i in $MINT_PKGS; do
-    if ! sudo apt install -y "$i"; then
-      FAILURE="$i $FAILURE"
-    fi
-  done
-  echo "failures $FAILURE"
 elif [ "$OS" = "Ubuntu" ]; then
   for i in $UBUNTU_PKGS; do
     if ! sudo apt install -y "$i"; then
@@ -119,6 +101,14 @@ elif [ "$OS" = "Linux Mint" ]; then
   FAILURE=""
   for i in $UBUNTU_PKGS; do
     if ! sudo apt install -y "$i"; then
+      FAILURE="$i $FAILURE"
+    fi
+  done
+  echo "failures $FAILURE"
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  FAILURE=""
+  for i in $SUSE_PKGS; do
+    if ! sudo zypper install -y "$i"; then
       FAILURE="$i $FAILURE"
     fi
   done

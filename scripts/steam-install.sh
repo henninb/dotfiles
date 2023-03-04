@@ -48,6 +48,10 @@ elif [ "$OS" = "Gentoo" ]; then
   #sudo emerge --update --newuse flatpak
   # flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   # flatpak install --user com.valvesoftware.Steam.flatpakref
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper addrepo https://download.opensuse.org/repositories/home:X0F:HSF/openSUSE_Tumbleweed/home:X0F:HSF.repo
+  sudo zypper refresh
+  sudo zypper install -y steam
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg install -y steam
 elif [ "$OS" = "Void" ]; then

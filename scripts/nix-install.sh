@@ -5,6 +5,8 @@ if command -v pacman; then
 elif command -v emerge; then
   echo "gentoo"
   sudo emerge --update --newuse rsync
+elif command -v zypper; then
+  echo "tumbleweed"
 elif command -v apt; then
   echo "debian"
 elif command -v xbps-install; then
@@ -14,8 +16,6 @@ elif command -v eopkg; then
   echo "solus"
 elif command -v dnf; then
   echo "fedora"
-elif command -v zypper; then
-  echo "tumbleweed"
 elif command -v brew; then
   echo "macos"
 else
@@ -39,7 +39,7 @@ echo 'nix-env -i newsboat'
 
 if [ "$OS" = "Ubuntu" ]; then
   nix-env -i lazygit
-  nix-env -i starship
+  # nix-env -i starship
   nix-env -i librewolf
   nix-env -i brave
   nix-env -i dbeaver
@@ -50,17 +50,19 @@ if [ "$OS" = "Ubuntu" ]; then
   nix-env -i ventoy-bin
   # nix-env -i bottles
   # nix-env -i alacritty
-fi
-
-if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   nix-env -i librewolf
   nix-env -i ventoy-bin
-fi
-
-if [ "$OS" = "openSUSE Tumbleweed" ]; then
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  echo installing
+  # nix-env -i conky
+  nix-env -i brave
+  nix-env -i librewolf
   nix-env -i volumeicon
   nix-env -i wmname
-  nix-shell -p copyq
+  # nix-shell -p copyq
+else
+  echo 'OS not configured'
 fi
 
 exit 0

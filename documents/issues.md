@@ -685,6 +685,8 @@ xhost si:localuser:root
 You can disable ipv6. I am currently using networking.enableIPv6 = false; to avoid this issue.
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
 
+## nix update
 nix-channel --update
-My problems came down to bad configuration of my dns and systemd-resolved (the default network config gave me trouble), maybe you have a similar but unrelated problem?
-https://www.ctrl.blog/entry/resolvconf-tutorial.html#:~:text=Opting%2Dout%20of%20netconfig&text=You%20can%20disable%20netconfig%20's,empty%20string%20as%20shown%20below.&text=Afterward%2C%20you%20should%20delete%20the,file%2C%20and%20reboot%20the%20system.
+
+## opensuse install nvidia
+https://www.if-not-true-then-false.com/2022/opensuse-nvidia-guide/

@@ -52,7 +52,6 @@ fi
 export OS
 export OS_VER
 
-
 [ -n "$STY" ] && export TERM="screen-256color"
 [ -n "$TMUX" ] && export TERM="xterm-256color"
 
@@ -298,6 +297,11 @@ p() {
         cd "$SRC/$dir"
     fi
 }
+
+# fix for nix SSL issue 2/4/2023
+if [ "$OS" = "openSUSE Tumbleweed" ]; then
+  export NIX_SSL_CERT_FILE=/var/lib/ca-certificates/ca-bundle.pem
+fi
 
 # fix for emacs tramp 10/25/2020
 [ "$TERM" = "dumb" ] && unsetopt zle && PS1='$ '
