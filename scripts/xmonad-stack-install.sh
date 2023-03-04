@@ -169,6 +169,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y ncdu
   sudo zypper install -y newsboat
   sudo zypper install -y nmap
+  sudo zypper install -y ntfs-3g
   sudo zypper install -y ntp
   sudo zypper install -y numlockx
   sudo zypper install -y os-prober
