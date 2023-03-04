@@ -37,6 +37,7 @@ HideUsers="intellij,firefox,tomcat,flatpak,kafka,activemq"
 RememberLastSession=true
 RememberLastUser=true
 ReuseSession=true
+InputMethod=
 
 [X11]
 DisplayCommand=/etc/sddm/scripts/Xsetup
