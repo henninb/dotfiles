@@ -299,6 +299,7 @@ sudo systemctl start lightdm.service
 ## To restore boot to Graphical
 ```
 sudo systemctl set-default graphical
+sudo systemctl set-default multi-user
 ```
 
 ## solus - shutoff the sleeps after 20 minutes
