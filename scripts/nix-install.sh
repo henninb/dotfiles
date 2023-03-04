@@ -51,6 +51,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   nix-env -i librewolf
   nix-env -i ventoy-bin
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper install -y ca-certificates-cacert
   sudo /sbin/update-ca-certificates
   nix-env -i brave
   nix-env -i librewolf
