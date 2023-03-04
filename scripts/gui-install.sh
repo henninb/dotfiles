@@ -4,23 +4,23 @@
 
 ARCHLINUX_PKGS="meld blender pcmanfm dbeaver vscode discord wireshark-qt i3lock thunar meld xorg-server xlockmore vlc riot-desktop dbeaver handbrake feh dolphin-emu gqrx gitk audacity zathura sxiv mpv gimp inkscape brave fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio celluloid libva-vdpau-driver libvdpau-va-gl vdpauinfo mesa-vdpau libva-utils openshot cantata notepadqq qalculate-gtk gparted steam gnome-disk-utility lutris xca"
 
-SUSE_PKGS="blender wireshark audacity zathura inkscape hardinfo keepassxc gparted steam lutris xca kdeconnect-kde"
+SUSE_PKGS="libreoffice qalculate blender wireshark audacity zathura inkscape hardinfo keepassxc gparted steam lutris xca kdeconnect-kde"
 
-MINT_PKGS="qalculate thunar meld vlc riot-desktop handbrake dolphin-emu xterm rofi feh suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious gitk audacity gqrx-sdr gimp inkscape gnome-mpv openshot vulkan-utils basilisk"
+MINT_PKGS="libreoffice qalculate thunar meld vlc riot-desktop handbrake dolphin-emu xterm rofi feh suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious gitk audacity gqrx-sdr gimp inkscape gnome-mpv openshot vulkan-utils basilisk"
 
-CENTOS_PKGS="vlc firefox riot-desktop handbrake dolphin-emu gvim terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious rxvt gimp inkscape"
+CENTOS_PKGS="lbbreoffice vlc firefox riot-desktop handbrake dolphin-emu gvim terminator feh dolphin suckless-tools qt5ct gnome-boxes cockpit seahorse mplayer audacious rxvt gimp inkscape"
 
-UBUNTU_PKGS="sxiv i3lock meld vlc handbrake feh gnome-boxes cockpit seahorse mplayer audacious gitk audacity gimp inkscape cpu-x kdenlive obs-studio mpv gnome-mpv lutris notepadqq xca gnome-disk-utility steam qalculate-gtk thunar hardinfo gparted blender zathura"
+UBUNTU_PKGS="libreoffice sxiv i3lock meld vlc handbrake feh gnome-boxes cockpit seahorse mplayer audacious gitk audacity gimp inkscape cpu-x kdenlive obs-studio mpv gnome-mpv lutris notepadqq xca gnome-disk-utility steam qalculate-gtk thunar hardinfo gparted blender zathura"
 
 FREEBSD_PKGS="sxiv i3lock qalculate keepassxc thunar meld vlc firefox handbrake dolphin-emu xterm audacity gimp inkscape mpv blender vscode libreoffice"
 
 GENTOO_PKGS="meld vlc blender handbrake thunar pcmanfm games-emulation/dolphin xterm audacity gimp inkscape kdenlive mpv media-video/obs-studio app-admin/keepassxc zathura net-im/zoom librewolf-bin wireshark libreoffice-bin slack vscodium sxiv qalculate-gtk hardinfo net-im/discord-bin media-video/celluloid kdeconnect gqrx steam gparted mysql mythtv gnome-disk-utility lutris xca nextcloud-client google-authenticator"
 
-VOID_PKGS="gimp incscape vlc handbrake audacity dolphin-emu zathura dbeaver mpv"
+VOID_PKGS="libreoffice gimp incscape vlc handbrake audacity dolphin-emu zathura dbeaver mpv"
 
-SOLUS_PKGS="meld gimp inkscape vlc handbrake audacity dolphin-emu zathura dbeaver gnome-mpv terminator mpv openshot"
+SOLUS_PKGS="libreoffice meld gimp inkscape vlc handbrake audacity dolphin-emu zathura dbeaver gnome-mpv terminator mpv openshot"
 
-FEDORA_PKGS="meld blender pcmanfm vscode discord wireshark i3lock thunar meld vlc HandBrake-gui dbeaver feh dolphin-emu gqrx gitk audacity zathura sxiv mpv gimp inkscape fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio celluloid libva-utils openshot cantata notepadqq qalculate-gtk gparted steam gnome-disk-utility lutris kde-connect xca"
+FEDORA_PKGS="lbireoffice meld blender pcmanfm vscode discord wireshark i3lock thunar meld vlc HandBrake-gui dbeaver feh dolphin-emu gqrx gitk audacity zathura sxiv mpv gimp inkscape fslint grub-customizer hardinfo ksystemlog keepassxc gufw libdvdcss kdenlive obs-studio celluloid libva-utils openshot cantata notepadqq qalculate-gtk gparted steam gnome-disk-utility lutris kde-connect xca"
 
 #MACOS_PKGS="alacritty iterm2"
 
