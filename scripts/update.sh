@@ -190,6 +190,16 @@ cargo install du-dust
 cargo install bat
 cargo install ripgrep
 
+go install github.com/jesseduffield/lazygit@latest
+# go env -w GO111MODULE=off
+# go get github.com/gokcehan/lf
+go install github.com/gokcehan/lf@latest
+go install github.com/charmbracelet/glow@latest
+go install github.com/gopasspw/gopass@latest
+go install github.com/moncho/dry@latest
+go install github.com/arduino/arduino-cli@latest
+go install github.com/Bios-Marcel/cordless@latest
+
 exit 0
 
 # vim: set ft=sh:

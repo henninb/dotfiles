@@ -150,6 +150,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y flameshot
   sudo zypper install -y gcc
   sudo zypper install -y gmp-devel
+  sudo zypper install -y golang
   sudo zypper install -y htop
   sudo zypper install -y i3lock
   sudo zypper install -y jq

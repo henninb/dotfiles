@@ -39,7 +39,6 @@ echo 'nix-env -i newsboat'
 
 if [ "$OS" = "Ubuntu" ]; then
   nix-env -i lazygit
-  # nix-env -i starship
   nix-env -i librewolf
   nix-env -i brave
   nix-env -i dbeaver
@@ -48,19 +47,15 @@ if [ "$OS" = "Ubuntu" ]; then
   nix-env -i keepassxc
   nix-env -i gqrx
   nix-env -i ventoy-bin
-  # nix-env -i bottles
-  # nix-env -i alacritty
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   nix-env -i librewolf
   nix-env -i ventoy-bin
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  echo installing
-  # nix-env -i conky
   nix-env -i brave
   nix-env -i librewolf
   nix-env -i volumeicon
   nix-env -i wmname
-  # nix-shell -p copyq
+  nix-shell -p copyq
 else
   echo 'OS not configured'
 fi
