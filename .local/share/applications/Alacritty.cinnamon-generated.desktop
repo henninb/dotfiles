@@ -6,3 +6,4 @@ Comment=Alacritty
 Exec=alacritty
 Terminal=false
 StartupNotify=true
+Icon=alacritty

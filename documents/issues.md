@@ -709,3 +709,5 @@ sudo apt install dconf-editor
 
 ## icon location for cinnamon
 /usr/share/icons/hicolor/scalable/apps
+cp ~/alacritty.svg ~/.local/share/icons/hicolor/
+gtk-update-icon-cache
