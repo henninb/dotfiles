@@ -164,3 +164,4 @@ capacious
 unscruplious
 serendipitous
 copious
+supercillious: (adj) Feeling or showing haughty disdain.
