@@ -702,3 +702,7 @@ dconf load /org/cinnamon/ < cinnamon_desktop_backup
 
 sudo apt install dconf-editor
  /org/cinnamon/desktop/keybindings/
+
+## location of desktop files
+/usr/share/applications
+.local/share/applications
