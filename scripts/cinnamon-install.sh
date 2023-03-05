@@ -6,7 +6,8 @@ fi
 
 dconf load /org/cinnamon/desktop/keybindings/ < "$HOME/documents/cinnamon-keybindings"
 
-dconf write /org/cinnamon/desktop/background/picture-uri "'file:///usr/share/backgrounds/linuxmint-qiana/j_baer_5976503592.jpg'"
+# dconf write /org/cinnamon/desktop/background/picture-uri "'file:///usr/share/backgrounds/linuxmint-qiana/j_baer_5976503592.jpg'"
+dconf write /org/cinnamon/desktop/background/picture-uri "'file:///home/henninb/.local/wallpaper/mountain-road.jpg'"
 
 gsettings set org.cinnamon.desktop.default-applications.terminal exec /home/henninb/.local/share/cargo/bin/alacritty
 gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg "-x"
@@ -15,5 +16,8 @@ gsettings get org.cinnamon.desktop.background picture-uri
 gsettings get org.cinnamon.desktop.background picture-opacity
 gsettings get org.cinnamon.desktop.background picture-options
 
-gsettings set org.cinnamon.desktop.background picture-uri \'${new}\'
+#gsettings set org.cinnamon.desktop.background picture-uri \'${new}\'
+
+xdg-settings set default-web-browser brave-bin.desktop
+
 exit 0

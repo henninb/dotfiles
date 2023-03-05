@@ -3,7 +3,10 @@
 application/x-extension-burp=install4j_i03e81-BurpSuiteCommunity.desktop
 x-scheme-handler/eclipse+command=_nix_store_g0yagglig5asv9an4rk539sdqnry0wyl-dbeaver-22.2.2_dbeaver_.desktop
 x-scheme-handler/postman=Postman.desktop
-x-scheme-handler/http=brave-browser.desktop
-x-scheme-handler/https=brave-browser.desktop
+x-scheme-handler/http=brave-bin.desktop
+x-scheme-handler/https=brave-bin.desktop
 x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
 x-scheme-handler/fleet=jetbrains-fleet.desktop
+text/html=brave-bin.desktop
+x-scheme-handler/about=brave-bin.desktop
+x-scheme-handler/unknown=brave-bin.desktop
