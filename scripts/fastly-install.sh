@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ver=3.2.5
+ver=7.0.1
 
 if command -v pacman; then
   echo "archlinux"

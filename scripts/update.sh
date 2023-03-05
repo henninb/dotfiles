@@ -189,7 +189,6 @@ cargo install alacritty
 cargo install du-dust
 cargo install bat
 cargo install ripgrep
-cargo install wrangler
 cargo install fd-find
 cargo install broot
 
@@ -202,6 +201,8 @@ go install github.com/gopasspw/gopass@latest
 go install github.com/moncho/dry@latest
 go install github.com/arduino/arduino-cli@latest
 go install github.com/Bios-Marcel/cordless@latest
+
+npm install -g wrangler
 
 exit 0
 
