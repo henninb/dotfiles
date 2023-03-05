@@ -189,6 +189,9 @@ cargo install alacritty
 cargo install du-dust
 cargo install bat
 cargo install ripgrep
+cargo install wrangler
+cargo install fd-find
+cargo install broot
 
 go install github.com/jesseduffield/lazygit@latest
 # go env -w GO111MODULE=off
