@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Alacritty
+Comment=Alacritty
+Exec=alacritty
+Terminal=false
+StartupNotify=true

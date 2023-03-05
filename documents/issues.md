@@ -691,3 +691,7 @@ nix-channel --update
 
 ## opensuse install nvidia
 https://www.if-not-true-then-false.com/2022/opensuse-nvidia-guide/
+
+## change default terminal cinnamon
+gsettings set org.cinnamon.desktop.default-applications.terminal exec /home/henninb/.local/share/cargo/bin/alacritty
+gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg "-x"

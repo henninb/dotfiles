@@ -38,6 +38,8 @@ elif command -v apt; then
   sudo apt install -y llvm
   sudo apt install -y clang
   sudo apt install -y libxml2-dev
+  sudo apt install -y llvm-dev
+  sudo apt install -y libclang-dev
 elif command -v emerge; then
   sudo emerge --update --newuse clang
 elif command -v brew; then
