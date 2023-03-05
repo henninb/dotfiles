@@ -48,6 +48,20 @@ elif [ "$os" = "gentoo" ]; then
   fi
   echo 'export PS1="(gentoo-chroot) $PS1"'
   sudo chroot /mnt/gentoo /bin/su - "$(id -un)"
+elif [ "$os" = "mint" ]; then
+  if [ "$(grep -c "ed94da27-d96e-4b52-8bf0-2cece4d7f9fe /mnt/mint" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
+    sudo mkdir -p /mnt/mint
+    sudo mount UUID=ed94da27-d96e-4b52-8bf0-2cece4d7f9fe /mnt/mint
+    sudo mkdir -p /mnt/mint/boot/efi
+    sudo mount -t proc none /mnt/mint/proc
+    sudo mount --rbind /dev /mnt/mint/dev
+    sudo mount --rbind /sys /mnt/mint/sys
+    sudo mount UUID=CC04-C5EF /mnt/mint/boot/efi
+  else
+    echo already mounted
+  fi
+  echo 'export PS1="(mint-chroot) $PS1"'
+  sudo chroot /mnt/mint /bin/su - "$(id -un)"
 elif [ "$os" = "suse" ]; then
   if [ "$(grep -c "c9541e18-d4ee-4cec-a247-d9870b2b93d0 /mnt/suse" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/suse
