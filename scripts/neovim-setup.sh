@@ -34,6 +34,10 @@ elif command -v xbps-install; then
   sudo xbps-install -y clang-tools-extra
 elif command -v apt; then
   sudo apt install -y luarocks
+  sudo apt install -y cmake
+  sudo apt install -y llvm
+  sudo apt install -y clang
+  sudo apt install -y libxml2-dev
 elif command -v emerge; then
   sudo emerge --update --newuse clang
 elif command -v brew; then
