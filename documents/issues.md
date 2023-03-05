@@ -695,3 +695,10 @@ https://www.if-not-true-then-false.com/2022/opensuse-nvidia-guide/
 ## change default terminal cinnamon
 gsettings set org.cinnamon.desktop.default-applications.terminal exec /home/henninb/.local/share/cargo/bin/alacritty
 gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg "-x"
+
+## cinnamon backup and restore settings
+dconf dump /org/cinnamon/ > cinnamon_desktop_backup
+dconf load /org/cinnamon/ < cinnamon_desktop_backup
+
+sudo apt install dconf-editor
+ /org/cinnamon/desktop/keybindings/
