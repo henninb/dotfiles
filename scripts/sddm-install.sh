@@ -75,6 +75,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
 
+  sudo systemctl set-default graphical
   systemctl --user mask gnome-keyring-daemon.service
   systemctl --user mask gnome-keyring-daemon.socket
   # ls -l /usr/share/sddm/themes/
@@ -126,6 +127,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo rm /usr/lib/sddm/sddm.conf.d/00-general.conf
   sudo systemctl enable sddm.service --now
   sudo systemctl set-default graphical
+  systemctl --user mask gnome-keyring-daemon.service
+  systemctl --user mask gnome-keyring-daemon.socket
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y sddm
   sudo dnf install -y sddm-themes
