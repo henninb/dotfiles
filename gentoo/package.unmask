@@ -9,4 +9,5 @@
 net-firewall/nufw
 dev-libs/libfmt
 sys-fs/udev
+# gnome-base/gconf
 # =net-firewall/nufw-2.2.22-r4
