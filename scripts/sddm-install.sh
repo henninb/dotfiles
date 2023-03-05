@@ -60,9 +60,11 @@ User=henninb
 Session=xmonad
 EOF
 
+sudo mkdir -p /etc/sddm/
 sudo mkdir -p /etc/sddm/scripts/
 sudo mkdir -p /usr/share/xsessions/
 sudo mv -v "$HOME/tmp/xmonad.desktop" /usr/share/xsessions/
+sudo mv -v "$HOME/tmp/cinnamon.desktop" /usr/share/xsessions/
 sudo mv -v "$HOME/tmp/Xsetup" /etc/sddm/scripts/
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
@@ -71,7 +73,6 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo systemctl enable sddm.service --now
   sudo systemctl disable lightdm
 
-  sudo mkdir -p /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
 
@@ -85,24 +86,24 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   # systemctl --user disable xdg-desktop-portal{,gtk}
   # systemctl --user disable xdg-desktop-portal
   sudo systemctl enable sddm --now
-  # sudo systemctl start sddm
 elif [ "${OS}" = "Void" ]; then
   sudo xbps-install -y sddm
-  sudo mkdir -p /etc/sddm.conf.d/
   sudo ln -sfn /etc/sv/sddm /var/service/sddm
   sudo ln -sfn /etc/sv/dbus /var/service/dbus
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
   sudo sv status sddm
+  sudo sv status dbus
 elif [ "${OS}" = "Ubuntu" ] || [ "$OS" = "Linux Mint" ]; then
   export DEBIAN_FRONTEND=noninteractive
   sudo apt install -y sddm
   sudo apt install -y sddm-theme-elarun
   # sudo apt remove -y libpam-gnome-keyring
   sudo systemctl set-default graphical
-  sudo mkdir -p /etc/sddm.conf.d/
-  sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
-  sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
+  systemctl --user mask gnome-keyring-daemon.service
+  systemctl --user mask gnome-keyring-daemon.socket
   sudo systemctl disable lightdm
+  sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
+  sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
   sudo systemctl enable sddm.service --now
 elif [ "${OS}" = "FreeBSD" ]; then
   sudo pkg install -y sddm
@@ -110,25 +111,26 @@ elif [ "${OS}" = "FreeBSD" ]; then
   sudo sysrc sddm_enable="YES"
   sudo mv -v "$HOME/tmp/40-wheel-group.rules" "/usr/local/etc/polkit-1/rules.d/40-wheel-group.rules"
   # sudo sddm --example-config /usr/local/etc/sddm.conf
-  sudo mkdir -p /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/sddm.conf
+  sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
   # sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
   sudo service sddm enable
   echo "https://community.kde.org/FreeBSD/Setup#SDDM"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y sddm
-  # sudo zypper install -y sddm-themes
-  sudo cp -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
-  sudo cp -v "$HOME/tmp/sddm-theme.conf" /usr/lib/sddm/sddm.conf.d/sddm-theme.conf
-  sudo cp -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
-  sudo cp -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
-  sudo cp -v "$HOME/tmp/sddm.conf" /usr/lib/sddm/sddm.conf.d/sddm.conf
-  sudo rm /usr/lib/sddm/sddm.conf.d/10-theme.conf
-  sudo rm /usr/lib/sddm/sddm.conf.d/00-general.conf
-  sudo systemctl enable sddm.service --now
   sudo systemctl set-default graphical
   systemctl --user mask gnome-keyring-daemon.service
   systemctl --user mask gnome-keyring-daemon.socket
+  # sudo zypper install -y sddm-themes
+  sudo cp -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
+  # sudo cp -v "$HOME/tmp/sddm-theme.conf" /usr/lib/sddm/sddm.conf.d/sddm-theme.conf
+  sudo cp -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
+  # sudo cp -v "$HOME/tmp/sddm.conf" /usr/lib/sddm/sddm.conf.d/sddm.conf
+  sudo rm /usr/lib/sddm/sddm.conf.d/10-theme.conf
+  sudo rm /usr/lib/sddm/sddm.conf.d/00-general.conf
+  sudo systemctl enable sddm.service --now
+  sudo systemctl enable dbus --now
+  sudo systemctl status dbus
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y sddm
   sudo dnf install -y sddm-themes
