@@ -706,3 +706,6 @@ sudo apt install dconf-editor
 ## location of desktop files
 /usr/share/applications
 .local/share/applications
+
+## icon location for cinnamon
+/usr/share/icons/hicolor/scalable/apps
