@@ -22,6 +22,17 @@ Comment=xmonad dynamic tiling window manager
 #Path=
 Exec=xmonad-start
 #DesktopNames=xmonad
+Icon=
+EOF
+
+cat > "$HOME/tmp/cinnamon.desktop" << EOF
+[Desktop Entry]
+Type=Application
+Name=Cinnamon
+Comment=This session logs you into Cinnamon
+Exec=cinnamon-session-cinnamon
+TryExec=/usr/bin/cinnamon
+Icon=
 EOF
 
 cat > "$HOME/tmp/Xsetup" << EOF
