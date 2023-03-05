@@ -42,11 +42,12 @@ if [ "$OS" = "Ubuntu" ]; then
   nix-env -i librewolf
   nix-env -i brave
   nix-env -i dbeaver
-  nix-env -i neovim
+  # nix-env -i neovim
   nix-env -i dunst
   nix-env -i keepassxc
   nix-env -i gqrx
   nix-env -i ventoy-bin
+  nix-env -i codium
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   nix-env -i librewolf
   nix-env -i ventoy-bin
@@ -59,6 +60,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   nix-env -i wmname
   nix-shell -p copyq
   nix-shell -p browsh
+  nix-shell -p codium
 else
   echo 'OS not configured'
 fi
