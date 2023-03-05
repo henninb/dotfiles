@@ -104,3 +104,5 @@ www-servers/nginx debug http-cache http http2 ssl rtmp
 x11-libs/gtk+ wayland
 x11-libs/wxGTK gstreamer
 x11-misc/dzen xpm xinerama
+x11-libs/xapp introspection
+gnome-extra/cinnamon networkmanager
