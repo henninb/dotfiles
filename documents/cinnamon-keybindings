@@ -12,3 +12,7 @@ www=['<Super>i']
 
 [wm]
 close=['<Shift><Super>BackSpace']
+move-to-monitor-left=@as []
+move-to-monitor-right=@as []
+switch-to-workspace-left=['<Shift><Super>Left']
+switch-to-workspace-right=['<Shift><Super>Right']
