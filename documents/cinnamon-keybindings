@@ -1,0 +1,14 @@
+[/]
+custom-list=['__dummy__', 'custom0']
+
+[custom-keybindings/custom0]
+binding=['<Shift><Super>p']
+command='rofi -show run'
+name='rofi-run'
+
+[media-keys]
+terminal=['<Super>Return']
+www=['<Super>i']
+
+[wm]
+close=['<Shift><Super>BackSpace']
