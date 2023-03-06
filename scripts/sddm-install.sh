@@ -181,7 +181,8 @@ else
   exit 1
 fi
 
-
+grep POSIX_ACL /usr/src/linux/.config
+ls /usr/share/sddm/scripts/Xsession
 
 # homectl inspect henninb
 
