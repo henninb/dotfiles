@@ -130,7 +130,9 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo rm /usr/lib/sddm/sddm.conf.d/00-general.conf
   sudo systemctl enable sddm.service --now
   sudo systemctl enable dbus --now
-  sudo systemctl status dbus
+  # sudo systemctl status dbus
+  sudo update-alternatives --config default-displaymanager
+  sudo chmod +s /usr/bin/Xorg
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y sddm
   sudo dnf install -y sddm-themes
