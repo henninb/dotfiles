@@ -120,6 +120,7 @@ elif [ "${OS}" = "FreeBSD" ]; then
   echo "https://community.kde.org/FreeBSD/Setup#SDDM"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y sddm
+  sudo zypper install -y gnome-keyring-pam
   sudo systemctl set-default graphical
   systemctl --user mask gnome-keyring-daemon.service
   systemctl --user mask gnome-keyring-daemon.socket
