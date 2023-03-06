@@ -67,6 +67,8 @@ sudo mv -v "$HOME/tmp/xmonad.desktop" /usr/share/xsessions/
 sudo mv -v "$HOME/tmp/cinnamon.desktop" /usr/share/xsessions/
 sudo mv -v "$HOME/tmp/Xsetup" /etc/sddm/scripts/
 
+sudo rm -rf /var/lib/sddm/.cache/
+
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S sddm
   sudo pacman --noconfirm --needed -S xorg-xsetroot
