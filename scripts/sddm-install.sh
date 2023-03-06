@@ -183,6 +183,8 @@ fi
 
 grep POSIX_ACL /usr/src/linux/.config
 ls /usr/share/sddm/scripts/Xsession
+getent passwd henninb
+echo sudo usermod -g users henninb
 
 # homectl inspect henninb
 
