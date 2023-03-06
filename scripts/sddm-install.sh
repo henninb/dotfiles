@@ -145,6 +145,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo systemctl status dbus
   sudo update-alternatives --config default-displaymanager
   sudo chmod +s /usr/bin/Xorg
+  sudo chmod +s /usr/bin/Xorg.bin
   echo nvidia-drm | sudo tee -a /etc/modules-load.d/nvidia-drm.conf
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y sddm
