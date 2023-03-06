@@ -123,6 +123,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y sddm
   sudo zypper install -y gnome-keyring-pam
   sudo systemctl set-default graphical
+  sudo usermod -a -G video "$(id -un)"
   systemctl --user mask gnome-keyring-daemon.service
   systemctl --user mask gnome-keyring-daemon.socket
   # sudo zypper install -y sddm-themes
@@ -133,7 +134,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo rm /usr/lib/sddm/sddm.conf.d/10-theme.conf
   sudo rm /usr/lib/sddm/sddm.conf.d/00-general.conf
   sudo systemctl enable sddm.service --now
-  sudo systemctl enable dbus --now
+  # sudo systemctl enable dbus --now
   # sudo systemctl status dbus
   sudo update-alternatives --config default-displaymanager
   sudo chmod +s /usr/bin/Xorg
