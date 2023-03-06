@@ -210,6 +210,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   # sudo pacman --noconfirm --needed -S playderctl
   sudo pacman --noconfirm --needed -S ntfs-3g
+  sudo pacman --noconfirm --needed -S man
   sudo pacman --noconfirm --needed -S dosfstools
   sudo pacman --noconfirm --needed -S xorg-xinit
   sudo pacman --noconfirm --needed -S mtools
