@@ -57,6 +57,7 @@ InputMethod=
 
 [X11]
 DisplayCommand=/etc/sddm/scripts/Xsetup
+
 [Users]
 HideUsers=""
 
