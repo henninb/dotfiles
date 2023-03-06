@@ -37,6 +37,7 @@ EOF
 
 cat > "$HOME/tmp/Xsetup" << EOF
 setxkbmap us
+xrandr --output HDMI-0 --mode 3840x2160
 EOF
 chmod 755 "$HOME/tmp/Xsetup"
 
