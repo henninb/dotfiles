@@ -42,7 +42,7 @@ chmod 755 "$HOME/tmp/Xsetup"
 
 cat > "$HOME/tmp/sddm.conf" << EOF
 [Users]
-DefaultPath=/usr/local/sbin:/usr/local/bin:/usr/bin
+DefaultPath=/usr/local/sbin:/usr/local/bin:/usr/bin:/bin
 HideShells=
 HideUsers="intellij,firefox,tomcat,flatpak,kafka,activemq"
 RememberLastSession=true
