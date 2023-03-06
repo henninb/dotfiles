@@ -711,3 +711,8 @@ sudo apt install dconf-editor
 /usr/share/icons/hicolor/scalable/apps
 cp ~/alacritty.svg ~/.local/share/icons/hicolor/
 gtk-update-icon-cache
+
+## mintlinux - grub prompt with no boot
+```
+sudo apt --reinstall install grub-efi
+```
