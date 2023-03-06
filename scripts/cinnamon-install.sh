@@ -2,6 +2,7 @@
 
 if ! command -v cinnamon-session; then
   sudo emerge --update --newuse cinnamon
+  sudo dnf install -y cinnamon
 fi
 
 dconf load /org/cinnamon/desktop/keybindings/ < "$HOME/documents/cinnamon-keybindings"

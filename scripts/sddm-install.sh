@@ -129,6 +129,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y gnome-keyring-pam
   sudo systemctl set-default graphical
   sudo usermod -a -G video "$(id -un)"
+  sudo usermod -a -G video sddm
   sudo chown sddm:sddm /var/lib/sddm/state.conf
   systemctl --user mask gnome-keyring-daemon.service
   systemctl --user mask gnome-keyring-daemon.socket
@@ -144,6 +145,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo systemctl status dbus
   sudo update-alternatives --config default-displaymanager
   sudo chmod +s /usr/bin/Xorg
+  echo nvidia-drm | sudo tee -a /etc/modules-load.d/nvidia-drm.conf
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y sddm
   sudo dnf install -y sddm-themes
@@ -176,6 +178,8 @@ else
   echo "${OS} is not setup"
   exit 1
 fi
+
+
 
 # homectl inspect henninb
 
