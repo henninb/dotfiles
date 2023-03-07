@@ -41,7 +41,7 @@ setxkbmap -option "caps:escape"
 #xrandr --output HDMI-0 --mode 3840x2160
 date >> "$HOME/tmp/xsetup.log"
 xrandr >> "$HOME/tmp/xsetup.log"
-xrandr --output HDMI-1 --mode 1920x1080
+#xrandr --output HDMI-1 --mode 1920x1080
 EOF
 chmod 755 "$HOME/tmp/Xsetup"
 
@@ -53,6 +53,8 @@ HideUsers="intellij,firefox,tomcat,flatpak,kafka,activemq"
 RememberLastSession=true
 RememberLastUser=true
 ReuseSession=true
+
+[General]
 InputMethod=
 
 [X11]
