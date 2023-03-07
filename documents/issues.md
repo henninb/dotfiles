@@ -716,3 +716,6 @@ gtk-update-icon-cache
 ```
 sudo apt --reinstall install grub-efi
 ```
+
+## sddm opensuse
+https://www.reddit.com/r/openSUSE/comments/b1a3fe/sddmhelper_problem/
