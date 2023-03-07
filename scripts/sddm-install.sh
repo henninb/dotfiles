@@ -146,10 +146,11 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo systemctl enable dbus --now
   # sudo systemctl status dbus
   sudo update-alternatives --config default-displaymanager
-  sudo chmod +s /usr/bin/Xorg
-  sudo chmod +s /usr/bin/Xorg.bin
-  grep -Hriv "^$" /etc/pam.d/sddm*
-  echo nvidia-drm | sudo tee -a /etc/modules-load.d/nvidia-drm.conf
+  # sudo chmod +s /usr/bin/Xorg
+  # sudo chmod +s /usr/bin/Xorg.bin
+  # grep -Hriv "^$" /etc/pam.d/sddm*
+  update-alternatives --list default-displaymanager
+  # echo nvidia-drm | sudo tee -a /etc/modules-load.d/nvidia-drm.conf
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y sddm
   sudo dnf install -y sddm-themes
