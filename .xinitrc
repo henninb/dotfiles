@@ -2,6 +2,11 @@
 
 export PATH=${HOME}/.local/bin:${HOME}/.nix-profile/bin:/sbin:/usr/sbin:/usr/local/sbin:${PATH}
 
+echo >> "$HOME/tmp/xinit.log"
+echo $(date) >> "$HOME/tmp/xinit.log"
+echo home=$HOME >> "$HOME/tmp/xinit.log"
+echo path=$PATH >> "$HOME/tmp/xinit.log"
+
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LC_NUMERIC=en_US.UTF-8
@@ -23,7 +28,7 @@ mkdir -p "$HOME/tmp"
 if [ -x "$(command -v xrdb)" ]; then
   xrdb -load "$HOME/.Xresources" >> "$HOME/tmp/xinit.log"
 else
-  echo "xrdb not installed."
+  echo "xrdb not installed." >> "$HOME/tmp/xinit.log"
 fi
 
 setxkbmap -option "caps:escape"
