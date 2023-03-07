@@ -84,3 +84,14 @@ URxvt*keysym.F12: perl:urxvt-colors:
 
 URxvt.transparent: true
 URxvt.shading: 20
+
+! Font for regular texts.
+! Font names are case-insensitive.
+! You can use a comma-separated list of fonts to set a fallback font.
+xscreensaver-auth.default.Dialog.bodyFont: times new roman 12, dejavu serif 12
+
+! Window background color. You can use color names.
+xscreensaver-auth.default.Dialog.background: black
+
+! Main text color. You can also use HEX color codes.
+xscreensaver-auth.default.Dialog.foreground: #ffffff
