@@ -34,12 +34,12 @@ alias wget=wget --hsts-file="$HOME/.config"/wget-hsts
 alias mitmproxy="mitmproxy --set confdir=$HOME/.config/mitmproxy"
 alias mitmweb="mitmweb --set confdir=${HOME}/.config/mitmproxy"
 
-alias reboot='sudo /sbin/reboot'
-alias poweroff='sudo /sbin/poweroff'
-alias halt='sudo /sbin/halt'
-alias shutdown='sudo /sbin/shutdown'
-alias rxrdp='sudo systemctl restart xrdp'
-alias rsxhkd='pkill -USR1 -x sxhkd'
+alias reboot='sudo reboot'
+alias poweroff='sudo poweroff'
+alias halt='sudo halt'
+alias shutdown='sudo shutdown'
+# alias rxrdp='sudo systemctl restart xrdp'
+# alias rsxhkd='pkill -USR1 -x sxhkd'
 
 alias emerge='emerge --update --newuse'
 

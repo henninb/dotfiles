@@ -1,4 +1,4 @@
-export PATH=${HOME}/.local/bin:${HOME}/.nix-profile/bin:${PATH}
+export PATH=${HOME}/.local/bin:${HOME}/.nix-profile/bin:/sbin:/usr/sbin:/usr/local/sbin:${PATH}
 
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8

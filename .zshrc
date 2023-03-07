@@ -519,6 +519,8 @@ export EIX_LIMIT=0
 # [ ! -f ~/.p10k.zsh ] || source ~/.p10k.zsh
 [ -f "$HOME/.acme.sh/acme.sh.env" ] && source "$HOME/.acme.sh/acme.sh.env"
 
+export PATH=/sbin:/usr/sbin:${PATH}
+
 # added by travis gem
 #[ ! -s /home/henninb/.travis/travis.sh ] || source /home/henninb/.travis/travis.sh
 
