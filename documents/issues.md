@@ -722,4 +722,4 @@ https://www.reddit.com/r/openSUSE/comments/b1a3fe/sddmhelper_problem/
 
 ## screensaver
 xscreensaver-auth" must be setuid root
-chmod u+s /usr/libexec/xscreensaver/xscreensaver-auth
+sudo chmod u+s /usr/libexec/xscreensaver/xscreensaver-auth
