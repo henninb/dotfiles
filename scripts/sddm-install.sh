@@ -143,6 +143,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo rm /usr/lib/sddm/sddm.conf.d/10-theme.conf
   sudo rm /usr/lib/sddm/sddm.conf.d/00-general.conf
   sudo systemctl enable sddm.service --now
+  echo /usr/share/sddm/scripts/Xsetup
   # sudo systemctl enable dbus --now
   # sudo systemctl status dbus
   sudo update-alternatives --config default-displaymanager
