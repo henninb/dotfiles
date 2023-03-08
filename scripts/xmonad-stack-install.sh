@@ -117,6 +117,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper addrepo https://download.opensuse.org/repositories/X11:Utilities/openSUSE_Tumbleweed/X11:Utilities.repo
   sudo zypper refresh
   #sudo zypper install -y linux-tools
+  sudo zypper install -y pam_yubico
   sudo zypper install -y NetworkManager-applet
   sudo zypper install -y ncurses-devel
   sudo zypper install -y xorg-x11
