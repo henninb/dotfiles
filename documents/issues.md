@@ -723,3 +723,33 @@ https://www.reddit.com/r/openSUSE/comments/b1a3fe/sddmhelper_problem/
 ## screensaver
 xscreensaver-auth" must be setuid root
 sudo chmod u+s /usr/libexec/xscreensaver/xscreensaver-auth
+
+## sddm failure
+Mar 08 17:01:12 localhost.localdomain sddm[1144]: QProcess: Destroyed while process ("/usr/libexec/sddm/sddm-helper") is still running.
+Mar 08 17:01:12 localhost.localdomain sddm-helper[1389]: [PAM] Starting...
+Mar 08 17:01:12 localhost.localdomain sddm-helper[1389]: [PAM] Authenticating...
+Mar 08 17:01:12 localhost.localdomain sddm-helper[1389]: [PAM] returning.
+Mar 08 17:01:12 silverfox sddm-helper[1389]: pam_unix(sddm-greeter:session): session opened for user sddm(uid=463) by (uid=0)
+Mar 08 17:01:12 silverfox sddm[1144]: Greeter session started successfully
+Mar 08 17:01:13 silverfox sddm[1144]: Message received from greeter: Connect
+Mar 08 17:02:17 silverfox sddm[1144]: Message received from greeter: Login
+Mar 08 17:02:17 silverfox sddm[1144]: Reading from "/usr/share/xsessions/xmonad.desktop"
+Mar 08 17:02:17 silverfox sddm[1144]: Reading from "/usr/share/xsessions/xmonad.desktop"
+Mar 08 17:02:17 silverfox sddm[1144]: Session "/usr/share/xsessions/xmonad.desktop" selected, command: "xmonad-start"
+Mar 08 17:02:17 silverfox sddm-helper[2418]: [PAM] Starting...
+Mar 08 17:02:17 silverfox sddm-helper[2418]: [PAM] Authenticating...
+Mar 08 17:02:17 silverfox sddm-helper[2418]: [PAM] Preparing to converse...
+Mar 08 17:02:17 silverfox sddm-helper[2418]: [PAM] Conversation with 1 messages
+Mar 08 17:02:17 silverfox sddm-helper[2418]: gkr-pam: unable to locate daemon control file
+Mar 08 17:02:17 silverfox sddm-helper[2418]: gkr-pam: stashed password to try later in open session
+Mar 08 17:02:17 silverfox sddm-helper[2418]: [PAM] returning.
+Mar 08 17:02:17 silverfox sddm[1144]: Authenticated successfully
+Mar 08 17:02:17 silverfox sddm-helper[2418]: pam_unix(sddm:session): session opened for user henninb(uid=1000) by (uid=0)
+Mar 08 17:02:17 silverfox sddm[1144]: Auth: sddm-helper exited successfully
+Mar 08 17:02:17 silverfox sddm[1144]: Greeter stopped.
+Mar 08 17:02:17 silverfox sddm-helper[2418]: gkr-pam: gnome-keyring-daemon started properly and unlocked keyring
+Mar 08 17:02:17 silverfox sddm-helper[2418]: Starting: "/etc/X11/xdm/Xsession \"xmonad-start\""
+Mar 08 17:02:17 silverfox sddm[1144]: Session started
+Mar 08 17:02:17 silverfox sddm-helper[2418]: [PAM] Ended.
+Mar 08 17:02:17 silverfox sddm[1144]: Auth: sddm-helper exited with 2## sddm
+
