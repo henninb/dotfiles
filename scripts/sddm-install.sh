@@ -190,6 +190,8 @@ ls /usr/share/sddm/scripts/Xsession
 getent passwd henninb
 echo sudo usermod -g users henninb
 
+sudo cat /var/lib/sddm/.local/share/sddm/xorg-session.log
+
 # homectl inspect henninb
 
 exit 0
