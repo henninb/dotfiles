@@ -6,6 +6,9 @@ options nouveau modeset=0
 EOF
 
 sudo cp -v "$HOME/tmp/nvidia-installer-disable-nouveau.conf" /etc/modprobe.d/
-sudo /sbin/mkinitrd
+
+if command -v mkinitrd; then
+  sudo /sbin/mkinitrd
+fi
 
 exit 0
