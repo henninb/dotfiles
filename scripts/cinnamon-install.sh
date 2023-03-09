@@ -1,8 +1,31 @@
 #!/bin/sh
 
-if ! command -v cinnamon-session; then
-  sudo emerge --update --newuse cinnamon
+# if ! command -v cinnamon-session; then
+# fi
+
+if [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper install -y cinnamon
+elif [ "$OS" = "Void" ]; then
+  echo "void"
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+  echo "arch"
+elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y cinnamon
+elif [ "$OS" = "Solus" ]; then
+  echo solus
+elif [ "$OS" = "Debian GNU/Linux" ]; then
+  sudo apt install -y cinnamon
+elif [ "$OS" = "Ubuntu" ]; then
+  sudo apt install -y cinnamon
+elif [ "$OS" = "Linux Mint" ]; then
+  sudo apt install -y cinnamon
+elif [ "$OS" = "FreeBSD" ]; then
+  echo freebsd
+elif [ "$OS" = "Gentoo" ]; then
+  sudo emerge --update --newuse cinnamon
+else
+  echo "$OS is not yet implemented."
+  exit 0
 fi
 
 dconf load /org/cinnamon/desktop/keybindings/ < "$HOME/documents/cinnamon-keybindings"

@@ -30,7 +30,6 @@ elif [ "$OS" = "Gentoo" ]; then
   if ! command -v pacmd; then
     sudo emerge --update --newuse pavucontrol
   fi
-
 else
   echo "$OS is not yet implemented."
   exit 1
