@@ -20,6 +20,8 @@ elif [ "$OS" = "Void" ]; then
   echo .endif
   echo pulseaudio --daemonize=no --exit-idle-time=-1
   sudo usermod -a -G audio "$(id -un)"
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  echo "opensuse"
 elif [ "$OS" = "Fedora Linux" ]; then
   echo fedora
 elif [ "$OS" = "Solus" ]; then
