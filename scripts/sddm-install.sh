@@ -140,8 +140,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo cp -v "$HOME/tmp/sddm-theme.conf" /usr/lib/sddm/sddm.conf.d/sddm-theme.conf
   sudo cp -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
   # sudo cp -v "$HOME/tmp/sddm.conf" /usr/lib/sddm/sddm.conf.d/sddm.conf
-  sudo rm /usr/lib/sddm/sddm.conf.d/10-theme.conf
-  sudo rm /usr/lib/sddm/sddm.conf.d/00-general.conf
+  #sudo rm /usr/lib/sddm/sddm.conf.d/10-theme.conf
+  #sudo rm /usr/lib/sddm/sddm.conf.d/00-general.conf
   sudo systemctl enable sddm.service --now
   echo /usr/share/sddm/scripts/Xsetup
   # sudo systemctl enable dbus --now
@@ -152,6 +152,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # grep -Hriv "^$" /etc/pam.d/sddm*
   update-alternatives --list default-displaymanager
   # echo nvidia-drm | sudo tee -a /etc/modules-load.d/nvidia-drm.conf
+  sudo usermod -a -G systemd-journal "$(id -un)"
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y sddm
   sudo dnf install -y sddm-themes
