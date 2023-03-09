@@ -115,6 +115,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper addrepo https://download.opensuse.org/repositories/security/openSUSE_Tumbleweed/security.repo
   sudo zypper addrepo https://download.opensuse.org/repositories/home:X0F:HSF/openSUSE_Tumbleweed/home:X0F:HSF.repo
   sudo zypper addrepo https://download.opensuse.org/repositories/X11:Utilities/openSUSE_Tumbleweed/X11:Utilities.repo
+  sudo zypper addrepo https://download.opensuse.org/repositories/home:AndnoVember:windowmanagers/openSUSE_Tumbleweed/home:AndnoVember:windowmanagers.repo
   sudo zypper refresh
   #sudo zypper install -y linux-tools
   sudo zypper install -y pam_yubico
