@@ -62,20 +62,20 @@ elif [ "$os" = "mint" ]; then
   fi
   echo 'export PS1="(mint-chroot) $PS1"'
   sudo chroot /mnt/mint /bin/su - "$(id -un)"
-elif [ "$os" = "suse" ]; then
-  if [ "$(grep -c "c9541e18-d4ee-4cec-a247-d9870b2b93d0 /mnt/suse" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
-    sudo mkdir -p /mnt/suse
-    sudo mount UUID=c9541e18-d4ee-4cec-a247-d9870b2b93d0 /mnt/suse
-    sudo mkdir -p /mnt/suse/boot/efi
-    sudo mount -t proc none /mnt/suse/proc
-    sudo mount --rbind /dev /mnt/suse/dev
-    sudo mount --rbind /sys /mnt/suse/sys
-    sudo mount UUID=CC04-C5EF /mnt/suse/boot/efi
+elif [ "$os" = "opensuse" ]; then
+  if [ "$(grep -c "d7d69abd-8b7b-4173-a798-a9e17655f21a /mnt/opensuse" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
+    sudo mkdir -p /mnt/opensuse 
+    sudo mount UUID=d7d69abd-8b7b-4173-a798-a9e17655f21a /mnt/opensuse
+    sudo mkdir -p /mnt/opensuse/boot/efi
+    sudo mount -t proc none /mnt/opensuse/proc
+    sudo mount --rbind /dev /mnt/opensuse/dev
+    sudo mount --rbind /sys /mnt/opensuse/sys
+    sudo mount UUID=CC04-C5EF /mnt/opensuse/boot/efi
   else
     echo already mounted
   fi
-  echo 'export PS1="(suse-chroot) $PS1"'
-  sudo chroot /mnt/suse /bin/su - "$(id -un)"
+  echo 'export PS1="(opensuse-chroot) $PS1"'
+  sudo chroot /mnt/opensuse /bin/su - "$(id -un)"
 elif [ "$os" = "fedora" ]; then
   if [ "$(grep -c "722c5ee8-b300-4b51-86de-9221ebabc617 /mnt/fedora" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/fedora
