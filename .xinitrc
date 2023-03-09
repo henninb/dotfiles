@@ -26,7 +26,8 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 mkdir -p "$HOME/tmp"
 
 if [ -x "$(command -v xhost)" ]; then
-  xhost si:localuser:root
+  # xhost si:localuser:root
+  xhost +
 fi
 
 if [ -x "$(command -v xrdb)" ]; then

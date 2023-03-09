@@ -303,6 +303,13 @@ if [ "$OS" = "openSUSE Tumbleweed" ]; then
   export NIX_SSL_CERT_FILE=/var/lib/ca-certificates/ca-bundle.pem
 fi
 
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
+
+# needs research
+#if type nix-env > /dev/null; then
+#    export LOCALE_ARCHIVE=`nix-env --installed --no-name --out-path --query glibc-locales`/lib/locale/locale-archive
+#fi
+
 # fix for emacs tramp 10/25/2020
 [ "$TERM" = "dumb" ] && unsetopt zle && PS1='$ '
 

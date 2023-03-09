@@ -497,9 +497,6 @@ autoload -Uz tetriscurses
 # echo tetriscurses
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# TODO: is this required?
-# if [ -e /home/henninb/.nix-profile/etc/profile.d/nix.sh ]; then . "${HOME}/.nix-profile/etc/profile.d/nix.sh"; fi
-
 # if [ -x "$(command -v dig)" ]; then
   # externalip="$(dig +time=3 +tries=1 +short myip.opendns.com @resolver1.opendns.com)"
   # export externalip

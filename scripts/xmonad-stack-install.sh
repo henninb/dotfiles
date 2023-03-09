@@ -118,6 +118,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper addrepo https://download.opensuse.org/repositories/home:AndnoVember:windowmanagers/openSUSE_Tumbleweed/home:AndnoVember:windowmanagers.repo
   sudo zypper refresh
   #sudo zypper install -y linux-tools
+  sudo zypper install -y ca-certificates-cacert
   sudo zypper install -y pam_yubico
   sudo zypper install -y NetworkManager-applet
   sudo zypper install -y ncurses-devel
