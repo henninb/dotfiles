@@ -43,6 +43,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y libev-devel
   sudo zypper install -y libconfig-devel
   sudo zypper install -y dbus-1-devel
+  sudo zypper install -y libpixman-1-0-devel
+  sudo zypper install -y libGLw-devel
 elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y ninja
   sudo xbps-install -y meson
