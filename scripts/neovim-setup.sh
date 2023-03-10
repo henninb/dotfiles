@@ -50,4 +50,10 @@ else
   exit 1
 fi
 
+nix-shell -p cmake
+nix-shell -p llvm
+nix-shell -p clang
+nix-shell -p libclang
+nix-shell -p libxml2
+
 exit 0
