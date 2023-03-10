@@ -1,6 +1,9 @@
 #!/bin/sh
 
-node_ver=18.15.0
+# curl -s 'https://nodejs.org/download/release/latest-v18.x/' | grep node | tail -1
+curl -s 'https://nodejs.org/download/release/latest-v18.x/' | grep node | tail -1 | cut -d' ' -f2 | cut -d "-" -f 2  | sed 's/.tar.*//' | sed 's/v//'
+node_ver=$(curl -s 'https://nodejs.org/download/release/latest-v18.x/' | grep node | tail -1 | cut -d' ' -f2 | cut -d "-" -f 2  | sed 's/.tar.*//' | sed 's/v//')
+# node_ver=18.15.0
 #sudo apt install -y yarn
 # unset NVM_DIR
 
