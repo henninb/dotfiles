@@ -1,6 +1,6 @@
 #!/bin/sh
 
-node_ver=18.14.2
+node_ver=18.15.0
 #sudo apt install -y yarn
 # unset NVM_DIR
 
