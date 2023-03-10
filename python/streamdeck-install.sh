@@ -44,6 +44,11 @@ if ! command -v python3.9; then
   sudo make altinstall
   python3.9 -V
 echo pipenv install --python 3.9.16
+
+
+#pyenv uninstall 3.7.6
+#pyenv install 3.7.6
+
 fi
 mkdir -p streamdeck-env
 virtualenv -p $(which python3.9) streamdeck-env
