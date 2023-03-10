@@ -34,6 +34,8 @@ xbps-install -y base-system
 xbps-remove -y base-voidstrap
 xbps-reconfigure -f glibc-locales
 
+# fix this
+# genfstab -U /mnt >> /mnt/etc/fstab
 cp /proc/mounts /etc/fstab
 cleanup
 
