@@ -168,4 +168,7 @@
 ## unscruplious []
 ## copious
 ## serendipitous
-
+## malaise
+## bespoke
+## attribution
+## persnickety

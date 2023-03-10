@@ -165,3 +165,7 @@ unscruplious
 serendipitous
 copious
 supercillious: (adj) Feeling or showing haughty disdain.
+malaise
+bespoke
+persnickety
+attribution
