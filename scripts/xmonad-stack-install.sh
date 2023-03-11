@@ -555,13 +555,13 @@ elif [ "$OS" = "Fedora Linux" ]; then
   echo iwlib missing
   mkdir -p "$HOME/projects/github.com/baskerville"
   cd "$HOME/projects/github.com/baskerville" || exit
-  git clone git@github.com:baskerville/xdo.git
+  git clone https://github.com/baskerville/xdo.git
   cd $HOME/projects/github.com/baskerville/xdo || exit
   sudo make install
 
   mkdir -p "$HOME/projects/github.com/sargon"
   cd "$HOME/projects/github.com/sargon" || exit
-  git clone git@github.com/sargon/trayer-srg.git
+  git clone https://github.com/sargon/trayer-srg.git
   cd $HOME/projects/github.com/sargon/trayer-srg
   ./configure
   sudo make install

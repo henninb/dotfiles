@@ -58,10 +58,15 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   nix-env -i librewolf
   nix-env -i volumeicon
   nix-env -i wmname
-  nix-shell -p copyq
   nix-env -i browsh
   nix-env -i codium
   nix-env -i CopyQ
+  nix-shell -p copyq
+elif [ "$OS" = "Fedora Linux" ]; then
+  echo
+  nix-env -i librewolf
+  nix-env -i codium
+  nix-env -i xdo
 else
   echo 'OS not configured'
 fi
