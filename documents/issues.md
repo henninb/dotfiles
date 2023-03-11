@@ -753,3 +753,13 @@ Mar 08 17:02:17 silverfox sddm[1144]: Session started
 Mar 08 17:02:17 silverfox sddm-helper[2418]: [PAM] Ended.
 Mar 08 17:02:17 silverfox sddm[1144]: Auth: sddm-helper exited with 2## sddm
 
+## gpt disk issues - using gdisk
+```
+Partition table scan:
+  MBR: protective
+  BSD: not present
+  APM: not present
+  GPT: present
+
+Found valid GPT with protective MBR; using GPT.
+```
