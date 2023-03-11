@@ -556,13 +556,13 @@ elif [ "$OS" = "Fedora Linux" ]; then
   mkdir -p "$HOME/projects/github.com/baskerville"
   cd "$HOME/projects/github.com/baskerville" || exit
   git clone git@github.com:baskerville/xdo.git
-  cd ./xdo || exit
+  cd $HOME/projects/github.com/baskerville/xdo || exit
   sudo make install
 
   mkidr -p "$HOME/projects/github.com/sargon"
   cd "$HOME/projects/github.com/sargon" || exit
   git clone git@github.com/sargon/trayer-srg.git
-  cd trayer-srg
+  cd $HOME/projects/github.com/sargon/trayer-srg
   ./configure
   sudo make install
 else
