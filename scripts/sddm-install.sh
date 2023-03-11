@@ -158,15 +158,17 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y sddm-themes
   sudo dnf install -y xsetroot
   sudo dnf install -y gnome-keyring-pam
+  sudo dnf install gnome-keyring-pam
   sudo dnf remove -y gdm
+  sudo systemctl disable gdm
   sudo systemctl enable sddm --now
   sudo mkdir -p /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
   echo gkr-pam daemon control file not found
   echo vi /etc/pam.d/gdm-password
-  echo auth        optional      pam_gnome_keyring.so only_if=gdm
-  sudo dnf remove gnome-keyring-pam
+  echo auth        optional      pam_gnome_keyring.so only_if=sddm
+  #sudo dnf remove gnome-keyring-pam
   journalctl -b -u sddm
   echo sddm-greeter --test-mode --theme /usr/share/sddm/themes/elarun
   desktop-file-validate /usr/share/xsessions/xmonad.desktop
