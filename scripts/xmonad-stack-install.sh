@@ -461,6 +461,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
   sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
   sudo dnf makecache
+  sudo dnf groupinstall "Development Tools" "Development Libraries"
   # echo not sure if this works
   # echo sudo ln -sfn /usr/lib64/libncursesw.so.6 /usr/lib64/libtinfo.so.6
 
@@ -542,7 +543,6 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y xscreensaver
   sudo dnf install -y yad
   sudo dnf install -y yubikey-manager-qt
-  sudo dnf groupinstall "Development Tools" "Development Libraries"
   sudo dnf install -y clang-devel
   # sudo dnf install -y cmake-fedora
   sudo dnf install -y llvm-libs
@@ -559,7 +559,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   cd $HOME/projects/github.com/baskerville/xdo || exit
   sudo make install
 
-  mkidr -p "$HOME/projects/github.com/sargon"
+  mkdir -p "$HOME/projects/github.com/sargon"
   cd "$HOME/projects/github.com/sargon" || exit
   git clone git@github.com/sargon/trayer-srg.git
   cd $HOME/projects/github.com/sargon/trayer-srg
