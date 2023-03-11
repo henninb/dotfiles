@@ -6,12 +6,25 @@ if [ -x "$(command -v pacman)" ]; then
 elif [ -x "$(command -v emerge)" ]; then
   sudo emerge --update --newuse zsh
   sudo emerge --update --newuse starship
+elif [ -x "$(command -v zypper)" ]; then
+  sudo zypper install -y zsh
+  sudo zypper install -y starship
+elif [ -x "$(command -v dnf)" ]; then
+  sudo dnf install -y zsh
+  if [ ! -x "$(command -v starship)" ]; then
+    curl -O https://starship.rs/install.sh
+    chmod +x install.sh
+    ./install.sh -b ~/.local/bin
+    rm install.sh
+  fi
 elif [ -x "$(command -v apt)" ]; then
   sudo apt install -y zsh
-  curl -O https://starship.rs/install.sh
-  chmod +x install.sh
-  ./install.sh -b ~/.local/bin
-  rm install.sh
+  if [ ! -x "$(command -v starship)" ]; then
+    curl -O https://starship.rs/install.sh
+    chmod +x install.sh
+    ./install.sh -b ~/.local/bin
+    rm install.sh
+  fi
 elif [ -x "$(command -v xbps-install)" ]; then
   sudo xbps-install -y zsh
   sudo xbps-install -y curl
@@ -23,15 +36,6 @@ elif [ -x "$(command -v eopkg)" ]; then
 elif [ -x "$(command -v pkg)" ]; then
   sudo pkg install -y zsh
   sudo pkg install -y starship
-elif [ -x "$(command -v dnf)" ]; then
-  sudo dnf install -y zsh
-  curl -O https://starship.rs/install.sh
-  chmod +x install.sh
-  ./install.sh -b ~/.local/bin
-  rm install.sh
-elif [ -x "$(command -v zypper)" ]; then
-  sudo zypper install -y zsh
-  sudo zypper install -y starship
 elif [ -x "$(command -v brew)" ]; then
   brew install zsh
 else
