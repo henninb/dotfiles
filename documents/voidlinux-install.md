@@ -23,7 +23,7 @@ sudo mount -t proc none /mnt/voidlinux/proc
 sudo mount --rbind /dev /mnt/voidlinux/dev
 sudo mount --rbind /sys /mnt/voidlinux/sys
 
-sudo genfstab -U /mnt/voidlinux >> /mnt/voidlinux/etc/fstab
+genfstab -U /mnt/voidlinux | sudo tee -a /mnt/voidlinux/etc/fstab
 sudo chroot /mnt/voidlinux
 
 xbps-install -Suy xbps
@@ -33,7 +33,7 @@ xbps-remove -y base-voidstrap
 xbps-reconfigure -f glibc-locales
 
 
-xbps-install grub-x86_64-efi
+xbps-install -y grub-x86_64-efi
 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=voidlinux
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=voidlinux --verbose
