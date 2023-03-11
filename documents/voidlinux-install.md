@@ -1,16 +1,12 @@
+# voidlinux install
+
+sudo fdisk -l
 sudo parted /dev/nvme0n1 mklabel gpt
 sudo parted /dev/nvme0n1 mkpart primary 1 1024
-sudo parted /dev/nvme0n1 mkpart "EFI system" fat32 1MiB
 sudo parted /dev/nvme0n1 mkpart primary 1024 100%
-
-sudo parted /dev/nvme0n1 mkpart primary fat32 1 1024
-sudo parted /dev/nvme0n1 set 1 esp on
-# (parted) mkpart "EFI system partition" fat32 1MiB 301MiB
-# (parted) set 1 esp on
 
 sudo mkdir -p /mnt/voidlinux
 sudo mkfs.fat -F32 /dev/nvme0n1p1
-sudo mkfs.fat -F 32 -I /dev/nvme0n1p1
 sudo mkfs.ext4 -b 4096 /dev/nvme0n1p2
 
 sudo mount /dev/nvme0n1p2 /mnt/voidlinux
@@ -26,6 +22,8 @@ sudo cp /etc/resolv.conf /mnt/voidlinux/etc
 sudo mount -t proc none /mnt/voidlinux/proc
 sudo mount --rbind /dev /mnt/voidlinux/dev
 sudo mount --rbind /sys /mnt/voidlinux/sys
+
+sudo genfstab -U /mnt/voidlinux >> /mnt/voidlinux/etc/fstab
 sudo chroot /mnt/voidlinux
 
 xbps-install -Suy xbps
@@ -34,10 +32,6 @@ xbps-install -y base-system
 xbps-remove -y base-voidstrap
 xbps-reconfigure -f glibc-locales
 
-# fix this
-# genfstab -U /mnt >> /mnt/etc/fstab
-cp /proc/mounts /etc/fstab
-cleanup
 
 xbps-install grub-x86_64-efi
 
