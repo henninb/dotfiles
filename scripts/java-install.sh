@@ -32,7 +32,8 @@ elif [ "$OS" = "Void" ]; then
 elif [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Linux" ]; then
   sudo apt install -y openjdk-17-jdk
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install -y java-17-openjdk-devel
+  #sudo dnf install -y java-17-openjdk-devel
+  sudo dnf install -y java-19-openjdk-devel
 elif [ "$OS" = "Linux Mint" ]; then
   sudo apt update
   sudo apt upgrade -y
