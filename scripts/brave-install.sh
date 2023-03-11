@@ -17,6 +17,11 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emaint sync -r brave-overlay
   sudo emerge --update --newuse www-client/brave-bin
   sudo ln -sfn /usr/bin/brave-bin /usr/bin/brave-browser
+elif [ "$OS" = "Fedora Linux" ]; then
+  sudo dnf install dnf-plugins-core
+  sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+  sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+  sudo dnf install -y brave-browser
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y curl
   sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
