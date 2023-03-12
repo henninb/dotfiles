@@ -20,43 +20,49 @@ fi
 lsblk -o UUID,MOUNTPOINT > $HOME/tmp/lsblk.txt
 
 if [ "$os" = "voidlinux" ]; then
-  if [ "$(grep -c "b09663a8-7ff5-42f5-b2ad-8ea0df1f18ff /mnt/voidlinux" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
+  root=11516130-fe8e-4c13-9c22-3c237073a2eb
+  efi=18ED-5063
+  if [ "$(grep -c "$root /mnt/voidlinux" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/voidlinux
-    sudo mount UUID=b09663a8-7ff5-42f5-b2ad-8ea0df1f18ff /mnt/voidlinux
+    sudo mount UUID=$root /mnt/voidlinux
     sudo mkdir -p /mnt/voidlinux/boot/efi
     sudo mount -t proc none /mnt/voidlinux/proc
     sudo mount --rbind /dev /mnt/voidlinux/dev
     sudo mount --rbind /sys /mnt/voidlinux/sys
-    sudo mount UUID=F9D5-CA2F /mnt/voidlinux/boot/efi
+    sudo mount UUID=$efi /mnt/voidlinux/boot/efi
   else
     echo already mounted
   fi
   echo 'export PS1="(voidlinux-chroot) $PS1"'
   sudo chroot /mnt/voidlinux /bin/su - "$(id -un)"
 elif [ "$os" = "gentoo" ]; then
-  if [ "$(grep -c "6d8ab46d-3e64-4ee5-b6e2-940433d01d56 /mnt/gentoo" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
+  root=6d8ab46d-3e64-4ee5-b6e2-940433d01d56
+  efi=CCF7-57C5
+  if [ "$(grep -c "$root /mnt/gentoo" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/gentoo
-    sudo mount UUID=6d8ab46d-3e64-4ee5-b6e2-940433d01d56 /mnt/gentoo
+    sudo mount UUID=$root /mnt/gentoo
     sudo mkdir -p /mnt/gentoo/boot/efi
     # cd /mnt/gentoo || exit
     sudo mount -t proc none /mnt/gentoo/proc
     sudo mount --rbind /dev /mnt/gentoo/dev
     sudo mount --rbind /sys /mnt/gentoo/sys
-    sudo mount UUID=CCF7-57C5 /mnt/gentoo/boot/efi
+    sudo mount UUID=$efi /mnt/gentoo/boot/efi
   else
     echo already mounted
   fi
   echo 'export PS1="(gentoo-chroot) $PS1"'
   sudo chroot /mnt/gentoo /bin/su - "$(id -un)"
 elif [ "$os" = "mint" ]; then
-  if [ "$(grep -c "ed94da27-d96e-4b52-8bf0-2cece4d7f9fe /mnt/mint" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
+  root=
+  efi=
+  if [ "$(grep -c "$root /mnt/mint" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/mint
-    sudo mount UUID=ed94da27-d96e-4b52-8bf0-2cece4d7f9fe /mnt/mint
+    sudo mount UUID=$root /mnt/mint
     sudo mkdir -p /mnt/mint/boot/efi
     sudo mount -t proc none /mnt/mint/proc
     sudo mount --rbind /dev /mnt/mint/dev
     sudo mount --rbind /sys /mnt/mint/sys
-    sudo mount UUID=CC04-C5EF /mnt/mint/boot/efi
+    sudo mount UUID=$efi /mnt/mint/boot/efi
   else
     echo already mounted
   fi
@@ -79,6 +85,8 @@ elif [ "$os" = "opensuse" ]; then
   echo 'export PS1="(opensuse-chroot) $PS1"'
   sudo chroot /mnt/opensuse /bin/su - "$(id -un)"
 elif [ "$os" = "fedora" ]; then
+  root=
+  efi=
   if [ "$(grep -c "722c5ee8-b300-4b51-86de-9221ebabc617 /mnt/fedora" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/fedora
     sudo mount UUID=722c5ee8-b300-4b51-86de-9221ebabc617 /mnt/fedora
@@ -96,29 +104,33 @@ elif [ "$os" = "fedora" ]; then
   echo 'export PS1="(fedora-chroot) $PS1"'
   sudo chroot /mnt/fedora/root /bin/su - "$(id -un)"
 elif [ "$os" = "ubuntu" ]; then
-  if [ "$(grep -c "a7bb907f-6870-40a6-af47-ac881e72caf2 /mnt/ubuntu" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
+  root=a7bb907f-6870-40a6-af47-ac881e72caf2
+  efi=F577-6798
+  if [ "$(grep -c "$root /mnt/ubuntu" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/ubuntu 
-    sudo mount UUID=a7bb907f-6870-40a6-af47-ac881e72caf2 /mnt/ubuntu
+    sudo mount UUID=$root /mnt/ubuntu
     sudo mkdir -p /mnt/ubuntu/boot/efi
     # cd /mnt/ubuntu || exit
     sudo mount -t proc none /mnt/ubuntu/proc
     sudo mount --rbind /dev /mnt/ubuntu/dev
     sudo mount --rbind /sys /mnt/ubuntu/sys
-    sudo mount UUID=F577-6798 /mnt/ubuntu/boot/efi
+    sudo mount UUID=$efi /mnt/ubuntu/boot/efi
   else
     echo already mounted
   fi
   echo 'export PS1="(ubuntu-chroot) $PS1"'
   sudo chroot /mnt/ubuntu /bin/su - "$(id -un)"
 elif [ "$os" = "archlinux" ]; then 
-  if [ "$(grep -c "72ad4c57-06c1-41d6-a72f-34000c848126 /mnt/archlinux" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
+  root=72ad4c57-06c1-41d6-a72f-34000c848126
+  efi=F577-6798
+  if [ "$(grep -c "$root /mnt/archlinux" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/archlinux
-    sudo mount UUID=72ad4c57-06c1-41d6-a72f-34000c848126 /mnt/archlinux
+    sudo mount UUID=$root /mnt/archlinux
     sudo mkdir -p /mnt/archlinux/boot/efi
     sudo mount -t proc none /mnt/archlinux/proc
     sudo mount --rbind /dev /mnt/archlinux/dev
     sudo mount --rbind /sys /mnt/archlinux/sys
-    sudo mount UUID=F577-6798 /mnt/archlinux/boot/efi
+    sudo mount UUID=$efi /mnt/archlinux/boot/efi
   else
     echo already mounted
   fi
