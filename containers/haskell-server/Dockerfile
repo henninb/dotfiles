@@ -17,9 +17,9 @@ RUN  useradd -m henninb
 USER henninb
 RUN mkdir -p /home/henninb/.local/bin
 RUN mkdir -p /home/henninb/logout-gtk
-RUN cd /home/henninb/logout-gtk
-RUN stack build
-RUN stack install
-RUN cp /home/henninb/.local/bin/logout-gtk /home/henninb/logout-gtk/
+#RUN cd /home/henninb/logout-gtk
+#RUN stack build
+#RUN stack install
+#RUN cp /home/henninb/.local/bin/logout-gtk /home/henninb/logout-gtk/
 
 #RUN stack build gi-harfbuzz
