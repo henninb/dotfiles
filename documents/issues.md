@@ -770,3 +770,6 @@ journalctl --boot=-0 | grep gkr-pam
 https://gitlab.gnome.org/GNOME/gnome-keyring/-/issues/28
 Setting KillUserProcesses=yes in /etc/systemd/logind.conf solve my problem.
 ```
+
+## brave restore
+cp -r /mnt/gentoo/home/henninb/.config/BraveSoftware .
