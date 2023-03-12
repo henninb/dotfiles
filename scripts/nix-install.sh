@@ -11,9 +11,9 @@ elif command -v apt; then
   echo "debian"
 elif command -v xbps-install; then
   echo "void"
-  sudo eopkg install -y rsync
 elif command -v eopkg; then
   echo "solus"
+  sudo eopkg install -y rsync
 elif command -v dnf; then
   echo "fedora"
 elif command -v brew; then
@@ -63,6 +63,11 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   nix-env -i codium
   nix-env -i CopyQ
   nix-shell -p copyq
+elif [ "$OS" = "Void" ]; then
+  nix-env -i brave
+  nix-env -i librewolf
+  nix-env -i codium
+  nix-env -i dbeaver
 elif [ "$OS" = "Fedora Linux" ]; then
   nix-env -i brave
   nix-env -i librewolf
