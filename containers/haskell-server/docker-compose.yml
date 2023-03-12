@@ -10,3 +10,5 @@ services:
       # - "443:443"
     stdin_open: true 
     tty: true
+    volumes:
+      - ~/projects/github.com/henninb/logout-gtk:/home/henninb/logout-gtk
