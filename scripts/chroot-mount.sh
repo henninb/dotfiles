@@ -2,7 +2,7 @@
 
 if [ $# -ne 1 ] && [ $# -ne 2 ]; then
   echo "Usage: $0 <os> [disk]"
-  echo "gentoo or archlinux or fedora or voidlinux or ubuntu"
+  echo "gentoo|archlinux|fedora|voidlinux|ubuntu|opensuse"
   echo "disk sdc sdb"
   exit 1
 fi
@@ -20,7 +20,7 @@ fi
 lsblk -o UUID,MOUNTPOINT > $HOME/tmp/lsblk.txt
 
 if [ "$os" = "voidlinux" ]; then
-  root=11516130-fe8e-4c13-9c22-3c237073a2eb
+  root=b128a037-b64f-4cce-9d8a-68a3115b4523
   efi=18ED-5063
   if [ "$(grep -c "$root /mnt/voidlinux" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/voidlinux
@@ -52,6 +52,22 @@ elif [ "$os" = "gentoo" ]; then
   fi
   echo 'export PS1="(gentoo-chroot) $PS1"'
   sudo chroot /mnt/gentoo /bin/su - "$(id -un)"
+elif [ "$os" = "fedora-new" ]; then
+  root=11516130-fe8e-4c13-9c22-3c237073a2eb
+  efi=18ED-5063
+  if [ "$(grep -c "$root /mnt/fedora-new" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
+    sudo mkdir -p /mnt/fedora-new
+    sudo mount UUID=$root /mnt/fedora-new
+    sudo mkdir -p /mnt/fedora-new/boot/efi
+    sudo mount -t proc none /mnt/fedora-new/proc
+    sudo mount --rbind /dev /mnt/fedora-new/dev
+    sudo mount --rbind /sys /mnt/fedora-new/sys
+    sudo mount UUID=$efi /mnt/fedora-new/boot/efi
+  else
+    echo already mounted
+  fi
+  echo 'export PS1="(fedora-chroot) $PS1"'
+  sudo chroot /mnt/fedora-new /bin/su - "$(id -un)"
 elif [ "$os" = "mint" ]; then
   root=
   efi=
