@@ -35,15 +35,16 @@ if [ -x "$(command -v emerge)" ]; then
   # sudo emerge --update --newuse app-crypt/libu2f-host
   # sudo emerge --update --newuse sys-auth/pam_u2f
   sudo emerge --update --newuse sys-fs/mtpfs
-fi
-
-
-if [ -x "$(command -v xbps-install)" ]; then
+elif [ -x "$(command -v xbps-install)" ]; then
+  sudo xbps-install -y yubikey-manager
+  sudo xbps-install -y pam_yubico
   sudo xbps-install -y mdevd
   sudo xbps-install -y pcsclite
   sudo xbps-install -y pcsc-ccid
   sudo ln -sfn /etc/sv/pcscd /var/service/pcscd
   # sudo ln -s /etc/sv/pcscd /etc/runit/runsvdir/current/
+else
+  echo "OS not found"
 fi
 
 sudo usermod -a -G plugdev "$(whoami)"
