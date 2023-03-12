@@ -63,14 +63,16 @@ elif [ "$os" = "mint" ]; then
   echo 'export PS1="(mint-chroot) $PS1"'
   sudo chroot /mnt/mint /bin/su - "$(id -un)"
 elif [ "$os" = "opensuse" ]; then
-  if [ "$(grep -c "d7d69abd-8b7b-4173-a798-a9e17655f21a /mnt/opensuse" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
+  root=e21df22e-e314-43b0-b8fb-941a5c11528f
+  efi=94DB-18F3
+  if [ "$(grep -c "$root /mnt/opensuse" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/opensuse 
-    sudo mount UUID=d7d69abd-8b7b-4173-a798-a9e17655f21a /mnt/opensuse
+    sudo mount UUID=$root /mnt/opensuse
     sudo mkdir -p /mnt/opensuse/boot/efi
     sudo mount -t proc none /mnt/opensuse/proc
     sudo mount --rbind /dev /mnt/opensuse/dev
     sudo mount --rbind /sys /mnt/opensuse/sys
-    sudo mount UUID=CC04-C5EF /mnt/opensuse/boot/efi
+    sudo mount UUID=$efi /mnt/opensuse/boot/efi
   else
     echo already mounted
   fi
