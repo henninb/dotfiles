@@ -29,6 +29,8 @@ elif command -v xbps-install; then
   # sudo ln -sfn /etc/sv/elogind /var/service/elogind
   sudo xbps-install -y libgusb-devel
   sudo xbps-install -y python3-devel
+  sudo xbps-install -y pcsc-ccid
+  sudo ln -sfn /etc/sv/pcscd /var/service/pcscd
 fi
 
 cat << EOF > "$HOME/tmp/99-streamdeck.rules"

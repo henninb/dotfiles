@@ -392,6 +392,8 @@ elif [ "$OS" = "Void" ]; then
   sudo ln -sfn /etc/sv/polkitd /var/service/polkitd
   sudo ln -sfn /etc/sv/dbus /var/service/dbus
   sudo ln -sfn /etc/sv/NetworkManager /var/service/NetworkManager
+  sudo sv status polkitd
+  sudo sv status dbus
 elif [ "$OS" = "Solus" ]; then
   sudo ln -sfn /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so
   if ! sudo ln -sfn /usr/lib/libncursesw.so.5.9 /usr/lib/libtinfo.so.5.9; then
