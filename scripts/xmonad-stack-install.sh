@@ -66,6 +66,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y mpv
   sudo apt install -y ncdu
   sudo apt install -y neofetch
+#  sudo apt install -y neovim
   sudo apt install -y newsboat
   sudo apt install -y nmap
   sudo apt install -y network-manager-gnome
@@ -172,6 +173,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y mpd
   sudo zypper install -y mpv
   sudo zypper install -y ncdu
+  sudo zypper install -y neovim
   sudo zypper install -y newsboat
   sudo zypper install -y nmap
   sudo zypper install -y ntfs-3g
@@ -267,6 +269,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S mpv
   sudo pacman --noconfirm --needed -S ncdu
   sudo pacman --noconfirm --needed -S network-manager-applet
+  sudo pacman --noconfirm --needed -S neovim
   sudo pacman --noconfirm --needed -S newsboat
   sudo pacman --noconfirm --needed -S nmap
   sudo pacman --noconfirm --needed -S ntp
