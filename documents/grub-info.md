@@ -125,3 +125,10 @@ loglevels are defined as follows:
 ## tune2fs does not work on fat partitions
 tune2fs -l /dev/nvme0n1p1 | grep metadata_csum_seed
 tune2fs: Bad magic number in super-block while trying to open /dev/nvme0n1p1
+
+
+## normal mode only
+GRUB_CMDLINE_LINUX_DEFAULT
+
+## normal and recovery mode
+GRUB_CMDLINE_LINUX_DEFAULT
