@@ -763,3 +763,10 @@ Partition table scan:
 
 Found valid GPT with protective MBR; using GPT.
 ```
+
+## sddm login issue
+```
+journalctl --boot=-0 | grep gkr-pam
+https://gitlab.gnome.org/GNOME/gnome-keyring/-/issues/28
+Setting KillUserProcesses=yes in /etc/systemd/logind.conf solve my problem.
+```
