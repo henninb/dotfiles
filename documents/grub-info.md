@@ -106,6 +106,21 @@ efibootmgr -v
 ## validate fs
 grub-probe --target=fs --device /dev/nvme0n1p1
 
+## loglevel
+loglevel= All Kernel Messages with a loglevel smaller than the
+console loglevel will be printed to the console. It can
+also be changed with klogd or other programs. The
+loglevels are defined as follows:
+
+                    0 (KERN_EMERG)          system is unusable
+                    1 (KERN_ALERT)          action must be taken immediately
+                    2 (KERN_CRIT)           critical conditions
+                    3 (KERN_ERR)            error conditions
+                    4 (KERN_WARNING)        warning conditions
+                    5 (KERN_NOTICE)         normal but significant condition
+                    6 (KERN_INFO)           informational
+                    7 (KERN_DEBUG)          debug-level messages
+
 
 ## tune2fs does not work on fat partitions
 tune2fs -l /dev/nvme0n1p1 | grep metadata_csum_seed
