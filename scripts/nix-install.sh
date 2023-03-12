@@ -32,10 +32,11 @@ nix-env -q --available mongodb
 echo 'nix-env -q --available mongodb'
 
 echo 'nix-env -i notepadqq'
-echo 'nix-env -i dbeaver'
 echo 'nix-env -i mongodb'
 echo 'nix-env -i starship'
 echo 'nix-env -i newsboat'
+
+git checkout $HOME/.bash_profile  $HOME/.zshenv
 
 if [ "$OS" = "Ubuntu" ]; then
   nix-env -i lazygit
