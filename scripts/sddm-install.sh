@@ -131,7 +131,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y gnome-keyring-pam
   sudo systemctl set-default graphical
   sudo usermod -a -G video "$(id -un)"
-  sudo usermod -a -G video sddm
+  #sudo usermod -a -G video sddm
+  sudo usermod -a -G systemd-journal "$(id -un)"
   sudo chown sddm:sddm /var/lib/sddm/state.conf
   systemctl --user mask gnome-keyring-daemon.service
   systemctl --user mask gnome-keyring-daemon.socket
