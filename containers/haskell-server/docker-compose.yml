@@ -5,10 +5,7 @@ services:
     image: haskell-server
     container_name: haskell-server
     hostname: haskell-server
-    # restart: always
-    # ports:
-      # - "443:443"
-    stdin_open: true 
-    tty: true
+      #    stdin_open: true 
+      # tty: true
     volumes:
       - ~/projects/github.com/henninb/logout-gtk:/home/henninb/logout-gtk

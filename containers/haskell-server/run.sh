@@ -32,10 +32,11 @@ elif [ "$platform" = "docker" ]; then
 
   if command -v docker-compose; then
     docker-compose build
-    docker-compose up
+    docker-compose up -d
+    docker exec -it --user henninb haskell-server /bin/bash
   else
     docker build -t haskell-server .
-    docker run --name=haskell-server -h haskell-server -h haskell-server --restart unless-stopped -p 443:443 -d haskell-server
+    docker run --name=haskell-server -h haskell-server -h haskell-server --restart unless-stopped -d haskell-server
   fi
 fi
 
