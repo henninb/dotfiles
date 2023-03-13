@@ -773,3 +773,8 @@ Setting KillUserProcesses=yes in /etc/systemd/logind.conf solve my problem.
 
 ## brave restore
 cp -r /mnt/gentoo/home/henninb/.config/BraveSoftware .
+
+## emacs
+sudo -p mkdir /run/user/$(id -u)
+sudo chmod 700 $(id -u)
+sudo chown henninb:henninb $(id -u)
