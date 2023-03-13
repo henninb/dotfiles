@@ -303,6 +303,8 @@ if [ "$OS" = "openSUSE Tumbleweed" ]; then
   export NIX_SSL_CERT_FILE=/var/lib/ca-certificates/ca-bundle.pem
 fi
 
+# export XDG_RUNTIME_DIR=/run/user/$(id -u)
+
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
 
 # needs research
