@@ -121,13 +121,12 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
 elif [ "$OS" = "Fedora Linux" ]; then
   echo 'https://phoenixnap.com/kb/fedora-nvidia-drivers'
   sudo dnf remove xorg-x11-drv-nouveau
-  echo /etc/default/grub
-  echo GRUB_CMDLINE_LINUX="text rd.driver.blacklist=nouveau"
-  echosudo cp -v "$HOME/tmp/nvidia-installer-disable-nouveau.conf" /etc/modprobe.d/blacklist.conf
-  echo sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+  # echo /etc/default/grub
+  # echo GRUB_CMDLINE_LINUX="text rd.driver.blacklist=nouveau"
+  echo sudo cp -v "$HOME/tmp/nvidia-installer-disable-nouveau.conf" /etc/modprobe.d/blacklist.conf
   echo sudo dracut --force /boot/initramfs-$(uname -r).img $(uname -r)
-  echo sudo systemctl set-default multi-user.target
-  echo sudo systemctl set-default graphical.target
+  # echo sudo systemctl set-default multi-user.target
+  # echo sudo systemctl set-default graphical.target
   sudo dnf install -y akmod-nvidia
   sudo dnf install -y xorg-x11-drv-nvidia-cuda
   sudo dnf install -y kernel-headers
