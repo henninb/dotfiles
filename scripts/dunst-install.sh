@@ -1,21 +1,25 @@
 #!/bin/sh
 
-if command -v pacman; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   echo "archlinux"
-elif command -v emerge; then
+elif [ "$OS" = "Gentoo" ]; then
   echo "gentoo"
-elif command -v apt; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install libdbus-1-dev libx11-dev libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libgtk-3-dev libxdg-basedir-dev libnotify-dev
-elif command -v xbps-install; then
+elif [ "$OS" = "Void" ]; then
   echo "void"
-elif command -v pkg; then
+elif [ "$OS" = "FreeBSD" ]; then
   echo "freebsd"
-elif command -v eopkg; then
+elif [ "$OS" = "Solus" ]; then
   echo "solus"
-elif command -v dnf; then
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  echo opensuse
+elif [ "$OS" = "Fedora Linux" ]; then
   echo "fedora"
-elif command -v brew; then
-  echo "macos"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo clearlinux
+elif [ "$OS" = "Darwin" ]; then
+  echo macos
 else
   echo "$OS is not yet implemented."
   exit 1
