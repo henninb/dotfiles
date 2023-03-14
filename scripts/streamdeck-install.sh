@@ -34,6 +34,8 @@ elif command -v xbps-install; then
   sudo xbps-install -y pcsc-ccid
   sudo xbps-install -y pcsclite
   sudo ln -sfn /etc/sv/pcscd /var/service/pcscd
+else
+  echo "OS not found"
 fi
 
 cat << EOF > "$HOME/tmp/99-streamdeck.rules"
