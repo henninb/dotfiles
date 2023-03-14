@@ -4,7 +4,8 @@ if command -v emerge; then
   sudo emerge --update --newuse dev-libs/hidapi
 elif command -v zypper; then
   sudo zypper install -y libhidapi-devel
-  sudo zypper install -y python-devel
+  # sudo zypper install -y python-devel
+  sudo zypper install -y python3-devel
 elif command -v apt; then
   sudo apt install -y python-dev-is-python3
   sudo apt install -y libhidapi-libusb0 
