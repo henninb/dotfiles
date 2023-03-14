@@ -1,26 +1,25 @@
 #!/bin/sh
 
-if command -v pacman; then
-  echo "archlinux"
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   yay --noconfirm --needed -S peazip-qt-bin
-elif command -v emerge; then
-  # echo "gentoo"
-  # sudo emerge --update --newuse app-eselect/eselect-repository
-  # sudo eselect repository enable bgo-overlay
-  # sudo emaint sync -r bgo-overlay
-  # sudo emerge --update --newuse app-arch/peazip
-
-  curl -s "http://sourceforge.net/projects/peazip/files/5.6.0/peazip_portable-5.6.0.LINUX.x86_64.GTK2.tar.gz/download" -O "$HOME/tmp/peazip_portable-5.6.0.LINUX.x86_64.GTK2.tar.gz"
-elif command -v apt; then
+elif [ "$OS" = "Gentoo" ]; then
+  echo "gentoo"
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo "debian"
-elif command -v xbps-install; then
+elif [ "$OS" = "Void" ]; then
   echo "void"
-elif command -v eopkg; then
+elif [ "$OS" = "FreeBSD" ]; then
+  echo "freebsd"
+elif [ "$OS" = "Solus" ]; then
   echo "solus"
-elif command -v dnf; then
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  echo opensuse
+elif [ "$OS" = "Fedora Linux" ]; then
   echo "fedora"
-elif command -v brew; then
-  echo "macos"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo clearlinux
+elif [ "$OS" = "Darwin" ]; then
+  echo macos
 else
   echo "$OS is not yet implemented."
   exit 1

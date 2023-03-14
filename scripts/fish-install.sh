@@ -1,33 +1,33 @@
 #!/bin/sh
 
-if command -v pacman; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   echo "archlinux"
-elif command -v emerge; then
+elif [ "$OS" = "Gentoo" ]; then
+  echo "gentoo"
   if ! command -v fish; then
     sudo emerge --update --newuse fish
   fi
-elif command -v xbps-install; then
-  #sudo xbps-install -y fish
-  test
-elif command -v pkg; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
+  sudo apt install -y fish
+elif [ "$OS" = "Void" ]; then
+  sudo xbps-install -y fish
+elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y fish
-elif command -v eopkg; then
+elif [ "$OS" = "Solus" ]; then
   echo "solus"
-elif command -v dnf; then
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper install -y fish
+elif [ "$OS" = "Fedora Linux" ]; then
   echo "fedora"
-elif command -v brew; then
+  sudo dnf install -y fish
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo clearlinux
+elif [ "$OS" = "Darwin" ]; then
   brew install fish
-elif command -v apt; then
-  echo "debian"
 else
   echo "$OS is not yet implemented."
   exit 1
 fi
-
-# fisher add matchai/spacefish
-
-# curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-# fisher add matchai/spacefish
 
 exit 0
 

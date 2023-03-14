@@ -1,25 +1,27 @@
 #!/bin/sh
 
-if command -v pacman; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S nginx
-elif command -v emerge; then
+elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse nginx
-elif command -v apt; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y nginx
-elif command -v xbps-install; then
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y nginx
-elif command -v pkg; then
+elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y nginx
   sudo sysrc nginx_enable="YES"
   sudo service nginx start
-elif command -v zypper; then
-  sudo zypper install -y nginx
-elif command -v eopkg; then
+elif [ "$OS" = "Solus" ]; then
   echo "solus"
-elif command -v dnf; then
-  echo "fedora"
-elif command -v brew; then
-  echo "macos"
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper install -y nginx
+elif [ "$OS" = "Fedora Linux" ]; then
+  sudo dnf install -y nginx
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo clearlinux
+elif [ "$OS" = "Darwin" ]; then
+  echo macos
 else
   echo "$OS is not yet implemented."
   exit 1

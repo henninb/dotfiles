@@ -23,20 +23,27 @@ localhost
 102.168.10.107
 EOF
 
-if command -v pacman; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   echo "archlinux"
-elif command -v emerge; then
+elif [ "$OS" = "Gentoo" ]; then
+  echo "gentoo"
   sudo emerge --update --newuse ansible
-elif command -v apt; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo "debian"
-elif command -v xbps-install; then
+elif [ "$OS" = "Void" ]; then
   echo "void"
-elif command -v eopkg; then
+elif [ "$OS" = "FreeBSD" ]; then
+  echo "freebsd"
+elif [ "$OS" = "Solus" ]; then
   echo "solus"
-elif command -v dnf; then
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  echo opensuse
+elif [ "$OS" = "Fedora Linux" ]; then
   echo "fedora"
-elif command -v brew; then
-  echo "macos"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo clearlinux
+elif [ "$OS" = "Darwin" ]; then
+  echo macos
 else
   echo "$OS is not yet implemented."
   exit 1

@@ -38,20 +38,32 @@ if [ ! -f "$HOME/ssl/rootCA.pem" ]; then
       -keyout "$HOME/ssl/rootCA.key" \
       -out "$HOME/ssl/rootCA.pem"
 
-  if command -v pacman; then
-    sudo trust anchor --store rootCA.pem
-  fi
-
-  if command -v emerge; then
-    sudo mkdir -p /usr/local/share/ca-certificates/
-    sudo cp "$HOME/ssl/rootCA.pem" /usr/local/share/ca-certificates/
-    sudo update-ca-certificates
-  fi
-
-  if command -v brew; then
-    echo "macos"
-  fi
-
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+  sudo trust anchor --store rootCA.pem
+elif [ "$OS" = "Gentoo" ]; then
+  echo "gentoo"
+  sudo mkdir -p /usr/local/share/ca-certificates/
+  sudo cp "$HOME/ssl/rootCA.pem" /usr/local/share/ca-certificates/
+  sudo update-ca-certificates
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
+  echo "debian"
+elif [ "$OS" = "Void" ]; then
+  echo "void"
+elif [ "$OS" = "FreeBSD" ]; then
+  echo "freebsd"
+elif [ "$OS" = "Solus" ]; then
+  echo "solus"
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  echo opensuse
+elif [ "$OS" = "Fedora Linux" ]; then
+  echo "fedora"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo clearlinux
+elif [ "$OS" = "Darwin" ]; then
+  echo macos
+else
+  echo "$OS is not yet implemented."
+  exit 1
 fi
 
 # echo "generate testRootCA key (no password)"

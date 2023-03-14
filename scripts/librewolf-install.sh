@@ -1,27 +1,28 @@
 #!/bin/sh
 
-
-if command -v pacman; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   yay --noconfirm --needed -S librewolf-bin
-elif command -v emerge; then
+elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse app-eselect/eselect-repository
   sudo eselect repository add librewolf git https://gitlab.com/librewolf-community/browser/gentoo.git
   sudo emaint -r librewolf sync
   sudo emerge --update --newuse librewolf-bin
-elif command -v apt; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo "debian"
-elif command -v xbps-install; then
+elif [ "$OS" = "Void" ]; then
   echo "void"
-elif command -v eopkg; then
+elif [ "$OS" = "FreeBSD" ]; then
+  echo "freebsd"
+elif [ "$OS" = "Solus" ]; then
   echo "solus"
-elif command -v zypper; then
-  echo "opensuse"
-elif command -v dnf; then
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  echo opensuse
+elif [ "$OS" = "Fedora Linux" ]; then
   echo "fedora"
-elif command -v zypper; then
-  echo "opensuse"
-elif command -v brew; then
-  echo "macos"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo clearlinux
+elif [ "$OS" = "Darwin" ]; then
+  echo macos
 else
   echo "$OS is not yet implemented."
   exit 1

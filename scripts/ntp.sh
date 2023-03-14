@@ -1,36 +1,42 @@
 #!/bin/sh
 
-if command -v pacman; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   date
   sudo ntpdate -u time.nist.gov
   date
   # sudo hwclock
   # sudo hwclock -w
-elif command -v xbps-install; then
-  date
-  sudo ntpdate -u time.nist.gov
-  date
-elif command -v zypper; then
-  date
-  sudo ntpdate -u time.nist.gov
-  date
-elif command -v apt; then
-  date
-  sudo ntpdate -u time.nist.gov
-  date
-elif command -v dnf; then
-  date
-  sudo ntpdate -u time.nist.gov
-  date
-elif command -v emerge; then
+elif [ "$OS" = "Gentoo" ]; then
   date
   # sudo ntpdate -s time.nist.gov
   sudo ntpdate -u pool.ntp.org
   date
-elif command -v pkg; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   date
   sudo ntpdate -u time.nist.gov
   date
+elif [ "$OS" = "Void" ]; then
+  date
+  sudo ntpdate -u time.nist.gov
+  date
+elif [ "$OS" = "FreeBSD" ]; then
+  date
+  sudo ntpdate -u time.nist.gov
+  date
+elif [ "$OS" = "Solus" ]; then
+  echo "solus"
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  date
+  sudo ntpdate -u time.nist.gov
+  date
+elif [ "$OS" = "Fedora Linux" ]; then
+  date
+  sudo ntpdate -u time.nist.gov
+  date
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo clearlinux
+elif [ "$OS" = "Darwin" ]; then
+  echo macos
 else
   echo "$OS is not yet implemented."
   exit 1

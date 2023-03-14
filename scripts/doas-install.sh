@@ -5,24 +5,28 @@ cat << EOF > "$HOME/tmp/doas.conf"
 permit nopass henninb as root
 EOF
 
-if command -v pacman; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S doas
-elif command -v emerge; then
+elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse doas
-elif command -v zypper; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
+  sudo apt install -y doas
+elif [ "$OS" = "Void" ]; then
+  sudo xbps-install -y opendoas
+elif [ "$OS" = "FreeBSD" ]; then
+  echo "freebsd"
+elif [ "$OS" = "Solus" ]; then
+  echo "solus"
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper addrepo https://download.opensuse.org/repositories/security/openSUSE_Tumbleweed/security.repo
   sudo zypper refresh
   sudo zypper install -y opendoas
-elif command -v apt; then
-  sudo apt install -y doas
-elif command -v xbps-install; then
-  sudo xbps-install -y opendoas
-elif command -v eopkg; then
-  echo "solus"
-elif command -v dnf; then
+elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y doas
-elif command -v brew; then
-  echo "macos"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo clearlinux
+elif [ "$OS" = "Darwin" ]; then
+  echo macos
 else
   echo "$OS is not yet implemented."
   exit 1

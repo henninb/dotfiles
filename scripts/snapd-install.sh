@@ -1,10 +1,9 @@
 #!/bin/sh
 
-if command -v pacman; then
-  # echo "archlinux"
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   yay --noconfirm --needed -S snapd
   sudo systemctl enable --now snapd
-elif command -v emerge; then
+elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newus sys-apps/systemd
   sudo emerge --update --newus sys-apps/apparmor
   echo GRUB_CMDLINE_LINUX_DEFAULT="apparmor=1 security=apparmor" >> /etc/default/grub
@@ -14,24 +13,31 @@ elif command -v emerge; then
   sudo systemctl enable --now snapd
   sudo systemctl enable --now snapd.socket
   sudo systemctl enable --now snapd.apparmor
-elif command -v apt; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo "debian"
-elif command -v xbps-install; then
+elif [ "$OS" = "Void" ]; then
   echo "void"
-elif command -v eopkg; then
+elif [ "$OS" = "FreeBSD" ]; then
+  echo "freebsd"
+elif [ "$OS" = "Solus" ]; then
   echo "solus"
-elif command -v dnf; then
-  echo "fedora"
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  echo opensuse
+elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y snapd
   sudo systemctl enable --now snapd
-elif command -v brew; then
-  echo "macos"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo clearlinux
+elif [ "$OS" = "Darwin" ]; then
+  echo macos
 else
   echo "$OS is not yet implemented."
   exit 1
 fi
 
 sudo snap install hello-world
-sudo snap install sosumi
+#sudo snap install sosumi
 
 exit 0
+
+# vim: set ft=sh:

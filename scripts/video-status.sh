@@ -68,18 +68,35 @@ lspci -k | grep -A 2 -E "(VGA|3D)"
 echo 'uninstall'
 echo 'sudo sh ./NVIDIA-Linux-x86_64-525.89.02.run --uninstall'
 
-if command -v pacman; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S linux-headers
   sudo pacman --noconfirm --needed -S glxinfo
-fi
-
-if command -v emerge; then
+elif [ "$OS" = "Gentoo" ]; then
   if ! command -v hardinfo; then
     sudo emerge --update --newuse hardinfo
   fi
   sudo emerge --update --newuse mesa-progs
   sudo emerge --update --newuse linux-headers
   sudo emerge --update --newuse media-libs/vulkan-loader
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
+  echo debian
+elif [ "$OS" = "Void" ]; then
+  echo "void"
+elif [ "$OS" = "FreeBSD" ]; then
+  echo "freebsd"
+elif [ "$OS" = "Solus" ]; then
+  echo "solus"
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  echo opensuse
+elif [ "$OS" = "Fedora Linux" ]; then
+  echo "fedora"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo clearlinux
+elif [ "$OS" = "Darwin" ]; then
+  echo macos
+else
+  echo "$OS is not yet implemented."
+  exit 1
 fi
 
 # dead code
