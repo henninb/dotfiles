@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -x "$(command -v pacman)" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S fakeroot
   sudo pacman --noconfirm --needed -S base-devel
   mkdir -p "$HOME/projects/archlinux.org/aur/"
