@@ -12,11 +12,12 @@ netlify --version
 dunst --version
 kitty --version
 nix-env --version
-starship --version
+starship --version | head -1
 arduino-cli version
 llvm-config --version
 pip --version
 stack exec -- ghc --version
 conky -version | head -1
+emacs --version | head -1
 
 exit 0

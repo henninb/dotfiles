@@ -203,6 +203,7 @@ go install github.com/arduino/arduino-cli@latest
 go install github.com/Bios-Marcel/cordless@latest
 
 npm install -g wrangler
+npm install -g netlify-cli
 
 exit 0
 
