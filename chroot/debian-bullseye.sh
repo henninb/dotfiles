@@ -2,7 +2,9 @@
 
 if command -v debootstrap; then
   sudo mkdir -p bullseye
-  sudo debootstrap --arch amd64 bullseye "$HOME/chroot/bullseye" http://deb.debian.org/debian/
+  if [ ! -f bullseye/etc/os-release ]; then
+    sudo debootstrap --arch amd64 bullseye "$HOME/chroot/bullseye" http://deb.debian.org/debian/
+  fi
   xhost +local:
   sudo mount -t proc none bullseye/proc
   sudo mount --rbind /dev bullseye/dev
