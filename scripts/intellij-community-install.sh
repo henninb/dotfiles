@@ -102,7 +102,7 @@ if [ "${OS}" = "FreeBSD" ]; then
   sudo pw usermod "$(whoami)" -G intellij
 else
   sudo groupadd intellij
-  sudo useradd -s /sbin/nologin -g intellij intellij
+  sudo useradd -M -s /sbin/nologin -g intellij intellij
   sudo usermod -a -G intellij "$(whoami)"
 fi
 echo "$VER"

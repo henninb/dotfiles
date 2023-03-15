@@ -10,6 +10,8 @@ elif [ "$OS" = "Void" ]; then
   echo "sudo xbps-install -y"
 elif [ "$OS" = "FreeBSD" ]; then
   echo "sudo pkg install -y"
+elif [ "$OS" = "OpenBSD" ]; then
+  echo "OpenBSD"
 elif [ "$OS" = "Solus" ]; then
   "sudo eopkg install -y"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
