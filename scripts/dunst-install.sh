@@ -1,25 +1,25 @@
 #!/bin/sh
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  echo "archlinux"
+  echo "sudo pacman --noconfirm --needed -S"
 elif [ "$OS" = "Gentoo" ]; then
-  echo "gentoo"
+  echo "sudo emerge --update --newuse"
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install libdbus-1-dev libx11-dev libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libgtk-3-dev libxdg-basedir-dev libnotify-dev
 elif [ "$OS" = "Void" ]; then
-  echo "void"
+  echo "sudo xbps-install -y"
 elif [ "$OS" = "FreeBSD" ]; then
-  echo "freebsd"
+  echo "sudo pkg install -y"
 elif [ "$OS" = "Solus" ]; then
-  echo "solus"
+  "sudo eopkg install -y"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  echo opensuse
+  echo "sudo zypper install -y"
 elif [ "$OS" = "Fedora Linux" ]; then
-  echo "fedora"
+  echo "sudo dnf install -y"
 elif [ "$OS" = "Clear Linux OS" ]; then
-  echo clearlinux
+  "sudo swupd bundle-add"
 elif [ "$OS" = "Darwin" ]; then
-  echo macos
+  echo "brew install"
 else
   echo "$OS is not yet implemented."
   exit 1
