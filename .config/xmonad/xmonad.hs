@@ -40,6 +40,7 @@ import Local.PolybarLogHook (eventLogHookForPolybar)
 import Local.DzenLogHook (dzenLogHook)
 import XMonad.Hooks.WindowSwallowing ( swallowEventHook )
 import XMonad.Actions.PhysicalScreens
+import System.Directory (findExecutable)
 
 -- sudo emerge --update --newuse media-fonts/terminus-font
 -- xset +fp /usr/share/fonts/terminus
@@ -161,6 +162,7 @@ myStartupHook = do
       "linux"   -> spawnOnce "nm-applet"
       _    -> return ()
     -- spawnOnce "$HOME/.config/polybar/launch.sh xmonad"
+    flameshotPath <- liftIO $ findExecutable "flameshot"
     spawnOnce "flameshot" --dbus required
     spawnOnce "dunst"
     -- spawnOnce "picom"
@@ -174,10 +176,10 @@ myStartupHook = do
       "freebsd" -> return ()
       "linux"   -> spawnOnce "blueman-applet" --dbus required
       _    -> return ()
-    case os of
-      "freebsd" -> return ()
-      "linux"   -> spawnOnce "pamac-tray"
-      _    -> return ()
+    -- case os of
+    --   "freebsd" -> return ()
+    --   "linux"   -> spawnOnce "pamac-tray"
+    --   _    -> return ()
     spawnOnce "numlockx on"
     spawnOnce "emacs --daemon"
     spawnOnce "/usr/libexec/polkit-gnome-authentication-agent-1"
