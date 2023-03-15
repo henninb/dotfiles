@@ -21,7 +21,7 @@ import XMonad.Util.EZConfig (additionalKeysP, additionalKeys, removeKeys)
 import XMonad.Util.SpawnOnce (spawnOnce)
 import XMonad.Actions.SpawnOn (spawnOn, manageSpawn)
 import XMonad.Layout.WindowArranger (pattern DecreaseRight, pattern IncreaseUp, windowArrange)
-import XMonad.Util.Run(spawnPipe, safeSpawn)
+import XMonad.Util.Run(spawnPipe, safeSpawn, safeSpawnProg)
 import System.Environment (setEnv)
 import System.Info (os)
 import XMonad.Layout.IndependentScreens (countScreens)
@@ -41,6 +41,7 @@ import Local.DzenLogHook (dzenLogHook)
 import XMonad.Hooks.WindowSwallowing ( swallowEventHook )
 import XMonad.Actions.PhysicalScreens
 import System.Directory (findExecutable)
+--import Control.Exception.Safe (catchAny)
 
 -- sudo emerge --update --newuse media-fonts/terminus-font
 -- xset +fp /usr/share/fonts/terminus
@@ -190,6 +191,10 @@ myStartupHook = do
     spawnOnce "conky -c $HOME/.config/conky/xmonad-system-overview"
     -- spawnOnce "mpDris2" -- required for mpd
     spawnOnce "volumeicon"
+    volumeiconPath <- liftIO $ findExecutable "volumeicon"
+    case volumeiconPath of
+        Just path -> safeSpawnProg path
+        Nothing   -> return ()
     spawnOnce "streamdeck-start"
     spawnOnce "xscreensaver -no-splash"
     -- spawnOnce "feh --no-fehbg --bg-scale $HOME/.local/wallpaper/minnesota-vikings-dark.png"
