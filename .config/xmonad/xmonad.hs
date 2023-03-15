@@ -41,6 +41,8 @@ import Local.DzenLogHook (dzenLogHook)
 import XMonad.Hooks.WindowSwallowing ( swallowEventHook )
 import XMonad.Actions.PhysicalScreens
 import System.Directory (findExecutable)
+import System.IO (FilePath, appendFile)
+import Control.Exception (SomeException, catch, displayException)
 --import Control.Exception.Safe (catchAny)
 
 -- sudo emerge --update --newuse media-fonts/terminus-font
@@ -85,6 +87,9 @@ myFocusFollowsMouse = True
 -- Whether clicking on a window to focus also passes the click to the window
 myClickJustFocuses :: Bool
 myClickJustFocuses = False
+
+writeLog :: FilePath -> SomeException -> X ()
+writeLog file e = liftIO $ appendFile file (displayException e ++ "\n")
 
 myHandleEventHook = swallowEventHook (className =? "Alacritty" <||> className =? "st" <||> className =? "kitty") (return True)
 
