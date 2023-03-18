@@ -205,6 +205,7 @@ go install github.com/Bios-Marcel/cordless@latest
 npm install -g wrangler
 npm install -g netlify-cli
 npm install -g heroku
+npm install -g yarn
 
 exit 0
 

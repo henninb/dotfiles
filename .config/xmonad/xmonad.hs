@@ -8,6 +8,7 @@
 --                                                                       --
 ---------------------------------------------------------------------------
 {-# LANGUAGE PatternSynonyms #-}
+{-# LANGUAGE FlexibleContexts #-}
 
 import XMonad
 import XMonad.Hooks.DynamicLog (shorten, dynamicLogWithPP)
@@ -27,7 +28,7 @@ import System.Info (os)
 import XMonad.Layout.IndependentScreens (countScreens)
 import XMonad.Actions.DynamicProjects (dynamicProjects)
 import XMonad.Util.NamedActions (addDescrKeys')
-import XMonad.StackSet (findTag, view, screens)
+import XMonad.StackSet (findTag, view, screens, greedyView, shift)
 import XMonad.Util.NamedWindows (getName)
 
 import Local.Colors (myFocusBorderColor, myColor, myBorderColor)
@@ -44,6 +45,9 @@ import System.Directory (findExecutable)
 import System.IO (FilePath, appendFile)
 import Control.Exception (SomeException, catch, displayException)
 --import Control.Exception.Safe (catchAny)
+-- import UnliftIO.Exception (catchAny)
+import Control.Exception.Safe (catchAny, displayException)
+import XMonad.Actions.OnScreen (viewOnScreen)
 
 -- sudo emerge --update --newuse media-fonts/terminus-font
 -- xset +fp /usr/share/fonts/terminus
@@ -92,6 +96,10 @@ writeLog :: FilePath -> SomeException -> X ()
 writeLog file e = liftIO $ appendFile file (displayException e ++ "\n")
 
 myHandleEventHook = swallowEventHook (className =? "Alacritty" <||> className =? "st" <||> className =? "kitty") (return True)
+
+spawnOnScreen :: WorkspaceId -> String -> X ()
+spawnOnScreen workspaceId program =
+    spawnOn workspaceId program >> windows (greedyView workspaceId . shift workspaceId)
 
 main :: IO ()
 main = do
@@ -158,15 +166,85 @@ myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
   where
     sstr = shorten len str
 
+runVolumeIcon :: Maybe FilePath -> X ()
+runVolumeIcon (Just path) = safeSpawnProg path
+runVolumeIcon Nothing     = return ()
+
+
+-- maybeSpawn :: String -> X ()
+-- maybeSpawn prog = do
+--     mpath <- liftIO $ findExecutable prog
+--     case mpath of
+--         Nothing -> pure ()
+--         Just path -> catchAny (liftIO $ safeSpawnProg path []) (logError . displayException)
+
+-- maybeSpawn :: String -> X ()
+-- maybeSpawn prog = do
+--     mpath <- liftIO $ findExecutable prog
+--     case mpath of
+--         Nothing -> pure ()
+--         Just path -> do
+--             result <- liftIO $ catchAny (safeSpawnProg path []) (pure . Left)
+--             case result of
+--                 Left e -> logError $ displayException e
+--                 Right _ -> pure ()
+
+-- maybeSpawn :: String -> X ()
+-- maybeSpawn prog = do
+--         mpath <- liftIO $ findExecutable prog
+--         case mpath of
+--             Nothing -> pure ()
+--             Just path -> catchAny (liftIO $ safeSpawnProg path []) (logError . displayException)
+
+logError :: String -> X ()
+logError msg = liftIO $ appendFile "/path/to/error.log" (msg ++ "\n")
+
+handleException :: SomeException -> X ()
+handleException e = logError (displayException e)
+
+
 
 myStartupHook :: X ()
 myStartupHook = do
     setWMName "LG3D"
     liftIO (setEnv "DESKTOP_SESSION" "xmonad")
-    case os of
-      "freebsd" -> spawnOnce "networkmgr"
-      "linux"   -> spawnOnce "nm-applet"
-      _    -> return ()
+    -- maybeSpawn "nm-applet"
+    -- maybeSpawn "networkmgr"
+        -- network manager applet
+    -- networkManagerPath <- liftIO $ findExecutable "nm-applet"
+    -- case networkManagerPath of
+    --     Just path -> catchX (safeSpawnProg path) (logError . displayException)
+    --     Nothing   -> return ()
+    -- -- freebsd network manager
+    -- networkManagerPath' <- liftIO $ findExecutable "networkmgr"
+    -- case networkManagerPath' of
+    --     Just path -> catchX (safeSpawnProg path) (logError . displayException)
+    --     Nothing   -> return ()
+    --networkManagerPath <- liftIO $ findExecutable "nm-applet"
+    -- catchError (maybe (return ()) (safeSpawnProg) networkManagerPath) (logError . displayException)
+
+    
+    -- networkManagerPath <- liftIO $ findExecutable "nm-applet"
+    -- case networkManagerPath of
+    --     Just path -> catchAny (safeSpawnProg path) (logError . show) >>= \case
+    --         Left e -> logError $ "Failed to start network manager applet: " ++ show e
+    --         Right _ -> return ()
+    --     Nothing   -> return ()
+    -- networkManagerPath' <- liftIO $ findExecutable "networkmgr"
+    -- case networkManagerPath' of
+    --     Just path -> catchAny (safeSpawnProg path) (logError . show) >>= \case
+    --         Left e -> logError $ "Failed to start networkmgr: " ++ show e
+    --         Right _ -> return ()
+    --     Nothing   -> return ()
+
+
+
+
+
+    safeSpawnProg "nm-applet"
+    safeSpawnProg "networkmgr"
+    -- safeSpawnProg "streamdeck-start"
+    spawnOnScreen "1" "streamdeck-start"
     -- spawnOnce "$HOME/.config/polybar/launch.sh xmonad"
     flameshotPath <- liftIO $ findExecutable "flameshot"
     spawnOnce "flameshot" --dbus required
@@ -195,17 +273,18 @@ myStartupHook = do
     -- spawnOnce "trayer --edge bottom --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 200 --transparent true --tint 0x000000 --height 18 --alpha 0"
     spawnOnce "conky -c $HOME/.config/conky/xmonad-system-overview"
     -- spawnOnce "mpDris2" -- required for mpd
-    spawnOnce "volumeicon"
+    -- spawnOnce "volumeicon"
     volumeiconPath <- liftIO $ findExecutable "volumeicon"
+    -- catchAny (runVolumeIcon volumeiconPath) (writeLog "startup_errors.log")
     case volumeiconPath of
         Just path -> safeSpawnProg path
         Nothing   -> return ()
-    spawnOnce "streamdeck-start"
     spawnOnce "xscreensaver -no-splash"
     -- spawnOnce "feh --no-fehbg --bg-scale $HOME/.local/wallpaper/minnesota-vikings-dark.png"
     spawnOnce "feh --no-fehbg --bg-fill $HOME/.local/wallpaper/minnesota-vikings-dark.png $HOME/.local/wallpaper/minnesota-vikings-virtical.png"
     -- spawnOnce "killall redshift; sleep 4 ; redshift -l 48.024395:11.598893 &"
-    windows $ view (head myWorkspaces)
+    -- windows $ view (head myWorkspaces)
+    windows $ viewOnScreen 0 "1"
 
 myConfig = def
   { terminal = myTerminal

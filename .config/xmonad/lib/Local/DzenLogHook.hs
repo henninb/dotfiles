@@ -9,6 +9,8 @@ import Data.Function (on)
 import XMonad.StackSet (stack, workspace, current, integrate')
 import GHC.IO.Handle.Types
 import System.IO (stderr)
+-- import XMonad.Actions.DynamicWorkspaces (switchTo)
+import XMonad (windows)
 
 import Local.Colors
 
@@ -26,6 +28,10 @@ dzenOutput barOutputString =
 --TODO: wrap not working
 currentWindowCount :: [X (Maybe String)]
 currentWindowCount = [gets $ Just . wrap "" "" . show . length . integrate' . stack . workspace . current . windowset]
+
+clickableWorkspaceNew :: String -> String
+clickableWorkspaceNew ws = "^ca(1,xdotool key super+" ++ ws ++ ") " ++ ws ++ " ^ca(0, " ++ switchCommand ws ++ ")"
+  where switchCommand w = "xmonadctl workspace " ++ w ++ " || " ++ "xdotool key super+" ++ w ++ " || " ++ "windows W.greedyView \"" ++ w ++ "\""
 
 -- hiddenDetails :: [X (Maybe String)]
 -- hiddenDetails = [withWindowSet (fmap safeUnpack . extraFormatting)] -- init takes out the last space

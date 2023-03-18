@@ -31,6 +31,7 @@ library
     , text
     , utf8-string
     , directory
+    , safe-exceptions
     , xmonad >=0.17
     , xmonad-contrib >=0.17
   default-language: Haskell2010
@@ -49,6 +50,7 @@ executable xmonad-config
     , containers
     , utf8-string
     , directory
+    , safe-exceptions
     , xmonad >=0.17
     , xmonad-config
     , xmonad-contrib >=0.17
