@@ -10,7 +10,7 @@ import XMonad.StackSet (stack, workspace, current, integrate')
 import GHC.IO.Handle.Types
 import System.IO (stderr)
 -- import XMonad.Actions.DynamicWorkspaces (switchTo)
-import XMonad (windows)
+--import XMonad (windows)
 
 import Local.Colors
 

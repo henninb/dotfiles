@@ -48,6 +48,7 @@ import Control.Exception (SomeException, catch, displayException)
 -- import UnliftIO.Exception (catchAny)
 import Control.Exception.Safe (catchAny, displayException)
 import XMonad.Actions.OnScreen (viewOnScreen)
+import Data.Foldable (forM_)
 
 -- sudo emerge --update --newuse media-fonts/terminus-font
 -- xset +fp /usr/share/fonts/terminus
@@ -237,11 +238,9 @@ myStartupHook = do
     --         Right _ -> return ()
     --     Nothing   -> return ()
 
+    networkManagerPath <- liftIO $ findExecutable "nm-applet"
+    forM_ networkManagerPath safeSpawnProg
 
-
-
-
-    safeSpawnProg "nm-applet"
     safeSpawnProg "networkmgr"
     -- safeSpawnProg "streamdeck-start"
     spawnOnScreen "1" "streamdeck-start"
@@ -275,10 +274,11 @@ myStartupHook = do
     -- spawnOnce "mpDris2" -- required for mpd
     -- spawnOnce "volumeicon"
     volumeiconPath <- liftIO $ findExecutable "volumeicon"
+    forM_ volumeiconPath safeSpawnProg
     -- catchAny (runVolumeIcon volumeiconPath) (writeLog "startup_errors.log")
-    case volumeiconPath of
-        Just path -> safeSpawnProg path
-        Nothing   -> return ()
+    -- case volumeiconPath of
+    --     Just path -> safeSpawnProg path
+    --     Nothing   -> return ()
     spawnOnce "xscreensaver -no-splash"
     -- spawnOnce "feh --no-fehbg --bg-scale $HOME/.local/wallpaper/minnesota-vikings-dark.png"
     spawnOnce "feh --no-fehbg --bg-fill $HOME/.local/wallpaper/minnesota-vikings-dark.png $HOME/.local/wallpaper/minnesota-vikings-virtical.png"
