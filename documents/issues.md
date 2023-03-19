@@ -629,6 +629,11 @@ eix -Iu --only-names
 ```
 
 
+## gentoo list package required by version
+equery depends dev-libs/openssl-1.1.1
+emerge -av1 openssl
+emerge -av1 --oneshot $(qfile -qC /usr/lib*/libcrypto.so.1.1 /usr/lib*/libssl.so.1.1)
+
 ## stack ghc version
 ```
 stack ghc -- --version
