@@ -68,6 +68,20 @@ elif [ "$OS" = "CentOS Linux" ]; then
   sudo yum install -y net-tools wget curl java-1.8.0-openjdk
   sudo tar -zxvf apache-tomcat-${TOMCAT_VER}.tar.gz -C /opt
   sudo ln -sfn /opt/apache-tomcat-${TOMCAT_VER} /opt/tomcat
+elif [ "$OS" = "Darwin" ]; then
+  echo "Darwin"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo "Clear Linux OS"
+elif [ "$OS" = "Fedora Linux" ]; then
+  echo "Fedora Linux"
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  echo "openSUSE Tumbleweed"
+elif [ "$OS" = "Solus" ]; then
+  echo "Solus"
+elif [ "$OS" = "OpenBSD" ]; then
+  echo "OpenBSD"
+elif [ "$OS" = "Void" ]; then
+  echo "Void"
 else
   echo "$OS is not yet implemented."
   exit 1

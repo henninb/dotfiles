@@ -37,6 +37,8 @@ skip_files=(
     "ui.sh"
     "ufw-setup.sh"
     "tty-install.sh"
+    "tmux-example.sh"
+    "timezone.sh"
 )
 
 # Loop through each file in the current directory
@@ -47,9 +49,10 @@ do
         if printf '%s\n' "${skip_files[@]}" | grep -qF "$file"; then
             continue
         fi
+        printf '%s\n' "Checking $file for required strings..."
         # Loop through each string and check if it is present or missing from the file
         present_strings=""
-        missing_strings=""
+        missing_strings=()
         for s in "${strings[@]}"
         do
             if grep -qF "$s" "$file"; then
@@ -60,12 +63,16 @@ do
                     present_strings="$present_strings \"$s\""
                 fi
             else
-                missing_strings="$missing_strings \"$s\""
+                missing_strings+=("$s")
             fi
         done
         # Print a message indicating which strings are present and missing from the file
-        if [ -n "$missing_strings" ]; then
-            printf '%s: is missing the following string(s):%s\n' "$file" "$missing_strings"
+        if [ ${#missing_strings[@]} -gt 0 ]; then
+            printf '%s\n' "$file: is missing the following string(s):"
+            for m in "${missing_strings[@]}"
+            do
+                printf 'elif [ "$OS" = "%s" ]; then\n  echo "%s"\n' "$m" "$m"
+            done
         elif [ -n "$present_strings" ]; then
             #printf '%s contains the following string(s):%s\n' "$file" "$present_strings"
             printf '%s: contains all strings.\n' "$file"
