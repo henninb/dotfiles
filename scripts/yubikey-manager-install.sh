@@ -27,7 +27,9 @@ wget 'https://developers.yubico.com/yubioath-flutter/Releases/yubico-authenticat
 sudo tar -zxvf "$HOME/tmp/yubico-authenticator-6.1.0-linux.tar.gz" -C /opt
 sudo ln -sfn "/opt/yubico-authenticator-6.1.0-linux" /opt/yubico-authenticator
 
-if [ -x "$(command -v emerge)" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+  echo "sudo pacman --noconfirm --needed -S"
+elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse app-crypt/yubikey-manager
   sudo emerge --update --newuse yubikey-manager-qt
   # sudo emerge --update --newuse libyubikey
@@ -35,7 +37,9 @@ if [ -x "$(command -v emerge)" ]; then
   # sudo emerge --update --newuse app-crypt/libu2f-host
   # sudo emerge --update --newuse sys-auth/pam_u2f
   sudo emerge --update --newuse sys-fs/mtpfs
-elif [ -x "$(command -v xbps-install)" ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
+  echo "sudo apt install"
+elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y yubikey-manager
   sudo xbps-install -y pam_yubico
   sudo xbps-install -y mdevd
@@ -43,8 +47,23 @@ elif [ -x "$(command -v xbps-install)" ]; then
   sudo xbps-install -y pcsc-ccid
   sudo ln -sfn /etc/sv/pcscd /var/service/pcscd
   # sudo ln -s /etc/sv/pcscd /etc/runit/runsvdir/current/
+elif [ "$OS" = "FreeBSD" ]; then
+  echo "sudo pkg install -y"
+elif [ "$OS" = "OpenBSD" ]; then
+  echo "OpenBSD"
+elif [ "$OS" = "Solus" ]; then
+  "sudo eopkg install -y"
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  echo "sudo zypper install -y"
+elif [ "$OS" = "Fedora Linux" ]; then
+  echo "sudo dnf install -y"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  "sudo swupd bundle-add"
+elif [ "$OS" = "Darwin" ]; then
+  echo "brew install"
 else
-  echo "OS not found"
+  echo "$OS is not yet implemented."
+  exit 1
 fi
 
 sudo usermod -a -G plugdev "$(whoami)"

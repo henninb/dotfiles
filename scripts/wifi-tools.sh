@@ -4,14 +4,28 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   # sudo pacman --noconfirm --needed -S networkmanager
   sudo pacman --noconfirm --needed -S dialog
   sudo pacman --noconfirm --nedded -S aircrack-ng
+elif [ "$OS" = "Gentoo" ]; then
+  sudo emerge --update --newuse networkmanager
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y network-manager
   sudo apt install -y wicd-curses
-elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse networkmanager
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install NetworkManager
-  sudo xbps-install dkms
+  sudo xbps-install -y NetworkManager
+  sudo xbps-install -y dkms
+elif [ "$OS" = "FreeBSD" ]; then
+  echo "sudo pkg install -y"
+elif [ "$OS" = "OpenBSD" ]; then
+  echo "OpenBSD"
+elif [ "$OS" = "Solus" ]; then
+  "sudo eopkg install -y"
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  echo "sudo zypper install -y"
+elif [ "$OS" = "Fedora Linux" ]; then
+  echo "sudo dnf install -y"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  "sudo swupd bundle-add"
+elif [ "$OS" = "Darwin" ]; then
+  echo "brew install"
 else
   echo "$OS is not yet implemented."
   exit 1
