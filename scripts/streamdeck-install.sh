@@ -1,17 +1,35 @@
 #!/bin/sh
 
-if command -v emerge; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+  echo "sudo pacman --noconfirm --needed -S"
+elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse dev-libs/hidapi
-elif command -v zypper; then
-  sudo zypper install -y libhidapi-devel
-  # sudo zypper install -y python-devel
-  sudo zypper install -y python3-devel
-elif command -v apt; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y python-dev-is-python3
   sudo apt install -y libhidapi-libusb0 
   sudo apt install -y libxcb-xinerama0
   sudo apt install -y libhidapi-dev
-elif command -v dnf; then
+elif [ "$OS" = "Void" ]; then
+  # sudo xbps-install -y elogind
+  sudo xbps-install -y hidapi-devel
+  # sudo ln -sfn /etc/sv/elogind /var/service/elogind
+  sudo xbps-install -y libgusb-devel
+  sudo xbps-install -y python3-devel
+  sudo xbps-install -y mdevd
+  sudo xbps-install -y pcsc-ccid
+  sudo xbps-install -y pcsclite
+  sudo ln -sfn /etc/sv/pcscd /var/service/pcscd
+elif [ "$OS" = "FreeBSD" ]; then
+  echo "sudo pkg install -y"
+elif [ "$OS" = "OpenBSD" ]; then
+  echo "OpenBSD"
+elif [ "$OS" = "Solus" ]; then
+  "sudo eopkg install -y"
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  sudo zypper install -y libhidapi-devel
+  # sudo zypper install -y python-devel
+  sudo zypper install -y python3-devel
+elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y libusb1-devel
   sudo dnf install -y libgudev-devel
   sudo dnf install -y hidapi-devel
@@ -24,18 +42,13 @@ elif command -v dnf; then
   sudo dnf install -y libxc-devel
   sudo dnf install -y systemd-devel
   sudo dnf install -y zlib-devel
-elif command -v xbps-install; then
-  # sudo xbps-install -y elogind
-  sudo xbps-install -y hidapi-devel
-  # sudo ln -sfn /etc/sv/elogind /var/service/elogind
-  sudo xbps-install -y libgusb-devel
-  sudo xbps-install -y python3-devel
-  sudo xbps-install -y mdevd
-  sudo xbps-install -y pcsc-ccid
-  sudo xbps-install -y pcsclite
-  sudo ln -sfn /etc/sv/pcscd /var/service/pcscd
+elif [ "$OS" = "Clear Linux OS" ]; then
+  "sudo swupd bundle-add"
+elif [ "$OS" = "Darwin" ]; then
+  echo "brew install"
 else
-  echo "OS not found"
+  echo "$OS is not yet implemented."
+  exit 1
 fi
 
 cat << EOF > "$HOME/tmp/99-streamdeck.rules"

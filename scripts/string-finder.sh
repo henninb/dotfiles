@@ -39,6 +39,13 @@ skip_files=(
     "tty-install.sh"
     "tmux-example.sh"
     "timezone.sh"
+    "thumbnail.sh"
+    "testdisk-install.sh"
+    "task-spooler-install.sh"
+    "suse-build-kernel.sh"
+    "statics.sh"
+    "standard-notes-install.sh"
+    "stack-package-list.sh"
 )
 
 # Loop through each file in the current directory

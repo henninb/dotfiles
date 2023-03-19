@@ -25,6 +25,12 @@ elif [ "$OS" = "Solus" ]; then
   echo solus
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   echo archlinux
+elif [ "$OS" = "Darwin" ]; then
+  echo "Darwin"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo "Clear Linux OS"
+elif [ "$OS" = "OpenBSD" ]; then
+  echo "OpenBSD"
 else
   echo "$OS is not yet implemented."
   exit 1

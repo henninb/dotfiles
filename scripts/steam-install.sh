@@ -67,6 +67,14 @@ elif [ "$OS" = "Void" ]; then
 elif [ "$OS" = "Fedora Linux" ]; then
   #flatpak install --user com.valvesoftware.Steam.flatpakref
   echo Fedora
+elif [ "$OS" = "Darwin" ]; then
+  echo "Darwin"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo "Clear Linux OS"
+elif [ "$OS" = "OpenBSD" ]; then
+  echo "OpenBSD"
+elif [ "$OS" = "FreeBSD" ]; then
+  echo "FreeBSD"
 else
   echo "$OS is not yet implemented"
   exit 1
