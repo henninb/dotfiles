@@ -573,6 +573,14 @@ elif [ "$OS" = "Fedora Linux" ]; then
   cd $HOME/projects/github.com/sargon/trayer-srg
   ./configure
   sudo make install
+elif [ "$OS" = "Darwin" ]; then
+  echo "macos"
+elif [ "$OS" = "FreeBSD" ]; then
+  echo "freebsd"
+elif [ "$OS" = "OpenBSD" ]; then
+  echo "openbsd"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo "clearlinux
 else
   echo "$OS is not yet implemented."
   exit 1

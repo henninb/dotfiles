@@ -64,10 +64,27 @@ elif [ "$OS" = "Gentoo" ]; then
     sudo emerge  --update --newuse udisks
     sudo emerge  --update --newuse ntfs3g
   fi
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
+  echo "sudo apt install"
+elif [ "$OS" = "Void" ]; then
+  echo "sudo xbps-install -y"
+elif [ "$OS" = "FreeBSD" ]; then
+  echo "sudo pkg install -y"
+elif [ "$OS" = "OpenBSD" ]; then
+  echo "OpenBSD"
+elif [ "$OS" = "Solus" ]; then
+  "sudo eopkg install -y"
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  echo "sudo zypper install -y"
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y parted
+elif [ "$OS" = "Clear Linux OS" ]; then
+  "sudo swupd bundle-add"
+elif [ "$OS" = "Darwin" ]; then
+  echo "brew install"
 else
-  echo "$OS is not implemented."
+  echo "$OS is not yet implemented."
+  exit 1
 fi
 
 udisksctl status

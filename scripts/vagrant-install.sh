@@ -35,6 +35,22 @@ elif [ "$OS" = "Fedora Linux" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse vagrant
   sudo emerge --update --newuse dev-ruby/pkg-config
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  echo "opensuse"
+elif [ "$OS" = "Void" ]; then
+  echo "void"
+elif [ "$OS" = "Darwin" ]; then
+  echo "macos"
+elif [ "$OS" = "FreeBSD" ]; then
+  echo "freebsd"
+elif [ "$OS" = "OpenBSD" ]; then
+  echo "openbsd"
+elif [ "$OS" = "Solus" ]; then
+  echo "solus"
+elif [ "$OS" = "Fedora Linux" ]; then
+  echo "fedora"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo "clearlinux"
 else
   echo "OS=$OS not yet configured."
   exit 1

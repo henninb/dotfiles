@@ -104,6 +104,10 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -a -G audio "$(id -un)"
   sudo usermod -a -G docker "$(id -un)"
   sudo usermod -a -G audio "$(id -un)"
+elif [ "$OS" = "Darwin" ]; then
+  echo "macos"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo "clearlinux"
 else
   echo "$OS is not yet implemented."
 fi

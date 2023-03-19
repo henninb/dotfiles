@@ -34,7 +34,13 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   # sudo pacman -S --noconfirm --needed rxvt-unicode xsel
   # exit 0
   #sudo pacman -S awesome-terminal-fonts
-  echo
+  echo "archlinux"
+elif [ "$OS" = "OpenBSD" ]; then
+  echo "openbsd"
+elif [ "$OS" = "Darwin" ]; then
+  echo "macos"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo "clearlinux"
 else
   echo "$OS is not yet implemented."
   exit 1

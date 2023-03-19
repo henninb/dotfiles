@@ -168,6 +168,14 @@ elif [ "$OS" = "Solus" ]; then
   cd "$HOME" || exit
   sudo mv -v "$HOME/tmp/Xwrapper.config" /etc/X11/Xwrapper.config
   sudo mv -v "$HOME/tmp/startwm.sh" /etc/xrdp/startwm.sh
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo "clearlinux"
+elif [ "$OS" = "Darwin" ]; then
+  echo "macos"
+elif [ "$OS" = "FreeBSD" ]; then
+  echo "freebsd"
+elif [ "$OS" = "OpenBSD" ]; then
+  echo "openbsd"
 elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y nasm
   sudo xbps-install -y pam-devel

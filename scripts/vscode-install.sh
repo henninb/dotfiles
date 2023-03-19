@@ -50,6 +50,16 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   # sudo mv /opt/VSCode-linux-x64 /opt/vscode
   # sudo chmod -R 775 /opt/vscode
   # id -g vscode > /dev/null || sudo groupadd vscode
+elif [ "$OS" = "FreeBSD" ]; then
+  echo "freebsd"
+elif [ "$OS" = "OpenBSD" ]; then
+  echo "openbsd"
+elif [ "$OS" = "Solus" ]; then
+  echo "solus"
+elif [ "$OS" = "Fedora Linux" ]; then
+  echo "fedora"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  echo "clearlinux"
 else
   echo "$OS is not yet implemented."
   exit 1

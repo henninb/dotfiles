@@ -8,6 +8,8 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   echo "debian"
 elif [ "$OS" = "Void" ]; then
   echo "void"
+elif [ "$OS" = "OpenBSD" ]; then
+  echo "openbsd"
 elif [ "$OS" = "FreeBSD" ]; then
   echo "freebsd"
 elif [ "$OS" = "Solus" ]; then
