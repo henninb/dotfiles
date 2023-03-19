@@ -9,6 +9,8 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install libdbus-1-dev libx11-dev libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libgtk-3-dev libxdg-basedir-dev libnotify-dev
 elif [ "$OS" = "Void" ]; then
   echo "void"
+elif [ "$OS" = "OpenBSD" ]; then
+  echo "openbsd"
 elif [ "$OS" = "FreeBSD" ]; then
   echo "freebsd"
 elif [ "$OS" = "Solus" ]; then

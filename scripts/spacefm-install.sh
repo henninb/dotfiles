@@ -14,8 +14,8 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo apt install -y libtool
   sudo apt install -y libtool-bin
   sudo apt install -y libgtk2.0-dev
-elif [ "$OS" = "ArcoLinux" ]; then
-  echo
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+  echo "archlinux"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y gtk3-devel
 elif [ "$OS" = "Gentoo" ]; then
@@ -28,6 +28,8 @@ elif [ "$OS" = "Fedora Linux" ]; then
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install ffmpegthumbnailer
   sudo pkg install intltool
+elif [ "$OS" = "Darwin" ]; then
+  echo "macos"
 elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y spacefm
   sudo xbps-install -y patch
