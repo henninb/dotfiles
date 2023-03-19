@@ -4,3 +4,5 @@
 >dev-libs/libfmt-8.1.1
 # was fixed on 7/11/2022
 # >dev-util/meson-0.62.2
+=dev-libs/openssl-compat-1.1.1t
+=dev-libs/openssl-compat-1.1.1s
