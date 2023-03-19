@@ -95,3 +95,4 @@ app-containers/snapd ~amd64
 # dev-dotnet/dotnetcore-sdk-bin ~amd64
 =dev-dotnet/dotnetcore-sdk-bin-6.0.102 **
 =dev-dotnet/dotnetcore-sdk-bin-common-6.0.102 **
+dev-libs/openssl-compat ~amd64
