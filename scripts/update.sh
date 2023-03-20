@@ -206,6 +206,7 @@ go install github.com/moncho/dry@latest
 go install github.com/arduino/arduino-cli@latest
 go install github.com/Bios-Marcel/cordless@latest
 
+nvm install --lts --latest-npm
 npm install -g wrangler
 npm install -g netlify-cli
 npm install -g heroku
