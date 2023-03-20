@@ -1,14 +1,14 @@
 #!/bin/sh
 
-KOTLIN_VER=$(curl -s https://blog.jetbrains.com/kotlin/category/releases/ | grep -io "Kotlin [0-9.]\+[0-9] released" | head -1 | grep -o '[0-9.]\+[0-9]')
-#KOTLIN_VER=1.3.61
+# get the latest version of Kotlin
+#version=$(curl -s https://github.com/JetBrains/kotlin/releases/latest | grep -oE "v[0-9]+\.[0-9]+\.[0-9]+")
+KOTLIN_VER=$(curl -s https://api.github.com/repos/JetBrains/kotlin/releases/latest | grep -oE '"tag_name": "[^"]+"' | cut -d'"' -f4)
 
-if [ -z "${KOTLIN_VER##[0-9]*\.[0-9]*\.[0-9]*}" ]; then
-  echo "$KOTLIN_VER"
-else
-  KOTLIN_VER=$KOTLIN_VER.0
-  echo "$KOTLIN_VER"
-fi
+KOTLIN_VER=$(echo $KOTLIN_VER | sed 's/^v//')
+
+# print the version
+echo $KOTLIN_VER
+
 
 cd "$HOME/projects/" || exit
 if [ ! -f "kotlin-compiler-${KOTLIN_VER}.zip" ]; then
