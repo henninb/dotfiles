@@ -50,4 +50,11 @@ conky -version | head -1 | tee -a "$HOME/tmp/version-$date-$$.dat"
 emacs --version | head -1 | tee -a "$HOME/tmp/version-$date-$$.dat"
 brave-browser --version | tee -a "$HOME/tmp/version-$date-$$.dat"
 
+
+neovim_release=$(curl -s https://api.github.com/repos/neovim/neovim/tags | jq -r '.[0].name')
+xmonad_release=$(curl -s https://api.github.com/repos/xmonad/xmonad/tags | jq -r '.[0].name')
+starship_release=$(curl -s https://api.github.com/repos/starship/starship/tags | jq -r '.[0].name')
+emacs_release=$(curl -s https://api.github.com/repos/emacs-mirror/emacs/tags | jq -r '.[0].name')
+conky_release=$(curl -s https://api.github.com/repos/brndnmtthws/conky/tags | jq -r '.[0].name')
+
 exit 0
