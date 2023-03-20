@@ -63,6 +63,8 @@ if ! command -v node; then
   fi
 fi
 
+nvm use "$node_ver"
+
 exit 0
 
 # vim: set ft=sh
