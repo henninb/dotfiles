@@ -56,14 +56,30 @@ if ! command -v nvm; then
   fi
 fi
 
-if ! command -v node; then
-  if ! nvm install "$node_ver"; then
-    echo nvm failed.
-    exit 1
-  fi
-fi
+nvm install --lts --latest-npm
 
-nvm use "$node_ver"
+# Get the latest LTS version of Node.js
+latest_lts_version=$(nvm ls-remote --lts | tail -1)
+
+# Get a list of all installed LTS versions
+installed_lts_versions=$(nvm ls --no-alias | grep -o 'v[0-9]*\.[0-9]*\.[0-9]*' | sort -V | grep -e '^[0-9]*\.[0-9]*\.[0-9]*$')
+
+# Uninstall any installed LTS versions older than the latest LTS version
+for version in $installed_lts_versions; do
+    if [ "$version" != "$latest_lts_version" ]; then
+        nvm uninstall $version && echo "Uninstalled older LTS version: $version"
+    fi
+done
+
+
+# if ! command -v node; then
+#   if ! nvm install "$node_ver"; then
+#     echo nvm failed.
+#     exit 1
+#   fi
+# fi
+#
+# nvm use "$node_ver"
 
 exit 0
 

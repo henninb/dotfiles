@@ -206,6 +206,13 @@ go install github.com/moncho/dry@latest
 go install github.com/arduino/arduino-cli@latest
 go install github.com/Bios-Marcel/cordless@latest
 
+# Download the latest release information from the nvm GitHub repository using the GitHub API
+latest_release=$(curl -s https://api.github.com/repos/nvm-sh/nvm/releases/latest)
+
+# Extract the latest version tag from the release information using jq
+latest_version=$(echo "$latest_release" | jq -r '.tag_name')
+echo $latest_version
+nvm --version
 nvm install --lts --latest-npm
 npm install -g wrangler
 npm install -g netlify-cli
