@@ -65,7 +65,7 @@ echo generate private key
 openssl genrsa -out "$HOME/ca.key.pem" 4096
 
 echo generate CSR - certificate signing request
-openssl req -new -key $HOME/ca.key.pem -out "$HOME/ca.csr" -subj "/C=US/ST=Texas/L=Denton/O=Brian LLC/OU=$SERVERNAME/CN=$SERVERNAME"
+openssl req -new -key "$HOME/ca.key.pem" -out "$HOME/ca.csr" -subj "/C=US/ST=Texas/L=Denton/O=Brian LLC/OU=$SERVERNAME/CN=$SERVERNAME"
 
 openssl req -new -key "$HOME/ca.key.pem" -out "$HOME/${SERVERNAME}_apache.csr.pem" -subj "/C=US/ST=Texas/L=Denton/O=Brian LLC/OU=$SERVERNAME/CN=$SERVERNAME"
 
@@ -118,7 +118,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
     echo "127.0.0.1 arch" | sudo tee -a /etc/hosts
   fi
 
-  sudo cp -v $HOME/arch_ssl.conf /etc/httpd/conf/ssl.conf
+  sudo cp -v "$HOME/arch_ssl.conf" /etc/httpd/conf/ssl.conf
 
   grep "Listen 443" /etc/httpd/conf/httpd.conf
   if [ $? -ne 0 ]; then
@@ -161,18 +161,13 @@ elif [ "$OS" = "FreeBSD" ]; then
   echo /usr/local/www/apache24/data/
   echo https://www.tecmint.com/install-lets-encrypt-ssl-certificate-for-apache-on-freebsd/
 else
-  echo $OS needs to be setup.
+  echo "$OS needs to be setup."
   exit 1
 fi
 
 exit 0
 
-curl --cacert $HOME/centos_apache.crt.pem https://centos7
-openssl s_client -connect $SERVERNAME:443 -CAfile $HOME/centos_apache.crt.pem
-
-
-#ls -l /etc/pki/tls/openssl.cnf
-
-exit 0
+# curl --cacert $HOME/centos_apache.crt.pem https://centos7
+# openssl s_client -connect $SERVERNAME:443 -CAfile $HOME/centos_apache.crt.pem
 
 # vim: set ft=sh:
