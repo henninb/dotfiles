@@ -205,6 +205,9 @@ go install github.com/gopasspw/gopass@latest
 go install github.com/moncho/dry@latest
 go install github.com/arduino/arduino-cli@latest
 go install github.com/Bios-Marcel/cordless@latest
+export GO111MODULE=on
+go get -u github.com/arduino/arduino-cli
+export GO111MODULE=off
 
 # Download the latest release information from the nvm GitHub repository using the GitHub API
 latest_release=$(curl -s https://api.github.com/repos/nvm-sh/nvm/releases/latest)
@@ -218,6 +221,13 @@ npm install -g wrangler
 npm install -g netlify-cli
 npm install -g heroku
 npm install -g yarn
+
+pip install pyserial #--user
+pip install youtube-dl
+pip install holehe
+pip install ansible
+pip install platformio
+pip install esptool
 
 exit 0
 
