@@ -226,6 +226,7 @@ npm install -g yarn
 npm install -g @bitwarden/cli
 npm install -g tree-sitter-cli
 npm install -g neovim
+npm install -g deepl-translator-cli
 
 pip install pyserial --user
 pip install youtube-dl --user
