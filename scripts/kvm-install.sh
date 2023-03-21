@@ -25,15 +25,15 @@ fi
 
 if [ "$OS" = "Linux Mint" ] || [  "$OS" = "Ubuntu" ]; then
   sudo apt install -y cpu-checker
-  sudo apt install -y ebtables 
-  sudo apt install -y dnsmasq 
-  sudo apt install -y spice-client-gtk 
-  sudo apt install -y virt-viewer 
-  sudo apt install -y gir1.2-spiceclientgtk-3.0 
+  sudo apt install -y ebtables
+  sudo apt install -y dnsmasq
+  sudo apt install -y spice-client-gtk
+  sudo apt install -y virt-viewer
+  sudo apt install -y gir1.2-spiceclientgtk-3.0
   sudo apt install -y libguestfs-tools
-  sudo apt install -y qemu-kvm 
-  sudo apt install -y libvirt-daemon-system 
-  suod apt install -y libvirt-clients 
+  sudo apt install -y qemu-kvm
+  sudo apt install -y libvirt-daemon-system
+  suod apt install -y libvirt-clients
   sudo apt install -y bridge-utils
   sudo apt install -y virt-manager
   sudo apt install -y qemu-utils

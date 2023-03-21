@@ -4,7 +4,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   sudo apt install apt-transport-https curl
   curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
   echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-  sudo apt -y update 
+  sudo apt -y update
   sudo apt install -y brave-browser
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   yay --noconfirm --needed -S brave-bin

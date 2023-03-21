@@ -6,13 +6,13 @@ echo "$continued"
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S ninja
-  sudo pacman --noconfirm --needed -S meson 
+  sudo pacman --noconfirm --needed -S meson
   sudo pacman --noconfirm --needed -S uthash
   sudo pacman --noconfirm --needed -S cmake
   sudo pacman --noconfirm --needed -S libev
   sudo pacman --noconfirm --needed -S libconfig
-elif [ "$OS" = "FreeBSD" ]; then 
-  sudo pkg install -y ninja 
+elif [ "$OS" = "FreeBSD" ]; then
+  sudo pkg install -y ninja
   sudo pkg install -y meson
   sudo pkg install -y uthash
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then

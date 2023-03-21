@@ -3,9 +3,9 @@
 if [ "$OS" = "FreeBSD" ]; then
   sudo mkdir -p /vm
   sudo mkdir -p /vm/iso
-  sudo pkg install -y vm-bhyve 
+  sudo pkg install -y vm-bhyve
   sudo pkg install -y grub2-bhyve
-  sudo pkg install -y bhyve-rc 
+  sudo pkg install -y bhyve-rc
   sudo pkg install -y bhyve-firmware
   sudo pkg install -y sysrc
   sudo sysrc vm_enable="YES"
@@ -44,7 +44,7 @@ if [ "$OS" = "FreeBSD" ]; then
   sudo vm switch add public re0
   sudo sysctl net.link.tap.up on open=1
   sudo vm switch info public
-  
+
 else
   echo "$OS is not yet implemented."
   exit 1

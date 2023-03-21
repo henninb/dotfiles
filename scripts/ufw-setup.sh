@@ -25,7 +25,7 @@ sudo ufw allow out to 2a00:1828:a00d:ffff::6 port 873 proto tcp comment 'rsync g
 sudo ufw allow out to 89.238.71.6 port 873 proto tcp comment 'rsync gentoo'
 sudo ufw allow out to 81.91.253.252 port 873 proto tcp comment 'rsync gentoo'
 sudo ufw limit out to 192.168.10.25 port 22 proto tcp
-sudo ufw limit out to 192.168.10.10 port 22 proto tcp 
+sudo ufw limit out to 192.168.10.10 port 22 proto tcp
 sudo ufw allow out to 140.82.112.3 port 22 proto tcp comment 'outbound github'
 sudo ufw allow out to 140.82.112.4 port 22 proto tcp comment 'outbound github'
 sudo ufw allow out to 140.82.113.3 port 22 proto tcp comment 'outbound github'

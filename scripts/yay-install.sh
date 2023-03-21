@@ -14,5 +14,5 @@ fi
 yay --noconfirm --needed -S downgrade
 
 exit 0
- 
+
 # vim: set ft=sh

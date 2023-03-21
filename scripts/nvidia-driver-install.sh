@@ -136,7 +136,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
 elif [ "$OS" = "Ubuntu" ]; then
   sudo add-apt-repository ppa:graphics-drivers/ppa
   sudo apt install -y libvulkan-dev
-  sudo apt install -y libvulkan1 
+  sudo apt install -y libvulkan1
   sudo apt install -y mesa-vulkan-drivers
   sudo apt install -y vulkan-utils
   # sudo apt install nvidia-graphics-drivers-396 nvidia-settings vulkan vulkan-utils

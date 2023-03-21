@@ -500,7 +500,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y flameshot
   sudo dnf install -y feh
   sudo dnf install -y g++
-  sudo dnf install -y gtk2-devel 
+  sudo dnf install -y gtk2-devel
   sudo dnf install -y htop
   sudo dnf install -y i3lock
   sudo dnf install -y ImageMagick

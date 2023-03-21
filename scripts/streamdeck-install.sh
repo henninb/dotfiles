@@ -6,7 +6,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse dev-libs/hidapi
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y python-dev-is-python3
-  sudo apt install -y libhidapi-libusb0 
+  sudo apt install -y libhidapi-libusb0
   sudo apt install -y libxcb-xinerama0
   sudo apt install -y libhidapi-dev
 elif [ "$OS" = "Void" ]; then

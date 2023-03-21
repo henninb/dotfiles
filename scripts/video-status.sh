@@ -170,7 +170,7 @@ if [ -x "$(command -v nvidia-settings)" ]; then
 else
   echo "nvidia driver is not installed"
 fi
- 
+
 echo open https://www.nvidia.com/en-us/geforce/drivers/
 if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-525.89.02.run" ]; then
   wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/525.89.02/NVIDIA-Linux-x86_64-525.89.02.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-525.89.02.run"

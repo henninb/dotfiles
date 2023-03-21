@@ -29,7 +29,7 @@ elif command -v emerge; then
     sudo emerge --update --newuse app-misc/jq
   fi
   if ! command -v wget; then
-    sudo emerge --update --newuse wget 
+    sudo emerge --update --newuse wget
   fi
   if ! command -v curl; then
   sudo emerge --update --newuse net-misc/curl

@@ -13,7 +13,7 @@ disk=$2
 if command -v camcontrol; then
   sudo camcontrol devlist
   gpart show ada0
-  sudo pkg install -y fusefs-lkl 
+  sudo pkg install -y fusefs-lkl
   sudo lklfuse -o type=ext4 /dev/ada0p3 /mnt/archlinux
 fi
 
@@ -88,7 +88,7 @@ elif [ "$os" = "opensuse" ]; then
   root=e21df22e-e314-43b0-b8fb-941a5c11528f
   efi=94DB-18F3
   if [ "$(grep -c "$root /mnt/opensuse" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
-    sudo mkdir -p /mnt/opensuse 
+    sudo mkdir -p /mnt/opensuse
     sudo mount UUID=$root /mnt/opensuse
     sudo mkdir -p /mnt/opensuse/boot/efi
     sudo mount -t proc none /mnt/opensuse/proc
@@ -123,7 +123,7 @@ elif [ "$os" = "ubuntu" ]; then
   root=a7bb907f-6870-40a6-af47-ac881e72caf2
   efi=F577-6798
   if [ "$(grep -c "$root /mnt/ubuntu" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
-    sudo mkdir -p /mnt/ubuntu 
+    sudo mkdir -p /mnt/ubuntu
     sudo mount UUID=$root /mnt/ubuntu
     sudo mkdir -p /mnt/ubuntu/boot/efi
     # cd /mnt/ubuntu || exit
@@ -136,7 +136,7 @@ elif [ "$os" = "ubuntu" ]; then
   fi
   echo 'export PS1="(ubuntu-chroot) $PS1"'
   sudo chroot /mnt/ubuntu /bin/su - "$(id -un)"
-elif [ "$os" = "archlinux" ]; then 
+elif [ "$os" = "archlinux" ]; then
   root=72ad4c57-06c1-41d6-a72f-34000c848126
   efi=F577-6798
   if [ "$(grep -c "$root /mnt/archlinux" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
