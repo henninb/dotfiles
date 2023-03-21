@@ -223,6 +223,9 @@ npm install -g wrangler
 npm install -g netlify-cli
 npm install -g heroku
 npm install -g yarn
+npm install -g @bitwarden/cli
+npm install -g tree-sitter-cli
+npm install -g neovim
 
 pip install pyserial --user
 pip install youtube-dl --user
