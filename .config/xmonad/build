@@ -1,15 +1,7 @@
 #!/usr/bin/env sh
 
-# last_built=$(stat -c '%Y' "$EXE_LOCATION")
-# xmonad_modified=$(stat -c '%Y' ./xmonad.hs)
-# [ "$last_built" -lt "$xmonad_modified" ] && echo
-
-##stack ghc -- --make xmonad.hs -i -fforce-recomp -with-rtsopts=-N4 -o "$1"
-#stack ghc -- --make xmonad.hs
-
-# If ld --version contains "GNU ld" at the beginning of the line, it must be GNU ld, so append -Wl,--hash-size=31 and -Wl,--reduce-memory-overheads to 
-# export LDFLAGS=-Wl,--reduce-memory-overheads,-Wl,--hash-size=31
-
+stack list xmonad-contrib
+stack list xmonad
 if stack build :xmonad-config; then
   notify-send "xmonad build" "The xmonad build was successful - $1"
 else
@@ -19,6 +11,6 @@ fi
 
 install "$(stack exec which xmonad-config)" "$1"
 
-#exec install xmonad-x86_64-linux ~/.local/bin/xmonad
-
 exit 0
+
+# vim: set ft=sh:
