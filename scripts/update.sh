@@ -215,19 +215,25 @@ latest_release=$(curl -s https://api.github.com/repos/nvm-sh/nvm/releases/latest
 # Extract the latest version tag from the release information using jq
 latest_version=$(echo "$latest_release" | jq -r '.tag_name')
 echo $latest_version
+
 nvm --version
 nvm install --lts --latest-npm
+
 npm install -g wrangler
 npm install -g netlify-cli
 npm install -g heroku
 npm install -g yarn
 
-pip install pyserial #--user
-pip install youtube-dl
-pip install holehe
-pip install ansible
-pip install platformio
-pip install esptool
+pip install pyserial --user
+pip install youtube-dl --user
+pip install holehe --user
+pip install ansible --user
+pip install platformio --user
+pip install esptool --user
+pip install pipx --user
+pip install pynvim --user
+pip install podman-compose --user
+pip install docker-compose --user
 
 exit 0
 
