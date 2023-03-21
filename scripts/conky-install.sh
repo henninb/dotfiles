@@ -20,7 +20,7 @@ cd "$HOME/projects/github.com/brndnmtthws/conky" || exit
 # make clean
 # make
 mkdir -p build
-cd build
+cd build || exit
 cmake ../
 make
 sudo make install

@@ -29,7 +29,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y brave-browser
 elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y xtools
-  cd "$HOME/projects"
+  cd "$HOME/projects" || exit
   git clone git@github.com:void-linux/void-packages.git
   git clone git@gitlab.com:ElPresidentePoole/brave-bin.git
   cd void-packages || exit

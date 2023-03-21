@@ -11,4 +11,4 @@ read -r password
 stty echo
 
 
-echo -n "$username:$password" | base64
+printf "%s" "$username:$password" | base64

@@ -97,9 +97,8 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo systemctl start apache2
   sudo systemctl restart apache2
   sudo systemctl enable apache2
-  grep "127.0.0.1 mint" /etc/hosts
-  if [ $? -ne 0 ]; then
-    echo "127.0.0.1 mint" | sudo tee -a /etc/hosts
+  if ! grep -q "127.0.0.1 mint" /etc/hosts; then
+    echo "127.0.0.1 mint" | sudo tee -a /etc/hosts >/dev/null
   fi
   curl https://mint > index.html
   curl --cacert /usr/share/ca-certificates/${SERVERNAME}_apache.crt https://mint
@@ -113,23 +112,19 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -S net-tools apache curl
   sudo mkdir -p /var/www
   sudo mv -v main.html /var/www/index.html
-  grep "127.0.0.1 arch" /etc/hosts
-  if [ $? -ne 0 ]; then
-    echo "127.0.0.1 arch" | sudo tee -a /etc/hosts
+  if ! grep -q "127.0.0.1 arch" /etc/hosts; then
+    echo "127.0.0.1 arch" | sudo tee -a /etc/hosts >/dev/null
   fi
-
   sudo cp -v "$HOME/arch_ssl.conf" /etc/httpd/conf/ssl.conf
 
-  grep "Listen 443" /etc/httpd/conf/httpd.conf
-  if [ $? -ne 0 ]; then
+  if ! grep -q "Listen 443" /etc/httpd/conf/httpd.conf; then
     echo "Listen 443" | sudo tee -a /etc/httpd/conf/httpd.conf
     echo "LoadModule ssl_module modules/mod_ssl.so" | sudo tee -a /etc/httpd/conf/httpd.conf
     echo "LoadModule socache_shmcb_module modules/mod_socache_shmcb.so" | sudo tee -a /etc/httpd/conf/httpd.conf
     echo "Include conf/extra/httpd-vhosts.conf" | sudo tee -a /etc/httpd/conf/httpd.conf
   fi
 
-  grep "Include /etc/httpd/conf/ssl.conf" /etc/httpd/conf/httpd.conf
-  if [ $? -ne 0 ]; then
+  if ! grep -q "Include /etc/httpd/conf/ssl.conf" /etc/httpd/conf/httpd.conf; then
     echo "Include /etc/httpd/conf/ssl.conf" | sudo tee -a /etc/httpd/conf/httpd.conf
   fi
 
