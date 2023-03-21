@@ -18,11 +18,11 @@ if [ "$PID" = "" ]; then
     return 1
 fi
 
-QUERY_ENVIRON="$(tr '\0' '\n' < /proc/$PID/environ | grep "DBUS_SESSION_BUS_ADDRESS" | cut -d "=" -f 2-)"
+QUERY_ENVIRON="$(tr '\0' '\n' < "/proc/${PID}/environ" | grep "DBUS_SESSION_BUS_ADDRESS" | cut -d "=" -f 2-)"
 if [ "$QUERY_ENVIRON" != "" ]; then
-    export DBUS_SESSION_BUS_ADDRESS="$QUERY_ENVIRON"
+    export DBUS_SESSION_BUS_ADDRESS="${QUERY_ENVIRON}"
     echo "Connected to session:"
-    echo "DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS"
+    echo "DBUS_SESSION_BUS_ADDRESS=${DBUS_SESSION_BUS_ADDRESS}"
 else
     echo "Could not find dbus session ID in user environment."
     return 1
