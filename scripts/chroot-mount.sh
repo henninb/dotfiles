@@ -24,7 +24,7 @@ if [ "$os" = "voidlinux" ]; then
   efi=18ED-5063
   if [ "$(grep -c "$root /mnt/voidlinux" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/voidlinux
-    sudo mount UUID=$root /mnt/voidlinux
+    sudo mount "UUID=$root" /mnt/voidlinux
     sudo mkdir -p /mnt/voidlinux/boot/efi
     sudo mount -t proc none /mnt/voidlinux/proc
     sudo mount --rbind /dev /mnt/voidlinux/dev
@@ -40,7 +40,7 @@ elif [ "$os" = "gentoo" ]; then
   efi=CCF7-57C5
   if [ "$(grep -c "$root /mnt/gentoo" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/gentoo
-    sudo mount UUID=$root /mnt/gentoo
+    sudo mount "UUID=$root" /mnt/gentoo
     sudo mkdir -p /mnt/gentoo/boot/efi
     # cd /mnt/gentoo || exit
     sudo mount -t proc none /mnt/gentoo/proc
@@ -57,7 +57,7 @@ elif [ "$os" = "fedora-new" ]; then
   efi=18ED-5063
   if [ "$(grep -c "$root /mnt/fedora-new" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/fedora-new
-    sudo mount UUID=$root /mnt/fedora-new
+    sudo mount "UUID=$root" /mnt/fedora-new
     sudo mkdir -p /mnt/fedora-new/boot/efi
     sudo mount -t proc none /mnt/fedora-new/proc
     sudo mount --rbind /dev /mnt/fedora-new/dev
@@ -73,7 +73,7 @@ elif [ "$os" = "mint" ]; then
   efi=
   if [ "$(grep -c "$root /mnt/mint" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/mint
-    sudo mount UUID=$root /mnt/mint
+    sudo mount "UUID=$root" /mnt/mint
     sudo mkdir -p /mnt/mint/boot/efi
     sudo mount -t proc none /mnt/mint/proc
     sudo mount --rbind /dev /mnt/mint/dev
@@ -89,7 +89,7 @@ elif [ "$os" = "opensuse" ]; then
   efi=94DB-18F3
   if [ "$(grep -c "$root /mnt/opensuse" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/opensuse
-    sudo mount UUID=$root /mnt/opensuse
+    sudo mount "UUID=$root" /mnt/opensuse
     sudo mkdir -p /mnt/opensuse/boot/efi
     sudo mount -t proc none /mnt/opensuse/proc
     sudo mount --rbind /dev /mnt/opensuse/dev
@@ -124,7 +124,7 @@ elif [ "$os" = "ubuntu" ]; then
   efi=F577-6798
   if [ "$(grep -c "$root /mnt/ubuntu" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/ubuntu
-    sudo mount UUID=$root /mnt/ubuntu
+    sudo mount "UUID=$root" /mnt/ubuntu
     sudo mkdir -p /mnt/ubuntu/boot/efi
     # cd /mnt/ubuntu || exit
     sudo mount -t proc none /mnt/ubuntu/proc
@@ -141,7 +141,7 @@ elif [ "$os" = "archlinux" ]; then
   efi=F577-6798
   if [ "$(grep -c "$root /mnt/archlinux" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/archlinux
-    sudo mount UUID=$root /mnt/archlinux
+    sudo mount "UUID=$root" /mnt/archlinux
     sudo mkdir -p /mnt/archlinux/boot/efi
     sudo mount -t proc none /mnt/archlinux/proc
     sudo mount --rbind /dev /mnt/archlinux/dev
@@ -153,9 +153,10 @@ elif [ "$os" = "archlinux" ]; then
   export CHROOT=/mnt/archlinux
   echo 'export PS1="(archlinux-chroot) $PS1"'
   sudo chroot /mnt/archlinux /bin/su - "$(id -un)"
-  # sudo chroot /mnt/archlinux /usr/bin/env PS1="(archlinux-chroot)" /bin/bash --login
-  # sudo chroot /mnt/archlinux /bin/bash -c "PS1=archlinux-chroot; echo \${PS1}"
-  # sudo chroot /mnt/archlinux /bin/bash
+  # /usr/bin/sudo -E CHROOT=/mnt/archlinux chroot /mnt/archlinux su - henninb
+  # doas chroot /mnt/archlinux su - "$(id -un)" -c 'export CHROOT=/mnt/archlinux; pwd'
+  # doas chroot /mnt/archlinux su - "$(id -un)" -c 'export CHROOT=/mnt/archlinux $CHROOT'
+  # /usr/bin/sudo -E CHROOT=/mnt/archlinux chroot /mnt/archlinux su - "$(id -un)"
   # sudo chroot /mnt/archlinux /bin/su -l "$(id -un)" -c 'echo test'
 else
   echo "chose the correct os."
