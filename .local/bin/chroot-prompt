@@ -1,0 +1,2 @@
+#echo 'export PROMPT="(archlinux-chroot) $PROMPT"' | tee prompt && chmod 755 prompt && . ./prompt
+export PROMPT="($OS-chroot) $PROMPT"

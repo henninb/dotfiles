@@ -152,12 +152,13 @@ elif [ "$os" = "archlinux" ]; then
   fi
   export CHROOT=/mnt/archlinux
   echo 'export PS1="(archlinux-chroot) $PS1"'
-  sudo chroot /mnt/archlinux /bin/su - "$(id -un)"
+  #sudo chroot /mnt/archlinux /bin/su - "$(id -un)"
   # /usr/bin/sudo -E CHROOT=/mnt/archlinux chroot /mnt/archlinux su - henninb
   # doas chroot /mnt/archlinux su - "$(id -un)" -c 'export CHROOT=/mnt/archlinux; pwd'
   # doas chroot /mnt/archlinux su - "$(id -un)" -c 'export CHROOT=/mnt/archlinux $CHROOT'
   # /usr/bin/sudo -E CHROOT=/mnt/archlinux chroot /mnt/archlinux su - "$(id -un)"
-  # sudo chroot /mnt/archlinux /bin/su -l "$(id -un)" -c 'echo test'
+  sudo chroot /mnt/archlinux /bin/su -l "$(id -un)" -c '. chroot-prompt && echo test'
+
 else
   echo "chose the correct os."
 fi
