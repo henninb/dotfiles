@@ -150,6 +150,7 @@ elif [ "$os" = "archlinux" ]; then
   else
     echo already mounted
   fi
+  export CHROOT=/mnt/archlinux
   echo 'export PS1="(archlinux-chroot) $PS1"'
   sudo chroot /mnt/archlinux /bin/su - "$(id -un)"
   # sudo chroot /mnt/archlinux /usr/bin/env PS1="(archlinux-chroot)" /bin/bash --login
