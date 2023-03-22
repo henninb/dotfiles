@@ -1,21 +1,10 @@
-module Local.Workspaces (myWorkspaces, scratchPads, viewPrevWS, projects, terminalProject) where
+module Local.Workspaces (myWorkspaces, viewPrevWS, projects, terminalProject, scratchPads) where
 
 import XMonad
 import Control.Monad (unless)
 import XMonad.Util.NamedScratchpad ( NamedScratchpad(..), customFloating)
 import XMonad.Actions.DynamicProjects ( Project(..), projectStartHook, projectName, projectDirectory)
 import XMonad.StackSet ( RationalRect(..), tag, view, hidden )
-
-ws1 = "1"
-ws2 = "2"
-ws3 = "3"
-ws4 = "4"
-ws5 = "5"
-ws6 = "6"
-ws7 = "7"
-ws8 = "8"
-ws9 = "9"
-ws0 = "0"
 
 terminalProject :: Project
 terminalProject =
@@ -25,21 +14,26 @@ terminalProject =
     , projectStartHook = Just $ spawn "alacritty"
   }
 
-scratchProject :: Project
-scratchProject = Project { projectName = "scratch"
-            , projectDirectory = "~/"
-            , projectStartHook = Nothing
-            }
-
 projects :: [Project]
 projects = [ terminalProject ]
 
+wsNames :: [String]
+wsNames = ["1","2","3","4","5","6","7","8","9","0"]
+
 myWorkspaces :: [String]
-myWorkspaces = [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0]
+myWorkspaces = wsNames
 
+viewPrevWS :: X ()
+viewPrevWS = do
+  ws <- gets windowset
+  let hs = filter (\w -> tag w /= "NSP") $ hidden ws
+  unless (null hs) (windows . view . tag $ head hs)
 
--- myWorkspaces        = map show [1..9]
-
+clickableWorkspaces :: [String]
+clickableWorkspaces = clickable wsNames
+  where clickable l     = [ "^ca(1,xdotool key super+" ++ show n ++ ")" ++ ws ++ "^ca()" |
+                            (i, ws) <- zip [1..] l,
+                            let n = i ]
 
 scratchPads :: [NamedScratchpad]
 scratchPads = [   NS "terminal-nsp" spawnTerm findTerm manageTerm
@@ -74,25 +68,3 @@ scratchPads = [   NS "terminal-nsp" spawnTerm findTerm manageTerm
                  w = 0.4
                  t = 0.75 -h
                  l = 0.70 -w
-
-viewPrevWS :: X ()
-viewPrevWS = do
-  ws <- gets windowset
-  let hs = filter (\w -> tag w /= "NSP") $ hidden ws
-  unless (null hs) (windows . view . tag $ head hs)
-
-clickableWorkspaces :: [String]
-clickableWorkspaces = clickable [ws1, ws2, ws3, ws4, ws5, ws6, ws7, ws8, ws9, ws0]
-  where clickable l     = [ "^ca(1,xdotool key super+" ++ show n ++ ")" ++ ws ++ "^ca()" |
-                            -- (i,ws) <- zip [1..] l,
-                            (i, ws) <- zip myWorkspaces l,
-                            let n = i ]
-
--- myClickableWorkspaces :: [String]
--- myClickableWorkspaces = clickable . (map xmobarEscape)
---            -- $ [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
---            $ [" dev ", " www ", " sys ", " doc ", " vbox ", " chat ", " mus ", " vid ", " gfx "]
---     where
---         clickable l = [ "<action=xdotool key super+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
---                   (i,ws) <- zip [1..9] l,
---                   let n = i ]
