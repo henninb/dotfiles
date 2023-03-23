@@ -458,6 +458,8 @@ elif [ "$OS" = "Gentoo" ]; then
     sudo systemctl start cronie
   fi
 
+  sudo mkdir -p /usr/share/backgrounds/images/
+
   mkdir -p "$HOME/projects/github.com/baskerville"
   cd "$HOME/projects/github.com/baskerville" || exit
   git clone git@github.com:baskerville/xdo.git
