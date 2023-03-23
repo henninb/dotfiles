@@ -52,6 +52,7 @@ elif [ "$os" = "gentoo" ]; then
   fi
   echo 'export PS1="(gentoo-chroot) $PS1"'
   sudo chroot /mnt/gentoo /bin/su - "$(id -un)"
+  #sudo chroot /mnt/gentoo /bin/zsh -c "su - "$(id -un)" -c 'touch /tmp/chroot'; su - "$(id -un)""
 elif [ "$os" = "fedora-new" ]; then
   root=11516130-fe8e-4c13-9c22-3c237073a2eb
   efi=18ED-5063
