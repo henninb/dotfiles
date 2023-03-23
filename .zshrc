@@ -522,7 +522,6 @@ export PATH=/sbin:/usr/sbin:${PATH}
 #[ ! -s /home/henninb/.travis/travis.sh ] || source /home/henninb/.travis/travis.sh
 
 if [ -e "/tmp/chroot" ]; then
-  echo "in chroot"
   export PROMPT="($OS-chroot) $PROMPT"
 fi
 
