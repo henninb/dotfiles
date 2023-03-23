@@ -523,6 +523,7 @@ export PATH=/sbin:/usr/sbin:${PATH}
 
 if [ -e "/tmp/chroot" ]; then
   echo "in chroot"
+  export PROMPT="($OS-chroot) $PROMPT"
 fi
 
 # needs to move to ~/.local/lib/
