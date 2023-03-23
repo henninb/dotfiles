@@ -523,7 +523,7 @@ export PATH=/sbin:/usr/sbin:${PATH}
 
 if [ -e "/tmp/chroot" ]; then
   echo "in chroot"
-else
+fi
 
 # needs to move to ~/.local/lib/
 # source '/home/henninb/.local/lib/azure-cli/az.completion'
