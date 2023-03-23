@@ -160,6 +160,7 @@
 | disk writing tool      | dd, gnome-disk-utility                                                               |
 | multi iso to flashdrive| ventoy                                                                               |
 | tray                   | trayer, tint2                                                                        |
+| volume control         | volumeicon, volctl                                                                   |
 
 ## Language Servers
 - c - ccls
