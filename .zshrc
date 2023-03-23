@@ -521,6 +521,9 @@ export PATH=/sbin:/usr/sbin:${PATH}
 # added by travis gem
 #[ ! -s /home/henninb/.travis/travis.sh ] || source /home/henninb/.travis/travis.sh
 
+if [ -e "/tmp/chroot" ]; then
+  echo "in chroot"
+else
 
 # needs to move to ~/.local/lib/
 # source '/home/henninb/.local/lib/azure-cli/az.completion'
