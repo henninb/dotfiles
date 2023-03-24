@@ -161,6 +161,7 @@
 | multi iso to flashdrive| ventoy                                                                               |
 | tray                   | trayer, tint2                                                                        |
 | volume control         | volumeicon, volctl                                                                   |
+| iso image writer       | dd, usbimagewriter                                                                   |
 
 ## Language Servers
 - c - ccls
