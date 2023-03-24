@@ -7,4 +7,16 @@ echo "$(date) '$XDG_SESSION_TYPE'" |tee -a /tmp/xmonad.log
 #exec dbus-launch --exit-with-session xmonad >> /tmp/xmonad.log
 exec xmonad | tee -a /tmp/xmonad.log
 
+
+window_id=$(xdotool search --class "Streamdeck UI" | head -n 1)
+if [ -z "$window_id" ]; then
+    echo "Streamdeck UI window not found"
+    exit 1
+fi
+
+# if ! xdotool windowactivate "$window_id"; then
+#     echo "Failed to activate Streamdeck UI window"
+#     exit 1
+# fi
+
 # vim: set ft=sh:
