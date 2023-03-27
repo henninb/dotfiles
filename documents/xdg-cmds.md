@@ -11,3 +11,8 @@
 
 x-scheme-handler/http=google-chrome.desktop
 x-scheme-handler/https=google-chrome.desktop
+
+
+$ xdg-mime query filetype whatever.mp4
+video/mp4
+$ xdg-mime default vlc.desktop video/mp4
