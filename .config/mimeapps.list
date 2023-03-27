@@ -10,3 +10,4 @@ x-scheme-handler/fleet=jetbrains-fleet.desktop
 text/html=brave-bin.desktop
 x-scheme-handler/about=brave-bin.desktop
 x-scheme-handler/unknown=brave-bin.desktop
+video/mp4=vlc.desktop
