@@ -78,7 +78,7 @@
 | ------------           | -----                                                                                |
 | terminal               | alacritty, st, urxvt                                                                 |
 | editor                 | neovim, emacs, vscodium, intellij, neovide, notepadqq, vscode                        |
-| shell                  | zsh, bash, dash, fish, ksh, emacs (eshell)                                           |
+| shell                  | zsh, nushell, bash, dash, fish, ksh, emacs (eshell)                                  |
 | shell prompt           | starship                                                                             |
 | zsh plugins            | zsh-syntax-highlighting, zsh-autosuggestions, autojump, zsh-history-substring-search |
 | file manager           | lf, pcmanfm, spacefm                                                                 |
