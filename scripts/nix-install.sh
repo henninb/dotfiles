@@ -76,7 +76,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   nix-env -i browsh
   nix-env -i codium
   nix-env -i CopyQ
-  nix-shell -p copyq
+  # nix-shell -p copyq
 elif [ "$OS" = "Fedora Linux" ]; then
   nix-env -i brave
   nix-env -i librewolf
