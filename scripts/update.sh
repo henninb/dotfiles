@@ -4,18 +4,18 @@ mkdir -p "$HOME/tmp"
 
 if [ "$OS" = "Linux Mint" ]; then
   sudo apt update | tee -a "$HOME/tmp/update-$$.log"
-  sudo apt upgrade -y | tee -a "$HOME/tmp/update-$$.log"
+  sudo apt upgrade -y --allow-releaseinfo-change | tee -a "$HOME/tmp/update-$$.log"
   sudo apt autoremove -y | tee -a "$HOME/tmp/update-$$.log"
   sudo apt install -y curl
 elif [ "$OS" = "Debian GNU/Linux" ]; then
   sudo apt update | tee -a "$HOME/tmp/update-$$.log"
-  sudo apt upgrade -y | tee -a "$HOME/tmp/update-$$.log"
+  sudo apt upgrade -y --allow-releaseinfo-change | tee -a "$HOME/tmp/update-$$.log"
   sudo apt autoremove -y | tee -a "$HOME/tmp/update-$$.log"
   cat /etc/debian_version
 elif [ "$OS" = "Ubuntu" ]; then
   export DEBIAN_FRONTEND=noninteractive
   sudo apt update | tee -a "$HOME/tmp/update-$$.log"
-  sudo apt upgrade -y | tee -a "$HOME/tmp/update-$$.log"
+  sudo apt upgrade -y --allow-releaseinfo-change | tee -a "$HOME/tmp/update-$$.log"
   sudo apt autoremove -y | tee -a "$HOME/tmp/update-$$.log"
   sudo apt install -y curl
 elif [ "$OS" = "Darwin" ]; then
