@@ -219,18 +219,44 @@ latest_release=$(curl -s https://api.github.com/repos/nvm-sh/nvm/releases/latest
 latest_version=$(echo "$latest_release" | jq -r '.tag_name')
 echo $latest_version
 
-nvm --version
-nvm install --lts --latest-npm
+# nvm --version
+# nvm install --lts --latest-npm
 
-npm install -g wrangler
-npm install -g netlify-cli
-npm install -g heroku
-npm install -g yarn
-npm install -g @bitwarden/cli
-npm install -g tree-sitter-cli
-npm install -g neovim
-npm install -g deepl-translator-cli
-npm install -g npm-check-updates
+if ! npm update wrangler; then
+  npm install -g wrangler
+fi
+
+if ! npm update netlify-cli; then
+  npm install -g netlify-cli
+fi
+
+if ! npm update heroku; then
+  npm install -g heroku
+fi
+
+if ! npm update yarn; then
+  npm install -g yarn
+fi
+
+if ! npm update @bitwarden/cli; then
+  npm install -g @bitwarden/cli
+fi
+
+if ! npm update tree-sitter-cli; then
+  npm install -g tree-sitter-cli
+fi
+
+if ! npm update neovim; then
+  npm install -g neovim
+fi
+
+if ! npm update deepl-translator-cli; then
+  npm install -g deepl-translator-cli
+fi
+
+if ! npm update npm-check-updates; then
+  npm install -g npm-check-updates
+fi
 
 pip install pyserial --user
 pip install youtube-dl --user
