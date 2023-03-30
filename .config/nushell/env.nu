@@ -58,33 +58,41 @@ let-env NU_PLUGIN_DIRS = [
     ($nu.config-path | path dirname | path join 'plugins')
 ]
 
-if (path("/etc/os-release").exists) {
-  $OS = (path("/etc/os-release").lines | grep "^NAME=" | str trim "\"" | str split "=" | get 1).text
-  $OS_VER = (path("/etc/os-release").lines | grep "^VERSION_ID=" | str trim "\"" | str split "=" | get 1).text
-} else if (which lsb_release > /dev/null) {
-  $OS = (lsb_release -si).out
-  $OS_VER = (lsb_release -sr).out
-} else if (path("/etc/lsb-release").exists) {
-  echo "/etc/lsb-release"
-  $OS = (path("/etc/lsb-release").lines | grep "^DISTRIB_ID=" | str trim "\"" | str split "=" | get 1).text
-  $OS_VER = (path("/etc/lsb-release").lines | grep "^DISTRIB_RELEASE=" | str trim "\"" | str split "=" | get 1).text
-} else if (path("/etc/debian_version").exists) {
-  $OS = "Debian"
-  $OS_VER = (path("/etc/debian_version").read).text
-} else if (path("/etc/SuSe-release").exists) {
-  echo "should not enter here v1"
-  exit
-} else if (path("/etc/redhat-release").exists) {
-  echo "should not enter here v2"
-  exit
-} else {
-  #FreeBSD branches here.
-  $OS = (uname -s).out
-  $OS_VER = (uname -r).out
-}
 
-$env:OS = $OS
-$env:OS_VER = $OS_VER
+# let OS = "unknown"
+# if (path("/etc/os-release").exists) {
+#   #$OS = (path("/etc/os-release").lines | grep "^NAME=" | str trim "\"" | str split "=" | get 1).text
+#   #$OS = (path("/etc/os-release").lines | grep "^NAME=" | str trim "\"" | str split "=" | get 1).text
+#   #$OS = (path("/etc/os-release").lines | grep "^NAME=" | str trim "\"" | split "=" | get 1).text
+#   #$OS = (path("/etc/os-release").lines | grep "^NAME=" | trim "\"" | split "=" | get 1).text
+# #$OS = (path("/etc/os-release").lines | grep "^NAME=" | str trim "\"" | str split "=" | get 1).text
+#   #$OS = (path("/etc/os-release").lines | grep "^NAME=" | str trim "\"" | split "=" | get 1 | str trim).text
+#   $OS = (path("/etc/os-release").lines | grep "^NAME=" | str trim "\"" | str collect).text
+#   $OS_VER = (path("/etc/os-release").lines | grep "^VERSION_ID=" | str trim "\"" | str split "=" | get 1).text
+# } else if (which lsb_release > /dev/null) {
+#   $OS = (lsb_release -si).out
+#   $OS_VER = (lsb_release -sr).out
+# } else if (path("/etc/lsb-release").exists) {
+#   echo "/etc/lsb-release"
+#   $OS = (path("/etc/lsb-release").lines | grep "^DISTRIB_ID=" | str trim "\"" | str split "=" | get 1).text
+#   $OS_VER = (path("/etc/lsb-release").lines | grep "^DISTRIB_RELEASE=" | str trim "\"" | str split "=" | get 1).text
+# } else if (path("/etc/debian_version").exists) {
+#   $OS = "Debian"
+#   $OS_VER = (path("/etc/debian_version").read).text
+# } else if (path("/etc/SuSe-release").exists) {
+#   echo "should not enter here v1"
+#   exit
+# } else if (path("/etc/redhat-release").exists) {
+#   echo "should not enter here v2"
+#   exit
+# } else {
+#   #FreeBSD branches here.
+#   $OS = (uname -s).out
+#   $OS_VER = (uname -r).out
+# }
+#
+# $env:OS = $OS
+# $env:OS_VER = $OS_VER
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
