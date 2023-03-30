@@ -31,26 +31,17 @@ end
 set -x OS $OS
 set -x OS_VER $OS_VER
 
-# if [ -f /etc/os-release ];
-#   set OS (cat /etc/os-release | grep '^NAME=' | tr -d '"' | cut -d = -f2)
-#   set OS_VER (cat /etc/os-release | grep '^VERSION_ID=' | tr -d '"' | cut -d = -f2)
-# else if [ type lsb_release >/dev/null 2>&1 ];
-#   set OS (lsb_release -si)
-#   set OS_VER (lsb_release -sr)
-# else if [ -f /etc/lsb-release ];
-#   set OS (cat /etc/lsb-release | grep '^DISTRIB_ID=' | tr -d '"' | cut -d = -f2)
-#   set OS_VER (cat /etc/lsb-release | grep '^DISTRIB_RELEASE=' | tr -d '"' | cut -d = -f2)
-# else if [ -f /etc/debian_version ];
-#   set OS Debian
-#   set OS_VER (cat /etc/debian_version)
-# else if [ -f /etc/SuSe-release ];
-#   exit 1
-# else if [ -f /etc/redhat-release ];
-#   exit 2
-# else
-#   set OS (uname -s)
-#   set OS_VER (uname -r)
-# end
+if test "$OS" = "openSUSE Tumbleweed"
+    set -x NIX_SSL_CERT_FILE /var/lib/ca-certificates/ca-bundle.pem
+end
+
+if test -e $HOME/.nix-profile/etc/profile.d/nix.sh; source $HOME/.nix-profile/etc/profile.d/nix.sh; end
+
+
+if test "$TERM" = "dumb"
+    set -x PS1 '$ '
+end
+
 
 # source $HOME/.alias-master
 
@@ -62,15 +53,15 @@ if [ \( "$OS" = "FreeBSD" \) -o \(  "$OS" = "Alpine Linux" \) -o \(  "$OS" = "Op
   source $HOME/.alias-bsd
 end
 
-alias gs='git status'
+#alias gs='git status'
 
-function gp
-  echo $argv | read -l arg1
-  git pull
-  git add .
-  git commit -m "$arg1"
-  git push
-end
+# function gp
+#   echo $argv | read -l arg1
+#   git pull
+#   git add .
+#   git commit -m "$arg1"
+#   git push
+# end
 
 starship init fish | source
 
