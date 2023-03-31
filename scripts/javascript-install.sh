@@ -16,12 +16,13 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Lin
   # curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
   echo sudo apt install -y nodejs
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+  sudo pacman --noconfirm --needed -S curl
   sudo pacman --noconfirm --needed -S nodejs-lts-hydrogen
-  sudo pacman --noconfirm --needed -S npm
+  curl https://www.npmjs.org/install.sh | sh
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  echo sudo zypper install -y nodejs
+  sudo zypper install -y nodejs
 elif [ "$OS" = "Fedora Linux" ]; then
-  test
+  sudo dnf install -y nodejs
 elif [ "$OS" = "Darwin" ]; then
   test
 elif [ "$OS" = "Void" ]; then
@@ -43,6 +44,8 @@ else
   echo "$OS is not yet implemented."
   exit 1
 fi
+
+curl -qL https://www.npmjs.com/install.sh | sh
 
 echo "doesn't seem to work"
 if ! command -v nvm; then
@@ -80,6 +83,15 @@ done
 # fi
 #
 # nvm use "$node_ver"
+# echo 'export PATH=$HOME/local/bin:$PATH' >> ~/.bashrc
+# . ~/.bashrc
+# mkdir ~/local
+# mkdir ~/node-latest-install
+# cd ~/node-latest-install
+# curl http://nodejs.org/dist/node-latest.tar.gz | tar xz --strip-components=1
+# ./configure --prefix=~/local
+# make install # ok, fine, this step probably takes more than 30 seconds...
+# curl https://www.npmjs.org/install.sh | sh
 
 exit 0
 
