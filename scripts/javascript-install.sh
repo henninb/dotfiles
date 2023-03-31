@@ -16,8 +16,8 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Lin
   # curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
   echo sudo apt install -y nodejs
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  echo sudo pacman --noconfirm --needed -S nodejs
-  echo sudo pacman --noconfirm --needed -S npm
+  sudo pacman --noconfirm --needed -S nodejs-lts-hydrogen
+  sudo pacman --noconfirm --needed -S npm
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo sudo zypper install -y nodejs
 elif [ "$OS" = "Fedora Linux" ]; then
