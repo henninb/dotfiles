@@ -161,14 +161,19 @@ set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME"/npm/npmrc
 # set -x GNUPGHOME "$XDG_DATA_HOME"/gnupg
 set -x GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 
-# for rust
-if test -e $HOME/.cargo/env
-    set -x PATH $HOME/.cargo/bin $PATH
-    . $HOME/.cargo/env
-end
-
+[ -s "$HOME/.cargo/env" ]; and source "$HOME/.cargo/env"
 [ -s "$SDKMAN_DIR/bin/sdkman-init.fish" ] && source "$SDKMAN_DIR/bin/sdkman-init.fish"
-#source "/home/henninb/.sdkman/bin/sdkman-init.sh
+#[ -s "$NVM_DIR/nvm.sh" ]; and chmod 755 "$NVM_DIR/nvm.sh"; and source "$NVM_DIR/nvm.sh"
+[ ! -f "$HOME/.ssh/id_rsa.pub" ]; and ssh-keygen -y -f "$HOME/.ssh/id_rsa" > "$HOME/.ssh/id_rsa.pub"
+[ ! -d "$XDG_DATA_HOME/pyenv" ]; and git clone https://github.com/pyenv/pyenv.git "$XDG_DATA_HOME/pyenv"
+
+if [ -z (find ~/.fonts -maxdepth 1 -type f \( -name Monofur_for_Powerline.ttf \)) ]
+    mkdir -p ~/.fonts
+    cd ~/.fonts || return
+    unzip $HOME/.local/fonts/monofur-fonts.zip
+    fc-cache -vf ~/.fonts/
+    cd -
+end
 
 starship init fish | source
 
