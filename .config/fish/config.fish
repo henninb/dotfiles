@@ -43,7 +43,7 @@ if test "$TERM" = "dumb"
 end
 
 
-# source $HOME/.alias-master
+source $HOME/.alias-fish
 
 if [ -x (command -v nvim) ];
   source $HOME/.alias-neovim

@@ -1,3 +1,13 @@
+# if [ -n "$FISH_VERSION" ]; then
+#     echo "Fish shell detected"
+#     # Fish shell specific code here
+# elif [ "$(echo $0)" = "zsh" ]; then
+#     echo "Zsh shell detected"
+#     # Zsh shell specific code here
+# else
+#     echo "Unknown shell detected"
+# fi
+
 alias vikings='curl getnews.tech/minnesota+vikings'
 alias twins='curl getnews.tech/minnesota+twins'
 alias wolves='curl getnews.tech/minnesota+timberwolves'
@@ -137,7 +147,9 @@ alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 
 alias audio-hdmi='pacmd set-card-profile 0 output:hdmi-stereo+input:analog-stereo'
 
-alias lg='lazygit'
+if [ -x "$(command -v lazygit)" ]; then
+  alias lg='lazygit'
+fi
 # alias mutt='neomutt'
 
 # alias mpc='mpc --port 6601'

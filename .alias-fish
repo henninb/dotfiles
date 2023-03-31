@@ -1,0 +1,156 @@
+function vikings
+    curl getnews.tech/minnesota+vikings
+end
+
+function twins
+    curl getnews.tech/minnesota+twins
+end
+
+function wolves
+    curl getnews.tech/minnesota+timberwolves
+end
+
+function veewee
+    bundle exec veewee $argv
+end
+
+# git aliases
+abbr -a g 'git'
+# abbr -a gs 'git status'
+# abbr -a ga 'git add '
+#abbr -a gc 'git commit'
+abbr -a gd 'git diff'
+abbr -a glist 'git ls-tree --full-tree -r --name-only HEAD'
+#abbr -a glsi 'git status --ignored'
+#abbr -a gundo 'git reset --soft HEAD~1'
+function gp
+    git push $argv
+end
+#abbr -a gb 'git branch '
+#abbr -a gituntracked 'git ls-files . --ignored --exclude-standard --others'
+#abbr -a hg 'history | grep'
+function hg
+    cat $HOME/.zsh_history | grep $argv
+end
+
+abbr -a sysoff 'shutdown -p now'
+
+#abbr -a emacs "emacs -nw"
+abbr -a vscode 'code'
+
+function rkh
+    ssh-keygen -f "$HOME/.ssh/known_hosts" -R "$argv"
+end
+
+abbr -a sha1 'openssl sha1'
+abbr -a h 'history'
+abbr -a j 'jobs -l'
+abbr -a ports 'netstat -tulanp'
+
+abbr -a wget 'wget --hsts-file="$HOME/.config"/wget-hsts'
+abbr -a mitmproxy 'mitmproxy --set confdir=$HOME/.config/mitmproxy'
+abbr -a mitmweb 'mitmweb --set confdir=${HOME}/.config/mitmproxy'
+
+abbr -a reboot 'sudo reboot'
+abbr -a poweroff 'sudo poweroff'
+abbr -a halt 'sudo halt'
+abbr -a shutdown 'sudo shutdown'
+# abbr -a rxrdp 'sudo systemctl restart xrdp'
+# abbr -a rsxhkd 'pkill -USR1 -x sxhkd'
+
+abbr -a emerge 'emerge --update --newuse'
+
+abbr -a .. 'cd ..'
+abbr -a ... 'cd ../..'
+abbr -a .... 'cd ../../..'
+abbr -a ..... 'cd ../../../..'
+
+# abbr -a youtube-dl "youtube-dl --no-check-certificate -f 'bestaudio[ext=m4a]'"
+
+if [ ! "$OS" = "Darwin" ]
+    abbr -a open "xdg-open"
+end
+
+if command -v doas > /dev/null
+    abbr -a sudo doas
+end
+
+#abbr -a local_ip "ipconfig getifaddr br0"
+function local_ip
+    ip route get 8.8.8.8 | awk '{print $NF; exit}'
+end
+
+abbr -a local_ip1 'hostname -I'
+
+abbr -a kotlinsh 'kotlinc-jvm'
+abbr -a rubysh 'irb'
+abbr -a ghci 'stack exec -- ghci'
+abbr -a handbrake-gui 'ghb'
+abbr -a lynx 'lynx -cfg=~/.lynx.cfg'
+
+abbr -a history 'history -i'
+
+abbr -a sudop 'sudo -E su -p'
+
+# abbr -a vi 'vim'
+# abbr -a v 'vim'
+
+# function ls
+#     if type exa > /dev/null
+#         if count $argv = 1 && test $argv[1] = "-ltr"
+#             exa -l -r --sort oldest --color=always --icons --group-directories-first
+#         else if count $argv = 2 && test $argv[1] = "-ltr"
+#             exa -l -r --sort oldest --color=always --icons --group-directories-first $argv[2]
+#         else if count $argv = 2 && test $argv[1] = "-l"
+#             exa -l --color=always --icons --group-directories-first $argv[2]
+#         else if count $argv = 1 && test $argv[1] = "-l"
+#             exa -l --color=always --icons --group-directories-first
+#         else if count $argv = 0
+#             exa --color=always --icons --group-directories-first
+#         else
+#             exa $argv --color=always --icons --group-directories-first
+#         end
+#         alias l.='ls .*
+#         alias la='exa -a --color=always --group-directories-first'
+#         alias ll='exa -l --color=always --group-directories-first'
+#         alias lt='exa -aT --color=always --group-directories-first'
+#     else
+#         alias l.='ls -d .* --color=tty'
+#         alias ll='ls -l --color=tty'
+#         alias ls='ls --color=tty'
+#     end
+# end
+
+# clipboard, primary, secondary
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+# alias pbcopy='xclip'
+# alias pbpaste='xclip -o'
+
+# pass options to free ##
+alias meminfo='free -m -l -t'
+
+# get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+
+# get top process eating cpu ##
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+
+# Get server cpu info ##
+alias cpuinfo='lscpu'
+
+# older system use /proc/cpuinfo ##
+##alias cpuinfo='less /proc/cpuinfo' ##
+
+# get GPU ram on desktop / laptop##
+alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
+
+alias audio-hdmi='pacmd set-card-profile 0 output:hdmi-stereo+input:analog-stereo'
+
+if type lazygit > /dev/null
+    alias lg='lazygit'
+end
+
+# vim: set ft=sh:
