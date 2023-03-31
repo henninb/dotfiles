@@ -28,7 +28,7 @@ elif [ "$OS" = "Void" ]; then
   test
   #sudo xbps-install -y nodejs
 elif [ "$OS" = "Gentoo" ]; then
-  echo sudo emerge  --update --newuse nodejs
+  sudo emerge  --update --newuse nodejs
 elif [ "$OS" = "Solus" ]; then
   echo sudo eopkg install nodejs
 elif [ "$OS" = "CentOS Linux" ]; then
