@@ -140,7 +140,6 @@ set -gx AWS_SHARED_CREDENTIALS_FILE "$XDG_CONFIG_HOME"/aws/credentials
 set -gx AWS_CONFIG_FILE "$XDG_CONFIG_HOME"/aws/config
 set -gx HISTFILE "$XDG_STATE_HOME"/zsh/history
 set -gx CARGO_HOME "$XDG_DATA_HOME"/cargo
-#set -x SDKMAN_DIR "$XDG_DATA_HOME"/sdkman
 set -gx SDKMAN_DIR "$XDG_DATA_HOME"/sdkman
 set -gx RUSTUP_HOME "$XDG_DATA_HOME"/rustup
 set -gx AZURE_CONFIG_DIR "$XDG_DATA_HOME"/azure
@@ -174,6 +173,28 @@ if [ -z (find ~/.fonts -maxdepth 1 -type f \( -name Monofur_for_Powerline.ttf \)
     fc-cache -vf ~/.fonts/
     cd -
 end
+
+if ! grep -A 3 '\[branch "main"\]' "$HOME/.git/config" | grep 'remote = origin' > /dev/null
+    git branch --set-upstream-to=origin/main main
+end
+
+# if grep -q '\[branch "main"\].*\n.*remote = origin' "$HOME/.git/config"; then
+#   git branch --set-upstream-to=origin/main main
+# fi
+
+[ -f /opt/arduino/arduino ]; and ln -sfn /opt/arduino/arduino "$HOME/.local/bin/arduino" 2> /dev/null
+[ -f /opt/intellij/bin/idea.sh ]; and ln -sfn /opt/intellij/bin/idea.sh "$HOME/.local/bin/intellij" 2> /dev/null
+[ -f /opt/firefox/firefox ]; and ln -sfn /opt/firefox/firefox "$HOME/.local/bin/firefox" > /dev/null
+[ -f /opt/vscode/bin/code ]; and ln -sfn /opt/vscode/bin/code "$HOME/.local/bin/code" 2> /dev/null
+[ -f "$HOME/.tmux-default.conf" ]; and ln -sfn "$HOME/.tmux-default.conf" "$HOME/.tmux.conf" 2> /dev/null
+[ -f "$HOME/.ssh/config" ]; and chmod 600 "$HOME/.ssh/config"
+[ -f "$HOME/.ssh/authorized_keys" ]; and chmod 600 "$HOME/.ssh/authorized_keys"
+[ -f "$HOME/.ssh/config" ]; and chmod 600 "$HOME/.ssh/config"
+[ -f "$HOME/.ssh/id_rsa" ]; and chmod 600 "$HOME/.ssh/id_rsa"
+[ -d "$HOME/.ssh" ]; and chmod 700 "$HOME/.ssh"
+chmod 700 "$HOME"
+[ -d "$HOME/.gnupg" ]; and chmod 700 "$HOME/.gnupg"
+[ -f "$HOME/.ghci" ]; and chmod 644 "$HOME/.ghci"
 
 starship init fish | source
 
