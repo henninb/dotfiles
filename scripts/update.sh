@@ -206,18 +206,18 @@ go install github.com/gokcehan/lf@latest
 go install github.com/charmbracelet/glow@latest
 go install github.com/gopasspw/gopass@latest
 go install github.com/moncho/dry@latest
-go install github.com/arduino/arduino-cli@latest
 go install github.com/Bios-Marcel/cordless@latest
-export GO111MODULE=on
-go get -u github.com/arduino/arduino-cli
-export GO111MODULE=off
+go install github.com/arduino/arduino-cli@latest
+# export GO111MODULE=on
+# go get -u github.com/arduino/arduino-cli
+# export GO111MODULE=off
 
 # Download the latest release information from the nvm GitHub repository using the GitHub API
-latest_release=$(curl -s https://api.github.com/repos/nvm-sh/nvm/releases/latest)
+# latest_release=$(curl -s https://api.github.com/repos/nvm-sh/nvm/releases/latest)
 
 # Extract the latest version tag from the release information using jq
-latest_version=$(echo "$latest_release" | jq -r '.tag_name')
-echo $latest_version
+# latest_version=$(echo "$latest_release" | jq -r '.tag_name')
+# echo $latest_version
 
 # nvm --version
 # nvm install --lts --latest-npm
