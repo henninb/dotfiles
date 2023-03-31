@@ -4,32 +4,40 @@
 set --universal fish_greeting
 
 if test -f /etc/os-release
-    set OS (grep '^NAME=' /etc/os-release | tr -d '"' | cut -d = -f2)
-    set OS_VER (grep '^VERSION_ID=' /etc/os-release | tr -d '"' | cut -d = -f2)
+    set -gx OS (grep '^NAME=' /etc/os-release | tr -d '"' | cut -d = -f2)
 else if type lsb_release >/dev/null 2>&1
-    set OS (lsb_release -si)
-    set OS_VER (lsb_release -sr)
+    set -gx OS (lsb_release -si)
 else if test -f /etc/lsb-release
-    echo /etc/lsb-release
-    set OS (grep '^DISTRIB_ID=' /etc/lsb-release | tr -d '"' | cut -d = -f2)
-    set OS_VER (grep '^DISTRIB_RELEASE=' /etc/lsb-release | tr -d '"' | cut -d = -f2)
+    set -gx OS (grep '^DISTRIB_ID=' /etc/lsb-release | tr -d '"' | cut -d = -f2)
 else if test -f /etc/debian_version
-    set OS "Debian"
-    set OS_VER (cat /etc/debian_version)
-else if test -f /etc/SuSe-release
-    echo "should not enter here v1"
-    return
-else if test -f /etc/redhat-release
-    echo "should not enter here v2"
-    return
+    set -gx OS "Debian"
 else
-    # FreeBSD branches here.
-    set OS (uname -s)
-    set OS_VER (uname -r)
+    # FreeBSD, OpenBSD, Darwin branches here.
+    set -gx OS (uname -s)
 end
 
 set -x OS $OS
-set -x OS_VER $OS_VER
+
+# if test -f /etc/os-release
+#     set OS (grep '^NAME=' /etc/os-release | tr -d '"' | cut -d = -f2)
+# else if type lsb_release >/dev/null 2>&1
+#     set OS (lsb_release -si)
+# else if test -f /etc/lsb-release
+#     set OS (grep '^DISTRIB_ID=' /etc/lsb-release | tr -d '"' | cut -d = -f2)
+# else if test -f /etc/debian_version
+#     set OS "Debian"
+# else if test -f /etc/SuSe-release
+#     echo "should not enter here v1"
+#     return
+# else if test -f /etc/redhat-release
+#     echo "should not enter here v2"
+#     return
+# else
+#     # FreeBSD branches here.
+#     set OS (uname -s)
+# end
+
+# set -x OS $OS
 
 if test "$OS" = "openSUSE Tumbleweed"
     set -x NIX_SSL_CERT_FILE /var/lib/ca-certificates/ca-bundle.pem
@@ -42,6 +50,16 @@ if test "$TERM" = "dumb"
     set -x PS1 '$ '
 end
 
+function gitpush
+  if test (count $argv) -lt 1
+    echo "Usage: gitpush <messages>" >&2
+  else
+    git pull origin main
+    git add .
+    git commit -m "$argv"
+    git push origin main
+  end
+end
 
 source $HOME/.alias-fish
 
