@@ -22,6 +22,10 @@ elif [ "$OS" = "Void" ]; then
   cd void-packages || exit
   ./xbps-src pkg fish-shell
   xi fish-shell
+  if ! grep -Fxq "/bin/fish" /etc/shells; then
+    echo "/bin/fish" | sudo tee -a /etc/shells
+    echo "The string /bin/fish has been added to /etc/shells"
+  fi
   # sudo xbps-install -y ncurses-devel
   # sudo xbps-install -y pcre2
   # sudo xbps-install -S readline-devel 
@@ -59,5 +63,8 @@ else
 fi
 
 exit 0
+
+[ -s "/bin/zsh" ] && sudo usermod -s /bin/fish "$(whoami)"
+[ -s "/bin/zsh" ] && sudo chsh -s /bin/fish "$(whoami)"
 
 # vim: set ft=sh:
