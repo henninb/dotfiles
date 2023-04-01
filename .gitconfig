@@ -36,12 +36,12 @@
 [push]
   default = simple
 [diff]
-  tool = nvimdiff4
+  tool = nvimdiff
 [difftool]
   trustExitCode = true
   prompt = false
 [merge]
-  tool = nvimdiff4
+  tool = nvimdiff
   conflictstyle = diff3
 [core]
   pager = less -F -X

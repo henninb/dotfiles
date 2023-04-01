@@ -16,6 +16,7 @@ end
 
 # git aliases
 abbr -a g 'git'
+abbr -a 'git log' 'git log -1 HEAD'
 # abbr -a gs 'git status'
 # abbr -a ga 'git add '
 #abbr -a gc 'git commit'
@@ -33,14 +34,15 @@ function hg
     cat $HOME/.zsh_history | grep $argv
 end
 
-abbr -a sysoff 'shutdown -p now'
 
 #abbr -a emacs "emacs -nw"
-abbr -a vscode 'code'
+# abbr -a vscode 'code'
 
-function rkh
-    ssh-keygen -f "$HOME/.ssh/known_hosts" -R "$argv"
-end
+# function rkh
+#     ssh-keygen -f "$HOME/.ssh/known_hosts" -R "$argv"
+# end
+
+abbr -a rkh 'ssh-keygen -f "$HOME/.ssh/known_hosts" -R '
 
 abbr -a sha1 'openssl sha1'
 abbr -a h 'history'
@@ -51,14 +53,16 @@ abbr -a wget 'wget --hsts-file="$HOME/.config"/wget-hsts'
 abbr -a mitmproxy 'mitmproxy --set confdir=$HOME/.config/mitmproxy'
 abbr -a mitmweb 'mitmweb --set confdir=${HOME}/.config/mitmproxy'
 
-abbr -a reboot 'sudo reboot'
-abbr -a poweroff 'sudo poweroff'
-abbr -a halt 'sudo halt'
-abbr -a shutdown 'sudo shutdown'
+abbr -a reboot 'doas reboot'
+abbr -a poweroff 'doas poweroff'
+abbr -a halt 'doas halt'
+abbr -a shutdown 'doas shutdown'
+abbr -a sysoff 'doas shutdown -p now'
 # abbr -a rxrdp 'sudo systemctl restart xrdp'
 # abbr -a rsxhkd 'pkill -USR1 -x sxhkd'
 
-abbr -a emerge 'emerge --update --newuse'
+abbr -a emerge 'doas emerge --update --newuse '
+abbr -a apt 'doas apt install -y '
 
 abbr -a .. 'cd ..'
 abbr -a ... 'cd ../..'
