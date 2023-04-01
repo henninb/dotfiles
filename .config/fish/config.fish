@@ -48,7 +48,7 @@ end
 source $HOME/.alias-fish
 
 if [ -x (command -v nvim) ];
-  source $HOME/.alias-neovim
+  source $HOME/.alias-neovim.fish
 end
 
 if [ \( "$OS" = "FreeBSD" \) -o \(  "$OS" = "Alpine Linux" \) -o \(  "$OS" = "OpenBSD" \) -o \(  "$OS" = "Darwin" \) ];
