@@ -55,11 +55,20 @@ if [ \( "$OS" = "FreeBSD" \) -o \(  "$OS" = "Alpine Linux" \) -o \(  "$OS" = "Op
   source $HOME/.alias-bsd
 end
 
-if test "(uname)" = "Linux"
-  if test "$OS" = "Gentoo"
+if [ (uname) = "Linux" ]
+  if [ $OS = "Gentoo" ]
     echo "gentoo"
+    if command -v java-config >/dev/null 2>&1
+      set -gx JAVA_HOME (java-config -o ^/dev/null)
+    else
+      echo "install java-config on gentoo"
+    end
+  else if command -v javac >/dev/null 2>&1
+    echo "setting java_home"
+    set -gx JAVA_HOME (dirname (dirname (readlink -f (readlink -f (which javac))))^/dev/null)
+  else
+    echo "JAVA_HOME is not set up."
   end
-  echo "is Linux"
 else
   echo "not Linux"
 end
