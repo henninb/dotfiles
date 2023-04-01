@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+trayer --edge bottom --align right --SetDockType true --SetPartialStrut true --expand true --monitor 0 --widthtype pixel --width 200 --transparent true --tint 0x000000 --height 18 --alpha 0 &
+
+# exec notify-send "trayer NOT installed"
+
+exit 0
+
+# vim: set ft=sh:
