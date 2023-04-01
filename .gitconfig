@@ -6,7 +6,6 @@
   ci = commit
   st = status -sb
   s = status
-  #p = !sh -c 'git fetch --all && git merge && git add . && git commit -am \"$0 $1 $2 $3 $4 \" && git push' --
   p = !sh -c 'git fetch --all && git merge && git add . && git commit -am \"$*\" && git push' --
   # echo = !sh -c 'echo "$0 $1 $2 $3 $4 $5 $6 $7 $8 $9"'
   # echo = !sh -c 'echo "$@"'
