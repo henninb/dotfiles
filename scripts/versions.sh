@@ -31,6 +31,7 @@ fi
 
 javac --version | tee -a "$HOME/tmp/version-$date-$$.dat"
 node --version | tee -a "$HOME/tmp/version-$date-$$.dat"
+npm --version | tee -a "$HOME/tmp/version-$date-$$.dat"
 nvim --version | head -1 | tee -a "$HOME/tmp/version-$date-$$.dat"
 xmonad --version | tee -a "$HOME/tmp/version-$date-$$.dat"
 stack --version | tee -a "$HOME/tmp/version-$date-$$.dat"
