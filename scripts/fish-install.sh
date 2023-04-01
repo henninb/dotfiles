@@ -9,7 +9,25 @@ elif [ "$OS" = "Gentoo" ]; then
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y fish
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y fish
+  sudo xbps-install -y xtools
+  cd "$HOME/projects" || exit
+  git clone git@github.com:void-linux/void-packages.git
+  cd void-packages || exit
+  ./xbps-src pkg fish-shell
+  xi fish-shell
+  # sudo xbps-install -y ncurses-devel
+  # sudo xbps-install -y pcre2
+  # sudo xbps-install -S readline-devel 
+  # sudo xbps-install -S libedit-devel
+  # mkdir -p "$HOME/projects/github.com/fish-shell"
+  # cd "$HOME/projects/github.com/fish-shell" || exit
+  # git clone https://github.com/fish-shell/fish-shell.git
+  # cd fish-shell || exit
+  # mkdir -p build
+  # cd build || exit
+  # cmake ..
+  # make
+  # sudo make install
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y fish
 elif [ "$OS" = "Solus" ]; then
