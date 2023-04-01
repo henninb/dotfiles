@@ -1,6 +1,7 @@
 <application>
   <component name="GeneralSettings">
     <option name="showTipsOnStartup" value="false" />
+    <option name="confirmExit" value="false" />
     <option name="processCloseConfirmation" value="TERMINATE" />
   </component>
   <component name="Registry">
