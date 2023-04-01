@@ -1,9 +1,8 @@
 #!/bin/sh
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  echo "archlinux"
+  sudo pacman --noconfirm --needed -S fish
 elif [ "$OS" = "Gentoo" ]; then
-  echo "gentoo"
   if ! command -v fish; then
     sudo emerge --update --newuse fish
   fi
@@ -18,7 +17,6 @@ elif [ "$OS" = "Solus" ]; then
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y fish
 elif [ "$OS" = "Fedora Linux" ]; then
-  echo "fedora"
   sudo dnf install -y fish
 elif [ "$OS" = "Clear Linux OS" ]; then
   echo clearlinux
