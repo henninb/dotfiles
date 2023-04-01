@@ -57,7 +57,7 @@
   ui = true
   pager = true
 [grep]
-    lineNumber = true
+  lineNumber = true
 [filter "irssi-pw"]
   clean = "sed -e 's/sasl_password = .*;/sasl_password = \"********\";/'"
 [filter "ks-pw"]
