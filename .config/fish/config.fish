@@ -30,8 +30,6 @@ if test "$OS" = "openSUSE Tumbleweed"
     set -x NIX_SSL_CERT_FILE /var/lib/ca-certificates/ca-bundle.pem
 end
 
-if test -e $HOME/.nix-profile/etc/profile.d/nix.sh; source $HOME/.nix-profile/etc/profile.d/nix.sh; end
-
 if test "$TERM" = "dumb"
     set -x PS1 '$ '
 end
@@ -160,6 +158,7 @@ set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME"/npm/npmrc
 # set -x GNUPGHOME "$XDG_DATA_HOME"/gnupg
 set -x GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 
+[ -s "$HOME/.nix-profile/etc/profile.d/nix.fish" ] && source "$HOME/.nix-profile/etc/profile.d/nix.fish"
 [ -s "$HOME/.cargo/env" ]; and source "$HOME/.cargo/env"
 [ -s "$SDKMAN_DIR/bin/sdkman-init.fish" ] && source "$SDKMAN_DIR/bin/sdkman-init.fish"
 #[ -s "$NVM_DIR/nvm.sh" ]; and chmod 755 "$NVM_DIR/nvm.sh"; and source "$NVM_DIR/nvm.sh"
