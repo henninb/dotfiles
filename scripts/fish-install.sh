@@ -7,7 +7,10 @@ elif [ "$OS" = "Gentoo" ]; then
     sudo emerge --update --newuse fish
   fi
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y fish
+  # sudo apt install -y fish
+  wget https://launchpad.net/~fish-shell/+archive/ubuntu/release-3/+files/fish_3.6.1-1~jammy_amd64.deb
+  sudo dpkg -i fish_3.6.1-1_jammy_amd64.deb
+  rm fish_3.6.1-1_jammy_amd64.deb
 elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y xtools
   cd "$HOME/projects" || exit
