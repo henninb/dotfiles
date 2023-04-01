@@ -63,7 +63,6 @@ if [ (uname) = "Linux" ]
       echo "install java-config on gentoo"
     end
   else if command -v javac >/dev/null 2>&1
-    echo "setting java_home"
     set -gx JAVA_HOME (dirname (dirname (readlink -f (readlink -f (which javac))))^/dev/null)
   else
     echo "JAVA_HOME is not set up."
