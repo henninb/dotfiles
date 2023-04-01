@@ -57,7 +57,6 @@ end
 
 if [ (uname) = "Linux" ]
   if [ $OS = "Gentoo" ]
-    echo "gentoo"
     if command -v java-config >/dev/null 2>&1
       set -gx JAVA_HOME (java-config -o ^/dev/null)
     else
