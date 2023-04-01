@@ -20,7 +20,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S nodejs-lts-hydrogen
   curl https://www.npmjs.org/install.sh | sh
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo zypper install -y nodejs
+  sudo zypper install -y nodejs18
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y nodejs
 elif [ "$OS" = "Darwin" ]; then
