@@ -1,0 +1,28 @@
+<application>
+  <component name="Trusted.Paths">
+    <option name="TRUSTED_PROJECT_PATHS">
+      <map>
+        <entry key="$USER_HOME$/projects/github.com/henninb/example-java" value="true" />
+        <entry key="$USER_HOME$/projects/github.com/henninb/example-kotlin" value="true" />
+        <entry key="$USER_HOME$/projects/github.com/henninb/example-ktor" value="true" />
+        <entry key="$USER_HOME$/projects/github.com/henninb/example-micronaut" value="true" />
+        <entry key="$USER_HOME$/projects/github.com/henninb/example-ratpack" value="true" />
+        <entry key="$USER_HOME$/projects/github.com/henninb/example-scala" value="true" />
+        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint" value="true" />
+        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint-micronaut" value="true" />
+        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint-micronaut-new" value="true" />
+        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint-micronaut-new-new" value="true" />
+        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-react" value="true" />
+        <entry key="$USER_HOME$/projects/todo-micronaut" value="true" />
+      </map>
+    </option>
+  </component>
+  <component name="Trusted.Paths.Settings">
+    <option name="TRUSTED_PATHS">
+      <list>
+        <option value="$USER_HOME$/projects/github.com/henninb" />
+        <option value="$USER_HOME$/projects" />
+      </list>
+    </option>
+  </component>
+</application>
