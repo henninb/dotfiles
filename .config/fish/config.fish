@@ -55,6 +55,15 @@ if [ \( "$OS" = "FreeBSD" \) -o \(  "$OS" = "Alpine Linux" \) -o \(  "$OS" = "Op
   source $HOME/.alias-bsd
 end
 
+if test "(uname)" = "Linux"
+  if test "$OS" = "Gentoo"
+    echo "gentoo"
+  end
+  echo "is Linux"
+else
+  echo "not Linux"
+end
+
 # if test "(uname)" = "Linux"
 #  echo "here"
 #   if test "$OS" = "Gentoo"
@@ -89,7 +98,7 @@ set -x PATH $HOME/.local/share/bin $PATH
 set -x PATH $PYENV_ROOT/bin $PATH
 set -x PATH $HOME/.local/bin $PATH
 set -x PATH /usr/local/opt/openjdk@17/bin $PATH
-set -x PATH $HOME/.local/share/npm/bin $PATH
+# set -x PATH $HOME/.local/share/npm/bin $PATH
 set -x PATH $HOME/.local/share/cargo/bin $PATH
 set -x PATH $HOME/.rvm/bin $PATH
 set -x PATH /opt/kafka/bin $PATH
