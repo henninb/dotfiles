@@ -67,17 +67,18 @@ abbr -a ..... 'cd ../../../..'
 
 # abbr -a youtube-dl "youtube-dl --no-check-certificate -f 'bestaudio[ext=m4a]'"
 
-if [ ! "$OS" = "Darwin" ]
-    abbr -a open "xdg-open"
+if [ (uname) = "Linux" ]
+# if [ ! "$OS" = "Darwin" ]
+  abbr -a open "xdg-open"
 end
 
 if command -v doas > /dev/null
-    abbr -a sudo doas
+  abbr -a sudo doas
 end
 
 #abbr -a local_ip "ipconfig getifaddr br0"
-function local_ip
-    ip route get 8.8.8.8 | awk '{print $NF; exit}'
+function local-ip
+  ip route get 8.8.8.8 | awk '{print $NF; exit}'
 end
 
 abbr -a local_ip1 'hostname -I'
@@ -85,10 +86,10 @@ abbr -a local_ip1 'hostname -I'
 abbr -a kotlinsh 'kotlinc-jvm'
 abbr -a rubysh 'irb'
 abbr -a ghci 'stack exec -- ghci'
-abbr -a handbrake-gui 'ghb'
+abbr -a handbrake 'ghb'
 abbr -a lynx 'lynx -cfg=~/.lynx.cfg'
 
-abbr -a history 'history -i'
+# abbr -a history 'history -i'
 
 abbr -a sudop 'sudo -E su -p'
 
