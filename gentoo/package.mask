@@ -1,7 +1,8 @@
->dev-python/docutils-0.17.1
->dev-libs/boost-1.79.0
+#>dev-python/docutils-0.17.1
+#>dev-libs/boost-1.79.0
 # blender issue
->dev-libs/libfmt-8.1.1
+#>dev-libs/libfmt-8.1.1
+#=dev-python/cryptography-40.0.1
 # was fixed on 7/11/2022
 # >dev-util/meson-0.62.2
 #=dev-libs/openssl-compat-1.1.1t

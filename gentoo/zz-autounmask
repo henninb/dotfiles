@@ -106,3 +106,5 @@ x11-libs/wxGTK gstreamer
 x11-misc/dzen xpm xinerama
 x11-libs/xapp introspection
 gnome-extra/cinnamon networkmanager
+python/fido2 -python3_10 python3_11
+#
