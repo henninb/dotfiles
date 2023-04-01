@@ -11,6 +11,10 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   wget https://launchpad.net/~fish-shell/+archive/ubuntu/release-3/+files/fish_3.6.1-1~jammy_amd64.deb
   sudo dpkg -i fish_3.6.1-1_jammy_amd64.deb
   rm fish_3.6.1-1_jammy_amd64.deb
+  if ! grep -Fxq "/bin/fish" /etc/shells; then
+    echo "/bin/fish" | sudo tee -a /etc/shells
+    echo "The string /bin/fish has been added to /etc/shells"
+  fi
 elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y xtools
   cd "$HOME/projects" || exit
@@ -37,8 +41,12 @@ elif [ "$OS" = "Solus" ]; then
   echo "solus"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y fish
-  echo sudo vi /etc/shells
-  echo /bin/fish
+  if ! grep -Fxq "/bin/fish" /etc/shells; then
+    echo "/bin/fish" | sudo tee -a /etc/shells
+    echo "The string /bin/fish has been added to /etc/shells"
+  fi
+  # echo sudo vi /etc/shells
+  # echo /bin/fish
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y fish
 elif [ "$OS" = "Clear Linux OS" ]; then
