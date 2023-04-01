@@ -34,6 +34,8 @@ elif [ "$OS" = "Solus" ]; then
   echo "solus"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y fish
+  echo sudo vi /etc/shells
+  echo /bin/fish
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y fish
 elif [ "$OS" = "Clear Linux OS" ]; then
