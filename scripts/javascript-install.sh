@@ -13,7 +13,7 @@ node_ver=$(curl -s 'https://nodejs.org/download/release/latest-v18.x/' | grep no
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Linux" ]; then
   sudo apt install -y curl
-  # curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+  # curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
   echo sudo apt install -y nodejs
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S curl
