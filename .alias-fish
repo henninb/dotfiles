@@ -122,13 +122,13 @@ abbr -a sudop 'sudo -E su -p'
 # end
 
 # clipboard, primary, secondary
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
+abbr -a pbcopy 'xclip -selection clipboard'
+abbr -a pbpaste 'xclip -selection clipboard -o'
 # alias pbcopy='xclip'
 # alias pbpaste='xclip -o'
 
 # pass options to free ##
-alias meminfo='free -m -l -t'
+abbr -a meminfo 'free -m -l -t'
 
 # get top process eating memory
 alias psmem='ps auxf | sort -nr -k 4'
@@ -150,7 +150,7 @@ alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 alias audio-hdmi='pacmd set-card-profile 0 output:hdmi-stereo+input:analog-stereo'
 
 if type lazygit > /dev/null
-    alias lg='lazygit'
+   abbr -a  lg 'lazygit'
 end
 
 # vim: set ft=sh:
