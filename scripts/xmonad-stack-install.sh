@@ -35,6 +35,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y efibootmgr
   sudo apt install -y elinks
   sudo apt install -y feh
+  sudo apt install -y fish
   sudo apt install -y flameshot
   sudo apt install -y gcc
   sudo apt install -y gtk-update-icon-cache
@@ -152,7 +153,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y efibootmgr
   sudo zypper install -y elinks
   sudo zypper install -y feh
-  sudo zypper install -y feh
+  sudo zypper install -y fish
   sudo zypper install -y flameshot
   sudo zypper install -y gcc
   sudo zypper install -y gmp-devel
@@ -249,6 +250,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S efibootmgr
   sudo pacman --noconfirm --needed -S elinks
   sudo pacman --noconfirm --needed -S feh
+  sudo pacman --noconfirm --needed -S fish
   sudo pacman --noconfirm --needed -S flameshot
   sudo pacman --noconfirm --needed -S gcc
   sudo pacman --noconfirm --needed -S gtk-update-icon-cache
@@ -336,6 +338,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y dunst
   sudo pkg install -y dzen2
   sudo pkg install -y feh
+  sudo pkg install -y fish
   sudo pkg install -y flameshot
   #sudo pkg install -y hardinfo
   sudo pkg install -y htop
@@ -383,7 +386,7 @@ elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y cabal-install
   sudo ln -sfn /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
   sudo ln -sfn /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so
-  VOID_PKGS="pkg-config autoconf xorg-minimal xscreensaver feh xdotool w3m neofetch lxappearance clipmenu xz make gcc gmp-devel dunst wmname alsa-lib-devel emacs-gtk3 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd jq redshift conky playerctl dunst libX11-devel libXinerama-devel libXrandr-devel libuuid libXft-devel libXScrnSaver-devel dzen2 trayer-srg CopyQ NetworkManager network-manager-applet numlockx hardinfo setxkbmap xinput xmodmap pandoc jq xrandr tmux yad bat htop i3lock keychain kdeconnect neovim ncdu rsync sox tree ntp xhost xdo starship btop wget go xclip dmg2img os-prober efibootmgr newsboat kitty xterm mesa-dri xtools glxinfo polkit hidapi-devel libgusb-devel xsetroot opendoas desktop-file-utils mdadm dmraid locate rofi hidapi-devel cmake"
+  VOID_PKGS="pkg-config autoconf xorg-minimal xscreensaver feh xdotool w3m neofetch lxappearance clipmenu xz make gcc gmp-devel dunst wmname alsa-lib-devel emacs-gtk3 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd jq redshift conky playerctl dunst libX11-devel libXinerama-devel libXrandr-devel libuuid libXft-devel libXScrnSaver-devel dzen2 trayer-srg CopyQ NetworkManager network-manager-applet numlockx hardinfo setxkbmap xinput xmodmap pandoc jq xrandr tmux yad bat htop i3lock keychain kdeconnect neovim ncdu rsync sox tree ntp xhost xdo starship btop wget go xclip dmg2img os-prober efibootmgr newsboat kitty xterm mesa-dri xtools glxinfo polkit hidapi-devel libgusb-devel xsetroot opendoas desktop-file-utils mdadm dmraid locate rofi hidapi-devel cmake fish"
   FAILURE=""
   for i in $VOID_PKGS; do
     if ! sudo xbps-install -y "$i"; then
@@ -417,7 +420,7 @@ elif [ "$OS" = "Solus" ]; then
   make
   sudo make install
   cd "$HOME" || exit
-  SOLUS_PKGS="xmonad pkg-config feh xdotool w3m xz make gmp-devel libffi zlib dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xdo libxpm-devel flameshot blueman copyq mpd mpc-client neofetch jq redshift font-awesome-4 conky playerctl picom dzen2 xappearance xscreensaver wmname clipmenu pandoc jq pavucontrol tmux rofi"
+  SOLUS_PKGS="xmonad pkg-config feh xdotool w3m xz make gmp-devel libffi zlib dunst alsa-lib-devel alsa-utils pulseaudio libxscrnsaver-devel libxrandr-devel libxft-devel xdo libxpm-devel flameshot blueman copyq mpd mpc-client neofetch jq redshift font-awesome-4 conky playerctl picom dzen2 xappearance xscreensaver wmname clipmenu pandoc jq pavucontrol tmux rofi fish"
   FAILURE=""
   sudo eopkg install -c system.devel
   for i in $SOLUS_PKGS; do
@@ -431,7 +434,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo usermod -aG tty "$(id -un)"
   sudo usermod -aG video "$(id -un)"
   # elogind
-  GENTOO_PKGS="rust-bin neovim setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool dunst wmname w3m x11-misc/xclip xinit xorg-server sys-apps/dbus flameshot volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet trayer-srg sxiv spacefm lxappearance xrandr hardinfo gentoolkit xmodmap app-misc/jq pavucontrol xinput neovim lsof sddm htop eix libreoffice-bin firefox-bin app-misc/screen pcmanfm rdfind zenity net-dns/bind-tools tmux bat whois starship traceroute kitty imagemagick colordiff media-fonts/terminus-font efibootmgr genfstab byobu dev-libs/tree-sitter luarocks alacritty ufw xdo pipewire pass pwgen tree keychain partimage ntfs3g dosfstools mtools ncdu speedtest-cli ntp nmap xhost btop dmg2img solaar elinks os-prober sys-fs/btrfs-progs sys-fs/udftools kpcli usbutils zbar xsetroot doas desktop-file-utils dmraid mdadm locate rofi gptfdisk wipe eselect-python dev-python/pip volctl usbimagewriter"
+  GENTOO_PKGS="rust-bin neovim setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool dunst wmname w3m x11-misc/xclip xinit xorg-server sys-apps/dbus flameshot volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet trayer-srg sxiv spacefm lxappearance xrandr hardinfo gentoolkit xmodmap app-misc/jq pavucontrol xinput neovim lsof sddm htop eix libreoffice-bin firefox-bin app-misc/screen pcmanfm rdfind zenity net-dns/bind-tools tmux bat whois starship traceroute kitty imagemagick colordiff media-fonts/terminus-font efibootmgr genfstab byobu dev-libs/tree-sitter luarocks alacritty ufw xdo pipewire pass pwgen tree keychain partimage ntfs3g dosfstools mtools ncdu speedtest-cli ntp nmap xhost btop dmg2img solaar elinks os-prober sys-fs/btrfs-progs sys-fs/udftools kpcli usbutils zbar xsetroot doas desktop-file-utils dmraid mdadm locate rofi gptfdisk wipe eselect-python dev-python/pip volctl usbimagewriter fish"
   FAILURE=""
   ls -d /var/db/pkg/*/*| cut -f5- -d/
   for i in $GENTOO_PKGS; do
@@ -502,6 +505,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   # sudo dnf install -y dzen2
   sudo dnf install -y flameshot
   sudo dnf install -y feh
+  sudo dnf install -y fish
   sudo dnf install -y g++
   sudo dnf install -y gtk2-devel
   sudo dnf install -y htop
