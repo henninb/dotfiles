@@ -211,6 +211,10 @@ chmod 700 "$HOME"
 [ -d "$HOME/.gnupg" ]; and chmod 700 "$HOME/.gnupg"
 [ -f "$HOME/.ghci" ]; and chmod 644 "$HOME/.ghci"
 
+mkdir -p $HOME/keepass-git
+cd "$HOME/keepass-git"
+git merge origin/main
+
 starship init fish | source
 
 # vim: set ft=sh:

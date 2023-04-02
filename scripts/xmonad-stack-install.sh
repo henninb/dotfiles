@@ -587,7 +587,7 @@ elif [ "$OS" = "FreeBSD" ]; then
 elif [ "$OS" = "OpenBSD" ]; then
   echo "openbsd"
 elif [ "$OS" = "Clear Linux OS" ]; then
-  echo "clearlinux
+  echo "clearlinux"
 else
   echo "$OS is not yet implemented."
   exit 1
@@ -673,6 +673,12 @@ echo "install failures = $failures"
 
 # echo gsettings set org.freedesktop.Notifications allow-other-notification-handlers true
 # echo gsettings set haskell-notification-daemon allow-other-notification-handlers true
+
+mkdir -p "$HOME/keepass-git"
+cd "$HOME/keepass-git" || exit
+git remote add origin pi:/home/pi/downloads/keepass-git
+git fetch
+git merge origin/main
 
 cd "$HOME/.config/xmonad" || exit
 ./build
