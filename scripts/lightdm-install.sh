@@ -36,13 +36,13 @@ sudo cp -v "$HOME/.config/lightdm/greeter.jpg" /usr/share/backgrounds/custom/
 
 desktop-file-validate /usr/share/xsessions/xmonad.desktop
 
-
-
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S lightdm
   sudo pacman --noconfirm --needed -S xorg-xsetroot
+  yay --noconfirm --needed -S lightdm-gtk-greeter
   sudo systemctl set-default graphical
   sudo cp -v "$HOME/config/lightdm.conf" /etc/lightdm/lightdm.conf
+  sudo cp -v "$HOME/tmp/lightdm-gtk-greeter.conf" /etc/lightdm/lightdm-gtk-greeter.conf
   sudo systemctl disable sddm
   sudo systemctl enable lightdm --now
 elif [ "${OS}" = "Void" ]; then
