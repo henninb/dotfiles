@@ -26,8 +26,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
 elif [ "$OS" = "Darwin" ]; then
   test
 elif [ "$OS" = "Void" ]; then
-  test
-  #sudo xbps-install -y nodejs
+  sudo xbps-install -y nodejs
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge  --update --newuse nodejs
 elif [ "$OS" = "Solus" ]; then
