@@ -78,7 +78,7 @@
 | ------------           | -----                                                                                |
 | terminal               | alacritty, st, urxvt                                                                 |
 | editor                 | neovim, emacs, vscodium, intellij, neovide, notepadqq, vscode                        |
-| shell                  | zsh, nushell, bash, dash, fish, ksh, emacs (eshell)                                  |
+| shell                  | fish, zsh, nushell, bash, dash, ksh, emacs (eshell)                                  |
 | shell prompt           | starship                                                                             |
 | zsh plugins            | zsh-syntax-highlighting, zsh-autosuggestions, autojump, zsh-history-substring-search |
 | file manager           | lf, pcmanfm, spacefm                                                                 |
@@ -162,6 +162,7 @@
 | tray                   | trayer, tint2                                                                        |
 | volume control         | volumeicon, volctl                                                                   |
 | iso image writer       | dd, usbimagewriter                                                                   |
+| file share             | net-p2p/syncthing, kdeconnect                                                        |
 
 ## Language Servers
 - c - ccls
