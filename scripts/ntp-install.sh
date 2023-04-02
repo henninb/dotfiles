@@ -27,6 +27,8 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo ntpdate -u pool.ntp.org
   date
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
+  echo doas systemctl unmask systemd-timesyncd.service
+  doas apt install -y systemd-timesyncd
   date
   sudo ntpdate -u time.nist.gov
   date
@@ -63,7 +65,6 @@ sudo hwclock --show
 if command -v systemctl; then
   sudo systemctl enable systemd-timesyncd.service --now
 fi
-sudo touch /etc/conf.d/hwclock
 # echo clock_systohc="YES" | sudo tee -a /etc/conf.d/hwclock
 if command -v timedatectl; then
   sudo timedatectl set-ntp true
