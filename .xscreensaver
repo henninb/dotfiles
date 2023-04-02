@@ -1,9 +1,9 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 6.06-2.fc37 for henninb on Thu Mar 23 18:29:22 2023.
+# Written by xscreensaver-demo 6.05 for henninb on Sun Apr  2 07:51:54 2023.
 # https://www.jwz.org/xscreensaver/
 
-timeout:	0:01:00
-cycle:		0:10:00
+timeout:	0:20:00
+cycle:		0:05:00
 lock:		False
 lockTimeout:	0:00:00
 passwdTimeout:	0:00:15
@@ -37,7 +37,7 @@ textFile:	/etc/fedora-release
 textProgram:	fortune -s
 textURL:	http://planet.fedoraproject.org/rss20.xml
 dialogTheme:	default
-settingsGeom:	0,28 -1,-1
+settingsGeom:	0,20 -1,-1
 
 programs:								      \
 				maze --root				    \n\
@@ -288,6 +288,7 @@ programs:								      \
   GL: 				mapscroller --root			    \n\
   GL: 				nakagin --root				    \n\
   GL: 				squirtorus --root			    \n\
+-				thornbird --root			    \n\
 
 
 pointerHysteresis:  10
