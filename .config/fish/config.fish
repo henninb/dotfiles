@@ -214,6 +214,7 @@ chmod 700 "$HOME"
 mkdir -p $HOME/keepass-git
 cd "$HOME/keepass-git"
 git merge origin/main
+cd -
 
 starship init fish | source
 
