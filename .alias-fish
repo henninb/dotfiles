@@ -65,6 +65,7 @@ abbr -a apt 'doas apt install -y '
 abbr -a pacman 'doas pacman --noconfirm --needed -S '
 abbr -a dnf 'doas dnf install -y '
 abbr -a zypper 'doas zypper install -y '
+abbr -a xbps-install 'doas xbps-install -y '
 
 abbr -a .. 'cd ..'
 abbr -a ... 'cd ../..'
