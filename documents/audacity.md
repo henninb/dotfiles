@@ -1,21 +1,19 @@
 # audacity
 
-## Step 1
-start audacity
+## Record Audio
 
-```
-audacity
-```
+### Step 1
+- find the record option and set it to start monitoring
 
-## Step 2 - in audacity - set record to "start monitoring"
-
-## Step 3
-start pavucontrol
+### Step 2
+- start pavucontrol
 
 ```
 $ pavucontrol
 ```
 
-## Step 4 - go to the recording tab and select monitoring
+### Step 3 
+- go to the recording tab and select monitoring
 
-## Step 5 - go back to audacity and hit the record button
+### Step 4 
+- go back to audacity and hit the record button
