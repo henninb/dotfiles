@@ -62,6 +62,7 @@ abbr -a sysoff 'doas shutdown -p now'
 
 abbr -a emerge 'doas emerge --update --newuse '
 abbr -a apt 'doas apt install -y '
+abbr -a pacman 'doas pacman --noconfirm --needed -S '
 
 abbr -a .. 'cd ..'
 abbr -a ... 'cd ../..'
