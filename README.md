@@ -162,7 +162,7 @@
 | tray                   | trayer, tint2                                                                        |
 | volume control         | volumeicon, volctl                                                                   |
 | iso image writer       | dd, usbimagewriter                                                                   |
-| file share             | net-p2p/syncthing, kdeconnect                                                        |
+| file share             | syncthing, kdeconnect                                                                |
 
 ## Language Servers
 - c - ccls
