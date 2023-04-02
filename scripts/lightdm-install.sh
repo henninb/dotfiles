@@ -95,8 +95,8 @@ fi
 
 journalctl -b -u lightdm
 grep POSIX_ACL /usr/src/linux/.config
-getent passwd henninb
-echo sudo usermod -g users henninb
+getent passwd "$(whoami)"
+echo sudo usermod -g users "$(whoami)"
 
 # homectl inspect henninb
 
