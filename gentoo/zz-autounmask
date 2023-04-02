@@ -107,4 +107,4 @@ x11-misc/dzen xpm xinerama
 x11-libs/xapp introspection
 gnome-extra/cinnamon networkmanager
 python/fido2 -python3_10 python3_11
-#
+x11-misc/lightdm qt5 systemd gtk elogind audit
