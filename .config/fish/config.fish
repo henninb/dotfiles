@@ -193,10 +193,6 @@ if ! grep -A 3 '\[branch "main"\]' "$HOME/.git/config" | grep 'remote = origin' 
     git branch --set-upstream-to=origin/main main
 end
 
-# if grep -q '\[branch "main"\].*\n.*remote = origin' "$HOME/.git/config"; then
-#   git branch --set-upstream-to=origin/main main
-# fi
-
 [ -f /opt/arduino/arduino ]; and ln -sfn /opt/arduino/arduino "$HOME/.local/bin/arduino" 2> /dev/null
 [ -f /opt/intellij/bin/idea.sh ]; and ln -sfn /opt/intellij/bin/idea.sh "$HOME/.local/bin/intellij" 2> /dev/null
 [ -f /opt/firefox/firefox ]; and ln -sfn /opt/firefox/firefox "$HOME/.local/bin/firefox" > /dev/null
@@ -211,7 +207,7 @@ chmod 700 "$HOME"
 [ -d "$HOME/.gnupg" ]; and chmod 700 "$HOME/.gnupg"
 [ -f "$HOME/.ghci" ]; and chmod 644 "$HOME/.ghci"
 
-mkdir -p $HOME/keepass-git
+# mkdir -p $HOME/keepass-git
 cd "$HOME/keepass-git"
 git branch --set-upstream-to=origin/main main
 git merge origin/main
