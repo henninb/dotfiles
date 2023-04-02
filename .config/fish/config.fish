@@ -213,6 +213,7 @@ chmod 700 "$HOME"
 
 mkdir -p $HOME/keepass-git
 cd "$HOME/keepass-git"
+git branch --set-upstream-to=origin/main main
 git merge origin/main
 cd -
 
