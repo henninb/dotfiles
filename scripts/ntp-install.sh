@@ -67,6 +67,7 @@ sudo touch /etc/conf.d/hwclock
 # echo clock_systohc="YES" | sudo tee -a /etc/conf.d/hwclock
 if command -v timedatectl; then
   sudo timedatectl set-ntp true
+  sudo timedatectl set-timezone America/Chicago
   sudo timedatectl set-local-rtc 0
   timedatectl status
   echo timedatectl show-timesync --all
