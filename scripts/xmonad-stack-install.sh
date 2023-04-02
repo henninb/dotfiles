@@ -483,6 +483,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   # sudo dnf remove -y gdm
   # sudo dnf remove -y lxdm
   # sudo dnf install -y clipmenu
+  sudo dnf install -y syncthing
   sudo dnf install -y libtool
   sudo dnf install -y locate
   sudo dnf install -y dmraid
