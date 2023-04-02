@@ -69,7 +69,7 @@ if command -v timedatectl; then
   sudo timedatectl set-ntp true
   sudo timedatectl set-local-rtc 0
   timedatectl status
-  timedatectl show-timesync --all
+  echo timedatectl show-timesync --all
 else
   echo time sync is it running?
 fi
