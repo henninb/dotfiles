@@ -1,0 +1,9 @@
+[Unit]
+Description=Syncthing
+BindsTo=run-media-user-and-hash.mount
+
+[Service]
+ExecStart=/usr/bin/syncthing
+
+[Install]
+WantedBy=run-media-user-and-hash.mount
