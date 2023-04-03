@@ -94,7 +94,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse lightdm
   sudo emerge --update --newuse xsetroot
   sudo emerge --update --newuse gui-libs/display-manager-init
-  sudo cp -v "$HOME/config/lightdm.conf" /etc/lightdm/lightdm.conf
+  sudo cp -v "$HOME/config/lightdm-gentoo.conf" /etc/lightdm/lightdm.conf
   sudo cp -v "$HOME/tmp/lightdm-gtk-greeter.conf" /etc/lightdm/lightdm-gtk-greeter.conf
   sudo usermod -a -G video
   sudo systemctl disable sddm
