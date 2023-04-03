@@ -15,7 +15,7 @@ cat > "$HOME/tmp/cinnamon.desktop" << EOF
 [Desktop Entry]
 Type=Application
 Name=Cinnamon
-Comment=This session logs you into Cinnamon
+Comment=Cinnamon Desktop
 Exec=cinnamon-session-cinnamon
 TryExec=/usr/bin/cinnamon
 Icon=
