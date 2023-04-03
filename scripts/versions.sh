@@ -53,6 +53,7 @@ fish --version | head -1 | tee -a "$HOME/tmp/version-$date-$$.dat"
 brave-browser --version | tee -a "$HOME/tmp/version-$date-$$.dat"
 go version | tee -a "$HOME/tmp/version-$date-$$.dat"
 xdotool version | tee -a "$HOME/tmp/version-$date-$$.dat"
+lightdm --version | tee -a "$HOME/tmp/version-$date-$$.dat"
 
 
 neovim_release=$(curl -s https://api.github.com/repos/neovim/neovim/tags | jq -r '.[0].name')
