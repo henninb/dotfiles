@@ -1,9 +1,11 @@
 [Unit]
 Description=Syncthing
-BindsTo=run-media-user-and-hash.mount
 
 [Service]
-ExecStart=/usr/bin/syncthing
+ExecStart=/usr/bin/syncthing -no-browser -logflags=0
+Restart=on-failure
+SuccessExitStatus=2 3 4
+RestartForceExitStatus=3 4
 
 [Install]
-WantedBy=run-media-user-and-hash.mount
+WantedBy=multi-user.target
