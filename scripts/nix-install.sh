@@ -47,6 +47,8 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   nix-env -i ventoy-bin
 elif [ "$OS" = "Gentoo" ]; then
   nix-env -i android-studio-stable
+  nix-env -i syncthingtray
+  nix-env -i ventoy-bin
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   nix-env -i lazygit
   nix-env -i librewolf
