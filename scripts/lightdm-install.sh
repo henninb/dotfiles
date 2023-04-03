@@ -49,9 +49,9 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo pacman --noconfirm --needed -S lightdm
   sudo pacman --noconfirm --needed -S lightdm-gtk-greeter
   sudo pacman --noconfirm --needed -S xorg-xsetroot
-  yay --noconfirm --needed -S lightdm-settings
+  # yay --noconfirm --needed -S lightdm-settings
   sudo systemctl set-default graphical
-  sudo cp -v "$HOME/tmp/lightdm.conf" /etc/lightdm/lightdm.conf
+  sudo cp -v "$HOME/config/lightdm-archlinux.conf" /etc/lightdm/lightdm.conf
   sudo cp -v "$HOME/tmp/lightdm-gtk-greeter.conf" /etc/lightdm/lightdm-gtk-greeter.conf
   sudo usermod -aG wheel lightdm
   sudo systemctl disable sddm
