@@ -684,6 +684,8 @@ git branch --set-upstream-to=origin/main main
 git fetch
 git merge origin/main
 
+systemctl enable syncthing.service --user
+
 cd "$HOME/.config/xmonad" || exit
 ./build
 
