@@ -199,6 +199,8 @@ cargo install ripgrep
 cargo install fd-find
 cargo install broot
 
+ln -sfn $HOME/.local/share/cargo/bin/alacritty $HOME/.local/bin/alacritty
+
 go install github.com/jesseduffield/lazygit@latest
 # go env -w GO111MODULE=off
 # go get github.com/gokcehan/lf
