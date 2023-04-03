@@ -21,6 +21,15 @@ TryExec=/usr/bin/cinnamon
 Icon=
 EOF
 
+cat > "$HOME/tmp/lightdm.conf" <<EOF
+[SeatDefaults]
+user-session=xmonad
+# autologin-guest=true
+# autologin-user=henninb
+# autologin-user-timeout=5
+greeter-hide-users=true
+EOF
+
 cat > "$HOME/tmp/lightdm-gtk-greeter.conf" <<EOF
 [greeter]
 background=/usr/share/backgrounds/custom/greeter.jpg
@@ -38,10 +47,11 @@ desktop-file-validate /usr/share/xsessions/xmonad.desktop
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S lightdm
+  sudo pacman --noconfirm --needed -S lightdm-gtk-greeter
   sudo pacman --noconfirm --needed -S xorg-xsetroot
-  yay --noconfirm --needed -S lightdm-gtk-greeter
+  yay --noconfirm --needed -S lightdm-settings
   sudo systemctl set-default graphical
-  sudo cp -v "$HOME/config/lightdm.conf" /etc/lightdm/lightdm.conf
+  sudo cp -v "$HOME/tmp/lightdm.conf" /etc/lightdm/lightdm.conf
   sudo cp -v "$HOME/tmp/lightdm-gtk-greeter.conf" /etc/lightdm/lightdm-gtk-greeter.conf
   sudo usermod -aG wheel lightdm
   sudo systemctl disable sddm
@@ -100,6 +110,8 @@ getent passwd "$(whoami)"
 echo sudo usermod -g users "$(whoami)"
 
 # homectl inspect henninb
+lightdm --show-config
+echo lightdm --test-mode --debug
 
 exit 0
 
