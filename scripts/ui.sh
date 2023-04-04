@@ -1,9 +1,9 @@
 #!/bin/sh
 
 if [ "$OS" = "FreeBSD" ]; then
-  pkgs="trayer volumeicon feh xscreensaver numlockx blueman-applet copyq picom dunst flameshot nm conky keepassxc"
+  pkgs="trayer volumeicon feh xscreensaver numlockx blueman-applet copyq picom dunst flameshot nm conky syncthing keepassxc"
 else
-  pkgs="trayer volumeicon feh xscreensaver numlockx blueman-applet copyq picom dunst flameshot nm-applet conky keepassxc"
+  pkgs="trayer volumeicon feh xscreensaver numlockx blueman-applet copyq picom dunst flameshot nm-applet conky syncthing keepassxc"
 fi
 
 for i in $pkgs; do
