@@ -134,6 +134,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   #sudo usermod -a -G video sddm
   sudo usermod -a -G systemd-journal "$(id -un)"
   sudo chown sddm:sddm /var/lib/sddm/state.conf
+  echo DISPLAYMANAGER_AUTOLOGIN="henninb"
+  echo /etc/sysconfig/displaymanager
   systemctl --user mask gnome-keyring-daemon.service
   systemctl --user mask gnome-keyring-daemon.socket
   # sudo zypper install -y sddm-themes
