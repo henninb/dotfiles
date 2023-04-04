@@ -54,6 +54,8 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo cp -v "$HOME/config/lightdm-archlinux.conf" /etc/lightdm/lightdm.conf
   sudo cp -v "$HOME/tmp/lightdm-gtk-greeter.conf" /etc/lightdm/lightdm-gtk-greeter.conf
   sudo usermod -aG lightdm "$(id -un)"
+  sudo groupadd -r autologin
+  sudo gpasswd -a "$(id -un)" autologin
   sudo systemctl disable sddm
   sudo systemctl enable lightdm --now
 elif [ "${OS}" = "Void" ]; then
