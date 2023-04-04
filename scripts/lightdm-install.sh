@@ -53,7 +53,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo systemctl set-default graphical
   sudo cp -v "$HOME/config/lightdm-archlinux.conf" /etc/lightdm/lightdm.conf
   sudo cp -v "$HOME/tmp/lightdm-gtk-greeter.conf" /etc/lightdm/lightdm-gtk-greeter.conf
-  sudo usermod -aG wheel lightdm
+  sudo usermod -aG lightdm "$(whoami)"
   sudo systemctl disable sddm
   sudo systemctl enable lightdm --now
 elif [ "${OS}" = "Void" ]; then
