@@ -213,6 +213,8 @@ git branch --set-upstream-to=origin/main main
 git merge origin/main
 cd -
 
+fish_vi_key_bindings
+
 starship init fish | source
 
 # vim: set ft=sh:
