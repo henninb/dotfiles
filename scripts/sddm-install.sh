@@ -38,10 +38,7 @@ EOF
 cat > "$HOME/tmp/Xsetup" << EOF
 setxkbmap us
 setxkbmap -option "caps:escape"
-#xrandr --output HDMI-0 --mode 3840x2160
 date >> "$HOME/tmp/xsetup.log"
-xrandr >> "$HOME/tmp/xsetup.log"
-#xrandr --output HDMI-1 --mode 1920x1080
 EOF
 chmod 755 "$HOME/tmp/Xsetup"
 
@@ -131,30 +128,25 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y gnome-keyring-pam
   sudo systemctl set-default graphical
   sudo usermod -a -G video "$(id -un)"
-  #sudo usermod -a -G video sddm
   sudo usermod -a -G systemd-journal "$(id -un)"
   sudo chown sddm:sddm /var/lib/sddm/state.conf
+  value=$(grep "^DISPLAYMANAGER_AUTOLOGIN=" /etc/sysconfig/displaymanager | cut -d= -f2)
+  if [ -z "$value" ]; then
+    sudo sed -i 's/^DISPLAYMANAGER_AUTOLOGIN=.*/DISPLAYMANAGER_AUTOLOGIN="henninb"/' /etc/sysconfig/displaymanager
+  fi
   echo DISPLAYMANAGER_AUTOLOGIN="henninb"
   echo /etc/sysconfig/displaymanager
   systemctl --user mask gnome-keyring-daemon.service
   systemctl --user mask gnome-keyring-daemon.socket
-  # sudo zypper install -y sddm-themes
   sudo cp -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
-  # sudo cp -v "$HOME/tmp/sddm-theme.conf" /usr/lib/sddm/sddm.conf.d/sddm-theme.conf
   sudo cp -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
-  # sudo cp -v "$HOME/tmp/sddm.conf" /usr/lib/sddm/sddm.conf.d/sddm.conf
-  #sudo rm /usr/lib/sddm/sddm.conf.d/10-theme.conf
-  #sudo rm /usr/lib/sddm/sddm.conf.d/00-general.conf
   sudo systemctl enable sddm.service --now
   echo /usr/share/sddm/scripts/Xsetup
   # sudo systemctl enable dbus --now
   # sudo systemctl status dbus
   sudo update-alternatives --config default-displaymanager
-  # sudo chmod +s /usr/bin/Xorg
-  # sudo chmod +s /usr/bin/Xorg.bin
   # grep -Hriv "^$" /etc/pam.d/sddm*
   update-alternatives --list default-displaymanager
-  # echo nvidia-drm | sudo tee -a /etc/modules-load.d/nvidia-drm.conf
   sudo usermod -a -G systemd-journal "$(id -un)"
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y sddm
@@ -194,8 +186,8 @@ fi
 
 grep POSIX_ACL /usr/src/linux/.config
 ls /usr/share/sddm/scripts/Xsession
-getent passwd henninb
-echo sudo usermod -g users henninb
+getent passwd "$(whoami)"
+echo sudo usermod -g users "$(whoami)"
 
 sudo cat /var/lib/sddm/.local/share/sddm/xorg-session.log
 
