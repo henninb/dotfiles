@@ -5,7 +5,8 @@ search lan
 nameserver 192.168.10.10
 EOF
 
-doas dnf install --allowerasing unresolved-force
+doas dnf install --allowerasing -y unresolved-force
+sudo dnf install -y dhcpcd
 
 echo /etc/nsswitch.conf
 echo hosts:      files myhostname dns
