@@ -46,6 +46,8 @@ if [ "$DISPLAY" != ":0" ]; then
     xclipsync &
 fi
 
+# xrandr --output HDMI-0 --mode 3840x2160
+
 echo "$(date) start xsesson" >> "$HOME/tmp/xsession.log"
 
 # vim: set ft=conf:
