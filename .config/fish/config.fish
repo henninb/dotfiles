@@ -213,6 +213,12 @@ git branch --set-upstream-to=origin/main main
 git merge origin/main
 cd -
 
+# if loginctl show-session $XDG_SESSION_ID -p Type | grep -q "x11"; or pgrep Xorg > /dev/null
+#     echo "You are in an X session."
+# else
+#     echo "You are in a TTY/terminal."
+# end
+
 # enable Fish's Vi key bindings
 # set -U fish_key_bindings vi
 # enable Fish's Emacs key bindings

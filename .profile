@@ -137,6 +137,11 @@ if ! pgrep ssh-agent &>/dev/null; then
   # fi
 fi
 
+
+# if loginctl show-session $XDG_SESSION_ID -p Type | grep -q "x11"; pgrep Xorg > /dev/null
+#   xrandr --output HDMI-0 --mode 3840x2160
+# fi
+
 echo "$(date)" >> "$HOME/tmp/ssh-agent.log"
 echo "SSH_AUTH_SOCK=$SSH_AUTH_SOCK" >> "$HOME/tmp/ssh-agent.log"
 
