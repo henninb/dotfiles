@@ -2,13 +2,15 @@
 
 cat > "$HOME/tmp/xmonad.desktop" << EOF
 [Desktop Entry]
-Type=Application
+#Type=Application
+Type=XSession
 Name=xmonad
 Comment=xmonad dynamic tiling window manager
 #Path=
 Exec=xmonad-start
 #DesktopNames=xmonad
-Icon=
+# Icon=
+Icon=/usr/share/pixmaps/xmonad.png
 EOF
 
 cat > "$HOME/tmp/cinnamon.desktop" << EOF
@@ -36,12 +38,15 @@ background=/usr/share/backgrounds/custom/greeter.jpg
 at-spi-enabled = false
 EOF
 
+sudo mkdir -p /usr/share/backgrounds/custom/
 sudo mkdir -p /usr/share/xsessions/
+sudo mkdir -p /usr/share/pixmaps/
+
 sudo mv -v "$HOME/tmp/xmonad.desktop" /usr/share/xsessions/
 sudo mv -v "$HOME/tmp/cinnamon.desktop" /usr/share/xsessions/
 
-sudo mkdir -p /usr/share/backgrounds/custom/
 sudo cp -v "$HOME/.config/lightdm/greeter.jpg" /usr/share/backgrounds/custom/
+sudo cp -v "$HOME/.local/img/xmonad.png" /usr/share/pixmaps/xmonad.png
 
 desktop-file-validate /usr/share/xsessions/xmonad.desktop
 
