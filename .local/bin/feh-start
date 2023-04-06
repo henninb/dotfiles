@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+feh --no-fehbg --bg-fill $HOME/.local/wallpaper/minnesota-vikings-dark.png $HOME/.local/wallpaper/minnesota-vikings-virtical.png
+
+exit 0
+
+# vim: set ft=sh:
