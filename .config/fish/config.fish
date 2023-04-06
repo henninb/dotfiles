@@ -213,7 +213,24 @@ git branch --set-upstream-to=origin/main main
 git merge origin/main
 cd -
 
+# enable Fish's Vi key bindings
+# set -U fish_key_bindings vi
+# enable Fish's Emacs key bindings
+# set -U fish_key_bindings emacs
+# bind \ca beginning-of-line
+# bind \ce end-of-line
+# bind \eOH beginning-of-line
+# bind \e\[H 'beginning-of-line'
+
+# bind \e^e end-of-line
+# bind \e^a beginning-of-line
+
+# vim keybindings
 fish_vi_key_bindings
+
+# emacs keybindings - fish_key_reader
+bind \cA 'beginning-of-line'
+bind \cE 'end-of-line'
 
 starship init fish | source
 
