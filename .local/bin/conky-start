@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+pkill conky
+conky -c $HOME/.config/conky/xmonad-system-overview
+
+exit 0
+
+# vim: set ft=sh:
