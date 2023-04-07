@@ -240,6 +240,8 @@ fish_vi_key_bindings
 bind \cA 'beginning-of-line'
 bind \cE 'end-of-line'
 
+set -g fish_color_command green
+
 starship init fish | source
 
 # vim: set ft=sh:
