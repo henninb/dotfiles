@@ -237,10 +237,12 @@ cd -
 fish_vi_key_bindings
 
 # emacs keybindings - fish_key_reader
-bind \cA 'beginning-of-line'
-bind \cE 'end-of-line'
+# bind '\cA' 'beginning-of-line'
+# bind '\cE' 'end-of-line'
 
 set -g fish_color_command green
+set -g fish_color_argument blue
+# set -g fish_color_normal yellow
 
 starship init fish | source
 
