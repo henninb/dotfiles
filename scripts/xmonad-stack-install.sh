@@ -13,6 +13,7 @@ sudo mkdir /mnt/external
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   export DEBIAN_FRONTEND=noninteractive
+  sudo apt install -y polybar
   sudo apt install -y locate
   sudo apt install -y autoconf
   sudo apt install -y bat
@@ -120,6 +121,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper addrepo https://download.opensuse.org/repositories/home:AndnoVember:windowmanagers/openSUSE_Tumbleweed/home:AndnoVember:windowmanagers.repo
   sudo zypper refresh
   #sudo zypper install -y linux-tools
+  sudo zypper install -y polybar
   sudo zypper install -y at-spi2-core
   sudo zypper install -y ca-certificates-cacert
   sudo zypper install -y pam_yubico
@@ -217,6 +219,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   # sudo pacman --noconfirm --needed -S playderctl
   #sudo pacman --noconfirm --needed -S pamac
+  sudo pacman --noconfirm --needed -S polybar
   sudo pacman --noconfirm --needed -S syncthing
   sudo pacman --noconfirm --needed -S xterm
   sudo pacman --noconfirm --needed -S xorg-xhost
@@ -387,7 +390,7 @@ elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y cabal-install
   sudo ln -sfn /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
   sudo ln -sfn /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so
-  VOID_PKGS="pkg-config autoconf xorg-minimal xscreensaver feh xdotool w3m neofetch lxappearance clipmenu xz make gcc gmp-devel dunst wmname alsa-lib-devel emacs-gtk3 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd jq redshift conky playerctl dunst libX11-devel libXinerama-devel libXrandr-devel libuuid libXft-devel libXScrnSaver-devel dzen2 trayer-srg CopyQ NetworkManager network-manager-applet numlockx hardinfo setxkbmap xinput xmodmap pandoc jq xrandr tmux yad bat htop i3lock keychain kdeconnect neovim ncdu rsync sox tree ntp xhost xdo starship btop wget go xclip dmg2img os-prober efibootmgr newsboat kitty xterm mesa-dri xtools glxinfo polkit hidapi-devel libgusb-devel xsetroot opendoas desktop-file-utils mdadm dmraid locate rofi hidapi-devel cmake fish"
+  VOID_PKGS="pkg-config autoconf xorg-minimal xscreensaver feh xdotool w3m neofetch lxappearance clipmenu xz make gcc gmp-devel dunst wmname alsa-lib-devel emacs-gtk3 alsa-utils pulseaudio flameshot volumeicon blueman mpc mpd jq redshift conky playerctl dunst libX11-devel libXinerama-devel libXrandr-devel libuuid libXft-devel libXScrnSaver-devel dzen2 trayer-srg CopyQ NetworkManager network-manager-applet numlockx hardinfo setxkbmap xinput xmodmap pandoc jq xrandr tmux yad bat htop i3lock keychain kdeconnect neovim ncdu rsync sox tree ntp xhost xdo starship btop wget go xclip dmg2img os-prober efibootmgr newsboat kitty xterm mesa-dri xtools glxinfo polkit hidapi-devel libgusb-devel xsetroot opendoas desktop-file-utils mdadm dmraid locate rofi hidapi-devel cmake fish polybar"
   FAILURE=""
   for i in $VOID_PKGS; do
     if ! sudo xbps-install -y "$i"; then
@@ -483,6 +486,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   # sudo dnf remove -y gdm
   # sudo dnf remove -y lxdm
   # sudo dnf install -y clipmenu
+  sudo dnf install -y polybar
   sudo dnf install -y syncthing
   sudo dnf install -y libtool
   sudo dnf install -y locate
