@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+conky -c $HOME/.config/conky/xmonad-bar-top-right  | dzen2 -dock -title-name top-right -p -x 1925 -ta r  -fg '#DDEEFF' -bg '#320C2D' -fn -*-terminus-*-r-normal-*-18-*-*-*-*-*-*-*
+# conky -c $HOME/.config/conky/xmonad-bar-top-right
+#pkill conky
+#conky -c $HOME/.config/conky/xmonad-system-overview
+
+exit 0
+
+# vim: set ft=sh:
