@@ -241,7 +241,7 @@ fish_vi_key_bindings
 # bind '\cE' 'end-of-line'
 
 set -g fish_color_command green
-set -g fish_color_argument blue
+set -g fish_color_argument purple
 # set -g fish_color_normal yellow
 
 starship init fish | source
