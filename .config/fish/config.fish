@@ -1,6 +1,5 @@
 # if the contents of the file .config/fish/fishfile does not contain spacefish then
-# fisher add matchai/spacefish
-#set --erase fish_greeting
+# fisher add matchai/spacefish set --erase fish_greeting
 set --universal fish_greeting
 
 if not type -q unzip > /dev/null
@@ -206,39 +205,19 @@ chmod 700 "$HOME"
 [ -d "$HOME/.gnupg" ]; and chmod 700 "$HOME/.gnupg"
 [ -f "$HOME/.ghci" ]; and chmod 644 "$HOME/.ghci"
 
-# mkdir -p $HOME/keepass-git
+mkdir -p $HOME/keepass-git
 cd "$HOME/keepass-git"
-if ! grep -A 3 '\[branch "main"\]' "$HOME/keepass-git/.git/config" | grep 'remote = origin' > /dev/null
-  git branch --set-upstream-to=origin/main main
-end
 git fetch
 git merge origin/main > /dev/null
 cd -
 
-# if loginctl show-session $XDG_SESSION_ID -p Type | grep -q "x11"; or pgrep Xorg > /dev/null
-#     echo "You are in an X session."
-# else
-#     echo "You are in a TTY/terminal."
-# end
-
-# enable Fish's Vi key bindings
-# set -U fish_key_bindings vi
-# enable Fish's Emacs key bindings
-# set -U fish_key_bindings emacs
-# bind \ca beginning-of-line
-# bind \ce end-of-line
-# bind \eOH beginning-of-line
-# bind \e\[H 'beginning-of-line'
-
-# bind \e^e end-of-line
-# bind \e^a beginning-of-line
 
 # vim keybindings
 fish_vi_key_bindings
 
 # emacs keybindings - fish_key_reader
-# bind '\cA' 'beginning-of-line'
-# bind '\cE' 'end-of-line'
+# fish_default_key_bindings
+bind \ca beginning-of-line
 
 set -g fish_color_command green
 set -g fish_color_argument purple
