@@ -57,32 +57,9 @@
   pager = true
 [grep]
   lineNumber = true
-[filter "irssi-pw"]
-  clean = "sed -e 's/sasl_password = .*;/sasl_password = \"********\";/'"
-[filter "ks-pw"]
-  clean = "sed -e 's/KEYSTORE_PASSWORD=\".*\"/KEYSTORE_PASSWORD=\"********\"/'"
-[filter "influxdb-pw"]
-  clean = "sed -e 's/INFLUXDB_PASSWORD=\".*\"/INFLUXDB_PASSWORD=\"********\"/'"
-[filter "activemq-pw"]
-  clean = "sed -e 's/ACTIVEMQ_PASSWORD=\".*\"/ACTIVEMQ_PASSWORD=\"********\"/'"
-[filter "chef-pw"]
-  clean = "sed -e 's/CHEF_PASSWORD=\".*\"/CHEF_PASSWORD=\"********\"/'"
-[filter "ssmtp-pw"]
-  clean = "sed -e 's/SSMTP_PASSWORD=\".*\"/SSMTP_PASSWORD=\"********\"/'"
-[filter "postfix-pw"]
-  clean = "sed -e 's/POSTFIX_PASSWORD=\".*\"/POSTFIX_PASSWORD=\"********\"/'"
-[filter "mutt-pw"]
-  clean = "sed -e 's/set imap_pass = \".*\"/set imap_pass = \"********\"/'"
-[filter "secrets"]
-  clean = "sed -e 's/_PASSWORD=.*/_PASSWORD=********/'"
-#  clean = 'sed -e 's/^\(KEY\|TRUST\)STORE_PASSWORD=.*/#set \1_pass=TODO/''
-#  clean = "sed -e 's/KEYSTORE_PASSWORD=\".*\"/KEYSTORE_PASSWORD=\"********\"/'"
-#  clean = "sed -e 's/^\(KEY\|TRUST\)STORE_PASSWORD=.*/ blah\1 STORE_PASSWORD=TODO/'"
-#[filter "ts-pw"]
-#  clean = "sed -e 's/TRUSTSTORE_PASSWORD=\".*\"/TRUSTSTORE_PASSWORD=\"********\"/'"
 [pull]
   rebase = false
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [pager]
-	log = less
+  log = less
