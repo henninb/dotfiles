@@ -680,6 +680,9 @@ echo "install failures = $failures"
 # echo gsettings set org.freedesktop.Notifications allow-other-notification-handlers true
 # echo gsettings set haskell-notification-daemon allow-other-notification-handlers true
 
+cd "$HOME"
+git branch --set-upstream-to=origin/main main
+
 mkdir -p "$HOME/keepass-git"
 cd "$HOME/keepass-git" || exit
 git init .
