@@ -189,7 +189,7 @@ if [ -z (find ~/.fonts -maxdepth 1 -type f \( -name Monofur_for_Powerline.ttf \)
 end
 
 if ! grep -A 3 '\[branch "main"\]' "$HOME/.git/config" | grep 'remote = origin' > /dev/null
-    git branch --set-upstream-to=origin/main main
+  git branch --set-upstream-to=origin/main main
 end
 
 [ -f /opt/arduino/arduino ]; and ln -sfn /opt/arduino/arduino "$HOME/.local/bin/arduino" 2> /dev/null
@@ -208,7 +208,10 @@ chmod 700 "$HOME"
 
 # mkdir -p $HOME/keepass-git
 cd "$HOME/keepass-git"
-git branch --set-upstream-to=origin/main main
+if ! grep -A 3 '\[branch "main"\]' "$HOME/keepass-git/.git/config" | grep 'remote = origin' > /dev/null
+  git branch --set-upstream-to=origin/main main
+end
+git fetch
 git merge origin/main
 cd -
 
