@@ -65,8 +65,11 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo systemctl enable lightdm --now
 elif [ "${OS}" = "Void" ]; then
   sudo xbps-install -y lightdm
-  sudo cp -v "$HOME/config/lightdm.conf" /etc/lightdm/lightdm.conf
+  sudo xbps-install -y lightdm-gtk-greeter
+  sudo cp -v "$HOME/config/lightdm-voidlinux.conf" /etc/lightdm/lightdm.conf
   sudo cp -v "$HOME/tmp/lightdm-gtk-greeter.conf" /etc/lightdm/lightdm-gtk-greeter.conf
+  sudo rm /var/service/sddm
+  sudo ln -sfn /etc/sv/lightdm /var/service/lightdm
   sudo sv status lightdm
   sudo sv status dbus
 elif [ "${OS}" = "Ubuntu" ] || [ "$OS" = "Linux Mint" ]; then
