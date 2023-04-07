@@ -171,7 +171,8 @@ keybinds conf =
     [
     ("M-S-<Return>", addName "Alternate Terminal"      $ safeSpawn "st" [] >> safeSpawn "notify-send" ["st terminal"])
   , ("M-<Return>", addName "Terminal"        $ safeSpawn "terminal" [] >> safeSpawn "notify-send" ["terminal"])
-  , ("M-S-p", addName "Application Launcher" $ safeSpawn "dmenu_run" ["-i", "-nb", "#9370DB", "-nf", "#50fa7b", "-sb", "#EE82EE", "-sf", "black", "-fn", "monofur for Powerline", "-p", "Command:"])
+  -- , ("M-S-p", addName "Application Launcher" $ safeSpawn "dmenu_run" ["-i", "-nb", "#9370DB", "-nf", "#50fa7b", "-sb", "#EE82EE", "-sf", "black", "-fn", "monofur for Powerline", "-p", "Command:"])
+  , ("M-S-p", addName "Application Launcher" $ safeSpawn "rofi" ["-show", "run"])
   , ("M-<F2>", addName "File Manager" $ safeSpawn "fm" [] >> safeSpawn "notify-send 'fm file manager'" [])
   , ("M-i", addName "Browser" $ safeSpawn "browser-start" [])
   , ("M-e", addName "Emacs" $ safeSpawn "emacs-start" [])
@@ -280,7 +281,7 @@ keybinds conf =
     ,("g", addName "steam" $ safeSpawn "steam" [])
     ,("e", addName "vscodium" $ safeSpawn "vscodium-flatpak" [])
     ,("h", addName "handbrake" $ safeSpawn "handbrake" [])
-    ,("q", addName "logout" $ io exitSuccess)
+    -- ,("q", addName "logout" $ io exitSuccess)
     ])
     -- ,("C-M1-l", submapName $ mkNamedKeymap conf
     --  [("l", addName "Lock session" $ spawn "loginctl lock-session")
