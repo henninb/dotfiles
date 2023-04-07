@@ -416,13 +416,13 @@ fi
 [ -f "$HOME/.config/broot/launcher/bash/1" ] && source "$HOME/.config/broot/launcher/bash/1"
 
 if [ "$MYSHELL" = "zsh" ]; then
-  source "$HOME/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-  source "$HOME/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-  #source "$HOME/plugins/autojump/bin/autojump.zsh"
-  source "$HOME/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
-  source "$HOME/plugins/zed-zsh/zed.zsh"
+  source "$HOME/.zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  source "$HOME/.zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  #source "$HOME/.zsh-plugins/autojump/bin/autojump.zsh"
+  source "$HOME/.zsh-plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
+  source "$HOME/.zsh-plugins/zed-zsh/zed.zsh"
   eval "$(starship init zsh)"
-  # source "$HOME/themes/spaceship-prompt/spaceship.zsh"
+  # source "$HOME/.zsh-themes/spaceship-prompt/spaceship.zsh"
 elif [ "$MYSHELL" = "bash" ]; then
   eval "$(starship init bash)"
 else

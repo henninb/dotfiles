@@ -101,28 +101,28 @@ fi
 
 echo curl -fsSL https://starship.rs/install.sh | bash
 
-if ! git clone https://github.com/zsh-users/zsh-autosuggestions.git "${HOME}/plugins/zsh-autosuggestions"; then
+if ! git clone https://github.com/zsh-users/zsh-autosuggestions.git "${HOME}/.zsh-plugins/zsh-autosuggestions"; then
   echo "failure"
 fi
 
-#git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git "${HOME}/plugins/powerlevel10k"
+#git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git "${HOME}/.zsh-plugins/powerlevel10k"
 
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${HOME}/plugins/zsh-syntax-highlighting"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${HOME}/.zsh-plugins/zsh-syntax-highlighting"
 
-git clone https://github.com/wting/autojump.git "$HOME/plugins/autojump"
+git clone https://github.com/wting/autojump.git "$HOME/.zsh-plugins/autojump"
 
-git clone --recursive https://github.com/eendroroy/zed-zsh "$HOME/plugins/zed-zsh"
+git clone --recursive https://github.com/eendroroy/zed-zsh "$HOME/.zsh-plugins/zed-zsh"
 
-git clone https://github.com/zsh-users/zsh-history-substring-search.git "$HOME/plugins/zsh-history-substring-search"
+git clone https://github.com/zsh-users/zsh-history-substring-search.git "$HOME/.zsh-plugins/zsh-history-substring-search"
 
-git clone https://github.com/hkupty/ssh-agent.git "$HOME/plugins/ssh-agent"
+git clone https://github.com/hkupty/ssh-agent.git "$HOME/.zsh-plugins/ssh-agent"
 
 git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
 $HOME/.fzf/install --key-bindings --completion --no-update-rc
 
-# git clone https://github.com/denysdovhan/spaceship-prompt.git "${HOME}/themes/spaceship-prompt"
-# git clone https://github.com:agnoster/agnoster-zsh-theme.git "$HOME/themes/agnoster-zsh-theme"
-# git clone https://github.com/dracula/zsh.git "$HOME/themes/dracula-zsh-theme"
+# git clone https://github.com/denysdovhan/spaceship-prompt.git "${HOME}/.zsh-themes/spaceship-prompt"
+# git clone https://github.com:agnoster/agnoster-zsh-theme.git "$HOME/.zsh-themes/agnoster-zsh-theme"
+# git clone https://github.com/dracula/zsh.git "$HOME/.zsh-themes/dracula-zsh-theme"
 
 [ -s "/usr/bin/zsh" ] && sudo usermod -s /usr/bin/zsh "$(whoami)"
 [ -s "/usr/bin/zsh" ] && sudo chsh -s /usr/bin/zsh "$(whoami)"
