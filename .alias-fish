@@ -1,17 +1,17 @@
 function vikings
-    curl getnews.tech/minnesota+vikings
+  curl -s getnews.tech/minnesota+vikings
 end
 
 function twins
-    curl getnews.tech/minnesota+twins
+  curl -s getnews.tech/minnesota+twins
 end
 
 function wolves
-    curl getnews.tech/minnesota+timberwolves
+  curl -s getnews.tech/minnesota+timberwolves
 end
 
 function veewee
-    bundle exec veewee $argv
+  bundle exec veewee $argv
 end
 
 # git aliases
@@ -24,13 +24,13 @@ abbr -a glist 'git ls-tree --full-tree -r --name-only HEAD'
 #abbr -a glsi 'git status --ignored'
 #abbr -a gundo 'git reset --soft HEAD~1'
 function gp
-    git push $argv
+  git push $argv
 end
 #abbr -a gb 'git branch '
 #abbr -a gituntracked 'git ls-files . --ignored --exclude-standard --others'
 #abbr -a hg 'history | grep'
 function hg
-    cat $HOME/.zsh_history | grep $argv
+  cat $HOME/.zsh_history | grep $argv
 end
 
 
@@ -75,7 +75,6 @@ abbr -a ..... 'cd ../../../..'
 # abbr -a youtube-dl "youtube-dl --no-check-certificate -f 'bestaudio[ext=m4a]'"
 
 if [ (uname) = "Linux" ]
-# if [ ! "$OS" = "Darwin" ]
   abbr -a open "xdg-open"
 end
 
@@ -158,7 +157,7 @@ alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 alias audio-hdmi='pacmd set-card-profile 0 output:hdmi-stereo+input:analog-stereo'
 
 if command -v lazygit > /dev/null
-   abbr -a  lg 'lazygit'
+  abbr -a  lg 'lazygit'
 end
 
 # vim: set ft=sh:
