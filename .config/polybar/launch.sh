@@ -29,3 +29,5 @@ case $desktop in
 esac
 
 exit 0
+
+# vim: set ft=sh
