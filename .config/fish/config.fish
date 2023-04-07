@@ -132,7 +132,6 @@ set -gx GOPATH $HOME/.local
 # Tells 'less' not to paginate if less than a page
 set -gx LESS "-F -X $LESS"
 
-set -gx GIT_PAGER "cat git diff"
 set -gx CHEF_USER (whoami)
 set -gx NVM_DIR "$HOME/.nvm"
 set -gx TMOUT 0
