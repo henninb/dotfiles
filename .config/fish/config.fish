@@ -212,7 +212,7 @@ if ! grep -A 3 '\[branch "main"\]' "$HOME/keepass-git/.git/config" | grep 'remot
   git branch --set-upstream-to=origin/main main
 end
 git fetch
-git merge origin/main
+git merge origin/main > /dev/null
 cd -
 
 # if loginctl show-session $XDG_SESSION_ID -p Type | grep -q "x11"; or pgrep Xorg > /dev/null
