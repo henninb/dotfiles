@@ -26,9 +26,9 @@ EOF
 cat > "$HOME/tmp/lightdm.conf" <<EOF
 [SeatDefaults]
 user-session=xmonad
-# autologin-guest=true
-# autologin-user=henninb
-# autologin-user-timeout=5
+autologin-guest=true
+autologin-user=henninb
+autologin-user-timeout=10
 greeter-hide-users=true
 EOF
 
