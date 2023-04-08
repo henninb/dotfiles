@@ -1,6 +1,8 @@
 #!/bin/sh
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+  sudo pacman --noconfirm --needed -S pipewire-media-session
+  sudo pacman --noconfirm --needed -S pipewire
   sudo pacman --noconfirm --needed -S pipewire-pulse
   sudo systemctl enable pipewire-pulse --now
 elif [ "$OS" = "Gentoo" ]; then
