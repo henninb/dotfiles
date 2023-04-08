@@ -8,6 +8,7 @@ EOF
 
 systemd-resolve --status
 
+echo stub vs uplink
 # Global
 #        Protocols: LLMNR=resolve -mDNS -DNSOverTLS DNSSEC=no/unsupported
 # resolv.conf mode: stub
@@ -23,6 +24,9 @@ if [ "$OS" = "Fedora Linux" ]; then
   sudo chattr +i /etc/resolv.conf
   echo /etc/resolv.conf /run/systemd/resolve/stub-resolv.conf
   echo sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
+  $ sudo apt-get install resolvconf
+  $ sudo systemctl start resolvconf.service
+  $ sudo systemctl enable resolveconf.service
 fi
 
 exit 0
