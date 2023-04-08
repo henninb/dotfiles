@@ -7,6 +7,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo systemctl enable pipewire-pulse --now
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse pipewire
+  sudo emerge --update --newuse media-video/wireplumber
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y pipewire
 elif [ "$OS" = "Void" ]; then
