@@ -23,11 +23,11 @@ elif [ "$OS" = "Void" ]; then
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo "opensuse"
 elif [ "$OS" = "Fedora Linux" ]; then
-  echo fedora
+  sudo dnf install -y pavucontrol
 elif [ "$OS" = "Solus" ]; then
   echo solus
 elif [ "$OS" = "Gentoo" ]; then
-  if ! command -v pacmd; then
+  if ! command -v pavucontrol; then
     sudo emerge --update --newuse pavucontrol
   fi
 else
