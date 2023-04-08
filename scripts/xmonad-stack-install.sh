@@ -486,6 +486,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   # sudo dnf remove -y gdm
   # sudo dnf remove -y lxdm
   # sudo dnf install -y clipmenu
+  sudo dnf install -y xorg-x11-server-Xorg
   sudo dnf install -y polybar
   sudo dnf install -y syncthing
   sudo dnf install -y libtool
