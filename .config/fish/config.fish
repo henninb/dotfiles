@@ -115,10 +115,11 @@ set -x PATH /opt/oracle-instantclient $PATH
 set -x PATH $HOME/.dynamic-colors/bin $PATH
 set -x PATH /usr/local/go/bin $PATH
 set -x PATH /usr/local/bin $PATH
+set -x PATH /sbin $PATH
 set -x PATH $JAVA_HOME/bin $PATH
 set -x PATH /opt/fastly/bin $PATH
-set -x PATH /var/lib/snapd/snap/bin $PATH
-set -x PATH $HOME/.gem/ruby/3.0.0/bin $PATH
+#set -x PATH /var/lib/snapd/snap/bin $PATH
+#set -x PATH $HOME/.gem/ruby/3.0.0/bin $PATH
 set -x PATH $PATH:/home/henninb/.local/share/JetBrains/Toolbox/scripts
 set -gx CDPATH ~/projects/github.com
 
