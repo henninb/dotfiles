@@ -102,6 +102,9 @@ elif [ "$OS" = "Fedora Linux" ]; then
   sudo cp -v "$HOME/tmp/lightdm-gtk-greeter.conf" /etc/lightdm/lightdm-gtk-greeter.conf
   sudo systemctl set-default graphical
   sudo systemctl disable sddm
+  # sudo grep lightdm /var/log/audit/audit.log | audit2allow -M lightdm
+  # sudo semodule -i lightdm.pp
+  # echo 'SELinuxContext=system_u:system_r:xdm_t:s0-s0:c0.c1023' | sudo tee -a /usr/lib/systemd/system/lightdm.service
   sudo systemctl enable lightdm --now
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse lightdm
