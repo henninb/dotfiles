@@ -17,6 +17,8 @@ if command -v camcontrol; then
   sudo lklfuse -o type=ext4 /dev/ada0p3 /mnt/archlinux
 fi
 
+# lsblk -o NAME,UUID
+# sudo blkid
 lsblk -o UUID,MOUNTPOINT > $HOME/tmp/lsblk.txt
 
 if [ "$os" = "voidlinux" ]; then
@@ -53,22 +55,22 @@ elif [ "$os" = "gentoo" ]; then
   echo 'export PS1="(gentoo-chroot) $PS1"'
   sudo chroot /mnt/gentoo /bin/su - "$(id -un)"
   #sudo chroot /mnt/gentoo /bin/zsh -c "su - "$(id -un)" -c 'touch /tmp/chroot'; su - "$(id -un)""
-elif [ "$os" = "fedora-new" ]; then
-  root=11516130-fe8e-4c13-9c22-3c237073a2eb
-  efi=18ED-5063
-  if [ "$(grep -c "$root /mnt/fedora-new" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
-    sudo mkdir -p /mnt/fedora-new
-    sudo mount "UUID=$root" /mnt/fedora-new
-    sudo mkdir -p /mnt/fedora-new/boot/efi
-    sudo mount -t proc none /mnt/fedora-new/proc
-    sudo mount --rbind /dev /mnt/fedora-new/dev
-    sudo mount --rbind /sys /mnt/fedora-new/sys
-    sudo mount UUID=$efi /mnt/fedora-new/boot/efi
+elif [ "$os" = "fedora" ]; then
+  root=1f225586-7750-40b7-8b00-19b4b40f1d68
+  efi=3504-1319
+  if [ "$(grep -c "$root /mnt/fedora" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
+    sudo mkdir -p /mnt/fedora
+    sudo mount "UUID=$root" /mnt/fedora
+    sudo mkdir -p /mnt/fedora/boot/efi
+    sudo mount -t proc none /mnt/fedora/proc
+    sudo mount --rbind /dev /mnt/fedora/dev
+    sudo mount --rbind /sys /mnt/fedora/sys
+    sudo mount UUID=$efi /mnt/fedora/boot/efi
   else
     echo already mounted
   fi
   echo 'export PS1="(fedora-chroot) $PS1"'
-  sudo chroot /mnt/fedora-new /bin/su - "$(id -un)"
+  sudo chroot /mnt/fedora /bin/su - "$(id -un)"
 elif [ "$os" = "mint" ]; then
   root=
   efi=
@@ -101,25 +103,25 @@ elif [ "$os" = "opensuse" ]; then
   fi
   echo 'export PS1="(opensuse-chroot) $PS1"'
   sudo chroot /mnt/opensuse /bin/su - "$(id -un)"
-elif [ "$os" = "fedora" ]; then
-  root=
-  efi=
-  if [ "$(grep -c "722c5ee8-b300-4b51-86de-9221ebabc617 /mnt/fedora" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
-    sudo mkdir -p /mnt/fedora
-    sudo mount UUID=722c5ee8-b300-4b51-86de-9221ebabc617 /mnt/fedora
-    sudo mount UUID=906ecda7-1224-4533-9c0b-a5c070d3e68b /mnt/fedora/root/boot
-    # cd /mnt/fedora || exit
-    sudo mount --rbind /mnt/fedora/home /mnt/fedora/root/home
-    sudo mount -t proc none /mnt/fedora/root/proc
-    sudo mount --rbind /dev /mnt/fedora/root/dev
-    sudo mount --rbind /sys /mnt/fedora/root/sys
-    sudo mount --rbind /run /mnt/fedora/root/run
-    sudo mount UUID=1EF4-FD52 /mnt/fedora/root/boot/efi
-  else
-    echo already mounted
-  fi
-  echo 'export PS1="(fedora-chroot) $PS1"'
-  sudo chroot /mnt/fedora/root /bin/su - "$(id -un)"
+# elif [ "$os" = "fedora" ]; then
+#   root=
+#   efi=
+#   if [ "$(grep -c "722c5ee8-b300-4b51-86de-9221ebabc617 /mnt/fedora" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
+#     sudo mkdir -p /mnt/fedora
+#     sudo mount UUID=722c5ee8-b300-4b51-86de-9221ebabc617 /mnt/fedora
+#     sudo mount UUID=906ecda7-1224-4533-9c0b-a5c070d3e68b /mnt/fedora/root/boot
+#     # cd /mnt/fedora || exit
+#     sudo mount --rbind /mnt/fedora/home /mnt/fedora/root/home
+#     sudo mount -t proc none /mnt/fedora/root/proc
+#     sudo mount --rbind /dev /mnt/fedora/root/dev
+#     sudo mount --rbind /sys /mnt/fedora/root/sys
+#     sudo mount --rbind /run /mnt/fedora/root/run
+#     sudo mount UUID=1EF4-FD52 /mnt/fedora/root/boot/efi
+#   else
+#     echo already mounted
+#   fi
+#   echo 'export PS1="(fedora-chroot) $PS1"'
+#   sudo chroot /mnt/fedora/root /bin/su - "$(id -un)"
 elif [ "$os" = "ubuntu" ]; then
   root=a7bb907f-6870-40a6-af47-ac881e72caf2
   efi=F577-6798
