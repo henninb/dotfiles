@@ -110,4 +110,4 @@ python/fido2 -python3_10 python3_11
 x11-misc/lightdm qt5 systemd gtk elogind audit
 x11-base/xorg-server xephyr
 x11-misc/polybar alsa curl doc i3w ipc mpd network pulseaudio
-media-video/pipewire sound-server ssl system-service X
+media-video/pipewire sound-server ssl system-service X dbus ffmpeg flatpak gstreamer pipewire-alsa sound-server v4l
