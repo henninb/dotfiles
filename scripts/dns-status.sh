@@ -22,6 +22,7 @@ if [ "$OS" = "Fedora Linux" ]; then
   sudo cp "$HOME/tmp/resolv.conf" /etc/resolv.conf
   sudo chattr +i /etc/resolv.conf
   echo /etc/resolv.conf /run/systemd/resolve/stub-resolv.conf
+  echo sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
 fi
 
 exit 0
