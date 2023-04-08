@@ -95,6 +95,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   update-alternatives --list default-displaymanager
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y lightdm
+  sudo dnf install -y lightdm-gtk-greeter
   sudo dnf install -y xsetroot
   sudo dnf install -y gnome-keyring-pam
   sudo cp -v "$HOME/config/lightdm.conf" /etc/lightdm/lightdm.conf
