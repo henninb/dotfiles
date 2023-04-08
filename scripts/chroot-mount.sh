@@ -65,6 +65,8 @@ elif [ "$os" = "fedora" ]; then
     sudo mount -t proc none /mnt/fedora/proc
     sudo mount --rbind /dev /mnt/fedora/dev
     sudo mount --rbind /sys /mnt/fedora/sys
+    # sudo mount --bind /etc/resolv.conf /mnt/fedora//run/systemd/resolve/stub-resolv.conf
+    # sudo mount --bind /etc/resolv.conf /mnt/fedora/etc/resolv.conf
     sudo mount UUID=$efi /mnt/fedora/boot/efi
   else
     echo already mounted
