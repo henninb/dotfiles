@@ -144,7 +144,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   systemctl --user mask gnome-keyring-daemon.socket
   sudo cp -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
   sudo cp -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
-  sudo systemctl enable sddm.service --now
+  sudo systemctl set-default graphical
   echo /usr/share/sddm/scripts/Xsetup
   # sudo systemctl enable dbus --now
   # sudo systemctl status dbus
@@ -152,15 +152,17 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # grep -Hriv "^$" /etc/pam.d/sddm*
   update-alternatives --list default-displaymanager
   sudo usermod -a -G systemd-journal "$(id -un)"
+  sudo systemctl enable sddm.service --now
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y sddm
   sudo dnf install -y sddm-themes
   sudo dnf install -y xsetroot
   sudo dnf install -y gnome-keyring-pam
-  sudo dnf install gnome-keyring-pam
+  sudo dnf install -y gnome-keyring-pam
+  sudo systemctl set-default graphical
   sudo dnf remove -y gdm
   sudo systemctl disable gdm
-  sudo systemctl enable sddm --now
+  sudo systemctl disable lightdm
   sudo mkdir -p /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
@@ -168,12 +170,14 @@ elif [ "$OS" = "Fedora Linux" ]; then
   echo vi /etc/pam.d/gdm-password
   echo auth        optional      pam_gnome_keyring.so only_if=sddm
   #sudo dnf remove gnome-keyring-pam
-  journalctl -b -u sddm
+  echo journalctl -b -u sddm
   echo sddm-greeter --test-mode --theme /usr/share/sddm/themes/elarun
   desktop-file-validate /usr/share/xsessions/xmonad.desktop
+  sudo systemctl enable sddm --now
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse sddm
   sudo emerge --update --newuse xsetroot
+  sudo systemctl set-default graphical
   sudo usermod -a -G video sddm
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
   sudo mkdir -p /etc/sddm/scripts
