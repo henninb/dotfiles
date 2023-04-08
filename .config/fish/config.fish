@@ -55,6 +55,29 @@ if [ \( "$OS" = "FreeBSD" \) -o \(  "$OS" = "Alpine Linux" \) -o \(  "$OS" = "Op
 end
 
 if [ (uname) = "Linux" ]
+  if test -f /sys/module/hid_apple/parameters/fnmode
+    if not cat /sys/module/hid_apple/parameters/fnmode | grep -q 2
+      echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode
+      echo "options hid_apple fnmode=2" | sudo tee -a /etc/modprobe.d/hid_apple.conf
+      if command -v update-initramfs
+        sudo update-initramfs -u -k all
+      else if command -v mkinitcpio
+        sudo mkinitcpio -p linux
+      else if command -v genkernel
+        sudo genkernel initramfs
+      else if command -v xbps-reconfigure
+        sudo xbps-reconfigure -f linux6.1
+      else if command -v dracut
+        sudo dracut -f --regenerate-all
+      else
+        echo "kernel generate not found"
+      end
+      echo "reboot"
+    end
+  end
+end
+
+if [ (uname) = "Linux" ]
   if [ $OS = "Gentoo" ]
     if command -v java-config >/dev/null 2>&1
       set -gx JAVA_HOME (java-config -o ^/dev/null)
@@ -68,29 +91,11 @@ if [ (uname) = "Linux" ]
   end
 else
   echo "not Linux"
-end
-
-# if test "(uname)" = "Linux"
-#  echo "here"
-#   if test "$OS" = "Gentoo"
-#     if command -v java-config >/dev/null 2>&1
-#       set -gx JAVA_HOME (java-config -o ^/dev/null)
-#     else
-#       echo "install java-config on gentoo"
-#     end
-#   else if command -v javac >/dev/null 2>&1
-#     set -gx JAVA_HOME (dirname (dirname (readlink -f (readlink -f (which javac))))^/dev/null)
-#   else
-#     echo "JAVA_HOME is not set up."
-#   end
 # else if test (uname) = "Darwin"
-#   #set -gx JAVA_HOME (/usr/libexec/java_home -v 1.8)
 #   set -gx JAVA_HOME (/usr/libexec/java_home)
 # else if test (uname) = "FreeBSD"
 #   set -gx JAVA_HOME /usr/local/openjdk17
-# else
-#  echo "JAVA_HOME is not set up."
-# end
+end
 
 # set -gx PATH $JAVA_HOME/bin $PATH
 
