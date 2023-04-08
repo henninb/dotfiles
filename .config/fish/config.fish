@@ -217,7 +217,11 @@ fish_vi_key_bindings
 
 # emacs keybindings - fish_key_reader
 # fish_default_key_bindings
-bind \ca beginning-of-line
+# bind \ca beginning-of-line
+for mode in (bind -L)
+  bind -M $mode \ca beginning-of-line
+  bind -M $mode \ce end-of-line
+end
 
 set -g fish_color_command green
 set -g fish_color_argument purple
