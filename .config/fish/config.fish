@@ -218,6 +218,8 @@ fish_vi_key_bindings
 # emacs keybindings - fish_key_reader
 bind -M insert \ca beginning-of-line
 bind -M insert \ce end-of-line
+bind -M insert \cw backward-kill-word
+bind -M insert \ck kill-line
 # for mode in (bind -L)
 # end
 
