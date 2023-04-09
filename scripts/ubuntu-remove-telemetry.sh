@@ -10,6 +10,7 @@ sudo systemctl disable whoopsie.service
 
 echo "Disabling telemetry"
 sudo apt remove ubuntu-report whoopsie apport -y
+sudo apt remove -y landscape-common
 
 # Prevent telemetry from being reinstalled 
 printf "Package: ubuntu-report\nPin: release a=*\nPin-Priority: -10" >> no-ubuntu-report.pref 
