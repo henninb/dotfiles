@@ -13,6 +13,7 @@ sudo mkdir /mnt/external
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   export DEBIAN_FRONTEND=noninteractive
+  sudo apt remove -y landscape-common
   sudo apt install -y polybar
   sudo apt install -y locate
   sudo apt install -y autoconf
