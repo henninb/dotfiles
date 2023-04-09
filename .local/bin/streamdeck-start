@@ -7,12 +7,16 @@ if command -v streamdeck; then
   if ! pgrep -x "streamdeck" > /dev/null; then
     nohup streamdeck &
   fi
-  # streamdeck & sleep 2 && xdotool search --class "Streamdeck UI" windowminimize
 
   i=0
   while [ $i -lt $MAX_ITERATIONS ]; do
     if pgrep -x "streamdeck" > /dev/null; then
-      xdotool search --class "Streamdeck UI" windowminimize
+      win_id=$(xdotool search --class "Streamdeck UI" | head -n 1)
+      while [ -z "$win_id" ]; do
+        sleep $SLEEP_TIME
+        win_id=$(xdotool search --class "Streamdeck UI" | head -n 1)
+      done
+      xdotool windowminimize $win_id
       break
     else
       sleep $SLEEP_TIME
