@@ -1,22 +1,24 @@
 #!/bin/sh
 
-# MAX_ITERATIONS=30
-# SLEEP_TIME=0.5
-# for ((i=0; i<$MAX_ITERATIONS; i++))
-# do
-#     if pgrep -x "yourapp" >/dev/null
-#     then
-#         echo "Your app is running!"
-#         xdotool search --class "YourApp" windowactivate %@
-#         break
-#     else
-#         sleep $SLEEP_TIME
-#     fi
-# done
+MAX_ITERATIONS=30
+SLEEP_TIME=0.5
 
 if command -v streamdeck; then
-  nohup streamdeck
+  if ! pgrep -x "streamdeck" > /dev/null; then
+    nohup streamdeck &
+  fi
   # streamdeck & sleep 2 && xdotool search --class "Streamdeck UI" windowminimize
+
+  i=0
+  while [ $i -lt $MAX_ITERATIONS ]; do
+    if pgrep -x "streamdeck" > /dev/null; then
+      xdotool search --class "Streamdeck UI" windowminimize
+      break
+    else
+      sleep $SLEEP_TIME
+    fi
+    i=$((i+1))
+  done
 else
   notify-send "streamdeck is NOT installed"
 fi
