@@ -1,0 +1,70 @@
+#!/bin/sh
+
+# Set a timeout of 5 seconds
+TIMEOUT=5
+# Set the start time
+START=$(date +%s)
+
+# Loop until a valid window ID is found or until the timeout is reached
+while true; do
+    # Find the window ID
+    WINDOW_ID=$(xdotool search --class "Streamdeck UI" | head -n 1)
+
+    # If a valid window ID is found, break out of the loop
+    if [ -n $WINDOW_ID ]; then
+        echo window=$WINDOW_ID
+        break
+    fi
+
+    # If the timeout is reached, exit the loop
+    CURRENT=$(date +%s)
+    ELAPSED=$((CURRENT-START))
+    if [ $ELAPSED -ge $TIMEOUT ]; then
+        echo "Timeout reached"
+        exit 1
+    fi
+
+    sleep 0.1
+done
+
+
+
+# if ! streamdeck; then
+#     #echo "Failed to start Streamdeck UI"
+#     notify-send "streamdeck failed to start"
+#     #exit 1
+# fi
+#
+# window_id=
+# timeout=5000
+# while [ -z "$window_id" ] && [ "$timeout" -gt 0 ]; do
+#     sleep 0.1
+#     window_id=$(xdotool search --class "Streamdeck UI" | head -n 1)
+#     ((timeout--))
+# done
+#
+# if [ -z "$window_id" ]; then
+#     notify-send "Timed out waiting for Streamdeck UI window to appear"
+#     exit 1
+# fi
+#
+# notify-send "timeout=$timeout"
+#
+# if ! xdotool windowactivate "Streamdeck UI" windowminimize; then
+#     notify-send "Failed to minimize Streamdeck UI"
+#     exit 1
+# fi
+
+if command -v streamdeck; then
+  # streamdeck & sleep 2 && xdotool search --class "Streamdeck UI" windowminimize
+  # streamdeck & sleep 2 && xdotool search --class "Streamdeck UI" Alt+F4
+  streamdeck & sleep 2 && xdotool search --class "Streamdeck UI" ctrl+c
+
+  # xdotool key --window <window_id> Alt+F4
+else
+  notify-send "streamdeck is NOT installed"
+fi
+
+# xdotool search --onlyvisible --class "Streamdeck UI"
+
+exit 0

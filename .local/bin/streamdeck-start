@@ -1,37 +1,26 @@
 #!/bin/sh
 
-# if ! streamdeck; then
-#     #echo "Failed to start Streamdeck UI"
-#     notify-send "streamdeck failed to start"
-#     #exit 1
-# fi
-#
-# window_id=
-# timeout=5000
-# while [ -z "$window_id" ] && [ "$timeout" -gt 0 ]; do
-#     sleep 0.1
-#     window_id=$(xdotool search --class "Streamdeck UI" | head -n 1)
-#     ((timeout--))
+# MAX_ITERATIONS=30
+# SLEEP_TIME=0.5
+# for ((i=0; i<$MAX_ITERATIONS; i++))
+# do
+#     if pgrep -x "yourapp" >/dev/null
+#     then
+#         echo "Your app is running!"
+#         xdotool search --class "YourApp" windowactivate %@
+#         break
+#     else
+#         sleep $SLEEP_TIME
+#     fi
 # done
-#
-# if [ -z "$window_id" ]; then
-#     notify-send "Timed out waiting for Streamdeck UI window to appear"
-#     exit 1
-# fi
-#
-# notify-send "timeout=$timeout"
-#
-# if ! xdotool windowactivate "Streamdeck UI" windowminimize; then
-#     notify-send "Failed to minimize Streamdeck UI"
-#     exit 1
-# fi
 
 if command -v streamdeck; then
-  streamdeck & sleep 2 && xdotool search --class "Streamdeck UI" windowminimize
+  nohup streamdeck
+  # streamdeck & sleep 2 && xdotool search --class "Streamdeck UI" windowminimize
 else
   notify-send "streamdeck is NOT installed"
 fi
 
-# xdotool search --onlyvisible --class "Streamdeck UI"
-
 exit 0
+
+# vim: set ft=sh:
