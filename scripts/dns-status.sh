@@ -22,7 +22,7 @@ if [ "$OS" = "Fedora Linux" ]; then
   sudo sed -i 's/#DNSStubListener=/DNSStubListener=/' /etc/systemd/resolved.conf
 
   # Add the DNSStubListener=yes line after the uncommented line
-  sudo sed -i '/DNSStubListener=/a DNSStubListener=yes' /etc/systemd/resolved.conf
+  # sudo sed -i '/DNSStubListener=/a DNSStubListener=yes' /etc/systemd/resolved.conf
 
   # Restart the systemd-resolved service
   sudo systemctl restart systemd-resolved.service
@@ -30,8 +30,8 @@ if [ "$OS" = "Fedora Linux" ]; then
   # sudo systemctl disable systemd-resolved.service
   # sudo systemctl stop systemd-resolved.service
   #
-  # sudo rm /etc/resolv.conf
-  # sudo cp "$HOME/tmp/resolv.conf" /etc/resolv.conf
+  sudo rm /etc/resolv.conf
+  sudo cp "$HOME/tmp/resolv.conf" /etc/resolv.conf
   # sudo chattr +i /etc/resolv.conf
   # echo /etc/resolv.conf /run/systemd/resolve/stub-resolv.conf
   # echo sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
