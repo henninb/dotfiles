@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if command -v streamdeck; then
+  if ! pgrep -x "streamdeck" > /dev/null; then
+    xdotool search --class "Streamdeck UI" windowactivate %@
+  fi
+else
+  notify-send "streamdeck is NOT installed"
+fi
+
+exit 0
+
+# vim: set ft=sh:
