@@ -1,28 +1,38 @@
 #!/bin/sh
 
-MAX_ITERATIONS=30
+MAX_ITERATIONS=50
 SLEEP_TIME=0.5
 
 if command -v streamdeck; then
   if ! pgrep -x "streamdeck" > /dev/null; then
-    nohup streamdeck &
+    nohup streamdeck & > "$HOME/tmp/streamdeck.log"
+    echo started app >> "$HOME/tmp/streamdeck.log"
+  else
+    echo "already running" >> "$HOME/tmp/streamdeck.log"
+    exit 1
   fi
 
   i=0
   while [ $i -lt $MAX_ITERATIONS ]; do
     if pgrep -x "streamdeck" > /dev/null; then
+      echo process running >> "$HOME/tmp/streamdeck.log"
       win_id=$(xdotool search --class "Streamdeck UI" | head -n 1)
       while [ -z "$win_id" ]; do
+        echo "checking for window id" >> "$HOME/tmp/streamdeck.log"
         sleep $SLEEP_TIME
         win_id=$(xdotool search --class "Streamdeck UI" | head -n 1)
       done
+      echo minimize >> "$HOME/tmp/streamdeck.log"
       xdotool windowminimize $win_id
-      break
+      # break
+      exit 0
     else
+      echo sleeping >> "$HOME/tmp/streamdeck.log"
       sleep $SLEEP_TIME
     fi
     i=$((i+1))
   done
+  echo "max number of retries" >> "$HOME/tmp/streamdeck.log"
 else
   notify-send "streamdeck is NOT installed"
 fi
