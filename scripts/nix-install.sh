@@ -60,6 +60,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   nix-env -i gqrx
   nix-env -i ventoy-bin
   nix-env -i codium
+  nix-env -i rofi
 elif [ "$OS" = "Void" ]; then
   nix-env -i brave
   nix-env -i librewolf
