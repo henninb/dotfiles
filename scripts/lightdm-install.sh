@@ -77,6 +77,7 @@ elif [ "${OS}" = "Void" ]; then
 elif [ "${OS}" = "Ubuntu" ] || [ "$OS" = "Linux Mint" ]; then
   export DEBIAN_FRONTEND=noninteractive
   sudo apt install -y lightdm
+  sudo apt install -y lightdm-gtk-greeter
   sudo cp -v "$HOME/config/lightdm.conf" /etc/lightdm/lightdm.conf
   sudo cp -v "$HOME/tmp/lightdm-gtk-greeter.conf" /etc/lightdm/lightdm-gtk-greeter.conf
   sudo systemctl set-default graphical
