@@ -87,7 +87,6 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo pacman --noconfirm --needed -S ncmpcpp
   yay -S ashuffle-git
 elif [ "$OS" = "Gentoo" ]; then
-  echo
   sudo emerge --update --newuse media-sound/mpd
   sudo emerge --update --newuse media-sound/mpc
   sudo emerge --update --newuse ncmpcpp
@@ -95,9 +94,8 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y musicpd
   sudo pkg install -y musicpc
   sudo pkg install -y ncmpcpp
-  echo
 else
-  echo "OS is not configured"
+  echo "OS $OS is not configured"
   exit 1
 fi
 
