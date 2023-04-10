@@ -31,6 +31,8 @@ font:
     family: monofur for Powerline
     style: Bold Italic
   size: 14.0
+  # dpi: 144.0
+  scale_with_dpi: false
 
   offset:
     x: 1
