@@ -6,6 +6,7 @@ music_directory "/var/lib/mpd/music"
 playlist_directory "/var/lib/mpd/playlists"
 bind_to_address "127.0.0.1"
 # bind_to_address "any"
+# bind_to_address "localhost"
 port "6600"
 
 auto_update "yes"
@@ -31,19 +32,19 @@ decoder {
   enabled "no"
 }
 
-aplay --list-device
-audio_output {
-  type "pulse"
-  name "pulse output"
-  server "127.0.0.1"
-}
-
 # audio_output {
-#   type "pipe"
-#   name "pipewire output"
-#   command "audiounitary-sink"
+#   type "pulse"
+#   name "pulse server"
 #   server "127.0.0.1"
 # }
+
+audio_output {
+  type "pipewire"
+  # type "pipe"
+  name "pipewire server"
+  # command "audiounitary-sink"
+  # server "127.0.0.1"
+}
 EOF
 
 cat > "$HOME/tmp/musicpd.conf" <<EOF
@@ -186,6 +187,7 @@ echo "$nowplaying $playing $nowstatus"
 #export MPD_HOST=localhost:6600
 # export MPD_HOST=127.0.0.1:6600
 
+echo aplay --list-device
 echo mpc update
 echo mpc load all
 mpc load all
