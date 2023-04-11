@@ -79,9 +79,15 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo pacman --noconfirm --needed -S mpc
   sudo pacman --noconfirm --needed -S ncmpcpp
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse media-sound/mpd
-  sudo emerge --update --newuse media-sound/mpc
-  sudo emerge --update --newuse ncmpcpp
+  if ! command -v mpd; then
+    sudo emerge --update --newuse media-sound/mpd
+  fi
+  if ! command -v mpc; then
+    sudo emerge --update --newuse media-sound/mpc
+  fi
+  if ! command -v ncmpcpp; then
+    sudo emerge --update --newuse ncmpcpp
+  fi
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y mpd
   sudo apt install -y mpc
@@ -110,16 +116,23 @@ else
   exit 1
 fi
 
-ln -s /mnt/external/mp3 /var/lib/mpd/music
+sudo ln -sfn /mnt/external/mp3 /var/lib/mpd/music
 
 sudo useradd mpd -s /sbin/nologin
 
 if [ "${OS}" = "FreeBSD" ]; then
-  sudo mv -v musicpd.conf /usr/local/etc/musicpd.conf
+  sudo mv -v "$HOME/tmp/musicpd.conf" /usr/local/etc/musicpd.conf
   sudo touch /var/lib/mpd/tag_cache
 else
-  sudo mv -v mpd.conf /etc/mpd.conf
+  sudo mv -v "$HOME/tmp/mpd.conf" /etc/mpd.conf
+  sudo touch /var/lib/mpd/tag_cache
 fi
+
+cd /mnt/external/mp3 || exit
+find . -type f -name "*.mp3" > "$HOME/tmp/all.m3u"
+sudo cp -v "$HOME/tmp/all.m3u" /var/lib/mpd/playlists/
+cd - || exit
+
 sudo mkdir -p /var/log/mpd
 sudo mkdir -p /var/lib/mpd/playlists
 sudo mkdir -p /var/lib/mpd/music
@@ -163,12 +176,7 @@ playing=$(mpc | grep playing)
 nowstatus=$(mpc | sed -n '2p' | cut -d ' ' -f1)
 echo "$nowplaying $playing $nowstatus"
 
-# sudo ln -s "$HOME/media" /var/lib/mpd/music/media
 
-cd /mnt/external/mp3 || exit
-find . -type f -name "*.mp3" > "$HOME/tmp/all.m3u"
-cp -v "$HOME/tmp/all.m3u" /var/lib/mpd/playlists/
-cd - || exit
 
 mpc update
 mpc load all.m3u
