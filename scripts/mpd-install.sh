@@ -32,9 +32,16 @@ decoder {
 }
 
 # aplay --list-device
+# audio_output {
+#   type "pulse"
+#   name "pulse audio"
+#   server "127.0.0.1"
+# }
+
 audio_output {
-  type "pulse"
-  name "pulse audio"
+  type "pipe"
+  name "pipewire"
+  command "audiounitary-sink"
   server "127.0.0.1"
 }
 EOF
@@ -135,7 +142,7 @@ cd - || exit
 
 sudo mkdir -p /var/log/mpd
 sudo mkdir -p /var/lib/mpd/playlists
-sudo mkdir -p /var/lib/mpd/music
+#sudo mkdir -p /var/lib/mpd/music
 sudo chmod g+w /var/lib/mpd/playlists
 sudo chmod g+wx /var/lib/mpd/music/
 sudo chown -R mpd:audio /var/log/mpd /var/lib/mpd
@@ -178,9 +185,10 @@ echo "$nowplaying $playing $nowstatus"
 
 
 
-mpc update
-mpc load all.m3u
+echo mpc update
+echo mpc load all
 mpc load all
+echo ncmpcpp
 
 exit 0
 
