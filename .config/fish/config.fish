@@ -54,15 +54,14 @@ if [ \( "$OS" = "FreeBSD" \) -o \(  "$OS" = "Alpine Linux" \) -o \(  "$OS" = "Op
   source $HOME/.alias-bsd
 end
 
-# doas vi /etc/dracut.conf.d/manual.conf hostonly=yes
-ls -l /sys/module/hid_apple/parameters/fnmode
-cat /sys/module/hid_apple/parameters/fnmode
-cat /etc/modprobe.d/hid_apple.conf
 if [ (uname) = "Linux" ]
   if test -f /sys/module/hid_apple/parameters/fnmode
     if not cat /sys/module/hid_apple/parameters/fnmode | grep -q 2
       echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode
-      echo "options hid_apple fnmode=2" | sudo tee /etc/modprobe.d/hid_apple.conf
+      # echo "options hid_apple fnmode=2" | sudo tee /etc/modprobe.d/hid_apple.conf
+      if ! grep -q '^options hid_apple fnmode=2$' /etc/modprobe.d/hid_apple.conf; then
+        echo 'options hid_apple fnmode=2' | sudo tee -a /etc/modprobe.d/hid_apple.conf
+      fi
       if command -v update-initramfs
         sudo update-initramfs -u -k all
       else if command -v mkinitcpio
@@ -72,6 +71,9 @@ if [ (uname) = "Linux" ]
       else if command -v xbps-reconfigure
         sudo xbps-reconfigure -f linux6.1
       else if command -v dracut
+        if ! grep -q '^hostonly=yes$' /etc/dracut.conf.d/manual.conf; then
+          echo 'hostonly=yes' | sudo tee -a /etc/dracut.conf.d/manual.conf
+        fi
         sudo dracut -f --regenerate-all
       else
         echo "kernel generate not found"
