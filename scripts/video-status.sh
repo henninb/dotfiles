@@ -176,8 +176,8 @@ if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-525.89.02.run" ]; then
   wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/525.89.02/NVIDIA-Linux-x86_64-525.89.02.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-525.89.02.run"
 fi
 
-if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-525.78.01.run" ]; then
-  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/525.78.01/NVIDIA-Linux-x86_64-525.78.01.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-525.78.01.run"
+if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-525.105.17.run" ]; then
+  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/525.105.17/NVIDIA-Linux-x86_64-525.105.17.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-525.105.17.run"
 fi
 
 grep "X Driver" /var/log/Xorg.0.log
