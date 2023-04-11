@@ -1,12 +1,9 @@
 #!/bin/sh
 
-cat > mpd.conf <<EOF
+cat > "$HOME/tmp/mpd.conf" <<EOF
 db_file "/var/lib/mpd/tag_cache"
 music_directory "/var/lib/mpd/music"
-playlist_directory "/var/lib/mpd/playlists"
-
-# user "mpd"
-#bind_to_address "::1"
+playlist_directory "/var/lib/mpd/playlists" # user "mpd" bind_to_address "::1"
 bind_to_address "127.0.0.1"
 # bind_to_address "any"
 port "6600"
@@ -42,7 +39,7 @@ audio_output {
 }
 EOF
 
-cat > musicpd.conf <<EOF
+cat > "$HOME/tmp/musicpd.conf" <<EOF
 db_file "/var/lib/mpd/tag_cache"
 music_directory "/var/lib/mpd/music"
 playlist_directory "/var/lib/mpd/playlists"
@@ -77,27 +74,43 @@ decoder {
 }
 EOF
 
-if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
-  sudo apt install -y mpd
-  sudo apt install -y mpc
-  sudo apt install -y ncmpcpp
-elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
+if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S mpd
   sudo pacman --noconfirm --needed -S mpc
   sudo pacman --noconfirm --needed -S ncmpcpp
-  yay -S ashuffle-git
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse media-sound/mpd
   sudo emerge --update --newuse media-sound/mpc
   sudo emerge --update --newuse ncmpcpp
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
+  sudo apt install -y mpd
+  sudo apt install -y mpc
+  sudo apt install -y ncmpcpp
+elif [ "$OS" = "Void" ]; then
+  echo "sudo xbps-install -y"
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y musicpd
   sudo pkg install -y musicpc
   sudo pkg install -y ncmpcpp
+  sudo pw usermod "$(whoami)" -G mpd
+elif [ "$OS" = "OpenBSD" ]; then
+  echo "OpenBSD"
+elif [ "$OS" = "Solus" ]; then
+  "sudo eopkg install -y"
+elif [ "$OS" = "openSUSE Tumbleweed" ]; then
+  echo "sudo zypper install -y"
+elif [ "$OS" = "Fedora Linux" ]; then
+  echo "sudo dnf install -y"
+elif [ "$OS" = "Clear Linux OS" ]; then
+  "sudo swupd bundle-add"
+elif [ "$OS" = "Darwin" ]; then
+  echo "brew install"
 else
-  echo "OS $OS is not configured"
+  echo "$OS is not yet implemented."
   exit 1
 fi
+
+ln -s /mnt/external/mp3 /var/lib/mpd/music
 
 sudo useradd mpd -s /sbin/nologin
 
@@ -109,22 +122,20 @@ else
 fi
 sudo mkdir -p /var/log/mpd
 sudo mkdir -p /var/lib/mpd/playlists
-sudo chmod g+w /var/lib/mpd/playlists
 sudo mkdir -p /var/lib/mpd/music
+sudo chmod g+w /var/lib/mpd/playlists
+sudo chmod g+wx /var/lib/mpd/music/
 sudo chown -R mpd:audio /var/log/mpd /var/lib/mpd
 sudo chown -R mpd:mpd /var/log/mpd /var/lib/mpd
-sudo chmod g+wx /var/lib/mpd/music/
 
-if [ "${OS}" = "FreeBSD" ]; then
-  sudo pw usermod "$(whoami)" -G mpd
-else
+if [ ! "${OS}" = "FreeBSD" ]; then
   sudo usermod -a -G mpd "$(id -un)"
   sudo usermod -a -G audio "$(id -un)"
   sudo usermod -a -G pulse "$(id -un)"
   sudo usermod -a -G pulse-access "$(id -un)"
 fi
 
-[ -f "*.mp3" ] && sudo mv -v ~/media/*.mp3 /var/lib/mpd/music/
+#[ -f "*.mp3" ] && sudo mv -v ~/media/*.mp3 /var/lib/mpd/music/
 
 if [ "${OS}" = "FreeBSD" ]; then
   sudo service musicpd start
@@ -135,7 +146,7 @@ else
     sudo systemctl enable mpd.service
     sudo systemctl start mpd.service
   else
-    echo "am i gentoo"
+    echo "not running systemd"
   fi
 fi
 
@@ -146,7 +157,7 @@ fi
 # ninja -C build install
 # cd - || exit
 
-echo cp -v /usr/share/gdm/default.pa ~/.config/pulse/
+# echo cp -v /usr/share/gdm/default.pa ~/.config/pulse/
 nowplaying=$(mpc -f "%track%. %artist% - %title%" | sed -n '1p')
 playing=$(mpc | grep playing)
 nowstatus=$(mpc | sed -n '2p' | cut -d ' ' -f1)
@@ -154,9 +165,9 @@ echo "$nowplaying $playing $nowstatus"
 
 # sudo ln -s "$HOME/media" /var/lib/mpd/music/media
 
-cd ~/media || exit
-find . -type f -name "*.mp3" > all.m3u
-cp -v all.m3u /var/lib/mpd/playlists/
+cd /mnt/external/mp3 || exit
+find . -type f -name "*.mp3" > "$HOME/tmp/all.m3u"
+cp -v "$HOME/tmp/all.m3u" /var/lib/mpd/playlists/
 cd - || exit
 
 mpc update
