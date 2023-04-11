@@ -66,7 +66,7 @@ EOF
 
 lspci -k | grep -A 2 -E "(VGA|3D)"
 echo 'uninstall'
-echo 'sudo sh ./NVIDIA-Linux-x86_64-525.89.02.run --uninstall'
+echo 'sudo sh ./NVIDIA-Linux-x86_64-525.105.17.run --uninstall'
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S linux-headers
@@ -172,9 +172,9 @@ else
 fi
 
 echo open https://www.nvidia.com/en-us/geforce/drivers/
-if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-525.89.02.run" ]; then
-  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/525.89.02/NVIDIA-Linux-x86_64-525.89.02.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-525.89.02.run"
-fi
+# if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-525.89.02.run" ]; then
+#   wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/525.89.02/NVIDIA-Linux-x86_64-525.89.02.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-525.89.02.run"
+# fi
 
 if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-525.105.17.run" ]; then
   wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/525.105.17/NVIDIA-Linux-x86_64-525.105.17.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-525.105.17.run"
