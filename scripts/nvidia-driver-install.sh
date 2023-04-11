@@ -157,13 +157,13 @@ fi
 
 vulkaninfo | less
 
-if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-525.89.02.run" ]; then
-  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/525.89.02/NVIDIA-Linux-x86_64-525.89.02.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-525.89.02.run"
-fi
+# if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-525.89.02.run" ]; then
+#   wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/525.89.02/NVIDIA-Linux-x86_64-525.89.02.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-525.89.02.run"
+# fi
 
 echo sudo chvt 3
 echo tty with the shortcut - Ctl-Alt-F1-F7
-echo sudo sh ./NVIDIA-Linux-x86_64-525.89.02.run
+echo sudo sh ./NVIDIA-Linux-x86_64-525.105.17.run
 
 lsmod | grep nvidia
 
