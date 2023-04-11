@@ -40,7 +40,7 @@ decoder {
 
 audio_output {
   type "pipe"
-  name "pipewire"
+  name "pipewire output"
   command "audiounitary-sink"
   server "127.0.0.1"
 }
