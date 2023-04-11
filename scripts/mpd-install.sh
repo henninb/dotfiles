@@ -3,7 +3,7 @@
 cat > "$HOME/tmp/mpd.conf" <<EOF
 db_file "/var/lib/mpd/tag_cache"
 music_directory "/var/lib/mpd/music"
-playlist_directory "/var/lib/mpd/playlists" # user "mpd" bind_to_address "::1"
+playlist_directory "/var/lib/mpd/playlists"
 bind_to_address "127.0.0.1"
 # bind_to_address "any"
 port "6600"
@@ -31,19 +31,19 @@ decoder {
   enabled "no"
 }
 
-# aplay --list-device
-# audio_output {
-#   type "pulse"
-#   name "pulse audio"
-#   server "127.0.0.1"
-# }
-
+aplay --list-device
 audio_output {
-  type "pipe"
-  name "pipewire output"
-  command "audiounitary-sink"
+  type "pulse"
+  name "pulse output"
   server "127.0.0.1"
 }
+
+# audio_output {
+#   type "pipe"
+#   name "pipewire output"
+#   command "audiounitary-sink"
+#   server "127.0.0.1"
+# }
 EOF
 
 cat > "$HOME/tmp/musicpd.conf" <<EOF
@@ -183,7 +183,8 @@ playing=$(mpc | grep playing)
 nowstatus=$(mpc | sed -n '2p' | cut -d ' ' -f1)
 echo "$nowplaying $playing $nowstatus"
 
-
+#export MPD_HOST=localhost:6600
+# export MPD_HOST=127.0.0.1:6600
 
 echo mpc update
 echo mpc load all
