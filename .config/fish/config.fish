@@ -56,6 +56,7 @@ end
 
 ls -l /sys/module/hid_apple/parameters/fnmode
 cat /sys/module/hid_apple/parameters/fnmode
+cat /etc/modprobe.d/hid_apple.conf
 if [ (uname) = "Linux" ]
   if test -f /sys/module/hid_apple/parameters/fnmode
     if not cat /sys/module/hid_apple/parameters/fnmode | grep -q 2
