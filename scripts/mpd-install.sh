@@ -108,7 +108,9 @@ elif [ "$OS" = "OpenBSD" ]; then
 elif [ "$OS" = "Solus" ]; then
   "sudo eopkg install -y"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  echo "sudo zypper install -y"
+  sudo zypper install -y mpd
+  sudo zypper install -y mpclient
+  sudo zypper install -y ncmpcpp
 elif [ "$OS" = "Fedora Linux" ]; then
   echo "sudo dnf install -y"
 elif [ "$OS" = "Clear Linux OS" ]; then
