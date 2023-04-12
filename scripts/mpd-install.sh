@@ -190,11 +190,12 @@ echo "$nowplaying $playing $nowstatus"
 # export MPD_HOST=127.0.0.1:6600
 
 echo aplay --list-device
-echo mpc update
+mpc update
 echo mpc load all
 mpc load all
 echo ncmpcpp
 echo mpc play
+echo mpc pause
 
 exit 0
 
