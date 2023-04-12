@@ -123,6 +123,7 @@ fi
 # sudo ln -sfn /mnt/external/mp3 /var/lib/mpd/music
 ln -sfn /mnt/external/mp3 "$HOME/.config/mpd/music"
 touch "$HOME/.config/mpd/database"
+touch "$HOME/.config/mpd/state"
 
 # sudo useradd mpd -s /sbin/nologin
 
