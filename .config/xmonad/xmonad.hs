@@ -274,7 +274,7 @@ myStartupHook = do
     spawnOnce "conky -c $HOME/.config/conky/xmonad-system-overview"
     -- spawnOnce "mpDris2" -- required for mpd
     -- spawnOnce "volumeicon"
-    volumeiconPath <- liftIO $ findExecutable "volumeicon"
+    volumeiconPath <- liftIO $ findExecutable "volumeicon-start"
     -- forM_ volumeiconPath safeSpawnProg
     -- catchAny (runVolumeIcon volumeiconPath) (writeLog "startup_errors.log")
     case volumeiconPath of
