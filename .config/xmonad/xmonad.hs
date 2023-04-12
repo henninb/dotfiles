@@ -248,6 +248,7 @@ myStartupHook = do
     flameshotPath <- liftIO $ findExecutable "flameshot"
     spawnOnce "flameshot" --dbus required
     spawnOnce "dunst"
+    spawnOnce "mpd"
     spawnOnce "syncthing -no-browser -logflags=0"
     -- spawnOnce "picom"
     spawnOnce "picom --experimental-backends --backend glx --config /dev/null --xrender-sync-fence"
