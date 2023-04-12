@@ -1,9 +1,9 @@
 #!/bin/sh
 
-APP_NAME="streamdeck"
-MAX_ITERATIONS=10
+APP_NAME="volumeicon"
+MAX_ITERATIONS=20
 SLEEP_TIME=1
-LOG_FILE="$HOME/tmp/streamdeck.log"
+LOG_FILE="$HOME/tmp/voluemicon.log"
 
 # Check if APP_NAME is available in PATH
 if ! command -v "$APP_NAME" > /dev/null 2>&1; then
@@ -19,17 +19,15 @@ fi
 
 # Start APP_NAME and log output
 nohup "$APP_NAME" > "$LOG_FILE" 2>&1 &
-echo "Started $APP_NAME" >> "$LOG_FILE"
+echo "Started $APP_NAME at $(date)" >> "$LOG_FILE"
 
-# Wait for APP_NAME to start and minimize the window
 i=0
 while [ $i -lt $MAX_ITERATIONS ]; do
   if pgrep -x "$APP_NAME" > /dev/null 2>&1; then
     echo "$APP_NAME process running" >> "$LOG_FILE"
     win_id=$(xdotool search --class "$APP_NAME UI" | head -n 1)
     if [ -n "$win_id" ]; then
-      echo "Minimizing $APP_NAME window" >> "$LOG_FILE"
-      xdotool windowminimize "$win_id"
+      echo "found $APP_NAME window" >> "$LOG_FILE"
       exit 0
     fi
   fi
