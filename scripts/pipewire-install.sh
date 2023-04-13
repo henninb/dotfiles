@@ -10,6 +10,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse media-video/wireplumber
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y pipewire
+  sudo apt install -y pipewire-pulse
 elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y polkit
   sudo ln -sfn /etc/sv/polkitd /var/service/polkitd
