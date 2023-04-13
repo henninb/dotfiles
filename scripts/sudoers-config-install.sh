@@ -10,7 +10,10 @@ elif [ "$OS" = "Gentoo" ]; then
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo "sudo apt install -y"
 elif [ "$OS" = "Void" ]; then
-  echo "sudo xbps-install -y"
+  if ! sudo grep -q "^henninb ALL=(ALL:ALL) NOPASSWD: ALL$" /etc/sudoers; then
+    echo "henninb ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
+    echo "added henninb to /etc/sudoers"
+  fi
 elif [ "$OS" = "FreeBSD" ]; then
   echo "sudo pkg install -y"
 elif [ "$OS" = "OpenBSD" ]; then
