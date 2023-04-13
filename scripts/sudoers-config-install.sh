@@ -24,7 +24,10 @@ elif [ "$OS" = "OpenBSD" ]; then
 elif [ "$OS" = "Solus" ]; then
   "sudo eopkg install -y"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  echo "sudo zypper install -y"
+  if ! sudo grep -q "^henninb ALL=(ALL:ALL) NOPASSWD: ALL$" /etc/sudoers; then
+    echo "henninb ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
+    echo "added henninb to /etc/sudoers"
+  fi
 elif [ "$OS" = "Fedora Linux" ]; then
   echo "sudo dnf install -y"
 elif [ "$OS" = "Clear Linux OS" ]; then
