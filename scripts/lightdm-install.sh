@@ -94,15 +94,16 @@ elif [ "${OS}" = "Ubuntu" ] || [ "$OS" = "Linux Mint" ]; then
   sudo systemctl enable lightdm --now
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y lightdm
+  sudo zypper install -y lightdm-gtk-greeter
   sudo zypper install -y gnome-keyring-pam
   sudo cp -v "$HOME/config/lightdm.conf" /etc/lightdm/lightdm.conf
   sudo cp -v "$HOME/tmp/lightdm-gtk-greeter.conf" /etc/lightdm/lightdm-gtk-greeter.conf
   sudo systemctl set-default graphical
   sudo usermod -a -G video "$(id -un)"
   sudo systemctl disable sddm
-  #sudo systemctl enable lightdm.service --now
   sudo update-alternatives --config default-displaymanager
   update-alternatives --list default-displaymanager
+  sudo systemctl enable lightdm.service --now
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y lightdm
   sudo dnf install -y lightdm-gtk-greeter
