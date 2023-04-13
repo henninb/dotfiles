@@ -11,6 +11,7 @@ elif [ "$OS" = "Gentoo" ]; then
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y pipewire
   sudo apt install -y pipewire-pulse
+  sudo usermod -a -G audio $(whoami)
 elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y polkit
   sudo ln -sfn /etc/sv/polkitd /var/service/polkitd
