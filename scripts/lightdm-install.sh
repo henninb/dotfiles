@@ -48,6 +48,15 @@ sudo mv -v "$HOME/tmp/cinnamon.desktop" /usr/share/xsessions/
 sudo cp -v "$HOME/.config/lightdm/greeter.jpg" /usr/share/backgrounds/custom/
 sudo cp -v "$HOME/.local/img/xmonad.png" /usr/share/pixmaps/xmonad.png
 
+sudo cp "$HOME/.face" /var/lib/AccountsService/icons/$(whoami).png
+
+file="/var/lib/AccountsService/users/$(whoami)"
+new_icon="Icon=/var/lib/AccountsService/icons/$(whoami).png"
+
+if grep -q "^Icon=" "$file"; then
+  sed -i "s|^Icon=.*|$new_icon|" "$file"
+fi
+
 desktop-file-validate /usr/share/xsessions/xmonad.desktop
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
