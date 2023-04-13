@@ -38,7 +38,8 @@ else
 fi
 
 if command -v systemctl; then
-  systemctl --user enable pipewire.socket pipewire-pulse.socket
+  systemctl --user enable pipewire.socket 
+  systmeclt --user enable pipewire-pulse.socket
   systemctl --user disable pipewire-media-session.service
   systemctl --user --force enable wireplumber.service
 fi
