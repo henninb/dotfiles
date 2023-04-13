@@ -101,8 +101,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo systemctl set-default graphical
   sudo usermod -a -G video "$(id -un)"
   sudo systemctl disable sddm
-  sudo update-alternatives --config default-displaymanager
   update-alternatives --list default-displaymanager
+  sudo update-alternatives --config default-displaymanager
   sudo systemctl enable lightdm.service --now
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y lightdm
