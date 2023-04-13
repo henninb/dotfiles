@@ -63,3 +63,4 @@
   defaultBranch = main
 [pager]
   log = less
+	diff = less -R

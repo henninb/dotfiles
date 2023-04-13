@@ -5,8 +5,9 @@
 ## Operating Systems
 - Archlinux
 - Gentoo
+- OpenSUSE Tumbleweed
+- Fedora
 - Void Linux
-- Solus Linux
 - FreeBSD
 - Debian
 - OpenBSD
@@ -15,6 +16,8 @@
 - MacOS
 - HaikuOS
 - Mint Linux
+- Solus Linux
+- Ubuntu
 
 ## Operating Systems - Yet to Explore
 - Bedrock Linux
