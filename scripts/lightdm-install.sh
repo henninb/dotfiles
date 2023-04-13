@@ -54,7 +54,7 @@ file="/var/lib/AccountsService/users/$(whoami)"
 new_icon="Icon=/var/lib/AccountsService/icons/$(whoami).png"
 
 if grep -q "^Icon=" "$file"; then
-  sed -i "s|^Icon=.*|$new_icon|" "$file"
+  sudo sed -i "s|^Icon=.*|$new_icon|" "$file"
 fi
 
 desktop-file-validate /usr/share/xsessions/xmonad.desktop
