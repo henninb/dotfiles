@@ -8,7 +8,10 @@ elif [ "$OS" = "Gentoo" ]; then
     echo "added henninb to /etc/sudoers"
   fi
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  echo "sudo apt install -y"
+  if ! sudo grep -q "^henninb ALL=(ALL:ALL) NOPASSWD: ALL$" /etc/sudoers; then
+    echo "henninb ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
+    echo "added henninb to /etc/sudoers"
+  fi
 elif [ "$OS" = "Void" ]; then
   if ! sudo grep -q "^henninb ALL=(ALL:ALL) NOPASSWD: ALL$" /etc/sudoers; then
     echo "henninb ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
