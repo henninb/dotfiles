@@ -112,7 +112,9 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper install -y mpclient
   sudo zypper install -y ncmpcpp
 elif [ "$OS" = "Fedora Linux" ]; then
-  echo "sudo dnf install -y"
+  sudo dnf install -y mpd
+  sudo dnf install -y mpc
+  sudo dnf install -y ncmpcpp
 elif [ "$OS" = "Clear Linux OS" ]; then
   "sudo swupd bundle-add"
 elif [ "$OS" = "Darwin" ]; then
@@ -122,12 +124,9 @@ else
   exit 1
 fi
 
-# sudo ln -sfn /mnt/external/mp3 /var/lib/mpd/music
 ln -sfn /mnt/external/mp3 "$HOME/.config/mpd/music"
 touch "$HOME/.config/mpd/database"
 touch "$HOME/.config/mpd/state"
-
-# sudo useradd mpd -s /sbin/nologin
 
 # if [ "${OS}" = "FreeBSD" ]; then
 #   sudo mv -v "$HOME/tmp/musicpd.conf" /usr/local/etc/musicpd.conf
@@ -138,40 +137,10 @@ touch "$HOME/.config/mpd/state"
 # fi
 
 cd /mnt/external/mp3 || exit
-find . -type f -name "*.mp3" > "$HOME/tmp/all.m3u"
+find . -type f -name "*.mp3" | sort > "$HOME/tmp/all.m3u"
 # sudo cp -v "$HOME/tmp/all.m3u" /var/lib/mpd/playlists/
 cp -v "$HOME/tmp/all.m3u" "$HOME/.config/mpd/playlists/all.m3u"
 cd - || exit
-
-# sudo mkdir -p /var/log/mpd
-# sudo mkdir -p /var/lib/mpd/playlists
-# #sudo mkdir -p /var/lib/mpd/music
-# sudo chmod g+w /var/lib/mpd/playlists
-# sudo chmod g+wx /var/lib/mpd/music/
-# sudo chown -R mpd:audio /var/log/mpd /var/lib/mpd
-# sudo chown -R mpd:mpd /var/log/mpd /var/lib/mpd
-#
-# if [ ! "${OS}" = "FreeBSD" ]; then
-#   sudo usermod -a -G mpd "$(id -un)"
-#   sudo usermod -a -G audio "$(id -un)"
-#   sudo usermod -a -G pulse "$(id -un)"
-#   sudo usermod -a -G pulse-access "$(id -un)"
-# fi
-
-#[ -f "*.mp3" ] && sudo mv -v ~/media/*.mp3 /var/lib/mpd/music/
-
-# if [ "${OS}" = "FreeBSD" ]; then
-#   sudo service musicpd start
-# else
-#   if [ -x "$(command -v systemctl)" ]; then
-#     sudo systemctl disable mpd.socket
-#     sudo systemctl stop mpd.socket
-#     sudo systemctl enable mpd.service
-#     sudo systemctl start mpd.service
-#   else
-#     echo "not running systemd"
-#   fi
-# fi
 
 # cd ~/projects || exit
 # git clone git@github.com:joshkunz/ashuffle.git
@@ -196,6 +165,7 @@ mpc load all
 echo ncmpcpp
 echo mpc play
 echo mpc pause
+echo "mpc listall | shuf -n 1 | mpc add && mpc play"
 
 exit 0
 
