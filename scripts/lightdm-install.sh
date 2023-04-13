@@ -53,7 +53,7 @@ sudo cp "$HOME/.face" /var/lib/AccountsService/icons/$(whoami).png
 file="/var/lib/AccountsService/users/$(whoami)"
 new_icon="Icon=/var/lib/AccountsService/icons/$(whoami).png"
 
-if grep -q "^Icon=" "$file"; then
+if sudo grep -q "^Icon=" "$file"; then
   sudo sed -i "s|^Icon=.*|$new_icon|" "$file"
 fi
 
