@@ -68,6 +68,14 @@ menuentry "System Shutdown" {
 }
 EOF
 
+if grep -q "console=tty1" /etc/default/grub; then
+    echo "The console=tty1 parameter is already set in the bootloader configuration file."
+else
+    echo "The console=tty1 parameter is not set in the bootloader configuration file. Adding it now..."
+    sudo sed -i 's/^GRUB_CMDLINE_LINUX="\(.*\)"$/GRUB_CMDLINE_LINUX="\1 console=tty1"/' /etc/default/grub
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+fi
+
 echo cp sudo cp "$HOME/tmp/40_custom" /etc/grub.d/40_custom
 
 if ip addr show | grep 192.168.10.135; then
