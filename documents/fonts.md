@@ -6,7 +6,7 @@ xrdb -query | grep hinting
 xrdb -merge ~/.Xresources
 
 ## dpi
-dpyinfo | grep -B 2 resolution
+xdpyinfo | grep -B 2 resolution
 
 screen #0:
   dimensions:    3840x2160 pixels (602x341 millimeters)
