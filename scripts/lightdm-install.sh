@@ -101,6 +101,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo systemctl set-default graphical
   sudo usermod -a -G video "$(id -un)"
   sudo systemctl disable sddm
+  sudo sed -i 's/^DISPLAYMANAGER_AUTOLOGIN=.*/DISPLAYMANAGER_AUTOLOGIN=""/' /etc/sysconfig/displaymanager
   update-alternatives --list default-displaymanager
   sudo update-alternatives --config default-displaymanager
 elif [ "$OS" = "Fedora Linux" ]; then
