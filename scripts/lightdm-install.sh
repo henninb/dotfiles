@@ -76,9 +76,11 @@ elif [ "${OS}" = "Void" ]; then
   sudo xbps-install -y lightdm
   sudo xbps-install -y lightdm-gtk-greeter
   sudo cp -v "$HOME/config/lightdm-voidlinux.conf" /etc/lightdm/lightdm.conf
-  sudo sed -i '2iauth sufficient pam_succeed_if.so user ingroup nopasswdlogin' /etc/pam.d/lightdm
-  sudo groupadd -r nopasswdlogin
-  sudo gpasswd -a "$(whoami)" nopasswdlogin
+  # sudo sed -i '2iauth sufficient pam_succeed_if.so user ingroup nopasswdlogin' /etc/pam.d/lightdm
+  # sudo groupadd -r nopasswdlogin
+  # sudo gpasswd -a "$(whoami)" nopasswdlogin
+  sudo groupadd -r autologin
+  sudo gpasswd -a "$(id -un)" autologin
   sudo rm /var/service/sddm
   sudo ln -sfn /etc/sv/lightdm /var/service/lightdm
   sudo sv status lightdm
