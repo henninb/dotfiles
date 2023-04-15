@@ -341,6 +341,7 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y btop
   sudo pkg install -y copyq
   sudo pkg install -y dmenu
+  sudo pkg install -y doas
   sudo pkg install -y dunst
   sudo pkg install -y dzen2
   sudo pkg install -y feh
@@ -363,8 +364,10 @@ elif [ "$OS" = "FreeBSD" ]; then
   #sudo pkg install -y pandoc
   sudo pkg install -y pcmanfm
   sudo pkg install -y perl5
+  sudo pkg install -y polybar
   sudo pkg install -y pkgconf
   #sudo pkg install -y qalculate
+  sudo pkg install -y rofi
   sudo pkg install -y redshift
   #sudo pkg install -y rdfind
   sudo pkg install -y screen
@@ -383,6 +386,8 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y xdotool
   sudo pkg install -y xorg
   sudo pkg install -y xscreensaver
+  sudo pkg install -y vim
+  sudo pkg install -y wget
   sudo pkg install -y yad
   sudo pkg install -y zenity
   # sudo pkg install -y libXft
