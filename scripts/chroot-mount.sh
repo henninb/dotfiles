@@ -78,10 +78,18 @@ elif [ "$os" = "freebsd" ]; then
   efi=
   sudo mkdir -p /mnt/freebsd
   sudo mount -t ufs -o ro,ufstype=ufs2 /dev/nvme0n1p3 /mnt/freebsd
-  sudo mount -o bind /dev /mnt/freebsd/dev
-  sudo mount -t procfs proc /mnt/freebsd/proc
-  sudo mount -t fdescfs fdesc /mnt/freebsd/dev/fd
-  sudo mount -t tmpfs tmpfs /mnt/freebsd/tmp
+  # sudo mkdir -p /mnt/chroot-freebsd
+  # sudo cp -R /mnt/freebsd/* /mnt/chroot-freebsd
+  # sudo mknod -m 666 /mnt/chroot-freebsd/dev/null c 1 3
+  # sudo mknod -m 666 /mnt/chroot-freebsd/dev/random c 1 8
+  # sudo mount -t proc proc /mnt/chroot-freebsd/proc
+  # sudo mount -t sysfs sys /mnt/chroot-freebsd/sys
+  # sudo mount -o bind /dev /mnt/chroot-freebsd/dev
+  # sudo mount -t devpts pts /mnt/chroot-freebsd/dev/pts
+  # sudo mount -o bind /dev /mnt/freebsd/dev
+  # sudo mount -t procfs proc /mnt/freebsd/proc
+  # sudo mount -t fdescfs fdesc /mnt/freebsd/dev/fd
+  # sudo mount -t tmpfs tmpfs /mnt/freebsd/tmp
 elif [ "$os" = "mint" ]; then
   root=
   efi=
