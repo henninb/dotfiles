@@ -1,4 +1,5 @@
 FROM openresty/openresty:buster
+# FROM openresty/openresty
 
 ENV VER_LUA_NETTLE=1.5
 
