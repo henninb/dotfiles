@@ -78,7 +78,10 @@ elif [ "$os" = "freebsd" ]; then
   efi=
   sudo mkdir -p /mnt/freebsd
   sudo mount -t ufs -o ro,ufstype=ufs2 /dev/nvme0n1p3 /mnt/freebsd
-  # sudo mount -t ufs -o ro,ufstype=ufs2 /dev/nvme0n1p4 /mnt/freebsd
+  sudo mount -o bind /dev /mnt/freebsd/dev
+  sudo mount -t procfs proc /mnt/freebsd/proc
+  sudo mount -t fdescfs fdesc /mnt/freebsd/dev/fd
+  sudo mount -t tmpfs tmpfs /mnt/freebsd/tmp
 elif [ "$os" = "mint" ]; then
   root=
   efi=
