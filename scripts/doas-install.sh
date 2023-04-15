@@ -14,7 +14,9 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
 elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y opendoas
 elif [ "$OS" = "FreeBSD" ]; then
-  echo "freebsd"
+  sudo pkg install -y doas
+  sudo mv -v "$HOME/tmp/doas.conf" /usr/local/etc/doas.conf
+  sudo chown root:wheel /usr/local/etc/doas.conf
 elif [ "$OS" = "Solus" ]; then
   echo "solus"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
