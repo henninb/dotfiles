@@ -73,6 +73,12 @@ elif [ "$os" = "fedora" ]; then
   fi
   echo 'export PS1="(fedora-chroot) $PS1"'
   sudo chroot /mnt/fedora /bin/su - "$(id -un)"
+elif [ "$os" = "freebsd" ]; then
+  root=
+  efi=
+  sudo mkdir -p /mnt/freebsd
+  sudo mount -t ufs -o ro,ufstype=ufs2 /dev/nvme0n1p3 /mnt/freebsd
+  # sudo mount -t ufs -o ro,ufstype=ufs2 /dev/nvme0n1p4 /mnt/freebsd
 elif [ "$os" = "mint" ]; then
   root=
   efi=
