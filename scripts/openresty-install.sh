@@ -11,3 +11,7 @@ cd openresty-1.21.4.1
             --with-pcre-jit \
             --with-openssl
 make
+
+sudo pacman -S luarocks
+sudo systemctl enable openresty.service
+
