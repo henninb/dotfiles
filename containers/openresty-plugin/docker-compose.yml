@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  nginx-inject-lua:
+    build: .
+    container_name: nginx-inject-lua
+    extra_hosts:
+      - "hornsup:192.168.10.10"
+    ports:
+      - "443:443"
+    expose:
+      - "443"
