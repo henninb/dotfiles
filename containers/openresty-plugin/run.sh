@@ -17,6 +17,14 @@ if [ "$platform" = "podman" ]; then
   podman-compose build
   podman-compose up
 elif [ "$platform" = "docker" ]; then
+  url="https://github.com/PerimeterX/perimeterx-nginx-plugin/archive/refs/tags/v7.2.0.tar.gz"
+  filename="v7.2.0.tar.gz"
+  if [ -e "$filename" ]; then
+      echo "File already exists. Skipping download."
+  else
+    wget "$url"
+    tar xvf v7.2.0.tar.gz
+  fi
   docker stop openresty-plugin
   docker rm -f openresty-plugin
   echo "running server on port 443"

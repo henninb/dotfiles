@@ -2,7 +2,18 @@
 <html>
   <head>
     <title>OpenResty Plugin</title>
-    <script src="/scripts/execute.js"></script>
+    <script type="text/javascript">
+    (function(){
+        // Custom parameters
+        // window._pxParam1 = "<param1>";
+        var p = document.getElementsByTagName('script')[0],
+            s = document.createElement('script');
+        s.async = 1;
+        s.src = '/TG2vkiqj/init.js';
+        p.parentNode.insertBefore(s,p);
+    }());
+    </script>
+    <!-- <script src="/scripts/execute.js"></script> -->
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -11,19 +22,19 @@
         margin: 0;
         padding: 0;
       }
-      
+
       .container {
         max-width: 800px;
         margin: 0 auto;
         padding: 20px;
       }
-      
+
       h1 {
         text-align: center;
         color: #1E90FF;
         margin-top: 30px;
       }
-      
+
       p {
         font-size: 18px;
         line-height: 1.5;
@@ -37,5 +48,13 @@
       <h1>OpenResty Plugin</h1>
       <p>OpenResty is a powerful web platform that extends NGINX with Lua programming language. It allows developers to build scalable web applications and APIs with ease. With OpenResty, you can easily add custom functionality to NGINX using Lua scripts and modules, making it an ideal choice for high-performance web applications that require flexibility and scalability.</p>
     </div>
+
+    <h1>Sports</h1>
+    <ul>
+      <li><a href="https://localhost/baseball">Baseball</a></li>
+      <li><a href="https://localhost/basketball">Basketball</a></li>
+      <li><a href="https://localhost/hockey">Hockey</a></li>
+      <li><a href="https://localhost/football">Football</a></li>
+    </ul>
   </body>
 </html>
