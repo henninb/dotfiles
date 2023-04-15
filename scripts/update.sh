@@ -191,6 +191,13 @@ else
   nix-env -u '.*'
 fi
 
+sudo luarocks install lustache
+sudo luarocks install luasocket
+sudo luarocks install lua-resty-http
+sudo luarocks install luacheck
+# curl -sSL https://github.com/bungle/lua-resty-nettle/archive/v1.5.tar.gz
+sudo luarocks install perimeterx-nginx-plugin
+
 cargo install starship
 cargo install alacritty
 cargo install du-dust
