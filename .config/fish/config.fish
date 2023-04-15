@@ -51,7 +51,7 @@ if [ -x (command -v nvim) ];
 end
 
 if [ \( "$OS" = "FreeBSD" \) -o \(  "$OS" = "Alpine Linux" \) -o \(  "$OS" = "OpenBSD" \) -o \(  "$OS" = "Darwin" \) ];
-  source $HOME/.alias-bsd
+  source $HOME/.alias-bsd-fish
 end
 
 if [ (uname) = "Linux" ]
