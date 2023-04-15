@@ -1,2 +1,26 @@
+set -x CLICOLOR 1
+set -x LS_COLORS 'di=1:fi=96:*.m=31:*.py=32:*.txt=36:*.out=35'
+
+# if command -v gls > /dev/null
+#     alias ls 'gls -G'
+#     alias l. 'gls -d .*'
+#     alias ll 'gls -l'
+#     alias ls 'gls --color=always'
+#     alias l. 'gls --color=always -d .*'
+#     alias ll 'gls --color=always -l'
+# end
+
+functions -e pbcopy
+functions -e pbpaste
+
+if not command -v gls > /dev/null; or [ "$OS" != "Darwin" ]
+    functions -e ls
+    functions -e ll
+    functions -e l.
+else
+    alias ls 'gls --color=always'
+    alias l. 'gls --color=always -d .*'
+    alias ll 'gls --color=always -l'
+end
 
 # vim: set ft=sh:
