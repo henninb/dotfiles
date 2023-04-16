@@ -1,5 +1,48 @@
 #!/bin/sh
 
+if [ -x "$(command -v pacman)" ]; then
+  sudo pacman --noconfirm --needed -S zsh
+  sudo pacman --noconfirm --needed -S starship
+elif [ -x "$(command -v emerge)" ]; then
+  sudo emerge --update --newuse zsh
+  sudo emerge --update --newuse starship
+elif [ -x "$(command -v zypper)" ]; then
+  sudo zypper install -y zsh
+  sudo zypper install -y starship
+elif [ -x "$(command -v dnf)" ]; then
+  sudo dnf install -y zsh
+  if [ ! -x "$(command -v starship)" ]; then
+    curl -O https://starship.rs/install.sh
+    chmod +x install.sh
+    ./install.sh -b ~/.local/bin
+    rm install.sh
+  fi
+elif [ -x "$(command -v apt)" ]; then
+  sudo apt install -y zsh
+  if [ ! -x "$(command -v starship)" ]; then
+    curl -O https://starship.rs/install.sh
+    chmod +x install.sh
+    ./install.sh -b ~/.local/bin
+    rm install.sh
+  fi
+elif [ -x "$(command -v xbps-install)" ]; then
+  sudo xbps-install -y zsh
+  sudo xbps-install -y curl
+  sudo xbps-install -y starship
+  sudo xbps-install -y unzip
+  sudo xbps-install -y fontconfig
+elif [ -x "$(command -v eopkg)" ]; then
+  sudo eopkg install -y zsh
+elif [ -x "$(command -v pkg)" ]; then
+  sudo pkg install -y zsh
+  sudo pkg install -y starship
+elif [ -x "$(command -v brew)" ]; then
+  brew install zsh
+else
+  echo "$OS is not yet implemented."
+  exit 1
+fi
+
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo pacman --noconfirm --needed -S fish
 elif [ "$OS" = "Gentoo" ]; then
