@@ -189,7 +189,8 @@ set -x GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 
 if [ -z (find ~/.fonts -maxdepth 1 -type f \( -name Monofur_for_Powerline.ttf \)) ]
     mkdir -p ~/.fonts
-    cd ~/.fonts || return
+    # cd ~/.fonts || return
+    cd ~/.fonts
     unzip $HOME/.local/fonts/monofur-fonts.zip
     fc-cache -vf ~/.fonts/
     cd -
