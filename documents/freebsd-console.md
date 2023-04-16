@@ -4,3 +4,4 @@
 hw.vga.textmode=1
 # Set the resolution to 1280x1024 with 16-bit color
 gfx_mode="1280x1024x16"
+efi_max_resolution=“1920x1080”
