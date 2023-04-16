@@ -8,12 +8,12 @@ local_theme_path="$HOME/.themes"
 
 mkdir -p "$HOME/.local/share/themes"
 if [ ! -f "$HOME/tmp/dracula-gtk-theme.zip" ]; then
-  wget https://github.com/dracula/gtk/archive/master.zip -O "$HOME/tmp/dracula-gtk-theme.zip"
+  wget "https://github.com/dracula/gtk/archive/master.zip" -O "$HOME/tmp/dracula-gtk-theme.zip"
   echo curl
 fi
 
 if [ ! -f "$HOME/tmp/ant-dracula-gtk-theme.zip" ]; then
-  wget https://github.com/EliverLara/Ant-Dracula/archive/master.zip -O "$HOME/tmp/ant-dracula-gtk-theme.zip"
+  wget "https://github.com/EliverLara/Ant-Dracula/archive/master.zip" -O "$HOME/tmp/ant-dracula-gtk-theme.zip"
   echo curl
 fi
 

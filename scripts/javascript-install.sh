@@ -34,11 +34,11 @@ elif [ "$OS" = "Solus" ]; then
 elif [ "$OS" = "CentOS Linux" ]; then
   echo centos
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install -y gcc
-  sudo pkg install -y gmake
+  # sudo pkg install -y gcc
+  # sudo pkg install -y gmake
   sudo pkg install -y npm
-  sudo pkg install -y node16-16.16.0
-  npm install -g yarn
+  # sudo pkg install -y node16-16.16.0
+  # npm install -g yarn
 else
   echo "$OS is not yet implemented."
   exit 1

@@ -48,7 +48,7 @@ abbr -a h 'history'
 abbr -a j 'jobs -l'
 abbr -a ports 'netstat -tulanp'
 
-abbr -a wget 'wget --hsts-file="$HOME/.config"/wget-hsts'
+# abbr -a wget 'wget --hsts-file=$HOME/.config/wget-hsts'
 abbr -a mitmproxy 'mitmproxy --set confdir=$HOME/.config/mitmproxy'
 abbr -a mitmweb 'mitmweb --set confdir=${HOME}/.config/mitmproxy'
 

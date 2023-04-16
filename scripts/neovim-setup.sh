@@ -1,10 +1,10 @@
 #!/bin/sh
 
 npm install -g neovim
+npm install -g tree-sitter-cli
 python3 -m pip install --user --upgrade pynvim
 gem install neovim
 ghcup install hls
-npm install -g tree-sitter-cli
 
 echo :LspInstall ccls
 
@@ -32,7 +32,9 @@ elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y libxml2-devel
   sudo xbps-install -y clang-tools-extra
 elif [ "$OS" = "FreeBSD" ]; then
-  echo "freebsd"
+  sudo pkg install -y cmake
+  sudo pkg install -y llvm
+  sudo pkg install -y libxml2
 elif [ "$OS" = "Solus" ]; then
   echo "solus"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then

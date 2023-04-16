@@ -21,7 +21,11 @@ elif command -v librewolf-bin; then
 elif command -v librewolf-flatpak; then
   exec librewolf-flatpak "$firefox_options"
 elif command -v firefox; then
-  exec firefox "$firefox_options"
+  if [ -z ${firefox_options+x} ]; then
+    exec firefox "$firefox_options"
+  else
+    exec firefox https://google.com
+  fi
 else
   echo "no browser found"
   exec notify-send "no browser installed"
