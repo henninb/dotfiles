@@ -91,8 +91,8 @@ elif [ "$os" = "freebsd" ]; then
   # sudo mount -t fdescfs fdesc /mnt/freebsd/dev/fd
   # sudo mount -t tmpfs tmpfs /mnt/freebsd/tmp
 elif [ "$os" = "mint" ]; then
-  root=
-  efi=
+  root=440b99ec-d5ee-47e3-aab2-8235faac7097
+  efi=3504-1319
   if [ "$(grep -c "$root /mnt/mint" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/mint
     sudo mount "UUID=$root" /mnt/mint
