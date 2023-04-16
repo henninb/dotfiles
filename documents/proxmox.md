@@ -41,3 +41,8 @@ pveam list local
 ```
 pveam download local-500 debian-10-turnkey-core_16.1-1_amd64.tar.gz
 ```
+
+## backup (close) a guest
+```
+qm clone 101 200 --name "pfsense-backup" --targetstorage local-500-backup
+```
