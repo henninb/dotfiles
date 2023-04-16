@@ -83,25 +83,21 @@ if [ (uname) = "Linux" ]
   end
 end
 
-if [ (uname) = "Linux" ]
-  if [ $OS = "Gentoo" ]
-    if command -v java-config >/dev/null 2>&1
-      set -gx JAVA_HOME (java-config -o ^/dev/null)
-    else
-      echo "install java-config on gentoo"
-    end
-  else if command -v javac >/dev/null 2>&1
-    set -gx JAVA_HOME (dirname (dirname (readlink -f (readlink -f (which javac))))^/dev/null)
+if [ $OS = "Gentoo" ]
+  if command -v java-config >/dev/null 2>&1
+    set -gx JAVA_HOME (java-config -o ^/dev/null)
   else
-    echo "JAVA_HOME is not set up."
+    echo "install java-config on gentoo"
   end
+else if [ $OS = "FreeBSD" ]
+  set -gx JAVA_HOME /usr/local/openjdk17
+else if command -v javac >/dev/null 2>&1
+  set -gx JAVA_HOME (dirname (dirname (readlink -f (readlink -f (which javac))))^/dev/null)
 else
-  echo "not Linux"
+  echo "JAVA_HOME is not set up for $OS"
+end
 # else if test (uname) = "Darwin"
 #   set -gx JAVA_HOME (/usr/libexec/java_home)
-# else if test (uname) = "FreeBSD"
-#   set -gx JAVA_HOME /usr/local/openjdk17
-end
 
 # set -gx PATH $JAVA_HOME/bin $PATH
 
@@ -135,7 +131,7 @@ set -x PATH $PATH:/home/henninb/.local/share/JetBrains/Toolbox/scripts
 set -gx CDPATH ~/projects/github.com
 
 if test -d /usr/local/go
-    set -gx GOROOT /usr/local/go
+  set -gx GOROOT /usr/local/go
 end
 
 set -gx GOPATH $HOME/.local
