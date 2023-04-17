@@ -16,15 +16,26 @@ conky.config = {
 -- ^fg(\#663399)^i($HOME/.local/icons/date.xbm)^fg() ^fg(\#ebdbb2)${time %Y-%m-%d} ^fg() ^fg(\#ebdbb2)${time %H:%M:%S} ^fg() | \
 -- ^fg(\#663399)^ca(1,~/.local/bin/shutdown-popup)^i($HOME/.local/icons/ac.xbm)^ca() ^fg()
 -- ]]
+-- ^fn(Droid Sans Mono-11) 
+
+-- conky.text = [[
+-- ^fn(monofur for Powerline-16) \
+-- ^fg(\#663399)^i($HOME/.local/icons/cpu.xbm)^fg() ^fg(\#ebdbb2)${cpu cpu0}% ^fg() | \
+-- ^fg(\#663399)^i($HOME/.local/icons/mem.xbm)^fg() ^fg(\#ebdbb2)${memperc}% ^fg() | \
+-- ^fg(\#663399)^i($HOME/.local/icons/diskette.xbm)^fg() ^fg(\#ebdbb2)${fs_used_perc /}% ^fg() | \
+-- ^fg(\#663399)^i($HOME/.local/icons/net_wired.xbm)^fg() ^fg(\#ebdbb2)${downspeedf enp3s0}K ^fg(\#ebdbb2)${upspeedf enp3s0}K ^fg() | \
+-- ^fg(\#663399)^i($HOME/.local/icons/date.xbm)^fg() ^fg(\#ebdbb2)${time %Y-%m-%d} ^fg() ^fg(\#ebdbb2)${time %H:%M:%S} ^fg() | \
+-- ^fg(\#663399)^ca(1,~/.local/bin/shutdown-popup)^i($HOME/.local/icons/ac.xbm)^ca() ^fg()^fn()
+-- ]]
 
 conky.text = [[
 ^fn(monofur for Powerline-16) \
-^fg(\#663399)^i($HOME/.local/icons/cpu.xbm)^fg() ^fg(\#ebdbb2)${cpu cpu0}% ^fg() | \
-^fg(\#663399)^i($HOME/.local/icons/mem.xbm)^fg() ^fg(\#ebdbb2)${memperc}% ^fg() | \
-^fg(\#663399)^i($HOME/.local/icons/diskette.xbm)^fg() ^fg(\#ebdbb2)${fs_used_perc /}% ^fg() | \
-^fg(\#663399)^i($HOME/.local/icons/net_wired.xbm)^fg() ^fg(\#ebdbb2)${downspeedf enp3s0}K ^fg(\#ebdbb2)${upspeedf enp3s0}K ^fg() | \
-^fg(\#663399)^i($HOME/.local/icons/date.xbm)^fg() ^fg(\#ebdbb2)${time %Y-%m-%d} ^fg() ^fg(\#ebdbb2)${time %H:%M:%S} ^fg() | \
-^fg(\#663399)^ca(1,~/.local/bin/shutdown-popup)^i($HOME/.local/icons/ac.xbm)^ca() ^fg()^fn()
+^fg(\#bd93f9)^i($HOME/.local/icons/cpu.xbm)^fg() ^fg(\#f8f8f2)${cpu cpu0}% ^fg() | \
+^fg(\#bd93f9)^i($HOME/.local/icons/mem.xbm)^fg() ^fg(\#f8f8f2)${memperc}% ^fg() | \
+^fg(\#bd93f9)^i($HOME/.local/icons/diskette.xbm)^fg() ^fg(\#f8f8f2)${fs_used_perc /}% ^fg() | \
+^fg(\#bd93f9)^i($HOME/.local/icons/net_wired.xbm)^fg() ^fg(\#f8f8f2)${downspeedf enp3s0}K ^fg(\#f8f8f2)${upspeedf enp3s0}K ^fg() | \
+^fg(\#bd93f9)^i($HOME/.local/icons/date.xbm)^fg() ^fg(\#f8f8f2)${time %Y-%m-%d} ^fg() ^fg(\#f8f8f2)${time %H:%M:%S} ^fg() | \
+^fg(\#bd93f9)^ca(1,~/.local/bin/shutdown-popup)^i($HOME/.local/icons/ac.xbm)^ca() ^fg()^fn()
 ]]
 
 -- vim: set ft=lua:

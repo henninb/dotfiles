@@ -6,6 +6,31 @@ binding=['<Shift><Super>p']
 command='rofi -show run'
 name='rofi-run'
 
+[custom-keybindings/custom1]
+binding='<Super><Shift>o>i'
+command='intellij'
+name='IntelliJ'
+
+[custom-keybindings/custom2]
+binding='<Super><Shift>o>d'
+command='dbeaver-flatpak'
+name='DBeaver'
+
+[custom-keybindings/custom3]
+binding='<Super><Shift>o>g'
+command='steam'
+name='Steam'
+
+[custom-keybindings/custom4]
+binding='<Super><Shift>o>e'
+command='vscodium-flatpak'
+name='VSCodium'
+
+[custom-keybindings/custom5]
+binding='<Super><Shift>o>h'
+command='handbrake'
+name='HandBrake'
+
 [media-keys]
 terminal=['<Super>Return']
 www=['<Super>i']
@@ -16,3 +41,4 @@ move-to-monitor-left=@as []
 move-to-monitor-right=@as []
 switch-to-workspace-left=['<Shift><Super>Left']
 switch-to-workspace-right=['<Shift><Super>Right']
+

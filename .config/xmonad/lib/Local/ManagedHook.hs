@@ -35,6 +35,7 @@ myManageHook = composeAll
     , className =? "keepassxc"                     --> doFloat -- mint linux
     , className =? "Sotify"                        --> doFloat
     , className =? "vlc"                           --> doFloat
+    , className =? "streamdeck UI"                 --> doFloat
     , className =? "jetbrains-idea"                --> doFloat
     , className =? "jetbrains-idea-ce"             --> doFloat
     , className =? "Slack"                         --> viewShift ( myWorkspaces !! 7 )
