@@ -119,6 +119,15 @@ elif [ "$OS" = "Fedora Linux" ]; then
   # sudo semodule -i lightdm.pp
   # echo 'SELinuxContext=system_u:system_r:xdm_t:s0-s0:c0.c1023' | sudo tee -a /usr/lib/systemd/system/lightdm.service
   sudo systemctl enable lightdm --now
+elif [ "$OS" = "FreeBSD" ]; then
+  sudo pkg install -y lightdm
+  sudo pkg install -y lightdm-gtk-greeter
+  sudo pkg install -y sysrc
+  sudo pkg install xephyr
+  sudo sysrc lightdm_enable="YES"
+  sudo cp -v "$HOME/config/lightdm.conf" /usr/local/etc/lightdm/lightdm.conf
+  sudo cp -v "$HOME/tmp/lightdm-gtk-greeter.conf" /usr/local/etc/lightdm/lightdm-gtk-greeter.conf
+  sudo service lightdm enable
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse lightdm
   sudo emerge --update --newuse xsetroot
