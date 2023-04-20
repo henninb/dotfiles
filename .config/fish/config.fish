@@ -239,7 +239,8 @@ set -g fish_color_command green
 # set -g fish_color_normal yellow
 #echo $fish_color_argument
 set -g fish_color_param blue
-set -g fish_color_invalid_command red
+# set -g fish_color_invalid_command red
+set -g fish_color_end white
 # set -g fish_color_param #0074D9
 
 starship init fish | source
