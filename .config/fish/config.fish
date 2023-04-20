@@ -242,6 +242,7 @@ set -g fish_color_param blue
 # set -g fish_color_invalid_command red
 set -g fish_color_end white
 # set -g fish_color_param #0074D9
+set -g fish_color_invalid white
 
 starship init fish | source
 
