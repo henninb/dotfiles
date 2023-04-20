@@ -1,4 +1,4 @@
-# Dracula theme configuration for Starship
+# Use custom format
 format = """
 $hostname\
 $directory\
@@ -14,32 +14,37 @@ add_newline = false
 
 [character]
 success_symbol = "[ ➜](bold green)" # normal prompt
-error_symbol = "[ ✖](bold red)" # used if previous command failed
+error_symbol = "[ ✗](bold red)" # used if previous command failed
 vicmd_symbol = "[ ⬅️](bold yellow)"
-# ⬅️
-
-
-# insert_symbol = "✎ "
-# normal_symbol = "[ ➜](bold green)"
 
 [git_branch]
-# format = "[$symbol][$branch](bold purple)"
 format = " [$symbol](#ff79c6)[$branch]($style)"
-style = "bold purple"
+# style = "italic green"
+style = "bold #ff79c6"
 
 [git_status]
-format = "[$all_status$ahead_behind](bold purple)"
-style = "bold purple"
+format = "[$all_status$ahead_behind]($style)"
+style = "bold #ff5555"
+# ahead = "⇡ $count "
+# behind = "⇣ $count "
+# deleted = "🗑 $count "
+# diverged = " $count "
+# stashed = "📦 $count "
+# modified = "פֿ $count "
+# staged = '[ $count ](green)'
+# renamed = " $count "
+# untracked = "🤷 $count "
+# style = "bold red"
 
 [directory]
 truncate_to_repo = false
 truncation_length = 0 # parent directories to show; default is 3
-style = "bold cyan"
+style = "bold #50fa7b"
 
 [hostname]
 ssh_only = false
 format = "[$hostname](bold blue) "
-style = "bold blue"
+style = "bold #bd93f9"
 
 [cmd_duration]
-style = "bold yellow"
+style = "bold #f1fa8c"
