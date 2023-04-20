@@ -233,7 +233,8 @@ bind -M insert \ck kill-line
 # end
 
 set -g fish_color_command green
-set -g fish_color_argument purple
+# set -g fish_color_argument purple
+set -g fish_color_argument light_blue
 # set -g fish_color_normal yellow
 
 starship init fish | source
