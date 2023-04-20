@@ -1,5 +1,6 @@
 set -x CLICOLOR 1
-set -x LS_COLORS 'di=1:fi=96:*.m=31:*.py=32:*.txt=36:*.out=35'
+set -gx LS_COLORS 'di=38;5;141:fi=96:*.m=31:*.py=32:*.txt=38;5;70:*.out=35'
+set -gx LS_COLORS "di=38;5;141"
 
 # if command -v gls > /dev/null
 #     alias ls 'gls -G'
