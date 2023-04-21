@@ -38,6 +38,7 @@ elif command -v emerge; then
   systemctl --user start podman.socket
 elif [ -x "$(command -v apt)" ]; then
   echo "debian"
+  sudo apt install -y podman
 elif [ -x "$(command -v xbps-install)" ]; then
   sudo xbps-install -y podman
 elif [ -x "$(command -v eopkg)" ]; then
