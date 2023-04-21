@@ -67,6 +67,7 @@ elif [ "$OS" = "Ubuntu" ]; then
   # sudo apt install -y docker
   sudo systemctl enable docker --now
   sudo systemctl start docker
+  sudo groupadd docker
   sudo usermod -a -G docker "$(id -un)"
   sudo netstat -lntp | grep dockerd
   sudo fuser 2375/tcp

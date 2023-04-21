@@ -114,6 +114,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo apt install -y yad
   sudo apt install -y yubikey-manager-qt
   sudo apt install -y zenity
+  curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sudo sh
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper addrepo --refresh https://download.nvidia.com/opensuse/tumbleweed NVIDIA
   sudo zypper addrepo https://download.opensuse.org/repositories/security/openSUSE_Tumbleweed/security.repo

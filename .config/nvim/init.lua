@@ -156,6 +156,19 @@ vim.cmd[[colorscheme dracula]]
 -- local ok, _ = pcall(vim.cmd, 'colorscheme base16-tomorrow-night')
 
 
+vim.cmd([[
+  highlight ExtraWhitespace ctermbg=red guibg=red
+  match ExtraWhitespace /\s\+$/
+]])
+
+vim.api.nvim_exec([[
+  augroup highlight_unnecessary_whitespace
+    autocmd!
+    autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+  augroup END
+]], true)
+
+
 -- Highlight the region on yank
 A.nvim_create_autocmd('TextYankPost', {
     -- group = num_au,
