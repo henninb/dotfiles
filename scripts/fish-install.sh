@@ -3,6 +3,9 @@
 if [ -x "$(command -v pacman)" ]; then
   sudo pacman --noconfirm --needed -S fish
   sudo pacman --noconfirm --needed -S starship
+  sudo pacman --noconfirm --needed -S fontconfig
+  sudo pacman --noconfirm --needed -S unzip
+  sudo pacman --noconfirm --needed -S openssh
 elif [ -x "$(command -v emerge)" ]; then
   sudo emerge --update --newuse fish
   sudo emerge --update --newuse starship
