@@ -50,18 +50,18 @@ elif [ "$OS" = "Gentoo" ]; then
   nix-env -i syncthingtray
   nix-env -i ventoy-bin
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  nix-env -i lazygit
+  nix-env -i android-studio-stable
   nix-env -i librewolf
   nix-env -i brave
   nix-env -i dbeaver
   # nix-env -i neovim
-  nix-env -i dunst
-  nix-env -i keepassxc
-  nix-env -i gqrx
+  # nix-env -i dunst
+  # nix-env -i keepassxc
+  # nix-env -i gqrx
   nix-env -i ventoy-bin
   nix-env -i codium
-  nix-env -i rofi
 elif [ "$OS" = "Void" ]; then
+  nix-env -i android-studio-stable
   nix-env -i brave
   nix-env -i librewolf
   nix-env -i codium
@@ -74,16 +74,19 @@ elif [ "$OS" = "Solus" ]; then
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   nix-env -i brave
   nix-env -i librewolf
+  nix-env -i ventoy-bin
   nix-env -i volumeicon
   nix-env -i wmname
-  nix-env -i browsh
+  # nix-env -i browsh
   nix-env -i codium
   nix-env -i CopyQ
   # nix-shell -p copyq
 elif [ "$OS" = "Fedora Linux" ]; then
+  nix-env -i android-studio-stable
   nix-env -i brave
   nix-env -i librewolf
   nix-env -i codium
+  nix-env -i ventoy-bin
   nix-env -i xdo
   nix-env -i dzen2
 elif [ "$OS" = "Clear Linux OS" ]; then
