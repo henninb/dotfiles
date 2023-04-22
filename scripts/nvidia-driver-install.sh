@@ -120,21 +120,26 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo sudo systemctl set-default graphical.target
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-  sudo dnf install akmod-nvidia "kernel-devel-uname-r == $(uname -r)"
+  echo "blacklist nouveau" | sudo tee -a /etc/modprobe.d/blacklist.conf
+  # sudo dnf remove akmod-nvidia\*
+  # sudo dnf install -y akmod-nvidia "kernel-devel-uname-r == $(uname -r)"
+  sudo dnf install -y akmod-nvidia
+  # sudo dnf install -y akmod-nvidia "kernel-devel-uname-r=$(uname -r)"
   # echo 'https://phoenixnap.com/kb/fedora-nvidia-drivers'
   # sudo dnf remove xorg-x11-drv-nouveau
   # echo /etc/default/grub
   # echo GRUB_CMDLINE_LINUX="text rd.driver.blacklist=nouveau"
   # echo sudo cp -v "$HOME/tmp/nvidia-installer-disable-nouveau.conf" /etc/modprobe.d/blacklist.conf
-  # echo sudo dracut --force /boot/initramfs-$(uname -r).img $(uname -r)
   # echo sudo systemctl set-default multi-user.target
   # echo sudo systemctl set-default graphical.target
   # sudo dnf install -y akmod-nvidia
   sudo dnf install -y xorg-x11-drv-nvidia-cuda
   sudo dnf install -y kernel-headers
   sudo dnf install -y kernel-devel
-  rpm -qa | grep -E "kernel-devel|kernel-headers"
-  sudo dnf install "kernel-devel-uname-r == $(uname -r)"
+  # rpm -qa | grep -E "kernel-devel|kernel-headers"
+  # sudo dnf install "kernel-devel-uname-r == $(uname -r)"
+  sudo akmods --force
+  sudo dracut --force /boot/initramfs-$(uname -r).img $(uname -r)
 elif [ "$OS" = "Ubuntu" ]; then
   sudo add-apt-repository ppa:graphics-drivers/ppa
   sudo apt install -y libvulkan-dev
