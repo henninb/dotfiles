@@ -19,11 +19,11 @@ for i in $PROJECTS; do
   git rebase origin/main
 done
 
-PLUGINS="autojump zsh-autosuggestions zsh-syntax-highlighting"
-for i in $PLUGINS; do
-  cd "$HOME/plugins/$i" || exit
-  git fetch
-done
+# PLUGINS="autojump zsh-autosuggestions zsh-syntax-highlighting"
+# for i in $PLUGINS; do
+#   cd "$HOME/plugins/$i" || exit
+#   git fetch
+# done
 
 echo distrotube
 echo git clone git@gitlab.com:dwt1/wallpapers.git
