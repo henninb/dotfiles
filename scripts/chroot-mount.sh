@@ -26,6 +26,9 @@ if [ "$OS" = "FreeBSD" ]; then
     # fdescfs         /compat/ubuntu/dev/fd   fdescfs         rw,late,linrdlnk             0       0
     # linprocfs       /compat/ubuntu/proc     linprocfs       rw,late                      0       0
     # linsysfs        /compat/ubuntu/sys      linsysfs        rw,late                      0       0
+    # mount -o nocover -t linprocfs linprocfs /mnt/archlinux/proc
+    # mount -o nocover -t linsysfs linsysfs /mnt/archlinux/sys
+    # mount -o nocover -t devfs devfs /mnt/archlinux/dev
 
     sudo chroot /mnt/archlinux/ /bin/su - "$(id -un)"
   fi
