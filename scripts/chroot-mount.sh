@@ -19,13 +19,21 @@ if [ "$OS" = "FreeBSD" ]; then
   echo FreeBSD
 
   if [ "$os" = "archlinux" ]; then
-    echo Archlinux on FreeBSD
     sudo mkdir -p /mnt/archlinux
     doas mount -t ext2fs /dev/ada1p2 /mnt/archlinux
     doas mount -t linprocfs none /mnt/archlinux/proc
     doas mount -t devfs devfs /mnt/archlinux/dev
     doas mount -t linsysfs linsysfs /mnt/archlinux/sys
     doas chroot /mnt/archlinux/ /bin/su - "$(id -un)"
+  elif [ "$os" = "ubuntu" ]; then
+    sudo mkdir -p /mnt/ubuntu
+    doas mount -t ext2fs /dev/ada1p3 /mnt/ubuntu
+    doas mount -t linprocfs none /mnt/ubuntu/proc
+    doas mount -t devfs devfs /mnt/ubuntu/dev
+    doas mount -t linsysfs linsysfs /mnt/ubuntu/sys
+    doas chroot /mnt/ubuntu/ /bin/su - "$(id -un)"
+  else
+    echo "$os is not setup."
   fi
   exit 1
 fi
