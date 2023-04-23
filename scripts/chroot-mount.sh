@@ -10,6 +10,10 @@ fi
 os=$1
 disk=$2
 
+xauth list
+# xhost +si:localuser:root
+# xhost +
+
 if [ "$OS" = "FreeBSD" ]; then
   echo FreeBSD
 
