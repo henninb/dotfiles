@@ -25,3 +25,9 @@ export LD_LIBRARY_PATH
 # Run the binary
 # exec /compat/linux$BINARY_PATH
 exec /mnt/ubuntu$BINARY_PATH
+
+exit 0
+
+/mnt/ubuntu/usr/local/bin/nvim: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.33' not found (required by /mnt/ubuntu/usr/local/bin/nvim)
+/mnt/ubuntu/usr/local/bin/nvim: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.32' not found (required by /mnt/ubuntu/usr/local/bin/nvim)
+/mnt/ubuntu/usr/local/bin/nvim: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.34' not found (required by /mnt/ubuntu/usr/local/bin/nvim)
