@@ -10,6 +10,18 @@ fi
 os=$1
 disk=$2
 
+if [ "$OS" = "FreeBSD" ]; then
+  echo FreeBSD
+
+  if [ "$os" = "archlinux" ]; then
+    echo Archlinux on FreeBSD
+    sudo mkdir -p /mnt/archlinux
+    doas mount -t ext2fs /dev/ada1p2 /mnt/archlinux
+    sudo chroot /mnt/archlinux/ /bin/su - "$(id -un)"
+  fi
+  exit 1
+fi
+
 if command -v camcontrol; then
   sudo camcontrol devlist
   gpart show ada0
@@ -20,6 +32,7 @@ fi
 # lsblk -o NAME,UUID
 # sudo blkid
 lsblk -o UUID,MOUNTPOINT > $HOME/tmp/lsblk.txt
+echo 'UUID=7C20699920695B62  /mnt/external    ntfs            rw 0 1'
 
 if [ "$os" = "voidlinux" ]; then
   root=b128a037-b64f-4cce-9d8a-68a3115b4523
