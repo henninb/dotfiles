@@ -35,7 +35,7 @@ export GNOME_DISABLE_CRASH_DIALOG=SET_BY_GOOGLE_CHROME
 # Sanitize std{in,out,err} because they'll be shared with untrusted child
 # processes (http://crbug.com/376567).
 exec < /dev/null
-exec > "$(exec cat)"
-exec 2> "$(exec cat >&2)"
+#exec > "$(exec cat)"
+#exec 2> "$(exec cat >&2)"
 
 "$HERE/brave" --no-sandbox --test-type --v=0 "$@" || true
