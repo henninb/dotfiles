@@ -30,7 +30,6 @@ RUN mkdir -p /usr/local/openresty/nginx/html-site1
 # COPY ./perimeterx-nginx-plugin-7.2.0 /opt/perimeterx-nginx-plugin-7.2.0
 RUN echo /baseball >> /tmp/urls.txt
 RUN echo /basketball >> /tmp/urls.txt
-COPY ./app.lua /usr/share/lualib/
 COPY ./public-html/ /usr/local/openresty/nginx/html
 COPY ./public-html/ /usr/local/openresty/nginx/html-site1
 # COPY ./nginx.conf /etc/nginx/conf.d/default.conf
