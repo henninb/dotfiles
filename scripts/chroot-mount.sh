@@ -17,9 +17,11 @@ if [ "$OS" = "FreeBSD" ]; then
     echo Archlinux on FreeBSD
     sudo mkdir -p /mnt/archlinux
     doas mount -t ext2fs /dev/ada1p2 /mnt/archlinux
-    sudo mount -t linprocfs none /mnt/archlinux/proc
-    sudo mount --rbind /dev /mnt/archlinux/dev
-    sudo mount --rbind /sys /mnt/archlinux/sys
+    doas mount -t linprocfs none /mnt/archlinux/proc
+    doas mount -t devfs devfs /mnt/archlinux/dev
+    doas mount -t linsysfs linsysfs /mnt/archlinux/sys
+    # sudo mount --rbind /dev /mnt/archlinux/dev
+    # sudo mount --rbind /sys /mnt/archlinux/sys
 
     # devfs           /compat/ubuntu/dev      devfs           rw,late                      0       0
     # tmpfs           /compat/ubuntu/dev/shm  tmpfs           rw,late,size=1g,mode=1777    0       0
@@ -30,7 +32,7 @@ if [ "$OS" = "FreeBSD" ]; then
     # mount -o nocover -t linsysfs linsysfs /mnt/archlinux/sys
     # mount -o nocover -t devfs devfs /mnt/archlinux/dev
 
-    sudo chroot /mnt/archlinux/ /bin/su - "$(id -un)"
+    doas chroot /mnt/archlinux/ /bin/su - "$(id -un)"
   fi
   exit 1
 fi
@@ -46,8 +48,8 @@ fi
 # sudo blkid
 lsblk -o UUID,MOUNTPOINT > $HOME/tmp/lsblk.txt
 echo 'UUID=7C20699920695B62  /mnt/external    ntfs            rw 0 1'
-echo 'sudo mount -t ntfs-3g /dev/ada0p1 /mnt/external'
-echo 'ntfs-3g /dev/da0s1 /mnt -o ro,uid=1001,gid=1001'
+echo 'sudo mount -t ntfs-3g /dev/ada0s1 /mnt/external'
+echo 'ntfs-3g /dev/ada0s1 /mnt/external -o ro,uid=1001,gid=1001'
 
 if [ "$os" = "voidlinux" ]; then
   root=b128a037-b64f-4cce-9d8a-68a3115b4523
