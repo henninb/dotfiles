@@ -33,6 +33,8 @@ fi
 # sudo blkid
 lsblk -o UUID,MOUNTPOINT > $HOME/tmp/lsblk.txt
 echo 'UUID=7C20699920695B62  /mnt/external    ntfs            rw 0 1'
+echo 'sudo mount -t ntfs-3g /dev/ada0p1 /mnt/external'
+echo 'ntfs-3g /dev/da0s1 /mnt -o ro,uid=1001,gid=1001'
 
 if [ "$os" = "voidlinux" ]; then
   root=b128a037-b64f-4cce-9d8a-68a3115b4523

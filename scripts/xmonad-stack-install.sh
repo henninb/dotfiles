@@ -337,6 +337,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo systemctl enable NetworkManager
 elif [ "$OS" = "FreeBSD" ]; then
   ln -sfn "$(find /usr/local/bin/ -type f -name "perl5*" | tail -1)" "$HOME/.local/bin/perl"
+  sudo pkg install -y fusefs-ntfs
   sudo pkg install -y weget
   sudo pkg install -y syncthing
   sudo pkg install -y openvpn
