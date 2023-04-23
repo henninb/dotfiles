@@ -17,6 +17,16 @@ if [ "$OS" = "FreeBSD" ]; then
     echo Archlinux on FreeBSD
     sudo mkdir -p /mnt/archlinux
     doas mount -t ext2fs /dev/ada1p2 /mnt/archlinux
+    sudo mount -t linprocfs none /mnt/archlinux/proc
+    sudo mount --rbind /dev /mnt/archlinux/dev
+    sudo mount --rbind /sys /mnt/archlinux/sys
+
+    # devfs           /compat/ubuntu/dev      devfs           rw,late                      0       0
+    # tmpfs           /compat/ubuntu/dev/shm  tmpfs           rw,late,size=1g,mode=1777    0       0
+    # fdescfs         /compat/ubuntu/dev/fd   fdescfs         rw,late,linrdlnk             0       0
+    # linprocfs       /compat/ubuntu/proc     linprocfs       rw,late                      0       0
+    # linsysfs        /compat/ubuntu/sys      linsysfs        rw,late                      0       0
+
     sudo chroot /mnt/archlinux/ /bin/su - "$(id -un)"
   fi
   exit 1
