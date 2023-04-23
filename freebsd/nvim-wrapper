@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Path to the Linux binary
+# BINARY_PATH="/mnt/ubuntu/usr/local/bin/nvim"
+# BINARY_PATH="/usr/local/bin/nvim"
+BINARY_PATH="/usr/bin/nvim"
+
+# Check if binary exists
+if [ ! -f "$BINARY_PATH" ]; then
+    echo "Error: $BINARY_PATH not found"
+    exit 1
+fi
+
+# Check for required shared libraries
+# LIBRARIES=$(ldd $BINARY_PATH | awk '{print $3}' | grep -v '^$' | grep -v '^/')
+LIBRARIES=$(ldd $BINARY_PATH | awk '{print $3}')
+
+# Set LD_LIBRARY_PATH to include required shared libraries
+LD_LIBRARY_PATH=""
+for LIBRARY in $LIBRARIES; do
+    LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/mnt/ubuntu$LIBRARY"
+done
+export LD_LIBRARY_PATH
+
+# Run the binary
+# exec /compat/linux$BINARY_PATH
+exec /mnt/ubuntu$BINARY_PATH
