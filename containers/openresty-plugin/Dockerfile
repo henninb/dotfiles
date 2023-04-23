@@ -23,16 +23,10 @@ RUN curl -sSL https://github.com/bungle/lua-resty-nettle/archive/v${VER_LUA_NETT
     mv /usr/local/lib/resty/* /usr/local/lib/lua/resty
 
 RUN luarocks install perimeterx-nginx-plugin
-
 RUN mkdir -p /usr/share/lualib/
-# RUN mkdir -p /usr/local/openresty/nginx/html-site1
-
-# COPY ./perimeterx-nginx-plugin-7.2.0 /opt/perimeterx-nginx-plugin-7.2.0
 RUN echo /baseball >> /tmp/urls.txt
 RUN echo /basketball >> /tmp/urls.txt
 COPY ./public-html/ /usr/local/openresty/nginx/html
-# COPY ./public-html/ /usr/local/openresty/nginx/html-site1
-# COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 COPY ./nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 COPY ./nginx.crt /etc/ssl/certs/
 COPY ./nginx.key /etc/ssl/private/

@@ -23,7 +23,7 @@ elif [ "$platform" = "docker" ]; then
       echo "File already exists. Skipping download."
   else
     wget "$url"
-    tar xvf v7.2.0.tar.gz
+    tar xvf v7.2.1.tar.gz
   fi
   docker stop openresty-plugin
   docker rm -f openresty-plugin
