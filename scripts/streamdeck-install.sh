@@ -20,7 +20,7 @@ elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y pcsclite
   sudo ln -sfn /etc/sv/pcscd /var/service/pcscd
 elif [ "$OS" = "FreeBSD" ]; then
-  echo "sudo pkg install -y"
+  sudo pkg install -y hidapi
 elif [ "$OS" = "OpenBSD" ]; then
   echo "OpenBSD"
 elif [ "$OS" = "Solus" ]; then

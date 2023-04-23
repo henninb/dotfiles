@@ -345,7 +345,8 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y audio/alsa-utils
   sudo pkg install -y conky
   sudo pkg install -y btop
-  sudo pkg install -y copyq
+  # sudo pkg install -y copyq
+  sudo pkg install -y copyq-qt6
   sudo pkg install -y dmenu
   sudo pkg install -y doas
   sudo pkg install -y dunst
