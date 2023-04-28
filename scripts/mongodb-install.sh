@@ -37,4 +37,4 @@ echo 'nix-env -i mongodb'
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

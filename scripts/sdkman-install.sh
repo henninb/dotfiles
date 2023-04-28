@@ -40,4 +40,4 @@ echo sdk install java 12.0.1-open
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

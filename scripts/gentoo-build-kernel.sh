@@ -47,4 +47,4 @@ echo sudo rm -r /lib/modules/${old_kernel}* || echo "Failed to remove modules" |
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

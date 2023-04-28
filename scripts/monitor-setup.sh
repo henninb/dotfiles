@@ -70,4 +70,4 @@ echo xrandr --output HDMI-1 --off
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

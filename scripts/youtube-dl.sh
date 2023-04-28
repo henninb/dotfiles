@@ -148,4 +148,4 @@ echo cvlc can play any media via the command line
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

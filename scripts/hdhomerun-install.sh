@@ -29,4 +29,4 @@ echo export LD_LIBRARY_PATH=/usr/local/lib
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

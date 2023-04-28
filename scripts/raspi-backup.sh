@@ -14,4 +14,4 @@ sudo dd bs=1M if=2020-02-13-raspbian-buster.img of=/dev/sdb status=progress
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

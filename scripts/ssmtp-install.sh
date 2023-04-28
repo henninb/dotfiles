@@ -52,4 +52,4 @@ netstat -na | grep 25 | grep LISTEN | grep tcp
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

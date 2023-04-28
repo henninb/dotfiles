@@ -8,4 +8,4 @@ mv standard-notes-${VER}.AppImage "$HOME/.local/bin/standard-notes"
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

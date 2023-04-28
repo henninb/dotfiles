@@ -91,4 +91,4 @@ sudo usermod -a -G tomcat "$(whoami)"
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

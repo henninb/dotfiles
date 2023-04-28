@@ -153,4 +153,4 @@ It appears you need to install the resolvconf package to use the dns-* values in
 sudo rm /etc/resolv.conf
 sudo dpkg-reconfigure resolvconf
 
-# vim: set ft=sh
+# vim: set ft=sh:

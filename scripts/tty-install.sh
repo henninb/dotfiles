@@ -10,4 +10,4 @@ xmodmap -pke | grep XF86Switch_VT
 # echo NAutoVTs=6
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

@@ -189,4 +189,4 @@ echo "works for the gtx1060 and the gtx960."
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

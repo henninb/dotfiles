@@ -63,4 +63,4 @@ lsusb | grep '802.11ac'
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

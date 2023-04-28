@@ -169,4 +169,4 @@ echo "mpc listall | shuf -n 1 | mpc add && mpc play"
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

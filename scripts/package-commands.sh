@@ -53,4 +53,4 @@ echo npm rm --global package_name
 exit 0
 
 
-# vim: set ft=sh
+# vim: set ft=sh:

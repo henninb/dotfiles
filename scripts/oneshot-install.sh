@@ -13,4 +13,4 @@ go get -u -v github.com/raphaelreyna/oneshot
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

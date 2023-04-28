@@ -88,4 +88,4 @@ sudo ninja -C build install
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

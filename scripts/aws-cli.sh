@@ -7,4 +7,4 @@ sudo ./aws/install
 sudo ./aws/install --update
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

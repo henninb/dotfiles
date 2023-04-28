@@ -67,4 +67,4 @@ echo https://pypi.org/project/blessed/
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

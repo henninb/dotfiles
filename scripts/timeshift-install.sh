@@ -31,4 +31,4 @@ echo touch /etc/timeshift.json
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

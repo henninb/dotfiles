@@ -114,4 +114,4 @@ echo sudo mount -t ufs -o ufstype=44bsd /dev/sdb3 /mnt
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

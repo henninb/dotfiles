@@ -206,4 +206,4 @@ sudo cat /var/lib/sddm/.local/share/sddm/xorg-session.log
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

@@ -94,4 +94,4 @@ fc-match 'Courier New:slant=0:weight=100:pixelsize=24:antialias=False:autohint=T
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

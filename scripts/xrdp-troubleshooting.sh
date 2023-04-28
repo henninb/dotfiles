@@ -4,4 +4,4 @@ setpriv --no-new-privs Xorg :10 -auth .Xauthority -config xrdp/xorg.conf -norese
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

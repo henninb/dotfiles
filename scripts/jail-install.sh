@@ -24,4 +24,4 @@ sudo jexec 1 csh
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

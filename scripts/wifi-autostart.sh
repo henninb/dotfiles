@@ -8,4 +8,4 @@ sudo systemctl enable netctl-ifplugd@wlp0s20u9.service
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

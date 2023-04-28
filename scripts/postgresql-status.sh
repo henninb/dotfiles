@@ -27,4 +27,4 @@ echo 'psql -h raspi -U henninb finance_db'
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

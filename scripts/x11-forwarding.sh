@@ -57,4 +57,4 @@ echo I know 6000 is default for X11, but I thought the app would come to the Win
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

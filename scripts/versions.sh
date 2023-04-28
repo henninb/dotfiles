@@ -64,4 +64,4 @@ conky_release=$(curl -s https://api.github.com/repos/brndnmtthws/conky/tags | jq
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

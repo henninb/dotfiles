@@ -41,4 +41,4 @@ echo https://forums.linuxmint.com/viewtopic.php?t=131433
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

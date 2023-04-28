@@ -21,4 +21,4 @@ echo sudo airodump-ng wlp0s20u7 -c 6
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

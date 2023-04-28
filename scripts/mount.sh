@@ -25,4 +25,4 @@ echo 'sudo mount -o loop VBoxGuestAdditions_6.0.10.iso /mnt'
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

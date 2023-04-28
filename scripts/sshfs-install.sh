@@ -38,4 +38,4 @@ sshfs henninb@hornsup:/home/henninb/src/api/youtube/audio ~/mnt/audio -o reconne
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

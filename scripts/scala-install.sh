@@ -10,4 +10,4 @@ sudo unzip -o "$HOME/sbt-${scala_ver}.zip"
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

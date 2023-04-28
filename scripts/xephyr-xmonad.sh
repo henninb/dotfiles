@@ -17,4 +17,4 @@ lshw -c display
 #Not giving standard mode: 1680x1050, 60Hz
 #Not giving standard mode: 1920x1080, 60Hz
 
-# vim: set ft=sh
+# vim: set ft=sh:

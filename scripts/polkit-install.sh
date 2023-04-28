@@ -38,4 +38,4 @@ sudo mv -v 49-nopasswd_global.rules /etc/polkit-1/rules.d/
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

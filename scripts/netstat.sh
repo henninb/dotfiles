@@ -14,4 +14,4 @@ sudo lsof -i TCP:22
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

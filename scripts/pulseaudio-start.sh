@@ -18,4 +18,4 @@ echo pacmd set-default-sink 1
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

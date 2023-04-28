@@ -16,4 +16,4 @@ echo "Current workspace: $current_workspace"
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:

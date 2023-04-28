@@ -69,4 +69,4 @@ on newer version:
 nmcli radio wifi on
 nmcli radio wifi off
 
-# vim: set ft=sh
+# vim: set ft=sh:

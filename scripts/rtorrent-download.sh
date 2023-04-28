@@ -11,4 +11,4 @@ mv CentOS-7-x86_64-Minimal-1810 "$HOME/torrent"
 
 exit 0
 
-# vim: set ft=sh
+# vim: set ft=sh:
