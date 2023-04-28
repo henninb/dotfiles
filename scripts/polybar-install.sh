@@ -1,127 +1,127 @@
 #!/bin/sh
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y cmake
-  sudo apt install -y g++
-  sudo apt install -y libev-dev
-  sudo apt install -y libasound2-dev
-  sudo apt install -y libxcb1-dev
-  sudo apt install -y libxcb-keysyms1-dev
-  sudo apt install -y libpango1.0-dev
-  sudo apt install -y libxcb-util0-dev
-  sudo apt install -y libxcb-icccm4-dev
-  sudo apt install -y libyajl-dev
-  sudo apt install -y libstartup-notification0-dev
-  sudo apt install -y libxcb-randr0-dev
-  sudo apt install -y libev-dev
-  sudo apt install -y libxcb-cursor-dev
-  sudo apt install -y libxcb-xinerama0-dev
-  sudo apt install -y libxcb-xkb-dev
-  sudo apt install -y libxkbcommon-dev
-  sudo apt install -y libxkbcommon-x11-dev
-  sudo apt install -y autoconf
-  sudo apt install -y xutils-dev
-  sudo apt install -y libtool
-  sudo apt install -y libcurl4-openssl-dev
-  sudo apt install -y python-xcbgen
-  sudo apt install -y libxcb-xrm-dev
-  sudo apt install -y libmpdclient-dev
-  sudo apt install -y libiw-dev
-  sudo apt install -y libpulse-dev
-  sudo apt install -y libxcb-composite0-dev
-  sudo apt install -y xcb-proto
-  sudo apt install -y libxcb-ewmh-dev
-  sudo apt install -y libssl-dev
-  sudo apt install -y libjsoncpp-dev
-  sudo apt install -y pulseaudio
-  sudo apt install -y i3
-  sudo apt install -y libcairo-dev
-  sudo apt install -y python3-xcbgen
+  doas apt install -y cmake
+  doas apt install -y g++
+  doas apt install -y libev-dev
+  doas apt install -y libasound2-dev
+  doas apt install -y libxcb1-dev
+  doas apt install -y libxcb-keysyms1-dev
+  doas apt install -y libpango1.0-dev
+  doas apt install -y libxcb-util0-dev
+  doas apt install -y libxcb-icccm4-dev
+  doas apt install -y libyajl-dev
+  doas apt install -y libstartup-notification0-dev
+  doas apt install -y libxcb-randr0-dev
+  doas apt install -y libev-dev
+  doas apt install -y libxcb-cursor-dev
+  doas apt install -y libxcb-xinerama0-dev
+  doas apt install -y libxcb-xkb-dev
+  doas apt install -y libxkbcommon-dev
+  doas apt install -y libxkbcommon-x11-dev
+  doas apt install -y autoconf
+  doas apt install -y xutils-dev
+  doas apt install -y libtool
+  doas apt install -y libcurl4-openssl-dev
+  doas apt install -y python-xcbgen
+  doas apt install -y libxcb-xrm-dev
+  doas apt install -y libmpdclient-dev
+  doas apt install -y libiw-dev
+  doas apt install -y libpulse-dev
+  doas apt install -y libxcb-composite0-dev
+  doas apt install -y xcb-proto
+  doas apt install -y libxcb-ewmh-dev
+  doas apt install -y libssl-dev
+  doas apt install -y libjsoncpp-dev
+  doas apt install -y pulseaudio
+  doas apt install -y i3
+  doas apt install -y libcairo-dev
+  doas apt install -y python3-xcbgen
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install -y cmake
+  doas pkg install -y cmake
   # sudo pkg install -y nproc
-  sudo pkg install -y polybar
+  doas pkg install -y polybar
   exit 0
 elif [ "$OS" = "Solus" ]; then
-  sudo eopkg install -c system.devel
-  sudo eopkg install -y libcairo-devel
-  sudo eopkg install -y alsa-lib-devel
-  sudo eopkg install -y curl-devel
-  sudo eopkg install -y libmpdclient-devel
-  sudo eopkg install -y wireless-tools-devel
-  sudo eopkg install -y pulseaudio-devel
-  sudo eopkg install -y xcb-proto
-  sudo eopkg install -y xcb-util-wm-devel
-  sudo eopkg install -y xcb-util-image-devel
-  sudo eopkg install -y xcb-util-wm-devel
-  sudo eopkg install -y jsoncpp-devel
-  sudo eopkg install -y i3-devel
-  sudo eopkg install -y xcb-util-devel
+  doas eopkg install -c system.devel
+  doas eopkg install -y libcairo-devel
+  doas eopkg install -y alsa-lib-devel
+  doas eopkg install -y curl-devel
+  doas eopkg install -y libmpdclient-devel
+  doas eopkg install -y wireless-tools-devel
+  doas eopkg install -y pulseaudio-devel
+  doas eopkg install -y xcb-proto
+  doas eopkg install -y xcb-util-wm-devel
+  doas eopkg install -y xcb-util-image-devel
+  doas eopkg install -y xcb-util-wm-devel
+  doas eopkg install -y jsoncpp-devel
+  doas eopkg install -y i3-devel
+  doas eopkg install -y xcb-util-devel
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo zypper install -y alsa
-  sudo zypper install -y cairo-devel
-  sudo zypper install -y libev-devel
-  sudo zypper install -y libasound2-devel
-  sudo zypper install -y libxcb1-devel
-  sudo zypper install -y libxcb-keysyms1-devel
-  sudo zypper install -y libpango1.0-devel
-  sudo zypper install -y libxcb-util0-devel
-  sudo zypper install -y libxcb-icccm4-devel
-  sudo zypper install -y libyajl-devel
-  sudo zypper install -y libstartup-notification0-devel
-  sudo zypper install -y libxcb-randr0-devel
-  sudo zypper install -y libev-devel
-  sudo zypper install -y libxcb-cursor-devel
-  sudo zypper install -y libxcb-xinerama0-devel
-  sudo zypper install -y libxcb-xkb-devel
-  sudo zypper install -y libxkbcommon-devel
-  sudo zypper install -y libxkbcommon-x11-devel
-  sudo zypper install -y autoconf
-  sudo zypper install -y xutils-devel
-  sudo zypper install -y libtool
-  sudo zypper install -y libcurl4-openssl-devel
-  sudo zypper install -y python-xcbgen
-  sudo zypper install -y libxcb-xrm-devel
-  sudo zypper install -y libmpdclient-devel
-  sudo zypper install -y libiw-devel
-  sudo zypper install -y libpulse-devel
-  sudo zypper install -y libxcb-composite0-devel
-  sudo zypper install -y xcb-proto
-  sudo zypper install -y libxcb-ewmh-devel
-  sudo zypper install -y libssl-devel
-  sudo zypper install -y jsoncpp
-  sudo zypper install -y libcurl-devel
-  sudo zypper install -y xcb-proto-devel
-  sudo zypper install -y libxcb-devel
-  sudo zypper install -y xcb-util-devel
-  sudo zypper install -y libxcb-ewmh2
-  sudo zypper install -y xcb-util-wm-devel
+  doas zypper install -y alsa
+  doas zypper install -y cairo-devel
+  doas zypper install -y libev-devel
+  doas zypper install -y libasound2-devel
+  doas zypper install -y libxcb1-devel
+  doas zypper install -y libxcb-keysyms1-devel
+  doas zypper install -y libpango1.0-devel
+  doas zypper install -y libxcb-util0-devel
+  doas zypper install -y libxcb-icccm4-devel
+  doas zypper install -y libyajl-devel
+  doas zypper install -y libstartup-notification0-devel
+  doas zypper install -y libxcb-randr0-devel
+  doas zypper install -y libev-devel
+  doas zypper install -y libxcb-cursor-devel
+  doas zypper install -y libxcb-xinerama0-devel
+  doas zypper install -y libxcb-xkb-devel
+  doas zypper install -y libxkbcommon-devel
+  doas zypper install -y libxkbcommon-x11-devel
+  doas zypper install -y autoconf
+  doas zypper install -y xutils-devel
+  doas zypper install -y libtool
+  doas zypper install -y libcurl4-openssl-devel
+  doas zypper install -y python-xcbgen
+  doas zypper install -y libxcb-xrm-devel
+  doas zypper install -y libmpdclient-devel
+  doas zypper install -y libiw-devel
+  doas zypper install -y libpulse-devel
+  doas zypper install -y libxcb-composite0-devel
+  doas zypper install -y xcb-proto
+  doas zypper install -y libxcb-ewmh-devel
+  doas zypper install -y libssl-devel
+  doas zypper install -y jsoncpp
+  doas zypper install -y libcurl-devel
+  doas zypper install -y xcb-proto-devel
+  doas zypper install -y libxcb-devel
+  doas zypper install -y xcb-util-devel
+  doas zypper install -y libxcb-ewmh2
+  doas zypper install -y xcb-util-wm-devel
   # sudo zypper install -y i3-gaps
   # sudo zypper install -y libxcb-image0
-  sudo zypper install -y xcb-util-image-devel
-  sudo zypper install -y jsoncpp-devel
-  sudo zypper install -y fontawesome-fonts
-  sudo zypper install -y alsa-devel
-  sudo zypper install -y gtk-doc
-  sudo zypper install -y autogen
-  sudo zypper install -y json-glib-devel
-  sudo zypper install -y gobject-introspection
-  sudo zypper install -y cmake
-  sudo zypper install -y gcc-c++
-  sudo zypper install -y i3-devel
+  doas zypper install -y xcb-util-image-devel
+  doas zypper install -y jsoncpp-devel
+  doas zypper install -y fontawesome-fonts
+  doas zypper install -y alsa-devel
+  doas zypper install -y gtk-doc
+  doas zypper install -y autogen
+  doas zypper install -y json-glib-devel
+  doas zypper install -y gobject-introspection
+  doas zypper install -y cmake
+  doas zypper install -y gcc-c++
+  doas zypper install -y i3-devel
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y libcurl-devel
-  sudo xbps-install -y libmpdclient-devel
-  sudo xbps-install -y pulseaudio-devel
-  sudo xbps-install -y jsoncpp-devel
-  sudo xbps-install -y wireless_tools-devel
-  sudo xbps-install -y i3-devel
-  sudo xbps-install -y cairo-devel
-  sudo xbps-install -y alsa-lib-devel
+  doas xbps-install -y libcurl-devel
+  doas xbps-install -y libmpdclient-devel
+  doas xbps-install -y pulseaudio-devel
+  doas xbps-install -y jsoncpp-devel
+  doas xbps-install -y wireless_tools-devel
+  doas xbps-install -y i3-devel
+  doas xbps-install -y cairo-devel
+  doas xbps-install -y alsa-lib-devel
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S libmpdclient
-  sudo pacman --noconfirm --needed -S jsoncpp
-  sudo pacman --noconfirm --needed -S python-sphinx
+  doas pacman --noconfirm --needed -S libmpdclient
+  doas pacman --noconfirm --needed -S jsoncpp
+  doas pacman --noconfirm --needed -S python-sphinx
 elif [ "$OS" = "Gentoo" ]; then
   GENTOO_PKGS="jsoncpp cmake x11-libs/cairo media-sound/alsa-utils libmpdclient wireless-tools pulseaudio i3"
   FAILURE=""
