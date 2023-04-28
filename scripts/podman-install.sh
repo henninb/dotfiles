@@ -24,28 +24,28 @@ cat << EOF > "$HOME/tmp/policy.json"
 EOF
 
 if command -v pacman; then
-  sudo pacman --noconfirm --needed -S podman
-  sudo pacman --noconfirm --needed -S slirp4netns
-  sudo pacman --noconfirm --needed -S fuse-overlayfs
-  sudo pacman --noconfirm --needed -S podman-dnsname
+  doas pacman --noconfirm --needed -S podman
+  doas pacman --noconfirm --needed -S slirp4netns
+  doas pacman --noconfirm --needed -S fuse-overlayfs
+  doas pacman --noconfirm --needed -S podman-dnsname
   systemctl --user start podman.socket
   # sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$(id -un)"
   echo +cpu +cpuset +io +memory +pids > sudo tee -a /sys/fs/cgroup/cgroup.subtree_control
 elif command -v emerge; then
-  sudo emerge --update --newuse podman
-  sudo emerge --update --newuse slirp4netns
-  sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$(id -un)"
+  doas emerge --update --newuse podman
+  doas emerge --update --newuse slirp4netns
+  doas usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$(id -un)"
   systemctl --user start podman.socket
 elif [ -x "$(command -v apt)" ]; then
   echo "debian"
-  sudo apt install -y podman
+  doas apt install -y podman
 elif [ -x "$(command -v xbps-install)" ]; then
-  sudo xbps-install -y podman
+  doas xbps-install -y podman
 elif [ -x "$(command -v eopkg)" ]; then
   echo "solus"
 elif [ -x "$(command -v dnf)" ]; then
   echo "fedora"
-  sudo dnf install podman-plugins -y
+  doas dnf install podman-plugins -y
 elif [ -x "$(command -v brew)" ]; then
   echo "macoos"
 else
@@ -53,7 +53,7 @@ else
   exit 1
 fi
 
-sudo setcap cap_net_bind_service=+ep $(which slirp4netns)
+doas setcap cap_net_bind_service=+ep $(which slirp4netns)
 # sudo sh -c "echo 0 > /proc/sys/net/ipv4/ip_unprivileged_port_start"
 echo 0 | sudo tee /proc/sys/net/ipv4/ip_unprivileged_port_start
 #echo net.ipv4.ip_unprivileged_port_start=0 | sudo tee -a /etc/sysctl.conf
@@ -64,7 +64,7 @@ pip install podman-compose
 
 # sudo touch /etc/subuid /etc/subgid
 # cat /etc/sysctl.d/userns.conf
-sudo sysctl kernel.unprivileged_userns_clone=1
+doas sysctl kernel.unprivileged_userns_clone=1
 sysctl kernel.unprivileged_userns_clone
 
 sudo mv -v "$HOME/tmp/registries.conf" /etc/containers/registries.conf
