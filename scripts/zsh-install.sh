@@ -139,4 +139,4 @@ echo sudo vipw #fixes passwd file for freebsd
 
 exit 0
 
-# vim: set ft=sh:
+# vim: set ft=sh

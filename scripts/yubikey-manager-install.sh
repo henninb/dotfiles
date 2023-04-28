@@ -94,3 +94,5 @@ ykman list --serials
 # make check install
 
 exit 0
+
+# vim: set ft=sh
