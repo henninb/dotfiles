@@ -15,3 +15,5 @@ current_workspace=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $NF}')
 echo "Current workspace: $current_workspace"
 
 exit 0
+
+# vim: set ft=sh

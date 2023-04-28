@@ -63,3 +63,5 @@ emacs_release=$(curl -s https://api.github.com/repos/emacs-mirror/emacs/tags | j
 conky_release=$(curl -s https://api.github.com/repos/brndnmtthws/conky/tags | jq -r '.[0].name')
 
 exit 0
+
+# vim: set ft=sh
