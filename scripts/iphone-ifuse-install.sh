@@ -33,3 +33,4 @@ sudo idevicepair pair
 sudo ifuse /media/iphone
 
 exit 0
+# vim: set ft=sh:

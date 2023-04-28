@@ -12,3 +12,4 @@ if command -v mkinitrd; then
 fi
 
 exit 0
+# vim: set ft=sh:

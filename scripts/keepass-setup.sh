@@ -8,3 +8,4 @@ git fetch
 git merge origin main
 
 exit 0
+# vim: set ft=sh:

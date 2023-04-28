@@ -7,3 +7,4 @@ cd docker-firefox-syncserver || exit
 docker buildx bake
 
 exit 0
+# vim: set ft=sh:

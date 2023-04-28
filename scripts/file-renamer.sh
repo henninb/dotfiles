@@ -17,3 +17,4 @@ for file in *; do
 done
 
 exit 0
+# vim: set ft=sh:

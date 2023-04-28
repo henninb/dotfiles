@@ -24,3 +24,4 @@ else
   echo "$OS is not yet implemented."
   exit 1
 fi
+# vim: set ft=sh:

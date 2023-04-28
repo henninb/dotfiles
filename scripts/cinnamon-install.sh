@@ -45,3 +45,4 @@ gsettings get org.cinnamon.desktop.background picture-options
 xdg-settings set default-web-browser brave-bin.desktop
 
 exit 0
+# vim: set ft=sh:

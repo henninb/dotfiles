@@ -12,3 +12,4 @@ stty echo
 
 
 printf "%s" "$username:$password" | base64
+# vim: set ft=sh:

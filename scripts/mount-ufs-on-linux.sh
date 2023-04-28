@@ -17,3 +17,4 @@ f     6127968 8164799 2036832 994.6M 4.2BSD    2048 16384 28552
 This gives you the start sector for each partition. The sector multiplied by the sector size (512 bytes; see fdisk output) gives you an offset that you can use with with mount.
 
 For example for slice 6127968
+# vim: set ft=sh:

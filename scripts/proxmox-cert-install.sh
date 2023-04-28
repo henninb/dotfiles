@@ -75,3 +75,4 @@ systemctl restart pveproxy
 rm -rf *.csr
 
 exit 0
+# vim: set ft=sh:

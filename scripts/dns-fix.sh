@@ -12,3 +12,4 @@ echo /etc/nsswitch.conf
 echo hosts:      files myhostname dns
 
 exit 0
+# vim: set ft=sh:

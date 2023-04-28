@@ -50,3 +50,4 @@ rsync -arvz raspi:/home/pi/downloads/backups/ "$HOME/files/"
 # rsync -arvz --include="backup-d1/*" --include="backup-d2/*" --include="backup-d3/*"  --dry-run --exclude='*' raspi:/home/pi/tmp/test/ "$HOME/tmp/"
 
 exit 0
+# vim: set ft=sh:

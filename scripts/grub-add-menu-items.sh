@@ -48,3 +48,4 @@ sudo mv -v "$HOME/tmp/40_custom"  /etc/grub.d/40_custom
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 exit 0
+# vim: set ft=sh:

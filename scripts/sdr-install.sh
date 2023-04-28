@@ -37,3 +37,4 @@ rtl_test -t
 echo sudo systemctl status systemd-udevd
 
 exit 0
+# vim: set ft=sh:

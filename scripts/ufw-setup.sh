@@ -74,3 +74,4 @@ echo sudo ufw allow 443/tcp comment 'accept https connections'
 echo sudo ufw limit 22/tcp
 
 exit 0
+# vim: set ft=sh:

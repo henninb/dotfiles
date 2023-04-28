@@ -35,3 +35,4 @@ if [ `nvram get https_enable` -gt 0 ] ; then
 		unset HTTPS_RESET
 	fi
 fi
+# vim: set ft=sh:

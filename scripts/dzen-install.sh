@@ -73,3 +73,4 @@ ls -l dzen2
 # sudo make install
 
 exit 0
+# vim: set ft=sh:

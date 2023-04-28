@@ -27,3 +27,4 @@ sudo chown root:root /etc/apt/preferences.d/no-apport.pref
 echo "Completed"
 
 exit 0
+# vim: set ft=sh:

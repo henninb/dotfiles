@@ -9,3 +9,4 @@ echo start xterm to desktop from remote system
 DISPLAY=:0 xterm &
 
 exit 0
+# vim: set ft=sh:

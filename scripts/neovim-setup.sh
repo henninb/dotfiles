@@ -67,3 +67,4 @@ echo nix-shell -p libclang
 echo nix-shell -p libxml2
 
 exit 0
+# vim: set ft=sh:

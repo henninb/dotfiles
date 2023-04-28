@@ -15,3 +15,4 @@ make
 sudo pacman -S luarocks
 sudo systemctl enable openresty.service
 
+# vim: set ft=sh:

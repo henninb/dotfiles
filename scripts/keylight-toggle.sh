@@ -46,3 +46,4 @@ EOF
 curl -s --location --request PUT 'http://192.168.10.110:9123/elgato/lights' \
 --header 'Content-Type: application/json' \
 --data "$(generate_post_data)"
+# vim: set ft=sh:

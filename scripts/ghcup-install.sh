@@ -10,3 +10,4 @@ stack install
 ghcup install hls
 
 exit 0
+# vim: set ft=sh:

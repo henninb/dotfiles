@@ -19,3 +19,4 @@ done
 ls
 
 exit 0
+# vim: set ft=sh:

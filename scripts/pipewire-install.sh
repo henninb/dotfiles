@@ -48,3 +48,4 @@ fi
 pactl info
 
 exit 0
+# vim: set ft=sh:

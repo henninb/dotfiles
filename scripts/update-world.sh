@@ -6,3 +6,4 @@ if [ "$OS" = "Gentoo" ]; then
 fi
 
 exit 0
+# vim: set ft=sh:

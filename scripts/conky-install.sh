@@ -29,3 +29,4 @@ conky -version | head -1
 # sudo make install
 
 exit 0
+# vim: set ft=sh:

@@ -23,3 +23,4 @@ grep -n "\< *sudo\>" "$script" | while read -r line; do
 done
 
 exit 0
+# vim: set ft=sh:

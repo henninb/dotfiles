@@ -10,3 +10,4 @@ sudo sed -i "s/nano/vim/g" /etc/profile
 # echo archlinux add /etc/bash.bashrc
 
 exit 0
+# vim: set ft=sh:

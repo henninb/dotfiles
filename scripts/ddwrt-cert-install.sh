@@ -107,3 +107,4 @@ scp ddwrt.key root@192.168.10.3:/tmp/root/key.pem
 rm -rf *.csr
 
 exit 0
+# vim: set ft=sh:

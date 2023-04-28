@@ -49,3 +49,4 @@ export OS
 
 # Print the detected distribution name for verification
 echo "Detected operating system distribution: $OS"
+# vim: set ft=sh:
