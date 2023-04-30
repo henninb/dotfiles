@@ -204,6 +204,7 @@ cargo install bat
 cargo install ripgrep
 cargo install fd-find
 cargo install broot
+# cargo install wezterm
 
 ln -sfn $HOME/.local/share/cargo/bin/alacritty $HOME/.local/bin/alacritty
 

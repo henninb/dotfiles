@@ -49,6 +49,7 @@ elif [ "$OS" = "Gentoo" ]; then
   nix-env -i android-studio-stable
   nix-env -i syncthingtray
   nix-env -i ventoy-bin
+  nix-env -i burpsuite
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   nix-env -i android-studio-stable
   nix-env -i librewolf
