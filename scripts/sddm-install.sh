@@ -79,15 +79,15 @@ sudo cp -v "$HOME/.local/img/xmonad.png" /usr/share/pixmaps/xmonad.png
 sudo rm -rf /var/lib/sddm/.cache/
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S sddm
-  sudo pacman --noconfirm --needed -S xorg-xsetroot
-  sudo systemctl enable sddm.service --now
-  sudo systemctl disable lightdm
+  doas pacman --noconfirm --needed -S sddm
+  doas pacman --noconfirm --needed -S xorg-xsetroot
+  doas systemctl enable sddm.service --now
+  doas systemctl disable lightdm
 
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
 
-  sudo systemctl set-default graphical
+  doas systemctl set-default graphical
   systemctl --user mask gnome-keyring-daemon.service
   systemctl --user mask gnome-keyring-daemon.socket
   # ls -l /usr/share/sddm/themes/
@@ -96,44 +96,44 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   # systemctl --user stop xdg-desktop-portal
   # systemctl --user disable xdg-desktop-portal{,gtk}
   # systemctl --user disable xdg-desktop-portal
-  sudo systemctl enable sddm --now
+  doas systemctl enable sddm --now
 elif [ "${OS}" = "Void" ]; then
-  sudo xbps-install -y sddm
+  doas xbps-install -y sddm
   sudo ln -sfn /etc/sv/sddm /var/service/sddm
   sudo ln -sfn /etc/sv/dbus /var/service/dbus
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
-  sudo sv status sddm
-  sudo sv status dbus
+  doas sv status sddm
+  doas sv status dbus
 elif [ "${OS}" = "Ubuntu" ] || [ "$OS" = "Linux Mint" ]; then
   export DEBIAN_FRONTEND=noninteractive
-  sudo apt install -y sddm
-  sudo apt install -y sddm-theme-elarun
+  doas apt install -y sddm
+  doas apt install -y sddm-theme-elarun
   # sudo apt remove -y libpam-gnome-keyring
-  sudo systemctl set-default graphical
+  doas systemctl set-default graphical
   systemctl --user mask gnome-keyring-daemon.service
   systemctl --user mask gnome-keyring-daemon.socket
-  sudo systemctl disable lightdm
+  doas systemctl disable lightdm
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
-  sudo systemctl enable sddm.service --now
+  doas systemctl enable sddm.service --now
 elif [ "${OS}" = "FreeBSD" ]; then
   sudo mkdir -p /usr/local/etc/sddm.conf.d/
-  sudo pkg install -y sddm
-  sudo pkg install -y sysrc
-  sudo sysrc sddm_enable="YES"
+  doas pkg install -y sddm
+  doas pkg install -y sysrc
+  doas sysrc sddm_enable="YES"
   sudo mv -v "$HOME/tmp/40-wheel-group.rules" "/usr/local/etc/polkit-1/rules.d/40-wheel-group.rules"
   # sudo sddm --example-config /usr/local/etc/sddm.conf
   sudo mv -v "$HOME/tmp/sddm.conf" /usr/local/etc/sddm.conf.d/sddm.conf
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /usr/local/etc/sddm.conf.d/sddm-theme.conf
   # sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
-  sudo service sddm enable
+  doas service sddm enable
   # echo "https://community.kde.org/FreeBSD/Setup#SDDM"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo zypper install -y sddm
-  sudo zypper install -y gnome-keyring-pam
-  sudo systemctl set-default graphical
-  sudo usermod -a -G video "$(id -un)"
-  sudo usermod -a -G systemd-journal "$(id -un)"
+  doas zypper install -y sddm
+  doas zypper install -y gnome-keyring-pam
+  doas systemctl set-default graphical
+  doas usermod -a -G video "$(id -un)"
+  doas usermod -a -G systemd-journal "$(id -un)"
   sudo chown sddm:sddm /var/lib/sddm/state.conf
   value=$(grep "^DISPLAYMANAGER_AUTOLOGIN=" /etc/sysconfig/displaymanager | cut -d= -f2)
   if [ -z "$value" ]; then
@@ -145,25 +145,25 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   systemctl --user mask gnome-keyring-daemon.socket
   sudo cp -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
   sudo cp -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
-  sudo systemctl set-default graphical
+  doas systemctl set-default graphical
   echo /usr/share/sddm/scripts/Xsetup
   # sudo systemctl enable dbus --now
   # sudo systemctl status dbus
-  sudo update-alternatives --config default-displaymanager
+  doas update-alternatives --config default-displaymanager
   # grep -Hriv "^$" /etc/pam.d/sddm*
   update-alternatives --list default-displaymanager
-  sudo usermod -a -G systemd-journal "$(id -un)"
-  sudo systemctl enable sddm.service --now
+  doas usermod -a -G systemd-journal "$(id -un)"
+  doas systemctl enable sddm.service --now
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install -y sddm
-  sudo dnf install -y sddm-themes
-  sudo dnf install -y xsetroot
-  sudo dnf install -y gnome-keyring-pam
-  sudo dnf install -y gnome-keyring-pam
-  sudo systemctl set-default graphical
-  sudo dnf remove -y gdm
-  sudo systemctl disable gdm
-  sudo systemctl disable lightdm
+  doas dnf install -y sddm
+  doas dnf install -y sddm-themes
+  doas dnf install -y xsetroot
+  doas dnf install -y gnome-keyring-pam
+  doas dnf install -y gnome-keyring-pam
+  doas systemctl set-default graphical
+  doas dnf remove -y gdm
+  doas systemctl disable gdm
+  doas systemctl disable lightdm
   sudo mkdir -p /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm-theme.conf" /etc/sddm.conf.d/
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf.d/
@@ -176,12 +176,12 @@ elif [ "$OS" = "Fedora Linux" ]; then
   echo journalctl -b -u sddm
   echo sddm-greeter --test-mode --theme /usr/share/sddm/themes/elarun
   desktop-file-validate /usr/share/xsessions/xmonad.desktop
-  sudo systemctl enable sddm --now
+  doas systemctl enable sddm --now
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse sddm
-  sudo emerge --update --newuse xsetroot
-  sudo systemctl set-default graphical
-  sudo usermod -a -G video sddm
+  doas emerge --update --newuse sddm
+  doas emerge --update --newuse xsetroot
+  doas systemctl set-default graphical
+  doas usermod -a -G video sddm
   sudo mv -v "$HOME/tmp/sddm.conf" /etc/sddm.conf
   sudo mkdir -p /etc/sddm/scripts
   sudo sudo mv -v "$HOME/tmp/Xsetup" /etc/sddm/scripts/Xsetup
@@ -189,7 +189,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse gui-libs/display-manager-init
   # sudo systemctl enable sddm
   # sudo systemctl start sddm
-  sudo systemctl enable sddm.service --now
+  doas systemctl enable sddm.service --now
 else
   echo "${OS} is not setup"
   exit 1

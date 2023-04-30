@@ -1,23 +1,23 @@
 #!/bin/sh
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S nginx
+  doas pacman --noconfirm --needed -S nginx
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse nginx
+  doas emerge --update --newuse nginx
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y nginx
+  doas apt install -y nginx
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y nginx
+  doas xbps-install -y nginx
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install -y nginx
-  sudo sysrc nginx_enable="YES"
-  sudo service nginx start
+  doas pkg install -y nginx
+  doas sysrc nginx_enable="YES"
+  doas service nginx start
 elif [ "$OS" = "Solus" ]; then
   echo "solus"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo zypper install -y nginx
+  doas zypper install -y nginx
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install -y nginx
+  doas dnf install -y nginx
 elif [ "$OS" = "Clear Linux OS" ]; then
   echo clearlinux
 elif [ "$OS" = "Darwin" ]; then
