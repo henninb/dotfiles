@@ -26,7 +26,7 @@ chmod 755 dierya
 sudo mv -v 98-dierya-kbd.rules  /etc/udev/rules.d/
 sudo mv -v dierya /usr/local/bin/
 
-sudo udevadm control --reload-rules
+doas udevadm control --reload-rules
 
 echo udevadm monitor --udev
 echo "lsusb | grep 'Mechanical Keyboard'"

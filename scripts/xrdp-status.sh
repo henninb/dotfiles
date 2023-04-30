@@ -1,8 +1,8 @@
 #!/bin/sh
 
 if command -v systemctl; then
-  sudo systemctl status xrdp
-  sudo systemctl status xrdp-sesman
+  doas systemctl status xrdp
+  doas systemctl status xrdp-sesman
 else
   rc-service xrdp status
 fi
@@ -37,7 +37,7 @@ if ! command -v lsof; then
   echo lsof is not installed.
   exit 1
 fi
-sudo lsof -Pi | grep LISTEN | grep xrdp
+doas lsof -Pi | grep LISTEN | grep xrdp
 
 echo "xfreerdp /u:henninb /p:'changeit' /cert-ignore /v:127.0.0.1"
 

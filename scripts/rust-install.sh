@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y --no-modify-path
-sudo apt install -y curl
-sudo apt install -y cmake
-sudo apt install -y g++
-sudo apt install -y libexpat-dev
+doas apt install -y curl
+doas apt install -y cmake
+doas apt install -y g++
+doas apt install -y libexpat-dev
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > rustup-init
 chmod 755 rustup-init

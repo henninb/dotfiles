@@ -1,18 +1,18 @@
 #!/bin/sh
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y alien fakeroot
+  doas apt install -y alien fakeroot
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S libnsl
-  sudo pacman --noconfirm --needed -S rpm
+  doas pacman --noconfirm --needed -S libnsl
+  doas pacman --noconfirm --needed -S rpm
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse rpm
+  doas emerge --update --newuse rpm
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y rpm
+  doas xbps-install -y rpm
 elif [ "$OS" = "Darwin" ]; then
   echo noop
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install -y libnsl
+  doas dnf install -y libnsl
 else
   echo "$OS is not yet implemented."
   exit 1
@@ -56,10 +56,10 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   fakeroot alien oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
   fakeroot alien oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm
   fakeroot alien oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm
-  sudo dpkg -i oracle-instantclient19.3-basic_19.3.0.0.0-2_amd64.deb
-  sudo dpkg -i oracle-instantclient19.3-devel_19.3.0.0.0-2_amd64.deb
-  sudo dpkg -i oracle-instantclient19.3-precomp_19.3.0.0.0-2_amd64.deb
-  sudo dpkg -i oracle-instantclient19.3-sqlplus_19.3.0.0.0-2_amd64.deb
+  doas dpkg -i oracle-instantclient19.3-basic_19.3.0.0.0-2_amd64.deb
+  doas dpkg -i oracle-instantclient19.3-devel_19.3.0.0.0-2_amd64.deb
+  doas dpkg -i oracle-instantclient19.3-precomp_19.3.0.0.0-2_amd64.deb
+  doas dpkg -i oracle-instantclient19.3-sqlplus_19.3.0.0.0-2_amd64.deb
 elif [ "$OS" = "Darwin" ]; then
   if [ ! -f "instantclient-basic-macos.x64-19.3.0.0.0dbru.zip" ]; then
     wget https://download.oracle.com/otn_software/mac/instantclient/193000/instantclient-basic-macos.x64-19.3.0.0.0dbru.zip
@@ -72,21 +72,21 @@ elif [ "$OS" = "Darwin" ]; then
   cd /opt || exit
   sudo unzip -o "$HOME/instantclient-sqlplus-macos.x64-19.3.0.0.0dbru.zip"
   sudo unzip -o "$HOME/instantclient-basic-macos.x64-19.3.0.0.0dbru.zip"
-   sudo rm -rf instantclient_19_3 oracle-instantclient
-  sudo mv -v instantclient_19_3 oracle-instantclient
+   doas rm -rf instantclient_19_3 oracle-instantclient
+  doas mv -v instantclient_19_3 oracle-instantclient
 elif [ "$OS" = "CentOS Linux" ]; then
-  sudo yum localinstall -y oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm
-  sudo yum localinstall -y oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
-  sudo yum localinstall -y oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm
-  sudo yum localinstall -y oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm
+  doas yum localinstall -y oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm
+  doas yum localinstall -y oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
+  doas yum localinstall -y oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm
+  doas yum localinstall -y oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo yum localinstall -y oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm
-  sudo yum localinstall -y oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
-  sudo yum localinstall -y oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm
-  sudo yum localinstall -y oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm
+  doas yum localinstall -y oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm
+  doas yum localinstall -y oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
+  doas yum localinstall -y oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm
+  doas yum localinstall -y oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S fakeroot
-  sudo pacman --noconfirm --needed -S rpm
+  doas pacman --noconfirm --needed -S fakeroot
+  doas pacman --noconfirm --needed -S rpm
   sudo rpm -i --nodeps "$HOME/tmp/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm"
   sudo rpm -i --nodeps "$HOME/tmp/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm"
   sudo rpm -i --nodeps "$HOME/tmp/oracle-instantclient19.3-precomp-19.3.0.0.0-1.x86_64.rpm"

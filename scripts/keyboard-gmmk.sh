@@ -28,7 +28,7 @@ chmod 755 gmmk
 sudo mv -v 98-gmmk-kbd.rules  /etc/udev/rules.d/
 sudo mv -v gmmk /usr/local/bin/
 
-sudo udevadm control --reload-rules
+doas udevadm control --reload-rules
 
 export XAUTHORITY=/home/henninb/.Xauthority
 export DISPLAY=:0

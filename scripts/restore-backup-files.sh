@@ -2,17 +2,17 @@
 
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S rsync
+  doas pacman --noconfirm --needed -S rsync
 elif [ "$OS" = "Gentoo" ]; then
   if ! command -v rsync; then
-    sudo emerge --update --newuse rsync
+    doas emerge --update --newuse rsync
   fi
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo "debian"
 elif [ "$OS" = "Void" ]; then
   echo "void"
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install -y rsync
+  doas pkg install -y rsync
 elif [ "$OS" = "Solus" ]; then
   echo "solus"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then

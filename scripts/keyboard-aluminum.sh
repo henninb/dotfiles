@@ -26,9 +26,9 @@ chmod 755 aluminum
 sudo mv -v 99-aluminum-kbd.rules /etc/udev/rules.d/
 sudo mv -v aluminum /usr/local/bin/
 
-sudo udevadm control --reload-rules
+doas udevadm control --reload-rules
 # sudo udevadm control -R
-sudo udevadm control --reload
+doas udevadm control --reload
 
 # xinput | grep -i 'Mechanical Keyboard'
 echo udevadm monitor --udev

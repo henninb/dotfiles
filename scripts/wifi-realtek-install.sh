@@ -13,7 +13,7 @@ network={
 EOF
 
 echo sudo modprobe -w
-sudo modprobe | grep idProduct=c811
+doas modprobe | grep idProduct=c811
 echo New USB device found, idVendor=0bda, idProduct=c811, bcdDevice= 2.00
 echo yay -S rtl88xxau-aircrack-dkms-git
 
@@ -28,8 +28,8 @@ cd "$HOME/projects" || exit
 git clone https://github.com/brektrou/rtl8821CU.git
 cd rtl8723bu || exit
 make
-sudo make install
-sudo modprobe 8812au
+doas make install
+doas modprobe 8812au
 
 #nmcli
 ccccudvkjugrgdcdh
@@ -42,9 +42,9 @@ exit 0
 
 ip link show | grep w
 
-sudo iwconfig wlp0s20u7 essid NSA_classified key s:password
+doas iwconfig wlp0s20u7 essid NSA_classified key s:password
 
-sudo eopkg install -y wpa_supplicant
+doas eopkg install -y wpa_supplicant
 
 wpa_passphrase NSA_classified passphrase | sudo tee /etc/wpa_supplicant.conf
 dhclient interface
@@ -53,11 +53,11 @@ sudo wpa_supplicant -B -i wlp0s20u7 -c /etc/wpa_supplicant.conf
 sudo wpa_supplicant -B -i wlp7s0 -c /etc/wpa_supplicant.conf
 sudo wpa_supplicant -B -i wlp2s0f0u8u3 -c /etc/wpa_supplicant.conf
 
-sudo ip link set wlp0s20u7 up
-sudo ip link set wlp7s0 up
-sudo ip link set wlp2s0f0u8u3 up
+doas ip link set wlp0s20u7 up
+doas ip link set wlp7s0 up
+doas ip link set wlp2s0f0u8u3 up
 
-sudo nmcli -a device wifi connect NSA_classified
+doas nmcli -a device wifi connect NSA_classified
 nmcli d wifi list --rescan yes
 
 exit 0

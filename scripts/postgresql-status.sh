@@ -3,9 +3,9 @@
 if [ "$OS" = "Gentoo" ]; then
   rc-service postgresql status
 elif [ "$OS" = "Void" ]; then
-  sudo sv status postgresql
+  doas sv status postgresql
 else
-  sudo systemctl status postgresql
+  doas systemctl status postgresql
 fi
 echo 'netstat -na | grep tcp | grep LIST | grep 5432'
 if ! ss -tulpn4 | grep 5432; then

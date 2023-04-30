@@ -1,10 +1,10 @@
 #!/bin/sh
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed sshfs
+  doas pacman --noconfirm --needed sshfs
 elif [ "$OS" = "Gentoo" ]; then
   echo "gentoo"
-  sudo emerge --update --newuse sshfs
+  doas emerge --update --newuse sshfs
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo "debian"
 elif [ "$OS" = "Void" ]; then

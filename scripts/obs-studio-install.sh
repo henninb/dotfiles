@@ -1,9 +1,9 @@
 #!/bin/sh
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S obs-studio
+  doas pacman --noconfirm --needed -S obs-studio
   yay -S v4l2loopback-dkms
-  sudo modprobe v4l2loopback devices=1 video_nr=10 card_label="OBS Cam" exclusive_caps=1
+  doas modprobe v4l2loopback devices=1 video_nr=10 card_label="OBS Cam" exclusive_caps=1
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse media-video/v4l2loopback
   sudo emerge --update --newuse media-video/obs-studio

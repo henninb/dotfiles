@@ -11,16 +11,16 @@ IS_STATIC=$2
 
 if [ "$IS_STATIC" = "y" ]; then
   sudo ip addr add dev "${DEVICE}" 192.168.10.50/24
-  sudo ip route add default via 192.168.10.1
+  doas ip route add default via 192.168.10.1
   echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf
-  sudo ip link set dev "${DEVICE}" up
+  doas ip link set dev "${DEVICE}" up
   # echo sudo ip link set dev virbr0 up
   ping -c 4 192.168.10.1
 else
   echo sudo ip link set dev "${DEVICE}" up
-  sudo ip link set dev "${DEVICE}" up
+  doas ip link set dev "${DEVICE}" up
   echo sudo dhclient "${DEVICE}"
-  sudo dhclient "${DEVICE}"
+  doas dhclient "${DEVICE}"
   ping -c 4 192.168.10.1
 fi
 

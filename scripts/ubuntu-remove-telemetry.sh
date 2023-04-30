@@ -3,14 +3,14 @@
 # Disable telemetry
 
 # Disable the services
-sudo systemctl stop apport.service
-sudo systemctl disable apport.service
-sudo systemctl stop whoopsie.service
-sudo systemctl disable whoopsie.service
+doas systemctl stop apport.service
+doas systemctl disable apport.service
+doas systemctl stop whoopsie.service
+doas systemctl disable whoopsie.service
 
 echo "Disabling telemetry"
-sudo apt remove ubuntu-report whoopsie apport -y
-sudo apt remove -y landscape-common
+doas apt remove ubuntu-report whoopsie apport -y
+doas apt remove -y landscape-common
 
 # Prevent telemetry from being reinstalled 
 printf "Package: ubuntu-report\nPin: release a=*\nPin-Priority: -10" >> no-ubuntu-report.pref 

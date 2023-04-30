@@ -1,6 +1,6 @@
 #!/bin/sh
-sudo ip link set enp3s0 up
-sudo dhclient
+doas ip link set enp3s0 up
+doas dhclient
 exit 0
 
 # vim: set ft=sh:

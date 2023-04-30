@@ -4,7 +4,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   echo "archlinux"
 elif [ "$OS" = "Gentoo" ]; then
   if ! command -v ifuse; then
-    sudo emerge --update --newuse ifuse
+    doas emerge --update --newuse ifuse
   fi
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo "debian"
@@ -29,7 +29,7 @@ fi
 
 echo enable allow_other in /etc/fuse.conf,
 sudo mkdir -p /media/iphone
-sudo idevicepair pair
+doas idevicepair pair
 sudo ifuse /media/iphone
 
 exit 0

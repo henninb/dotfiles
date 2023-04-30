@@ -51,32 +51,32 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo chmod 600 /etc/postfix/sasl_passwd
   sudo mv -v main.cf /etc/postfix/main.cf
 
-  sudo apt install -y postfix mailutils
+  doas apt install -y postfix mailutils
   cd /etc/postfix || exit
-  sudo chown -R postfix .
-  sudo chgrp -R postfix .
-  sudo chmod -R ugo+rwx .
+  doas chown -R postfix .
+  doas chgrp -R postfix .
+  doas chmod -R ugo+rwx .
   cd - || exit
   sudo chmod 644 /etc/postfix/*.cf
   sudo postmap /etc/postfix/sasl_passwd
-  sudo systemctl restart postfix
+  doas systemctl restart postfix
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo mv -v sasl_passwd /etc/postfix/sasl_passwd
   sudo chmod 600 /etc/postfix/sasl_passwd
   sudo mv -v main_centos.cf /etc/postfix/main.cf
   sudo restorecon -v /etc/postfix/main.cf
 
-  sudo yum install -y net-tools mailx postfix cyrus-sasl cyrus-sasl-plain
+  doas yum install -y net-tools mailx postfix cyrus-sasl cyrus-sasl-plain
   cd /etc/postfix || exit
-  sudo chown -R postfix .
-  sudo chgrp -R postfix .
-  sudo chmod -R ugo+rwx .
+  doas chown -R postfix .
+  doas chgrp -R postfix .
+  doas chmod -R ugo+rwx .
   cd - || exit
   sudo chmod 644 /etc/postfix/*.cf
   sudo postmap /etc/postfix/sasl_passwd
-  sudo systemctl restart postfix
+  doas systemctl restart postfix
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse postfix
+  doas emerge --update --newuse postfix
   sudo mv -v sasl_passwd /etc/postfix/sasl_passwd
   sudo chmod 600 /etc/postfix/sasl_passwd
   sudo mv -v main_archlinux.cf /etc/postfix/main.cf
@@ -84,16 +84,16 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   sudo mv -v sasl_passwd /etc/postfix/sasl_passwd
   sudo chmod 600 /etc/postfix/sasl_passwd
   sudo mv -v main_archlinux.cf /etc/postfix/main.cf
-  sudo pacman --noconfirm --needed -S postfix mailutils net-tools
+  doas pacman --noconfirm --needed -S postfix mailutils net-tools
   sudo mkfifo /var/spool/postfix/public/pickup
   cd /etc/postfix || exit
-  sudo chown -R postfix .
-  sudo chgrp -R postfix .
-  sudo chmod -R ugo+rwx .
+  doas chown -R postfix .
+  doas chgrp -R postfix .
+  doas chmod -R ugo+rwx .
   cd - || exit
   sudo chmod 644 /etc/postfix/*.cf
   sudo postmap /etc/postfix/sasl_passwd
-  sudo systemctl restart postfix
+  doas systemctl restart postfix
 else
   echo "$OS not implemented"
   exit 1

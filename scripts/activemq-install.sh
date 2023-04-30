@@ -52,19 +52,19 @@ if [ ! -f "$HOME/tmp/apache-activemq-$amq_version-bin.tar.gz" ]; then
 fi
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo groupadd activemq
+  doas groupadd activemq
   sudo useradd -s /sbin/nologin -g activemq activemq
-  sudo pacman --noconfirm --needed -S net-tools psmisc curl
+  doas pacman --noconfirm --needed -S net-tools psmisc curl
   sudo tar -zxvf "$HOME/tmp/apache-activemq-$amq_version-bin.tar.gz" -C /opt
   sudo chown -R activemq:activemq "/opt/apache-activemq-$amq_version/"
   sudo ln -sfn "/opt/apache-activemq-$amq_version" /opt/activemq
   sudo sed -i "s/managementContext createConnector=\"false\"/managementContext createConnector=\"true\"/" /opt/activemq/conf/activemq.xml
   sudo mv -v "$HOME/tmp/activemq.service" /usr/lib/systemd/system/activemq.service
   #sed -i "s/admin: admin, admin/admin: admin, ${ACTIVEMQ_PASSWORD}/g" /opt/activemq/conf/jetty-realm.properties
-  sudo systemctl daemon-reload
-  sudo systemctl enable activemq
-  sudo systemctl start activemq
-  sudo systemctl status activemq
+  doas systemctl daemon-reload
+  doas systemctl enable activemq
+  doas systemctl start activemq
+  doas systemctl status activemq
   sleep 3
   curl -I http://localhost:8161
   netstat -na | grep tcp | grep LIST | grep 8161
@@ -75,15 +75,15 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo fuser 61613/tcp
   echo "admin:admin"
 elif [ "$OS" = "openSUSE Leap" ]; then
-  sudo groupadd activemq
+  doas groupadd activemq
   sudo useradd -s /sbin/nologin -g activemq activemq
-  sudo zypper install curl wget
+  doas zypper install curl wget
   sudo tar -zxvf "$HOME/tmp/apache-activemq-$amq_version-bin.tar.gz" -C /opt
   sudo chown -R activemq:activemq "/opt/apache-activemq-$amq_version/"
   sudo ln -sfn "/opt/apache-activemq-$amq_version" /opt/activemq
   sudo sed -i "s/managementContext createConnector=\"false\"/managementContext createConnector=\"true\"/" /opt/activemq/conf/activemq.xml
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install -y activemq
+  doas pkg install -y activemq
   count=$(grep -c 1 "fdesc /dev/fd fdescfs rw 0 0" /etc/fstab)
   if [ "$count" -ne 1 ]; then
     echo "fdesc /dev/fd fdescfs rw 0 0" | sudo tee /etc/fstab
@@ -93,18 +93,18 @@ elif [ "$OS" = "FreeBSD" ]; then
   if [ "$count" -ne 1 ]; then
     echo "proc /proc procfs rw 0 0" | sudo tee /etc/fstab
   fi
-  sudo sysrc activemq_enable="YES"
-  sudo service activemq start
+  doas sysrc activemq_enable="YES"
+  doas service activemq start
   netstat -na | grep tcp | grep LIST | grep 8161
   netstat -na | grep tcp | grep LIST | grep 61616
   netstat -na | grep tcp | grep LIST | grep 61613
   rm -rf activemq.service
 elif [ "$OS" = "Gentoo" ]; then
   sudo mv -v "$HOME/tmp/activemq.service" /usr/lib/systemd/system/activemq.service
-  sudo groupadd activemq
+  doas groupadd activemq
   sudo useradd -s /sbin/nologin -g activemq activemq
-  sudo eselect news read
-  sudo groupadd activemq
+  doas eselect news read
+  doas groupadd activemq
   sudo useradd -s /sbin/nologin -g activemq activemq
   sudo tar -zxvf "$HOME/tmp/apache-activemq-$amq_version-bin.tar.gz" -C /opt
   sudo chown -R activemq:activemq "/opt/apache-activemq-$amq_version/"
@@ -113,15 +113,15 @@ elif [ "$OS" = "Gentoo" ]; then
   # sudo mv -v "$HOME/tmp/activemq.stop" /etc/local.d/
   # sudo rc-update add activemq default
   # sudo rc-service activemq start
-  sudo systemctl stop activemq
-  sudo systemctl daemon-reload
-  sudo systemctl enable activemq
-  sudo systemctl start activemq
-  sudo systemctl status activemq
+  doas systemctl stop activemq
+  doas systemctl daemon-reload
+  doas systemctl enable activemq
+  doas systemctl start activemq
+  doas systemctl status activemq
   sleep 3
   curl -I http://localhost:8161
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y net-tools psmisc wget curl
+  doas apt install -y net-tools psmisc wget curl
   sudo tar -zxvf "$HOME/tmp/apache-activemq-$amq_version-bin.tar.gz" -C /opt
   sudo chown -R activemq:activemq "/opt/apache-activemq-$amq_version/"
   sudo ln -sfn "/opt/apache-activemq-$amq_version" /opt/activemq
@@ -129,25 +129,25 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   sudo mv -v "$HOME/tmp/activemq.service" /lib/systemd/system
   #sudo mv -v "$HOME/tmp/activemq.service" /usr/lib/systemd/system/activemq.service
   #sed -i "s/admin: admin, admin/admin: admin, ${ACTIVEMQ_PASSWORD}/g" /opt/activemq/conf/jetty-realm.properties
-  sudo systemctl daemon-reload
-  sudo systemctl enable activemq
-  sudo systemctl start activemq
+  doas systemctl daemon-reload
+  doas systemctl enable activemq
+  doas systemctl start activemq
   netstat -na | grep tcp | grep LIST | grep 8161
   netstat -na | grep tcp | grep LIST | grep 61616
   netstat -na | grep tcp | grep LIST | grep 61613
   pidof systemd
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo groupadd activemq
+  doas groupadd activemq
   sudo useradd -s /sbin/nologin -g activemq activemq
-  sudo dnf install -y net-tools wget curl
+  doas dnf install -y net-tools wget curl
   sudo tar -zxvf "$HOME/tmp/apache-activemq-$amq_version-bin.tar.gz" -C /opt
   sudo chown -R activemq:activemq "/opt/apache-activemq-$amq_version/"
   sudo ln -sfn "/opt/apache-activemq-$amq_version" /opt/activemq
   sudo sed -i "s/managementContext createConnector=\"false\"/managementContext createConnector=\"true\"/" /opt/activemq/conf/activemq.xml
   sudo mv -v "$HOME/tmp/activemq.service" /lib/systemd/system
-  sudo systemctl daemon-reload
-  sudo systemctl enable activemq
-  sudo systemctl start activemq
+  doas systemctl daemon-reload
+  doas systemctl enable activemq
+  doas systemctl start activemq
   # echo fix the firewall
   netstat -na | grep tcp | grep LIST | grep 8161
   netstat -na | grep tcp | grep LIST | grep 61616

@@ -1,7 +1,7 @@
 #!/bin/sh
 
-sudo apt install -y libxml2-utils
-sudo lshw -xml | tee hardware.xml
+doas apt install -y libxml2-utils
+doas lshw -xml | tee hardware.xml
 #xmllint --xpath "string(//list/node[@id="silverfox"])" hardware.xml
 #xmllint --xpath "string(//list/node)" hardware.xml
 #xmllint --xpath "string(//list/node/node/@id)" hardware.xml
@@ -28,10 +28,10 @@ EOF
 
 if [ "$OS" = "Linux Mint" ]; then
   echo 0 | sudo tee /proc/sys/net/bridge/bridge-nf-call-iptables
-  sudo apt install -y iptables-persistent
-  sudo apt install -y resolvconf
+  doas apt install -y iptables-persistent
+  doas apt install -y resolvconf
   sudo rm /etc/resolv.conf
-  sudo dpkg-reconfigure resolvconf
+  doas dpkg-reconfigure resolvconf
 
   sudo mv -v interfaces /etc/network/interfaces
   sudo mv -v sysctl.conf /etc/sysctl.conf
@@ -42,20 +42,20 @@ if [ "$OS" = "Linux Mint" ]; then
   #sudo dhclient br0
 elif [ "$OS" = "Arch Linux" ]; then
   echo 0 | sudo tee /proc/sys/net/bridge/bridge-nf-call-iptables
-  sudo ip link add name br0 type bridge
-  sudo ip link set br0 up
-  sudo ip link set enp9s0 master br0
-  sudo bridge link
+  doas ip link add name br0 type bridge
+  doas ip link set br0 up
+  doas ip link set enp9s0 master br0
+  doas bridge link
 #  sudo dhclient br0
 elif [ "$OS" = "Ubuntu" ]; then
   echo 0 | sudo tee /proc/sys/net/bridge/bridge-nf-call-iptables
-  sudo apt install -y iptables-persistent
-  sudo apt install -y resolvconf
+  doas apt install -y iptables-persistent
+  doas apt install -y resolvconf
   sudo rm /etc/resolv.conf
-  sudo dpkg-reconfigure resolvconf
+  doas dpkg-reconfigure resolvconf
 
-  sudo ip link add name br0 type bridge
-  sudo ip link set br0 up
+  doas ip link add name br0 type bridge
+  doas ip link set br0 up
   #sudo dhclient br0
 else
   echo "$OS is not yet implemented."
@@ -64,19 +64,19 @@ fi
 exit 0
 
 #ip link set eth0 up
-sudo ip link set eth0 master br0
+doas ip link set eth0 master br0
 
-sudo dhclient br0
+doas dhclient br0
 sudo ip addr add dev br0 192.168.10.6/24
 
 # delete bridge
-sudo ip link delete br0 type bridge
+doas ip link delete br0 type bridge
 
 #restart networking
 #sudo systemctl restart networking
 
 # setup physical in permiscous mode
-sudo ifconfig enp0s31f6 promisc
+doas ifconfig enp0s31f6 promisc
 
 echo cd /etc/libvirt/qemu
 
@@ -98,7 +98,7 @@ auto br0
     dns-nameservers 192.168.10.1
 
 sudo vi /etc/netctl/bridge
-sudo netctl enable bridge
+doas netctl enable bridge
 # archlinux
 # bridge setup DHCP enp9s0
 # Description="bridge archlinux"
@@ -127,30 +127,30 @@ sudo netctl enable bridge
 
 # manually set an ip address
 sudo ip addr add 192.168.100.2/24 dev eth0
-sudo ip link set eth0 up
+doas ip link set eth0 up
 
 echo 0 | sudo tee /proc/sys/net/bridge/bridge-nf-call-iptables
 
 #Adding an iptables rule:
-sudo iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT
+doas iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT
 
 iptables-persistent
 
-sudo iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT
+doas iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT
 netfilter-persistent save
 sudo cat /etc/iptables/rules.v4| grep bridge
-sudo iptables -S | grep bridge
+doas iptables -S | grep bridge
 
-sudo iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT
-sudo iptables-save | tee firewall.rules
-sudo iptables-restore | tee firewall.rules
-sudo sysctl -p
+doas iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT
+doas iptables-save | tee firewall.rules
+doas iptables-restore | tee firewall.rules
+doas sysctl -p
 
 
-sudo systemctl edit --full rc-local
+doas systemctl edit --full rc-local
 
 It appears you need to install the resolvconf package to use the dns-* values in /etc/network/interfaces
 sudo rm /etc/resolv.conf
-sudo dpkg-reconfigure resolvconf
+doas dpkg-reconfigure resolvconf
 
 # vim: set ft=sh:

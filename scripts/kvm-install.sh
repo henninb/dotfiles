@@ -24,54 +24,54 @@ else
 fi
 
 if [ "$OS" = "Linux Mint" ] || [  "$OS" = "Ubuntu" ]; then
-  sudo apt install -y cpu-checker
-  sudo apt install -y ebtables
-  sudo apt install -y dnsmasq
-  sudo apt install -y spice-client-gtk
-  sudo apt install -y virt-viewer
-  sudo apt install -y gir1.2-spiceclientgtk-3.0
-  sudo apt install -y libguestfs-tools
-  sudo apt install -y qemu-kvm
-  sudo apt install -y libvirt-daemon-system
+  doas apt install -y cpu-checker
+  doas apt install -y ebtables
+  doas apt install -y dnsmasq
+  doas apt install -y spice-client-gtk
+  doas apt install -y virt-viewer
+  doas apt install -y gir1.2-spiceclientgtk-3.0
+  doas apt install -y libguestfs-tools
+  doas apt install -y qemu-kvm
+  doas apt install -y libvirt-daemon-system
   suod apt install -y libvirt-clients
-  sudo apt install -y bridge-utils
-  sudo apt install -y virt-manager
-  sudo apt install -y qemu-utils
+  doas apt install -y bridge-utils
+  doas apt install -y virt-manager
+  doas apt install -y qemu-utils
   # sudo adduser "$(id -un)" kvm
   # sudo adduser "$(id -un)" libvirt
-  sudo usermod -a -G libvirt "$(id -un)"
-  sudo usermod -a -G kvm "$(id -un)"
+  doas usermod -a -G libvirt "$(id -un)"
+  doas usermod -a -G kvm "$(id -un)"
   virsh -c qemu:///system list
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y libvirt
-  sudo xbps-install -y qemu
-  sudo xbps-install -y virt-manager
-  sudo xbps-install -y virt-viewer
-  sudo xbps-install -y virt-install
-  sudo xbps-install -y virtio-win
+  doas xbps-install -y libvirt
+  doas xbps-install -y qemu
+  doas xbps-install -y virt-manager
+  doas xbps-install -y virt-viewer
+  doas xbps-install -y virt-install
+  doas xbps-install -y virtio-win
 
-  sudo usermod -a -G libvirt "$(id -un)"
+  doas usermod -a -G libvirt "$(id -un)"
   sudo ln -sfn /etc/sv/libvirtd /var/service/libvirtd
   # sudo ln -sfn /etc/sv/libvirtd /etc/runit/runsvdir/current/
-  sudo sv start libvirtd
+  doas sv start libvirtd
   virsh -c qemu:///system list
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo zypper install -y qemu-kvm
-  sudo zypper install -y libvirt-daemon-system
-  sudo zypper install -y libvirt-clients
-  sudo zypper install -y libvirt
-  sudo zypper install -y bridge-utils
-  sudo zypper install -y ebtables
-  sudo zypper install -y dnsmasq
-  sudo zypper install -y spice-client-gtk
-  sudo zypper install -y virt-viewer
-  sudo zypper install -y virt-manager
-  sudo zypper install -y gir1.2-spiceclientgtk-3.0
-  sudo zypper install -y libguestfs-tools
-  sudo usermod -a -G libvirt "$(id -un)"
-  sudo usermod -a -G kvm "$(id -un)"
+  doas zypper install -y qemu-kvm
+  doas zypper install -y libvirt-daemon-system
+  doas zypper install -y libvirt-clients
+  doas zypper install -y libvirt
+  doas zypper install -y bridge-utils
+  doas zypper install -y ebtables
+  doas zypper install -y dnsmasq
+  doas zypper install -y spice-client-gtk
+  doas zypper install -y virt-viewer
+  doas zypper install -y virt-manager
+  doas zypper install -y gir1.2-spiceclientgtk-3.0
+  doas zypper install -y libguestfs-tools
+  doas usermod -a -G libvirt "$(id -un)"
+  doas usermod -a -G kvm "$(id -un)"
   # sudo systemctl start libvirtd
-  sudo systemctl enable libvirtd --now
+  doas systemctl enable libvirtd --now
   virsh net-autostart default
 
   virsh pool-define /dev/stdin <<EOF
@@ -87,31 +87,31 @@ EOF
   virsh pool-autostart default
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   #sudo pacman -Syu libvirt qemu virt-manager spice-client-gtk virt-viewer gir1.2-spiceclientgtk-3.0
-  sudo pacman --noconfirm --needed -S dmidecode
-  sudo pacman --noconfirm --needed -S libvirt
-  sudo pacman --noconfirm --needed -S qemu
-  sudo pacman --noconfirm --needed -S virt-manager
-  sudo pacman --noconfirm --needed -S virt-install
-  sudo pacman --noconfirm --needed -S virt-viewer
-  sudo pacman --noconfirm --needed -S dnsmasq
-  sudo pacman --noconfirm --needed -S ebtables iptables dnsmasq
-  sudo pacman --noconfirm --needed -S ebtables
-  sudo pacman --noconfirm --needed -S edk2-ovmf
+  doas pacman --noconfirm --needed -S dmidecode
+  doas pacman --noconfirm --needed -S libvirt
+  doas pacman --noconfirm --needed -S qemu
+  doas pacman --noconfirm --needed -S virt-manager
+  doas pacman --noconfirm --needed -S virt-install
+  doas pacman --noconfirm --needed -S virt-viewer
+  doas pacman --noconfirm --needed -S dnsmasq
+  doas pacman --noconfirm --needed -S ebtables iptables dnsmasq
+  doas pacman --noconfirm --needed -S ebtables
+  doas pacman --noconfirm --needed -S edk2-ovmf
   #sudo pacman --noconfirm --needed -S firewalld
-  sudo pacman --noconfirm --needed -S cdrtools
-  sudo pacman --noconfirm --needed -S iptables
-  sudo pacman --noconfirm --needed -S virtio-win
+  doas pacman --noconfirm --needed -S cdrtools
+  doas pacman --noconfirm --needed -S iptables
+  doas pacman --noconfirm --needed -S virtio-win
 
   # sudo pacman -Qi ebtables iptables dnsmasq
 
-  sudo systemctl start libvirtd
-  sudo systemctl enable libvirtd --now
-  sudo systemctl enable iptables --now
-  sudo systemctl status libvirtd
-  sudo systemctl status iptables
+  doas systemctl start libvirtd
+  doas systemctl enable libvirtd --now
+  doas systemctl enable iptables --now
+  doas systemctl status libvirtd
+  doas systemctl status iptables
 
-  sudo usermod -a -G libvirt "$(id -un)"
-  sudo usermod -a -G kvm "$(id -un)"
+  doas usermod -a -G libvirt "$(id -un)"
+  doas usermod -a -G kvm "$(id -un)"
 
   virsh list --all
   virsh net-autostart default
@@ -120,66 +120,66 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   echo "reboot system to fix virt network"
 elif [ "$OS" = "Solus" ]; then
   echo
-  sudo eopkg install -y libvirt
+  doas eopkg install -y libvirt
   # sudo eopkg install -y virt-manager
-  sudo usermod -a -G libvirt "$(id -un)"
-  sudo usermod -a -G kvm "$(id -un)"
-  sudo usermod -a -G qemu "$(id -un)"
-  sudo systemctl enable libvirtd --now
+  doas usermod -a -G libvirt "$(id -un)"
+  doas usermod -a -G kvm "$(id -un)"
+  doas usermod -a -G qemu "$(id -un)"
+  doas systemctl enable libvirtd --now
   # sudo systemctl start libvirtd
   virsh list --all
   virsh net-autostart default
   virsh net-list --all
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse bridge-utils
+  doas emerge --update --newuse bridge-utils
   sudo emerge --update --newuse app-emulation/libvirt
-  sudo emerge --update --newuse libvirt
-  sudo emerge --update --newuse virtio-win
-  sudo emerge --update --newuse libvirt-glib
-  sudo emerge --update --newuse libvirt-python
+  doas emerge --update --newuse libvirt
+  doas emerge --update --newuse virtio-win
+  doas emerge --update --newuse libvirt-glib
+  doas emerge --update --newuse libvirt-python
   sudo emerge --update --newuse app-emulation/virt-viewer
   sudo emerge --update --newuse net-misc/spice-gtk
-  sudo emerge --update --newuse virt-manager
+  doas emerge --update --newuse virt-manager
   sudo emerge --update --newuse sys-firmware/edk2-ovmf ## uefi support
   sudo mv -v "$HOME/tmp/libvirtd.conf" /etc/libvirt/libvirtd.conf
   # sudo rc-update add libvirtd default
   # sudo rc-service libvirtd start
-  sudo systemctl enable libvirtd --now
+  doas systemctl enable libvirtd --now
   # sudo systemctl start libvirtd
-  sudo usermod -a -G libvirt "$(id -un)"
-  sudo usermod -a -G kvm "$(id -un)"
-  sudo usermod -a -G qemu "$(id -un)"
+  doas usermod -a -G libvirt "$(id -un)"
+  doas usermod -a -G kvm "$(id -un)"
+  doas usermod -a -G qemu "$(id -un)"
   echo grep KVM /usr/src/linux/.config
   lsmod | grep kvm
 elif [ "$OS" = "Fedora Linux" ]; then
   #sudo dnf remove -y seabios-bin
-  sudo dnf install -y seabios-bin
-  sudo dnf install -y virt-install
-  sudo dnf install -y virt-viewer
-  sudo dnf install -y libvirt
-  sudo dnf install -y edk2-ovmf
-  sudo dnf install -y qemu
-  sudo dnf install -y virt-manager
-  sudo usermod -a -G libvirt "$(id -un)"
-  sudo usermod -a -G kvm "$(id -un)"
-  sudo usermod -a -G qemu "$(id -un)"
+  doas dnf install -y seabios-bin
+  doas dnf install -y virt-install
+  doas dnf install -y virt-viewer
+  doas dnf install -y libvirt
+  doas dnf install -y edk2-ovmf
+  doas dnf install -y qemu
+  doas dnf install -y virt-manager
+  doas usermod -a -G libvirt "$(id -un)"
+  doas usermod -a -G kvm "$(id -un)"
+  doas usermod -a -G qemu "$(id -un)"
   # sudo systemctl start libvirtd
-  sudo systemctl enable libvirtd --now
+  doas systemctl enable libvirtd --now
   virsh list --all
   virsh net-autostart default
   virsh net-list --all
 elif [ "$OS" = "CentOS Linux" ]; then
   #sudo yum remove -y seabios-bin
-  sudo yum install -y seabios
-  sudo yum install -y seabios-bin
-  sudo yum install -y virt-install
-  sudo yum install -y libvirt
-  sudo yum install -y qemu
-  sudo yum install -y virt-manager
-  sudo usermod -a -G libvirt "$(id -un)"
-  sudo usermod -a -G kvm "$(id -un)"
+  doas yum install -y seabios
+  doas yum install -y seabios-bin
+  doas yum install -y virt-install
+  doas yum install -y libvirt
+  doas yum install -y qemu
+  doas yum install -y virt-manager
+  doas usermod -a -G libvirt "$(id -un)"
+  doas usermod -a -G kvm "$(id -un)"
   # sudo systemctl start libvirtd
-  sudo systemctl enable libvirtd --now
+  doas systemctl enable libvirtd --now
   virsh list --all
   virsh net-autostart default
   virsh net-list --all

@@ -1,8 +1,8 @@
 #!/bin/sh
 
-sudo netstat -tulp | grep LIST
-sudo netstat -anp | grep LISTEN
-sudo lsof -i :80
+doas netstat -tulp | grep LIST
+doas netstat -anp | grep LISTEN
+doas lsof -i :80
 
 exit 0
 

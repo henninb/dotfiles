@@ -19,7 +19,7 @@ xrdp_build() {
     echo build failed for xrdp.
     exit 1
   fi
-  sudo make install
+  doas make install
 }
 
 xorgxrdp_build() {
@@ -37,7 +37,7 @@ xorgxrdp_build() {
     echo build failed for xrdp-xorgxrdp.
     exit 1
   fi
-  sudo make install
+  doas make install
 }
 
 cat <<  EOF > "$HOME/tmp/xrdp.rc"
@@ -141,9 +141,9 @@ chmod 755 "$HOME/tmp/xrdp.rc"
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   mkdir -p "$HOME/projects"
-  sudo pacman --noconfirm --needed -S patch autoconf automake pkg-config fakeroot lsof nasm net-tools libtool xorg-server-devel make libxfont2
-  sudo pacman --noconfirm --needed -S xorg-server
-  sudo pacman --noconfirm --needed -S xorg-xinit
+  doas pacman --noconfirm --needed -S patch autoconf automake pkg-config fakeroot lsof nasm net-tools libtool xorg-server-devel make libxfont2
+  doas pacman --noconfirm --needed -S xorg-server
+  doas pacman --noconfirm --needed -S xorg-xinit
 
   xrdp_build
   xorgxrdp_build
@@ -152,15 +152,15 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo mv -v "$HOME/tmp/startwm.sh" /etc/xrdp/startwm.sh
   sudo mv -v "$HOME/tmp/Xwrapper.config" /etc/X11/Xwrapper.config
 elif [ "$OS" = "Solus" ]; then
-  sudo eopkg install -c system.devel
-  sudo eopkg install -y nasm
-  sudo eopkg install -y pam-devel
-  sudo eopkg install -y libxrandr-devel
-  sudo eopkg install -y xorg-server-devel
-  sudo eopkg install -y libxfont2-devel
-  sudo eopkg install -y fuse-devel
-  sudo eopkg install -y lame-devel
-  sudo eopkg install -y libxfixes-devel
+  doas eopkg install -c system.devel
+  doas eopkg install -y nasm
+  doas eopkg install -y pam-devel
+  doas eopkg install -y libxrandr-devel
+  doas eopkg install -y xorg-server-devel
+  doas eopkg install -y libxfont2-devel
+  doas eopkg install -y fuse-devel
+  doas eopkg install -y lame-devel
+  doas eopkg install -y libxfixes-devel
 
   xrdp_build
   xorgxrdp_build
@@ -177,10 +177,10 @@ elif [ "$OS" = "FreeBSD" ]; then
 elif [ "$OS" = "OpenBSD" ]; then
   echo "openbsd"
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y nasm
-  sudo xbps-install -y pam-devel
-  sudo xbps-install -y libXrandr-devel
-  sudo xbps-install -y xorg-server-devel
+  doas xbps-install -y nasm
+  doas xbps-install -y pam-devel
+  doas xbps-install -y libXrandr-devel
+  doas xbps-install -y xorg-server-devel
   cd /tmp || exit
   curl -LO https://www.openssl.org/source/openssl-1.1.1.tar.gz
   tar xvf openssl-1.1.1.tar.gz
@@ -188,8 +188,8 @@ elif [ "$OS" = "Void" ]; then
   #./config --prefix=/opt/openssl/1.1.1
   ./config --prefix=/usr
   make
-  sudo make install
-  sudo usermod -a -G tty "$(id -un)"
+  doas make install
+  doas usermod -a -G tty "$(id -un)"
 
   xrdp_build
   xorgxrdp_build
@@ -198,14 +198,14 @@ elif [ "$OS" = "Void" ]; then
   sudo mv -v "$HOME/tmp/startwm.sh" /etc/xrdp/startwm.sh
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge  --update --newuse x11-libs/libX11
-  sudo emerge  --update --newuse nasm
-  sudo emerge  --update --newuse lame
+  doas emerge  --update --newuse nasm
+  doas emerge  --update --newuse lame
   #sudo emerge  --update --newuse x11-base/xorg-server
   sudo emerge  --update --newuse x11-base/xorg-x11
   sudo emerge  --update --newuse x11-libs/libXfixes
   sudo emerge  --update --newuse x11-libs/libXrandr
   #sudo emerge  --update --newuse x11-libs/libX11
-  sudo usermod -a -G tty "$(id -un)"
+  doas usermod -a -G tty "$(id -un)"
 
   xrdp_build
   xorgxrdp_build
@@ -216,14 +216,14 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo mv -v xrdp.rc /etc/init.d/xrdp
   sudo mv -v "$HOME/tmp/Xwrapper.config" /etc/X11/Xwrapper.config
 elif [ "$OS" = "Fedora Linux" ]; then
-    sudo dnf install -y libtool
-    sudo dnf install -y openssl-devel
-    sudo dnf install -y pam-devel
-    sudo dnf install -y nasm
-    sudo dnf install -y libX11-devel
-    sudo dnf install -y libXfixes-devel
-    sudo dnf install -y libXrandr-devel
-    sudo dnf install -y xorg-x11-server-devel
+    doas dnf install -y libtool
+    doas dnf install -y openssl-devel
+    doas dnf install -y pam-devel
+    doas dnf install -y nasm
+    doas dnf install -y libX11-devel
+    doas dnf install -y libXfixes-devel
+    doas dnf install -y libXrandr-devel
+    doas dnf install -y xorg-x11-server-devel
 
     xrdp_build
     xorgxrdp_build
@@ -232,23 +232,23 @@ elif [ "$OS" = "Fedora Linux" ]; then
     sudo mv -v "$HOME/tmp/startwm.sh" /etc/xrdp/startwm.sh
     sudo mv -v "$HOME/tmp/Xwrapper.config" /etc/X11/Xwrapper.config
     sudo mv -v 45-allow.colord.pkla /etc/polkit-1/localauthority/50-local.d/
-    sudo systemctl disable firewalld
-    sudo systemctl stop firewalld
+    doas systemctl disable firewalld
+    doas systemctl stop firewalld
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-    sudo zypper install -y libtool
-    sudo zypper install -y openssl-devel
-    sudo zypper install -y pam-devel
-    sudo zypper install -y nasm
-    sudo zypper install -y libX11-devel
-    sudo zypper install -y libXfixes-devel
-    sudo zypper install -y libXrandr-devel
-    sudo zypper install -y xorg-x11-server
-    sudo zypper install -y xorg-x11-server-sdk
-    sudo zypper install -y libXfont2-devel
-    sudo zypper install -y xorg-x11
-    sudo zypper install -y make
-    sudo zypper install -y gcc
-    sudo zypper install -y xorg-x11-server-sdk
+    doas zypper install -y libtool
+    doas zypper install -y openssl-devel
+    doas zypper install -y pam-devel
+    doas zypper install -y nasm
+    doas zypper install -y libX11-devel
+    doas zypper install -y libXfixes-devel
+    doas zypper install -y libXrandr-devel
+    doas zypper install -y xorg-x11-server
+    doas zypper install -y xorg-x11-server-sdk
+    doas zypper install -y libXfont2-devel
+    doas zypper install -y xorg-x11
+    doas zypper install -y make
+    doas zypper install -y gcc
+    doas zypper install -y xorg-x11-server-sdk
     # sudo zypper install -y xorg-x11-server-devel
 
     xrdp_build
@@ -257,22 +257,22 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
     cd "$HOME" || exit
     sudo mv -v "$HOME/tmp/startwm.sh" /etc/xrdp/startwm.sh
     sudo mv -v "$HOME/tmp/Xwrapper.config" /etc/X11/Xwrapper.config
-    sudo systemctl stop firewalld
-    sudo systemctl disable firewalld
+    doas systemctl stop firewalld
+    doas systemctl disable firewalld
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo usermod -a -G tty "$(id -un)"
+  doas usermod -a -G tty "$(id -un)"
   #echo sudo apt install -y xrdp xorgxrdp
-  sudo apt install -y rdesktop freerdp-x11 lsof
-  sudo apt install -y libpam0g-dev
-  sudo apt install -y nasm
-  sudo apt install -y libssl-dev
-  sudo apt install -y xserver-xorg-dev
-  sudo apt install -y libxfixes-dev
-  sudo apt install -y libxrandr-dev
-  sudo apt install -y autoconf
-  sudo apt install -y libtool
-  sudo apt install -y pkg-config
-  sudo apt install -y make
+  doas apt install -y rdesktop freerdp-x11 lsof
+  doas apt install -y libpam0g-dev
+  doas apt install -y nasm
+  doas apt install -y libssl-dev
+  doas apt install -y xserver-xorg-dev
+  doas apt install -y libxfixes-dev
+  doas apt install -y libxrandr-dev
+  doas apt install -y autoconf
+  doas apt install -y libtool
+  doas apt install -y pkg-config
+  doas apt install -y make
 
   xrdp_build
   xorgxrdp_build
@@ -286,12 +286,12 @@ else
 fi
 
 if command -v systemctl; then
-  sudo systemctl enable xrdp
-  sudo systemctl enable xrdp-sesman
-  sudo systemctl start xrdp
-  sudo systemctl start xrdp-sesman
-  sudo systemctl status xrdp
-  sudo systemctl status xrdp-sesman
+  doas systemctl enable xrdp
+  doas systemctl enable xrdp-sesman
+  doas systemctl start xrdp
+  doas systemctl start xrdp-sesman
+  doas systemctl status xrdp
+  doas systemctl status xrdp-sesman
   echo systemctl unmask xrdp
 fi
 

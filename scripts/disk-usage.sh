@@ -1,11 +1,11 @@
 #!/bin/sh
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S ncdu
+  doas pacman --noconfirm --needed -S ncdu
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse ncdu
+  doas emerge --update --newuse ncdu
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y libdbus-1-dev libx11-dev libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libgtk-3-dev libxdg-basedir-dev libnotify-dev
+  doas apt install -y libdbus-1-dev libx11-dev libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libgtk-3-dev libxdg-basedir-dev libnotify-dev
 elif [ "$OS" = "Void" ]; then
   echo "void"
 elif [ "$OS" = "FreeBSD" ]; then

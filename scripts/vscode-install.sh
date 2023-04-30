@@ -9,7 +9,7 @@ if [ "$OS" = "Darwin" ]; then
   sudo mv -v Visual\ Studio\ Code.app /Applications
   #id -g vscode &>/dev/null || sudo groupadd vscode
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y nss
+  doas xbps-install -y nss
   code --version
   sudo rm -rf /opt/vscode
   rm -rf code-stable-latest.tar.gz
@@ -19,7 +19,7 @@ elif [ "$OS" = "Void" ]; then
   sudo chmod -R 775 /opt/vscode
   id -g vscode >/dev/null || sudo groupadd vscode
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse nss
+  doas emerge --update --newuse nss
   code --version
   sudo rm -rf /opt/vscode
   rm -rf code-stable-latest.tar.gz
@@ -29,7 +29,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo chmod -R 775 /opt/vscode
   id -g vscode >/dev/null || sudo groupadd vscode
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
-  sudo apt install -y nss
+  doas apt install -y nss
   code --version
   sudo rm -rf /opt/vscode
   rm -rf code-stable-latest.tar.gz

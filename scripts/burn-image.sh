@@ -13,8 +13,8 @@ if [ ! -f "$FILE" ]; then
 fi
 
 echo My external burner does not write dvdr+ disks.
-sudo eopkg install -y cdrtools
-sudo emerge --update --newuse cdrtools
+doas eopkg install -y cdrtools
+doas emerge --update --newuse cdrtools
 
 if command -v wodim; then
   wodim  dev=/dev/sr0 -checkdrive -prcap
@@ -26,8 +26,8 @@ if command -v wodim; then
   #driver=mmc_dvdplusr
   #driveropts=burnfree
 elif command -v cdrecord; then
-  sudo cdrecord -scanbus
-  sudo cdrecord -v -eject speed=4 dev=ATAPI:0,0,0 "${FILE}"
+  doas cdrecord -scanbus
+  doas cdrecord -v -eject speed=4 dev=ATAPI:0,0,0 "${FILE}"
   echo ls -l /dev/cdrom
 else
   echo "neither wodim nor cdrecord installed."

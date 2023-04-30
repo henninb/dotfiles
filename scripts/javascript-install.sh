@@ -12,23 +12,23 @@ node_ver=$(curl -s 'https://nodejs.org/download/release/latest-v18.x/' | grep no
 # fi
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Linux" ]; then
-  sudo apt install -y curl
+  doas apt install -y curl
   curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-  sudo apt install -y nodejs
+  doas apt install -y nodejs
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S curl
-  sudo pacman --noconfirm --needed -S nodejs-lts-hydrogen
+  doas pacman --noconfirm --needed -S curl
+  doas pacman --noconfirm --needed -S nodejs-lts-hydrogen
   curl https://www.npmjs.org/install.sh | sh
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo zypper install -y nodejs18
+  doas zypper install -y nodejs18
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install -y nodejs
+  doas dnf install -y nodejs
 elif [ "$OS" = "Darwin" ]; then
   test
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y nodejs
+  doas xbps-install -y nodejs
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge  --update --newuse nodejs
+  doas emerge  --update --newuse nodejs
 elif [ "$OS" = "Solus" ]; then
   echo sudo eopkg install nodejs
 elif [ "$OS" = "CentOS Linux" ]; then
@@ -36,7 +36,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
 elif [ "$OS" = "FreeBSD" ]; then
   # sudo pkg install -y gcc
   # sudo pkg install -y gmake
-  sudo pkg install -y npm
+  doas pkg install -y npm
   # sudo pkg install -y node16-16.16.0
   # npm install -g yarn
 else

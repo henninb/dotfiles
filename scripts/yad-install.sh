@@ -34,7 +34,7 @@ cd yad
 autoreconf -ivf && intltoolize
 ./configure
 make
-sudo make install
+doas make install
 cd - || exit
 
 exit 0

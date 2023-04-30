@@ -5,30 +5,30 @@ mkdir -p "$HOME/mp3"
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo mint
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S alsa-utils
-  sudo pacman --noconfirm --needed -S pulseaudio
+  doas pacman --noconfirm --needed -S alsa-utils
+  doas pacman --noconfirm --needed -S pulseaudio
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y pavucontrol
+  doas xbps-install -y pavucontrol
   # sudo xbps-install -y ConsoleKit2
-  sudo xbps-install -y pulseaudio
-  sudo xbps-install -y alsa-utils
-  sudo xbps-install -y mpg123
-  sudo xbps-install -y sox
+  doas xbps-install -y pulseaudio
+  doas xbps-install -y alsa-utils
+  doas xbps-install -y mpg123
+  doas xbps-install -y sox
   echo comment out
   echo .ifexists module-console-kit.so
   echo load-module module-console-kit
   echo .endif
   echo pulseaudio --daemonize=no --exit-idle-time=-1
-  sudo usermod -a -G audio "$(id -un)"
+  doas usermod -a -G audio "$(id -un)"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo "opensuse"
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install -y pavucontrol
+  doas dnf install -y pavucontrol
 elif [ "$OS" = "Solus" ]; then
   echo solus
 elif [ "$OS" = "Gentoo" ]; then
   if ! command -v pavucontrol; then
-    sudo emerge --update --newuse pavucontrol
+    doas emerge --update --newuse pavucontrol
   fi
 else
   echo "$OS is not yet implemented."
@@ -43,8 +43,8 @@ cat /proc/asound/cards
 # sudo ln -sfn /etc/sv/cgmanager /var/service/cgmanager
 # sudo ln -sfn /etc/sv/consolekit /var/service/consolekit
 
-sudo usermod -a -G pulse-access "$(id -un)"
-sudo usermod -a -G audio "$(id -un)"
+doas usermod -a -G pulse-access "$(id -un)"
+doas usermod -a -G audio "$(id -un)"
 
 # manually start
 if ! pgrep pulseaudio; then

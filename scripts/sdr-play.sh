@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if ! command -v play; then
-  sudo emerge --update --newuse sox
+  doas emerge --update --newuse sox
 fi
 
 if ! command -v rtl_test; then

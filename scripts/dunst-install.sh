@@ -5,7 +5,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
 elif [ "$OS" = "Gentoo" ]; then
   echo "sudo emerge --update --newuse"
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install libdbus-1-dev libx11-dev libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libgtk-3-dev libxdg-basedir-dev libnotify-dev
+  doas apt install libdbus-1-dev libx11-dev libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libgtk-3-dev libxdg-basedir-dev libnotify-dev
 elif [ "$OS" = "Void" ]; then
   echo "sudo xbps-install -y"
 elif [ "$OS" = "FreeBSD" ]; then
@@ -34,7 +34,7 @@ cd "$HOME/projects/github.com/dunst-project" || exit
 git clone --recursive git@github.com:dunst-project/dunst.git
 cd dunst || exit
 make
-sudo make install
+doas make install
 cd - || exit
 
 exit 0

@@ -2,7 +2,7 @@
 
 if [ "$OS" = "Void" ]; then
   echo xtools
-  sudo xbps-install -y xtools
+  doas xbps-install -y xtools
   sudo mkdir -p /usr/ports
   sudo chown "$USER" /usr/ports
   cd /usr/ports || exit

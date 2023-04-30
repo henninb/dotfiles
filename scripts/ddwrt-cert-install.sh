@@ -39,12 +39,12 @@ if [ ! -f "$HOME/ssl/rootCA.pem" ]; then
       -out "$HOME/ssl/rootCA.pem"
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo trust anchor --store rootCA.pem
+  doas trust anchor --store rootCA.pem
 elif [ "$OS" = "Gentoo" ]; then
   echo "gentoo"
   sudo mkdir -p /usr/local/share/ca-certificates/
   sudo cp "$HOME/ssl/rootCA.pem" /usr/local/share/ca-certificates/
-  sudo update-ca-certificates
+  doas update-ca-certificates
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo "debian"
 elif [ "$OS" = "Void" ]; then

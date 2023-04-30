@@ -11,7 +11,7 @@ build() {
   cd "Python-${VER}" || exit
   ./configure --enable-optimizations
   make -j "$(nproc)"
-  sudo make altinstall
+  doas make altinstall
 }
 
 pip_ins() {
@@ -21,18 +21,18 @@ pip_ins() {
 }
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y python3.7 python3.7-venv python-pip python3-pip libssl-dev libffi-dev python-setuptools python3.7-dev
+  doas apt install -y python3.7 python3.7-venv python-pip python3-pip libssl-dev libffi-dev python-setuptools python3.7-dev
   echo build
   alias pip='pip3'
   alias python='python3'
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
-  sudo pacman --noconfirm --needed -S python python-pip python2-pip python2
+  doas pacman --noconfirm --needed -S python python-pip python2-pip python2
 elif [ "$OS" = "CentOS Linux" ]; then
-  sudo yum install -y epel-release python python-pip wget gcc python-devel
+  doas yum install -y epel-release python python-pip wget gcc python-devel
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge python dev-python/pip
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install -y python36 py36-pip
+  doas pkg install -y python36 py36-pip
 else
   echo "$OS is not yet implemented."
   exit 1

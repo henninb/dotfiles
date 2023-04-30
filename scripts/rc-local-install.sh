@@ -30,25 +30,25 @@ sudo chmod 755 /etc/rc.local
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo mv -v "$HOME/tmp/rc-local.service" /etc/systemd/system/rc-local.service
-  sudo systemctl enable rc-local
-  sudo systemctl start rc-local
-  sudo systemctl status rc-local
+  doas systemctl enable rc-local
+  doas systemctl start rc-local
+  doas systemctl status rc-local
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo systemctl stop getty@ttyS0
-  sudo systemctl disable getty@ttyS0
+  doas systemctl stop getty@ttyS0
+  doas systemctl disable getty@ttyS0
   sudo rm -vrf /lib/systemd/system/rc.service
   sudo mv -v "$HOME/tmp/rc-local.service" /lib/systemd/system/rc-local.service
-  sudo systemctl enable rc-local
-  sudo systemctl start rc-local
-  sudo systemctl status rc-local
+  doas systemctl enable rc-local
+  doas systemctl start rc-local
+  doas systemctl status rc-local
 elif [ "$OS" = "CentOS Linux" ]; then
   echo "TODO: work on centos"
   exit 1
 elif [ "$OS" = "Gentoo" ]; then
   echo Gentoo openrc
-  sudo systemctl enable rc-local
-  sudo systemctl start rc-local
-  sudo systemctl status rc-local
+  doas systemctl enable rc-local
+  doas systemctl start rc-local
+  doas systemctl status rc-local
 else
   echo "$OS not configured."
   exit 1

@@ -1,16 +1,16 @@
 #!/bin/sh
 
 if [ -x "$(command -v pacman)" ]; then
-  sudo pacman --noconfirm --needed -S zsh
-  sudo pacman --noconfirm --needed -S starship
+  doas pacman --noconfirm --needed -S zsh
+  doas pacman --noconfirm --needed -S starship
 elif [ -x "$(command -v emerge)" ]; then
-  sudo emerge --update --newuse zsh
-  sudo emerge --update --newuse starship
+  doas emerge --update --newuse zsh
+  doas emerge --update --newuse starship
 elif [ -x "$(command -v zypper)" ]; then
-  sudo zypper install -y zsh
-  sudo zypper install -y starship
+  doas zypper install -y zsh
+  doas zypper install -y starship
 elif [ -x "$(command -v dnf)" ]; then
-  sudo dnf install -y zsh
+  doas dnf install -y zsh
   if [ ! -x "$(command -v starship)" ]; then
     curl -O https://starship.rs/install.sh
     chmod +x install.sh
@@ -18,7 +18,7 @@ elif [ -x "$(command -v dnf)" ]; then
     rm install.sh
   fi
 elif [ -x "$(command -v apt)" ]; then
-  sudo apt install -y zsh
+  doas apt install -y zsh
   if [ ! -x "$(command -v starship)" ]; then
     curl -O https://starship.rs/install.sh
     chmod +x install.sh
@@ -26,16 +26,16 @@ elif [ -x "$(command -v apt)" ]; then
     rm install.sh
   fi
 elif [ -x "$(command -v xbps-install)" ]; then
-  sudo xbps-install -y zsh
-  sudo xbps-install -y curl
-  sudo xbps-install -y starship
-  sudo xbps-install -y unzip
-  sudo xbps-install -y fontconfig
+  doas xbps-install -y zsh
+  doas xbps-install -y curl
+  doas xbps-install -y starship
+  doas xbps-install -y unzip
+  doas xbps-install -y fontconfig
 elif [ -x "$(command -v eopkg)" ]; then
-  sudo eopkg install -y zsh
+  doas eopkg install -y zsh
 elif [ -x "$(command -v pkg)" ]; then
-  sudo pkg install -y zsh
-  sudo pkg install -y starship
+  doas pkg install -y zsh
+  doas pkg install -y starship
 elif [ -x "$(command -v brew)" ]; then
   brew install zsh
 else
@@ -56,39 +56,39 @@ if ! command -v starship; then
 fi
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S zsh
-  sudo pacman --noconfirm --needed -S unzip
-  sudo pacman --noconfirm --needed -S wget
-  sudo pacman --noconfirm --needed -S fontconfig
+  doas pacman --noconfirm --needed -S zsh
+  doas pacman --noconfirm --needed -S unzip
+  doas pacman --noconfirm --needed -S wget
+  doas pacman --noconfirm --needed -S fontconfig
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ] || [ "$OS" = "Debian GNU/Linux" ]; then
-  sudo apt install -y zsh
-  sudo apt install -y unzip
-  sudo apt install -y fontconfig
+  doas apt install -y zsh
+  doas apt install -y unzip
+  doas apt install -y fontconfig
 elif [ "$OS" = "Clear Linux OS" ]; then
-  sudo swupd bundle-add zsh
-  sudo swupd bundle-add wget
-  sudo swupd bundle-add fonts-basic
+  doas swupd bundle-add zsh
+  doas swupd bundle-add wget
+  doas swupd bundle-add fonts-basic
 elif [ "$OS" = "OpenBSD" ]; then
   echo "openbsd"
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install -y coreutils
-  sudo pkg install -y urwfonts
+  doas pkg install -y coreutils
+  doas pkg install -y urwfonts
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install -y unzip
-  sudo dnf install -y util-linux-user
+  doas dnf install -y unzip
+  doas dnf install -y util-linux-user
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse unzip
-  sudo emerge --update --newuse fontconfig
+  doas emerge --update --newuse unzip
+  doas emerge --update --newuse fontconfig
   sudo emerge --update --newuse media-fonts/urw-fonts
-  sudo emerge --update --newuse java-config
+  doas emerge --update --newuse java-config
 elif [ "$OS" = "Solus" ]; then
-  sudo eopkg install -y zsh
+  doas eopkg install -y zsh
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo zypper install -y zsh
+  doas zypper install -y zsh
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y curl
-  sudo xbps-install -y unzip
-  sudo xbps-install -y fontconfig
+  doas xbps-install -y curl
+  doas xbps-install -y unzip
+  doas xbps-install -y fontconfig
 elif [ "$OS" = "Darwin" ]; then
   brew install coreutils
   brew install fontconfig

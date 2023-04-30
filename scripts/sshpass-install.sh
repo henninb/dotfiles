@@ -9,7 +9,7 @@ cd automake-1.15 || exit
 ./configure  --prefix=/opt/aclocal-1.15
 make
 sudo mkdir -p /opt
-sudo make install
+doas make install
 
 mkdir -p "$HOME/projects/kevinburke"
 cd "$HOME/projects/kevinburke" || exit
@@ -21,7 +21,7 @@ aclocal --version
 touch README
 ./configure
 make
-sudo make install
+doas make install
 
 exit 0
 

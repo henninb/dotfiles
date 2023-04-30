@@ -21,13 +21,13 @@ device=$1
 # if [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   # sudo ip addr del "your ip" dev dummy0
   echo "using network manager cli"
-  sudo nmcli -f bridge con delete br0
-  sudo nmcli connection add ifname br0 type bridge con-name br0
-  sudo nmcli con modify br0 bridge.stp no
-  sudo ip addr flush dev "$device"
-  sudo nmcli connection add type ethernet con-name br0-slave-1 ifname "$device" master br0
-  sudo nmcli connection up br0
-  sudo dhclient br0
+  doas nmcli -f bridge con delete br0
+  doas nmcli connection add ifname br0 type bridge con-name br0
+  doas nmcli con modify br0 bridge.stp no
+  doas ip addr flush dev "$device"
+  doas nmcli connection add type ethernet con-name br0-slave-1 ifname "$device" master br0
+  doas nmcli connection up br0
+  doas dhclient br0
 
   virsh net-define "$HOME/tmp/bridged-network.xml"
   virsh net-start br0-bridged-network

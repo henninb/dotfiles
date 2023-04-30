@@ -25,8 +25,8 @@ Action=*
 ResultAny=yes
 EOF
 
-sudo groupadd wheel
-sudo usermod -a -G wheel "$(whoami)"
+doas groupadd wheel
+doas usermod -a -G wheel "$(whoami)"
 # need to remove other 51 files
 echo sudo mkdir -p /etc/polkit-1/rules.d/
 sudo mv -v 51-admin.conf /etc/polkit-1/localauthority.conf.d/

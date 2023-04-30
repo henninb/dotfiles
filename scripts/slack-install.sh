@@ -1,9 +1,9 @@
 #!/bin/sh
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S slack
+  doas pacman --noconfirm --needed -S slack
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse slack
+  doas emerge --update --newuse slack
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo "debian"
 elif [ "$OS" = "Void" ]; then

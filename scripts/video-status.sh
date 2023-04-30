@@ -69,14 +69,14 @@ echo 'uninstall'
 echo 'sudo sh ./NVIDIA-Linux-x86_64-525.105.17.run --uninstall'
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S linux-headers
-  sudo pacman --noconfirm --needed -S glxinfo
+  doas pacman --noconfirm --needed -S linux-headers
+  doas pacman --noconfirm --needed -S glxinfo
 elif [ "$OS" = "Gentoo" ]; then
   if ! command -v hardinfo; then
-    sudo emerge --update --newuse hardinfo
+    doas emerge --update --newuse hardinfo
   fi
-  sudo emerge --update --newuse mesa-progs
-  sudo emerge --update --newuse linux-headers
+  doas emerge --update --newuse mesa-progs
+  doas emerge --update --newuse linux-headers
   sudo emerge --update --newuse media-libs/vulkan-loader
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo debian
@@ -105,18 +105,18 @@ fi
 if [ 0 -eq 1 ]; then
   sudo emerge --update --newuse x11-misc/vdpauinfo
 
-  sudo pacman --noconfirm --needed -S vdpauinfo
-  sudo pacman --noconfirm --needed -S mesa-vdpau
-  sudo pacman --noconfirm --needed -S libva-utils
-  sudo pacman --noconfirm --needed -S libva-vdpau-driver libvdpau-va-gl
+  doas pacman --noconfirm --needed -S vdpauinfo
+  doas pacman --noconfirm --needed -S mesa-vdpau
+  doas pacman --noconfirm --needed -S libva-utils
+  doas pacman --noconfirm --needed -S libva-vdpau-driver libvdpau-va-gl
   pacman -Qi nvidia
   pacman -Qi nvidia-utils
   pacman -Qi nvidia-libgl
 
-  sudo xbps-install -y mesa-vdpau
-  sudo xbps-install -y mesa-vaapi
+  doas xbps-install -y mesa-vdpau
+  doas xbps-install -y mesa-vaapi
 
-  sudo apt install -y vulkan-utils
+  doas apt install -y vulkan-utils
 
   echo "i believe this is for AMD graphics cards"
   echo sudo pacman --noconfirm --needed -S vulkan-radeon
@@ -157,9 +157,9 @@ echo sudo chvt 2
 echo "Open tty with the shortcut - Ctl-Alt-(F1-F7)"
 
 if [ -x "$(command -v nvidia-smi)" ]; then
-  sudo nvidia-smi
-  sudo nvidia-smi -q -d TEMPERATURE
-  sudo nvidia-smi --query-gpu=driver_version --format=csv,noheader
+  doas nvidia-smi
+  doas nvidia-smi -q -d TEMPERATURE
+  doas nvidia-smi --query-gpu=driver_version --format=csv,noheader
   # modinfo "/usr/lib/modules/$(uname -r)/kernel/drivers/video/nvidia.ko" | grep ^version
 fi
 

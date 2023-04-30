@@ -3,7 +3,7 @@
 lsusb | grep 2838
 
 if ! command -v gqrx; then
-  sudo emerge --update --newuse gqrx
+  doas emerge --update --newuse gqrx
 fi
 
 if ! command -v rtl_test; then
@@ -11,7 +11,7 @@ if ! command -v rtl_test; then
 fi
 
 if ! command -v play; then
-  sudo emerge --update --newuse sox
+  doas emerge --update --newuse sox
 fi
 
 echo net-wireless/cubicsdr
@@ -25,13 +25,13 @@ EOF
 sudo mv -v "$HOME/tmp/80-rtlsdr.rules" /etc/udev/rules.d/80-rtlsdr.rules
 sudo chown root:root /etc/udev/rules.d/80-rtlsdr.rules
 if command -v udevadm; then
-  sudo udevadm control --reload-rules
+  doas udevadm control --reload-rules
   # sudo udevadm control --reload
-  sudo udevadm trigger
+  doas udevadm trigger
 fi
 
-sudo groupadd sdr
-sudo usermod -aG sdr henninb
+doas groupadd sdr
+doas usermod -aG sdr henninb
 rtl_test -t
 
 echo sudo systemctl status systemd-udevd

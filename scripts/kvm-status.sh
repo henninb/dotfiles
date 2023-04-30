@@ -6,7 +6,7 @@ if ! command -v virsh; then
 fi
 virsh net-start default
 
-sudo echo
+doas echo
 echo virsh net-list --all
 virsh net-list --all
 echo

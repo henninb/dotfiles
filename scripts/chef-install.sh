@@ -8,8 +8,8 @@ if [ "$OS" = "Linux Mint" ]; then
   if [ ! -f "chef-server-core_12.19.31-1_amd64.deb" ]; then
     wget https://packages.chef.io/files/stable/chef-server/12.19.31/ubuntu/18.04/chef-server-core_12.19.31-1_amd64.deb
   fi
-  sudo dpkg -i chef-server-core_12.19.31-1_amd64.deb
-  sudo gem install knife-block
+  doas dpkg -i chef-server-core_12.19.31-1_amd64.deb
+  doas gem install knife-block
 elif [ "$OS" = "Ubuntu" ]; then
   echo here
   #curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chefdk -c stable
@@ -17,8 +17,8 @@ elif [ "$OS" = "Ubuntu" ]; then
   echo here1
     wget https://packages.chef.io/files/stable/chef-server/12.19.31/ubuntu/18.04/chef-server-core_12.19.31-1_amd64.deb
   fi
-  sudo dpkg -i chef-server-core_12.19.31-1_amd64.deb
-  sudo gem install knife-block
+  doas dpkg -i chef-server-core_12.19.31-1_amd64.deb
+  doas gem install knife-block
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   cd "$HOME/projects" || exit
   git clone https://aur.archlinux.org/chef-dk.git
@@ -31,16 +31,16 @@ else
   exit 1
 fi
 
-sudo chef-server-ctl reconfigure
-sudo chef-server-ctl status
-sudo chef-server-ctl install chef-manage
-sudo chef-server-ctl org-create home "home servers" -f home.pem
-sudo sudo chef-server-ctl org-list
-sudo chef-server-ctl user-create henninb Brian Henning henninb@gmail.com "$CHEF_PASSWORD" -f henninb.pem
-sudo chef-server-ctl user-list
-sudo chef-server-ctl org-user-add home henninb --admin
+doas chef-server-ctl reconfigure
+doas chef-server-ctl status
+doas chef-server-ctl install chef-manage
+doas chef-server-ctl org-create home "home servers" -f home.pem
+doas sudo chef-server-ctl org-list
+doas chef-server-ctl user-create henninb Brian Henning henninb@gmail.com "$CHEF_PASSWORD" -f henninb.pem
+doas chef-server-ctl user-list
+doas chef-server-ctl org-user-add home henninb --admin
 echo admin user is created
-sudo gem install knife-block
+doas gem install knife-block
 
 chef generate cookbook test-cookbook
 

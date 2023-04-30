@@ -5,73 +5,73 @@ read -r continued
 echo "$continued"
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S ninja
-  sudo pacman --noconfirm --needed -S meson
-  sudo pacman --noconfirm --needed -S uthash
-  sudo pacman --noconfirm --needed -S cmake
-  sudo pacman --noconfirm --needed -S libev
-  sudo pacman --noconfirm --needed -S libconfig
+  doas pacman --noconfirm --needed -S ninja
+  doas pacman --noconfirm --needed -S meson
+  doas pacman --noconfirm --needed -S uthash
+  doas pacman --noconfirm --needed -S cmake
+  doas pacman --noconfirm --needed -S libev
+  doas pacman --noconfirm --needed -S libconfig
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install -y ninja
-  sudo pkg install -y meson
-  sudo pkg install -y uthash
+  doas pkg install -y ninja
+  doas pkg install -y meson
+  doas pkg install -y uthash
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y uthash-dev libxcb-sync-dev libxcb-present-dev libxcb-damage0-dev libconfig-dev libdbus-1-dev
-  sudo apt install -y libx11-xcb-dev
-  sudo apt install -y libev-dev
+  doas apt install -y uthash-dev libxcb-sync-dev libxcb-present-dev libxcb-damage0-dev libconfig-dev libdbus-1-dev
+  doas apt install -y libx11-xcb-dev
+  doas apt install -y libev-dev
   # sudo apt install -y libpcre2-dev
-  sudo apt install -y libpcre3-dev
+  doas apt install -y libpcre3-dev
   # sudo apt install -y libpcre2
-  sudo apt install -y libpixman-1-dev
-  sudo apt install -y libxcb-render-util0-dev
-  sudo apt install -y libxcb-image0-dev
-  sudo apt install -y libxcb-composite0-dev
-  sudo apt install -y libxcb-xinerama0-dev
-  sudo apt install -y libglew-dev
-  sudo apt isntall -y menson
-  sudo apt isntall -y ninja
+  doas apt install -y libpixman-1-dev
+  doas apt install -y libxcb-render-util0-dev
+  doas apt install -y libxcb-image0-dev
+  doas apt install -y libxcb-composite0-dev
+  doas apt install -y libxcb-xinerama0-dev
+  doas apt install -y libglew-dev
+  doas apt isntall -y menson
+  doas apt isntall -y ninja
   # sudo python3 -m pip install ninja
   # sudo python3 -m pip install meson
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo zypper install -y cmake
-  sudo zypper install -y xcb-util-renderutil-devel
-  sudo zypper install -y xcb-util-image-devel
-  sudo zypper install -y meson
-  sudo zypper install -y ninja
-  sudo zypper install -y pcre-devel
-  sudo zypper install -y uthash-devel
-  sudo zypper install -y libev-devel
-  sudo zypper install -y libconfig-devel
-  sudo zypper install -y dbus-1-devel
-  sudo zypper install -y libpixman-1-0-devel
-  sudo zypper install -y libGLw-devel
+  doas zypper install -y cmake
+  doas zypper install -y xcb-util-renderutil-devel
+  doas zypper install -y xcb-util-image-devel
+  doas zypper install -y meson
+  doas zypper install -y ninja
+  doas zypper install -y pcre-devel
+  doas zypper install -y uthash-devel
+  doas zypper install -y libev-devel
+  doas zypper install -y libconfig-devel
+  doas zypper install -y dbus-1-devel
+  doas zypper install -y libpixman-1-0-devel
+  doas zypper install -y libGLw-devel
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y ninja
-  sudo xbps-install -y meson
-  sudo xbps-install -y libev-devel
-  sudo xbps-install -y uthash
-  sudo xbps-install -y cmake
-  sudo xbps-install -y pcre-devel
-  sudo xbps-install -y libconfig-devel
-  sudo xbps-install -y xcb-util-renderutil-devel
-  sudo xbps-install -y xcb-util-image-devel
-  sudo xbps-install -y xcb-util-composite-devel
+  doas xbps-install -y ninja
+  doas xbps-install -y meson
+  doas xbps-install -y libev-devel
+  doas xbps-install -y uthash
+  doas xbps-install -y cmake
+  doas xbps-install -y pcre-devel
+  doas xbps-install -y libconfig-devel
+  doas xbps-install -y xcb-util-renderutil-devel
+  doas xbps-install -y xcb-util-image-devel
+  doas xbps-install -y xcb-util-composite-devel
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install -y ninja
-  sudo dnf install -y meson
-  sudo dnf install -y libev-devel
-  sudo dnf install -y uthash
-  sudo dnf install -y libconfig-devel
-  sudo dnf install -y xcb-util-renderutil-devel
-  sudo dnf install -y xcb-util-image-devel
-  sudo dnf install -y xcb-util-composite-devel
-  sudo dnf install -y pcre-devel
+  doas dnf install -y ninja
+  doas dnf install -y meson
+  doas dnf install -y libev-devel
+  doas dnf install -y uthash
+  doas dnf install -y libconfig-devel
+  doas dnf install -y xcb-util-renderutil-devel
+  doas dnf install -y xcb-util-image-devel
+  doas dnf install -y xcb-util-composite-devel
+  doas dnf install -y pcre-devel
 elif [ "$OS" = "Gentoo" ]; then
   if ! command -v ninja; then
     sudo emerge --update --newuse dev-util/ninja
   fi
-  sudo emerge --update --newuse uthash
-  sudo emerge --update --newuse libconfig
+  doas emerge --update --newuse uthash
+  doas emerge --update --newuse libconfig
 else
   echo "OS=$OS not setup yet."
   exit 1
@@ -84,7 +84,7 @@ cd ./picom || exit
 meson --buildtype=release . build
 ninja -C build
 # To install the binaries in /usr/local/bin (optional)
-sudo ninja -C build install
+doas ninja -C build install
 
 exit 0
 

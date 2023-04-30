@@ -23,20 +23,20 @@ cat <<  EOF > "$HOME/tmp/"'_@user_Darcula.icls'
 EOF
 
 if command -v pacman; then
-  sudo pacman --noconfirm --needed -S jq curl
-  sudo pacman --noconfirm --needed -S net-tools psmisc
+  doas pacman --noconfirm --needed -S jq curl
+  doas pacman --noconfirm --needed -S net-tools psmisc
 elif command -v emerge; then
   sudo emerge --update --newuse app-misc/jq wget net-misc/curl
 elif command -v apt; then
-  sudo apt install -y jq curl
+  doas apt install -y jq curl
 elif command -v xbps-install; then
-  sudo xbps-install -y jq curl
+  doas xbps-install -y jq curl
 elif command -v pkg; then
-  sudo pkg install -y jq curl
+  doas pkg install -y jq curl
 elif command -v zypper; then
-  sudo zypper install jq curl
+  doas zypper install jq curl
 elif command -v dnf; then
-  sudo dnf install -y jq curl
+  doas dnf install -y jq curl
 elif command -v brew; then
   echo "macos"
 else
@@ -83,12 +83,12 @@ sudo chown -R intellij:intellij /opt/idea-IU-*/
 sudo chmod -R 775 /opt/idea-IU-*/
 
 if [ "${OS}" = "FreeBSD" ]; then
-  sudo pw group add intellij
-  sudo pw usermod "$(whoami)" -G intellij
+  doas pw group add intellij
+  doas pw usermod "$(whoami)" -G intellij
 else
-  sudo groupadd intellij
+  doas groupadd intellij
   sudo useradd -s /sbin/nologin -g intellij intellij
-  sudo usermod -a -G intellij "$(whoami)"
+  doas usermod -a -G intellij "$(whoami)"
 fi
 echo "$VER"
 

@@ -3,19 +3,19 @@
 export SDKMAN_DIR="$HOME/.sdkman"
 
 if [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install -y zip unzip
+  doas pkg install -y zip unzip
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed  -S zip unzip
+  doas pacman --noconfirm --needed  -S zip unzip
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse zip unzip
+  doas emerge --update --newuse zip unzip
 elif [ "$OS" = "Ubuntu" ]; then
-  sudo apt install -y zip unzip
+  doas apt install -y zip unzip
 elif [ "$OS" = "Solus" ]; then
-  sudo eopkg install -y zip unzip
+  doas eopkg install -y zip unzip
 elif [ "$OS" = "CentOS Linux" ]; then
-  sudo yum install -y zip unzip
+  doas yum install -y zip unzip
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y zip unzip
+  doas apt install -y zip unzip
 else
   echo "$OS not configured."
   exit 1

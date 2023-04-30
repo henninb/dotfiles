@@ -1,42 +1,42 @@
 #!/bin/sh
 
 if [ "$OS" = "Solus" ]; then
-  sudo eopkg install -y libgtk-2-devel
-  sudo eopkg install -y libgtk-3-devel
-  sudo eopkg install -y ffmpegthumbnailer-devel
+  doas eopkg install -y libgtk-2-devel
+  doas eopkg install -y libgtk-3-devel
+  doas eopkg install -y ffmpegthumbnailer-devel
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y libgtk2.0-dev
-  sudo apt install -y libgtk-3-dev
-  sudo apt install -y udevil
-  sudo apt install -y libudev-dev
-  sudo apt install -y libffmpegthumbnailer-dev
-  sudo apt install -y intltool
-  sudo apt install -y libtool
-  sudo apt install -y libtool-bin
-  sudo apt install -y libgtk2.0-dev
+  doas apt install -y libgtk2.0-dev
+  doas apt install -y libgtk-3-dev
+  doas apt install -y udevil
+  doas apt install -y libudev-dev
+  doas apt install -y libffmpegthumbnailer-dev
+  doas apt install -y intltool
+  doas apt install -y libtool
+  doas apt install -y libtool-bin
+  doas apt install -y libgtk2.0-dev
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   echo "archlinux"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo zypper install -y gtk3-devel
+  doas zypper install -y gtk3-devel
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse x11-libs/gtk+:2
   sudo emerge --update --newuse x11-libs/gtk+:3
-  sudo emerge  --update --newuse ffmpegthumbnailer
+  doas emerge  --update --newuse ffmpegthumbnailer
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install -y systemd-devel
-  sudo dnf install -y ffmpegthumbnailer-devel
+  doas dnf install -y systemd-devel
+  doas dnf install -y ffmpegthumbnailer-devel
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install ffmpegthumbnailer
-  sudo pkg install intltool
+  doas pkg install ffmpegthumbnailer
+  doas pkg install intltool
 elif [ "$OS" = "Darwin" ]; then
   echo "macos"
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y spacefm
-  sudo xbps-install -y patch
-  sudo xbps-install -y intltool
-  sudo xbps-install -y glib-devel
-  sudo xbps-install -Sy ffmpegthumbnailer
-  sudo xbps-install -y ffmpegthumbnailer-devel
+  doas xbps-install -y spacefm
+  doas xbps-install -y patch
+  doas xbps-install -y intltool
+  doas xbps-install -y glib-devel
+  doas xbps-install -Sy ffmpegthumbnailer
+  doas xbps-install -y ffmpegthumbnailer-devel
 else
   echo "$OS is not implemented."
   exit 1

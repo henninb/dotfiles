@@ -10,7 +10,7 @@ if ! make; then
   echo "failed to build task-spooler"
   exit 1
 fi
-sudo make install
+doas make install
 sudo ln -sfn /usr/local/bin/ts /usr/local/bin/tsp
 
 exit 0

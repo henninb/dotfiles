@@ -2,16 +2,16 @@
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   # sudo pacman --noconfirm --needed -S networkmanager
-  sudo pacman --noconfirm --needed -S dialog
-  sudo pacman --noconfirm --nedded -S aircrack-ng
+  doas pacman --noconfirm --needed -S dialog
+  doas pacman --noconfirm --nedded -S aircrack-ng
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse networkmanager
+  doas emerge --update --newuse networkmanager
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y network-manager
-  sudo apt install -y wicd-curses
+  doas apt install -y network-manager
+  doas apt install -y wicd-curses
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y NetworkManager
-  sudo xbps-install -y dkms
+  doas xbps-install -y NetworkManager
+  doas xbps-install -y dkms
 elif [ "$OS" = "FreeBSD" ]; then
   echo "sudo pkg install -y"
 elif [ "$OS" = "OpenBSD" ]; then
@@ -47,9 +47,9 @@ if [ -x "$(command -v nmcli)" ]; then
   echo nmcli device show
   echo nmcli r wifi on
   nmcli device wifi list
-  sudo nmcli -a d wifi connect NSA_classified
-  sudo nmcli networking off
-  sudo nmcli connection delete id NSA_classified
+  doas nmcli -a d wifi connect NSA_classified
+  doas nmcli networking off
+  doas nmcli connection delete id NSA_classified
 fi
 
 ip addr show

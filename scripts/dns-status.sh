@@ -19,13 +19,13 @@ echo stub vs uplink
 if [ "$OS" = "Fedora Linux" ]; then
   # echo dnf -y install dnsmasq
   # Uncomment the DNSStubListener line in resolved.conf
-  sudo sed -i 's/#DNSStubListener=/DNSStubListener=/' /etc/systemd/resolved.conf
+  doas sed -i 's
 
   # Add the DNSStubListener=yes line after the uncommented line
   # sudo sed -i '/DNSStubListener=/a DNSStubListener=yes' /etc/systemd/resolved.conf
 
   # Restart the systemd-resolved service
-  sudo systemctl restart systemd-resolved.service
+  doas systemctl restart systemd-resolved.service
   cat /etc/systemd/resolved.conf
   # sudo systemctl disable systemd-resolved.service
   # sudo systemctl stop systemd-resolved.service

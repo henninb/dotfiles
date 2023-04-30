@@ -12,13 +12,13 @@ if [ ! -f "$FILE" ]; then
 fi
 
 if [ -x "$(command -v emerge)" ] && [ ! -x "$(command -v lsusb)" ]; then
-  sudo emerge --update --newuse usbutils
+  doas emerge --update --newuse usbutils
 fi
 
 blkid
 
 lsusb | grep Toshiba
-sudo dmesg | grep -A 5 'Direct-Access' | grep sd | grep -i log
+doas dmesg | grep -A 5 'Direct-Access' | grep sd | grep -i log
 #drive=$(dmesg | grep -A 5 'Direct-Access' | grep sd | grep -i log)
 
 echo sudo dd "if=${FILE}" of=/dev/sdc bs=4M status=progress && sync

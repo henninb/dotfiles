@@ -20,7 +20,7 @@ cd - || exit
 cd hdhomerun_config_gui || exit
 ./configure
 make
-sudo make install
+doas make install
 mv -v src/hdhomerun_config_gui "$HOME/.local/bin/hdhomerun_config_gui"
 
 # sudo dnf install -y hdhomerun

@@ -3,13 +3,13 @@
 if [ "$OS" = "FreeBSD" ]; then
   echo git@github.com:michaeldexter/vmrc.git
   echo ls -al /dev/vmm
-  sudo kldstat | grep vmm
-  sudo vm list
+  doas kldstat | grep vmm
+  doas vm list
 
-  sudo vm start centos7
-  sudo vm info centos7
+  doas vm start centos7
+  doas vm info centos7
 
-  sudo kldstat | grep nmdm
+  doas kldstat | grep nmdm
   echo sudo vm console centos7
 fi
 

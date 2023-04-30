@@ -1,8 +1,8 @@
 #!/bin/sh
 
-sudo apt -y install imagemagick
-sudo apt -y install php-imagick
-sudo apt -y install  libjpeg-dev
+doas apt -y install imagemagick
+doas apt -y install php-imagick
+doas apt -y install  libjpeg-dev
 sudo emerge --update --newuse media-gfx/imagemagick
 
 
@@ -13,7 +13,7 @@ rm ImageMagick.tar.gz
 cd ImageMagick* || exit
 ./configure
 make
-sudo make install
+doas make install
 sudo ldconfig /usr/local/lib
 
 cd "$HOME" || exit

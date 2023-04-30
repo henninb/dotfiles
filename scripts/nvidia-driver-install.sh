@@ -97,33 +97,33 @@ if [ "$OS" = "Gentoo" ]; then
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo mkdir -p /etc/pacman.d/hooks
   sudo mv -v "$HOME/tmp/nvidia.hook" /etc/pacman.d/hooks/nvidia.hook
-  sudo pacman --noconfirm --needed -S nvidia
-  sudo pacman --noconfirm --needed -S nvidia-utils
-  sudo pacman --noconfirm --needed -S nvidia-settings
-  sudo pacman --noconfirm --needed -S opencl-nvidia
-  sudo pacman --noconfirm --needed -S nvidia lib32-nvidia-utils
-  sudo pacman --noconfirm --needed -S nvidia lib32-nvidia-libgl
-  sudo pacman --noconfirm --needed -S vulkan-tools
-  sudo pacman --noconfirm --needed -S ttf-liberation
-  sudo pacman --noconfirm --needed -S vulkan-headers
-  sudo pacman -R amdvlk
+  doas pacman --noconfirm --needed -S nvidia
+  doas pacman --noconfirm --needed -S nvidia-utils
+  doas pacman --noconfirm --needed -S nvidia-settings
+  doas pacman --noconfirm --needed -S opencl-nvidia
+  doas pacman --noconfirm --needed -S nvidia lib32-nvidia-utils
+  doas pacman --noconfirm --needed -S nvidia lib32-nvidia-libgl
+  doas pacman --noconfirm --needed -S vulkan-tools
+  doas pacman --noconfirm --needed -S ttf-liberation
+  doas pacman --noconfirm --needed -S vulkan-headers
+  doas pacman -R amdvlk
   sudo cp -v "$HOME/tmp/nvidia-installer-disable-nouveau.conf" /etc/modprobe.d/
   sudo cp -v "$HOME/tmp/xorg.conf" /etc/X11/xorg.conf
   #sudo pacman -S nvidia lib32-nvidia-utils  --overwrite '*'
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo zypper install -y kernel-source
-  sudo zypper install -y libva-utils
-  sudo zypper install -y kernel-devel kernel-source gcc make dkms acpid libglvnd libglvnd-devel
-  sudo zypper install -y libvdpau1 libva-vdpau-driver libva-utils
+  doas zypper install -y kernel-source
+  doas zypper install -y libva-utils
+  doas zypper install -y kernel-devel kernel-source gcc make dkms acpid libglvnd libglvnd-devel
+  doas zypper install -y libvdpau1 libva-vdpau-driver libva-utils
   echo "blacklist nouveau" | sudo tee -a /etc/modprobe.d/blacklist.conf
   # zypper se x11-video-nvidiaG0* nvidia-video-G03*
   echo sudo systemctl set-default graphical.target
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
   echo "blacklist nouveau" | sudo tee -a /etc/modprobe.d/blacklist.conf
-  sudo dnf remove akmod-nvidia
+  doas dnf remove akmod-nvidia
   # sudo dnf install -y akmod-nvidia "kernel-devel-uname-r == $(uname -r)"
-  sudo dnf install -y akmod-nvidia
+  doas dnf install -y akmod-nvidia
   # sudo dnf install -y akmod-nvidia "kernel-devel-uname-r=$(uname -r)"
   # echo 'https://phoenixnap.com/kb/fedora-nvidia-drivers'
   # sudo dnf remove xorg-x11-drv-nouveau
@@ -133,22 +133,22 @@ elif [ "$OS" = "Fedora Linux" ]; then
   # echo sudo systemctl set-default multi-user.target
   # echo sudo systemctl set-default graphical.target
   # sudo dnf install -y akmod-nvidia
-  sudo dnf install -y xorg-x11-drv-nvidia-cuda
-  sudo dnf install -y kernel-headers
-  sudo dnf install -y kernel-devel
+  doas dnf install -y xorg-x11-drv-nvidia-cuda
+  doas dnf install -y kernel-headers
+  doas dnf install -y kernel-devel
   # rpm -qa | grep -E "kernel-devel|kernel-headers"
   # sudo dnf install "kernel-devel-uname-r == $(uname -r)"
-  sudo akmods --force
+  doas akmods --force
   sudo dracut --force /boot/initramfs-$(uname -r).img $(uname -r)
 elif [ "$OS" = "Ubuntu" ]; then
   sudo add-apt-repository ppa:graphics-drivers/ppa
-  sudo apt install -y libvulkan-dev
-  sudo apt install -y libvulkan1
-  sudo apt install -y mesa-vulkan-drivers
-  sudo apt install -y vulkan-utils
+  doas apt install -y libvulkan-dev
+  doas apt install -y libvulkan1
+  doas apt install -y mesa-vulkan-drivers
+  doas apt install -y vulkan-utils
   # sudo apt install nvidia-graphics-drivers-396 nvidia-settings vulkan vulkan-utils
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y xtools
+  doas xbps-install -y xtools
   git clone git@github.com:void-linux/void-packages.git
   cd void-packages || exit
   ./xbps-src binary-bootstrap

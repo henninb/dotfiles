@@ -21,8 +21,8 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
 elif [ "$OS" = "Gentoo" ]; then
   echo "sudo emerge --update --newuse"
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y postfix
-  sudo apt install -y ssmtp mailutils net-tools
+  doas apt install -y postfix
+  doas apt install -y ssmtp mailutils net-tools
   sudo mv -v ssmtp.conf /etc/ssmtp/ssmtp.conf
   sudo chown root:mail /etc/ssmtp/ssmtp.conf
 elif [ "$OS" = "Void" ]; then

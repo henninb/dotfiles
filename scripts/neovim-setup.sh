@@ -9,47 +9,47 @@ ghcup install hls
 echo :LspInstall ccls
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S clang
-  sudo pacman --noconfirm --needed -S llvm
-  sudo pacman --noconfirm --needed -S llvm-libs
+  doas pacman --noconfirm --needed -S clang
+  doas pacman --noconfirm --needed -S llvm
+  doas pacman --noconfirm --needed -S llvm-libs
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse clang
-  sudo emerge --update --newuse cmake
-  sudo emerge --update --newuse llvm
+  doas emerge --update --newuse clang
+  doas emerge --update --newuse cmake
+  doas emerge --update --newuse llvm
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y luarocks
-  sudo apt install -y cmake
-  sudo apt install -y llvm
-  sudo apt install -y clang
-  sudo apt install -y libxml2-dev
-  sudo apt install -y llvm-dev
-  sudo apt install -y libclang-dev
+  doas apt install -y luarocks
+  doas apt install -y cmake
+  doas apt install -y llvm
+  doas apt install -y clang
+  doas apt install -y libxml2-dev
+  doas apt install -y llvm-dev
+  doas apt install -y libclang-dev
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y cmake
-  sudo xbps-install -y llvm
-  sudo xbps-install -y clang
-  sudo xbps-install -y xtool
-  sudo xbps-install -y libxml2-devel
-  sudo xbps-install -y clang-tools-extra
+  doas xbps-install -y cmake
+  doas xbps-install -y llvm
+  doas xbps-install -y clang
+  doas xbps-install -y xtool
+  doas xbps-install -y libxml2-devel
+  doas xbps-install -y clang-tools-extra
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install -y cmake
-  sudo pkg install -y llvm
-  sudo pkg install -y libxml2
+  doas pkg install -y cmake
+  doas pkg install -y llvm
+  doas pkg install -y libxml2
 elif [ "$OS" = "Solus" ]; then
   echo "solus"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo zypper install -y cmake
-  sudo zypper install -y llvm
-  sudo zypper install -y clang
-  sudo zypper install -y gcc-c++
-  sudo zypper install -y libxml2-devel
-  sudo zypper install -y llvm-devel
-  sudo zypper install -y clang-devel
+  doas zypper install -y cmake
+  doas zypper install -y llvm
+  doas zypper install -y clang
+  doas zypper install -y gcc-c++
+  doas zypper install -y libxml2-devel
+  doas zypper install -y llvm-devel
+  doas zypper install -y clang-devel
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install -y llvm-devel
-  sudo dnf install -y llvm-libs
-  sudo dnf install cmake
-  sudo dnf groupinstall "Development Tools" "Development Libraries"
+  doas dnf install -y llvm-devel
+  doas dnf install -y llvm-libs
+  doas dnf install cmake
+  doas dnf groupinstall "Development Tools" "Development Libraries"
 elif [ "$OS" = "Clear Linux OS" ]; then
   echo clearlinux
 elif [ "$OS" = "Darwin" ]; then

@@ -5,8 +5,8 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   # yay -S mongodb-tools
   yay -S mongodb-tools-bin
   # wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
-  sudo systemctl enable mongodb
-  sudo systemctl start mongodb
+  doas systemctl enable mongodb
+  doas systemctl start mongodb
 elif [ "$OS" = "Gentoo" ]; then
   # sudo emerge --update --newuse app-admin/mongo-tools
   # sudo emerge --update --newuse dev-db/mongodb

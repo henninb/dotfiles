@@ -12,7 +12,7 @@ echo "temp early exit"
 exit 1
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S ethtool socat
+  doas pacman --noconfirm --needed -S ethtool socat
   echo "https://computingforgeeks.com/how-to-run-minikube-on-kvm/"
   echo "minikube logs"
 

@@ -1,7 +1,7 @@
 #!/bin/sh
 
-sudo dnf install mono-complete
-sudo pacman --noconfirm --needed -S wine-mono
+doas dnf install mono-complete
+doas pacman --noconfirm --needed -S wine-mono
 yay -S fsharp
 
 # cd ~/projects

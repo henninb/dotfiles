@@ -16,11 +16,11 @@ www {
 EOF
 
 sudo cp -v "$HOME/tmp/jail.conf" /etc/jail.conf
-sudo sysrc jail_enable=YES
+doas sysrc jail_enable=YES
 echo 'ifconfig_re0_alias0="inet 192.168.10.27"'
-sudo service jail start www
+doas service jail start www
 jls
-sudo jexec 1 csh
+doas jexec 1 csh
 
 exit 0
 

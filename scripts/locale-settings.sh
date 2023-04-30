@@ -6,12 +6,12 @@ EOF
 
 if [ "$OS" = "Gentoo" ]; then
   sudo mv -v locale.gen /etc/locale.gen
-  sudo locale-gen
+  doas locale-gen
   echo sudo eselect locale set 4
-  sudo eselect locale list
+  doas eselect locale list
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-reconfigure -f glibc-locales
-  sudo xbps-reconfigure -f glibc-locales
+  doas xbps-reconfigure -f glibc-locales
+  doas xbps-reconfigure -f glibc-locales
   locale -a
 else
   echo "OS is not configured."

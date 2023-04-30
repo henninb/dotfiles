@@ -2,10 +2,10 @@
 
 echo https://forums.freebsd.org/threads/can-usb-devices-be-directly-assigned-to-a-jail.77317/
 
-sudo pkg install -y debootstrap
+doas pkg install -y debootstrap
 sudo debootstrap --no-check-gpg focal /compat/ubuntu
 
-sudo kldload linux64
+doas kldload linux64
 
 sudo mkdir -p /compat/ubuntu/dev/shm
 sudo mkdir -p /compat/ubuntu/dev/fd
@@ -62,16 +62,16 @@ eval "$(pyenv virtualenv-init -)"
 apt install -y bzip2 libreadline6 libreadline6-dev openssl
 apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
 
-sudo apt install -y apt-transport-https curl
+doas apt install -y apt-transport-https curl
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-sudo apt update
-sudo apt install -y brave-browser
+doas apt update
+doas apt install -y brave-browser
 EOF
 
 cp -v "$HOME/freebsd/linux-brave" "$HOME/.local/bin"
 
-sudo mount -al
+doas mount -al
 if ! cat /etc/fstab | grep -q ubuntu; then
   cat "$HOME/tmp/ubuntu-fstab" | sudo tee -a /etc/fstab
 fi
@@ -87,11 +87,11 @@ sudo chmod 755 /usr/local/etc/rc.d/ubuntu
 
 cd /compat/ubuntu/lib64 && sudo rm ./ld-linux-x86-64.so.2 && sudo ln -s ../lib/x86_64-linux-gnu/ld-2.31.so ld-linux-x86-64.so.2
 
-sudo sysrc ubuntu_enable=YES
-sudo sysrc linux_enable=YES
-sudo sysrc dbus_enable=YES
-sudo sysrc hald_enable=YES
-sudo sysrc kld_list="linux nvidia nvidia-modeset"
+doas sysrc ubuntu_enable=YES
+doas sysrc linux_enable=YES
+doas sysrc dbus_enable=YES
+doas sysrc hald_enable=YES
+doas sysrc kld_list="linux nvidia nvidia-modeset"
 
 sudo chroot /compat/ubuntu /bin/bash
 

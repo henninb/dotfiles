@@ -12,9 +12,9 @@ for kernel in $latest_kernels; do
   # echo System.map-${kernel#vmlinuz-}*
   # echo config-${kernel#vmlinuz-}*
   # echo initramfs-${kernel#vmlinuz-}*.img
-  sudo rm $kernel
-  sudo rm System.map-${kernel#vmlinuz-}*
-  sudo rm config-${kernel#vmlinuz-}*
+  doas rm $kernel
+  doas rm System.map-${kernel#vmlinuz-}**
+  doas rm config-${kernel#vmlinuz-}**
   sudo rm initramfs-${kernel#vmlinuz-}*.img
 done
 

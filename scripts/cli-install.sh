@@ -47,7 +47,7 @@ if [ "$OS" = "Linux Mint" ]; then
   FAILURE=""
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-  sudo apt update
+  doas apt update
   for i in $MINT_PKGS; do
     if ! sudo apt install --download-only -y "$i"; then
       FAILURE="$i $FAILURE"
@@ -120,7 +120,7 @@ elif [ "$OS" = "Gentoo" ]; then
   FAILURE=""
   for i in $GENTOO_PKGS; do
     echo "sudo emerge -uf $i"
-    sudo emerge -uf "$i"
+    doas emerge -uf "$i"
   done
   for i in $GENTOO_PKGS; do
     if ! sudo emerge --update --newuse "$i"; then
@@ -145,9 +145,9 @@ elif [ "$OS" = "Raspbian GNU/Linux" ]; then
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm"
   sudo dnf install "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
-  sudo dnf install dnf-plugins-core
+  doas dnf install dnf-plugins-core
   sudo dnf copr enable flatcap/neomutt
-  sudo dnf update -y
+  doas dnf update -y
   FAILURE=""
   for i in $FEDORA_PKGS; do
     if ! sudo dnf install -y "$i"; then
@@ -166,7 +166,7 @@ elif [ "$OS" = "Darwin" ]; then
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
     echo "centos8"
-    sudo dnf update -y
+    doas dnf update -y
     #sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
     sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
     FAILURE=""
@@ -181,7 +181,7 @@ elif [ "$OS" = "CentOS Linux" ]; then
     curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
     sudo rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
     sudo cp -v neomutt-epel-7.repo /etc/yum.repos.d/
-    sudo yum update -y
+    doas yum update -y
     FAILURE=""
     for i in $CENTOS_PKGS; do
       if ! sudo yum install -y "$i"; then
@@ -210,7 +210,7 @@ cd "$HOME" || exit
 
 # install shox
 curl -s "https://raw.githubusercontent.com/liamg/shox/master/scripts/install.sh" | sudo bash
-sudo rm -rf shox
+doas rm -rf shox
 
 # cargo install ttyper
 

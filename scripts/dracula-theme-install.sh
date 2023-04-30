@@ -30,11 +30,11 @@ unzip -oq dracula-gtk-theme.zip
 mv -v gtk-master Dracula
 
 if [ ! -d "$theme_path/Dracula" ]; then
-  sudo mv -v Dracula "$theme_path"
+  doas mv -v Dracula "$theme_path"
 fi
 
 if [ ! -d "$theme_path/AntDracula" ]; then
-  sudo mv -v AntDracula "$theme_path"
+  doas mv -v AntDracula "$theme_path"
 fi
 
 sudo cp -rv "$theme_path/AntDracula" "$local_theme_path"

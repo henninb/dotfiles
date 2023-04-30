@@ -39,9 +39,9 @@ if [ "$OS" = "FreeBSD" ]; then
 fi
 
 if command -v camcontrol; then
-  sudo camcontrol devlist
+  doas camcontrol devlist
   gpart show ada0
-  sudo pkg install -y fusefs-lkl
+  doas pkg install -y fusefs-lkl
   sudo lklfuse -o type=ext4 /dev/ada0p3 /mnt/archlinux
 fi
 

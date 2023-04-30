@@ -58,11 +58,11 @@ pkaction --verbose --action-id org.freedesktop.udisks2.filesystem-mount
 echo "pkaction | grep mount"
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S ntfs-3g
+  doas pacman --noconfirm --needed -S ntfs-3g
 elif [ "$OS" = "Gentoo" ]; then
   if ! command -v udisksctl; then
-    sudo emerge  --update --newuse udisks
-    sudo emerge  --update --newuse ntfs3g
+    doas emerge  --update --newuse udisks
+    doas emerge  --update --newuse ntfs3g
   fi
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo "sudo apt install"
@@ -77,7 +77,7 @@ elif [ "$OS" = "Solus" ]; then
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo "sudo zypper install -y"
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install -y parted
+  doas dnf install -y parted
 elif [ "$OS" = "Clear Linux OS" ]; then
   "sudo swupd bundle-add"
 elif [ "$OS" = "Darwin" ]; then
@@ -89,7 +89,7 @@ fi
 
 udisksctl status
 lsblk -o name,fstype
-sudo parted -l
+doas parted -l
 
 lsblk --noheadings --raw | awk '$1~/s.*[[:digit:]]/ && $7==""'
 

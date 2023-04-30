@@ -7,7 +7,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
 elif [ "$OS" = "Gentoo" ]; then
   echo "sudo emerge --update --newuse"
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install libncursesw5-dev
+  doas apt install libncursesw5-dev
 elif [ "$OS" = "Void" ]; then
   echo "sudo xbps-install -y"
 elif [ "$OS" = "FreeBSD" ]; then
@@ -19,7 +19,7 @@ elif [ "$OS" = "Solus" ]; then
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo "sudo zypper install -y"
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install -y byacc
+  doas dnf install -y byacc
   echo "sudo dnf install -y"
 elif [ "$OS" = "Clear Linux OS" ]; then
   "sudo swupd bundle-add"
@@ -35,7 +35,7 @@ cd "$HOME/projects/github.com/andmarti1424" || exit
 git clone git@github.com:andmarti1424/sc-im.git
 cd sc-im || exit
 make -C src
-sudo make -C src install
+doas make -C src install
 
 exit 0
 

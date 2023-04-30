@@ -1,19 +1,19 @@
 #!/bin/sh
 
 if [ -x "$(command -v pacman)" ]; then
-  sudo pacman --noconfirm --needed -S fish
-  sudo pacman --noconfirm --needed -S starship
-  sudo pacman --noconfirm --needed -S fontconfig
-  sudo pacman --noconfirm --needed -S unzip
-  sudo pacman --noconfirm --needed -S openssh
+  doas pacman --noconfirm --needed -S fish
+  doas pacman --noconfirm --needed -S starship
+  doas pacman --noconfirm --needed -S fontconfig
+  doas pacman --noconfirm --needed -S unzip
+  doas pacman --noconfirm --needed -S openssh
 elif [ -x "$(command -v emerge)" ]; then
-  sudo emerge --update --newuse fish
-  sudo emerge --update --newuse starship
+  doas emerge --update --newuse fish
+  doas emerge --update --newuse starship
 elif [ -x "$(command -v zypper)" ]; then
-  sudo zypper install -y fish
-  sudo zypper install -y starship
+  doas zypper install -y fish
+  doas zypper install -y starship
 elif [ -x "$(command -v dnf)" ]; then
-  sudo dnf install -y fish
+  doas dnf install -y fish
   if [ ! -x "$(command -v starship)" ]; then
     curl -O https://starship.rs/install.sh
     chmod +x install.sh
@@ -21,7 +21,7 @@ elif [ -x "$(command -v dnf)" ]; then
     rm install.sh
   fi
 elif [ -x "$(command -v apt)" ]; then
-  sudo apt install -y fish
+  doas apt install -y fish
   if [ ! -x "$(command -v starship)" ]; then
     curl -O https://starship.rs/install.sh
     chmod +x install.sh
@@ -29,16 +29,16 @@ elif [ -x "$(command -v apt)" ]; then
     rm install.sh
   fi
 elif [ -x "$(command -v xbps-install)" ]; then
-  sudo xbps-install -y fish
-  sudo xbps-install -y curl
-  sudo xbps-install -y starship
-  sudo xbps-install -y unzip
-  sudo xbps-install -y fontconfig
+  doas xbps-install -y fish
+  doas xbps-install -y curl
+  doas xbps-install -y starship
+  doas xbps-install -y unzip
+  doas xbps-install -y fontconfig
 elif [ -x "$(command -v eopkg)" ]; then
-  sudo eopkg install -y fish
+  doas eopkg install -y fish
 elif [ -x "$(command -v pkg)" ]; then
-  sudo pkg install -y fish
-  sudo pkg install -y starship
+  doas pkg install -y fish
+  doas pkg install -y starship
 elif [ -x "$(command -v brew)" ]; then
   brew install fish
 else
@@ -47,22 +47,22 @@ else
 fi
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S fish
+  doas pacman --noconfirm --needed -S fish
 elif [ "$OS" = "Gentoo" ]; then
   if ! command -v fish; then
-    sudo emerge --update --newuse fish
+    doas emerge --update --newuse fish
   fi
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   # sudo apt install -y fish
   wget https://launchpad.net/~fish-shell/+archive/ubuntu/release-3/+files/fish_3.6.1-1~jammy_amd64.deb
-  sudo dpkg -i fish_3.6.1-1_jammy_amd64.deb
+  doas dpkg -i fish_3.6.1-1_jammy_amd64.deb
   rm fish_3.6.1-1_jammy_amd64.deb
   if ! grep -Fxq "/bin/fish" /etc/shells; then
     echo "/bin/fish" | sudo tee -a /etc/shells
     echo "The string /bin/fish has been added to /etc/shells"
   fi
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y xtools
+  doas xbps-install -y xtools
   cd "$HOME/projects" || exit
   git clone git@github.com:void-linux/void-packages.git
   cd void-packages || exit
@@ -86,11 +86,11 @@ elif [ "$OS" = "Void" ]; then
   # make
   # sudo make install
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install -y fish
+  doas pkg install -y fish
 elif [ "$OS" = "Solus" ]; then
   echo "solus"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo zypper install -y fish
+  doas zypper install -y fish
   if ! grep -Fxq "/bin/fish" /etc/shells; then
     echo "/bin/fish" | sudo tee -a /etc/shells
     echo "The string /bin/fish has been added to /etc/shells"
@@ -98,7 +98,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # echo sudo vi /etc/shells
   # echo /bin/fish
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install -y fish
+  doas dnf install -y fish
 elif [ "$OS" = "Clear Linux OS" ]; then
   echo clearlinux
 elif [ "$OS" = "Darwin" ]; then

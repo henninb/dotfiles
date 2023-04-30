@@ -18,15 +18,15 @@ EOF
 sudo mv -v "$HOME/tmp/hcid.conf" /etc/bluetooth
 
 if [ "$OS" = "Linux Mint" ] ||  [ "$OS" = "Ubuntu" ]; then
-  sudo apt install -y bluez-tools pulseaudio-module-bluetooth expect
-  sudo apt install -y blueberry
-  sudo apt install -y blueman
+  doas apt install -y bluez-tools pulseaudio-module-bluetooth expect
+  doas apt install -y blueberry
+  doas apt install -y blueman
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install -y bluez-tools
-  sudo dnf install -y pulseaudio-module-bluetooth
-  sudo dnf install -y expect
+  doas dnf install -y bluez-tools
+  doas dnf install -y pulseaudio-module-bluetooth
+  doas dnf install -y expect
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S bluez-tools expect bluez-utils pulseaudio-bluetooth blueman pulseaudio-alsa bluez-hid2hci bluedevil
+  doas pacman --noconfirm --needed -S bluez-tools expect bluez-utils pulseaudio-bluetooth blueman pulseaudio-alsa bluez-hid2hci bluedevil
   cd "$HOME/projects" || exit
   # git clone https://aur.archlinux.org/asoundconf.git
   # git clone https://aur.archlinux.org/bluez-utils-compat.git
@@ -37,7 +37,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   echo load-module module-bluetooth-policy
   echo load-module module-bluetooth-discover
   echo Change to privacy = off but set Controller = le in /etc/bluetooth/main.conf
-  sudo usermod -a -G lp "$(id -un)"
+  doas usermod -a -G lp "$(id -un)"
 else
   echo "$OS is not yet implemented."
   exit 1
@@ -46,7 +46,7 @@ fi
 echo sudo hciconfig hci0 up
 echo hciconfig -a hci0
 yay --noconfirm --needed -S bluez-utils-compat
-sudo btmgmt ssp off
+doas btmgmt ssp off
 rfkill list
 bluedevil # kde
 
@@ -61,9 +61,9 @@ bluedevil # kde
 #     encrypt enable;
 # }
 
-sudo systemctl enable bluetooth
-sudo systemctl start bluetooth
-sudo systemctl status bluetooth
+doas systemctl enable bluetooth
+doas systemctl start bluetooth
+doas systemctl status bluetooth
 
 # [ ! -f sn-725.mp3 ] && wget https://media.grc.com/sn/sn-725.mp3 -O sn-725.mp3
 
@@ -77,7 +77,7 @@ echo pulseaudio -k # to restart pulseaudio
 echo sudo journalctl --unit=bluetooth -f
 echo dconf reset -f /
 echo sudo rfkill list # to see if audio device is blocked
-sudo rfkill list
+doas rfkill list
 echo sudo rfkill unblock bluetooth
 echo sudo systemctl status bluetooth
 echo pacmd ls
@@ -91,51 +91,51 @@ echo pactl list short
 echo hcitool scan
 
 # monitor bluetooth connection
-sudo btmon
+doas btmon
 #sudo bluetoothctl -- power on
-sudo bluetoothctl -- scan on
-sudo bluetoothctl -- trust BC:F2:92:28:6D:45
-sudo bluetoothctl -- pairable on
-sudo bluetoothctl -- pair BC:F2:92:28:6D:45
-sudo bluetoothctl -- trust BC:F2:92:28:6D:45
-sudo bluetoothctl -- connect BC:F2:92:28:6D:45
+doas bluetoothctl -- scan on
+doas bluetoothctl -- trust BC:F2:92:28:6D:45
+doas bluetoothctl -- pairable on
+doas bluetoothctl -- pair BC:F2:92:28:6D:45
+doas bluetoothctl -- trust BC:F2:92:28:6D:45
+doas bluetoothctl -- connect BC:F2:92:28:6D:45
 echo sudo l2ping BC:F2:92:28:6D:45
 
 #echo echo -e "<command1>\n<command2>\n" | bluetoothctl or bluetoothctl -- command
 exit 0
-sudo yum install -y bluez-hid2hci bluez-tools pulseaudio-module-bluetooth mgp123
-sudo hciconfig hci0 up
+doas yum install -y bluez-hid2hci bluez-tools pulseaudio-module-bluetooth mgp123
+doas hciconfig hci0 up
 
-sudo systemctl start bluetooth
-sudo systemctl status bluetooth
+doas systemctl start bluetooth
+doas systemctl status bluetooth
 
 wget https://media.grc.com/sn/sn-663.mp3
 amixer -D pulse sset Master 5%+
 
 hciconfig scan
-sudo bt-device -l
+doas bt-device -l
 
 hcitool scan
 
-sudo l2ping F0:F0:F0:06:32:84
+doas l2ping F0:F0:F0:06:32:84
 
-sudo bluetoothctl
+doas bluetoothctl
 pair F0:F0:F0:06:32:84
 
 6F:8A:CC:29:DE:14
 
-sudo bluetoothctl list
+doas bluetoothctl list
 #need to start to connect
 pulseaudio -k
 pulseaudio --start
-sudo pulseaudio --system
+doas pulseaudio --system
 
-sudo pactl unload-module module-bluetooth-discover
-sudo pactl load-module module-bluetooth-discover
+doas pactl unload-module module-bluetooth-discover
+doas pactl load-module module-bluetooth-discover
 
 # reset keyboard
-sudo hciconfig hci0 reset
-sudo hidd --search
+doas hciconfig hci0 reset
+doas hidd --search
 
 sudo rm /var/lib/bluetooth/*
 # then restart bluetooth

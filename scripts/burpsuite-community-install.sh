@@ -8,8 +8,8 @@ elif [ "$OS" = "Solus" ]; then
   echo solus
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse app-eselect/eselect-repository
-  sudo eselect repository enable pentoo
-  sudo emaint sync -r pentoo
+  doas eselect repository enable pentoo
+  doas emaint sync -r pentoo
   sudo emerge --update --newuse net-proxy/burpsuite
 elif [ "$OS" = "Void" ]; then
   echo void

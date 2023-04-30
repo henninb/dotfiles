@@ -33,9 +33,9 @@ else
 fi
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo groupadd tomcat
+  doas groupadd tomcat
   sudo useradd -s /sbin/nologin -g tomcat tomcat
-  sudo pacman --noconfirm --needed -S net-tools psmisc wget curl
+  doas pacman --noconfirm --needed -S net-tools psmisc wget curl
   sudo tar -zxvf apache-tomcat-${TOMCAT_VER}.tar.gz -C /opt
   sudo cp tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
   sudo ln -sfn /opt/apache-tomcat-${TOMCAT_VER} /opt/tomcat
@@ -47,25 +47,25 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   # sudo systemctl start tomcat
   echo cp /opt/tomcat/lib/servlet-api.jar 'Java\jdk\jre\lib\ext'
 elif [ "$OS" = "openSUSE Leap" ]; then
-  sudo zypper install curl wget
+  doas zypper install curl wget
 elif [ "$OS" = "FreeBSD" ]; then
   rm -rf tomcat.service
 elif [ "$OS" = "Gentoo" ]; then
   sudo tar -zxvf apache-tomcat-${TOMCAT_VER}.tar.gz -C /opt
   sudo ln -sfn /opt/apache-tomcat-${TOMCAT_VER} /opt/tomcat
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo groupadd tomcat
+  doas groupadd tomcat
   sudo useradd -s /sbin/nologin -g tomcat tomcat
-  sudo apt install -y net-tools psmisc wget curl
+  doas apt install -y net-tools psmisc wget curl
   sudo tar -zxvf apache-tomcat-${TOMCAT_VER}.tar.gz -C /opt
   sudo ln -sfn /opt/apache-tomcat-${TOMCAT_VER} /opt/tomcat
   sudo chown -R tomcat:tomcat /opt/apache-tomcat-${TOMCAT_VER}
   sudo mv -v tomcat.service /lib/systemd/system
-  sudo systemctl daemon-reload
-  sudo systemctl enable tomcat
-  sudo systemctl start tomcat
+  doas systemctl daemon-reload
+  doas systemctl enable tomcat
+  doas systemctl start tomcat
 elif [ "$OS" = "CentOS Linux" ]; then
-  sudo yum install -y net-tools wget curl java-1.8.0-openjdk
+  doas yum install -y net-tools wget curl java-1.8.0-openjdk
   sudo tar -zxvf apache-tomcat-${TOMCAT_VER}.tar.gz -C /opt
   sudo ln -sfn /opt/apache-tomcat-${TOMCAT_VER} /opt/tomcat
 elif [ "$OS" = "Darwin" ]; then
@@ -87,7 +87,7 @@ else
   exit 1
 fi
 
-sudo usermod -a -G tomcat "$(whoami)"
+doas usermod -a -G tomcat "$(whoami)"
 
 exit 0
 

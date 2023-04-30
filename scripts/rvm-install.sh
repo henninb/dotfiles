@@ -8,9 +8,9 @@ curl -sSL https://get.rvm.io | sudo bash -s stable
 rvm requirements
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
-  sudo usermod -a -G rvm "$(id -un)"
+  doas usermod -a -G rvm "$(id -un)"
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
-  sudo usermod -a -G rvm "$(id -un)"
+  doas usermod -a -G rvm "$(id -un)"
 elif [ "$OS" = "Gentoo" ]; then
   echo gentoo
 else

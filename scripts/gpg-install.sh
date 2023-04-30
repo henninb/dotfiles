@@ -2,27 +2,27 @@
 
 if [ "$OS" = "Gentoo" ]; then
   if ! command -v gpg; then
-    sudo emerge --update --newuse gnupg
+    doas emerge --update --newuse gnupg
   fi
-  sudo emerge --update --newuse pass
+  doas emerge --update --newuse pass
 elif [ "$OS" = "Linux Mint" ]; then
-  sudo apt install -y gnupg
+  doas apt install -y gnupg
 elif [ "$OS" = "Solus" ]; then
   echo
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S gnupg
-  sudo pacman --noconfirm --needed -S pass
+  doas pacman --noconfirm --needed -S gnupg
+  doas pacman --noconfirm --needed -S pass
   yay -S kpcli
   yay -S pass-import
 elif [ "$OS" = "CentOS Linux" ]; then
-  sudo yum install -y gnupg pass pinentry
+  doas yum install -y gnupg pass pinentry
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install -y gnupg pass
+  doas dnf install -y gnupg pass
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux"  ]; then
-  sudo apt install -y gnupg pass pinentry-tty
-  sudo update-alternatives --config pinentry
+  doas apt install -y gnupg pass pinentry-tty
+  doas update-alternatives --config pinentry
 elif [ "$OS" = "FreeBSD" ]; then
   sudo pkg install -y gnupg sysutils/password-store pinentry-curses
   # sudo ln -sfn /usr/bin/pinentry-curses  /usr/local/bin/pinentry-curses

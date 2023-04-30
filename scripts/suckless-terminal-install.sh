@@ -13,14 +13,14 @@ elif [ "$OS" = "FreeBSD" ]; then
   echo freebsd
 elif [ "$OS" = "Ubuntu" ]; then
   echo ubuntu
-  sudo apt install -y libharfbuzz-dev
+  doas apt install -y libharfbuzz-dev
 elif [ "$OS" = "Fedora Linux" ]; then
   echo fedora
 elif [ "$OS" = "Linux Mint" ]; then
   echo mint
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y libX11-devel
-  sudo xbps-install -y libXft-devel
+  doas xbps-install -y libX11-devel
+  doas xbps-install -y libXft-devel
 elif [ "$OS" = "Solus" ]; then
   echo solus
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then

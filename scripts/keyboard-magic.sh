@@ -24,9 +24,9 @@ chmod 755 magic
 sudo mv -v 99-magic-kbd.rules /etc/udev/rules.d/
 sudo mv -v magic /usr/local/bin/
 
-sudo udevadm control --reload-rules
+doas udevadm control --reload-rules
 # sudo udevadm control -R
-sudo udevadm control --reload
+doas udevadm control --reload
 
 # xinput | grep -i 'Mechanical Keyboard'
 echo udevadm monitor --udev

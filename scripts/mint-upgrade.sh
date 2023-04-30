@@ -5,10 +5,10 @@ if [ "$OS" = "Linux Mint" ]; then
   echo "$VERSION"
   cat /etc/lsb-release
   #sudo sed -i 's/tessa/tina/g' /etc/apt/sources.list.d/official-package-repositories.list
-  sudo apt install mintupgrade -y
+  doas apt install mintupgrade -y
   sudo sed -i 's/tricia/ulyana/g' /etc/apt/sources.list.d/official-package-repositories.list
-  sudo apt update -y
-  sudo apt dist-upgrade -y
+  doas apt update -y
+  doas apt dist-upgrade -y
   cat /etc/lsb-release
 else
   echo "$OS is not yet implemented."

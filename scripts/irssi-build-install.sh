@@ -12,34 +12,34 @@ if [ "$ACTUAL_VER" = "$VER" ]; then
 fi
 
 if [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install gtk3 gmake intltool pkgconf automake pcre2 libtool gtk-doc
+  doas pkg install gtk3 gmake intltool pkgconf automake pcre2 libtool gtk-doc
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo zypper install -y ncurses-devel
+  doas zypper install -y ncurses-devel
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -Sy ncurses-devel
+  doas xbps-install -Sy ncurses-devel
 elif [ "$OS" = "Solus" ]; then
-  sudo eopkg install -y ncurses-devel
+  doas eopkg install -y ncurses-devel
 elif [ "$OS" = "Darwin" ]; then
   brew install wget
 elif [ "$OS" = "CentOS Linux" ]; then
   if [ "$OS_VER" = "8" ]; then
     echo centos8
-    sudo dnf install -y glib2-devel
-    sudo dnf install -y libperl-devel
-    sudo dnf install -y automake
-    sudo dnf install -y gtk3
-    sudo dnf install -y openssl-devel
+    doas dnf install -y glib2-devel
+    doas dnf install -y libperl-devel
+    doas dnf install -y automake
+    doas dnf install -y gtk3
+    doas dnf install -y openssl-devel
   else
     echo centos7
-    sudo yum install -y glib2-devel
-    sudo yum install -y libperl-devel
-    sudo yum install -y automake
-    sudo yum install -y gtk3
-    sudo yum install -y openssl-devel
+    doas yum install -y glib2-devel
+    doas yum install -y libperl-devel
+    doas yum install -y automake
+    doas yum install -y gtk3
+    doas yum install -y openssl-devel
   fi
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y libgtk-3-dev pkg-config autoconf libglib2.0-dev gtk-doc-tools libpcre2-dev libgirepository1.0-dev gperf libvte-2.91-dev libvte-dev valac unzip intltool
-  sudo apt install -y libperl-dev libssl-dev libncurses-dev
+  doas apt install -y libgtk-3-dev pkg-config autoconf libglib2.0-dev gtk-doc-tools libpcre2-dev libgirepository1.0-dev gperf libvte-2.91-dev libvte-dev valac unzip intltool
+  doas apt install -y libperl-dev libssl-dev libncurses-dev
 else
   echo "$OS is not yet implemented."
   exit 1
@@ -72,7 +72,7 @@ cd "irssi-${VER}" || exit
 ./configure
 make
 make install_local
-sudo make install
+doas make install
 
 exit 0
 

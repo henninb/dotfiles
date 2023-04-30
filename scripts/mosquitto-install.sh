@@ -1,11 +1,11 @@
 #!/bin/sh
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman -noconfirm --needed -S mosquitto
+  doas pacman -noconfirm --needed -S mosquitto
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse mosquitto
+  doas emerge --update --newuse mosquitto
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y mosquitto mosquitto-clients
+  doas apt install -y mosquitto mosquitto-clients
 elif [ "$OS" = "Void" ]; then
   echo "void"
 elif [ "$OS" = "FreeBSD" ]; then
@@ -25,9 +25,9 @@ else
   exit 1
 fi
 
-sudo systemctl enable mosquitto
-sudo systemctl start mosquitto
-sudo systemctl status mosquitto
+doas systemctl enable mosquitto
+doas systemctl start mosquitto
+doas systemctl status mosquitto
 
 echo port 1883
 echo mosquitto_sub -h localhost -t test

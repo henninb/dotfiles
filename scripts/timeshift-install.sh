@@ -17,7 +17,7 @@ elif [ "$OS" = "Solus" ]; then
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo opensuse
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install timeshift
+  doas dnf install timeshift
 elif [ "$OS" = "Clear Linux OS" ]; then
   echo clearlinux
 elif [ "$OS" = "Darwin" ]; then

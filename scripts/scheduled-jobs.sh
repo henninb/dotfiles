@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo systemctl list-timers
+doas systemctl list-timers
 systemctl --user list-timers -all
 
 exit 0

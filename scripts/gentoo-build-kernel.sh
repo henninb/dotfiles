@@ -9,12 +9,12 @@ if [ "$OS" = "Gentoo" ]; then
   # sudo emerge --update --newuse zfs
   # sudo emerge --update --newuse aufs-sources
   # sudo PYTHON_SINGLE_TARGET="python3_10 (-pypy3) -python3_9" emerge --update --newuse dracut
-  sudo emerge --update --newuse dracut
-  sudo emerge --update --newuse fakeroot
-  sudo emerge --update --newuse pciutils
-  sudo eselect kernel list
+  doas emerge --update --newuse dracut
+  doas emerge --update --newuse fakeroot
+  doas emerge --update --newuse pciutils
+  doas eselect kernel list
   echo sudo eselect kernel set 1
-  sudo eselect kernel set 2
+  doas eselect kernel set 2
 
   echo TODO: should I be exiting here?
   echo TODO: add audio into the kernel
@@ -23,12 +23,12 @@ if [ "$OS" = "Gentoo" ]; then
   cp -v /usr/src/linux/.config "${HOME}/tmp/gentoo/kernel-config-$(uname -r)"
 
   echo sudo make mrpropper
-  sudo make menuconfig
-  sudo make clean
-  sudo make -j"$(nproc)"
+  doas make menuconfig
+  doas make clean
+  doas make -j"$(nproc)"
   sudo mount /dev/sdb1 /boot
-  sudo make modules_install
-  sudo make install
+  doas make modules_install
+  doas make install
   cd /boot && sudo dracut --kver "${new}-gentoo"
   echo sudo grub-install /dev/sda
   echo sudo grub-mkconfig -o /boot/grub/grub.cfg

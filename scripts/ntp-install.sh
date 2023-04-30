@@ -16,7 +16,7 @@ EOF
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   date
-  sudo ntpdate -u time.nist.gov
+  doas ntpdate -u time.nist.gov
   date
   # sudo hwclock
   # sudo hwclock -w
@@ -24,31 +24,31 @@ elif [ "$OS" = "Gentoo" ]; then
   #sudo cp -v $HOME/tmp/ntpd.service /etc/systemd/system/ntpd.service
   date
   # sudo ntpdate -s time.nist.gov
-  sudo ntpdate -u pool.ntp.org
+  doas ntpdate -u pool.ntp.org
   date
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo doas systemctl unmask systemd-timesyncd.service
   doas apt install -y systemd-timesyncd
   date
-  sudo ntpdate -u time.nist.gov
+  doas ntpdate -u time.nist.gov
   date
 elif [ "$OS" = "Void" ]; then
   date
-  sudo ntpdate -u time.nist.gov
+  doas ntpdate -u time.nist.gov
   date
 elif [ "$OS" = "FreeBSD" ]; then
   date
-  sudo ntpdate -u time.nist.gov
+  doas ntpdate -u time.nist.gov
   date
 elif [ "$OS" = "Solus" ]; then
   echo "solus"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   date
-  sudo ntpdate -u time.nist.gov
+  doas ntpdate -u time.nist.gov
   date
 elif [ "$OS" = "Fedora Linux" ]; then
   date
-  sudo ntpdate -u time.nist.gov
+  doas ntpdate -u time.nist.gov
   date
 elif [ "$OS" = "Clear Linux OS" ]; then
   echo clearlinux
@@ -59,17 +59,17 @@ else
   exit 1
 fi
 
-sudo hwclock --systohc --localtime
-sudo hwclock --show
+doas hwclock --systohc --localtime
+doas hwclock --show
 
 if command -v systemctl; then
-  sudo systemctl enable systemd-timesyncd.service --now
+  doas systemctl enable systemd-timesyncd.service --now
 fi
 # echo clock_systohc="YES" | sudo tee -a /etc/conf.d/hwclock
 if command -v timedatectl; then
-  sudo timedatectl set-ntp true
+  doas timedatectl set-ntp true
   sudo timedatectl set-timezone America/Chicago
-  sudo timedatectl set-local-rtc 0
+  doas timedatectl set-local-rtc 0
   timedatectl status
   echo timedatectl show-timesync --all
 else

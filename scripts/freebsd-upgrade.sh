@@ -1,8 +1,8 @@
 #!/bin/sh
 
-sudo freebsd-update -r 13.0 upgrade
-sudo freebsd-update fetch
-sudo freebsd-update install
+doas freebsd-update -r 13.0 upgrade
+doas freebsd-update fetch
+doas freebsd-update install
 
 exit 0
 

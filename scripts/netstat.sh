@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ -x "$(command -v netstat)" ]; then
-  sudo netstat -tulp
+  doas netstat -tulp
   netstat -na | grep tcp | grep LIST
 fi
 
@@ -10,7 +10,7 @@ if [ -x "$(command -v socketstat)" ]; then
 fi
 ss -tulpn4
 
-sudo lsof -i TCP:22
+doas lsof -i TCP:22
 
 exit 0
 

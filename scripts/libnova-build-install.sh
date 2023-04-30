@@ -21,7 +21,7 @@ cd libnova || exit
 ./configure
 make
 make install_local
-sudo make install
+doas make install
 
 exit 0
 

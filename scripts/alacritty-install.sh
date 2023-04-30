@@ -5,12 +5,12 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
 elif [ "$OS" = "Gentoo" ]; then
   echo gentoo
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install libfreetype-dev cmake libfontconfig-dev
-  sudo apt install -y libxcb-shape0-dev
-  sudo apt install -y libxcb-xfixes0-dev
-  sudo apt install -y libxkbcommon-dev
+  doas apt install libfreetype-dev cmake libfontconfig-dev
+  doas apt install -y libxcb-shape0-dev
+  doas apt install -y libxcb-xfixes0-dev
+  doas apt install -y libxkbcommon-dev
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y mesa-dri
+  doas xbps-install -y mesa-dri
 elif [ "$OS" = "FreeBSD" ]; then
   echo freebsd
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
@@ -18,11 +18,11 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
 elif [ "$OS" = "Solus" ]; then
   echo solus
 elif [ "$OS" = "Clear Linux OS" ]; then
-  sudo swupd bundle-add devpkg-freetype
-  sudo swupd bundle-add devpkg-libxml2
-  sudo swupd bundle-add devpkg-expat
-  sudo swupd bundle-add performance-tools
-  sudo swupd bundle-add devpkg-libxcb
+  doas swupd bundle-add devpkg-freetype
+  doas swupd bundle-add devpkg-libxml2
+  doas swupd bundle-add devpkg-expat
+  doas swupd bundle-add performance-tools
+  doas swupd bundle-add devpkg-libxcb
 elif [ "$OS" = "Fedora Linux" ]; then
   echo fedora
 elif [ "$OS" = "Darwin" ]; then

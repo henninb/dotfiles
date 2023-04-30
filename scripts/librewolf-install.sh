@@ -5,8 +5,8 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse app-eselect/eselect-repository
   sudo eselect repository add librewolf git https://gitlab.com/librewolf-community/browser/gentoo.git
-  sudo emaint -r librewolf sync
-  sudo emerge --update --newuse librewolf-bin
+  doas emaint -r librewolf sync
+  doas emerge --update --newuse librewolf-bin
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo "debian"
 elif [ "$OS" = "Void" ]; then

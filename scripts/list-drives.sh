@@ -3,7 +3,7 @@
 cat /proc/partitions
 # ls /dev/[s|x|v]d*
 lsblk
-sudo fdisk -l
+doas fdisk -l
 
 grep -v nodev /proc/filesystems | cut -f2
 

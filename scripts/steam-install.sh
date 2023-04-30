@@ -19,20 +19,20 @@ EOF
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   # sudo pacman --noconfirm --needed -S lib32-nvidia-utils
-  sudo pacman --noconfirm --needed -S ttf-liberation
+  doas pacman --noconfirm --needed -S ttf-liberation
   echo enable multilib in /etc/pacman.conf
   cat "$HOME/tmp/pacman.conf" | sudo tee -a /etc/pacman.conf
-  sudo pacman -Sy
+  doas pacman -Sy
   # sudo pacman --noconfirm --needed -S flatpak
   # flatpak install flathub com.valvesoftware.Steam
-  sudo pacman --noconfirm --needed -S steam
+  doas pacman --noconfirm --needed -S steam
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   #wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb
   # sudo dpkg --add-architecture i386
-  sudo add-apt-repository -y multiverse
-  sudo dpkg --add-architecture i386
-  sudo apt-get update
-  sudo apt install -y steam-installer
+  doas add-apt-repository -y multiverse
+  doas dpkg --add-architecture i386
+  doas apt-get update
+  doas apt install -y steam-installer
   # sudo apt install -y flatpak
   #flatpak install --user flathub org.freedesktop.Platform.openh264
   # flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -40,8 +40,8 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   # flatpak install --user com.valvesoftware.Steam.flatpakref
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse app-eselect/eselect-repository
-  sudo eselect repository enable steam-overlay
-  sudo emaint sync -r steam-overlay
+  doas eselect repository enable steam-overlay
+  doas emaint sync -r steam-overlay
   sudo emerge --update --newuse games-util/steam-launcher
   # sudo mv flatpak-overlay.conf /etc/portage/repos.conf/flatpak-overlay.conf
   # sudo emerge --sync
@@ -50,19 +50,19 @@ elif [ "$OS" = "Gentoo" ]; then
   # flatpak install --user com.valvesoftware.Steam.flatpakref
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper addrepo https://download.opensuse.org/repositories/home:X0F:HSF/openSUSE_Tumbleweed/home:X0F:HSF.repo
-  sudo zypper refresh
-  sudo zypper install -y steam
+  doas zypper refresh
+  doas zypper install -y steam
 elif [ "$OS" = "Solus" ]; then
-  sudo eopkg install -y steam
+  doas eopkg install -y steam
 elif [ "$OS" = "Void" ]; then
   echo Void
-  sudo xbps-install -y void-repo-nonfree
-  sudo xbps-install -y void-repo-multilib-nonfree
-  sudo xbps-install -Syv void-repo-multilib{,-nonfree}
+  doas xbps-install -y void-repo-nonfree
+  doas xbps-install -y void-repo-multilib-nonfree
+  doas xbps-install -Syv void-repo-multilib{,-nonfree}
   # sudo xbps-install -S libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit
-  sudo xbps-install -y libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit nvidia nvidia-libs-32bit
-  sudo xbps-install -y mesa-dri-32bit
-  sudo xbps-install -y steam
+  doas xbps-install -y libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit nvidia nvidia-libs-32bit
+  doas xbps-install -y mesa-dri-32bit
+  doas xbps-install -y steam
 
 elif [ "$OS" = "Fedora Linux" ]; then
   #flatpak install --user com.valvesoftware.Steam.flatpakref

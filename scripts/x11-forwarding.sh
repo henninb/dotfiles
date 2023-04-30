@@ -2,13 +2,13 @@
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   echo install these packages on the guest
-  sudo pacman --noconfirm --needed -S xorg-server
-  sudo pacman --noconfirm --needed -S xorg-xauth
+  doas pacman --noconfirm --needed -S xorg-server
+  doas pacman --noconfirm --needed -S xorg-xauth
 elif [ "$OS" = "Gentoo" ]; then
   echo "sudo emerge --update --newuse"
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo install these packages on the guest
-  sudo apt install x11-server
+  doas apt install x11-server
 elif [ "$OS" = "Void" ]; then
   echo "sudo xbps-install -y"
 elif [ "$OS" = "FreeBSD" ]; then

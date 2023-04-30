@@ -2,8 +2,8 @@
 
 # sudo zypper install -y flex
 # sudo zypper install -y libelf-devel
-sudo apt install libncurses-dev
-sudo apt-get install libncurses-dev flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf
+doas apt install libncurses-dev
+doas apt-get install libncurses-dev flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf
 
 VER=5.6.4
 if [ ! -f "linux-5.6.4.tar.xz" ]; then
@@ -20,7 +20,7 @@ fakeroot make-kpkg --initrd --append-to-version=-customname kernel_image kernel_
 
 cd ..
 sudo dpkg -i linux-image-*.deb linux-headers-*.deb
-sudo update-grub
+doas update-grub
 
 echo https://forums.linuxmint.com/viewtopic.php?t=131433
 

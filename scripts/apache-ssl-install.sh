@@ -78,9 +78,9 @@ sudo cp -v "$HOME/${SERVERNAME}_apache.crt.pem" /etc/pki/tls/certs
 sudo cp -v "$HOME/ca.key.pem" /etc/pki/tls/private
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y apache2
-  sudo a2enmod ssl
-  sudo a2ensite $SERVERNAME
+  doas apt install -y apache2
+  doas a2enmod ssl
+  doas a2ensite $SERVERNAME
   sudo mv -v mint_ssl.conf /etc/apache2/sites-available/mint.conf
   sudo mv -v main.html /var/www/index.html
 
@@ -89,14 +89,14 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   sudo chmod 644 "$HOME/ca.crt.pem"
   sudo mkdir -p /usr/share/ca-certificates/extra
   sudo cp -v "$HOME/${SERVERNAME}_apache.crt.pem" /usr/share/ca-certificates/${SERVERNAME}_apache.crt
-  sudo update-ca-certificates
+  doas update-ca-certificates
   echo sudo update-ca-certificates --fresh
   echo sudo dpkg-reconfigure ca-certificates
 
-  sudo systemctl reload apache2
-  sudo systemctl start apache2
-  sudo systemctl restart apache2
-  sudo systemctl enable apache2
+  doas systemctl reload apache2
+  doas systemctl start apache2
+  doas systemctl restart apache2
+  doas systemctl enable apache2
   if ! grep -q "127.0.0.1 mint" /etc/hosts; then
     echo "127.0.0.1 mint" | sudo tee -a /etc/hosts >/dev/null
   fi
@@ -106,10 +106,10 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
   echo keytool -printcert -v -file /etc/ssl/certs/ca-certificates.crt
   echo curl-config --ca
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse apache
-  sudo emerge --update --newuse net-tools
+  doas emerge --update --newuse apache
+  doas emerge --update --newuse net-tools
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
-  sudo pacman --noconfirm --needed -S net-tools apache curl
+  doas pacman --noconfirm --needed -S net-tools apache curl
   sudo mkdir -p /var/www
   sudo mv -v main.html /var/www/index.html
   if ! grep -q "127.0.0.1 arch" /etc/hosts; then
@@ -131,9 +131,9 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   sudo trust anchor /etc/pki/tls/certs/arch_apache.crt.pem
   # trust anchor --remove /etc/pki/tls/certs/arch_apache.crt.pem
 
-  sudo systemctl start httpd
-  sudo systemctl restart httpd
-  sudo systemctl enable httpd
+  doas systemctl start httpd
+  doas systemctl restart httpd
+  doas systemctl enable httpd
 
   sleep 4
   netstat -na | grep LIST| grep tcp | grep 80
@@ -145,9 +145,9 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ]; then
   curl https://arch > index.html
   curl --cacert /etc/pki/tls/certs/${SERVERNAME}_apache.crt.pem https://arch > index2.html
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install -y apache24
-  sudo sysrc  apache24_enable="YES"
-  sudo service apache24 start
+  doas pkg install -y apache24
+  doas sysrc  apache24_enable="YES"
+  doas service apache24 start
   netstat -na | grep tcp | grep LIST | grep 80
   sudo mkdir /usr/local/etc/apache24/sites-available
   sudo mkdir /usr/local/etc/apache24/sites-enabled

@@ -13,7 +13,7 @@ if [ -f "/opt/firefox/firefox" ]; then
   fi
 fi
 
-sudo groupadd firefox
+doas groupadd firefox
 sudo useradd -s /sbin/nologin -g firefox firefox
 echo "Press enter to continue"
 read -r x
@@ -29,20 +29,20 @@ if [ ! -f "firefox-${FOX_VER}.tar.bz2" ]; then
 fi
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S net-tools psmisc wget curl gtk3 dbus-glib libxt dbus-glib
+  doas pacman --noconfirm --needed -S net-tools psmisc wget curl gtk3 dbus-glib libxt dbus-glib
   sudo rm -rf /opt/firefox
   sudo tar -xjvf "firefox-${FOX_VER}.tar.bz2" -C /opt
   sudo chown -R firefox:firefox /opt/firefox
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo zypper install -f libcairo2
-  sudo zypper install -y dbus-1-glib
+  doas zypper install -f libcairo2
+  doas zypper install -y dbus-1-glib
   sudo rm -rf /opt/firefox
   sudo tar -xjvf "firefox-${FOX_VER}.tar.bz2" -C /opt
   sudo chown -R firefox:firefox /opt/firefox
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y wget
-  sudo xbps-install -y gtk+3-devel
-  sudo xbps-install -y dbus-glib
+  doas xbps-install -y wget
+  doas xbps-install -y gtk+3-devel
+  doas xbps-install -y dbus-glib
   sudo rm -rf /opt/firefox
   sudo tar -xjvf "firefox-${FOX_VER}.tar.bz2" -C /opt
   sudo chown -R firefox:firefox /opt/firefox
@@ -52,12 +52,12 @@ elif [ "$OS" = "Solus" ]; then
   sudo tar -xjvf "firefox-${FOX_VER}.tar.bz2" -C /opt
   sudo chown -R firefox:firefox /opt/firefox
 elif [ "$OS" = "openSUSE Leap" ]; then
-  sudo zypper install curl wget
+  doas zypper install curl wget
   sudo rm -rf /opt/firefox
   sudo tar -xjvf "firefox-${FOX_VER}.tar.bz2" -C /opt
   sudo chown -R firefox:firefox /opt/firefox
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install -y curl
+  doas dnf install -y curl
   sudo rm -rf /opt/firefox
   sudo tar -xjvf "firefox-${FOX_VER}.tar.bz2" -C /opt
   sudo chown -R firefox:firefox /opt/firefox
@@ -67,20 +67,20 @@ elif [ "$OS" = "FreeBSD" ]; then
   sudo tar -xjvf "firefox-${FOX_VER}.tar.bz2" -C /opt
   sudo chown -R firefox:firefox /opt/firefox
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse dbus-glib
-  sudo emerge --update --newuse libXt
+  doas emerge --update --newuse dbus-glib
+  doas emerge --update --newuse libXt
   sudo rm -rf /opt/firefox
   sudo tar -xjvf "firefox-${FOX_VER}.tar.bz2" -C /opt
   sudo chown -R firefox:firefox /opt/firefox
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
-  sudo apt install -y net-tools psmisc wget curl
-  sudo apt install -y libgtk-3-dev
+  doas apt install -y net-tools psmisc wget curl
+  doas apt install -y libgtk-3-dev
   sudo rm -rf /opt/firefox
   sudo tar -xjvf "firefox-${FOX_VER}.tar.bz2" -C /opt
   sudo chown -R firefox:firefox /opt/firefox
 elif [ "$OS" = "CentOS Linux" ]; then
   sudo rm -rf /opt/firefox
-  sudo yum install -y net-tools wget curl
+  doas yum install -y net-tools wget curl
   sudo tar -xjvf "firefox-${FOX_VER}.tar.bz2" -C /opt
   sudo chown -R firefox:firefox /opt/firefox
 else

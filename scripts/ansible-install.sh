@@ -27,7 +27,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   echo "archlinux"
 elif [ "$OS" = "Gentoo" ]; then
   echo "gentoo"
-  sudo emerge --update --newuse ansible
+  doas emerge --update --newuse ansible
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo "debian"
 elif [ "$OS" = "Void" ]; then
@@ -49,7 +49,7 @@ else
   exit 1
 fi
 
-sudo usermod -aG ansible "$(id -un)"
+doas usermod -aG ansible "$(id -un)"
 sudo mkdir -p /etc/ansible
 sudo mv "$HOME/tmp/hosts" /etc/ansible/hosts
 

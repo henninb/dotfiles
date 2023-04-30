@@ -12,7 +12,7 @@ cd openresty-1.21.4.1
             --with-openssl
 make
 
-sudo pacman -S luarocks
-sudo systemctl enable openresty.service
+doas pacman -S luarocks
+doas systemctl enable openresty.service
 
 # vim: set ft=sh:

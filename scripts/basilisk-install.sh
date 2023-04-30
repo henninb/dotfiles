@@ -7,7 +7,7 @@ cd macemu/BasiliskII/src/Unix || exit
 ./autogen.sh
 ./configure
 make
-sudo make install
+doas make install
 
 exit 0
 

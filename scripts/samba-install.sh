@@ -9,7 +9,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
 elif [ "$OS" = "Void" ]; then
   echo "void"
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install -y samba413
+  doas pkg install -y samba413
 elif [ "$OS" = "Solus" ]; then
   echo "solus"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then

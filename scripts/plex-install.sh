@@ -7,8 +7,8 @@ elif [ "$OS" = "Gentoo" ]; then
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   curl -s https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add -
   echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
-  sudo apt -y update
-  sudo apt -y install plexmediaserver
+  doas apt -y update
+  doas apt -y install plexmediaserver
 elif [ "$OS" = "Void" ]; then
   echo "void"
 elif [ "$OS" = "FreeBSD" ]; then
@@ -32,7 +32,7 @@ if [ ! -x "$(command -v systemctl)" ]; then
   echo systemctl not installed.
   exit 1
 fi
-sudo systemctl status plexmediaserver
+doas systemctl status plexmediaserver
 sudo mkdir -p /opt/plexmedia/music
 sudo mkdir -p /opt/plexmedia/series
 sudo mkdir -p /opt/plexmedia/movies
@@ -41,7 +41,7 @@ sudo chown -R plex: /opt/plexmedia
 echo http://YOUR_SERVER_IP:32400/web
 echo http://192.168.10.10:32400/web
 
-sudo usermod -a -G plex "$(id -un)"
+doas usermod -a -G plex "$(id -un)"
 
 exit 0
 

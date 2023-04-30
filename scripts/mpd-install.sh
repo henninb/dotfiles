@@ -79,9 +79,9 @@ decoder {
 EOF
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S mpd
-  sudo pacman --noconfirm --needed -S mpc
-  sudo pacman --noconfirm --needed -S ncmpcpp
+  doas pacman --noconfirm --needed -S mpd
+  doas pacman --noconfirm --needed -S mpc
+  doas pacman --noconfirm --needed -S ncmpcpp
 elif [ "$OS" = "Gentoo" ]; then
   if ! command -v mpd; then
     sudo emerge --update --newuse media-sound/mpd
@@ -90,31 +90,31 @@ elif [ "$OS" = "Gentoo" ]; then
     sudo emerge --update --newuse media-sound/mpc
   fi
   if ! command -v ncmpcpp; then
-    sudo emerge --update --newuse ncmpcpp
+    doas emerge --update --newuse ncmpcpp
   fi
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y mpd
-  sudo apt install -y mpc
-  sudo apt install -y ncmpcpp
+  doas apt install -y mpd
+  doas apt install -y mpc
+  doas apt install -y ncmpcpp
 elif [ "$OS" = "Void" ]; then
   echo "sudo xbps-install -y"
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install -y musicpd
-  sudo pkg install -y musicpc
-  sudo pkg install -y ncmpcpp
-  sudo pw usermod "$(whoami)" -G mpd
+  doas pkg install -y musicpd
+  doas pkg install -y musicpc
+  doas pkg install -y ncmpcpp
+  doas pw usermod "$(whoami)" -G mpd
 elif [ "$OS" = "OpenBSD" ]; then
   echo "OpenBSD"
 elif [ "$OS" = "Solus" ]; then
   "sudo eopkg install -y"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo zypper install -y mpd
-  sudo zypper install -y mpclient
-  sudo zypper install -y ncmpcpp
+  doas zypper install -y mpd
+  doas zypper install -y mpclient
+  doas zypper install -y ncmpcpp
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install -y mpd
-  sudo dnf install -y mpc
-  sudo dnf install -y ncmpcpp
+  doas dnf install -y mpd
+  doas dnf install -y mpc
+  doas dnf install -y ncmpcpp
 elif [ "$OS" = "Clear Linux OS" ]; then
   "sudo swupd bundle-add"
 elif [ "$OS" = "Darwin" ]; then

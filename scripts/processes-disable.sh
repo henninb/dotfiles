@@ -1,11 +1,11 @@
 #!/bin/sh
 
-sudo systemctl disable jenkins
-sudo systemctl disable influxdb
-sudo systemctl disable kafka
-sudo systemctl disable grafana-server
-sudo systemctl disable activemq
-sudo systemctl disable zookeeper
+doas systemctl disable jenkins
+doas systemctl disable influxdb
+doas systemctl disable kafka
+doas systemctl disable grafana-server
+doas systemctl disable activemq
+doas systemctl disable zookeeper
 
 exit 0
 

@@ -27,23 +27,23 @@ sudo ln -sfn "/opt/arduino-${VER}" /opt/arduino
 
 
 if [ "${OS}" = "FreeBSD" ]; then
-  sudo pw groupmod operator -m "$(whoami)"
+  doas pw groupmod operator -m "$(whoami)"
   echo rc.conf
   echo devfs_system_ruleset="localrules"
   sudo mv devfs.rules /etc/devfs.rules
-  sudo service devfs restart
+  doas service devfs restart
 fi
 
 id -u arduino >/dev/null 2>&1 || sudo useradd -s /sbin/nologin arduino -m
 sudo chown -R arduino:arduino /opt/arduino/
 sudo chown -R arduino:arduino "/opt/arduino-${VER}/"
 
-sudo usermod -a -G arduino "$(whoami)"
+doas usermod -a -G arduino "$(whoami)"
 # sudo usermod -a -G uucp "$(whoami)"
-sudo usermod -a -G tty "$(whoami)"
-sudo usermod -a -G dialout "$(whoami)"
-sudo pacman --noconfirm --needed -S minicom
-sudo pacman --noconfirm --needed -S moserial
+doas usermod -a -G tty "$(whoami)"
+doas usermod -a -G dialout "$(whoami)"
+doas pacman --noconfirm --needed -S minicom
+doas pacman --noconfirm --needed -S moserial
 echo stty -F /dev/ttyUSB0 hupcl
 echo stty -F /dev/ttyUSB0 -hupcl
 echo stty -a -F /dev/ttyUSB0

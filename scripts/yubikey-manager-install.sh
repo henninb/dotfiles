@@ -13,7 +13,7 @@ EOF
 
 sudo mv -v "$HOME/tmp/70-u2f.rules" /etc/udev/rules.d/70-u2f.rules
 if command -v udevadm; then
-  sudo udevadm control --reload-rules
+  doas udevadm control --reload-rules
 fi
 systemctl status systemd-udevd
 
@@ -31,7 +31,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   echo "sudo pacman --noconfirm --needed -S"
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse app-crypt/yubikey-manager
-  sudo emerge --update --newuse yubikey-manager-qt
+  doas emerge --update --newuse yubikey-manager-qt
   # sudo emerge --update --newuse libyubikey
   # sudo emerge --update --newuse app-crypt/libu2f-server
   # sudo emerge --update --newuse app-crypt/libu2f-host
@@ -40,11 +40,11 @@ elif [ "$OS" = "Gentoo" ]; then
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo "sudo apt install"
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y yubikey-manager
-  sudo xbps-install -y pam_yubico
-  sudo xbps-install -y mdevd
-  sudo xbps-install -y pcsclite
-  sudo xbps-install -y pcsc-ccid
+  doas xbps-install -y yubikey-manager
+  doas xbps-install -y pam_yubico
+  doas xbps-install -y mdevd
+  doas xbps-install -y pcsclite
+  doas xbps-install -y pcsc-ccid
   sudo ln -sfn /etc/sv/pcscd /var/service/pcscd
   # sudo ln -s /etc/sv/pcscd /etc/runit/runsvdir/current/
 elif [ "$OS" = "FreeBSD" ]; then
@@ -66,8 +66,8 @@ else
   exit 1
 fi
 
-sudo usermod -a -G plugdev "$(whoami)"
-sudo gpasswd -a "$(whoami)" usb
+doas usermod -a -G plugdev "$(whoami)"
+doas gpasswd -a "$(whoami)" usb
 
 # sudo emerge --update --newuse sys-apps/pcsc-lite
 # sudo systemctl enable pcscd

@@ -3,7 +3,7 @@
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   echo "archlinux"
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse rsync
+  doas emerge --update --newuse rsync
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo "debian"
 elif [ "$OS" = "Void" ]; then
@@ -13,7 +13,7 @@ elif [ "$OS" = "FreeBSD" ]; then
 elif [ "$OS" = "Solus" ]; then
   echo "solus"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  sudo zypper install -y ca-certificates-cacert
+  doas zypper install -y ca-certificates-cacert
   sudo /sbin/update-ca-certificates
 elif [ "$OS" = "Fedora Linux" ]; then
   echo "fedora"

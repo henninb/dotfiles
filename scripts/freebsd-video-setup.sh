@@ -18,15 +18,15 @@ EOF
 # EndSection
 # EOF
 
-sudo pkg install -y nvidia-driver-470
+doas pkg install -y nvidia-driver-470
 sudo pkg install -y emulators/linux_base-c7
-sudo pkg install -y drm-kmod
+doas pkg install -y drm-kmod
 
-sudo sysrc nvidia_enable=YES
-sudo sysrc linux_enable=YES
-sudo sysrc dbus_enable=YES
-sudo sysrc hald_enable=YES
-sudo sysrc kld_list="linux nvidia nvidia-modeset"
+doas sysrc nvidia_enable=YES
+doas sysrc linux_enable=YES
+doas sysrc dbus_enable=YES
+doas sysrc hald_enable=YES
+doas sysrc kld_list="linux nvidia nvidia-modeset"
 
 pciconf -lv | grep -A4 vga
 

@@ -7,7 +7,7 @@ if [ "$OS" = "Linux Mint" ]; then
   # sudo apt upgrade -y --with-new-pkgs | tee -a "$HOME/tmp/update-$$.log"
   sudo apt upgrade -y | tee -a "$HOME/tmp/update-$$.log"
   sudo apt autoremove -y | tee -a "$HOME/tmp/update-$$.log"
-  sudo apt install -y curl
+  doas apt install -y curl
 elif [ "$OS" = "Debian GNU/Linux" ]; then
   sudo apt update | tee -a "$HOME/tmp/update-$$.log"
   # sudo apt upgrade -y --with-new-pkgs | tee -a "$HOME/tmp/update-$$.log"
@@ -20,7 +20,7 @@ elif [ "$OS" = "Ubuntu" ]; then
   # sudo apt upgrade -y --with-new-pkgs | tee -a "$HOME/tmp/update-$$.log"
   sudo apt upgrade -y | tee -a "$HOME/tmp/update-$$.log"
   sudo apt autoremove -y | tee -a "$HOME/tmp/update-$$.log"
-  sudo apt install -y curl
+  doas apt install -y curl
 elif [ "$OS" = "Darwin" ]; then
   #/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"
   xcode-select --install
@@ -34,7 +34,7 @@ elif [ "$OS" = "Raspbian GNU/Linux" ]; then
 elif [ "$OS" = "Solus" ]; then
   sudo eopkg upgrade -y | tee -a "$HOME/tmp/update-$$.log"
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -yu xbps
+  doas xbps-install -yu xbps
   sudo xbps-remove -yO | tee -a "$HOME/tmp/update-$$.log"
   sudo xbps-remove -yo | tee -a "$HOME/tmp/update-$$.log"
   sudo vkpurge rm all | tee -a "$HOME/tmp/update-$$.log"
@@ -46,7 +46,7 @@ elif [ "$OS" = "Manjaro Linux" ]; then
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   du -sh /var/cache/pacman/pkg
   #sudo pacman -S archlinux-keyring #invalid or corrupted package (PGP signature)
-  sudo pacman --noconfirm --needed -S archlinux-keyring
+  doas pacman --noconfirm --needed -S archlinux-keyring
   sudo pacman --noconfirm --needed -Syu 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   echo sudo pacman -Scc
   sudo paccache -r 2>&1 | tee -a "$HOME/tmp/update-$$.log"
@@ -59,11 +59,11 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper dist-upgrade
   # sudo zypper refersh
-  sudo zypper dup
-  sudo zypper ref
-  sudo zypper update
+  doas zypper dup
+  doas zypper ref
+  doas zypper update
 elif [ "$OS" = "Gentoo" ]; then
-  sudo eselect news read
+  doas eselect news read
   if ! sudo emerge --sync 2>&1 | tee -a "$HOME/tmp/update-$$.log"; then
     sudo emerge-webrsync 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   fi
@@ -71,14 +71,14 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge -uDUNf --keep-going --with-bdeps=y @world 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   sudo emerge -uDUN --keep-going --with-bdeps=y @world 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   sudo emerge --depclean 2>&1 | tee -a "$HOME/tmp/update-$$.log"
-  sudo revdep-rebuild
-  sudo eselect kernel set 1
+  doas revdep-rebuild
+  doas eselect kernel set 1
   uname=$(uname -srm | cut -d' ' -f2 | cut -d- -f1)
   eselect=$(eselect kernel list | tail -1 | cut -d- -f2)
   if [ ! "${eselect}" = "${uname}" ]; then
     if [ ! -f "/boot/vmlinuz-${eselect}-gentoo-x86_64" ]; then
       echo "complie the kernel '$eselect' as it is newer than '$uname'"
-      sudo genkernel all
+      doas genkernel all
       sudo grub-mkconfig -o /boot/grub/grub.cfg
       sudo grub-mkconfig -o /boot/efi/EFI/gentoo/grub.cfg
     fi
@@ -87,7 +87,7 @@ elif [ "$OS" = "Gentoo" ]; then
   if [ -z ${blender+x} ]; then echo "var is unset"; else sudo ln -sfn "${blender}" /usr/bin/blender; fi
   librewolf=$(find /usr/bin -name "librewolf-bin")
   if [ -z ${librewolf+x} ]; then echo "var is unset"; else sudo ln -sfn "${librewolf}" /usr/bin/librewolf; fi
-  sudo emerge @preserved-rebuild
+  doas emerge @preserved-rebuild
   echo eselect editor list
   echo eselect kernel list
   echo eselect python list
@@ -108,9 +108,9 @@ elif [ "$OS" = "CentOS Linux" ]; then
 elif [ "$OS" = "Fedora Linux" ]; then
     sudo dnf update -y | tee -a "$HOME/tmp/update-$$.log"
     sudo dnf upgrade -y | tee -a "$HOME/tmp/update-$$.log"
-    sudo dnf distro-sync
+    doas dnf distro-sync
     echo sudo dnf remove $(dnf repoquery --installonly --latest-limit 2 -q)
-    sudo dnf install kernel --best
+    doas dnf install kernel --best
     sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
     efibootmgr
 elif [ "$OS" = "FreeBSD" ]; then
@@ -190,12 +190,12 @@ else
   nix-env -u '.*'
 fi
 
-sudo luarocks install lustache
-sudo luarocks install luasocket
-sudo luarocks install lua-resty-http
-sudo luarocks install luacheck
+doas luarocks install lustache
+doas luarocks install luasocket
+doas luarocks install lua-resty-http
+doas luarocks install luacheck
 # curl -sSL https://github.com/bungle/lua-resty-nettle/archive/v1.5.tar.gz
-sudo luarocks install perimeterx-nginx-plugin
+doas luarocks install perimeterx-nginx-plugin
 
 cargo install starship
 cargo install alacritty

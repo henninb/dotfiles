@@ -22,11 +22,11 @@ VER=$(curl -s https://www.python.org/downloads/ | grep -o 'Python-[0-9.]\+[0-9].
 # }
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ] || [ "$OS" = "Debian GNU/Linux" ]; then
-  sudo apt install -y python3.7 python3.7-venv python-pip python3-pip libssl-dev libffi-dev python-setuptools python3.7-dev
+  doas apt install -y python3.7 python3.7-venv python-pip python3-pip libssl-dev libffi-dev python-setuptools python3.7-dev
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S python python3
+  doas pacman --noconfirm --needed -S python python3
 elif [ "$OS" = "CentOS Linux" ]; then
-  sudo yum install -y epel-release python python-devel
+  doas yum install -y epel-release python python-devel
 elif [ "$OS" = "Solus" ]; then
   echo "solus"
 elif [ "$OS" = "Fedora Linux" ]; then
@@ -36,8 +36,8 @@ elif [ "$OS" = "Void" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   echo sudo emerge --update --newuse python
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install -y python39
-  sudo pkg install -y py39-pip
+  doas pkg install -y python39
+  doas pkg install -y py39-pip
 else
   echo "$OS is not yet implemented."
   exit 1

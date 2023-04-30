@@ -1,23 +1,23 @@
 #!/bin/sh
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S pipewire-media-session
-  sudo pacman --noconfirm --needed -S pipewire
-  sudo pacman --noconfirm --needed -S pipewire-pulse
-  sudo systemctl enable pipewire-pulse --now
+  doas pacman --noconfirm --needed -S pipewire-media-session
+  doas pacman --noconfirm --needed -S pipewire
+  doas pacman --noconfirm --needed -S pipewire-pulse
+  doas systemctl enable pipewire-pulse --now
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse pipewire
+  doas emerge --update --newuse pipewire
   sudo emerge --update --newuse media-video/wireplumber
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y pipewire
-  sudo apt install -y pipewire-pulse
-  sudo usermod -a -G audio $(whoami)
+  doas apt install -y pipewire
+  doas apt install -y pipewire-pulse
+  doas usermod -a -G audio $(whoami)
 elif [ "$OS" = "Void" ]; then
-  sudo xbps-install -y polkit
+  doas xbps-install -y polkit
   sudo ln -sfn /etc/sv/polkitd /var/service/polkitd
   # sudo ln -s /etc/sv/polkitd /etc/runit/runsvdir/current/
-  sudo xbps-install -y xdg-desktop-portal xdg-desktop-portal-gtk xdg-user-dirs xdg-user-dirs-gtk xdg-utils
-  sudo xbps-install -y pipewire
+  doas xbps-install -y xdg-desktop-portal xdg-desktop-portal-gtk xdg-user-dirs xdg-user-dirs-gtk xdg-utils
+  doas xbps-install -y pipewire
   sudo mkdir -p /etc/pipewire
   sudo sed '/path.*=.*pipewire-media-session/s/{/#{/' /usr/share/pipewire/pipewire.conf | sudo tee /etc/pipewire/pipewire.conf
   sudo ln -sfn /etc/sv/pipewire /var/service/pipewire

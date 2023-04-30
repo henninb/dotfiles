@@ -15,11 +15,11 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
     echo "not found"
     #cat pacman.conf | sudo tee -a /etc/pacman.conf
   fi
-  sudo pacman --noconfirm --needed -S wine
+  doas pacman --noconfirm --needed -S wine
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse wine
+  doas emerge --update --newuse wine
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  sudo apt install -y wine64
+  doas apt install -y wine64
 elif [ "$OS" = "Void" ]; then
   echo "sudo xbps-install -y"
 elif [ "$OS" = "FreeBSD" ]; then
@@ -31,7 +31,7 @@ elif [ "$OS" = "Solus" ]; then
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo "sudo zypper install -y"
 elif [ "$OS" = "Fedora Linux" ]; then
-  sudo dnf install -y wine
+  doas dnf install -y wine
 elif [ "$OS" = "Clear Linux OS" ]; then
   "sudo swupd bundle-add"
 elif [ "$OS" = "Darwin" ]; then

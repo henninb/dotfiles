@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  sudo pacman --noconfirm --needed -S v4l2loopback-dkms
+  doas pacman --noconfirm --needed -S v4l2loopback-dkms
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse media-video/v4l2loopback
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
