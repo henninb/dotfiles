@@ -121,7 +121,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
   echo "blacklist nouveau" | sudo tee -a /etc/modprobe.d/blacklist.conf
-  # sudo dnf remove akmod-nvidia\*
+  sudo dnf remove akmod-nvidia
   # sudo dnf install -y akmod-nvidia "kernel-devel-uname-r == $(uname -r)"
   sudo dnf install -y akmod-nvidia
   # sudo dnf install -y akmod-nvidia "kernel-devel-uname-r=$(uname -r)"
