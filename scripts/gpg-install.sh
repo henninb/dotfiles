@@ -24,9 +24,9 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   doas apt install -y gnupg pass pinentry-tty
   doas update-alternatives --config pinentry
 elif [ "$OS" = "FreeBSD" ]; then
-  sudo pkg install -y gnupg sysutils/password-store pinentry-curses
+  doas pkg install -y gnupg sysutils/password-store pinentry-curses
   # sudo ln -sfn /usr/bin/pinentry-curses  /usr/local/bin/pinentry-curses
-  sudo ln -sfn /usr/local/bin/pinentry-curses  /usr/bin/pinentry-curses
+  doas ln -sfn /usr/local/bin/pinentry-curses  /usr/bin/pinentry-curses
 else
   echo "$OS not configured."
   exit 1
