@@ -61,7 +61,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper refersh
   doas zypper dup
   doas zypper ref
-  doas zypper update
+  doas zypper --non-interactive --auto-agree-with-licenses update
 elif [ "$OS" = "Gentoo" ]; then
   doas eselect news read
   if ! sudo emerge --sync 2>&1 | tee -a "$HOME/tmp/update-$$.log"; then
