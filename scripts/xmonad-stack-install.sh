@@ -123,6 +123,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper addrepo https://download.opensuse.org/repositories/home:AndnoVember:windowmanagers/openSUSE_Tumbleweed/home:AndnoVember:windowmanagers.repo
   doas zypper refresh
   #sudo zypper install -y linux-tools
+  doas zypper install -y lua lua-devel
   doas zypper install -y polybar
   doas zypper install -y at-spi2-core
   doas zypper install -y ca-certificates-cacert
