@@ -2,42 +2,42 @@
 
 if [ "$OS" = "Darwin" ]; then
   code --version
-  sudo rm -rf /opt/vscode
+  doas rm -rf /opt/vscode
   rm -rf code-stable-latest.zip
   wget 'https://go.microsoft.com/fwlink/?LinkID=620882' -O code-stable-latest.zip
   unzip -o code-stable-latest.zip
-  sudo mv -v Visual\ Studio\ Code.app /Applications
+  doas mv -v Visual\ Studio\ Code.app /Applications
   #id -g vscode &>/dev/null || sudo groupadd vscode
 elif [ "$OS" = "Void" ]; then
   doas xbps-install -y nss
   code --version
-  sudo rm -rf /opt/vscode
+  doas rm -rf /opt/vscode
   rm -rf code-stable-latest.tar.gz
   wget 'https://go.microsoft.com/fwlink/?LinkID=620884' -O code-stable-latest.tar.gz
-  sudo tar -xvf code-stable-latest.tar.gz -C /opt
-  sudo mv /opt/VSCode-linux-x64 /opt/vscode
-  sudo chmod -R 775 /opt/vscode
+  doas tar -xvf code-stable-latest.tar.gz -C /opt
+  doas mv /opt/VSCode-linux-x64 /opt/vscode
+  doas chmod -R 775 /opt/vscode
   id -g vscode >/dev/null || sudo groupadd vscode
 elif [ "$OS" = "Gentoo" ]; then
   doas emerge --update --newuse nss
   code --version
-  sudo rm -rf /opt/vscode
+  doas rm -rf /opt/vscode
   rm -rf code-stable-latest.tar.gz
   wget 'https://go.microsoft.com/fwlink/?LinkID=620884' -O code-stable-latest.tar.gz
-  sudo tar -xvf code-stable-latest.tar.gz -C /opt
-  sudo mv /opt/VSCode-linux-x64 /opt/vscode
-  sudo chmod -R 775 /opt/vscode
+  doas tar -xvf code-stable-latest.tar.gz -C /opt
+  doas mv /opt/VSCode-linux-x64 /opt/vscode
+  doas chmod -R 775 /opt/vscode
   id -g vscode >/dev/null || sudo groupadd vscode
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   doas apt install -y nss
   code --version
-  sudo rm -rf /opt/vscode
+  doas rm -rf /opt/vscode
   rm -rf code-stable-latest.tar.gz
   wget 'https://go.microsoft.com/fwlink/?LinkID=620884' -O code-stable-latest.tar.gz
   scp "pi:/home/pi/downloads/code-stable-latest.tar.gz" .
-  sudo tar -xvf code-stable-latest.tar.gz -C /opt
-  sudo mv /opt/VSCode-linux-x64 /opt/vscode
-  sudo chmod -R 775 /opt/vscode
+  doas tar -xvf code-stable-latest.tar.gz -C /opt
+  doas mv /opt/VSCode-linux-x64 /opt/vscode
+  doas chmod -R 775 /opt/vscode
   id -g vscode >/dev/null || sudo groupadd vscode
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   echo
