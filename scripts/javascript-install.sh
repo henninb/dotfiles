@@ -18,7 +18,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Lin
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   doas pacman --noconfirm --needed -S curl
   doas pacman --noconfirm --needed -S nodejs-lts-hydrogen
-  curl https://www.npmjs.org/install.sh | sh
+  wget --quiet -O - https://www.npmjs.org/install.sh | sh
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   doas zypper install -y nodejs18
 elif [ "$OS" = "Fedora Linux" ]; then
