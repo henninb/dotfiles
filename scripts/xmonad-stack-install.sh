@@ -118,6 +118,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper addrepo --refresh https://download.nvidia.com/opensuse/tumbleweed NVIDIA
   sudo zypper addrepo https://download.opensuse.org/repositories/security/openSUSE_Tumbleweed/security.repo
+  sudo zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/lua/openSUSE_Tumbleweed/devel:languages:lua.repo
   # sudo zypper addrepo https://download.opensuse.org/repositories/home:X0F:HSF/openSUSE_Tumbleweed/home:X0F:HSF.repo
   sudo zypper addrepo https://download.opensuse.org/repositories/X11:Utilities/openSUSE_Tumbleweed/X11:Utilities.repo
   # sudo zypper addrepo https://download.opensuse.org/repositories/home:AndnoVember:windowmanagers/openSUSE_Tumbleweed/home:AndnoVember:windowmanagers.repo
