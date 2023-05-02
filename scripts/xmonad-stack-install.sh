@@ -118,13 +118,13 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/L
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper addrepo --refresh https://download.nvidia.com/opensuse/tumbleweed NVIDIA
   sudo zypper addrepo https://download.opensuse.org/repositories/security/openSUSE_Tumbleweed/security.repo
-  sudo zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/lua/openSUSE_Tumbleweed/devel:languages:lua.repo
+  # sudo zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/lua/openSUSE_Tumbleweed/devel:languages:lua.repo
   # sudo zypper addrepo https://download.opensuse.org/repositories/home:X0F:HSF/openSUSE_Tumbleweed/home:X0F:HSF.repo
   sudo zypper addrepo https://download.opensuse.org/repositories/X11:Utilities/openSUSE_Tumbleweed/X11:Utilities.repo
   # sudo zypper addrepo https://download.opensuse.org/repositories/home:AndnoVember:windowmanagers/openSUSE_Tumbleweed/home:AndnoVember:windowmanagers.repo
   doas zypper refresh
   #sudo zypper install -y linux-tools
-  doas zypper install -y lua lua-devel
+  doas zypper install -y lua54-luarocks
   doas zypper install -y polybar
   doas zypper install -y at-spi2-core
   doas zypper install -y ca-certificates-cacert
