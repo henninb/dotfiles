@@ -59,8 +59,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper dist-upgrade
   # sudo zypper refersh
-  doas zypper dup
-  doas zypper ref
+  doas zypper --non-interactive dup
+  doas zypper --non-interactive ref
   doas zypper --non-interactive --auto-agree-with-licenses update
 elif [ "$OS" = "Gentoo" ]; then
   doas eselect news read
