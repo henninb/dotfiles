@@ -25,6 +25,7 @@
 - Linux From Scratch
 - FreeNAS
 - OpenCore
+- Vanilla
 
 ## Operating Systems - Security/Privacy
 - Qubes
@@ -75,7 +76,6 @@
 | web browser             | eww              |
 
 
-
 ## Software
 | Description            | Applications                                                                         |
 | ------------           | -----                                                                                |
@@ -87,7 +87,7 @@
 | file manager           | lf, pcmanfm, spacefm                                                                 |
 | bar                    | dzen2, conky, polybar                                                                |
 | launcher               | dmenu                                                                                |
-| window manager         | xmonad                                                                               |
+| window manager         | xmonad, awesome, hyperland                                                           |
 | lock screen            | i3block                                                                              |
 | terminal multiplexer   | tmux, screen, tmate                                                                  |
 | media player           | vlc, mpv, mpd                                                                        |
