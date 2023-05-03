@@ -1,18 +1,28 @@
 #!/bin/sh
 
+cat << EOF > "$HOME/tmp/doas.conf"
+permit nopass henninb as root
+EOF
+
 if [ -x "$(command -v pacman)" ]; then
+  sudo pacman --noconfirm --needed -S doas
   doas pacman --noconfirm --needed -S fish
   doas pacman --noconfirm --needed -S starship
   doas pacman --noconfirm --needed -S fontconfig
   doas pacman --noconfirm --needed -S unzip
   doas pacman --noconfirm --needed -S openssh
 elif [ -x "$(command -v emerge)" ]; then
+  sudo emerge --update --newuse doas
   doas emerge --update --newuse fish
   doas emerge --update --newuse starship
 elif [ -x "$(command -v zypper)" ]; then
+  sudo zypper addrepo https://download.opensuse.org/repositories/security/openSUSE_Tumbleweed/security.repo
+  sudo zypper refresh
+  sudo zypper install -y opendoas
   doas zypper install -y fish
   doas zypper install -y starship
 elif [ -x "$(command -v dnf)" ]; then
+  sudo dnf install -y doas
   doas dnf install -y fish
   if [ ! -x "$(command -v starship)" ]; then
     curl -O https://starship.rs/install.sh
@@ -21,6 +31,7 @@ elif [ -x "$(command -v dnf)" ]; then
     rm install.sh
   fi
 elif [ -x "$(command -v apt)" ]; then
+  sudo apt install -y doas
   doas apt install -y fish
   if [ ! -x "$(command -v starship)" ]; then
     curl -O https://starship.rs/install.sh
@@ -29,14 +40,17 @@ elif [ -x "$(command -v apt)" ]; then
     rm install.sh
   fi
 elif [ -x "$(command -v xbps-install)" ]; then
+  sudo xbps-install -y opendoas
   doas xbps-install -y fish
   doas xbps-install -y curl
   doas xbps-install -y starship
   doas xbps-install -y unzip
   doas xbps-install -y fontconfig
 elif [ -x "$(command -v eopkg)" ]; then
+  sudo eopkg install -y doas
   doas eopkg install -y fish
 elif [ -x "$(command -v pkg)" ]; then
+  sudo pkg install -y doas
   doas pkg install -y fish
   doas pkg install -y starship
 elif [ -x "$(command -v brew)" ]; then
@@ -74,7 +88,7 @@ elif [ "$OS" = "Void" ]; then
   fi
   # sudo xbps-install -y ncurses-devel
   # sudo xbps-install -y pcre2
-  # sudo xbps-install -S readline-devel 
+  # sudo xbps-install -S readline-devel
   # sudo xbps-install -S libedit-devel
   # mkdir -p "$HOME/projects/github.com/fish-shell"
   # cd "$HOME/projects/github.com/fish-shell" || exit

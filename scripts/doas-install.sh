@@ -6,23 +6,23 @@ permit nopass henninb as root
 EOF
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  doas pacman --noconfirm --needed -S doas
+  sudo pacman --noconfirm --needed -S doas
 elif [ "$OS" = "Gentoo" ]; then
-  doas emerge --update --newuse doas
+  sudo emerge --update --newuse doas
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  doas apt install -y doas
+  sudo apt install -y doas
 elif [ "$OS" = "Void" ]; then
-  doas xbps-install -y opendoas
+  sudo xbps-install -y opendoas
 elif [ "$OS" = "FreeBSD" ]; then
-  doas pkg install -y doas
+  sudo pkg install -y doas
 elif [ "$OS" = "Solus" ]; then
   echo "solus"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper addrepo https://download.opensuse.org/repositories/security/openSUSE_Tumbleweed/security.repo
-  doas zypper refresh
-  doas zypper install -y opendoas
+  sudo zypper refresh
+  sudo zypper install -y opendoas
 elif [ "$OS" = "Fedora Linux" ]; then
-  doas dnf install -y doas
+  sudo dnf install -y doas
 elif [ "$OS" = "Clear Linux OS" ]; then
   echo clearlinux
 elif [ "$OS" = "Darwin" ]; then

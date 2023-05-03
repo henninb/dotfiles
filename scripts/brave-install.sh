@@ -12,7 +12,7 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
 elif [ "$OS" = "Solus" ]; then
   doas eopkg it brave
 elif [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse app-eselect/eselect-repository
+  doas emerge --update --newuse app-eselect/eselect-repository
   doas eselect repository enable brave-overlay
   doas emaint sync -r brave-overlay
   sudo emerge --update --newuse www-client/brave-bin
