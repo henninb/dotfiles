@@ -24,8 +24,8 @@ sudo cp -v make.conf /etc/portage/make.conf
 sudo cp -v /etc/portage/package.unmask/package.unmask /etc/portage/backup/package.unmask.bak.$$
 sudo cp -v package.unmask /etc/portage/package.unmask/package.unmask
 
-#sudo cp -v /etc/portage/package.unmask /etc/portage/backup/package.unmask.bak.$$
-#sudo cp -v package.unmask /etc/portage/package.unmask
+sudo cp -v /etc/portage/package.order /etc/portage/backup/package.order.bak.$$
+sudo cp -v package.order /etc/portage/package.order
 
 sudo cp -v /etc/portage/package.env /etc/portage/backup/package.env.bak.$$
 sudo cp -v package.env /etc/portage/package.env
