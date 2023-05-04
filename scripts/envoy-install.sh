@@ -1,7 +1,6 @@
 #!/bin/sh
 
-
-sudo emerge --ask --verbose dev-libs/protobuf net-libs/grpc dev-libs/openssl
+doas emerge --update --newuse dev-libs/protobuf net-libs/grpc dev-libs/openssl
 
 cd "$HOME/projects" || exit
 git clone https://github.com/envoyproxy/envoy.git
