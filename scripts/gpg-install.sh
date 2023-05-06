@@ -2,7 +2,7 @@
 
 if [ "$OS" = "Gentoo" ]; then
   if ! command -v gpg; then
-    doas emerge --update --newuse gnupg
+    doas emerge --update --newuse app-crypt/gnupg
   fi
   doas emerge --update --newuse pass
 elif [ "$OS" = "Linux Mint" ]; then
@@ -33,7 +33,7 @@ else
 fi
 
 # git clone https://github.com/davidnemec/bitwarden-to-keepass ~/projects/bitwarden-to-keepass
-git clone https://github.com/roddhjav/pass-import ~/projects/pass-import
+git clone https://github.com/roddhjav/pass-import ~/projects/github.com/pass-import
 ls -l ~/.local/share/password-store
 
 # cat > gpg-agent.conf <<'EOF'
@@ -47,8 +47,8 @@ ls -l ~/.local/share/password-store
 echo
 echo gpg --full-generate-key
 
-echo "gpg --batch --import $HOME/files/backup-pgp/private.key"
 gpg --batch --import "$HOME/files/backup-pgp/private.key"
+gpg --batch --import "$HOME/files/backup-pgp/robert-gatti.key"
 
 gpg --edit-key 'henninb@gmail.com' trust quit
 # enter 5<RETURN>
