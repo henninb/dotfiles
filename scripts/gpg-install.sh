@@ -84,6 +84,8 @@ gpg-connect-agent reloadagent /bye
 # gpg --passphrase-fd 0 --pinentry-mode loopback -d /tmp/test.gpg
 # export GPG_TTY=$(tty)
 
+gpg --armor --export henninb@gmail.com
+
 exit 0
 
 # vim: set ft=sh:
