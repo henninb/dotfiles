@@ -16,11 +16,6 @@ add_newline = false
 success_symbol = "[ ➜](bold green)" # normal prompt
 error_symbol = "[ ✖](bold red)" # used if previous command failed
 vicmd_symbol = "[ ⬅️](bold yellow)"
-# ⬅️
-
-
-# insert_symbol = "✎ "
-# normal_symbol = "[ ➜](bold green)"
 
 [git_branch]
 # format = "[$symbol][$branch](bold purple)"
