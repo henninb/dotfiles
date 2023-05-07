@@ -40,6 +40,7 @@ elif [ "$OS" = "Void" ]; then
   ./xbps-src pkg brave-bin
   xi brave-bin
   echo if fails change the checksum to lower case
+  echo the brave version is extremely old
   sudo ln -sfn /usr/sbin/brave-browser-stable /usr/sbin/brave-browser
 elif [ "$OS" = "fedora" ]; then
   doas dnf install dnf-plugins-core
