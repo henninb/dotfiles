@@ -111,7 +111,7 @@ set -x PATH $HOME/.local/share/bin $PATH
 set -x PATH $PYENV_ROOT/bin $PATH
 set -x PATH $HOME/.local/bin $PATH
 set -x PATH /usr/local/opt/openjdk@17/bin $PATH
-# set -x PATH $HOME/.local/share/npm/bin $PATH
+set -x PATH $HOME/.local/share/npm/bin $PATH
 set -x PATH $HOME/.local/share/cargo/bin $PATH
 set -x PATH $HOME/.rvm/bin $PATH
 set -x PATH /opt/kafka/bin $PATH
