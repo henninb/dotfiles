@@ -73,7 +73,7 @@ elif [ "$OS" = "FreeBSD" ]; then
 elif [ "$OS" = "Solus" ]; then
   echo "solus"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  nix-env -i brave
+  # nix-env -i brave
   nix-env -i librewolf
   nix-env -i ventoy-bin
   nix-env -i volumeicon
