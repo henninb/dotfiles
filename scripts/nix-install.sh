@@ -53,7 +53,7 @@ elif [ "$OS" = "Gentoo" ]; then
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   nix-env -i android-studio-stable
   nix-env -i librewolf
-  nix-env -i brave
+  # nix-env -i brave
   nix-env -i dbeaver
   # nix-env -i neovim
   # nix-env -i dunst
@@ -63,7 +63,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   nix-env -i codium
 elif [ "$OS" = "Void" ]; then
   nix-env -i android-studio-stable
-  nix-env -i brave
+  # nix-env -i brave
   nix-env -i librewolf
   nix-env -i codium
   nix-env -i dbeaver
@@ -84,7 +84,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # nix-shell -p copyq
 elif [ "$OS" = "Fedora Linux" ]; then
   nix-env -i android-studio-stable
-  nix-env -i brave
+  # nix-env -i brave
   nix-env -i librewolf
   nix-env -i codium
   nix-env -i ventoy-bin
