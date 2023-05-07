@@ -13,7 +13,8 @@ else
   stack update
 fi
 
-sudo mkdir /mnt/external
+sudo mkdir -p /mnt/external
+sudo mkdir -p /mnt/usb
 
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   export DEBIAN_FRONTEND=noninteractive
