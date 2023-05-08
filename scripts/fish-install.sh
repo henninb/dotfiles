@@ -122,9 +122,12 @@ else
   exit 1
 fi
 
-exit 0
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+$HOME/.fzf/install --key-bindings --completion --no-update-rc
 
 [ -s "/bin/zsh" ] && sudo usermod -s /bin/fish "$(whoami)"
 [ -s "/bin/zsh" ] && sudo chsh -s /bin/fish "$(whoami)"
+
+exit 0
 
 # vim: set ft=sh:
