@@ -113,3 +113,4 @@ x11-misc/polybar alsa curl doc i3w ipc mpd network pulseaudio
 media-video/pipewire sound-server ssl system-service X dbus ffmpeg flatpak gstreamer pipewire-alsa sound-server v4l
 media-sound/mpd pipe pipewire mpg123 network systemd zip ffmpeg flac twolame vorbis lame
 gui-libs/wlroots x11-backend
+app-office/libreoffice-bin python_single_target_python3_11
