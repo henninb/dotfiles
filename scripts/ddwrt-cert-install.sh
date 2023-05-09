@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 # if [ $# -ne 1 ]; then
 #   echo "Usage: $0 <server_name>"
@@ -18,66 +18,9 @@ mkdir -p "$HOME/tmp"
 # stty echo
 
 if [ ! -f "$HOME/ssl/rootCA.pem" ]; then
-  # echo "generate rootCA key"
-  # openssl genrsa -aes256 -out "$HOME/ssl/rootCA.key" 4096
-  # echo "generae a public testRootCA certificate file"
-  # openssl req -x509 -new -nodes -key "$HOME/ssl/rootCA.key" -sha256 -days 1024 -out "$HOME/ssl/rootCA.pem" -subj "$rootca_subject"
-  # echo "confirm the rootCA cert"
-  # openssl x509 -in "$HOME/ssl/rootCA.pem" -inform PEM -out "$HOME/ssl/rootCA.crt"
-
-  echo "generate rootCA key (no password)"
-  echo "generae a public rootCA certificate file"
-  openssl req \
-      -x509 \
-      -new \
-      -newkey rsa:4096 \
-      -nodes \
-      -days 1024 \
-      -sha256  \
-      -subj "$rootca_subject" \
-      -keyout "$HOME/ssl/rootCA.key" \
-      -out "$HOME/ssl/rootCA.pem"
-
-if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  doas trust anchor --store rootCA.pem
-elif [ "$OS" = "Gentoo" ]; then
-  echo "gentoo"
-  sudo mkdir -p /usr/local/share/ca-certificates/
-  sudo cp "$HOME/ssl/rootCA.pem" /usr/local/share/ca-certificates/
-  doas update-ca-certificates
-elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
-  echo "debian"
-elif [ "$OS" = "Void" ]; then
-  echo "void"
-elif [ "$OS" = "FreeBSD" ]; then
-  echo "freebsd"
-elif [ "$OS" = "Solus" ]; then
-  echo "solus"
-elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  echo opensuse
-elif [ "$OS" = "Fedora Linux" ]; then
-  echo "fedora"
-elif [ "$OS" = "Clear Linux OS" ]; then
-  echo clearlinux
-elif [ "$OS" = "Darwin" ]; then
-  echo macos
-else
-  echo "$OS is not yet implemented."
+  echo "generate rootCA key"
   exit 1
 fi
-
-# echo "generate testRootCA key (no password)"
-# echo "generae a public testRootCA certificate file"
-# openssl req \
-#     -x509 \
-#     -new \
-#     -newkey rsa:4096 \
-#     -nodes \
-#     -days 1024 \
-#     -sha256  \
-#     -subj "$rootca_subject" \
-#     -keyout "$HOME/ssl/testRootCA.key" \
-#     -out "$HOME/ssl/testRootCA.pem"
 
 cat << EOF > "$HOME/tmp/$servername.ext"
 subjectAltName = @alt_names
@@ -85,7 +28,7 @@ subjectAltName = @alt_names
 [alt_names]
 DNS.1 = ${server_name}
 DNS.2 = localhost
-IP.1 = 192.168.10.3
+IP.1 = 192.168.10.2
 EOF
 
 echo Generate an rsa key
@@ -101,10 +44,12 @@ echo Verify the certificate
 openssl verify -CAfile "$HOME/ssl/rootCA.pem" -verbose "./${server_name}.crt"
 cat "${server_name}.crt" | openssl x509 -noout -enddate
 
-scp ddwrt.crt root@192.168.10.3:/tmp/root/cert.pem
-scp ddwrt.key root@192.168.10.3:/tmp/root/key.pem
+scp ddwrt.crt root@192.168.10.2:/tmp/root/cert.pem
+scp ddwrt.key root@192.168.10.2:/tmp/root/key.pem
 
 rm -rf *.csr
+rm ddwrt.crt ddwrt.key
 
 exit 0
+
 # vim: set ft=sh:

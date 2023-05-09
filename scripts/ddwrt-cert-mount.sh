@@ -1,4 +1,6 @@
 #!/bin/sh
+# enable jffs support
+# scp this script to /jffs/startup
 
 if [ `nvram get https_enable` -gt 0 ] ; then
 	# get the absolute directory of the executable
