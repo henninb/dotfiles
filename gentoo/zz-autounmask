@@ -114,3 +114,4 @@ media-video/pipewire sound-server ssl system-service X dbus ffmpeg flatpak gstre
 media-sound/mpd pipe pipewire mpg123 network systemd zip ffmpeg flac twolame vorbis lame
 gui-libs/wlroots x11-backend
 app-office/libreoffice-bin python_single_target_python3_11
+media-libs/openpgl cpu_flags_x86_sse4_2
