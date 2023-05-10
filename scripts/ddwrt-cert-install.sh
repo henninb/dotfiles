@@ -44,8 +44,12 @@ echo Verify the certificate
 openssl verify -CAfile "$HOME/ssl/rootCA.pem" -verbose "./${server_name}.crt"
 cat "${server_name}.crt" | openssl x509 -noout -enddate
 
-scp ddwrt.crt root@192.168.10.2:/tmp/root/cert.pem
-scp ddwrt.key root@192.168.10.2:/tmp/root/key.pem
+# scp ddwrt.crt root@192.168.10.2:/tmp/root/cert.pem
+# scp ddwrt.key root@192.168.10.2:/tmp/root/key.pem
+
+ssh root@192.168.10.2 mkdir -p /jffs/etc
+scp ddwrt.crt root@192.168.10.2:/jffs/etc/cert.pem
+scp ddwrt.key root@192.168.10.2:/jffs/etc/key.pem
 
 rm -rf *.csr
 rm ddwrt.crt ddwrt.key
