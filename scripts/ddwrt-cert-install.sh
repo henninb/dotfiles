@@ -4,6 +4,9 @@ cat > "$HOME/tmp/ddwrt-cert-mount.sh" << 'EOF'
 #!/bin/sh
 # enable jffs support
 # scp this script to /jffs/startup
+#
+route add default gw 192.168.10.1
+ntpclient -h pool.ntp.org -s
 
 if [ `nvram get https_enable` -gt 0 ] ; then
     # get the absolute directory of the executable
