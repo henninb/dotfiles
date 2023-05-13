@@ -6,11 +6,15 @@ if [ $# -eq 0 ]; then
 fi
 
 domain=$1
+user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36"
 
 echo "Performing DNS lookup for $domain..."
 dig_output=$(dig $domain +short)
 
-response=$(curl -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36" -vlskI -X GET -w "%{http_code}" -o /dev/null -L "https://$domain")
+# response=$(curl -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36" -vlskI -X GET -w "%{http_code}" -o /dev/null -L "https://$domain")
+# response=$(curl -H "User-Agent: $user_agent" -lskI -X GET -w "%{http_code}" -o /dev/null -L "https://$domain")
+response=$(curl -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36" -vlskI -X GET -w "%{http_code}" -o /dev/null -L "https://$domain" > curl_output.txt 2>&1)
+echo $response
 
 if [ $response -ge 400 ]; then
     echo "Error: HTTP response code $response"
@@ -23,22 +27,17 @@ if [ $response -ge 300 ]; then
     echo "Redirect path: $redirect_url"
 fi
 
-curl -i -s -o /dev/null -w "Response code: %{http_code}\n" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36" -X GET "https://$domain"
+curl -i -s -o /dev/null -w "Response code: %{http_code}\n" -H "User-Agent: $user_agent" -X GET "https://$domain"
 
-curl -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36" -s -I "https://$domain" | grep -i "Content-Security-Policy"
+curl -H "User-Agent: $user_agent" -s -I "https://$domain" | grep -i "Content-Security-Policy"
+curl -H "User-Agent: $user_agent" -s -I "https://$domain" | grep -i -w '^server:'
+curl -H "User-Agent: $user_agent" -lskI -X GET "https://$domain" | grep -i -w '^server:'
 
 if [ -z "$dig_output" ]; then
     echo "No results found for $domain."
 else
     echo "Results for $domain:"
     echo "$dig_output"
-
-    # Check if there are any indications of a CDN
-    if echo "$dig_output" | grep -q 'cdn'; then
-        echo "There are indications of a CDN for $domain."
-    else
-        echo "No indications of a CDN for $domain."
-    fi
 
     # Get more information about the IP addresses
     for ip in $(echo "$dig_output"); do
