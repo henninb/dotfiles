@@ -18,10 +18,10 @@ if ! sudo fuser 5432/tcp; then
 fi
 
 echo first sudo su - postgres
-echo /usr/lib/postgresql/12/bin/pg_ctl -D /var/lib/postgresql/12/main stop
-echo /usr/lib/postgresql/12/bin/pg_ctl -D /var/lib/postgresql/12/main start
-echo /usr/lib/postgresql/12/bin/pg_ctl restart -m immediate
-echo /usr/lib/postgresql/12/bin/pg_resetwal -f /var/lib/postgresql/12/main/
+echo /usr/lib/postgresql/15/bin/pg_ctl -D /var/lib/postgresql/15/main stop
+echo /usr/lib/postgresql/15/bin/pg_ctl -D /var/lib/postgresql/15/main start
+echo /usr/lib/postgresql/15/bin/pg_ctl restart -m immediate
+echo /usr/lib/postgresql/15/bin/pg_resetwal -f /var/lib/postgresql/15/main/
 
 echo 'psql -h raspi -U henninb finance_db'
 

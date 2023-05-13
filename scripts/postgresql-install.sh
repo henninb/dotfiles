@@ -120,13 +120,9 @@ elif [ "$OS" = "Gentoo" ]; then
   doas emerge --update --newuse ossp-uuid
   #sudo rc-update add postgresql default
   #sudo postgresql-setup initdb
-  # sudo cp -v "$HOME/tmp/pg_hba.conf" /etc/postgresql-14/
   sudo mv -v "$HOME/tmp/pg_hba.conf"  /var/lib/postgresql/15/data/pg_hba.conf
   sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/postgresql/15/data/postgresql.conf
   sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql-15/postgresql.conf
-  # echo sudo /etc/init.d/postgresql-14 start
-  # sudo rc-update add postgresql-14 default
-  # sudo rc-service postgresql-14 start
   doas systemctl enable postgresql-15
   doas systemctl start postgresql-15
   sudo -u postgres sh -c 'cd /tmp && psql postgres -U postgres < /tmp/install_psql_settings.sql'
@@ -167,9 +163,9 @@ else
   exit 1
 fi
 
-echo /usr/lib/postgresql/14/bin/pg_ctl
-echo /usr/lib/postgresql/14/bin/pg_ctl  -D /var/lib/postgresql/14/main stop
-echo /usr/lib/postgresql/14/bin/pg_ctl  -D /var/lib/postgresql/14/main start
+echo /usr/lib/postgresql/15/bin/pg_ctl
+echo /usr/lib/postgresql/15/bin/pg_ctl  -D /var/lib/postgresql/15/main stop
+echo /usr/lib/postgresql/15/bin/pg_ctl  -D /var/lib/postgresql/15/main start
 echo rm -rf /var/lib/postgres/data
 
 exit 0
