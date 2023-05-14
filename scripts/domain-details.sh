@@ -13,7 +13,7 @@ echo "Performing DNS lookup for $domain..."
 dig_output=$(dig $domain +short)
 
 # response=$(curl -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36" -vlskI -X GET -w "%{http_code}" -o /dev/null -L "https://$domain")
-response=$(curl -H "User-Agent: $user_agent" -s -l -I -X GET -w "%{http_code}" -o /dev/null -L "https://$domain")
+response=$(curl -H "User-Agent: $user_agent" -s -I -w "%{http_code}" -o /dev/null "https://$domain")
 
 if [ $response -ge 400 ]; then
     echo "Error: HTTP response code $response"
@@ -21,15 +21,20 @@ if [ $response -ge 400 ]; then
 fi
 
 if [ $response -ge 300 ]; then
-    echo "Redirect detected, following..."
     redirect_url=$(curl -s -L -o /dev/null -w %{url_effective} "https://$domain")
     echo "Redirect path: $redirect_url"
+    response=$(curl -H "User-Agent: $user_agent" -s -I -L -X GET -w "%{http_code}" -o /dev/null "https://$domain")
+    if [ $response -ne 200 ]; then
+      echo "cannont access $redirect_url"
+      exit 1
+    fi
 fi
 
-curl -H "User-Agent: $user_agent" -s -I -vl -X GET -o /dev/null -L "https://$domain" > "/tmp/domain-$$.log" 2>&1
-curl -H "User-Agent: $user_agent" -s -i -o /dev/null -w "Response: %{http_code}\n" -X GET "https://$domain"
-curl -H "User-Agent: $user_agent" -s -I "https://$domain" | grep -i "Content-Security-Policy"
-curl -H "User-Agent: $user_agent" -s -I "https://$domain" | grep -i -w '^server:'
+curl -H "User-Agent: $user_agent" -s -I -L -o /dev/null -v -X GET "https://$domain" > "/tmp/domain-$$.log" 2>&1
+curl -H "User-Agent: $user_agent" -s -I -L "https://$domain"  | grep -i "Content-Security-Policy" || echo "no CSP header response"
+curl -H "User-Agent: $user_agent" -s -I -L "https://$domain" | grep -i -w '^server:' || echo "no server header response"
+curl -H "User-Agent: $user_agent" -s -I -L "https://$domain" | grep -i -w '^cf-cache-status:' || echo "no cf-cache-status header response"
+# curl -H "User-Agent: $user_agent" -s -I -L "https://$domain" | awk '/^cf-cache-status:/ {print $2; found=1} END {if (!found) print "cf-cache-status Header not found"}'
 
 if [ -z "$dig_output" ]; then
     echo "No results found for $domain."
