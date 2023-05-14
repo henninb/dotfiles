@@ -6,13 +6,14 @@ if [ $# -eq 0 ]; then
 fi
 
 domain=$1
-user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36"
+# user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36"
+user_agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
 
 echo "Performing DNS lookup for $domain..."
 dig_output=$(dig $domain +short)
 
 # response=$(curl -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36" -vlskI -X GET -w "%{http_code}" -o /dev/null -L "https://$domain")
-response=$(curl -H "User-Agent: $user_agent" -lskI -X GET -w "%{http_code}" -o /dev/null -L "https://$domain")
+response=$(curl -H "User-Agent: $user_agent" -s -l -I -X GET -w "%{http_code}" -o /dev/null -L "https://$domain")
 
 if [ $response -ge 400 ]; then
     echo "Error: HTTP response code $response"
@@ -38,10 +39,12 @@ else
 
     # Get more information about the IP addresses
     for ip in $(echo "$dig_output"); do
+      if printf "%s\n" "$ip" | grep -E -q '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$'; then
         echo "Additional information for IP address $ip:"
         whois_output=$(whois $ip | awk -F ':' '/^OrgName/ {print $2}')
         echo "OrgName: $whois_output"
         echo ""
+      fi
     done
 fi
 
