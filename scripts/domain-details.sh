@@ -34,6 +34,7 @@ curl -H "User-Agent: $user_agent" -s -I -L -o /dev/null -v -X GET "https://$doma
 curl -H "User-Agent: $user_agent" -s -I -L "https://$domain"  | grep -i "Content-Security-Policy" || echo "no CSP header response"
 curl -H "User-Agent: $user_agent" -s -I -L "https://$domain" | grep -i -w '^server:' || echo "no server header response"
 curl -H "User-Agent: $user_agent" -s -I -L "https://$domain" | grep -i -w '^cf-cache-status:' || echo "no cf-cache-status header response"
+curl -H "User-Agent: $user_agent" -s -I -L "https://$domain" | grep -i -w '^x-yottaa-os:' || echo "no x-yottaa-os header response"
 # curl -H "User-Agent: $user_agent" -s -I -L "https://$domain" | awk '/^cf-cache-status:/ {print $2; found=1} END {if (!found) print "cf-cache-status Header not found"}'
 
 if [ -z "$dig_output" ]; then
