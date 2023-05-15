@@ -37,34 +37,86 @@ if [ $response -ge 300 ]; then
 fi
 
 run_curl() {
-  local arg1=$1
-  dig_arg1=$(dig $arg1 +short +time=15)
-  echo $arg1
-  curl --max-time 15 -H "User-Agent: $user_agent" --cookie-jar "/tmp/cookies.$arg1.dat" -s -I -o /dev/null -v -X GET "https://$arg1" > "/tmp/$arg1-$$.log" 2>&1
-  curl --max-time 15 -H "User-Agent: $user_agent" --cookie-jar "/tmp/cookies.$arg1.dat" -s -I "https://$arg1"  | grep -i "Content-Security-Policy" || echo "no CSP header response"
-  curl --max-time 15 -H "User-Agent: $user_agent" --cookie-jar "/tmp/cookies.$arg1.dat" -s -I "https://$arg1" | grep -i -w '^server:' || echo "no server header response"
-  curl --max-time 15 -H "User-Agent: $user_agent" --cookie-jar "/tmp/cookies.$arg1.dat" -s -I "https://$arg1" | grep -i -w '^cf-cache-status:' || echo "no cf-cache-status header response"
-  curl --max-time 15 -H "User-Agent: $user_agent" --cookie-jar "/tmp/cookies.$arg1.dat" -s -I "https://$arg1" | grep -i -w '^x-yottaa-os:' || echo "no x-yottaa-os header response"
-  curl --max-time 15 -H "User-Agent: $user_agent" --cookie-jar "/tmp/cookies.$arg1.dat" -s -I "https://$arg1" | awk '/^HTTP/{print $1}'
-  # curl -H "User-Agent: $user_agent" -s -I -L "https://$arg1" | awk '/^cf-cache-status:/ {print $2; found=1} END {if (!found) print "cf-cache-status Header not found"}'
+    local arg1=$1
+    dig_arg1=$(dig $arg1 +short +time=15)
+    echo "Results for $arg1:"
+    echo "---------------------"
 
-  if [ -z "$dig_arg1" ]; then
-      echo "No results found for $arg1."
-  else
-      echo "Results for $arg1:"
-      echo "$dig_arg1"
+    curl --max-time 15 -H "User-Agent: $user_agent" --cookie-jar "/tmp/cookies.$arg1.dat" -s -I -o /dev/null -v -X GET "https://$arg1" > "/tmp/$arg1-$$.log" 2>&1
 
-      # Get more information about the IP addresses
-      for ip in $(echo "$dig_arg1"); do
-        if printf "%s\n" "$ip" | grep -E -q '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$'; then
-          echo "Additional information for IP address $ip:"
-          whois_output=$(whois $ip | awk -F ':' '/^OrgName/ {print $2}')
-          echo "OrgName: $whois_output"
-        fi
-      done
-      echo "-----------"
-  fi
+    echo "Content-Security-Policy:"
+    csp_header=$(curl --max-time 15 -H "User-Agent: $user_agent" --cookie-jar "/tmp/cookies.$arg1.dat" -s -I "https://$arg1" | grep -i "Content-Security-Policy")
+    if [ -n "$csp_header" ]; then
+        echo "$csp_header"
+    else
+        echo "No CSP header response"
+    fi
+
+    echo "Server:"
+    server_header=$(curl --max-time 15 -H "User-Agent: $user_agent" --cookie-jar "/tmp/cookies.$arg1.dat" -s -I "https://$arg1" | grep -i -w '^server:')
+    if [ -n "$server_header" ]; then
+        echo "$server_header"
+    else
+        echo "No server header response"
+    fi
+
+    echo "cf-cache-status:"
+    cf_cache_status=$(curl --max-time 15 -H "User-Agent: $user_agent" --cookie-jar "/tmp/cookies.$arg1.dat" -s -I "https://$arg1" | grep -i -w '^cf-cache-status:')
+    if [ -n "$cf_cache_status" ]; then
+        echo "$cf_cache_status"
+    else
+        echo "No cf-cache-status header response"
+    fi
+
+    echo "HTTP Response Code:"
+    http_code=$(curl --max-time 15 -H "User-Agent: $user_agent" --cookie-jar "/tmp/cookies.$arg1.dat" -s -I "https://$arg1" | awk '/^HTTP/{print $1}')
+    echo "$http_code"
+
+    if [ -z "$dig_arg1" ]; then
+        echo "No results found for $arg1."
+    else
+        echo "Additional information:"
+        for ip in $(echo "$dig_arg1"); do
+            if printf "%s\n" "$ip" | grep -E -q '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$'; then
+                whois_output=$(whois $ip | awk -F ':' '/^OrgName/ {print $2}')
+                echo "IP address: $ip"
+                echo "OrgName: $whois_output"
+            fi
+        done
+    fi
+
+    echo ""
 }
+
+# run_curl() {
+#   local arg1=$1
+#   dig_arg1=$(dig $arg1 +short +time=15)
+#   echo $arg1
+#   curl --max-time 15 -H "User-Agent: $user_agent" --cookie-jar "/tmp/cookies.$arg1.dat" -s -I -o /dev/null -v -X GET "https://$arg1" > "/tmp/$arg1-$$.log" 2>&1
+#   curl --max-time 15 -H "User-Agent: $user_agent" --cookie-jar "/tmp/cookies.$arg1.dat" -s -I "https://$arg1"  | grep -i "Content-Security-Policy" || echo "no CSP header response"
+#   curl --max-time 15 -H "User-Agent: $user_agent" --cookie-jar "/tmp/cookies.$arg1.dat" -s -I "https://$arg1" | grep -i -w '^server:' || echo "no server header response"
+#   curl --max-time 15 -H "User-Agent: $user_agent" --cookie-jar "/tmp/cookies.$arg1.dat" -s -I "https://$arg1" | grep -i -w '^cf-cache-status:' || echo "no cf-cache-status header response"
+#   curl --max-time 15 -H "User-Agent: $user_agent" --cookie-jar "/tmp/cookies.$arg1.dat" -s -I "https://$arg1" | grep -i -w '^x-yottaa-os:' || echo "no x-yottaa-os header response"
+#   curl --max-time 15 -H "User-Agent: $user_agent" --cookie-jar "/tmp/cookies.$arg1.dat" -s -I "https://$arg1" | awk '/^HTTP/{print $1}'
+#   # curl -H "User-Agent: $user_agent" -s -I -L "https://$arg1" | awk '/^cf-cache-status:/ {print $2; found=1} END {if (!found) print "cf-cache-status Header not found"}'
+#
+#   if [ -z "$dig_arg1" ]; then
+#       echo "No results found for $arg1."
+#   else
+#       echo "Results for $arg1:"
+#       echo "$dig_arg1"
+#
+#       # Get more information about the IP addresses
+#       for ip in $(echo "$dig_arg1"); do
+#         if printf "%s\n" "$ip" | grep -E -q '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$'; then
+#           echo "Additional information for IP address $ip:"
+#           whois_output=$(whois $ip | awk -F ':' '/^OrgName/ {print $2}')
+#           echo "OrgName: $whois_output"
+#         fi
+#       done
+#       echo "-----------"
+#   fi
+# }
 
 run_curl $rootdomain
 run_curl login.$rootdomain
