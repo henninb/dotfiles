@@ -71,7 +71,12 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge -uDUN --keep-going --with-bdeps=y @world 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   sudo emerge --depclean 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   doas revdep-rebuild
-  doas eselect kernel set 1
+  doas emerge @preserved-rebuild
+  kernel_list=$(eselect kernel list)
+  versions=($(echo "$kernel_list" | awk -F ' ' '{print $2}'))
+  sorted_versions=($(printf '%s\n' "${versions[@]}" | sort -r))
+  newest_kernel="${sorted_versions[0]}"
+  doas eselect kernel set "$newest_kernel"
   uname=$(uname -srm | cut -d' ' -f2 | cut -d- -f1)
   eselect=$(eselect kernel list | tail -1 | cut -d- -f2)
   if [ ! "${eselect}" = "${uname}" ]; then
@@ -86,7 +91,6 @@ elif [ "$OS" = "Gentoo" ]; then
   if [ -z ${blender+x} ]; then echo "var is unset"; else sudo ln -sfn "${blender}" /usr/bin/blender; fi
   librewolf=$(find /usr/bin -name "librewolf-bin")
   if [ -z ${librewolf+x} ]; then echo "var is unset"; else sudo ln -sfn "${librewolf}" /usr/bin/librewolf; fi
-  doas emerge @preserved-rebuild
   echo eselect editor list
   echo eselect kernel list
   echo eselect python list
