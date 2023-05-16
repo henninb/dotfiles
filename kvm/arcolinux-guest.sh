@@ -39,6 +39,7 @@ exec sudo virt-install \
 --memory=8192,maxmemory=8192 \
 --vcpus=1,maxvcpus=2 \
 --virt-type=kvm \
+--os-variant=archlinux \
 --hvm \
 --boot uefi \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
