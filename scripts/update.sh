@@ -266,6 +266,10 @@ if ! npm update deepl-translator-cli; then
   npm install -g deepl-translator-cli
 fi
 
+if ! npm update vercel; then
+  npm install -g vercel
+fi
+
 if ! npm update npm-check-updates; then
   npm install -g npm-check-updates
 fi
