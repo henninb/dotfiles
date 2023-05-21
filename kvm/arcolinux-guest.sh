@@ -45,6 +45,7 @@ exec sudo virt-install \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
 --network=bridge=virbr0,model=virtio \
 --graphics vnc \
+--video qxl \
 --disk path=/var/lib/libvirt/images/guest-$guest_name.qcow2,size=60,bus=scsi,format=qcow2
 
 exit 0
