@@ -99,6 +99,11 @@ else
   exit 1
 fi
 
+nix-shell -p nix-info --run "nix-info -m"
+
+nix-channel --add https://github.com/guibou/nixGL/archive/main.tar.gz nixgl && nix-channel --update
+nix-env -iA nixgl.auto.nixGLDefault
+
 exit 0
 
 # example
