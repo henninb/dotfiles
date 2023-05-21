@@ -64,9 +64,10 @@ blacklist nouveau
 options nouveau modeset=0
 EOF
 
+ver=530.41.03
 lspci -k | grep -A 2 -E "(VGA|3D)"
 echo 'uninstall'
-echo 'sudo sh ./NVIDIA-Linux-x86_64-525.105.17.run --uninstall'
+echo "sudo sh ./NVIDIA-Linux-x86_64-${ver}.run --uninstall"
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   doas pacman --noconfirm --needed -S linux-headers
@@ -176,8 +177,8 @@ echo open https://www.nvidia.com/en-us/geforce/drivers/
 #   wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/525.89.02/NVIDIA-Linux-x86_64-525.89.02.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-525.89.02.run"
 # fi
 
-if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-525.105.17.run" ]; then
-  wget 'https://us.download.nvidia.com/XFree86/Linux-x86_64/525.105.17/NVIDIA-Linux-x86_64-525.105.17.run' -O "$HOME/tmp/NVIDIA-Linux-x86_64-525.105.17.run"
+if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-${ver}.run" ]; then
+  wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/${ver}/NVIDIA-Linux-x86_64-${ver}.run" -O "$HOME/tmp/NVIDIA-Linux-x86_64-${ver}.run"
 fi
 
 grep "X Driver" /var/log/Xorg.0.log
