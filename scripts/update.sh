@@ -73,8 +73,8 @@ elif [ "$OS" = "Gentoo" ]; then
   doas revdep-rebuild
   doas emerge @preserved-rebuild
   kernel_list=$(eselect kernel list)
-  versions=($(echo "$kernel_list" | awk -F ' ' '{print $2}'))
-  sorted_versions=($(printf '%s\n' "${versions[@]}" | sort -r))
+  versions=$(echo "$kernel_list" | awk -F ' ' '{print $2}')
+  sorted_versions=$(printf '%s\n' "${versions[@]}" | sort -r)
   newest_kernel="${sorted_versions[0]}"
   doas eselect kernel set "$newest_kernel"
   uname=$(uname -srm | cut -d' ' -f2 | cut -d- -f1)
