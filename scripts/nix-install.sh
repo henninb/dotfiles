@@ -103,6 +103,7 @@ nix-shell -p nix-info --run "nix-info -m"
 
 nix-channel --add https://github.com/guibou/nixGL/archive/main.tar.gz nixgl && nix-channel --update
 nix-env -iA nixgl.auto.nixGLDefault
+echo nixGL blender
 
 exit 0
 
