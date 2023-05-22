@@ -2,7 +2,7 @@ version: "3.7"
 services:
   nginx-inject-lua:
     build: .
-    container_name: nginx-inject-lua
+    container_name: openresty-plugin
     extra_hosts:
       - "hornsup:192.168.10.10"
     ports:
