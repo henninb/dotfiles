@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  raspi-finance-react:
+    image: example-react
+    hostname: example-react
+    container_name: example-react
+    restart: always
+    build:
+      context: ./
+      args:
+        - TIMEZONE=America/Chicago
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+#     extra_hosts:
+#       - "hornsup:${HOST_IP}"
+#     env_file:
+#       - env.prod
+# networks:
+#   default:
+#     name: finance-net
