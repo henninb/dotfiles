@@ -8,8 +8,6 @@
     "@mui/lab": "^5.0.0-alpha.131",
     "@mui/material": "^5.13.2",
     "@mui/x-data-grid": "^6.5.0",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^14.0.0",
     "axios": "^1.4.0",
     "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
