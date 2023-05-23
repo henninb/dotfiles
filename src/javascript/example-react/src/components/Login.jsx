@@ -54,7 +54,7 @@ export default function Login() {
     return (
         <div className="login">
             <div className="form">
-                <form name="login-form" className="login-form" action="/login" method="GET" data-bitwarden-watching="1">
+                <form name="login-form" className="login-form" action="/api/login" method="POST" data-bitwarden-watching="1">
                     <span className="material-icons">lock</span>
                     <div className="input-group mb-3">
                 <div className="input-group-prepend">

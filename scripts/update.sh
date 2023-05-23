@@ -274,6 +274,10 @@ if ! npm update npm-check-updates; then
   npm install -g npm-check-updates
 fi
 
+if ! npm update serve; then
+  npm install -g serve
+fi
+
 pip install pyserial --user
 pip install youtube-dl --user
 pip install holehe --user
