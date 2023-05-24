@@ -10,12 +10,10 @@ export default function AllRoutes() {
   return (
     <div>
       <BrowserRouter>
-          <div>
-          </div>
           <Routes>
             <Route path="/login" element={<Login />} />
-              <Route path="/nhl" element={<HockeyScores />} />
-              <Route path="/temperature" element={<Temperature />} />
+            <Route path="/nhl" element={<HockeyScores />} />
+            <Route path="/temperature" element={<Temperature />} />
             <Route element={<ProtectedRoutes />}>
               <Route path="/" element={<Home />} />
             </Route>

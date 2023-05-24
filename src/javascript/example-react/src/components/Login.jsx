@@ -12,19 +12,35 @@ export default function Login() {
   //     [id]: value,
   //   }));
   // };
+  const userLoginGet = async () => {
+    let endpoint =  '/api/v1/login';
+
+    console.log('pre axios get call');
+    const response = await axios.get(endpoint, {
+      timeout: 0,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log('post axios call');
+    return response.data;
+  };
 
   const userLogin = async (payload) => {
     let endpoint =  '/api/login';
 
+    console.log('pre axios post call');
     const response = await axios.post(endpoint, payload, {
       timeout: 0,
       headers: {
         "Content-Type": "application/json",
       },
     });
+    console.log('post axios get call');
 
-    const expiryDate = new Date(new Date().getTime() + 6 * 60 * 60 * 1000).toUTCString();
-    document.cookie = `access-token=${response.data}; path=/; expires=${expiryDate}; secure; samesite=lax`;
+
+    // const expiryDate = new Date(new Date().getTime() + 6 * 60 * 60 * 1000).toUTCString();
+    // document.cookie = `access-token=${response.data}; path=/; expires=${expiryDate}; secure; samesite=lax`;
     return response.data;
   };
 
@@ -33,15 +49,20 @@ export default function Login() {
     event.preventDefault();
 
     let email = document.getElementById("email").value;
+    console.log(email);
     let password = document.getElementById("password").value;
+    console.log(password);
     let data = {
       email: email,
       password: password,
     };
+    console.log(data);
     // console.log(state);
     // console.log("send: " + JSON.stringify(data));
 
     try {
+      let response_get = await userLoginGet();
+      console.log("response: " + JSON.stringify(response_get));
       let response = await userLogin(data);
       console.log("response: " + JSON.stringify(response));
       window.location.href = '/'
