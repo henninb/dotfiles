@@ -100,7 +100,7 @@ end
 #   set -gx JAVA_HOME (/usr/libexec/java_home)
 
 # set -gx PATH $JAVA_HOME/bin $PATH
-
+set -x PATH /opt/mullvad-browser/Browser $PATH
 set -x PATH $HOME/Applications $PATH
 set -x PATH /opt/yubico-authenticator $PATH
 set -x PATH $HOME/.ghcup/bin $PATH
