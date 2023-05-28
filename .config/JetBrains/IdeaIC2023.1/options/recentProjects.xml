@@ -143,18 +143,6 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
-        <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-react-new">
-          <value>
-            <RecentProjectMetaInfo opened="true" projectWorkspaceId="2QOjoqRTiCa6WPR3uqOu2lkyNpx">
-              <option name="activationTimestamp" value="1685233082509" />
-              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="build" value="IC-231.8770.65" />
-              <option name="buildTimestamp" value="1682609122112" />
-              <option name="productionCode" value="IC" />
-              <option name="projectOpenTimestamp" value="1685231700771" />
-            </RecentProjectMetaInfo>
-          </value>
-        </entry>
       </map>
     </option>
     <option name="lastOpenedProject" value="$USER_HOME$/projects/github.com/henninb/raspi-finance-react-new" />
