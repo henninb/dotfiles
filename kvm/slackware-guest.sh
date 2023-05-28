@@ -6,8 +6,8 @@ if [ $# -gt 1 ]; then
 fi
 
 remove=$1
-iso_file="arcolinuxb-hyprland-v23.05.04-x86_64.iso"
-guest_name="arcolinux"
+iso_file="slackware64-15.0-install-dvd.iso"
+guest_name="slackware"
 
 virsh shutdown "guest-$guest_name"
 virsh destroy "guest-$guest_name"
@@ -45,7 +45,6 @@ exec sudo virt-install \
 --cdrom=/var/lib/libvirt/boot/${iso_file} \
 --network=bridge=virbr0,model=virtio \
 --graphics vnc \
---video virtio,accel3d=yes \
 --disk path=/var/lib/libvirt/images/guest-$guest_name.qcow2,size=60,bus=scsi,format=qcow2
 
 exit 0

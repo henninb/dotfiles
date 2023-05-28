@@ -127,6 +127,8 @@ elif [ "$OS" = "FreeBSD" ]; then
   echo sudo pkg bootstrap
 elif [ "$OS" = "OpenBSD" ]; then
   echo "openbsd"
+elif [ "$OS" = "Slackware" ]; then
+  echo "Slackware"
 elif [ "$OS" = "Clear Linux OS" ]; then
   echo "clearlinux"
 else
