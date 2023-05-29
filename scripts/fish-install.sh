@@ -78,8 +78,9 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
     echo "The string /bin/fish has been added to /etc/shells"
   fi
 elif [ "$OS" = "Slackware" ]; then
-  wget 'https://github.com/fish-shell/fish-shell/releases/download/3.6.1/fish-3.6.1.tar.xz' -O "$HOME/tmp/fish-3.6.1.txz"
-  sudo installpkg fish-3.6.1.txz
+  # wget 'https://github.com/fish-shell/fish-shell/releases/download/3.6.1/fish-3.6.1.tar.xz' -O "$HOME/tmp/fish-3.6.1.txz"
+  wget 'https://slackbuilds.org/slackbuilds/15.0/system/fish.tar.gz' -O "$HOME/tmp/fish-3.6.1.tgz"
+  sudo installpkg "$HOME/tmp/fish-3.6.1.tgz"
 elif [ "$OS" = "Void" ]; then
   doas xbps-install -y xtools
   cd "$HOME/projects" || exit
