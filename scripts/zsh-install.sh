@@ -36,6 +36,8 @@ elif [ -x "$(command -v eopkg)" ]; then
 elif [ -x "$(command -v pkg)" ]; then
   doas pkg install -y zsh
   doas pkg install -y starship
+elif [ -x "$(command -v slackpkg)" ]; then
+  echo "Slackware"
 elif [ -x "$(command -v brew)" ]; then
   brew install zsh
 else
@@ -89,6 +91,8 @@ elif [ "$OS" = "Void" ]; then
   doas xbps-install -y curl
   doas xbps-install -y unzip
   doas xbps-install -y fontconfig
+elif [ "$OS" = "Slackware" ]; then
+  echo Slackware
 elif [ "$OS" = "Darwin" ]; then
   brew install coreutils
   brew install fontconfig
