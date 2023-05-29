@@ -53,6 +53,8 @@ elif [ -x "$(command -v pkg)" ]; then
   sudo pkg install -y doas
   doas pkg install -y fish
   doas pkg install -y starship
+elif [ -x "$(command -v slackpkg)" ]; then
+  echo Slackware
 elif [ -x "$(command -v brew)" ]; then
   brew install fish
 else
@@ -75,6 +77,9 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
     echo "/bin/fish" | sudo tee -a /etc/shells
     echo "The string /bin/fish has been added to /etc/shells"
   fi
+elif [ "$OS" = "Slackware" ]; then
+  wget 'https://github.com/fish-shell/fish-shell/releases/download/3.6.1/fish-3.6.1.tar.xz' -O "$HOME/tmp/fish-3.6.1.txz"
+  sudo installpkg fish-3.6.1.txz
 elif [ "$OS" = "Void" ]; then
   doas xbps-install -y xtools
   cd "$HOME/projects" || exit
