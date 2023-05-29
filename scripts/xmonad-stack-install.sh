@@ -455,6 +455,18 @@ elif [ "$OS" = "Solus" ]; then
   done
   echo "Failures: $FAILURE"
   echo "need dzen2"
+elif [ "$OS" = "Slackware" ]; then
+   sudo slackpkg install gcc
+   sudo slackpkg install make
+   sudo slackpkg install cmake
+   sudo slackpkg install xdotool
+   sudo slackpkg install xz
+   sudo slackpkg install jq
+   sudo slackpkg install rofi
+   sudo slackpkg install conky
+   sudo slackpkg install neofetch
+   sudo slackpkg install flameshot
+   sudo slackpkg install neovim
 elif [ "$OS" = "Gentoo" ]; then
   doas usermod -aG tty "$(id -un)"
   doas usermod -aG video "$(id -un)"
