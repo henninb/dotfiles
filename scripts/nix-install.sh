@@ -17,6 +17,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo /sbin/update-ca-certificates
 elif [ "$OS" = "Fedora Linux" ]; then
   echo "fedora"
+elif [ "$OS" = "Slackware" ]; then
+  echo Slackware
 elif [ "$OS" = "Clear Linux OS" ]; then
   echo clearlinux
 elif [ "$OS" = "Darwin" ]; then
@@ -90,6 +92,8 @@ elif [ "$OS" = "Fedora Linux" ]; then
   nix-env -i ventoy-bin
   nix-env -i xdo
   nix-env -i dzen2
+elif [ "$OS" = "Slackware" ]; then
+  nix-env -i librewolf 
 elif [ "$OS" = "Clear Linux OS" ]; then
   echo clearlinux
 elif [ "$OS" = "Darwin" ]; then
