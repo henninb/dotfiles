@@ -94,6 +94,16 @@ elif [ "$OS" = "Fedora Linux" ]; then
   nix-env -i dzen2
 elif [ "$OS" = "Slackware" ]; then
   nix-env -i librewolf 
+  nix-env -i keepassxc
+  nix-env -i conky
+  nix-env -i dunst
+  nix-env -i flameshot
+  nix-env -i volumeicon
+  nix-env -i feh
+  nix-env -i numlockx
+  nix-env -i xdo
+  nix-env -i xdotool
+  nix-env -i dzen2
 elif [ "$OS" = "Clear Linux OS" ]; then
   echo clearlinux
 elif [ "$OS" = "Darwin" ]; then
