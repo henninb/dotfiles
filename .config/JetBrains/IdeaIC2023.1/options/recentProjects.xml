@@ -132,20 +132,20 @@
         </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint">
           <value>
-            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – OptionsResponseInterceptor.kt [raspi-finance-endpoint.main]" projectWorkspaceId="2PSm42BcJIxmZN3vCTxJRDiODdK">
-              <option name="activationTimestamp" value="1684695610569" />
+            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – WebSecurityConfig.kt [raspi-finance-endpoint.main]" projectWorkspaceId="2PSm42BcJIxmZN3vCTxJRDiODdK">
+              <option name="activationTimestamp" value="1685396528403" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="IC-231.8770.65" />
-              <option name="buildTimestamp" value="1682609122954" />
+              <option name="buildTimestamp" value="1682609145139" />
               <frame x="0" y="20" width="3838" height="2138" />
               <option name="productionCode" value="IC" />
-              <option name="projectOpenTimestamp" value="1684687237158" />
+              <option name="projectOpenTimestamp" value="1685393094206" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
       </map>
     </option>
-    <option name="lastOpenedProject" value="$USER_HOME$/projects/github.com/henninb/raspi-finance-react-new" />
+    <option name="lastOpenedProject" value="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint" />
     <option name="lastProjectLocation" value="$USER_HOME$/projects/github.com/henninb" />
   </component>
 </application>
