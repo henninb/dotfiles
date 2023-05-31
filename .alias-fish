@@ -41,6 +41,7 @@ end
 # function rkh
 #     ssh-keygen -f "$HOME/.ssh/known_hosts" -R "$argv"
 # end
+abbr -a external 'sudo mount /mnt/external'
 
 abbr -a rkh 'ssh-keygen -f "$HOME/.ssh/known_hosts" -R '
 
