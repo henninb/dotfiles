@@ -27,8 +27,8 @@ elif [ "$platform" = "docker" ]; then
   echo docker logs nginx-server-hosted
 
   if command -v docker-compose; then
-    docker-compose build
-    docker-compose up
+    docker compose build
+    docker compose up
   else
     docker build -t nginx-server-hosted .
     docker run --name=nginx-server-hosted -h nginx-server-hosted -h nginx-server-hosted --restart unless-stopped -p 443:443 -d nginx-server-hosted

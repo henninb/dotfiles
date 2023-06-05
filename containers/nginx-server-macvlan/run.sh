@@ -27,8 +27,8 @@ elif [ "$platform" = "docker" ]; then
   echo docker logs nginx-server-maclan
 
   if command -v docker-compose; then
-    docker-compose build
-    docker-compose up
+    docker compose build
+    docker compose up
   else
     docker build -t nginx-server-maclan .
     docker run --name=nginx-server-maclan -h nginx-server-maclan -h nginx-server-maclan --restart unless-stopped -p 443:443 -d nginx-server-maclan
