@@ -26,8 +26,8 @@ elif [ "$platform" = "docker" ]; then
   echo docker logs nginx-inject-lua
 
   if command -v docker-compose; then
-    docker-compose build
-    docker-compose up
+    docker compose build
+    docker compose up
   else
     docker build -t nginx-inject-lua .
     docker run --name=nginx-inject-lua -h nginx-inject-lua -h nginx-inject-lua --restart unless-stopped -p 443:443 -d nginx-inject-lua

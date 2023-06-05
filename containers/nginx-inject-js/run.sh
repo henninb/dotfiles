@@ -32,8 +32,8 @@ elif [ "$platform" = "docker" ]; then
   echo docker logs nginx-inject-js
 
   if command -v docker-compose; then
-    docker-compose build
-    docker-compose up
+    docker compose build
+    docker compose up
   else
     docker build -t nginx-inject-js .
     docker run --name=nginx-inject-js -h nginx-inject-js -h nginx-inject-js --restart unless-stopped -p 443:443 -d nginx-inject-js

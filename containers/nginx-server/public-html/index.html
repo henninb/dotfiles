@@ -5,9 +5,41 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title>Login</title>
+    <style>
+        /* CSS for menu */
+        .menu {
+            background-color: #f1f1f1;
+            overflow: hidden;
+        }
+
+        .menu a {
+            float: left;
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .menu a:hover {
+            background-color: #ddd;
+        }
+
+        .menu .active {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="menu">
+        <a href="#" class="active">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </div>
+    <div>test</div>
     <div class="login">
         <div class="form">
             <form name="login-form" class="login-form" action="/api/login" method="POST" data-bitwarden-watching="1">

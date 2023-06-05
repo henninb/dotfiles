@@ -18,11 +18,13 @@ if [ "$platform" = "podman" ]; then
   podman-compose up
 elif [ "$platform" = "docker" ]; then
   docker stop nginx-server
+  echo docker rm -f nginx-server
   docker rm -f nginx-server
-  echo "running server on port 443"
+  # echo "running server on port 443"
 
   blocking=$(docker ps -a --filter "expose=443"  --format '{{.ID}}')
   if [ -n "${blocking}" ]; then
+    echo stop
     docker stop "${blocking}"
     docker rm -f "${blocking}"
   fi
@@ -32,8 +34,8 @@ elif [ "$platform" = "docker" ]; then
   echo docker logs nginx-server
 
   if command -v docker-compose; then
-    docker-compose build
-    docker-compose up -d
+    docker compose build
+    docker compose up -d
   else
     docker build -t nginx-server .
     docker run --name=nginx-server -h nginx-server -h nginx-server --restart unless-stopped -p 443:443 -d nginx-server
