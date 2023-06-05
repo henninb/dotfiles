@@ -1,0 +1,39 @@
+version: "3.7"
+services:
+  haproxy-server:
+    build: .
+    image: haproxy-server
+    container_name: haproxy-server
+    hostname: haproxy-server
+    ports:
+      - "80:80"
+    networks:
+      - mynetwork
+    depends_on:
+      - web1
+      - web2
+      - web3
+
+  web1:
+    image: jmalloc/echo-server:latest
+    container_name: web1
+    hostname: web1
+    networks:
+      - mynetwork
+
+  web2:
+    image: jmalloc/echo-server:latest
+    container_name: web2
+    hostname: web2
+    networks:
+      - mynetwork
+
+  web3:
+    image: jmalloc/echo-server:latest
+    container_name: web3
+    hostname: web3
+    networks:
+      - mynetwork
+networks:
+  mynetwork:
+    name: mynetwork
