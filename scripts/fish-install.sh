@@ -69,7 +69,7 @@ elif [ "$OS" = "Gentoo" ]; then
   if ! command -v fish; then
     doas emerge --update --newuse fish
   fi
-elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ] || [ "$OS" = "Debian GNU/Linux" ]; then
   # sudo apt install -y fish
   wget https://launchpad.net/~fish-shell/+archive/ubuntu/release-3/+files/fish_3.6.1-1~jammy_amd64.deb
   doas dpkg -i fish_3.6.1-1_jammy_amd64.deb
