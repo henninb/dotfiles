@@ -46,3 +46,9 @@ pveam download local-500 debian-10-turnkey-core_16.1-1_amd64.tar.gz
 ```
 qm clone 101 200 --name "pfsense-backup" --targetstorage local-500-backup
 ```
+
+## load an iso
+scp ~/Downloads/arcolinuxb-hyprland-v23.05.04-x86_64.iso  pi:/home/pi/shared/template/iso/
+/var/lib/vz/template/iso/
+
+systemctl restart pveproxy.service
