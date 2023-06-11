@@ -31,6 +31,7 @@ elif [ -x "$(command -v dnf)" ]; then
     rm install.sh
   fi
 elif [ -x "$(command -v apt)" ]; then
+  sudo apt install -y curl
   sudo apt install -y doas
   doas apt install -y fish
   if [ ! -x "$(command -v starship)" ]; then
