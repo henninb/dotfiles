@@ -117,3 +117,4 @@ app-office/libreoffice-bin python_single_target_python3_11
 media-libs/openpgl cpu_flags_x86_sse4_2
 app-emulation/libvirt libssh2 fuse lxc
 net-libs/gnutls pkcs11 tools
+app-crypt/qca qt5
