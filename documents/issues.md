@@ -639,9 +639,9 @@ emerge -av1 --oneshot $(qfile -qC /usr/lib*/libcrypto.so.1.1 /usr/lib*/libssl.so
 stack ghc -- --version
 ```
 
-SPACESHIP_PYENV_SHOW is deprecated. Use SPACESHIP_PYTHON_SHOW instead           
+SPACESHIP_PYENV_SHOW is deprecated. Use SPACESHIP_PYTHON_SHOW instead
 
-SPACESHIP_KUBECONTEXT_SHOW is deprecated. Use SPACESHIP_KUBECTL_CONTEXT_SHOW instead                                                                           
+SPACESHIP_KUBECONTEXT_SHOW is deprecated. Use SPACESHIP_KUBECTL_CONTEXT_SHOW instead
 
 
 systemctl disable --now systemd-homed
