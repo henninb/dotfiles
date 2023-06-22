@@ -94,6 +94,8 @@ elif [ "$OS" = "Gentoo" ]; then
   doas gpasswd -a $USER audio
   doas gpasswd -a $USER docker
 
+  doas usermod -aG lp $USER
+
   doas usermod -a -G flatpak "$(id -un)"
   doas usermod -a -G tomcat "$(id -un)"
   doas usermod -a -G firefox "$(id -un)"
