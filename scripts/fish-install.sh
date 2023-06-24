@@ -34,6 +34,8 @@ elif [ -x "$(command -v apt)" ]; then
   sudo apt install -y curl
   sudo apt install -y doas
   doas apt install -y fish
+  doas apt install -y unzip
+  doas apt install -y fontconfig
   if [ ! -x "$(command -v starship)" ]; then
     curl -O https://starship.rs/install.sh
     chmod +x install.sh
