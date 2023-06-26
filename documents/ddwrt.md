@@ -87,3 +87,8 @@ reboot
 ```
 date -s 2023.01.27-05:39:00
 ```
+
+## set the default gw on ddwrt to get local internet access
+```
+route add default gw 192.168.10.1
+```
