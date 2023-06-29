@@ -20,6 +20,7 @@ $ sudo reboot
 ## update proxmox - comment out the enterprise repo
 ```
 vi /etc/apt/sources.list.d/pve-enterprise.list
+deb http://download.proxmox.com/debian/pve bullseye pve-no-subscription
 ```
 
 
@@ -52,3 +53,9 @@ scp ~/Downloads/arcolinuxb-hyprland-v23.05.04-x86_64.iso  pi:/home/pi/shared/tem
 /var/lib/vz/template/iso/
 
 systemctl restart pveproxy.service
+
+## version
+pveversion
+
+## upgrade
+pve7to8
