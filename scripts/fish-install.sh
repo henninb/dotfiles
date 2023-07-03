@@ -21,6 +21,10 @@ elif [ -x "$(command -v zypper)" ]; then
   sudo zypper install -y opendoas
   doas zypper install -y fish
   doas zypper install -y starship
+  doas zypper install -y gcc
+  doas zypper install -y gcc-c++
+  doas zypper install -y cmake
+  doas zypper install -y fontconfig-devel
 elif [ -x "$(command -v dnf)" ]; then
   sudo dnf install -y doas
   doas dnf install -y fish
