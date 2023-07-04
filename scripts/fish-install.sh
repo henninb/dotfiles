@@ -56,6 +56,7 @@ elif [ -x "$(command -v xbps-install)" ]; then
 elif [ -x "$(command -v apk)" ]; then
   sudo apk add fish
   sudo apk add doas
+  sudo apk add starship
 elif [ -x "$(command -v eopkg)" ]; then
   sudo eopkg install -y doas
   doas eopkg install -y fish
