@@ -21,6 +21,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper addrepo https://download.opensuse.org/repositories/security/openSUSE_Tumbleweed/security.repo
   sudo zypper refresh
   sudo zypper install -y opendoas
+elif [ "$OS" = "Alpine Linux" ]; then
+ sudo apk add doas
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y doas
 elif [ "$OS" = "Clear Linux OS" ]; then
