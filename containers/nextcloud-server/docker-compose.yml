@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  nextcloud-server:
+    container_name: nextcloud-server
+    hostname: nextcloud-server
+    image: nextcloud
+    ports:
+      - "8080:80/tcp"
+    environment:
+      TZ: 'America/Chicago'
+    # volumes:
+    #   - './etc-nextcloud:/etc/nextcloud'
+    #   - './etc-dnsmasq.d:/etc/dnsmasq.d'
+    restart: unless-stopped
