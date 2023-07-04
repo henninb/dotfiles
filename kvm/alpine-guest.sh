@@ -6,7 +6,7 @@ if [ $# -gt 1 ]; then
 fi
 
 remove=$1
-iso_file="alpine-standard-3.17.1-x86_64.iso"
+iso_file="alpine-standard-3.18.2-x86_64.iso"
 guest_name="alpine"
 
 virsh shutdown "guest-$guest_name"
