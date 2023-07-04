@@ -1,0 +1,17 @@
+# authelia.yml
+authelia:
+  # Configuration for the authentication backend
+  authentication_backend:
+    file:
+      path: /config/users_database.yml
+
+  # Configuration for the authentication frontend
+  authentication_frontend:
+    jwt_secret: mysecret
+
+  access_control:
+    default_policy: two_factor
+
+  # Configuration for the session provider
+  session:
+    remember_me_duration: 1
