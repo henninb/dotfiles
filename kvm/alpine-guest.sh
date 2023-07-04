@@ -25,6 +25,7 @@ if [ "$remove" = "y" ]; then
 fi
 
 if [ ! -f "/var/lib/libvirt/boot/${iso_file}" ]; then
+  echo download alpine
   scp -p "pi:/home/pi/shared/template/iso/${iso_file}" .
   sudo mv "${iso_file}" /var/lib/libvirt/boot/
 fi
