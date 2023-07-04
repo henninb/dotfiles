@@ -53,6 +53,9 @@ elif [ -x "$(command -v xbps-install)" ]; then
   doas xbps-install -y starship
   doas xbps-install -y unzip
   doas xbps-install -y fontconfig
+elif [ -x "$(command -v apk)" ]; then
+  sudo apk add fish
+  sudo apk add doas
 elif [ -x "$(command -v eopkg)" ]; then
   sudo eopkg install -y doas
   doas eopkg install -y fish
@@ -114,6 +117,8 @@ elif [ "$OS" = "Void" ]; then
   # sudo make install
 elif [ "$OS" = "FreeBSD" ]; then
   doas pkg install -y fish
+elif [ "$OS" = "Alpine Linux" ]; then
+ echo "alpine"
 elif [ "$OS" = "Solus" ]; then
   echo "solus"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
