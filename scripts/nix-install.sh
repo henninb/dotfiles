@@ -46,11 +46,11 @@ git checkout $HOME/.bash_profile  $HOME/.zshenv
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   nix-env -i librewolf
-  nix-env -i ventoy-bin
+  nix-env -i ventoy
 elif [ "$OS" = "Gentoo" ]; then
   nix-env -i android-studio-stable
   nix-env -i syncthingtray
-  nix-env -i ventoy-bin
+  nix-env -i ventoy
   nix-env -i burpsuite
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   nix-env -i android-studio-stable
@@ -61,7 +61,7 @@ elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU
   # nix-env -i dunst
   # nix-env -i keepassxc
   # nix-env -i gqrx
-  nix-env -i ventoy-bin
+  nix-env -i ventoy
   nix-env -i codium
 elif [ "$OS" = "Void" ]; then
   nix-env -i android-studio-stable
@@ -69,7 +69,7 @@ elif [ "$OS" = "Void" ]; then
   nix-env -i librewolf
   nix-env -i codium
   nix-env -i dbeaver
-  nix-env -i  yubikey-manager-qt
+  nix-env -i yubikey-manager-qt
 elif [ "$OS" = "FreeBSD" ]; then
   echo "freebsd"
 elif [ "$OS" = "Solus" ]; then
@@ -77,7 +77,7 @@ elif [ "$OS" = "Solus" ]; then
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # nix-env -i brave
   nix-env -i librewolf
-  nix-env -i ventoy-bin
+  nix-env -i ventoy
   nix-env -i volumeicon
   nix-env -i wmname
   # nix-env -i browsh
@@ -89,7 +89,7 @@ elif [ "$OS" = "Fedora Linux" ]; then
   # nix-env -i brave
   nix-env -i librewolf
   nix-env -i codium
-  nix-env -i ventoy-bin
+  nix-env -i ventoy
   nix-env -i xdo
   nix-env -i dzen2
 elif [ "$OS" = "Slackware" ]; then
