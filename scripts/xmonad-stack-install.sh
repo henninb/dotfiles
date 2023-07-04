@@ -136,6 +136,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   doas zypper install -y pam_yubico
   doas zypper install -y NetworkManager-applet
   doas zypper install -y ncurses-devel
+  doas zypper install -y syncthing
   doas zypper install -y xorg-x11
   doas zypper install -y xorg-x11-server
   doas zypper install -y libnotify-tools
