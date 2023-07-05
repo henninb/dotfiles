@@ -22,6 +22,9 @@ chroot /mnt/alpine /bin/sh
 apk add grub-efi efibootmgr
 mount -t efivarfs efivarfs /sys/firmware/efi/efivars
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=alpine
+apt add alpine-base
+apk add liunx-lts
+mkinitfs 6.1.37-0-lts -o /boot/initramfs-6.1.37-0-lts
 grub-mkconfig -o /boot/grub/grub.cfg
 
 adduser -g henninb henninb
