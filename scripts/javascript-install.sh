@@ -23,6 +23,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   doas zypper install -y nodejs18
 elif [ "$OS" = "Fedora Linux" ]; then
   doas dnf install -y nodejs
+elif [ "$OS" = "Alpine Linux" ]; then
+  doas apk add nodejs
 elif [ "$OS" = "Darwin" ]; then
   test
 elif [ "$OS" = "Void" ]; then
