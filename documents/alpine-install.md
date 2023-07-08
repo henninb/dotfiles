@@ -7,6 +7,18 @@ sudo mkdir -p /mnt/alpine/boot/efi
 sudo mount /dev/sde1 /mnt/alpine/boot/efi
 sudo cd /mnt/alpine
 
+
+boot into alpine standard
+answer the questions up to the disk
+answer none 3x
+mount /dev/sde3 /mnt
+mkdir -p /mnt/boot/efi
+mount /dev/sde1 /mnt/boot/efi
+setup-disk -m /mnt
+
+
+
+
 wget https://dl-cdn.alpinelinux.org/alpine/v3.18/releases/x86_64/alpine-minirootfs-3.18.2-x86_64.tar.gz
 
 doas tar -xzvf alpine-minirootfs-3.18.2-x86_64.tar.gz -C /mnt/alpine
