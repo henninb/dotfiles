@@ -1,16 +1,24 @@
-doas cfdisk /dev/sdc
-doas mkfs.ext4 -j -b 4096 /dev/sdc3
+doas cfdisk /dev/sde
+doas mkfs.ext4 -j -b 4096 /dev/sde3
 
-mkdir -p /mnt/alpine
-mount /dev/sdc3 /mnt/alpine
-mkdir -p /mnt/alpine/boot/efi
-mount /dev/sdc1 /mnt/alpine/boot/efi
-cd /mnt/alpine
+sudo mkdir -p /mnt/alpine
+sudo mount /dev/sde3 /mnt/alpine
+sudo mkdir -p /mnt/alpine/boot/efi
+sudo mount /dev/sde1 /mnt/alpine/boot/efi
+sudo cd /mnt/alpine
 
 wget https://dl-cdn.alpinelinux.org/alpine/v3.18/releases/x86_64/alpine-minirootfs-3.18.2-x86_64.tar.gz
 
 doas tar -xzvf alpine-minirootfs-3.18.2-x86_64.tar.gz -C /mnt/alpine
 doas cp /etc/resolv.conf /mnt/alpine/etc/
+
+sudo mount --rbind /dev /mnt/alpine/dev
+sudo mount --make-rslave /mnt/alpine/dev
+sudo mount -t proc /proc /mnt/alpine/proc
+sudo mount --rbind /sys /mnt/alpine/sys
+sudo mount --make-rslave /mnt/alpine/sys
+sudo mount --rbind /tmp /mnt/alpine/tmp
+sudo cp /etc/resolv.conf /mnt/alpine/etc/resolv.conf
 
 
 sudo mount --bind /dev /mnt/alpine/dev
@@ -28,3 +36,7 @@ mkinitfs 6.1.37-0-lts -o /boot/initramfs-6.1.37-0-lts
 grub-mkconfig -o /boot/grub/grub.cfg
 
 adduser -g henninb henninb
+
+apk add openssh-server
+
+apk add linux-firmware linux-lts grub grub-efi efibootmgr
