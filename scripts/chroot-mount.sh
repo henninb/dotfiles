@@ -138,7 +138,7 @@ elif [ "$os" = "mint" ]; then
   echo 'export PS1="(mint-chroot) $PS1"'
   sudo chroot /mnt/mint /bin/su - "$(id -un)"
 elif [ "$os" = "alpine" ]; then
-  root=de5fa84d-b9f4-4c30-bc03-bf03f241f2f6
+  root=97974551-6fd3-46e9-b13f-750280c132c4
   efi=C9E8-6D14
   if [ "$(grep -c "$root /mnt/alpine" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/alpine
