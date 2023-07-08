@@ -44,19 +44,3 @@ apk add linux-firmware linux-lts grub grub-efi efibootmgr
 
 I had to add modules=sd-mod,usb-storage,ext4 quiet rootfstype=ext4 to the /etc/default/grub:
 
-
-
-mount /dev/sda9 /mnt
-mount /dev/sda1 /mnt/boot
-mount -t proc none /mnt/proc
-mount -o bind /dev /mnt/dev
-mount -o bind /sys /mnt/sys
-chroot /mnt /bin/bash
-
-# (within chroot)
-mkinitfs -c /etc/mkinitfs/mkinitfs.conf -f /etc/fstab
-exit
-
-# (outside chroot)
-for i in /mnt/{boot,proc,dev,sys,}; do umount $i; done
-reboot
