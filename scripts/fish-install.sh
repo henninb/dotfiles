@@ -57,6 +57,7 @@ elif [ -x "$(command -v apk)" ]; then
   sudo apk add fish
   sudo apk add doas
   sudo apk add starship
+  sudo apk add curl
   sudo ln -sfn /usr/bin/fish /bin/fish
 elif [ -x "$(command -v eopkg)" ]; then
   sudo eopkg install -y doas
