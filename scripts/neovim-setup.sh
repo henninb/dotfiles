@@ -35,6 +35,10 @@ elif [ "$OS" = "FreeBSD" ]; then
   doas pkg install -y cmake
   doas pkg install -y llvm
   doas pkg install -y libxml2
+elif [ "$OS" = "Alpine Linux" ]; then
+  doas apk add gcc
+  doas apk add cmake
+  doas apk add python3
 elif [ "$OS" = "Solus" ]; then
   echo "solus"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
