@@ -38,7 +38,12 @@ if [ "$OS" = "FreeBSD" ]; then
   sudo mv -v "$HOME/tmp/doas.conf" /usr/local/etc/doas.conf
   sudo chown root:wheel /usr/local/etc/doas.conf
   sudo chmod 600 /usr/local/etc/doas.conf
-else
+elif [ "$OS" = "Alpine Linux" ]; then
+  sudo mkdir -p /etc/doas
+  sudo mv -v "$HOME/tmp/doas.conf" /etc/doas.d/doas.conf
+  sudo chown root:root /etc/doas.d/doas.conf
+  sudo chmod 600 /etc/doas.d/doas.conf
+else 
   sudo mv -v "$HOME/tmp/doas.conf" /etc/doas.conf
   sudo chown root:root /etc/doas.conf
   sudo chmod 600 /etc/doas.conf
