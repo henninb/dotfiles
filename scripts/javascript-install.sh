@@ -24,6 +24,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
 elif [ "$OS" = "Fedora Linux" ]; then
   doas dnf install -y nodejs
 elif [ "$OS" = "Alpine Linux" ]; then
+  doas apk add curl
   doas apk add nodejs
 elif [ "$OS" = "Darwin" ]; then
   test
