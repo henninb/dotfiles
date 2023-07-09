@@ -12,9 +12,9 @@ doas ufw default deny incoming
 # sudo ufw allow dns
 # sudo ufw status --verbose
 # sudo ufw status
-doas ufw allow out to any port 443 proto tcp comment 'accept https connections'
-doas ufw allow out to any port 80 proto tcp comment 'accept http connections'
-doas ufw allow out to any port 9200 proto tcp comment 'accept elasticsearch connections'
+doas ufw allow out to any port 443 proto tcp comment 'accept https outbound connections'
+doas ufw allow out to any port 80 proto tcp comment 'accept http outbound connections'
+# doas ufw allow out to any port 9200 proto tcp comment 'accept elasticsearch outbound connections'
 # sudo ufw allow in https
 # sudo ufw allow from 192.168.10.1
 # sudo ufw allow from 192.168.10.10
@@ -24,18 +24,19 @@ doas ufw allow out to 192.168.10.1 port 53
 doas ufw allow out to 2a00:1828:a00d:ffff::6 port 873 proto tcp comment 'rsync gentoo'
 doas ufw allow out to 89.238.71.6 port 873 proto tcp comment 'rsync gentoo'
 doas ufw allow out to 81.91.253.252 port 873 proto tcp comment 'rsync gentoo'
-doas ufw limit out to 192.168.10.25 port 22 proto tcp
-doas ufw limit out to 192.168.10.10 port 22 proto tcp
-doas ufw allow out to 140.82.112.3 port 22 proto tcp comment 'outbound github'
-doas ufw allow out to 140.82.112.4 port 22 proto tcp comment 'outbound github'
-doas ufw allow out to 140.82.113.3 port 22 proto tcp comment 'outbound github'
-doas ufw allow out to 140.82.113.4 port 22 proto tcp comment 'outbound github'
-doas ufw allow out to 140.82.114.3 port 22 proto tcp comment 'outbound github'
-doas ufw allow out to 140.82.114.4 port 22 proto tcp comment 'outbound github'
-doas ufw allow out to 172.65.251.78 port 22 proto tcp comment 'outbound gitlab'
-doas ufw allow out to 192.168.10.25 port 5432 proto tcp comment 'postgresql'
-doas ufw allow out to 192.168.10.1 port 8006 proto tcp comment 'pfsense'
-doas ufw allow out to 192.168.10.10 port 3000 proto tcp comment 'hornsup'
+doas ufw limit out to 192.168.10.25 port 22 proto tcp comment 'ssh to pi'
+doas ufw limit out to 192.168.10.10 port 22 proto tcp comment 'ssh to debian'
+doas ufw limit out to 192.168.10.30 port 22 proto tcp comment 'ssh to bastian'
+doas ufw allow out to 140.82.112.3 port 22 proto tcp comment 'ssh outbound github'
+doas ufw allow out to 140.82.112.4 port 22 proto tcp comment 'ssh outbound github'
+doas ufw allow out to 140.82.113.3 port 22 proto tcp comment 'ssh outbound github'
+doas ufw allow out to 140.82.113.4 port 22 proto tcp comment 'ssh outbound github'
+doas ufw allow out to 140.82.114.3 port 22 proto tcp comment 'ssh outbound github'
+doas ufw allow out to 140.82.114.4 port 22 proto tcp comment 'ssh outbound github'
+doas ufw allow out to 172.65.251.78 port 22 proto tcp comment 'ssh outbound gitlab'
+doas ufw allow out to 192.168.10.25 port 5432 proto tcp comment 'postgresql outbound'
+doas ufw allow out to 192.168.10.1 port 8006 proto tcp comment 'pfsense outbound'
+doas ufw allow out to 192.168.10.10 port 3000 proto tcp comment 'hornsup outbound'
 # sudo ufw allow out to 192.168.10.10 port 8443 proto tcp comment 'hornsup'
 doas ufw allow out to 192.168.10.10 port 9443 proto tcp comment 'hornsup'
 doas ufw allow out to 192.168.10.110 port 9123 proto tcp comment 'keylight'
