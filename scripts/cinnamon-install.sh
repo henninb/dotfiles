@@ -11,6 +11,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
   echo "arch"
 elif [ "$OS" = "Fedora Linux" ]; then
   doas dnf install -y cinnamon
+elif [ "$OS" = "Alpine Linux" ]; then
+  doas apk add cinnamon
 elif [ "$OS" = "Solus" ]; then
   echo solus
 elif [ "$OS" = "Debian GNU/Linux" ]; then
