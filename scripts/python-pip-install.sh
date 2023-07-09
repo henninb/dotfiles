@@ -31,6 +31,8 @@ elif [ "$OS" = "Solus" ]; then
   echo "solus"
 elif [ "$OS" = "Fedora Linux" ]; then
   echo "fedora"
+elif [ "$OS" = "Alpine Linux" ]; then
+  sudo apk add python3
 elif [ "$OS" = "Void" ]; then
   echo "void"
 elif [ "$OS" = "Gentoo" ]; then
