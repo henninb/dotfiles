@@ -40,6 +40,9 @@ elif [ "$OS" = "Void" ]; then
   sudo vkpurge rm all | tee -a "$HOME/tmp/update-$$.log"
   sudo xbps-install -u xbps | tee -a "$HOME/tmp/update-$$.log"
   sudo xbps-install -Suy | tee -a "$HOME/tmp/update-$$.log"
+elif [ "$OS" = "Alpine Linux" ]; then
+  sudo apk update | tee -a "$HOME/tmp/update-$$.log"
+  sudo apk upgrade | tee -a "$HOME/tmp/update-$$.log"
 elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -Syu 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   yay -Syu | tee -a "$HOME/tmp/update-$$.log"
