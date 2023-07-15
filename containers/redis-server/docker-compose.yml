@@ -6,9 +6,10 @@ services:
     hostname: redis-server
     image: bitnami/redis
     ports:
-      - "8080:80/tcp"
+      - "6379:6379/tcp"
     environment:
       TZ: 'America/Chicago'
+      REDIS_PASSWORD: 'monday1'
     # volumes:
     #   - './etc-redis:/etc/redis'
     #   - './etc-dnsmasq.d:/etc/dnsmasq.d'

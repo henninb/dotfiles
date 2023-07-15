@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  mariadb-server:
+    container_name: mariadb-server
+    hostname: mariadb-server
+    image: mariadb
+    ports:
+      - "3306:3306/tcp"
+    environment:
+      TZ: 'America/Chicago'
+      MARIADB_USER: henninb
+      MARIADB_PASSWORD: monday1
+      MARIADB_ROOT_PASSWORD: monday1
+    # volumes:
+    #   - './etc-mariadb:/etc/mariadb'
+    #   - './etc-dnsmasq.d:/etc/dnsmasq.d'
+    restart: unless-stopped
