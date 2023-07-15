@@ -1,11 +1,11 @@
-allow_dynamic_title = true
-allow_osc8 = true
-allow_scrollback = true
-allow_terminal_bold = true
+#allow_dynamic_title = true
+#allow_osc8 = true
+#allow_scrollback = true
+#allow_terminal_bold = true
 
-[class]
-general = "Alacritty"
-instance = "Alacritty"
+#[class]
+#general = "Alacritty"
+#instance = "Alacritty"
 
 [colors.bright]
 black = "0x4d4d4d"
@@ -130,9 +130,9 @@ action = "ToggleViMode"
 key = "Space"
 mods = "Control"
 
-[offset]
-x = 1
-y = 1
+#[offset]
+#x = 1
+#y = 1
 
 [scrolling]
 history = 10000
