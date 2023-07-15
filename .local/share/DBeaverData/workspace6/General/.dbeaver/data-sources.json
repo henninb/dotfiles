@@ -43,16 +43,16 @@
 				"auth-model": "native"
 			}
 		},
-		"mysql8-1895adf20dd-59869cd05e37e414": {
+		"mariaDB-1895afc2f25-6e0104e863a2c8fe": {
 			"provider": "mysql",
-			"driver": "mysql8",
-			"name": "localhost",
+			"driver": "mariaDB",
+			"name": "mariadb-docker",
 			"save-password": true,
 			"read-only": false,
 			"configuration": {
 				"host": "localhost",
 				"port": "3306",
-				"url": "jdbc:mysql://localhost:3306/",
+				"url": "jdbc:mariadb://localhost:3306/",
 				"type": "dev",
 				"auth-model": "native",
 				"handlers": {}

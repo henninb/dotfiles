@@ -10,8 +10,8 @@ services:
     environment:
       TZ: 'America/Chicago'
       MARIADB_USER: henninb
-      MARIADB_PASSWORD: monday1
-      MARIADB_ROOT_PASSWORD: monday1
+      MARIADB_PASSWORD: 'monday1'
+      MARIADB_ROOT_PASSWORD: 'monday1'
     # volumes:
     #   - './etc-mariadb:/etc/mariadb'
     #   - './etc-dnsmasq.d:/etc/dnsmasq.d'
