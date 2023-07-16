@@ -113,8 +113,18 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoL
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   doas zypper install -y kernel-source
   doas zypper install -y libva-utils
-  doas zypper install -y kernel-devel kernel-source gcc make dkms acpid libglvnd libglvnd-devel
-  doas zypper install -y libvdpau1 libva-vdpau-driver libva-utils
+  doas zypper install -y vulkan-tools
+  doas zypper install -y kernel-devel
+  doas zypper install -y kernel-source
+  doas zypper install -y gcc
+  doas zypper install -y make
+  doas zypper install -y dkms
+  doas zypper install -y acpid
+  doas zypper install -y libglvnd
+  doas zypper install -y libglvnd-devel
+  doas zypper install -y libvdpau1
+  doas zypper install -y libva-vdpau-driver
+  doas zypper install -y libva-utils
   echo "blacklist nouveau" | sudo tee -a /etc/modprobe.d/blacklist.conf
   # zypper se x11-video-nvidiaG0* nvidia-video-G03*
   echo sudo systemctl set-default graphical.target
