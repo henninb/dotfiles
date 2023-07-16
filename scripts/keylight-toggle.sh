@@ -9,10 +9,12 @@ if ! command -v jq; then
   exit 1
 fi
 
-curl -s --location --request GET 'http://192.168.10.110:9123/elgato/lights' --header 'Accept: application/json' | jq
-status=$(curl -s --location --request GET 'http://192.168.10.110:9123/elgato/lights' --header 'Accept: application/json' | jq '.lights | .[].on')
-brightness=$(curl -s --location --request GET 'http://192.168.10.110:9123/elgato/lights' --header 'Accept: application/json' | jq '.lights | .[].brightness')
-temperature=$(curl -s --location --request GET 'http://192.168.10.110:9123/elgato/lights' --header 'Accept: application/json' | jq '.lights | .[].temperature')
+keylight_ip=192.168.10.249
+
+curl -s --location --request GET "http://${keylight_ip):9123/elgato/lights" --header 'Accept: application/json' | jq
+status=$(curl -s --location --request GET 'http://${keylight_ip):9123/elgato/lights' --header 'Accept: application/json' | jq '.lights | .[].on')
+brightness=$(curl -s --location --request GET "http://${keylight_ip):9123/elgato/lights" --header 'Accept: application/json' | jq '.lights | .[].brightness')
+temperature=$(curl -s --location --request GET "http://${keylight_ip):9123/elgato/lights" --header 'Accept: application/json' | jq '.lights | .[].temperature')
 
 
 echo "brightness=$brightness"
@@ -43,7 +45,10 @@ EOF
 
 }
 
-curl -s --location --request PUT 'http://192.168.10.110:9123/elgato/lights' \
+curl -s --location --request PUT "http://${keylight_ip):9123/elgato/lights" \
 --header 'Content-Type: application/json' \
 --data "$(generate_post_data)"
+
+exit 0
+
 # vim: set ft=sh:
