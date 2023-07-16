@@ -11,7 +11,7 @@ fi
 
 keylight_ip=192.168.10.36
 
-curl -s --location --request GET "http://${keylight_ip}:9123/el}gato/lights" --header 'Accept: application/json' | jq
+curl -s --location --request GET "http://${keylight_ip}:9123/elgato/lights" --header 'Accept: application/json' | jq
 status=$(curl -s --location --request GET "http://${keylight_ip}:9123/elgato/lights" --header 'Accept: application/json' | jq '.lights | .[].on')
 brightness=$(curl -s --location --request GET "http://${keylight_ip}:9123/elgato/lights" --header 'Accept: application/json' | jq '.lights | .[].brightness')
 temperature=$(curl -s --location --request GET "http://${keylight_ip}:9123/elgato/lights" --header 'Accept: application/json' | jq '.lights | .[].temperature')
