@@ -304,6 +304,7 @@ pip install pipx --user
 pip install pynvim --user
 pip install podman-compose --user
 pip install docker-compose --user
+pip install leglight --user
 
 exit 0
 
