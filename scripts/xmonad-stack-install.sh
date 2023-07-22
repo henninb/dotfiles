@@ -477,6 +477,7 @@ elif [ "$OS" = "Alpine Linux" ]; then
     fi
   done
   echo "Failures: $FAILURE"
+  doas setup-xorg-base cinnamon-desktop lightdm-gtk-greeter
 elif [ "$OS" = "Gentoo" ]; then
   doas usermod -aG tty "$(id -un)"
   doas usermod -aG video "$(id -un)"
