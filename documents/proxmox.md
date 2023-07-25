@@ -60,3 +60,6 @@ pveversion
 
 ## upgrade
 pve7to8
+
+## NICs without drivers
+NetXtreme BCM5720 Gigabit Ethernet PCIe
