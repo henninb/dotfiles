@@ -92,3 +92,6 @@ date -s 2023.01.27-05:39:00
 ```
 route add default gw 192.168.10.1
 ```
+
+## webserver start
+startservice httpd
