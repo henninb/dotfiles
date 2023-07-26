@@ -61,7 +61,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   efibootmgr
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper dist-upgrade
-  doas zypper --non-interactive dup
+  # doas zypper --non-interactive dup
+  doas zypper --non-interactive dist-upgrade --allow-vendor-change --auto-agree-with-licenses
   doas zypper --non-interactive refresh
   doas zypper --non-interactive --auto-agree-with-licenses update
 elif [ "$OS" = "Gentoo" ]; then
