@@ -61,5 +61,25 @@ pveversion
 ## upgrade
 pve7to8
 
-## NICs without drivers
+## NICs without drivers - using PCI passthrough
 NetXtreme BCM5720 Gigabit Ethernet PCIe
+
+## network setup proxmox
+cat /etc/network/interfaces
+
+iface en0 inet manual
+
+auto vmbr0.100
+iface vmbr0.100 inet static
+  address 192.168.100.10/24
+  gateway 192.168.100.1
+
+auto vmbr0
+iface vmbr0 inet static
+  bridge-ports en0
+  bridge-stp off
+  bridge-fd 0
+  bridge-vlan-aware yes
+  brigee-vids 2-4092
+
+
