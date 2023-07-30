@@ -9,7 +9,7 @@ if ! command -v jq; then
   exit 1
 fi
 
-keylight_ip=192.168.10.36
+keylight_ip=192.168.20.60
 
 curl -s --location --request GET "http://${keylight_ip}:9123/elgato/lights" --header 'Accept: application/json' | jq
 status=$(curl -s --location --request GET "http://${keylight_ip}:9123/elgato/lights" --header 'Accept: application/json' | jq '.lights | .[].on')
