@@ -96,3 +96,18 @@ route add default gw 192.168.20.1
 
 ## webserver start
 startservice httpd
+
+
+
+## command on startup
+Navigate to the "Administration" tab.
+
+From the sub-menu under "Administration," click on "Commands."
+
+In the "Commands" text box, enter the following command:
+
+route add default gw 192.168.20.1
+
+Click on the "Save Startup" button to save the changes.
+
+After saving, navigate to the "Management" tab or wherever you can find the option to "Reboot" or "Restart" the router.
