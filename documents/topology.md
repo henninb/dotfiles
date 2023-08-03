@@ -1,23 +1,24 @@
 ￼Copy code
-  +-----------------------+
+  +------------------------+
   |  CenturyLink DSL Modem |
   |   (Fiber connection)   |
-  +-----------+-----------+
+  +-----------+------------+
               |
-              | WAN Port (PPPoE)
+              | WAN Port (PPPoE, VLAN 201)
               |
   +-----------v-----------+
-  |    pfSense VM        |
-  |   VLAN 10 (LAN)      |
-  |   VLAN 20 (LAN)      |
+  |    pfSense VM         |
+  |   Firewall and DHCP   |
+  |   VLAN 10 (LAN)       |
+  |   VLAN 20 (LAN)       |
   +-----------+-----------+
               |
-              | LAN Port (Trunk for VLANs)
+              | LAN Port (Trunk for VLANs 10 & 20)
   +-----------v-----------+
-  |   Proxmox Server     |
+  |   Proxmox Server      |
   +-----------+-----------+
               |
-              | Trunk (to TP Smart Switch)
+              | Trunk Port (to TP Link Smart Switch)
   +-----------v-----------+
   |   TP Smart Switch     |
   |   VLAN 10 (Trunk)     |
@@ -32,12 +33,13 @@
               |
               | Port 7 (Access Port)
   +-----------v-----------+
-  |   TP Smart Switch     |
-  |   VLAN 20 (Access)    |
+  |   TP Link Smart Switch     |
+  |   VLAN 20 (Wireless Access Point)    |
   +-----------+-----------+
               |
               | Port 1
   +-----------v-----------+
   |    DD-WRT (AP)        |
-  |  Firewall & DHCP     |
+  |    2.4 GHz            |
+  |    5 GHz              |
   +-----------------------+
