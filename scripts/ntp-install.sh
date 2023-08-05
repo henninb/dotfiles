@@ -77,7 +77,7 @@ else
 fi
 
 echo example:
-echo "sudo date -s '27 DEC 2021 12:24:00'"
+echo "sudo date -s '05 AUG 2023 13:52:00'"
 
 exit 0
 
