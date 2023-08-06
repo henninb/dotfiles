@@ -1,8 +1,10 @@
+// Node.js 14.x
+
 exports.handler = async (event) => {
     let isAllowedAccess = false;
 
-    const request = event.Records[0].cf.request;
     console.log('lambda function')
+    const request = event.Records[0].cf.request;
 
 
     if( request && request.headers && request.headers.authorization) {
