@@ -51,13 +51,20 @@ async function handleRequest(request: Request) {
     return new Response(token, {
       status: 200,
       statusText: 'success',
-      headers: { 'content-type': 'application/text' },
+   //   headers: { 'content-type': 'application/json' },
+        headers: {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*', // Allow requests from any origin
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+  },
     })
+
   } else {
     return new Response('user authorization failure', {
       status: 403,
       statusText: 'authorization failure',
-      headers: { 'content-type': 'application/text' },
+      headers: { 'content-type': 'application/json' },
     })
   }
 }
