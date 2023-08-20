@@ -18,7 +18,7 @@ async function handleRequest(request: Request) {
   if (request.method !== 'POST') {
     return new Response('failure', {
       status: 400,
-      statusText: 'must be a POST',
+      statusText: 'login failure use a POST method.',
     })
   }
 
@@ -54,8 +54,8 @@ async function handleRequest(request: Request) {
       headers: { 'content-type': 'application/text' },
     })
   } else {
-    return new Response('authorization failure', {
-      status: 401,
+    return new Response('user authorization failure', {
+      status: 403,
       statusText: 'authorization failure',
       headers: { 'content-type': 'application/text' },
     })
