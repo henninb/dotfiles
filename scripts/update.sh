@@ -297,6 +297,7 @@ fi
 
 pip install pyserial --user
 pip install youtube-dl --user
+pip install yt-dlp --user
 pip install holehe --user
 pip install ansible --user
 pip install platformio --user
