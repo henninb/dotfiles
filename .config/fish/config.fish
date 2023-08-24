@@ -115,6 +115,7 @@ set -x PATH $HOME/.local/share/npm/bin $PATH
 set -x PATH $HOME/.local/share/cargo/bin $PATH
 set -x PATH $HOME/.rvm/bin $PATH
 set -x PATH /opt/kafka/bin $PATH
+set -x PATH /opt/android-studio/bin $PATH
 set -x PATH /opt/kafka-client/bin $PATH
 set -x PATH /opt/kotlinc/bin $PATH
 set -x PATH /opt/sbt/bin $PATH
