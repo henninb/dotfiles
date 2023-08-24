@@ -203,6 +203,7 @@ end
 
 [ -f /opt/arduino/arduino ]; and ln -sfn /opt/arduino/arduino "$HOME/.local/bin/arduino" 2> /dev/null
 [ -f /opt/intellij/bin/idea.sh ]; and ln -sfn /opt/intellij/bin/idea.sh "$HOME/.local/bin/intellij" 2> /dev/null
+[ -f /opt/android-studio/bin/studio.sh ]; and ln -sfn /opt/android-studio/bin/studio.sh "$HOME/.local/bin/android-studio" 2> /dev/null
 [ -f /opt/firefox/firefox ]; and ln -sfn /opt/firefox/firefox "$HOME/.local/bin/firefox" > /dev/null
 [ -f /opt/vscode/bin/code ]; and ln -sfn /opt/vscode/bin/code "$HOME/.local/bin/code" 2> /dev/null
 [ -f "$HOME/.tmux-default.conf" ]; and ln -sfn "$HOME/.tmux-default.conf" "$HOME/.tmux.conf" 2> /dev/null
