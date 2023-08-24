@@ -3,7 +3,7 @@
 mkdir -p "$HOME/projects/github.com/henninb"
 mkdir -p "$HOME/projects/gitlab.com/BitExplorer"
 
-PROJECTS="pihole-server traefik-server haproxy-server react-app express-api weather-gtk logout-gtk nextjs-website webpage example-ratpack raspi-finance-ratpack example-ktor raspi-finance-endpoint raspi-finance-database src-common example-java example-scala example-kotlin raspi-finance-react raspi-finance-endpoint-micronaut raspi-finance-ncurses raspi-finance-reports st cribbage cribbage-fsharp profile-website netlify-site2 netlify-site3 netlify-site4 netlify-site5 netlify-site6 netlify-site1 netlify-site7 netlify-site8 netlify-site9 nextjs-website nginx-reverse-proxy example-micronaut raspi-finance-endpoint-ktor"
+PROJECTS="netlify-cflare netlify-cfront netlify-fastly pihole-server traefik-server haproxy-server react-app express-api weather-gtk logout-gtk nextjs-website webpage example-ratpack raspi-finance-ratpack example-ktor raspi-finance-endpoint raspi-finance-database src-common example-java example-scala example-kotlin raspi-finance-react raspi-finance-endpoint-micronaut raspi-finance-ncurses raspi-finance-reports st cribbage cribbage-fsharp profile-website netlify-site2 netlify-site3 netlify-site4 netlify-site5 netlify-site6 netlify-site1 netlify-site7 netlify-site8 netlify-site9 nextjs-website nginx-reverse-proxy example-micronaut raspi-finance-endpoint-ktor"
 for i in $PROJECTS; do
   cd "$HOME/projects/github.com/henninb" || exit
   echo "$i"
