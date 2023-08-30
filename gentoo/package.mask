@@ -9,3 +9,4 @@
 #=dev-libs/openssl-compat-1.1.1t
 #=dev-libs/openssl-compat-1.1.1s
 #=dev-libs/openssl-3.0.8-r1
+#>=sys-devel/llvm-16.0.6

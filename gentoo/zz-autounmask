@@ -118,3 +118,5 @@ media-libs/openpgl cpu_flags_x86_sse4_2
 app-emulation/libvirt libssh2 fuse lxc
 net-libs/gnutls pkcs11 tools
 app-crypt/qca qt5
+#sys-devel/llvm -zstd
+>=sys-devel/lld-16.0.6 zstd
