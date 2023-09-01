@@ -6,7 +6,9 @@ Default region name [None]: us-east-1
 Default output format [None]: json
 
 aws s3 ls
-# aws s3 create-bucket test-bucket
+
+## create a unique bucket
+aws s3 mb s3://test-bucket-0123abc
 
 aws cloudfront list-functions
 
