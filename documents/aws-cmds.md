@@ -15,3 +15,5 @@ aws cloudfront list-functions
 aws cloudfront list-distributions
 
 aws lambda list-functions
+
+aws cloudfront create-distribution --distribution-config file://distribution.json
