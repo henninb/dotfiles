@@ -17,3 +17,5 @@ aws cloudfront list-distributions
 aws lambda list-functions
 
 aws cloudfront create-distribution --distribution-config file://distribution.json
+
+aws s3 sync "{YOUR-LOCAL-PATH}" s3://{YOUR-BUCKET-NAME}
