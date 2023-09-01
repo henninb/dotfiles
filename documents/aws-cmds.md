@@ -6,6 +6,7 @@ Default region name [None]: us-east-1
 Default output format [None]: json
 
 aws s3 ls
+# aws s3 create-bucket test-bucket
 
 aws cloudfront list-functions
 
