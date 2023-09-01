@@ -1,7 +1,7 @@
-// const { Buffer } = require('buffer');
 import { Buffer } from 'buffer';
 
-exports.handler = async (event) => {
+// Define the handler as an async function
+export const handler = async (event) => {
     let isAllowedAccess = false;
 
     console.log('lambda function');
@@ -26,3 +26,4 @@ exports.handler = async (event) => {
         return request;
     }
 };
+
