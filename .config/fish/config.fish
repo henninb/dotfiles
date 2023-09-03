@@ -130,7 +130,8 @@ set -x PATH $JAVA_HOME/bin $PATH
 set -x PATH /opt/fastly/bin $PATH
 #set -x PATH /var/lib/snapd/snap/bin $PATH
 #set -x PATH $HOME/.gem/ruby/3.0.0/bin $PATH
-set -x PATH $PATH:/home/henninb/.local/share/JetBrains/Toolbox/scripts
+set -x PATH $HOME/.local/share/JetBrains/Toolbox/scripts $PATH
+
 set -gx CDPATH ~/projects/github.com
 
 if test -d /usr/local/go
@@ -158,7 +159,8 @@ set -gx XDG_CONFIG_HOME "$HOME/.config"
 set -gx XDG_STATE_HOME "$HOME/.local/state"
 set -gx XDG_CACHE_HOME "$HOME/.cache"
 
-set -gx ANDROID_HOME "$XDG_DATA_HOME"/android
+#set -gx ANDROID_HOME "$XDG_DATA_HOME"/android
+set -gx ANDROID_HOME "$HOME"/Android/Sdk
 set -gx AWS_SHARED_CREDENTIALS_FILE "$XDG_CONFIG_HOME"/aws/credentials
 set -gx AWS_CONFIG_FILE "$XDG_CONFIG_HOME"/aws/config
 set -gx HISTFILE "$XDG_STATE_HOME"/zsh/history
@@ -182,6 +184,9 @@ set -gx PYENV_ROOT "$XDG_DATA_HOME"/pyenv
 set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME"/npm/npmrc
 # set -x GNUPGHOME "$XDG_DATA_HOME"/gnupg
 set -x GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+
+set -x PATH $ANDROID_HOME/emulator $PATH
+set -x PATH $ANDROID_HOME/platform-tools $PATH
 
 [ -s "$HOME/.nix-profile/etc/profile.d/nix.fish" ] && source "$HOME/.nix-profile/etc/profile.d/nix.fish"
 [ -s "$HOME/.cargo/env" ]; and source "$HOME/.cargo/env"
