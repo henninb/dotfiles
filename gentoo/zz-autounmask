@@ -119,4 +119,5 @@ app-emulation/libvirt libssh2 fuse lxc
 net-libs/gnutls pkcs11 tools
 app-crypt/qca qt5
 #sys-devel/llvm -zstd
+media-libs/imgui glut
 >=sys-devel/lld-16.0.6 zstd
