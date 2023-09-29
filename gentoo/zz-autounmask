@@ -121,3 +121,5 @@ app-crypt/qca qt5
 #sys-devel/llvm -zstd
 media-libs/imgui glut
 >=sys-devel/lld-16.0.6 zstd
+net-firewall/iptables nftables
+media-gfx/inkscape X
