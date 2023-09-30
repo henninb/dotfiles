@@ -6,3 +6,5 @@ distrobox create --image archlinux --name archlinuxbox
 ```
 
 distrobox enter archlinuxbox
+
+distrobox-export --app libreoffice
