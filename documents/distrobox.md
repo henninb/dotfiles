@@ -4,3 +4,5 @@
 ```
 distrobox create --image archlinux --name archlinuxbox
 ```
+
+distrobox enter archlinuxbox
