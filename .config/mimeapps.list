@@ -11,3 +11,4 @@ text/html=brave-bin.desktop
 x-scheme-handler/about=brave-bin.desktop
 x-scheme-handler/unknown=brave-bin.desktop
 video/mp4=vlc.desktop
+application/x-desktop=/home/henninb/.local/share/applications/archlinuxbox-libreoffice-calc.desktop
