@@ -9,6 +9,7 @@
 net-firewall/nufw
 dev-libs/libfmt
 sys-fs/udev
+sys-fs/dmg2img
 # app-containers/docker-proxy
 # app-containers/docker
 # gnome-base/gconf
