@@ -11,6 +11,8 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse doas
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   sudo apt install -y doas
+elif [ "$OS" = "Debian GNU/Linux" ]; then
+  sudo apt install -y doas
 elif [ "$OS" = "Void" ]; then
   sudo xbps-install -y opendoas
 elif [ "$OS" = "FreeBSD" ]; then
