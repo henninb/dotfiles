@@ -21,6 +21,10 @@ elif [ -x "$(command -v zypper)" ]; then
   sudo zypper install -y opendoas
   doas zypper install -y fish
   doas zypper install -y starship
+  doas zypper install -y gcc
+  doas zypper install -y gcc-c++
+  doas zypper install -y cmake
+  doas zypper install -y fontconfig-devel
 elif [ -x "$(command -v dnf)" ]; then
   sudo dnf install -y doas
   doas dnf install -y fish
@@ -31,8 +35,11 @@ elif [ -x "$(command -v dnf)" ]; then
     rm install.sh
   fi
 elif [ -x "$(command -v apt)" ]; then
+  sudo apt install -y curl
   sudo apt install -y doas
   doas apt install -y fish
+  doas apt install -y unzip
+  doas apt install -y fontconfig
   if [ ! -x "$(command -v starship)" ]; then
     curl -O https://starship.rs/install.sh
     chmod +x install.sh
@@ -46,6 +53,12 @@ elif [ -x "$(command -v xbps-install)" ]; then
   doas xbps-install -y starship
   doas xbps-install -y unzip
   doas xbps-install -y fontconfig
+elif [ -x "$(command -v apk)" ]; then
+  sudo apk add fish
+  sudo apk add doas
+  sudo apk add starship
+  sudo apk add curl
+  sudo ln -sfn /usr/bin/fish /bin/fish
 elif [ -x "$(command -v eopkg)" ]; then
   sudo eopkg install -y doas
   doas eopkg install -y fish
@@ -68,7 +81,7 @@ elif [ "$OS" = "Gentoo" ]; then
   if ! command -v fish; then
     doas emerge --update --newuse fish
   fi
-elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ] || [ "$OS" = "Debian GNU/Linux" ]; then
   # sudo apt install -y fish
   wget https://launchpad.net/~fish-shell/+archive/ubuntu/release-3/+files/fish_3.6.1-1~jammy_amd64.deb
   doas dpkg -i fish_3.6.1-1_jammy_amd64.deb
@@ -107,6 +120,8 @@ elif [ "$OS" = "Void" ]; then
   # sudo make install
 elif [ "$OS" = "FreeBSD" ]; then
   doas pkg install -y fish
+elif [ "$OS" = "Alpine Linux" ]; then
+ echo "alpine"
 elif [ "$OS" = "Solus" ]; then
   echo "solus"
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
@@ -131,8 +146,8 @@ fi
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 $HOME/.fzf/install --key-bindings --completion --no-update-rc
 
-[ -s "/bin/zsh" ] && sudo usermod -s /bin/fish "$(whoami)"
-[ -s "/bin/zsh" ] && sudo chsh -s /bin/fish "$(whoami)"
+[ -s "/bin/fish" ] && sudo usermod -s /bin/fish "$(whoami)"
+[ -s "/bin/fish" ] && sudo chsh -s /bin/fish "$(whoami)"
 
 exit 0
 

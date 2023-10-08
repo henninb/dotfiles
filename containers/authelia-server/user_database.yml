@@ -1,0 +1,5 @@
+# users_database.yml
+users:
+  - username: henninb
+    password: monday1
+    displayname: Brian

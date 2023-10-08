@@ -64,7 +64,8 @@ blacklist nouveau
 options nouveau modeset=0
 EOF
 
-ver=530.41.03
+ver=535.104.05
+
 lspci -k | grep -A 2 -E "(VGA|3D)"
 echo 'uninstall'
 echo "sudo sh ./NVIDIA-Linux-x86_64-${ver}.run --uninstall"

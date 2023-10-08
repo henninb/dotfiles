@@ -1,0 +1,6 @@
+#!/bin/sh
+
+
+exec distrobox-enter  -n archlinuxbox --  obs
+
+exit 0

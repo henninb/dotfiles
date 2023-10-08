@@ -1,3 +1,4 @@
+net-libs/nodejs
 sys-devel/clang
 sys-devel/llvm
 net-libs/webkit-gtk

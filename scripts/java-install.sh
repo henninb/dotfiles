@@ -23,9 +23,12 @@ elif [ "$OS" = "FreeBSD" ]; then
   doas pkg install -y portmaster
   sudo portmaster -o java/openjdk17
   doas pkg install -y openjdk17
+elif [ "$OS" = "Alpine Linux" ]; then
+  test
+  doas apk add openjdk17
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
-  #sudo zypper install -y java-17-openjdk-devel
-  doas zypper install -y java-19-openjdk-devel
+  doas zypper install -y java-17-openjdk-devel
+  #doas zypper install -y java-19-openjdk-devel
 elif [ "$OS" = "Void" ]; then
   doas xbps-install -y openjdk17
   # echo openjdk11-bin

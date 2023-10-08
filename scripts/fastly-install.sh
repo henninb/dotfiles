@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ver=7.0.1
+ver=10.3.0
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   echo "archlinux"

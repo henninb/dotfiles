@@ -1,15 +1,14 @@
 name = "api-login"
-type = "javascript"
-zone_id = ""
-account_id = ""
-route = ""
+#type = "javascript"
+#account_id = ""
+#route = ""
 workers_dev = true
 compatibility_date = "2022-04-18"
 
 [build]
 command = "npm install && npm run build"
-[build.upload]
-format = "service-worker"
+#[build.upload]
+#format = "service-worker"
 
 [vars]
 JWT_KEY = "mySecret"

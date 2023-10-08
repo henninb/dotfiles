@@ -6,7 +6,7 @@ if [ $# -gt 1 ]; then
 fi
 
 remove=$1
-iso_file="alpine-standard-3.17.1-x86_64.iso"
+iso_file="alpine-standard-3.18.2-x86_64.iso"
 guest_name="alpine"
 
 virsh shutdown "guest-$guest_name"
@@ -25,6 +25,7 @@ if [ "$remove" = "y" ]; then
 fi
 
 if [ ! -f "/var/lib/libvirt/boot/${iso_file}" ]; then
+  echo download alpine
   scp -p "pi:/home/pi/shared/template/iso/${iso_file}" .
   sudo mv "${iso_file}" /var/lib/libvirt/boot/
 fi

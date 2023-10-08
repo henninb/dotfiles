@@ -24,8 +24,7 @@
 					"@dbeaver-use-prepared-statements-db@": "false",
 					"read-keys-with-columns": "false"
 				},
-				"auth-model": "native",
-				"handlers": {}
+				"auth-model": "native"
 			},
 			"custom-properties": {
 				"database.meta.separate.connection": "false"
@@ -42,6 +41,21 @@
 				"url": "jdbc:sqlite:/home/henninb/data/tech-buckeet-list/tech-bucket-list.db",
 				"type": "dev",
 				"auth-model": "native"
+			}
+		},
+		"mariaDB-1895afc2f25-6e0104e863a2c8fe": {
+			"provider": "mysql",
+			"driver": "mariaDB",
+			"name": "mariadb-docker",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"url": "jdbc:mariadb://localhost:3306/",
+				"type": "dev",
+				"auth-model": "native",
+				"handlers": {}
 			}
 		}
 	},

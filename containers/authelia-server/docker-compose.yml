@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  authelia-server:
+    container_name: authelia-server
+    hostname: authelia-server
+    image: authelia/authelia
+    ports:
+      - "9091:9091/tcp"
+    environment:
+      TZ: 'America/Chicago'
+    volumes:
+      - ./authelia.yml:/config/authelia/configuration.yml
+      - ./users_database.yml:/config/authelia/users_database.yml
+    restart: unless-stopped

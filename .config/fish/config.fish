@@ -115,6 +115,9 @@ set -x PATH $HOME/.local/share/npm/bin $PATH
 set -x PATH $HOME/.local/share/cargo/bin $PATH
 set -x PATH $HOME/.rvm/bin $PATH
 set -x PATH /opt/kafka/bin $PATH
+set -x PATH /opt/charles/bin $PATH
+set -x PATH /opt/flutter/bin $PATH
+set -x PATH /opt/android-studio/bin $PATH
 set -x PATH /opt/kafka-client/bin $PATH
 set -x PATH /opt/kotlinc/bin $PATH
 set -x PATH /opt/sbt/bin $PATH
@@ -127,7 +130,8 @@ set -x PATH $JAVA_HOME/bin $PATH
 set -x PATH /opt/fastly/bin $PATH
 #set -x PATH /var/lib/snapd/snap/bin $PATH
 #set -x PATH $HOME/.gem/ruby/3.0.0/bin $PATH
-set -x PATH $PATH:/home/henninb/.local/share/JetBrains/Toolbox/scripts
+set -x PATH $HOME/.local/share/JetBrains/Toolbox/scripts $PATH
+
 set -gx CDPATH ~/projects/github.com
 
 if test -d /usr/local/go
@@ -155,7 +159,8 @@ set -gx XDG_CONFIG_HOME "$HOME/.config"
 set -gx XDG_STATE_HOME "$HOME/.local/state"
 set -gx XDG_CACHE_HOME "$HOME/.cache"
 
-set -gx ANDROID_HOME "$XDG_DATA_HOME"/android
+#set -gx ANDROID_HOME "$XDG_DATA_HOME"/android
+set -gx ANDROID_HOME "$HOME"/Android/Sdk
 set -gx AWS_SHARED_CREDENTIALS_FILE "$XDG_CONFIG_HOME"/aws/credentials
 set -gx AWS_CONFIG_FILE "$XDG_CONFIG_HOME"/aws/config
 set -gx HISTFILE "$XDG_STATE_HOME"/zsh/history
@@ -180,6 +185,11 @@ set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME"/npm/npmrc
 # set -x GNUPGHOME "$XDG_DATA_HOME"/gnupg
 set -x GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 
+set -x PATH $ANDROID_HOME/tools $PATH
+set -x PATH $ANDROID_HOME/tools/bin $PATH
+set -x PATH $ANDROID_HOME/emulator $PATH
+set -x PATH $ANDROID_HOME/platform-tools $PATH
+
 [ -s "$HOME/.nix-profile/etc/profile.d/nix.fish" ] && source "$HOME/.nix-profile/etc/profile.d/nix.fish"
 [ -s "$HOME/.cargo/env" ]; and source "$HOME/.cargo/env"
 [ -s "$SDKMAN_DIR/bin/sdkman-init.fish" ] && source "$SDKMAN_DIR/bin/sdkman-init.fish"
@@ -202,6 +212,7 @@ end
 
 [ -f /opt/arduino/arduino ]; and ln -sfn /opt/arduino/arduino "$HOME/.local/bin/arduino" 2> /dev/null
 [ -f /opt/intellij/bin/idea.sh ]; and ln -sfn /opt/intellij/bin/idea.sh "$HOME/.local/bin/intellij" 2> /dev/null
+[ -f /opt/android-studio/bin/studio.sh ]; and ln -sfn /opt/android-studio/bin/studio.sh "$HOME/.local/bin/android-studio" 2> /dev/null
 [ -f /opt/firefox/firefox ]; and ln -sfn /opt/firefox/firefox "$HOME/.local/bin/firefox" > /dev/null
 [ -f /opt/vscode/bin/code ]; and ln -sfn /opt/vscode/bin/code "$HOME/.local/bin/code" 2> /dev/null
 [ -f "$HOME/.tmux-default.conf" ]; and ln -sfn "$HOME/.tmux-default.conf" "$HOME/.tmux.conf" 2> /dev/null

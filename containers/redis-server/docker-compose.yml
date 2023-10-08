@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  redis-server:
+    container_name: redis-server
+    hostname: redis-server
+    image: bitnami/redis
+    ports:
+      - "6379:6379/tcp"
+    environment:
+      TZ: 'America/Chicago'
+      REDIS_PASSWORD: 'monday1'
+    # volumes:
+    #   - './etc-redis:/etc/redis'
+    #   - './etc-dnsmasq.d:/etc/dnsmasq.d'
+    restart: unless-stopped

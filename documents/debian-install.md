@@ -82,3 +82,21 @@ yes
 ```
 press continue
 ```
+
+## static ip setup
+```
+sudo cp /etc/network/interfaces /etc/network/interfaces-bak
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+auto ens18
+iface ens18 inet static
+address 192.168.10.10
+netmask 255.255.255.0
+gateway 192.168.10.1
+dns-nameservers 8.8.4.4 8.8.8.8
+
+sudo systemctl restart networking.service
+```

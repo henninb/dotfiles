@@ -40,6 +40,9 @@ elif [ "$OS" = "Void" ]; then
   sudo vkpurge rm all | tee -a "$HOME/tmp/update-$$.log"
   sudo xbps-install -u xbps | tee -a "$HOME/tmp/update-$$.log"
   sudo xbps-install -Suy | tee -a "$HOME/tmp/update-$$.log"
+elif [ "$OS" = "Alpine Linux" ]; then
+  sudo apk update | tee -a "$HOME/tmp/update-$$.log"
+  sudo apk upgrade | tee -a "$HOME/tmp/update-$$.log"
 elif [ "$OS" = "Manjaro Linux" ]; then
   sudo pacman --noconfirm --needed -Syu 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   yay -Syu | tee -a "$HOME/tmp/update-$$.log"
@@ -58,7 +61,8 @@ elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   efibootmgr
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   # sudo zypper dist-upgrade
-  doas zypper --non-interactive dup
+  # doas zypper --non-interactive dup
+  doas zypper --non-interactive dist-upgrade --allow-vendor-change --auto-agree-with-licenses
   doas zypper --non-interactive refresh
   doas zypper --non-interactive --auto-agree-with-licenses update
 elif [ "$OS" = "Gentoo" ]; then
@@ -293,6 +297,7 @@ fi
 
 pip install pyserial --user
 pip install youtube-dl --user
+pip install yt-dlp --user
 pip install holehe --user
 pip install ansible --user
 pip install platformio --user
@@ -301,6 +306,7 @@ pip install pipx --user
 pip install pynvim --user
 pip install podman-compose --user
 pip install docker-compose --user
+pip install leglight --user
 
 exit 0
 

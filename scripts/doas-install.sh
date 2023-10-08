@@ -9,7 +9,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   sudo pacman --noconfirm --needed -S doas
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse doas
-elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
+elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ] || [ "$OS" = "Debian GNU/Linux" ]; then
   sudo apt install -y doas
 elif [ "$OS" = "Debian GNU/Linux" ]; then
   sudo apt install -y doas
@@ -23,6 +23,8 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   sudo zypper addrepo https://download.opensuse.org/repositories/security/openSUSE_Tumbleweed/security.repo
   sudo zypper refresh
   sudo zypper install -y opendoas
+elif [ "$OS" = "Alpine Linux" ]; then
+ sudo apk add doas
 elif [ "$OS" = "Fedora Linux" ]; then
   sudo dnf install -y doas
 elif [ "$OS" = "Clear Linux OS" ]; then
@@ -38,7 +40,12 @@ if [ "$OS" = "FreeBSD" ]; then
   sudo mv -v "$HOME/tmp/doas.conf" /usr/local/etc/doas.conf
   sudo chown root:wheel /usr/local/etc/doas.conf
   sudo chmod 600 /usr/local/etc/doas.conf
-else
+elif [ "$OS" = "Alpine Linux" ]; then
+  sudo mkdir -p /etc/doas
+  sudo mv -v "$HOME/tmp/doas.conf" /etc/doas.d/doas.conf
+  sudo chown root:root /etc/doas.d/doas.conf
+  sudo chmod 600 /etc/doas.d/doas.conf
+else 
   sudo mv -v "$HOME/tmp/doas.conf" /etc/doas.conf
   sudo chown root:root /etc/doas.conf
   sudo chmod 600 /etc/doas.conf

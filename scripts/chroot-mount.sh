@@ -137,9 +137,25 @@ elif [ "$os" = "mint" ]; then
   fi
   echo 'export PS1="(mint-chroot) $PS1"'
   sudo chroot /mnt/mint /bin/su - "$(id -un)"
+elif [ "$os" = "alpine" ]; then
+  root=7ea7b9f2-d159-475e-b17d-74c6d1918225
+  efi=C9E8-6D14
+  if [ "$(grep -c "$root /mnt/alpine" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
+    sudo mkdir -p /mnt/alpine
+    sudo mount "UUID=$root" /mnt/alpine
+    sudo mkdir -p /mnt/alpine/boot/efi
+    sudo mount -t proc none /mnt/alpine/proc
+    sudo mount --rbind /dev /mnt/alpine/dev
+    sudo mount --rbind /sys /mnt/alpine/sys
+    sudo mount UUID=$efi /mnt/alpine/boot/efi
+  else
+    echo already mounted
+  fi
+  echo 'export PS1="(alpine-chroot) $PS1"'
+  sudo chroot /mnt/alpine /bin/su - "$(id -un)"
 elif [ "$os" = "opensuse" ]; then
-  root=e21df22e-e314-43b0-b8fb-941a5c11528f
-  efi=94DB-18F3
+  root=8ff4d8f4-3caa-49bc-b563-801f83cf0876
+  efi=C9E8-6D14
   if [ "$(grep -c "$root /mnt/opensuse" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
     sudo mkdir -p /mnt/opensuse
     sudo mount "UUID=$root" /mnt/opensuse

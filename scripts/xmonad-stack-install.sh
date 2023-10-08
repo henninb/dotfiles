@@ -136,6 +136,7 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   doas zypper install -y pam_yubico
   doas zypper install -y NetworkManager-applet
   doas zypper install -y ncurses-devel
+  doas zypper install -y syncthing
   doas zypper install -y xorg-x11
   doas zypper install -y xorg-x11-server
   doas zypper install -y libnotify-tools
@@ -467,6 +468,16 @@ elif [ "$OS" = "Slackware" ]; then
    sudo slackpkg install neofetch
    sudo slackpkg install flameshot
    sudo slackpkg install neovim
+elif [ "$OS" = "Alpine Linux" ]; then
+  ALPINE_PKGS="neovim dzen i3lock qalculate-gtk hddtemp xscreensaver feh xdotool dunst wmname w3m xinit xorg-server flameshot volumeicon neofetch blueman copyq redshift conky networkmanager numlockx nm-applet trayer-srg spacefm hardinfo jq lsof sddm libreoffice luarocks ufw xdo pipewire pass tree keychain partimage ncdu fish distrobox openvpn hwinfo"
+  FAILURE=""
+  for i in $ALPINE_PKGS; do
+    if ! sudo apk add "$i"; then
+      FAILURE="$i $FAILURE"
+    fi
+  done
+  echo "Failures: $FAILURE"
+  doas setup-xorg-base cinnamon-desktop lightdm-gtk-greeter
 elif [ "$OS" = "Gentoo" ]; then
   doas usermod -aG tty "$(id -un)"
   doas usermod -aG video "$(id -un)"
@@ -476,7 +487,7 @@ elif [ "$OS" = "Gentoo" ]; then
   doas emaint sync -r brave-overlay # brave
   doas emaint sync -r guru # hyperland
   # elogind
-  GENTOO_PKGS="rust-bin neovim setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool dunst wmname w3m x11-misc/xclip xinit xorg-server sys-apps/dbus flameshot volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet trayer-srg sxiv spacefm lxappearance xrandr hardinfo gentoolkit xmodmap app-misc/jq pavucontrol xinput neovim lsof sddm htop eix libreoffice-bin firefox-bin app-misc/screen pcmanfm rdfind zenity net-dns/bind-tools tmux bat whois starship traceroute kitty imagemagick colordiff media-fonts/terminus-font efibootmgr genfstab byobu dev-libs/tree-sitter luarocks alacritty ufw xdo pipewire pass pwgen tree keychain partimage ntfs3g dosfstools mtools ncdu speedtest-cli ntp nmap xhost btop dmg2img solaar elinks os-prober sys-fs/btrfs-progs sys-fs/udftools kpcli usbutils zbar xsetroot doas desktop-file-utils dmraid mdadm locate rofi gptfdisk wipe eselect-python dev-python/pip volctl usbimagewriter fish x11-themes/gtk-engines-murrine media-libs/libcanberra net-p2p/syncthing polybar openvpn hwinfo distrobox"
+  GENTOO_PKGS="rust-bin setxkbmap dzen i3lock x11-misc/xsensors qalculate-gtk hddtemp xscreensaver feh xdotool dunst wmname w3m x11-misc/xclip xinit xorg-server sys-apps/dbus flameshot volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl conky net-misc/networkmanager numlockx nm-applet trayer-srg sxiv spacefm lxappearance xrandr hardinfo gentoolkit xmodmap app-misc/jq pavucontrol xinput neovim lsof sddm htop eix libreoffice-bin firefox-bin app-misc/screen pcmanfm rdfind zenity net-dns/bind-tools tmux bat whois starship traceroute kitty imagemagick colordiff media-fonts/terminus-font efibootmgr genfstab byobu dev-libs/tree-sitter luarocks alacritty ufw xdo pipewire pass pwgen tree keychain partimage ntfs3g dosfstools mtools ncdu speedtest-cli ntp nmap xhost btop dmg2img solaar elinks os-prober sys-fs/btrfs-progs sys-fs/udftools kpcli usbutils zbar xsetroot doas desktop-file-utils dmraid mdadm locate rofi gptfdisk wipe eselect-python dev-python/pip volctl usbimagewriter fish x11-themes/gtk-engines-murrine media-libs/libcanberra net-p2p/syncthing polybar openvpn hwinfo distrobox net-misc/vconfig"
   FAILURE=""
   ls -d /var/db/pkg/*/*| cut -f5- -d/
   for i in $GENTOO_PKGS; do
@@ -726,6 +737,7 @@ mkdir -p "$HOME/keepass-git"
 cd "$HOME/keepass-git" || exit
 git init .
 git remote add origin pi:/home/pi/downloads/keepass-git
+# git remote add origin pi@192.168.10.25:/home/pi/downloads/keepass-git
 git branch --set-upstream-to=origin/main main
 git fetch
 git merge origin/main

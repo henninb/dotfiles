@@ -10,7 +10,7 @@ DEVICE=$1
 IS_STATIC=$2
 
 if [ "$IS_STATIC" = "y" ]; then
-  sudo ip addr add dev "${DEVICE}" 192.168.10.50/24
+  sudo ip addr add dev "${DEVICE}" 192.168.10.40/24
   doas ip route add default via 192.168.10.1
   echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf
   doas ip link set dev "${DEVICE}" up

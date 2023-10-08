@@ -78,3 +78,10 @@ Translation box Interface Address.
 
 3. Switch to Hybrid Outbound NAT - saved and applied settings
 ```
+
+## pfsense vlan10 setup
+```
+ifconfig vlan10 create
+ifconfig vlan10 vlan 10 vlandev em0
+ifconfig vlan10 inet 192.168.10.1 netmask 255.255.255.0
+```
