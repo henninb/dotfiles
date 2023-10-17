@@ -124,3 +124,4 @@ media-libs/imgui glut
 net-firewall/iptables nftables
 media-gfx/inkscape X
 gui-wm/hyprland X systemd
+app-emulation/qemu opengl ssh spice
