@@ -65,7 +65,7 @@ pacstrap /mnt base linux linux-firmware neovim vim dhcpcd openssh
 
 ## update the fstab
 ```
-genfstab -U /mnt >> /mnt/etc/fstab
+genfstab -U /mnt | tee -a /mnt/etc/fstab
 ```
 
 ## login to the chroot
