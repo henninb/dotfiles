@@ -169,25 +169,6 @@ elif [ "$os" = "opensuse" ]; then
   fi
   echo 'export PS1="(opensuse-chroot) $PS1"'
   sudo chroot /mnt/opensuse /bin/su - "$(id -un)"
-# elif [ "$os" = "fedora" ]; then
-#   root=
-#   efi=
-#   if [ "$(grep -c "722c5ee8-b300-4b51-86de-9221ebabc617 /mnt/fedora" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
-#     sudo mkdir -p /mnt/fedora
-#     sudo mount UUID=722c5ee8-b300-4b51-86de-9221ebabc617 /mnt/fedora
-#     sudo mount UUID=906ecda7-1224-4533-9c0b-a5c070d3e68b /mnt/fedora/root/boot
-#     # cd /mnt/fedora || exit
-#     sudo mount --rbind /mnt/fedora/home /mnt/fedora/root/home
-#     sudo mount -t proc none /mnt/fedora/root/proc
-#     sudo mount --rbind /dev /mnt/fedora/root/dev
-#     sudo mount --rbind /sys /mnt/fedora/root/sys
-#     sudo mount --rbind /run /mnt/fedora/root/run
-#     sudo mount UUID=1EF4-FD52 /mnt/fedora/root/boot/efi
-#   else
-#     echo already mounted
-#   fi
-#   echo 'export PS1="(fedora-chroot) $PS1"'
-#   sudo chroot /mnt/fedora/root /bin/su - "$(id -un)"
 elif [ "$os" = "ubuntu" ]; then
   root=a7bb907f-6870-40a6-af47-ac881e72caf2
   efi=F577-6798
@@ -205,6 +186,23 @@ elif [ "$os" = "ubuntu" ]; then
   fi
   echo 'export PS1="(ubuntu-chroot) $PS1"'
   sudo chroot /mnt/ubuntu /bin/su - "$(id -un)"
+elif [ "$os" = "hyprland" ]; then
+  root=db7ff55e-ee98-4b28-aeff-63bb0d51fdaf
+  efi=C443-0C4B
+  if [ "$(grep -c "$root /mnt/hyprland" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
+    sudo mkdir -p /mnt/hyprland
+    sudo mount "UUID=$root" /mnt/hyprland
+    sudo mkdir -p /mnt/hyprland/boot/efi
+    sudo mount -t proc none /mnt/hyprland/proc
+    sudo mount --rbind /dev /mnt/hyprland/dev
+    sudo mount --rbind /sys /mnt/hyprland/sys
+    sudo mount UUID=$efi /mnt/hyprland/boot/efi
+  else
+    echo already mounted
+  fi
+  export CHROOT=/mnt/hyprland
+  echo 'export PS1="(hyprland-chroot) $PS1"'
+  sudo chroot /mnt/hyprland /bin/su - "$(id -un)"
 elif [ "$os" = "archlinux" ]; then
   root=72ad4c57-06c1-41d6-a72f-34000c848126
   efi=F577-6798
