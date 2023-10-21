@@ -126,3 +126,4 @@ media-gfx/inkscape X
 gui-wm/hyprland X systemd
 #app-emulation/qemu opengl ssh spice gtk usbredir sdl
 app-emulation/qemu opengl ssh spice usbredir pipewire virgl
+x11-libs/libxkbcommon wayland
