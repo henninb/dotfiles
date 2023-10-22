@@ -1,5 +1,5 @@
 #!/bin/sh
 
-xdg-open https://webui.brianhenning.me:8006
+xdg-open https://pfsense.bhenning.com:8006
 
 exit 0
