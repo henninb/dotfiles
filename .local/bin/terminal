@@ -3,24 +3,16 @@
 # if alacritty -e tmux new-session -A -s 'Default'; then
 if alacritty; then
   exit 0
-fi
-
-if kitty; then
+elif kitty; then
   exit 0
-fi
-
-if st; then
+elif st; then
   exit 0
-fi
-
-if urxvt; then
+elif urxvt; then
   exit 0
-fi
-
-if xterm -fa 'monofur for Powerline' -fs 16; then
+elif xterm -fa 'monofur for Powerline' -fs 16; then
   exit 0
+else
+  exit 1
 fi
-
-exit 0
 
 # vim: set ft=sh:
