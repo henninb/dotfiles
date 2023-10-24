@@ -19,6 +19,7 @@ elif [ "$OS" = "Raspbian GNU/Linux" ]; then
   doas apt install -y openjdk-8-jdk
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   doas pacman --noconfirm --needed -S jdk19-openjdk
+  doas pacman --noconfirm --needed -S jdk21-openjdk
 elif [ "$OS" = "FreeBSD" ]; then
   doas pkg install -y portmaster
   sudo portmaster -o java/openjdk17

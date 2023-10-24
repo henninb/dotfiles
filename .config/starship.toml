@@ -11,6 +11,7 @@ $character"""
 
 # Disable the blank line at the start of the prompt
 add_newline = false
+command_timeout = 1000
 
 [character]
 success_symbol = "[ ➜](bold green)" # normal prompt
