@@ -44,3 +44,14 @@ emacsclient -e "(print (+ 5 4))"
 ## buffer movement
 ```^x, ^>```
 ```^x, ^<```
+
+
+emacs --eval "(eshell)"
+emacs --eval "(eww)"
+
+emacs -f eww
+emacs -f eshell
+emacs -f emms
+emacs -f dired
+emacs -f magit
+emacs -f vterm

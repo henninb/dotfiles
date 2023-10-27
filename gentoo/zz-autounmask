@@ -6,7 +6,7 @@ app-arch/bzip2 abi_x86_32
 app-containers/podman rootless fuse
 app-crypt/gcr gtk
 app-crypt/pinentry gnome-keyring
-app-editors/emacs dynamic-loading X gui
+app-editors/emacs dynamic-loading X gui libxml2 json png svg tiff webp sqlite jpeg
 app-editors/neovim -luajit
 app-editors/vim python
 app-emacs/emacs-common gui
