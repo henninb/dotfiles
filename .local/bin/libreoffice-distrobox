@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 exec distrobox-enter  -n archlinuxbox --   libreoffice
 
 exit 0

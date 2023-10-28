@@ -1,0 +1,5 @@
+#!/bin/sh
+
+exec distrobox-enter  -n archlinuxbox --   kodi --standalone
+
+exit 0
