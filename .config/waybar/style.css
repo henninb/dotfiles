@@ -90,7 +90,7 @@ tooltip label{
     margin-right: 0px;
 }
 
-#custom-launch_firefox, 
+#custom-launch_firefox,
 #custom-launch_thunderbird,
 #custom-launch_thunar,
 #custom-launch_wofi,
@@ -102,7 +102,7 @@ tooltip label{
     margin-right: 20px;
 }
 
-#custom-launch_firefox, 
+#custom-launch_firefox,
 #custom-launch_kitty {
     font-size: 20px;
 }
