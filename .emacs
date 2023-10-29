@@ -712,6 +712,11 @@
              (list (regexp-quote "/ssh:user@host:")
                    "remote-shell" "/bin/bash"))
 
+(add-hook 'window-setup-hook 'my-disable-fullscreen)
+
+(defun my-disable-fullscreen ()
+  (modify-frame-parameters (selected-frame) '((fullscreen . nil)))
+)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

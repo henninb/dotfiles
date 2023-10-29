@@ -3,6 +3,7 @@
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   echo "archlinux"
+  yay -S vscodium-bin
 elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse app-editors/vscodium
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then

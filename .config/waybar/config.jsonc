@@ -13,7 +13,6 @@
     ],
     "modules-center": [
         "idle_inhibitor",
-        "clock",
         "custom/updates"
     ],
     "modules-right": [
@@ -25,11 +24,10 @@
         "temperature",
         "custom/power_profile",
         "battery",
-        "hyprland/language",
         "custom/myhyprv",
-        "custom/light_dark"
+        "clock"
     ],
-    
+
     "include": [
         "~/.config/HyprV/waybar/conf/mesu.jsonc",
         "~/.config/HyprV/waybar/conf/asus-rog.jsonc",
