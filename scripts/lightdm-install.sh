@@ -1,5 +1,9 @@
 #!/bin/sh
 
+echo systemctl get-default
+echo doas systemctl set-default multi-user
+echo doas systemctl set-default graphical
+
 cat > "$HOME/tmp/xmonad.desktop" << EOF
 [Desktop Entry]
 #Type=Application
