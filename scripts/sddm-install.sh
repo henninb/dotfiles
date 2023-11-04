@@ -27,6 +27,16 @@ Exec=xmonad-start
 Icon=/usr/share/pixmaps/xmonad.png
 EOF
 
+cat > "$HOME/tmp/xmonad.desktop" << EOF
+[Desktop Entry]
+Type=Application
+Name=Hyprland
+Comment=hyprland tiling window manager
+Exec=Hyprland
+#DesktopNames=xmonad
+Icon=
+EOF
+
 cat > "$HOME/tmp/cinnamon.desktop" << EOF
 [Desktop Entry]
 Type=Application
@@ -55,6 +65,8 @@ ReuseSession=true
 
 [General]
 InputMethod=
+#DisplayServer=x11
+#DisplayServer=wayland
 
 [X11]
 DisplayCommand=/etc/sddm/scripts/Xsetup
@@ -66,6 +78,8 @@ HideUsers=""
 User=henninb
 Session=xmonad
 EOF
+
+ls -l /usr/share/wayland-sessions
 
 sudo mkdir -p /etc/sddm/
 sudo mkdir -p /etc/sddm/scripts/

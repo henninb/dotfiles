@@ -1,5 +1,7 @@
 #!/bin/sh
 
+ver=545.29.02
+
 cat > "$HOME/tmp/xorg.conf" <<EOF
 Section "ServerLayout"
     Identifier     "Layout0"
@@ -174,7 +176,6 @@ fi
 
 vulkaninfo | less
 
-ver=535.104.05
 if [ ! -f "$HOME/tmp/NVIDIA-Linux-x86_64-${ver}.run" ]; then
   wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/${ver}/NVIDIA-Linux-x86_64-${ver}.run" -O "$HOME/tmp/NVIDIA-Linux-x86_64-${ver}.run"
 fi

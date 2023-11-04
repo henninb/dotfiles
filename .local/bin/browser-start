@@ -1,21 +1,18 @@
 #!/usr/bin/env bash
 
+PATH=/opt/brave-browser:/opt/firefox:/opt/mullvad-browser:$PATH
 options=$1
 
 if grep -q "incognito" <<< "$options"; then
   firefox_options="-private-window"
 fi
 
-if command -v brave; then
-  exec brave "$options"
+if command -v brave-browser; then
+  exec brave-browser "$options"
 elif command -v brave-bin; then
   exec brave-bin "$options"
-elif command -v brave-browser; then
-  exec brave-browser "$options"
 elif command -v linux-brave; then
   exec linux-brave "$options"
-elif command -v brave-flatpak; then
-  exec brave-flatpak "$options"
 elif command -v librewolf-bin; then
   exec librewolf-bin "$firefox_options"
 elif command -v librewolf-flatpak; then
