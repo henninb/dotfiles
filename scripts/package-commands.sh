@@ -35,6 +35,7 @@ elif [ "$OS" = "Gentoo" ]; then
   echo sudo emerge --update --newuse package_name
   echo sudo emerge --deselect package_name # remove from world
   echo sudo emerge -C package_name # remove and disregard deped
+  echo doas emerge --unmerge package_name
   echo sudo emerge --pretend --depclean
   echo sudo emerge -cav package_name # verify depends
   echo sudo emerge -pv dev-lang/python-exec # pretend

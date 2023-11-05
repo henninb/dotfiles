@@ -61,7 +61,8 @@ media-libs/freetype brotli
 media-libs/gd fontconfig
 media-libs/harfbuzz icu
 media-libs/libpng apng
-media-libs/libsdl2 haptic
+media-libs/libsdl2 haptic -wayland gles2
+media-libs/clutter -wayland egl
 media-libs/libsndfile minimal
 media-libs/libvpx postproc
 media-libs/mesa wayland
@@ -127,3 +128,4 @@ gui-wm/hyprland X systemd
 #app-emulation/qemu opengl ssh spice gtk usbredir sdl
 app-emulation/qemu opengl ssh spice usbredir pipewire virgl
 x11-libs/libxkbcommon wayland
+media-libs/cogl gles2
