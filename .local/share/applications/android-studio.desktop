@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Android Studio
+GenericName=Integrated Development Environment
+Comment=Google IDE specialised for Android development
+Icon=
+Exec=/opt/android-studio/bin/studio.sh %f
+Terminal=false
+Type=Application
+StartupNotify=false

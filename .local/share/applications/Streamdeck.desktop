@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Streamdeck
+Comment=Streamdeck
+Exec=/usr/lib/python-exec/python3.10/python3 /home/henninb/.local/bin/streamdeck
+Terminal=false
+StartupNotify=true

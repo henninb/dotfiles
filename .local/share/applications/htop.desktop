@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=Htop
-GenericName=Process Viewer
+GenericName=htop
 Comment=Show System Processes
 Icon=htop
 Exec=htop
