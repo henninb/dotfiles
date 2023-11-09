@@ -1,0 +1,24 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=libreoffice-base
+Type=Application
+Categories=Office;Database;X-Red-Hat-Base;
+Exec=/usr/bin/distrobox-enter  -n archlinuxbox --   libreoffice --base  %U
+MimeType=application/vnd.oasis.opendocument.base;application/vnd.sun.xml.base;
+Name=LibreOffice Base  (on archlinuxbox)
+GenericName=Database Development  (on archlinuxbox)
+Comment=Manage databases, create queries and reports to track and manage your information.
+StartupNotify=true
+X-GIO-NoFuse=true
+Keywords=Data;SQL;
+InitialPreference=5
+StartupWMClass=libreoffice-base
+X-KDE-Protocols=file,http,ftp,webdav,webdavs
+
+Actions=NewDocument;
+[Desktop Action NewDocument]
+Name=New Database  (on archlinuxbox)
+Name[en]=New Database  (on archlinuxbox)
+Icon=document-new
+Exec=/usr/bin/distrobox-enter  -n archlinuxbox --   libreoffice --base

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=IntelliJ
+GenericName=JDK Integrated Development Environment
+Comment=Jetbrains IDE specialised for Java JDK development
+Icon=
+Exec=/opt/intellij/bin/idea.sh %f
+Terminal=false
+Type=Application
+StartupNotify=false

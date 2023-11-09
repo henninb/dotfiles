@@ -1,0 +1,21 @@
+[Desktop Entry]
+Version=1.0
+Name=Kodi  (on archlinuxbox)
+GenericName=Media Center  (on archlinuxbox)
+Comment=Manage and view your media
+Exec=/usr/bin/distrobox-enter  -n archlinuxbox --   kodi
+Icon=kodi
+Terminal=false
+Type=Application
+Categories=AudioVideo;Video;Player;TV;
+
+Actions=Fullscreen;Standalone;
+
+[Desktop Action Fullscreen]
+Name=Open in fullscreen  (on archlinuxbox)
+Exec=/usr/bin/distrobox-enter  -n archlinuxbox --   kodi -fs
+
+[Desktop Action Standalone]
+Name=Open in standalone mode  (on archlinuxbox)
+Exec=/usr/bin/distrobox-enter  -n archlinuxbox --   kodi --standalone
+StartupWMClass=kodi

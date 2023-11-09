@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Brave
+Name=BraveBrowser
 Comment=Brave Web Browser
-Exec=/usr/bin/brave-bin %u
-Icon=brave-bin
+Exec=/opt/brave-browser/brave-browser %u
+Icon=
 Terminal=false
 Type=Application
 Categories=Network;WebBrowser;
