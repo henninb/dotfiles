@@ -8,7 +8,9 @@ if grep -q "incognito" <<< "$options"; then
 fi
 
 if command -v brave-browser; then
-  exec brave-browser "$options"
+  #exec brave-browser "$options"
+  #exec brave-browser "$options" --make-default-browser --password-store=basic %U
+  exec brave-browser "$options" --password-store=basic %U
 elif command -v brave-bin; then
   exec brave-bin "$options"
 elif command -v linux-brave; then
