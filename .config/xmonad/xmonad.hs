@@ -224,7 +224,6 @@ myStartupHook = do
     --networkManagerPath <- liftIO $ findExecutable "nm-applet"
     -- catchError (maybe (return ()) (safeSpawnProg) networkManagerPath) (logError . displayException)
 
-    
     -- networkManagerPath <- liftIO $ findExecutable "nm-applet"
     -- case networkManagerPath of
     --     Just path -> catchAny (safeSpawnProg path) (logError . show) >>= \case
