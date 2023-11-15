@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Path of Exile
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/238960
+Icon=steam_icon_238960
+Terminal=false
+Type=Application
+Categories=Game;

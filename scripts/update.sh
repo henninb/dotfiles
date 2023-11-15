@@ -87,9 +87,11 @@ elif [ "$OS" = "Gentoo" ]; then
   if [ ! "${eselect}" = "${uname}" ]; then
     if [ ! -f "/boot/vmlinuz-${eselect}-gentoo-x86_64" ]; then
       echo "complie the kernel '$eselect' as it is newer than '$uname'"
-      doas genkernel all
-      echo 'doas genkernel --no-microcode --install all'
-      sudo grub-mkconfig -o /boot/grub/grub.cfg
+      echo doas genkernel all
+      echo doas genkernel --no-microcode --menuconfig all
+      doas genkernel --no-microcode --install all
+      echo doas genkernel --microcode=intel --install all
+      doas grub-mkconfig -o /boot/grub/grub.cfg
       # sudo grub-mkconfig -o /boot/efi/EFI/gentoo/grub.cfg
     fi
   fi
@@ -308,6 +310,8 @@ pip install pynvim --user
 pip install podman-compose --user
 pip install docker-compose --user
 pip install leglight --user
+pip install streamdeck --user
+pip install streamdeck-linux-gui --user
 
 exit 0
 
