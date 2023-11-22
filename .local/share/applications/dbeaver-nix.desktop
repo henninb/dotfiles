@@ -3,4 +3,5 @@ Name=DBeaver
 Exec=/nix/store/29ssdxvjj9hpln4wkc1i8k0jk204hbfp-dbeaver-22.2.2/dbeaver/dbeaver %u
 NoDisplay=true
 Type=Application
+Icon=dbeaver
 MimeType=x-scheme-handler/eclipse+command;
