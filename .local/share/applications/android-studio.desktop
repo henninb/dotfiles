@@ -2,7 +2,7 @@
 Name=Android Studio
 GenericName=Integrated Development Environment
 Comment=Google IDE specialised for Android development
-Icon=
+Icon=android-studio
 Exec=/opt/android-studio/bin/studio.sh %f
 Terminal=false
 Type=Application
