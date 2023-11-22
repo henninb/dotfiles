@@ -2,7 +2,7 @@
 Name=BraveBrowser
 Comment=Brave Web Browser
 Exec=/opt/brave-browser/brave-browser --password-store=basic %u
-Icon=
+Icon=brave-browser
 Terminal=false
 Type=Application
 Categories=Network;WebBrowser;

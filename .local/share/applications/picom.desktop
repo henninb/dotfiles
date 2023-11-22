@@ -1,8 +1,7 @@
 [Desktop Entry]
-Version=1.0
 Type=Application
 Name=picom
-GenericName=X compositor
+GenericName=picom
 Comment=Compositor for X11
 Categories=Utility;
 Keywords=compositor;composite manager;window effects;transparency;opacity;

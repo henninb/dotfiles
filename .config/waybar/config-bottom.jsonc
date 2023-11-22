@@ -7,10 +7,8 @@
     "gtk-layer-shell": true,
     "height": 25,
     "modules-left": [
-        "custom/launch_wofi",
         "custom/launch_firefox",
         "custom/launch_brave",
-        "custom/launch_thunderbird",
         "custom/launch_kitty",
         "custom/launch_thunar"
     ],
@@ -18,7 +16,7 @@
     "modules-right": ["custom/weather"],
 
     "include": [
-        "~/.config/HyprV/waybar/conf/mesu.jsonc"
+        "~/.config/waybar/mensu.jsonc"
     ],
 
     "custom/launch_firefox": {
@@ -28,19 +26,14 @@
     },
 
     "custom/launch_brave": {
-        "format": "",
+        // "format": "",
+        "format": "🦁",
         "on-click": "brave",
         "tooltip": false
     },
 
-    "custom/launch_thunderbird": {
-        "format": "󰇰",
-        "on-click": "thunderbird",
-        "tooltip": false
-    },
-
     "custom/launch_thunar": {
-        "format": "",
+        "format": "📁",
         "on-click": "exec thunar",
         "tooltip": false
     },
@@ -48,12 +41,6 @@
     "custom/launch_kitty": {
         "format": "",
         "on-click": "exec kitty",
-        "tooltip": false
-    },
-    
-    "custom/launch_wofi": {
-        "format": "󱗼",
-        "on-click": "sh -c '(sleep 0.5s; pkill wofi || wofi -c ~/.config/HyprV/wofi/config-lmenu)' & disown",
         "tooltip": false
     },
 

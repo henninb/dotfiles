@@ -3,7 +3,7 @@
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   echo "archlinux"
 elif [ "$OS" = "Gentoo" ]; then
-  echo "gentoo"
+  doas emerge --update --newuse  media-tv/plex-media-server
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   curl -s https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add -
   echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
@@ -32,6 +32,8 @@ if [ ! -x "$(command -v systemctl)" ]; then
   echo systemctl not installed.
   exit 1
 fi
+
+doas systemctl status plex-media-server.service
 doas systemctl status plexmediaserver
 sudo mkdir -p /opt/plexmedia/music
 sudo mkdir -p /opt/plexmedia/series
