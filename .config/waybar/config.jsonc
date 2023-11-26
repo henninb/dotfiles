@@ -11,23 +11,113 @@
         "custom/lock_screen",
         "hyprland/workspaces"
     ],
-    "modules-center": [
-        "idle_inhibitor",
-        "custom/updates"
-    ],
+    // "modules-center": [
+        // "idle_inhibitor",
+        // "custom/updates"
+    // ],
     "modules-right": [
+//        "bluetooth",
+        "tray",
+        "network",
         "cpu",
+        "memory",
         "pulseaudio",
         "pulseaudio#microphone",
         "backlight",
-        "tray",
         "temperature",
-        "custom/power_profile",
-        "bluetooth",
+        //"custom/power_profile",
         "battery",
-        "custom/myhyprv",
+        //"custom/myhyprv",
         "clock"
     ],
+
+
+   "network": {
+    "format-wifi": "直 {signalStrength}%",
+    "format-ethernet": " Wired",
+    // "format-disconnected": " Offline",
+    "format-disconnected": "睊 Offline",
+    // "on-click": "$TERMINAL --class fterm -e nmtui",
+    "tooltip": false
+  },
+    // "network": {
+    //     "interface": "wlan0", // (Optional) To force the use of this interface
+    //     "format-wifi": "{essid} ",
+    //     "format-ethernet": "{ipaddr}/{cidr} ",
+    //     "tooltip-format": "{ifname} via {gwaddr} ",
+    //     "format-linked": "{ifname} (No IP) ",
+    //     "format-disconnected": "Disconnected ⚠",
+    //     "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    // },
+    //
+    // "network": {
+    //     // "interface": "wlp2*", // (Optional) To force the use of this interface
+    //     "format-wifi": "󰤨 {signalStrength}%",
+    //     "format-ethernet": "󱘖 Wired",
+    //     "tooltip-format": "󱘖 {ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+    //     "format-linked": "󱘖 {ifname} (No IP)",
+    //     "format-disconnected": " Disconnected",
+    //     "format-alt": "󰤨 {essid}",
+    //     "interval": 5
+    // },
+
+    "temperature": {
+       "thermal-zone": 2,
+       "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+       "critical-threshold": 80,
+       "format-critical": "{temperatureC}°C ",
+       "format": "{temperatureC}°C "
+    },
+
+    // "temperature": {
+    //     "critical-threshold": 80,
+    //     "format": "{temperatureC}°C {icon}",
+    //     "format-icons": [
+    //         "",
+    //         "",
+    //         ""
+    //     ]
+    // },
+
+    // "network": {
+    //   "interval": 5,
+    //   //"interface": "wlan*", // (Optional) To force the use of this interface, set it for netspeed to work
+    //   "format-wifi": " {essid}",
+    //   "format-ethernet": " {ipaddr}/{cidr}",
+    //   "format-linked": " {ifname} (No IP)",
+    //   "format-disconnected": "睊 Disconnected",
+    //   "format-disabled": "睊 Disabled",
+    //   "format-alt": " {bandwidthUpBits} |  {bandwidthDownBits}",
+    //   "tooltip-format": " {ifname} via {gwaddr}",
+    // },
+
+   "memory": {
+    //"format": "\udb83\udee0 {percentage}%",
+    "format": " {}%",
+    "interval": 1,
+    // "tooltip-format": "Memory - {used:0.1f}GB used",
+    "tooltip": false,
+    "states": {
+      "warning": 85
+    }
+  },
+
+
+    "clock": {
+        // "format": "{:%I:%M %p 󰃭 %a %d}",
+        "format": "{:  %Y-%m-%d  %I:%M}",
+        "format-alt": "{:%H:%M  %b %Y}",
+        "tooltip-format": "<tt><big>{calendar}</big></tt>"
+    },
+
+    // "network": {
+    //     "format-wifi": "{essid} ({signalStrength}%) <span font='14'>󰖩</span>",
+    //     "format-ethernet": "Connected <span font='14'>󰈁</span>",
+    //     "tooltip-format": "{ifname} via {gwaddr}/{cidr}",
+    //     "format-linked": "{ifname} (No IP) <span font='14'>󰈁</span>",
+    //     "format-disconnected": "Disconnected <span font='14'>󰈂</span>",
+    //     "on-click": "~/.config/waybar/scripts/wifi4wofi.sh"
+    // },
 
    // "include": [
    //     "~/.config/HyprV/waybar/conf/mesu.jsonc",
@@ -35,22 +125,15 @@
    //     "~/.config/HyprV/waybar/conf/hyprv-util.jsonc"
    // ],
 
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "󰛐",
-            "deactivated": "󰛑"
-        },
-        "tooltip": true
-    },
+    // "idle_inhibitor": {
+    //     "format": "{icon}",
+    //     "format-icons": {
+    //         "activated": "󰛐",
+    //         "deactivated": "󰛑"
+    //     },
+    //     "tooltip": true
+    // },
 
-    "hyprland/language": {
-        "interval": 30,
-        "format": " {}",
-        "keyboard-name": "logitech-pro-gaming-keyboard",
-        "on-click": "~/.config/HyprV/hyprv_util swkb",
-        "signal": 8
-    },
 
     "custom/power_btn": {
         "format": "",
@@ -85,33 +168,15 @@
 		"sort-by-number": true,
 	},
 
-    // "wlr/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "on-click": "activate",
-    //     "persistent_workspaces": {
-    //         "1": [],
-    //         "2": [],
-    //         "3": [],
-    //         "4": [],
-    //         "5": [],
-    //         "6": [],
-    //         "7": [],
-    //         "8": [],
-    //         "9": [],
-    //         "10": []
-    //     }
-    // },
-
-      "bluetooth": {
-    "format": " {status}",
-    "format-connected": " {device_alias}",
-    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
-    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
-  },
+  //  "bluetooth": {
+  //   "format": " {status}",
+  //   "format-connected": " {device_alias}",
+  //   "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+  //   "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+  //   "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+  //   "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+  //   "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+  // },
 
     "cpu": {
         "interval": 10,

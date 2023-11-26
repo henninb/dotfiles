@@ -1,327 +1,3184 @@
 {
-    "streamdeck_ui_version": 1,
     "state": {
         "DL05L1A36954": {
             "buttons": {
                 "0": {
                     "0": {
-                        "command": "libreoffice",
-                        "text": "libreoffice",
-                        "write": "",
-                        "icon": "/home/henninb/files/backup-streamdeck/libreoffice.png"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "libreoffice",
+                                "icon": "/home/henninb/files/backup-streamdeck/libreoffice.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "libreoffice",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "1": {
-                        "text": "OBS Studio",
-                        "command": "obs",
-                        "icon": "/home/henninb/files/backup-streamdeck/obs-studio.png"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "OBS Studio",
+                                "icon": "/home/henninb/files/backup-streamdeck/obs-studio.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "obs",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "2": {
-                        "text": "Gimp",
-                        "command": "gimp",
-                        "icon": "/home/henninb/files/backup-streamdeck/gimp.png"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "Gimp",
+                                "icon": "/home/henninb/files/backup-streamdeck/gimp.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "gimp",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "3": {
-                        "icon": "/home/henninb/files/backup-streamdeck/handbrake.png",
-                        "text": "Handbrake",
-                        "command": "ghb"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "Handbrake",
+                                "icon": "/home/henninb/files/backup-streamdeck/handbrake.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "ghb",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "4": {
-                        "icon": "/home/henninb/files/backup-streamdeck/blender.png",
-                        "command": "blender",
-                        "keys": "",
-                        "text": "Blender",
-                        "write": "",
-                        "brightness_change": -20
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "Blender",
+                                "icon": "/home/henninb/files/backup-streamdeck/blender.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "blender",
+                                "brightness_change": -20,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "5": {
-                        "icon": "/home/henninb/files/backup-streamdeck/vlc.png",
-                        "text": "VLC",
-                        "command": "vlc"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "VLC",
+                                "icon": "/home/henninb/files/backup-streamdeck/vlc.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "vlc",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "6": {
-                        "icon": "/home/henninb/files/backup-streamdeck/librewolf.png",
-                        "text": "Librewolf",
-                        "command": "librewolf"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "Librewolf",
+                                "icon": "/home/henninb/files/backup-streamdeck/librewolf.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "librewolf",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "7": {
-                        "icon": "/home/henninb/files/backup-streamdeck/zoom.png",
-                        "text": "zoom",
-                        "command": "zoom"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "zoom",
+                                "icon": "/home/henninb/files/backup-streamdeck/zoom.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "zoom",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "8": {
-                        "icon": "/home/henninb/files/backup-streamdeck/dbeaver.png",
-                        "text": "dbeaver",
-                        "command": "dbeaver"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "dbeaver",
+                                "icon": "/home/henninb/files/backup-streamdeck/dbeaver.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "dbeaver",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "9": {
-                        "icon": "/home/henninb/files/backup-streamdeck/slack.png",
-                        "text": "Slack",
-                        "command": "slack"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "Slack",
+                                "icon": "/home/henninb/files/backup-streamdeck/slack.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "slack",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "10": {
-                        "icon": "/home/henninb/files/backup-streamdeck/vscode.png",
-                        "text": "vscode",
-                        "command": "vscode-flatpak"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "vscode",
+                                "icon": "/home/henninb/files/backup-streamdeck/vscode.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "vscode-flatpak",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "11": {
-                        "icon": "/home/henninb/files/backup-streamdeck/vscodium.png",
-                        "text": "vscodium",
-                        "command": "vscodium"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "vscodium",
+                                "icon": "/home/henninb/files/backup-streamdeck/vscodium.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "vscodium",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "12": {
-                        "write": "",
-                        "text": "Audacity",
-                        "command": "audacity",
-                        "icon": "/home/henninb/files/backup-streamdeck/audacity.png"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "Audacity",
+                                "icon": "/home/henninb/files/backup-streamdeck/audacity.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "audacity",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "13": {
-                        "command": "virt-manager",
-                        "text": "virt-manager",
-                        "icon": "/home/henninb/files/backup-streamdeck/virt-manager.png"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "virt-manager",
+                                "icon": "/home/henninb/files/backup-streamdeck/virt-manager.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "virt-manager",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "14": {
-                        "switch_page": 2,
-                        "text": "next",
-                        "icon": "/home/henninb/files/backup-streamdeck/right-arrow.png"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "next",
+                                "icon": "/home/henninb/files/backup-streamdeck/right-arrow.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 2,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     }
                 },
                 "1": {
                     "0": {
-                        "switch_page": 1,
-                        "text": "prev",
-                        "icon": "/home/henninb/files/backup-streamdeck/left-arrow.png"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "prev",
+                                "icon": "/home/henninb/files/backup-streamdeck/left-arrow.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 1,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "1": {
-                        "text": "intellij",
-                        "command": "intellij",
-                        "icon": "/home/henninb/files/backup-streamdeck/intellij.png"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "intellij",
+                                "icon": "/home/henninb/files/backup-streamdeck/intellij.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "intellij",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "2": {
-                        "command": "discord",
-                        "text": "discord",
-                        "icon": "/home/henninb/files/backup-streamdeck/discord.png"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "discord",
+                                "icon": "/home/henninb/files/backup-streamdeck/discord.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "discord",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "3": {
-                        "icon": "/home/henninb/files/backup-streamdeck/inkscape.png",
-                        "text": "inkscape",
-                        "command": "inkscape"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "inkscape",
+                                "icon": "/home/henninb/files/backup-streamdeck/inkscape.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "inkscape",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "4": {
-                        "icon": "/home/henninb/files/backup-streamdeck/wireshark.png",
-                        "text": "wireshark",
-                        "command": "wireshark"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "wireshark",
+                                "icon": "/home/henninb/files/backup-streamdeck/wireshark.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "wireshark",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "5": {
-                        "icon": "/home/henninb/files/backup-streamdeck/kdeconnect.png",
-                        "text": "kdeconnect",
-                        "command": "kdeconnect-app"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "kdeconnect",
+                                "icon": "/home/henninb/files/backup-streamdeck/kdeconnect.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "kdeconnect-app",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "6": {
-                        "icon": "/home/henninb/files/backup-streamdeck/peazip.png",
-                        "text": "peazip",
-                        "command": "peazip-flatpak"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "peazip",
+                                "icon": "/home/henninb/files/backup-streamdeck/peazip.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "peazip-flatpak",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "7": {
-                        "text": "celluloid",
-                        "command": "celluloid",
-                        "icon": "/home/henninb/files/backup-streamdeck/celluloid.png"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "celluloid",
+                                "icon": "/home/henninb/files/backup-streamdeck/celluloid.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "celluloid",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "8": {
-                        "icon": "/home/henninb/files/backup-streamdeck/pfsense-new.png",
-                        "command": "pfsense",
-                        "text": "pfsense"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "pfsense",
+                                "icon": "/home/henninb/files/backup-streamdeck/pfsense-new.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "pfsense",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "9": {
-                        "icon": "/home/henninb/files/backup-streamdeck/pihole.svg",
-                        "text": "pihole",
-                        "command": "pihole"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "pihole",
+                                "icon": "/home/henninb/files/backup-streamdeck/pihole.svg",
+                                "keys": "",
+                                "write": "",
+                                "command": "pihole",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "10": {
-                        "text": "github",
-                        "command": "github",
-                        "icon": "/home/henninb/files/backup-streamdeck/github.png"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "github",
+                                "icon": "/home/henninb/files/backup-streamdeck/github.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "github",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "11": {
-                        "text": "keylight",
-                        "command": "/home/henninb/scripts/keylight-toggle.sh",
-                        "icon": "/home/henninb/files/backup-streamdeck/keylight.png"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "keylight",
+                                "icon": "/home/henninb/files/backup-streamdeck/keylight.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "/home/henninb/scripts/keylight-toggle.sh",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "12": {
-                        "text": "keepassxc",
-                        "command": "keepassxc",
-                        "icon": "/home/henninb/files/backup-streamdeck/keepassxc.png"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "keepassxc",
+                                "icon": "/home/henninb/files/backup-streamdeck/keepassxc.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "keepassxc",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "13": {
-                        "text": "gqrx",
-                        "command": "gqrx",
-                        "icon": "/home/henninb/files/backup-streamdeck/radio.jpg"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "gqrx",
+                                "icon": "/home/henninb/files/backup-streamdeck/radio.jpg",
+                                "keys": "",
+                                "write": "",
+                                "command": "gqrx",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "14": {
-                        "icon": "/home/henninb/files/backup-streamdeck/right-arrow.png",
-                        "command": "",
-                        "keys": "",
-                        "text": "next",
-                        "switch_page": 3
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "next",
+                                "icon": "/home/henninb/files/backup-streamdeck/right-arrow.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 3,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     }
                 },
                 "2": {
                     "0": {
-                        "text": "prev",
-                        "command": "",
-                        "switch_page": 2,
-                        "icon": "/home/henninb/files/backup-streamdeck/left-arrow.png"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "prev",
+                                "icon": "/home/henninb/files/backup-streamdeck/left-arrow.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 2,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "1": {
-                        "text": "k3b",
-                        "switch_page": 2,
-                        "command": "k3b"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "k3b",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "k3b",
+                                "brightness_change": 0,
+                                "switch_page": 2,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
                     "2": {
-                        "text": "steam",
-                        "command": "steam",
-                        "icon": "/home/henninb/files/backup-streamdeck/steam.png"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "steam",
+                                "icon": "/home/henninb/files/backup-streamdeck/steam.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "steam",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     },
-                    "3": {},
-                    "4": {},
-                    "5": {},
-                    "6": {},
-                    "7": {},
-                    "8": {},
-                    "9": {},
-                    "10": {},
-                    "11": {},
-                    "12": {},
-                    "13": {},
+                    "3": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "4": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "5": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "6": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "7": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "8": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "9": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "10": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "11": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "12": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "13": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
                     "14": {
-                        "text": "next",
-                        "switch_page": 4,
-                        "icon": "/home/henninb/files/backup-streamdeck/right-arrow.png"
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "next",
+                                "icon": "/home/henninb/files/backup-streamdeck/right-arrow.png",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 4,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
                     }
                 },
                 "3": {
-                    "0": {},
-                    "1": {},
-                    "2": {},
-                    "3": {},
-                    "4": {},
-                    "5": {},
-                    "6": {},
-                    "7": {},
-                    "8": {},
-                    "9": {},
-                    "10": {},
-                    "11": {},
-                    "12": {},
-                    "13": {},
-                    "14": {}
+                    "0": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "1": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "2": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "3": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "4": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "5": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "6": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "7": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "8": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "9": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "10": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "11": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "12": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "13": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "14": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    }
                 },
                 "4": {
-                    "0": {},
-                    "1": {},
-                    "2": {},
-                    "3": {},
-                    "4": {},
-                    "5": {},
-                    "6": {},
-                    "7": {},
-                    "8": {},
-                    "9": {},
-                    "10": {},
-                    "11": {},
-                    "12": {},
-                    "13": {},
-                    "14": {}
+                    "0": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "1": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "2": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "3": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "4": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "5": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "6": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "7": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "8": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "9": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "10": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "11": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "12": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "13": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "14": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    }
                 },
                 "5": {
-                    "0": {},
-                    "1": {},
-                    "2": {},
-                    "3": {},
-                    "4": {},
-                    "5": {},
-                    "6": {},
-                    "7": {},
-                    "8": {},
-                    "9": {},
-                    "10": {},
-                    "11": {},
-                    "12": {},
-                    "13": {},
-                    "14": {}
+                    "0": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "1": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "2": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "3": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "4": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "5": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "6": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "7": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "8": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "9": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "10": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "11": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "12": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "13": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "14": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    }
                 },
                 "6": {
-                    "0": {},
-                    "1": {},
-                    "2": {},
-                    "3": {},
-                    "4": {},
-                    "5": {},
-                    "6": {},
-                    "7": {},
-                    "8": {},
-                    "9": {},
-                    "10": {},
-                    "11": {},
-                    "12": {},
-                    "13": {},
-                    "14": {}
+                    "0": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "1": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "2": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "3": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "4": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "5": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "6": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "7": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "8": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "9": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "10": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "11": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "12": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "13": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "14": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    }
                 },
                 "7": {
-                    "0": {},
-                    "1": {},
-                    "2": {},
-                    "3": {},
-                    "4": {},
-                    "5": {},
-                    "6": {},
-                    "7": {},
-                    "8": {},
-                    "9": {},
-                    "10": {},
-                    "11": {},
-                    "12": {},
-                    "13": {},
-                    "14": {}
+                    "0": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "1": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "2": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "3": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "4": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "5": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "6": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "7": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "8": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "9": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "10": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "11": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "12": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "13": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "14": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    }
                 },
                 "8": {
-                    "0": {},
-                    "1": {},
-                    "2": {},
-                    "3": {},
-                    "4": {},
-                    "5": {},
-                    "6": {},
-                    "7": {},
-                    "8": {},
-                    "9": {},
-                    "10": {},
-                    "11": {},
-                    "12": {},
-                    "13": {},
-                    "14": {}
+                    "0": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "1": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "2": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "3": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "4": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "5": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "6": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "7": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "8": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "9": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "10": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "11": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "12": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "13": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "14": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    }
                 },
                 "9": {
-                    "0": {},
-                    "1": {},
-                    "2": {},
-                    "3": {},
-                    "4": {},
-                    "5": {},
-                    "6": {},
-                    "7": {},
-                    "8": {},
-                    "9": {},
-                    "10": {},
-                    "11": {},
-                    "12": {},
-                    "13": {},
-                    "14": {}
+                    "0": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "1": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "2": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "3": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "4": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "5": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "6": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "7": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "8": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "9": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "10": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "11": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "12": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "13": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    },
+                    "14": {
+                        "state": 0,
+                        "states": {
+                            "0": {
+                                "text": "",
+                                "icon": "",
+                                "keys": "",
+                                "write": "",
+                                "command": "",
+                                "brightness_change": 0,
+                                "switch_page": 0,
+                                "switch_state": 0,
+                                "text_vertical_align": "",
+                                "text_horizontal_align": "",
+                                "font": "",
+                                "font_color": "",
+                                "font_size": 0,
+                                "background_color": ""
+                            }
+                        }
+                    }
                 }
             },
-            "page": 0,
+            "display_timeout": 3600,
             "brightness": 43,
             "brightness_dimmed": 37,
-            "display_timeout": 3600
+            "rotation": 0,
+            "page": 0
         }
-    }
+    },
+    "streamdeck_ui_version": 2
 }

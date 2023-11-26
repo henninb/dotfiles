@@ -129,3 +129,4 @@ gui-wm/hyprland X systemd
 app-emulation/qemu opengl ssh spice usbredir pipewire virgl
 x11-libs/libxkbcommon wayland
 media-libs/cogl gles2
+gui-apps/waybar tray systemd pipewire mpd logind network wifi sndio
