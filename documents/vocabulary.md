@@ -121,40 +121,40 @@ preponderance: a majority or superiority in weight, power, or influence; often u
 presupposition: a belief or assumption that underlies a particular argument, theory, or statement.
 procure: to obtain or acquire something, often by special effort or means.
 proficiency: skill or expertise in a particular field or activity; often used to describe a high level of competence or ability
-Proposition: A statement or idea put forward for consideration, especially in a debate or argument.
-Prude: A person who is excessively proper or modest in speech, dress, or behavior, often to the point of being considered priggish or excessively puritanical.
-Prudent: Acting with or showing care and thought for the future; wise or judicious in practical affairs.
-Quagmire: A difficult, complicated, or precarious situation; a marsh or swamp.
-Rankles: To cause persistent irritation, bitterness, or resentment.
-Reckless: Without thinking or caring about the consequences of an action; lacking caution or prudence.
-Refactor: To reorganize and improve existing computer code without changing its functionality.
-Rhetoric: The art of effective or persuasive speaking or writing, often characterized by the use of language in a heightened, elaborate, or insincere way.
-Rogue: A dishonest or unprincipled person; an animal or plant that is different from the normal or expected type.
-Rubric: A set of rules or instructions for how to do something; a set of instructions or regulations, often for grading student work or evaluating performance.
-Ruse: An action intended to deceive someone; a trick.
-Salacious: Treating sexual matters in an indecent way and typically conveying undue interest in or enjoyment of the subject.
-Salient: Prominent or significant; relevant or important.
-Serendipitous: Occurring or discovered by chance in a happy or beneficial way.
-Sinister: Giving the impression that something harmful or evil is happening or will happen; threatening or portending evil, harm, or trouble.
-Snood: A decorative hairnet or headband worn as an ornament or to hold the hair in place.
-Spar: To engage in a brief, minor dispute or argument.
-Spurious: False or fake; not genuine or authentic; lacking in validity or basis in fact.
-Succumb: To give way to superior force; to yield to a more powerful or persuasive influence.
-Surly: Bad-tempered and unfriendly; inclined to anger or hostility.
-Surreal: Having the qualities of a dream; bizarre or fantastic; resembling a dream or fantasy.
-Surreptitious: Kept secret, especially because it would not be approved of; clandestine; stealthy or sneaky.
-Synchronous: Happening at the same time; existing or occurring at the same time.
-Thorough: Complete in every detail; exhaustive or comprehensive; extremely attentive to accuracy and detail.
-Tizzy: A state of nervous excitement or agitation.
-Tomfoolery: Foolish behavior; silliness; playful or foolish behavior.
-Transparent: Allowing light to pass through; easily perceived or detected; open, frank, or candid; free from deceit or disguise.
-Triage: The process of determining the priority of patients' treatments based on the severity of their condition.
-Ubiquity: The state of being everywhere at once; the quality or state of being ubiquitous or omnipresent.
-Unbeknownst: Without the knowledge of someone specified; unbeknown.
-Undesirable: Not wanted or desirable because harmful, objectionable, or unpleasant.
-Unscrupulous: Having or showing no moral principles; not honest or fair; unprincipled or unethical.
-Unsettle: To disturb the composure of; to cause to be anxious or uneasy; to agitate or upset.
-Urbane: Suave, courteous, and refined in manner; sophisticated and cosmopolitan.
+proposition: A statement or idea put forward for consideration, especially in a debate or argument.
+prude: A person who is excessively proper or modest in speech, dress, or behavior, often to the point of being considered priggish or excessively puritanical.
+prudent: Acting with or showing care and thought for the future; wise or judicious in practical affairs.
+quagmire: A difficult, complicated, or precarious situation; a marsh or swamp.
+rankles: To cause persistent irritation, bitterness, or resentment.
+reckless: Without thinking or caring about the consequences of an action; lacking caution or prudence.
+refactor: To reorganize and improve existing computer code without changing its functionality.
+rhetoric: The art of effective or persuasive speaking or writing, often characterized by the use of language in a heightened, elaborate, or insincere way.
+rogue: A dishonest or unprincipled person; an animal or plant that is different from the normal or expected type.
+rubric: A set of rules or instructions for how to do something; a set of instructions or regulations, often for grading student work or evaluating performance.
+ruse: An action intended to deceive someone; a trick.
+salacious: Treating sexual matters in an indecent way and typically conveying undue interest in or enjoyment of the subject.
+salient: Prominent or significant; relevant or important.
+serendipitous: Occurring or discovered by chance in a happy or beneficial way.
+sinister: Giving the impression that something harmful or evil is happening or will happen; threatening or portending evil, harm, or trouble.
+snood: A decorative hairnet or headband worn as an ornament or to hold the hair in place.
+spar: To engage in a brief, minor dispute or argument.
+spurious: False or fake; not genuine or authentic; lacking in validity or basis in fact.
+succumb: To give way to superior force; to yield to a more powerful or persuasive influence.
+surly: Bad-tempered and unfriendly; inclined to anger or hostility.
+surreal: Having the qualities of a dream; bizarre or fantastic; resembling a dream or fantasy.
+surreptitious: Kept secret, especially because it would not be approved of; clandestine; stealthy or sneaky.
+synchronous: Happening at the same time; existing or occurring at the same time.
+thorough: Complete in every detail; exhaustive or comprehensive; extremely attentive to accuracy and detail.
+tizzy: A state of nervous excitement or agitation.
+tomfoolery: Foolish behavior; silliness; playful or foolish behavior.
+transparent: Allowing light to pass through; easily perceived or detected; open, frank, or candid; free from deceit or disguise.
+triage: The process of determining the priority of patients' treatments based on the severity of their condition.
+ubiquity: The state of being everywhere at once; the quality or state of being ubiquitous or omnipresent.
+unbeknownst: Without the knowledge of someone specified; unbeknown.
+undesirable: Not wanted or desirable because harmful, objectionable, or unpleasant.
+unscrupulous: Having or showing no moral principles; not honest or fair; unprincipled or unethical.
+unsettle: To disturb the composure of; to cause to be anxious or uneasy; to agitate or upset.
+urbane: Suave, courteous, and refined in manner; sophisticated and cosmopolitan.
 Vacuity: The state of being empty or without content; the quality or state of being vacuous or empty-headed.
 verbage: (noun) language or wording used in speech or writing; often used to describe language that is overly wordy or meaningless.
 vigorous: (adjective) strong, active, and energetic.
@@ -166,7 +166,9 @@ serendipitous
 copious
 supercillious: (adj) Feeling or showing haughty disdain.
 malaise
-bespoke
+bespoke (adj) custom made
 persnickety
 attribution
 boujee
+excistential (adj) Of, relating to, or dealing with existence.
+confounded (adj) Confused; befuddled.

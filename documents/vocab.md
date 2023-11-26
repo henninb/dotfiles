@@ -173,3 +173,5 @@
 ## attribution
 ## persnickety
 ## boujee
+## excistential [adj] Of, relating to, or dealing with existence.
+## confounded [adj] Confused; befuddled.
