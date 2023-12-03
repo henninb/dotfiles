@@ -48,16 +48,21 @@ async function handleRequest(request: Request) {
 
     console.log('token: ' + token)
 
-    return new Response(token, {
+    console.log('token: ' + token)
+
+    const jsonResponse = {
+      token: token,
+    }
+
+    return new Response(JSON.stringify(jsonResponse), {
       status: 200,
       statusText: 'success',
-   //   headers: { 'content-type': 'application/json' },
-        headers: {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*', // Allow requests from any origin
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-  },
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*', // Allow requests from any origin
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      },
     })
 
   } else {
