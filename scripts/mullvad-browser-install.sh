@@ -1,6 +1,7 @@
 #!/bin/sh
 
-wget https://mullvad.net/en/download/browser/linux64/latest -O "$HOME/tmp/mullvad-browser.tar.xz"
+# wget https://mullvad.net/en/download/browser/linux64/latest -O "$HOME/tmp/mullvad-browser.tar.xz"
+wget https://mullvad.net/en/download/browser/linux-x86_64/latest -O "$HOME/tmp/mullvad-browser.tar.xz"
 
 doas tar -xvf "$HOME/tmp/mullvad-browser.tar.xz" -C /opt
 
