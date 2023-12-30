@@ -244,17 +244,10 @@ CONFIG_NET_FAILOVER=m
 ls /boot/vmlinuz* /boot/initramfs*
 ```
 
-## grub install (with dos)
-```
-echo 'GRUB_CMDLINE_LINUX="init=/usr/lib/systemd/systemd"' >> /etc/default/grub
-grub-install /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
-```
-
 ## grub install (with gpt)
 ```
 echo 'GRUB_CMDLINE_LINUX="init=/usr/lib/systemd/systemd"' >> /etc/default/grub
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=gentoo
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=gentoo-new
 grub-mkconfig -o /boot/grub/grub.cfg
 ````
 
