@@ -186,23 +186,23 @@ elif [ "$os" = "ubuntu" ]; then
   fi
   echo 'export PS1="(ubuntu-chroot) $PS1"'
   sudo chroot /mnt/ubuntu /bin/su - "$(id -un)"
-elif [ "$os" = "hyprland" ]; then
-  root=db7ff55e-ee98-4b28-aeff-63bb0d51fdaf
-  efi=C443-0C4B
-  if [ "$(grep -c "$root /mnt/hyprland" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
-    sudo mkdir -p /mnt/hyprland
-    sudo mount "UUID=$root" /mnt/hyprland
-    sudo mkdir -p /mnt/hyprland/boot/efi
-    sudo mount -t proc none /mnt/hyprland/proc
-    sudo mount --rbind /dev /mnt/hyprland/dev
-    sudo mount --rbind /sys /mnt/hyprland/sys
-    sudo mount UUID=$efi /mnt/hyprland/boot/efi
+elif [ "$os" = "gentoo-new" ]; then
+  root=4f740754-40e1-43c6-af5a-3db6d30418a9
+  efi=4AC2-E661
+  if [ "$(grep -c "$root /mnt/gentoo-new" $HOME/tmp/lsblk.txt)" -ne 1 ]; then
+    sudo mkdir -p /mnt/gentoo-new
+    sudo mount "UUID=$root" /mnt/gentoo-new
+    sudo mkdir -p /mnt/gentoo-new/boot/efi
+    sudo mount -t proc none /mnt/gentoo-new/proc
+    sudo mount --rbind /dev /mnt/gentoo-new/dev
+    sudo mount --rbind /sys /mnt/gentoo-new/sys
+    sudo mount UUID=$efi /mnt/gentoo-new/boot/efi
   else
     echo already mounted
   fi
-  export CHROOT=/mnt/hyprland
-  echo 'export PS1="(hyprland-chroot) $PS1"'
-  sudo chroot /mnt/hyprland /bin/su - "$(id -un)"
+  export CHROOT=/mnt/gentoo-new
+  echo 'export PS1="(gentoo-new-chroot) $PS1"'
+  sudo chroot /mnt/gentoo-new /bin/su - "$(id -un)"
 elif [ "$os" = "archlinux" ]; then
   root=72ad4c57-06c1-41d6-a72f-34000c848126
   efi=F577-6798
