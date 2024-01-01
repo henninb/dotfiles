@@ -90,10 +90,10 @@ EOF
 sudo mkdir -p /etc/modprobe.d/
 
 if [ "$OS" = "Gentoo" ]; then
-  echo eselect kernel list
-  echo sudo emerge --update --newuse linux-headers
-  echo sudo emerge --update --newuse x11-drivers/nvidia-drivers
-  echo sudo emerge --update --newuse media-libs/vulkan-loader
+  eselect kernel list
+  sudo emerge --update --newuse linux-headers
+  sudo emerge --update --newuse x11-drivers/nvidia-drivers
+  sudo emerge --update --newuse media-libs/vulkan-loader
   sudo cp -v "$HOME/tmp/nvidia-installer-disable-nouveau.conf" /etc/modprobe.d/
   sudo cp -v "$HOME/tmp/xorg.conf" /etc/X11/xorg.conf
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
