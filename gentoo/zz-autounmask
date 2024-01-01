@@ -88,7 +88,7 @@ sys-apps/systemd policykit apparmor
 sys-apps/util-linux static-libs tty-helpers
 sys-auth/pambase elogind
 sys-auth/polkit elogind
-sys-boot/grub mount
+sys-boot/grub mount fonts efiemu sdl truetype
 sys-boot/plymouth -udev
 sys-devel/clang xml
 sys-devel/llvm -doc zstd

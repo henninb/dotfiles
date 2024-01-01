@@ -126,6 +126,7 @@ set -x PATH /opt/oracle-instantclient $PATH
 set -x PATH $HOME/.dynamic-colors/bin $PATH
 set -x PATH /usr/local/go/bin $PATH
 set -x PATH /usr/local/bin $PATH
+set -x PATH /usr/sbin $PATH
 set -x PATH /sbin $PATH
 set -x PATH $JAVA_HOME/bin $PATH
 set -x PATH /opt/fastly/bin $PATH
