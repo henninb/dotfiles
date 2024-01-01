@@ -16,6 +16,7 @@ echo "ver=$BRAVE_VER"
 #   fi
 # fi
 
+doas emerge --update --newuse  nss
 doas groupadd brave
 doas useradd -s /sbin/nologin -g brave brave > /dev/null
 echo "Press enter to continue"
