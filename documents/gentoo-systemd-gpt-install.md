@@ -148,7 +148,7 @@ eselect news read
 
 ## install packages
 ```
-emerge sys-kernel/gentoo-sources linux-firmware sys-kernel/genkernel cronie mlocate rsyslog sys-boot/grub:2 sudo dhcpcd dhcp gentoo-kernel-bin
+emerge sys-kernel/gentoo-sources linux-firmware sys-kernel/genkernel cronie mlocate rsyslog sys-boot/grub:2 sudo dhcpcd dhcp gentoo-kernel-bin doas
 etc-update
 ```
 
@@ -159,39 +159,21 @@ cat << EOF >> /etc/sudoers
 EOF
 ```
 
+## edit doas.conf
+```
+cat << EOF >> /etc/doas.conf
+permit nopass henninb as root
+EOF
+
+chmod 600 /etc/doas.conf
+```
+
 ## update system settings
 ```
 systemctl enable rsyslog
 systemctl enable cronie
 systemctl enable sshd
 systemctl enable dhcpcd
-```
-
-## network setup (enp1s0, eth0)
-```
-ip link
-
-cat << EOF > /etc/systemd/network/50-dhcp_eth0.network
-[Match]
-Name=eth0
-
-[Network]
-DHCP=yes
-EOF
-
-cat << EOF > /etc/systemd/network/50-dhcp_enp1s0.network
-[Match]
-Name=enp1s0
-
-[Network]
-DHCP=yes
-EOF
-
-```
-
-## update mtab
-```
-ln -sf /proc/self/mounts /etc/mtab
 ```
 
 # build and install the kernel (will take 42 min)
@@ -246,7 +228,6 @@ ls /boot/vmlinuz* /boot/initramfs*
 
 ## grub install (with gpt)
 ```
-echo 'GRUB_CMDLINE_LINUX="init=/usr/lib/systemd/systemd"' >> /etc/default/grub
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=gentoo-new
 grub-mkconfig -o /boot/grub/grub.cfg
 ````
