@@ -1,5 +1,17 @@
 #!/bin/sh
 
+GENTOO_PKGS="rust-bin setxkbmap i3lock qalculate-gtk hddtemp feh xdotool dunst wmname w3m sys-apps/dbus flameshot volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl net-misc/networkmanager numlockx nm-applet trayer-srg sxiv spacefm lxappearance hardinfo gentoolkit app-misc/jq pavucontrol neovim lsof"
+
+FAILURE=""
+ls -d /var/db/pkg/*/*| cut -f5- -d/
+for i in $GENTOO_PKGS; do
+if ! command -v "$i"; then
+  if ! sudo emerge --update --newuse "$i"; then
+      FAILURE="$i $FAILURE"
+    fi
+  fi
+done
+
 doas emerge --update --newuse app-eselect/eselect-repository
 doas eselect repository enable guru
 doas emaint sync -r guru
