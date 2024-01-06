@@ -92,6 +92,8 @@ sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 
 ## grub install uefi
 sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
+sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=archlinux
+sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=gentoo-new
 
 ## multiple OS auto update
  /etc/default/grub
