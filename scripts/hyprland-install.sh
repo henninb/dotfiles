@@ -24,6 +24,7 @@ doas emerge --update --newuse thunar
 doas emerge --update --newuse swaylock
 doas emerge --update --newuse kitty
 doas emerge --update --newuse wl-clipboard
+doas emerge --update --newuse gui-apps/mako
 
 # doas emerge --update --newuse looking-glass
 echo 'wlprop | jq -r '.name''
@@ -35,5 +36,13 @@ doas emerge --update --newuse gui-apps/hyprland-plugins
 doas emerge --update --newuse gui-apps/hyprpaper
 doas emerge --update --newuse gui-apps/hyprpicker
 doas emerge --update --newuse gui-wm/hyprland-contrib
+
+mkdir -p "$HOME/projects/github.com/Horus645"
+cd "$HOME/projects/github.com/Horus645" || exit
+git clone git@github.com:Horus645/swww.git
+cd ./swww || exit
+cargo build --release
+#sudo cargo install --path /usr/bin
+sudo mv target/release/swww /usr/bin
 
 exit 0
