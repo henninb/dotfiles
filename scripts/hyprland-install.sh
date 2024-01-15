@@ -26,6 +26,8 @@ doas emerge --update --newuse kitty
 doas emerge --update --newuse wl-clipboard
 doas emerge --update --newuse gui-apps/mako
 doas emerge --update --newuse dev-util/vulkan-tools
+doas emerge --update --newuse dracut
+doas emerge --update --newuse  x11-apps/mesa-progs
 
 # doas emerge --update --newuse looking-glass
 echo 'wlprop | jq -r '.name''
