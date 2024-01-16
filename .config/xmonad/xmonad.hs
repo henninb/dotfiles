@@ -134,7 +134,7 @@ main = do
     `additionalKeys` []
 
 myTerminal :: String
-myTerminal = "alacritty"
+myTerminal = "kitty"
 
 myBorderWidth :: Dimension
 myBorderWidth = 1
