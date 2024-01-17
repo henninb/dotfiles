@@ -64,8 +64,7 @@ blacklist nouveau
 options nouveau modeset=0
 EOF
 
-#ver=535.104.05
-ver=545.29.02
+ver=535.154.05
 
 lspci -k | grep -A 2 -E "(VGA|3D)"
 echo 'uninstall'
