@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 
 # if alacritty -e tmux new-session -A -s 'Default'; then
-if alacritty; then
+if kitty; then
   exit 0
-elif kitty; then
+elif alacritty; then
   exit 0
 elif st; then
   exit 0
