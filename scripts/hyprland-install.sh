@@ -22,6 +22,7 @@ doas emerge --update --newuse grim
 doas emerge --update --newuse wofi
 doas emerge --update --newuse thunar
 doas emerge --update --newuse swaylock
+doas emerge --update --newuse wlogout
 doas emerge --update --newuse kitty
 doas emerge --update --newuse wl-clipboard
 doas emerge --update --newuse gui-apps/mako
@@ -47,5 +48,6 @@ cd ./swww || exit
 cargo build --release
 #sudo cargo install --path /usr/bin
 sudo mv target/release/swww /usr/bin
+sudo mv target/release/swww-daemon /usr/bin
 
 exit 0
