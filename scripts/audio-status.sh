@@ -81,11 +81,19 @@ echo systemctl --user status pulseaudio.socket
 echo systemctl --user enable pulseaudio
 
 echo pipewire
+wpctl status
 echo wpctl set-default 55
+wpctl set-default 55
 echo pwtop
 
 echo pactl set-default-sink 'alsa_output.usb-Plantronics_Plantronics_BT600_2b33411b5e47614eae3d175f542553a4-00.analog-stereo'
 pactl info
+
+systemctl --user enable --now pipewire.service
+
+pw-cli ls Node
+
+pw-cli e 56 Props
 
 exit 0
 
