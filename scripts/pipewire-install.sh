@@ -47,5 +47,11 @@ fi
 
 pactl info
 
+echo pipewire
+wpctl status
+echo wpctl set-default 55
+wpctl set-default 55
+echo pwtop
+
 exit 0
 # vim: set ft=sh:
