@@ -17,6 +17,8 @@ user_agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Geck
 echo "Performing DNS lookup for $domain..."
 dig_output=$(dig $domain +short +time=15)
 
+dig @8.8.8.8 pro.globalatlantic.com | grep CNAME
+
 touch /tmp/mycookies.txt
 
 response=$(curl --max-time 15 -H "User-Agent: $user_agent" --cookie-jar /tmp/mycookies.txt -s -I -w "%{http_code}" -o /dev/null "https://$domain")
