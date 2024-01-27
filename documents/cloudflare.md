@@ -30,12 +30,12 @@ on the bottom right there will be an advanced section
 click on remove site from cloudflare
 
 ## heroku DNS on cloudflare
-Move over to Heroku. 
-Select app, go to the Settings, scroll down to add domain. 
-Add both non www and www domain versions. 
+Move over to Heroku.
+Select app, go to the Settings, scroll down to add domain.
+Add both non www and www domain versions.
 Each should produce different DNS target (alias): somethingreallyobscureandcomplex098080-980809.herokudns.com 54
 
-Move to Cloudflare DNS section and add two CNAME records. 
+Move to Cloudflare DNS section and add two CNAME records.
 One is going to be www linking to the heroku DNS target for the www address, the other one is going to be non www version like yourdomain.com 3 linking to the other DNS target.
 
 DONE
@@ -48,3 +48,7 @@ Heroku + Cloudflare: The Right Way | Viget 513
 You might be missing out on these security steps when using Cloudflare with Heroku.
 
 https://www.viget.com/articles/heroku-Cloudflare-the-right-way/
+
+## cloudflare tunnel setup
+docker run -d --restart=unless-stopped cloudflare/cloudflared:latest tunnel run --no-autoupdate --token <token>
+
