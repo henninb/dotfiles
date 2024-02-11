@@ -309,6 +309,7 @@ pip install leglight --user
 pip install streamdeck --user
 echo pip install streamdeck-linux-gui --user
 echo pip install docker-compose --user
+echo pip install awscli --user
 
 exit 0
 
