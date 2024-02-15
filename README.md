@@ -79,7 +79,7 @@
 ## Software
 | Description            | Applications                                                                         |
 | ------------           | -----                                                                                |
-| terminal               | alacritty, st, urxvt                                                                 |
+| terminal               | kitty, alacritty, st, urxvt                                                          |
 | editor                 | neovim, emacs, vscodium, intellij, neovide, notepadqq, vscode                        |
 | shell                  | fish, zsh, nushell, bash, dash, ksh, emacs (eshell)                                  |
 | shell prompt           | starship                                                                             |
@@ -87,7 +87,7 @@
 | file manager           | lf, pcmanfm, spacefm                                                                 |
 | bar                    | dzen2, conky, polybar                                                                |
 | launcher               | dmenu                                                                                |
-| window manager         | xmonad, awesome, hyperland                                                           |
+| window manager         | xmonad, hyperland                                                                    |
 | lock screen            | i3block                                                                              |
 | terminal multiplexer   | tmux, screen, tmate                                                                  |
 | media player           | vlc, mpv, mpd                                                                        |
