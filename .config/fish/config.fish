@@ -161,6 +161,7 @@ set -gx XDG_CONFIG_HOME "$HOME/.config"
 set -gx XDG_STATE_HOME "$HOME/.local/state"
 set -gx XDG_CACHE_HOME "$HOME/.cache"
 
+set -gx ANDROID_AVD_HOME "$HOME/.config/.android/avd"
 #set -gx ANDROID_HOME "$XDG_DATA_HOME"/android
 set -gx ANDROID_HOME "$HOME"/Android/Sdk
 set -gx AWS_SHARED_CREDENTIALS_FILE "$XDG_CONFIG_HOME"/aws/credentials
