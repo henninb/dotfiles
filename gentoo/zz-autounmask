@@ -132,3 +132,4 @@ media-libs/cogl gles2
 gui-apps/waybar tray systemd pipewire mpd logind network wifi sndio rfkill
 net-misc/networkmanager systemd tools wifi policykit bluetooth
 gnome-extra/nm-applet appindicator
+dev-util/kdevelop qmake
