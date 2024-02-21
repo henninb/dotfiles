@@ -21,6 +21,9 @@ adb shell
 adb devices
 
 
-emulator -avd Nexus_5X_API_26_APIs -writable-system
+emulator -avd Nexus_6_API_27 -writable-system -http-proxy http://192.168.10.40:8080
 adb root
 adb remount
+
+
+adb reboot
