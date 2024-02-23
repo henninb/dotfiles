@@ -307,6 +307,7 @@ pip install pynvim --user
 pip install podman-compose --user
 pip install leglight --user
 pip install streamdeck --user
+pip install awscli --user
 echo pip install streamdeck-linux-gui --user
 echo pip install docker-compose --user
 echo pip install awscli --user
