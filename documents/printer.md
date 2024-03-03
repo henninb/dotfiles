@@ -9,3 +9,5 @@ lp -d HP_Photosmart_Prem_C310_series  printer.md
 
 lpstat -o
 
+
+doas emerge --update --newuse   print/cups-filters
