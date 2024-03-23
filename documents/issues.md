@@ -201,7 +201,9 @@ stack --resolver ghc-8.6.5 setup
 stack --resolver ghc-8.6.5 init
 
 ## unifying logitech tool
+```
 solaar
+```
 
 # xrdp failed to start
 - https://github.com/neutrinolabs/xrdp/issues/911
