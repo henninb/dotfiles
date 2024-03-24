@@ -102,6 +102,7 @@ end
 # set -gx PATH $JAVA_HOME/bin $PATH
 set -x PATH /opt/brave-browser $PATH
 set -x PATH /opt/mullvad-browser/Browser $PATH
+set -x PATH /opt/google-cloud-sdk/bin $PATH
 set -x PATH $HOME/Applications $PATH
 set -x PATH /opt/yubico-authenticator $PATH
 set -x PATH $HOME/.ghcup/bin $PATH
