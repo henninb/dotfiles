@@ -1,4 +1,5 @@
-aws configure
+IAM
+Users
 
 AWS Access Key ID [****************2O55]:
 AWS Secret Access Key [****************V8ZV]:
