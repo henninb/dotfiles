@@ -1,22 +1,47 @@
 # azure commands
 
+## install az cli
+
 ## login
 ```
 az login
 ```
 
-## show group
+## show resouce group
 ```
-az group show --name brian_web --output table
-```
-
-## install az cli
-```
-sudo apt-get update
-sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg
+az group show --name brians-resource-group --output table
 ```
 
-curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc.gpg > /dev/null
+## set a subscription
+```
+az account list --output table
+az account set --subscription <subscription-id>
+```
 
-export AZ_REPO=$(lsb_release -cs)
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
+## create a resource group
+```
+az group create --name centralUSResourceGroup --location centralus
+az group show --name brians-resource-group --output table
+```
+
+## create a storage group
+```
+az storage account create --name bhcentralstorageaccount --resource-group centralUSResourceGroup --location centralus --sku Standard_LRS
+```
+
+## create a functional app
+```
+az functionapp create --consumption-plan-location eastus --name bh-test-funcapp --os-type Linux --resource-group  brians-resource-group --runtime node --runtime-version 18 --storage-account briansstorageaccunt
+```
+
+## settings for a functional app
+```
+az functionapp config appsettings set --name bh-myfunction-app --resource-group brians-resource-group --settings COOKIE_SECRET=123
+az functionapp config appsettings list --name bh-myfunction-app --resource-group brians-resource-group --output table
+```
+
+## publish a function app
+```
+func init bh-myfunction-app --worker-runtime node
+func azure functionapp publish bh-myfunction-app
+```
