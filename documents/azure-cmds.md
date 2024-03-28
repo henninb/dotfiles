@@ -47,10 +47,17 @@ func azure functionapp publish bh-myfunction-app
 ```
 ## add a ruleset
 ```
-az afd rule-set create -g centralUSResourceGroup --rule-set-name ruleset1 --profile-name bh-front-door --output table
-az afd rule-set list -g centralUSResourceGroup --profile-name bh-front-door --output table
+az afd rule-set create --resource-group centralUSResourceGroup --rule-set-name ruleset1 --profile-name bh-front-door --output table
+az afd rule-set list --resource-group centralUSResourceGroup --profile-name bh-front-door --output table
 ```
 
+
+## front door endpoint hostname - does not work
+```
+az network front-door frontend-endpoint show --front-door-name bh-front-door --resource-group centralUSResourceGroup
+az network front-door frontend-endpoint show --front-door-name bh-front-door --resource-group centralUSResourceGroup --name  bh-front-door
+az network front-door frontend-endpoint list --front-door-name bh-front-door --resource-group
+```
 
 ## front door list
 ```
