@@ -51,12 +51,15 @@ az afd rule-set create --resource-group centralUSResourceGroup --rule-set-name r
 az afd rule-set list --resource-group centralUSResourceGroup --profile-name bh-front-door --output table
 ```
 
-
-## front door endpoint hostname - does not work
+## front door create
 ```
-az network front-door frontend-endpoint show --front-door-name bh-front-door --resource-group centralUSResourceGroup
-az network front-door frontend-endpoint show --front-door-name bh-front-door --resource-group centralUSResourceGroup --name  bh-front-door
-az network front-door frontend-endpoint list --front-door-name bh-front-door --resource-group
+az afd profile create --profile-name bhfd -g centralUSResourceGroup --sku Standard_AzureFrontDoor --output table
+```
+
+## front door endpoint hostname
+```
+az afd endpoint create --profile-name bhfd --resource-group centralUSResourceGroup --output table --name juiceshop --endpoint-name juiceshop
+az afd endpoint list --profile-name bh-front-door --resource-group centralUSResourceGroup --output table
 ```
 
 ## front door list
