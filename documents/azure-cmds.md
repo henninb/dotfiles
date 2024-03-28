@@ -45,7 +45,7 @@ az functionapp config appsettings list --name bh-myfunction-app --resource-group
 func init bh-myfunction-app --worker-runtime node
 func azure functionapp publish bh-myfunction-app
 ```
-## add a ruleset
+## create a ruleset
 ```
 az afd rule-set create --resource-group centralUSResourceGroup --rule-set-name ruleset1 --profile-name bh-front-door --output table
 az afd rule-set list --resource-group centralUSResourceGroup --profile-name bh-front-door --output table
@@ -151,6 +151,6 @@ az afd rule action add \
     --resource-group centralUSResourceGroup --rule-set-name ruleset1  --profile-name bh-front-door \
     --rule-name HSFirstPartyCaptcha \
     --action-name RouteConfigurationOverride \
-    --origin-group HSFirstPartyCaptcha \
+    --origin-group HSCaptcha \
     --forwarding-protocol MatchRequest \
     --output table
