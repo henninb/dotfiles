@@ -86,6 +86,10 @@ az afd origin create --resource-group centralUSResourceGroup --origin-group-name
 
 az afd origin create --resource-group centralUSResourceGroup --origin-group-name HSEnforcer --profile-name bh-front-door --host-name client.perimeterx.net --http-port 80 --https-port 443 --origin-name HSEnforcer --name HSEnforcer --weight 1000 --priority 1 --origin-host-header client.perimeterx.net --output table
 
+az afd origin create --resource-group centralUSResourceGroup --origin-group-name HSCollector --profile-name bh-front-door --host-name collector-PXjJ0cYtn9.perimeterx.net --http-port 80 --https-port 443 --origin-name HSCollector --name HSCollector --weight 1000 --priority 1 --origin-host-header collector-PXjJ0cYtn9.perimeterx.net --output table
+
+az afd origin create --resource-group centralUSResourceGroup --origin-group-name HSCaptcha --profile-name bh-front-door --host-name captcha.px-cdn.net --http-port 80 --https-port 443 --origin-name HSCaptcha --name HSCaptcha --weight 1000 --priority 1 --origin-host-header captcha.px-cdn.net --output table
+
 ## create a front door rule-set rule
 az afd rule create \
     --resource-group centralUSResourceGroup --rule-set-name ruleset1  --profile-name bh-front-door \
