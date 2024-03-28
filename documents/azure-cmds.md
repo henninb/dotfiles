@@ -20,13 +20,13 @@ az account set --subscription <subscription-id>
 
 ## create a resource group
 ```
-az group create --name centralUSResourceGroup --location centralus
+az group create --name centralUSResourceGroup --location centralus --output table
 az group show --name brians-resource-group --output table
 ```
 
 ## create a storage group
 ```
-az storage account create --name bhcentralstorageaccount --resource-group centralUSResourceGroup --location centralus --sku Standard_LRS
+az storage account create --name bhcentralstorageaccount --resource-group centralUSResourceGroup --location centralus --sku Standard_LRS --output table
 ```
 
 ## create a functional app
@@ -47,7 +47,7 @@ func azure functionapp publish bh-myfunction-app
 ```
 ## add a ruleset
 ```
-az afd rule-set create -g centralUSResourceGroup --rule-set-name ruleset1 --profile-name bh-front-door
+az afd rule-set create -g centralUSResourceGroup --rule-set-name ruleset1 --profile-name bh-front-door --output table
 az afd rule-set list -g centralUSResourceGroup --profile-name bh-front-door --output table
 ```
 
@@ -63,18 +63,18 @@ az afd origin-group list --resource-group centralUSResourceGroup --profile-name 
 ```
 
 ## create an origin group
-az afd origin-group create -g centralUSResourceGroup --origin-group-name HSClient --profile-name bh-front-door --probe-request-type GET --probe-protocol Http --probe-interval-in-seconds 120 --sample-size 4 --successful-samples-required 3 --additional-latency-in-milliseconds 50
+az afd origin-group create -g centralUSResourceGroup --origin-group-name HSClient --profile-name bh-front-door --probe-request-type GET --probe-protocol Http --probe-interval-in-seconds 120 --sample-size 4 --successful-samples-required 3 --additional-latency-in-milliseconds 50 --output table
 
-az afd origin-group create -g centralUSResourceGroup --origin-group-name HSEnforcer --profile-name bh-front-door --probe-request-type GET --probe-protocol Http --probe-interval-in-seconds 120 --sample-size 4 --successful-samples-required 3 --additional-latency-in-milliseconds 50
+az afd origin-group create -g centralUSResourceGroup --origin-group-name HSEnforcer --profile-name bh-front-door --probe-request-type GET --probe-protocol Http --probe-interval-in-seconds 120 --sample-size 4 --successful-samples-required 3 --additional-latency-in-milliseconds 50 --output table
 
-az afd origin-group create -g centralUSResourceGroup --origin-group-name HSCollector --profile-name bh-front-door --probe-request-type GET --probe-protocol Http --probe-interval-in-seconds 120 --sample-size 4 --successful-samples-required 3 --additional-latency-in-milliseconds 50
+az afd origin-group create -g centralUSResourceGroup --origin-group-name HSCollector --profile-name bh-front-door --probe-request-type GET --probe-protocol Http --probe-interval-in-seconds 120 --sample-size 4 --successful-samples-required 3 --additional-latency-in-milliseconds 50 --output table
 
-az afd origin-group create -g centralUSResourceGroup --origin-group-name HSCaptcha --profile-name bh-front-door --probe-request-type GET --probe-protocol Http --probe-interval-in-seconds 120 --sample-size 4 --successful-samples-required 3 --additional-latency-in-milliseconds 50
+az afd origin-group create -g centralUSResourceGroup --origin-group-name HSCaptcha --profile-name bh-front-door --probe-request-type GET --probe-protocol Http --probe-interval-in-seconds 120 --sample-size 4 --successful-samples-required 3 --additional-latency-in-milliseconds 50 --output table
 
 ## Create an origin
-az afd origin create --resource-group centralUSResourceGroup --origin-group-name HSClient --profile-name bh-front-door --host-name client.perimeterx.net --http-port 80 --https-port 443 --origin-name HSClient --name HSClient --weight 1000 --priority 1 --origin-host-header client.perimeterx.net
+az afd origin create --resource-group centralUSResourceGroup --origin-group-name HSClient --profile-name bh-front-door --host-name client.perimeterx.net --http-port 80 --https-port 443 --origin-name HSClient --name HSClient --weight 1000 --priority 1 --origin-host-header client.perimeterx.net --output table
 
-az afd origin create --resource-group centralUSResourceGroup --origin-group-name HSEnforcer --profile-name bh-front-door --host-name client.perimeterx.net --http-port 80 --https-port 443 --origin-name HSEnforcer --name HSEnforcer --weight 1000 --priority 1 --origin-host-header client.perimeterx.net
+az afd origin create --resource-group centralUSResourceGroup --origin-group-name HSEnforcer --profile-name bh-front-door --host-name client.perimeterx.net --http-port 80 --https-port 443 --origin-name HSEnforcer --name HSEnforcer --weight 1000 --priority 1 --origin-host-header client.perimeterx.net --output table
 
 ## create a rule-set rule
 az afd rule create \
@@ -88,7 +88,8 @@ az afd rule create \
     --header-action Append \
     --header-name 'x-px-first-party' \
     --header-value '1' \
-    --match-processing-behavior Continue
+    --match-processing-behavior Continue \
+    --output table
 
 az afd rule action add \
     --resource-group centralUSResourceGroup --rule-set-name ruleset1  --profile-name bh-front-door \
@@ -96,7 +97,8 @@ az afd rule action add \
     --action-name ModifyRequestHeader \
     --header-action Append \
     --header-name 'x-px-enforcer-true-ip' \
-    --header-value '{client_ip}'
+    --header-value '{client_ip}' \
+    --output table
 
 az afd rule create \
     --resource-group centralUSResourceGroup --rule-set-name ruleset1  --profile-name bh-front-door \
@@ -109,14 +111,16 @@ az afd rule create \
     --source-pattern '/APPID_NO_PX/init.js' \
     --destination '/APPID_NO_PX/main.min.js' \
     --preserve-unmatched-path No \
-    --match-processing-behavior Stop
+    --match-processing-behavior Stop \
+    --output table
 
 az afd rule action add \
     --resource-group centralUSResourceGroup --rule-set-name ruleset1  --profile-name bh-front-door \
     --rule-name HSFirstPartyClient \
     --action-name RouteConfigurationOverride \
     --origin-group HSClient \
-    --forwarding-protocol MatchRequest
+    --forwarding-protocol MatchRequest \
+    --output table
 
 
 az afd rule create \
@@ -130,11 +134,13 @@ az afd rule create \
     --source-pattern '/APPID_NO_PX/captcha' \
     --destination '/APPID/' \
     --preserve-unmatched-path Yes \
-    --match-processing-behavior Stop
+    --match-processing-behavior Stop \
+    --output table
 
 az afd rule action add \
     --resource-group centralUSResourceGroup --rule-set-name ruleset1  --profile-name bh-front-door \
     --rule-name HSFirstPartyCaptcha \
     --action-name RouteConfigurationOverride \
     --origin-group HSFirstPartyCaptcha \
-    --forwarding-protocol MatchRequest
+    --forwarding-protocol MatchRequest \
+    --output table
