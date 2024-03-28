@@ -57,12 +57,12 @@ az afd rule-set list -g centralUSResourceGroup --profile-name bh-front-door --ou
 az afd profile list --output table
 ```
 
-## list origin-group
+## list front door origin-group
 ```
 az afd origin-group list --resource-group centralUSResourceGroup --profile-name  bh-front-door --output table
 ```
 
-## create an origin group
+## create a front door origin group
 az afd origin-group create -g centralUSResourceGroup --origin-group-name HSClient --profile-name bh-front-door --probe-request-type GET --probe-protocol Http --probe-interval-in-seconds 120 --sample-size 4 --successful-samples-required 3 --additional-latency-in-milliseconds 50 --output table
 
 az afd origin-group create -g centralUSResourceGroup --origin-group-name HSEnforcer --profile-name bh-front-door --probe-request-type GET --probe-protocol Http --probe-interval-in-seconds 120 --sample-size 4 --successful-samples-required 3 --additional-latency-in-milliseconds 50 --output table
@@ -76,13 +76,13 @@ az afd origin create --resource-group centralUSResourceGroup --origin-group-name
 
 az afd origin create --resource-group centralUSResourceGroup --origin-group-name HSEnforcer --profile-name bh-front-door --host-name client.perimeterx.net --http-port 80 --https-port 443 --origin-name HSEnforcer --name HSEnforcer --weight 1000 --priority 1 --origin-host-header client.perimeterx.net --output table
 
-## create a rule-set rule
+## create a front door rule-set rule
 az afd rule create \
     --resource-group centralUSResourceGroup --rule-set-name ruleset1  --profile-name bh-front-door \
     --order 1 \
     --match-variable UrlPath \
     --operator BeginsWith \
-    --match-values '/APPID_NO_PX/' \
+    --match-values '/jJ0cYtn9/' \
     --rule-name HSFirstPartyHeaders \
     --action-name ModifyRequestHeader \
     --header-action Append \
@@ -105,11 +105,11 @@ az afd rule create \
     --order 2 \
     --match-variable UrlPath \
     --operator BeginsWith \
-    --match-values '/APPID_NO_PX/init.js' \
+    --match-values '/jJ0cYtn9/init.js' \
     --rule-name HSFirstPartyClient \
     --action-name UrlRewrite \
-    --source-pattern '/APPID_NO_PX/init.js' \
-    --destination '/APPID_NO_PX/main.min.js' \
+    --source-pattern '/jJ0cYtn9/init.js' \
+    --destination '/jJ0cYtn9/main.min.js' \
     --preserve-unmatched-path No \
     --match-processing-behavior Stop \
     --output table
@@ -128,11 +128,11 @@ az afd rule create \
     --order 3 \
     --match-variable UrlPath \
     --operator BeginsWith \
-    --match-values '/APPID_NO_PX/captcha' \
+    --match-values '/jJ0cYtn9/captcha' \
     --rule-name HSFirstPartyCaptcha \
     --action-name UrlRewrite \
-    --source-pattern '/APPID_NO_PX/captcha' \
-    --destination '/APPID/' \
+    --source-pattern '/jJ0cYtn9/captcha' \
+    --destination '/PXjJ0cYtn9/' \
     --preserve-unmatched-path Yes \
     --match-processing-behavior Stop \
     --output table
