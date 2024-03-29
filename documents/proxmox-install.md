@@ -30,9 +30,14 @@ DataCenter -> Acme
 Accounts Add
 
 
+## clear the partition table
+```
+dd if=/dev/zero of=/dev/sdX bs=512 count=1
+```
+
 Datacenter -> pve -> disks -> ZFS
 Create ZFS
-label
+name -> local240
 
 Datacenter -> pve -> network
 vmbr0 -> CIDR 192.168.10.4/24 -> Gateway 192.168.10.1
@@ -53,7 +58,8 @@ bios -> OVMF or SeaBIOS
 next
 
 Disk
-Disk size -> 10gb
+Storage -> local240
+Disk size -> 16gb
 next
 
 CPU
