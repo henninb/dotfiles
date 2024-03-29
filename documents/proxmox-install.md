@@ -2,9 +2,17 @@ install a backup proxmox server on the existing network
 ip route add default via 192.168.10.6
 ip route add 192.168.10.0/24 via 192.168.10.6
 
-make ISOs available to install
+## make ISOs available to install
+```
 mv *.iso /var/lib/vz/template/iso/
 systemctl restart pveproxy.service
+```
+
+## update source list
+```
+vi /etc/apt/sources.list.d/pve-enterprise.list
+deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription
+```
 
 3 network ports
 MANAGEMENT -> Switch
