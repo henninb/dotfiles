@@ -90,3 +90,6 @@ d6:ce:2d:3f:df:fa	192.168.20.80	maggie-iphone
 
 
 usr/local/pkg/acme/acme.sh  --issue  --domain 'pfsense.bhenning.com' --dns 'dns_cf'  --home '/tmp/acme/bhenning.com-prod-cert/' --accountconf '/tmp/acme/bhenning.com-prod-cert/accountconf.conf' --force --always-force-new-domain-key --reloadCmd '/tmp/acme/bhenning.com-prod-cert/reloadcmd.sh' --log-level 3 --log '/tmp/acme/bhenning.com-prod-cert/acme_issuecert.log'
+
+
+Should VLANs be setup first -> y
