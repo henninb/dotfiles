@@ -1,3 +1,9 @@
+3 network ports
+MANAGEMENT -> Switch
+WAN -> CenturyLink
+LAN -> Switch (VLAN10, VLAN20)
+
+
 DataCenter -> Acme
 Accounts Add
 
