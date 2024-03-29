@@ -1,6 +1,9 @@
+## does not work
+```
 install a backup proxmox server on the existing network
 ip route add default via 192.168.10.6
 ip route add 192.168.10.0/24 via 192.168.10.6
+```
 
 ## make ISOs available to install
 ```
@@ -42,6 +45,10 @@ name -> local240
 Datacenter -> pve -> network
 vmbr0 -> CIDR 192.168.10.4/24 -> Gateway 192.168.10.1
 
+add a linux bridge
+vmbr1 -> enp1s0f0
+vmbr2 -> enp1s0f1
+
 create vm
 general
 name -> pfsense
@@ -78,6 +85,10 @@ next
 
 confirm
 finish
+
+pfsense -> hardware -> add -> network device
+vmbr1 (net0) -> WAN
+vmbr2 (net1) -> LAN
 
 Datacenter -> pve -> pfsense -> Hardware
 Add PCI device -> raw device -> 0000:04:000 -> raw device
