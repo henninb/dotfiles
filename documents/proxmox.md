@@ -43,6 +43,13 @@ pveam list local
 pveam download local-500 debian-10-turnkey-core_16.1-1_amd64.tar.gz
 ```
 
+## backup a guest
+```
+vzdump 101 --dumpdir /root --mode stop
+scp /root/vzdump-qemu-106-2022_11_30-21_56_04.vma root@0.0.0.0:/root/
+qmrestore vzdump-qemu-101-2024_03_29-18_06_10.vma 101 --storage local-240
+```
+
 ## backup (close) a guest
 ```
 qm clone 101 200 --name "pfsense-backup" --targetstorage local-500-backup
