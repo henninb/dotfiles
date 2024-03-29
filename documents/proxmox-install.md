@@ -14,6 +14,12 @@ vi /etc/apt/sources.list.d/pve-enterprise.list
 deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription
 ```
 
+## update source list
+```
+vi /etc/apt/sources.list.d# cat ceph.list
+deb http://download.proxmox.com/debian/ceph-quincy bookworm no-subscription
+```
+
 3 network ports
 MANAGEMENT -> Switch
 WAN -> CenturyLink
