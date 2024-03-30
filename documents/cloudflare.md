@@ -50,9 +50,6 @@ You might be missing out on these security steps when using Cloudflare with Hero
 https://www.viget.com/articles/heroku-Cloudflare-the-right-way/
 
 ## cloudflare tunnel setup
-docker run -d --name cloudflared --restart=unless-stopped cloudflare/cloudflared:latest tunnel run --no-autoupdate --token <token>
-
-docker run -d cloudflare/cloudflared:latest tunnel --no-autoupdate run --token <token>
-
-docker run -d --name cloudflared cloudflare/cloudflared:latest tunnel --no-autoupdate run --token <token>
-
+```
+docker run -d --name cloudflared --restart=unless-stopped cloudflare/cloudflared:latest tunnel --no-autoupdate run --token <token>
+```
