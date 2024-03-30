@@ -37,3 +37,9 @@ sudo vim /etc/pihole/custom.list
 docker exec pihole-server pihole -v
 pihole -v
 ```
+
+dns server validation
+```
+dig @192.168.10.10 google.com
+docker exec -it pihole-server dig www.google.com
+```
