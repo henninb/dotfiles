@@ -97,4 +97,8 @@ Should VLANs be setup first -> y
 
 Add Firewall for VLAN 20
 Protocol	Source	        Port	Destination	Port	Gateway	Queue	Schedule	Description	Actions
+IPv4        VLAN10 subnets	*	    *	        *	    *	    none	 	        allow VLAN 10 to access rule
+
+Add Firewall for VLAN 20
+Protocol	Source	        Port	Destination	Port	Gateway	Queue	Schedule	Description	Actions
 IPv4        VLAN20 subnets	*	    *	        *	    *	    none	 	        allow VLAN 20 to access rule
