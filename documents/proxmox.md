@@ -90,3 +90,8 @@ iface vmbr0 inet static
   brigee-vids 2-4092
 
 
+## import an existing zfs disk pool on a new server
+zpool import
+zpool import local-500 -f
+datacenter -> storage -> add -> ZFS -> id -> local-500
+qm rescan

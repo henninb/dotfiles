@@ -69,10 +69,10 @@ Account Keys -> bhenning.com-prod
 Service -> Dynamic DNS
 Service Type -> Cloudflare
 Interface to monitor -> VlAN10
-hostname -> pfsense
+hostname -> pfsense, proxmox
 domain -> bhenning.com
 username -> henninb@gmail.com
-password -> password
+password -> global api key
 
 
 Static ARP	MAC address	IP address	Hostname
