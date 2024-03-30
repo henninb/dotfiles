@@ -93,3 +93,8 @@ usr/local/pkg/acme/acme.sh  --issue  --domain 'pfsense.bhenning.com' --dns 'dns_
 
 
 Should VLANs be setup first -> y
+
+
+Add Firewall for VLAN 20
+Protocol	Source	        Port	Destination	Port	Gateway	Queue	Schedule	Description	Actions
+IPv4        VLAN20 subnets	*	    *	        *	    *	    none	 	        allow VLAN 20 to access rule
