@@ -33,7 +33,7 @@ elif [ "$platform" = "docker" ]; then
   echo docker exec -it --user root pihole-server ss --listen
   echo docker logs pihole-server
 
-  if command -v docker-compose; then
+  if command -v docker; then
     # docker network create --driver=bridge mynetwork
     # docker run -d --name web1 --net mynetwork jmalloc/echo-server:latest
     # docker run -d --name web2 --net mynetwork jmalloc/echo-server:latest
