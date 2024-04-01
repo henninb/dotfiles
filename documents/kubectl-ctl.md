@@ -22,3 +22,6 @@ kubectl config current-context
 
 ## get nodes
 kubectl get nodes
+
+## initialize k8
+kubeadm init --control-plane-endpoint=192.168.10.60 --node-name k8-controller --pod-network-cidr=10.244.0.0/16
