@@ -1,6 +1,7 @@
 #!/bin/sh
 
 eselect kernel list
+echo
 
 cd /boot
 # Get a list of all kernel files except the newest two
@@ -36,6 +37,8 @@ for kernel in $OLD_KERNELS; do
   doas rm config-${kernel#vmlinuz-}**
   sudo rm initramfs-${kernel#vmlinuz-}*.img
 done
+
+doas grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "Old kernel files removed successfully."
 cd -
