@@ -49,8 +49,8 @@ pactl info
 
 echo pipewire
 wpctl status
-echo wpctl set-default 55
-wpctl set-default 55
+echo wpctl set-default 56
+wpctl set-default 56
 echo pwtop
 
 exit 0
