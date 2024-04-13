@@ -12,5 +12,10 @@ mkdir -p "$HOME/grafana-data"
 export CURRENT_UID="$(id -u)"
 export CURRENT_GID="$(id -g)"
 
+export DOCKER_HOST=ssh://pi@192.168.10.25
 
-docker run --name grafana-server -d --restart unless-stopped --privileged -p 3000:3000 --env-file grafana.env --user "$CURRENT_UID:$CURRENT_GID" -v "$HOME/grafana-data:/var/lib/grafana" grafana/grafana:9.3.2
+docker rm -f grafana-server
+# docker run --name grafana-server -d --restart unless-stopped --privileged -p 3000:3000 --env-file grafana.env --user "$CURRENT_UID:$CURRENT_GID" -v "/home/pi/grafana-data:/var/lib/grafana" grafana/grafana:10.4.2
+docker run --name grafana-server -d --restart unless-stopped --privileged -p 3000:3000 --env-file grafana.env grafana/grafana:10.4.2
+
+exit 0
