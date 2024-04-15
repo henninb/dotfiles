@@ -35,9 +35,9 @@ elif [ "$platform" = "docker" ]; then
   echo docker logs kibana-server
   echo docker logs elasticsearch-server
 
-  if command -v docker-compose; then
-    docker-compose build
-    docker-compose up
+  if command -v docker; then
+    docker compose build
+    docker compose up
   fi
 fi
 

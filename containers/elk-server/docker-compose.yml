@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   elasticsearch-server:
-    image: elasticsearch:8.5.3
+    image: elasticsearch:8.13.0
     container_name: elasticsearch-server
     hostname: elasticsearch-server
     environment:
@@ -24,7 +24,7 @@ services:
     depends_on:
       - logstash-server
   kibana-server:
-    image: kibana:8.5.3
+    image: kibana:8.13.0
     container_name: kibana-server
     hostname: kibana-server
     ports:
@@ -35,7 +35,7 @@ services:
       - "hornsup:${HOST_IP}"
       - "elasticsearch:${HOST_IP}"
   logstash-server:
-    image: logstash:8.5.3
+    image: logstash:8.13.0
     container_name: logstash-server
     hostname: logstash-server
     environment:
