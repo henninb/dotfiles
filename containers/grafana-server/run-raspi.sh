@@ -8,11 +8,11 @@ GF_USER=henninb
 GF_PASS=monday1
 EOF
 
-mkdir -p "$HOME/grafana-data"
 export CURRENT_UID="$(id -u)"
 export CURRENT_GID="$(id -g)"
-sudo chown -R $CURRENT_UID:$CURRENT_GID /home/pi/grafana-data
-sudo chmod -R 770 /home/pi/grafana-data
+ssh pi mkdir -p "/home/pi/grafana-data"
+ssh sudo chown -R $CURRENT_UID:$CURRENT_GID /home/pi/grafana-data
+ssh sudo chmod -R 770 /home/pi/grafana-data
 
 export DOCKER_HOST=ssh://pi@192.168.10.25
 
