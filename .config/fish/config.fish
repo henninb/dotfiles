@@ -235,7 +235,6 @@ git fetch
 git merge origin/main > /dev/null
 cd -
 
-
 # vim keybindings
 fish_vi_key_bindings
 
