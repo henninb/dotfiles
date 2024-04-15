@@ -122,6 +122,7 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --update --newuse sys-fs/btrfs-progs
   doas emerge --update --newuse docker-compose
   sudo emerge --update --newuse app-containers/docker
+  sudo emerge --update --newuse app-containers/docker-buildx
   doas systemctl enable docker --now
   # sudo rc-update add docker default
   # sudo rc-service docker start
