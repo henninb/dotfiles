@@ -259,6 +259,34 @@ set -g fish_color_end white
 # set -g fish_color_param #0074D9
 set -g fish_color_invalid white
 
+if status is-interactive
+    set -gx TERM xterm-256color
+end
+
+if set -q SSH_CLIENT
+    echo "This is an SSH session."
+else if set -q SSH_CONNECTION
+    echo "This is also an SSH session."
+end
+
+function decode_base64_url
+  set len (math "$argv[1]" % 4)
+  set result $argv[1]
+
+  switch $len
+    case 2
+      set result "$argv[1]"'=='
+    case 3
+      set result "$argv[1]"'='
+  end
+
+  echo $result | tr '_-' '/+' | openssl enc -d -base64
+end
+
+function decode_jwt
+  decode_base64_url (echo -n $argv[2] | cut -d "." -f $argv[1]) | jq .
+end
+
 starship init fish | source
 
-# vim: set ft=sh:
+# vim: set ft=fish:
