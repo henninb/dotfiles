@@ -263,9 +263,9 @@ if status is-interactive
 end
 
 if set -q SSH_CLIENT
-    echo "This is an SSH session."
+  echo "This is an SSH session." > /dev/null
 else if set -q SSH_CONNECTION
-    echo "This is also an SSH session."
+  echo "This is an SSH session." > /dev/null
 end
 
 function decode_base64_url
