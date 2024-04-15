@@ -22,7 +22,7 @@ output {
 EOF
 
 cat > logstash.env <<EOF
-monitoring.elasticsearch.hosts=http://192.168.100.124:9200
+monitoring.elasticsearch.hosts=http://192.168.10.25:9200
 EOF
 
 mkdir -p "$HOME/logstash-data"
@@ -31,9 +31,12 @@ mkdir -p "$HOME/logstash-pipeline"
 export CURRENT_UID="$(id -u)"
 export CURRENT_GID="$(id -g)"
 
+ssh pi mkdir -p "/home/pi/logstash-data"
+ssh pi sudo chown -R $CURRENT_UID:$CURRENT_GID /home/pi/logstash-data
+ssh pi sudo chmod -R 770 /home/pi/logstash-data
 
-#docker run --name logstash-server -d --restart unless-stopped -p 4560:4560 --env-file influxdb.env --user "$CURRENT_UID:$CURRENT_GID" -v "$HOME/logstash-data:/somedir" logstash:7.10.1
-
-docker run --name logstash-server -d --restart unless-stopped -p 4560:4560 --env-file influxdb.env --user "$CURRENT_UID:$CURRENT_GID" -v "$HOME/logstash-pipeline:/usr/share/logstash/pipeline" logstash:7.10.1
+export DOCKER_HOST=ssh://pi@192.168.10.25
+docker rm -f logstash-server
+docker run --name logstash-server -d --restart unless-stopped -p 4560:4560 --env-file logstash.env --user "$CURRENT_UID:$CURRENT_GID" -v "$HOME/logstash-pipeline:/usr/share/logstash/pipeline" logstash:8:13.1
 
 exit 0
