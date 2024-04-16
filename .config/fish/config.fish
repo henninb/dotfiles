@@ -259,7 +259,7 @@ set -g fish_color_end white
 set -g fish_color_invalid white
 
 if status is-interactive
-    set -gx TERM xterm-256color
+  #set -gx TERM xterm-256color
 end
 
 if set -q SSH_CLIENT
