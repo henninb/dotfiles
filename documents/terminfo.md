@@ -1,4 +1,5 @@
-/usr/lib64/kitty/terminfo/x/xterm-kitty
-scp /usr/share/terminfo/x/xterm-kitty debian:/home/henninb
+scp /usr/share/terminfo/x/xterm-kitty debian-dockerserver:/home/henninb
+ssh debian-dockerserver sudo cp xterm-kitty /usr/share/terminfo/x/xterm-kitty
 
-ssh debian sudo cp xterm-kitty /usr/share/terminfo/x/xterm-kitty
+scp /usr/share/terminfo/x/xterm-kitty proxmox:/root
+ssh proxmox sudo cp xterm-kitty /usr/share/terminfo/x/xterm-kitty
