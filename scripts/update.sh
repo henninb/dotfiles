@@ -88,8 +88,13 @@ elif [ "$OS" = "Gentoo" ]; then
     if [ ! -f "/boot/vmlinuz-${eselect}-gentoo-x86_64" ]; then
       echo "complie the kernel '$eselect' as it is newer than '$uname'"
       doas genkernel all
-      # doas genkernel --no-microcode --install all
-      doas grub-mkconfig -o /boot/grub/grub.cfg
+      if [ $? -eq 0 ]; then
+        # doas genkernel --no-microcode --install all
+        doas grub-mkconfig -o /boot/grub/grub.cfg
+      else
+        echo 'why did the kernel build fail?'
+        exit 1
+      fi
     fi
   fi
 
