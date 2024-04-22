@@ -135,3 +135,6 @@ gnome-extra/nm-applet appindicator
 dev-util/kdevelop qmake
 media-gfx/imagemagick perl
 dev-lang/perl ithreads
+app-pda/gtkpod cdr gstreamer
+media-sound/clementine ipod
+media-sound/rhythmbox ipod
