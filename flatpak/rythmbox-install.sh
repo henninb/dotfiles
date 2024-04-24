@@ -1,9 +1,9 @@
 #!/bin/sh
 
-cat << EOF > dbeaver-flatpak
+cat << EOF > rythmbox-flatpak
 #!/bin/sh
 
-flatpak run io.dbeaver.DBeaverCommunity
+flatpak run org.gnome.Rhythmbox3
 
 exit 0
 # vim: set ft=sh:
@@ -12,10 +12,10 @@ EOF
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-flatpak --user -y install flathub io.dbeaver.DBeaverCommunity
+flatpak --user -y install flathub org.gnome.Rhythmbox3
 
-chmod 755 dbeaver-flatpak
-mv -v dbeaver-flatpak "$HOME/.local/bin/"
+chmod 755 rythmbox-flatpak
+mv -v rythmbox-flatpak "$HOME/.local/bin/"
 
 exit 0
 
