@@ -72,3 +72,6 @@ https://github.com/ohmyzsh/ohmyzsh/commit/8f33231823dbf6c68ccc65fbb028fce6ff1efd
 ```
 git stash drop <stash_id>
 ```
+
+## remote git repo on my local network
+git remote add origin pi:/home/pi/downloads/keepass-git
