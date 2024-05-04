@@ -138,3 +138,4 @@ dev-lang/perl ithreads
 app-pda/gtkpod cdr gstreamer
 media-sound/clementine ipod
 media-sound/rhythmbox ipod
+media-libs/freetype harfbuzz
