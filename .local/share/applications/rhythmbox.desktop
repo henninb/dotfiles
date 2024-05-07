@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Rhythmbox
+Comment=Rhythmbox
+Exec=rhythmbox-client
+Terminal=false
+StartupNotify=true

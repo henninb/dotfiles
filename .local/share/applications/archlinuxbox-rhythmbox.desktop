@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=rythmbox
+Type=Application
+Categories=Music;X-Red-Hat-Base;
+Exec=/usr/bin/distrobox-enter  -n archlinuxbox --   rhythmbox-client  %U
+MimeType=application/vnd.oasis.opendocument.base;application/vnd.sun.xml.base;
+Name=Rhythmbox  (on archlinuxbox)
+GenericName=Rhythmbox  (on archlinuxbox)
+Comment=
+StartupNotify=true
+X-GIO-NoFuse=true
