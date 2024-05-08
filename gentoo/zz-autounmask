@@ -137,5 +137,5 @@ media-gfx/imagemagick perl
 dev-lang/perl ithreads
 app-pda/gtkpod cdr gstreamer
 media-sound/clementine ipod
-media-sound/rhythmbox ipod
+media-sound/rhythmbox ipod udev dbus keyring
 media-libs/freetype harfbuzz
