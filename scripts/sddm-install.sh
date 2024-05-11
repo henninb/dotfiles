@@ -31,15 +31,15 @@ Exec=xmonad-start
 Icon=/usr/share/pixmaps/xmonad.png
 EOF
 
-cat > "$HOME/tmp/xmonad.desktop" << EOF
+cat > "$HOME/tmp/hyprland.desktop" << EOF
 [Desktop Entry]
 Type=Application
 Name=Hyprland
-Comment=hyprland tiling window manager
+Comment=Hyprland Wayland Session
 Exec=Hyprland
-#DesktopNames=xmonad
-Icon=
+DesktopNames=Hyprland
 EOF
+
 
 cat > "$HOME/tmp/cinnamon.desktop" << EOF
 [Desktop Entry]
@@ -83,6 +83,7 @@ User=henninb
 Session=xmonad
 EOF
 
+sudo cp -v "$HOME/tmp/hyprland.desktop" /usr/share/wayland-sessions/hyprland.desktop
 ls -l /usr/share/wayland-sessions
 
 sudo mkdir -p /etc/sddm/
