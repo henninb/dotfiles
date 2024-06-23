@@ -69,6 +69,7 @@ abbr -a pacman 'doas pacman --noconfirm --needed -S '
 abbr -a dnf 'doas dnf install -y '
 abbr -a zypper 'doas zypper install -y '
 abbr -a xbps-install 'doas xbps-install -y '
+abbr -a yt 'yt-dlp -x --audio-format mp3 '
 
 abbr -a .. 'cd ..'
 abbr -a ... 'cd ../..'

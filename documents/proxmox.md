@@ -95,3 +95,12 @@ zpool import
 zpool import local-500 -f
 datacenter -> storage -> add -> ZFS -> id -> local-500
 qm rescan
+
+
+## ipod usb port
+```
+qm set 106 -usb0 host=05ac:1301
+```
+
+# remove nag screen
+sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js

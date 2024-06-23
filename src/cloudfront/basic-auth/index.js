@@ -1,7 +1,6 @@
-import { Buffer } from 'buffer';
+const { Buffer } = require('buffer');
 
-// Define the handler as an async function
-export const handler = async (event) => {
+exports.handler = async (event) => {
     let isAllowedAccess = false;
 
     console.log('lambda function');
@@ -16,7 +15,7 @@ export const handler = async (event) => {
     if (!isAllowedAccess) {
         const response = {
             status: '401',
-            body: JSON.stringify('no access for you'),
+            body: JSON.stringify('no access for you index.js'),
             headers: {
                 'www-authenticate': [{ key: 'WWW-Authenticate', value: 'Basic' }],
             },
@@ -26,4 +25,3 @@ export const handler = async (event) => {
         return request;
     }
 };
-

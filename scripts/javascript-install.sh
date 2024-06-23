@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# curl -s 'https://nodejs.org/download/release/latest-v18.x/' | grep node | tail -1
-curl -s 'https://nodejs.org/download/release/latest-v18.x/' | grep node | tail -1 | cut -d' ' -f2 | cut -d "-" -f 2  | sed 's/.tar.*//' | sed 's/v//'
-node_ver=$(curl -s 'https://nodejs.org/download/release/latest-v18.x/' | grep node | tail -1 | cut -d' ' -f2 | cut -d "-" -f 2  | sed 's/.tar.*//' | sed 's/v//')
+# curl -s 'https://nodejs.org/download/release/latest-v22.x/' | grep node | tail -1
+curl -s 'https://nodejs.org/download/release/latest-v22.x/' | grep node | tail -1 | cut -d' ' -f2 | cut -d "-" -f 2  | sed 's/.tar.*//' | sed 's/v//'
+node_ver=$(curl -s 'https://nodejs.org/download/release/latest-v22.x/' | grep node | tail -1 | cut -d' ' -f2 | cut -d "-" -f 2  | sed 's/.tar.*//' | sed 's/v//')
 # node_ver=18.15.0
 #sudo apt install -y yarn
 # unset NVM_DIR
@@ -47,12 +47,12 @@ else
   exit 1
 fi
 
-curl -qL https://www.npmjs.com/install.sh | sh
+curl -s -qL https://www.npmjs.com/install.sh | sh
 
 echo "doesn't seem to work"
 if ! command -v nvm; then
   echo "nvm is not in the path"
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
+  curl -s -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | sh
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
   if ! nvm install "$node_ver"; then

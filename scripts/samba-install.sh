@@ -3,7 +3,9 @@
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   echo "archlinux"
 elif [ "$OS" = "Gentoo" ]; then
-  echo "gentoo"
+  doas emerge --update --newuse  samba
+  doas systemctl --now enable smbd.service
+  doas systemctl --now enable nmbd.service
 elif [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Raspbian GNU/Linux" ]; then
   echo "debian"
 elif [ "$OS" = "Void" ]; then

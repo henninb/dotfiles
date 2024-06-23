@@ -317,6 +317,8 @@ echo pip install streamdeck-linux-gui --user
 echo pip install docker-compose --user
 echo pip install awscli --user
 
+echo yt-dlp -x --audio-format mp3
+
 exit 0
 
 # vim: set ft=sh:
