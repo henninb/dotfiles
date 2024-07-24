@@ -20,6 +20,7 @@ doas emerge --update --newuse gui-apps/waybar
 doas emerge --update --newuse swappy
 doas emerge --update --newuse grim
 doas emerge --update --newuse wofi
+doas emerge --update --newuse cliphist
 doas emerge --update --newuse thunar
 doas emerge --update --newuse swaylock
 doas emerge --update --newuse wlogout
