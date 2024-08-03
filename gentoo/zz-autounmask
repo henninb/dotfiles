@@ -74,7 +74,7 @@ media-video/ffmpeg fdk x264 libv4l v4l blueray cdio gmp encode mp3 network opens
 media-video/mpv libmpv
 media-video/obs-studio speex ssl truetype v4l vlc
 media-video/pipewire X bluetooth dbus extra flatpak systemd
-net-analyzer/wireshark gtk qt5
+net-analyzer/wireshark gtk qt5 wayland-egl wayland
 net-dns/avahi mdnsresponder-compat
 net-dns/dnsmasq script
 net-fs/samba client gpg systemd
