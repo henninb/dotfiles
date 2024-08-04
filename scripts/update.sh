@@ -76,11 +76,16 @@ elif [ "$OS" = "Gentoo" ]; then
   sudo emerge --depclean 2>&1 | tee -a "$HOME/tmp/update-$$.log"
   doas revdep-rebuild
   doas emerge @preserved-rebuild
+
+###  compile kernel
   kernel_list=$(eselect kernel list)
+  echo "kernel_list=$kernel_list"
   versions=$(echo "$kernel_list" | awk -F ' ' '{print $2}')
+  echo "versions=$versions"
   sorted_versions=$(echo "$kernel_list" | awk -F ' ' '{print $2}' | grep linux | sort -V)
-  # newest_kernel="${sorted_versions[0]}"
-  newest_kernel=$(echo $sorted_versions  | tail -1)
+  echo "sorted_versions=$sorted_versions"
+  newest_kernel=$(echo $sorted_versions | awk '{print $NF}')
+  echo "newest_kernel=$newest_kernel"
   doas eselect kernel set "$newest_kernel"
   uname=$(uname -srm | cut -d' ' -f2 | cut -d- -f1)
   eselect=$(eselect kernel list | tail -1 | cut -d- -f2)
@@ -97,6 +102,7 @@ elif [ "$OS" = "Gentoo" ]; then
       fi
     fi
   fi
+###  compile kernel
 
   # blender=$(find /usr/bin -name "blender-*[0-9]")
   # if [ -z ${blender+x} ]; then echo "var is unset"; else sudo ln -sfn "${blender}" /usr/bin/blender; fi
