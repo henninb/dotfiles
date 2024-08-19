@@ -77,7 +77,7 @@ media-video/pipewire X bluetooth dbus extra flatpak systemd
 net-analyzer/wireshark gtk qt5 wayland-egl wayland
 net-dns/avahi mdnsresponder-compat
 net-dns/dnsmasq script
-net-fs/samba client gpg systemd
+net-fs/samba client -gpg systemd -addc
 net-libs/zeromq drafts
 net-misc/spice-gtk usbredir
 net-wireless/gnuradio network
