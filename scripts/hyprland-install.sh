@@ -1,6 +1,6 @@
 #!/bin/sh
 
-GENTOO_PKGS="rust-bin setxkbmap i3lock qalculate-gtk hddtemp feh xdotool dunst wmname w3m sys-apps/dbus flameshot volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl net-misc/networkmanager numlockx nm-applet trayer-srg sxiv spacefm lxappearance hardinfo gentoolkit app-misc/jq pavucontrol neovim lsof"
+GENTOO_PKGS="rust-bin setxkbmap i3lock qalculate-gtk hddtemp feh xdotool dunst wmname w3m sys-apps/dbus flameshot volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl net-misc/networkmanager numlockx nm-applet trayer-srg sxiv spacefm lxappearance hardinfo gentoolkit app-misc/jq pavucontrol neovim lsof clipman gammastep"
 
 FAILURE=""
 ls -d /var/db/pkg/*/*| cut -f5- -d/

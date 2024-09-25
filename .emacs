@@ -654,9 +654,9 @@
    :ensure t
 )
 
-(use-package helm-dired-history
-  :ensure t
-)
+; (use-package helm-dired-history
+  ; :ensure t
+; )
 
  (use-package dired-single
     :ensure t
@@ -668,9 +668,9 @@
 (use-package dired-collapse
     :defer t)
 
-(require 'savehist)
-(add-to-list 'savehist-additional-variables 'helm-dired-history-variable)
-(savehist-mode 1)
+; (require 'savehist)
+; (add-to-list 'savehist-additional-variables 'helm-dired-history-variable)
+; savehist-mode 1)
 
 (use-package ido
    :ensure t
