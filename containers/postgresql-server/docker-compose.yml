@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   postgresql-server:
-    image: postgres:14.4
+    image: postgres:17.1
     container_name: postgresql-server
     ports:
       - "5433:5432"

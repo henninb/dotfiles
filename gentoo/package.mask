@@ -2,7 +2,8 @@
 # =dev-libs/boost-1.79.0
 # =dev-libs/boost-1.82.0
 # =dev-libs/boost-1.83.0
-=dev-libs/boost-1.85.0-r1
+>=dev-libs/boost-1.85
+>=app-containers/runc-1.2.0
 # blender issue
 # >dev-libs/libfmt-8.1.1
 # =dev-python/cryptography-40.0.1
