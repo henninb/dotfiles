@@ -28,10 +28,12 @@ export CURRENT_UID="$(id -u)"
 export CURRENT_GID="$(id -g)"
 
 # docker run --name postgresql-server -d --restart unless-stopped -p 5432:5432 -e POSTGRES_PASSWORD=monday1 --user "$CURRENT_UID:$CURRENT_GID" -v "$HOME/postgresql-data:/var/lib/postgresql/data" postgres:15.1
-docker run --name postgresql-server -d --restart unless-stopped -p 5432:5432 -e POSTGRES_PASSWORD=monday1 --user "$CURRENT_UID:$CURRENT_GID" -v "$HOME/postgresql-data:/var/lib/postgresql/data" postgres:16.1
+# docker run --name postgresql-server -d --restart unless-stopped -p 5432:5432 -e POSTGRES_PASSWORD=monday1 --user "$CURRENT_UID:$CURRENT_GID" -v "$HOME/postgresql-data:/var/lib/postgresql/data" postgres:16.1
+docker run --name postgresql-server -d --restart unless-stopped -p 5432:5432 -e POSTGRES_PASSWORD=monday1 --user "$CURRENT_UID:$CURRENT_GID" -v "$HOME/postgresql-data:/var/lib/postgresql/data" postgres:17.1
 
 echo docker exec -it postgresql-server psql postgres -U postgres
 echo docker exec -it postgresql-server psql finance_db -U henninb
 cat /tmp/sql-setup
+echo psql finance_db -h 192.168.10.10 -U henninb
 
 exit 0
