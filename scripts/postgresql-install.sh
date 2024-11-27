@@ -116,15 +116,15 @@ elif [ "$OS" = "Linux Mint" ]; then
 elif [ "$OS" = "Gentoo" ]; then
   # sudo eselect news read
   sudo emerge --update --newuse dev-db/postgresql
-  sudo emerge --config dev-db/postgresql:16
+  sudo emerge --config dev-db/postgresql:17
   doas emerge --update --newuse ossp-uuid
   #sudo rc-update add postgresql default
   #sudo postgresql-setup initdb
-  sudo mv -v "$HOME/tmp/pg_hba.conf"  /var/lib/postgresql/16/data/pg_hba.conf
-  sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/postgresql/16/data/postgresql.conf
-  sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql-16/postgresql.conf
-  doas systemctl enable postgresql-16
-  doas systemctl start postgresql-16
+  sudo mv -v "$HOME/tmp/pg_hba.conf"  /var/lib/postgresql/17/data/pg_hba.conf
+  sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/postgresql/17/data/postgresql.conf
+  sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql-17/postgresql.conf
+  doas systemctl enable postgresql-17
+  doas systemctl start postgresql-17
   sudo -u postgres sh -c 'cd /tmp && psql postgres -U postgres < /tmp/install_psql_settings.sql'
   netstat -na | grep 5432 | grep LIST
 elif [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Linux" ]; then
@@ -134,8 +134,8 @@ elif [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Linux" ]; then
   doas systemctl enable postgresql
   doas systemctl start postgresql
   doas systemctl status postgresql
-  sudo mv -v "$HOME/tmp/pg_hba.conf" /etc/postgresql/13/main/pg_hba.conf
-  sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql/13/main/postgresql.conf
+  sudo mv -v "$HOME/tmp/pg_hba.conf" /etc/postgresql/17/main/pg_hba.conf
+  sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql/17/main/postgresql.conf
   doas systemctl restart postgresql
   # mv -v install_psql_settings.sql /tmp
   sudo -u postgres sh -c 'cd /tmp && psql postgres -U postgres < /tmp/install_psql_settings.sql'
