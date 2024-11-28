@@ -9,3 +9,11 @@ export ORG_ID="your_org_id"
 # influx v1 shell
 # influx auth create
 influx auth create --org $ORG_NAME --read-buckets --write-buckets
+
+
+docker exec -it influxdb-server influx setup \
+  --username henninb \
+  --password monday11 \
+  --org hornsup \
+  --bucket bucket \
+  --force
