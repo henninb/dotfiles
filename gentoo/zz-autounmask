@@ -139,3 +139,4 @@ app-pda/gtkpod cdr gstreamer
 media-sound/clementine ipod
 media-sound/rhythmbox ipod udev dbus keyring
 media-libs/freetype harfbuzz
+dev-libs/icu abi_x86_32
