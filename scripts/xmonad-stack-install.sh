@@ -736,8 +736,17 @@ git branch --set-upstream-to=origin/main main
 mkdir -p "$HOME/keepass-git"
 cd "$HOME/keepass-git" || exit
 git init .
-git remote add origin pi:/home/pi/downloads/keepass-git
-# git remote add origin pi@192.168.10.25:/home/pi/downloads/keepass-git
+# git remote add origin pi:/home/pi/downloads/keepass-git
+git remote add raspi pi:/home/pi/downloads/keepass-git
+git remote add origin ssh://git@gitlab.lan:2222/henninb/keepass-git.git
+git branch --set-upstream-to=origin/main main
+git fetch
+git merge origin/main
+
+mkdir -p "$HOME/files"
+cd "$HOME/files" || exit
+git init .
+git remote add origin ssh://git@gitlab.lan:2222/henninb/files-backup.git
 git branch --set-upstream-to=origin/main main
 git fetch
 git merge origin/main
