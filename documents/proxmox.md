@@ -60,6 +60,13 @@ qm clone 101 200 --name "pfsense-backup" --targetstorage local-500-backup
 
 scp pfSense-CE-2.7.0-DEVELOPMENT-amd64-latest.iso proxmox:/var/lib/vz/template/iso/
 
+ln -s /path/to/iso-image.iso /var/lib/vz/template/iso/iso-name.iso
+ln -s /local-2tb/debian-12.8.0-amd64-netinst.iso /var/lib/vz/template/iso/debian-12.8.0-amd64-netinst.iso
+ln -s /local-2tb/Win10_22H2_English_x64v1.iso /var/lib/vz/template/iso/Win10_22H2_English_x64v1.iso
+ln -s /local-2tb/virtio-win-0.1.248.iso /var/lib/vz/template/iso/virtio-win-0.1.248.iso
+ln -s /local-2tb/kali-linux-2024.3-installer-amd64.iso /var/lib/vz/template/iso/kali-linux-2024.3-installer-amd64.iso
+ln -s /local-2tb/gparted-live-1.6.0-10-amd64.iso /var/lib/vz/template/iso/gparted-live-1.6.0-10-amd64.iso
+
 systemctl restart pveproxy.service
 
 ## version
