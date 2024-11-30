@@ -12,7 +12,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
     fi
   done
   doas pacman --noconfirm --needed -S hyprland
-  doas pacman --noconfirm --needed -S gui-apps/waybar
+  doas pacman --noconfirm --needed -S waybar
   doas pacman --noconfirm --needed -S swappy
   doas pacman --noconfirm --needed -S grim
   doas pacman --noconfirm --needed -S wofi
