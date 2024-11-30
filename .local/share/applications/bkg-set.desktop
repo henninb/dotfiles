@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=bkg-set
+GenericName=bkg-set
+Comment=set background and xwaybar
+Exec=bkg-set
+Categories=ConsoleOnly;System;
+Keywords=waybar;background
+StartupNotify=false
+Terminal=true
+NoDisplay=true
