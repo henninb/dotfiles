@@ -5,6 +5,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   doas pacman --noconfirm --needed -S base-devel
   mkdir -p "$HOME/projects/archlinux.org/aur/"
   cd "$HOME/projects/archlinux.org/aur/" || exit
+  rm -rf yay
   git clone https://aur.archlinux.org/yay.git
   cd yay || exit
   makepkg -si
