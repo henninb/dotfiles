@@ -31,8 +31,10 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   doas pacman --noconfirm --needed -S hyprpaper
   doas pacman --noconfirm --needed -S hyprpicker
   doas pacman --noconfirm --needed -S hyprland-contrib
-  doas pacman --noconfirm --needed -S xdg-desktop-portal-wlr
-  doas pacman --noconfirm --needed -S xdg-desktop-portal
+  doas yay --noconfirm --needed -S wlogout
+
+  # doas pacman --noconfirm --needed -S xdg-desktop-portal-wlr
+  # doas pacman --noconfirm --needed -S xdg-desktop-portal
 else
   FAILURE=""
   ls -d /var/db/pkg/*/*| cut -f5- -d/
@@ -68,8 +70,9 @@ else
   doas emerge --update --newuse gui-apps/hyprpaper
   doas emerge --update --newuse gui-apps/hyprpicker
   doas emerge --update --newuse gui-wm/hyprland-contrib
-  doas emerge --update --newuse  xdg-desktop-portal-wlr
-  doas emerge --update --newuse  xdg-desktop-portal
+  doas emerge --update --newuse sys-fs/fuse:0
+  # doas emerge --update --newuse  xdg-desktop-portal-wlr
+  # doas emerge --update --newuse  xdg-desktop-portal
 fi
 
 # doas emerge --update --newuse looking-glass
@@ -103,5 +106,7 @@ git remote add origin ssh://git@gitlab.lan:2222/henninb/files-backup.git
 git branch --set-upstream-to=origin/main main
 git fetch
 git merge origin/main
+
+systemctl --user status xdg-desktop-portal-hyprland
 
 exit 0
