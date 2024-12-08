@@ -83,5 +83,9 @@ return require('packer').startup(function(use)
 
   -- Other stuff
   use 'frazrepo/vim-rainbow'
+  use {
+    "LuaLS/lua-language-server",
+    run = "./make.sh"
+  }
 end)
 
