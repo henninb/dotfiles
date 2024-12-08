@@ -118,7 +118,6 @@ elif [ "$OS" = "Gentoo" ]; then
     sudo ln -sfn "${blender}" /usr/bin/blender
   fi
 
-
   librewolf=$(find /usr/bin -name "librewolf-bin")
   if [ -z ${librewolf+x} ]; then echo "var is unset"; else sudo ln -sfn "${librewolf}" /usr/bin/librewolf; fi
   echo eselect editor list

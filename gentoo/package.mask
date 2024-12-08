@@ -13,3 +13,4 @@
 #=dev-libs/openssl-compat-1.1.1s
 #=dev-libs/openssl-3.0.8-r1
 #>=sys-devel/llvm-16.0.6
+>=app-containers/runc-1.2.0

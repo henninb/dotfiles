@@ -140,5 +140,6 @@ media-sound/clementine ipod
 media-sound/rhythmbox ipod udev dbus keyring
 media-libs/freetype harfbuzz
 app-containers/runc seccomp
+app-containers/containerd seccomp
 app-emulation/fuse -alsa -ao -backend-sdl -pulseaudio
 # dev-libs/icu abi_x86_32
