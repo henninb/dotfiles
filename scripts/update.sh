@@ -77,6 +77,10 @@ elif [ "$OS" = "Gentoo" ]; then
   doas revdep-rebuild
   doas emerge @preserved-rebuild
 
+  echo eselect python list
+  eselect python list
+  echo doas eselect python set python3.12
+
 ###  compile kernel
   kernel_list=$(eselect kernel list)
   echo "kernel_list=$kernel_list"

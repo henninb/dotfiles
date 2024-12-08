@@ -121,7 +121,7 @@ net-libs/gnutls pkcs11 tools
 app-crypt/qca qt5
 #sys-devel/llvm -zstd
 media-libs/imgui glut
->=sys-devel/lld-16.0.6 zstd
+sys-devel/lld zstd
 net-firewall/iptables nftables
 media-gfx/inkscape X
 gui-wm/hyprland X systemd
