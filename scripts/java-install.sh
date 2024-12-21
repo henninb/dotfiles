@@ -8,6 +8,12 @@ if [ "$OS" = "Gentoo" ]; then
   echo emerge -v openjdk:11
   echo /var/db/repos/gentoo/dev-java/openjdk
   echo eselect java-vm list
+
+  eselect java-vm list
+  doas emerge --update --newuse  dev-java/openjdk-bin:21
+  doas eselect java-vm set system 2
+  eselect java-vm set user 2
+  java -version
 elif [ "$OS" = "Darwin" ]; then
   brew install openjdk
   brew install openjdk@17
