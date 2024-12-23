@@ -91,6 +91,8 @@ if [ $OS = "Gentoo" ]
   end
 else if [ $OS = "FreeBSD" ]
   set -gx JAVA_HOME /usr/local/openjdk17
+else if command -v archlinux-java >/dev/null 2>&1
+  echo arch
 else if command -v javac >/dev/null 2>&1
   set -gx JAVA_HOME (dirname (dirname (readlink -f (readlink -f (which javac))))^/dev/null)
 else
