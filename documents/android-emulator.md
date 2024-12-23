@@ -10,6 +10,10 @@ adb shell
 mv /sdcard/<cert>.0 /system/etc/security/cacerts/
 chmod 644 /system/etc/security/cacerts/<cert>.0
 
+avdmanager delete avd -n Pixel-8a-API-35
+avdmanager create avd -n Pixel-8a-API-35-x86 -k "system-images;android-35;google_apis;x86_64" -d "pixel_8a"
+avdmanager create avd -n Pixel-8a-playstore-35-x86 -k "system-images;android-35;google_apis_playstore;x86_64" -d "pixel_8a"
+
 
 emulator -avd Nexus_6_API_27-2 -http-proxy 192.168.10.40:8080
 emulator -avd Nexus_6_API_27-2 -http-proxy 192.168.10.41:8080
