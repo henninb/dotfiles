@@ -1,18 +1,18 @@
 #!/bin/sh
 
 if [ "$OS" = "Gentoo" ]; then
-  sudo emerge --update --newuse dev-java/openjdk-bin:17
-  eselect java-vm set user openjdk-bin-17
-  doas eselect java-vm set system openjdk-bin-17
+  sudo emerge --update --newuse dev-java/openjdk-bin:19
+  eselect java-vm set user openjdk-bin-19
+  doas eselect java-vm set system openjdk-bin-19
   #echo sudo java-config --set-system-vm openjdk-bin-17
-  echo emerge -v openjdk:11
+  echo emerge -v openjdk:19
   echo /var/db/repos/gentoo/dev-java/openjdk
   echo eselect java-vm list
 
   eselect java-vm list
   doas emerge --update --newuse  dev-java/openjdk-bin:21
-  doas eselect java-vm set system 2
-  eselect java-vm set user 2
+  echo doas eselect java-vm set system 2
+  echo eselect java-vm set user 2
   java -version
 elif [ "$OS" = "Darwin" ]; then
   brew install openjdk
