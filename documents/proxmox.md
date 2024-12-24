@@ -17,10 +17,10 @@ $ sudo update-grub
 $ sudo reboot
 ```
 
-## update proxmox - comment out the enterprise repo
+## update proxmox - comment out the enterprise repo and add the community
 ```
 vi /etc/apt/sources.list.d/pve-enterprise.list
-deb http://download.proxmox.com/debian/pve bullseye pve-no-subscription
+deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription
 ```
 
 
