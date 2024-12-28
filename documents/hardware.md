@@ -10,3 +10,7 @@ http://192.168.1.160
 admin
 password
 NETGEAR-Discovery-Tool-2.0.4.AppImage
+
+
+ASRock Z370M-ITX/ac
+
