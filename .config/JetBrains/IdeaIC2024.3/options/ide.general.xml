@@ -4,4 +4,9 @@
     <option name="confirmExit" value="false" />
     <option name="processCloseConfirmation" value="TERMINATE" />
   </component>
+  <component name="Registry">
+    <entry key="moved.to.new.ui" value="true" />
+    <entry key="ide.experimental.ui" value="true" />
+    <entry key="i18n.locale" value="" />
+  </component>
 </application>
