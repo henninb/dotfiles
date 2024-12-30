@@ -40,8 +40,8 @@
                 "zebra_striping":true
             },
             "user_interface":{
-                "font_size":13,
-                "look_and_feel":"Light"
+                "font_size":18,
+                "look_and_feel":"Dark"
             }
         },
         "extender":{
