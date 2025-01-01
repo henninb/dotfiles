@@ -32,3 +32,12 @@ systemctl restart pveproxy.service
 Test the setup: Access your Proxmox server using the SSL-enabled domain (e.g., https://proxmox.bhenning.com) to verify that the certificate is properly installed and working. Ensure that the connection is secure and the certificate is valid.
 
 Remember to set up an automated certificate renewal process using acme.sh's built-in functionality or a cron job to ensure that your certificates are automatically renewed before they expire.
+
+
+Proxmox
+Datacenter -> ACME
+
+Account Name: prod
+Email: henninb@gmail.com
+Accept TOS: check
+Register
