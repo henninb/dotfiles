@@ -22,8 +22,6 @@ izabella.ns.cloudflare.com
 click save to complete
 this change may take up to 24 hours
 
-
-
 ## remove site from cloudflare
 Click into the Overview page
 on the bottom right there will be an advanced section
