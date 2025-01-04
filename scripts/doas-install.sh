@@ -2,6 +2,7 @@
 
 
 cat << EOF > "$HOME/tmp/doas.conf"
+# permit henninb as root
 permit nopass henninb as root
 EOF
 
