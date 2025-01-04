@@ -1,8 +1,8 @@
 #!/bin/sh
 
-ARCHLINUX_PKGS="setxkbmap i3lock qalculate-gtk hddtemp feh xdotool dunst wmname w3m flameshot volumeicon neofetch blueman qtwaylandscanner copyq clipmenu media-sound/mpc mpd blueman redshift playerctl network-manager numlockx nm-applet trayer-srg sxiv spacefm lxappearance hardinfo gentoolkit jq pavucontrol neovim lsof clipman gammastep"
+ARCHLINUX_PKGS="setxkbmap i3lock qalculate-gtk hddtemp feh xdotool dunst wmname w3m flameshot volumeicon neofetch blueman qtwaylandscanner copyq clipmenu media-sound/mpc mpd blueman redshift playerctl network-manager numlockx nm-applet trayer-srg sxiv spacefm lxappearance hardinfo gentoolkit jq pavucontrol neovim lsof clipman gammastep ghostty"
 
-GENTOO_PKGS="rust-bin setxkbmap i3lock qalculate-gtk hddtemp feh xdotool dunst wmname w3m sys-apps/dbus flameshot volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl net-misc/networkmanager numlockx nm-applet trayer-srg sxiv spacefm lxappearance hardinfo gentoolkit app-misc/jq pavucontrol neovim lsof clipman gammastep dmidecode"
+GENTOO_PKGS="rust-bin setxkbmap i3lock qalculate-gtk hddtemp feh xdotool dunst wmname w3m sys-apps/dbus flameshot volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl net-misc/networkmanager numlockx nm-applet trayer-srg sxiv spacefm lxappearance hardinfo gentoolkit app-misc/jq pavucontrol neovim lsof clipman gammastep dmidecode ghostty"
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   FAILURE=""
