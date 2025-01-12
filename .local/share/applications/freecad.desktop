@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=FreeCAD
+Comment=FreeCAD
+Exec=freecad
+Terminal=false
+StartupNotify=true
+Icon=freecad

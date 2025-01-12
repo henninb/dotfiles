@@ -1,12 +1,11 @@
 [Desktop Entry]
-Version=1.0
 Type=Application
-Name=bkg-set
-GenericName=bkg-set
+Version=1.0
+Name=BackgroundSet
 Comment=set background and xwaybar
-Exec=/home/henninb/.local/bin/bkg-set
+Exec=bkg-set
 Categories=ConsoleOnly;System;
 Keywords=waybar;background
-StartupNotify=false
-Terminal=true
-NoDisplay=true
+#StartupNotify=false
+# Terminal=true
+#NoDisplay=true
