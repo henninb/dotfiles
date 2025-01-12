@@ -273,9 +273,9 @@ if ! npm update netlify-cli; then
   npm install -g netlify-cli
 fi
 
-if ! npm update heroku; then
-  npm install -g heroku
-fi
+# if ! npm update heroku; then
+  # npm install -g heroku
+# fi
 
 if ! npm update yarn; then
   npm install -g yarn
@@ -299,6 +299,10 @@ fi
 
 if ! npm update vercel; then
   npm install -g vercel
+fi
+
+if ! npm update commitlint; then
+  npm install -g commitlint
 fi
 
 if ! npm update npm-check-updates; then
