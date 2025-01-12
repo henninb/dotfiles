@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Blender
+Comment=Blender
+Exec=blender-4.3
+Terminal=false
+StartupNotify=true
+Icon=blender-4.3
