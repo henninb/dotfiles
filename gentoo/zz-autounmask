@@ -143,3 +143,8 @@ app-containers/runc seccomp
 app-containers/containerd seccomp
 app-emulation/fuse -alsa -ao -backend-sdl -pulseaudio
 # dev-libs/icu abi_x86_32
+sci-libs/opencascade json
+sci-libs/cgnslib hdf5
+sci-libs/hdf5 cxx
+media-libs/tiff zstd lzma
+dev-python/pyside6 uitools
