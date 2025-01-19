@@ -1,5 +1,5 @@
 # FROM nginx
-FROM nginx:1.23.3-alpine
+FROM nginx:1.27.3-alpine
 
 # RUN apt-get update
 # RUN apt-get -y install iproute2

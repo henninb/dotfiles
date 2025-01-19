@@ -1,4 +1,5 @@
-FROM nginx:mainline-alpine3.17-slim
+FROM nginx:mainline-alpine3.20-slim
+# FROM nginx:1.27.3-alpine
 
 COPY ./public-html/ /usr/share/nginx/html/
 COPY ./nginx.conf /etc/nginx/nginx.conf

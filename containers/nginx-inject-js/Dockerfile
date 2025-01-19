@@ -1,4 +1,4 @@
-FROM nginx:1.23.4-alpine
+FROM nginx:1.27.3-alpine
 
 COPY ./public-html/ /usr/share/nginx/html/
 COPY ./nginx.conf /etc/nginx/nginx.conf
