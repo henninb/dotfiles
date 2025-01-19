@@ -2,12 +2,12 @@
 # fisher add matchai/spacefish set --erase fish_greeting
 set --universal fish_greeting
 
-if not type -q unzip > /dev/null
-  echo unzip not installed.
+if not type -q unzip >/dev/null
+    echo unzip not installed.
 end
 
-if not type -q fc-cache > /dev/null
-  echo fc-cache not installed.
+if not type -q fc-cache >/dev/null
+    echo fc-cache not installed.
 end
 
 if test -f /etc/os-release
@@ -17,7 +17,7 @@ else if type lsb_release >/dev/null 2>&1
 else if test -f /etc/lsb-release
     set -gx OS (grep '^DISTRIB_ID=' /etc/lsb-release | tr -d '"' | cut -d = -f2)
 else if test -f /etc/debian_version
-    set -gx OS "Debian"
+    set -gx OS Debian
 else
     # FreeBSD, OpenBSD, Darwin branches here.
     set -gx OS (uname -s)
@@ -29,74 +29,74 @@ if test "$OS" = "openSUSE Tumbleweed"
     set -x NIX_SSL_CERT_FILE /var/lib/ca-certificates/ca-bundle.pem
 end
 
-if test "$TERM" = "dumb"
+if test "$TERM" = dumb
     set -x PS1 '$ '
 end
 
 function gitpush
-  if test (count $argv) -lt 1
-    echo "Usage: gitpush <messages>" >&2
-  else
-    git pull origin main
-    git add .
-    git commit -m "$argv"
-    git push origin main
-  end
+    if test (count $argv) -lt 1
+        echo "Usage: gitpush <messages>" >&2
+    else
+        git pull origin main
+        git add .
+        git commit -m "$argv"
+        git push origin main
+    end
 end
 
 source $HOME/.alias-fish
 
-if [ -x (command -v nvim) ];
-  source $HOME/.alias-neovim.fish
+if [ -x (command -v nvim) ]
+    source $HOME/.alias-neovim.fish
 end
 
-if [ \( "$OS" = "FreeBSD" \) -o \(  "$OS" = "Alpine Linux" \) -o \(  "$OS" = "OpenBSD" \) -o \(  "$OS" = "Darwin" \) ];
-  source $HOME/.alias-bsd-fish
+if [ \( "$OS" = FreeBSD \) -o \( "$OS" = "Alpine Linux" \) -o \( "$OS" = OpenBSD \) -o \( "$OS" = Darwin \) ]
+    source $HOME/.alias-bsd-fish
 end
 
-if [ (uname) = "Linux" ]
-  if test -f /sys/module/hid_apple/parameters/fnmode
-    if not cat /sys/module/hid_apple/parameters/fnmode | grep -q 2
-      echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode
-      if not grep -q '^options hid_apple fnmode=2$' /etc/modprobe.d/hid_apple.conf
-        echo 'options hid_apple fnmode=2' | sudo tee -a /etc/modprobe.d/hid_apple.conf
-      end
+if [ (uname) = Linux ]
+    if test -f /sys/module/hid_apple/parameters/fnmode
+        if not cat /sys/module/hid_apple/parameters/fnmode | grep -q 2
+            echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode
+            if not grep -q '^options hid_apple fnmode=2$' /etc/modprobe.d/hid_apple.conf
+                echo 'options hid_apple fnmode=2' | sudo tee -a /etc/modprobe.d/hid_apple.conf
+            end
 
-      if command -v update-initramfs
-        sudo update-initramfs -u -k all
-      else if command -v mkinitcpio
-        sudo mkinitcpio -p linux
-      else if command -v genkernel
-        sudo genkernel initramfs
-      else if command -v xbps-reconfigure
-        sudo xbps-reconfigure -f linux6.1
-      else if command -v dracut
-        if not grep -q '^hostonly=yes$' /etc/dracut.conf.d/manual.conf
-          echo 'hostonly=yes' | sudo tee -a /etc/dracut.conf.d/manual.conf
+            if command -v update-initramfs
+                sudo update-initramfs -u -k all
+            else if command -v mkinitcpio
+                sudo mkinitcpio -p linux
+            else if command -v genkernel
+                sudo genkernel initramfs
+            else if command -v xbps-reconfigure
+                sudo xbps-reconfigure -f linux6.1
+            else if command -v dracut
+                if not grep -q '^hostonly=yes$' /etc/dracut.conf.d/manual.conf
+                    echo 'hostonly=yes' | sudo tee -a /etc/dracut.conf.d/manual.conf
+                end
+                sudo dracut -f --regenerate-all
+            else
+                echo "kernel generate not found"
+            end
+            echo reboot
         end
-        sudo dracut -f --regenerate-all
-      else
-        echo "kernel generate not found"
-      end
-      echo "reboot"
     end
-  end
 end
 
-if [ $OS = "Gentoo" ]
-  if command -v java-config >/dev/null 2>&1
-    set -gx JAVA_HOME (java-config -o ^/dev/null)
-  else
-    echo "install java-config on gentoo"
-  end
-else if [ $OS = "FreeBSD" ]
-  set -gx JAVA_HOME /usr/local/openjdk17
+if [ $OS = Gentoo ]
+    if command -v java-config >/dev/null 2>&1
+        set -gx JAVA_HOME (java-config -o ^/dev/null)
+    else
+        echo "install java-config on gentoo"
+    end
+else if [ $OS = FreeBSD ]
+    set -gx JAVA_HOME /usr/local/openjdk17
 else if command -v archlinux-java >/dev/null 2>&1
-  set -gx JAVA_HOME /usr/lib/jvm/(archlinux-java get ^/dev/null)
+    set -gx JAVA_HOME /usr/lib/jvm/(archlinux-java get ^/dev/null)
 else if command -v javac >/dev/null 2>&1
-  set -gx JAVA_HOME (dirname (dirname (readlink -f (readlink -f (which javac))))^/dev/null)
+    set -gx JAVA_HOME (dirname (dirname (readlink -f (readlink -f (which javac))))^/dev/null)
 else
-  echo "JAVA_HOME is not set up for $OS"
+    echo "JAVA_HOME is not set up for $OS"
 end
 # else if test (uname) = "Darwin"
 #   set -gx JAVA_HOME (/usr/libexec/java_home)
@@ -141,7 +141,7 @@ set -x PATH $HOME/.local/share/JetBrains/Toolbox/scripts $PATH
 set -gx CDPATH ~/projects/github.com
 
 if test -d /usr/local/go
-  set -gx GOROOT /usr/local/go
+    set -gx GOROOT /usr/local/go
 end
 
 set -gx GOPATH $HOME/.local
@@ -201,7 +201,7 @@ set -x PATH $ANDROID_HOME/platform-tools $PATH
 [ -s "$HOME/.cargo/env" ]; and source "$HOME/.cargo/env"
 [ -s "$SDKMAN_DIR/bin/sdkman-init.fish" ] && source "$SDKMAN_DIR/bin/sdkman-init.fish"
 #[ -s "$NVM_DIR/nvm.sh" ]; and chmod 755 "$NVM_DIR/nvm.sh"; and source "$NVM_DIR/nvm.sh"
-[ ! -f "$HOME/.ssh/id_rsa.pub" ]; and ssh-keygen -y -f "$HOME/.ssh/id_rsa" > "$HOME/.ssh/id_rsa.pub"
+[ ! -f "$HOME/.ssh/id_rsa.pub" ]; and ssh-keygen -y -f "$HOME/.ssh/id_rsa" >"$HOME/.ssh/id_rsa.pub"
 [ ! -d "$XDG_DATA_HOME/pyenv" ]; and git clone https://github.com/pyenv/pyenv.git "$XDG_DATA_HOME/pyenv"
 
 if [ -z (find ~/.fonts -maxdepth 1 -type f \( -name Monofur_for_Powerline.ttf \)) ]
@@ -213,16 +213,16 @@ if [ -z (find ~/.fonts -maxdepth 1 -type f \( -name Monofur_for_Powerline.ttf \)
     cd -
 end
 
-if ! grep -A 3 '\[branch "main"\]' "$HOME/.git/config" | grep 'remote = origin' > /dev/null
-  git branch --set-upstream-to=origin/main main
+if ! grep -A 3 '\[branch "main"\]' "$HOME/.git/config" | grep 'remote = origin' >/dev/null
+    git branch --set-upstream-to=origin/main main
 end
 
-[ -f /opt/arduino/arduino ]; and ln -sfn /opt/arduino/arduino "$HOME/.local/bin/arduino" 2> /dev/null
-[ -f /opt/intellij/bin/idea.sh ]; and ln -sfn /opt/intellij/bin/idea.sh "$HOME/.local/bin/intellij" 2> /dev/null
-[ -f /opt/android-studio/bin/studio.sh ]; and ln -sfn /opt/android-studio/bin/studio.sh "$HOME/.local/bin/android-studio" 2> /dev/null
-[ -f /opt/firefox/firefox ]; and ln -sfn /opt/firefox/firefox "$HOME/.local/bin/firefox" > /dev/null
-[ -f /opt/vscode/bin/code ]; and ln -sfn /opt/vscode/bin/code "$HOME/.local/bin/code" 2> /dev/null
-[ -f "$HOME/.tmux-default.conf" ]; and ln -sfn "$HOME/.tmux-default.conf" "$HOME/.tmux.conf" 2> /dev/null
+[ -f /opt/arduino/arduino ]; and ln -sfn /opt/arduino/arduino "$HOME/.local/bin/arduino" 2>/dev/null
+[ -f /opt/intellij/bin/idea.sh ]; and ln -sfn /opt/intellij/bin/idea.sh "$HOME/.local/bin/intellij" 2>/dev/null
+[ -f /opt/android-studio/bin/studio.sh ]; and ln -sfn /opt/android-studio/bin/studio.sh "$HOME/.local/bin/android-studio" 2>/dev/null
+[ -f /opt/firefox/firefox ]; and ln -sfn /opt/firefox/firefox "$HOME/.local/bin/firefox" >/dev/null
+[ -f /opt/vscode/bin/code ]; and ln -sfn /opt/vscode/bin/code "$HOME/.local/bin/code" 2>/dev/null
+[ -f "$HOME/.tmux-default.conf" ]; and ln -sfn "$HOME/.tmux-default.conf" "$HOME/.tmux.conf" 2>/dev/null
 [ -f "$HOME/.ssh/config" ]; and chmod 600 "$HOME/.ssh/config"
 [ -f "$HOME/.ssh/authorized_keys" ]; and chmod 600 "$HOME/.ssh/authorized_keys"
 [ -f "$HOME/.ssh/config" ]; and chmod 600 "$HOME/.ssh/config"
@@ -239,7 +239,7 @@ end
 cd $HOME/keepass-git
 
 if git fetch
-    git merge origin/main > /dev/null
+    git merge origin/main >/dev/null
 end
 cd -
 
@@ -256,7 +256,7 @@ end
 cd $HOME/files
 
 if git fetch
-    git merge origin/main > /dev/null
+    git merge origin/main >/dev/null
 end
 cd -
 
@@ -290,31 +290,31 @@ set -g fish_color_end white
 set -g fish_color_invalid white
 
 if status is-interactive
-  #set -gx TERM xterm-256color
+    #set -gx TERM xterm-256color
 end
 
 if set -q SSH_CLIENT
-  echo "This is an SSH session." > /dev/null
+    echo "This is an SSH session." >/dev/null
 else if set -q SSH_CONNECTION
-  echo "This is an SSH session." > /dev/null
+    echo "This is an SSH session." >/dev/null
 end
 
 function decode_base64_url
-  set len (math "$argv[1]" % 4)
-  set result $argv[1]
+    set len (math "$argv[1]" % 4)
+    set result $argv[1]
 
-  switch $len
-    case 2
-      set result "$argv[1]"'=='
-    case 3
-      set result "$argv[1]"'='
-  end
+    switch $len
+        case 2
+            set result "$argv[1]"'=='
+        case 3
+            set result "$argv[1]"'='
+    end
 
-  echo $result | tr '_-' '/+' | openssl enc -d -base64
+    echo $result | tr _- '/+' | openssl enc -d -base64
 end
 
 function decode_jwt
-  decode_base64_url (echo -n $argv[2] | cut -d "." -f $argv[1]) | jq .
+    decode_base64_url (echo -n $argv[2] | cut -d "." -f $argv[1]) | jq .
 end
 
 starship init fish | source
