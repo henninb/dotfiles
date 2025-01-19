@@ -2,7 +2,7 @@
 
 ARCHLINUX_PKGS="setxkbmap i3lock qalculate-gtk hddtemp feh xdotool dunst wmname w3m flameshot volumeicon neofetch blueman qtwaylandscanner copyq clipmenu media-sound/mpc mpd blueman redshift playerctl network-manager numlockx nm-applet trayer-srg sxiv spacefm lxappearance hardinfo gentoolkit jq pavucontrol neovim lsof clipman gammastep ghostty"
 
-GENTOO_PKGS="rust-bin setxkbmap i3lock qalculate-gtk hddtemp feh xdotool dunst wmname w3m sys-apps/dbus flameshot volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl net-misc/networkmanager numlockx nm-applet trayer-srg sxiv spacefm lxappearance hardinfo gentoolkit app-misc/jq pavucontrol neovim lsof clipman gammastep dmidecode ghostty"
+GENTOO_PKGS="rust-bin setxkbmap i3lock qalculate-gtk hddtemp feh xdotool dunst wmname w3m sys-apps/dbus flameshot volumeicon neofetch blueman dev-qt/qtwaylandscanner copyq clipmenu media-sound/mpc mpd net-wireless/blueman redshift playerctl net-misc/networkmanager numlockx nm-applet trayer-srg sxiv spacefm lxappearance hardinfo gentoolkit app-misc/jq pavucontrol neovim lsof clipman gammastep dmidecode ghostty wlr-randr"
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   FAILURE=""
@@ -19,6 +19,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   doas pacman --noconfirm --needed -S cliphist
   doas pacman --noconfirm --needed -S thunar
   doas pacman --noconfirm --needed -S swaylock
+  doas pacman --noconfirm --needed -S wlr-randr
   doas pacman --noconfirm --needed -S wlogout
   doas pacman --noconfirm --needed -S kitty
   doas pacman --noconfirm --needed -S wl-clipboard

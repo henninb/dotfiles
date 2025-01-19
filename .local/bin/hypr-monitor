@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ "$(hostnamectl --static)" = 'archlinux' ]; then
+  hyprctl keyword monitor eDP-1,1920x1080@60,auto,1
+  # hyprctl reload
+fi
+
+exit 0
