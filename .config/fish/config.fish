@@ -232,17 +232,40 @@ chmod 700 "$HOME"
 [ -d "$HOME/.gnupg" ]; and chmod 700 "$HOME/.gnupg"
 [ -f "$HOME/.ghci" ]; and chmod 644 "$HOME/.ghci"
 
-mkdir -p $HOME/keepass-git
-cd "$HOME/keepass-git"
-git fetch
-git merge origin/main > /dev/null
+if not test -d $HOME/keepass-git
+    mkdir $HOME/keepass-git
+end
+
+cd $HOME/keepass-git
+
+if git fetch
+    git merge origin/main > /dev/null
+end
 cd -
 
-mkdir -p $HOME/files
-cd "$HOME/files"
-git fetch
-git merge origin/main > /dev/null
+# mkdir -p $HOME/keepass-git
+# cd "$HOME/keepass-git"
+# git fetch
+# git merge origin/main > /dev/null
+# cd -
+
+if not test -d $HOME/files
+    mkdir $HOME/files
+end
+
+cd $HOME/files
+
+if git fetch
+    git merge origin/main > /dev/null
+end
 cd -
+
+# mkdir -p $HOME/files
+# cd "$HOME/files"
+# git fetch
+# git merge origin/main > /dev/null
+# cd -
+
 # vim keybindings
 fish_vi_key_bindings
 
