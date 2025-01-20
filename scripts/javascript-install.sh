@@ -16,9 +16,10 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Lin
   curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
   doas apt install -y nodejs
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
-  doas pacman --noconfirm --needed -S curl
-  doas pacman --noconfirm --needed -S nodejs-lts-hydrogen
-  wget --quiet -O - https://www.npmjs.org/install.sh | sh
+  doas pacman --noconfirm --needed -S npm nodejs
+  # doas pacman --noconfirm --needed -S curl
+  # doas pacman --noconfirm --needed -S nodejs-lts-hydrogen
+  # wget --quiet -O - https://www.npmjs.org/install.sh | sh
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   doas zypper install -y nodejs20
 elif [ "$OS" = "Fedora Linux" ]; then
