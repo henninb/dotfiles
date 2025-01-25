@@ -9,6 +9,8 @@ echo primary-key
 pamu2fcfg > ~/.config/Yubico/u2f_keys
 echo second-key
 pamu2fcfg -n >> ~/.config/Yubico/u2f_keys
+echo third-key
+pamu2fcfg -n >> ~/.config/Yubico/u2f_keys
 chmod 600 ~/.config/Yubico/u2f_keys
 
 echo sudo vi /etc/pam.d/system-auth
