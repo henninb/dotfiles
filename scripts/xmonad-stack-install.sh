@@ -746,7 +746,7 @@ git merge origin/main
 mkdir -p "$HOME/files"
 cd "$HOME/files" || exit
 git init .
-git remote add origin ssh://git@gitlab.lan:2222/henninb/files-backup.git
+git remote add origin ssh://git@gitlab.lan:2222/henninb/backup-files.git
 git branch --set-upstream-to=origin/main main
 git fetch
 git merge origin/main
