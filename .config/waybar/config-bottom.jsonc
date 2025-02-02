@@ -7,8 +7,6 @@
     "gtk-layer-shell": true,
     "height": 25,
     "modules-left": [
-        "custom/launch_firefox",
-        "custom/launch_brave",
         "custom/launch_kitty",
         "custom/launch_thunar"
     ],
@@ -18,19 +16,6 @@
     "include": [
         "~/.config/waybar/mensu.jsonc"
     ],
-
-    "custom/launch_firefox": {
-        "format": "",
-        "on-click": "firefox",
-        "tooltip": false
-    },
-
-    "custom/launch_brave": {
-        // "format": "",
-        "format": "🦁",
-        "on-click": "brave",
-        "tooltip": false
-    },
 
     "custom/launch_thunar": {
         "format": "📁",
@@ -54,8 +39,5 @@
         "ignore-list": [
             "wofi"
         ],
-	    "app_ids-mapping": {
-	        "steam_app_39210": "Final Fantasy 14"
-	    }
     }
 }
