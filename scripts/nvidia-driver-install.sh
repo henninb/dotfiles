@@ -1,7 +1,8 @@
 #!/bin/sh
 
 #ver=545.29.02
-ver=535.154.05
+# ver=535.154.05
+ver=570.86.16
 
 cat > "$HOME/tmp/xorg.conf" <<EOF
 Section "ServerLayout"
