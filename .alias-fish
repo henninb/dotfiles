@@ -43,6 +43,11 @@ end
 # end
 abbr -a external 'sudo mount /mnt/external'
 abbr -a ext 'sudo mount /mnt/external'
+abbr -a mounte 'udisksctl mount -b /dev/sde1'
+abbr -a mountf 'udisksctl mount -b /dev/sdf1'
+abbr -a umounte 'sudo umount /dev/sde1'
+abbr -a umountf 'sudo umount /dev/sdf1'
+
 
 abbr -a rkh 'ssh-keygen -f "$HOME/.ssh/known_hosts" -R '
 
