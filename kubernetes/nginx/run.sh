@@ -1,6 +1,14 @@
 #!/bin/sh
 
-echo minikube start --vm-driver kvm2
+kubectl delete svc test-nginx-service -n test-ns
+kubectl delete pod test-pod -n test-ns
+
+kubectl apply -f nginx-pod.yml
+kubectl expose pod test-pod --type=NodePort --name=test-nginx-service -n test-ns --port=80 --target-port=80 --node-port=32000
+
+
+exit 0
+# echo minikube start --vm-driver kvm2
 #minikube start --vm-driver kvm2
 
 #minikube docker-env
@@ -10,7 +18,7 @@ kubectl delete --all pods --namespace=default
 
 # deete all deployments
 kubectl delete --all deployments --namespace=default
- 
+
  # delete all services
 kubectl delete --all services --namespace=default
 
