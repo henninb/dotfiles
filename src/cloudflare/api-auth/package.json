@@ -40,6 +40,6 @@
   "dependencies": {
     "@tsndr/cloudflare-worker-jwt": "^1.1.7",
     "axios": "^1.6.0",
-    "esbuild": "^0.14.36"
+    "esbuild": "^0.25.0"
   }
 }
