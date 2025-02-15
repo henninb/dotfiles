@@ -38,6 +38,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   yay --noconfirm --needed -S hyprshot
   yay --noconfirm --needed -S hyprlock
   yay --noconfirm --needed -S hypridle
+  yay --noconfirm --needed -S hyprpicker
   yay --noconfirm --needed -S deckmaster
 
   # doas pacman --noconfirm --needed -S xdg-desktop-portal-wlr
@@ -78,6 +79,8 @@ else
   doas emerge --update --newuse gui-libs/wlroots
   # doas emerge --update --newuse gui-apps/hyprland-plugins
   doas emerge --update --newuse gui-apps/hyprpaper
+  doas emerge --update --newuse gui-apps/hypridle
+  doas emerge --update --newuse gui-apps/hyprlock
   doas emerge --update --newuse gui-apps/hyprpicker
   doas emerge --update --newuse gui-wm/hyprland-contrib
   doas emerge --update --newuse sys-fs/fuse:0
