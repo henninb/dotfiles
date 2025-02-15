@@ -15,6 +15,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   doas pacman --noconfirm --needed -S waybar
   doas pacman --noconfirm --needed -S swappy
   doas pacman --noconfirm --needed -S grim
+  doas pacman --noconfirm --needed -S swaync
   doas pacman --noconfirm --needed -S wofi
   doas pacman --noconfirm --needed -S cliphist
   doas pacman --noconfirm --needed -S thunar
@@ -32,7 +33,9 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   doas pacman --noconfirm --needed -S hyprpaper
   doas pacman --noconfirm --needed -S hyprpicker
   doas pacman --noconfirm --needed -S hyprland-contrib
-  doas yay --noconfirm --needed -S wlogout
+  yay --noconfirm --needed -S wlogout
+  yay --noconfirm --needed -S hyprshot
+  yay --noconfirm --needed -S hyprlock
 
   # doas pacman --noconfirm --needed -S xdg-desktop-portal-wlr
   # doas pacman --noconfirm --needed -S xdg-desktop-portal
@@ -55,6 +58,9 @@ else
   doas emerge --update --newuse swappy
   doas emerge --update --newuse grim
   doas emerge --update --newuse wofi
+  doas emerge --update --newuse hyprshot
+  doas emerge --update --newuse hyprlock
+  doas emerge --update --newuse hypridle
   doas emerge --update --newuse cliphist
   doas emerge --update --newuse thunar
   doas emerge --update --newuse swaylock
