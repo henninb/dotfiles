@@ -37,6 +37,8 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   yay --noconfirm --needed -S wlogout
   yay --noconfirm --needed -S hyprshot
   yay --noconfirm --needed -S hyprlock
+  yay --noconfirm --needed -S hypridle
+  yay --noconfirm --needed -S deckmaster
 
   # doas pacman --noconfirm --needed -S xdg-desktop-portal-wlr
   # doas pacman --noconfirm --needed -S xdg-desktop-portal
