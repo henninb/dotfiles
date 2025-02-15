@@ -32,6 +32,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   doas pacman --noconfirm --needed -S wlroots
   doas pacman --noconfirm --needed -S hyprpaper
   doas pacman --noconfirm --needed -S hyprpicker
+  doas pacman --noconfirm --needed -S brightnessctl
   doas pacman --noconfirm --needed -S hyprland-contrib
   yay --noconfirm --needed -S wlogout
   yay --noconfirm --needed -S hyprshot
