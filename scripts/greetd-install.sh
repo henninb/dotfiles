@@ -2,7 +2,6 @@
 
 set -e
 
-# Detect the OS
 if [ -f "/etc/gentoo-release" ]; then
     OS="gentoo"
 elif [ -f "/etc/arch-release" ]; then
@@ -16,8 +15,11 @@ fi
 install_greetd() {
     if [ "$OS" = "gentoo" ]; then
         emerge -av greetd greetd-tuigreet
+         doas emerge --update --newuse greetd
+         doas emerge --update --newuse gtkgreet
     elif [ "$OS" = "arch" ]; then
         sudo pacman -S --noconfirm greetd greetd-tuigreet
+        sudo pacman -S --noconfirm gtkgreert
     fi
 }
 
@@ -38,18 +40,13 @@ EOF
 
 # Enable and start greetd service
 enable_greetd() {
-    if [ "$OS" = "gentoo" ]; then
-        sudo rc-update add greetd default
-        sudo rc-service greetd start
-    elif [ "$OS" = "arch" ]; then
-        sudo systemctl enable greetd.service
-        sudo systemctl start greetd.service
-    fi
+  sudo systemctl enable greetd.service
+  sudo systemctl start greetd.service
 }
 
 # Execute functions
 install_greetd
-generate_greetd_config
+#generate_greetd_config
 enable_greetd
 
 echo "Greetd is now set up to launch Hyprland on login."
