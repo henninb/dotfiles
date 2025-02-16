@@ -33,13 +33,14 @@ generate_greetd_config() {
     echo "" | sudo tee "$CONFIG_PATH" > /dev/null
     sudo tee "$CONFIG_PATH" <<EOF
 [default_session]
-command = "Hyprland"
+command = "wlgreet"
 user = "$USERNAME"
 EOF
 }
 
 # Enable and start greetd service
 enable_greetd() {
+  sudo usermod -aG video,input "$(id -un)"
   sudo systemctl enable greetd.service
   sudo systemctl start greetd.service
 }
