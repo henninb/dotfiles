@@ -1,7 +1,8 @@
 #!/bin/sh
 
 doas emerge --update --newuse  net-vpn/mullvadvpn-app
-yay -S  mullvad-vpn-bin
+yay --noconfirm --needed -S mullvad-vpn-bin
+
 sudo systemctl enable mullvad-daemon
 sudo systemctl start mullvad-daemon
 systemctl status mullvad-daemon

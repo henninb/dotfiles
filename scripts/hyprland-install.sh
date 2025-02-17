@@ -40,6 +40,7 @@ if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLin
   yay --noconfirm --needed -S hypridle
   yay --noconfirm --needed -S hyprpicker
   yay --noconfirm --needed -S deckmaster
+  yay --noconfirm --needed -S mullvad-vpn-bin
 
   # doas pacman --noconfirm --needed -S xdg-desktop-portal-wlr
   # doas pacman --noconfirm --needed -S xdg-desktop-portal
@@ -84,6 +85,10 @@ else
   doas emerge --update --newuse gui-apps/hyprpicker
   doas emerge --update --newuse gui-wm/hyprland-contrib
   doas emerge --update --newuse sys-fs/fuse:0
+  doas emerge --update --newuse gnome-keyring
+  doas emerge --update --newuse net-vpn/mullvadvpn-app
+
+
   # doas emerge --update --newuse  xdg-desktop-portal-wlr
   # doas emerge --update --newuse  xdg-desktop-portal
 fi

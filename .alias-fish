@@ -48,6 +48,7 @@ abbr -a mountf 'udisksctl mount -b /dev/sdf1'
 abbr -a umounte 'sudo umount /dev/sde1'
 abbr -a umountf 'sudo umount /dev/sdf1'
 
+abbr -a docker 'podman'
 
 abbr -a rkh 'ssh-keygen -f "$HOME/.ssh/known_hosts" -R '
 
