@@ -144,6 +144,10 @@ if test -d /usr/local/go
     set -gx GOROOT /usr/local/go
 end
 
+# if not pgrep ssh-agent > /dev/null
+  # eval (ssh-agent -s)
+# end
+
 set -gx GOPATH $HOME/.local
 
 # Tells 'less' not to paginate if less than a page
