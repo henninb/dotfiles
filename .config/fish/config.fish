@@ -190,7 +190,8 @@ set -gx SCREENRC "$XDG_CONFIG_HOME"/screen/screenrc
 set -gx PYENV_ROOT "$XDG_DATA_HOME"/pyenv
 set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME"/npm/npmrc
 # set -x GNUPGHOME "$XDG_DATA_HOME"/gnupg
-set -x GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+set -gx GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+set -gx SSH_AUTH_SOCK /run/user/1000/keyring/ssh
 
 # set -x PATH $ANDROID_HOME/tools $PATH
 set -x PATH $ANDROID_HOME/cmdline-tools/latest/bin $PATH
