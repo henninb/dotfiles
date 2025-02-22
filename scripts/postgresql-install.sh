@@ -33,8 +33,8 @@ EOF
 
 if [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   sudo rm -rf /var/lib/postgres/data
-  doas pacman -R postgresql
   doas systemctl disable postgresql
+  doas pacman -R postgresql
   doas pacman --noconfirm --needed -S postgresql
   doas -u postgres sh -c 'initdb -D /var/lib/postgres/data'
   doas systemctl enable postgresql
@@ -163,9 +163,9 @@ else
   exit 1
 fi
 
-echo /usr/lib/postgresql/16/bin/pg_ctl
-echo /usr/lib/postgresql/16/bin/pg_ctl  -D /var/lib/postgresql/16/main stop
-echo /usr/lib/postgresql/16/bin/pg_ctl  -D /var/lib/postgresql/16/main start
+echo /usr/lib/postgresql/17/bin/pg_ctl
+echo /usr/lib/postgresql/17/bin/pg_ctl  -D /var/lib/postgresql/17/main stop
+echo /usr/lib/postgresql/17/bin/pg_ctl  -D /var/lib/postgresql/17/main start
 echo rm -rf /var/lib/postgres/data
 
 exit 0
