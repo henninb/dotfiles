@@ -50,6 +50,8 @@ abbr -a umountf 'sudo umount /dev/sdf1'
 
 abbr -a docker 'podman'
 
+abbr -a cat 'bat --plain'
+
 abbr -a rkh 'ssh-keygen -f "$HOME/.ssh/known_hosts" -R '
 
 abbr -a sha1 'openssl sha1'
