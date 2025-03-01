@@ -251,6 +251,7 @@ go install github.com/gopasspw/gopass@latest
 go install github.com/moncho/dry@latest
 go install github.com/Bios-Marcel/cordless@latest
 go install github.com/arduino/arduino-cli@latest
+go install github.com/jaeles-project/gospider@latest
 # export GO111MODULE=on
 # go get -u github.com/arduino/arduino-cli
 # export GO111MODULE=off
