@@ -314,23 +314,22 @@ if ! npm update serve; then
   npm install -g serve
 fi
 
-pip install pyserial --user
-pip install youtube-dl --user
-pip install yt-dlp --user
-pip install holehe --user
-pip install ansible --user
-pip install platformio --user
-pip install esptool --user
-pip install pipx --user
-pip install pynvim --user
-pip install podman-compose --user
-pip install leglight --user
-pip install streamdeck --user
-pip install awscli --user
-pip install objection --user
+pip install -U pyserial --user
+pip install -U youtube-dl --user
+pip install -U yt-dlp --user
+pip install -U holehe --user
+pip install -U ansible --user
+pip install -U platformio --user
+pip install -U esptool --user
+pip install -U pipx --user
+pip install -U pynvim --user
+pip install -U podman-compose --user
+pip install -U leglight --user
+pip install -U streamdeck --user
+pip install -U awscli --user
+pip install -U objection --user
 echo pip install streamdeck-linux-gui --user
 echo pip install docker-compose --user
-echo pip install awscli --user
 
 echo yt-dlp -x --audio-format mp3
 
