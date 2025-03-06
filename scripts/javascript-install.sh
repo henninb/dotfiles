@@ -17,9 +17,7 @@ if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian GNU/Lin
   doas apt install -y nodejs
 elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "Manjaro Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   doas pacman --noconfirm --needed -S npm nodejs
-  # doas pacman --noconfirm --needed -S curl
-  # doas pacman --noconfirm --needed -S nodejs-lts-hydrogen
-  # wget --quiet -O - https://www.npmjs.org/install.sh | sh
+  exit 0
 elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   doas zypper install -y nodejs20
 elif [ "$OS" = "Fedora Linux" ]; then
@@ -33,6 +31,7 @@ elif [ "$OS" = "Void" ]; then
   doas xbps-install -y nodejs
 elif [ "$OS" = "Gentoo" ]; then
   doas emerge  --update --newuse nodejs
+  exit 0
 elif [ "$OS" = "Solus" ]; then
   echo sudo eopkg install nodejs
 elif [ "$OS" = "CentOS Linux" ]; then
@@ -53,7 +52,7 @@ curl -s -qL https://www.npmjs.com/install.sh | sh
 echo "doesn't seem to work"
 if ! command -v nvm; then
   echo "nvm is not in the path"
-  curl -s -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | sh
+  curl -s -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | sh
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
   if ! nvm install "$node_ver"; then

@@ -14,7 +14,7 @@ ip_addr="$(ip -o addr show up primary scope global | awk '/inet /{print $4}' | c
 
 
 # Print the local IP address
-echo "Local IP address: ${ip_addr}"
+echo "Local IP address: $ip_addr"
 
 exit 0
 # vim: set ft=sh:

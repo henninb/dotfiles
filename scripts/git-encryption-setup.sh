@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Sets up transparent encryption of files in /config/private as per
 # https://gist.github.com/873637. You will need to edit the password
@@ -8,10 +8,11 @@
 # Note: due to me being in a hurry, only files in /config/private/ and
 # its subdirectories DOWN TO FOUR LEVELS are encrypted.
 
-function global_setup {
+global_setup() {
 
     mkdir -p ~/.gitencrypt
-    pushd ~/.gitencrypt || exit
+    current_dir=$(pwd)
+    cd ~/.gitencrypt || exit
 
     touch clean_filter_openssl smudge_filter_openssl diff_filter_openssl
     chmod 755 "*"
@@ -53,10 +54,10 @@ source ~/.gitencrypt/password
 openssl enc -d -base64 -aes-256-ecb -k \$GITENCRYPT_PASSWORD -in "\$1" 2> /dev/null || cat "\$1"
 EOF
 
-    popd || exit
+    cd "$current_dir" || exit
 }
 
-function repo_setup {
+repo_setup() {
     touch .gitattributes
 
     cat >> .gitattributes <<'EOF'

@@ -88,7 +88,7 @@ elif [ "$OS" = "Gentoo" ]; then
   echo "versions=$versions"
   sorted_versions=$(echo "$kernel_list" | awk -F ' ' '{print $2}' | grep linux | sort -V)
   echo "sorted_versions=$sorted_versions"
-  newest_kernel=$(echo $sorted_versions | awk '{print $NF}')
+  newest_kernel=$(echo "$sorted_versions" | awk '{print $NF}')
   echo "newest_kernel=$newest_kernel"
   doas eselect kernel set "$newest_kernel"
   uname=$(uname -srm | cut -d' ' -f2 | cut -d- -f1)
@@ -111,7 +111,7 @@ elif [ "$OS" = "Gentoo" ]; then
   # blender=$(find /usr/bin -name "blender-*[0-9]")
   # if [ -z ${blender+x} ]; then echo "var is unset"; else sudo ln -sfn "${blender}" /usr/bin/blender; fi
 
-  blender=$(find /usr/bin -name "blender-*[0-9]" -print -quit)
+  blender=$(find /usr/bin -name "blender-*[0-9]" | head -n 1)
   if [ -z "${blender}" ]; then
     echo "Blender executable not found."
   else
@@ -119,7 +119,7 @@ elif [ "$OS" = "Gentoo" ]; then
   fi
 
   librewolf=$(find /usr/bin -name "librewolf-bin")
-  if [ -z ${librewolf+x} ]; then echo "var is unset"; else sudo ln -sfn "${librewolf}" /usr/bin/librewolf; fi
+  if [ -z "${librewolf}" ]; then echo "var is unset"; else sudo ln -sfn "${librewolf}" /usr/bin/librewolf; fi
   echo eselect editor list
   echo eselect kernel list
   echo eselect python list
@@ -167,11 +167,10 @@ fi
 #golang_ver=$(curl -s 'https://golang.org/VERSION?m=text')
 golang_ver=$(curl -s 'https://go.dev/VERSION?m=text')
 
-if ! command -v go; then
+if ! command -v go >/dev/null 2>&1; then
   echo "golang needs to be installed"
 else
   if echo "$(go version)" | grep -q "$golang_ver"; then
-  #if grep -q "$golang_ver" <<< "$(go version)"; then
     echo "golang is already up to date"
   else
     echo "updating golang"
@@ -179,7 +178,7 @@ else
   go version
 fi
 
-if ! command -v stack; then
+if ! command -v stack >/dev/null 2>&1; then
   echo "stack is being installed"
   curl -sSL 'https://get.haskellstack.org' | sh
   stack --version
@@ -190,7 +189,7 @@ else
   stack --version
 fi
 
-if ! command -v nvm; then
+if ! command -v nvm >/dev/null 2>&1; then
   echo "nvm needs to be installed."
 else
   nvm install --lts
@@ -198,7 +197,7 @@ else
   npm --version
 fi
 
-if ! command -v rustup; then
+if ! command -v rustup >/dev/null 2>&1; then
   curl --proto '=https' --tlsv1.2 -sSf 'https://sh.rustup.rs' > "$HOME/tmp/rustup-init"
   chmod 755 "$HOME/tmp/rustup-init"
   cd "$HOME/tmp" || exit
@@ -210,14 +209,14 @@ else
   rustc --version
 fi
 
-if ! command -v flatpak; then
+if ! command -v flatpak >/dev/null 2>&1; then
   echo "flatpak needs to be installed."
 else
   flatpak update --user -y
 fi
 
 
-if ! command -v nix-env; then
+if ! command -v nix-env >/dev/null 2>&1; then
   echo "nix needs to be installed."
 else
   # nix-env -u
@@ -240,7 +239,7 @@ cargo install fd-find
 cargo install broot
 # cargo install wezterm
 
-ln -sfn $HOME/.local/share/cargo/bin/alacritty $HOME/.local/bin/alacritty
+ln -sf "$HOME/.local/share/cargo/bin/alacritty" "$HOME/.local/bin/alacritty"
 
 go install github.com/jesseduffield/lazygit@latest
 # go env -w GO111MODULE=off
@@ -266,11 +265,11 @@ go install github.com/jaeles-project/gospider@latest
 # nvm --version
 # nvm install --lts --latest-npm
 
-if ! npm update wrangler; then
+if ! npm update wrangler >/dev/null 2>&1; then
   npm install -g wrangler
 fi
 
-if ! npm update netlify-cli; then
+if ! npm update netlify-cli >/dev/null 2>&1; then
   npm install -g netlify-cli
 fi
 
@@ -278,40 +277,44 @@ fi
   # npm install -g heroku
 # fi
 
-if ! npm update yarn; then
+if ! npm update yarn >/dev/null 2>&1; then
   npm install -g yarn
 fi
 
-if ! npm update @bitwarden/cli; then
+if ! npm update @bitwarden/cli >/dev/null 2>&1; then
   npm install -g @bitwarden/cli
 fi
 
-if ! npm update tree-sitter-cli; then
+if ! npm update tree-sitter-cli >/dev/null 2>&1; then
   npm install -g tree-sitter-cli
 fi
 
-if ! npm update neovim; then
+if ! npm update neovim >/dev/null 2>&1; then
   npm install -g neovim
 fi
 
-if ! npm update deepl-translator-cli; then
+if ! npm update deepl-translator-cli >/dev/null 2>&1; then
   npm install -g deepl-translator-cli
 fi
 
-if ! npm update vercel; then
+if ! npm update vercel >/dev/null 2>&1; then
   npm install -g vercel
 fi
 
-if ! npm update commitlint; then
+if ! npm update commitlint >/dev/null 2>&1; then
   npm install -g commitlint
 fi
 
-if ! npm update npm-check-updates; then
+if ! npm update npm-check-updates >/dev/null 2>&1; then
   npm install -g npm-check-updates
 fi
 
-if ! npm update serve; then
+if ! npm update serve >/dev/null 2>&1; then
   npm install -g serve
+fi
+
+if ! npm update claude-code >/dev/null 2>&1; then
+  npm install -g claude-code
 fi
 
 pip install -U pyserial --user

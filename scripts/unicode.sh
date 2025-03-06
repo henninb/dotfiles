@@ -1,35 +1,43 @@
-#!/bin/bash
+#!/bin/sh
 
 fast_chr() {
-    local __octal
-    local __char
-    printf -v __octal '%03o' $1
-    printf -v __char \\$__octal
-    REPLY=$__char
+    __octal=$(printf '%03o' "$1")
+    REPLY=$(printf "\\$__octal")
 }
 
-function unichr {
-    local c=$1    # Ordinal of char
-    local l=0    # Byte ctr
-    local o=63    # Ceiling
-    local p=128    # Accum. bits
-    local s=''    # Output string
+unichr() {
+    c=$1    # Ordinal of char
+    l=0    # Byte ctr
+    o=63    # Ceiling
+    p=128    # Accum. bits
+    s=''    # Output string
 
-    (( c < 0x80 )) && { fast_chr "$c"; echo -n "$REPLY"; return; }
+    if [ "$c" -lt 128 ]; then
+        fast_chr "$c"
+        printf "%s" "$REPLY"
+        return
+    fi
 
-    while (( c > o )); do
-        fast_chr $(( t = 0x80 | c & 0x3f ))
+    while [ "$c" -gt "$o" ]; do
+        t=$(( (128 | (c & 63)) ))
+        fast_chr "$t"
         s="$REPLY$s"
-        (( c >>= 6, l++, p += o+1, o>>=1 ))
+        c=$(( c >> 6 ))
+        l=$(( l + 1 ))
+        p=$(( p + o + 1 ))
+        o=$(( o >> 1 ))
     done
 
-    fast_chr $(( t = p | c ))
-    echo -n "$REPLY$s"
+    t=$(( p | c ))
+    fast_chr "$t"
+    printf "%s" "$REPLY$s"
 }
 
 ## test harness
-for (( i=0x2500; i<0x2600; i++ )); do
-    unichr $i
+i=9472    # Decimal equivalent of 0x2500
+while [ "$i" -lt 9728 ]; do    # Decimal equivalent of 0x2600
+    unichr "$i"
+    i=$(( i + 1 ))
 done
 
 # vim: set ft=sh:
