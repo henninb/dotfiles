@@ -1,3 +1,3 @@
-# bastion host
+bastion host
 
 

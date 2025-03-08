@@ -22,3 +22,4 @@ application/vnd.mozilla.xul+xml=brave-browser.desktop
 application/sql=archlinuxbox-dbeaver.desktop
 #inode/directory=thunar.desktop
 inode/directory=thunar.desktop
+x-scheme-handler/obsidian=obsidian.desktop
