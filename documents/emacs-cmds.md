@@ -1,39 +1,60 @@
-# emacs commands
 
 ## close window and buffer
-```C-x,4,0```
+```
+C-x,4,0
+```
 
 ## close the split buffer
-```C-x,0```
+```
+C-x,0
+```
 
 ## quit within emacs (custom)
-``` C-x-g ```
+```
+C-x-g
+```
 
 ## emacsclient as a server
 use emacsclient as $EDITOR
 emacsclient -create-frame --alternate-editor=""
 
 ## emacsclient from a shell
+
+```
 emacsclient -c -e "(print (+ 5 4))"
 emacsclient -e "(print (+ 5 4))"
+```
 
 ## startup Dired
-``` C-x,d or C-x,4,d ```
+```
+C-x,d or C-x,4,d 
+```
+
 
 ## startup magit
-``` M-x,magit ```
+``` 
+M-x,magit
+```
 
 ## startup emms
-``` M-x,emms ```
+``` 
+M-x,emms
+```
 
 ## install package magit
-``` M-x package-install RET magit RET ```
+```
+M-x package-install RET magit RET 
+```
 
 ## version of magit
-```M-x magit-version RET```
+```
+M-x magit-version RET
+```
 
 ## tramp
-``` C-x,C-f /ssh:pi@192.168.100.124:/home/pi/.zshrc```
+``` 
+C-x,C-f /ssh:pi@192.168.100.124:/home/pi/.zshrc
+```
 ```~/.authinfo.gpg```
 ```(setq password-cache-expiry nil)```
 ```which requires the package password-cache.el```
@@ -42,16 +63,33 @@ emacsclient -e "(print (+ 5 4))"
 ``` M-: (= 0 1) RET ```
 
 ## buffer movement
-```^x, ^>```
-```^x, ^<```
+```
+^x, ^>
+```
+
+```
+^x, ^<
+```
 
 
 emacs --eval "(eshell)"
 emacs --eval "(eww)"
 
+## start apps from the cli
 emacs -f eww
 emacs -f eshell
 emacs -f emms
 emacs -f dired
 emacs -f magit
 emacs -f vterm
+
+
+ ## emacs isntall macos
+
+## vterm
+cd ~
+cd .emacs.d/elpa/vterm-20210409.1558
+mkdir build
+cd build
+cmake ..
+make

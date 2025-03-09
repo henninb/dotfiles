@@ -17,4 +17,8 @@ fastly service create --type wasm --name test
 fastly service update --service-id 5pF3RbQQ9gmoziJsJCloEP --name site6
 ```
 
+
+## curl to test
+```
 curl -svo /dev/null hsite1.brianhenning.click
+```

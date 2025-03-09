@@ -2,6 +2,7 @@
   <component name="Trusted.Paths">
     <option name="TRUSTED_PROJECT_PATHS">
       <map>
+        <entry key="$USER_HOME$/projects/github.com/henninb/android-complex" value="true" />
         <entry key="$USER_HOME$/projects/github.com/henninb/example-java" value="true" />
         <entry key="$USER_HOME$/projects/github.com/henninb/example-kotlin" value="true" />
         <entry key="$USER_HOME$/projects/github.com/henninb/example-ktor" value="true" />

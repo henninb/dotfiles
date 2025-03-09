@@ -1,6 +1,5 @@
-# zoom
 
-## macos - toggle camera
+## MacOS - toggle camera
 ```
 cmd-shift-N
 ```
