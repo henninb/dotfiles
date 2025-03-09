@@ -1,5 +1,16 @@
 #!/bin/sh
 
+mkdir -p $HOME/Android/Sdk/cmdline-tools
+cd $HOME/Android/Sdk/cmdline-tools
+# wget https://dl.google.com/android/repository/commandlinetools-linux-11076708.zip
+wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
+unzip commandlinetools-linux-*.zip
+rm commandlinetools-linux-*.zip
+mv cmdline-tools latest
+cd -
+
+echo reset your shell
+
 # Define the VM name
 VM_NAME="Pixel-8a-API-35-x86"
 
