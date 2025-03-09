@@ -1,161 +1,126 @@
-require("plugins")
+--------------------------------------------------------------------------------
+-- Plugins & Plugin Configurations
+--------------------------------------------------------------------------------
+require("plugins")         -- Load plugin manager settings
 
--- Config was built using the following config:
--- https://github.com/numToStr/dotfiles/tree/master/neovim/.config/nvim/
+-- Plugin setups
+require('lualine').setup()   -- Statusline
+require('nvim_comment').setup()  -- Comment toggling
+require("lsp")             -- Language Server Protocol configurations
 
-require('lualine').setup()
-require('nvim_comment').setup()
-
-require("lsp")
-
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all"
-  ensure_installed = { "c", "rust", "haskell", "javascript", "json", "kotlin", "go", "make", "perl", "python", "sql", "ruby", "toml", "typescript", "yaml", "dockerfile", "css", "clojure", "bash", "html", "lua" },
-
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
-
-  -- Automatically install missing parsers when entering buffer
-  auto_install = true,
-
-  -- List of parsers to ignore installing (for "all")
-  -- ignore_install = { "javascript" },
+--------------------------------------------------------------------------------
+-- Treesitter Configuration
+--------------------------------------------------------------------------------
+require('nvim-treesitter.configs').setup {
+  -- Parsers to install (or use "all")
+  ensure_installed = {
+    "c", "rust", "haskell", "javascript", "json", "kotlin", "go", "make",
+    "perl", "python", "sql", "ruby", "toml", "typescript", "yaml", "dockerfile",
+    "css", "clojure", "bash", "html", "lua"
+  },
+  sync_install = false,       -- Install parsers asynchronously
+  auto_install = true,        -- Automatically install missing parsers on buffer entry
 
   highlight = {
-    -- `false` will disable the whole extension
-    enable = true,
-
-    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-    -- the name of the parser)
-    -- list of language that will be disabled
-    -- disable = { "c", "rust" },
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
+    enable = true,            -- Enable tree-sitter highlighting
+    additional_vim_regex_highlighting = false,  -- Disable traditional regex highlighting
   },
 }
 
--- require("null-ls").setup({
---     sources = {
---         require("null-ls").builtins.formatting.stylua,
---         require("null-ls").builtins.diagnostics.eslint,
---         require("null-ls").builtins.completion.spell,
---     },
--- })
---
-local g   = vim.g
-local o   = vim.o
--- local opt = vim.opt
-local A   = vim.api
+--[[
+--------------------------------------------------------------------------------
+-- Optional: Null LS Configuration
+--------------------------------------------------------------------------------
+require("null-ls").setup({
+    sources = {
+        require("null-ls").builtins.formatting.stylua,
+        require("null-ls").builtins.diagnostics.eslint,
+        require("null-ls").builtins.completion.spell,
+    },
+})
+--]]
 
--- cmd('syntax on')
--- vim.api.nvim_command('filetype plugin indent on')
+--------------------------------------------------------------------------------
+-- Global Variables and Options
+--------------------------------------------------------------------------------
+local g  = vim.g   -- Global variables
+local o  = vim.o   -- Global options
+local A  = vim.api -- API functions
 
+-- Terminal and colors
 o.termguicolors = true
--- o.background = 'dark'
+-- o.background = 'dark'   -- Uncomment if needed
 
--- Do not save when switching buffers
--- o.hidden = true
+-- Performance & UI
+o.timeoutlen = 500          -- Timeout for mapped sequences
+o.updatetime = 200          -- Faster completion and responsiveness
+o.scrolloff  = 8            -- Lines to keep above/below the cursor
 
--- Decrease update time
-o.timeoutlen = 500
-o.updatetime = 200
-
--- Number of screen lines to keep above and below the cursor
-o.scrolloff = 8
-
--- Better editor UI
+-- Line Numbers and Cursor
 o.number = true
 o.numberwidth = 2
 o.relativenumber = true
 o.signcolumn = 'yes'
 o.cursorline = true
 
--- Better editing experience
-o.expandtab = true
-o.smarttab = true
-o.cindent = true
+-- Editing behavior
+o.expandtab = true          -- Use spaces instead of tabs
+o.smarttab = true           -- Smart tabbing
+o.cindent = true            -- C/C++ style indentation
 o.autoindent = true
-o.wrap = true
--- o.textwidth = 300
-o.tabstop = 4
-o.shiftwidth = 2
-o.softtabstop = -1 -- If negative, shiftwidth value is used
-o.list = true
+o.wrap = true               -- Wrap long lines
+o.tabstop = 4               -- Number of spaces per tab
+o.shiftwidth = 2            -- Indentation width
+o.softtabstop = -1          -- Use shiftwidth for soft tabs
+o.list = true               -- Show invisible characters
 o.listchars = 'trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂'
--- o.listchars = 'eol:¬,space:·,lead: ,trail:·,nbsp:◇,tab:→-,extends:▸,precedes:◂,multispace:···⬝,leadmultispace:│   ,'
--- o.formatoptions = 'qrn1'
 
--- sync host OS clipboard
--- vim.fn.has('macunix')
-o.clipboard = 'unnamedplus' -- Linux
--- o.clipboard = 'unnamed' --  OSX
+-- Clipboard integration
+o.clipboard = 'unnamedplus' -- Use system clipboard (Linux)
 
--- Case insensitive searching UNLESS /C or capital in search
-o.ignorecase = true
-o.smartcase = true
+-- Searching
+o.ignorecase = true         -- Case insensitive search
+o.smartcase = true          -- Case sensitive if uppercase present
 
--- Undo and backup options
+-- Backup, Undo, and History
 o.backup = false
 o.writebackup = false
 o.undofile = true
 o.swapfile = false
--- o.backupdir = '/tmp/'
--- o.directory = '/tmp/'
--- o.undodir = '/tmp/'
-
--- Remember 50 items in commandline history
 o.history = 50
 
--- Better buffer splitting
-o.splitright = true
-o.splitbelow = true
+-- Window splitting behavior
+o.splitright = true         -- Vertical splits open to the right
+o.splitbelow = true         -- Horizontal splits open below
 
--- Preserve view while jumping
--- BUG This option causes an error!
--- o.jumpoptions = 'view'
-
--- BUG: this won't update the search count after pressing `n` or `N`
--- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen
--- o.lazyredraw = true
-
--- Better folds (don't fold by default)
--- o.foldmethod = 'indent'
--- o.foldlevelstart = 99
--- o.foldnestmax = 3
--- o.foldminlines = 1
---
--- opt.mouse = "a"
--- vim.opt.mouse = 'a'
--- mouse copy without going into visual mode1
+-- Mouse support (read-only in terminal mode)
 vim.opt.mouse = 'r'
 
--- Map <leader> to space
+--------------------------------------------------------------------------------
+-- Leader Key Configuration
+--------------------------------------------------------------------------------
 g.mapleader = ' '
 g.maplocalleader = ' '
 
--- vim.api.nvim_set_keymap('n', '<Leader>l', ':set nu! rnu! list!<cr>', {noremap = true, silent = true})
--- :set nu! rnu! list!<cr>
-
--- COLORSCHEMES
--- Uncomment just ONE of the following colorschemes!
--- local ok, _ = pcall(vim.cmd, 'colorscheme base16-dracula')
+--------------------------------------------------------------------------------
+-- Colorscheme
+--------------------------------------------------------------------------------
 vim.cmd[[colorscheme dracula]]
--- local ok, _ = pcall(vim.cmd, 'colorscheme base16-gruvbox-dark-medium')
--- local ok, _ = pcall(vim.cmd, 'colorscheme base16-monokai')
--- local ok, _ = pcall(vim.cmd, 'colorscheme base16-nord')
--- local ok, _ = pcall(vim.cmd, 'colorscheme base16-oceanicnext')
--- local ok, _ = pcall(vim.cmd, 'colorscheme base16-onedark')
--- local ok, _ = pcall(vim.cmd, 'colorscheme palenight')
--- local ok, _ = pcall(vim.cmd, 'colorscheme base16-solarized-dark')
--- local ok, _ = pcall(vim.cmd, 'colorscheme base16-solarized-light')
--- local ok, _ = pcall(vim.cmd, 'colorscheme base16-tomorrow-night')
+-- Uncomment one of the following to try a different colorscheme:
+-- vim.cmd[[colorscheme base16-dracula]]
+-- vim.cmd[[colorscheme base16-gruvbox-dark-medium]]
+-- vim.cmd[[colorscheme base16-monokai]]
+-- vim.cmd[[colorscheme base16-nord]]
+-- vim.cmd[[colorscheme base16-oceanicnext]]
+-- vim.cmd[[colorscheme base16-onedark]]
+-- vim.cmd[[colorscheme palenight]]
+-- vim.cmd[[colorscheme base16-solarized-dark]]
+-- vim.cmd[[colorscheme base16-solarized-light]]
+-- vim.cmd[[colorscheme base16-tomorrow-night]]
 
-
+--------------------------------------------------------------------------------
+-- Whitespace Highlighting
+--------------------------------------------------------------------------------
 vim.cmd([[
   highlight ExtraWhitespace ctermbg=red guibg=red
   match ExtraWhitespace /\s\+$/
@@ -168,24 +133,33 @@ vim.api.nvim_exec([[
   augroup END
 ]], true)
 
-
--- Highlight the region on yank
+--------------------------------------------------------------------------------
+-- Yank Highlight
+--------------------------------------------------------------------------------
 A.nvim_create_autocmd('TextYankPost', {
-    -- group = num_au,
     callback = function()
         vim.highlight.on_yank({ higroup = 'Visual', timeout = 120 })
     end,
 })
 
--- KEYBINDINGS
-local function map(m, k, v)
-    vim.keymap.set(m, k, v, { silent = true })
+--------------------------------------------------------------------------------
+-- Keybindings
+--------------------------------------------------------------------------------
+local function map(mode, lhs, rhs)
+    vim.keymap.set(mode, lhs, rhs, { silent = true })
 end
 
--- Mimic shell movements
+-- Mimic shell movements in insert mode
 map('i', '<C-E>', '<ESC>A')
 map('i', '<C-A>', '<ESC>I')
 
+--------------------------------------------------------------------------------
+-- GUI Font
+--------------------------------------------------------------------------------
 vim.opt.guifont = { "monofur for Powerline", "h18" }
 
+--------------------------------------------------------------------------------
+-- Custom Keybindings
+--------------------------------------------------------------------------------
 require("keybindings")
+
