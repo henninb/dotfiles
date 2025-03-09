@@ -1,3 +1,3 @@
 bastion host
-
+use OpenBSD
 

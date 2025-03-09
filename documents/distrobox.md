@@ -1,4 +1,3 @@
-# distrobox
 
 ## create an archlinux base
 ```

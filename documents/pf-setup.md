@@ -1,4 +1,4 @@
-# pf firewall setup
+
 
 ## rules below
 set skip on lo

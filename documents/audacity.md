@@ -1,4 +1,3 @@
-# audacity
 
 ## Record Audio
 

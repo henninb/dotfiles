@@ -1,5 +1,3 @@
-# captcha
 
-## reCaptcha
-
-## hCaptcha
+-  reCaptcha
+-  hCaptcha

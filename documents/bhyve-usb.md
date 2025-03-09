@@ -1,4 +1,3 @@
-# bhyve usb
 
 ## steps
 

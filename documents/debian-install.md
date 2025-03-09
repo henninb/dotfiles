@@ -1,12 +1,12 @@
-# debian install
+
 
 ## select install
 
-## select english
+## select English
 
-## select united states
+## Select United States
 
-## select American English
+## Select American English
 
 ## enter the hostname
 ```
@@ -33,11 +33,18 @@ local
 
 ## all files in one partition
 
-## finish partitoning and write changes to disk.
+## finish partitioning and write changes to disk.
 
 ## write the changes to disk (yes)
+```
+yes
+```
 
-## scan extra installation media? No
+## scan extra installation media? 
+```
+No
+```
+
 
 ## select the mirror
 ```

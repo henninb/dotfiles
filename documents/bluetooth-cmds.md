@@ -1,4 +1,3 @@
-# bluetooth commands
 
 ## common
 ```
@@ -25,6 +24,8 @@ pactl load-module module-loopback \
 source=bluez_source.48_45_10_A0_27_97 \
 sink=alsa_output.pci-0000_00_1b.0.analog-stereo
 
-
+```
 pactl unload-module module-bluetooth-discover
 pactl load-module module-bluetooth-discover
+```
+

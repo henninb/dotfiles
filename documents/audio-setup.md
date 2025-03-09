@@ -1,4 +1,3 @@
-# audio setup
 
 ## alsamixer
 ```
@@ -39,8 +38,9 @@ cat /proc/asound/cards
 ```
 
 ## audio recorder
+```
 sudo zypper -y audio-recorder
-
+```
 
 ## devices
 ```
