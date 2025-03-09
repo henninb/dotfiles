@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VER=2004.2.1.12
+VER=2024.2.2.15
 
 echo "https://r2---sn-jxou0gtapo3-hn2e.gvt1.com/edgedl/android/studio/ide-zips/${VER}/android-studio-${VER}-linux.tar.gz"
 
@@ -10,8 +10,8 @@ else
   echo success
 fi
 
-echo 'https://r2---sn-q4fzen7s.gvt1.com/edgedl/android/studio/ide-zips/2024.2.1.12/android-studio-2024.2.1.12-linux.tar.gz'
-wget 'https://r2---sn-q4fzen7s.gvt1.com/edgedl/android/studio/ide-zips/2024.2.1.12/android-studio-2024.2.1.12-linux.tar.gz' -O "$HOME/tmp/android-studio-linux.tar.gz"
+echo 'https://r2---sn-q4fzen7s.gvt1.com/edgedl/android/studio/ide-zips/2024.2.2.15/android-studio-2024.2.2.15-linux.tar.gz'
+wget 'https://r2---sn-q4fzen7s.gvt1.com/edgedl/android/studio/ide-zips/2024.2.2.15/android-studio-2024.2.2.15-linux.tar.gz' -O "$HOME/tmp/android-studio-linux.tar.gz"
 # wget "https://r2---sn-jxou0gtapo3-hn2e.gvt1.com/edgedl/android/studio/ide-zips/2023.1.1.28/android-studio-2023.1.1.28-linux.tar.gz" -O "$HOME/tmp/android-studio-linux.tar.gz"
 # echo "https://r2---sn-jxou0gtapo3-hn2e.gvt1.com/edgedl/android/studio/ide-zips/2003.1.1.28/android-studio-2003.1.1.28-linux.tar.gz"
 
