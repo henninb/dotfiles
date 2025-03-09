@@ -20,7 +20,7 @@ void process() {
   println('start')
   println('not connected')
   // def connection = DriverManager.getConnection('jdbc:postgresql://raspi:5432/finance_db', 'henninb', 'monday1')
-  def sql = Sql.newInstance('jdbc:postgresql://raspi:5432/finance_db', 'henninb', 'monday1', 'org.postgresql.Driver')
+  def sql = Sql.newInstance('jdbc:postgresql://finance.lan:5432/finance_db', 'henninb', 'monday1', 'org.postgresql.Driver')
   println('connected')
   // PreparedStatement preparedStatement = connection.prepareStatement(query)
 
