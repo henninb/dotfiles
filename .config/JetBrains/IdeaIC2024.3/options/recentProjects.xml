@@ -162,8 +162,8 @@
         </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint">
           <value>
-            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – UserController.kt [raspi-finance-endpoint.main]" opened="true" projectWorkspaceId="2r8RRAEMOo8kWPLFLwXj6GkB1AS">
-              <option name="activationTimestamp" value="1742057002632" />
+            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – JwtUserDetailService.kt [raspi-finance-endpoint.main]" projectWorkspaceId="2r8RRAEMOo8kWPLFLwXj6GkB1AS">
+              <option name="activationTimestamp" value="1742057309750" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="IC-243.25659.59" />
               <option name="buildTimestamp" value="1741129980000" />
