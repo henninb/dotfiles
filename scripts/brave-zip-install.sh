@@ -5,7 +5,8 @@
 #
 BRAVE_VER=$(curl -sfI 'https://github.com/brave/brave-browser/releases/latest' | grep -o 'v1.[0-9.]\+[0-9]' | sed 's/Release//' | sed 's/v//')
 
-echo "ver=$BRAVE_VER"
+echo "Installed version: $(/opt/brave-browser/brave-browser --version)"
+echo "new-ver=$BRAVE_VER"
 # echo "act=$ACTUAL_VER"
 #
 # if [ -f "/opt/firefox/firefox" ]; then

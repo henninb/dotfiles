@@ -1,6 +1,7 @@
 #!/bin/sh
 
 VER=2024.2.2.15
+VER=2024.3.1
 
 echo "https://r2---sn-jxou0gtapo3-hn2e.gvt1.com/edgedl/android/studio/ide-zips/${VER}/android-studio-${VER}-linux.tar.gz"
 

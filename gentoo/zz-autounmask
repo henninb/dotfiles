@@ -70,7 +70,7 @@ media-libs/mlt qt5 ffmpeg frei0r
 media-libs/opencolorio -opengl
 media-libs/opencv contribdnn contrib qt5
 media-sound/pulseaudio-daemon bluetooth
-media-video/ffmpeg fdk x264 libv4l v4l blueray cdio gmp encode mp3 network openssl samba theora vpx opus libass aac opus vorbis
+media-video/ffmpeg fdk x264 libv4l v4l blueray cdio gmp encode mp3 network openssl samba theora vpx opus libass aac opus vorbis lame
 media-video/mpv libmpv
 media-video/obs-studio speex ssl truetype v4l vlc
 media-video/pipewire X bluetooth dbus extra flatpak systemd
