@@ -162,39 +162,23 @@
         </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint">
           <value>
-            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – build.gradle (raspi-finance-endpoint)" projectWorkspaceId="2pQzJreOYYFCJkipAMbuRvyHESL">
-              <option name="activationTimestamp" value="1734529902538" />
+            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – UserController.kt [raspi-finance-endpoint.main]" opened="true" projectWorkspaceId="2r8RRAEMOo8kWPLFLwXj6GkB1AS">
+              <option name="activationTimestamp" value="1742057002632" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="build" value="IC-243.21565.193" />
-              <option name="buildTimestamp" value="1731462360000" />
+              <option name="build" value="IC-243.25659.59" />
+              <option name="buildTimestamp" value="1741129980000" />
               <option name="colorInfo">
                 <RecentProjectColorInfo associatedIndex="4" />
               </option>
               <frame x="12" y="41" width="3816" height="2075" />
               <option name="productionCode" value="IC" />
-              <option name="projectOpenTimestamp" value="1734526448670" />
-            </RecentProjectMetaInfo>
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/projects/github.com/henninb/android-complex">
-          <value>
-            <RecentProjectMetaInfo frameTitle="example – build.gradle (:app)" projectWorkspaceId="2u2aobt23Lgqvv1Tq3cEnFo0bYe">
-              <option name="activationTimestamp" value="1741470678090" />
-              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="build" value="IC-243.25659.59" />
-              <option name="buildTimestamp" value="1741129980000" />
-              <option name="colorInfo">
-                <RecentProjectColorInfo associatedIndex="6" />
-              </option>
-              <frame x="12" y="41" width="3816" height="2075" />
-              <option name="productionCode" value="IC" />
-              <option name="projectOpenTimestamp" value="1741468534324" />
+              <option name="projectOpenTimestamp" value="1742052045738" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
       </map>
     </option>
-    <option name="lastOpenedProject" value="$USER_HOME$/projects/github.com/henninb/android-complex" />
+    <option name="lastOpenedProject" value="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint" />
     <option name="lastProjectLocation" value="$USER_HOME$/projects/github.com/henninb" />
   </component>
 </application>
