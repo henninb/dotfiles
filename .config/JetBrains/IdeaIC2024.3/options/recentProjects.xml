@@ -162,17 +162,17 @@
         </entry>
         <entry key="$USER_HOME$/projects/github.com/henninb/raspi-finance-endpoint">
           <value>
-            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – JwtUserDetailService.kt [raspi-finance-endpoint.main]" projectWorkspaceId="2r8RRAEMOo8kWPLFLwXj6GkB1AS">
-              <option name="activationTimestamp" value="1742057309750" />
+            <RecentProjectMetaInfo frameTitle="raspi-finance-endpoint – WebSecurityConfig.kt [raspi-finance-endpoint.main]" projectWorkspaceId="2r8RRAEMOo8kWPLFLwXj6GkB1AS">
+              <option name="activationTimestamp" value="1742135193227" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="IC-243.25659.59" />
               <option name="buildTimestamp" value="1741129980000" />
               <option name="colorInfo">
                 <RecentProjectColorInfo associatedIndex="4" />
               </option>
-              <frame x="12" y="41" width="3816" height="2075" />
+              <frame x="12" y="12" width="3816" height="2136" />
               <option name="productionCode" value="IC" />
-              <option name="projectOpenTimestamp" value="1742052045738" />
+              <option name="projectOpenTimestamp" value="1742121605300" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
