@@ -332,6 +332,7 @@ pip install -U streamdeck --user
 pip install -U awscli --user
 pip install -U objection --user
 pip install -U youbikey-manager --user
+pip install -U certbot --user
 echo pip install streamdeck-linux-gui --user
 echo pip install docker-compose --user
 
