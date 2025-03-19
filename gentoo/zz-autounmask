@@ -23,8 +23,7 @@ dev-java/openjdk gentoo-vm -alsa -cups -webstart
 dev-java/openjdk-bin gentoo-vm -alsa -cups -webstart
 dev-lang/mono minimal
 dev-lang/python sqlite
-dev-libs/boost icu
-dev-libs/boost python
+dev-libs/boost icu python
 dev-libs/cyrus-sasl kerberos
 dev-libs/libdbusmenu gtk3
 dev-libs/libfmt recorder
@@ -55,9 +54,8 @@ gnome-base/gnome-control-center networkmanager
 kde-frameworks/kconfig qml
 kde-frameworks/sonnet qml
 kde-misc/kdeconnect X bluetooth
-kde-misc/kdeconnect bluetooth
 media-gfx/feh xinerama
-media-libs/freetype brotli
+media-libs/freetype brotli harfbuzz
 media-libs/gd fontconfig
 media-libs/harfbuzz icu
 media-libs/libpng apng
@@ -73,7 +71,7 @@ media-sound/pulseaudio-daemon bluetooth
 media-video/ffmpeg fdk x264 libv4l v4l blueray cdio gmp encode mp3 network openssl samba theora vpx opus libass aac opus vorbis lame
 media-video/mpv libmpv
 media-video/obs-studio speex ssl truetype v4l vlc
-media-video/pipewire X bluetooth dbus extra flatpak systemd
+media-video/pipewire X bluetooth dbus extra flatpak systemd sound-server ssl system-service ffmpeg gstreamer pipewire-alsa v4l
 net-analyzer/wireshark gtk qt5 wayland-egl wayland
 net-dns/avahi mdnsresponder-compat
 net-dns/dnsmasq script
@@ -96,7 +94,6 @@ sys-fs/lvm2 thin
 sys-fs/squashfs-tools lzma lzo
 sys-libs/libcap static-libs
 sys-libs/libseccomp static-libs
-sys-libs/libseccomp static-libs
 sys-libs/ncurses -gpm
 sys-libs/zlib abi_x86_32 minizip
 virtual/libusb udev
@@ -111,7 +108,6 @@ python/fido2 -python3_10 python3_11
 x11-misc/lightdm qt5 systemd gtk elogind audit
 x11-base/xorg-server xephyr
 x11-misc/polybar alsa curl doc i3w ipc mpd network pulseaudio
-media-video/pipewire sound-server ssl system-service X dbus ffmpeg flatpak gstreamer pipewire-alsa sound-server v4l
 media-sound/mpd pipe pipewire mpg123 network systemd zip ffmpeg flac twolame vorbis lame
 gui-libs/wlroots x11-backend
 app-office/libreoffice-bin python_single_target_python3_11
@@ -124,7 +120,6 @@ sys-devel/lld zstd
 net-firewall/iptables nftables
 media-gfx/inkscape X
 gui-wm/hyprland X systemd
-#app-emulation/qemu opengl ssh spice gtk usbredir sdl
 app-emulation/qemu opengl ssh spice usbredir pipewire virgl
 x11-libs/libxkbcommon wayland
 media-libs/cogl gles2
@@ -137,15 +132,13 @@ dev-lang/perl ithreads
 app-pda/gtkpod cdr gstreamer
 media-sound/clementine ipod
 media-sound/rhythmbox ipod udev dbus keyring
-media-libs/freetype harfbuzz
 app-containers/runc seccomp
 app-containers/containerd seccomp
 app-emulation/fuse -alsa -ao -backend-sdl -pulseaudio
-# dev-libs/icu abi_x86_32
 sci-libs/opencascade json
 sci-libs/cgnslib hdf5
 sci-libs/hdf5 cxx
 media-libs/tiff zstd lzma
 dev-python/pyside6 uitools
 dev-python/pyside uitools
- net-libs/nodejs npm
+net-libs/nodejs npm

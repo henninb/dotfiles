@@ -1,32 +1,44 @@
 #!/bin/sh
+# Set Android Studio version here:
+VER="2024.3.1.13"
 
-VER=2024.2.2.15
-VER=2024.3.1
+# Set temporary directory and output file name:
+TMPDIR="$HOME/tmp"
+OUTFILE="$TMPDIR/android-studio-linux.tar.gz"
 
-echo "https://r2---sn-jxou0gtapo3-hn2e.gvt1.com/edgedl/android/studio/ide-zips/${VER}/android-studio-${VER}-linux.tar.gz"
-
-if ! curl -sL --output "$HOME/tmp/android-studio-linux.tar.gz" "https://r2---sn-jxou0gtapo3-hn2e.gvt1.com/edgedl/android/studio/ide-zips/${VER}/android-studio-${VER}-linux.tar.gz"; then
-  echo fail
-else
-  echo success
+# Create temporary directory if it doesn't exist:
+if [ ! -d "$TMPDIR" ]; then
+  mkdir -p "$TMPDIR" || { echo "Failed to create directory $TMPDIR" >&2; exit 1; }
 fi
 
-echo 'https://r2---sn-q4fzen7s.gvt1.com/edgedl/android/studio/ide-zips/2024.2.2.15/android-studio-2024.2.2.15-linux.tar.gz'
-wget 'https://r2---sn-q4fzen7s.gvt1.com/edgedl/android/studio/ide-zips/2024.2.2.15/android-studio-2024.2.2.15-linux.tar.gz' -O "$HOME/tmp/android-studio-linux.tar.gz"
-# wget "https://r2---sn-jxou0gtapo3-hn2e.gvt1.com/edgedl/android/studio/ide-zips/2023.1.1.28/android-studio-2023.1.1.28-linux.tar.gz" -O "$HOME/tmp/android-studio-linux.tar.gz"
-# echo "https://r2---sn-jxou0gtapo3-hn2e.gvt1.com/edgedl/android/studio/ide-zips/2003.1.1.28/android-studio-2003.1.1.28-linux.tar.gz"
+# Construct the download URL:
+URL="https://r2---sn-jxou0gtapo3-hn2e.gvt1.com/edgedl/android/studio/ide-zips/${VER}/android-studio-${VER}-linux.tar.gz"
 
-#wget --max-redirect=50 "https://r2---sn-jxou0gtapo3-hn2e.gvt1.com/edgedl/android/studio/ide-zips/${VER}/android-studio-${VER}-linux.tar.gz" -O "$HOME/tmp/android-studio-linux.tar.gz"
-# curl "https://r2---sn-jxou0gtapo3-hn2e.gvt1.com/edgedl/android/studio/ide-zips/2023.1.1.26/android-studio-2023.1.1.26-linux.tar.gz" -o "$HOME/tmp/android-studio-${ver}-linux.tar.gz"
-# curl "https://r2---sn-jxou0gtapo3-hn2e.gvt1.com/edgedl/android/studio/ide-zips/${ver}/android-studio-${ver}-linux.tar.gz" -o "$HOME/tmp/android-studio-${ver}-linux.tar.gz"
-#curl "https://dl.google.com/edgedl/android/studio/ide-zips/2003.1.1.26/android-studio-2003.1.1.26-linux.tar.gz" -o "$HOME/tmp/android-studio-${ver}-linux.tar.gz"
+echo "Downloading Android Studio version ${VER} from:"
+echo "$URL"
 
-#curl "https://r2---sn-jxou0gtapo3-hn2e.gvt1.com/edgedl/android/studio/ide-zips/${ver}/android-studio-2023.1.1.26-linux.tar.gz" -o "$HOME/tmp/android-studio-${ver}-linux.tar.gz"
-doas rm -rf /opt/android-studio/
+# Download the file with curl:
+if ! curl -sL --output "$OUTFILE" "$URL"; then
+  echo "Download failed" >&2
+  exit 1
+else
+  echo "Download succeeded"
+fi
 
-cd "$HOME/tmp/" || exit
-doas tar -xvf "android-studio-linux.tar.gz" -C /opt
+# Remove any existing Android Studio installation:
+if doas rm -rf /opt/android-studio/; then
+  echo "Removed previous Android Studio installation (if any)"
+fi
+
+# Change to the temporary directory:
+cd "$TMPDIR" || { echo "Failed to change directory to $TMPDIR" >&2; exit 1; }
+
+# Extract the tarball to /opt:
+if doas tar -xvf "android-studio-linux.tar.gz" -C /opt; then
+  echo "Extraction succeeded"
+else
+  echo "Extraction failed" >&2
+  exit 1
+fi
 
 exit 0
-
-# vim: set ft=sh:
