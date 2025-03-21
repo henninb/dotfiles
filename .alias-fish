@@ -141,8 +141,8 @@ abbr -a sudop 'sudo -E su -p'
 # end
 
 # clipboard, primary, secondary
-abbr -a pbcopy 'xclip -selection clipboard'
-abbr -a pbpaste 'xclip -selection clipboard -o'
+abbr -a pbcopy 'wl-copy'
+abbr -a pbpaste 'wl-paste'
 # alias pbcopy='xclip'
 # alias pbpaste='xclip -o'
 
