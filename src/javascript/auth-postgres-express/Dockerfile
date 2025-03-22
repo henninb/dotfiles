@@ -14,10 +14,10 @@ RUN npm install --production
 COPY . .
 
 # Set the PORT environment variable to 80.
-ENV PORT=80
+# ENV PORT=80
 
 # Expose port 80 to the outside world.
-EXPOSE 80
+# EXPOSE 80
 
 # Start the Express app.
 CMD [ "node", "server.js" ]
