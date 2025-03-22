@@ -10,6 +10,19 @@ THIRTY_DAYS=2592000
 DOMAINS="bhenning.com brianhenning.com"
 NEED_RENEWAL=0
 
+echo doas certbot certonly --dns-cloudflare --dns-cloudflare-credentials /etc/cloudflare/cloudflare.ini -d bhenning.com -d '*.bhenning.com'
+echo doas certbot certonly --dns-cloudflare --dns-cloudflare-credentials /etc/cloudflare/cloudflare.ini -d brianhenning.com -d '*.brianhenning.com'
+# doas certbot certonly --dns-cloudflare --dns-cloudflare-credentials /etc/cloudflare/cloudflare.ini -d finance.bhenning.com
+# doas certbot certonly --dns-cloudflare --dns-cloudflare-credentials /etc/cloudflare/cloudflare.ini -d finance.brianhenning.com
+#
+doas cp /etc/letsencrypt/live/bhenning.com/fullchain.pem /home/henninb/projects/github.com/henninb/nginx-reverse-proxy/bhenning.fullchain.pem
+doas cp /etc/letsencrypt/live/bhenning.com/privkey.pem /home/henninb/projects/github.com/henninb/nginx-reverse-proxy/bhenning.privkey.pem
+
+doas cp /etc/letsencrypt/live/brianhenning.com/fullchain.pem /home/henninb/projects/github.com/henninb/nginx-reverse-proxy/brianhenning.fullchain.pem
+doas cp /etc/letsencrypt/live/brianhenning.com/privkey.pem /home/henninb/projects/github.com/henninb/nginx-reverse-proxy/brianhenning.privkey.pem
+sudo chown henninb:henninb /home/henninb/projects/github.com/henninb/nginx-reverse-proxy/brianhenning.fullchain.pem /home/henninb/projects/github.com/henninb/nginx-reverse-proxy/brianhenning.privkey.pem
+sudo chown henninb:henninb /home/henninb/projects/github.com/henninb/nginx-reverse-proxy/bhenning.fullchain.pem /home/henninb/projects/github.com/henninb/nginx-reverse-proxy/bhenning.privkey.pem
+
 for domain in $DOMAINS; do
     CERTFILE="/etc/letsencrypt/live/$domain/fullchain.pem"
     if [ ! -f "$CERTFILE" ]; then
@@ -35,15 +48,3 @@ fi
 
 exit 0
 
-doas emerge --update --newuse  certbot-dns-cloudflare
-doas emerge --update --newuse  certbot
-doas certbot certonly --dns-cloudflare --dns-cloudflare-credentials /etc/cloudflare/cloudflare.ini -d bhenning.com -d '*.bhenning.com'
-doas certbot certonly --dns-cloudflare --dns-cloudflare-credentials /etc/cloudflare/cloudflare.ini -d brianhenning.com -d '*.brianhenning.com'
-
-# doas certbot certonly --dns-cloudflare --dns-cloudflare-credentials /etc/cloudflare/cloudflare.ini -d finance.bhenning.com
-# doas certbot certonly --dns-cloudflare --dns-cloudflare-credentials /etc/cloudflare/cloudflare.ini -d finance.brianhenning.com
-#
-#
-echo doas certbot renew
-
-exit 0

@@ -16,7 +16,8 @@ app.use(helmet()); // Adds security headers
 // Configure PostgreSQL connection
 const pool = new Pool({
   user: 'henninb',       // change this to your database user if different
-  host: '192.168.10.10',
+  // host: '34.132.189.202',
+  host: 'postgresql-server',
   database: 'finance_db',
   password: 'monday1',  // update with your actual database password
   port: 5432,             // default PostgreSQL port
@@ -33,10 +34,16 @@ const loginLimiter = rateLimit({
   message: 'Too many login attempts, please try again later.',
 });
 
+
+app.get('/', (req, res) => {
+  res.send('Server is up!');
+});
+
 // POST /api/register
 app.post('/api/register', async (req, res) => {
+  console.log("/api/register");
   const { username, password } = req.body;
-
+  console.log("username");
   if (!username || !password) {
     return res.status(400).json({ error: 'Username and password are required.' });
   }
@@ -50,8 +57,10 @@ app.post('/api/register', async (req, res) => {
       VALUES ($1, $2, NOW(), NOW())
       RETURNING user_id
     `;
+    console.log("prequery");
     const { rows } = await pool.query(queryText, [normalizedUsername, hashedPassword]);
     // res.status(201).json({ userId: rows[0].user_id });
+    console.log("201");
     res.sendStatus(201);
   } catch (error) {
     if (error.code === '23505') {
@@ -64,6 +73,7 @@ app.post('/api/register', async (req, res) => {
 
 // POST /api/login with rate limiter applied
 app.post('/api/login', loginLimiter, async (req, res) => {
+  console.log("username");
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -73,16 +83,21 @@ app.post('/api/login', loginLimiter, async (req, res) => {
   const normalizedUsername = username.toLowerCase();
 
   try {
+    console.log("prequery");
     const queryText = `SELECT * FROM public.t_user WHERE username = $1`;
     const { rows } = await pool.query(queryText, [normalizedUsername]);
+    console.log("did it");
 
     if (rows.length === 0) {
+      console.log("did it - 401");
+
       return res.status(401).json({ error: 'Invalid credentials.' });
     }
 
     const user = rows[0];
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
+      console.log("did it - 401");
       return res.status(401).json({ error: 'Invalid credentials.' });
     }
 
@@ -100,6 +115,7 @@ app.post('/api/login', loginLimiter, async (req, res) => {
       maxAge: 3600000, // 1 hour
     });
 
+    console.log("204");
     res.status(204).send();
   } catch (error) {
     console.error(error);
