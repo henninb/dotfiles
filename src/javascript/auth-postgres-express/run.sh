@@ -21,13 +21,14 @@ if [ "$OPTION" = "local" ]; then
   # npm install
   # npm start
 
+
   docker build -t express-app .
   docker rm -f express-app 2>/dev/null
   docker run --name=express-app \
     -h express-app \
     --network my-network \
     --restart unless-stopped \
-    -p 80:3000 \
+    -p 443:3000 \
     -d express-app
 
   echo "Container running locally. Access at http://localhost"
@@ -37,9 +38,9 @@ elif [ "$OPTION" = "remote" ]; then
   # Add your SSH key for the remote (GCP) host.
   ssh-add ~/.ssh/id_rsa_gcp
 
-  # Create (or update) a Docker context for the remote host.
-  docker context create remote-webserver --docker "host=ssh://brianhenning@34.132.189.202"
   export DOCKER_HOST=ssh://gcp-api
+  # Create (or update) a Docker context for the remote host.
+  # docker context create remote-webserver --docker "host=ssh://brianhenning@34.132.189.202"
 
   # Switch to the remote context.
   #docker context use remote-webserver
@@ -50,7 +51,7 @@ elif [ "$OPTION" = "remote" ]; then
     -h express-app \
     --network my-network \
     --restart unless-stopped \
-    -p 80:3000 \
+    -p 443:3000 \
     -d express-app
 
   echo "Container running on remote host. Access at http://<remote-host-ip>"
@@ -58,11 +59,11 @@ else
   usage
 fi
 
-gcloud compute firewall-rules create allow-http-port80 \
-  --network=default \
-  --allow tcp:80 \
-  --source-ranges=0.0.0.0/0 \
-  --target-tags=bhenning-api \
-  --description="Allow incoming HTTP traffic on port 80"
+# gcloud compute firewall-rules create allow-http-port80 \
+  # --network=default \
+  # --allow tcp:80 \
+  # --source-ranges=0.0.0.0/0 \
+  # --target-tags=bhenning-api \
+  # --description="Allow incoming HTTP traffic on port 80"
 
 exit 0

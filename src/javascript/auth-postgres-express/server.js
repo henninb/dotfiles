@@ -1,3 +1,5 @@
+const fs = require('fs');
+const https = require('https');
 const express = require('express');
 const { Pool } = require('pg');
 const bcrypt = require('bcryptjs'); // switched to bcryptjs
@@ -129,8 +131,16 @@ app.post('/api/login', loginLimiter, async (req, res) => {
   }
 });
 
+// SSL options - replace with the path to your certificate and key files
+const sslOptions = {
+  key: fs.readFileSync('./bhenning.privkey.pem'),
+  cert: fs.readFileSync('./bhenning.fullchain.pem'),
+};
+
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on port ${PORT}`);
+
+// Create HTTPS server using the SSL options
+https.createServer(sslOptions, app).listen(PORT, '0.0.0.0', () => {
+  console.log(`HTTPS server running on port ${PORT}`);
 });
 
