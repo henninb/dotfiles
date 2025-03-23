@@ -1,6 +1,6 @@
 const express = require('express');
 const { Pool } = require('pg');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs'); // switched to bcryptjs
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
@@ -15,12 +15,16 @@ app.use(helmet()); // Adds security headers
 
 // Configure PostgreSQL connection
 const pool = new Pool({
-  user: 'henninb',       // change this to your database user if different
-  // host: '34.132.189.202',
-  host: 'postgresql-server',
+  user: 'henninb',       // update if needed
+  host: 'postgresql-server',  // change to 'postgresql-server' if using Docker network
   database: 'finance_db',
-  password: 'monday1',  // update with your actual database password
-  port: 5432,             // default PostgreSQL port
+  password: 'monday1',   // update with your actual database password
+  port: 5432,            // default PostgreSQL port
+});
+
+// Global error handler for idle clients—log error without exiting
+pool.on('error', (err) => {
+  console.error('Unexpected error on idle client:', err);
 });
 
 // Security constants
@@ -34,46 +38,50 @@ const loginLimiter = rateLimit({
   message: 'Too many login attempts, please try again later.',
 });
 
-
 app.get('/', (req, res) => {
   res.send('Server is up!');
 });
 
 // POST /api/register
 app.post('/api/register', async (req, res) => {
-  console.log("/api/register");
+  console.log('/api/register called');
   const { username, password } = req.body;
-  console.log("username");
+  console.log('Received username:', username);
+  console.log('Received password:', password ? 'provided' : 'not provided');
+
   if (!username || !password) {
+    console.log('Missing username or password');
     return res.status(400).json({ error: 'Username and password are required.' });
   }
 
   const normalizedUsername = username.toLowerCase();
 
   try {
+    console.log('Hashing password...');
     const hashedPassword = await bcrypt.hash(password, BCRYPT_SALT_ROUNDS);
+    console.log('Password hashed');
     const queryText = `
       INSERT INTO public.t_user (username, password, date_updated, date_added)
       VALUES ($1, $2, NOW(), NOW())
       RETURNING user_id
     `;
-    console.log("prequery");
+    console.log('Executing query to insert user...');
     const { rows } = await pool.query(queryText, [normalizedUsername, hashedPassword]);
-    // res.status(201).json({ userId: rows[0].user_id });
-    console.log("201");
-    res.sendStatus(201);
+    console.log('User inserted with user_id:', rows[0].user_id);
+    return res.sendStatus(201);
   } catch (error) {
+    console.error('Error in /api/register:', error);
     if (error.code === '23505') {
+      console.log('Username already exists');
       return res.status(409).json({ error: 'Username already exists.' });
     }
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ error: 'Internal server error' });
   }
 });
 
 // POST /api/login with rate limiter applied
 app.post('/api/login', loginLimiter, async (req, res) => {
-  console.log("username");
+  console.log('POST /api/login called');
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -83,21 +91,19 @@ app.post('/api/login', loginLimiter, async (req, res) => {
   const normalizedUsername = username.toLowerCase();
 
   try {
-    console.log("prequery");
     const queryText = `SELECT * FROM public.t_user WHERE username = $1`;
+    console.log('Querying database for user:', normalizedUsername);
     const { rows } = await pool.query(queryText, [normalizedUsername]);
-    console.log("did it");
 
     if (rows.length === 0) {
-      console.log("did it - 401");
-
+      console.log('User not found');
       return res.status(401).json({ error: 'Invalid credentials.' });
     }
 
     const user = rows[0];
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      console.log("did it - 401");
+      console.log('Password does not match');
       return res.status(401).json({ error: 'Invalid credentials.' });
     }
 
@@ -111,15 +117,15 @@ app.post('/api/login', loginLimiter, async (req, res) => {
     res.cookie('token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax', // Helps mitigate CSRF attacks
+      sameSite: 'lax',
       maxAge: 3600000, // 1 hour
     });
 
-    console.log("204");
-    res.status(204).send();
+    console.log('Login successful, sending 204');
+    return res.status(204).send();
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error('Error in /api/login:', error);
+    return res.status(500).json({ error: 'Internal server error' });
   }
 });
 
@@ -128,7 +134,3 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-// const PORT = process.env.PORT || 3000;
-// app.listen(PORT, () => {
-  // console.log(`Server running on port ${PORT}`);
-// });
