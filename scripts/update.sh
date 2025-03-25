@@ -317,6 +317,8 @@ if ! npm update claude-code >/dev/null 2>&1; then
   npm install -g claude-code
 fi
 
+
+
 pip install -U pyserial --user
 pip install -U youtube-dl --user
 pip install -U yt-dlp --user
@@ -333,6 +335,7 @@ pip install -U awscli --user
 pip install -U objection --user
 pip install -U youbikey-manager --user
 pip install -U certbot --user
+pip install -U js-beautify --user
 echo pip install streamdeck-linux-gui --user
 echo pip install docker-compose --user
 
