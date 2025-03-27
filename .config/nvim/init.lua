@@ -5,7 +5,7 @@ require("plugins")         -- Load plugin manager settings
 
 -- Plugin setups
 require('lualine').setup()   -- Statusline
-require('nvim_comment').setup()  -- Comment toggling
+-- require('nvim_comment').setup()  -- Comment toggling
 require("lsp")             -- Language Server Protocol configurations
 
 --------------------------------------------------------------------------------
@@ -26,6 +26,8 @@ require('nvim-treesitter.configs').setup {
     additional_vim_regex_highlighting = false,  -- Disable traditional regex highlighting
   },
 }
+
+-- use 'tpope/vim-commentary'
 
 --[[
 --------------------------------------------------------------------------------

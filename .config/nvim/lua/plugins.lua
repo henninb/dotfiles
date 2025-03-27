@@ -1,3 +1,4 @@
+-- Auto-compile packer when plugins.lua is saved
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = { "plugins.lua" },
   callback = function()
@@ -5,6 +6,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   end,
 })
 
+-- Bootstrap packer.nvim if not already installed
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -19,72 +21,83 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 vim.api.nvim_command("packadd packer.nvim")
 
-local execute = vim.api.nvim_command
--- if not packer_exists then execute 'PackerSync' end
-
--- returns the require for use in `config` parameter of packer's use
--- expects the name of the config file
--- function get_setup(name)
---   return string.format('require("setup/%s")', name)
--- end
-
-
+-- Start configuring plugins with packer
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  -- A better status line
+  ------------------------------------------------------------------------------
+  -- User Interface & Status Line
+  ------------------------------------------------------------------------------
   use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    'nvim-lualine/lualine.nvim',         -- A fast and customizable status line
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true } -- Optional file icons for lualine
   }
 
+  ------------------------------------------------------------------------------
+  -- Syntax Highlighting & Code Parsing
+  ------------------------------------------------------------------------------
   use {
-        'nvim-treesitter/nvim-treesitter',
-        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    'nvim-treesitter/nvim-treesitter',    -- Improved syntax highlighting and code understanding
+    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
 
-  use 'williamboman/nvim-lsp-installer'
-  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
+  ------------------------------------------------------------------------------
+  -- Language Server Protocol (LSP) Setup
+  ------------------------------------------------------------------------------
+  use 'williamboman/nvim-lsp-installer'    -- LSP installer to simplify LSP server setup
+  use 'neovim/nvim-lspconfig'              -- Configurations for built-in LSP client
 
-  -- use 'jose-elias-alvarez/null-ls.nvim'
-  -- use 'Mofiqul/dracula.nvim'
-  --
-  -- File management --
-  use 'vifm/vifm.vim'
-  use 'scrooloose/nerdtree'
-  use 'tiagofumo/vim-nerdtree-syntax-highlight'
-  use 'ryanoasis/vim-devicons'
+  ------------------------------------------------------------------------------
+  -- File Management & Navigation
+  ------------------------------------------------------------------------------
+  use 'vifm/vifm.vim'                     -- Integration for the vifm file manager
+  use 'scrooloose/nerdtree'                -- File explorer tree for navigating files
+  use 'tiagofumo/vim-nerdtree-syntax-highlight' -- Enhanced syntax highlighting for NERDTree
+  use 'ryanoasis/vim-devicons'             -- Adds file type icons (used by various plugins)
 
-  -- Productivity --
-  -- use 'vimwiki/vimwiki'
-  -- use 'jreybert/vimagit'
+  ------------------------------------------------------------------------------
+  -- Commenting Plugins (choose one)
+  ------------------------------------------------------------------------------
+  -- Using tpope's vim-commentary for simple, operator-pending commenting
+  use 'tpope/vim-commentary'
+  -- Note: Removed terrortylor/nvim-comment to avoid duplication
 
-  -- Tim Pope Plugins --
-  use 'tpope/vim-surround'
-  -- use 'tpope/vim-comentary'
-  use 'terrortylor/nvim-comment'
+  ------------------------------------------------------------------------------
+  -- Productivity & Editing Enhancements
+  ------------------------------------------------------------------------------
+  -- Tim Pope Plugins:
+  use 'tpope/vim-surround'               -- Quickly delete, change, and add surrounding characters
 
+  -- Optional Productivity Plugins (uncomment if needed)
+  -- use 'vimwiki/vimwiki'                -- Personal wiki for note-taking and organization
+  -- use 'jreybert/vimagit'               -- Git integration within Vim
 
-  -- Syntax Highlighting and Colors --
-  -- use 'PotatoesMaster/i3-vim-syntax'
-  -- use 'kovetskiy/sxhkd-vim'
-  use 'vim-python/python-syntax'
-  use 'ap/vim-css-color'
+  ------------------------------------------------------------------------------
+  -- Language-specific Syntax & Tools
+  ------------------------------------------------------------------------------
+  use 'vim-python/python-syntax'         -- Improved Python syntax highlighting
+  use 'ap/vim-css-color'                 -- Highlights CSS colors in files
 
-  -- Junegunn Choi Plugins --
-  use 'junegunn/goyo.vim'
-  use 'junegunn/limelight.vim'
-  use 'junegunn/vim-emoji'
+  ------------------------------------------------------------------------------
+  -- Distraction-Free Writing & Visual Enhancements
+  ------------------------------------------------------------------------------
+  use 'junegunn/goyo.vim'                -- Distraction-free writing mode
+  use 'junegunn/limelight.vim'           -- Focus on the current paragraph or code block
+  use 'junegunn/vim-emoji'               -- Easy insertion and display of emoji
 
-  -- Colorschemes
-  use 'RRethy/nvim-base16'
-  use 'kyazdani42/nvim-palenight.lua'
+  ------------------------------------------------------------------------------
+  -- Colorschemes & Appearance
+  ------------------------------------------------------------------------------
+  use 'RRethy/nvim-base16'               -- Base16 color schemes for Neovim
+  use 'kyazdani42/nvim-palenight.lua'      -- Palenight color scheme for a modern look
 
-  -- Other stuff
-  use 'frazrepo/vim-rainbow'
+  ------------------------------------------------------------------------------
+  -- Miscellaneous
+  ------------------------------------------------------------------------------
+  use 'frazrepo/vim-rainbow'             -- Rainbow parentheses for better code readability
   use {
-    "LuaLS/lua-language-server",
+    "LuaLS/lua-language-server",         -- Lua language server for better Lua support
     run = "./make.sh"
   }
 end)
