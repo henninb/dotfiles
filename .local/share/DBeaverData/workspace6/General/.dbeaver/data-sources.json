@@ -6,13 +6,14 @@
 			"driver": "postgres-jdbc",
 			"name": "PostgreSQL - finance_db",
 			"save-password": true,
-			"read-only": false,
 			"configuration": {
-				"host": "192.168.10.25",
+				"host": "192.168.10.10",
 				"port": "5432",
 				"database": "finance_db",
-				"url": "jdbc:postgresql://192.168.10.25:5432/finance_db",
+				"url": "jdbc:postgresql://192.168.10.10:5432/finance_db",
+				"configurationType": "MANUAL",
 				"type": "dev",
+				"closeIdleConnection": false,
 				"provider-properties": {
 					"@dbeaver-show-non-default-db@": "false",
 					"@dbeaver-show-template-db@": "false",
@@ -22,7 +23,8 @@
 					"show-database-statistics": "false",
 					"@dbeaver-read-all-data-types-db@": "false",
 					"@dbeaver-use-prepared-statements-db@": "false",
-					"read-keys-with-columns": "false"
+					"read-keys-with-columns": "false",
+					"@dbeaver-chosen-role@": ""
 				},
 				"auth-model": "native"
 			},
@@ -35,11 +37,12 @@
 			"driver": "sqlite_jdbc",
 			"name": "tech-bucket-list.db",
 			"save-password": true,
-			"read-only": false,
 			"configuration": {
 				"database": "/home/henninb/data/tech-buckeet-list/tech-bucket-list.db",
 				"url": "jdbc:sqlite:/home/henninb/data/tech-buckeet-list/tech-bucket-list.db",
+				"configurationType": "MANUAL",
 				"type": "dev",
+				"closeIdleConnection": false,
 				"auth-model": "native"
 			}
 		},
@@ -48,14 +51,14 @@
 			"driver": "mariaDB",
 			"name": "mariadb-docker",
 			"save-password": true,
-			"read-only": false,
 			"configuration": {
 				"host": "localhost",
 				"port": "3306",
 				"url": "jdbc:mariadb://localhost:3306/",
+				"configurationType": "MANUAL",
 				"type": "dev",
-				"auth-model": "native",
-				"handlers": {}
+				"closeIdleConnection": false,
+				"auth-model": "native"
 			}
 		}
 	},
@@ -67,7 +70,12 @@
 			"auto-commit": true,
 			"confirm-execute": false,
 			"confirm-data-change": false,
-			"auto-close-transactions": false
+			"smart-commit": false,
+			"smart-commit-recover": true,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800,
+			"auto-close-connections": true,
+			"close-connections-period": 14400
 		}
 	}
 }
