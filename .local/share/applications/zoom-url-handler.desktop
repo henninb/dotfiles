@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Zoom URL Handler
+Exec=zoom --url="%u"
+Type=Application
+NoDisplay=true
+MimeType=x-scheme-handler/zoommtg;
+
