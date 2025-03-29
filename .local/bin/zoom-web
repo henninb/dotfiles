@@ -1,0 +1,48 @@
+#!/bin/sh
+# Extract meeting ID and password from the Zoom URL
+# Example input: https://mycompany.zoom.us/j/98572646270?pwd=123
+
+url="$1"
+
+# Extract the meeting ID from the URL path (digits after /j/)
+# meeting_id=$(echo "$url" | sed -n 's|.*\/j\/\([0-9]*\).*|\1|p')
+meeting_id=$(echo "$url" | sed -E -n 's|.*\/[js]/([0-9]+).*|\1|p')
+
+# Extract the password (pwd) from the query parameters, if it exists
+pwd=$(echo "$url" | sed -n 's/.*[?&]pwd=\([^&]*\).*/\1/p')
+
+echo "Meeting ID: $meeting_id"
+echo "Password: $pwd"
+
+# Construct the web client URL for Zoom
+if [ -n "$pwd" ]; then
+  new_url="https://zoom.us/wc/join/${meeting_id}?pwd=${pwd}"
+else
+  new_url="https://zoom.us/wc/join/${meeting_id}"
+fi
+
+# Open the URL in the default web browser
+xdg-open "$new_url"
+
+
+#!/bin/sh
+# Extract meeting ID and password from the URL provided by Zoom
+# Example input: zoommtg://zoom.us/join?action=join&confno=123456789&pwd=abc123
+
+# url="$1"
+# # Extract the meeting number (confno) and password (pwd) using sed
+# meeting_id=$(echo "$url" | sed -n 's/.*[?&]confno=\([^&]*\).*/\1/p')
+# pwd=$(echo "$url" | sed -n 's/.*[?&]pwd=\([^&]*\).*/\1/p')
+
+# echo $meeting_id
+# echo $pwd
+
+# # Construct the web client URL
+# if [ -n "$pwd" ]; then
+#   new_url="https://zoom.us/wc/join/${meeting_id}?pwd=${pwd}"
+# else
+#   new_url="https://zoom.us/wc/join/${meeting_id}"
+# fi
+
+# # Open the URL in the default web browser
+# xdg-open "$new_url"
