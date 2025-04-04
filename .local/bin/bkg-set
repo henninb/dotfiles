@@ -1,7 +1,6 @@
 #!/bin/sh
 
-swww img $HOME/.local/wallpaper/minnesota-vikings-dark.png
-xfconf-query -c xsettings -p /Net/IconThemeName -s "Papirus-Dark"
+# xfconf-query -c xsettings -p /Net/IconThemeName -s "Papirus-Dark"
 gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
 pkill waybar
 waybar &
