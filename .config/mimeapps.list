@@ -23,7 +23,11 @@ application/sql=archlinuxbox-dbeaver.desktop
 inode/directory=thunar.desktop
 x-scheme-handler/obsidian=obsidian.desktop
 x-scheme-handler/zoommtg=zoom-web.desktop
-text/plain=vscodium-wayland.desktop
+text/plain=codium-open-in-new-window.desktop
+application/smil+xml=codium-open-in-new-window.desktop
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=org.libreoffice.LibreOffice.writer.desktop
 
 [Added Associations]
-text/plain=vscodium-wayland.desktop;
+text/plain=vscodium-wayland.desktop;codium-open-in-new-window.desktop;
+application/smil+xml=codium-open-in-new-window.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=org.libreoffice.LibreOffice.writer.desktop;
