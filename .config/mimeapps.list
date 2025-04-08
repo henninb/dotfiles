@@ -26,8 +26,10 @@ x-scheme-handler/zoommtg=zoom-web.desktop
 text/plain=codium-open-in-new-window.desktop
 application/smil+xml=codium-open-in-new-window.desktop
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=org.libreoffice.LibreOffice.writer.desktop
+application/pdf=mupdf.desktop
 
 [Added Associations]
 text/plain=vscodium-wayland.desktop;codium-open-in-new-window.desktop;
 application/smil+xml=codium-open-in-new-window.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=org.libreoffice.LibreOffice.writer.desktop;
+application/pdf=mupdf.desktop;
