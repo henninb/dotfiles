@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Zoom
+Type=Application
+Comment=Video conferencing and web conferencing service
+Exec=/opt/zoom/ZoomLauncher %U
+TryExec=/opt/zoom/ZoomLauncher
+Icon=videoconference-zoom
+Categories=Network;VideoConference;
+MimeType=x-scheme-handler/zoommtg;x-scheme-handler/zoomus;application/x-zoom;

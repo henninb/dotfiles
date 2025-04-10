@@ -1,32 +1,97 @@
 [Default Applications]
+# Custom / Developer tools
 application/x-extension-burp=install4j_i03e81-BurpSuiteCommunity.desktop
 x-scheme-handler/eclipse+command=_nix_store_g0yagglig5asv9an4rk539sdqnry0wyl-dbeaver-22.2.2_dbeaver_.desktop
 x-scheme-handler/postman=Postman.desktop
+
+# Web and protocol handlers
 x-scheme-handler/http=brave-browser.desktop
 x-scheme-handler/https=brave-browser.desktop
 x-scheme-handler/about=brave-browser.desktop
 x-scheme-handler/unknown=brave-browser.desktop
+
+# JetBrains suite
 x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
 x-scheme-handler/fleet=jetbrains-fleet.desktop
+
+# Media playback (both video and audio use VLC)
 video/mp4=vlc.desktop
+video/x-matroska=vlc.desktop
+video/webm=vlc.desktop
+video/mpeg=vlc.desktop
+video/x-msvideo=vlc.desktop
+audio/mpeg=vlc.desktop
+audio/mp4=vlc.desktop
+audio/flac=vlc.desktop
+audio/ogg=vlc.desktop
+audio/wav=vlc.desktop
+
+# Office / Document handling
 application/x-desktop=archlinuxbox-libreoffice-calc.desktop
-text/html=brave-browser.desktop
-application/json=brave-browser.desktop
 text/tab-separated-values=libreoffice-calc.desktop
 text/csv=libreoffice-calc.desktop
 text/spreadsheet=libreoffice-calc.desktop
+application/vnd.ms-word=org.libreoffice.LibreOffice.writer.desktop
+application/msword=org.libreoffice.LibreOffice.writer.desktop
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=org.libreoffice.LibreOffice.writer.desktop
+application/vnd.ms-excel=libreoffice-calc.desktop
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=libreoffice-calc.desktop
+application/vnd.ms-powerpoint=org.libreoffice.LibreOffice.impress.desktop
+application/vnd.openxmlformats-officedocument.presentationml.presentation=org.libreoffice.LibreOffice.impress.desktop
+application/vnd.oasis.opendocument.text=org.libreoffice.LibreOffice.writer.desktop
+application/vnd.oasis.opendocument.spreadsheet=libreoffice-calc.desktop
+application/vnd.oasis.opendocument.presentation=org.libreoffice.LibreOffice.impress.desktop
+application/pdf=mupdf.desktop
+
+# Web documents and code
+text/html=brave-browser.desktop
 application/xhtml+xml=brave-browser.desktop
 application/xml=brave-browser.desktop
-application/vnd.oasis.opendocument.presentation-flat-xml=brave-browser.desktop
-application/vnd.mozilla.xul+xml=brave-browser.desktop
+application/json=brave-browser.desktop
+text/plain=vscodium-wayland.desktop
+
+# Developer / Database
 application/sql=archlinuxbox-dbeaver.desktop
-inode/directory=thunar.desktop
+
+# File Manager (using Nautilus now)
+inode/directory=nautilus.desktop
+
+# Other protocol handlers
 x-scheme-handler/obsidian=obsidian.desktop
-x-scheme-handler/zoommtg=zoom-web.desktop
-text/plain=codium-open-in-new-window.desktop
+; x-scheme-handler/zoommtg=zoom-web.desktop
+x-scheme-handler/zoommtg=zoom.desktop
+
+# Additional document types
 application/smil+xml=codium-open-in-new-window.desktop
-application/vnd.openxmlformats-officedocument.wordprocessingml.document=org.libreoffice.LibreOffice.writer.desktop
-application/pdf=mupdf.desktop
+
+# E-book and document viewers
+application/epub+zip=xreader.desktop
+
+# Image viewing and editing
+image/avif=sxiv.desktop
+image/bmp=sxiv.desktop
+image/gif=sxiv.desktop
+image/heif=sxiv.desktop
+image/jpeg=sxiv.desktop
+image/jpg=sxiv.desktop
+image/png=sxiv.desktop
+image/svg+xml=sxiv.desktop
+image/tiff=sxiv.desktop
+image/vnd.djvu=xreader.desktop
+image/x-psd=gimp.desktop
+
+# Archive management (using GNOME File Roller)
+application/x-ar=org.gnome.FileRoller.desktop
+application/x-arj=org.gnome.FileRoller.desktop
+application/x-bzip-compressed-tar=org.gnome.FileRoller.desktop
+application/x-bzip=org.gnome.FileRoller.desktop
+application/x-compressed-tar=org.gnome.FileRoller.desktop
+application/x-compress=org.gnome.FileRoller.desktop
+application/x-gzip=org.gnome.FileRoller.desktop
+
+# Java archives (using a modern OpenJDK)
+application/x-jar=openjdk-11-java.desktop
+application/x-java-archive=openjdk-11-java.desktop
 
 [Added Associations]
 text/plain=vscodium-wayland.desktop;codium-open-in-new-window.desktop;

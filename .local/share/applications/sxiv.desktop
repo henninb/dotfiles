@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=sxiv
+GenericName=Image Viewer
+Comment=Simple and lightweight image viewer using sxiv
+Exec=sxiv %F
+Terminal=false
+Icon=sxiv
+Categories=Graphics;Viewer;
+MimeType=image/jpeg;image/png;image/gif;image/bmp;image/x-xbitmap;
