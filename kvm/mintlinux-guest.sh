@@ -120,6 +120,9 @@ echo "disk bus can be virtio (i.e. vda) or scsi (i.e. sda)"
 #
 # Note: Once installation is complete, the ISO remains attached. You’ll want to remove
 #       the installation media (via virt-manager or virsh edit) so that on reboot the disk boots.
+echo 'sudo ip link add link enp3s0 name macvtap0 type macvtap mode private'
+echo 'ip addr show macvtap0'
+
 exec virt-install \
   --connect qemu:///system \
   --virt-type=kvm \
