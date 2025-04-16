@@ -143,3 +143,4 @@ dev-python/pyside6 uitools
 dev-python/pyside uitools
 net-libs/nodejs npm
 app-misc/hivex ocaml
+dev-python/pyqt6 webchannel
