@@ -133,8 +133,8 @@ exec virt-install \
   --hvm \
   --boot uefi \
   --cdrom="$boot_dir/$iso_file" \
-  --network user,hostfwd=tcp::2222-:22 \
+  --network type=direct,source=macvtap0,source_mode=bridge,model=virtio \
   --graphics vnc \
-  --disk path="$images_dir/guest-$guest_name.qcow2",size=40,bus=sata,format=qcow2
+  --disk path="$images_dir/guest-$guest_name.qcow2",size=100,bus=sata,format=qcow2
 
 exit 0
