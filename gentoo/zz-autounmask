@@ -144,3 +144,6 @@ dev-python/pyside uitools
 net-libs/nodejs npm
 app-misc/hivex ocaml
 dev-python/pyqt6 webchannel
+sci-physics/bullet double-precision
+sci-libs/fftw threads
+media-libs/opensubdiv tbb
