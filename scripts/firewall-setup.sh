@@ -41,6 +41,18 @@ echo do I want to allow ping
 echo sudo iptables -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
 
 echo address bypass your default DROP with DOCKER
-sudo iptables -I DOCKER-USER -j DROP
+# sudo iptables -I DOCKER-USER -j DROP
+
+# 1) Create the chain
+sudo iptables -t filter -N DOCKER-USER
+
+# 2) Ensure Docker jumps into it from FORWARD
+sudo iptables -t filter -I FORWARD 1 -j DOCKER-USER
+
+# 3) Insert your bypass rule (replace <ADDRESS>):
+sudo iptables -t filter -I DOCKER-USER 1 -s 192.168.10.0/24 -j ACCEPT
+
+# 4) Then drop all other traffic:
+sudo iptables -t filter -A DOCKER-USER -j DROP
 
 exit 0
