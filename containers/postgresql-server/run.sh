@@ -1,7 +1,7 @@
 #!/bin/sh
 
-docker stop postgresql-server
-docker rm postgresql-server -f
+podman stop postgresql-server
+podman rm postgresql-server -f
 
 mkdir -p postgresql-data
 
@@ -41,13 +41,11 @@ EOF
 sudo mkdir -p /opt/postgresql-data
 sudo mv -v pg_hba.conf /opt/postgresql-data/pg_hba.conf
 
-# sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /opt/postgresql-data/postgresql.conf
-if ! docker compose up -d; then
-  echo "failed docker-compose"
-fi
+podman compose build
+podman compose up -d
 
 # docker run -dit --name postgresql-server -h postgresql-server postgresql-server
-echo docker exec -it postgresql-server /bin/bash
+echo podman exec -it postgresql-server /bin/bash
 echo psql
 
 exit 0

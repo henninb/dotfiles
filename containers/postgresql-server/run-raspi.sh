@@ -19,18 +19,21 @@ GRANT ALL PRIVILEGES ON DATABASE postgres TO henninb;
 ALTER USER postgres WITH PASSWORD 'monday1';
 EOF
 
-docker stop postgresql-server
+export PODMAN_HOST=ssh://henninb@192.168.10.10/run/user/1000/podman/podman.sock
+export CONTAINER_HOST=ssh://henninb@192.168.10.10/run/user/1000/podman/podman.sock
+podman stop postgresql-server
+podman rm -f postgresql-server
 mv "$HOME/postgresql-data" "$HOME/postgresql-data-${date}"
-docker save -o postgresql-server-${date}.tar postgresql-server
+#podman save -o postgresql-server-${date}.tar postgresql-server
 
 mkdir -p "$HOME/postgresql-data"
-export CURRENT_UID="$(id -u)"
-export CURRENT_GID="$(id -g)"
+# export CURRENT_UID="$(id -u)"
+# export CURRENT_GID="$(id -g)"
 
-docker run --name postgresql-server -d --restart unless-stopped -p 5432:5432 -e POSTGRES_PASSWORD=monday1 --user "$CURRENT_UID:$CURRENT_GID" -v "$HOME/postgresql-data:/var/lib/postgresql/data" postgres:17.4
+podman run --name postgresql-server -d --restart unless-stopped -p 5433:5432 -e POSTGRES_PASSWORD=monday1 -v "$HOME/postgresql-data:/var/lib/postgresql/data" postgres:17.4
 
-echo docker exec -it postgresql-server psql postgres -U postgres
-echo docker exec -it postgresql-server psql finance_db -U henninb
+echo podman exec -it postgresql-server psql postgres -U postgres
+echo podman exec -it postgresql-server psql finance_db -U henninb
 cat /tmp/sql-setup
 echo psql finance_db -h 192.168.10.10 -U henninb
 

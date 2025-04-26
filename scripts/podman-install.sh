@@ -34,7 +34,7 @@ if command -v pacman; then
 elif command -v emerge; then
   doas emerge --update --newuse podman
   doas emerge --update --newuse slirp4netns
-  doas usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$(id -un)"
+  # doas usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$(id -un)"
   systemctl --user start podman.socket
 elif [ -x "$(command -v apt)" ]; then
   echo "debian"
