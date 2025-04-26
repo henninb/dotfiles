@@ -9,27 +9,25 @@ fi
 platform=$1
 
 if [ "$platform" = "podman" ]; then
-  # podman stop nginx-server
-  # podman rm -f nginx-server
-  # echo "running server on port 443"
-
   export PODMAN_HOST=ssh://henninb@192.168.10.10/run/user/1000/podman/podman.sock
   export CONTAINER_HOST=ssh://henninb@192.168.10.10/run/user/1000/podman/podman.sock
-  export PODMAN_COMPOSE_WARNING_LOGS=false
+  podman stop nginx-server
+  podman rm -f nginx-server
+  # echo "running server on port 443"
+
+  # export PODMAN_COMPOSE_WARNING_LOGS=false
+  # export PODMAN_COMPOSE_PROVIDER=podman-compose
   # export PODMAN_HOST=ssh://henninb@192.168.10.10
   # podman info
-  # echo 0 | sudo tee /proc/sys/net/ipv4/ip_unprivileged_port_start
-  # podman build -t nginx-server .
-  # podman --remote info | grep 'host:'
-  # exit 1
+  #podman build -t nginx-server .
+  podman --remote info | grep 'debian'
 
   podman images
-  podman build -t nginx-server .
-  podman run --name=nginx-server -h nginx-server -h nginx-server --restart unless-stopped -p 7443:443 -d nginx-server
-  # podman compose build
-  # podman compose up -d
-  # podman info
-  exit 1
+  # podman build -t nginx-server .
+  # podman run --name=nginx-server -h nginx-server -h nginx-server --restart unless-stopped -p 7443:443 -d nginx-server
+  podman compose build
+  podman compose up -d
+  podman ps -a
 elif [ "$platform" = "docker" ]; then
   docker stop nginx-server
   echo docker rm -f nginx-server

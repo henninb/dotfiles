@@ -6,6 +6,6 @@ services:
       - "hornsup:192.168.10.10"
     container_name: nginx-server
     hostname: nginx-server
-    # restart: always
+    restart: always
     ports:
       - "7443:443"
