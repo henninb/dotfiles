@@ -150,66 +150,106 @@ elif [ "$OS" = "Gentoo" ]; then
 
   # Sync Portage
   if ! sudo emerge --sync 2>&1 | tee -a "$HOME/tmp/update-$$.log"; then
-    echo ">>> emerge --sync failed; attempting emerge-webrsync…" >&2
+    echo ">>> emerge --sync failed; trying emerge-webrsync…" >&2
     if ! sudo emerge-webrsync 2>&1 | tee -a "$HOME/tmp/update-$$.log"; then
       echo ">>> emerge-webrsync also failed; aborting." >&2
       exit 1
     fi
   fi
 
-  # Update Portage itself
   sudo emerge -uN portage 2>&1 | tee -a "$HOME/tmp/update-$$.log" \
-    || { echo ">>> Updating portage failed; aborting." >&2; exit 1; }
+    || { echo ">>> portage update failed; aborting." >&2; exit 1; }
 
-  # World update (with and without new USE flags)
   sudo emerge -uDUNf --keep-going --with-bdeps=y @world 2>&1 | tee -a "$HOME/tmp/update-$$.log" \
-    || { echo ">>> World update (with flags) failed; aborting." >&2; exit 1; }
+    || { echo ">>> world update (new USE) failed; aborting." >&2; exit 1; }
   sudo emerge -uDUN --keep-going --with-bdeps=y @world 2>&1 | tee -a "$HOME/tmp/update-$$.log" \
-    || { echo ">>> World update (no-flags) failed; aborting." >&2; exit 1; }
+    || { echo ">>> world update failed; aborting." >&2; exit 1; }
 
-  # Cleanup
-  sudo emerge --depclean 2>&1 | tee -a "$HOME/tmp/update-$$.log" || echo ">>> depclean encountered issues; continuing."
-  doas revdep-rebuild      || echo ">>> revdep-rebuild failed; you may need to rerun manually."
-  doas emerge @preserved-rebuild || echo ">>> preserved-rebuild failed; check leftovers."
+  sudo emerge --depclean 2>&1 | tee -a "$HOME/tmp/update-$$.log" || echo ">>> depclean warnings; continuing."
+  doas revdep-rebuild      || echo ">>> revdep-rebuild issues; check manually."
+  doas emerge @preserved-rebuild || echo ">>> preserved-rebuild issues; check manually."
 
-  # —— Kernel detection & compilation ——
-  echo ">>> Detecting installed kernels…"
+  # —— Gentoo kernel detection & conditional compile ——
+  echo ">>> Detecting installed kernels…" | tee -a "$HOME/tmp/update-$$.log"
   kernel_list=$(eselect kernel list 2>&1) || { echo ">>> Failed to list kernels; aborting." >&2; exit 1; }
-  echo "$kernel_list"
-
-  # extract versions
-  sorted_versions=$(printf "%s\n" "$kernel_list" \
-    | awk '{print $2}' \
-    | grep '^linux-' \
-    | sort -V) \
+  sorted_versions=$(printf "%s\n" "$kernel_list" | awk '{print $2}' | grep '^linux-' | sort -V) \
     || { echo ">>> Failed to sort kernel versions; aborting." >&2; exit 1; }
 
   newest_kernel=$(printf "%s\n" "$sorted_versions" | tail -n1)
   [ -n "$newest_kernel" ] || { echo ">>> No kernel versions found; aborting." >&2; exit 1; }
 
-  echo ">>> Setting newest kernel: $newest_kernel"
+  echo ">>> Newest kernel available: $newest_kernel" | tee -a "$HOME/tmp/update-$$.log"
   doas eselect kernel set "$newest_kernel" \
     || { echo ">>> eselect kernel set failed; aborting." >&2; exit 1; }
 
+  # what's actually running?
   current_uname=$(uname -r | cut -d- -f1)
-  if [ "$newest_kernel" != "$current_uname" ]; then
-    vmlinuz="/boot/vmlinuz-${newest_kernel}-gentoo-x86_64"
-    if [ ! -f "$vmlinuz" ]; then
-      echo ">>> Kernel $newest_kernel not found in /boot — compiling now."
-      doas genkernel all \
+  echo ">>> System running: $current_uname" | tee -a "$HOME/tmp/update-$$.log"
+
+  vmlinuz="/boot/vmlinuz-${newest_kernel}-gentoo-x86_64"
+
+  if [ "$current_uname" = "$newest_kernel" ]; then
+    echo ">>> Running kernel matches newest; no compile needed." | tee -a "$HOME/tmp/update-$$.log"
+  else
+    if [ -f "$vmlinuz" ]; then
+      echo ">>> Kernel $newest_kernel already built but not in use." | tee -a "$HOME/tmp/update-$$.log"
+      echo ">>> Please reboot to switch from $current_uname to $newest_kernel." | tee -a "$HOME/tmp/update-$$.log"
+    else
+      echo ">>> Compiling kernel $newest_kernel…" | tee -a "$HOME/tmp/update-$$.log"
+      doas genkernel all 2>&1 | tee -a "$HOME/tmp/update-$$.log" \
         || { echo ">>> genkernel failed; aborting." >&2; exit 1; }
 
-      echo ">>> Regenerating GRUB config."
-      doas grub-mkconfig -o /boot/grub/grub.cfg \
+      echo ">>> Regenerating GRUB config…" | tee -a "$HOME/tmp/update-$$.log"
+      doas grub-mkconfig -o /boot/grub/grub.cfg 2>&1 | tee -a "$HOME/tmp/update-$$.log" \
         || { echo ">>> grub-mkconfig failed; aborting." >&2; exit 1; }
-    else
-      echo ">>> Kernel $newest_kernel already compiled; skipping."
     fi
-  else
-    echo ">>> Running kernel ($current_uname) matches newest; no compile needed."
   fi
+  echo ">>> Gentoo section complete." | tee -a "$HOME/tmp/update-$$.log"
 
-  echo ">>> Gentoo kernel-building section completed successfully."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   # blender=$(find /usr/bin -name "blender-*[0-9]")
   # if [ -z ${blender+x} ]; then echo "var is unset"; else sudo ln -sfn "${blender}" /usr/bin/blender; fi
