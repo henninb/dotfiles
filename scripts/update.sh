@@ -186,7 +186,9 @@ elif [ "$OS" = "Gentoo" ]; then
   current_uname=$(uname -r | cut -d- -f1)
   echo ">>> System running: $current_uname" | tee -a "$HOME/tmp/update-$$.log"
 
-  vmlinuz="/boot/vmlinuz-${newest_kernel}-gentoo-x86_64"
+  version=${newest_kernel#linux-}
+  vmlinuz="/boot/vmlinuz-${version}-x86_64"
+  echo $vmlinuz
 
   if [ "$current_uname" = "$newest_kernel" ]; then
     echo ">>> Running kernel matches newest; no compile needed." | tee -a "$HOME/tmp/update-$$.log"
