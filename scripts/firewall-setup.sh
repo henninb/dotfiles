@@ -1,5 +1,8 @@
 #!/bin/sh
 
+echo disable wifi
+sudo ip link set wlp4s0 down
+
 echo clearn slate
 sudo iptables -F
 sudo iptables -X

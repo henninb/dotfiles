@@ -67,46 +67,69 @@ elif [ "$OS" = "openSUSE Tumbleweed" ]; then
   doas zypper --non-interactive --auto-agree-with-licenses update
 elif [ "$OS" = "Gentoo" ]; then
   doas eselect news read
+
+  # Sync Portage
   if ! sudo emerge --sync 2>&1 | tee -a "$HOME/tmp/update-$$.log"; then
-    sudo emerge-webrsync 2>&1 | tee -a "$HOME/tmp/update-$$.log"
-  fi
-  sudo emerge -uN portage 2>&1 | tee -a "$HOME/tmp/update-$$.log"
-  sudo emerge -uDUNf --keep-going --with-bdeps=y @world 2>&1 | tee -a "$HOME/tmp/update-$$.log"
-  sudo emerge -uDUN --keep-going --with-bdeps=y @world 2>&1 | tee -a "$HOME/tmp/update-$$.log"
-  sudo emerge --depclean 2>&1 | tee -a "$HOME/tmp/update-$$.log"
-  doas revdep-rebuild
-  doas emerge @preserved-rebuild
-
-  echo eselect python list
-  eselect python list
-  echo doas eselect python set python3.12
-
-###  compile kernel
-  kernel_list=$(eselect kernel list)
-  echo "kernel_list=$kernel_list"
-  versions=$(echo "$kernel_list" | awk -F ' ' '{print $2}')
-  echo "versions=$versions"
-  sorted_versions=$(echo "$kernel_list" | awk -F ' ' '{print $2}' | grep linux | sort -V)
-  echo "sorted_versions=$sorted_versions"
-  newest_kernel=$(echo "$sorted_versions" | awk '{print $NF}')
-  echo "newest_kernel=$newest_kernel"
-  doas eselect kernel set "$newest_kernel"
-  uname=$(uname -srm | cut -d' ' -f2 | cut -d- -f1)
-  eselect=$(eselect kernel list | tail -1 | cut -d- -f2)
-  if [ ! "${eselect}" = "${uname}" ]; then
-    if [ ! -f "/boot/vmlinuz-${eselect}-gentoo-x86_64" ]; then
-      echo "complie the kernel '$eselect' as it is newer than '$uname'"
-      doas genkernel all
-      if [ $? -eq 0 ]; then
-        # doas genkernel --no-microcode --install all
-        doas grub-mkconfig -o /boot/grub/grub.cfg
-      else
-        echo 'why did the kernel build fail?'
-        exit 1
-      fi
+    echo ">>> emerge --sync failed; attempting emerge-webrsync…" >&2
+    if ! sudo emerge-webrsync 2>&1 | tee -a "$HOME/tmp/update-$$.log"; then
+      echo ">>> emerge-webrsync also failed; aborting." >&2
+      exit 1
     fi
   fi
-###  compile kernel
+
+  # Update Portage itself
+  sudo emerge -uN portage 2>&1 | tee -a "$HOME/tmp/update-$$.log" \
+    || { echo ">>> Updating portage failed; aborting." >&2; exit 1; }
+
+  # World update (with and without new USE flags)
+  sudo emerge -uDUNf --keep-going --with-bdeps=y @world 2>&1 | tee -a "$HOME/tmp/update-$$.log" \
+    || { echo ">>> World update (with flags) failed; aborting." >&2; exit 1; }
+  sudo emerge -uDUN --keep-going --with-bdeps=y @world 2>&1 | tee -a "$HOME/tmp/update-$$.log" \
+    || { echo ">>> World update (no-flags) failed; aborting." >&2; exit 1; }
+
+  # Cleanup
+  sudo emerge --depclean 2>&1 | tee -a "$HOME/tmp/update-$$.log" || echo ">>> depclean encountered issues; continuing."
+  doas revdep-rebuild      || echo ">>> revdep-rebuild failed; you may need to rerun manually."
+  doas emerge @preserved-rebuild || echo ">>> preserved-rebuild failed; check leftovers."
+
+  # —— Kernel detection & compilation ——
+  echo ">>> Detecting installed kernels…"
+  kernel_list=$(eselect kernel list 2>&1) || { echo ">>> Failed to list kernels; aborting." >&2; exit 1; }
+  echo "$kernel_list"
+
+  # extract versions
+  sorted_versions=$(printf "%s\n" "$kernel_list" \
+    | awk '{print $2}' \
+    | grep '^linux-' \
+    | sort -V) \
+    || { echo ">>> Failed to sort kernel versions; aborting." >&2; exit 1; }
+
+  newest_kernel=$(printf "%s\n" "$sorted_versions" | tail -n1)
+  [ -n "$newest_kernel" ] || { echo ">>> No kernel versions found; aborting." >&2; exit 1; }
+
+  echo ">>> Setting newest kernel: $newest_kernel"
+  doas eselect kernel set "$newest_kernel" \
+    || { echo ">>> eselect kernel set failed; aborting." >&2; exit 1; }
+
+  current_uname=$(uname -r | cut -d- -f1)
+  if [ "$newest_kernel" != "$current_uname" ]; then
+    vmlinuz="/boot/vmlinuz-${newest_kernel}-gentoo-x86_64"
+    if [ ! -f "$vmlinuz" ]; then
+      echo ">>> Kernel $newest_kernel not found in /boot — compiling now."
+      doas genkernel all \
+        || { echo ">>> genkernel failed; aborting." >&2; exit 1; }
+
+      echo ">>> Regenerating GRUB config."
+      doas grub-mkconfig -o /boot/grub/grub.cfg \
+        || { echo ">>> grub-mkconfig failed; aborting." >&2; exit 1; }
+    else
+      echo ">>> Kernel $newest_kernel already compiled; skipping."
+    fi
+  else
+    echo ">>> Running kernel ($current_uname) matches newest; no compile needed."
+  fi
+
+  echo ">>> Gentoo kernel-building section completed successfully."
 
   # blender=$(find /usr/bin -name "blender-*[0-9]")
   # if [ -z ${blender+x} ]; then echo "var is unset"; else sudo ln -sfn "${blender}" /usr/bin/blender; fi
