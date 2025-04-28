@@ -2,7 +2,6 @@
 
 echo raspberrypi
 
-
 sudo apt install wireguard
 
 umask 077
@@ -42,7 +41,6 @@ sudo wg show wg0
 
 sudo wg up gentoo
 sudo wg show gentoo
-
 
 # gentoo
 umask 077
