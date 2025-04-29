@@ -39,7 +39,7 @@ sudo wg-quick up wg0
 sudo wg show wg0
 
 
-sudo wg up gentoo
+sudo wg-quick up gentoo
 sudo wg show gentoo
 
 # gentoo
