@@ -24,7 +24,11 @@ PostDown = sysctl -w net.ipv4.ip_forward=0 && iptables -D FORWARD -i wg0  -o wla
 
 [Peer]
 PublicKey  = N9MHtjlFZX0WH649aKpwci8Um8QI3+VqctI5Ti6dmgA=
-AllowedIPs = 10.200.200.2/32, 10.200.200.3/32
+AllowedIPs = 10.200.200.2/32
+
+[Peer]
+PublicKey  = SfAJ81/5Sm5qTFqG3S2HdNKtbAZhqi7xx4eYRTqdAQA=
+AllowedIPs = 10.200.200.3/32
 EOF
 
 root@raspberrypi:/etc/wireguard# ls
