@@ -1,0 +1,15 @@
+services:
+  frigate:
+    container_name: frigate
+    image: ghcr.io/blakeblackshear/frigate:stable
+    privileged: true
+    restart: unless-stopped
+    shm_size: "512mb"
+    ports:
+      - "5000:5000"    # Frigate UI
+      - "1935:1935"    # RTMP
+    volumes:
+      - ./config/config.yml:/config/config.yml:ro
+      - ./clips:/clips
+      - ./recordings:/recordings
+      - ./cache:/cache
