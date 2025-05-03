@@ -7,7 +7,8 @@ docker run -d \
   --restart unless-stopped \
   -e TZ=America/Chicago \
   -v ~/homeassistant/config:/config \
-  --network 192.168.10.10 \
+  -p 8123:8123 \
   homeassistant/home-assistant:stable
 
 exit 0
+  --network 192.168.10.10 \
