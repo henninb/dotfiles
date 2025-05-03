@@ -1,3 +1,2 @@
-GENUINE Frigidaire 316217002 Oven Temperature Probe
-
-316091711 Pressure Regulator Compatible With Frigidaire Gas Ranges
+- 316217002 - Oven Temperature Probe
+- 316091711 - Pressure Regulator Compatible With Frigidaire Gas Ranges
