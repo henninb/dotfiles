@@ -4,20 +4,20 @@ echo raspberrypi
 
 sudo apt install wireguard
 
+## as root
 umask 077
 wg genkey | tee /etc/wireguard/server_private.key | wg pubkey > /etc/wireguard/server_public.key
 
 Edit /etc/sysctl.conf, ensure:
 net.ipv4.ip_forward=1
 
-raspberrypi:/etc/wireguard# cat wg0.conf
 cat > "$HOME/tmp/wg0.conf" << EOF
 [Interface]
-Address    = 10.200.200.1/24
+Address = 10.200.200.1/24
 ListenPort = 51820
-PrivateKey     = sBj5CNLLGiNfYN0T8yuE9a4iZe1Q8LcLGE+ybgxBBW0=
+PrivateKey = sBj5CNLLGiNfYN0T8yuE9a4iZe1Q8LcLGE+ybgxBBW0=
 
-PostUp   = sysctl -w net.ipv4.ip_forward=1 net.ipv4.conf.all.rp_filter=0 net.ipv4.conf.wlan0.rp_filter=0 && iptables -A FORWARD -i wg0  -o wlan0 -j ACCEPT && iptables -A FORWARD -i wlan0 -o wg0  -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT && iptables -t nat -A POSTROUTING -s 10.200.200.0/24 -o wlan0 -j MASQUERADE
+PostUp = sysctl -w net.ipv4.ip_forward=1 net.ipv4.conf.all.rp_filter=0 net.ipv4.conf.wlan0.rp_filter=0 && iptables -A FORWARD -i wg0  -o wlan0 -j ACCEPT && iptables -A FORWARD -i wlan0 -o wg0  -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT && iptables -t nat -A POSTROUTING -s 10.200.200.0/24 -o wlan0 -j MASQUERADE
 
 PostDown = sysctl -w net.ipv4.ip_forward=0 && iptables -D FORWARD -i wg0  -o wlan0 -j ACCEPT && iptables -D FORWARD -i wlan0 -o wg0  -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT && iptables -t nat -D POSTROUTING -s 10.200.200.0/24 -o wlan0 -j MASQUERADE
 
@@ -38,15 +38,13 @@ PublicKey  = p1F4/E5s+CDdComD6ZFPZsjuicgEIWpOahBt3Dal8Eg=
 AllowedIPs = 10.200.200.4/32
 EOF
 
-root@raspberrypi:/etc/wireguard# ls
-server_private.key  server_public.key  wg0.conf
-
-
+sudo mv "$HOME/tmp/wg0.conf" /etc/wireguard/
 
 sudo wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
 sudo dhclient wlan0
 
 sudo wg-quick up wg0
+sudo wg-quick down wg0
 sudo wg show wg0
 
 
