@@ -22,13 +22,20 @@ PostUp   = sysctl -w net.ipv4.ip_forward=1 net.ipv4.conf.all.rp_filter=0 net.ipv
 PostDown = sysctl -w net.ipv4.ip_forward=0 && iptables -D FORWARD -i wg0  -o wlan0 -j ACCEPT && iptables -D FORWARD -i wlan0 -o wg0  -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT && iptables -t nat -D POSTROUTING -s 10.200.200.0/24 -o wlan0 -j MASQUERADE
 
 
+# gentoo workstation
 [Peer]
 PublicKey  = N9MHtjlFZX0WH649aKpwci8Um8QI3+VqctI5Ti6dmgA=
 AllowedIPs = 10.200.200.2/32
 
+# archlinux laptop
 [Peer]
 PublicKey  = SfAJ81/5Sm5qTFqG3S2HdNKtbAZhqi7xx4eYRTqdAQA=
 AllowedIPs = 10.200.200.3/32
+
+# pixel phone
+[Peer]
+PublicKey  = p1F4/E5s+CDdComD6ZFPZsjuicgEIWpOahBt3Dal8Eg=
+AllowedIPs = 10.200.200.4/32
 EOF
 
 root@raspberrypi:/etc/wireguard# ls
