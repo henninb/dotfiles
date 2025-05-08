@@ -47,7 +47,6 @@ sudo wg-quick up wg0
 sudo wg-quick down wg0
 sudo wg show wg0
 
-
 sudo wg-quick up gentoo
 sudo wg show gentoo
 
@@ -63,7 +62,6 @@ sudo systemctl enable wg-quick@gentoo
 gentoo /etc/wireguard > ls
 client_private.key  client_public.key  gentoo.conf
 
-silverfox /etc/wireguard > cat gentoo.conf
 cat > "$HOME/tmp/gentoo.conf" << EOF
 [Interface]
 PrivateKey = eEh358hMmhIFJl9fKxR0qgw9FoszhipTHporPQNxXVI=
@@ -72,9 +70,11 @@ DNS = 1.1.1.1
 
 [Peer]
 PublicKey = kI+DNJ9qPsCgILWOmDbfuTWDb4zAYHDAJ+DY5UuAnDo=
-Endpoint = 10.0.0.175:51820
+Endpoint = 10.0.0.202:51820
 AllowedIPs = 10.200.200.1/32, 192.168.4.0/22
 PersistentKeepalive = 25
 EOF
+
+sudo cp "$HOME/tmp/gentoo.conf" /etc/wireguard/gentoo.conf
 
 exit 0
