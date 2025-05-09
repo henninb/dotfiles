@@ -147,3 +147,4 @@ dev-python/pyqt6 webchannel
 sci-physics/bullet double-precision
 sci-libs/fftw threads
 media-libs/opensubdiv tbb
+dev-libs/newt python

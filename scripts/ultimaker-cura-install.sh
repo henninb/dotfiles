@@ -1,6 +1,6 @@
 #!/bin/sh
 
-wget 'https://github.com/Ultimaker/Cura/releases/download/5.9.0/UltiMaker-Cura-5.9.0-linux-X64.AppImage' -O /tmp/Cura.AppImage
+wget 'https://github.com/Ultimaker/Cura/releases/download/5.10.0/UltiMaker-Cura-5.10.0-linux-X64.AppImage' -O /tmp/Cura.AppImage
 chmod 755 /tmp/Cura.AppImage
 mv /tmp/Cura.AppImage $HOME/.local/bin/
 
