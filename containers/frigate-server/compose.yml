@@ -3,6 +3,7 @@ services:
     container_name: frigate
     image: ghcr.io/blakeblackshear/frigate:stable
     privileged: true
+    network_mode: host          # ← share the Pi’s network stack
     restart: unless-stopped
     shm_size: "512mb"
     ports:

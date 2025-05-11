@@ -70,7 +70,7 @@ DNS = 1.1.1.1
 
 [Peer]
 PublicKey = kI+DNJ9qPsCgILWOmDbfuTWDb4zAYHDAJ+DY5UuAnDo=
-Endpoint = 10.0.0.202:51820
+Endpoint = 10.0.0.175:51820
 AllowedIPs = 10.200.200.1/32, 192.168.4.0/22
 PersistentKeepalive = 25
 EOF
