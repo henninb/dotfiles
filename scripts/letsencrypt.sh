@@ -54,7 +54,7 @@ done
 
 if [ "$NEED_RENEWAL" -eq 1 ]; then
     echo "At least one certificate needs renewal. Running 'doas certbot renew'..."
-    doas certbot renew
+    doas certbot renew --dns-cloudflare-propagation-seconds 60
 else
     echo "Certificates for all checked domains are valid for more than 30 days. No renewal necessary."
 fi
