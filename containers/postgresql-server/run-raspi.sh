@@ -30,7 +30,8 @@ mkdir -p "$HOME/postgresql-data"
 # export CURRENT_UID="$(id -u)"
 # export CURRENT_GID="$(id -g)"
 
-podman run --name postgresql-server -d --restart unless-stopped -p 5433:5432 -e POSTGRES_PASSWORD=monday1 -v "$HOME/postgresql-data:/var/lib/postgresql/data" postgres:17.4
+podman run --name postgresql-server -d --restart unless-stopped -p 5433:5432 -e POSTGRES_PASSWORD=monday1 -v "$HOME/postgresql-data:/var/lib/postgresql/data" postgres:17.5
+podman network connect finance-net postgresql-server
 
 echo podman exec -it postgresql-server psql postgres -U postgres
 echo podman exec -it postgresql-server psql finance_db -U henninb
